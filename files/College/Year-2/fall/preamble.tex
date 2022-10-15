@@ -19,6 +19,8 @@
 \usepackage{tcolorbox}
 \usepackage{float}
 \usepackage{extramarks}
+\usepackage[export]{adjustbox}
+\usepackage{caption}
 
 %%%%%%%%%%%%
 %  Tables  %
@@ -53,17 +55,6 @@
   \section*{\@lesson}
   \addcontentsline{toc}{section}{\@lesson}
 }
-
-%%%%%%%%%%%%%%%%%%
-% Fix WrapFigure %
-%%%%%%%%%%%%%%%%%%
-
-\newcommand{\wrapfill}{\par\ifnum\value{WF@wrappedlines}>0
-    \parskip=0pt
-    \addtocounter{WF@wrappedlines}{-1}%
-    \null\vspace{\arabic{WF@wrappedlines}\baselineskip}%
-    \WFclear
-\fi}
 
 %%%%%%%%%%%%%%%%%
 % Fancy Headers %
@@ -134,31 +125,6 @@
 
 \pdfsuppresswarningpagegroup=1
 
-%%%%%%%%%%%%%%%%%
-% Multi Columns %
-%%%%%%%%%%%%%%%%%
-
-\let\multicolmulticols\multicols
-\let\endmulticolmulticols\endmulticols
-
-\RenewDocumentEnvironment{multicols}{mO{}}
-{%
-  \ifnum#1=1
-    #2%
-  \else % More than 1 column
-    \multicolmulticols{#1}[#2]
-  \fi
-}
-{%
-  \ifnum#1=1
-\else % More than 1 column
-  \endmulticolmulticols
-\fi
-}
-
-\newlength{\thickarrayrulewidth}
-\setlength{\thickarrayrulewidth}{5\arrayrulewidth}
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                                   Theorems                                  %
@@ -169,20 +135,20 @@
 \mdfsetup{skipabove=1em,skipbelow=0em}
 
 \theoremstyle{definition}
-\newcommand{\createnewtheorem}[3]{
+\newcommand{\createnewtheorem}[2]{
   \declaretheoremstyle[
-  headfont=\bfseries\sffamily\color{#2}, bodyfont=\normalfont,
+  headfont=\bfseries\sffamily\color{#2!70!black}, bodyfont=\normalfont,
   mdframed={
     linewidth=2pt,
     rightline=false, topline=false, bottomline=false,
-    linecolor=#3, backgroundcolor=#3!5,
+    linecolor=#2, backgroundcolor=#2!5,
   },
   ]{#1}
 }
 
-\createnewtheorem{thmgreenbox}{ForestGreen!70!black}{ForestGreen}
-\createnewtheorem{thmbluebox}{NavyBlue!70!black}{NavyBlue}
-\createnewtheorem{thmredbox}{RawSienna!70!black}{RawSienna}
+\createnewtheorem{thmgreenbox}{ForestGreen}
+\createnewtheorem{thmbluebox}{NavyBlue}
+\createnewtheorem{thmredbox}{RawSienna}
 
 \declaretheorem[style=thmgreenbox, name=Definition]{definition}
 \declaretheorem[style=thmredbox, name=Theorem]{theorem}

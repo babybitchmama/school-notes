@@ -40,6 +40,42 @@
 \fancyfoot[L]{\lastxmark}
 \fancyfoot[C]{\thepage}
 
+%%%%%%%%%%%%%%%%%%
+% Fix WrapFigure %
+%%%%%%%%%%%%%%%%%%
+
+\newcommand{\wrapfill}{\par\ifnum\value{WF@wrappedlines}>0
+    \parskip=0pt
+    \addtocounter{WF@wrappedlines}{-1}%
+    \null\vspace{\arabic{WF@wrappedlines}\baselineskip}%
+    \WFclear
+\fi}
+
+%%%%%%%%%%%%%%%%%
+% Multi Columns %
+%%%%%%%%%%%%%%%%%
+
+\let\multicolmulticols\multicols
+\let\endmulticolmulticols\endmulticols
+
+\RenewDocumentEnvironment{multicols}{mO{}}
+{%
+  \ifnum#1=1
+    #2%
+  \else % More than 1 column
+    \multicolmulticols{#1}[#2]
+  \fi
+}
+{%
+  \ifnum#1=1
+\else % More than 1 column
+  \endmulticolmulticols
+\fi
+}
+
+\newlength{\thickarrayrulewidth}
+\setlength{\thickarrayrulewidth}{5\arrayrulewidth}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                                  Title Page                                 %
