@@ -22,7 +22,12 @@
 \usepackage[export]{adjustbox}
 \usepackage{caption}
 \usepackage{acro}
-\usepackage[symbols,nogroupskip,record]{glossaries-extra}
+\usepackage{fancyhdr}
+\usepackage{import}
+\usepackage{pdfpages}
+\usepackage{transparent}
+\usepackage{thmtools}
+\usepackage[framemethod=TikZ]{mdframed}
 
 %%%%%%%%%%%%
 %  Tables  %
@@ -62,8 +67,6 @@
 %%%%%%%%%%%%%%%%%
 % Fancy Headers %
 %%%%%%%%%%%%%%%%%
-
-\usepackage{fancyhdr}
 
 \newcommand{\createintro}{
   \maketitle
@@ -117,10 +120,7 @@
 % Figure Support %
 %%%%%%%%%%%%%%%%%%
 
-\usepackage{import}
 \pdfminorversion=7
-\usepackage{pdfpages}
-\usepackage{transparent}
 \newcommand{\incfig}[2][1]{%
   \def\svgwidth{#1\columnwidth}
   \import{./figures/}{#2.pdf_tex}
@@ -133,8 +133,6 @@
 %                                 Environments                                %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\usepackage{thmtools}
-\usepackage[framemethod=TikZ]{mdframed}
 \mdfsetup{skipabove=1em,skipbelow=0em}
 
 \renewcommand{\qed}{\hfill\color{RawSienna}{Q.E.D.}}
