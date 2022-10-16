@@ -93,8 +93,8 @@
   \renewcommand{\headrulewidth}{0.4pt}
   \pagestyle{fancy}
 
-  \fancyhead[RO,LE]{\@lesson}
-  \fancyhead[RE,LO]{Hashem A. Damrah}
+  \fancyhead[R,L]{\@lesson}
+  \fancyhead[R,L]{Hashem A. Damrah}
   \fancyfoot[C]{\thepage}
 }
 
@@ -160,21 +160,21 @@
   \createnewtheorem{thmblueline}{rightline=false, topline=false, bottomline=false}{}
   \createnewtheorem{thmproofbox}{rightline=false, topline=false, bottomline=false}{qed=\qedsymbol}
 }{
-  \newcommand{\createcoloredtheorem}[7]{
+  \newcommand{\createcoloredtheorem}[8]{
     \createnewtheorem{#1}{
       linewidth=2pt,
       rightline=#3, leftline=#4, topline=#5, bottomline=#6,
-      linecolor=#2, backgroundcolor=#2!5
-    }{headfont=\bfseries\sffamily\color{#2}, #7}
+      linecolor=#2, backgroundcolor=#2!5, #7
+    }{headfont=\bfseries\sffamily\color{#2}, #8}
   }
 
   % Color environments.
-  \createcoloredtheorem{thmgreenbox}{ForestGreen}{false}{true}{false}{false}{}
-  \createcoloredtheorem{thmredbox}{RawSienna}{false}{true}{false}{false}{}
-  \createcoloredtheorem{thmbluebox}{NavyBlue}{false}{true}{false}{false}{}
-  \createcoloredtheorem{thmredlines}{RawSienna}{true}{false}{true}{true}{}
-  \createcoloredtheorem{thmblueline}{NavyBlue}{true}{false}{true}{true}{}
-  \createcoloredtheorem{thmproofbox}{RawSienna}{false}{true}{false}{false}{qed=\qedsymbol}
+  \createcoloredtheorem{thmgreenbox}{ForestGreen}{false}{true}{false}{false}{}{}
+  \createcoloredtheorem{thmredbox}{RawSienna}{false}{true}{false}{false}{}{}
+  \createcoloredtheorem{thmbluebox}{NavyBlue}{false}{true}{false}{false}{}{}
+  \createcoloredtheorem{thmredlines}{RawSienna}{false}{false}{true}{true}{backgroundcolor=white}{}
+  \createcoloredtheorem{thmblueline}{NavyBlue}{false}{true}{false}{false}{backgroundcolor=white}{}
+  \createcoloredtheorem{thmproofbox}{RawSienna}{false}{true}{false}{false}{}{qed=\qedsymbol}
 }
 \makeatother
 
