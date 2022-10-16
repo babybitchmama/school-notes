@@ -157,34 +157,24 @@
   \createnewtheorem{thmredbox}{}{}
   \createnewtheorem{thmbluebox}{}{}
   \createnewtheorem{thmredlines}{rightline=false, leftline=false}{}
+  \createnewtheorem{thmblueline}{rightline=false, topline=false, bottomline=false}{}
   \createnewtheorem{thmproofbox}{rightline=false, topline=false, bottomline=false}{qed=\qedsymbol}
 }{
+  \newcommand{\createcoloredtheorem}[7]{
+    \createnewtheorem{#1}{
+      linewidth=2pt,
+      rightline=#3, leftline=#4, topline=#5, bottomline=#6,
+      linecolor=#2, backgroundcolor=#2!5
+    }{headfont=\bfseries\sffamily\color{#2}, #7}
+  }
+
   % Color environments.
-  \createnewtheorem{thmgreenbox}{
-    linewidth=2pt,
-    rightline=false, topline=false, bottomline=false,
-    linecolor=ForestGreen, backgroundcolor=ForestGreen!5
-  }{headfont=\bfseries\sffamily\color{ForestGreen}}
-  \createnewtheorem{thmredbox}{
-    linewidth=2pt,
-    rightline=false, topline=false, bottomline=false,
-    linecolor=RawSienna, backgroundcolor=RawSienna!5
-  }{headfont=\bfseries\sffamily\color{RawSienna}}
-  \createnewtheorem{thmbluebox}{
-    linewidth=2pt,
-    rightline=false, topline=false, bottomline=false,
-    linecolor=NavyBlue, backgroundcolor=NavyBlue!5
-  }{headfont=\bfseries\sffamily\color{NavyBlue}}
-  \createnewtheorem{thmredlines}{
-    linewidth=2pt,
-    leftline=false, rightline=false,
-    linecolor=RawSienna,
-  }{headfont=\bfseries\sffamily\color{RawSienna}}
-  \createnewtheorem{thmproofbox}{
-    linewidth=2pt,
-    leftline=false, topline=false, bottomline=false,
-    linecolor=RawSienna, backgroundcolor=RawSienna!5
-  }{headfont=\bfseries\sffamily\color{RawSienna},qed=\qedsymbol}
+  \createcoloredtheorem{thmgreenbox}{ForestGreen}{false}{true}{false}{false}{}
+  \createcoloredtheorem{thmredbox}{RawSienna}{false}{true}{false}{false}{}
+  \createcoloredtheorem{thmbluebox}{NavyBlue}{false}{true}{false}{false}{}
+  \createcoloredtheorem{thmredlines}{RawSienna}{true}{false}{true}{true}{}
+  \createcoloredtheorem{thmblueline}{NavyBlue}{true}{false}{true}{true}{}
+  \createcoloredtheorem{thmproofbox}{RawSienna}{false}{true}{false}{false}{qed=\qedsymbol}
 }
 \makeatother
 
