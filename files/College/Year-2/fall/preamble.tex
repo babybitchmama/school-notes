@@ -44,6 +44,7 @@
 
 \def\@lesson{}
 \newcommand{\lesson}[3]{
+  \setcounter{section}{#1}
   \renewcommand\thesubsection{#1.\arabic{subsection}}
 
   \ifthenelse{\isempty{#3}}{
@@ -120,7 +121,7 @@
 \pdfminorversion=7
 \usepackage{pdfpages}
 \usepackage{transparent}
-\newcommand{\incfig}[2][]{%
+\newcommand{\incfig}[2][1]{%
   \def\svgwidth{#1\columnwidth}
   \import{./figures/}{#2.pdf_tex}
 }
@@ -129,32 +130,83 @@
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%                                   Theorems                                  %
+%                                 Environments                                %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \usepackage{thmtools}
 \usepackage[framemethod=TikZ]{mdframed}
 \mdfsetup{skipabove=1em,skipbelow=0em}
 
+\renewcommand{\qed}{\hfill\color{RawSienna}{Q.E.D.}}
+
 \theoremstyle{definition}
-\newcommand{\createnewtheorem}[2]{
+
+\newcommand{\createnewtheorem}[3]{
   \declaretheoremstyle[
-  headfont=\bfseries\sffamily\color{#2!70!black}, bodyfont=\normalfont,
+  headfont=\bfseries\sffamily, bodyfont=\normalfont, #3,
   mdframed={
-    linewidth=2pt,
-    rightline=false, topline=false, bottomline=false,
-    linecolor=#2, backgroundcolor=#2!5,
+    #2
   },
   ]{#1}
 }
 
-\createnewtheorem{thmgreenbox}{ForestGreen}
-\createnewtheorem{thmbluebox}{NavyBlue}
-\createnewtheorem{thmredbox}{RawSienna}
+\makeatletter
+\@ifclasswith{article}{nocolor}{
+  % No color environments.
+  \createnewtheorem{thmgreenbox}{}{}
+  \createnewtheorem{thmredbox}{}{}
+  \createnewtheorem{thmbluebox}{}{}
+  \createnewtheorem{thmredlines}{rightline=false, leftline=false}{}
+  \createnewtheorem{thmproofbox}{rightline=false, topline=false, bottomline=false}{qed=\qedsymbol}
+}{
+  % Color environments.
+  \createnewtheorem{thmgreenbox}{
+    linewidth=2pt,
+    rightline=false, topline=false, bottomline=false,
+    linecolor=ForestGreen, backgroundcolor=ForestGreen!5
+  }{headfont=\bfseries\sffamily\color{ForestGreen}}
+  \createnewtheorem{thmredbox}{
+    linewidth=2pt,
+    rightline=false, topline=false, bottomline=false,
+    linecolor=RawSienna, backgroundcolor=RawSienna!5
+  }{headfont=\bfseries\sffamily\color{RawSienna}}
+  \createnewtheorem{thmbluebox}{
+    linewidth=2pt,
+    rightline=false, topline=false, bottomline=false,
+    linecolor=NavyBlue, backgroundcolor=NavyBlue!5
+  }{headfont=\bfseries\sffamily\color{NavyBlue}}
+  \createnewtheorem{thmredlines}{
+    linewidth=2pt,
+    leftline=false, rightline=false,
+    linecolor=RawSienna,
+  }{headfont=\bfseries\sffamily\color{RawSienna}}
+  \createnewtheorem{thmproofbox}{
+    linewidth=2pt,
+    leftline=false, topline=false, bottomline=false,
+    linecolor=RawSienna, backgroundcolor=RawSienna!5
+  }{headfont=\bfseries\sffamily\color{RawSienna},qed=\qedsymbol}
+}
+\makeatother
 
-\declaretheorem[style=thmgreenbox, name=Definition]{definition}
-\declaretheorem[style=thmredbox, name=Theorem]{theorem}
+\declaretheorem[numberwithin=section, style=thmgreenbox, name=Definition]{definition}
+
+\declaretheorem[sibling=definition, style=thmredbox, name=Corollary]{corollary}
+\declaretheorem[sibling=definition, style=thmredbox, name=Proposition]{prop}
+\declaretheorem[sibling=definition, style=thmredbox, name=Theorem]{theorem}
+\declaretheorem[sibling=definition, style=thmredbox, name=Lemma]{lemma}
+
+\declaretheorem[sibling=definition, style=thmredlines, name=Exercise]{exercise}
+
+\declaretheorem[numbered=no, style=thmproofbox, name=Proof]{replacementproof}
+\renewenvironment{proof}[1][\proofname]{\vspace{-10pt}\begin{replacementproof}}{\end{replacementproof}}
+
 \declaretheorem[style=thmbluebox, numbered=no, name=Example]{example}
+\declaretheorem[style=thmblueline, numbered=no, name=Remark]{remark}
 
 \newtheorem*{notation}{Notation}
+\newtheorem*{previouslyseen}{As previously seen}
+\newtheorem*{problem}{Problem}
+\newtheorem*{observe}{Observe}
+\newtheorem*{property}{Property}
+\newtheorem*{intuition}{Intuition}
 \newtheorem*{note}{Note}
