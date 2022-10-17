@@ -2,17 +2,24 @@
 %                                Basic Packages                               %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+% Gives us multiple colors.
 \usepackage[usenames,dvipsnames,pdftex]{xcolor}
+% Let's us style link colors.
 \usepackage{hyperref}
+% Let's us import images and graphics.
 \usepackage{graphicx}
+% Let's us use figures in floating environments.
 \usepackage{float}
+% Let's us create multiple columns.
 \usepackage{multicol}
+% Gives us better math syntax.
 \usepackage{amsmath,amsfonts,mathtools,amsthm,amssymb}
+% Let's us strikethrough text.
 \usepackage{cancel}
-\usepackage{float}
+% Let's us edit the caption of a figure.
 \usepackage{caption}
+% Let's us import pdf directly in our tex code.
 \usepackage{pdfpages}
-\usepackage{transparent}
 \def\class{article}
 
 
@@ -24,7 +31,6 @@
 %  Symbols  %
 %%%%%%%%%%%%%
 
-\let\svlim\lim\def\lim{\svlim\limits}
 \let\implies\Rightarrow
 \let\impliedby\Leftarrow
 \let\iff\Leftrightarrow
@@ -74,13 +80,13 @@
 \renewcommand\maketitlehooka{\null\mbox{}\vfill}
 \renewcommand\maketitlehookd{\vfill\null}
 
-%%%%%%%%%%
-%  Todo  %
-%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%
+%  Todo Commands  %
+%%%%%%%%%%%%%%%%%%%
 
 \usepackage[colorinlistoftodos]{todonotes}
 \makeatletter
-\@ifclasswith{\class}{working}{
+\@ifclasswith\class{working}{
   \newcommand\unsure[2][1=]{\todo[linecolor=red,backgroundcolor=red!25,bordercolor=red,#1]{#2}}
   \newcommand\change[2][1=]{\todo[linecolor=blue,backgroundcolor=blue!25,bordercolor=blue,#1]{#2}}
   \newcommand\info[2][1=]{\todo[linecolor=OliveGreen,backgroundcolor=OliveGreen!25,bordercolor=OliveGreen,#1]{#2}}
@@ -104,31 +110,35 @@
 %  Create a grey background in the middle of the PDF  %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\usepackage{eso-pic}
-\definecolor{reallylightgray}{HTML}{FAFAFA}
-\AddToShipoutPicture{
-  \ifthenelse{\isodd{\thepage}}{
-    \AtPageLowerLeft{
-      \put(\LenToUnit{\dimexpr\paperwidth-222pt},0){
-        \color{reallylightgray}\rule{222pt}{297mm}
-      }
-    }
-  }
-  {
-    \AtPageLowerLeft{
-      \color{reallylightgray}\rule{222pt}{297mm}
-    }
-  }
-}
+% \usepackage{eso-pic}
+% \definecolor{reallylightgray}{HTML}{FAFAFA}
+% \AddToShipoutPicture{
+%   \ifthenelse{\isodd{\thepage}}{
+%     \AtPageLowerLeft{
+%       \put(\LenToUnit{\dimexpr\paperwidth-222pt},0){
+%         \color{reallylightgray}\rule{222pt}{297mm}
+%       }
+%     }
+%   }
+%   {
+%     \AtPageLowerLeft{
+%       \color{reallylightgray}\rule{222pt}{297mm}
+%     }
+%   }
+% }
 
 %%%%%%%%%%%%%%%%%%%%%%%%
 %  Modify Links Color  %
 %%%%%%%%%%%%%%%%%%%%%%%%
 
 \hypersetup{
+  % Enable highlighting links.
   colorlinks,
+  % Change the color of links to blue.
   linkcolor=blue,
+  % Change the color of citations to black.
   citecolor={black},
+  % Change the color of url's to blue with some black.
   urlcolor={blue!80!black}
 }
 
@@ -158,6 +168,10 @@
 % 2. \lesson[4]{Oct 17 2022 Mon (08:46:48)}{Lecture Title}
 % 3. \lesson{Oct 17 2022 Mon (08:46:48)}{}
 % 4. \lesson[4]{Oct 17 2022 Mon (08:46:48)}{}
+% Parameters:
+% 1. (Optional) Lesson number.
+% 2. Time and date of lecture.
+% 3. Lecture Title.
 \def\@lesson{}
 \newcommand\lesson[3][\arabic{lecturecounter}]{
   % Add 1 to the lecture counter.
@@ -258,7 +272,11 @@
   \import{./figures/}{#2.pdf_tex}
 }
 
-\pdfsuppresswarningpagegroup=1
+\begingroup\expandafter\expandafter\expandafter\endgroup
+\expandafter\ifx\csname pdfsuppresswarningpagegroup\endcsname\relax
+\else
+  \pdfsuppresswarningpagegroup=1\relax
+\fi
 
 %%%%%%%%%%%%%
 %  Correct  %
@@ -331,6 +349,15 @@
 %  Helpful New Commands  %
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 
+% EXAMPLE:
+% 1. \createnewtheorem{thmredbox}{}{}
+% 2. \createnewtheorem{thmbluebox}{}{}
+% 3. \createnewtheorem{thmblueline}{rightline=false, topline=false, bottomline=false}{}
+% 4. \createnewtheorem{thmproofbox}{rightline=false, topline=false, bottomline=false}{qed=\qedsymbol}
+% Parameters:
+% 1. Theorem name.
+% 2. Any extra parameters to pass to mdframed.
+% 3. Any extra parameters to pass to declare theorem directly.
 \newcommand\createnewtheorem[3]{
   \declaretheoremstyle[
   headfont=\bfseries\sffamily, bodyfont=\normalfont, #3,
@@ -340,6 +367,20 @@
   ]{#1}
 }
 
+% EXAMPLE:
+% 1. \createcoloredtheorem{thmredbox}{RawSienna}{false}{true}{false}{false}{}{}
+% 2. \createcoloredtheorem{thmbluebox}{NavyBlue}{false}{true}{false}{false}{}{}
+% 3. \createcoloredtheorem{thmblueline}{NavyBlue}{false}{true}{false}{false}{backgroundcolor=white}{}
+% 4. \createcoloredtheorem{thmproofbox}{RawSienna}{false}{true}{false}{false}{backgroundcolor=white}{qed=\qedsymbol}
+% Parameters:
+% 1. Theorem name.
+% 2. Color of theorem.
+% 3. Enable right line.
+% 4. Enable left line.
+% 5. Enable top line.
+% 6. Enable bottom line.
+% 7. Any extra parameters to pass to mdframed.
+% 8. Any extra parameters to pass to declare theorem directly.
 \newcommand\createcoloredtheorem[8]{
   \createnewtheorem{#1}{
     linewidth=2pt,
@@ -356,12 +397,11 @@
 \usepackage{tcolorbox}
 
 \makeatletter
-\@ifclasswith{\class}{nocolor}{
+\@ifclasswith\class{nocolor}{
   % No color environments.
   \createnewtheorem{thmgreenbox}{}{}
   \createnewtheorem{thmredbox}{}{}
   \createnewtheorem{thmbluebox}{}{}
-  \createcoloredtheorem{thmrednolines}{RawSienna}{false}{false}{false}{false}{backgroundcolor=white}{}
   \createnewtheorem{thmblueline}{rightline=false, topline=false, bottomline=false}{}
   \createnewtheorem{thmproofbox}{rightline=false, topline=false, bottomline=false}{qed=\qedsymbol}
 }{
