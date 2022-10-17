@@ -8,6 +8,9 @@ all:
 	make compile
 	make clean
 
+doall:
+	make clean compile clean view
+
 compile:
 	pdflatex -synctex=1 $(DOCNAME).tex
 	pdflatex -synctex=1 $(DOCNAME).tex
