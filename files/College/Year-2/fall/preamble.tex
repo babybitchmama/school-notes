@@ -84,23 +84,24 @@
 %  Todo Commands  %
 %%%%%%%%%%%%%%%%%%%
 
+\usepackage{xargs}
 \usepackage[colorinlistoftodos]{todonotes}
 \makeatletter
 \@ifclasswith\class{working}{
-  \newcommand\unsure[2][1=]{\todo[linecolor=red,backgroundcolor=red!25,bordercolor=red,#1]{#2}}
-  \newcommand\change[2][1=]{\todo[linecolor=blue,backgroundcolor=blue!25,bordercolor=blue,#1]{#2}}
-  \newcommand\info[2][1=]{\todo[linecolor=OliveGreen,backgroundcolor=OliveGreen!25,bordercolor=OliveGreen,#1]{#2}}
-  \newcommand\improvement[2][1=]{\todo[linecolor=Plum,backgroundcolor=Plum!25,bordercolor=Plum,#1]{#2}}
+  \newcommandx\unsure[2][1=]{\todo[linecolor=red,backgroundcolor=red!25,bordercolor=red,#1]{#2}}
+  \newcommandx\change[2][1=]{\todo[linecolor=blue,backgroundcolor=blue!25,bordercolor=blue,#1]{#2}}
+  \newcommandx\info[2][1=]{\todo[linecolor=OliveGreen,backgroundcolor=OliveGreen!25,bordercolor=OliveGreen,#1]{#2}}
+  \newcommandx\improvement[2][1=]{\todo[linecolor=Plum,backgroundcolor=Plum!25,bordercolor=Plum,#1]{#2}}
 
   \newcommand\listnotes{
     \newpage
     \listoftodos[Notes]
   }
 }{
-  \newcommand\unsure[2][1=]{}
-  \newcommand\change[2][1=]{}
-  \newcommand\info[2][1=]{}
-  \newcommand\improvement[2][1=]{}
+  \newcommandx\unsure[2][1=]{}
+  \newcommandx\change[2][1=]{}
+  \newcommandx\info[2][1=]{}
+  \newcommandx\improvement[2][1=]{}
 
   \newcommand\listnotes{}
 }
@@ -110,22 +111,24 @@
 %  Create a grey background in the middle of the PDF  %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% \usepackage{eso-pic}
-% \definecolor{reallylightgray}{HTML}{FAFAFA}
-% \AddToShipoutPicture{
-%   \ifthenelse{\isodd{\thepage}}{
-%     \AtPageLowerLeft{
-%       \put(\LenToUnit{\dimexpr\paperwidth-222pt},0){
-%         \color{reallylightgray}\rule{222pt}{297mm}
-%       }
-%     }
-%   }
-%   {
-%     \AtPageLowerLeft{
-%       \color{reallylightgray}\rule{222pt}{297mm}
-%     }
-%   }
-% }
+\usepackage{eso-pic}
+\newcommand\definegraybackground{
+  \definecolor{reallylightgray}{HTML}{FAFAFA}
+  \AddToShipoutPicture{
+    \ifthenelse{\isodd{\thepage}}{
+      \AtPageLowerLeft{
+        \put(\LenToUnit{\dimexpr\paperwidth-222pt},0){
+          \color{reallylightgray}\rule{222pt}{297mm}
+        }
+      }
+    }
+    {
+      \AtPageLowerLeft{
+        \color{reallylightgray}\rule{222pt}{297mm}
+      }
+    }
+  }
+}
 
 %%%%%%%%%%%%%%%%%%%%%%%%
 %  Modify Links Color  %
@@ -179,6 +182,8 @@
 
   % Set the section number to the lecture counter.
   \setcounter{section}{#1}
+  \setcounter{subsection}{0}
+  \setcounter{subsubsection}{0}
 
   % Reset the exercise and solution counter back to 0.
   \setcounter{exercisecounter}{0}
@@ -333,6 +338,7 @@
   \fancyhead[R]{\@lesson}
   \fancyhead[L]{Hashem A. Damrah}
   \fancyfoot[C]{\thepage}
+  \definegraybackground
 }
 
 \makeatother
