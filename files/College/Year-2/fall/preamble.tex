@@ -2,40 +2,17 @@
 %                                Basic Packages                               %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\usepackage[usenames,dvipsnames,pdftex]{xcolor}
 \usepackage{hyperref}
-\hypersetup{
-  colorlinks,
-  linkcolor=blue,
-  citecolor={black},
-  urlcolor={blue!80!black}
-}
-\usepackage{lipsum}
-\usepackage{graphicx,wrapfig}
+\usepackage{graphicx}
 \usepackage{float}
 \usepackage{multicol}
-\usepackage[usenames,dvipsnames,pdftex]{xcolor}
 \usepackage{amsmath,amsfonts,mathtools,amsthm,amssymb}
 \usepackage{cancel}
-\usepackage{xifthen}
-\usepackage{tcolorbox}
 \usepackage{float}
-\usepackage{extramarks}
-\usepackage[export]{adjustbox}
 \usepackage{caption}
-\usepackage{acro}
-\usepackage{fancyhdr}
-\usepackage{import}
 \usepackage{pdfpages}
 \usepackage{transparent}
-\usepackage{thmtools}
-\usepackage[framemethod=TikZ]{mdframed}
-\usepackage{siunitx}
-\usepackage{tikz}
-\usepackage{tikz-cd}
-\usepackage{pgfplots}
-\usepackage{titling}
-\usepackage{xargs}
-\usepackage[colorinlistoftodos]{todonotes}
 \def\class{article}
 
 
@@ -60,47 +37,40 @@
 \setlength{\tabcolsep}{5pt}
 \renewcommand\arraystretch{1.5}
 
-%%%%%%%%%%%%%%%%%%
-% Figure Support %
-%%%%%%%%%%%%%%%%%%
-
-\pdfminorversion=7
-\newcommand\incfig[2][1]{%
-  \def\svgwidth{#1\columnwidth}
-  \import{./figures/}{#2.pdf_tex}
-}
-
-\pdfsuppresswarningpagegroup=1
-
-%%%%%%%%%%%%%
-%  Correct  %
-%%%%%%%%%%%%%
-
-\definecolor{correct}{HTML}{009900}
-\newcommand\correct[2]{{\color{red}{#1 }}\ensuremath{\to}{\color{correct}{ #2}}}
-
 %%%%%%%%%%%%%%
 %  SI Unitx  %
 %%%%%%%%%%%%%%
 
+\usepackage{siunitx}
 \sisetup{locale = FR}
 
 %%%%%%%%%%
 %  TikZ  %
 %%%%%%%%%%
 
+\usepackage[framemethod=TikZ]{mdframed}
+\usepackage{tikz}
+\usepackage{tikz-cd}
+
 \usetikzlibrary{intersections, angles, quotes, calc, positioning}
 \usetikzlibrary{arrows.meta}
-\pgfplotsset{compat=1.13}
 
 \tikzset{
   force/.style={thick, {Circle[length=2pt]}-stealth, shorten <=-1pt}
 }
 
+%%%%%%%%%%%%%%%
+%  PGF Plots  %
+%%%%%%%%%%%%%%%
+
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.13}
+
 %%%%%%%%%%%%%%%%%%%%%%%
 %  Center Title Page  %
 %%%%%%%%%%%%%%%%%%%%%%%
 
+\usepackage{titling}
 \renewcommand\maketitlehooka{\null\mbox{}\vfill}
 \renewcommand\maketitlehookd{\vfill\null}
 
@@ -108,6 +78,7 @@
 %  Todo  %
 %%%%%%%%%%
 
+\usepackage[colorinlistoftodos]{todonotes}
 \makeatletter
 \@ifclasswith{\class}{working}{
   \newcommand\unsure[2][1=]{\todo[linecolor=red,backgroundcolor=red!25,bordercolor=red,#1]{#2}}
@@ -129,27 +100,37 @@
 }
 \makeatother
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%  Put things in the background of images  %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Create a grey background in the middle of the PDF  %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% \usepackage{eso-pic}
+\usepackage{eso-pic}
+\definecolor{reallylightgray}{HTML}{FAFAFA}
+\AddToShipoutPicture{
+  \ifthenelse{\isodd{\thepage}}{
+    \AtPageLowerLeft{
+      \put(\LenToUnit{\dimexpr\paperwidth-222pt},0){
+        \color{reallylightgray}\rule{222pt}{297mm}
+      }
+    }
+  }
+  {
+    \AtPageLowerLeft{
+      \color{reallylightgray}\rule{222pt}{297mm}
+    }
+  }
+}
 
-% \definecolor{reallylightgray}{HTML}{FAFAFA}
-% \AddToShipoutPicture{
-%   \ifthenelse{\isodd{\thepage}}{
-%     \AtPageLowerLeft{
-%       \put(\LenToUnit{\dimexpr\paperwidth-222pt},0){
-%         \color{reallylightgray}\rule{222pt}{297mm}
-%       }
-%     }
-%   }
-%   {
-%     \AtPageLowerLeft{
-%       \color{reallylightgray}\rule{222pt}{297mm}
-%     }
-%   }
-% }
+%%%%%%%%%%%%%%%%%%%%%%%%
+%  Modify Links Color  %
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\hypersetup{
+  colorlinks,
+  linkcolor=blue,
+  citecolor={black},
+  urlcolor={blue!80!black}
+}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -168,27 +149,41 @@
 %  Lecture Command  %
 %%%%%%%%%%%%%%%%%%%%%
 
-\def\testdateparts#1{\dateparts#1\relax}
-\def\dateparts#1 #2 #3 #4 #5\relax{
-  \hspace*{\fill}\small\textsf{\mbox{#1 #2 #3 #5}}
-}
-
 \makeatletter
 
+\usepackage{xifthen}
+
+% EXAMPLE:
+% 1. \lesson{Oct 17 2022 Mon (08:46:48)}{Lecture Title}
+% 2. \lesson[4]{Oct 17 2022 Mon (08:46:48)}{Lecture Title}
+% 3. \lesson{Oct 17 2022 Mon (08:46:48)}{}
+% 4. \lesson[4]{Oct 17 2022 Mon (08:46:48)}{}
 \def\@lesson{}
 \newcommand\lesson[3][\arabic{lecturecounter}]{
+  % Add 1 to the lecture counter.
   \addtocounter{lecturecounter}{1}
+
+  % Set the section number to the lecture counter.
   \setcounter{section}{#1}
+
+  % Reset the exercise and solution counter back to 0.
   \setcounter{exercisecounter}{0}
   \setcounter{solutioncounter}{0}
+
   \renewcommand\thesubsection{#1.\arabic{subsection}}
 
+  % Check if user passed the lecture title or not.
   \ifthenelse{\isempty{#3}}{
     \def\@lesson{Lecture \arabic{lecturecounter}}
   }{
     \def\@lesson{Lecture \arabic{lecturecounter}: #3}
   }
-  \testdateparts{#2}
+
+  % Display the information like the following:
+  %                                                  Oct 17 2022 Mon (08:49:10)
+  % ---------------------------------------------------------------------------
+  % Lecture 1: Lecture Title
+  \hfill\small{#2}
   \hrule
   \vspace*{-0.3cm}
   \section*{\@lesson}
@@ -199,11 +194,24 @@
 %  Exercise Command  %
 %%%%%%%%%%%%%%%%%%%%%%
 
+% EXAMPLE:
+% 1. \exercise
+% 2. \exercise[3]
+% Parameters:
+% 1. (Optional) The exercise number. You don't need to add this, because by
+%    default, a counter will be doing it for you. Here's an example: 5.7. The
+%    first number is the section number, and the second number is the exercise
+%    number.
 \def\@exercise{}
 \newcommand\exercise[1][\arabic{exercisecounter}]{
+  % Add 1 to the exercise counter.
   \addtocounter{exercisecounter}{1}
+
+  % Edit the \@exercise variable.
   \def\@exercise{Exercise \arabic{section}.#1}
+  % Create a subsection without numbering.
   \subsection*{\@exercise}
+  % Add the subsection to the table of contents.
   \addcontentsline{toc}{subsection}{\@exercise}
 }
 
@@ -211,19 +219,64 @@
 %  Solution Command  %
 %%%%%%%%%%%%%%%%%%%%%%
 
+% EXAMPLE:
+% 1. \solution
+% 2. \solution[3]
+% Parameters:
+% 1. (Optional) The solution number. You don't need to add this, because by
+%    default, a counter will be doing it for you. Here's an example: 5.7. The
+%    first number is the section number, and the second number is the solution
+%    number.
 \def\@solution{}
 \newcommand\solution[1][\arabic{solutioncounter}]{
+  % Add 1 to the solution counter.
   \addtocounter{solutioncounter}{1}
+
+  % Edit the \@solution variable.
   \def\@solution{Solution \arabic{section}.#1}
+  % Create a subsection without numbering.
   \subsection*{\@solution}
+  % Add the subsection to the table of contents.
   \addcontentsline{toc}{subsection}{\@solution}
 }
 
+%%%%%%%%%%%%%%%%%%%%
+%  Import Figures  %
+%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{import}
+\pdfminorversion=7
+
+% EXAMPLE:
+% 1. \incfig{limit-graph}
+% 2. \incfig[0.4]{limit-graph}
+% Parameters:
+% 1. The figure name. It should be located in figures/NAME.tex_pdf.
+% 2. (Optional) The width of the figure. Example: 0.5, 0.35.
+\newcommand\incfig[2][1]{%
+  \def\svgwidth{#1\columnwidth}
+  \import{./figures/}{#2.pdf_tex}
+}
+
+\pdfsuppresswarningpagegroup=1
+
+%%%%%%%%%%%%%
+%  Correct  %
+%%%%%%%%%%%%%
+
+% EXAMPLE:
+% 1. \correct{INCORRECT}{CORRECT}
+% Parameters:
+% 1. The incorrect statement.
+% 2. The correct statement.
+\definecolor{correct}{HTML}{009900}
+\newcommand\correct[2]{{\color{red}{#1 }}\ensuremath{\to}{\color{correct}{ #2}}}
 
 %%%%%%%%%%%%%%%%%
 % Fancy Headers %
 %%%%%%%%%%%%%%%%%
 
+\usepackage{fancyhdr}
 \newcommand\forcenewpage{\clearpage\mbox{~}\clearpage\newpage}
 \newcommand\createintro{
   \pagenumbering{roman}
@@ -272,11 +325,11 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \mdfsetup{skipabove=1em,skipbelow=0em}
-
-% \renewcommand\qed{\hfill\color{RawSienna}{Q.E.D.}}
-\renewcommand\qed{\hfill\color{RawSienna}$\blacksquare$}
-
 \theoremstyle{definition}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Helpful New Commands  %
+%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \newcommand\createnewtheorem[3]{
   \declaretheoremstyle[
@@ -294,6 +347,13 @@
     linecolor=#2, backgroundcolor=#2!5, #7
   }{headfont=\bfseries\sffamily\color{#2}, #8}
 }
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Create Environments Styles Based on Given Parameter  %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{thmtools}
+\usepackage{tcolorbox}
 
 \makeatletter
 \@ifclasswith{\class}{nocolor}{
@@ -314,6 +374,10 @@
 }
 \makeatother
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Create the Environments  %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \declaretheorem[numberwithin=section, style=thmgreenbox, name=Definition]{definition}
 \declaretheorem[sibling=definition, style=thmredbox, name=Corollary]{corollary}
 \declaretheorem[sibling=definition, style=thmredbox, name=Proposition]{prop}
@@ -324,12 +388,16 @@
 \declaretheorem[style=thmbluebox, numbered=no, name=Example]{example}
 \declaretheorem[style=thmblueline, numbered=no, name=Remark]{remark}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Edit Proof Environment  %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \renewenvironment{proof}[1][\proofname]{\vspace{-10pt}\begin{replacementproof}}{\end{replacementproof}}
 \newenvironment{explanation}[1][\proofname]{\vspace{-10pt}\begin{expl}}{\end{expl}}
 
-\newenvironment{myproof}[1][\proofname]{%
-  \proof[\rm \bf #1]%
-}{\endproof}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Create Simple Environments  %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \newtheorem*{notation}{Notation}
 \newtheorem*{previouslyseen}{As previously seen}
