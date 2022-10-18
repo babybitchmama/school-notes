@@ -9,6 +9,7 @@
 %%%%%%%%%
 
 \usepackage{tasks}
+\usepackage{extramarks}
 
 \settasks{label=\bfseries\arabic*.),label-width=2em}
 
@@ -83,7 +84,7 @@
 
 \title{
   \vspace{2in}
-  \textmd{\textbf{\hmwkClass:\ \hmwkTitle}}\\
+  \textmd{\textmd{\textbf{\hmwkClass:\ \hmwkTitle}}}\\
   \normalsize\vspace{0.1in}\small{Due\ on\ \hmwkDueDate\ at \hmwkDueTime}\\
   \vspace{0.1in}\large{\textit{\hmwkClassInstructor\ \hmwkClassTime}}
   \vspace{3in}
@@ -168,7 +169,7 @@
 % Environments %
 %%%%%%%%%%%%%%%%
 
-\newenvironment{solution}[1][-1]{
+\renewenvironment{solution}[1][-1]{
   \ifnum#1>0
     \setcounter{homeworkSolutionCounter}{#1}
   \fi
@@ -179,7 +180,7 @@
   \exitProblemHeader{homeworkSolutionCounter}
 }
 
-\newenvironment{problem}[1][-1]{
+\renewenvironment{problem}[1][-1]{
   \ifnum#1>0
     \setcounter{homeworkProblemCounter}{#1}
   \fi
