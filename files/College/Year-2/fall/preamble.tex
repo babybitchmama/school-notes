@@ -4,23 +4,26 @@
 
 % Gives us multiple colors.
 \usepackage[usenames,dvipsnames,pdftex]{xcolor}
-% Let's us style link colors.
+% Lets us style link colors.
 \usepackage{hyperref}
-% Let's us import images and graphics.
+% Lets us import images and graphics.
 \usepackage{graphicx}
-% Let's us use figures in floating environments.
+% Lets us use figures in floating environments.
 \usepackage{float}
-% Let's us create multiple columns.
+% Lets us create multiple columns.
 \usepackage{multicol}
 % Gives us better math syntax.
 \usepackage{amsmath,amsfonts,mathtools,amsthm,amssymb}
-% Let's us strikethrough text.
+% Lets us strikethrough text.
 \usepackage{cancel}
-% Let's us edit the caption of a figure.
+% Lets us edit the caption of a figure.
 \usepackage{caption}
-% Let's us import pdf directly in our tex code.
+% Lets us import pdf directly in our tex code.
 \usepackage{pdfpages}
-\def\class{report}
+% Lets us do algorithm stuff.
+\usepackage[ruled,vlined,linesnumbered]{algorithm2e}
+
+\def\class{article}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -165,8 +168,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \newcounter{lecturecounter}
-\newcounter{exercisecounter}
-\newcounter{solutioncounter}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 %  Helpful New Commands  %
@@ -177,11 +178,13 @@
   % all the custom environments.
   \setcounter{subsection}{0}
   \setcounter{subsubsection}{0}
-  \setcounter{definition}{0}
-
-  % Reset the counters for the exercise and solution environments.
-  \setcounter{exercisecounter}{0}
-  \setcounter{solutioncounter}{0}
+  \setcounter{paragraph}{0}
+  \setcounter{subparagraph}{0}
+  \setcounter{theorem}{0}
+  \setcounter{claim}{0}
+  \setcounter{corollary}{0}
+  \setcounter{lemma}{0}
+  \setcounter{exercise}{0}
 }
 
 %%%%%%%%%%%%%%%%%%%%%
@@ -229,56 +232,6 @@
   \vspace*{-0.3cm}
   \section*{\@lesson}
   \addcontentsline{toc}{section}{\@lesson}
-}
-
-%%%%%%%%%%%%%%%%%%%%%%
-%  Exercise Command  %
-%%%%%%%%%%%%%%%%%%%%%%
-
-% EXAMPLE:
-% 1. \exercise
-% 2. \exercise[3]
-% Parameters:
-% 1. (Optional) The exercise number. You don't need to add this, because by
-%    default, a counter will be doing it for you. Here's an example: 5.7. The
-%    first number is the section number, and the second number is the exercise
-%    number.
-\def\@exercise{}
-\newcommand\exercise[1][\arabic{exercisecounter}]{
-  % Add 1 to the exercise counter.
-  \addtocounter{exercisecounter}{1}
-
-  % Edit the \@exercise variable.
-  \def\@exercise{Exercise \arabic{section}.#1}
-  % Create a subsection without numbering.
-  \subsection*{\@exercise}
-  % Add the subsection to the table of contents.
-  \addcontentsline{toc}{subsection}{\@exercise}
-}
-
-%%%%%%%%%%%%%%%%%%%%%%
-%  Solution Command  %
-%%%%%%%%%%%%%%%%%%%%%%
-
-% EXAMPLE:
-% 1. \solution
-% 2. \solution[3]
-% Parameters:
-% 1. (Optional) The solution number. You don't need to add this, because by
-%    default, a counter will be doing it for you. Here's an example: 5.7. The
-%    first number is the section number, and the second number is the solution
-%    number.
-\def\@solution{}
-\newcommand\solution[1][\arabic{solutioncounter}]{
-  % Add 1 to the solution counter.
-  \addtocounter{solutioncounter}{1}
-
-  % Edit the \@solution variable.
-  \def\@solution{Solution \arabic{section}.#1}
-  % Create a subsection without numbering.
-  \subsection*{\@solution}
-  % Add the subsection to the table of contents.
-  \addcontentsline{toc}{subsection}{\@solution}
 }
 
 %%%%%%%%%%%%%%%%%%%%
@@ -366,8 +319,7 @@
   % Add the table of contents.
   \tableofcontents
   % Force a new page.
-  % \forcenewpage
-  \newpage
+  \forcenewpage
 
   % Move the page numberings back to arabic, from roman numerals.
   \pagenumbering{arabic}
@@ -383,10 +335,66 @@
   % In the bottom center, add the page.
   \fancyfoot[C]{\thepage}
   % Add a nice gray background in the middle of all the upcoming pages.
-  % \definegraybackground
+  \definegraybackground
 }
 
 \makeatother
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                               Custom Commands                               %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%
+%  Circle  %
+%%%%%%%%%%%%
+
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+  \node[shape=circle,draw,inner sep=1pt] (char) {#1};}
+}
+
+%%%%%%%%%%%%%%%%%%%
+%  Todo Commands  %
+%%%%%%%%%%%%%%%%%%%
+
+\usepackage{xargs}
+\usepackage[colorinlistoftodos]{todonotes}
+
+\makeatletter
+
+\@ifclasswith\class{working}{
+  \newcommandx\unsure[2][1=]{\todo[linecolor=red,backgroundcolor=red!25,bordercolor=red,#1]{#2}}
+  \newcommandx\change[2][1=]{\todo[linecolor=blue,backgroundcolor=blue!25,bordercolor=blue,#1]{#2}}
+  \newcommandx\info[2][1=]{\todo[linecolor=OliveGreen,backgroundcolor=OliveGreen!25,bordercolor=OliveGreen,#1]{#2}}
+  \newcommandx\improvement[2][1=]{\todo[linecolor=Plum,backgroundcolor=Plum!25,bordercolor=Plum,#1]{#2}}
+
+  \newcommand\listnotes{
+    \newpage
+    \listoftodos[Notes]
+  }
+}{
+  \newcommandx\unsure[2][1=]{}
+  \newcommandx\change[2][1=]{}
+  \newcommandx\info[2][1=]{}
+  \newcommandx\improvement[2][1=]{}
+
+  \newcommand\listnotes{}
+}
+
+\makeatother
+
+%%%%%%%%%%%%%
+%  Correct  %
+%%%%%%%%%%%%%
+
+% EXAMPLE:
+% 1. \correct{INCORRECT}{CORRECT}
+% Parameters:
+% 1. The incorrect statement.
+% 2. The correct statement.
+\definecolor{correct}{HTML}{009900}
+\newcommand\correct[2]{{\color{red}{#1 }}\ensuremath{\to}{\color{correct}{ #2}}}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                                 Environments                                %
@@ -414,11 +422,12 @@
 \definecolor{definition}{HTML}{228b22}
 \definecolor{prop}{HTML}{191971}
 \definecolor{lemma}{HTML}{983b0f}
+\definecolor{exercise}{HTML}{88D6D1}
 
 \colorlet{definition}{mygreen!85!black}
 \colorlet{claim}{mygreen!85!black}
 \colorlet{corollary}{mypurple!85!black}
-\colorlet{question}{RawSienna}
+% \colorlet{question}{RawSienna}
 \colorlet{proof}{theorem}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -487,10 +496,13 @@
   \createnewtheoremstyle{thmcorollarybox}{}{}
   \createnewtheoremstyle{thmpropbox}{}{}
   \createnewtheoremstyle{thmlemmabox}{}{}
+  \createnewtheoremstyle{thmexercisebox}{}{}
+  \createnewtheoremstyle{thmdefinitionbox}{}{}
+  \createnewtheoremstyle{thmquestionbox}{}{}
+  \createnewtheoremstyle{thmsolutionbox}{}{}
 
-  \createnewtheoremstyle{thmproofbox}{qed=\qedsymbol}{
-    rightline=false, topline=false, bottomline=false
-  }
+  \createnewtheoremstyle{thmproofbox}{qed=\qedsymbol}{}
+  \createnewtheoremstyle{thmexplanationbox}{}{}
 }{
   % Environments with color.
 
@@ -503,36 +515,164 @@
   \createnewcoloredtheoremstyle{thmcorollarybox}{corollary}{}{}
   \createnewcoloredtheoremstyle{thmpropbox}{prop}{}{}
   \createnewcoloredtheoremstyle{thmlemmabox}{lemma}{}{}
-  \createnewcoloredtheoremstyle{thmquestionbox}{question}{}{
-    leftline=false, topline=true, bottomline=true, backgroundcolor=white,
-  }
+  \createnewcoloredtheoremstyle{thmexercisebox}{exercise}{}{}
 
   \createnewcoloredtheoremstyle{thmproofbox}{proof}{qed=\qedsymbol}{backgroundcolor=white}
+  \createnewcoloredtheoremstyle{thmexplanationbox}{example}{qed=\qedsymbol}{backgroundcolor=white}
 }
-
-\declaretheoremstyle[
-headfont=\bfseries\sffamily, bodyfont=\normalfont\itshape,
-mdframed={
-  rightline=false, leftline=false, topline=false, bottomline=false,
-},
-]{thmsolutionbox}
 \makeatother
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %  Create the Environments  %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\declaretheorem[numberwithin=section, style=thmdefinitionbox, name=Definition]{definition}
-\declaretheorem[numberwithin=section, style=thmtheorembox,    name=Theorem]{theorem}
-\declaretheorem[numbered=no,          style=thmexamplebox,    name=Example]{example}
-\declaretheorem[numberwithin=section, style=thmclaimbox,      name=Claim]{claim}
-\declaretheorem[numberwithin=section, style=thmcorollarybox,  name=Corollary]{corollary}
-\declaretheorem[numberwithin=section, style=thmpropbox,       name=Proposition]{prop}
-\declaretheorem[numberwithin=section, style=thmlemmabox,      name=Lemma]{lemma}
-\declaretheorem[numberwithin=section, style=thmquestionbox,   name=Question]{question}
-\declaretheorem[                      style=thmsolutionbox,   name=Solution]{sol}
+\declaretheorem[numberwithin=section, style=thmtheorembox,     name=Theorem]{theorem}
+\declaretheorem[numbered=no,          style=thmexamplebox,     name=Example]{example}
+\declaretheorem[numberwithin=section, style=thmclaimbox,       name=Claim]{claim}
+\declaretheorem[numberwithin=section, style=thmcorollarybox,   name=Corollary]{corollary}
+\declaretheorem[numberwithin=section, style=thmpropbox,        name=Proposition]{prop}
+\declaretheorem[numberwithin=section, style=thmlemmabox,       name=Lemma]{lemma}
+\declaretheorem[numberwithin=section, style=thmexercisebox,    name=Exercise]{exercise}
 \declaretheorem[numbered=no,          style=thmproofbox,       name=Proof]{replacementproof}
 \declaretheorem[numbered=no,          style=thmexplanationbox, name=Proof]{expl}
+
+\makeatletter
+\@ifclasswith\class{nocolor}{
+  % Environments without color.
+
+  \newtheorem*{note}{Note}
+
+  \declaretheorem[numberwithin=section, style=thmdefinitionbox, name=Definition]{definition}
+  \declaretheorem[numberwithin=section, style=thmquestionbox,   name=Question]{question}
+  \declaretheorem[numberwithin=section, style=thmsolutionbox,   name=Solution]{solution}
+}{
+  % Environments with color.
+
+  \newtcbtheorem[number within=section]{Definition}{Definition}{
+    enhanced,
+    before skip=2mm,
+    after skip=2mm,
+    colback=red!5,
+    colframe=red!80!black,
+    colbacktitle=red!75!black,
+    boxrule=0.5mm,
+    attach boxed title to top left={
+      xshift=1cm,
+      yshift*=1mm-\tcboxedtitleheight
+    },
+    varwidth boxed title*=-3cm,
+    boxed title style={
+      interior engine=empty,
+      frame code={
+        \path[fill=tcbcolback]
+        ([yshift=-1mm,xshift=-1mm]frame.north west)
+        arc[start angle=0,end angle=180,radius=1mm]
+        ([yshift=-1mm,xshift=1mm]frame.north east)
+        arc[start angle=180,end angle=0,radius=1mm];
+        \path[left color=tcbcolback!60!black,right color=tcbcolback!60!black,
+        middle color=tcbcolback!80!black]
+        ([xshift=-2mm]frame.north west) -- ([xshift=2mm]frame.north east)
+        [rounded corners=1mm]-- ([xshift=1mm,yshift=-1mm]frame.north east)
+        -- (frame.south east) -- (frame.south west)
+        -- ([xshift=-1mm,yshift=-1mm]frame.north west)
+        [sharp corners]-- cycle;
+      },
+    },
+    fonttitle=\bfseries,
+    title={#2},
+    #1
+  }{def}
+
+  \NewDocumentEnvironment{definition}{O{}O{}}
+    {\begin{Definition}{#1}{#2}}{\end{Definition}}
+
+  \newtcolorbox{note}[1][]{%
+    enhanced jigsaw,
+    colback=gray!20!white,%
+    colframe=gray!80!black,
+    size=small,
+    boxrule=1pt,
+    title=\textbf{Note:-},
+    halign title=flush center,
+    coltitle=black,
+    breakable,
+    drop shadow=black!50!white,
+    attach boxed title to top left={xshift=1cm,yshift=-\tcboxedtitleheight/2,yshifttext=-\tcboxedtitleheight/2},
+    minipage boxed title=1.5cm,
+    boxed title style={%
+      colback=white,
+      size=fbox,
+      boxrule=1pt,
+      boxsep=2pt,
+      underlay={%
+        \coordinate (dotA) at ($(interior.west) + (-0.5pt,0)$);
+        \coordinate (dotB) at ($(interior.east) + (0.5pt,0)$);
+        \begin{scope}
+          \clip (interior.north west) rectangle ([xshift=3ex]interior.east);
+          \filldraw [white, blur shadow={shadow opacity=60, shadow yshift=-.75ex}, rounded corners=2pt] (interior.north west) rectangle (interior.south east);
+        \end{scope}
+        \begin{scope}[gray!80!black]
+          \fill (dotA) circle (2pt);
+          \fill (dotB) circle (2pt);
+        \end{scope}
+      },
+    },
+    #1,
+  }
+
+  \newtcbtheorem{Question}{Question}{enhanced,
+    breakable,
+    colback=white,
+    colframe=myblue!80!black,
+    attach boxed title to top left={yshift*=-\tcboxedtitleheight},
+    fonttitle=\bfseries,
+    title=\textbf{Question:-},
+    boxed title size=title,
+    boxed title style={%
+      sharp corners,
+      rounded corners=northwest,
+      colback=tcbcolframe,
+      boxrule=0pt,
+    },
+    underlay boxed title={%
+      \path[fill=tcbcolframe] (title.south west)--(title.south east)
+      to[out=0, in=180] ([xshift=5mm]title.east)--
+      (title.center-|frame.east)
+      [rounded corners=\kvtcb@arc] |-
+      (frame.north) -| cycle;
+    },
+    #1
+  }{def}
+
+  \NewDocumentEnvironment{question}{O{}O{}}
+  {\begin{Question}{#1}{#2}}{\end{Question}}
+
+  \newtcolorbox{Solution}{enhanced,
+    breakable,
+    colback=white,
+    colframe=mygreen!80!black,
+    attach boxed title to top left={yshift*=-\tcboxedtitleheight},
+    title=\textbf{Solution:-},
+    boxed title size=title,
+    boxed title style={%
+      sharp corners,
+      rounded corners=northwest,
+      colback=tcbcolframe,
+      boxrule=0pt,
+    },
+    underlay boxed title={%
+      \path[fill=tcbcolframe] (title.south west)--(title.south east)
+      to[out=0, in=180] ([xshift=5mm]title.east)--
+      (title.center-|frame.east)
+      [rounded corners=\kvtcb@arc] |-
+      (frame.north) -| cycle;
+    },
+  }
+
+  \NewDocumentEnvironment{solution}{O{}O{}}
+  {\vspace{-10pt}\begin{Solution}{#1}{#2}}{\end{Solution}}
+}
+\makeatother
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %  Edit Proof Environment  %
@@ -549,59 +689,3 @@ mdframed={
 \newtheorem*{observe}{Observe}
 \newtheorem*{property}{Property}
 \newtheorem*{intuition}{Intuition}
-\newtheorem*{note}{Note}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%                               Custom Commands                               %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%
-%  Circle  %
-%%%%%%%%%%%%
-
-\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
-  \node[shape=circle,draw,inner sep=1pt] (char) {#1};}
-}
-
-%%%%%%%%%%%%%%%%%%%
-%  Todo Commands  %
-%%%%%%%%%%%%%%%%%%%
-
-\usepackage{xargs}
-\usepackage[colorinlistoftodos]{todonotes}
-
-\makeatletter
-
-\@ifclasswith\class{working}{
-  \newcommandx\unsure[2][1=]{\todo[linecolor=red,backgroundcolor=red!25,bordercolor=red,#1]{#2}}
-  \newcommandx\change[2][1=]{\todo[linecolor=blue,backgroundcolor=blue!25,bordercolor=blue,#1]{#2}}
-  \newcommandx\info[2][1=]{\todo[linecolor=OliveGreen,backgroundcolor=OliveGreen!25,bordercolor=OliveGreen,#1]{#2}}
-  \newcommandx\improvement[2][1=]{\todo[linecolor=Plum,backgroundcolor=Plum!25,bordercolor=Plum,#1]{#2}}
-
-  \newcommand\listnotes{
-    \newpage
-    \listoftodos[Notes]
-  }
-}{
-  \newcommandx\unsure[2][1=]{}
-  \newcommandx\change[2][1=]{}
-  \newcommandx\info[2][1=]{}
-  \newcommandx\improvement[2][1=]{}
-
-  \newcommand\listnotes{}
-}
-
-\makeatother
-
-%%%%%%%%%%%%%
-%  Correct  %
-%%%%%%%%%%%%%
-
-% EXAMPLE:
-% 1. \correct{INCORRECT}{CORRECT}
-% Parameters:
-% 1. The incorrect statement.
-% 2. The correct statement.
-\definecolor{correct}{HTML}{009900}
-\newcommand\correct[2]{{\color{red}{#1 }}\ensuremath{\to}{\color{correct}{ #2}}}
