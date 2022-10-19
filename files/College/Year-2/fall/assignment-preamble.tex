@@ -1,6 +1,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%                             Basic Document Setup                            %
+%                                Basic Settings                               %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 \input{../../preamble.tex}
 
@@ -40,42 +41,6 @@
 \fancyhead[R]{\firstxmark}
 \fancyfoot[L]{\lastxmark}
 \fancyfoot[C]{\thepage}
-
-%%%%%%%%%%%%%%%%%%
-% Fix WrapFigure %
-%%%%%%%%%%%%%%%%%%
-
-\newcommand{\wrapfill}{\par\ifnum\value{WF@wrappedlines}>0
-    \parskip=0pt
-    \addtocounter{WF@wrappedlines}{-1}%
-    \null\vspace{\arabic{WF@wrappedlines}\baselineskip}%
-    \WFclear
-\fi}
-
-%%%%%%%%%%%%%%%%%
-% Multi Columns %
-%%%%%%%%%%%%%%%%%
-
-\let\multicolmulticols\multicols
-\let\endmulticolmulticols\endmulticols
-
-\RenewDocumentEnvironment{multicols}{mO{}}
-{%
-  \ifnum#1=1
-    #2%
-  \else % More than 1 column
-    \multicolmulticols{#1}[#2]
-  \fi
-}
-{%
-  \ifnum#1=1
-\else % More than 1 column
-  \endmulticolmulticols
-\fi
-}
-
-\newlength{\thickarrayrulewidth}
-\setlength{\thickarrayrulewidth}{5\arrayrulewidth}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -123,8 +88,20 @@
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%                Setup Environments For Problems and Solutions                %
+%                                 Environments                                %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%
+% Create Counters %
+%%%%%%%%%%%%%%%%%%%
+
+\setcounter{secnumdepth}{0}
+\newcounter{partCounter}
+\newcounter{homeworkProblemCounter}
+\setcounter{homeworkProblemCounter}{1}
+\newcounter{homeworkSolutionCounter}
+\setcounter{homeworkSolutionCounter}{1}
+\nobreak\extramarks{Problem \arabic{homeworkProblemCounter}}{}\nobreak{}
 
 %%%%%%%%%%%%%%%%%%
 % Create Headers %
@@ -152,18 +129,6 @@
     Problem \arabic{#1}
   }{}\nobreak{}
 }
-
-%%%%%%%%%%%%%%%%%%%
-% Create Counters %
-%%%%%%%%%%%%%%%%%%%
-
-\setcounter{secnumdepth}{0}
-\newcounter{partCounter}
-\newcounter{homeworkProblemCounter}
-\setcounter{homeworkProblemCounter}{1}
-\newcounter{homeworkSolutionCounter}
-\setcounter{homeworkSolutionCounter}{1}
-\nobreak\extramarks{Problem \arabic{homeworkProblemCounter}}{}\nobreak{}
 
 %%%%%%%%%%%%%%%%
 % Environments %
