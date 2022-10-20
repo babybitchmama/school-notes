@@ -22,6 +22,12 @@
 \usepackage{pdfpages}
 % Lets us do algorithm stuff.
 \usepackage[ruled,vlined,linesnumbered]{algorithm2e}
+% Use a smiley face for our qed symbol.
+\usepackage{tikzsymbols}
+% Derivative stuff.
+\usepackage{derivative}
+\usepackage{physics}
+\renewcommand\qedsymbol{$\Laughey$}
 
 \def\class{article}
 
@@ -50,8 +56,44 @@
 %  SI Unitx  %
 %%%%%%%%%%%%%%
 
+\usepackage{booktabs}
 \usepackage{siunitx}
-\sisetup{locale = FR}
+\sisetup{
+  locale = US,
+  per-mode = symbol,
+  propagate-math-font = true,
+  reset-math-version = false,
+  exponent-mode = engineering,
+  round-mode = figures,
+  round-precision = 3,
+  drop-zero-decimal,
+}
+
+% Distance
+\DeclareSIUnit{\kilometer}{km}
+\DeclareSIUnit{\meter}{m}
+\DeclareSIUnit{\feet}{ft}
+\DeclareSIUnit{\inche}{in}
+\DeclareSIUnit{\centimeter}{cm}
+\DeclareSIUnit{\decimeter}{dm}
+\DeclareSIUnit{\millimeter}{mm}
+
+% Time
+\DeclareSIUnit{\year}{yr}
+\DeclareSIUnit{\month}{mos}
+\DeclareSIUnit{\week}{wk}
+\DeclareSIUnit{\day}{d}
+\DeclareSIUnit{\hour}{hr}
+\DeclareSIUnit{\minute}{min}
+\DeclareSIUnit{\second}{sec}
+\DeclareSIUnit{\milliseconds}{ms}
+
+% Weight
+\DeclareSIUnit{\ton}{ton}
+\DeclareSIUnit{\pound}{lb}
+\DeclareSIUnit{\ounce}{oz}
+\DeclareSIUnit{\kilogram}{kg}
+\DeclareSIUnit{\gram}{g}
 
 %%%%%%%%%%
 %  TikZ  %
@@ -173,6 +215,8 @@
 %  Helpful New Commands  %
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\makeatletter
+
 \newcommand\resetcounters{
   % Reset the counters for subsection, subsubsection and the definition
   % all the custom environments.
@@ -185,13 +229,15 @@
   \setcounter{corollary}{0}
   \setcounter{lemma}{0}
   \setcounter{exercise}{0}
+
+  \@ifclasswith\class{nocolor}{
+    \setcounter{definition}{0}
+  }{}
 }
 
 %%%%%%%%%%%%%%%%%%%%%
 %  Lecture Command  %
 %%%%%%%%%%%%%%%%%%%%%
-
-\makeatletter
 
 \usepackage{xifthen}
 
@@ -427,7 +473,6 @@
 \colorlet{definition}{mygreen!85!black}
 \colorlet{claim}{mygreen!85!black}
 \colorlet{corollary}{mypurple!85!black}
-% \colorlet{question}{RawSienna}
 \colorlet{proof}{theorem}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
