@@ -30,6 +30,7 @@
 \renewcommand\qedsymbol{$\Laughey$}
 
 \def\class{article}
+\setcounter{tocdepth}{3}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -293,7 +294,7 @@
 % Parameters:
 % 1. The figure name. It should be located in figures/NAME.tex_pdf.
 % 2. (Optional) The width of the figure. Example: 0.5, 0.35.
-\newcommand\incfig[2][1]{%
+\newcommand\incfig[2][1]{
   \def\svgwidth{#1\columnwidth}
   \import{./figures/}{#2.pdf_tex}
 }
@@ -381,7 +382,7 @@
   % In the bottom center, add the page.
   \fancyfoot[C]{\thepage}
   % Add a nice gray background in the middle of all the upcoming pages.
-  \definegraybackground
+  % \definegraybackground
 }
 
 \makeatother
@@ -692,11 +693,12 @@
   \NewDocumentEnvironment{question}{O{}O{}}
   {\begin{Question}{#1}{#2}}{\end{Question}}
 
-  \newtcolorbox{Solution}{enhanced,
+  \newtcbtheorem{Solution}{Solution}{enhanced,
     breakable,
     colback=white,
     colframe=mygreen!80!black,
     attach boxed title to top left={yshift*=-\tcboxedtitleheight},
+    fonttitle=\bfseries,
     title=\textbf{Solution:-},
     boxed title size=title,
     boxed title style={%
@@ -712,7 +714,8 @@
       [rounded corners=\kvtcb@arc] |-
       (frame.north) -| cycle;
     },
-  }
+    #1
+  }{def}
 
   \NewDocumentEnvironment{solution}{O{}O{}}
   {\vspace{-10pt}\begin{Solution}{#1}{#2}}{\end{Solution}}
@@ -734,3 +737,4 @@
 \newtheorem*{observe}{Observe}
 \newtheorem*{property}{Property}
 \newtheorem*{intuition}{Intuition}
+\newtheorem*{questionexpl}{Explanation}
