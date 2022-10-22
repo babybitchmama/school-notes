@@ -8,6 +8,8 @@
 \usepackage{hyperref}
 % Lets us import images and graphics.
 \usepackage{graphicx}
+% Let's us modify list stuff.
+\usepackage{enumitem}
 % Lets us use figures in floating environments.
 \usepackage{float}
 % Lets us create multiple columns.
@@ -26,8 +28,9 @@
 \usepackage{tikzsymbols}
 % Derivative stuff.
 \usepackage{derivative}
-\usepackage{physics}
-\renewcommand\qedsymbol{$\Laughey$}
+% Table stuff.
+\usepackage{multirow}
+\usepackage{tabularx,ragged2e,booktabs}
 
 \def\class{article}
 \setcounter{tocdepth}{3}
@@ -37,6 +40,16 @@
 %                                Basic Settings                               %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+%%%%%%%%%%%
+%  Table  %
+%%%%%%%%%%%
+
+\newcolumntype{C}{>{\Centering\arraybackslash}X}
+
+\usepackage[font=bf]{caption}
+\renewcommand\thetable{\Roman{table}}
+\renewcommand\qedsymbol{$\Laughey$}
+
 %%%%%%%%%%%%%
 %  Symbols  %
 %%%%%%%%%%%%%
@@ -45,6 +58,13 @@
 \let\impliedby\Leftarrow
 \let\iff\Leftrightarrow
 \let\epsilon\varepsilon
+
+%%%%%%%%%%%
+%  Lists  %
+%%%%%%%%%%%
+
+\setlist[itemize,1]{label=--}
+\setlist[itemize,2]{label=\textbullet}
 
 %%%%%%%%%%%%
 %  Tables  %
@@ -72,6 +92,7 @@
 
 % Distance
 \DeclareSIUnit{\kilometer}{km}
+\DeclareSIUnit{\mile}{mi}
 \DeclareSIUnit{\meter}{m}
 \DeclareSIUnit{\feet}{ft}
 \DeclareSIUnit{\inche}{in}
@@ -274,7 +295,7 @@
   %                                                  Oct 17 2022 Mon (08:49:10)
   % ---------------------------------------------------------------------------
   % Lecture 1: Lecture Title
-  \hfill\small{#2}
+  \hfill\footnotesize{#2}
   \hrule
   \vspace*{-0.3cm}
   \section*{\@lesson}
@@ -411,7 +432,8 @@
 
 \@ifclasswith\class{working}{
   \newcommandx\unsure[2][1=]{\todo[linecolor=red,backgroundcolor=red!25,bordercolor=red,#1]{#2}}
-  \newcommandx\change[2][1=]{\todo[linecolor=blue,backgroundcolor=blue!25,bordercolor=blue,#1]{#2}}
+  \newcommandx\change[2][1=]{\todo[linecolor=yellow,backgroundcolor=yellow!25,bordercolor=yellow,#1]{#2}}
+  \newcommandx\add[2][1=]{\todo[linecolor=blue,backgroundcolor=blue!25,bordercolor=blue,#1]{#2}}
   \newcommandx\info[2][1=]{\todo[linecolor=OliveGreen,backgroundcolor=OliveGreen!25,bordercolor=OliveGreen,#1]{#2}}
   \newcommandx\improvement[2][1=]{\todo[linecolor=Plum,backgroundcolor=Plum!25,bordercolor=Plum,#1]{#2}}
 
@@ -441,6 +463,12 @@
 % 2. The correct statement.
 \definecolor{correct}{HTML}{009900}
 \newcommand\correct[2]{{\color{red}{#1 }}\ensuremath{\to}{\color{correct}{ #2}}}
+
+%%%%%%%%%%%%%%%
+%  Important  %
+%%%%%%%%%%%%%%%
+
+\newcommand\imp[1]{{\color{red}#1}}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
