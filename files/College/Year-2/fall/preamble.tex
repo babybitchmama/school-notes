@@ -264,16 +264,16 @@
 \usepackage{xifthen}
 
 % EXAMPLE:
-% 1. \lesson{Oct 17 2022 Mon (08:46:48)}{Lecture Title}
-% 2. \lesson[4]{Oct 17 2022 Mon (08:46:48)}{Lecture Title}
-% 3. \lesson{Oct 17 2022 Mon (08:46:48)}{}
-% 4. \lesson[4]{Oct 17 2022 Mon (08:46:48)}{}
+% 1. \lecture{Oct 17 2022 Mon (08:46:48)}{Lecture Title}
+% 2. \lecture[4]{Oct 17 2022 Mon (08:46:48)}{Lecture Title}
+% 3. \lecture{Oct 17 2022 Mon (08:46:48)}{}
+% 4. \lecture[4]{Oct 17 2022 Mon (08:46:48)}{}
 % Parameters:
-% 1. (Optional) Lesson number.
+% 1. (Optional) lecture number.
 % 2. Time and date of lecture.
 % 3. Lecture Title.
-\def\@lesson{}
-\newcommand\lesson[3][\arabic{lecturecounter}]{
+\def\@lecture{}
+\newcommand\lecture[3][\arabic{lecturecounter}]{
   % Add 1 to the lecture counter.
   \addtocounter{lecturecounter}{1}
 
@@ -286,9 +286,9 @@
 
   % Check if user passed the lecture title or not.
   \ifthenelse{\isempty{#3}}{
-    \def\@lesson{Lecture \arabic{lecturecounter}}
+    \def\@lecture{Lecture \arabic{lecturecounter}}
   }{
-    \def\@lesson{Lecture \arabic{lecturecounter}: #3}
+    \def\@lecture{Lecture \arabic{lecturecounter}: #3}
   }
 
   % Display the information like the following:
@@ -298,33 +298,9 @@
   \hfill\footnotesize{#2}
   \hrule
   \vspace*{-0.3cm}
-  \section*{\@lesson}
-  \addcontentsline{toc}{section}{\@lesson}
+  \section*{\@lecture}
+  \addcontentsline{toc}{section}{\@lecture}
 }
-
-%%%%%%%%%%%%%%%%%%%%
-%  Import Figures  %
-%%%%%%%%%%%%%%%%%%%%
-
-\usepackage{import}
-\pdfminorversion=7
-
-% EXAMPLE:
-% 1. \incfig{limit-graph}
-% 2. \incfig[0.4]{limit-graph}
-% Parameters:
-% 1. The figure name. It should be located in figures/NAME.tex_pdf.
-% 2. (Optional) The width of the figure. Example: 0.5, 0.35.
-\newcommand\incfig[2][1]{
-  \def\svgwidth{#1\columnwidth}
-  \import{./figures/}{#2.pdf_tex}
-}
-
-\begingroup\expandafter\expandafter\expandafter\endgroup
-\expandafter\ifx\csname pdfsuppresswarningpagegroup\endcsname\relax
-\else
-  \pdfsuppresswarningpagegroup=1\relax
-\fi
 
 %%%%%%%%%%%%%%%%%
 % Fancy Headers %
@@ -397,7 +373,7 @@
   % Add the header line back.
   \renewcommand\headrulewidth{0.4pt}
   % In the top right, add the lecture title.
-  \fancyhead[R]{\@lesson}
+  \fancyhead[R]{\@lecture}
   % In the top left, add the author name.
   \fancyhead[L]{\@author}
   % In the bottom center, add the page.
@@ -408,6 +384,42 @@
 
 \makeatother
 
+%%%%%%%%%%%%%%%%%%%%
+%  Import Figures  %
+%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{import}
+\pdfminorversion=7
+
+% EXAMPLE:
+% 1. \incfig{limit-graph}
+% 2. \incfig[0.4]{limit-graph}
+% Parameters:
+% 1. The figure name. It should be located in figures/NAME.tex_pdf.
+% 2. (Optional) The width of the figure. Example: 0.5, 0.35.
+\newcommand\incfig[2][1]{
+  \def\svgwidth{#1\columnwidth}
+  \import{./figures/}{#2.pdf_tex}
+}
+
+\begingroup\expandafter\expandafter\expandafter\endgroup
+\expandafter\ifx\csname pdfsuppresswarningpagegroup\endcsname\relax
+\else
+  \pdfsuppresswarningpagegroup=1\relax
+\fi
+
+%%%%%%%%%%%%%%%%
+%  References  %
+%%%%%%%%%%%%%%%%
+
+\newcommand\urlref[2]{%
+  \href{#1}{\raisebox{0.15ex}{\scriptsize \faLink}\:\textup{\textbf{#2}}}%
+}
+
+\newcommand\pdfref[3]{%
+  \href{paper//open-paper?id=#1&page=#2}{%
+  \textup{[\textbf{\ifthenelse{\isempty{#3}}{here}{#3}}]}}%
+}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                               Custom Commands                               %
