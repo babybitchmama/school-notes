@@ -275,7 +275,7 @@
 \def\@lecture{}
 \newcommand\lecture[3][\arabic{lecturecounter}]{
   % Add 1 to the lecture counter.
-  \addtocounter{lecturecounter}{1}
+  \stepcounter{lecturecounter}
 
   % Set the section number to the lecture counter.
   \setcounter{section}{#1}
@@ -634,7 +634,7 @@
 }{
   % Environments with color.
 
-  \newtcbtheorem[number within=section]{Definition}{Definition}{
+  \newtcbtheorem[number within=lecturecounter]{Definition}{Definition}{
     enhanced,
     before skip=2mm,
     after skip=2mm,
