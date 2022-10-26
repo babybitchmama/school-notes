@@ -30,6 +30,7 @@
 \usepackage{derivative}
 % Table stuff.
 \usepackage{multirow}
+\usepackage{tablists}
 \usepackage{tabularx,ragged2e,booktabs}
 
 \def\class{article}
@@ -39,6 +40,15 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                                Basic Settings                               %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%
+% Tasks %
+%%%%%%%%%
+
+\usepackage{tasks}
+\usepackage{extramarks}
+
+\settasks{label=\bfseries\arabic*.),label-width=2em}
 
 %%%%%%%%%%%
 %  Table  %
@@ -515,6 +525,7 @@
 \colorlet{claim}{mygreen!85!black}
 \colorlet{corollary}{mypurple!85!black}
 \colorlet{proof}{theorem}
+\colorlet{notation}{theorem}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %  Create Environments Styles Based on Given Parameter  %
@@ -586,9 +597,10 @@
   \createnewtheoremstyle{thmdefinitionbox}{}{}
   \createnewtheoremstyle{thmquestionbox}{}{}
   \createnewtheoremstyle{thmsolutionbox}{}{}
+  \createnewtheoremstyle{thmnotationbox}{}{rightline=false, leftline=true, topline=false, bottomline=false}
 
-  \createnewtheoremstyle{thmproofbox}{qed=\qedsymbol}{}
-  \createnewtheoremstyle{thmexplanationbox}{}{}
+  \createnewtheoremstyle{thmproofbox}{qed=\qedsymbol}{rightline=false, leftline=true, topline=false, bottomline=false}
+  \createnewtheoremstyle{thmexplanationbox}{}{rightline=false, leftline=true, topline=false, bottomline=false}
 }{
   % Environments with color.
 
@@ -602,6 +614,7 @@
   \createnewcoloredtheoremstyle{thmpropbox}{prop}{}{}
   \createnewcoloredtheoremstyle{thmlemmabox}{lemma}{}{}
   \createnewcoloredtheoremstyle{thmexercisebox}{exercise}{}{}
+  \createnewcoloredtheoremstyle{thmnotationbox}{notation}{}{backgroundcolor=white}
 
   \createnewcoloredtheoremstyle{thmproofbox}{proof}{qed=\qedsymbol}{backgroundcolor=white}
   \createnewcoloredtheoremstyle{thmexplanationbox}{example}{qed=\qedsymbol}{backgroundcolor=white}
@@ -619,14 +632,20 @@
 \declaretheorem[numberwithin=section, style=thmpropbox,        name=Proposition]{prop}
 \declaretheorem[numberwithin=section, style=thmlemmabox,       name=Lemma]{lemma}
 \declaretheorem[numberwithin=section, style=thmexercisebox,    name=Exercise]{exercise}
+\declaretheorem[numbered=no,          style=thmnotationbox,    name=Notation]{notation}
 \declaretheorem[numbered=no,          style=thmproofbox,       name=Proof]{replacementproof}
 \declaretheorem[numbered=no,          style=thmexplanationbox, name=Proof]{expl}
+
+\AtEndEnvironment{exercise}{
+  \addcontentsline{toc}{subsubsection}{Exercise \arabic{exercise}}
+}%
 
 \makeatletter
 \@ifclasswith\class{nocolor}{
   % Environments without color.
 
   \newtheorem*{note}{Note}
+  \newtheorem*{pnote}{Note}
 
   \declaretheorem[numberwithin=section, style=thmdefinitionbox, name=Definition]{definition}
   \declaretheorem[numberwithin=section, style=thmquestionbox,   name=Question]{question}
@@ -678,7 +697,7 @@
     colframe=gray!80!black,
     size=small,
     boxrule=1pt,
-    title=\textbf{Note:-},
+    title=\textbf{Note.},
     halign title=flush center,
     coltitle=black,
     breakable,
@@ -712,7 +731,7 @@
     colframe=myblue!80!black,
     attach boxed title to top left={yshift*=-\tcboxedtitleheight},
     fonttitle=\bfseries,
-    title=\textbf{Question:-},
+    title=\textbf{Question.},
     boxed title size=title,
     boxed title style={%
       sharp corners,
@@ -739,7 +758,7 @@
     colframe=mygreen!80!black,
     attach boxed title to top left={yshift*=-\tcboxedtitleheight},
     fonttitle=\bfseries,
-    title=\textbf{Solution:-},
+    title=\textbf{Solution.},
     boxed title size=title,
     boxed title style={%
       sharp corners,
@@ -759,6 +778,8 @@
 
   \NewDocumentEnvironment{solution}{O{}O{}}
   {\vspace{-10pt}\begin{Solution}{#1}{#2}}{\end{Solution}}
+
+  \newtheorem*{pnote}{Note}
 }
 \makeatother
 
@@ -771,7 +792,6 @@
 
 \theoremstyle{definition}
 
-\newtheorem*{notation}{Notation}
 \newtheorem*{previouslyseen}{As previously seen}
 \newtheorem*{problem}{Problem}
 \newtheorem*{observe}{Observe}
