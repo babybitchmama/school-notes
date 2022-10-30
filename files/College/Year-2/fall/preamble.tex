@@ -101,31 +101,33 @@
 }
 
 % Distance
-\DeclareSIUnit{\kilometer}{km}
-\DeclareSIUnit{\mile}{mi}
-\DeclareSIUnit{\meter}{m}
-\DeclareSIUnit{\feet}{ft}
-\DeclareSIUnit{\inche}{in}
+\DeclareSIUnit{\millimeter}{mm}
 \DeclareSIUnit{\centimeter}{cm}
 \DeclareSIUnit{\decimeter}{dm}
-\DeclareSIUnit{\millimeter}{mm}
+\DeclareSIUnit{\inch}{in}
+\DeclareSIUnit{\foot}{ft}
+\DeclareSIUnit{\yard}{yd}
+\DeclareSIUnit{\meter}{m}
+\DeclareSIUnit{\kilometer}{km}
+\DeclareSIUnit{\mile}{mi}
 
 % Time
-\DeclareSIUnit{\year}{yr}
-\DeclareSIUnit{\month}{mos}
-\DeclareSIUnit{\week}{wk}
-\DeclareSIUnit{\day}{d}
-\DeclareSIUnit{\hour}{hr}
-\DeclareSIUnit{\minute}{min}
+\DeclareSIUnit{\millisecond}{ms}
 \DeclareSIUnit{\second}{sec}
-\DeclareSIUnit{\milliseconds}{ms}
+\DeclareSIUnit{\minute}{min}
+\DeclareSIUnit{\hour}{hr}
+\DeclareSIUnit{\day}{d}
+\DeclareSIUnit{\week}{wk}
+\DeclareSIUnit{\month}{mos}
+\DeclareSIUnit{\year}{yr}
 
 % Weight
-\DeclareSIUnit{\ton}{ton}
-\DeclareSIUnit{\pound}{lb}
-\DeclareSIUnit{\ounce}{oz}
-\DeclareSIUnit{\kilogram}{kg}
+\DeclareSIUnit{\milligram}{mg}
 \DeclareSIUnit{\gram}{g}
+\DeclareSIUnit{\ounce}{oz}
+\DeclareSIUnit{\pound}{lb}
+\DeclareSIUnit{\kilogram}{kg}
+\DeclareSIUnit{\ton}{t}
 
 %%%%%%%%%%
 %  TikZ  %
@@ -181,6 +183,12 @@
   }
 }
 
+%%%%%%%%%%%%%%%%%%%
+%  Footnote Line  %
+%%%%%%%%%%%%%%%%%%%
+
+\renewcommand\footnoterule{\hrule\vspace{0.1cm}}
+
 %%%%%%%%%%%%%%%%%%%%%%%%
 %  Modify Links Color  %
 %%%%%%%%%%%%%%%%%%%%%%%%
@@ -232,10 +240,17 @@
 \newlength{\thickarrayrulewidth}
 \setlength{\thickarrayrulewidth}{5\arrayrulewidth}
 
+%%%%%%%%%%%%%%%%%%%
+%  Caption Setup  %
+%%%%%%%%%%%%%%%%%%%
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%                           School Specific Commands                          %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\captionsetup[figure]{font=small}
+\captionsetup{justification=centering}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                           School Specific Commands                           %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 %  Initiate New Counters  %
@@ -373,6 +388,7 @@
   % Add the table of contents.
   \tableofcontents
   % Force a new page.
+  \newpage
   \forcenewpage
 
   % Move the page numberings back to arabic, from roman numerals.
@@ -448,6 +464,7 @@
 %%%%%%%%%%%%%%%%%%%
 
 \usepackage{xargs}
+\usepackage{sidenotes}
 \usepackage[colorinlistoftodos]{todonotes}
 
 \makeatletter
@@ -594,7 +611,6 @@
   \createnewtheoremstyle{thmpropbox}{}{}
   \createnewtheoremstyle{thmlemmabox}{}{}
   \createnewtheoremstyle{thmexercisebox}{}{}
-  \createnewtheoremstyle{thmdefinitionbox}{}{}
   \createnewtheoremstyle{thmquestionbox}{}{}
   \createnewtheoremstyle{thmsolutionbox}{}{}
   \createnewtheoremstyle{thmnotationbox}{}{rightline=false, leftline=true, topline=false, bottomline=false}
@@ -780,6 +796,7 @@
   {\vspace{-10pt}\begin{Solution}{#1}{#2}}{\end{Solution}}
 
   \newtheorem*{pnote}{Note}
+  \newtheorem*{pnotation}{Notation}
 }
 \makeatother
 

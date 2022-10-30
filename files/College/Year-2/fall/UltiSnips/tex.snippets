@@ -1,0 +1,145 @@
+################################################################################
+#                                                                              #
+#                                    Global                                    #
+#                                                                              #
+################################################################################
+
+global !p
+
+from latex_.scopes import text
+environments = {
+	"def": "definition",
+	"thm": "theorem",
+	"exm": "example",
+	"clm": "claim",
+	"cor": "corollary",
+	"prop": "proposition",
+	"lem": "lemma",
+	"exc": "exercise",
+	"qst": "question",
+	"sol": "solution",
+	"not": "note",
+	"nta": "notation",
+}
+
+endglobal
+
+
+################################################################################
+#                                                                              #
+#                                 Environments                                 #
+#                                                                              #
+################################################################################
+
+context "text()"
+snippet def "Definition Environment" Abm
+\begin{definition}[$1]
+	\label{def:${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:_:\L$1$2$3\E)/ga}}}
+
+	$3
+\end{definition}
+endsnippet
+
+snippet thm "Theorem Environment" Abm
+\begin{theorem}[$1]
+	\label{thm:${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:_:\L$1$2$3\E)/ga}}}
+
+	$3
+\end{theorem}
+endsnippet
+
+snippet exm "Example Environment" Abm
+\begin{example}[$1]
+	\label{exm:${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:_:\L$1$2$3\E)/ga}}}
+
+	$3
+\end{example}
+endsnippet
+
+snippet clm "Claim Environment" Abm
+\begin{claim}[$1]
+	\label{clm:${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:_:\L$1$2$3\E)/ga}}}
+
+	$3
+\end{claim}
+endsnippet
+
+snippet cor "Corollary Environment" Abm
+\begin{corollary}[$1]
+	\label{cor:${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:_:\L$1$2$3\E)/ga}}}
+
+	$3
+\end{corollary}
+endsnippet
+
+snippet prop "Proposition Environment" Abm
+\begin{proposition}[$1]
+	\label{prop:${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:_:\L$1$2$3\E)/ga}}}
+
+	$3
+\end{proposition}
+endsnippet
+
+snippet lem "Lemma Environment" Abm
+\begin{lemma}[$1]
+	\label{lem:${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:_:\L$1$2$3\E)/ga}}}
+
+	$3
+\end{lemma}
+endsnippet
+
+snippet exc "Exercise Environment" Abm
+\begin{exercise}[$1]
+	\label{exc:${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:_:\L$1$2$3\E)/ga}}}
+
+	$3
+\end{exercise}
+endsnippet
+
+snippet qst "Question Environment" Abm
+\begin{question}[$1]
+	\label{qst:${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:_:\L$1$2$3\E)/ga}}}
+
+	$3
+\end{question}
+endsnippet
+
+snippet sol "Solution Environment" Abm
+\begin{solution}[$1]
+	\label{sol:${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:_:\L$1$2$3\E)/ga}}}
+
+	$3
+\end{solution}
+endsnippet
+
+snippet not "Note Environment" Abm
+\begin{note}[$1]
+	\label{not:${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:_:\L$1$2$3\E)/ga}}}
+
+	$3
+\end{note}
+endsnippet
+
+snippet nta "Notation Environment" Abm
+\begin{notation}[$1]
+	\label{nta:${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:_:\L$1$2$3\E)/ga}}}
+
+	$3
+\end{notation}
+endsnippet
+
+
+################################################################################
+#                                                                              #
+#                                    Other                                     #
+#                                                                              #
+################################################################################
+
+snippet lec "Lecture"
+\lecture{`date "+%b %d %Y %a (%H:%M:%S)"`}{${1:NAME}}
+\label{lec_$2:${3:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:_:\L$1$2$3\E)/ga}}}
+
+$0
+
+\newpage
+endsnippet
