@@ -24,8 +24,6 @@
 \usepackage{pdfpages}
 % Lets us do algorithm stuff.
 \usepackage[ruled,vlined,linesnumbered]{algorithm2e}
-% Use a smiley face for our qed symbol.
-\usepackage{tikzsymbols}
 % Derivative stuff.
 \usepackage{derivative}
 % Table stuff.
@@ -97,6 +95,7 @@
 \sisetup{
   locale = US,
   per-mode = symbol,
+  quotient-mode=fraction,
   propagate-math-font = true,
   reset-math-version = false,
   exponent-mode = engineering,
@@ -134,28 +133,82 @@
 \DeclareSIUnit{\kilogram}{kg}
 \DeclareSIUnit{\ton}{t}
 
+% Liquid
+\DeclareSIUnit{\gallon}{gal}
+\DeclareSIUnit{\liter}{L}
+\DeclareSIUnit{\milliliter}{mL}
+
 %%%%%%%%%%
 %  TikZ  %
 %%%%%%%%%%
 
 \usepackage[framemethod=TikZ]{mdframed}
 \usepackage{tikz}
+\usepackage{animate}
 \usepackage{tikz-cd}
-\usepackage{tikzsymbols}
 
-\usetikzlibrary{intersections, angles, quotes, calc, positioning}
-\usetikzlibrary{arrows.meta}
-
-\tikzset{
-  force/.style={thick, {Circle[length=2pt]}-stealth, shorten <=-1pt}
+\usetikzlibrary{
+  intersections,
+  angles,
+  quotes,
+  calc,
+  positioning,
+  arrows.meta
 }
+\tikzset{>=stealth}
 
 %%%%%%%%%%%%%%%
 %  PGF Plots  %
 %%%%%%%%%%%%%%%
 
 \usepackage{pgfplots}
-\pgfplotsset{compat=1.13}
+\pgfplotsset{compat=1.18}
+
+\usepgfplotslibrary{patchplots}
+\usetikzlibrary{3d,calc}
+
+% curve, dot, and graph custom styles
+\pgfplotsset{pccplot/.style={color=red,mark=none,line width=1pt,<->,solid}} % primary style for curves
+\pgfplotsset{asymptote/.style={color=gray,mark=none,line width=1pt,<->,dashed}}
+\pgfplotsset{soldot/.style={color=red,only marks,mark=*}}
+\pgfplotsset{holdot/.style={color=red,fill=white,only marks,mark=*}}
+\pgfplotsset{blankgraph/.style={xmin=-10,xmax=10,ymin=-10,ymax=10,axis line style= {-, draw opacity=0 },axis lines=box,major tick length=0mm,xtick={-10,-9,...,10},ytick={-10,-9,...,10},grid=major,yticklabels={,,},xticklabels={,,},minor xtick=,minor ytick=,xlabel={},ylabel={},width=0.75\textwidth,grid style={solid,gray!40}}}
+
+% cycle list of plot styles for graphs with multiple plots
+\pgfplotscreateplotcyclelist{pccstylelist}{%
+  pccplot \\
+  color=blue,mark=none,line width=1pt,<->,dashdotted\\%
+  color=gray,mark=none,line width=1pt,<->,dashdotdotted\\%
+}
+
+\def\axisdefaultwidth{175pt}
+\def\axisdefaultheight{\axisdefaultwidth}
+
+\pgfplotsset{every axis/.append style={
+    axis x line=middle,
+    axis y line=middle,
+    axis line style={<->},
+    xlabel={$x$},
+    ylabel={$y$},
+    xmin = -7,xmax = 7,
+    ymin = -7,ymax = 7,
+    yticklabel style={inner sep=0.333ex},
+    minor xtick = {-7,-6,...,7},
+    minor ytick = {-7,-6,...,7},
+    scale only axis,
+    cycle list name=pccstylelist,
+    tick label style={font=\footnotesize},
+    legend cell align=left,
+    grid = minor,
+    grid style = {solid,gray!40},
+    try min ticks=6,
+}}
+
+% arrow style
+\tikzset{>=stealth}
+
+% framing the graphs
+\pgfplotsset{framed/.style={axis background/.style ={draw=gray}}}
 
 %%%%%%%%%%%%%%%%%%%%%%%
 %  Center Title Page  %
@@ -293,6 +346,7 @@
 %  Lecture Command  %
 %%%%%%%%%%%%%%%%%%%%%
 
+\usepackage{ifthen}
 \usepackage{xifthen}
 
 % EXAMPLE:
