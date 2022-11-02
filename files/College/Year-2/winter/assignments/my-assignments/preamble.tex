@@ -1,0 +1,150 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                Basic Settings                               %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\input{../../preamble.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%  Change Size of PDF  %
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+
+%%%%%%%%%%%%%%%%
+% Fancy Header %
+%%%%%%%%%%%%%%%%
+
+\linespread{1.1}
+
+\renewcommand\headrulewidth{0.4pt}
+\renewcommand\footrulewidth{0.4pt}
+
+\pagestyle{fancy}
+
+\fancyhead[L]{\hmwkAuthorName}
+\fancyhead[C]{\hmwkClass: \hmwkTitle: \hmwkClassInstructorShortName}
+\fancyhead[R]{\firstxmark}
+\fancyfoot[L]{\lastxmark}
+\fancyfoot[C]{\thepage}
+% TODO: Add bottom right box for professor to put grade.
+% \fancyfoot[R]{\thepage}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                  Title Page                                 %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{
+  \vspace{2in}
+  \textmd{\textmd{\textbf{\hmwkClass:\ \hmwkTitle}}}\\
+  \normalsize\vspace{0.1in}\small{Due\ on\ \hmwkDueDate\ at \hmwkDueTime}\\
+  \vspace{0.1in}\large{\textit{\hmwkClassInstructor\ \hmwkClassTime}}
+  \vspace{3in}
+}
+
+\author{\hmwkAuthorName}
+\date{}
+
+\renewcommand{\part}[1]{\textbf{\large Part \Alph{partCounter}}\stepcounter{partCounter}\\}
+
+\newcounter{countitems}
+\newcounter{nextitemizecount}
+\newcommand{\setupcountitems}{%
+  \stepcounter{nextitemizecount}%
+  \setcounter{countitems}{0}%
+  \preto\item{\stepcounter{countitems}}%
+}
+
+\makeatletter
+\newcommand{\computecountitems}{%
+  \edef\@currentlabel{\number\c@countitems}%
+}
+\newcommand{\nextitemizecount}{%
+  \getrefnumber{countitems@\number\c@nextitemizecount}%
+}
+\newcommand{\previtemizecount}{%
+  \getrefnumber{countitems@\number\numexpr\value{nextitemizecount}-1\relax}%
+}
+\makeatother
+
+\newenvironment{AutoMultiColItemize}{%
+  \ifnumcomp{\nextitemizecount}{>}{3}{\begin{multicols}{2}}{}%
+    \setupcountitems\begin{itemize}}%
+    {\end{itemize}%
+  \unskip\computecountitems\ifnumcomp{\previtemizecount}{>}{3}{\end{multicols}}{}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                 Environments                                %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%
+% Create Counters %
+%%%%%%%%%%%%%%%%%%%
+
+\setcounter{secnumdepth}{0}
+\newcounter{partCounter}
+\newcounter{homeworkProblemCounter}
+\setcounter{homeworkProblemCounter}{1}
+\newcounter{homeworkSolutionCounter}
+\setcounter{homeworkSolutionCounter}{1}
+\nobreak\extramarks{Problem \arabic{homeworkProblemCounter}}{}\nobreak{}
+
+%%%%%%%%%%%%%%%%%%
+% Create Headers %
+%%%%%%%%%%%%%%%%%%
+
+\newcommand{\enterProblemHeader}[1]{
+  \nobreak\extramarks{}{
+    Problem \arabic{#1} continued on next page \ldots
+  }\nobreak{}
+  \nobreak\extramarks{
+    Problem \arabic{#1} (continued)
+  }{
+    Problem \arabic{#1} continued on next page \ldots
+  }\nobreak{}
+}
+
+\newcommand{\exitProblemHeader}[1]{
+  \nobreak\extramarks{
+    Problem \arabic{#1} (continued)
+  }{
+    Problem \arabic{#1} continued on next page\ldots
+  }\nobreak{}
+  \stepcounter{#1}
+  \nobreak\extramarks{
+    Problem \arabic{#1}
+  }{}\nobreak{}
+}
+
+%%%%%%%%%%%%%%%%
+% Environments %
+%%%%%%%%%%%%%%%%
+
+\renewenvironment{solution}[1][-1]{
+  \ifnum#1>0
+    \setcounter{homeworkSolutionCounter}{#1}
+  \fi
+  \section{Solution \arabic{homeworkSolutionCounter}}
+  \setcounter{partCounter}{1}
+  \enterProblemHeader{homeworkSolutionCounter}
+}{
+  \exitProblemHeader{homeworkSolutionCounter}
+}
+
+\renewenvironment{problem}[1][-1]{
+  \ifnum#1>0
+    \setcounter{homeworkProblemCounter}{#1}
+  \fi
+  \section{Problem \arabic{homeworkProblemCounter}}
+  \setcounter{partCounter}{1}
+  \enterProblemHeader{homeworkProblemCounter}
+}{
+  \exitProblemHeader{homeworkProblemCounter}
+}
