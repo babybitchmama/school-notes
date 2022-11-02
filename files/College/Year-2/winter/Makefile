@@ -23,7 +23,3 @@ view:
 	make compile
 	make clean
 	$(PDF_VIEWER) $(DOCNAME).pdf
-
-proof:
-	make compile DOCNAME="proofs"
-	make clean
