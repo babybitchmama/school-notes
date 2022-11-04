@@ -1,6 +1,8 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%                                Basic Packages                               %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                                              %
+%                              Required Packages                               %
+%                                                                              %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Gives us multiple colors.
 \usepackage[usenames,dvipsnames,pdftex]{xcolor}
@@ -24,8 +26,6 @@
 \usepackage{pdfpages}
 % Lets us do algorithm stuff.
 \usepackage[ruled,vlined,linesnumbered]{algorithm2e}
-% Use a smiley face for our qed symbol.
-\usepackage{tikzsymbols}
 % Derivative stuff.
 \usepackage{derivative}
 % Table stuff.
@@ -134,28 +134,84 @@
 \DeclareSIUnit{\kilogram}{kg}
 \DeclareSIUnit{\ton}{t}
 
+% Liquid
+\DeclareSIUnit{\gallon}{gal}
+\DeclareSIUnit{\liter}{L}
+\DeclareSIUnit{\milliliter}{mL}
+
 %%%%%%%%%%
 %  TikZ  %
 %%%%%%%%%%
 
 \usepackage[framemethod=TikZ]{mdframed}
 \usepackage{tikz}
+\usepackage{animate}
 \usepackage{tikz-cd}
-\usepackage{tikzsymbols}
 
-\usetikzlibrary{intersections, angles, quotes, calc, positioning}
-\usetikzlibrary{arrows.meta}
-
-\tikzset{
-  force/.style={thick, {Circle[length=2pt]}-stealth, shorten <=-1pt}
+\usetikzlibrary{
+  intersections,
+  angles,
+  quotes,
+  calc,
+  positioning,
+  arrows.meta
 }
+\tikzset{>=stealth}
 
 %%%%%%%%%%%%%%%
 %  PGF Plots  %
 %%%%%%%%%%%%%%%
 
 \usepackage{pgfplots}
-\pgfplotsset{compat=1.13}
+\pgfplotsset{compat=1.18}
+
+\usepgfplotslibrary{patchplots}
+\usetikzlibrary{3d,calc}
+
+% curve, dot, and graph custom styles
+\pgfplotsset{pccplot/.style={color=red,mark=none,line width=1pt,<->,solid}} % primary style for curves
+\pgfplotsset{asymptote/.style={color=gray,mark=none,line width=1pt,<->,dashed}}
+\pgfplotsset{soldot/.style={color=red,only marks,mark=*}}
+\pgfplotsset{holdot/.style={color=red,fill=white,only marks,mark=*}}
+\pgfplotsset{blankgraph/.style={xmin=-10,xmax=10,ymin=-10,ymax=10,axis line style= {-, draw opacity=0 },axis lines=box,major tick length=0mm,xtick={-10,-9,...,10},ytick={-10,-9,...,10},grid=major,yticklabels={,,},xticklabels={,,},minor xtick=,minor ytick=,xlabel={},ylabel={},width=0.75\textwidth,grid style={solid,gray!40}}}
+
+% cycle list of plot styles for graphs with multiple plots
+\pgfplotscreateplotcyclelist{pccstylelist}{%
+  pccplot \\
+  color=blue,mark=none,line width=1pt,<->,dashdotted\\%
+  color=gray,mark=none,line width=1pt,<->,dashdotdotted\\%
+}
+
+\def\axisdefaultwidth{175pt}
+\def\axisdefaultheight{\axisdefaultwidth}
+
+\pgfplotsset{every axis/.append style={
+    axis x line=middle,
+    axis y line=middle,
+    axis line style={<->},
+    xlabel={$x$},
+    ylabel={$y$},
+    xmin = -7,xmax = 7,
+    ymin = -7,ymax = 7,
+    yticklabel style={inner sep=0.333ex},
+    minor xtick = {-7,-6,...,7},
+    minor ytick = {-7,-6,...,7},
+    scale only axis,
+    cycle list name=pccstylelist,
+    tick label style={font=\footnotesize},
+    legend cell align=left,
+    grid = minor,
+    grid style = {solid,gray!40},
+    try min ticks=6,
+  },
+  framed/.style={axis background/.style = {draw=gray}}
+}
+
+% arrow style
+\tikzset{>=stealth}
+
+% framing the graphs
+\pgfplotsset{}
 
 %%%%%%%%%%%%%%%%%%%%%%%
 %  Center Title Page  %
@@ -283,16 +339,14 @@
   \setcounter{corollary}{0}
   \setcounter{lemma}{0}
   \setcounter{exercise}{0}
-
-  \@ifclasswith\class{nocolor}{
-    \setcounter{definition}{0}
-  }{}
+  \setcounter{definition}{0}
 }
 
 %%%%%%%%%%%%%%%%%%%%%
 %  Lecture Command  %
 %%%%%%%%%%%%%%%%%%%%%
 
+\usepackage{ifthen}
 \usepackage{xifthen}
 
 % EXAMPLE:
@@ -542,10 +596,9 @@
 \definecolor{myred}{RGB}{199, 68, 64}
 \definecolor{mypurple}{RGB}{197, 92, 212}
 
-\definecolor{definition}{HTML}{228b22}
+% \definecolor{definition}{HTML}{228b22}
 \definecolor{theorem}{HTML}{00007B}
 \definecolor{example}{HTML}{2A7F7F}
-\definecolor{definition}{HTML}{228b22}
 \definecolor{prop}{HTML}{191971}
 \definecolor{lemma}{HTML}{983b0f}
 \definecolor{exercise}{HTML}{88D6D1}
@@ -653,6 +706,7 @@
 %  Create the Environments  %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\declaretheorem[numberwithin=section, style=thmdefinitionbox,  name=Definition]{definition}
 \declaretheorem[numberwithin=section, style=thmtheorembox,     name=Theorem]{theorem}
 \declaretheorem[numbered=no,          style=thmexamplebox,     name=Example]{example}
 \declaretheorem[numberwithin=section, style=thmclaimbox,       name=Claim]{claim}
@@ -666,92 +720,20 @@
 
 \AtEndEnvironment{exercise}{
   \addcontentsline{toc}{subsubsection}{Exercise \arabic{exercise}}
-}%
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Create Question and Solution Environments with or without color  %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \makeatletter
 \@ifclasswith\class{nocolor}{
   % Environments without color.
 
-  \newtheorem*{note}{Note}
-  \newtheorem*{pnote}{Note}
-
-  \declaretheorem[numberwithin=section, style=thmdefinitionbox, name=Definition]{definition}
   \declaretheorem[numberwithin=section, style=thmquestionbox,   name=Question]{question}
   \declaretheorem[numberwithin=section, style=thmsolutionbox,   name=Solution]{solution}
 }{
   % Environments with color.
-
-  \newtcbtheorem[number within=lecturecounter]{Definition}{Definition}{
-    enhanced,
-    before skip=2mm,
-    after skip=2mm,
-    colback=red!5,
-    colframe=red!80!black,
-    colbacktitle=red!75!black,
-    boxrule=0.5mm,
-    attach boxed title to top left={
-      xshift=1cm,
-      yshift*=1mm-\tcboxedtitleheight
-    },
-    varwidth boxed title*=-3cm,
-    boxed title style={
-      interior engine=empty,
-      frame code={
-        \path[fill=tcbcolback]
-        ([yshift=-1mm,xshift=-1mm]frame.north west)
-        arc[start angle=0,end angle=180,radius=1mm]
-        ([yshift=-1mm,xshift=1mm]frame.north east)
-        arc[start angle=180,end angle=0,radius=1mm];
-        \path[left color=tcbcolback!60!black,right color=tcbcolback!60!black,
-        middle color=tcbcolback!80!black]
-        ([xshift=-2mm]frame.north west) -- ([xshift=2mm]frame.north east)
-        [rounded corners=1mm]-- ([xshift=1mm,yshift=-1mm]frame.north east)
-        -- (frame.south east) -- (frame.south west)
-        -- ([xshift=-1mm,yshift=-1mm]frame.north west)
-        [sharp corners]-- cycle;
-      },
-    },
-    fonttitle=\bfseries,
-    title={#2},
-    #1
-  }{def}
-
-  \NewDocumentEnvironment{definition}{O{}O{}}
-    {\begin{Definition}{#1}{#2}}{\end{Definition}}
-
-  \newtcolorbox{note}[1][]{%
-    enhanced jigsaw,
-    colback=gray!20!white,%
-    colframe=gray!80!black,
-    size=small,
-    boxrule=1pt,
-    title=\textbf{Note.},
-    halign title=flush center,
-    coltitle=black,
-    breakable,
-    drop shadow=black!50!white,
-    attach boxed title to top left={xshift=1cm,yshift=-\tcboxedtitleheight/2,yshifttext=-\tcboxedtitleheight/2},
-    minipage boxed title=1.5cm,
-    boxed title style={%
-      colback=white,
-      size=fbox,
-      boxrule=1pt,
-      boxsep=2pt,
-      underlay={%
-        \coordinate (dotA) at ($(interior.west) + (-0.5pt,0)$);
-        \coordinate (dotB) at ($(interior.east) + (0.5pt,0)$);
-        \begin{scope}
-          \clip (interior.north west) rectangle ([xshift=3ex]interior.east);
-          \filldraw [white, blur shadow={shadow opacity=60, shadow yshift=-.75ex}, rounded corners=2pt] (interior.north west) rectangle (interior.south east);
-        \end{scope}
-        \begin{scope}[gray!80!black]
-          \fill (dotA) circle (2pt);
-          \fill (dotB) circle (2pt);
-        \end{scope}
-      },
-    },
-    #1,
-  }
 
   \newtcbtheorem{Question}{Question}{enhanced,
     breakable,
@@ -806,9 +788,6 @@
 
   \NewDocumentEnvironment{solution}{O{}O{}}
   {\vspace{-10pt}\begin{Solution}{#1}{#2}}{\end{Solution}}
-
-  \newtheorem*{pnote}{Note}
-  \newtheorem*{pnotation}{Notation}
 }
 \makeatother
 
@@ -821,6 +800,7 @@
 
 \theoremstyle{definition}
 
+\newtheorem*{note}{Note}
 \newtheorem*{previouslyseen}{As previously seen}
 \newtheorem*{problem}{Problem}
 \newtheorem*{observe}{Observe}
