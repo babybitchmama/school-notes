@@ -97,7 +97,6 @@
 \sisetup{
   locale = US,
   per-mode = symbol,
-  quotient-mode=fraction,
   propagate-math-font = true,
   reset-math-version = false,
   exponent-mode = engineering,
@@ -204,13 +203,15 @@
     grid = minor,
     grid style = {solid,gray!40},
     try min ticks=6,
-}}
+  },
+  framed/.style={axis background/.style = {draw=gray}}
+}
 
 % arrow style
 \tikzset{>=stealth}
 
 % framing the graphs
-\pgfplotsset{framed/.style={axis background/.style ={draw=gray}}}
+\pgfplotsset{}
 
 %%%%%%%%%%%%%%%%%%%%%%%
 %  Center Title Page  %
@@ -338,10 +339,7 @@
   \setcounter{corollary}{0}
   \setcounter{lemma}{0}
   \setcounter{exercise}{0}
-
-  \@ifclasswith\class{nocolor}{
-    \setcounter{definition}{0}
-  }{}
+  \setcounter{definition}{0}
 }
 
 %%%%%%%%%%%%%%%%%%%%%
@@ -598,10 +596,9 @@
 \definecolor{myred}{RGB}{199, 68, 64}
 \definecolor{mypurple}{RGB}{197, 92, 212}
 
-\definecolor{definition}{HTML}{228b22}
+% \definecolor{definition}{HTML}{228b22}
 \definecolor{theorem}{HTML}{00007B}
 \definecolor{example}{HTML}{2A7F7F}
-\definecolor{definition}{HTML}{228b22}
 \definecolor{prop}{HTML}{191971}
 \definecolor{lemma}{HTML}{983b0f}
 \definecolor{exercise}{HTML}{88D6D1}
@@ -709,6 +706,7 @@
 %  Create the Environments  %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\declaretheorem[numberwithin=section, style=thmdefinitionbox,  name=Definition]{definition}
 \declaretheorem[numberwithin=section, style=thmtheorembox,     name=Theorem]{theorem}
 \declaretheorem[numbered=no,          style=thmexamplebox,     name=Example]{example}
 \declaretheorem[numberwithin=section, style=thmclaimbox,       name=Claim]{claim}
@@ -722,92 +720,20 @@
 
 \AtEndEnvironment{exercise}{
   \addcontentsline{toc}{subsubsection}{Exercise \arabic{exercise}}
-}%
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Create Question and Solution Environments with or without color  %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \makeatletter
 \@ifclasswith\class{nocolor}{
   % Environments without color.
 
-  \newtheorem*{note}{Note}
-  \newtheorem*{pnote}{Note}
-
-  \declaretheorem[numberwithin=section, style=thmdefinitionbox, name=Definition]{definition}
   \declaretheorem[numberwithin=section, style=thmquestionbox,   name=Question]{question}
   \declaretheorem[numberwithin=section, style=thmsolutionbox,   name=Solution]{solution}
 }{
   % Environments with color.
-
-  \newtcbtheorem[number within=lecturecounter]{Definition}{Definition}{
-    enhanced,
-    before skip=2mm,
-    after skip=2mm,
-    colback=red!5,
-    colframe=red!80!black,
-    colbacktitle=red!75!black,
-    boxrule=0.5mm,
-    attach boxed title to top left={
-      xshift=1cm,
-      yshift*=1mm-\tcboxedtitleheight
-    },
-    varwidth boxed title*=-3cm,
-    boxed title style={
-      interior engine=empty,
-      frame code={
-        \path[fill=tcbcolback]
-        ([yshift=-1mm,xshift=-1mm]frame.north west)
-        arc[start angle=0,end angle=180,radius=1mm]
-        ([yshift=-1mm,xshift=1mm]frame.north east)
-        arc[start angle=180,end angle=0,radius=1mm];
-        \path[left color=tcbcolback!60!black,right color=tcbcolback!60!black,
-        middle color=tcbcolback!80!black]
-        ([xshift=-2mm]frame.north west) -- ([xshift=2mm]frame.north east)
-        [rounded corners=1mm]-- ([xshift=1mm,yshift=-1mm]frame.north east)
-        -- (frame.south east) -- (frame.south west)
-        -- ([xshift=-1mm,yshift=-1mm]frame.north west)
-        [sharp corners]-- cycle;
-      },
-    },
-    fonttitle=\bfseries,
-    title={#2},
-    #1
-  }{def}
-
-  \NewDocumentEnvironment{definition}{O{}O{}}
-    {\begin{Definition}{#1}{#2}}{\end{Definition}}
-
-  \newtcolorbox{note}[1][]{%
-    enhanced jigsaw,
-    colback=gray!20!white,%
-    colframe=gray!80!black,
-    size=small,
-    boxrule=1pt,
-    title=\textbf{Note.},
-    halign title=flush center,
-    coltitle=black,
-    breakable,
-    drop shadow=black!50!white,
-    attach boxed title to top left={xshift=1cm,yshift=-\tcboxedtitleheight/2,yshifttext=-\tcboxedtitleheight/2},
-    minipage boxed title=1.5cm,
-    boxed title style={%
-      colback=white,
-      size=fbox,
-      boxrule=1pt,
-      boxsep=2pt,
-      underlay={%
-        \coordinate (dotA) at ($(interior.west) + (-0.5pt,0)$);
-        \coordinate (dotB) at ($(interior.east) + (0.5pt,0)$);
-        \begin{scope}
-          \clip (interior.north west) rectangle ([xshift=3ex]interior.east);
-          \filldraw [white, blur shadow={shadow opacity=60, shadow yshift=-.75ex}, rounded corners=2pt] (interior.north west) rectangle (interior.south east);
-        \end{scope}
-        \begin{scope}[gray!80!black]
-          \fill (dotA) circle (2pt);
-          \fill (dotB) circle (2pt);
-        \end{scope}
-      },
-    },
-    #1,
-  }
 
   \newtcbtheorem{Question}{Question}{enhanced,
     breakable,
@@ -862,9 +788,6 @@
 
   \NewDocumentEnvironment{solution}{O{}O{}}
   {\vspace{-10pt}\begin{Solution}{#1}{#2}}{\end{Solution}}
-
-  \newtheorem*{pnote}{Note}
-  \newtheorem*{pnotation}{Notation}
 }
 \makeatother
 
@@ -877,6 +800,7 @@
 
 \theoremstyle{definition}
 
+\newtheorem*{note}{Note}
 \newtheorem*{previouslyseen}{As previously seen}
 \newtheorem*{problem}{Problem}
 \newtheorem*{observe}{Observe}
