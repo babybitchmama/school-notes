@@ -384,7 +384,7 @@
   %                                                  Oct 17 2022 Mon (08:49:10)
   % ---------------------------------------------------------------------------
   % Lecture 1: Lecture Title
-  \@ifclasswith\class{twocolumn}{
+  \if@twocolumn%
     \twocolumn[
     \hfill\footnotesize{#2}
     \hrule
@@ -392,12 +392,12 @@
     \section*{\@lecture}
     \vspace{0.2cm}
     ]
-  }{
+  \else%
     \hfill\footnotesize{#2}
     \hrule
     \vspace*{-0.3cm}
     \section*{\@lecture}
-  }
+  \fi
   \addcontentsline{toc}{section}{\@lecture}
 }
 
@@ -415,56 +415,33 @@
   \@ifclasswith\class{twocolumn}{\onecolumn}{}
   % Use roman page numbers (e.g. i, v, vi, x, ...)
   \pagenumbering{roman}
+  {\begin{center}\LARGE\@title\end{center}}
+  % Input the intro.tex file.
+  \input{intro}
 
-  % Display the page style.
-  \maketitle
-  % Make the title pagestyle empty, meaning no fancy headers and footers.
-  \thispagestyle{empty}
-  % Create a newpage.
-  \newpage
-
-  % Input the intro.tex page if it exists.
-  \IfFileExists{intro.tex}{ % If the intro.tex file exists.
-    % Input the intro.tex file.
-    \input{intro}
-
-    % Make the pagestyle fancy for the intro.tex page.
-    \pagestyle{fancy}
-
-    % Remove the line for the header.
-    \renewcommand\headrulewidth{0pt}
-
-    % Remove all header stuff.
-    \fancyhead{}
-
-    % Add stuff for the footer in the center.
-    \fancyfoot[C]{
-      \textit{For more notes like this, visit
-      \href{\linktootherpages}{\shortlinkname}}. \\
-      \vspace{0.1cm}
-      \hrule
-      \vspace{0.1cm}
-      \@author, \\
-      \term: \academicyear, \\
-      Last Update: \today, \\
-      \faculty
-    }
-  }{ % If the intro.tex file doesn't exist.
-    % Force a \newpageage.
-    \forcenewpage
+  % Make the pagestyle fancy for the intro.tex page.
+  \pagestyle{fancy}
+  % Remove the line for the header.
+  \renewcommand\headrulewidth{0pt}
+  % Remove all header stuff.
+  \fancyhead{}
+  % Add stuff for the footer in the center.
+  \fancyfoot[C]{
+    \textit{For more notes like this, visit \href{\linktootherpages}{\shortlinkname}}.
   }
 
-  % Create a new page.
-  \newpage
+  \vspace{0.5cm}
+  \begin{tcolorbox}[enhanced,colback=white,center upper,size=fbox, drop shadow southwest,sharp corners]
+    \@author, \\
+    \term: \academicyear, \\
+    Last Update: \today, \\
+    \faculty, \location.
+  \end{tcolorbox}
+  \begin{multicols}{2}
+    \tableofcontents
+  \end{multicols}
 
-  % Remove the center stuff we did above, and replace it with just the page
-  % number, which is still in roman numerals.
-  \fancyfoot[C]{\thepage}
-  % Add the table of contents.
-  \tableofcontents
-  % Force a new page.
-  \newpage
-  % \forcenewpage
+  \@ifclasswith\class{twocolumn}{\twocolumn}{\forcenewpage}
 
   % Move the page numberings back to arabic, from roman numerals.
   \pagenumbering{arabic}
@@ -480,12 +457,8 @@
   % In the bottom center, add the page.
   \fancyfoot[C]{\thepage}
   % Add a nice gray background in the middle of all the upcoming pages.
-  \definegraybackground
-
-  \@ifclasswith\class{twocolumn}{\twocolumn}{}
+  % \definegraybackground
 }
-
-\makeatother
 
 %%%%%%%%%%%%%%%%%%%%
 %  Import Figures  %
@@ -510,6 +483,8 @@
 \else
   \pdfsuppresswarningpagegroup=1\relax
 \fi
+
+\makeatother
 
 %%%%%%%%%%%%%%%%
 %  References  %
@@ -546,6 +521,7 @@
 
 \usepackage{xargs}
 \usepackage{sidenotes}
+\setlength\marginparwidth{2cm}
 \usepackage[colorinlistoftodos]{todonotes}
 
 \makeatletter
