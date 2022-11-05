@@ -28,13 +28,13 @@
 \usepackage[ruled,vlined,linesnumbered]{algorithm2e}
 % Derivative stuff.
 \usepackage{derivative}
+% Lets us add vectors graphically.
+\usepackage{physics}
 % Table stuff.
 \usepackage{multirow}
 \usepackage{tablists}
 \usepackage{tabularx,ragged2e,booktabs}
-
-\def\class{article}
-\setcounter{tocdepth}{3}
+\usepackage{wasysym}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -80,6 +80,7 @@
 
 \setlist[itemize,1]{label=--}
 \setlist[itemize,2]{label=\textbullet}
+\setlist[enumerate,1]{label=\protect\circled{\arabic*}}
 
 %%%%%%%%%%%%
 %  Tables  %
@@ -154,9 +155,15 @@
   quotes,
   calc,
   positioning,
-  arrows.meta
+  3d,
+  arrows,
+  arrows.meta,
+  % shadows.blur,
 }
+
 \tikzset{>=stealth}
+\colorlet{veccol}{green!45!black}
+% \tikzstyle{vector}=[->,very thick,veccol]
 
 %%%%%%%%%%%%%%%
 %  PGF Plots  %
@@ -166,7 +173,6 @@
 \pgfplotsset{compat=1.18}
 
 \usepgfplotslibrary{patchplots}
-\usetikzlibrary{3d,calc}
 
 % curve, dot, and graph custom styles
 \pgfplotsset{pccplot/.style={color=red,mark=none,line width=1pt,<->,solid}} % primary style for curves
@@ -178,8 +184,8 @@
 % cycle list of plot styles for graphs with multiple plots
 \pgfplotscreateplotcyclelist{pccstylelist}{%
   pccplot \\
-  color=blue,mark=none,line width=1pt,<->,dashdotted\\%
-  color=gray,mark=none,line width=1pt,<->,dashdotdotted\\%
+  color=blue,mark=none,line width=1pt,<->,dashdotted \\%
+  color=gray,mark=none,line width=1pt,<->,dashdotdotted \\%
 }
 
 \def\axisdefaultwidth{175pt}
@@ -207,11 +213,8 @@
   framed/.style={axis background/.style = {draw=gray}}
 }
 
-% arrow style
-\tikzset{>=stealth}
-
 % framing the graphs
-\pgfplotsset{}
+\pgfplotsset{axis background/.style={draw=gray}}
 
 %%%%%%%%%%%%%%%%%%%%%%%
 %  Center Title Page  %
@@ -381,10 +384,20 @@
   %                                                  Oct 17 2022 Mon (08:49:10)
   % ---------------------------------------------------------------------------
   % Lecture 1: Lecture Title
-  \hfill\footnotesize{#2}
-  \hrule
-  \vspace*{-0.3cm}
-  \section*{\@lecture}
+  \@ifclasswith\class{twocolumn}{
+    \twocolumn[
+    \hfill\footnotesize{#2}
+    \hrule
+    \vspace*{-0.3cm}
+    \section*{\@lecture}
+    \vspace{0.2cm}
+    ]
+  }{
+    \hfill\footnotesize{#2}
+    \hrule
+    \vspace*{-0.3cm}
+    \section*{\@lecture}
+  }
   \addcontentsline{toc}{section}{\@lecture}
 }
 
@@ -399,6 +412,7 @@
 
 % This command makes it easier to manage my headers and footers.
 \newcommand\createintro{
+  \@ifclasswith\class{twocolumn}{\onecolumn}{}
   % Use roman page numbers (e.g. i, v, vi, x, ...)
   \pagenumbering{roman}
 
@@ -466,7 +480,9 @@
   % In the bottom center, add the page.
   \fancyfoot[C]{\thepage}
   % Add a nice gray background in the middle of all the upcoming pages.
-  % \definegraybackground
+  \definegraybackground
+
+  \@ifclasswith\class{twocolumn}{\twocolumn}{}
 }
 
 \makeatother
@@ -522,6 +538,7 @@
 \newcommand*\circled[1]{\tikz[baseline=(char.base)]{
   \node[shape=circle,draw,inner sep=1pt] (char) {#1};}
 }
+
 
 %%%%%%%%%%%%%%%%%%%
 %  Todo Commands  %
@@ -585,7 +602,6 @@
 \usepackage[most,many,breakable]{tcolorbox}
 
 \tcbuselibrary{theorems,skins,hooks}
-\usetikzlibrary{arrows,calc,shadows.blur}
 
 %%%%%%%%%%%%%%%%%%%
 %  Define Colors  %
