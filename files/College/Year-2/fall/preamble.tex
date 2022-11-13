@@ -20,8 +20,6 @@
 \usepackage{amsmath,amsfonts,mathtools,amsthm,amssymb}
 % Lets us strikethrough text.
 \usepackage{cancel}
-% Lets us edit the caption of a figure.
-\usepackage{caption}
 % Lets us import pdf directly in our tex code.
 \usepackage{pdfpages}
 % Lets us do algorithm stuff.
@@ -93,7 +91,6 @@
 %  SI Unitx  %
 %%%%%%%%%%%%%%
 
-\usepackage{booktabs}
 \usepackage{siunitx}
 \sisetup{
   locale = US,
@@ -160,12 +157,67 @@
   arrows,
   arrows.meta,
   patterns,
-  % shadows.blur,
 }
 
 \tikzset{>=stealth}
-\colorlet{veccol}{green!45!black}
-\tikzstyle{vector}=[->,very thick,veccol]
+
+\tikzstyle{vector label} = [midway,fill=white,sloped]
+\tikzstyle{vector}=[->,very thick]
+\tikzstyle{construction} = [->,thin,dashed,draw=green!45!black]
+
+\usepackage{pdftexcmds}
+
+\makeatletter
+\newcommand\headToTailRule[6]{
+  \begin{tikzpicture}[inner sep=1pt,>=stealth]
+    \draw[<->] (#1)--(#2) node[right]{$x$};
+    \draw[<->] (#3)--(#4) node[above]{$y$};
+
+    \coordinate (O) at (#1);
+    \coordinate (A) at (#5);
+    \coordinate (B) at (#6);
+    \coordinate (A+B) at ($(A)+(B)$);
+
+    \draw[vector,blue] (O)--(A) node[vector label] {$\vec{x}$};
+    \draw[construction] (O)--(B);
+
+    \draw[vector,red] (A)--(A+B) node[vector label] {$\vec{y}$};
+    \draw[construction] (B)--(A+B);
+
+    \draw[vector,purple] (O)--(A+B) node[vector label] {$\vec{x}+\vec{y}$};
+  \end{tikzpicture}
+}
+
+\newcommand\parallelogramRule[6]{
+  \begin{tikzpicture}[inner sep=1pt,>=stealth]
+    \draw[<->] (#1)--(#2) node[right]{$x$};
+    \draw[<->] (#3)--(#4) node[above]{$y$};
+
+    \coordinate (O) at (#1);
+    \coordinate (A) at (#5);
+    \coordinate (B) at (#6);
+    \coordinate (A+B) at ($(A)+(B)$);
+
+    \draw[vector,blue] (O)--(A) node[vector label] {$\vec{x}$};
+    \draw[vector,red] (O)--(B) node[vector label] {$\vec{y}$};
+
+    \draw[construction] (A)--(A+B);
+    \draw[construction] (B)--(A+B);
+
+    \draw[vector,purple] (O)--(A+B) node[vector label] {$\vec{x}+\vec{y}$};
+  \end{tikzpicture}
+}
+
+\newcommand\addVectors[7][parallelogram]{
+  \ifnum\pdf@strcmp{\unexpanded{#1}}{parallelogram}=0 %
+     \expandafter\@firstoftwo
+  \else
+    \expandafter\@secondoftwo
+  \fi
+  {\parallelogramRule{#2}{#3}{#4}{#5}{#6}{#7}}
+  {\headToTailRule{#2}{#3}{#4}{#5}{#6}{#7}}
+}
+\makeatother
 
 %%%%%%%%%%%%%%%
 %  PGF Plots  %
@@ -332,6 +384,20 @@
 
 \makeatletter
 
+\usepackage{currfile}
+\usepackage{substr}
+
+\def\fulllecnum{
+  \BehindSubString{lec-}{\scantokens\expandafter{\currfilebase\noexpand}}
+}
+\newcommand\lecnum{
+  \IfBehindSubStringEmpty{lec-0}{\scantokens\expandafter{\currfilebase\noexpand}}{
+    \BehindSubString{lec-}{\scantokens\expandafter{\currfilebase\noexpand}}
+  }{
+    \BehindSubString{lec-0}{\scantokens\expandafter{\currfilebase\noexpand}}
+  }
+}
+
 \newcommand\resetcounters{
   % Reset the counters for subsection, subsubsection and the definition
   % all the custom environments.
@@ -356,21 +422,18 @@
 
 % EXAMPLE:
 % 1. \lecture{Oct 17 2022 Mon (08:46:48)}{Lecture Title}
-% 2. \lecture[4]{Oct 17 2022 Mon (08:46:48)}{Lecture Title}
-% 3. \lecture{Oct 17 2022 Mon (08:46:48)}{}
-% 4. \lecture[4]{Oct 17 2022 Mon (08:46:48)}{}
+% 2. \lecture{Oct 17 2022 Mon (08:46:48)}{}
 % Parameters:
-% 1. (Optional) lecture number.
-% 2. Time and date of lecture.
-% 3. Lecture Title.
+% 1. Time and date of lecture.
+% 2. Lecture Title.
 \def\@lecture{}
-\newcommand\lecture[3][\arabic{lecturecounter}]{
+\newcommand\lecture[2]{
   % Add 1 to the lecture counter.
-  \stepcounter{lecturecounter}
+  \setcounter{lecturecounter}{\lecnum}
 
   % Set the section number to the lecture counter.
-  \setcounter{section}{#1}
-  \renewcommand\thesubsection{#1.\arabic{subsection}}
+  \setcounter{section}{\arabic{#1}}
+  \renewcommand\thesubsection{\arabic{#1}.\arabic{subsection}}
 
   % Reset the counters.
   \resetcounters
@@ -417,7 +480,11 @@
   \@ifclasswith\class{twocolumn}{\onecolumn}{}
   % Use roman page numbers (e.g. i, v, vi, x, ...)
   \pagenumbering{roman}
-  {\begin{center}\LARGE\@title\end{center}}
+  \begin{center}
+    {\LARGE\@title} \\
+    {\Large\vspace{0.25cm}\@author} \\
+    {\large\vspace{0.25cm}\@date}
+  \end{center}
   % Input the intro.tex file.
   \input{intro}
 
@@ -434,16 +501,17 @@
 
   \vspace{0.5cm}
   \begin{tcolorbox}[enhanced,colback=white,center upper,size=fbox, drop shadow southwest,sharp corners]
-    \@author, \\
     \term: \academicyear, \\
     Last Update: \today, \\
     \faculty, \location.
   \end{tcolorbox}
-  \begin{multicols}{2}
-    \tableofcontents
-  \end{multicols}
+  \@ifclasswith\class{twocolumn}{
+    \begin{multicols}{2}
+      \tableofcontents
+    \end{multicols}
+  }{\tableofcontents}
 
-  \@ifclasswith\class{twocolumn}{\twocolumn}{\forcenewpage}
+  \@ifclasswith\class{twocolumn}{\twocolumn}{\newpage}
 
   % Move the page numberings back to arabic, from roman numerals.
   \pagenumbering{arabic}
@@ -476,8 +544,18 @@
 % 1. The figure name. It should be located in figures/NAME.tex_pdf.
 % 2. (Optional) The width of the figure. Example: 0.5, 0.35.
 \newcommand\incfig[2][1]{
+  \ifnum \arabic{lecturecounter}=0
+    \def\figlocation{./figures/}
+  \else
+    \ifnum \arabic{lecturecounter}<10
+      \def\figlocation{./figures/lec-0\arabic{lecturecounter}}
+    \else
+      \def\figlocation{./figures/lec-\arabic{lecturecounter}}
+    \fi
+  \fi
+
   \def\svgwidth{#1\columnwidth}
-  \import{./figures/}{#2.pdf_tex}
+  \import{\figlocation}{#2.pdf_tex}
 }
 
 \begingroup\expandafter\expandafter\expandafter\endgroup
