@@ -4,6 +4,8 @@
 %                                                                              %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+% Set encoding style.
+\usepackage[utf8]{inputenc}
 % Gives us multiple colors.
 \usepackage[usenames,dvipsnames,pdftex]{xcolor}
 % Lets us style link colors.
@@ -16,22 +18,20 @@
 \usepackage{float}
 % Lets us create multiple columns.
 \usepackage{multicol}
+\usepackage{multirow}
 % Gives us better math syntax.
 \usepackage{amsmath,amsfonts,mathtools,amsthm,amssymb}
-% Lets us strikethrough text.
+% Lets us strike through text.
 \usepackage{cancel}
 % Lets us import pdf directly in our tex code.
 \usepackage{pdfpages}
-% Lets us do algorithm stuff.
-\usepackage[ruled,vlined,linesnumbered]{algorithm2e}
 % Derivative stuff.
 \usepackage{derivative}
 % Lets us add vectors graphically.
 \usepackage{physics}
 % Table stuff.
-\usepackage{multirow}
 \usepackage{tablists}
-\usepackage{tabularx,ragged2e,booktabs}
+\usepackage{tabularx}
 \usepackage{wasysym}
 
 
@@ -165,60 +165,6 @@
 \tikzstyle{vector}=[->,very thick]
 \tikzstyle{construction} = [->,thin,dashed,draw=green!45!black]
 
-\usepackage{pdftexcmds}
-
-\makeatletter
-\newcommand\headToTailRule[6]{
-  \begin{tikzpicture}[inner sep=1pt,>=stealth]
-    \draw[<->] (#1)--(#2) node[right]{$x$};
-    \draw[<->] (#3)--(#4) node[above]{$y$};
-
-    \coordinate (O) at (#1);
-    \coordinate (A) at (#5);
-    \coordinate (B) at (#6);
-    \coordinate (A+B) at ($(A)+(B)$);
-
-    \draw[vector,blue] (O)--(A) node[vector label] {$\vec{x}$};
-    \draw[construction] (O)--(B);
-
-    \draw[vector,red] (A)--(A+B) node[vector label] {$\vec{y}$};
-    \draw[construction] (B)--(A+B);
-
-    \draw[vector,purple] (O)--(A+B) node[vector label] {$\vec{x}+\vec{y}$};
-  \end{tikzpicture}
-}
-
-\newcommand\parallelogramRule[6]{
-  \begin{tikzpicture}[inner sep=1pt,>=stealth]
-    \draw[<->] (#1)--(#2) node[right]{$x$};
-    \draw[<->] (#3)--(#4) node[above]{$y$};
-
-    \coordinate (O) at (#1);
-    \coordinate (A) at (#5);
-    \coordinate (B) at (#6);
-    \coordinate (A+B) at ($(A)+(B)$);
-
-    \draw[vector,blue] (O)--(A) node[vector label] {$\vec{x}$};
-    \draw[vector,red] (O)--(B) node[vector label] {$\vec{y}$};
-
-    \draw[construction] (A)--(A+B);
-    \draw[construction] (B)--(A+B);
-
-    \draw[vector,purple] (O)--(A+B) node[vector label] {$\vec{x}+\vec{y}$};
-  \end{tikzpicture}
-}
-
-\newcommand\addVectors[7][parallelogram]{
-  \ifnum\pdf@strcmp{\unexpanded{#1}}{parallelogram}=0 %
-     \expandafter\@firstoftwo
-  \else
-    \expandafter\@secondoftwo
-  \fi
-  {\parallelogramRule{#2}{#3}{#4}{#5}{#6}{#7}}
-  {\headToTailRule{#2}{#3}{#4}{#5}{#6}{#7}}
-}
-\makeatother
-
 %%%%%%%%%%%%%%%
 %  PGF Plots  %
 %%%%%%%%%%%%%%%
@@ -228,18 +174,16 @@
 
 \usepgfplotslibrary{patchplots}
 
-% curve, dot, and graph custom styles
-\pgfplotsset{pccplot/.style={color=red,mark=none,line width=1pt,<->,solid}} % primary style for curves
+\pgfplotsset{pccplot/.style={color=red,mark=none,line width=1pt,<->,solid}}
 \pgfplotsset{asymptote/.style={color=gray,mark=none,line width=1pt,<->,dashed}}
 \pgfplotsset{soldot/.style={color=red,only marks,mark=*}}
 \pgfplotsset{holdot/.style={color=red,fill=white,only marks,mark=*}}
 \pgfplotsset{blankgraph/.style={xmin=-10,xmax=10,ymin=-10,ymax=10,axis line style= {-, draw opacity=0 },axis lines=box,major tick length=0mm,xtick={-10,-9,...,10},ytick={-10,-9,...,10},grid=major,yticklabels={,,},xticklabels={,,},minor xtick=,minor ytick=,xlabel={},ylabel={},width=0.75\textwidth,grid style={solid,gray!40}}}
 
-% cycle list of plot styles for graphs with multiple plots
-\pgfplotscreateplotcyclelist{pccstylelist}{%
+\pgfplotscreateplotcyclelist{pccstylelist}{
   pccplot \\
-  color=blue,mark=none,line width=1pt,<->,dashdotted \\%
-  color=gray,mark=none,line width=1pt,<->,dashdotdotted \\%
+  color=blue,mark=none,line width=1pt,<->,dashdotted \\
+  color=gray,mark=none,line width=1pt,<->,dashdotdotted \\
 }
 
 \def\axisdefaultwidth{175pt}
@@ -344,13 +288,13 @@
 {%
   \ifnum#1=1
     #2%
-  \else % More than 1 column
+  \else
     \multicolmulticols{#1}[#2]
   \fi
 }
 {%
   \ifnum#1=1
-\else % More than 1 column
+\else
   \endmulticolmulticols
 \fi
 }
@@ -372,35 +316,13 @@
 %                                                                              %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%  Initiate New Counters  %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\newcounter{lecturecounter}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%
-%  Helpful New Commands  %
-%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%
+%  Helpful Commands  %
+%%%%%%%%%%%%%%%%%%%%%%
 
 \makeatletter
 
-\usepackage{currfile}
-\usepackage{substr}
-
-\def\fulllecnum{
-  \BehindSubString{lec-}{\scantokens\expandafter{\currfilebase\noexpand}}
-}
-\newcommand\lecnum{
-  \IfBehindSubStringEmpty{lec-0}{\scantokens\expandafter{\currfilebase\noexpand}}{
-    \BehindSubString{lec-}{\scantokens\expandafter{\currfilebase\noexpand}}
-  }{
-    \BehindSubString{lec-0}{\scantokens\expandafter{\currfilebase\noexpand}}
-  }
-}
-
 \newcommand\resetcounters{
-  % Reset the counters for subsection, subsubsection and the definition
-  % all the custom environments.
   \setcounter{subsection}{0}
   \setcounter{subsubsection}{0}
   \setcounter{paragraph}{0}
@@ -413,6 +335,41 @@
   \setcounter{definition}{0}
 }
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% EXAMPLE:                                                                     %
+% ---------------------------------------------------------------------------- %
+% 1. \lec{1}                                                                   %
+% 2. \lec{4}                                                                   %
+%                                                                              %
+% PARAMETERS:                                                                  %
+% ---------------------------------------------------------------------------- %
+% 1. Lecture number.                                                           %
+%                                                                              %
+% DESCRIPTION:                                                                 %
+% ---------------------------------------------------------------------------- %
+% It loads the lecture provided. It looks into the `lectures/` folder. If you  %
+% provided a number less than 10, it'll use 0 and you're number. If you        %
+% provided, 4 for example, it'll try to include the file `lectures/lec-04.tex`.%
+% It also sets the section number to the provided number and resets all        %
+% counters back to zero.                                                       %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\def\@lecnum{}
+\newcommand\lec[1]{%
+  \ifnum #1<10
+    % If the lecture number passed is less than 10, add a 0 in front of the
+    % digit.
+    \def\@lecnum{0#1}
+  \else
+    \def\@lecnum{#1}
+  \fi
+  % Set the section counter to the number passed.
+  \setcounter{section}{#1}
+  % Reset all counters.
+  \resetcounters
+  % Include the lecture.
+  \input{lectures/lec-\@lecnum.tex}
+}
+
 %%%%%%%%%%%%%%%%%%%%%
 %  Lecture Command  %
 %%%%%%%%%%%%%%%%%%%%%
@@ -420,49 +377,51 @@
 \usepackage{ifthen}
 \usepackage{xifthen}
 
-% EXAMPLE:
-% 1. \lecture{Oct 17 2022 Mon (08:46:48)}{Lecture Title}
-% 2. \lecture{Oct 17 2022 Mon (08:46:48)}{}
-% Parameters:
-% 1. Time and date of lecture.
-% 2. Lecture Title.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% EXAMPLE:                                                                     %
+% ---------------------------------------------------------------------------- %
+% 1. \lecture{Oct 17 2022 Mon (08:46:48)}{Lecture Title}                       %
+% 2. \lecture{Oct 17 2022 Mon (08:46:48)}{}                                    %
+%                                                                              %
+% PARAMETERS:                                                                  %
+% ---------------------------------------------------------------------------- %
+% 1. Time and date of lecture.                                                 %
+% 2. Lecture Title.                                                            %
+%                                                                              %
+% DESCRIPTION:                                                                 %
+% ---------------------------------------------------------------------------- %
+% Display the information like the following:                                  %
+%                                                                              %
+%                                                   Oct 17 2022 Mon (08:49:10) %
+% ---------------------------------------------------------------------------- %
+% Lecture 1: Lecture Title                                                     %
+%                                                                              %
+% You don't need to provide a lecture number, since it uses the lecture number %
+% from the file as the lecture number.                                         %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \def\@lecture{}
 \newcommand\lecture[2]{
-  % Add 1 to the lecture counter.
-  \setcounter{lecturecounter}{\lecnum}
-
-  % Set the section number to the lecture counter.
-  \setcounter{section}{\arabic{#1}}
-  \renewcommand\thesubsection{\arabic{#1}.\arabic{subsection}}
-
-  % Reset the counters.
-  \resetcounters
-
-  % Check if user passed the lecture title or not.
-  \ifthenelse{\isempty{#3}}{
-    \def\@lecture{Lecture \arabic{lecturecounter}}
+  \ifthenelse{\isempty{#2}}{
+    \def\@lecture{Lecture \arabic{section}}
   }{
-    \def\@lecture{Lecture \arabic{lecturecounter}: #3}
+    \def\@lecture{Lecture \arabic{section}: #2}
   }
 
-  % Display the information like the following:
-  %                                                  Oct 17 2022 Mon (08:49:10)
-  % ---------------------------------------------------------------------------
-  % Lecture 1: Lecture Title
-  \if@twocolumn%
+  \if@twocolumn
     \twocolumn[
-    \hfill\footnotesize{#2}
+    \hfill\footnotesize{#1}
     \hrule
     \vspace*{-0.3cm}
     \section*{\@lecture}
     \vspace{0.2cm}
     ]
-  \else%
-    \hfill\footnotesize{#2}
+  \else
+    \hfill\footnotesize{#1}
     \hrule
     \vspace*{-0.3cm}
     \section*{\@lecture}
   \fi
+
   \addcontentsline{toc}{section}{\@lecture}
 }
 
@@ -472,62 +431,114 @@
 
 \usepackage{fancyhdr}
 
-% Force a new page.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% EXAMPLE:                                                                     %
+% ---------------------------------------------------------------------------- %
+% 1. \forcenewpage                                                             %
+%                                                                              %
+% DESCRIPTION:                                                                 %
+% ---------------------------------------------------------------------------- %
+% Force a new page, because sometimes latex doesn't do it.                     %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newcommand\forcenewpage{\clearpage\mbox{~}\clearpage\newpage}
 
-% This command makes it easier to manage my headers and footers.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% EXAMPLE:                                                                     %
+% ---------------------------------------------------------------------------- %
+% 1. \createintro                                                              %
+%                                                                              %
+% DESCRIPTION:                                                                 %
+% ---------------------------------------------------------------------------- %
+% This command does a million things.                                          %
+%                                                                              %
+% First, it creates a title page with the following properties:                %
+% ---------------------------------------------------------------------------- %
+% 1. It sets the numbering style to roman, removes the header line, and creates%
+%    a nice footer center style.                                               %
+% 2. It checks if you passed the `twocolumn` parameter. If so, it sets the     %
+%    title page to one column.                                                 %
+% 3. It checks if a intro.tex file exists. If so, it includes it.              %
+% 4. It creates a 3d box with more information.                                %
+% 5. It includes the table of contents.                                        %
+% 6. It checks if you passed the `twocolumn` parameter. If so, it sets         %
+%    everything back to two column. Otherwise, it just creates a new page.     %
+%                                                                              %
+% Now, it gets everything prepared to include the actual notes.                %
+% ---------------------------------------------------------------------------- %
+% 1. It sets the numbering style back to arabic, adds the header line, and     %
+%    changes the fancy style.                                                  %
+%       1. It adds the current lecture title in the top right.                 %
+%       2. It adds the author's name in the top left.                          %
+%       3. It adds the page number in the bottom center.                       %
+% 2. It checks if you passed the `graygf` parameter. If so, it creates a nice  %
+%    transparent gray color on the right of all left pages and on the left of  %
+%    all right pages.                                                          %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newcommand\createintro{
   \@ifclasswith\class{twocolumn}{\onecolumn}{}
-  % Use roman page numbers (e.g. i, v, vi, x, ...)
   \pagenumbering{roman}
+
+  % Create title page.
   \begin{center}
     {\LARGE\@title} \\
     {\Large\vspace{0.25cm}\@author} \\
     {\large\vspace{0.25cm}\@date}
   \end{center}
-  % Input the intro.tex file.
-  \input{intro}
 
-  % Make the pagestyle fancy for the intro.tex page.
+  % Check if the intro.tex file exists.
+  % If it does, include it, otherwise, just ignore.
+  \IfFileExists{./intro.tex}{\input{intro.tex}}{}
+
+  % Set the pagestyle to fancy.
   \pagestyle{fancy}
-  % Remove the line for the header.
+  % Remove the header line.
   \renewcommand\headrulewidth{0pt}
-  % Remove all header stuff.
+
+  % Reset fancyhead styles.
   \fancyhead{}
-  % Add stuff for the footer in the center.
+  % Add a fancyfoot center style.
   \fancyfoot[C]{
     \textit{For more notes like this, visit \href{\linktootherpages}{\shortlinkname}}.
   }
 
+  % Create a box with more information.
   \vspace{0.5cm}
   \begin{tcolorbox}[enhanced,colback=white,center upper,size=fbox, drop shadow southwest,sharp corners]
     \term: \academicyear, \\
     Last Update: \today, \\
     \faculty, \location.
   \end{tcolorbox}
-  \@ifclasswith\class{twocolumn}{
-    \begin{multicols}{2}
-      \tableofcontents
-    \end{multicols}
-  }{\tableofcontents}
 
-  \@ifclasswith\class{twocolumn}{\twocolumn}{\newpage}
+  % Create a table of contents.
+  \tableofcontents
 
-  % Move the page numberings back to arabic, from roman numerals.
+  \@ifclasswith\class{twocolumn}{%
+    % If user passed twocolumn as a parameter to \documentclass, then set the
+    % rest of the page to two column.
+    \twocolumn%
+  }{%
+    % Otherwise, just create a new page.
+    \newpage%
+  }
+
+  % Change the numbering style back to arabic from roman.
   \pagenumbering{arabic}
-  % Set the page number to 1.
+  % Reset page numbers back to 1.
   \setcounter{page}{1}
 
-  % Add the header line back.
+  % Add back the header line.
   \renewcommand\headrulewidth{0.4pt}
-  % In the top right, add the lecture title.
+  % Add the lecture name in the top right.
   \fancyhead[R]{\@lecture}
-  % In the top left, add the author name.
+  % Add the author name in the top left.
   \fancyhead[L]{\@author}
-  % In the bottom center, add the page.
+  % Add the page number in the bottom center.
   \fancyfoot[C]{\thepage}
-  % Add a nice gray background in the middle of all the upcoming pages.
-  % \definegraybackground
+  \@ifclasswith\class{grayfg}{%
+    % If user passed twocolumn as a parameter to \documentclass, then set the
+    % rest of the page to two column.
+    \definegraybackground%
+  }{}
 }
 
 %%%%%%%%%%%%%%%%%%%%
@@ -537,114 +548,206 @@
 \usepackage{import}
 \pdfminorversion=7
 
-% EXAMPLE:
-% 1. \incfig{limit-graph}
-% 2. \incfig[0.4]{limit-graph}
-% Parameters:
-% 1. The figure name. It should be located in figures/NAME.tex_pdf.
-% 2. (Optional) The width of the figure. Example: 0.5, 0.35.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% EXAMPLE:                                                                     %
+% ---------------------------------------------------------------------------- %
+% 1. \incfig{airplane}                                                         %
+% 2. \incfig[0.5]{airplane}                                                    %
+%                                                                              %
+% PARAMETERS:                                                                  %
+% ---------------------------------------------------------------------------- %
+% 1. (Optional) The width of the image with respect to textwidth. If you put   %
+%    0.3, it'll be 0.3 * \textwidth.                                           %
+% 2. The figure name.                                                          %
+%                                                                              %
+% DESCRIPTION:                                                                 %
+% ---------------------------------------------------------------------------- %
+% It looks for a file in:                                                      %
+%   ./figures/lec-(current lecture number)/fig-name.pdf_tex                    %
+% If you're current lecture was 4, and the figure name was airplane, here's how%
+% it would look like:                                                          %
+%   ./figures/lec-04/airplane.pdf_tex                                          %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newcommand\incfig[2][1]{
-  \ifnum \arabic{lecturecounter}=0
-    \def\figlocation{./figures/}
-  \else
-    \ifnum \arabic{lecturecounter}<10
-      \def\figlocation{./figures/lec-0\arabic{lecturecounter}}
-    \else
-      \def\figlocation{./figures/lec-\arabic{lecturecounter}}
-    \fi
-  \fi
-
+  \def\figlocation{./figures/lec-\@lecnum}
   \def\svgwidth{#1\columnwidth}
   \import{\figlocation}{#2.pdf_tex}
 }
 
-\begingroup\expandafter\expandafter\expandafter\endgroup
-\expandafter\ifx\csname pdfsuppresswarningpagegroup\endcsname\relax
-\else
-  \pdfsuppresswarningpagegroup=1\relax
-\fi
-
 \makeatother
 
-%%%%%%%%%%%%%%%%
-%  References  %
-%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Add vectors using the parallelogram and head to tail method  %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\newcommand\urlref[2]{%
-  \href{#1}{\raisebox{0.15ex}{\scriptsize \faLink}\:\textup{\textbf{#2}}}%
-}
-
-\newcommand\pdfref[3]{%
-  \href{paper//open-paper?id=#1&page=#2}{%
-  \textup{[\textbf{\ifthenelse{\isempty{#3}}{here}{#3}}]}}%
-}
-
+\usepackage{pdftexcmds}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% EXAMPLE:                                                                     %
+% ---------------------------------------------------------------------------- %
 %                                                                              %
-%                               Custom Commands                                %
+% PARAMETERS:                                                                  %
+% ---------------------------------------------------------------------------- %
 %                                                                              %
+% DESCRIPTION:                                                                 %
+% ---------------------------------------------------------------------------- %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand\parallelogramRule[6]{
+  \begin{tikzpicture}[inner sep=1pt,>=stealth]
+    \draw[<->] (#1)--(#2) node[right]{$x$};
+    \draw[<->] (#3)--(#4) node[above]{$y$};
+
+    \coordinate (O) at (#1);
+    \coordinate (A) at (#5);
+    \coordinate (B) at (#6);
+    \coordinate (A+B) at ($(A)+(B)$);
+
+    \draw[vector,blue] (O)--(A) node[vector label] {$\vec{x}$};
+    \draw[vector,red] (O)--(B) node[vector label] {$\vec{y}$};
+
+    \draw[construction] (A)--(A+B);
+    \draw[construction] (B)--(A+B);
+
+    \draw[vector,purple] (O)--(A+B) node[vector label] {$\vec{x}+\vec{y}$};
+  \end{tikzpicture}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% EXAMPLE:                                                                     %
+% ---------------------------------------------------------------------------- %
+%                                                                              %
+% PARAMETERS:                                                                  %
+% ---------------------------------------------------------------------------- %
+%                                                                              %
+% DESCRIPTION:                                                                 %
+% ---------------------------------------------------------------------------- %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand\headToTailRule[6]{
+  \begin{tikzpicture}[inner sep=1pt,>=stealth]
+    \draw[<->] (#1)--(#2) node[right]{$x$};
+    \draw[<->] (#3)--(#4) node[above]{$y$};
+
+    \coordinate (O) at (#1);
+    \coordinate (A) at (#5);
+    \coordinate (B) at (#6);
+    \coordinate (A+B) at ($(A)+(B)$);
+
+    \draw[vector,blue] (O)--(A) node[vector label] {$\vec{x}$};
+    \draw[construction] (O)--(B);
+
+    \draw[vector,red] (A)--(A+B) node[vector label] {$\vec{y}$};
+    \draw[construction] (B)--(A+B);
+
+    \draw[vector,purple] (O)--(A+B) node[vector label] {$\vec{x}+\vec{y}$};
+  \end{tikzpicture}
+}
+
+\makeatletter
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% EXAMPLE:                                                                     %
+% ---------------------------------------------------------------------------- %
+%                                                                              %
+% PARAMETERS:                                                                  %
+% ---------------------------------------------------------------------------- %
+%                                                                              %
+% DESCRIPTION:                                                                 %
+% ---------------------------------------------------------------------------- %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand\addVectors[7][parallelogram]{
+  \ifnum\pdf@strcmp{\unexpanded{#1}}{parallelogram}=0%
+     \expandafter\@firstoftwo
+  \fi
+  {\parallelogramRule{#2}{#3}{#4}{#5}{#6}{#7}}
+  \ifnum\pdf@strcmp{\unexpanded{#1}}{headToTail}=0%
+     \expandafter\@firstoftwo
+  \fi
+  {\headToTailRule{#2}{#3}{#4}{#5}{#6}{#7}}
+}
+
+\makeatother
 
 %%%%%%%%%%%%
 %  Circle  %
 %%%%%%%%%%%%
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% EXAMPLE:                                                                     %
+% ---------------------------------------------------------------------------- %
+%                                                                              %
+% PARAMETERS:                                                                  %
+% ---------------------------------------------------------------------------- %
+%                                                                              %
+% DESCRIPTION:                                                                 %
+% ---------------------------------------------------------------------------- %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newcommand*\circled[1]{\tikz[baseline=(char.base)]{
   \node[shape=circle,draw,inner sep=1pt] (char) {#1};}
 }
-
-
-%%%%%%%%%%%%%%%%%%%
-%  Todo Commands  %
-%%%%%%%%%%%%%%%%%%%
-
-\usepackage{xargs}
-\usepackage{sidenotes}
-\setlength\marginparwidth{2cm}
-\usepackage[colorinlistoftodos]{todonotes}
-
-\makeatletter
-
-\@ifclasswith\class{working}{
-  \newcommandx\unsure[2][1=]{\todo[linecolor=red,backgroundcolor=red!25,bordercolor=red,#1]{#2}}
-  \newcommandx\change[2][1=]{\todo[linecolor=yellow,backgroundcolor=yellow!25,bordercolor=yellow,#1]{#2}}
-  \newcommandx\add[2][1=]{\todo[linecolor=blue,backgroundcolor=blue!25,bordercolor=blue,#1]{#2}}
-  \newcommandx\info[2][1=]{\todo[linecolor=OliveGreen,backgroundcolor=OliveGreen!25,bordercolor=OliveGreen,#1]{#2}}
-  \newcommandx\improvement[2][1=]{\todo[linecolor=Plum,backgroundcolor=Plum!25,bordercolor=Plum,#1]{#2}}
-
-  \newcommand\listnotes{
-    \newpage
-    \listoftodos[Notes]
-  }
-}{
-  \newcommandx\unsure[2][1=]{}
-  \newcommandx\change[2][1=]{}
-  \newcommandx\info[2][1=]{}
-  \newcommandx\improvement[2][1=]{}
-
-  \newcommand\listnotes{}
-}
-
-\makeatother
 
 %%%%%%%%%%%%%
 %  Correct  %
 %%%%%%%%%%%%%
 
-% EXAMPLE:
-% 1. \correct{INCORRECT}{CORRECT}
-% Parameters:
-% 1. The incorrect statement.
-% 2. The correct statement.
 \definecolor{correct}{HTML}{009900}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% EXAMPLE:                                                                     %
+% ---------------------------------------------------------------------------- %
+%                                                                              %
+% PARAMETERS:                                                                  %
+% ---------------------------------------------------------------------------- %
+%                                                                              %
+% DESCRIPTION:                                                                 %
+% ---------------------------------------------------------------------------- %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newcommand\correct[2]{{\color{red}{#1 }}\ensuremath{\to}{\color{correct}{ #2}}}
 
 %%%%%%%%%%%%%%%
 %  Important  %
 %%%%%%%%%%%%%%%
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% EXAMPLE:                                                                     %
+% ---------------------------------------------------------------------------- %
+%                                                                              %
+% PARAMETERS:                                                                  %
+% ---------------------------------------------------------------------------- %
+%                                                                              %
+% DESCRIPTION:                                                                 %
+% ---------------------------------------------------------------------------- %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newcommand\imp[1]{{\color{red}#1}}
+
+%%%%%%%%%%%%%%%%%%%
+%  Todo Commands  %
+%%%%%%%%%%%%%%%%%%%
+
+\usepackage[colorinlistoftodos]{todonotes}
+
+\makeatletter
+
+\@ifclasswith\class{working}{
+  \newcommand\unsure[2][]{\todo[linecolor=red,backgroundcolor=red!25,bordercolor=red,#1]{#2}}
+  \newcommand\change[2][]{\todo[linecolor=yellow,backgroundcolor=yellow!25,bordercolor=yellow,#1]{#2}}
+  \newcommand\add[2][]{\todo[linecolor=blue,backgroundcolor=blue!25,bordercolor=blue,#1]{#2}}
+  \newcommand\info[2][]{\todo[linecolor=OliveGreen,backgroundcolor=OliveGreen!25,bordercolor=OliveGreen,#1]{#2}}
+  \newcommand\improvement[2][]{\todo[linecolor=Plum,backgroundcolor=Plum!25,bordercolor=Plum,#1]{#2}}
+
+  \newcommand\listnotes{
+    \newpage
+    \listoftodos[Notes]
+  }
+}{
+  \newcommand\unsure[2][]{}
+  \newcommand\change[2][]{}
+  \newcommand\info[2][]{}
+  \newcommand\improvement[2][]{}
+
+  \newcommand\listnotes{}
+}
+
+\makeatother
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -668,7 +771,6 @@
 \definecolor{myred}{RGB}{199, 68, 64}
 \definecolor{mypurple}{RGB}{197, 92, 212}
 
-% \definecolor{definition}{HTML}{228b22}
 \definecolor{theorem}{HTML}{00007B}
 \definecolor{example}{HTML}{2A7F7F}
 \definecolor{prop}{HTML}{191971}
@@ -680,6 +782,7 @@
 \colorlet{corollary}{mypurple!85!black}
 \colorlet{proof}{theorem}
 \colorlet{notation}{theorem}
+\colorlet{remark}{example}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %  Create Environments Styles Based on Given Parameter  %
@@ -691,16 +794,16 @@
 %  Helpful Commands  %
 %%%%%%%%%%%%%%%%%%%%%%
 
-% EXAMPLE:
-% 1. \createnewtheoremstyle{thmdefinitionbox}{}{}
-% 2. \createnewtheoremstyle{thmtheorembox}{}{}
-% 3. \createnewtheoremstyle{thmproofbox}{qed=\qedsymbol}{
-%       rightline=false, topline=false, bottomline=false
-%    }
-% Parameters:
-% 1. Theorem name.
-% 2. Any extra parameters to pass directly to declaretheoremstyle.
-% 3. Any extra parameters to pass directly to mdframed.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% EXAMPLE:                                                                     %
+% ---------------------------------------------------------------------------- %
+%                                                                              %
+% PARAMETERS:                                                                  %
+% ---------------------------------------------------------------------------- %
+%                                                                              %
+% DESCRIPTION:                                                                 %
+% ---------------------------------------------------------------------------- %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newcommand\createnewtheoremstyle[3]{
   \declaretheoremstyle[
   headfont=\bfseries\sffamily, bodyfont=\normalfont, #2,
@@ -710,17 +813,16 @@
   ]{#1}
 }
 
-% EXAMPLE:
-% 1. \createnewcoloredtheoremstyle{thmdefinitionbox}{definition}{}{}
-% 2. \createnewcoloredtheoremstyle{thmexamplebox}{example}{}{
-%       rightline=true, leftline=true, topline=true, bottomline=true
-%     }
-% 3. \createnewcoloredtheoremstyle{thmproofbox}{proof}{qed=\qedsymbol}{backgroundcolor=white}
-% Parameters:
-% 1. Theorem name.
-% 2. Color of theorem.
-% 3. Any extra parameters to pass directly to declaretheoremstyle.
-% 4. Any extra parameters to pass directly to mdframed.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% EXAMPLE:                                                                     %
+% ---------------------------------------------------------------------------- %
+%                                                                              %
+% PARAMETERS:                                                                  %
+% ---------------------------------------------------------------------------- %
+%                                                                              %
+% DESCRIPTION:                                                                 %
+% ---------------------------------------------------------------------------- %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newcommand\createnewcoloredtheoremstyle[4]{
   \declaretheoremstyle[
   headfont=\bfseries\sffamily\color{#2}, bodyfont=\normalfont, #3,
@@ -738,39 +840,33 @@
 
 \makeatletter
 \@ifclasswith\class{nocolor}{
-  % Environments without color.
-
-  \createnewtheoremstyle{thmdefinitionbox}{}{}
-  \createnewtheoremstyle{thmtheorembox}{}{}
-  \createnewtheoremstyle{thmexamplebox}{}{}
   \createnewtheoremstyle{thmclaimbox}{}{}
   \createnewtheoremstyle{thmcorollarybox}{}{}
-  \createnewtheoremstyle{thmpropbox}{}{}
-  \createnewtheoremstyle{thmlemmabox}{}{}
+  \createnewtheoremstyle{thmdefinitionbox}{}{}
   \createnewtheoremstyle{thmexercisebox}{}{}
-  \createnewtheoremstyle{thmquestionbox}{}{}
-  \createnewtheoremstyle{thmsolutionbox}{}{}
-  \createnewtheoremstyle{thmnotationbox}{}{rightline=false, leftline=true, topline=false, bottomline=false}
-
-  \createnewtheoremstyle{thmproofbox}{qed=\qedsymbol}{rightline=false, leftline=true, topline=false, bottomline=false}
+  \createnewtheoremstyle{thmexamplebox}{}{}
   \createnewtheoremstyle{thmexplanationbox}{}{rightline=false, leftline=true, topline=false, bottomline=false}
+  \createnewtheoremstyle{thmlemmabox}{}{}
+  \createnewtheoremstyle{thmnotationbox}{}{rightline=false, leftline=true, topline=false, bottomline=false}
+  \createnewtheoremstyle{thmpropbox}{}{}
+  \createnewtheoremstyle{thmremarkbox}{}{rightline=false, leftline=true, topline=false, bottomline=false}
+  \createnewtheoremstyle{thmreplacementproofbox}{qed=\qedsymbol}{rightline=false, leftline=true, topline=false, bottomline=false}
+  \createnewtheoremstyle{thmtheorembox}{}{}
 }{
-  % Environments with color.
-
+  \createnewcoloredtheoremstyle{thmclaimbox}{claim}{}{}
+  \createnewcoloredtheoremstyle{thmcorollarybox}{corollary}{}{}
   \createnewcoloredtheoremstyle{thmdefinitionbox}{definition}{}{}
-  \createnewcoloredtheoremstyle{thmtheorembox}{theorem}{}{}
   \createnewcoloredtheoremstyle{thmexamplebox}{example}{}{
     rightline=true, leftline=true, topline=true, bottomline=true
   }
-  \createnewcoloredtheoremstyle{thmclaimbox}{claim}{}{}
-  \createnewcoloredtheoremstyle{thmcorollarybox}{corollary}{}{}
-  \createnewcoloredtheoremstyle{thmpropbox}{prop}{}{}
-  \createnewcoloredtheoremstyle{thmlemmabox}{lemma}{}{}
   \createnewcoloredtheoremstyle{thmexercisebox}{exercise}{}{}
-  \createnewcoloredtheoremstyle{thmnotationbox}{notation}{}{backgroundcolor=white}
-
-  \createnewcoloredtheoremstyle{thmproofbox}{proof}{qed=\qedsymbol}{backgroundcolor=white}
   \createnewcoloredtheoremstyle{thmexplanationbox}{example}{qed=\qedsymbol}{backgroundcolor=white}
+  \createnewcoloredtheoremstyle{thmlemmabox}{lemma}{}{}
+  \createnewcoloredtheoremstyle{thmnotationbox}{notation}{}{backgroundcolor=white}
+  \createnewcoloredtheoremstyle{thmpropbox}{prop}{}{}
+  \createnewcoloredtheoremstyle{thmremarkbox}{remark}{}{backgroundcolor=white}
+  \createnewcoloredtheoremstyle{thmreplacementproofbox}{proof}{qed=\qedsymbol}{backgroundcolor=white}
+  \createnewcoloredtheoremstyle{thmtheorembox}{theorem}{}{}
 }
 \makeatother
 
@@ -778,21 +874,18 @@
 %  Create the Environments  %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\declaretheorem[numberwithin=section, style=thmdefinitionbox,  name=Definition]{definition}
-\declaretheorem[numberwithin=section, style=thmtheorembox,     name=Theorem]{theorem}
-\declaretheorem[numbered=no,          style=thmexamplebox,     name=Example]{example}
-\declaretheorem[numberwithin=section, style=thmclaimbox,       name=Claim]{claim}
-\declaretheorem[numberwithin=section, style=thmcorollarybox,   name=Corollary]{corollary}
-\declaretheorem[numberwithin=section, style=thmpropbox,        name=Proposition]{prop}
-\declaretheorem[numberwithin=section, style=thmlemmabox,       name=Lemma]{lemma}
-\declaretheorem[numberwithin=section, style=thmexercisebox,    name=Exercise]{exercise}
-\declaretheorem[numbered=no,          style=thmnotationbox,    name=Notation]{notation}
-\declaretheorem[numbered=no,          style=thmproofbox,       name=Proof]{replacementproof}
-\declaretheorem[numbered=no,          style=thmexplanationbox, name=Proof]{expl}
-
-\AtEndEnvironment{exercise}{
-  \addcontentsline{toc}{subsubsection}{Exercise \arabic{exercise}}
-}
+\declaretheorem[numberwithin=section, style=thmclaimbox,            name=Claim]      {claim}
+\declaretheorem[numberwithin=section, style=thmcorollarybox,        name=Corollary]  {corollary}
+\declaretheorem[numberwithin=section, style=thmdefinitionbox,       name=Definition] {definition}
+\declaretheorem[numbered=no,          style=thmexamplebox,          name=Example]    {example}
+\declaretheorem[numberwithin=section, style=thmexercisebox,         name=Exercise]   {exercise}
+\declaretheorem[numbered=no,          style=thmexplanationbox,      name=Proof]      {expl}
+\declaretheorem[numberwithin=section, style=thmlemmabox,            name=Lemma]      {lemma}
+\declaretheorem[numbered=no,          style=thmnotationbox,         name=Notation]   {notation}
+\declaretheorem[numberwithin=section, style=thmpropbox,             name=Proposition]{prop}
+\declaretheorem[numbered=no,          style=thmremarkbox,           name=Remark]     {remark}
+\declaretheorem[numbered=no,          style=thmreplacementproofbox, name=Proof]      {replacementproof}
+\declaretheorem[numberwithin=section, style=thmtheorembox,          name=Theorem]    {theorem}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %  Create Question and Solution Environments with or without color  %
@@ -800,13 +893,16 @@
 
 \makeatletter
 \@ifclasswith\class{nocolor}{
-  % Environments without color.
+  \createnewtheoremstyle{thmquestionbox}{}{}
+  \createnewtheoremstyle{thmsolutionbox}{}{}
 
   \declaretheorem[numberwithin=section, style=thmquestionbox,   name=Question]{question}
   \declaretheorem[numberwithin=section, style=thmsolutionbox,   name=Solution]{solution}
-}{
-  % Environments with color.
 
+  \AtBeginEnvironment{solution}{
+    \vspace{-10pt}
+  }
+}{
   \newtcbtheorem{Question}{Question}{enhanced,
     breakable,
     colback=white,
@@ -870,6 +966,10 @@
 \renewenvironment{proof}[1][\proofname]{\vspace{-10pt}\begin{replacementproof}}{\end{replacementproof}}
 \newenvironment{explanation}[1][\proofname]{\vspace{-10pt}\begin{expl}}{\end{expl}}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Create Plain Environments  %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \theoremstyle{definition}
 
 \newtheorem*{note}{Note}
@@ -880,3 +980,17 @@
 \newtheorem*{property}{Property}
 \newtheorem*{intuition}{Intuition}
 \newtheorem*{questionexpl}{Explanation}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%  End of Environments  %
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\AtEndEnvironment{exercise}{
+  \addcontentsline{toc}{subsubsection}{Exercise \arabic{exercise}}
+}
+\AtEndEnvironment{question}{
+  \addcontentsline{toc}{subsubsection}{Question \arabic{question}}
+}
+\AtEndEnvironment{solution}{
+  \addcontentsline{toc}{subsubsection}{Solution \arabic{question}}
+}
