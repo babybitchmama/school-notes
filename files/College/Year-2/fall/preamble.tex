@@ -4,8 +4,9 @@
 %                                                                              %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% Set encoding style.
+% Basic packages.
 \usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
 % Gives us multiple colors.
 \usepackage[usenames,dvipsnames,pdftex]{xcolor}
 % Lets us style link colors.
@@ -58,7 +59,6 @@
 
 \usepackage[font=bf]{caption}
 \renewcommand\thetable{\Roman{table}}
-% \renewcommand\qedsymbol{$\Laughey$}
 
 \let\svlim\lim\def\lim{\svlim\limits}
 \let\svsum\sum\def\sum{\svsum\limits}
@@ -365,14 +365,13 @@
 % counters back to zero.                                                       %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \def\@lecnum{}
-\newcommand\lec[1]{%
+\newcommand\lec[1]{
   \ifnum #1<10
-    % If the lecture number passed is less than 10, add a 0 in front of the
-    % digit.
     \def\@lecnum{0#1}
   \else
     \def\@lecnum{#1}
   \fi
+
   % Set the section counter to the number passed.
   \setcounter{section}{#1}
   % Reset all counters.
@@ -666,13 +665,12 @@
 % ---------------------------------------------------------------------------- %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newcommand\addVectors[7][parallelogram]{
-  \ifnum\pdf@strcmp{\unexpanded{#1}}{parallelogram}=0%
+  \ifnum\pdf@strcmp{\unexpanded{#1}}{parallelogram}=0 %
      \expandafter\@firstoftwo
+  \else
+    \expandafter\@secondoftwo
   \fi
   {\parallelogramRule{#2}{#3}{#4}{#5}{#6}{#7}}
-  \ifnum\pdf@strcmp{\unexpanded{#1}}{headToTail}=0%
-     \expandafter\@firstoftwo
-  \fi
   {\headToTailRule{#2}{#3}{#4}{#5}{#6}{#7}}
 }
 
@@ -730,6 +728,14 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newcommand\imp[1]{{\color{red}#1}}
 
+%%%%%%%%%
+%  QED  %
+%%%%%%%%%
+
+\usepackage{stmaryrd} % for \lightning
+\renewcommand\qed{{{\color{theorem}Q.E.D.}}}
+\newcommand\contra{\phantom\qedhere\hfill\scalebox{1.1}{$\lightning$}}
+
 %%%%%%%%%%%%%%%%%%%
 %  Todo Commands  %
 %%%%%%%%%%%%%%%%%%%
@@ -739,26 +745,148 @@
 \makeatletter
 
 \@ifclasswith\class{working}{
-  \newcommand\unsure[2][]{\todo[linecolor=red,backgroundcolor=red!25,bordercolor=red,#1]{#2}}
-  \newcommand\change[2][]{\todo[linecolor=yellow,backgroundcolor=yellow!25,bordercolor=yellow,#1]{#2}}
-  \newcommand\add[2][]{\todo[linecolor=blue,backgroundcolor=blue!25,bordercolor=blue,#1]{#2}}
-  \newcommand\info[2][]{\todo[linecolor=OliveGreen,backgroundcolor=OliveGreen!25,bordercolor=OliveGreen,#1]{#2}}
-  \newcommand\improvement[2][]{\todo[linecolor=Plum,backgroundcolor=Plum!25,bordercolor=Plum,#1]{#2}}
+  \@ifclasswith\class{sidenotes}{
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    % EXAMPLE:                                                                 %
+    % ------------------------------------------------------------------------ %
+    %                                                                          %
+    % PARAMETERS:                                                              %
+    % ------------------------------------------------------------------------ %
+    %                                                                          %
+    % DESCRIPTION:                                                             %
+    % ------------------------------------------------------------------------ %
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \newcommand\improvement[2][]{\todo[linecolor=Plum,backgroundcolor=Plum!25,bordercolor=Plum,#1]{#2}}
+    \newcommand\unsure[2][]{\todo[linecolor=red,backgroundcolor=red!25,bordercolor=red,#1]{#2}}
+    \newcommand\change[2][]{\todo[linecolor=yellow,backgroundcolor=yellow!25,bordercolor=yellow,#1]{#2}}
+    \newcommand\add[2][]{\todo[linecolor=blue,backgroundcolor=blue!25,bordercolor=blue,#1]{#2}}
+    \newcommand\info[2][]{\todo[linecolor=OliveGreen,backgroundcolor=OliveGreen!25,bordercolor=OliveGreen,#1]{#2}}
 
-  \newcommand\listnotes{
-    \newpage
-    \listoftodos[Notes]
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    % EXAMPLE:                                                                 %
+    % ------------------------------------------------------------------------ %
+    %                                                                          %
+    % PARAMETERS:                                                              %
+    % ------------------------------------------------------------------------ %
+    %                                                                          %
+    % DESCRIPTION:                                                             %
+    % ------------------------------------------------------------------------ %
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \newcommand\listnotes{
+      \newpage
+      \listoftodos[Notes]
+    }
+  }{
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    % EXAMPLE:                                                                 %
+    % ------------------------------------------------------------------------ %
+    %                                                                          %
+    % PARAMETERS:                                                              %
+    % ------------------------------------------------------------------------ %
+    %                                                                          %
+    % DESCRIPTION:                                                             %
+    % ------------------------------------------------------------------------ %
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \newenvironment{improvement}[1]{\begin{tcolorbox}[
+        arc=0mm,
+        colback=white,
+        colframe=Plum!25,
+        title=Improvement,
+        fonttitle=\sffamily,
+        breakable
+    ]}{\end{tcolorbox}}
+    \newenvironment{unsure}[1]{\begin{tcolorbox}[
+        arc=0mm,
+        colback=white,
+        colframe=red!25,
+        title=Unsure,
+        fonttitle=\sffamily,
+        breakable
+    ]}{\end{tcolorbox}}
+    \newenvironment{change}[1]{\begin{tcolorbox}[
+        arc=0mm,
+        colback=white,
+        colframe=yellow!25,
+        title=Change,
+        fonttitle=\sffamily,
+        breakable
+    ]}{\end{tcolorbox}}
+    \newenvironment{add}[1]{\begin{tcolorbox}[
+        arc=0mm,
+        colback=white,
+        colframe=blue!25,
+        title=Add,
+        fonttitle=\sffamily,
+        breakable
+    ]}{\end{tcolorbox}}
+    \newenvironment{info}[1]{\begin{tcolorbox}[
+        arc=0mm,
+        colback=white,
+        colframe=OliveGreen!25,
+        title=Info,
+        fonttitle=\sffamily,
+        breakable
+    ]}{\end{tcolorbox}}
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    % EXAMPLE:                                                                 %
+    % ------------------------------------------------------------------------ %
+    %                                                                          %
+    % PARAMETERS:                                                              %
+    % ------------------------------------------------------------------------ %
+    %                                                                          %
+    % DESCRIPTION:                                                             %
+    % ------------------------------------------------------------------------ %
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \newcommand\listnotes{}
   }
 }{
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  % EXAMPLE:                                                                   %
+  % -------------------------------------------------------------------------- %
+  %                                                                            %
+  % PARAMETERS:                                                                %
+  % -------------------------------------------------------------------------- %
+  %                                                                            %
+  % DESCRIPTION:                                                               %
+  % -------------------------------------------------------------------------- %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \newcommand\improvement[2][]{}
   \newcommand\unsure[2][]{}
   \newcommand\change[2][]{}
+  \newcommand\add[2][]{}
   \newcommand\info[2][]{}
-  \newcommand\improvement[2][]{}
 
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  % EXAMPLE:                                                                   %
+  % -------------------------------------------------------------------------- %
+  %                                                                            %
+  % PARAMETERS:                                                                %
+  % -------------------------------------------------------------------------- %
+  %                                                                            %
+  % DESCRIPTION:                                                               %
+  % -------------------------------------------------------------------------- %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \newcommand\listnotes{}
 }
 
 \makeatother
+
+%%%%%%%%%%%%%%%%%%
+%  Equivalently  %
+%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% EXAMPLE:                                                                     %
+% ---------------------------------------------------------------------------- %
+%                                                                              %
+% PARAMETERS:                                                                  %
+% ---------------------------------------------------------------------------- %
+%                                                                              %
+% DESCRIPTION:                                                                 %
+% ---------------------------------------------------------------------------- %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand\equivalently[1]{[ \textbf{Equivalently:} #1 ]}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
