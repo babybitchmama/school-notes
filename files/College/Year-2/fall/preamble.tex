@@ -745,100 +745,30 @@
 \makeatletter
 
 \@ifclasswith\class{working}{
-  \@ifclasswith\class{sidenotes}{
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    % EXAMPLE:                                                                 %
-    % ------------------------------------------------------------------------ %
-    %                                                                          %
-    % PARAMETERS:                                                              %
-    % ------------------------------------------------------------------------ %
-    %                                                                          %
-    % DESCRIPTION:                                                             %
-    % ------------------------------------------------------------------------ %
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    \newcommand\improvement[2][]{\todo[linecolor=Plum,backgroundcolor=Plum!25,bordercolor=Plum,#1]{#2}}
-    \newcommand\unsure[2][]{\todo[linecolor=red,backgroundcolor=red!25,bordercolor=red,#1]{#2}}
-    \newcommand\change[2][]{\todo[linecolor=yellow,backgroundcolor=yellow!25,bordercolor=yellow,#1]{#2}}
-    \newcommand\add[2][]{\todo[linecolor=blue,backgroundcolor=blue!25,bordercolor=blue,#1]{#2}}
-    \newcommand\info[2][]{\todo[linecolor=OliveGreen,backgroundcolor=OliveGreen!25,bordercolor=OliveGreen,#1]{#2}}
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  % EXAMPLE:                                                                 %
+  % ------------------------------------------------------------------------ %
+  %                                                                          %
+  % PARAMETERS:                                                              %
+  % ------------------------------------------------------------------------ %
+  %                                                                          %
+  % DESCRIPTION:                                                             %
+  % ------------------------------------------------------------------------ %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \newcommand\improvement[2][]{\todo[linecolor=Plum,backgroundcolor=Plum!25,bordercolor=Plum,#1]{#2}}
+  \newcommand\unsure[2][]{\todo[linecolor=red,backgroundcolor=red!25,bordercolor=red,#1]{#2}}
+  \newcommand\change[2][]{\todo[linecolor=yellow,backgroundcolor=yellow!25,bordercolor=yellow,#1]{#2}}
+  \newcommand\add[2][]{\todo[linecolor=blue,backgroundcolor=blue!25,bordercolor=blue,#1]{#2}}
+  \newcommand\info[2][]{\todo[linecolor=OliveGreen,backgroundcolor=OliveGreen!25,bordercolor=OliveGreen,#1]{#2}}
 
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    % EXAMPLE:                                                                 %
-    % ------------------------------------------------------------------------ %
-    %                                                                          %
-    % PARAMETERS:                                                              %
-    % ------------------------------------------------------------------------ %
-    %                                                                          %
-    % DESCRIPTION:                                                             %
-    % ------------------------------------------------------------------------ %
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    \newcommand\listnotes{
-      \newpage
-      \listoftodos[Notes]
-    }
-  }{
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    % EXAMPLE:                                                                 %
-    % ------------------------------------------------------------------------ %
-    %                                                                          %
-    % PARAMETERS:                                                              %
-    % ------------------------------------------------------------------------ %
-    %                                                                          %
-    % DESCRIPTION:                                                             %
-    % ------------------------------------------------------------------------ %
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    \newenvironment{improvement}[1]{\begin{tcolorbox}[
-        arc=0mm,
-        colback=white,
-        colframe=Plum!25,
-        title=Improvement,
-        fonttitle=\sffamily,
-        breakable
-    ]}{\end{tcolorbox}}
-    \newenvironment{unsure}[1]{\begin{tcolorbox}[
-        arc=0mm,
-        colback=white,
-        colframe=red!25,
-        title=Unsure,
-        fonttitle=\sffamily,
-        breakable
-    ]}{\end{tcolorbox}}
-    \newenvironment{change}[1]{\begin{tcolorbox}[
-        arc=0mm,
-        colback=white,
-        colframe=yellow!25,
-        title=Change,
-        fonttitle=\sffamily,
-        breakable
-    ]}{\end{tcolorbox}}
-    \newenvironment{add}[1]{\begin{tcolorbox}[
-        arc=0mm,
-        colback=white,
-        colframe=blue!25,
-        title=Add,
-        fonttitle=\sffamily,
-        breakable
-    ]}{\end{tcolorbox}}
-    \newenvironment{info}[1]{\begin{tcolorbox}[
-        arc=0mm,
-        colback=white,
-        colframe=OliveGreen!25,
-        title=Info,
-        fonttitle=\sffamily,
-        breakable
-    ]}{\end{tcolorbox}}
-
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    % EXAMPLE:                                                                 %
-    % ------------------------------------------------------------------------ %
-    %                                                                          %
-    % PARAMETERS:                                                              %
-    % ------------------------------------------------------------------------ %
-    %                                                                          %
-    % DESCRIPTION:                                                             %
-    % ------------------------------------------------------------------------ %
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    \newcommand\listnotes{}
+  \newcommand\improvementinline[2][]{\todo[inline,linecolor=Plum,backgroundcolor=Plum!25,bordercolor=Plum,#1]{#2}}
+  \newcommand\unsureinline[2][]{\todo[inline,linecolor=red,backgroundcolor=red!25,bordercolor=red,#1]{#2}}
+  \newcommand\changeinline[2][]{\todo[inline,linecolor=yellow,backgroundcolor=yellow!25,bordercolor=yellow,#1]{#2}}
+  \newcommand\addinline[2][]{\todo[inline,linecolor=blue,backgroundcolor=blue!25,bordercolor=blue,#1]{#2}}
+  \newcommand\infoinline[2][]{\todo[inline,linecolor=OliveGreen,backgroundcolor=OliveGreen!25,bordercolor=OliveGreen,#1]{#2}}
+  \newcommand\listnotes{
+    \newpage
+    \listoftodos[Notes]
   }
 }{
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -857,16 +787,11 @@
   \newcommand\add[2][]{}
   \newcommand\info[2][]{}
 
-  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  % EXAMPLE:                                                                   %
-  % -------------------------------------------------------------------------- %
-  %                                                                            %
-  % PARAMETERS:                                                                %
-  % -------------------------------------------------------------------------- %
-  %                                                                            %
-  % DESCRIPTION:                                                               %
-  % -------------------------------------------------------------------------- %
-  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \newcommand\improvementinline[2][]{}
+  \newcommand\unsureinline[2][]{}
+  \newcommand\changeinline[2][]{}
+  \newcommand\addinline[2][]{}
+  \newcommand\infoinline[2][]{}
   \newcommand\listnotes{}
 }
 
