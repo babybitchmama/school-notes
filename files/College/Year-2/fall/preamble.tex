@@ -56,12 +56,14 @@
 %%%%%%%%%%%
 
 \newcolumntype{C}{>{\Centering\arraybackslash}X}
+\setlength{\tabcolsep}{5pt}
+\renewcommand\arraystretch{1.5}
 
+% Caption setup.
 \usepackage[font=bf]{caption}
 \renewcommand\thetable{\Roman{table}}
-
-\let\svlim\lim\def\lim{\svlim\limits}
-\let\svsum\sum\def\sum{\svsum\limits}
+\captionsetup[figure]{font=small}
+\captionsetup{justification=centering}
 
 %%%%%%%%%%%%%
 %  Symbols  %
@@ -71,6 +73,8 @@
 \let\impliedby\Leftarrow
 \let\iff\Leftrightarrow
 \let\epsilon\varepsilon
+\let\svlim\lim\def\lim{\svlim\limits}
+\let\svsum\sum\def\sum{\svsum\limits}
 
 %%%%%%%%%%%
 %  Lists  %
@@ -79,13 +83,6 @@
 \setlist[itemize,1]{label=--}
 \setlist[itemize,2]{label=\textbullet}
 \setlist[enumerate,1]{label=\protect\circled{\arabic*}}
-
-%%%%%%%%%%%%
-%  Tables  %
-%%%%%%%%%%%%
-
-\setlength{\tabcolsep}{5pt}
-\renewcommand\arraystretch{1.5}
 
 %%%%%%%%%%%%%%
 %  SI Unitx  %
@@ -313,13 +310,6 @@
 \newlength{\thickarrayrulewidth}
 \setlength{\thickarrayrulewidth}{5\arrayrulewidth}
 
-%%%%%%%%%%%%%%%%%%%
-%  Caption Setup  %
-%%%%%%%%%%%%%%%%%%%
-
-\captionsetup[figure]{font=small}
-\captionsetup{justification=centering}
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                                                                              %
@@ -338,12 +328,15 @@
   \setcounter{subsubsection}{0}
   \setcounter{paragraph}{0}
   \setcounter{subparagraph}{0}
-  \setcounter{theorem}{0}
   \setcounter{claim}{0}
   \setcounter{corollary}{0}
-  \setcounter{lemma}{0}
-  \setcounter{exercise}{0}
   \setcounter{definition}{0}
+  \setcounter{exercise}{0}
+  \setcounter{lemma}{0}
+  \setcounter{prop}{0}
+  \setcounter{theorem}{0}
+  \setcounter{question}{0}
+  \setcounter{solution}{0}
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -410,12 +403,12 @@
 % from the file as the lecture number.                                         %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \def\@lecture{}
-\newcommand\lecture[2]{
-  \ifthenelse{\isempty{#2}}{
+\newcommand\lecture[2]{%
+  \ifthenelse{\isempty{#2}}{%
     \def\@lecture{Lecture \arabic{section}}
-  }{
+  }{%
     \def\@lecture{Lecture \arabic{section}: #2}
-  }
+  }%
 
   \if@twocolumn
     \twocolumn[
@@ -733,7 +726,18 @@
 %%%%%%%%%
 
 \usepackage{stmaryrd} % for \lightning
-\renewcommand\qed{{{\color{theorem}Q.E.D.}}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% EXAMPLE:                                                                     %
+% ---------------------------------------------------------------------------- %
+% 1. \contra                                                                   %
+%                                                                              %
+% DESCRIPTION:                                                                 %
+% ---------------------------------------------------------------------------- %
+% I use this when I'm proving a proof using contradiction. So, at the end, I   %
+% just use \contra, which replaces the regular QED symbol, which is a square   %
+% with a lightning bolt.                                                       %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newcommand\contra{\phantom\qedhere\hfill\scalebox{1.1}{$\lightning$}}
 
 %%%%%%%%%%%%%%%%%%%
