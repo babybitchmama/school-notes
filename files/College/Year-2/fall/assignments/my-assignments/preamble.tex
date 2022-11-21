@@ -10,7 +10,7 @@
 %  Helpful New Commands  %
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\newcommand\point[1]{\hfill[\textbf{\textit{#1}}]}
+\newcommand\point[1]{\hfill[\textbf{\textit{#1}}]{\parfillskip0pt\par}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%
 %  Change Size of PDF  %
@@ -39,8 +39,14 @@
 \fancyhead[R]{\firstxmark}
 \fancyfoot[L]{\lastxmark}
 \fancyfoot[C]{\thepage}
-% TODO: Add bottom right box for professor to put grade.
-% \fancyfoot[R]{\thepage}
+\fancyfoot[R]{}
+
+\fancypagestyle{boxfooter}{
+  \fancyfoot[R]{\setlength\unitlength{1cm}
+    \begin{picture}(0,0)
+      \put(-1,-0.7){\framebox(1,1)}
+  \end{picture}}
+}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -138,7 +144,7 @@
 % Environments %
 %%%%%%%%%%%%%%%%
 
-\renewenvironment{solution}[1][-1]{
+\newenvironment{probsolution}[1][-1]{
   \ifnum#1>0
     \setcounter{homeworkSolutionCounter}{#1}
   \fi
@@ -147,6 +153,7 @@
   \enterProblemHeader{homeworkSolutionCounter}
 }{
   \exitProblemHeader{homeworkSolutionCounter}
+  \thispagestyle{boxfooter}
 }
 
 \renewenvironment{problem}[1][-1]{
