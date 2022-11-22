@@ -830,6 +830,14 @@
 
 \tcbuselibrary{theorems,skins,hooks}
 
+%%%%%%%%%%%%%%%%%%%%%
+%  Create Counters  %
+%%%%%%%%%%%%%%%%%%%%%
+
+\newcounter{lecture}
+\newcounter{question}
+\newcounter{solution}
+
 %%%%%%%%%%%%%%%%%%%
 %  Define Colors  %
 %%%%%%%%%%%%%%%%%%%
@@ -977,7 +985,7 @@
     colframe=myblue!80!black,
     attach boxed title to top left={yshift*=-\tcboxedtitleheight},
     fonttitle=\bfseries,
-    title=\textbf{Question.},
+    title=\textbf{Question: \arabic{question}},
     boxed title size=title,
     boxed title style={%
       sharp corners,
@@ -996,7 +1004,7 @@
   }{def}
 
   \NewDocumentEnvironment{question}{O{}O{}}
-  {\begin{Question}{#1}{#2}}{\end{Question}}
+  {\begin{Question}{#1}\stepcounter{question}{#2}}{\end{Question}}
 
   \newtcbtheorem{Solution}{Solution}{enhanced,
     breakable,
@@ -1004,7 +1012,7 @@
     colframe=mygreen!80!black,
     attach boxed title to top left={yshift*=-\tcboxedtitleheight},
     fonttitle=\bfseries,
-    title=\textbf{Solution.},
+    title=\textbf{Solution: \arabic{solution}},
     boxed title size=title,
     boxed title style={%
       sharp corners,
@@ -1023,7 +1031,7 @@
   }{def}
 
   \NewDocumentEnvironment{solution}{O{}O{}}
-  {\vspace{-10pt}\begin{Solution}{#1}{#2}}{\end{Solution}}
+  {\vspace{-10pt}\begin{Solution}\stepcounter{question}{#1}{#2}}{\end{Solution}}
 }
 \makeatother
 
