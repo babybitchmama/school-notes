@@ -267,9 +267,9 @@
   % Enable highlighting links.
   colorlinks,
   % Change the color of links to blue.
-  linkcolor=blue,
+  linkcolor=main,
   % Change the color of citations to black.
-  citecolor={black},
+  citecolor=black,
   % Change the color of url's to blue with some black.
   urlcolor={blue!80!black}
 }
@@ -324,19 +324,10 @@
 \makeatletter
 
 \newcommand\resetcounters{
-  \setcounter{subsection}{0}
-  \setcounter{subsubsection}{0}
-  \setcounter{paragraph}{0}
-  \setcounter{subparagraph}{0}
-  \setcounter{claim}{0}
-  \setcounter{corollary}{0}
-  \setcounter{definition}{0}
-  \setcounter{exercise}{0}
-  \setcounter{lemma}{0}
-  \setcounter{prop}{0}
-  \setcounter{theorem}{0}
-  \setcounter{question}{0}
-  \setcounter{solution}{0}
+  % \setcounter{subsection}{0}
+  % \setcounter{subsubsection}{0}
+  % \setcounter{paragraph}{0}
+  % \setcounter{subparagraph}{0}
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -835,30 +826,17 @@
 %%%%%%%%%%%%%%%%%%%%%
 
 \newcounter{lecture}
-\newcounter{question}
-\newcounter{solution}
 
 %%%%%%%%%%%%%%%%%%%
 %  Define Colors  %
 %%%%%%%%%%%%%%%%%%%
 
-\definecolor{myblue}{RGB}{45, 111, 177}
-\definecolor{mygreen}{RGB}{56, 140, 70}
-\definecolor{myred}{RGB}{199, 68, 64}
-\definecolor{mypurple}{RGB}{197, 92, 212}
-
-\definecolor{theorem}{HTML}{00007B}
-\definecolor{example}{HTML}{2A7F7F}
-\definecolor{prop}{HTML}{191971}
-\definecolor{lemma}{HTML}{983b0f}
-\definecolor{exercise}{HTML}{88D6D1}
-
-\colorlet{definition}{mygreen!85!black}
-\colorlet{claim}{mygreen!85!black}
-\colorlet{corollary}{mypurple!85!black}
-\colorlet{proof}{theorem}
-\colorlet{notation}{theorem}
-\colorlet{remark}{example}
+\definecolor{main}{HTML}{F035A3}
+\definecolor{example}{HTML}{00A6E4}
+\definecolor{examplebg}{HTML}{CAE4F0}
+\definecolor{solution}{HTML}{00AEEF}
+\definecolor{qedsolution}{HTML}{76B4CF}
+\definecolor{subsubsection}{HTML}{B00D15}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %  Create Environments Styles Based on Given Parameter  %
@@ -866,181 +844,160 @@
 
 \mdfsetup{skipabove=1em,skipbelow=0em}
 
-%%%%%%%%%%%%%%%%%%%%%%
-%  Helpful Commands  %
-%%%%%%%%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% EXAMPLE:                                                                     %
-% ---------------------------------------------------------------------------- %
-%                                                                              %
-% PARAMETERS:                                                                  %
-% ---------------------------------------------------------------------------- %
-%                                                                              %
-% DESCRIPTION:                                                                 %
-% ---------------------------------------------------------------------------- %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\newcommand\createnewtheoremstyle[3]{
-  \declaretheoremstyle[
-  headfont=\bfseries\sffamily, bodyfont=\normalfont, #2,
-  mdframed={
-    #3,
-  },
-  ]{#1}
-}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% EXAMPLE:                                                                     %
-% ---------------------------------------------------------------------------- %
-%                                                                              %
-% PARAMETERS:                                                                  %
-% ---------------------------------------------------------------------------- %
-%                                                                              %
-% DESCRIPTION:                                                                 %
-% ---------------------------------------------------------------------------- %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\newcommand\createnewcoloredtheoremstyle[4]{
-  \declaretheoremstyle[
-  headfont=\bfseries\sffamily\color{#2}, bodyfont=\normalfont, #3,
-  mdframed={
-    linewidth=2pt,
-    rightline=false, leftline=true, topline=false, bottomline=false,
-    linecolor=#2, backgroundcolor=#2!5, #4,
-  },
-  ]{#1}
-}
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %  Create the Environment Styles  %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\usepackage{color}
+\makeatletter
+\def\zz{\edef\zzz{\pdfliteral{\current@color}}}%pdftex version
+\makeatother
+
 \makeatletter
 \@ifclasswith\class{nocolor}{
-  \createnewtheoremstyle{thmclaimbox}{}{}
-  \createnewtheoremstyle{thmcorollarybox}{}{}
-  \createnewtheoremstyle{thmdefinitionbox}{}{}
-  \createnewtheoremstyle{thmexercisebox}{}{}
-  \createnewtheoremstyle{thmexamplebox}{}{}
-  \createnewtheoremstyle{thmexplanationbox}{}{rightline=false, leftline=true, topline=false, bottomline=false}
-  \createnewtheoremstyle{thmlemmabox}{}{}
-  \createnewtheoremstyle{thmnotationbox}{}{rightline=false, leftline=true, topline=false, bottomline=false}
-  \createnewtheoremstyle{thmpropbox}{}{}
-  \createnewtheoremstyle{thmremarkbox}{}{rightline=false, leftline=true, topline=false, bottomline=false}
-  \createnewtheoremstyle{thmreplacementproofbox}{qed=\qedsymbol}{rightline=false, leftline=true, topline=false, bottomline=false}
-  \createnewtheoremstyle{thmtheorembox}{}{}
+  % \createnewtheoremstyle{thmdefinitionbox}{}{}
+  % \createnewtheoremstyle{thmexamplebox}{}{}
+  % \createnewtheoremstyle{thmsolutionbox}{}{}
+  % \createnewtheoremstyle{thmtheorembox}{}{}
 }{
-  \createnewcoloredtheoremstyle{thmclaimbox}{claim}{}{}
-  \createnewcoloredtheoremstyle{thmcorollarybox}{corollary}{}{}
-  \createnewcoloredtheoremstyle{thmdefinitionbox}{definition}{}{}
-  \createnewcoloredtheoremstyle{thmexamplebox}{example}{}{
-    rightline=true, leftline=true, topline=true, bottomline=true
+  \declaretheoremstyle[
+    headfont=\sffamily\bfseries\zz\color{example}\colorbox{examplebg}{EXAMPLE \arabic{example}},
+    headformat=\NOTE,
+    notefont=\bfseries,
+    bodyfont=\normalfont,
+    notefont=\zzz\bfseries,
+    notebraces={~ },
+    headpunct=,
+  ]{thmexamplebox}
+
+  \newcommand\qedsolution{{\color{qedsolution}\rule{3mm}{1.5mm}}}
+  \declaretheoremstyle[
+    headfont=\sffamily\zz\color{solution},
+    bodyfont=\normalfont,
+    notefont=\bfseries,
+    headpunct=,
+    postheadspace=\newline,
+    qed=\qedsolution,
+    spaceabove=\topsep,
+    spacebelow=\topsep,
+  ]{thmsolutionbox}
+
+  \newcommand\boxitem[1]{
+    \tcbox[
+      enhanced,
+      box align=base,
+      nobeforeafter,
+      colframe=main,
+      top=0pt,
+      bottom=0pt,
+      left=0pt,
+      right=0pt,
+      toprule=0.5pt,
+      bottomrule=0.5pt,
+      leftrule=0.5pt,
+      rightrule=0.5pt,
+      fontupper=\scriptsize,
+      colupper=main,
+      colback=white,
+      sharp corners,
+    ]{#1}
   }
-  \createnewcoloredtheoremstyle{thmexercisebox}{exercise}{}{}
-  \createnewcoloredtheoremstyle{thmexplanationbox}{example}{qed=\qedsymbol}{backgroundcolor=white}
-  \createnewcoloredtheoremstyle{thmlemmabox}{lemma}{}{}
-  \createnewcoloredtheoremstyle{thmnotationbox}{notation}{}{backgroundcolor=white}
-  \createnewcoloredtheoremstyle{thmpropbox}{prop}{}{}
-  \createnewcoloredtheoremstyle{thmremarkbox}{remark}{}{backgroundcolor=white}
-  \createnewcoloredtheoremstyle{thmreplacementproofbox}{proof}{qed=\qedsymbol}{backgroundcolor=white}
-  \createnewcoloredtheoremstyle{thmtheorembox}{theorem}{}{}
+
+  \declaretheoremstyle[
+    headfont=\sffamily\bfseries\zz\color{main},
+    headformat=\boxitem{\NUMBER}~\NAME,
+    bodyfont=\normalfont,
+    notebraces={~ },
+    notefont=\bfseries,
+    headpunct=,
+    mdframed={
+      linewidth=0.5pt,
+      linecolor=main,
+    },
+  ]{thmdefinitionbox}
+
+  \declaretheoremstyle[
+    headfont=\sffamily\bfseries\zz\color{main},
+    headformat=\boxitem{\NUMBER}\hspace{-0.1cm}\NOTE,
+    bodyfont=\normalfont,
+    notebraces={~ },
+    notefont=\bfseries,
+    headpunct=,
+    mdframed={
+      linewidth=0.5pt,
+      linecolor=main,
+    },
+  ]{thmtheorembox}
+
+  \declaretheoremstyle[
+    headfont=\sffamily\bfseries\zz\color{main},
+    bodyfont=\normalfont,
+    notebraces={~ },
+    notefont=\bfseries,
+    headpunct=,
+    mdframed={
+      linewidth=0.5pt,
+      rightline=false, leftline=true, topline=false, bottomline=false,
+      linecolor=main,
+    },
+  ]{thmremarkbox}
+
+  \declaretheoremstyle[
+    headfont=\sffamily\bfseries\zz\color{main},
+    bodyfont=\normalfont,
+    notebraces={~ },
+    notefont=\bfseries,
+    headpunct=,
+    mdframed={
+      rightline=false, leftline=false, topline=false, bottomline=false,
+    },
+  ]{thmreplacementproofbox}
 }
+\makeatother
+
+\makeatletter
+\renewcommand\tagform@[1]{%
+  \tikz \draw[color=main] (0,0) rectangle (0.5,0.5)%
+  node[pos=0.5] {{\color{main}\textbf{#1}}};%
+}
+\def\@eqnnum{{\normalfont \normalcolor \theequation}}
+
+\usepackage{titlesec}
+
+\titleformat*{\section}{\sffamily\fontsize{14}{16}\bfseries}
+\titleformat*{\subsection}{\sffamily\fontsize{12}{14}\bfseries}
+\titleformat{\subsubsection}{\color{subsubsection}\sffamily\fontsize{11}{14}\bfseries}{}{0em}{}
+
+\def\@seccntformat#1{\llap{\csname the#1\endcsname\quad}}
 \makeatother
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %  Create the Environments  %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\declaretheorem[numberwithin=section, style=thmclaimbox,            name=Claim]      {claim}
-\declaretheorem[numberwithin=section, style=thmcorollarybox,        name=Corollary]  {corollary}
-\declaretheorem[numberwithin=section, style=thmdefinitionbox,       name=Definition] {definition}
-\declaretheorem[numbered=no,          style=thmexamplebox,          name=Example]    {example}
-\declaretheorem[numberwithin=section, style=thmexercisebox,         name=Exercise]   {exercise}
-\declaretheorem[numbered=no,          style=thmexplanationbox,      name=Proof]      {expl}
-\declaretheorem[numberwithin=section, style=thmlemmabox,            name=Lemma]      {lemma}
-\declaretheorem[numbered=no,          style=thmnotationbox,         name=Notation]   {notation}
-\declaretheorem[numberwithin=section, style=thmpropbox,             name=Proposition]{prop}
-\declaretheorem[numbered=no,          style=thmremarkbox,           name=Remark]     {remark}
-\declaretheorem[numbered=no,          style=thmreplacementproofbox, name=Proof]      {replacementproof}
-\declaretheorem[numberwithin=section, style=thmtheorembox,          name=Theorem]    {theorem}
+\declaretheorem[numberwithin=section, style=thmdefinitionbox, name=Definition] {definition}
+\declaretheorem[numberwithin=section, style=thmexamplebox,    name=]           {example}
+\declaretheorem[numbered=no,          style=thmsolutionbox,   name=SOLUTION]   {solution}
+\declaretheorem[numberwithin=section, style=thmtheorembox,    name=Theorem]    {theorem}
+\declaretheorem[numbered=no,          style=thmremarkbox,     name=Remark]     {remark}
+\declaretheorem[numbered=no,          style=thmreplacementproofbox, name=PROOF]      {replacementproof}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%  Create Question and Solution Environments with or without color  %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\makeatletter
-\@ifclasswith\class{nocolor}{
-  \createnewtheoremstyle{thmquestionbox}{}{}
-  \createnewtheoremstyle{thmsolutionbox}{}{}
+\renewcommand{\thedefinition}{\arabic{definition}}
+\renewcommand{\theexample}{\arabic{example}}
+\renewcommand{\thetheorem}{\arabic{theorem}}
 
-  \declaretheorem[numberwithin=section, style=thmquestionbox,   name=Question]{question}
-  \declaretheorem[numberwithin=section, style=thmsolutionbox,   name=Solution]{solution}
-
-  \AtBeginEnvironment{solution}{
-    \vspace{-10pt}
-  }
-}{
-  \newtcbtheorem{Question}{Question}{enhanced,
-    breakable,
-    colback=white,
-    colframe=myblue!80!black,
-    attach boxed title to top left={yshift*=-\tcboxedtitleheight},
-    fonttitle=\bfseries,
-    title=\textbf{Question: \arabic{question}},
-    boxed title size=title,
-    boxed title style={%
-      sharp corners,
-      rounded corners=northwest,
-      colback=tcbcolframe,
-      boxrule=0pt,
-    },
-    underlay boxed title={%
-      \path[fill=tcbcolframe] (title.south west)--(title.south east)
-      to[out=0, in=180] ([xshift=5mm]title.east)--
-      (title.center-|frame.east)
-      [rounded corners=\kvtcb@arc] |-
-      (frame.north) -| cycle;
-    },
-    #1
-  }{def}
-
-  \NewDocumentEnvironment{question}{O{}O{}}
-  {\begin{Question}{#1}\stepcounter{question}{#2}}{\end{Question}}
-
-  \newtcbtheorem{Solution}{Solution}{enhanced,
-    breakable,
-    colback=white,
-    colframe=mygreen!80!black,
-    attach boxed title to top left={yshift*=-\tcboxedtitleheight},
-    fonttitle=\bfseries,
-    title=\textbf{Solution: \arabic{solution}},
-    boxed title size=title,
-    boxed title style={%
-      sharp corners,
-      rounded corners=northwest,
-      colback=tcbcolframe,
-      boxrule=0pt,
-    },
-    underlay boxed title={%
-      \path[fill=tcbcolframe] (title.south west)--(title.south east)
-      to[out=0, in=180] ([xshift=5mm]title.east)--
-      (title.center-|frame.east)
-      [rounded corners=\kvtcb@arc] |-
-      (frame.north) -| cycle;
-    },
-    #1
-  }{def}
-
-  \NewDocumentEnvironment{solution}{O{}O{}}
-  {\vspace{-10pt}\begin{Solution}\stepcounter{question}{#1}{#2}}{\end{Solution}}
+\newtcolorbox[use counter=example]{purpleframe}{%
+  colback=white,
+  colframe=main,
+  sharp corners,
+  toprule=0.5pt,
+  bottomrule=0.5pt,
+  leftrule=0.5pt,
+  rightrule=0.5pt,
 }
-\makeatother
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%  Edit Proof Environment  %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \renewenvironment{proof}[1][\proofname]{\vspace{-10pt}\begin{replacementproof}}{\end{replacementproof}}
-\newenvironment{explanation}[1][\proofname]{\vspace{-10pt}\begin{expl}}{\end{expl}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %  Create Plain Environments  %
@@ -1049,24 +1006,10 @@
 \theoremstyle{definition}
 
 \newtheorem*{note}{Note}
-\newtheorem*{pnotation}{Notation}
+\newtheorem*{notation}{Notation}
 \newtheorem*{previouslyseen}{As previously seen}
 \newtheorem*{problem}{Problem}
 \newtheorem*{observe}{Observe}
 \newtheorem*{property}{Property}
 \newtheorem*{intuition}{Intuition}
 \newtheorem*{questionexpl}{Explanation}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%
-%  End of Environments  %
-%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\AtEndEnvironment{exercise}{
-  \addcontentsline{toc}{subsubsection}{Exercise \arabic{exercise}}
-}
-\AtEndEnvironment{question}{
-  \addcontentsline{toc}{subsubsection}{Question \arabic{question}}
-}
-\AtEndEnvironment{solution}{
-  \addcontentsline{toc}{subsubsection}{Solution \arabic{question}}
-}
