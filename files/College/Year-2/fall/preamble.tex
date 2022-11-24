@@ -179,8 +179,8 @@
 
 \pgfplotscreateplotcyclelist{pccstylelist}{
   pccplot \\
-  % color=blue,mark=none,line width=1pt,<->,dashdotted \\
-  % color=gray,mark=none,line width=1pt,<->,dashdotdotted \\
+  color=blue,mark=none,line width=1pt,<->,dashdotted \\
+  color=gray,mark=none,line width=1pt,<->,dashdotdotted \\
 }
 
 \def\axisdefaultwidth{175pt}
@@ -225,16 +225,6 @@
 
 \usepackage{eso-pic}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% EXAMPLE:                                                                     %
-% ---------------------------------------------------------------------------- %
-%                                                                              %
-% PARAMETERS:                                                                  %
-% ---------------------------------------------------------------------------- %
-%                                                                              %
-% DESCRIPTION:                                                                 %
-% ---------------------------------------------------------------------------- %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newcommand\definegraybackground{
   \definecolor{reallylightgray}{HTML}{FAFAFA}
   \AddToShipoutPicture{
@@ -263,16 +253,23 @@
 %  Modify Links Color  %
 %%%%%%%%%%%%%%%%%%%%%%%%
 
-\hypersetup{
-  % Enable highlighting links.
-  colorlinks,
-  % Change the color of links to blue.
-  linkcolor=main,
-  % Change the color of citations to black.
-  citecolor=black,
-  % Change the color of url's to blue with some black.
-  urlcolor={blue!80!black}
+\makeatletter
+\@ifclasswith\class{nocolor}{
+  \hypersetup{
+    colorlinks,
+    linkcolor=black,
+    citecolor=black,
+    urlcolor=black,
+  }
+}{
+  \hypersetup{
+    colorlinks,
+    linkcolor=main,
+    citecolor=black,
+    urlcolor={blue!80!black}
+  }
 }
+\makeatother
 
 %%%%%%%%%%%%%%%%%%
 % Fix WrapFigure %
@@ -324,30 +321,12 @@
 \makeatletter
 
 \newcommand\resetcounters{
-  % \setcounter{subsection}{0}
-  % \setcounter{subsubsection}{0}
-  % \setcounter{paragraph}{0}
-  % \setcounter{subparagraph}{0}
+  \setcounter{subsection}{0}
+  \setcounter{subsubsection}{0}
+  \setcounter{paragraph}{0}
+  \setcounter{subparagraph}{0}
 }
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% EXAMPLE:                                                                     %
-% ---------------------------------------------------------------------------- %
-% 1. \lec{1}                                                                   %
-% 2. \lec{4}                                                                   %
-%                                                                              %
-% PARAMETERS:                                                                  %
-% ---------------------------------------------------------------------------- %
-% 1. Lecture number.                                                           %
-%                                                                              %
-% DESCRIPTION:                                                                 %
-% ---------------------------------------------------------------------------- %
-% It loads the lecture provided. It looks into the `lectures/` folder. If you  %
-% provided a number less than 10, it'll use 0 and you're number. If you        %
-% provided, 4 for example, it'll try to include the file `lectures/lec-04.tex`.%
-% It also sets the section number to the provided number and resets all        %
-% counters back to zero.                                                       %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \def\@lecnum{}
 \newcommand\lec[1]{
   \ifnum #1<10
@@ -360,8 +339,8 @@
   \setcounter{section}{#1}
   % Reset all counters.
   \resetcounters
-  % Include the lecture.
-  \input{lectures/lec-\@lecnum.tex}
+  % Include the lecture file if it exists.
+  \IfFileExists{lectures/lec-\@lecnum.tex}{\input{lectures/lec-\@lecnum.tex}}{}
 }
 
 %%%%%%%%%%%%%%%%%%%%%
@@ -371,28 +350,6 @@
 \usepackage{ifthen}
 \usepackage{xifthen}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% EXAMPLE:                                                                     %
-% ---------------------------------------------------------------------------- %
-% 1. \lecture{Oct 17 2022 Mon (08:46:48)}{Lecture Title}                       %
-% 2. \lecture{Oct 17 2022 Mon (08:46:48)}{}                                    %
-%                                                                              %
-% PARAMETERS:                                                                  %
-% ---------------------------------------------------------------------------- %
-% 1. Time and date of lecture.                                                 %
-% 2. Lecture Title.                                                            %
-%                                                                              %
-% DESCRIPTION:                                                                 %
-% ---------------------------------------------------------------------------- %
-% Display the information like the following:                                  %
-%                                                                              %
-%                                                   Oct 17 2022 Mon (08:49:10) %
-% ---------------------------------------------------------------------------- %
-% Lecture 1: Lecture Title                                                     %
-%                                                                              %
-% You don't need to provide a lecture number, since it uses the lecture number %
-% from the file as the lecture number.                                         %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \def\@lecture{}
 \newcommand\lecture[2]{%
   \ifthenelse{\isempty{#2}}{%
@@ -410,7 +367,7 @@
     \vspace{0.2cm}
     ]
   \else
-    \hfill\footnotesize{#1}
+    \hfill\sffamily\footnotesize{#1}
     \hrule
     \vspace*{-0.3cm}
     \section*{\@lecture}
@@ -425,49 +382,8 @@
 
 \usepackage{fancyhdr}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% EXAMPLE:                                                                     %
-% ---------------------------------------------------------------------------- %
-% 1. \forcenewpage                                                             %
-%                                                                              %
-% DESCRIPTION:                                                                 %
-% ---------------------------------------------------------------------------- %
-% Force a new page, because sometimes latex doesn't do it.                     %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newcommand\forcenewpage{\clearpage\mbox{~}\clearpage\newpage}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% EXAMPLE:                                                                     %
-% ---------------------------------------------------------------------------- %
-% 1. \createintro                                                              %
-%                                                                              %
-% DESCRIPTION:                                                                 %
-% ---------------------------------------------------------------------------- %
-% This command does a million things.                                          %
-%                                                                              %
-% First, it creates a title page with the following properties:                %
-% ---------------------------------------------------------------------------- %
-% 1. It sets the numbering style to roman, removes the header line, and creates%
-%    a nice footer center style.                                               %
-% 2. It checks if you passed the `twocolumn` parameter. If so, it sets the     %
-%    title page to one column.                                                 %
-% 3. It checks if a intro.tex file exists. If so, it includes it.              %
-% 4. It creates a 3d box with more information.                                %
-% 5. It includes the table of contents.                                        %
-% 6. It checks if you passed the `twocolumn` parameter. If so, it sets         %
-%    everything back to two column. Otherwise, it just creates a new page.     %
-%                                                                              %
-% Now, it gets everything prepared to include the actual notes.                %
-% ---------------------------------------------------------------------------- %
-% 1. It sets the numbering style back to arabic, adds the header line, and     %
-%    changes the fancy style.                                                  %
-%       1. It adds the current lecture title in the top right.                 %
-%       2. It adds the author's name in the top left.                          %
-%       3. It adds the page number in the bottom center.                       %
-% 2. It checks if you passed the `graygf` parameter. If so, it creates a nice  %
-%    transparent gray color on the right of all left pages and on the left of  %
-%    all right pages.                                                          %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newcommand\createintro{
   \@ifclasswith\class{twocolumn}{\onecolumn}{}
   \pagenumbering{roman}
@@ -541,27 +457,6 @@
 
 \usepackage{import}
 \pdfminorversion=7
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% EXAMPLE:                                                                     %
-% ---------------------------------------------------------------------------- %
-% 1. \incfig{airplane}                                                         %
-% 2. \incfig[0.5]{airplane}                                                    %
-%                                                                              %
-% PARAMETERS:                                                                  %
-% ---------------------------------------------------------------------------- %
-% 1. (Optional) The width of the image with respect to textwidth. If you put   %
-%    0.3, it'll be 0.3 * \textwidth.                                           %
-% 2. The figure name.                                                          %
-%                                                                              %
-% DESCRIPTION:                                                                 %
-% ---------------------------------------------------------------------------- %
-% It looks for a file in:                                                      %
-%   ./figures/lec-(current lecture number)/fig-name.pdf_tex                    %
-% If you're current lecture was 4, and the figure name was airplane, here's how%
-% it would look like:                                                          %
-%   ./figures/lec-04/airplane.pdf_tex                                          %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newcommand\incfig[2][1]{
   \def\figlocation{./figures/lec-\@lecnum}
   \def\svgwidth{#1\columnwidth}
@@ -575,17 +470,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \usepackage{pdftexcmds}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% EXAMPLE:                                                                     %
-% ---------------------------------------------------------------------------- %
-%                                                                              %
-% PARAMETERS:                                                                  %
-% ---------------------------------------------------------------------------- %
-%                                                                              %
-% DESCRIPTION:                                                                 %
-% ---------------------------------------------------------------------------- %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newcommand\parallelogramRule[6]{
   \begin{tikzpicture}[inner sep=1pt,>=stealth]
     \draw[<->] (#1)--(#2) node[right]{$x$};
@@ -606,16 +490,6 @@
   \end{tikzpicture}
 }
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% EXAMPLE:                                                                     %
-% ---------------------------------------------------------------------------- %
-%                                                                              %
-% PARAMETERS:                                                                  %
-% ---------------------------------------------------------------------------- %
-%                                                                              %
-% DESCRIPTION:                                                                 %
-% ---------------------------------------------------------------------------- %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newcommand\headToTailRule[6]{
   \begin{tikzpicture}[inner sep=1pt,>=stealth]
     \draw[<->] (#1)--(#2) node[right]{$x$};
@@ -638,16 +512,6 @@
 
 \makeatletter
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% EXAMPLE:                                                                     %
-% ---------------------------------------------------------------------------- %
-%                                                                              %
-% PARAMETERS:                                                                  %
-% ---------------------------------------------------------------------------- %
-%                                                                              %
-% DESCRIPTION:                                                                 %
-% ---------------------------------------------------------------------------- %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newcommand\addVectors[7][parallelogram]{
   \ifnum\pdf@strcmp{\unexpanded{#1}}{parallelogram}=0 %
      \expandafter\@firstoftwo
@@ -664,16 +528,6 @@
 %  Circle  %
 %%%%%%%%%%%%
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% EXAMPLE:                                                                     %
-% ---------------------------------------------------------------------------- %
-%                                                                              %
-% PARAMETERS:                                                                  %
-% ---------------------------------------------------------------------------- %
-%                                                                              %
-% DESCRIPTION:                                                                 %
-% ---------------------------------------------------------------------------- %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newcommand*\circled[1]{\tikz[baseline=(char.base)]{
   \node[shape=circle,draw,inner sep=1pt] (char) {#1};}
 }
@@ -683,52 +537,19 @@
 %%%%%%%%%%%%%
 
 \definecolor{correct}{HTML}{009900}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% EXAMPLE:                                                                     %
-% ---------------------------------------------------------------------------- %
-%                                                                              %
-% PARAMETERS:                                                                  %
-% ---------------------------------------------------------------------------- %
-%                                                                              %
-% DESCRIPTION:                                                                 %
-% ---------------------------------------------------------------------------- %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newcommand\correct[2]{{\color{red}{#1 }}\ensuremath{\to}{\color{correct}{ #2}}}
 
 %%%%%%%%%%%%%%%
 %  Important  %
 %%%%%%%%%%%%%%%
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% EXAMPLE:                                                                     %
-% ---------------------------------------------------------------------------- %
-%                                                                              %
-% PARAMETERS:                                                                  %
-% ---------------------------------------------------------------------------- %
-%                                                                              %
-% DESCRIPTION:                                                                 %
-% ---------------------------------------------------------------------------- %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newcommand\imp[1]{{\color{red}#1}}
 
 %%%%%%%%%
 %  QED  %
 %%%%%%%%%
 
-\usepackage{stmaryrd} % for \lightning
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% EXAMPLE:                                                                     %
-% ---------------------------------------------------------------------------- %
-% 1. \contra                                                                   %
-%                                                                              %
-% DESCRIPTION:                                                                 %
-% ---------------------------------------------------------------------------- %
-% I use this when I'm proving a proof using contradiction. So, at the end, I   %
-% just use \contra, which replaces the regular QED symbol, which is a square   %
-% with a lightning bolt.                                                       %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{stmaryrd}
 \newcommand\contra{\phantom\qedhere\hfill\scalebox{1.1}{$\lightning$}}
 
 %%%%%%%%%%%%%%%%%%%
@@ -740,16 +561,6 @@
 \makeatletter
 
 \@ifclasswith\class{working}{
-  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  % EXAMPLE:                                                                 %
-  % ------------------------------------------------------------------------ %
-  %                                                                          %
-  % PARAMETERS:                                                              %
-  % ------------------------------------------------------------------------ %
-  %                                                                          %
-  % DESCRIPTION:                                                             %
-  % ------------------------------------------------------------------------ %
-  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \newcommand\improvement[2][]{\todo[linecolor=Plum,backgroundcolor=Plum!25,bordercolor=Plum,#1]{#2}}
   \newcommand\unsure[2][]{\todo[linecolor=red,backgroundcolor=red!25,bordercolor=red,#1]{#2}}
   \newcommand\change[2][]{\todo[linecolor=yellow,backgroundcolor=yellow!25,bordercolor=yellow,#1]{#2}}
@@ -766,16 +577,6 @@
     \listoftodos[Notes]
   }
 }{
-  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  % EXAMPLE:                                                                   %
-  % -------------------------------------------------------------------------- %
-  %                                                                            %
-  % PARAMETERS:                                                                %
-  % -------------------------------------------------------------------------- %
-  %                                                                            %
-  % DESCRIPTION:                                                               %
-  % -------------------------------------------------------------------------- %
-  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \newcommand\improvement[2][]{}
   \newcommand\unsure[2][]{}
   \newcommand\change[2][]{}
@@ -792,20 +593,34 @@
 
 \makeatother
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Edit Sections/Subsections/Subsubsections  %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\makeatletter
+\renewcommand\tagform@[1]{%
+  \tikz \draw[color=main] (0,0) rectangle (0.5,0.5)%
+  node[pos=0.5] {{\color{main}\textbf{#1}}};%
+}
+\def\@eqnnum{{\normalfont \normalcolor \theequation}}
+
+\usepackage{titlesec}
+\titleformat*{\section}{\sffamily\fontsize{14}{16}\bfseries}
+\titleformat*{\subsection}{\sffamily\fontsize{12}{14}\bfseries}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Edit equation number display  %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\makeatletter
+\titleformat{\subsubsection}{\color{subsubsection}\sffamily\fontsize{11}{14}\bfseries}{}{0em}{}
+\def\@seccntformat#1{\llap{\csname the#1\endcsname\quad}}
+\makeatother
+
 %%%%%%%%%%%%%%%%%%
 %  Equivalently  %
 %%%%%%%%%%%%%%%%%%
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% EXAMPLE:                                                                     %
-% ---------------------------------------------------------------------------- %
-%                                                                              %
-% PARAMETERS:                                                                  %
-% ---------------------------------------------------------------------------- %
-%                                                                              %
-% DESCRIPTION:                                                                 %
-% ---------------------------------------------------------------------------- %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newcommand\equivalently[1]{[ \textbf{Equivalently:} #1 ]}
 
 
@@ -819,185 +634,171 @@
 \usepackage{thmtools}
 \usepackage[most,many,breakable]{tcolorbox}
 
+\mdfsetup{skipabove=1em,skipbelow=0em}
 \tcbuselibrary{theorems,skins,hooks}
-
-%%%%%%%%%%%%%%%%%%%%%
-%  Create Counters  %
-%%%%%%%%%%%%%%%%%%%%%
-
-\newcounter{lecture}
 
 %%%%%%%%%%%%%%%%%%%
 %  Define Colors  %
 %%%%%%%%%%%%%%%%%%%
 
-\definecolor{main}{HTML}{F035A3}
-\definecolor{example}{HTML}{00A6E4}
-\definecolor{examplebg}{HTML}{CAE4F0}
-\definecolor{solution}{HTML}{00AEEF}
-\definecolor{qedsolution}{HTML}{76B4CF}
-\definecolor{subsubsection}{HTML}{B00D15}
+\makeatletter
+\@ifclasswith\class{nocolor}{
+  \definecolor{main}{HTML}{000000}
+  \definecolor{definition}{HTML}{000000}
+  \definecolor{example}{HTML}{000000}
+  \definecolor{examplebg}{HTML}{ffffff}
+  \definecolor{solution}{HTML}{000000}
+  \definecolor{qedsolution}{HTML}{000000}
+  \definecolor{qedproof}{HTML}{000000}
+  \definecolor{subsubsection}{HTML}{000000}
+
+  \newcommand\colframecolor{black}
+  \newcommand\colbackcolor{white}
+  \newcommand\coluppercolor{black}
+}{
+  \definecolor{main}{HTML}{F035A3}
+  \definecolor{definition}{HTML}{F035A3}
+  \definecolor{example}{HTML}{00A6E4}
+  \definecolor{examplebg}{HTML}{CAE4F0}
+  \definecolor{solution}{HTML}{00AEEF}
+  \definecolor{qedsolution}{HTML}{76B4CF}
+  \definecolor{qedproof}{HTML}{F035A3}
+  \definecolor{subsubsection}{HTML}{B00D15}
+
+  \newcommand\colframecolor{main}
+  \newcommand\colbackcolor{white}
+  \newcommand\coluppercolor{main}
+}
+\makeatother
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %  Create Environments Styles Based on Given Parameter  %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\mdfsetup{skipabove=1em,skipbelow=0em}
+\newcommand\qedsolution{{\color{qedsolution}\rule{4mm}{1.5mm}}}
+\newcommand\qedproof{{\color{qedproof}\rule{4mm}{1.5mm}}}
+\newcommand\boxitem[1]{
+  \tcbox[
+    enhanced,
+    box align=base,
+    nobeforeafter,
+    top=0pt,
+    bottom=0pt,
+    left=0pt,
+    right=0pt,
+    toprule=0.5pt,
+    bottomrule=0.5pt,
+    leftrule=0.5pt,
+    rightrule=0.5pt,
+    fontupper=\scriptsize,
+    sharp corners,
+    colframe=\colframecolor,
+    colback=\colbackcolor,
+    colupper=\coluppercolor,
+  ]{#1}
+}
+\makeatother
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %  Create the Environment Styles  %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\usepackage{color}
-\makeatletter
-\def\zz{\edef\zzz{\pdfliteral{\current@color}}}%pdftex version
-\makeatother
+\declaretheoremstyle[
+  headfont=\sffamily\bfseries\color{definition},
+  headformat=\boxitem{\NUMBER}~\NAME,
+  bodyfont=\normalfont,
+  notebraces={~ },
+  notefont=\bfseries,
+  headpunct=,
+  mdframed={
+    linewidth=0.5pt,
+    linecolor=main,
+  },
+]{thmdefinitionbox}
 
-\makeatletter
-\@ifclasswith\class{nocolor}{
-  % \createnewtheoremstyle{thmdefinitionbox}{}{}
-  % \createnewtheoremstyle{thmexamplebox}{}{}
-  % \createnewtheoremstyle{thmsolutionbox}{}{}
-  % \createnewtheoremstyle{thmtheorembox}{}{}
-}{
-  \declaretheoremstyle[
-    headfont=\sffamily\bfseries\zz\color{example}\colorbox{examplebg}{EXAMPLE \arabic{example}},
-    headformat=\NOTE,
-    notefont=\bfseries,
-    bodyfont=\normalfont,
-    notefont=\zzz\bfseries,
-    notebraces={~ },
-    headpunct=,
-  ]{thmexamplebox}
+\declaretheoremstyle[
+  headfont=\sffamily\bfseries\color{example}\colorbox{examplebg}{EXAMPLE \arabic{example}},
+  headformat=\NOTE,
+  notefont=\bfseries,
+  bodyfont=\normalfont,
+  notefont={\color{black}\bfseries},
+  notebraces={~ },
+  headpunct=,
+]{thmexamplebox}
 
-  \newcommand\qedsolution{{\color{qedsolution}\rule{3mm}{1.5mm}}}
-  \declaretheoremstyle[
-    headfont=\sffamily\zz\color{solution},
-    bodyfont=\normalfont,
-    notefont=\bfseries,
-    headpunct=,
-    postheadspace=\newline,
-    qed=\qedsolution,
-    spaceabove=\topsep,
-    spacebelow=\topsep,
-  ]{thmsolutionbox}
+\declaretheoremstyle[
+  headfont=\sffamily\color{solution},
+  bodyfont=\normalfont,
+  notefont=\bfseries,
+  headpunct=,
+  qed=\qedsolution,
+  spaceabove=\topsep,
+  spacebelow=\topsep,
+]{thmsolutionbox}
 
-  \newcommand\boxitem[1]{
-    \tcbox[
-      enhanced,
-      box align=base,
-      nobeforeafter,
-      colframe=main,
-      top=0pt,
-      bottom=0pt,
-      left=0pt,
-      right=0pt,
-      toprule=0.5pt,
-      bottomrule=0.5pt,
-      leftrule=0.5pt,
-      rightrule=0.5pt,
-      fontupper=\scriptsize,
-      colupper=main,
-      colback=white,
-      sharp corners,
-    ]{#1}
+\declaretheoremstyle[
+  headfont=\sffamily\bfseries\color{main},
+  headformat=\boxitem{\NUMBER}\hspace{-0.1cm}\NOTE,
+  bodyfont=\normalfont,
+  notebraces={~ },
+  notefont=\bfseries,
+  headpunct=,
+  mdframed={
+    linewidth=0.5pt, linecolor=main,
+  },
+]{thmtheorembox}
+
+\declaretheoremstyle[
+  headfont=\sffamily\bfseries\color{main},
+  bodyfont=\normalfont,
+  notebraces={~ },
+  notefont=\bfseries,
+  headpunct=,
+  mdframed={
+    linewidth=0.5pt, linecolor=main,
+    rightline=false, topline=false, bottomline=false,
+  },
+]{thmremarkbox}
+
+\declaretheoremstyle[
+  headfont=\sffamily\color{main},
+  headindent=0mm,
+  bodyfont=\normalfont,
+  notefont=\bfseries,
+  headpunct=,
+  qed=\qedproof,
+]{thmreplacementproofbox}
+
+\declaretheoremstyle[
+  headfont=\sffamily\color{main},
+  headindent=0mm,
+  bodyfont=\normalfont,
+  notefont=\bfseries,
+  notebraces={~ },
+  headpunct=,
+  mdframed={
+    linewidth=0.5pt, linecolor=main,
+    topline=true, bottomline=true, leftline=true, rightline=true,
   }
-
-  \declaretheoremstyle[
-    headfont=\sffamily\bfseries\zz\color{main},
-    headformat=\boxitem{\NUMBER}~\NAME,
-    bodyfont=\normalfont,
-    notebraces={~ },
-    notefont=\bfseries,
-    headpunct=,
-    mdframed={
-      linewidth=0.5pt,
-      linecolor=main,
-    },
-  ]{thmdefinitionbox}
-
-  \declaretheoremstyle[
-    headfont=\sffamily\bfseries\zz\color{main},
-    headformat=\boxitem{\NUMBER}\hspace{-0.1cm}\NOTE,
-    bodyfont=\normalfont,
-    notebraces={~ },
-    notefont=\bfseries,
-    headpunct=,
-    mdframed={
-      linewidth=0.5pt,
-      linecolor=main,
-    },
-  ]{thmtheorembox}
-
-  \declaretheoremstyle[
-    headfont=\sffamily\bfseries\zz\color{main},
-    bodyfont=\normalfont,
-    notebraces={~ },
-    notefont=\bfseries,
-    headpunct=,
-    mdframed={
-      linewidth=0.5pt,
-      rightline=false, leftline=true, topline=false, bottomline=false,
-      linecolor=main,
-    },
-  ]{thmremarkbox}
-
-  \declaretheoremstyle[
-    headfont=\sffamily\bfseries\zz\color{main},
-    bodyfont=\normalfont,
-    notebraces={~ },
-    notefont=\bfseries,
-    headpunct=,
-    mdframed={
-      rightline=false, leftline=false, topline=false, bottomline=false,
-    },
-  ]{thmreplacementproofbox}
-}
-\makeatother
-
-\makeatletter
-\renewcommand\tagform@[1]{%
-  \tikz \draw[color=main] (0,0) rectangle (0.5,0.5)%
-  node[pos=0.5] {{\color{main}\textbf{#1}}};%
-}
-\def\@eqnnum{{\normalfont \normalcolor \theequation}}
-
-\usepackage{titlesec}
-
-\titleformat*{\section}{\sffamily\fontsize{14}{16}\bfseries}
-\titleformat*{\subsection}{\sffamily\fontsize{12}{14}\bfseries}
-\titleformat{\subsubsection}{\color{subsubsection}\sffamily\fontsize{11}{14}\bfseries}{}{0em}{}
-
-\def\@seccntformat#1{\llap{\csname the#1\endcsname\quad}}
-\makeatother
+]{thmpurpleframebox}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %  Create the Environments  %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\declaretheorem[numberwithin=section, style=thmdefinitionbox, name=Definition] {definition}
-\declaretheorem[numberwithin=section, style=thmexamplebox,    name=]           {example}
-\declaretheorem[numbered=no,          style=thmsolutionbox,   name=SOLUTION]   {solution}
-\declaretheorem[numberwithin=section, style=thmtheorembox,    name=Theorem]    {theorem}
-\declaretheorem[numbered=no,          style=thmremarkbox,     name=Remark]     {remark}
-\declaretheorem[numbered=no,          style=thmreplacementproofbox, name=PROOF]      {replacementproof}
+\declaretheorem[numberwithin=section, style=thmdefinitionbox, name=Definition]  {definition}
+\declaretheorem[numberwithin=section, style=thmexamplebox,    name=]            {example}
+\declaretheorem[numbered=no,          style=thmsolutionbox,   name=SOLUTION]    {solution}
+\declaretheorem[numberwithin=section, style=thmtheorembox,    name=Theorem]     {theorem}
+\declaretheorem[numbered=no,          style=thmremarkbox,     name=Remark]      {remark}
+\declaretheorem[numbered=no,          style=thmreplacementproofbox, name=PROOF] {replacementproof}
+\declaretheorem[numbered=no,          style=thmpurpleframebox, name=]           {purpleframe}
 
+\renewenvironment{proof}[1][\proofname]{\begin{replacementproof}}{\end{replacementproof}}
 
 \renewcommand{\thedefinition}{\arabic{definition}}
 \renewcommand{\theexample}{\arabic{example}}
 \renewcommand{\thetheorem}{\arabic{theorem}}
-
-\newtcolorbox[use counter=example]{purpleframe}{%
-  colback=white,
-  colframe=main,
-  sharp corners,
-  toprule=0.5pt,
-  bottomrule=0.5pt,
-  leftrule=0.5pt,
-  rightrule=0.5pt,
-}
-
-\renewenvironment{proof}[1][\proofname]{\vspace{-10pt}\begin{replacementproof}}{\end{replacementproof}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %  Create Plain Environments  %
