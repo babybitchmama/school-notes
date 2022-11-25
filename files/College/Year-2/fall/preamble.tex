@@ -60,10 +60,10 @@
 \renewcommand\arraystretch{1.5}
 
 % Caption setup.
-\usepackage[font=bf]{caption}
-\renewcommand\thetable{\Roman{table}}
-\captionsetup[figure]{font=small}
-\captionsetup{justification=centering}
+% \usepackage[font=bf]{caption}
+% \renewcommand\thetable{\Roman{table}}
+% \captionsetup[figure]{font=small}
+% \captionsetup{justification=centering}
 
 %%%%%%%%%%%%%
 %  Symbols  %
@@ -169,47 +169,35 @@
 \usepackage{pgfplots}
 \pgfplotsset{compat=1.18}
 
+\usepgfplotslibrary{fillbetween}
 \usepgfplotslibrary{patchplots}
 
-\pgfplotsset{pccplot/.style={color=red,mark=none,line width=1pt,<->,solid}}
+\definecolor{linecolor1}{HTML}{3DC6F3}
+\definecolor{linecolor2}{HTML}{F034A3}
+
+\pgfplotsset{pccplot/.style={color=linecolor1,mark=none,line width=1pt,solid}}
 \pgfplotsset{asymptote/.style={color=gray,mark=none,line width=1pt,<->,dashed}}
-\pgfplotsset{soldot/.style={color=red,only marks,mark=*}}
-\pgfplotsset{holdot/.style={color=red,fill=white,only marks,mark=*}}
-\pgfplotsset{blankgraph/.style={xmin=-10,xmax=10,ymin=-10,ymax=10,axis line style= {-, draw opacity=0 },axis lines=box,major tick length=0mm,xtick={-10,-9,...,10},ytick={-10,-9,...,10},grid=major,yticklabels={,,},xticklabels={,,},minor xtick=,minor ytick=,xlabel={},ylabel={},width=0.75\textwidth,grid style={solid,gray!40}}}
+\pgfplotsset{soldot/.style={color=linecolor2,only marks,mark=*}}
+\pgfplotsset{holdot/.style={color=linecolor2,fill=white,only marks,mark=*}}
+\pgfplotsset{integration/.style={name path=curve,color=linecolor1,mark=none,line width=0.5pt,solid}}
 
 \pgfplotscreateplotcyclelist{pccstylelist}{
   pccplot \\
-  color=blue,mark=none,line width=1pt,<->,dashdotted \\
-  color=gray,mark=none,line width=1pt,<->,dashdotdotted \\
 }
 
 \def\axisdefaultwidth{175pt}
 \def\axisdefaultheight{\axisdefaultwidth}
-
-\pgfplotsset{every axis/.append style={
-    axis x line=middle,
-    axis y line=middle,
-    axis line style={<->},
+\pgfplotsset{
+  every axis/.append style={
+    axis x line=middle, x axis line style={name path=xaxis},
+    axis y line=middle, y axis line style={name path=yaxis},
+    ticks=none,
+    axis line style={->},
     xlabel={$x$},
     ylabel={$y$},
-    xmin = -7,xmax = 7,
-    ymin = -7,ymax = 7,
-    yticklabel style={inner sep=0.333ex},
-    minor xtick = {-7,-6,...,7},
-    minor ytick = {-7,-6,...,7},
-    scale only axis,
-    cycle list name=pccstylelist,
-    tick label style={font=\footnotesize},
-    legend cell align=left,
-    grid = minor,
-    grid style = {solid,gray!40},
-    try min ticks=6,
+    samples=1000,
   },
-  framed/.style={axis background/.style = {draw=gray}}
 }
-
-% framing the graphs
-\pgfplotsset{axis background/.style={draw=gray}}
 
 %%%%%%%%%%%%%%%%%%%%%%%
 %  Center Title Page  %
@@ -814,3 +802,47 @@
 \newtheorem*{property}{Property}
 \newtheorem*{intuition}{Intuition}
 \newtheorem*{questionexpl}{Explanation}
+
+
+
+
+
+
+
+
+
+% https://tex.stackexchange.com/a/168978/254196
+\newcounter{source}
+\newcommand\source[1]{%
+  \tikz[remember picture,baseline,inner sep=0pt] {%
+    \node [name=source-\thesource,anchor=base]{$#1$};
+  }%
+  \setcounter{target}{0}
+  \stepcounter{source}
+}
+
+\newcounter{target}
+\newcommand\target[1]{%
+  \tikz[remember picture,baseline,inner sep=0pt] {%
+    \node [name=target-\thetarget,anchor=base]{$#1$};
+  }%
+  \setcounter{source}{0}
+  \stepcounter{target}%
+}
+\newcommand\drawarrows{
+  \tikz[remember picture, overlay, bend left=45, -latex] {
+    \foreach \j [evaluate=\j as \m using int(\j)] in {1,...,\thesource}{
+      \foreach \i [evaluate=\i as \n using int(\i-1)] in {1,...,\thetarget} {
+        \draw [linecolor1](source-0.north) to (target-\n.north) coordinate (UP);
+      }
+    }
+  }
+
+  \tikz[remember picture, overlay, bend left=-45, -latex] {
+    \foreach \j [evaluate=\j as \m using int(\j)] in {1,...,\thesource}{
+      \foreach \i [evaluate=\i as \n using int(\i-1)] in {1,...,\thetarget} {
+        \draw [linecolor2](source-1.south) to (target-\n.south) coordinate (DOWN) ;
+      }
+    }
+  }
+}

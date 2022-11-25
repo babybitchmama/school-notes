@@ -166,3 +166,15 @@
 }{
   \exitProblemHeader{homeworkProblemCounter}
 }
+
+%%%%%%%%%%%%%%%
+%  PGF Plots  %
+%%%%%%%%%%%%%%%
+
+\definecolor{linecolor1}{HTML}{ff0000}
+\definecolor{linecolor2}{HTML}{0000ff}
+\pgfplotsset{pccplot/.style={color=linecolor1,mark=none,line width=1pt,solid}}
+\pgfplotsset{asymptote/.style={color=gray,mark=none,line width=1pt,<->,dashed}}
+\pgfplotsset{soldot/.style={color=linecolor2,only marks,mark=*}}
+\pgfplotsset{holdot/.style={color=linecolor2,fill=white,only marks,mark=*}}
+\pgfplotsset{blankgraph/.style={xmin=-10,xmax=10,ymin=-10,ymax=10,axis line style= {-, draw opacity=0 },axis lines=box,major tick length=0mm,xtick={-10,-9,...,10},ytick={-10,-9,...,10},grid=major,yticklabels={,,},xticklabels={,,},minor xtick=,minor ytick=,xlabel={},ylabel={},width=0.75\textwidth,grid style={solid,gray!40}}}

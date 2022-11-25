@@ -46,6 +46,7 @@ folders:
   - "assignments/my-assignments/pdf-files"
   - "assignments/my-assignments/sympy-scripts"
   - "assignments/my-assignments/yaml-files"
+  - "books"
   - "figures"
   - "lectures"
   - "papers"
