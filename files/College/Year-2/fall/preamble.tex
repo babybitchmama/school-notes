@@ -60,10 +60,10 @@
 \renewcommand\arraystretch{1.5}
 
 % Caption setup.
-% \usepackage[font=bf]{caption}
-% \renewcommand\thetable{\Roman{table}}
-% \captionsetup[figure]{font=small}
-% \captionsetup{justification=centering}
+\usepackage[font=bf]{caption}
+\renewcommand\thetable{\Roman{table}}
+\captionsetup[figure]{font=small}
+\captionsetup{justification=centering}
 
 %%%%%%%%%%%%%
 %  Symbols  %
@@ -191,7 +191,7 @@
   every axis/.append style={
     axis x line=middle, x axis line style={name path=xaxis},
     axis y line=middle, y axis line style={name path=yaxis},
-    ticks=none,
+    % ticks=none,
     axis line style={->},
     xlabel={$x$},
     ylabel={$y$},
