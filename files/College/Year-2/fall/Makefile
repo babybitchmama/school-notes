@@ -17,7 +17,7 @@ compile:
 	pdflatex -synctex=1 $(DOCNAME).tex
 
 clean:
-	rm -rf *.aux *.bcf *.fdb_latexmk *.fls *.log *.out *.toc *.synctex* *.tdo *.loe
+	rm -rf *.aux *.bcf *.fdb_latexmk *.fls *.log *.out *.toc *.synctex* *.tdo *.loe *.snm *.nav
 
 view:
 	make compile
