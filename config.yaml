@@ -7,8 +7,8 @@ terminal_commands: "-e"
 pdf_viewer: "zathura"
 
 notes_dir: "/home/singularis/Documents/school-notes"
-root: "/home/singularis/Documents/school-notes/College/Year-2/fall"
-templates_dir: "/home/singularis/Documents/school-notes/files/College/Year-2/fall"
+root: "/home/singularis/Documents/school-notes/College/Year-1/winter"
+templates_dir: "/home/singularis/Documents/school-notes/files/College/Year-1/winter"
 current_course: "/home/singularis/Documents/school-notes/current-course"
 
 assignments_dir: "/home/singularis/Documents/school-notes/current-course/assignments"

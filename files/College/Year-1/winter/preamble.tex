@@ -1,0 +1,851 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                                              %
+%                              Required Packages                               %
+%                                                                              %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Basic packages.
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+% Gives us multiple colors.
+\usepackage[usenames,dvipsnames,pdftex]{xcolor}
+% Lets us style link colors.
+\usepackage{hyperref}
+% Lets us import images and graphics.
+\usepackage{graphicx}
+% Let's us modify list stuff.
+\usepackage{enumitem}
+% Lets us use figures in floating environments.
+\usepackage{float}
+% Lets us create multiple columns.
+\usepackage{multicol}
+\usepackage{multirow}
+% Gives us better math syntax.
+\usepackage{amsmath,amsfonts,mathtools,amsthm,amssymb}
+% Lets us strike through text.
+\usepackage{cancel}
+% Lets us import pdf directly in our tex code.
+\usepackage{pdfpages}
+% Derivative stuff.
+\usepackage{derivative}
+% Lets us add vectors graphically.
+\usepackage{physics}
+% Table stuff.
+\usepackage{tablists}
+\usepackage{tabularx}
+\usepackage{wasysym}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                                              %
+%                                Basic Settings                                %
+%                                                                              %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%
+% Tasks %
+%%%%%%%%%
+
+\usepackage{tasks}
+\usepackage{extramarks}
+
+\settasks{label=\bfseries\arabic*.),label-width=2em}
+
+%%%%%%%%%%%
+%  Table  %
+%%%%%%%%%%%
+
+\newcolumntype{C}{>{\Centering\arraybackslash}X}
+\setlength{\tabcolsep}{5pt}
+\renewcommand\arraystretch{1.5}
+
+% Caption setup.
+\usepackage[font=bf]{caption}
+\renewcommand\thetable{\Roman{table}}
+\captionsetup[figure]{font=small}
+\captionsetup{justification=centering}
+
+%%%%%%%%%%%%%
+%  Symbols  %
+%%%%%%%%%%%%%
+
+\let\implies\Rightarrow
+\let\impliedby\Leftarrow
+\let\iff\Leftrightarrow
+\let\epsilon\varepsilon
+\let\svlim\lim\def\lim{\svlim\limits}
+\let\svsum\sum\def\sum{\svsum\limits}
+
+%%%%%%%%%%%
+%  Lists  %
+%%%%%%%%%%%
+
+\setlist[itemize,1]{label=--}
+\setlist[itemize,2]{label=\textbullet}
+\setlist[enumerate,1]{label=\protect\circled{\arabic*}}
+
+%%%%%%%%%%%%%%
+%  SI Unitx  %
+%%%%%%%%%%%%%%
+
+\usepackage{siunitx}
+\sisetup{
+  locale = US,
+  per-mode = symbol,
+  propagate-math-font = true,
+  reset-math-version = false,
+  exponent-mode = engineering,
+  round-mode = figures,
+  round-precision = 3,
+  drop-zero-decimal,
+}
+
+% Distance
+\DeclareSIUnit{\millimeter}{mm}
+\DeclareSIUnit{\centimeter}{cm}
+\DeclareSIUnit{\decimeter}{dm}
+\DeclareSIUnit{\inch}{in}
+\DeclareSIUnit{\foot}{ft}
+\DeclareSIUnit{\yard}{yd}
+\DeclareSIUnit{\meter}{m}
+\DeclareSIUnit{\kilometer}{km}
+\DeclareSIUnit{\mile}{mi}
+
+% Time
+\DeclareSIUnit{\millisecond}{ms}
+\DeclareSIUnit{\second}{sec}
+\DeclareSIUnit{\minute}{min}
+\DeclareSIUnit{\hour}{hr}
+\DeclareSIUnit{\day}{d}
+\DeclareSIUnit{\week}{wk}
+\DeclareSIUnit{\month}{mos}
+\DeclareSIUnit{\year}{yr}
+
+% Weight
+\DeclareSIUnit{\milligram}{mg}
+\DeclareSIUnit{\gram}{g}
+\DeclareSIUnit{\ounce}{oz}
+\DeclareSIUnit{\pound}{lb}
+\DeclareSIUnit{\kilogram}{kg}
+\DeclareSIUnit{\ton}{t}
+
+% Liquid
+\DeclareSIUnit{\gallon}{gal}
+\DeclareSIUnit{\liter}{L}
+\DeclareSIUnit{\milliliter}{mL}
+
+%%%%%%%%%%
+%  TikZ  %
+%%%%%%%%%%
+
+\usepackage[framemethod=TikZ]{mdframed}
+\usepackage{tikz}
+\usepackage{tkz-euclide}
+\usepackage{tikz-cd}
+\usepackage{animate}
+\usepackage{bm}
+
+\usetikzlibrary{
+  intersections,
+  angles,
+  quotes,
+  calc,
+  positioning,
+  3d,
+  arrows,
+  arrows.meta,
+  patterns,
+}
+
+\tikzset{>=stealth}
+
+\tikzstyle{vector label} = [midway,fill=white,sloped]
+\tikzstyle{vector}=[->,very thick]
+\tikzstyle{construction} = [->,thin,dashed,draw=green!45!black]
+
+%%%%%%%%%%%%%%%
+%  PGF Plots  %
+%%%%%%%%%%%%%%%
+
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+
+\usepgfplotslibrary{fillbetween}
+\usepgfplotslibrary{patchplots}
+\usepgfplotslibrary{external}
+\tikzexternalenable
+
+\definecolor{linecolor1}{HTML}{3DC6F3}
+\definecolor{linecolor2}{HTML}{F034A3}
+
+\pgfplotsset{pccplot/.style={color=linecolor1,mark=none,line width=1pt,solid}}
+\pgfplotsset{asymptote/.style={color=gray,mark=none,line width=1pt,<->,dashed}}
+\pgfplotsset{soldot/.style={color=linecolor2,only marks,mark=*}}
+\pgfplotsset{holdot/.style={color=linecolor2,fill=white,only marks,mark=*}}
+\pgfplotsset{integration/.style={name path=curve,color=linecolor1,mark=none,line width=0.5pt,solid}}
+
+\pgfplotscreateplotcyclelist{pccstylelist}{
+  pccplot \\
+}
+
+\def\axisdefaultwidth{175pt}
+\def\axisdefaultheight{\axisdefaultwidth}
+\pgfplotsset{
+  every axis/.append style={
+    axis x line=middle, x axis line style={name path=xaxis},
+    axis y line=middle, y axis line style={name path=yaxis},
+    % ticks=none,
+    axis line style={->},
+    xlabel={$x$},
+    ylabel={$y$},
+    samples=1000,
+  },
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%
+%  Center Title Page  %
+%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{titling}
+\renewcommand\maketitlehooka{\null\mbox{}\vfill}
+\renewcommand\maketitlehookd{\vfill\null}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Create a grey background in the middle of the PDF  %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{eso-pic}
+
+\newcommand\definegraybackground{
+  \definecolor{reallylightgray}{HTML}{FAFAFA}
+  \AddToShipoutPicture{
+    \ifthenelse{\isodd{\thepage}}{
+      \AtPageLowerLeft{
+        \put(\LenToUnit{\dimexpr\paperwidth-222pt},0){
+          \color{reallylightgray}\rule{222pt}{297mm}
+        }
+      }
+    }
+    {
+      \AtPageLowerLeft{
+        \color{reallylightgray}\rule{222pt}{297mm}
+      }
+    }
+  }
+}
+
+%%%%%%%%%%%%%%%%%%%
+%  Footnote Line  %
+%%%%%%%%%%%%%%%%%%%
+
+\renewcommand\footnoterule{\hrule\vspace{0.1cm}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%  Modify Links Color  %
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\makeatletter
+\@ifclasswith\class{nocolor}{
+  \hypersetup{
+    colorlinks,
+    linkcolor=black,
+    citecolor=black,
+    urlcolor=black,
+  }
+}{
+  \hypersetup{
+    colorlinks,
+    linkcolor=main,
+    citecolor=black,
+    urlcolor={blue!80!black}
+  }
+}
+\makeatother
+
+%%%%%%%%%%%%%%%%%%
+% Fix WrapFigure %
+%%%%%%%%%%%%%%%%%%
+
+\newcommand{\wrapfill}{\par\ifnum\value{WF@wrappedlines}>0
+    \parskip=0pt
+    \addtocounter{WF@wrappedlines}{-1}%
+    \null\vspace{\arabic{WF@wrappedlines}\baselineskip}%
+    \WFclear
+\fi}
+
+%%%%%%%%%%%%%%%%%
+% Multi Columns %
+%%%%%%%%%%%%%%%%%
+
+\let\multicolmulticols\multicols
+\let\endmulticolmulticols\endmulticols
+
+\RenewDocumentEnvironment{multicols}{mO{}}
+{%
+  \ifnum#1=1
+    #2%
+  \else
+    \multicolmulticols{#1}[#2]
+  \fi
+}
+{%
+  \ifnum#1=1
+\else
+  \endmulticolmulticols
+\fi
+}
+
+\newlength{\thickarrayrulewidth}
+\setlength{\thickarrayrulewidth}{5\arrayrulewidth}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                                              %
+%                           School Specific Commands                           %
+%                                                                              %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%
+%  Helpful Commands  %
+%%%%%%%%%%%%%%%%%%%%%%
+
+\makeatletter
+
+\newcommand\resetcounters{
+  \setcounter{subsection}{0}
+  \setcounter{subsubsection}{0}
+  \setcounter{paragraph}{0}
+  \setcounter{subparagraph}{0}
+}
+
+\def\@lecnum{}
+\newcommand\lec[1]{
+  \ifnum #1<10
+    \def\@lecnum{0#1}
+  \else
+    \def\@lecnum{#1}
+  \fi
+
+  % Set the section counter to the number passed.
+  \setcounter{section}{#1}
+  % Reset all counters.
+  \resetcounters
+  % Include the lecture file if it exists.
+  \IfFileExists{lectures/lec-\@lecnum.tex}{\input{lectures/lec-\@lecnum.tex}}{}
+}
+
+%%%%%%%%%%%%%%%%%%%%%
+%  Lecture Command  %
+%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{ifthen}
+\usepackage{xifthen}
+
+\def\@lecture{}
+\newcommand\lecture[2]{%
+  \ifthenelse{\isempty{#2}}{%
+    \def\@lecture{Lecture \arabic{section}}
+  }{%
+    \def\@lecture{Lecture \arabic{section}: #2}
+  }%
+
+  \if@twocolumn
+    \twocolumn[
+    \hfill\footnotesize{#1}
+    \hrule
+    \vspace*{-0.3cm}
+    \section*{\@lecture}
+    \vspace{0.2cm}
+    ]
+  \else
+    \hfill\sffamily\footnotesize{#1}
+    \hrule
+    \vspace*{-0.3cm}
+    \section*{\@lecture}
+  \fi
+
+  \addcontentsline{toc}{section}{\@lecture}
+}
+
+%%%%%%%%%%%%%%%%%
+% Fancy Headers %
+%%%%%%%%%%%%%%%%%
+
+\usepackage{fancyhdr}
+
+\newcommand\forcenewpage{\clearpage\mbox{~}\clearpage\newpage}
+
+\newcommand\createintro{
+  \@ifclasswith\class{twocolumn}{\onecolumn}{}
+  \pagenumbering{roman}
+
+  % Create title page.
+  \begin{center}
+    {\LARGE\@title} \\
+    {\Large\vspace{0.25cm}\@author} \\
+    {\large\vspace{0.25cm}\@date}
+  \end{center}
+
+  % Check if the intro.tex file exists.
+  % If it does, include it, otherwise, just ignore.
+  \IfFileExists{./intro.tex}{\input{intro.tex}}{}
+
+  % Set the pagestyle to fancy.
+  \pagestyle{fancy}
+  % Remove the header line.
+  \renewcommand\headrulewidth{0pt}
+
+  % Reset fancyhead styles.
+  \fancyhead{}
+  % Add a fancyfoot center style.
+  \fancyfoot[C]{
+    \textit{For more notes like this, visit \href{\linktootherpages}{\shortlinkname}}.
+  }
+
+  % Create a box with more information.
+  \vspace{0.5cm}
+  \begin{tcolorbox}[enhanced,colback=white,center upper,size=fbox, drop shadow southwest,sharp corners]
+    \term: \academicyear, \\
+    Last Update: \today, \\
+    \faculty, \location.
+  \end{tcolorbox}
+
+  % Create a table of contents.
+  \tableofcontents
+
+  \@ifclasswith\class{twocolumn}{%
+    % If user passed twocolumn as a parameter to \documentclass, then set the
+    % rest of the page to two column.
+    \twocolumn%
+  }{%
+    % Otherwise, just create a new page.
+    \newpage%
+  }
+
+  % Change the numbering style back to arabic from roman.
+  \pagenumbering{arabic}
+  % Reset page numbers back to 1.
+  \setcounter{page}{1}
+
+  % Add back the header line.
+  \renewcommand\headrulewidth{0.4pt}
+  % Add the lecture name in the top right.
+  \fancyhead[R]{\@lecture}
+  % Add the author name in the top left.
+  \fancyhead[L]{\@author}
+  % Add the page number in the bottom center.
+  \fancyfoot[C]{\thepage}
+  \@ifclasswith\class{grayfg}{%
+    % If user passed twocolumn as a parameter to \documentclass, then set the
+    % rest of the page to two column.
+    \definegraybackground%
+  }{}
+}
+
+%%%%%%%%%%%%%%%%%%%%
+%  Import Figures  %
+%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{import}
+\pdfminorversion=7
+\newcommand\incfig[2][1]{
+  \def\figlocation{./figures/lec-\@lecnum}
+  \def\svgwidth{#1\columnwidth}
+  \import{\figlocation}{#2.pdf_tex}
+}
+
+\makeatother
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Add vectors using the parallelogram and head to tail method  %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{pdftexcmds}
+\newcommand\parallelogramRule[6]{
+  \begin{tikzpicture}[inner sep=1pt,>=stealth]
+    \draw[<->] (#1)--(#2) node[right]{$x$};
+    \draw[<->] (#3)--(#4) node[above]{$y$};
+
+    \coordinate (O) at (#1);
+    \coordinate (A) at (#5);
+    \coordinate (B) at (#6);
+    \coordinate (A+B) at ($(A)+(B)$);
+
+    \draw[vector,blue] (O)--(A) node[vector label] {$\vec{x}$};
+    \draw[vector,red] (O)--(B) node[vector label] {$\vec{y}$};
+
+    \draw[construction] (A)--(A+B);
+    \draw[construction] (B)--(A+B);
+
+    \draw[vector,purple] (O)--(A+B) node[vector label] {$\vec{x}+\vec{y}$};
+  \end{tikzpicture}
+}
+
+\newcommand\headToTailRule[6]{
+  \begin{tikzpicture}[inner sep=1pt,>=stealth]
+    \draw[<->] (#1)--(#2) node[right]{$x$};
+    \draw[<->] (#3)--(#4) node[above]{$y$};
+
+    \coordinate (O) at (#1);
+    \coordinate (A) at (#5);
+    \coordinate (B) at (#6);
+    \coordinate (A+B) at ($(A)+(B)$);
+
+    \draw[vector,blue] (O)--(A) node[vector label] {$\vec{x}$};
+    \draw[construction] (O)--(B);
+
+    \draw[vector,red] (A)--(A+B) node[vector label] {$\vec{y}$};
+    \draw[construction] (B)--(A+B);
+
+    \draw[vector,purple] (O)--(A+B) node[vector label] {$\vec{x}+\vec{y}$};
+  \end{tikzpicture}
+}
+
+\makeatletter
+
+\newcommand\addVectors[7][parallelogram]{
+  \ifnum\pdf@strcmp{\unexpanded{#1}}{parallelogram}=0 %
+     \expandafter\@firstoftwo
+  \else
+    \expandafter\@secondoftwo
+  \fi
+  {\parallelogramRule{#2}{#3}{#4}{#5}{#6}{#7}}
+  {\headToTailRule{#2}{#3}{#4}{#5}{#6}{#7}}
+}
+
+\makeatother
+
+%%%%%%%%%%%%
+%  Circle  %
+%%%%%%%%%%%%
+
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+  \node[shape=circle,draw,inner sep=1pt] (char) {#1};}
+}
+
+%%%%%%%%%%%%%
+%  Correct  %
+%%%%%%%%%%%%%
+
+\definecolor{correct}{HTML}{009900}
+\newcommand\correct[2]{{\color{red}{#1 }}\ensuremath{\to}{\color{correct}{ #2}}}
+
+%%%%%%%%%%%%%%%
+%  Important  %
+%%%%%%%%%%%%%%%
+
+\newcommand\imp[1]{{\color{main}#1}}
+
+%%%%%%%%%
+%  QED  %
+%%%%%%%%%
+
+\usepackage{stmaryrd}
+\newcommand\contra{\phantom\qedhere\hfill\scalebox{1.1}{$\lightning$}}
+
+%%%%%%%%%%%%%%%%%%%
+%  Todo Commands  %
+%%%%%%%%%%%%%%%%%%%
+
+\usepackage[colorinlistoftodos]{todonotes}
+
+\makeatletter
+
+\@ifclasswith\class{working}{
+  \newcommand\improvement[2][]{\todo[linecolor=Plum,backgroundcolor=Plum!25,bordercolor=Plum,#1]{#2}}
+  \newcommand\unsure[2][]{\todo[linecolor=red,backgroundcolor=red!25,bordercolor=red,#1]{#2}}
+  \newcommand\change[2][]{\todo[linecolor=yellow,backgroundcolor=yellow!25,bordercolor=yellow,#1]{#2}}
+  \newcommand\add[2][]{\todo[linecolor=blue,backgroundcolor=blue!25,bordercolor=blue,#1]{#2}}
+  \newcommand\info[2][]{\todo[linecolor=OliveGreen,backgroundcolor=OliveGreen!25,bordercolor=OliveGreen,#1]{#2}}
+
+  \newcommand\improvementinline[2][]{\todo[inline,linecolor=Plum,backgroundcolor=Plum!25,bordercolor=Plum,#1]{#2}}
+  \newcommand\unsureinline[2][]{\todo[inline,linecolor=red,backgroundcolor=red!25,bordercolor=red,#1]{#2}}
+  \newcommand\changeinline[2][]{\todo[inline,linecolor=yellow,backgroundcolor=yellow!25,bordercolor=yellow,#1]{#2}}
+  \newcommand\addinline[2][]{\todo[inline,linecolor=blue,backgroundcolor=blue!25,bordercolor=blue,#1]{#2}}
+  \newcommand\infoinline[2][]{\todo[inline,linecolor=OliveGreen,backgroundcolor=OliveGreen!25,bordercolor=OliveGreen,#1]{#2}}
+  \newcommand\listnotes{
+    \newpage
+    \listoftodos[Notes]
+  }
+}{
+  \newcommand\improvement[2][]{}
+  \newcommand\unsure[2][]{}
+  \newcommand\change[2][]{}
+  \newcommand\add[2][]{}
+  \newcommand\info[2][]{}
+
+  \newcommand\improvementinline[2][]{}
+  \newcommand\unsureinline[2][]{}
+  \newcommand\changeinline[2][]{}
+  \newcommand\addinline[2][]{}
+  \newcommand\infoinline[2][]{}
+  \newcommand\listnotes{}
+}
+
+\makeatother
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Edit Sections/Subsections/Subsubsections  %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\makeatletter
+\renewcommand\tagform@[1]{%
+  \tikz \draw[color=main] (0,0) rectangle (0.5,0.5)%
+  node[pos=0.5] {{\color{main}\textbf{#1}}};%
+}
+\def\@eqnnum{{\normalfont \normalcolor \theequation}}
+
+\usepackage{titlesec}
+\titleformat*{\section}{\sffamily\fontsize{14}{16}\bfseries}
+\titleformat*{\subsection}{\sffamily\fontsize{12}{14}\bfseries}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Edit equation number display  %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\makeatletter
+\titleformat{\subsubsection}{\color{subsubsection}\sffamily\fontsize{11}{14}\bfseries}{}{0em}{}
+\def\@seccntformat#1{\llap{\csname the#1\endcsname\quad}}
+\makeatother
+
+%%%%%%%%%%%%%%%%%%
+%  Equivalently  %
+%%%%%%%%%%%%%%%%%%
+
+\newcommand\equivalently[1]{[ \textbf{Equivalently:} #1 ]}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                                              %
+%                                 Environments                                 %
+%                                                                              %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{varwidth}
+\usepackage{thmtools}
+\usepackage[most,many,breakable]{tcolorbox}
+
+\mdfsetup{skipabove=1em,skipbelow=0em}
+\tcbuselibrary{theorems,skins,hooks}
+
+%%%%%%%%%%%%%%%%%%%
+%  Define Colors  %
+%%%%%%%%%%%%%%%%%%%
+
+\makeatletter
+\@ifclasswith\class{nocolor}{
+  \definecolor{main}{HTML}{000000}
+  \definecolor{definition}{HTML}{000000}
+  \definecolor{example}{HTML}{000000}
+  \definecolor{examplebg}{HTML}{ffffff}
+  \definecolor{solution}{HTML}{000000}
+  \definecolor{qedsolution}{HTML}{000000}
+  \definecolor{qedproof}{HTML}{000000}
+  \definecolor{subsubsection}{HTML}{000000}
+
+  \newcommand\colframecolor{black}
+  \newcommand\colbackcolor{white}
+  \newcommand\coluppercolor{black}
+}{
+  \definecolor{main}{HTML}{F035A3}
+  \definecolor{definition}{HTML}{F035A3}
+  \definecolor{example}{HTML}{00A6E4}
+  \definecolor{examplebg}{HTML}{CAE4F0}
+  \definecolor{solution}{HTML}{00AEEF}
+  \definecolor{qedsolution}{HTML}{76B4CF}
+  \definecolor{qedproof}{HTML}{F035A3}
+  \definecolor{subsubsection}{HTML}{B00D15}
+
+  \newcommand\colframecolor{main}
+  \newcommand\colbackcolor{white}
+  \newcommand\coluppercolor{main}
+}
+\makeatother
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Create Environments Styles Based on Given Parameter  %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand\qedsolution{{\color{qedsolution}\rule{4mm}{1.5mm}}}
+\newcommand\qedproof{{\color{qedproof}\rule{4mm}{1.5mm}}}
+\newcommand\boxitem[1]{
+  \tcbox[
+    enhanced,
+    box align=base,
+    nobeforeafter,
+    top=0pt,
+    bottom=0pt,
+    left=0pt,
+    right=0pt,
+    toprule=0.5pt,
+    bottomrule=0.5pt,
+    leftrule=0.5pt,
+    rightrule=0.5pt,
+    fontupper=\scriptsize,
+    sharp corners,
+    colframe=\colframecolor,
+    colback=\colbackcolor,
+    colupper=\coluppercolor,
+  ]{#1}
+}
+\makeatother
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Create the Environment Styles  %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\declaretheoremstyle[
+  headfont=\sffamily\bfseries\color{definition},
+  headformat=\boxitem{\NUMBER}~\NAME,
+  bodyfont=\normalfont,
+  notebraces={~ },
+  notefont=\bfseries,
+  headpunct=,
+  mdframed={
+    linewidth=0.5pt,
+    linecolor=main,
+  },
+]{thmdefinitionbox}
+
+\declaretheoremstyle[
+  headfont=\sffamily\bfseries\color{example}\colorbox{examplebg}{EXAMPLE \arabic{example}},
+  headformat=\NOTE,
+  notefont=\bfseries,
+  bodyfont=\normalfont,
+  notefont={\color{black}\bfseries},
+  notebraces={~ },
+  headpunct=,
+]{thmexamplebox}
+
+\declaretheoremstyle[
+  headfont=\sffamily\color{solution},
+  bodyfont=\normalfont,
+  notefont=\bfseries,
+  headpunct=,
+  qed=\qedsolution,
+  spaceabove=\topsep,
+  spacebelow=\topsep,
+]{thmsolutionbox}
+
+\declaretheoremstyle[
+  headfont=\sffamily\bfseries\color{main},
+  headformat=\boxitem{\NUMBER}\hspace{-0.1cm}\NOTE,
+  bodyfont=\normalfont,
+  notebraces={~ },
+  notefont=\bfseries,
+  headpunct=,
+  mdframed={
+    linewidth=0.5pt, linecolor=main,
+  },
+]{thmtheorembox}
+
+\declaretheoremstyle[
+  headfont=\sffamily\bfseries\color{main},
+  bodyfont=\normalfont,
+  notebraces={~ },
+  notefont=\bfseries,
+  headpunct=,
+  mdframed={
+    linewidth=0.5pt, linecolor=main,
+    rightline=false, topline=false, bottomline=false,
+  },
+]{thmremarkbox}
+
+\declaretheoremstyle[
+  headfont=\sffamily\color{main},
+  headindent=0mm,
+  bodyfont=\normalfont,
+  notefont=\bfseries,
+  headpunct=,
+  qed=\qedproof,
+]{thmreplacementproofbox}
+
+\declaretheoremstyle[
+  headfont=\sffamily\color{main},
+  headindent=0mm,
+  bodyfont=\normalfont,
+  notefont=\bfseries,
+  notebraces={~ },
+  headpunct=,
+  mdframed={
+    linewidth=0.5pt, linecolor=main,
+    topline=true, bottomline=true, leftline=true, rightline=true,
+  }
+]{thmpurpleframebox}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Create the Environments  %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\declaretheorem[numberwithin=section, style=thmdefinitionbox, name=Definition]  {definition}
+\declaretheorem[numberwithin=section, style=thmexamplebox,    name=]            {example}
+\declaretheorem[numbered=no,          style=thmsolutionbox,   name=SOLUTION]    {solution}
+\declaretheorem[numberwithin=section, style=thmtheorembox,    name=Theorem]     {theorem}
+\declaretheorem[numbered=no,          style=thmremarkbox,     name=Remark]      {remark}
+\declaretheorem[numbered=no,          style=thmreplacementproofbox, name=PROOF] {replacementproof}
+\declaretheorem[numbered=no,          style=thmpurpleframebox, name=]           {purpleframe}
+
+\renewenvironment{proof}[1][\proofname]{\begin{replacementproof}}{\end{replacementproof}}
+
+\renewcommand{\thedefinition}{\arabic{definition}}
+\renewcommand{\theexample}{\arabic{example}}
+\renewcommand{\thetheorem}{\arabic{theorem}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Create Plain Environments  %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\theoremstyle{definition}
+
+\newtheorem*{note}{Note}
+\newtheorem*{notation}{Notation}
+\newtheorem*{previouslyseen}{As previously seen}
+\newtheorem*{problem}{Problem}
+\newtheorem*{observe}{Observe}
+\newtheorem*{property}{Property}
+\newtheorem*{intuition}{Intuition}
+\newtheorem*{questionexpl}{Explanation}
+
+
+
+
+
+
+
+
+
+% https://tex.stackexchange.com/a/168978/254196
+\newcounter{source}
+\newcommand\source[1]{%
+  \tikz[remember picture,baseline,inner sep=0pt] {%
+    \node [name=source-\thesource,anchor=base]{$#1$};
+  }%
+  \setcounter{target}{0}
+  \stepcounter{source}
+}
+
+\newcounter{target}
+\newcommand\target[1]{%
+  \tikz[remember picture,baseline,inner sep=0pt] {%
+    \node [name=target-\thetarget,anchor=base]{$#1$};
+  }%
+  \setcounter{source}{0}
+  \stepcounter{target}%
+}
+\newcommand\drawarrows{
+  \tikz[remember picture, overlay, bend left=45, -latex] {
+    \foreach \j [evaluate=\j as \m using int(\j)] in {1,...,\thesource}{
+      \foreach \i [evaluate=\i as \n using int(\i-1)] in {1,...,\thetarget} {
+        \draw [linecolor1](source-0.north) to (target-\n.north) coordinate (UP);
+      }
+    }
+  }
+
+  \tikz[remember picture, overlay, bend left=-45, -latex] {
+    \foreach \j [evaluate=\j as \m using int(\j)] in {1,...,\thesource}{
+      \foreach \i [evaluate=\i as \n using int(\i-1)] in {1,...,\thetarget} {
+        \draw [linecolor2](source-1.south) to (target-\n.south) coordinate (DOWN) ;
+      }
+    }
+  }
+}
