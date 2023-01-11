@@ -1,7 +1,0 @@
-# Assignments
-
-# Announcments
-
-# Events
-
-# Todos
