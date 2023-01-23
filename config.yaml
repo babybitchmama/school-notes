@@ -60,5 +60,5 @@ files:
   "assignments/my-assignments/master.tex": "copy"
   "intro.tex": "copy"
   "master.tex": "copy"
-  "notes.norg": "copy"
+  "notes.md": "copy"
   "UltiSnips/tex.snippets": "copy"
