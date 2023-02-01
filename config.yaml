@@ -6,8 +6,8 @@ terminal: "kitty"
 pdf_viewer: "zathura"
 
 notes_dir: "~/Documents/school-notes"
-root: "~/Documents/school-notes/College/Year-1/winter"
-templates_dir: "~/Documents/school-notes/College/Year-1/winter/_files"
+root: "~/Documents/school-notes/College/Year-1/spring"
+templates_dir: "~/Documents/school-notes/College/Year-1/spring/_files"
 current_course: "~/Documents/school-notes/current-course"
 
 assignments_dir: "~/Documents/school-notes/current-course/assignments"
