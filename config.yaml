@@ -7,6 +7,7 @@ pdf_viewer: "zathura"
 
 notes_dir: "~/Documents/school-notes"
 root: "~/Documents/school-notes/College/Year-1/winter"
+
 templates_dir: "~/Documents/school-notes/College/Year-1/winter/_files"
 current_course: "~/Documents/school-notes/current-course"
 
