@@ -39,4 +39,4 @@ College/Year-1/winter/psy-201a/books/from-inquiry-to-understanding.pdf filter=lf
 College/Year-2/spring/mth-253/books/single-variable-calculus.pdf filter=lfs diff=lfs merge=lfs -text
 College/Year-2/spring/mth-253/books/solutions.pdf filter=lfs diff=lfs merge=lfs -text
 College/Year-2/spring/phy-123/books/astronomy-2e.pdf filter=lfs diff=lfs merge=lfs -text
-College/Year-2/spring/psy-202/books/psychology-in-modules.pdf filter=lfs diff=lfs merge=lfs -text
+College/Year-2/spring/psy-202a/books/psychology-in-modules.pdf filter=lfs diff=lfs merge=lfs -text
