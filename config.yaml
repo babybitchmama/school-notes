@@ -5,6 +5,8 @@ editor: "nvim"
 terminal: "kitty"
 pdf_viewer: "zathura"
 
+create_readme_file: true
+
 notes_dir: "~/Documents/school-notes"
 root: "~/Documents/school-notes/College/Year-2/spring"
 templates_dir: "~/Documents/school-notes/College/Year-2/spring/_files"
