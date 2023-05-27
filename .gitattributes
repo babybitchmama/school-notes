@@ -8,7 +8,22 @@
 #  Spring Term  #
 #################
 
-College/Year-1/spring/mth-112/books/algebra_and_trigonometry_2e.pdf filter=lfs diff=lfs merge=lfs -text
+College/Year-1/spring/mth-253/books/single-variable-calculus.pdf filter=lfs diff=lfs merge=lfs -text
+College/Year-1/spring/mth-253/books/solutions/chap-01.pdf filter=lfs diff=lfs merge=lfs -text
+College/Year-1/spring/mth-253/books/solutions/chap-02.pdf filter=lfs diff=lfs merge=lfs -text
+College/Year-1/spring/mth-253/books/solutions/chap-03.pdf filter=lfs diff=lfs merge=lfs -text
+College/Year-1/spring/mth-253/books/solutions/chap-04.pdf filter=lfs diff=lfs merge=lfs -text
+College/Year-1/spring/mth-253/books/solutions/chap-05.pdf filter=lfs diff=lfs merge=lfs -text
+College/Year-1/spring/mth-253/books/solutions/chap-06.pdf filter=lfs diff=lfs merge=lfs -text
+College/Year-1/spring/mth-253/books/solutions/chap-07.pdf filter=lfs diff=lfs merge=lfs -text
+College/Year-1/spring/mth-253/books/solutions/chap-08.pdf filter=lfs diff=lfs merge=lfs -text
+College/Year-1/spring/mth-253/books/solutions/chap-09.pdf filter=lfs diff=lfs merge=lfs -text
+College/Year-1/spring/mth-253/books/solutions/chap-10.pdf filter=lfs diff=lfs merge=lfs -text
+College/Year-1/spring/mth-253/books/solutions/chap-11.pdf filter=lfs diff=lfs merge=lfs -text
+College/Year-1/spring/mth-253/books/solutions/chap-12.pdf filter=lfs diff=lfs merge=lfs -text
+College/Year-1/spring/mth-253/books/solutions/chap-13.pdf filter=lfs diff=lfs merge=lfs -text
+College/Year-1/spring/phy-123/books/astronomy-2e.pdf filter=lfs diff=lfs merge=lfs -text
+College/Year-1/spring/psy-202a/books/psychology-in-modules.pdf filter=lfs diff=lfs merge=lfs -text
 
 ###############
 #  Fall Term  #
@@ -22,21 +37,18 @@ College/Year-1/fall/mth-251/books/solutions.pdf filter=lfs diff=lfs merge=lfs -t
 #################
 
 College/Year-1/winter/mth-252/books/single-variable-calculus.pdf filter=lfs diff=lfs merge=lfs -text
-College/Year-1/winter/mth-252/books/solutions.pdf filter=lfs diff=lfs merge=lfs -text
+College/Year-1/winter/mth-253/books/solutions/chap-01.pdf filter=lfs diff=lfs merge=lfs -text
+College/Year-1/winter/mth-253/books/solutions/chap-02.pdf filter=lfs diff=lfs merge=lfs -text
+College/Year-1/winter/mth-253/books/solutions/chap-03.pdf filter=lfs diff=lfs merge=lfs -text
+College/Year-1/winter/mth-253/books/solutions/chap-04.pdf filter=lfs diff=lfs merge=lfs -text
+College/Year-1/winter/mth-253/books/solutions/chap-05.pdf filter=lfs diff=lfs merge=lfs -text
+College/Year-1/winter/mth-253/books/solutions/chap-06.pdf filter=lfs diff=lfs merge=lfs -text
+College/Year-1/winter/mth-253/books/solutions/chap-07.pdf filter=lfs diff=lfs merge=lfs -text
+College/Year-1/winter/mth-253/books/solutions/chap-08.pdf filter=lfs diff=lfs merge=lfs -text
+College/Year-1/winter/mth-253/books/solutions/chap-09.pdf filter=lfs diff=lfs merge=lfs -text
+College/Year-1/winter/mth-253/books/solutions/chap-10.pdf filter=lfs diff=lfs merge=lfs -text
+College/Year-1/winter/mth-253/books/solutions/chap-11.pdf filter=lfs diff=lfs merge=lfs -text
+College/Year-1/winter/mth-253/books/solutions/chap-12.pdf filter=lfs diff=lfs merge=lfs -text
+College/Year-1/winter/mth-253/books/solutions/chap-13.pdf filter=lfs diff=lfs merge=lfs -text
 College/Year-1/winter/phy-121/books/astronomy-2e.pdf filter=lfs diff=lfs merge=lfs -text
 College/Year-1/winter/psy-201a/books/from-inquiry-to-understanding.pdf filter=lfs diff=lfs merge=lfs -text
-
-#######################################################################
-#                                                                     #
-#                               Year 2                                #
-#                                                                     #
-#######################################################################
-
-#################
-#  Spring Term  #
-#################
-
-College/Year-2/spring/mth-253/books/single-variable-calculus.pdf filter=lfs diff=lfs merge=lfs -text
-College/Year-2/spring/mth-253/books/solutions.pdf filter=lfs diff=lfs merge=lfs -text
-College/Year-2/spring/phy-123/books/astronomy-2e.pdf filter=lfs diff=lfs merge=lfs -text
-College/Year-2/spring/psy-202a/books/psychology-in-modules.pdf filter=lfs diff=lfs merge=lfs -text
