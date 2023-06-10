@@ -9,8 +9,8 @@ pdf_viewer: "zathura"
 create_readme_file: true
 
 notes_dir: "~/Documents/school-notes"
-root: "~/Documents/school-notes/College/Year-1/spring"
-templates_dir: "~/Documents/school-notes/College/Year-1/spring/_files"
+root: "~/Documents/school-notes/College/Year-2/fall"
+templates_dir: "~/Documents/school-notes/College/Year-2/fall/_files"
 current_course: "~/Documents/school-notes/current-course"
 
 assignments_dir: "~/Documents/school-notes/current-course/assignments"
