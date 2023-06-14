@@ -14,6 +14,7 @@
 *.fot
 *.cb
 *.cb2
+*.ptc
 .*.lb
 
 ## Intermediate documents:
