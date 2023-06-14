@@ -13,6 +13,10 @@ root: "~/Documents/school-notes/College/Year-1/spring"
 templates_dir: "~/Documents/school-notes/College/Year-1/spring/_files"
 current_course: "~/Documents/school-notes/current-course"
 
+books_dir: "~/Documents/school-notes/current-course/books"
+
+figures_dir: "~/Documents/school-notes/current-course/figures"
+
 assignments_dir: "~/Documents/school-notes/current-course/assignments"
 graded_assignments_folder: "~/Documents/school-notes/current-course/assignments/graded-assignments"
 my_assignments_folder: "~/Documents/school-notes/current-course/assignments/my-assignments"
