@@ -1,5 +1,5 @@
 calendar_id: "pl1q0jmhbqqavhbtvi8km3m3lc@group.calendar.google.com"
-drive_folder_id: "1xXRQetu6dUznaFHdHV_0pvdoZX7LzOxv"
+drive_folder_id: "1Zk69SPZSoywrG_rq0sRnADIxRx9Gf8iJ"
 
 code_dir: "~/Documents/school-setup"
 editor: "nvim"
@@ -7,6 +7,7 @@ terminal: "kitty"
 pdf_viewer: "zathura"
 
 create_readme_file: true
+highlight_current_course: true
 
 notes_dir: "~/Documents/school-notes"
 root: "~/Documents/school-notes/College/Year-1/spring"
