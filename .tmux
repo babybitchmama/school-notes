@@ -3,31 +3,35 @@
 set -e
 SESSION_NAME="School Notes"
 
-if tmux has-session -t="$SESSION_NAME" 2> /dev/null; then
-  tmux attach -t "$SESSION_NAME"
-  exit
+tmuxAttachCommand=""
+if [ "$TMUX" != "" ]; then
+  tmuxAttachCommand="tmux switch-client -t \"$SESSION_NAME:MTH-253\""
+else
+  tmuxAttachCommand="tmux attach -t \"$SESSION_NAME:MTH-253\""
+fi
+
+if tmux has-session -t "$SESSION_NAME" 2> /dev/null; then
+  eval "$tmuxAttachCommand"
 fi
 
 tmux new-session -d -s "$SESSION_NAME"
 
-tmux rename-session "$SESSION_NAME"
+tmux rename-window -t "$SESSION_NAME" "MTH-253"
+tmux send-keys -t "$SESSION_NAME" "cd ./College/Year-1/spring/mth-253/; clear; lanc" Enter
 
-tmux rename-window "MTH-253"
-tmux send-keys "cd ./College/Year-1/spring/mth-253/; clear; lanc" Enter
+tmux new-window -t "$SESSION_NAME"
 
-tmux new-window
+tmux rename-window -t "$SESSION_NAME" "PHY-123"
+tmux send-keys -t "$SESSION_NAME" "cd ./College/Year-1/spring/phy-123/; clear; lanc" Enter
 
-tmux rename-window "PHY-123"
-tmux send-keys "cd ./College/Year-1/spring/phy-123/; clear; lanc" Enter
+tmux new-window -t "$SESSION_NAME"
 
-tmux new-window
+tmux rename-window -t "$SESSION_NAME" "PSY-202A"
+tmux send-keys -t "$SESSION_NAME" "cd ./College/Year-1/spring/psy-202a/; clear; lanc" Enter
 
-tmux rename-window "PSY-202A"
-tmux send-keys "cd ./College/Year-1/spring/psy-202a/; clear; lanc" Enter
+tmux new-window -t "$SESSION_NAME"
 
-tmux new-window
+tmux rename-window -t "$SESSION_NAME" "Git"
+tmux send-keys -t "$SESSION_NAME" "clear; git status" Enter
 
-tmux rename-window "Git"
-tmux send-keys "clear; git status" Enter
-
-tmux attach -t "$SESSION_NAME:MTH-253"
+eval "$tmuxAttachCommand"
