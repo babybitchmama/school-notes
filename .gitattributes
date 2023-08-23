@@ -64,3 +64,16 @@ College/Year-1/winter/mth-252/books/single-variable-calculus/solutions/chap-12.p
 College/Year-1/winter/mth-252/books/single-variable-calculus/solutions/chap-13.pdf filter=lfs diff=lfs merge=lfs -text
 College/Year-1/winter/phy-121/books/astronomy-2e.pdf filter=lfs diff=lfs merge=lfs -text
 College/Year-1/winter/psy-201a/books/from-inquiry-to-understanding.pdf filter=lfs diff=lfs merge=lfs -text
+
+
+#######################################################################
+#                                                                     #
+#                               Year 2                                #
+#                                                                     #
+#######################################################################
+
+###############
+#  Fall Term  #
+###############
+
+College/Year-2/fall/mth-261/books/linear-algebra-and-its-applications.pdf filter=lfs diff=lfs merge=lfs -text
