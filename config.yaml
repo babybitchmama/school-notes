@@ -14,7 +14,6 @@ templates_dir: "~/Documents/school-notes/College/Year-1/spring/_files"
 current_course: "~/Documents/school-notes/current-course"
 
 books_dir: "~/Documents/school-notes/current-course/books"
-
 figures_dir: "~/Documents/school-notes/current-course/figures"
 
 assignments_dir: "~/Documents/school-notes/current-course/assignments"
@@ -55,7 +54,6 @@ folders:
   - "exam-review"
   - "figures"
   - "papers"
-  - "online-lecture-notes"
   - "sympy-scripts"
   - "UltiSnips"
 
