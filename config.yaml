@@ -30,6 +30,7 @@ my_assignments_pdf_folder: "~/Documents/school-notes/current-course/assignments/
 date_format: "%b %d %Y %a (%H:%M:%S)"
 home: "/home/singularis"
 user: "singularis"
+trash_dir: "~/.local/share/lesson-manager/Year-1/spring"
 
 rofi_options:
   - "-markup-rows"
