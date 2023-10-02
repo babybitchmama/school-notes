@@ -5,9 +5,9 @@ SESSION_NAME="School Notes"
 
 tmuxAttachCommand=""
 if [ "$TMUX" != "" ]; then
-  tmuxAttachCommand="tmux switch-client -t \"$SESSION_NAME:MTH-253\""
+  tmuxAttachCommand="tmux switch-client -t \"$SESSION_NAME:1\""
 else
-  tmuxAttachCommand="tmux attach -t \"$SESSION_NAME:MTH-253\""
+  tmuxAttachCommand="tmux attach -t \"$SESSION_NAME:1\""
 fi
 
 if tmux has-session -t "$SESSION_NAME" 2> /dev/null; then
@@ -16,22 +16,31 @@ fi
 
 tmux new-session -d -s "$SESSION_NAME"
 
-tmux rename-window -t "$SESSION_NAME" "MTH-253"
-tmux send-keys -t "$SESSION_NAME" "cd ./College/Year-1/spring/mth-253/; clear; lanc" Enter
+#######################################################################
+#                                                                     #
+#                               College                               #
+#                                                                     #
+#######################################################################
 
-tmux new-window -t "$SESSION_NAME"
+############
+#  Year 1  #
+############
 
-tmux rename-window -t "$SESSION_NAME" "PHY-123"
-tmux send-keys -t "$SESSION_NAME" "cd ./College/Year-1/spring/phy-123/; clear; lanc" Enter
+# source ./College/Year-1/fall/.tmux
+# source ./College/Year-1/winter/.tmux
+# source ./College/Year-1/spring/.tmux
 
-tmux new-window -t "$SESSION_NAME"
+############
+#  Year 2  #
+############
 
-tmux rename-window -t "$SESSION_NAME" "PSY-202A"
-tmux send-keys -t "$SESSION_NAME" "cd ./College/Year-1/spring/psy-202a/; clear; lanc" Enter
+source ./College/Year-2/fall/.tmux
+# source ./College/Year-2/winter/.tmux
+# source ./College/Year-2/spring/.tmux
 
 tmux new-window -t "$SESSION_NAME"
 
 tmux rename-window -t "$SESSION_NAME" "Git"
-tmux send-keys -t "$SESSION_NAME" "clear; watch git status" Enter
+tmux send-keys -t "$SESSION_NAME" "clear; wgs" Enter
 
 eval "$tmuxAttachCommand"
