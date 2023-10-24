@@ -76,4 +76,6 @@ College/Year-1/winter/psy-201a/books/from-inquiry-to-understanding.pdf filter=lf
 #  Fall Term  #
 ###############
 
+College/Year-2/fall/art-204/books/the-history-of-art-a-global-view-prehistory-to-1500.pdf filter=lfs diff=lfs merge=lfs -text
 College/Year-2/fall/mth-261/books/linear-algebra-and-its-applications.pdf filter=lfs diff=lfs merge=lfs -text
+College/Year-2/fall/psy-213/books/biological-psychology.pdf filter=lfs diff=lfs merge=lfs -text
