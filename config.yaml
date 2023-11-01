@@ -1,3 +1,4 @@
+---
 calendar_id: "pl1q0jmhbqqavhbtvi8km3m3lc@group.calendar.google.com"
 drive_folder_id: "1Zk69SPZSoywrG_rq0sRnADIxRx9Gf8iJ"
 
@@ -16,21 +17,25 @@ current_course: "~/Documents/school-notes/current-course"
 books_dir: "~/Documents/school-notes/current-course/books"
 figures_dir: "~/Documents/school-notes/current-course/figures"
 
-assignments_dir: "~/Documents/school-notes/current-course/assignments"
-graded_assignments_folder: "~/Documents/school-notes/current-course/assignments/graded-assignments"
-my_assignments_folder: "~/Documents/school-notes/current-course/assignments/my-assignments"
-online_assignments_folder: "~/Documents/school-notes/current-course/assignments/online-assignments"
-
-my_assignments_image_folder: "~/Documents/school-notes/current-course/assignments/my-assignments/latex-files"
-my_assignments_bibtex_folder: "~/Documents/school-notes/current-course/assignments/my-assignments/bibtex-files"
-my_assignments_latex_folder: "~/Documents/school-notes/current-course/assignments/my-assignments/latex-files"
-my_assignments_yaml_folder: "~/Documents/school-notes/current-course/assignments/my-assignments/yaml-files"
-my_assignments_pdf_folder: "~/Documents/school-notes/current-course/assignments/my-assignments/pdf-files"
-
 date_format: "%b %d %Y %a (%H:%M:%S)"
 home: "/home/singularis"
 user: "singularis"
 trash_dir: "~/.local/share/lesson-manager/Year-1/spring"
+
+assignments_dir: "~/Documents/school-notes/current-course/assignments"
+my_assignments_folder: "~/Documents/school-notes/current-course/assignments/my-assignments"
+
+my_assignment_folders:
+  image_folder: "latex-files"
+  bibtex_folder: "bibtex-files"
+  latex_folder: "latex-files"
+  yaml_folder: "yaml-files"
+  pdf_folder: "pdf-files"
+
+assignment_folders:
+  - "graded-assignments"
+  - "solution-keys"
+  - "online-assignments"
 
 rofi_options:
   - "-markup-rows"
