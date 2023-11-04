@@ -1,6 +1,6 @@
 ---
 calendar_id: "pl1q0jmhbqqavhbtvi8km3m3lc@group.calendar.google.com"
-drive_folder_id: "1Zk69SPZSoywrG_rq0sRnADIxRx9Gf8iJ"
+drive_folder_id: "1mOsI_86qjgMkMk5vJZiV-FTRg-wIrtco"
 
 editor: "nvim"
 terminal: "kitty"
@@ -34,8 +34,8 @@ my_assignment_folders:
 
 assignment_folders:
   - "graded-assignments"
-  - "solution-keys"
   - "online-assignments"
+  - "solution-keys"
 
 rofi_options:
   - "-markup-rows"
@@ -49,6 +49,7 @@ folders:
   - "assignments"
   - "assignments/graded-assignments"
   - "assignments/online-assignments"
+  - "assignments/soluion-keys"
   - "assignments/my-assignments"
   - "assignments/my-assignments/bibtex-files"
   - "assignments/my-assignments/image-files"
@@ -59,6 +60,7 @@ folders:
   - "books"
   - "exam-review"
   - "figures"
+  - "note-guide"
   - "papers"
   - "sympy-scripts"
   - "UltiSnips"
