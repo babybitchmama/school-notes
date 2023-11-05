@@ -23,19 +23,18 @@ user: "singularis"
 trash_dir: "~/.local/share/lesson-manager/Year-1/spring"
 
 assignments_dir: "~/Documents/school-notes/current-course/assignments"
-my_assignments_folder: "~/Documents/school-notes/current-course/assignments/my-assignments"
 
 my_assignment_folders:
-  image_folder: "latex-files"
-  bibtex_folder: "bibtex-files"
-  latex_folder: "latex-files"
+  root: "my-assignments"
+  bib_folder: "bibtex-files"
+  tex_folder: "latex-files"
   yaml_folder: "yaml-files"
   pdf_folder: "pdf-files"
 
 assignment_folders:
-  - "graded-assignments"
-  - "online-assignments"
-  - "solution-keys"
+  "Graded Assignment": "graded-assignments"
+  "Online Assignment": "online-assignments"
+  "Solution Key": "solution-keys/pdf-files"
 
 rofi_options:
   - "-markup-rows"
@@ -50,6 +49,8 @@ folders:
   - "assignments/graded-assignments"
   - "assignments/online-assignments"
   - "assignments/soluion-keys"
+  - "assignments/soluion-keys/pdf-files"
+  - "assignments/soluion-keys/latex-files"
   - "assignments/my-assignments"
   - "assignments/my-assignments/bibtex-files"
   - "assignments/my-assignments/image-files"
@@ -68,10 +69,13 @@ folders:
 files:
   "assignments/my-assignments/preamble.tex": "symlink"
   "assignments/my-assignments/Makefile": "symlink"
+  "assignments/solution-keys/Makefile": "symlink"
+  "assignments/solution-keys/preamble.tex": "symlink"
   "Makefile": "symlink"
   "preamble.tex": "symlink"
   "UltiSnips/tex.snippets": "symlink"
   "assignments/my-assignments/master.tex": "copy"
+  "assignments/solution-keys/master.tex": "copy"
   "intro.tex": "copy"
   "master.tex": "copy"
   "notes.md": "copy"
