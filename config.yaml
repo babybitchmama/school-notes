@@ -10,8 +10,8 @@ create_readme_file: true
 highlight_current_course: true
 
 notes_dir: "~/Documents/school-notes"
-root: "~/Documents/school-notes/College/Year-1/spring"
-templates_dir: "~/Documents/school-notes/College/Year-1/spring/_files"
+root: "~/Documents/school-notes/College/Year-2/winter"
+templates_dir: "~/Documents/school-notes/College/Year-2/winter/_files"
 current_course: "~/Documents/school-notes/current-course"
 
 books_dir: "~/Documents/school-notes/current-course/books"
@@ -20,21 +20,17 @@ figures_dir: "~/Documents/school-notes/current-course/figures"
 date_format: "%b %d %Y %a (%H:%M:%S)"
 home: "/home/singularis"
 user: "singularis"
-trash_dir: "~/.local/share/lesson-manager/Year-1/spring"
+trash_dir: "~/.local/share/lesson-manager/Year-2/winter"
 
 assignments_dir: "~/Documents/school-notes/current-course/assignments"
-
-my_assignment_folders:
-  root: "my-assignments"
-  bib_folder: "bibtex-files"
-  tex_folder: "latex-files"
-  yaml_folder: "yaml-files"
-  pdf_folder: "pdf-files"
-
 assignment_folders:
-  "Graded Assignment": "graded-assignments"
-  "Online Assignment": "online-assignments"
-  "Solution Key": "solution-keys/pdf-files"
+  bib_folder: "my-assignments/bibtex-files"
+  tex_folder: "my-assignments/latex-files"
+  yaml_folder: "my-assignments/yaml-files"
+  pdf_folder: "my-assignments/pdf-files"
+  graded_assignment: "graded-assignments"
+  online_assignment: "online-assignments"
+  solution_key: "solution-keys/pdf-files"
 
 rofi_options:
   - "-markup-rows"
@@ -48,9 +44,9 @@ folders:
   - "assignments"
   - "assignments/graded-assignments"
   - "assignments/online-assignments"
-  - "assignments/soluion-keys"
-  - "assignments/soluion-keys/pdf-files"
-  - "assignments/soluion-keys/latex-files"
+  - "assignments/solution-keys"
+  - "assignments/solution-keys/pdf-files"
+  - "assignments/solution-keys/latex-files"
   - "assignments/my-assignments"
   - "assignments/my-assignments/bibtex-files"
   - "assignments/my-assignments/image-files"
