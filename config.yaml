@@ -10,8 +10,8 @@ create_readme_file: true
 highlight_current_course: true
 
 notes_dir: "~/Documents/school-notes"
-root: "~/Documents/school-notes/College/Year-2/winter"
-templates_dir: "~/Documents/school-notes/College/Year-2/winter/_files"
+root: "~/Documents/school-notes/College/Year-2/fall"
+templates_dir: "~/Documents/school-notes/College/Year-2/fall/_files"
 current_course: "~/Documents/school-notes/current-course"
 
 books_dir: "~/Documents/school-notes/current-course/books"
@@ -20,7 +20,7 @@ figures_dir: "~/Documents/school-notes/current-course/figures"
 date_format: "%b %d %Y %a (%H:%M:%S)"
 home: "/home/singularis"
 user: "singularis"
-trash_dir: "~/.local/share/lesson-manager/Year-2/winter"
+trash_dir: "~/.local/share/lesson-manager/Year-2/fall"
 
 assignments_dir: "~/Documents/school-notes/current-course/assignments"
 assignment_folders:
