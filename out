@@ -1,0 +1,1532 @@
+.
+├── College
+│   ├── Year-1
+│   │   ├── fall
+│   │   │   ├── _files
+│   │   │   │   ├── assignments
+│   │   │   │   │   └── my-assignments
+│   │   │   │   │       ├── Makefile
+│   │   │   │   │       ├── master.tex
+│   │   │   │   │       └── preamble.tex
+│   │   │   │   ├── intro.tex
+│   │   │   │   ├── Makefile
+│   │   │   │   ├── master.tex
+│   │   │   │   ├── notes.md
+│   │   │   │   ├── preamble.tex
+│   │   │   │   ├── README.md
+│   │   │   │   └── UltiSnips
+│   │   │   │       └── tex.snippets
+│   │   │   ├── mth-251
+│   │   │   │   ├── assignments
+│   │   │   │   │   ├── graded-assignments
+│   │   │   │   │   │   ├── graded-assignment-01.pdf
+│   │   │   │   │   │   ├── graded-assignment-02.pdf
+│   │   │   │   │   │   ├── graded-assignment-03.pdf
+│   │   │   │   │   │   ├── graded-assignment-04.pdf
+│   │   │   │   │   │   ├── graded-assignment-05.pdf
+│   │   │   │   │   │   ├── graded-assignment-06.pdf
+│   │   │   │   │   │   ├── graded-assignment-07.pdf
+│   │   │   │   │   │   ├── graded-assignment-08.pdf
+│   │   │   │   │   │   ├── README.md
+│   │   │   │   │   │   ├── takehome-exam-01.pdf
+│   │   │   │   │   │   └── takehome-exam-02.pdf
+│   │   │   │   │   ├── my-assignments
+│   │   │   │   │   │   ├── bibtex-files
+│   │   │   │   │   │   │   └── README.md
+│   │   │   │   │   │   ├── figures
+│   │   │   │   │   │   │   └── huge-graph.png
+│   │   │   │   │   │   ├── image-files
+│   │   │   │   │   │   │   └── README.md
+│   │   │   │   │   │   ├── latex-files
+│   │   │   │   │   │   │   ├── graded-assignment-01.tex
+│   │   │   │   │   │   │   ├── graded-assignment-02.tex
+│   │   │   │   │   │   │   ├── graded-assignment-03.tex
+│   │   │   │   │   │   │   ├── graded-assignment-04.tex
+│   │   │   │   │   │   │   ├── graded-assignment-05.tex
+│   │   │   │   │   │   │   ├── graded-assignment-06.tex
+│   │   │   │   │   │   │   ├── graded-assignment-07.tex
+│   │   │   │   │   │   │   ├── graded-assignment-08.tex
+│   │   │   │   │   │   │   ├── graded-assignment-09.tex
+│   │   │   │   │   │   │   ├── README.md
+│   │   │   │   │   │   │   ├── takehome-exam-01.tex
+│   │   │   │   │   │   │   └── takehome-exam-02.tex
+│   │   │   │   │   │   ├── Makefile -> /home/singularis/Documents/school-notes/College/Year-1/fall/_files/assignments/my-assignments/Makefile
+│   │   │   │   │   │   ├── master.tex
+│   │   │   │   │   │   ├── pdf-files
+│   │   │   │   │   │   │   ├── graded-assignment-01.pdf
+│   │   │   │   │   │   │   ├── graded-assignment-02.pdf
+│   │   │   │   │   │   │   ├── graded-assignment-03.pdf
+│   │   │   │   │   │   │   ├── graded-assignment-04.pdf
+│   │   │   │   │   │   │   ├── graded-assignment-05.pdf
+│   │   │   │   │   │   │   ├── graded-assignment-06.pdf
+│   │   │   │   │   │   │   ├── graded-assignment-07.pdf
+│   │   │   │   │   │   │   ├── graded-assignment-08.pdf
+│   │   │   │   │   │   │   ├── graded-assignment-09.pdf
+│   │   │   │   │   │   │   ├── README.md
+│   │   │   │   │   │   │   ├── takehome-exam-01.pdf
+│   │   │   │   │   │   │   └── takehome-exam-02.pdf
+│   │   │   │   │   │   ├── preamble.tex -> /home/singularis/Documents/school-notes/College/Year-1/fall/_files/assignments/my-assignments/preamble.tex
+│   │   │   │   │   │   ├── README.md
+│   │   │   │   │   │   ├── sympy-scripts
+│   │   │   │   │   │   │   ├── README.md
+│   │   │   │   │   │   │   └── takehome-exam-02.ipynb
+│   │   │   │   │   │   └── yaml-files
+│   │   │   │   │   │       ├── graded-assignment-01.yaml
+│   │   │   │   │   │       ├── graded-assignment-02.yaml
+│   │   │   │   │   │       ├── graded-assignment-03.yaml
+│   │   │   │   │   │       ├── graded-assignment-04.yaml
+│   │   │   │   │   │       ├── graded-assignment-05.yaml
+│   │   │   │   │   │       ├── graded-assignment-06.yaml
+│   │   │   │   │   │       ├── graded-assignment-07.yaml
+│   │   │   │   │   │       ├── graded-assignment-08.yaml
+│   │   │   │   │   │       ├── graded-assignment-09.yaml
+│   │   │   │   │   │       ├── README.md
+│   │   │   │   │   │       ├── takehome-exam-01.yaml
+│   │   │   │   │   │       └── takehome-exam-02.yaml
+│   │   │   │   │   ├── online-assignments
+│   │   │   │   │   │   ├── graded-assignment-01.pdf
+│   │   │   │   │   │   ├── graded-assignment-02.pdf
+│   │   │   │   │   │   ├── graded-assignment-03.pdf
+│   │   │   │   │   │   ├── graded-assignment-04.pdf
+│   │   │   │   │   │   ├── graded-assignment-05.pdf
+│   │   │   │   │   │   ├── graded-assignment-06.pdf
+│   │   │   │   │   │   ├── graded-assignment-07.pdf
+│   │   │   │   │   │   ├── graded-assignment-08.pdf
+│   │   │   │   │   │   ├── graded-assignment-09.pdf
+│   │   │   │   │   │   ├── README.md
+│   │   │   │   │   │   ├── takehome-exam-01.pdf
+│   │   │   │   │   │   └── takehome-exam-02.pdf
+│   │   │   │   │   └── README.md
+│   │   │   │   ├── books
+│   │   │   │   │   ├── README.md
+│   │   │   │   │   └── single-variable-calculus
+│   │   │   │   │       ├── master.pdf
+│   │   │   │   │       └── solutions
+│   │   │   │   │           ├── chap-01.pdf
+│   │   │   │   │           ├── chap-02.pdf
+│   │   │   │   │           ├── chap-03.pdf
+│   │   │   │   │           ├── chap-04.pdf
+│   │   │   │   │           ├── chap-05.pdf
+│   │   │   │   │           ├── chap-06.pdf
+│   │   │   │   │           ├── chap-07.pdf
+│   │   │   │   │           ├── chap-08.pdf
+│   │   │   │   │           ├── chap-09.pdf
+│   │   │   │   │           ├── chap-10.pdf
+│   │   │   │   │           ├── chap-11.pdf
+│   │   │   │   │           ├── chap-12.pdf
+│   │   │   │   │           └── chap-13.pdf
+│   │   │   │   ├── exam-review
+│   │   │   │   │   ├── answers
+│   │   │   │   │   │   ├── kling-final-exam-key.pdf
+│   │   │   │   │   │   ├── README.md
+│   │   │   │   │   │   ├── simonds-exam-1-key.pdf
+│   │   │   │   │   │   ├── simonds-exam-2-key.pdf
+│   │   │   │   │   │   ├── simonds-exam-3-key.pdf
+│   │   │   │   │   │   └── simonds-final-exam-key.pdf
+│   │   │   │   │   ├── practice
+│   │   │   │   │   │   ├── kling-final-exam.pdf
+│   │   │   │   │   │   ├── README.md
+│   │   │   │   │   │   ├── simonds-exam-1.pdf
+│   │   │   │   │   │   ├── simonds-exam-2.pdf
+│   │   │   │   │   │   ├── simonds-exam-3.pdf
+│   │   │   │   │   │   └── simonds-final-exam.pdf
+│   │   │   │   │   └── README.md
+│   │   │   │   ├── figures
+│   │   │   │   │   └── README.md
+│   │   │   │   ├── info.yaml
+│   │   │   │   ├── intro.tex
+│   │   │   │   ├── lectures
+│   │   │   │   │   ├── lec-01.tex
+│   │   │   │   │   ├── lec-02.tex
+│   │   │   │   │   ├── lec-03.tex
+│   │   │   │   │   ├── lec-04.tex
+│   │   │   │   │   ├── lec-05.tex
+│   │   │   │   │   ├── lec-06.tex
+│   │   │   │   │   ├── lec-07.tex
+│   │   │   │   │   ├── lec-08.tex
+│   │   │   │   │   └── lec-09.tex
+│   │   │   │   ├── Makefile -> /home/singularis/Documents/school-notes/College/Year-1/fall/_files/Makefile
+│   │   │   │   ├── master.tex
+│   │   │   │   ├── notes.md
+│   │   │   │   ├── online-lecture-notes
+│   │   │   │   │   ├── lec-01.pdf
+│   │   │   │   │   ├── lec-02.pdf
+│   │   │   │   │   ├── lec-03.pdf
+│   │   │   │   │   ├── lec-04.pdf
+│   │   │   │   │   ├── lec-05.pdf
+│   │   │   │   │   ├── lec-06.pdf
+│   │   │   │   │   ├── lec-07.pdf
+│   │   │   │   │   ├── lec-08.pdf
+│   │   │   │   │   ├── lec-09.pdf
+│   │   │   │   │   ├── lec-10.pdf
+│   │   │   │   │   └── README.md
+│   │   │   │   ├── papers
+│   │   │   │   │   └── README.md
+│   │   │   │   ├── preamble.tex -> /home/singularis/Documents/school-notes/College/Year-1/fall/_files/preamble.tex
+│   │   │   │   ├── sympy-scripts
+│   │   │   │   │   └── README.md
+│   │   │   │   └── UltiSnips
+│   │   │   │       ├── README.md
+│   │   │   │       └── tex.snippets
+│   │   │   └── README.md
+│   │   ├── spring
+│   │   │   ├── _files
+│   │   │   │   ├── assignments
+│   │   │   │   │   └── my-assignments
+│   │   │   │   │       ├── Makefile
+│   │   │   │   │       ├── master.tex
+│   │   │   │   │       └── preamble.tex
+│   │   │   │   ├── intro.tex
+│   │   │   │   ├── Makefile
+│   │   │   │   ├── master.tex
+│   │   │   │   ├── notes.md
+│   │   │   │   ├── preamble.tex
+│   │   │   │   ├── README.md
+│   │   │   │   └── UltiSnips
+│   │   │   │       └── tex.snippets
+│   │   │   ├── mth-253
+│   │   │   │   ├── assignments
+│   │   │   │   │   ├── graded-assignments
+│   │   │   │   │   │   ├── graded-assignment-01.pdf
+│   │   │   │   │   │   ├── graded-assignment-02.pdf
+│   │   │   │   │   │   ├── graded-assignment-03.pdf
+│   │   │   │   │   │   ├── graded-assignment-04.pdf
+│   │   │   │   │   │   ├── graded-assignment-05.pdf
+│   │   │   │   │   │   ├── graded-assignment-06.pdf
+│   │   │   │   │   │   ├── graded-assignment-07.pdf
+│   │   │   │   │   │   ├── graded-assignment-08.pdf
+│   │   │   │   │   │   ├── README.md
+│   │   │   │   │   │   ├── takehome-exam-01.pdf
+│   │   │   │   │   │   ├── takehome-exam-02.pdf
+│   │   │   │   │   │   └── takehome-final-exam.pdf
+│   │   │   │   │   ├── my-assignments
+│   │   │   │   │   │   ├── bibtex-files
+│   │   │   │   │   │   │   ├── graded-assignment-01.bib
+│   │   │   │   │   │   │   ├── graded-assignment-02.bib
+│   │   │   │   │   │   │   ├── graded-assignment-03.bib
+│   │   │   │   │   │   │   ├── graded-assignment-04.bib
+│   │   │   │   │   │   │   ├── graded-assignment-05.bib
+│   │   │   │   │   │   │   ├── graded-assignment-06.bib
+│   │   │   │   │   │   │   ├── graded-assignment-07.bib
+│   │   │   │   │   │   │   ├── graded-assignment-08.bib
+│   │   │   │   │   │   │   ├── README.md
+│   │   │   │   │   │   │   ├── takehome-exam-01.bib
+│   │   │   │   │   │   │   ├── takehome-exam-02.bib
+│   │   │   │   │   │   │   └── takehome-final-exam.bib
+│   │   │   │   │   │   ├── image-files
+│   │   │   │   │   │   │   └── README.md
+│   │   │   │   │   │   ├── latex-files
+│   │   │   │   │   │   │   ├── graded-assignment-01.tex
+│   │   │   │   │   │   │   ├── graded-assignment-02.tex
+│   │   │   │   │   │   │   ├── graded-assignment-03.tex
+│   │   │   │   │   │   │   ├── graded-assignment-04.tex
+│   │   │   │   │   │   │   ├── graded-assignment-05.tex
+│   │   │   │   │   │   │   ├── graded-assignment-06.tex
+│   │   │   │   │   │   │   ├── graded-assignment-07.tex
+│   │   │   │   │   │   │   ├── graded-assignment-08.tex
+│   │   │   │   │   │   │   ├── README.md
+│   │   │   │   │   │   │   ├── takehome-exam-01.tex
+│   │   │   │   │   │   │   ├── takehome-exam-02.tex
+│   │   │   │   │   │   │   └── takehome-final-exam.tex
+│   │   │   │   │   │   ├── Makefile -> /home/singularis/Documents/school-notes/College/Year-1/spring/_files/assignments/my-assignments/Makefile
+│   │   │   │   │   │   ├── master.pdf
+│   │   │   │   │   │   ├── master.tex
+│   │   │   │   │   │   ├── pdf-files
+│   │   │   │   │   │   │   ├── graded-assignment-01.pdf
+│   │   │   │   │   │   │   ├── graded-assignment-02.pdf
+│   │   │   │   │   │   │   ├── graded-assignment-03.pdf
+│   │   │   │   │   │   │   ├── graded-assignment-04.pdf
+│   │   │   │   │   │   │   ├── graded-assignment-05.pdf
+│   │   │   │   │   │   │   ├── graded-assignment-06.pdf
+│   │   │   │   │   │   │   ├── graded-assignment-07.pdf
+│   │   │   │   │   │   │   ├── graded-assignment-08.pdf
+│   │   │   │   │   │   │   ├── README.md
+│   │   │   │   │   │   │   ├── takehome-exam-01.pdf
+│   │   │   │   │   │   │   ├── takehome-exam-02.pdf
+│   │   │   │   │   │   │   └── takehome-final-exam.pdf
+│   │   │   │   │   │   ├── preamble.tex -> /home/singularis/Documents/school-notes/College/Year-1/spring/_files/assignments/my-assignments/preamble.tex
+│   │   │   │   │   │   ├── README.md
+│   │   │   │   │   │   ├── sympy-scripts
+│   │   │   │   │   │   │   └── README.md
+│   │   │   │   │   │   └── yaml-files
+│   │   │   │   │   │       ├── graded-assignment-01.yaml
+│   │   │   │   │   │       ├── graded-assignment-02.yaml
+│   │   │   │   │   │       ├── graded-assignment-03.yaml
+│   │   │   │   │   │       ├── graded-assignment-04.yaml
+│   │   │   │   │   │       ├── graded-assignment-05.yaml
+│   │   │   │   │   │       ├── graded-assignment-06.yaml
+│   │   │   │   │   │       ├── graded-assignment-07.yaml
+│   │   │   │   │   │       ├── graded-assignment-08.yaml
+│   │   │   │   │   │       ├── README.md
+│   │   │   │   │   │       ├── takehome-exam-01.yaml
+│   │   │   │   │   │       ├── takehome-exam-02.yaml
+│   │   │   │   │   │       └── takehome-final-exam.yaml
+│   │   │   │   │   ├── online-assignments
+│   │   │   │   │   │   ├── graded-assignment-01.pdf
+│   │   │   │   │   │   ├── graded-assignment-02.pdf
+│   │   │   │   │   │   ├── graded-assignment-03.pdf
+│   │   │   │   │   │   ├── graded-assignment-04.pdf
+│   │   │   │   │   │   ├── graded-assignment-05.pdf
+│   │   │   │   │   │   ├── graded-assignment-06.pdf
+│   │   │   │   │   │   ├── graded-assignment-07.pdf
+│   │   │   │   │   │   ├── graded-assignment-08.pdf
+│   │   │   │   │   │   ├── README.md
+│   │   │   │   │   │   ├── takehome-exam-01.pdf
+│   │   │   │   │   │   ├── takehome-exam-02.pdf
+│   │   │   │   │   │   └── takehome-final-exam.pdf
+│   │   │   │   │   └── README.md
+│   │   │   │   ├── books
+│   │   │   │   │   ├── README.md
+│   │   │   │   │   └── single-variable-calculus
+│   │   │   │   │       ├── master.pdf
+│   │   │   │   │       └── solutions
+│   │   │   │   │           ├── chap-01.pdf
+│   │   │   │   │           ├── chap-02.pdf
+│   │   │   │   │           ├── chap-03.pdf
+│   │   │   │   │           ├── chap-04.pdf
+│   │   │   │   │           ├── chap-05.pdf
+│   │   │   │   │           ├── chap-06.pdf
+│   │   │   │   │           ├── chap-07.pdf
+│   │   │   │   │           ├── chap-08.pdf
+│   │   │   │   │           ├── chap-09.pdf
+│   │   │   │   │           ├── chap-10.pdf
+│   │   │   │   │           ├── chap-11.pdf
+│   │   │   │   │           ├── chap-12.pdf
+│   │   │   │   │           └── chap-13.pdf
+│   │   │   │   ├── exam-review
+│   │   │   │   │   ├── answers
+│   │   │   │   │   │   ├── README.md
+│   │   │   │   │   │   └── simonds-final-exam.pdf
+│   │   │   │   │   ├── practice
+│   │   │   │   │   │   ├── README.md
+│   │   │   │   │   │   └── simonds-final-exam.pdf
+│   │   │   │   │   └── README.md
+│   │   │   │   ├── figures
+│   │   │   │   │   ├── lec-01
+│   │   │   │   │   │   ├── accuracy-of-linear-approximation.pdf
+│   │   │   │   │   │   ├── accuracy-of-linear-approximation.pdf_tex
+│   │   │   │   │   │   ├── accuracy-of-linear-approximation.svg
+│   │   │   │   │   │   ├── graphic-display-of-dx-and-dy.pdf
+│   │   │   │   │   │   ├── graphic-display-of-dx-and-dy.pdf_tex
+│   │   │   │   │   │   ├── graphic-display-of-dx-and-dy.svg
+│   │   │   │   │   │   ├── tangent-line-of-x.pdf
+│   │   │   │   │   │   ├── tangent-line-of-x.pdf_tex
+│   │   │   │   │   │   └── tangent-line-of-x.svg
+│   │   │   │   │   ├── lec-03
+│   │   │   │   │   ├── lec-04
+│   │   │   │   │   ├── lec-05
+│   │   │   │   │   ├── lec-06
+│   │   │   │   │   ├── lec-10
+│   │   │   │   │   └── README.md
+│   │   │   │   ├── info.yaml
+│   │   │   │   ├── intro.tex
+│   │   │   │   ├── lectures
+│   │   │   │   │   ├── figures
+│   │   │   │   │   ├── lec-01.tex
+│   │   │   │   │   ├── lec-02.tex
+│   │   │   │   │   ├── lec-03.tex
+│   │   │   │   │   ├── lec-04.tex
+│   │   │   │   │   ├── lec-06.tex
+│   │   │   │   │   ├── lec-07.tex
+│   │   │   │   │   ├── lec-08.tex
+│   │   │   │   │   ├── lec-09.tex
+│   │   │   │   │   ├── lec-10.tex
+│   │   │   │   │   └── README.md
+│   │   │   │   ├── Makefile -> /home/singularis/Documents/school-notes/College/Year-1/spring/_files/Makefile
+│   │   │   │   ├── master.pdf
+│   │   │   │   ├── master.tex
+│   │   │   │   ├── notes.md
+│   │   │   │   ├── online-lecture-notes
+│   │   │   │   │   ├── README.md
+│   │   │   │   │   ├── week-01.pdf
+│   │   │   │   │   ├── week-02.pdf
+│   │   │   │   │   ├── week-03.pdf
+│   │   │   │   │   ├── week-04.pdf
+│   │   │   │   │   ├── week-05.pdf
+│   │   │   │   │   ├── week-06.pdf
+│   │   │   │   │   ├── week-07.pdf
+│   │   │   │   │   ├── week-08.pdf
+│   │   │   │   │   └── week-09.pdf
+│   │   │   │   ├── papers
+│   │   │   │   │   └── README.md
+│   │   │   │   ├── preamble.tex -> /home/singularis/Documents/school-notes/College/Year-1/spring/_files/preamble.tex
+│   │   │   │   ├── README.md
+│   │   │   │   ├── sympy-scripts
+│   │   │   │   │   └── README.md
+│   │   │   │   └── UltiSnips
+│   │   │   │       ├── README.md
+│   │   │   │       └── tex.snippets -> /home/singularis/Documents/school-notes/College/Year-1/spring/_files/UltiSnips/tex.snippets
+│   │   │   ├── phy-123
+│   │   │   │   ├── assignments
+│   │   │   │   │   ├── graded-assignments
+│   │   │   │   │   │   └── README.md
+│   │   │   │   │   ├── my-assignments
+│   │   │   │   │   │   ├── bibtex-files
+│   │   │   │   │   │   │   ├── assignment-01.bib
+│   │   │   │   │   │   │   ├── assignment-02.bib
+│   │   │   │   │   │   │   ├── assignment-03.bib
+│   │   │   │   │   │   │   ├── assignment-04.bib
+│   │   │   │   │   │   │   ├── assignment-05.bib
+│   │   │   │   │   │   │   ├── assignment-06.bib
+│   │   │   │   │   │   │   ├── assignment-07.bib
+│   │   │   │   │   │   │   ├── assignment-08.bib
+│   │   │   │   │   │   │   ├── assignment-09.bib
+│   │   │   │   │   │   │   └── README.md
+│   │   │   │   │   │   ├── image-files
+│   │   │   │   │   │   │   └── README.md
+│   │   │   │   │   │   ├── latex-files
+│   │   │   │   │   │   │   ├── assignment-01.tex
+│   │   │   │   │   │   │   ├── assignment-02.tex
+│   │   │   │   │   │   │   ├── assignment-03.tex
+│   │   │   │   │   │   │   ├── assignment-04.tex
+│   │   │   │   │   │   │   ├── assignment-05.tex
+│   │   │   │   │   │   │   ├── assignment-06.tex
+│   │   │   │   │   │   │   ├── assignment-07.tex
+│   │   │   │   │   │   │   ├── assignment-08.tex
+│   │   │   │   │   │   │   ├── assignment-09.tex
+│   │   │   │   │   │   │   └── README.md
+│   │   │   │   │   │   ├── Makefile -> /home/singularis/Documents/school-notes/College/Year-1/spring/_files/assignments/my-assignments/Makefile
+│   │   │   │   │   │   ├── master.tex
+│   │   │   │   │   │   ├── pdf-files
+│   │   │   │   │   │   │   ├── assignment-01.pdf
+│   │   │   │   │   │   │   ├── assignment-02.pdf
+│   │   │   │   │   │   │   ├── assignment-03.pdf
+│   │   │   │   │   │   │   ├── assignment-04.pdf
+│   │   │   │   │   │   │   ├── assignment-05.pdf
+│   │   │   │   │   │   │   ├── assignment-06.pdf
+│   │   │   │   │   │   │   ├── assignment-07.pdf
+│   │   │   │   │   │   │   ├── assignment-08.pdf
+│   │   │   │   │   │   │   ├── assignment-09.pdf
+│   │   │   │   │   │   │   ├── lab-01.pdf
+│   │   │   │   │   │   │   ├── lab-02.pdf
+│   │   │   │   │   │   │   ├── lab-03.pdf
+│   │   │   │   │   │   │   ├── lab-04.pdf
+│   │   │   │   │   │   │   ├── lab-05.pdf
+│   │   │   │   │   │   │   ├── lab-06.pdf
+│   │   │   │   │   │   │   ├── lab-07.pdf
+│   │   │   │   │   │   │   └── README.md
+│   │   │   │   │   │   ├── preamble.tex -> /home/singularis/Documents/school-notes/College/Year-1/spring/_files/assignments/my-assignments/preamble.tex
+│   │   │   │   │   │   ├── README.md
+│   │   │   │   │   │   ├── sympy-scripts
+│   │   │   │   │   │   │   └── README.md
+│   │   │   │   │   │   └── yaml-files
+│   │   │   │   │   │       ├── assignment-01.yaml
+│   │   │   │   │   │       ├── assignment-02.yaml
+│   │   │   │   │   │       ├── assignment-03.yaml
+│   │   │   │   │   │       ├── assignment-04.yaml
+│   │   │   │   │   │       ├── assignment-05.yaml
+│   │   │   │   │   │       ├── assignment-06.yaml
+│   │   │   │   │   │       ├── assignment-07.yaml
+│   │   │   │   │   │       ├── assignment-08.yaml
+│   │   │   │   │   │       ├── assignment-09.yaml
+│   │   │   │   │   │       ├── lab-01.yaml
+│   │   │   │   │   │       ├── lab-02.yaml
+│   │   │   │   │   │       ├── lab-03.yaml
+│   │   │   │   │   │       ├── lab-04.yaml
+│   │   │   │   │   │       ├── lab-05.yaml
+│   │   │   │   │   │       ├── lab-06.yaml
+│   │   │   │   │   │       ├── lab-07.yaml
+│   │   │   │   │   │       └── README.md
+│   │   │   │   │   ├── online-assignments
+│   │   │   │   │   │   ├── lab-01.pdf
+│   │   │   │   │   │   ├── lab-02.pdf
+│   │   │   │   │   │   ├── lab-03.pdf
+│   │   │   │   │   │   ├── lab-04.pdf
+│   │   │   │   │   │   ├── lab-05.pdf
+│   │   │   │   │   │   ├── lab-06.pdf
+│   │   │   │   │   │   ├── lab-07.pdf
+│   │   │   │   │   │   └── README.md
+│   │   │   │   │   └── README.md
+│   │   │   │   ├── books
+│   │   │   │   │   ├── astronomy-2e.pdf
+│   │   │   │   │   └── README.md
+│   │   │   │   ├── chapters
+│   │   │   │   │   └── README.md
+│   │   │   │   ├── exam-review
+│   │   │   │   │   ├── answers
+│   │   │   │   │   │   └── README.md
+│   │   │   │   │   ├── practice
+│   │   │   │   │   │   └── README.md
+│   │   │   │   │   └── README.md
+│   │   │   │   ├── figures
+│   │   │   │   │   ├── chap-01
+│   │   │   │   │   └── README.md
+│   │   │   │   ├── info.yaml
+│   │   │   │   ├── intro.tex
+│   │   │   │   ├── Makefile -> /home/singularis/Documents/school-notes/College/Year-1/spring/_files/Makefile
+│   │   │   │   ├── master.pdf
+│   │   │   │   ├── master.tex
+│   │   │   │   ├── notes.md
+│   │   │   │   ├── online-chapter-notes
+│   │   │   │   │   └── README.md
+│   │   │   │   ├── papers
+│   │   │   │   │   └── README.md
+│   │   │   │   ├── preamble.tex -> /home/singularis/Documents/school-notes/College/Year-1/spring/_files/preamble.tex
+│   │   │   │   ├── README.md
+│   │   │   │   ├── sympy-scripts
+│   │   │   │   │   └── README.md
+│   │   │   │   └── UltiSnips
+│   │   │   │       ├── README.md
+│   │   │   │       └── tex.snippets -> /home/singularis/Documents/school-notes/College/Year-1/spring/_files/UltiSnips/tex.snippets
+│   │   │   └── psy-202a
+│   │   │       ├── assignments
+│   │   │       │   ├── graded-assignments
+│   │   │       │   │   └── README.md
+│   │   │       │   ├── my-assignments
+│   │   │       │   │   ├── bibtex-files
+│   │   │       │   │   │   ├── journal-assignment-01.bib
+│   │   │       │   │   │   ├── journal-assignment-02.bib
+│   │   │       │   │   │   ├── journal-assignment-03.bib
+│   │   │       │   │   │   ├── journal-assignment-04.bib
+│   │   │       │   │   │   ├── journal-assignment-05.bib
+│   │   │       │   │   │   ├── journal-assignment-06.bib
+│   │   │       │   │   │   ├── README.md
+│   │   │       │   │   │   ├── signature-assignment-01.bib
+│   │   │       │   │   │   ├── signature-assignment-02.bib
+│   │   │       │   │   │   └── signature-assignment-03.bib
+│   │   │       │   │   ├── image-files
+│   │   │       │   │   │   └── README.md
+│   │   │       │   │   ├── latex-files
+│   │   │       │   │   │   ├── journal-assignment-01.tex
+│   │   │       │   │   │   ├── journal-assignment-02.tex
+│   │   │       │   │   │   ├── journal-assignment-03.tex
+│   │   │       │   │   │   ├── journal-assignment-04.tex
+│   │   │       │   │   │   ├── journal-assignment-05.tex
+│   │   │       │   │   │   ├── journal-assignment-06.tex
+│   │   │       │   │   │   ├── journal-assignment-07.tex
+│   │   │       │   │   │   ├── README.md
+│   │   │       │   │   │   ├── signature-assignment-01.tex
+│   │   │       │   │   │   ├── signature-assignment-02.tex
+│   │   │       │   │   │   └── signature-assignment-03.tex
+│   │   │       │   │   ├── Makefile -> /home/singularis/Documents/school-notes/College/Year-1/spring/_files/assignments/my-assignments/Makefile
+│   │   │       │   │   ├── master.tex
+│   │   │       │   │   ├── pdf-files
+│   │   │       │   │   │   ├── journal-assignment-01.pdf
+│   │   │       │   │   │   ├── journal-assignment-02.pdf
+│   │   │       │   │   │   ├── journal-assignment-03.pdf
+│   │   │       │   │   │   ├── journal-assignment-04.pdf
+│   │   │       │   │   │   ├── journal-assignment-05.pdf
+│   │   │       │   │   │   ├── journal-assignment-06.pdf
+│   │   │       │   │   │   ├── journal-assignment-07.pdf
+│   │   │       │   │   │   ├── README.md
+│   │   │       │   │   │   ├── signature-assignment-01.pdf
+│   │   │       │   │   │   ├── signature-assignment-02.pdf
+│   │   │       │   │   │   └── signature-assignment-03.pdf
+│   │   │       │   │   ├── preamble.tex -> /home/singularis/Documents/school-notes/College/Year-1/spring/_files/assignments/my-assignments/preamble.tex
+│   │   │       │   │   ├── README.md
+│   │   │       │   │   ├── sympy-scripts
+│   │   │       │   │   │   └── README.md
+│   │   │       │   │   └── yaml-files
+│   │   │       │   │       ├── journal-assignment-01.yaml
+│   │   │       │   │       ├── journal-assignment-02.yaml
+│   │   │       │   │       ├── journal-assignment-03.yaml
+│   │   │       │   │       ├── journal-assignment-04.yaml
+│   │   │       │   │       ├── journal-assignment-05.yaml
+│   │   │       │   │       ├── journal-assignment-06.yaml
+│   │   │       │   │       ├── journal-assignment-07.yaml
+│   │   │       │   │       ├── README.md
+│   │   │       │   │       ├── signature-assignment-01.yaml
+│   │   │       │   │       ├── signature-assignment-02.yaml
+│   │   │       │   │       └── signature-assignment-03.yaml
+│   │   │       │   ├── online-assignments
+│   │   │       │   │   └── README.md
+│   │   │       │   └── README.md
+│   │   │       ├── books
+│   │   │       │   ├── psychology-in-modules.pdf
+│   │   │       │   └── README.md
+│   │   │       ├── chapters
+│   │   │       │   └── README.md
+│   │   │       ├── exam-review
+│   │   │       │   ├── answers
+│   │   │       │   │   └── README.md
+│   │   │       │   ├── practice
+│   │   │       │   │   └── README.md
+│   │   │       │   └── README.md
+│   │   │       ├── figures
+│   │   │       │   └── README.md
+│   │   │       ├── info.yaml
+│   │   │       ├── intro.tex
+│   │   │       ├── Makefile -> /home/singularis/Documents/school-notes/College/Year-1/spring/_files/Makefile
+│   │   │       ├── master.pdf
+│   │   │       ├── master.tex
+│   │   │       ├── notes.md
+│   │   │       ├── online-chapter-notes
+│   │   │       │   └── README.md
+│   │   │       ├── papers
+│   │   │       │   └── README.md
+│   │   │       ├── preamble.tex -> /home/singularis/Documents/school-notes/College/Year-1/spring/_files/preamble.tex
+│   │   │       ├── README.md
+│   │   │       ├── sympy-scripts
+│   │   │       │   └── README.md
+│   │   │       └── UltiSnips
+│   │   │           ├── README.md
+│   │   │           └── tex.snippets -> /home/singularis/Documents/school-notes/College/Year-1/spring/_files/UltiSnips/tex.snippets
+│   │   └── winter
+│   │       ├── courses.pdf
+│   │       ├── _files
+│   │       │   ├── assignments
+│   │       │   │   └── my-assignments
+│   │       │   │       ├── Makefile
+│   │       │   │       ├── master.tex
+│   │       │   │       └── preamble.tex
+│   │       │   ├── intro.tex
+│   │       │   ├── Makefile
+│   │       │   ├── master.tex
+│   │       │   ├── notes.md
+│   │       │   ├── preamble.tex
+│   │       │   ├── README.md
+│   │       │   └── UltiSnips
+│   │       │       └── tex.snippets
+│   │       ├── mth-252
+│   │       │   ├── assignments
+│   │       │   │   ├── graded-assignments
+│   │       │   │   │   ├── exam-1-takehome.pdf
+│   │       │   │   │   ├── graded-assignment-01.pdf
+│   │       │   │   │   ├── graded-assignment-02.pdf
+│   │       │   │   │   ├── graded-assignment-03.pdf
+│   │       │   │   │   ├── graded-assignment-04.pdf
+│   │       │   │   │   ├── graded-assignment-05.pdf
+│   │       │   │   │   ├── graded-assignment-06.pdf
+│   │       │   │   │   ├── graded-assignment-07.pdf
+│   │       │   │   │   ├── graded-assignment-08.pdf
+│   │       │   │   │   └── README.md
+│   │       │   │   ├── my-assignments
+│   │       │   │   │   ├── bibtex-files
+│   │       │   │   │   │   └── README.md
+│   │       │   │   │   ├── image-files
+│   │       │   │   │   │   └── README.md
+│   │       │   │   │   ├── latex-files
+│   │       │   │   │   │   ├── are-you-ready.tex
+│   │       │   │   │   │   ├── exam-1-takehome.tex
+│   │       │   │   │   │   ├── graded-assignment-01.tex
+│   │       │   │   │   │   ├── graded-assignment-02.tex
+│   │       │   │   │   │   ├── graded-assignment-03.tex
+│   │       │   │   │   │   ├── graded-assignment-04.tex
+│   │       │   │   │   │   ├── graded-assignment-05.tex
+│   │       │   │   │   │   ├── graded-assignment-06.tex
+│   │       │   │   │   │   ├── graded-assignment-07.tex
+│   │       │   │   │   │   ├── graded-assignment-08.tex
+│   │       │   │   │   │   └── README.md
+│   │       │   │   │   ├── Makefile -> /home/singularis/Documents/school-notes/College/Year-1/winter/_files/assignments/my-assignments/Makefile
+│   │       │   │   │   ├── master.tex
+│   │       │   │   │   ├── pdf-files
+│   │       │   │   │   │   ├── are-you-ready.pdf
+│   │       │   │   │   │   ├── exam-1-takehome.pdf
+│   │       │   │   │   │   ├── graded-assignment-01.pdf
+│   │       │   │   │   │   ├── graded-assignment-02.pdf
+│   │       │   │   │   │   ├── graded-assignment-03.pdf
+│   │       │   │   │   │   ├── graded-assignment-04.pdf
+│   │       │   │   │   │   ├── graded-assignment-05.pdf
+│   │       │   │   │   │   ├── graded-assignment-06.pdf
+│   │       │   │   │   │   ├── graded-assignment-07.pdf
+│   │       │   │   │   │   ├── graded-assignment-08.pdf
+│   │       │   │   │   │   └── README.md
+│   │       │   │   │   ├── preamble.tex -> /home/singularis/Documents/school-notes/College/Year-1/winter/_files/assignments/my-assignments/preamble.tex
+│   │       │   │   │   ├── README.md
+│   │       │   │   │   ├── sympy-scripts
+│   │       │   │   │   │   ├── graded-assignment-08.ipynb
+│   │       │   │   │   │   └── README.md
+│   │       │   │   │   └── yaml-files
+│   │       │   │   │       ├── are-you-ready.yaml
+│   │       │   │   │       ├── exam-1-takehome.yaml
+│   │       │   │   │       ├── graded-assignment-01.yaml
+│   │       │   │   │       ├── graded-assignment-02.yaml
+│   │       │   │   │       ├── graded-assignment-03.yaml
+│   │       │   │   │       ├── graded-assignment-04.yaml
+│   │       │   │   │       ├── graded-assignment-05.yaml
+│   │       │   │   │       ├── graded-assignment-06.yaml
+│   │       │   │   │       ├── graded-assignment-07.yaml
+│   │       │   │   │       ├── graded-assignment-08.yaml
+│   │       │   │   │       └── README.md
+│   │       │   │   ├── online-assignments
+│   │       │   │   │   ├── are-you-ready.pdf
+│   │       │   │   │   ├── exam-1-takehome.pdf
+│   │       │   │   │   ├── graded-assignment-01.pdf
+│   │       │   │   │   ├── graded-assignment-02.pdf
+│   │       │   │   │   ├── graded-assignment-03.pdf
+│   │       │   │   │   ├── graded-assignment-04.pdf
+│   │       │   │   │   ├── graded-assignment-05.pdf
+│   │       │   │   │   ├── graded-assignment-06.pdf
+│   │       │   │   │   ├── graded-assignment-07.pdf
+│   │       │   │   │   ├── graded-assignment-08.pdf
+│   │       │   │   │   └── README.md
+│   │       │   │   └── README.md
+│   │       │   ├── books
+│   │       │   │   ├── README.md
+│   │       │   │   └── single-variable-calculus
+│   │       │   │       ├── master.pdf
+│   │       │   │       └── solutions
+│   │       │   │           ├── chap-01.pdf
+│   │       │   │           ├── chap-02.pdf
+│   │       │   │           ├── chap-03.pdf
+│   │       │   │           ├── chap-04.pdf
+│   │       │   │           ├── chap-05.pdf
+│   │       │   │           ├── chap-06.pdf
+│   │       │   │           ├── chap-07.pdf
+│   │       │   │           ├── chap-08.pdf
+│   │       │   │           ├── chap-09.pdf
+│   │       │   │           ├── chap-10.pdf
+│   │       │   │           ├── chap-11.pdf
+│   │       │   │           ├── chap-12.pdf
+│   │       │   │           └── chap-13.pdf
+│   │       │   ├── exam-review
+│   │       │   │   ├── answers
+│   │       │   │   │   ├── README.md
+│   │       │   │   │   └── simonds-final-exam-key.pdf
+│   │       │   │   ├── practice
+│   │       │   │   │   ├── README.md
+│   │       │   │   │   └── simonds-final-exam.pdf
+│   │       │   │   └── README.md
+│   │       │   ├── figures
+│   │       │   │   └── README.md
+│   │       │   ├── info.yaml
+│   │       │   ├── intro.tex
+│   │       │   ├── lectures
+│   │       │   │   ├── lec-01.tex
+│   │       │   │   ├── lec-02.tex
+│   │       │   │   ├── lec-03.tex
+│   │       │   │   ├── lec-04.tex
+│   │       │   │   ├── lec-05.tex
+│   │       │   │   ├── lec-06.tex
+│   │       │   │   └── README.md
+│   │       │   ├── Makefile -> /home/singularis/Documents/school-notes/College/Year-1/winter/_files/Makefile
+│   │       │   ├── master.pdf
+│   │       │   ├── master.tex
+│   │       │   ├── notes.md
+│   │       │   ├── online-lecture-notes
+│   │       │   │   ├── lec-01.pdf
+│   │       │   │   ├── lec-02.pdf
+│   │       │   │   ├── lec-03.pdf
+│   │       │   │   ├── lec-04.pdf
+│   │       │   │   ├── lec-05.pdf
+│   │       │   │   ├── lec-06.pdf
+│   │       │   │   ├── lec-07.pdf
+│   │       │   │   ├── lec-08.pdf
+│   │       │   │   ├── lec-09.pdf
+│   │       │   │   ├── lec-10.pdf
+│   │       │   │   ├── lec-11.pdf
+│   │       │   │   └── README.md
+│   │       │   ├── papers
+│   │       │   │   └── README.md
+│   │       │   ├── preamble.tex -> /home/singularis/Documents/school-notes/College/Year-1/winter/_files/preamble.tex
+│   │       │   ├── sympy-scripts
+│   │       │   │   └── README.md
+│   │       │   └── UltiSnips
+│   │       │       ├── README.md
+│   │       │       └── tex.snippets -> /home/singularis/Documents/school-notes/College/Year-1/winter/_files/UltiSnips/tex.snippets
+│   │       ├── phy-121
+│   │       │   ├── assignments
+│   │       │   │   ├── graded-assignments
+│   │       │   │   │   └── README.md
+│   │       │   │   ├── my-assignments
+│   │       │   │   │   ├── bibtex-files
+│   │       │   │   │   │   ├── assignment-01.bib
+│   │       │   │   │   │   ├── assignment-02.bib
+│   │       │   │   │   │   ├── assignment-03.bib
+│   │       │   │   │   │   ├── assignment-04.bib
+│   │       │   │   │   │   ├── assignment-05.bib
+│   │       │   │   │   │   ├── assignment-06.bib
+│   │       │   │   │   │   ├── assignment-07.bib
+│   │       │   │   │   │   ├── assignment-08.bib
+│   │       │   │   │   │   ├── assignment-09.bib
+│   │       │   │   │   │   ├── assignment-10.bib
+│   │       │   │   │   │   └── README.md
+│   │       │   │   │   ├── image-files
+│   │       │   │   │   │   └── README.md
+│   │       │   │   │   ├── latex-files
+│   │       │   │   │   │   ├── assignment-01.tex
+│   │       │   │   │   │   ├── assignment-02.tex
+│   │       │   │   │   │   ├── assignment-03.tex
+│   │       │   │   │   │   ├── assignment-04.tex
+│   │       │   │   │   │   ├── assignment-05.tex
+│   │       │   │   │   │   ├── assignment-06.tex
+│   │       │   │   │   │   ├── assignment-07.tex
+│   │       │   │   │   │   ├── assignment-08.tex
+│   │       │   │   │   │   ├── assignment-09.tex
+│   │       │   │   │   │   ├── assignment-10.tex
+│   │       │   │   │   │   └── README.md
+│   │       │   │   │   ├── Makefile -> /home/singularis/Documents/school-notes/College/Year-1/winter/_files/assignments/my-assignments/Makefile
+│   │       │   │   │   ├── master.tex
+│   │       │   │   │   ├── pdf-files
+│   │       │   │   │   │   ├── assignment-01.pdf
+│   │       │   │   │   │   ├── assignment-02.pdf
+│   │       │   │   │   │   ├── assignment-03.pdf
+│   │       │   │   │   │   ├── assignment-04.pdf
+│   │       │   │   │   │   ├── assignment-05.pdf
+│   │       │   │   │   │   ├── assignment-06.pdf
+│   │       │   │   │   │   ├── assignment-07.pdf
+│   │       │   │   │   │   ├── assignment-08.pdf
+│   │       │   │   │   │   ├── assignment-09.pdf
+│   │       │   │   │   │   ├── assignment-10.pdf
+│   │       │   │   │   │   ├── lab-01.pdf
+│   │       │   │   │   │   ├── lab-02.pdf
+│   │       │   │   │   │   ├── lab-03.pdf
+│   │       │   │   │   │   ├── lab-04.pdf
+│   │       │   │   │   │   ├── lab-05.pdf
+│   │       │   │   │   │   ├── lab-06.pdf
+│   │       │   │   │   │   ├── lab-07.pdf
+│   │       │   │   │   │   ├── lab-08.pdf
+│   │       │   │   │   │   ├── lab-09.pdf
+│   │       │   │   │   │   ├── lab-10.pdf
+│   │       │   │   │   │   └── README.md
+│   │       │   │   │   ├── preamble.tex -> /home/singularis/Documents/school-notes/College/Year-1/winter/_files/assignments/my-assignments/preamble.tex
+│   │       │   │   │   ├── README.md
+│   │       │   │   │   ├── sympy-scripts
+│   │       │   │   │   │   └── README.md
+│   │       │   │   │   └── yaml-files
+│   │       │   │   │       ├── assignment-01.yaml
+│   │       │   │   │       ├── assignment-02.yaml
+│   │       │   │   │       ├── assignment-03.yaml
+│   │       │   │   │       ├── assignment-04.yaml
+│   │       │   │   │       ├── assignment-05.yaml
+│   │       │   │   │       ├── assignment-06.yaml
+│   │       │   │   │       ├── assignment-07.yaml
+│   │       │   │   │       ├── assignment-08.yaml
+│   │       │   │   │       ├── assignment-09.yaml
+│   │       │   │   │       ├── assignment-10.yaml
+│   │       │   │   │       ├── lab-01.yaml
+│   │       │   │   │       ├── lab-02.yaml
+│   │       │   │   │       ├── lab-03.yaml
+│   │       │   │   │       ├── lab-04.yaml
+│   │       │   │   │       ├── lab-05.yaml
+│   │       │   │   │       ├── lab-06.yaml
+│   │       │   │   │       ├── lab-07.yaml
+│   │       │   │   │       ├── lab-08.yaml
+│   │       │   │   │       ├── lab-09.yaml
+│   │       │   │   │       ├── lab-10.yaml
+│   │       │   │   │       └── README.md
+│   │       │   │   ├── online-assignments
+│   │       │   │   │   ├── lab-01.pdf
+│   │       │   │   │   ├── lab-02.pdf
+│   │       │   │   │   ├── lab-03.pdf
+│   │       │   │   │   ├── lab-04.pdf
+│   │       │   │   │   ├── lab-05.pdf
+│   │       │   │   │   ├── lab-06.pdf
+│   │       │   │   │   ├── lab-07.pdf
+│   │       │   │   │   ├── lab-08.pdf
+│   │       │   │   │   ├── lab-09.pdf
+│   │       │   │   │   ├── lab-10.pdf
+│   │       │   │   │   └── README.md
+│   │       │   │   └── README.md
+│   │       │   ├── books
+│   │       │   │   ├── astronomy-2e.pdf
+│   │       │   │   └── README.md
+│   │       │   ├── chapters
+│   │       │   │   ├── chap-01.tex
+│   │       │   │   └── README.md
+│   │       │   ├── exam-review
+│   │       │   │   ├── answers
+│   │       │   │   │   └── README.md
+│   │       │   │   ├── practice
+│   │       │   │   │   └── README.md
+│   │       │   │   └── README.md
+│   │       │   ├── figures
+│   │       │   │   └── README.md
+│   │       │   ├── info.yaml
+│   │       │   ├── intro.tex
+│   │       │   ├── Makefile -> /home/singularis/Documents/school-notes/College/Year-1/winter/_files/Makefile
+│   │       │   ├── master.tex
+│   │       │   ├── notes.md
+│   │       │   ├── online-chapter-notes
+│   │       │   │   └── README.md
+│   │       │   ├── papers
+│   │       │   │   └── README.md
+│   │       │   ├── preamble.tex -> /home/singularis/Documents/school-notes/College/Year-1/winter/_files/preamble.tex
+│   │       │   ├── sympy-scripts
+│   │       │   │   └── README.md
+│   │       │   └── UltiSnips
+│   │       │       ├── README.md
+│   │       │       └── tex.snippets -> /home/singularis/Documents/school-notes/College/Year-1/winter/_files/UltiSnips/tex.snippets
+│   │       └── psy-201a
+│   │           ├── assignments
+│   │           │   ├── graded-assignments
+│   │           │   │   └── README.md
+│   │           │   ├── my-assignments
+│   │           │   │   ├── bibtex-files
+│   │           │   │   │   ├── README.md
+│   │           │   │   │   ├── signature-assignment-01.bib
+│   │           │   │   │   └── signature-assignment-02.bib
+│   │           │   │   ├── figures
+│   │           │   │   │   └── \bibliography{bib}.svg
+│   │           │   │   ├── image-files
+│   │           │   │   │   └── README.md
+│   │           │   │   ├── latex-files
+│   │           │   │   │   ├── README.md
+│   │           │   │   │   ├── signature-assignment-01.tex
+│   │           │   │   │   └── signature-assignment-02.tex
+│   │           │   │   ├── Makefile -> /home/singularis/Documents/school-notes/College/Year-1/winter/_files/assignments/my-assignments/Makefile
+│   │           │   │   ├── master.tex
+│   │           │   │   ├── pdf-files
+│   │           │   │   │   ├── README.md
+│   │           │   │   │   ├── signature-assignment-01.pdf
+│   │           │   │   │   └── signature-assignment-02.pdf
+│   │           │   │   ├── preamble.tex -> /home/singularis/Documents/school-notes/College/Year-1/winter/_files/assignments/my-assignments/preamble.tex
+│   │           │   │   ├── README.md
+│   │           │   │   ├── sympy-scripts
+│   │           │   │   │   └── README.md
+│   │           │   │   └── yaml-files
+│   │           │   │       ├── README.md
+│   │           │   │       └── signature-assignment-01.yaml
+│   │           │   ├── online-assignments
+│   │           │   │   └── README.md
+│   │           │   └── README.md
+│   │           ├── books
+│   │           │   ├── from-inquiry-to-understanding.pdf
+│   │           │   └── README.md
+│   │           ├── chapters
+│   │           │   ├── chap-01.tex
+│   │           │   ├── chap-02.tex
+│   │           │   ├── chap-03.tex
+│   │           │   └── README.md
+│   │           ├── exam-review
+│   │           │   ├── answers
+│   │           │   │   └── README.md
+│   │           │   ├── practice
+│   │           │   │   └── README.md
+│   │           │   └── README.md
+│   │           ├── figures
+│   │           │   └── README.md
+│   │           ├── info.yaml
+│   │           ├── intro.tex
+│   │           ├── Makefile -> /home/singularis/Documents/school-notes/College/Year-1/winter/_files/Makefile
+│   │           ├── master.tex
+│   │           ├── notes.md
+│   │           ├── online-chapter-notes
+│   │           │   └── README.md
+│   │           ├── papers
+│   │           │   └── README.md
+│   │           ├── preamble.tex -> /home/singularis/Documents/school-notes/College/Year-1/winter/_files/preamble.tex
+│   │           ├── sympy-scripts
+│   │           │   └── README.md
+│   │           └── UltiSnips
+│   │               ├── README.md
+│   │               └── tex.snippets -> /home/singularis/Documents/school-notes/College/Year-1/winter/_files/UltiSnips/tex.snippets
+│   └── Year-2
+│       ├── fall
+│       │   ├── art-204
+│       │   │   ├── assignments
+│       │   │   │   ├── graded-assignments
+│       │   │   │   │   └── README.md
+│       │   │   │   ├── my-assignments
+│       │   │   │   │   ├── bibtex-files
+│       │   │   │   │   │   └── README.md
+│       │   │   │   │   ├── image-files
+│       │   │   │   │   │   └── README.md
+│       │   │   │   │   ├── latex-files
+│       │   │   │   │   │   └── README.md
+│       │   │   │   │   ├── Makefile -> /home/singularis/Documents/school-notes/College/Year-2/fall/_files/assignments/my-assignments/Makefile
+│       │   │   │   │   ├── master.tex
+│       │   │   │   │   ├── pdf-files
+│       │   │   │   │   │   └── README.md
+│       │   │   │   │   ├── preamble.tex -> /home/singularis/Documents/school-notes/College/Year-2/fall/_files/assignments/my-assignments/preamble.tex
+│       │   │   │   │   ├── README.md
+│       │   │   │   │   ├── sympy-scripts
+│       │   │   │   │   │   └── README.md
+│       │   │   │   │   └── yaml-files
+│       │   │   │   │       └── README.md
+│       │   │   │   ├── online-assignments
+│       │   │   │   │   └── README.md
+│       │   │   │   ├── README.md
+│       │   │   │   └── solution-keys
+│       │   │   │       └── pdf-files
+│       │   │   ├── books
+│       │   │   │   ├── README.md
+│       │   │   │   └── the-history-of-art-a-global-view-prehistory-to-1500.pdf
+│       │   │   ├── chapters
+│       │   │   ├── exam-review
+│       │   │   │   ├── answers
+│       │   │   │   ├── practice
+│       │   │   │   └── README.md
+│       │   │   ├── figures
+│       │   │   │   └── README.md
+│       │   │   ├── info.yaml
+│       │   │   ├── intro.tex
+│       │   │   ├── Makefile -> /home/singularis/Documents/school-notes/College/Year-2/fall/_files/Makefile
+│       │   │   ├── master.tex
+│       │   │   ├── notes.md
+│       │   │   ├── online-chapter-notes
+│       │   │   ├── online-lecture-notes
+│       │   │   │   └── README.md
+│       │   │   ├── papers
+│       │   │   │   └── README.md
+│       │   │   ├── preamble.tex -> /home/singularis/Documents/school-notes/College/Year-2/fall/_files/preamble.tex
+│       │   │   ├── sympy-scripts
+│       │   │   │   └── README.md
+│       │   │   └── UltiSnips
+│       │   │       ├── README.md
+│       │   │       └── tex.snippets -> /home/singularis/Documents/school-notes/College/Year-2/fall/_files/UltiSnips/tex.snippets
+│       │   ├── comm-111
+│       │   │   ├── assignments
+│       │   │   │   ├── graded-assignments
+│       │   │   │   │   └── README.md
+│       │   │   │   ├── my-assignments
+│       │   │   │   │   ├── bibtex-files
+│       │   │   │   │   │   ├── assessing-the-credibility-of-sources.bib
+│       │   │   │   │   │   ├── audience-analysis-survey.bib
+│       │   │   │   │   │   ├── critique-intro-and-conclusion.bib
+│       │   │   │   │   │   ├── informative-speech-outline.bib
+│       │   │   │   │   │   ├── inspiration-speech-outline.bib
+│       │   │   │   │   │   ├── listening-for-a-speakers-signposts.bib
+│       │   │   │   │   │   └── README.md
+│       │   │   │   │   ├── image-files
+│       │   │   │   │   │   └── README.md
+│       │   │   │   │   ├── latex-files
+│       │   │   │   │   │   ├── assessing-the-credibility-of-sources.tex
+│       │   │   │   │   │   ├── audience-analysis-survey.tex
+│       │   │   │   │   │   ├── critique-intro-and-conclusion.tex
+│       │   │   │   │   │   ├── informative-speech-outline.tex
+│       │   │   │   │   │   ├── inspiration-speech-outline.tex
+│       │   │   │   │   │   ├── listening-for-a-speakers-signposts.tex
+│       │   │   │   │   │   └── README.md
+│       │   │   │   │   ├── Makefile -> /home/singularis/Documents/school-notes/College/Year-2/fall/_files/assignments/my-assignments/Makefile
+│       │   │   │   │   ├── master.tex
+│       │   │   │   │   ├── pdf-files
+│       │   │   │   │   │   ├── assessing-the-credibility-of-sources.pdf
+│       │   │   │   │   │   ├── audience-analysis-survey.pdf
+│       │   │   │   │   │   ├── critique-intro-and-conclusion.pdf
+│       │   │   │   │   │   ├── informative-speech-outline.pdf
+│       │   │   │   │   │   ├── inspiration-speech-outline.pdf
+│       │   │   │   │   │   ├── listening-for-a-speakers-signposts.pdf
+│       │   │   │   │   │   └── README.md
+│       │   │   │   │   ├── preamble.tex -> /home/singularis/Documents/school-notes/College/Year-2/fall/_files/assignments/my-assignments/preamble.tex
+│       │   │   │   │   ├── README.md
+│       │   │   │   │   ├── sympy-scripts
+│       │   │   │   │   │   └── README.md
+│       │   │   │   │   └── yaml-files
+│       │   │   │   │       ├── assessing-the-credibility-of-sources.yaml
+│       │   │   │   │       ├── audience-analysis-survey.yaml
+│       │   │   │   │       ├── critique-intro-and-conclusion.yaml
+│       │   │   │   │       ├── listening-for-a-speakers-signposts.yaml
+│       │   │   │   │       └── README.md
+│       │   │   │   ├── online-assignments
+│       │   │   │   │   └── README.md
+│       │   │   │   ├── README.md
+│       │   │   │   └── solution-keys
+│       │   │   │       └── pdf-files
+│       │   │   ├── books
+│       │   │   │   └── README.md
+│       │   │   ├── chapters
+│       │   │   ├── exam-review
+│       │   │   │   ├── answers
+│       │   │   │   ├── practice
+│       │   │   │   └── README.md
+│       │   │   ├── figures
+│       │   │   │   └── README.md
+│       │   │   ├── info.yaml
+│       │   │   ├── intro.tex
+│       │   │   ├── Makefile -> /home/singularis/Documents/school-notes/College/Year-2/fall/_files/Makefile
+│       │   │   ├── master.tex
+│       │   │   ├── notes.md
+│       │   │   ├── online-chapter-notes
+│       │   │   ├── online-lecture-notes
+│       │   │   │   └── README.md
+│       │   │   ├── papers
+│       │   │   │   └── README.md
+│       │   │   ├── preamble.tex -> /home/singularis/Documents/school-notes/College/Year-2/fall/_files/preamble.tex
+│       │   │   ├── sympy-scripts
+│       │   │   │   └── README.md
+│       │   │   └── UltiSnips
+│       │   │       ├── README.md
+│       │   │       └── tex.snippets -> /home/singularis/Documents/school-notes/College/Year-2/fall/_files/UltiSnips/tex.snippets
+│       │   ├── _files
+│       │   │   ├── assignments
+│       │   │   │   ├── my-assignments
+│       │   │   │   │   ├── Makefile
+│       │   │   │   │   ├── master.tex
+│       │   │   │   │   └── preamble.tex
+│       │   │   │   └── solution-keys
+│       │   │   │       ├── Makefile
+│       │   │   │       ├── master.tex
+│       │   │   │       └── preamble.tex
+│       │   │   ├── exams
+│       │   │   │   └── solution-keys
+│       │   │   │       ├── Makefile
+│       │   │   │       ├── master.tex
+│       │   │   │       └── preamble.tex
+│       │   │   ├── intro.tex
+│       │   │   ├── Makefile
+│       │   │   ├── master.tex
+│       │   │   ├── notes.md
+│       │   │   ├── preamble.tex
+│       │   │   ├── README.md
+│       │   │   └── UltiSnips
+│       │   │       └── tex.snippets
+│       │   ├── mth-261
+│       │   │   ├── assignments
+│       │   │   │   ├── graded-assignments
+│       │   │   │   │   ├── README.md
+│       │   │   │   │   ├── written-homework-02.pdf
+│       │   │   │   │   └── written-homework-03.pdf
+│       │   │   │   ├── my-assignments
+│       │   │   │   │   ├── bibtex-files
+│       │   │   │   │   │   ├── formal-lab-01.bib
+│       │   │   │   │   │   ├── README.md
+│       │   │   │   │   │   ├── written-homework-01.bib
+│       │   │   │   │   │   ├── written-homework-02.bib
+│       │   │   │   │   │   ├── written-homework-03.bib
+│       │   │   │   │   │   ├── written-homework-04.bib
+│       │   │   │   │   │   └── written-homework-05.bib
+│       │   │   │   │   ├── image-files
+│       │   │   │   │   │   └── README.md
+│       │   │   │   │   ├── latex-files
+│       │   │   │   │   │   ├── formal-lab-01.tex
+│       │   │   │   │   │   ├── README.md
+│       │   │   │   │   │   ├── written-homework-01.tex
+│       │   │   │   │   │   ├── written-homework-02.tex
+│       │   │   │   │   │   ├── written-homework-03.tex
+│       │   │   │   │   │   ├── written-homework-04.tex
+│       │   │   │   │   │   └── written-homework-05.tex
+│       │   │   │   │   ├── Makefile -> /home/singularis/Documents/school-notes/College/Year-2/fall/_files/assignments/my-assignments/Makefile
+│       │   │   │   │   ├── master.tex
+│       │   │   │   │   ├── pdf-files
+│       │   │   │   │   │   ├── formal-lab-01.pdf
+│       │   │   │   │   │   ├── README.md
+│       │   │   │   │   │   ├── written-homework-01.pdf
+│       │   │   │   │   │   ├── written-homework-02.pdf
+│       │   │   │   │   │   ├── written-homework-03.pdf
+│       │   │   │   │   │   ├── written-homework-04.pdf
+│       │   │   │   │   │   └── written-homework-05.pdf
+│       │   │   │   │   ├── preamble.tex -> /home/singularis/Documents/school-notes/College/Year-2/fall/_files/assignments/my-assignments/preamble.tex
+│       │   │   │   │   ├── README.md
+│       │   │   │   │   ├── sympy-scripts
+│       │   │   │   │   │   └── README.md
+│       │   │   │   │   └── yaml-files
+│       │   │   │   │       ├── formal-lab-01.yaml
+│       │   │   │   │       ├── formal-lab-02.yaml
+│       │   │   │   │       ├── README.md
+│       │   │   │   │       ├── written-homework-01.yaml
+│       │   │   │   │       ├── written-homework-02.yaml
+│       │   │   │   │       ├── written-homework-03.yaml
+│       │   │   │   │       ├── written-homework-04.yaml
+│       │   │   │   │       └── written-homework-05.yaml
+│       │   │   │   ├── online-assignments
+│       │   │   │   │   ├── formal-lab-01.pdf
+│       │   │   │   │   ├── formal-lab-02.pdf
+│       │   │   │   │   ├── README.md
+│       │   │   │   │   ├── written-homework-01.pdf
+│       │   │   │   │   ├── written-homework-02.pdf
+│       │   │   │   │   ├── written-homework-03.pdf
+│       │   │   │   │   ├── written-homework-04.pdf
+│       │   │   │   │   └── written-homework-05.pdf
+│       │   │   │   ├── README.md
+│       │   │   │   └── solution-keys
+│       │   │   │       ├── 01.pdf
+│       │   │   │       ├── latex-files
+│       │   │   │       ├── Makefile -> /home/singularis/Documents/school-notes/College/Year-2/fall/_files/assignments/my-assignments/Makefile
+│       │   │   │       ├── master.tex
+│       │   │   │       ├── pdf-files
+│       │   │   │       └── preamble.tex -> /home/singularis/Documents/school-notes/College/Year-2/fall/_files/assignments/my-assignments/preamble.tex
+│       │   │   ├── books
+│       │   │   │   ├── linear-algebra-and-its-applications.pdf
+│       │   │   │   └── README.md
+│       │   │   ├── exam-review
+│       │   │   ├── exams
+│       │   │   │   ├── info.yaml
+│       │   │   │   ├── README.md
+│       │   │   │   ├── review
+│       │   │   │   │   ├── answers
+│       │   │   │   │   │   └── README.md
+│       │   │   │   │   ├── practice
+│       │   │   │   │   │   └── README.md
+│       │   │   │   │   └── README.md
+│       │   │   │   └── solution-keys
+│       │   │   │       ├── latex-files
+│       │   │   │       │   └── README.md
+│       │   │   │       ├── pdf-files
+│       │   │   │       │   └── README.md
+│       │   │   │       └── README.md
+│       │   │   ├── figures
+│       │   │   │   ├── lec-04
+│       │   │   │   │   ├── vector-span.pdf
+│       │   │   │   │   ├── vector-span.pdf_tex
+│       │   │   │   │   └── vector-span.svg
+│       │   │   │   └── README.md
+│       │   │   ├── info.yaml
+│       │   │   ├── intro.tex
+│       │   │   ├── lectures
+│       │   │   │   ├── lec-01.tex
+│       │   │   │   ├── lec-02.tex
+│       │   │   │   ├── lec-03.tex
+│       │   │   │   ├── lec-04.tex
+│       │   │   │   ├── lec-05.tex
+│       │   │   │   ├── lec-06.tex
+│       │   │   │   ├── lec-07.tex
+│       │   │   │   ├── lec-08.tex
+│       │   │   │   ├── lec-09.tex
+│       │   │   │   ├── lec-10.tex
+│       │   │   │   ├── lec-11.tex
+│       │   │   │   ├── lec-12.tex
+│       │   │   │   ├── lec-13.tex
+│       │   │   │   └── lec-14.tex
+│       │   │   ├── Makefile -> /home/singularis/Documents/school-notes/College/Year-2/fall/_files/Makefile
+│       │   │   ├── master.aux
+│       │   │   ├── master.pdf
+│       │   │   ├── master.tex
+│       │   │   ├── note-guide
+│       │   │   │   ├── exam-01.tex
+│       │   │   │   ├── exam-02.tex
+│       │   │   │   ├── Makefile -> /home/singularis/Documents/school-notes/College/Year-2/fall/_files/Makefile
+│       │   │   │   ├── master.aux
+│       │   │   │   ├── master.pdf
+│       │   │   │   └── master.tex
+│       │   │   ├── notes.md
+│       │   │   ├── online-lecture-notes
+│       │   │   │   ├── lec-01-annotated.pdf
+│       │   │   │   ├── lec-01-blank.pdf
+│       │   │   │   ├── lec-02-annotated.pdf
+│       │   │   │   ├── lec-02-blank.pdf
+│       │   │   │   ├── lec-03-annotated.pdf
+│       │   │   │   ├── lec-03-blank.pdf
+│       │   │   │   ├── lec-04-annotated.pdf
+│       │   │   │   ├── lec-04-blank.pdf
+│       │   │   │   ├── lec-05-annotated.pdf
+│       │   │   │   ├── lec-05-blank.pdf
+│       │   │   │   ├── lec-06-annotated.pdf
+│       │   │   │   ├── lec-06-blank.pdf
+│       │   │   │   ├── lec-07-annotated.pdf
+│       │   │   │   ├── lec-07-blank.pdf
+│       │   │   │   ├── lec-08-annotated.pdf
+│       │   │   │   ├── lec-08-blank.pdf
+│       │   │   │   ├── lec-09-annotated.pdf
+│       │   │   │   ├── lec-09-blank.pdf
+│       │   │   │   ├── lec-10-annotated.pdf
+│       │   │   │   ├── lec-10-blank.pdf
+│       │   │   │   ├── lec-11-annotated.pdf
+│       │   │   │   ├── lec-11-blank.pdf
+│       │   │   │   ├── lec-12-annotated.pdf
+│       │   │   │   ├── lec-12-blank.pdf
+│       │   │   │   ├── lec-13-annotated.pdf
+│       │   │   │   ├── lec-13-blank.pdf
+│       │   │   │   ├── lec-14-blank.pdf
+│       │   │   │   ├── lec-15-blank.pdf
+│       │   │   │   ├── lec-16-blank.pdf
+│       │   │   │   ├── lec-17-blank.pdf
+│       │   │   │   └── README.md
+│       │   │   ├── papers
+│       │   │   │   └── README.md
+│       │   │   ├── preamble.tex -> /home/singularis/Documents/school-notes/College/Year-2/fall/_files/preamble.tex
+│       │   │   ├── sympy-scripts
+│       │   │   │   └── README.md
+│       │   │   └── UltiSnips
+│       │   │       ├── README.md
+│       │   │       └── tex.snippets -> /home/singularis/Documents/school-notes/College/Year-2/fall/_files/UltiSnips/tex.snippets
+│       │   ├── psy-213
+│       │   │   ├── assignments
+│       │   │   │   ├── graded-assignments
+│       │   │   │   │   └── README.md
+│       │   │   │   ├── my-assignments
+│       │   │   │   │   ├── bibtex-files
+│       │   │   │   │   │   └── README.md
+│       │   │   │   │   ├── image-files
+│       │   │   │   │   │   ├── module-01
+│       │   │   │   │   │   │   ├── amygdala.png
+│       │   │   │   │   │   │   ├── cerebellum.png
+│       │   │   │   │   │   │   ├── hypothalamus.png
+│       │   │   │   │   │   │   ├── medulla.png
+│       │   │   │   │   │   │   ├── nucleus-accumbens.png
+│       │   │   │   │   │   │   ├── thalamus.png
+│       │   │   │   │   │   │   └── the-pons.png
+│       │   │   │   │   │   └── README.md
+│       │   │   │   │   ├── latex-files
+│       │   │   │   │   │   └── README.md
+│       │   │   │   │   ├── Makefile -> /home/singularis/Documents/school-notes/College/Year-2/fall/_files/assignments/my-assignments/Makefile
+│       │   │   │   │   ├── master.tex
+│       │   │   │   │   ├── pdf-files
+│       │   │   │   │   │   └── README.md
+│       │   │   │   │   ├── preamble.tex -> /home/singularis/Documents/school-notes/College/Year-2/fall/_files/assignments/my-assignments/preamble.tex
+│       │   │   │   │   ├── README.md
+│       │   │   │   │   ├── sympy-scripts
+│       │   │   │   │   │   └── README.md
+│       │   │   │   │   └── yaml-files
+│       │   │   │   │       └── README.md
+│       │   │   │   ├── online-assignments
+│       │   │   │   │   └── README.md
+│       │   │   │   ├── README.md
+│       │   │   │   └── solution-keys
+│       │   │   │       └── pdf-files
+│       │   │   ├── books
+│       │   │   │   ├── biological-psychology.pdf
+│       │   │   │   ├── h.tex
+│       │   │   │   └── README.md
+│       │   │   ├── book.txt
+│       │   │   ├── chapters
+│       │   │   ├── exam-review
+│       │   │   │   ├── answers
+│       │   │   │   ├── practice
+│       │   │   │   └── README.md
+│       │   │   ├── figures
+│       │   │   │   └── README.md
+│       │   │   ├── info.yaml
+│       │   │   ├── intro.tex
+│       │   │   ├── Makefile -> /home/singularis/Documents/school-notes/College/Year-2/fall/_files/Makefile
+│       │   │   ├── master.tex
+│       │   │   ├── notes.md
+│       │   │   ├── online-chapter-notes
+│       │   │   │   └── week-07.pdf
+│       │   │   ├── online-lecture-notes
+│       │   │   │   └── README.md
+│       │   │   ├── papers
+│       │   │   │   └── README.md
+│       │   │   ├── preamble.tex -> /home/singularis/Documents/school-notes/College/Year-2/fall/_files/preamble.tex
+│       │   │   ├── sympy-scripts
+│       │   │   │   └── README.md
+│       │   │   ├── text
+│       │   │   └── UltiSnips
+│       │   │       ├── README.md
+│       │   │       └── tex.snippets -> /home/singularis/Documents/school-notes/College/Year-2/fall/_files/UltiSnips/tex.snippets
+│       │   └── README.md
+│       ├── spring
+│       │   ├── mth-243
+│       │   │   └── info.yaml
+│       │   ├── mth-255
+│       │   │   └── info.yaml
+│       │   ├── mth-256
+│       │   │   └── info.yaml
+│       │   └── README.md
+│       └── winter
+│           ├── art-101
+│           │   ├── assignments
+│           │   │   ├── graded-assignments
+│           │   │   │   └── README.md
+│           │   │   ├── my-assignments
+│           │   │   │   ├── bibtex-files
+│           │   │   │   │   └── README.md
+│           │   │   │   ├── image-files
+│           │   │   │   │   └── README.md
+│           │   │   │   ├── latex-files
+│           │   │   │   │   └── README.md
+│           │   │   │   ├── Makefile -> /home/singularis/Documents/school-notes/College/Year-2/winter/_files/assignments/my-assignments/Makefile
+│           │   │   │   ├── master.tex
+│           │   │   │   ├── pdf-files
+│           │   │   │   │   └── README.md
+│           │   │   │   ├── preamble.tex -> /home/singularis/Documents/school-notes/College/Year-2/winter/_files/assignments/my-assignments/preamble.tex
+│           │   │   │   ├── README.md
+│           │   │   │   ├── sympy-scripts
+│           │   │   │   │   └── README.md
+│           │   │   │   └── yaml-files
+│           │   │   │       └── README.md
+│           │   │   ├── online-assignments
+│           │   │   │   └── README.md
+│           │   │   ├── README.md
+│           │   │   └── solution-keys
+│           │   │       ├── latex-files
+│           │   │       │   └── README.md
+│           │   │       ├── Makefile -> /home/singularis/Documents/school-notes/College/Year-2/winter/_files/assignments/solution-keys/Makefile
+│           │   │       ├── master.tex
+│           │   │       ├── pdf-files
+│           │   │       │   └── README.md
+│           │   │       ├── preamble.tex -> /home/singularis/Documents/school-notes/College/Year-2/winter/_files/assignments/solution-keys/preamble.tex
+│           │   │       └── README.md
+│           │   ├── books
+│           │   │   └── README.md
+│           │   ├── chapters
+│           │   ├── exams
+│           │   │   ├── README.md
+│           │   │   ├── review
+│           │   │   │   ├── answers
+│           │   │   │   │   └── README.md
+│           │   │   │   ├── practice
+│           │   │   │   │   └── README.md
+│           │   │   │   └── README.md
+│           │   │   └── solution-keys
+│           │   │       ├── latex-files
+│           │   │       │   └── README.md
+│           │   │       ├── Makefile -> /home/singularis/Documents/school-notes/College/Year-2/winter/_files/exams/solution-keys/Makefile
+│           │   │       ├── master.tex
+│           │   │       ├── pdf-files
+│           │   │       │   └── README.md
+│           │   │       ├── preamble.tex -> /home/singularis/Documents/school-notes/College/Year-2/winter/_files/exams/solution-keys/preamble.tex
+│           │   │       └── README.md
+│           │   ├── figures
+│           │   │   └── README.md
+│           │   ├── info.yaml
+│           │   ├── intro.tex
+│           │   ├── Makefile -> /home/singularis/Documents/school-notes/College/Year-2/winter/_files/Makefile
+│           │   ├── master.tex
+│           │   ├── note-guide
+│           │   │   └── README.md
+│           │   ├── notes.md
+│           │   ├── papers
+│           │   │   └── README.md
+│           │   ├── preamble.tex -> /home/singularis/Documents/school-notes/College/Year-2/winter/_files/preamble.tex
+│           │   ├── sympy-scripts
+│           │   │   └── README.md
+│           │   └── UltiSnips
+│           │       ├── README.md
+│           │       └── tex.snippets -> /home/singularis/Documents/school-notes/College/Year-2/winter/_files/UltiSnips/tex.snippets
+│           ├── _files
+│           │   ├── assignments
+│           │   │   ├── my-assignments
+│           │   │   │   ├── Makefile
+│           │   │   │   ├── master.tex
+│           │   │   │   └── preamble.tex
+│           │   │   └── solution-keys
+│           │   │       ├── Makefile
+│           │   │       ├── master.tex
+│           │   │       └── preamble.tex
+│           │   ├── exams
+│           │   │   └── solution-keys
+│           │   │       ├── Makefile
+│           │   │       ├── master.tex
+│           │   │       └── preamble.tex
+│           │   ├── intro.tex
+│           │   ├── Makefile
+│           │   ├── master.tex
+│           │   ├── notes.md
+│           │   ├── preamble.tex
+│           │   ├── README.md
+│           │   └── UltiSnips
+│           │       └── tex.snippets
+│           ├── he-242
+│           │   ├── assignments
+│           │   │   ├── graded-assignments
+│           │   │   │   └── README.md
+│           │   │   ├── my-assignments
+│           │   │   │   ├── bibtex-files
+│           │   │   │   │   └── README.md
+│           │   │   │   ├── image-files
+│           │   │   │   │   └── README.md
+│           │   │   │   ├── latex-files
+│           │   │   │   │   └── README.md
+│           │   │   │   ├── Makefile -> /home/singularis/Documents/school-notes/College/Year-2/winter/_files/assignments/my-assignments/Makefile
+│           │   │   │   ├── master.tex
+│           │   │   │   ├── pdf-files
+│           │   │   │   │   └── README.md
+│           │   │   │   ├── preamble.tex -> /home/singularis/Documents/school-notes/College/Year-2/winter/_files/assignments/my-assignments/preamble.tex
+│           │   │   │   ├── README.md
+│           │   │   │   ├── sympy-scripts
+│           │   │   │   │   └── README.md
+│           │   │   │   └── yaml-files
+│           │   │   │       └── README.md
+│           │   │   ├── online-assignments
+│           │   │   │   └── README.md
+│           │   │   ├── README.md
+│           │   │   └── solution-keys
+│           │   │       ├── latex-files
+│           │   │       │   └── README.md
+│           │   │       ├── Makefile -> /home/singularis/Documents/school-notes/College/Year-2/winter/_files/assignments/solution-keys/Makefile
+│           │   │       ├── master.tex
+│           │   │       ├── pdf-files
+│           │   │       │   └── README.md
+│           │   │       ├── preamble.tex -> /home/singularis/Documents/school-notes/College/Year-2/winter/_files/assignments/solution-keys/preamble.tex
+│           │   │       └── README.md
+│           │   ├── books
+│           │   │   └── README.md
+│           │   ├── chapters
+│           │   ├── exams
+│           │   │   ├── README.md
+│           │   │   ├── review
+│           │   │   │   ├── answers
+│           │   │   │   │   └── README.md
+│           │   │   │   ├── practice
+│           │   │   │   │   └── README.md
+│           │   │   │   └── README.md
+│           │   │   └── solution-keys
+│           │   │       ├── latex-files
+│           │   │       │   └── README.md
+│           │   │       ├── Makefile -> /home/singularis/Documents/school-notes/College/Year-2/winter/_files/exams/solution-keys/Makefile
+│           │   │       ├── master.tex
+│           │   │       ├── pdf-files
+│           │   │       │   └── README.md
+│           │   │       ├── preamble.tex -> /home/singularis/Documents/school-notes/College/Year-2/winter/_files/exams/solution-keys/preamble.tex
+│           │   │       └── README.md
+│           │   ├── figures
+│           │   │   └── README.md
+│           │   ├── info.yaml
+│           │   ├── intro.tex
+│           │   ├── Makefile -> /home/singularis/Documents/school-notes/College/Year-2/winter/_files/Makefile
+│           │   ├── master.tex
+│           │   ├── note-guide
+│           │   │   └── README.md
+│           │   ├── notes.md
+│           │   ├── papers
+│           │   │   └── README.md
+│           │   ├── preamble.tex -> /home/singularis/Documents/school-notes/College/Year-2/winter/_files/preamble.tex
+│           │   ├── sympy-scripts
+│           │   │   └── README.md
+│           │   └── UltiSnips
+│           │       ├── README.md
+│           │       └── tex.snippets -> /home/singularis/Documents/school-notes/College/Year-2/winter/_files/UltiSnips/tex.snippets
+│           ├── mth-254
+│           │   ├── assignments
+│           │   │   ├── graded-assignments
+│           │   │   │   └── README.md
+│           │   │   ├── my-assignments
+│           │   │   │   ├── bibtex-files
+│           │   │   │   │   └── README.md
+│           │   │   │   ├── image-files
+│           │   │   │   │   └── README.md
+│           │   │   │   ├── latex-files
+│           │   │   │   │   └── README.md
+│           │   │   │   ├── Makefile -> /home/singularis/Documents/school-notes/College/Year-2/winter/_files/assignments/my-assignments/Makefile
+│           │   │   │   ├── master.tex
+│           │   │   │   ├── pdf-files
+│           │   │   │   │   └── README.md
+│           │   │   │   ├── preamble.tex -> /home/singularis/Documents/school-notes/College/Year-2/winter/_files/assignments/my-assignments/preamble.tex
+│           │   │   │   ├── README.md
+│           │   │   │   ├── sympy-scripts
+│           │   │   │   │   └── README.md
+│           │   │   │   └── yaml-files
+│           │   │   │       └── README.md
+│           │   │   ├── online-assignments
+│           │   │   │   └── README.md
+│           │   │   ├── README.md
+│           │   │   └── solution-keys
+│           │   │       ├── latex-files
+│           │   │       │   └── README.md
+│           │   │       ├── Makefile -> /home/singularis/Documents/school-notes/College/Year-2/winter/_files/assignments/solution-keys/Makefile
+│           │   │       ├── master.tex
+│           │   │       ├── pdf-files
+│           │   │       │   └── README.md
+│           │   │       ├── preamble.tex -> /home/singularis/Documents/school-notes/College/Year-2/winter/_files/assignments/solution-keys/preamble.tex
+│           │   │       └── README.md
+│           │   ├── books
+│           │   │   └── README.md
+│           │   ├── chapters
+│           │   ├── exams
+│           │   │   ├── info.yaml
+│           │   │   ├── README.md
+│           │   │   ├── review
+│           │   │   │   ├── answers
+│           │   │   │   │   └── README.md
+│           │   │   │   ├── practice
+│           │   │   │   │   └── README.md
+│           │   │   │   └── README.md
+│           │   │   └── solution-keys
+│           │   │       ├── latex-files
+│           │   │       │   └── README.md
+│           │   │       ├── Makefile -> /home/singularis/Documents/school-notes/College/Year-2/winter/_files/exams/solution-keys/Makefile
+│           │   │       ├── master.tex
+│           │   │       ├── pdf-files
+│           │   │       │   └── README.md
+│           │   │       ├── preamble.tex -> /home/singularis/Documents/school-notes/College/Year-2/winter/_files/exams/solution-keys/preamble.tex
+│           │   │       └── README.md
+│           │   ├── figures
+│           │   │   └── README.md
+│           │   ├── info.yaml
+│           │   ├── intro.tex
+│           │   ├── Makefile -> /home/singularis/Documents/school-notes/College/Year-2/winter/_files/Makefile
+│           │   ├── master.tex
+│           │   ├── note-guide
+│           │   │   └── README.md
+│           │   ├── notes.md
+│           │   ├── papers
+│           │   │   └── README.md
+│           │   ├── preamble.tex -> /home/singularis/Documents/school-notes/College/Year-2/winter/_files/preamble.tex
+│           │   ├── sympy-scripts
+│           │   │   └── README.md
+│           │   └── UltiSnips
+│           │       ├── README.md
+│           │       └── tex.snippets -> /home/singularis/Documents/school-notes/College/Year-2/winter/_files/UltiSnips/tex.snippets
+│           └── README.md
+├── config.yaml
+├── Courses
+│   ├── Makefile
+│   ├── master.pdf
+│   └── master.tex
+├── current-course -> /home/singularis/Documents/school-notes/College/Year-2/fall/mth-261
+├── notes.md
+├── out
+└── README.md
+
+392 directories, 1138 files
