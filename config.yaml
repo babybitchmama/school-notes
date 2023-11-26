@@ -14,15 +14,17 @@ root: "~/Documents/school-notes/College/Year-2/fall"
 templates_dir: "~/Documents/school-notes/College/Year-2/fall/_files"
 current_course: "~/Documents/school-notes/current-course"
 
-books_dir: "~/Documents/school-notes/current-course/books"
-figures_dir: "~/Documents/school-notes/current-course/figures"
+# relative to current_course
+books_dir: "books"
+figures_dir: "figures"
 
 date_format: "%b %d %Y %a (%H:%M:%S)"
 home: "/home/singularis"
 user: "singularis"
 trash_dir: "~/.local/share/lesson-manager/Year-2/fall"
 
-assignments_dir: "~/Documents/school-notes/current-course/assignments"
+# relative to current_course
+assignments_dir: "assignments"
 assignment_folders:
   bib_folder: "my-assignments/bibtex-files"
   tex_folder: "my-assignments/latex-files"
@@ -32,7 +34,8 @@ assignment_folders:
   online_assignment: "online-assignments"
   solution_key: "solution-keys/pdf-files"
 
-exams_dir: "~/Documents/school-notes/current-course/exams"
+# relative to current_course
+exams_dir: "exams"
 exam_solution_keys:
   pdf_folder: "solution-keys/pdf-files"
   tex_folder: "solution-keys/latex-files"
