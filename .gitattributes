@@ -77,26 +77,31 @@ College/Year-1/spring/psy-202a/books/psychology-in-modules.pdf filter=lfs diff=l
 ###############
 
 College/Year-2/fall/art-204/books/the-history-of-art-a-global-view-prehistory-to-1500.pdf filter=lfs diff=lfs merge=lfs -text
-College/Year-2/fall/mth-261/books/linear-algebra-and-its-applications.pdf filter=lfs diff=lfs merge=lfs -text
+College/Year-2/fall/mth-261/books/linear-algebra-and-its-applications/master.pdf filter=lfs diff=lfs merge=lfs -text
+College/Year-2/fall/mth-261/books/linear-algebra-and-its-applications/solutions/chap-01.pdf filter=lfs diff=lfs merge=lfs -text
+College/Year-2/fall/mth-261/books/linear-algebra-and-its-applications/solutions/chap-02.pdf filter=lfs diff=lfs merge=lfs -text
+College/Year-2/fall/mth-261/books/linear-algebra-and-its-applications/solutions/chap-03.pdf filter=lfs diff=lfs merge=lfs -text
+College/Year-2/fall/mth-261/books/linear-algebra-and-its-applications/solutions/chap-04.pdf filter=lfs diff=lfs merge=lfs -text
+College/Year-2/fall/mth-261/books/linear-algebra-and-its-applications/solutions/chap-05.pdf filter=lfs diff=lfs merge=lfs -text
+College/Year-2/fall/mth-261/books/linear-algebra-and-its-applications/solutions/chap-06.pdf filter=lfs diff=lfs merge=lfs -text
+College/Year-2/fall/mth-261/books/linear-algebra-and-its-applications/solutions/chap-07.pdf filter=lfs diff=lfs merge=lfs -text
 College/Year-2/fall/psy-213/books/biological-psychology.pdf filter=lfs diff=lfs merge=lfs -text
 
 #################
 #  Winter Term  #
 #################
 
-College/Year-2/fall/mth-254/books/concepts-and-calculus/master.pdf filter=lfs diff=lfs merge=lfs -text
-College/Year-2/fall/mth-254/books/concepts-and-calculus/solutions/chap-01.pdf filter=lfs diff=lfs merge=lfs -text
-College/Year-2/fall/mth-254/books/concepts-and-calculus/solutions/chap-02.pdf filter=lfs diff=lfs merge=lfs -text
-College/Year-2/fall/mth-254/books/concepts-and-calculus/solutions/chap-03.pdf filter=lfs diff=lfs merge=lfs -text
-College/Year-2/fall/mth-254/books/concepts-and-calculus/solutions/chap-04.pdf filter=lfs diff=lfs merge=lfs -text
-College/Year-2/fall/mth-254/books/concepts-and-calculus/solutions/chap-05.pdf filter=lfs diff=lfs merge=lfs -text
-College/Year-2/fall/mth-254/books/concepts-and-calculus/solutions/chap-06.pdf filter=lfs diff=lfs merge=lfs -text
-College/Year-2/fall/mth-254/books/concepts-and-calculus/solutions/chap-07.pdf filter=lfs diff=lfs merge=lfs -text
-College/Year-2/fall/mth-254/books/concepts-and-calculus/solutions/chap-08.pdf filter=lfs diff=lfs merge=lfs -text
-College/Year-2/fall/mth-254/books/concepts-and-calculus/solutions/chap-09.pdf filter=lfs diff=lfs merge=lfs -text
-College/Year-2/fall/mth-254/books/concepts-and-calculus/solutions/chap-10.pdf filter=lfs diff=lfs merge=lfs -text
-College/Year-2/fall/mth-254/books/concepts-and-calculus/solutions/chap-11.pdf filter=lfs diff=lfs merge=lfs -text
-College/Year-2/fall/mth-254/books/concepts-and-calculus/solutions/chap-12.pdf filter=lfs diff=lfs merge=lfs -text
-College/Year-2/fall/mth-254/books/concepts-and-calculus/solutions/chap-13.pdf filter=lfs diff=lfs merge=lfs -text
-College/Year-2/fall/mth-261/books/linear-algebra-and-its-applications.pdf filter=lfs diff=lfs merge=lfs -text
-College/Year-2/fall/psy-213/books/biological-psychology.pdf filter=lfs diff=lfs merge=lfs -text
+College/Year-2/winter/mth-254/books/concepts-and-calculus/master.pdf filter=lfs diff=lfs merge=lfs -text
+College/Year-2/winter/mth-254/books/concepts-and-calculus/solutions/chap-01.pdf filter=lfs diff=lfs merge=lfs -text
+College/Year-2/winter/mth-254/books/concepts-and-calculus/solutions/chap-02.pdf filter=lfs diff=lfs merge=lfs -text
+College/Year-2/winter/mth-254/books/concepts-and-calculus/solutions/chap-03.pdf filter=lfs diff=lfs merge=lfs -text
+College/Year-2/winter/mth-254/books/concepts-and-calculus/solutions/chap-04.pdf filter=lfs diff=lfs merge=lfs -text
+College/Year-2/winter/mth-254/books/concepts-and-calculus/solutions/chap-05.pdf filter=lfs diff=lfs merge=lfs -text
+College/Year-2/winter/mth-254/books/concepts-and-calculus/solutions/chap-06.pdf filter=lfs diff=lfs merge=lfs -text
+College/Year-2/winter/mth-254/books/concepts-and-calculus/solutions/chap-07.pdf filter=lfs diff=lfs merge=lfs -text
+College/Year-2/winter/mth-254/books/concepts-and-calculus/solutions/chap-08.pdf filter=lfs diff=lfs merge=lfs -text
+College/Year-2/winter/mth-254/books/concepts-and-calculus/solutions/chap-09.pdf filter=lfs diff=lfs merge=lfs -text
+College/Year-2/winter/mth-254/books/concepts-and-calculus/solutions/chap-10.pdf filter=lfs diff=lfs merge=lfs -text
+College/Year-2/winter/mth-254/books/concepts-and-calculus/solutions/chap-11.pdf filter=lfs diff=lfs merge=lfs -text
+College/Year-2/winter/mth-254/books/concepts-and-calculus/solutions/chap-12.pdf filter=lfs diff=lfs merge=lfs -text
+College/Year-2/winter/mth-254/books/concepts-and-calculus/solutions/chap-13.pdf filter=lfs diff=lfs merge=lfs -text
