@@ -32,16 +32,7 @@ assignment_folders:
   pdf_folder: "my-assignments/pdf-files"
   graded_assignment: "graded-assignments"
   online_assignment: "online-assignments"
-  solution_key: "solution-keys/pdf-files"
-
-# relative to current_course
-exams_dir: "exams"
-exam_solution_keys:
-  pdf_folder: "solution-keys/pdf-files"
-  tex_folder: "solution-keys/latex-files"
-exam_review:
-  practice: "review/practice"
-  answers: "review/answers"
+  solution_key: "solution-keys"
 
 rofi_options:
   - "-markup-rows"
