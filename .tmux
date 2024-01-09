@@ -34,8 +34,8 @@ tmux new-session -d -s "$SESSION_NAME"
 #  Year 2  #
 ############
 
-source ./College/Year-2/fall/.tmux
-# source ./College/Year-2/winter/.tmux
+# source ./College/Year-2/fall/.tmux
+source ./College/Year-2/winter/.tmux
 # source ./College/Year-2/spring/.tmux
 
 tmux new-window -t "$SESSION_NAME"
