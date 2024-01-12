@@ -56,7 +56,6 @@ folders:
   - "assignments/my-assignments/yaml-files"
   - "books"
   - "figures"
-  - "note-guide"
   - "papers"
   - "sympy-scripts"
   - "UltiSnips"
@@ -70,4 +69,3 @@ files:
   "assignments/my-assignments/master.tex": "copy"
   "intro.tex": "copy"
   "master.tex": "copy"
-  "notes.md": "copy"
