@@ -40,6 +40,7 @@
 
 \usepackage{tasks} % Required for creating tasks
 \usepackage[font=bf]{caption} % Required for customizing captions
+\usepackage{subcaption} % Required for creating subfigures
 \usepackage{siunitx} % Required for SI units
 \usepackage{titletoc} % Required for customizing table of contents
 \usepackage[framemethod=TikZ]{mdframed} % Required for creating boxes
@@ -49,6 +50,7 @@
 \usepackage{tikz}
 \usepackage{tkz-euclide}
 \usepackage{tikz-cd}
+\usepackage{tikz-3dplot}
 
 % Required for creating plots
 \usepackage{pgfplots}
@@ -402,8 +404,14 @@
 \makeatother
 
 % Circle
-\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
-  \node[shape=circle,draw,inner sep=1pt] (char) {#1};}
+\newcommand*\circled[1]{
+  \tikz[baseline=(char.base)] {
+    \node[shape=circle,draw,inner sep=1pt] (char) {#1};
+  }
+}
+\newcommand\coloredcircle[1]{\tikz[baseline=(char.base)] {
+    \node[shape=circle,draw,inner sep=1pt,color=#1,fill=#1!50] (char) {\phantom{$1$}};
+  }
 }
 
 % Correct
@@ -439,6 +447,8 @@
 \newcommand\sz{\stackrel{\textrm{set}}{=}}
 \newcommand\ce{\overset{\checkmark}{=}}
 \newcommand\proj{\text{proj}}
+\newcommand\comp{\text{comp}}
+\newcommand{\geogebra}{\textsf{GeoGebra}}
 
 % Vectors
 \renewcommand\a{\vec{a}}
@@ -447,6 +457,7 @@
 \renewcommand\d{\vec{d}}
 \newcommand\e{\vec{e}}
 \newcommand\f{\vec{f}}
+\newcommand\g{\vec{g}}
 \newcommand\p{\vec{p}}
 \renewcommand\r{\vec{r}}
 \renewcommand\u{\vec{u}}

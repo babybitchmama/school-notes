@@ -21,7 +21,6 @@ figures_dir: "figures"
 date_format: "%b %d %Y %a (%H:%M:%S)"
 home: "/home/singularis"
 user: "singularis"
-trash_dir: "~/.local/share/lesson-manager/Year-2/fall"
 
 # relative to current_course
 assignments_dir: "assignments"
@@ -58,14 +57,13 @@ folders:
   - "figures"
   - "papers"
   - "sympy-scripts"
-  - "UltiSnips"
 
 files:
   "assignments/my-assignments/preamble.tex": "symlink"
   "assignments/my-assignments/Makefile": "symlink"
   "Makefile": "symlink"
   "preamble.tex": "symlink"
-  "UltiSnips/tex.snippets": "symlink"
+  "UltiSnips": "symlink"
   "assignments/my-assignments/master.tex": "copy"
   "intro.tex": "copy"
   "master.tex": "copy"
