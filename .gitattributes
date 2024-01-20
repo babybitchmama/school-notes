@@ -91,6 +91,8 @@ College/Year-2/fall/psy-213/books/biological-psychology.pdf filter=lfs diff=lfs 
 #  Winter Term  #
 #################
 
+College/Year-2/winter/art-101/books/understanding-architecture.pdf filter=lfs diff=lfs merge=lfs -text
+College/Year-2/winter/he-242/books/stress-management-for-life.pdf filter=lfs diff=lfs merge=lfs -text
 College/Year-2/winter/mth-254/books/concepts-and-calculus/master.pdf filter=lfs diff=lfs merge=lfs -text
 College/Year-2/winter/mth-254/books/concepts-and-calculus/solutions/chap-01.pdf filter=lfs diff=lfs merge=lfs -text
 College/Year-2/winter/mth-254/books/concepts-and-calculus/solutions/chap-02.pdf filter=lfs diff=lfs merge=lfs -text
