@@ -638,6 +638,7 @@
 ]{thmpurpleframebox}
 
 \declaretheoremstyle[
+  headformat=\NAME\NOTE,
   headfont=\sffamily\bfseries,
   headindent=24pt,
   bodyfont=\normalfont,
@@ -664,8 +665,8 @@
 \declaretheorem[style=thmreplacementproofbox, name=PROOF]           {replacementproof}
 \declaretheorem[style=thmpurpleframebox,      name=]                {purpleframe}
 
-\declaretheorem[numbered=no,          style=thmmaindefinitionbox,   name=Note]            {note}
-\declaretheorem[numbered=no,          style=thmmaindefinitionbox,   name=Problem]         {problem}
+\declaretheorem[style=thmmaindefinitionbox,   name=Note]            {note}
+\declaretheorem[style=thmmaindefinitionbox,   name=Problem]         {problem}
 
 \declaretheorem[numbered=no,          style=thmmainplainbox,        name=Lemma]           {lemma}
 \declaretheorem[numbered=no,          style=thmmainplainbox,        name=Corollary]       {corollary}
