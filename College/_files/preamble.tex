@@ -397,6 +397,11 @@
 \makeatletter
 
 % Import Figures
+\newcommand\incimg[3][1]{
+  \def\svgwidth{#1\columnwidth}
+  \includegraphics[width=#1\columnwidth]{\figloc-\@notenum/#2.png}
+}
+
 \newcommand\incfig[2][1]{
   \def\svgwidth{#1\columnwidth}
   \import{\figloc-\@notenum}{#2.pdf_tex}
