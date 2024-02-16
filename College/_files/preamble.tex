@@ -108,6 +108,7 @@
 
 \colorlet{definition}{main}
 \colorlet{theorem}{main}
+\colorlet{lemma}{main}
 \colorlet{remark}{main}
 \colorlet{qedproof}{proof}
 \colorlet{question}{example}
@@ -624,6 +625,17 @@
 ]{thmtheorembox}
 
 \declaretheoremstyle[
+  headfont=\sffamily\bfseries\color{lemma},
+  headformat=\fbox{\arabic{lemma}}~\NAME\NOTE,
+  bodyfont=\normalfont,
+  headpunct=,
+  mdframed={
+    linewidth=0.5pt,
+    linecolor=lemma,
+  },
+]{thmlemmabox}
+
+\declaretheoremstyle[
   headfont=\sffamily\bfseries\color{question}\colorbox{questionfg}{QUESTION \arabic{question}},
   headformat=\textbf{\NOTE},
   notefont=\bfseries,
@@ -712,6 +724,7 @@
 
 \declaretheorem[style=thmdefinitionbox,       name=Definition]      {definition}
 \declaretheorem[style=thmtheorembox,          name=Theorem]         {theorem}
+\declaretheorem[style=thmlemmabox,            name=Lemma]           {lemma}
 \declaretheorem[style=thmexamplebox,          name=Example]         {example}
 \declaretheorem[style=thmquestionbox,         name=]                {question}
 \declaretheorem[style=thmsolutionbox,         name=SOLUTION]        {solution}
@@ -722,7 +735,6 @@
 \declaretheorem[style=thmmaindefinitionbox,   name=Note]            {note}
 \declaretheorem[style=thmmaindefinitionbox,   name=Problem]         {problem}
 
-\declaretheorem[numbered=no,          style=thmmainplainbox,        name=Lemma]           {lemma}
 \declaretheorem[numbered=no,          style=thmmainplainbox,        name=Corollary]       {corollary}
 \declaretheorem[numbered=no,          style=thmmainplainbox,        name=Proposition]     {proposition}
 \declaretheorem[numbered=no,          style=thmmainplainbox,        name=Conjecture]      {conjecture}
