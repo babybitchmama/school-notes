@@ -409,9 +409,9 @@
 \makeatletter
 
 % Import Figures
-\newcommand\incimg[3][1]{
-  \def\svgwidth{#1\columnwidth}
-  \includegraphics[width=#1\columnwidth]{\figloc-\@notenum/#2.png}
+\newcommand\incimg[2][1]{%
+  \def\svgwidth{#1\columnwidth}%
+  \includegraphics[width=#1\columnwidth]{\figloc-\@notenum/#2}%
 }
 
 \newcommand\incfig[2][1]{
