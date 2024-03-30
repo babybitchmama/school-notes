@@ -387,7 +387,7 @@
 
   \begin{tcolorbox}[enhanced,colback=white,center upper,size=fbox, drop shadow southwest,sharp corners]
     \term: \academicyear, \\
-    Last Update: \today, \\
+    Last Update: January 9, 2024, \\
     \faculty, \location.
   \end{tcolorbox}
 
@@ -511,18 +511,18 @@
 \newcommand\I{^{-1}}
 
 % Hat vectors
-\newcommand\ah{\hat{a}}
-\newcommand\bh{\hat{b}}
-\newcommand\ch{\hat{c}}
-\renewcommand\dh{\hat{d}}
-\newcommand\eh{\hat{e}}
-\newcommand\ph{\hat{p}}
-\newcommand\uh{\hat{u}}
-\newcommand\vh{\hat{v}}
-\newcommand\wh{\hat{w}}
-\newcommand\xh{\hat{x}}
-\newcommand\yh{\hat{y}}
-\newcommand\zh{\hat{z}}
+\newcommand\ah{\hat{\mathbf{a}}}
+\newcommand\bh{\hat{\mathbf{b}}}
+\newcommand\ch{\hat{\mathbf{c}}}
+\renewcommand\dh{\hat{\mathbf{d}}}
+\newcommand\eh{\hat{\mathbf{e}}}
+\newcommand\ph{\hat{\mathbf{p}}}
+\newcommand\uh{\hat{\mathbf{u}}}
+\newcommand\vh{\hat{\mathbf{v}}}
+\newcommand\wh{\hat{\mathbf{w}}}
+\newcommand\xh{\hat{\mathbf{x}}}
+\newcommand\yh{\hat{\mathbf{y}}}
+\newcommand\zh{\hat{\mathbf{z}}}
 
 % Unit vectors
 \newcommand\ui{\mathbf{i}}
@@ -579,7 +579,13 @@
     }%
   \endgroup
 }
-\newcommand\empheq[1]{\colorboxed{main}{\hspace{2em}#1\hspace{2em}}}
+\newcommand\empheq[1]{%
+  \colorboxed{main}{%
+    \begin{aligned}[b]
+      #1
+    \end{aligned}%
+  }%
+}
 \makeatother
 
 % Equivalently
@@ -698,7 +704,7 @@
   headfont=\sffamily\color{main},
   headformat=\NOTE,
   headindent=0mm,
-  bodyfont=\normalfont,
+  bodyfont=\normalfont\centering,
   notefont=\bfseries,
   notebraces={~ },
   headpunct=,
