@@ -38,6 +38,7 @@
 \usepackage{longtable} % Required for long tables
 \usepackage{xfrac} % Required for extra fraction options
 \usepackage{diagbox} % Required for creating diagonal boxes
+\usepackage{polynom} % Required for polynomial long division
 
 \usepackage{tasks} % Required for creating tasks
 \usepackage[font=bf]{caption} % Required for customizing captions
@@ -411,7 +412,6 @@
 
 % Import Figures
 \newcommand\incimg[2][1]{%
-  \def\svgwidth{#1\columnwidth}%
   \includegraphics[width=#1\columnwidth]{\figloc-\@notenum/#2}%
 }
 
