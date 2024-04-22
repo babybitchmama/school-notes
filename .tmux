@@ -35,8 +35,12 @@ tmux new-session -d -s "$SESSION_NAME"
 ############
 
 # source ./College/Year-2/fall/.tmux
-source ./College/Year-2/winter/.tmux
-# source ./College/Year-2/spring/.tmux
+# source ./College/Year-2/winter/.tmux
+
+tmux rename-window -t "$SESSION_NAME" "MTH-254"
+tmux send-keys -t "$SESSION_NAME" "cd ./College/Year-2/winter/mth-254/; clear" Enter
+tmux new-window -t "$SESSION_NAME"
+source ./College/Year-2/spring/.tmux
 
 tmux new-window -t "$SESSION_NAME"
 
