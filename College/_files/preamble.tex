@@ -252,6 +252,8 @@
 \pgfplotsset{soldot/.style={color=linecolor2,only marks,mark=*}}
 \pgfplotsset{holdot/.style={color=linecolor2,fill=white,only marks,mark=*}}
 \pgfplotsset{integration/.style={name path=curve,color=linecolor1,mark=none,line width=0.5pt,solid}}
+\pgfplotsset{horizontal marks/.style={}}
+\pgfplotsset{vertical marks/.style={}}
 
 \pgfplotscreateplotcyclelist{stylelist}{
   style1,
@@ -388,7 +390,8 @@
 
   \begin{tcolorbox}[enhanced,colback=white,center upper,size=fbox, drop shadow southwest,sharp corners]
     \term: \academicyear, \\
-    Last Update: January 9, 2024, \\
+    % Last Update: January 9, 2024, \\
+    Last Update: \today, \\
     \faculty, \location.
   \end{tcolorbox}
 
@@ -478,6 +481,12 @@
 \newcommand\proj{\text{proj}}
 \newcommand\comp{\text{comp}}
 \newcommand\geogebra{\textsf{GeoGebra}}
+
+% Used to switch tag position
+\makeatletter
+\newcommand\leqnomode{\tagsleft@true}
+\newcommand\reqnomode{\tagsleft@false}
+\makeatother
 
 % Vectors
 \renewcommand\a{\mathbf{a}}
