@@ -64,12 +64,15 @@
 \usepackage{fancyhdr} % Required for customizing headers and footers
 \usepackage{import} % Required for importing pdf_tex files
 \usepackage{titlesec} % Required for customizing sectioning commands
+\usepackage{etex} % Required for more registers
 
 % Required for creating boxes
 \usepackage{varwidth}
 \usepackage{thmtools}
 \usepackage{etoolbox}
 \usepackage[most,many,breakable]{tcolorbox}
+
+\makeatletter
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -78,9 +81,17 @@
 %                                                                              %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% Define Colors
-\makeatletter
+\ifx\nauthor\undefined
+  \def\nauthor{Hashem A. Damrah}
+\else
+\fi
 
+\ifx\class\undefined
+  \def\class{report}
+\else
+\fi
+
+% Define Colors
 \newcommand\newcolor[3]{
   \@ifclasswith\class{nocolor}{
     \definecolor{#1}{HTML}{#3}
@@ -88,8 +99,6 @@
     \definecolor{#1}{HTML}{#2}
   }
 }
-
-\makeatother
 
 \newcolor{linecolor1}{3DC6F3}{000000}
 \newcolor{linecolor2}{F034A3}{000000}
@@ -116,18 +125,17 @@
 \colorlet{question}{example}
 \colorlet{questionfg}{examplebg}
 
-% Geometry
-\geometry{
-  tmargin=2cm,
-  rmargin=1in,
-  lmargin=1in,
-  margin=0.85in,
-  bmargin=2cm,
-  footskip=1cm,
-}
+% % Geometry
+% \geometry{
+%   tmargin=2cm,
+%   rmargin=1in,
+%   lmargin=1in,
+%   margin=0.85in,
+%   bmargin=2cm,
+%   footskip=1cm,
+% }
 
-% Tasks
-\settasks{label=\bfseries\arabic*.),label-width=2em}
+\geometry{a4paper, total={170mm,257mm}, left=15mm, top=20mm}
 
 % Tables
 \newcolumntype{C}{>{\Centering\arraybackslash}X}
@@ -289,8 +297,6 @@
 %  Helpful Commands  %
 %%%%%%%%%%%%%%%%%%%%%%
 
-\makeatletter
-
 \newcommand\resetcounters{
   \setcounter{section}{0}
   \setcounter{subsection}{0}
@@ -309,17 +315,17 @@
 %  Lecture/Chapter Command  %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\def\@notenum{}
+\def\notenum{}
 \newcommand\includenote[1]{
   \ifnum #1<10
-    \def\@notenum{0#1}
+    \def\notenum{0#1}
   \else
-    \def\@notenum{#1}
+    \def\notenum{#1}
   \fi
 
   \setcounter{chapter}{#1}
   \resetcounters
-  \IfFileExists{\noteloc-\@notenum.tex}{\input{\noteloc-\@notenum.tex}}{}
+  \IfFileExists{\noteloc-\notenum.tex}{\input{\noteloc-\notenum.tex}}{}
 }
 
 \newcommand\includenotes[2]{
@@ -340,13 +346,7 @@
   \addtocontents{toc}{\protect\setcounter{tocdepth}{\arabic{tocdepth}}}
 }
 
-\newcommand\customlabel[2]{%
-  \protected@write \@auxout {}{\string \newlabel {#1}{{#2}{\thepage}{#2}{#1}{}} }%
-  \hypertarget{#1}{}
-}
-
-\def\@note{}
-\newcounter{nte}
+\newcounter{nte}[chapter]
 \NewDocumentCommand\nte{O{} O{} m m}{%
   \cleartoleftpage
   \setcounter{nte}{\arabic{chapter}}
@@ -356,9 +356,7 @@
   }{%
     \def\@note{\lecorchap~\arabic{chapter}: #4}
   }%
-  \def\@notetbl{\lecorchap~\arabic{chapter}}
   \phantomsection\addcontentsline{toc}{chapter}{\protect\numberline{\thechapter}#4}
-  \customlabel{note_\@notenum}{\@notenum}
   {\fontsize{10}{12}\selectfont\sffamily\ifstrequal{#1}{}{}{\noindent#1}\ifstrequal{#3}{}{}{\hfill#3}}
   \vspace*{0.03cm}
   \hrule
@@ -390,7 +388,6 @@
 
   \begin{tcolorbox}[enhanced,colback=white,center upper,size=fbox, drop shadow southwest,sharp corners]
     \term: \academicyear, \\
-    % Last Update: January 9, 2024, \\
     Last Update: \today, \\
     \faculty, \location.
   \end{tcolorbox}
@@ -403,7 +400,7 @@
 
   \renewcommand\headrulewidth{0.4pt}
   \fancyhead[R]{\@note}
-  \fancyhead[L]{\@author}
+  \fancyhead[L]{\nauthor}
   \fancyfoot[C]{\thepage}
 }
 
@@ -411,19 +408,15 @@
 %  Random Commands  %
 %%%%%%%%%%%%%%%%%%%%%
 
-\makeatletter
-
 % Import Figures
 \newcommand\incimg[2][1]{%
-  \includegraphics[width=#1\columnwidth]{\figloc-\@notenum/#2}%
+  \includegraphics[width=#1\columnwidth]{\figloc-\notenum/#2}%
 }
 
 \newcommand\incfig[2][1]{
   \def\svgwidth{#1\columnwidth}
-  \import{\figloc-\@notenum}{#2.pdf_tex}
+  \import{\figloc-\notenum}{#2.pdf_tex}
 }
-
-\makeatother
 
 % Circle
 \newcommand*\circled[1]{
@@ -443,9 +436,6 @@
 
 % Important
 \newcommand\imp[1]{{\color{main}#1}}
-
-% For diagonal strikeout in blue
-\newcommand\blu[1]{\phantom{#1}}
 
 % For diagonal strikeout in red
 \newcommand\rcancel[1]{\renewcommand\CancelColor{\color{red}}\cancel{#1}}
@@ -482,12 +472,11 @@
 \newcommand\proj{\text{proj}}
 \newcommand\comp{\text{comp}}
 \newcommand\geogebra{\textsf{GeoGebra}}
+\newcommand\Sspan{\text{Span}}
 
 % Used to switch tag position
-\makeatletter
 \newcommand\leqnomode{\tagsleft@true}
 \newcommand\reqnomode{\tagsleft@false}
-\makeatother
 
 % Vectors
 \renewcommand\a{\mathbf{a}}
@@ -499,8 +488,6 @@
 \newcommand\g{\mathbf{g}}
 \newcommand\n{\mathbf{n}}
 \newcommand\p{\mathbf{p}}
-
-\renewcommand\P{^{\prime}}
 
 \newcommand\RR{\mathbf{R}}
 \newcommand\FF{\mathbf{F}}
@@ -527,8 +514,6 @@
 \newcommand\z{\mathbf{z}}
 
 \newcommand\zero{\mathbf{0}}
-\newcommand\T{^{\top}}
-\newcommand\I{^{-1}}
 
 % Hat vectors
 \newcommand\ah{\hat{\mathbf{a}}}
@@ -563,28 +548,14 @@
 \newcommand\Y{\mathcal{Y}}
 \newcommand\W{\mathbf{w}}
 
-% Span
-\newcommand\Sspan{\text{Span}}
-
-% Edit Section/Subsection/Subsubsection
-\makeatletter
-\titleformat*{\section}{\sffamily\scshape\fontsize{14}{16}\bfseries}
-\titleformat*{\subsection}{\color{subsubsection}\scshape\sffamily\fontsize{13}{15}\bfseries}
-\def\@seccntformat#1{\llap{\csname the#1\endcsname\quad}}
-\makeatother
-\renewcommand\thesection{\arabic{section}}
-
 % Edit equation number display
-\makeatletter
 \renewcommand\theequation{\arabic{equation}}
 \renewcommand\tagform@[1]{%
   {\color{main}\boxed{\textbf{#1}}}
 }
 \def\@eqnnum{{\normalfont \normalcolor \theequation}}
-\makeatother
 
 % Create command to box equations
-\makeatletter
 \newcommand*\colorboxed{}
 \def\colorboxed#1#{%
   \colorboxedAux{#1}%
@@ -600,16 +571,12 @@
   \endgroup
 }
 \newcommand\empheq[1]{%
-  \colorboxed{main}{%
+  \colorboxed{black}{%
     \begin{aligned}[b]
       #1
     \end{aligned}%
   }%
 }
-\makeatother
-
-% Equivalently
-\newcommand\equivalently[1]{[ \textbf{Equivalently:} #1 ]}
 
 % L'Hopital's Rule
 \newcommand\lop{\stackrel{\textrm{H}}{=}}
@@ -624,55 +591,10 @@
 \newcommand*\TickSize{2pt}%
 \newcommand*\AxisMin{0}%
 \newcommand*\AxisMax{0}%
-\newcommand*\DrawHorizontalPhaseLine[4][]{%
-  % #1 = axis tick labels
-  % #2 = right arrows positions as CSV
-  % #3 = left arrow positions as CSV
+\newcommand*\PhaseLine[4][]{%
   \gdef\AxisMin{0}%
   \gdef\AxisMax{0}%
-  \edef\MyList{#2}% Allows for #1 to be both a macro or not
-  \foreach \X in \MyList {
-    \draw (\X,\TickSize) -- (\X,-\TickSize) node [below] {$\X$};
-    \ifnum\AxisMin>\X
-      \xdef\AxisMin{\X}%
-    \fi
-    \ifnum\AxisMax<\X
-      \xdef\AxisMax{\X}%
-    \fi
-  }
-
-  \edef\MyList{#3}% Allows for #2 to be both a macro or not
-  \foreach \X in \MyList {% Right arrows
-    \draw [->] (\X-0.1,0) -- (\X,0);
-    \ifnum\AxisMin>\X
-      \xdef\AxisMin{\X}%
-    \fi
-    \ifnum\AxisMax<\X
-      \xdef\AxisMax{\X}%
-    \fi
-  }
-
-  \edef\MyList{#4}% Allows for #3 to be both a macro or not
-  \foreach \X in \MyList {% Left arrows
-    \draw [<-] (\X-0.1,0) -- (\X,0);
-    \ifnum\AxisMin>\X
-      \xdef\AxisMin{\X}%
-    \fi
-    \ifnum\AxisMax<\X
-      \xdef\AxisMax{\X}%
-    \fi
-  }
-
-  \draw  (\AxisMin-1,0) -- (\AxisMax+1,0) node [right] {#1};
-}%
-
-\newcommand*\DrawVerticalPhaseLine[4][]{%
-  % #1 = axis tick labels
-  % #2 = up arrows positions as CSV
-  % #3 = down arrow positions as CSV
-  \gdef\AxisMin{0}%
-  \gdef\AxisMax{0}%
-  \edef\MyList{#2}% Allows for #1 to be both a macro or not
+  \edef\MyList{#2}%
   \foreach \X in \MyList {
     \draw (-\TickSize,\X) -- (\TickSize,\X) node [right] {$\X$};
     \ifnum\AxisMin>\X
@@ -683,7 +605,7 @@
     \fi
   }
 
-  \edef\MyList{#3}% Allows for #2 to be both a macro or not
+  \edef\MyList{#3}%
   \foreach \X in \MyList {% Up arrows
     \draw [->] (0,\X-0.1) -- (0,\X);
     \ifnum\AxisMin>\X
@@ -694,7 +616,7 @@
     \fi
   }
 
-  \edef\MyList{#4}% Allows for #3 to be both a macro or not
+  \edef\MyList{#4}%
   \foreach \X in \MyList {% Down arrows
     \draw [->] (0,\X+0.1) -- (0,\X);
     \ifnum\AxisMin>\X
@@ -718,32 +640,57 @@
 \mdfsetup{skipabove=1em,skipbelow=0em}
 \tcbuselibrary{theorems,skins,hooks}
 
-\newcommand\qedsolution{{\color{qedsolution}\rule{4mm}{1.5mm}}}
-\newcommand\qedproof{{\color{qedproof}\rule{4mm}{1.5mm}}}
+\@ifclasswith{\class}{nocolor}{
+  \theoremstyle{definition}
 
-\declaretheoremstyle[
-  headfont=\sffamily\bfseries\color{definition},
-  headformat=\fbox{\arabic{definition}}~\NAME\NOTE,
-  bodyfont=\normalfont,
-  headpunct=,
-  mdframed={
-    linewidth=0.5pt,
-    linecolor=definition,
-  },
-]{thmdefinitionbox}
+  \newtheorem{definition}{Definition}
+  \newtheorem{question}{Question}
+  \newtheorem{solution}{Solution}
 
-\declaretheoremstyle[
-  headfont=\sffamily\bfseries\color{theorem},
-  headformat=\fbox{\arabic{theorem}}~\NAME\NOTE,
-  bodyfont=\normalfont,
-  headpunct=,
-  mdframed={
-    linewidth=0.5pt,
-    linecolor=theorem,
-  },
-]{thmtheorembox}
+  \newtheorem*{remark}{Remark}
+  \newtheorem*{note}{Note}
+  \newtheorem*{example}{Example}
 
-\declaretheoremstyle[
+  \newtheorem*{notation}{Notation}
+  \newtheorem*{recall}{Recall}
+  \newtheorem*{claim}{Claim}
+  \newtheorem{case}{Case}
+  \newtheorem*{acknowledgment}{Acknowledgment}
+  \newtheorem*{conclusion}{Conclusion}
+
+  \newtheorem{theorem}{Theorem}
+  \newtheorem{lemma}{Lemma}[theorem]
+  \newtheorem{corollary}{Corollary}[theorem]
+  \newtheorem{proposition}{Proposition}[theorem]
+  \newtheorem{conjecture}{Conjecture}[theorem]
+  \newtheorem{explanation}{Explanation}[theorem]
+}{
+  \newcommand\qedsolution{{\color{qedsolution}\rule{4mm}{1.5mm}}}
+  \newcommand\qedproof{{\color{qedproof}\rule{4mm}{1.5mm}}}
+
+  \declaretheoremstyle[
+    headfont=\sffamily\bfseries\color{definition},
+    headformat=\fbox{\arabic{definition}}~\NAME\NOTE,
+    bodyfont=\normalfont,
+    headpunct=,
+    mdframed={
+      linewidth=0.5pt,
+      linecolor=definition,
+    },
+  ]{thmdefinitionbox}
+
+  \declaretheoremstyle[
+    headfont=\sffamily\bfseries\color{theorem},
+    headformat=\fbox{\arabic{theorem}}~\NAME\NOTE,
+    bodyfont=\normalfont,
+    headpunct=,
+    mdframed={
+      linewidth=0.5pt,
+      linecolor=theorem,
+    },
+  ]{thmtheorembox}
+
+  \declaretheoremstyle[
   headfont=\sffamily\bfseries\color{lemma},
   headformat=\fbox{\arabic{lemma}}~\NAME\NOTE,
   bodyfont=\normalfont,
@@ -752,9 +699,9 @@
     linewidth=0.5pt,
     linecolor=lemma,
   },
-]{thmlemmabox}
+  ]{thmlemmabox}
 
-\declaretheoremstyle[
+  \declaretheoremstyle[
   headfont=\sffamily\bfseries\color{question}\colorbox{questionfg}{QUESTION \arabic{question}},
   headformat=\textbf{\NOTE},
   notefont=\bfseries,
@@ -762,9 +709,9 @@
   notefont={\color{black}\bfseries},
   notebraces={~ },
   headpunct=,
-]{thmquestionbox}
+  ]{thmquestionbox}
 
-\declaretheoremstyle[
+  \declaretheoremstyle[
   headfont=\sffamily\bfseries\color{example},
   headformat=\NAME\NOTE,
   bodyfont=\normalfont,
@@ -774,9 +721,9 @@
     linecolor=example,
     backgroundcolor=examplebg,
   },
-]{thmexamplebox}
+  ]{thmexamplebox}
 
-\declaretheoremstyle[
+  \declaretheoremstyle[
   headfont=\sffamily\color{solution},
   headformat=\NAME~\arabic{solution},
   notefont=\bfseries,
@@ -784,9 +731,9 @@
   qed=\qedsolution,
   spaceabove=\topsep,
   spacebelow=\topsep,
-]{thmsolutionbox}
+  ]{thmsolutionbox}
 
-\declaretheoremstyle[
+  \declaretheoremstyle[
   headfont=\sffamily\bfseries\color{remark},
   bodyfont=\itshape,
   notebraces={~ },
@@ -796,9 +743,9 @@
     linewidth=0.5pt, linecolor=remark,
     rightline=false, topline=false, bottomline=false,
   },
-]{thmremarkbox}
+  ]{thmremarkbox}
 
-\declaretheoremstyle[
+  \declaretheoremstyle[
   headfont=\sffamily\color{proof},
   headformat=\NAME,
   headindent=0mm,
@@ -806,7 +753,52 @@
   notefont=\bfseries,
   headpunct=,
   qed=\qedproof,
-]{thmreplacementproofbox}
+  ]{thmreplacementproofbox}
+
+  \declaretheoremstyle[
+  headformat=\NAME\NOTE,
+  headfont=\sffamily\bfseries,
+  headindent=24pt,
+  bodyfont=\normalfont,
+  notefont=\bfseries,
+  notebraces={~},
+  headpunct=:,
+  ]{thmmaindefinitionbox}
+
+  \declaretheoremstyle[
+  headfont=\sffamily,
+  headindent=24pt,
+  bodyfont=\itshape,
+  notefont=\bfseries,
+  notebraces={~ },
+  headpunct=:,
+  ]{thmmainplainbox}
+
+  \declaretheorem[style=thmdefinitionbox,       name=Definition]      {definition}
+  \declaretheorem[style=thmtheorembox,          name=Theorem]         {theorem}
+  \declaretheorem[style=thmlemmabox,            name=Lemma]           {lemma}
+  \declaretheorem[style=thmexamplebox,          name=Example]         {example}
+  \declaretheorem[style=thmquestionbox,         name=]                {question}
+  \declaretheorem[style=thmsolutionbox,         name=SOLUTION]        {solution}
+  \declaretheorem[style=thmremarkbox,           name=Remark]          {remark}
+  \declaretheorem[style=thmreplacementproofbox, name=PROOF]           {replacementproof}
+
+  \declaretheorem[style=thmmaindefinitionbox,   name=Note]            {note}
+  \declaretheorem[style=thmmaindefinitionbox,   name=Problem]         {problem}
+
+  \declaretheorem[numbered=no,          style=thmmainplainbox,        name=Corollary]       {corollary}
+  \declaretheorem[numbered=no,          style=thmmainplainbox,        name=Proposition]     {proposition}
+  \declaretheorem[numbered=no,          style=thmmainplainbox,        name=Conjecture]      {conjecture}
+  \declaretheorem[numbered=no,          style=thmmainplainbox,        name=Explanation]     {explanation}
+  \declaretheorem[numbered=no,          style=thmmainplainbox,        name=Notation]        {notation}
+  \declaretheorem[numbered=no,          style=thmmainplainbox,        name=Recall]          {recall}
+  \declaretheorem[numbered=no,          style=thmmainplainbox,        name=Claim]           {claim}
+  \declaretheorem[numbered=no,          style=thmmainplainbox,        name=Case]            {case}
+  \declaretheorem[numbered=no,          style=thmmainplainbox,        name=Acknowledgment]  {acknowledgment}
+  \declaretheorem[numbered=no,          style=thmmainplainbox,        name=Conclusion]      {conclusion}
+
+  \renewenvironment{proof}[1][\proofname]{\begin{replacementproof}}{\end{replacementproof}}
+}
 
 \declaretheoremstyle[
   headfont=\sffamily\color{main},
@@ -822,50 +814,7 @@
   }
 ]{thmpurpleframebox}
 
-\declaretheoremstyle[
-  headformat=\NAME\NOTE,
-  headfont=\sffamily\bfseries,
-  headindent=24pt,
-  bodyfont=\normalfont,
-  notefont=\bfseries,
-  notebraces={~},
-  headpunct=:,
-]{thmmaindefinitionbox}
-
-\declaretheoremstyle[
-  headfont=\sffamily,
-  headindent=24pt,
-  bodyfont=\itshape,
-  notefont=\bfseries,
-  notebraces={~ },
-  headpunct=:,
-]{thmmainplainbox}
-
-\declaretheorem[style=thmdefinitionbox,       name=Definition]      {definition}
-\declaretheorem[style=thmtheorembox,          name=Theorem]         {theorem}
-\declaretheorem[style=thmlemmabox,            name=Lemma]           {lemma}
-\declaretheorem[style=thmexamplebox,          name=Example]         {example}
-\declaretheorem[style=thmquestionbox,         name=]                {question}
-\declaretheorem[style=thmsolutionbox,         name=SOLUTION]        {solution}
-\declaretheorem[style=thmremarkbox,           name=Remark]          {remark}
-\declaretheorem[style=thmreplacementproofbox, name=PROOF]           {replacementproof}
 \declaretheorem[style=thmpurpleframebox,      name=]                {purpleframe}
-
-\declaretheorem[style=thmmaindefinitionbox,   name=Note]            {note}
-\declaretheorem[style=thmmaindefinitionbox,   name=Problem]         {problem}
-
-\declaretheorem[numbered=no,          style=thmmainplainbox,        name=Corollary]       {corollary}
-\declaretheorem[numbered=no,          style=thmmainplainbox,        name=Proposition]     {proposition}
-\declaretheorem[numbered=no,          style=thmmainplainbox,        name=Conjecture]      {conjecture}
-\declaretheorem[numbered=no,          style=thmmainplainbox,        name=Explanation]     {explanation}
-\declaretheorem[numbered=no,          style=thmmainplainbox,        name=Notation]        {notation}
-\declaretheorem[numbered=no,          style=thmmainplainbox,        name=Recall]          {recall}
-\declaretheorem[numbered=no,          style=thmmainplainbox,        name=Claim]           {claim}
-\declaretheorem[numbered=no,          style=thmmainplainbox,        name=Case]            {case}
-\declaretheorem[numbered=no,          style=thmmainplainbox,        name=Acknowledgment]  {acknowledgment}
-\declaretheorem[numbered=no,          style=thmmainplainbox,        name=Conclusion]      {conclusion}
-
-\renewenvironment{proof}[1][\proofname]{\begin{replacementproof}}{\end{replacementproof}}
 
 %%%%%%%%%%%%%%%%%%
 %  Cref Styling  %
@@ -931,56 +880,5 @@
 \creflabelformat{equation}{#2\textup{#1}#3}
 \creflabelformat{table}{#2\textup{#1}#3}
 \creflabelformat{figure}{#2\textup{#1}#3}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%                                                                     %
-%                          Table of Contents                          %
-%                                                                     %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\contentsmargin{0cm}
-\makeatletter
-
-\titlecontents{chapter}[3.7pc]
-{%
-  \addvspace{30pt}%
-  \begin{tikzpicture}[remember picture, overlay]%
-    \draw[fill=tbl,draw=tbl] (-7,-.1) rectangle (-0.7,.5);%
-    \pgftext[left,x=-3.7cm,y=0.2cm]{\color{white}\Large\sc\bfseries \lecorchap~\thecontentslabel\\*\hspace*{.7em}\ \thecontentslabel};%
-  \end{tikzpicture}%
-  \color{tbl}\large\sc\bfseries%
-}%
-{}
-{}
-{\;\titlerule\;\large\sc\bfseries Page \thecontentspage
-	\begin{tikzpicture}[remember picture, overlay]
-		\draw[fill=tbl,draw=tbl] (2pt,0) rectangle (4,0.1pt);
-	\end{tikzpicture}}%
-
-\titlecontents{section}[3.7pc]
-{\addvspace{2pt}}
-{\contentslabel[\thecontentslabel]{2pc}}
-{}
-{\hfill\small \thecontentspage}
-[]
-
-\titlecontents{subsection}[5.75pc]
-{\addvspace{2pt}}
-{\contentslabel[\thecontentslabel]{2pc}}
-{}
-{\hfill\small \thecontentspage}
-[]%
-
-\renewcommand\tableofcontents{%
-  \chapter*{%
-    \vspace*{-20\p@}%
-    \begin{tikzpicture}[remember picture, overlay]%
-      \pgftext[right,x=15cm,y=0.2cm]{\color{tbl}\Huge\sc\bfseries \contentsname};%
-      \draw[fill=tbl,draw=tbl] (13,-.75) rectangle (20,1);%
-      \clip (13,-.75) rectangle (20,1);
-      \pgftext[right,x=15cm,y=0.2cm]{\color{white}\Huge\sc\bfseries \contentsname};%
-    \end{tikzpicture}}%
-  \@starttoc{toc}}
 
 \makeatother
