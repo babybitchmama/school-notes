@@ -286,6 +286,18 @@
   },
 }
 
+% Edit Section/Subsection/Subsubsection
+\titleformat*{\section}{\sffamily\scshape\fontsize{14}{16}\bfseries}
+\titleformat*{\subsection}{\color{subsubsection}\scshape\sffamily\fontsize{13}{15}\bfseries}
+\def\@seccntformat#1{\llap{\csname the#1\endcsname\quad}}
+\renewcommand\thesection{\arabic{section}}
+
+\renewcommand\theequation{\arabic{equation}}
+\renewcommand\tagform@[1]{%
+  {\color{main}\boxed{\textbf{#1}}}
+}
+\def\@eqnnum{{\normalfont \normalcolor \theequation}}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                                                                              %
@@ -547,13 +559,6 @@
 \newcommand\X{\mathcal{X}}
 \newcommand\Y{\mathcal{Y}}
 \newcommand\W{\mathbf{w}}
-
-% Edit equation number display
-\renewcommand\theequation{\arabic{equation}}
-\renewcommand\tagform@[1]{%
-  {\color{main}\boxed{\textbf{#1}}}
-}
-\def\@eqnnum{{\normalfont \normalcolor \theequation}}
 
 % Create command to box equations
 \newcommand*\colorboxed{}
