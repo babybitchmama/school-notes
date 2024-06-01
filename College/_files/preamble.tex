@@ -125,16 +125,7 @@
 \colorlet{question}{example}
 \colorlet{questionfg}{examplebg}
 
-% % Geometry
-% \geometry{
-%   tmargin=2cm,
-%   rmargin=1in,
-%   lmargin=1in,
-%   margin=0.85in,
-%   bmargin=2cm,
-%   footskip=1cm,
-% }
-
+% Geometry
 \geometry{a4paper, total={170mm,257mm}, left=15mm, top=20mm}
 
 % Tables
@@ -359,6 +350,7 @@
 }
 
 \newcounter{nte}[chapter]
+\def\@note{}
 \NewDocumentCommand\nte{O{} O{} m m}{%
   \cleartoleftpage
   \setcounter{nte}{\arabic{chapter}}
@@ -446,6 +438,12 @@
 \newcommand\incorrect[1]{{\color{incorrect}#1}}
 \newcommand\inctocor[2]{\incorrect{#1} \ensuremath{\to} \correct{#2}}
 
+% Bracket
+\renewcommand\bra[1]{\left\langle#1\right|}
+\renewcommand\ket[1]{\left|#1\right\rangle}
+\renewcommand\braket[2]{\left\langle#1\middle|#2\right\rangle}
+\renewcommand\ang[1]{\left\langle#1\right\rangle}
+
 % Important
 \newcommand\imp[1]{{\color{main}#1}}
 
@@ -453,6 +451,7 @@
 \newcommand\rcancel[1]{\renewcommand\CancelColor{\color{red}}\cancel{#1}}
 
 % For differentials
+\newcommand\dd[1]{\textrm{d}#1}
 \newcommand\dA{\textrm{d}A}
 \newcommand\dm{\textrm{d}m}
 \newcommand\dt{\textrm{d}t}
@@ -651,11 +650,24 @@
 \tcbuselibrary{theorems,skins,hooks}
 
 \@ifclasswith{\class}{nocolor}{
+  \renewcommand\qedsymbol{{\color{black}\rule{4mm}{1.5mm}}}
+
   \theoremstyle{definition}
 
   \newtheorem{definition}{Definition}
   \newtheorem{question}{Question}
-  \newtheorem{solution}{Solution}
+  \newtheorem{sol}{Solution}
+
+  % This is a very hacky way of creating an environment that has a qed symbol at
+  % the end of it, as you cannot create it using \newtheorem for some odd reason
+  % (unless I'm just an idiot).
+  \newcounter{solutioncnt}
+  \setcounter{solutioncnt}{1}
+  \newcommand\solutionname{\normalfont\textbf{Solution \arabic{solutioncnt}.}}
+  \newenvironment{solution}%
+  {\renewcommand\proofname\solutionname%
+  \begin{proof}}%
+  {\stepcounter{solutioncnt}\end{proof}}
 
   \newtheorem*{remark}{Remark}
   \newtheorem*{note}{Note}
@@ -824,7 +836,7 @@
   }
 ]{thmpurpleframebox}
 
-\declaretheorem[style=thmpurpleframebox,      name=]                {purpleframe}
+\declaretheorem[style=thmpurpleframebox, name=]{purpleframe}
 
 %%%%%%%%%%%%%%%%%%
 %  Cref Styling  %
@@ -890,5 +902,57 @@
 \creflabelformat{equation}{#2\textup{#1}#3}
 \creflabelformat{table}{#2\textup{#1}#3}
 \creflabelformat{figure}{#2\textup{#1}#3}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                                     %
+%                          Table of Contents                          %
+%                                                                     %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\contentsmargin{0cm}
+\makeatletter
+
+\titlecontents{chapter}[3.7pc]
+  {%
+    \addvspace{30pt}%
+    \begin{tikzpicture}[remember picture, overlay]%
+      \draw[fill=tbl,draw=tbl] (-7,-.1) rectangle (0.2,.5);%
+      \pgftext[left,x=-3cm,y=0.2cm]{\color{white}\Large\sc\bfseries \lecorchap~\thecontentslabel\\*\hspace*{0.7em}\ \thecontentslabel};%
+    \end{tikzpicture}%
+    ~~\color{tbl}\large\sc\bfseries%
+  }%
+  {}
+  {}
+  {\;\titlerule\;\large\sc\bfseries Page \thecontentspage
+    \begin{tikzpicture}[remember picture, overlay]
+      \draw[fill=tbl,draw=tbl] (2pt,0) rectangle (4,0.1pt);
+    \end{tikzpicture}%
+  }
+
+\titlecontents{section}[3.7pc]
+  {\addvspace{2pt}}
+  {\contentslabel[\thecontentslabel]{2pc}}
+  {}
+  {\hfill\small \thecontentspage}
+  []%
+
+\titlecontents{subsection}[5.75pc]
+  {\addvspace{2pt}}
+  {\contentslabel[\thecontentslabel]{2pc}}
+  {}
+  {\hfill\small \thecontentspage}
+  []%
+
+\renewcommand\tableofcontents{%
+  \chapter*{%
+    \vspace*{-20\p@}%
+    \begin{tikzpicture}[remember picture, overlay]%
+      \pgftext[right,x=15cm,y=0.2cm]{\color{tbl}\Huge\sc\bfseries \contentsname};%
+      \draw[fill=tbl,draw=tbl] (13,-.75) rectangle (20,1);%
+      \clip (13,-.75) rectangle (20,1);%
+      \pgftext[right,x=15cm,y=0.2cm]{\color{white}\Huge\sc\bfseries \contentsname};%
+    \end{tikzpicture}}%
+  \@starttoc{toc}%
+}%
 
 \makeatother
