@@ -297,6 +297,20 @@
   }
 }
 
+\newcommand\graphslopefield{
+  \pgfmathsetmacro{\hx}{(\xmax-\xmin)/\nx}
+  \pgfmathsetmacro{\hy}{(\ymax-\ymin)/\ny}
+  \foreach \i in {0,...,\nx}
+  \foreach \j in {0,...,\ny}{
+    \pgfmathsetmacro{\yprime}{f({\xmin+\i*\hx},{\ymin+\j*\hy})}
+    \draw[black,shift={({\xmin+\i*\hx},{\ymin+\j*\hy})}] 
+    (0,0)--($(0,0)!2mm!(.1,.1*\yprime)$);
+  }
+
+  \draw[->] (\xmin-.5,0)--(\xmax+.5,0) node[below right] {$x$};
+  \draw[->] (0,\ymin-.5)--(0,\ymax+.5) node[above left] {$y$};
+}
+
 \tikzset{style1/.style={color=linecolor1,mark=none,line width=1pt,solid}}
 \tikzset{style2/.style={color=linecolor2,mark=none,line width=1pt,solid}}
 \tikzset{style3/.style={color=linecolor3,mark=none,line width=1pt,solid}}
@@ -841,19 +855,19 @@
   headpunct=:,
 ]{thmmainplainbox}
 
-% \declaretheoremstyle[
-%   headfont=\sffamily\color{main},
-%   headformat=\NOTE,
-%   headindent=0mm,
-%   bodyfont=\normalfont\centering,
-%   notefont=\bfseries,
-%   notebraces={~ },
-%   headpunct=,
-%   mdframed={
-%     linewidth=0.5pt, linecolor=main,
-%     topline=true, bottomline=true, leftline=true, rightline=true,
-%   }
-% ]{thmpurpleframebox}
+\declaretheoremstyle[
+  headfont=\sffamily\color{main},
+  headformat=\NOTE,
+  headindent=0mm,
+  bodyfont=\normalfont\centering,
+  notefont=\bfseries,
+  notebraces={~ },
+  headpunct=,
+  mdframed={
+    linewidth=0.5pt, linecolor=main,
+    topline=true, bottomline=true, leftline=true, rightline=true,
+  }
+]{thmpurpleframebox}
 
 \declaretheorem[              style=thmdefinitionbox,       name=Definition]      {definition}
 \declaretheorem[              style=thmtheorembox,          name=Theorem]         {theorem}
@@ -867,7 +881,7 @@
 \declaretheorem[style=thmmaindefinitionbox,   name=Note]            {note}
 \declaretheorem[style=thmmaindefinitionbox,   name=Problem]         {problem}
 
-% \declaretheorem[style=thmpurpleframebox, name=]{purpleframe}
+\declaretheorem[style=thmpurpleframebox, name=]{purpleframe}
 
 \declaretheorem[numbered=no,          style=thmmainplainbox,        name=Corollary]       {corollary}
 \declaretheorem[numbered=no,          style=thmmainplainbox,        name=Proposition]     {proposition}
@@ -881,15 +895,6 @@
 \declaretheorem[numbered=no,          style=thmmainplainbox,        name=Conclusion]      {conclusion}
 
 \renewenvironment{proof}[1][\proofname]{\begin{replacementproof}}{\end{replacementproof}}
-
-\newtcolorbox{purpleframe}[2][]{%
-	boxrule=0.75pt,
-	sharp corners,
-	colframe=main,
-	% colback=pag,
-	coltext=white,
-	#1,
-}
 
 %%%%%%%%%%%%%%%%%%
 %  Cref Styling  %
