@@ -143,7 +143,14 @@
 \setlength{\parindent}{0pt}
 
 % Geometry
-\geometry{a4paper, total={170mm,257mm}, left=15mm, top=20mm}
+\geometry{
+  tmargin=2cm,
+  rmargin=1in,
+  lmargin=1in,
+  margin=0.85in,
+  bmargin=2cm,
+  footskip=.2in
+}
 
 % Tables
 \newcolumntype{C}{>{\Centering\arraybackslash}X}
@@ -968,50 +975,96 @@
 %                                                                     %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+% \contentsmargin{0cm}
+% \titlecontents{chapter}[3.7pc]
+%   {%
+%     \addvspace{30pt}%
+%     \begin{tikzpicture}[remember picture, overlay]%
+%       \draw[fill=tbl,draw=tbl] (-7,-.1) rectangle (0.2,.5);%
+%       \pgftext[left,x=-3cm,y=0.2cm]{\color{white}\Large\sc\bfseries \lecorchap~\thecontentslabel\\*\hspace*{0.7em}\ \thecontentslabel};%
+%     \end{tikzpicture}%
+%     ~~\color{tbl}\large\sc\bfseries%
+%   }%
+%   {}
+%   {}
+%   {\;\titlerule\;\large\sc\bfseries Page \thecontentspage
+%     \begin{tikzpicture}[remember picture, overlay]
+%       \draw[fill=tbl,draw=tbl] (2pt,0) rectangle (4,0.1pt);
+%     \end{tikzpicture}%
+%   }
+
+% \titlecontents{section}[3.7pc]
+%   {\addvspace{2pt}}
+%   {\contentslabel[\thecontentslabel]{2pc}}
+%   {}
+%   {\hfill\small \thecontentspage}
+%   []%
+
+% \titlecontents{subsection}[5.75pc]
+%   {\addvspace{2pt}}
+%   {\contentslabel[\thecontentslabel]{2pc}}
+%   {}
+%   {\hfill\small \thecontentspage}
+%   []%
+
+% \renewcommand\tableofcontents{%
+%   \chapter*{%
+%     \vspace*{-20\p@}%
+%     \begin{tikzpicture}[remember picture, overlay]%
+%       \pgftext[right,x=15cm,y=0.2cm]{\color{tbl}\Huge\sc\bfseries \contentsname};%
+%       \draw[fill=tbl,draw=tbl] (13,-.75) rectangle (20,1);%
+%       \clip (13,-.75) rectangle (20,1);%
+%       \pgftext[right,x=15cm,y=0.2cm]{\color{white}\Huge\sc\bfseries \contentsname};%
+%     \end{tikzpicture}}%
+%   \@starttoc{toc}%
+% }%
+
+\usepackage{titletoc,titlesec}
 \contentsmargin{0cm}
-\makeatletter
-
 \titlecontents{chapter}[3.7pc]
-  {%
-    \addvspace{30pt}%
-    \begin{tikzpicture}[remember picture, overlay]%
-      \draw[fill=tbl,draw=tbl] (-7,-.1) rectangle (0.2,.5);%
-      \pgftext[left,x=-3cm,y=0.2cm]{\color{white}\Large\sc\bfseries \lecorchap~\thecontentslabel\\*\hspace*{0.7em}\ \thecontentslabel};%
-    \end{tikzpicture}%
-    ~~\color{tbl}\large\sc\bfseries%
-  }%
-  {}
-  {}
-  {\;\titlerule\;\large\sc\bfseries Page \thecontentspage
-    \begin{tikzpicture}[remember picture, overlay]
-      \draw[fill=tbl,draw=tbl] (2pt,0) rectangle (4,0.1pt);
-    \end{tikzpicture}%
-  }
-
+{\addvspace{30pt}%
+	\begin{tikzpicture}[remember picture, overlay]%
+		\draw[fill=main!60,draw=main!60] (-7,-.1) rectangle (-0.7,.5);%
+		\pgftext[left,x=-3.6cm,y=0.2cm]{\color{white}\Large\sc\bfseries \lecorchap\ \thecontentslabel};%
+	\end{tikzpicture}\color{main!60}\large\sc\bfseries}%
+{}
+{}
+{\;\titlerule\;\large\sc\bfseries Page \thecontentspage
+	\begin{tikzpicture}[remember picture, overlay]
+		\draw[fill=main!60,draw=main!60] (2pt,0) rectangle (4,0.1pt);
+\end{tikzpicture}}%
 \titlecontents{section}[3.7pc]
-  {\addvspace{2pt}}
-  {\contentslabel[\thecontentslabel]{2pc}}
-  {}
-  {\hfill\small \thecontentspage}
-  []%
+{\addvspace{2pt}}
+{\contentslabel[\thecontentslabel]{2pc}}
+{}
+{\hfill\small \thecontentspage}
+[]
+\titlecontents{subsection}[3.7pc]
+{\addvspace{-1pt}\small}
+{\hspace*{2pc}\contentslabel[\thecontentslabel]{2pc}}
+{}
+{\hfill\small \thecontentspage}
+[]
 
-\titlecontents{subsection}[5.75pc]
-  {\addvspace{2pt}}
-  {\contentslabel[\thecontentslabel]{2pc}}
-  {}
-  {\hfill\small \thecontentspage}
-  []%
+%{\addvspace{-1pt}\small}
+%{}
+%{}
+%{\ --- \small\thecontentspage}
+%[ \textbullet\ ][]
 
-\renewcommand\tableofcontents{%
-  \chapter*{%
-    \vspace*{-20\p@}%
-    \begin{tikzpicture}[remember picture, overlay]%
-      \pgftext[right,x=15cm,y=0.2cm]{\color{tbl}\Huge\sc\bfseries \contentsname};%
-      \draw[fill=tbl,draw=tbl] (13,-.75) rectangle (20,1);%
-      \clip (13,-.75) rectangle (20,1);%
-      \pgftext[right,x=15cm,y=0.2cm]{\color{white}\Huge\sc\bfseries \contentsname};%
-    \end{tikzpicture}}%
-  \@starttoc{toc}%
-}%
+\makeatletter
+\renewcommand{\tableofcontents}{%
+	\chapter*{%
+		\vspace*{-20\p@}%
+		\begin{tikzpicture}[remember picture, overlay]%
+			\pgftext[right,x=15cm,y=0.2cm]{\color{main!60}\Huge\sc\bfseries \contentsname};%
+			\draw[fill=main!60,draw=main!60] (13,-.75) rectangle (20,1);%
+			\clip (13,-.75) rectangle (20,1);
+			\pgftext[right,x=15cm,y=0.2cm]{\color{white}\Huge\sc\bfseries \contentsname};%
+	\end{tikzpicture}}%
+	\@starttoc{toc}}
+\makeatother
+\titleformat{\chapter}[display]
+{\normalfont\Huge\bfseries}{\chaptertitlename\ \thechapter}{20pt}{\Huge}
 
 \makeatother
