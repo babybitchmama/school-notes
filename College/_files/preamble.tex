@@ -745,6 +745,11 @@
 \newcommand\qedsolution{{\color{qedsolution}\rule{4mm}{1.5mm}}}
 \newcommand\qedproof{{\color{qedproof}\rule{4mm}{1.5mm}}}
 
+\xpatchcmd{\endmdframed}
+  {\aftergroup\endmdf@trivlist\color@endgroup}
+  {\endmdf@trivlist\color@endgroup\@doendpe}
+  {}{}
+
 \declaretheoremstyle[
   headfont=\sffamily\bfseries\color{definition},
   headformat=\fbox{\arabic{definition}}~\NAME\NOTE,
@@ -797,16 +802,12 @@
   qed=\qedsolution,
 ]{thmexamplebox}
 
-\xpatchcmd{\endmdframed}
-  {\aftergroup\endmdf@trivlist\color@endgroup}
-  {\endmdf@trivlist\color@endgroup\@doendpe}
-  {}{}
-
 \declaretheoremstyle[
   headfont=\sffamily\color{solution},
   headformat=\parbox{\textwidth}{\centering\NAME~\arabic{solution}},
   notefont=\bfseries,
   headpunct=,
+  postheadspace=\newline,
   mdframed={
     linewidth=0.5pt, linecolor=solution,
     rightline=false, leftline=false,
@@ -857,21 +858,7 @@
 
 \declaretheoremstyle[
   headfont=\sffamily\color{main},
-  headformat=\centering\NOTE\newline,
-  headindent=0mm,
-  bodyfont=\normalfont\centering,
-  notefont=\bfseries,
-  notebraces={~ },
-  headpunct=,
-  mdframed={
-    linewidth=0.5pt, linecolor=main,
-    topline=true, bottomline=true, leftline=true, rightline=true,
-  }
-]{thmpurpleframeboxc}
-
-\declaretheoremstyle[
-  headfont=\sffamily\color{main},
-  headformat={\makebox[\textwidth][c]{\NAME~\NOTE}},
+  headformat=\parbox{\textwidth}{\centering\NAME~\NOTE},
   headindent=0mm,
   bodyfont=\normalfont,
   notefont=\bfseries,
@@ -881,7 +868,7 @@
     linewidth=0.5pt, linecolor=main,
     topline=true, bottomline=true, leftline=true, rightline=true,
   }
-]{thmpurpleframeboxl}
+]{thmpurpleframebox}
 
 \declaretheorem[              style=thmdefinitionbox,       name=Definition]      {definition}
 \declaretheorem[              style=thmtheorembox,          name=Theorem]         {theorem}
@@ -895,8 +882,7 @@
 \declaretheorem[style=thmmaindefinitionbox,   name=Note]            {note}
 \declaretheorem[style=thmmaindefinitionbox,   name=Problem]         {problem}
 
-\declaretheorem[style=thmpurpleframeboxc, name=]{purpleframe}
-\declaretheorem[style=thmpurpleframeboxl, name=]{purpleframel}
+\declaretheorem[style=thmpurpleframebox, name=]{purpleframe}
 
 \declaretheorem[numbered=no,          style=thmmainplainbox,        name=Corollary]       {corollary}
 \declaretheorem[numbered=no,          style=thmmainplainbox,        name=Proposition]     {proposition}
