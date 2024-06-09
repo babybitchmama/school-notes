@@ -857,7 +857,7 @@
 
 \declaretheoremstyle[
   headfont=\sffamily\color{main},
-  headformat=\NOTE,
+  headformat=\centering\NOTE\newline,
   headindent=0mm,
   bodyfont=\normalfont\centering,
   notefont=\bfseries,
@@ -867,7 +867,21 @@
     linewidth=0.5pt, linecolor=main,
     topline=true, bottomline=true, leftline=true, rightline=true,
   }
-]{thmpurpleframebox}
+]{thmpurpleframeboxc}
+
+\declaretheoremstyle[
+  headfont=\sffamily\color{main},
+  headformat={\makebox[\textwidth][c]{\NAME~\NOTE}},
+  headindent=0mm,
+  bodyfont=\normalfont,
+  notefont=\bfseries,
+  notebraces={~ },
+  headpunct=,
+  mdframed={
+    linewidth=0.5pt, linecolor=main,
+    topline=true, bottomline=true, leftline=true, rightline=true,
+  }
+]{thmpurpleframeboxl}
 
 \declaretheorem[              style=thmdefinitionbox,       name=Definition]      {definition}
 \declaretheorem[              style=thmtheorembox,          name=Theorem]         {theorem}
@@ -881,7 +895,8 @@
 \declaretheorem[style=thmmaindefinitionbox,   name=Note]            {note}
 \declaretheorem[style=thmmaindefinitionbox,   name=Problem]         {problem}
 
-\declaretheorem[style=thmpurpleframebox, name=]{purpleframe}
+\declaretheorem[style=thmpurpleframeboxc, name=]{purpleframe}
+\declaretheorem[style=thmpurpleframeboxl, name=]{purpleframel}
 
 \declaretheorem[numbered=no,          style=thmmainplainbox,        name=Corollary]       {corollary}
 \declaretheorem[numbered=no,          style=thmmainplainbox,        name=Proposition]     {proposition}
