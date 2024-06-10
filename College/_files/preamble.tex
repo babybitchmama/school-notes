@@ -323,10 +323,30 @@
 \tikzset{style3/.style={color=linecolor3,mark=none,line width=1pt,solid}}
 \tikzset{style4/.style={color=linecolor4,mark=none,line width=1pt,solid}}
 \tikzset{style5/.style={color=linecolor5,mark=none,line width=1pt,solid}}
+
+\tikzset{integration1/.style={color=linecolor1,fill=linecolor1!20,fill opacity=0.5,mark=none,line width=1pt,solid}}
+\tikzset{integration2/.style={color=linecolor2,fill=linecolor1!20,fill opacity=0.5,mark=none,line width=1pt,solid}}
+\tikzset{integration3/.style={color=linecolor3,fill=linecolor1!20,fill opacity=0.5,mark=none,line width=1pt,solid}}
+\tikzset{integration4/.style={color=linecolor4,fill=linecolor1!20,fill opacity=0.5,mark=none,line width=1pt,solid}}
+\tikzset{integration5/.style={color=linecolor5,fill=linecolor1!20,fill opacity=0.5,mark=none,line width=1pt,solid}}
+
 \tikzset{asymptote/.style={color=gray,mark=none,line width=1pt,<->,dashed}}
 \tikzset{soldot/.style={color=linecolor2,fill=linecolor2,only marks,mark=*}}
 \tikzset{holdot/.style={color=linecolor2,fill=white,only marks,mark=*}}
-\tikzset{integration/.style={name path=curve,color=linecolor1,mark=none,line width=0.5pt,solid}}
+
+\tikzset{>=stealth}
+\tikzset{->-/.style={decoration={markings,mark=at position .5 with {\arrow{>}}},postaction={decorate}}}
+
+%%%%%%%%%%%%%%
+%  PgfPlots  %
+%%%%%%%%%%%%%%
+
+\pgfplotsset{compat=1.18}
+
+\usepgfplotslibrary{colormaps,patchplots}
+\usepgfplotslibrary{groupplots}
+\usepgfplotslibrary{fillbetween}
+\usepgfplotslibrary{external}
 
 \def\axisdefaultwidth{175pt}
 \def\axisdefaultheight{\axisdefaultwidth}
@@ -343,31 +363,21 @@
   },
 }
 
-\tikzset{>=stealth}
-\tikzset{->-/.style={decoration={markings,mark=at position .5 with {\arrow{>}}},postaction={decorate}}}
-
-%%%%%%%%%%%%%%
-%  PgfPlots  %
-%%%%%%%%%%%%%%
-
-\pgfplotsset{compat=1.18}
-
-\usepgfplotslibrary{colormaps,patchplots}
-\usepgfplotslibrary{groupplots}
-\usepgfplotslibrary{fillbetween}
-\usepgfplotslibrary{external}
-
 \pgfplotsset{style1/.style={color=linecolor1,mark=none,line width=1pt,solid}}
 \pgfplotsset{style2/.style={color=linecolor2,mark=none,line width=1pt,solid}}
 \pgfplotsset{style3/.style={color=linecolor3,mark=none,line width=1pt,solid}}
 \pgfplotsset{style4/.style={color=linecolor4,mark=none,line width=1pt,solid}}
 \pgfplotsset{style5/.style={color=linecolor5,mark=none,line width=1pt,solid}}
+
+\pgfplotsset{integration1/.style={color=linecolor1,fill=linecolor1!20,fill opacity=0.5,mark=none,line width=1pt,solid}}
+\pgfplotsset{integration2/.style={color=linecolor2,fill=linecolor1!20,fill opacity=0.5,mark=none,line width=1pt,solid}}
+\pgfplotsset{integration3/.style={color=linecolor3,fill=linecolor1!20,fill opacity=0.5,mark=none,line width=1pt,solid}}
+\pgfplotsset{integration4/.style={color=linecolor4,fill=linecolor1!20,fill opacity=0.5,mark=none,line width=1pt,solid}}
+\pgfplotsset{integration5/.style={color=linecolor5,fill=linecolor1!20,fill opacity=0.5,mark=none,line width=1pt,solid}}
+
 \pgfplotsset{asymptote/.style={color=gray,mark=none,line width=1pt,<->,dashed}}
 \pgfplotsset{soldot/.style={color=linecolor2,only marks,mark=*}}
 \pgfplotsset{holdot/.style={color=linecolor2,fill=white,only marks,mark=*}}
-\pgfplotsset{integration/.style={name path=curve,color=linecolor1,mark=none,line width=0.5pt,solid}}
-\pgfplotsset{horizontal marks/.style={}}
-\pgfplotsset{vertical marks/.style={}}
 
 \pgfplotscreateplotcyclelist{stylelist}{
   style1,
