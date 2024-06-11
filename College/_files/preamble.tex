@@ -262,6 +262,15 @@
 \makeatother
 
 \usetikzlibrary{shapes.arrows}
+\tikzset{every pin/.style={pin edge={<-}}}
+\tikzset{flow/.style={
+    decoration={
+      markings,mark=at position #1 with {\arrow{>}}
+    },postaction={decorate}
+  },
+  flow/.default=0.5
+}
+
 \tikzset{balls/.pic={
   \fill[red5!10!pag] (-.06cm,0) circle (2pt);
   \fill[red5!20!pag] (-.045cm,0) circle (2pt);
