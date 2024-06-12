@@ -996,50 +996,6 @@
 %                                                                     %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% \contentsmargin{0cm}
-% \titlecontents{chapter}[3.7pc]
-%   {%
-%     \addvspace{30pt}%
-%     \begin{tikzpicture}[remember picture, overlay]%
-%       \draw[fill=tbl,draw=tbl] (-7,-.1) rectangle (0.2,.5);%
-%       \pgftext[left,x=-3cm,y=0.2cm]{\color{white}\Large\sc\bfseries \lecorchap~\thecontentslabel\\*\hspace*{0.7em}\ \thecontentslabel};%
-%     \end{tikzpicture}%
-%     ~~\color{tbl}\large\sc\bfseries%
-%   }%
-%   {}
-%   {}
-%   {\;\titlerule\;\large\sc\bfseries Page \thecontentspage
-%     \begin{tikzpicture}[remember picture, overlay]
-%       \draw[fill=tbl,draw=tbl] (2pt,0) rectangle (4,0.1pt);
-%     \end{tikzpicture}%
-%   }
-
-% \titlecontents{section}[3.7pc]
-%   {\addvspace{2pt}}
-%   {\contentslabel[\thecontentslabel]{2pc}}
-%   {}
-%   {\hfill\small \thecontentspage}
-%   []%
-
-% \titlecontents{subsection}[5.75pc]
-%   {\addvspace{2pt}}
-%   {\contentslabel[\thecontentslabel]{2pc}}
-%   {}
-%   {\hfill\small \thecontentspage}
-%   []%
-
-% \renewcommand\tableofcontents{%
-%   \chapter*{%
-%     \vspace*{-20\p@}%
-%     \begin{tikzpicture}[remember picture, overlay]%
-%       \pgftext[right,x=15cm,y=0.2cm]{\color{tbl}\Huge\sc\bfseries \contentsname};%
-%       \draw[fill=tbl,draw=tbl] (13,-.75) rectangle (20,1);%
-%       \clip (13,-.75) rectangle (20,1);%
-%       \pgftext[right,x=15cm,y=0.2cm]{\color{white}\Huge\sc\bfseries \contentsname};%
-%     \end{tikzpicture}}%
-%   \@starttoc{toc}%
-% }%
-
 \usepackage{titletoc,titlesec}
 \contentsmargin{0cm}
 \titlecontents{chapter}[3.7pc]
