@@ -924,7 +924,14 @@
 \declaretheorem[numbered=no,          style=thmmainplainbox,        name=Acknowledgment]  {acknowledgment}
 \declaretheorem[numbered=no,          style=thmmainplainbox,        name=Conclusion]      {conclusion}
 
-\renewenvironment{proof}[1][\proofname]{\begin{replacementproof}}{\end{replacementproof}}
+% \renewenvironment{proof}[1][\proofname]{\begin{replacementproof}}{\end{replacementproof}}
+\renewenvironment{proof}[1][\proofname]{
+  \begin{replacementproof}
+  \setlength{\parindent}{1em}
+}{
+  \end{replacementproof}
+  \setlength{\parindent}{0pt} % Restore global indentation setting
+}
 
 %%%%%%%%%%%%%%%%%%
 %  Cref Styling  %
