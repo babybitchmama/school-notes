@@ -41,6 +41,11 @@ source ./todo-list/.tmux
 
 tmux new-window -t "$SESSION_NAME"
 
+tmux rename-window -t "$SESSION_NAME" "Degrees"
+tmux send-keys -t "$SESSION_NAME" "cd ./Degrees/Bachelors/" Enter
+
+tmux new-window -t "$SESSION_NAME"
+
 tmux rename-window -t "$SESSION_NAME" "Git"
 tmux send-keys -t "$SESSION_NAME" "clear; wgs" Enter
 
