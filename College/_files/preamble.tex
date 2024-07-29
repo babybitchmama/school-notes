@@ -107,8 +107,7 @@
 \definecolor{tbl}{HTML}{F035A3}
 \definecolor{main}{HTML}{F035A3}
 \definecolor{solution}{HTML}{00AEEF}
-\definecolor{qedsolution}{HTML}{76B4CF}
-\definecolor{proof}{HTML}{F035A3}
+\definecolor{qedexample}{HTML}{76B4CF}
 \definecolor{subsubsection}{HTML}{B00D15}
 \definecolor{example}{HTML}{00A6E4}
 \definecolor{examplebg}{HTML}{F2FBF8}
@@ -137,6 +136,7 @@
 \colorlet{theorem}{main}
 \colorlet{corollary}{main}
 \colorlet{lemma}{main}
+\colorlet{proof}{main}
 \colorlet{remark}{main}
 \colorlet{qedproof}{proof}
 \colorlet{question}{example}
@@ -262,7 +262,6 @@
 	\def\tikz@plane@x{\pgfpointxyz{1}{0}{#1}}%
 	\def\tikz@plane@y{\pgfpointxyz{0}{1}{#1}}%
 	\tikz@canvas@is@plane}
-\makeatother
 
 \usetikzlibrary{shapes.arrows}
 \tikzset{every pin/.style={pin edge={<-}}}
@@ -773,7 +772,7 @@
 \mdfsetup{skipabove=1em,skipbelow=0em}
 \tcbuselibrary{theorems,skins,hooks}
 
-\newcommand\qedsolution{{\color{qedsolution}\rule{4mm}{1.5mm}}}
+\newcommand\qedexample{{\color{qedexample}\rule{4mm}{1.5mm}}}
 \newcommand\qedproof{{\color{qedproof}\rule{4mm}{1.5mm}}}
 
 \xpatchcmd{\endmdframed}
@@ -826,6 +825,15 @@
 ]{thmlemmabox}
 
 \declaretheoremstyle[
+  headfont=\sffamily\bfseries\color{example},
+  headformat=\NAME\NOTE,
+  bodyfont=\normalfont,
+  headpunct=,
+  spaceabove=\topsep,
+  qed=\qedexample,
+]{thmexamplebox}
+
+\declaretheoremstyle[
   headfont=\sffamily\bfseries\color{question}\colorbox{questionfg}{QUESTION \arabic{question}},
   headformat=\textbf{\NOTE},
   notefont=\bfseries,
@@ -834,28 +842,6 @@
   notebraces={()},
   headpunct=,
 ]{thmquestionbox}
-
-\declaretheoremstyle[
-  headfont=\sffamily\bfseries\color{example},
-  headformat=\NAME\NOTE,
-  bodyfont=\normalfont,
-  headpunct=,
-  spaceabove=\topsep,
-  qed=\qedsolution,
-]{thmexamplebox}
-
-\declaretheoremstyle[
-  headfont=\sffamily\color{solution},
-  headformat=\parbox{\textwidth}{\centering\NAME~\arabic{solution}},
-  notefont=\bfseries,
-  headpunct=,
-  postheadspace=\newline,
-  mdframed={
-    linewidth=0.5pt, linecolor=solution,
-    rightline=false, leftline=false,
-    skipbelow=0.5em,
-  },
-]{thmsolutionbox}
 
 \declaretheoremstyle[
   headfont=\sffamily\bfseries\color{remark},
@@ -877,17 +863,11 @@
   notefont=\bfseries,
   headpunct=,
   qed=\qedproof,
+  mdframed={
+    linewidth=0.5pt, linecolor=proof,
+    rightline=false, topline=false, bottomline=false,
+  },
 ]{thmreplacementproofbox}
-
-\declaretheoremstyle[
-  headformat=\NAME\NOTE,
-  headfont=\sffamily\bfseries,
-  headindent=24pt,
-  bodyfont=\normalfont,
-  notefont=\bfseries,
-  notebraces={~},
-  headpunct=:,
-]{thmmaindefinitionbox}
 
 \declaretheoremstyle[
   headfont=\sffamily,
@@ -918,14 +898,8 @@
 \declaretheorem[              style=thmlemmabox,            name=Lemma]           {lemma}
 \declaretheorem[              style=thmexamplebox,          name=Example]         {example}
 \declaretheorem[              style=thmquestionbox,         name=]                {question}
-\declaretheorem[              style=thmsolutionbox,         name=SOLUTION]        {solution}
 \declaretheorem[              style=thmreplacementproofbox, name=PROOF]           {replacementproof}
 \declaretheorem[numbered=no,  style=thmremarkbox,           name=Remark]          {remark}
-
-\declaretheorem[style=thmmaindefinitionbox,   name=Note]            {note}
-\declaretheorem[style=thmmaindefinitionbox,   name=Problem]         {problem}
-
-\declaretheorem[style=thmpurpleframebox, name=]{purpleframe}
 
 \declaretheorem[numbered=no,          style=thmmainplainbox,        name=Proposition]     {proposition}
 \declaretheorem[numbered=no,          style=thmmainplainbox,        name=Conjecture]      {conjecture}
@@ -937,13 +911,65 @@
 \declaretheorem[numbered=no,          style=thmmainplainbox,        name=Acknowledgment]  {acknowledgment}
 \declaretheorem[numbered=no,          style=thmmainplainbox,        name=Conclusion]      {conclusion}
 
-% \renewenvironment{proof}[1][\proofname]{\begin{replacementproof}}{\end{replacementproof}}
-\renewenvironment{proof}[1][\proofname]{
-  \begin{replacementproof}
-  \setlength{\parindent}{1em}
-}{
-  \end{replacementproof}
-  \setlength{\parindent}{0pt} % Restore global indentation setting
+\newtheoremstyle{side}{}{}{\advance\leftskip3cm\relax}{}
+{\bfseries}{}{0pt}{%
+  \makebox[0pt][r]{%
+    \smash{\parbox[t]{2.5cm}{\raggedright\thmname{#1}%
+    \thmnumber{\space #2}\thmnote{\newline (#3)}}}%
+\hspace{.5cm}}}
+
+\theoremstyle{side}
+\newtheorem*{note}{Note.}
+
+\renewenvironment{proof}[1][\proofname]{\vspace{-10pt}\begin{replacementproof}}{\end{replacementproof}}
+
+\newtcolorbox{solution}{
+  tikznode boxed title,
+  colback=white,
+  enhanced,
+  attach boxed title to top center={
+    yshift=-3mm,
+    yshifttext=-1mm,
+  },
+  boxed title style={
+    size=small,
+    colback=white,
+    frame code={},
+  },
+  title={\sffamily\color{solution}SOLUTION~\arabic{question}},
+  frame hidden,
+  borderline north={0.5pt}{0pt}{question},
+  borderline south={0.5pt}{0pt}{question},
+  breakable,
+}
+
+\newcommand\prpl[1][]{%
+  \begin{tcolorbox}[%
+    title={\sffamily\color{main}#1},
+    colback=white,
+    enhanced,
+    attach boxed title to top center={
+      yshift=-3mm,
+      yshifttext=-1mm,
+    },
+    boxed title style={
+      size=small,
+      colback=white,
+      frame code={},
+    },
+    frame hidden,
+    borderline east={0.5pt}{0pt}{main},
+    borderline west={0.5pt}{0pt}{main},
+    borderline north={0.5pt}{0pt}{main},
+    borderline south={0.5pt}{0pt}{main},
+    breakable,
+  ]
+}
+
+\newenvironment{purpleframe}[1][]{%
+  \prpl[#1]%
+}{%
+  \end{tcolorbox}%
 }
 
 %%%%%%%%%%%%%%%%%%
@@ -1047,13 +1073,6 @@
 {\hfill\small \thecontentspage}
 []
 
-%{\addvspace{-1pt}\small}
-%{}
-%{}
-%{\ --- \small\thecontentspage}
-%[ \textbullet\ ][]
-
-\makeatletter
 \renewcommand{\tableofcontents}{%
 	\chapter*{%
 		\vspace*{-20\p@}%
@@ -1064,7 +1083,6 @@
 			\pgftext[right,x=15cm,y=0.2cm]{\color{white}\Huge\sc\bfseries \contentsname};%
 	\end{tikzpicture}}%
 	\@starttoc{toc}}
-\makeatother
 \titleformat{\chapter}[display]
 {\normalfont\Huge\bfseries}{\chaptertitlename\ \thechapter}{20pt}{\Huge}
 
