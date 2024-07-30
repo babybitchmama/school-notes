@@ -894,7 +894,7 @@
 
 \declaretheorem[              style=thmdefinitionbox,       name=Definition]      {definition}
 \declaretheorem[              style=thmtheorembox,          name=Theorem]         {theorem}
-\declaretheorem[              style=thmcorollarybox,          name=Corollary]       {corollary}
+\declaretheorem[              style=thmcorollarybox,        name=Corollary]       {corollary}
 \declaretheorem[              style=thmlemmabox,            name=Lemma]           {lemma}
 \declaretheorem[              style=thmexamplebox,          name=Example]         {example}
 \declaretheorem[              style=thmquestionbox,         name=]                {question}
@@ -941,6 +941,7 @@
   borderline north={0.5pt}{0pt}{question},
   borderline south={0.5pt}{0pt}{question},
   breakable,
+  parskip=\baselineskip,
 }
 
 \newcommand\prpl[1][]{%
@@ -963,6 +964,7 @@
     borderline north={0.5pt}{0pt}{main},
     borderline south={0.5pt}{0pt}{main},
     breakable,
+    parskip=0pt,
   ]
 }
 
