@@ -77,6 +77,10 @@
 \usepackage{etoolbox}
 \usepackage[most,many,breakable]{tcolorbox}
 
+% Dark mode
+\usepackage{darkmode}
+\enabledarkmode
+
 \makeatletter
 
 
@@ -147,12 +151,10 @@
 
 % Geometry
 \geometry{
-  tmargin=2cm,
-  rmargin=1in,
-  lmargin=1in,
-  margin=0.85in,
-  bmargin=2cm,
-  footskip=.2in
+  top=1in,
+  bottom=1in,
+  right=1in,
+  left=1in,
 }
 
 % Tables
@@ -229,8 +231,8 @@
 \hypersetup{
   colorlinks,
   linkcolor=main!90,
-  citecolor=black,
-  urlcolor=black,
+  citecolor=linecolor1,
+  urlcolor=linecolor1,
 }
 
 %%%%%%%%%%
@@ -329,6 +331,9 @@
   \draw[->] (0,\ymin-.5)--(0,\ymax+.5) node[above left] {$y$};
 }
 
+\tikzset{background rectangle/.style={draw=main, line width=0.5pt, inner xsep=0.5cm, inner ysep=0.5cm}}
+
+\tikzset{derivative/.style={color=gray,mark=none,line width=0.5pt,solid}}
 \tikzset{style1/.style={color=linecolor1,mark=none,line width=1pt,solid}}
 \tikzset{style2/.style={color=linecolor2,mark=none,line width=1pt,solid}}
 \tikzset{style3/.style={color=linecolor3,mark=none,line width=1pt,solid}}
@@ -358,6 +363,14 @@
 \usepgfplotslibrary{groupplots}
 \usepgfplotslibrary{fillbetween}
 \usepgfplotslibrary{external}
+\usepgfplotslibrary{colorbrewer}
+
+\pgfplotsset{%
+  colormap={integration}{
+    color=(linecolor1)
+    color=(linecolor2)
+  },
+}
 
 \def\axisdefaultwidth{175pt}
 \def\axisdefaultheight{\axisdefaultwidth}
@@ -511,7 +524,15 @@
     \textit{For more notes like this, visit \href{\linktootherpages}{\shortlinkname}}.%
   }%
 
-  \begin{tcolorbox}[enhanced,colback=white,center upper,size=fbox, drop shadow southwest,sharp corners]
+  \begin{tcolorbox}[
+      enhanced,
+      center upper,
+      size=fbox,
+      drop shadow southwest,
+      sharp corners,
+      colback=pag,
+      coltext=white,
+    ]
     \term: \academicyear, \\
     Last Update: \today, \\
     \faculty, \location.
@@ -783,61 +804,49 @@
 \declaretheoremstyle[
   headfont=\sffamily\bfseries\color{definition},
   headformat=\fbox{\arabic{definition}}~\NAME\NOTE,
-  bodyfont=\normalfont,
+  bodyfont=\normalfont\color{white},
   headpunct=,
-  mdframed={
-    linewidth=0.5pt,
-    linecolor=definition,
-  },
+  mdframed={backgroundcolor=pag, linecolor=definition, linewidth=0.5pt},
 ]{thmdefinitionbox}
 
 \declaretheoremstyle[
   headfont=\sffamily\bfseries\color{theorem},
   headformat=\fbox{\arabic{theorem}}~\NAME\NOTE,
-  bodyfont=\normalfont,
+  bodyfont=\normalfont\color{white},
   headpunct=,
-  mdframed={
-    linewidth=0.5pt,
-    linecolor=theorem,
-  },
+  mdframed={backgroundcolor=pag, linecolor=theorem, linewidth=0.5pt},
 ]{thmtheorembox}
 
 \declaretheoremstyle[
   headfont=\sffamily\bfseries\color{corollary},
   headformat=\fbox{\arabic{corollary}}~\NAME\NOTE,
-  bodyfont=\normalfont,
+  bodyfont=\normalfont\color{white},
   headpunct=,
-  mdframed={
-    linewidth=0.5pt,
-    linecolor=theorem,
-  },
+  mdframed={backgroundcolor=pag, linecolor=theorem, linewidth=0.5pt},
 ]{thmcorollarybox}
 
 \declaretheoremstyle[
   headfont=\sffamily\bfseries\color{lemma},
   headformat=\fbox{\arabic{lemma}}~\NAME\NOTE,
-  bodyfont=\normalfont,
+  bodyfont=\normalfont\color{white},
   headpunct=,
-  mdframed={
-    linewidth=0.5pt,
-    linecolor=lemma,
-  },
+  mdframed={backgroundcolor=pag, linecolor=theorem, linewidth=0.5pt},
 ]{thmlemmabox}
 
 \declaretheoremstyle[
   headfont=\sffamily\bfseries\color{example},
   headformat=\NAME\NOTE,
-  bodyfont=\normalfont,
+  bodyfont=\normalfont\color{white},
   headpunct=,
   spaceabove=\topsep,
   qed=\qedexample,
 ]{thmexamplebox}
 
 \declaretheoremstyle[
-  headfont=\sffamily\bfseries\color{question}\colorbox{questionfg}{QUESTION \arabic{question}},
+  headfont=\sffamily\bfseries\color{question}QUESTION \arabic{question},
   headformat=\textbf{\NOTE},
   notefont=\bfseries,
-  bodyfont=\normalfont,
+  bodyfont=\normalfont\color{white},
   notefont={\color{black}\bfseries},
   notebraces={()},
   headpunct=,
@@ -845,12 +854,12 @@
 
 \declaretheoremstyle[
   headfont=\sffamily\bfseries\color{remark},
-  bodyfont=\itshape,
+  bodyfont=\itshape\color{white},
   notebraces={~ },
   notefont=\bfseries,
   headpunct=,
   mdframed={
-    linewidth=0.5pt, linecolor=remark,
+    backgroundcolor=pag, linecolor=remark, linewidth=0.5pt,
     rightline=false, topline=false, bottomline=false,
   },
 ]{thmremarkbox}
@@ -859,12 +868,12 @@
   headfont=\sffamily\color{proof},
   headformat=\NAME,
   headindent=0mm,
-  bodyfont=\normalfont,
+  bodyfont=\normalfont\color{white},
   notefont=\bfseries,
   headpunct=,
   qed=\qedproof,
   mdframed={
-    linewidth=0.5pt, linecolor=proof,
+    backgroundcolor=pag, linewidth=0.5pt, linecolor=proof,
     rightline=false, topline=false, bottomline=false,
   },
 ]{thmreplacementproofbox}
@@ -872,7 +881,7 @@
 \declaretheoremstyle[
   headfont=\sffamily,
   headindent=24pt,
-  bodyfont=\itshape,
+  bodyfont=\itshape\color{white},
   notefont=\bfseries,
   notebraces={~ },
   headpunct=:,
@@ -882,14 +891,14 @@
   headfont=\sffamily\color{main},
   headformat=\parbox{\textwidth}{\centering\NAME~\NOTE},
   headindent=0mm,
-  bodyfont=\normalfont,
+  bodyfont=\normalfont\color{white},
   notefont=\bfseries,
   notebraces={~ },
   headpunct=,
   mdframed={
-    linewidth=0.5pt, linecolor=main,
+    backgroundcolor=pag, linecolor=main, linewidth=0.5pt,
     topline=true, bottomline=true, leftline=true, rightline=true,
-  }
+  },
 ]{thmpurpleframebox}
 
 \declaretheorem[              style=thmdefinitionbox,       name=Definition]      {definition}
@@ -925,7 +934,8 @@
 
 \newtcolorbox{solution}{
   tikznode boxed title,
-  colback=white,
+  colback=pag,
+  coltext=white,
   enhanced,
   attach boxed title to top center={
     yshift=-3mm,
@@ -933,7 +943,7 @@
   },
   boxed title style={
     size=small,
-    colback=white,
+    colback=pag,
     frame code={},
   },
   title={\sffamily\color{solution}SOLUTION~\arabic{question}},
@@ -947,7 +957,7 @@
 \newcommand\prpl[1][]{%
   \begin{tcolorbox}[%
     title={\sffamily\color{main}#1},
-    colback=white,
+    colback=pag,
     enhanced,
     attach boxed title to top center={
       yshift=-3mm,
@@ -955,9 +965,10 @@
     },
     boxed title style={
       size=small,
-      colback=white,
+      colback=pag,
       frame code={},
     },
+    coltext=white,
     frame hidden,
     borderline east={0.5pt}{0pt}{main},
     borderline west={0.5pt}{0pt}{main},
