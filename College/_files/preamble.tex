@@ -42,6 +42,7 @@
 \usepackage{xfrac} % Required for extra fraction options
 \usepackage{diagbox} % Required for creating diagonal boxes
 \usepackage{polynom} % Required for polynomial long division
+\usepackage{xr} % Required for cross-referencing
 
 \usepackage{tasks} % Required for creating tasks
 \usepackage[font=bf]{caption} % Required for customizing captions
@@ -99,6 +100,10 @@
   \def\class{report}
 \else
 \fi
+
+\newcommand{\globalcolor}[1]{%
+  \color{#1}\global\let\default@color\current@color
+}
 
 \definecolor{linecolor1}{HTML}{3DC6F3}
 \definecolor{linecolor2}{HTML}{F034A3}
@@ -333,7 +338,6 @@
 
 \tikzset{background rectangle/.style={draw=main, line width=0.5pt, inner xsep=0.5cm, inner ysep=0.5cm}}
 
-\tikzset{derivative/.style={color=gray,mark=none,line width=0.5pt,solid}}
 \tikzset{style1/.style={color=linecolor1,mark=none,line width=1pt,solid}}
 \tikzset{style2/.style={color=linecolor2,mark=none,line width=1pt,solid}}
 \tikzset{style3/.style={color=linecolor3,mark=none,line width=1pt,solid}}
@@ -346,6 +350,7 @@
 \tikzset{integration4/.style={color=linecolor4,fill=linecolor1!20,fill opacity=0.5,mark=none,line width=1pt,solid}}
 \tikzset{integration5/.style={color=linecolor5,fill=linecolor1!20,fill opacity=0.5,mark=none,line width=1pt,solid}}
 
+\tikzset{derivative/.style={color=gray,mark=none,line width=0.5pt,solid}}
 \tikzset{asymptote/.style={color=gray,mark=none,line width=1pt,<->,dashed}}
 \tikzset{soldot/.style={color=linecolor2,fill=linecolor2,only marks,mark=*}}
 \tikzset{holdot/.style={color=linecolor2,fill=white,only marks,mark=*}}
@@ -804,62 +809,64 @@
 \declaretheoremstyle[
   headfont=\sffamily\bfseries\color{definition},
   headformat=\fbox{\arabic{definition}}~\NAME\NOTE,
-  bodyfont=\normalfont\color{white},
+  bodyfont=\normalfont,
   headpunct=,
-  mdframed={backgroundcolor=pag, linecolor=definition, linewidth=0.5pt},
+  mdframed={backgroundcolor=pag, linecolor=definition, linewidth=0.5pt, fontcolor=white},
 ]{thmdefinitionbox}
 
 \declaretheoremstyle[
   headfont=\sffamily\bfseries\color{theorem},
   headformat=\fbox{\arabic{theorem}}~\NAME\NOTE,
-  bodyfont=\normalfont\color{white},
+  bodyfont=\normalfont,
   headpunct=,
-  mdframed={backgroundcolor=pag, linecolor=theorem, linewidth=0.5pt},
+  mdframed={backgroundcolor=pag, linecolor=theorem, linewidth=0.5pt, fontcolor=white},
 ]{thmtheorembox}
 
 \declaretheoremstyle[
   headfont=\sffamily\bfseries\color{corollary},
   headformat=\fbox{\arabic{corollary}}~\NAME\NOTE,
-  bodyfont=\normalfont\color{white},
+  bodyfont=\normalfont,
   headpunct=,
-  mdframed={backgroundcolor=pag, linecolor=theorem, linewidth=0.5pt},
+  mdframed={backgroundcolor=pag, linecolor=corollary, linewidth=0.5pt, fontcolor=white},
 ]{thmcorollarybox}
 
 \declaretheoremstyle[
   headfont=\sffamily\bfseries\color{lemma},
   headformat=\fbox{\arabic{lemma}}~\NAME\NOTE,
-  bodyfont=\normalfont\color{white},
+  bodyfont=\normalfont,
   headpunct=,
-  mdframed={backgroundcolor=pag, linecolor=theorem, linewidth=0.5pt},
+  mdframed={backgroundcolor=pag, linecolor=lemma, linewidth=0.5pt, fontcolor=white},
 ]{thmlemmabox}
 
 \declaretheoremstyle[
   headfont=\sffamily\bfseries\color{example},
   headformat=\NAME\NOTE,
-  bodyfont=\normalfont\color{white},
+  bodyfont=\normalfont,
   headpunct=,
   spaceabove=\topsep,
   qed=\qedexample,
+  mdframed={fontcolor=white, backgroundcolor=pag, leftline=false, rightline=false, topline=false, bottomline=false},
 ]{thmexamplebox}
 
 \declaretheoremstyle[
   headfont=\sffamily\bfseries\color{question}QUESTION \arabic{question},
   headformat=\textbf{\NOTE},
   notefont=\bfseries,
-  bodyfont=\normalfont\color{white},
+  bodyfont=\normalfont,
   notefont={\color{black}\bfseries},
   notebraces={()},
   headpunct=,
+  mdframed={fontcolor=white, backgroundcolor=pag, leftline=false, rightline=false, topline=false, bottomline=false},
 ]{thmquestionbox}
 
 \declaretheoremstyle[
   headfont=\sffamily\bfseries\color{remark},
-  bodyfont=\itshape\color{white},
+  bodyfont=\itshape,
   notebraces={~ },
   notefont=\bfseries,
   headpunct=,
   mdframed={
-    backgroundcolor=pag, linecolor=remark, linewidth=0.5pt,
+    backgroundcolor=pag, linecolor=remark, linewidth=0.5pt, fontcolor=white,
     rightline=false, topline=false, bottomline=false,
   },
 ]{thmremarkbox}
@@ -868,12 +875,12 @@
   headfont=\sffamily\color{proof},
   headformat=\NAME,
   headindent=0mm,
-  bodyfont=\normalfont\color{white},
+  bodyfont=\normalfont,
   notefont=\bfseries,
   headpunct=,
   qed=\qedproof,
   mdframed={
-    backgroundcolor=pag, linewidth=0.5pt, linecolor=proof,
+    backgroundcolor=pag, linewidth=0.5pt, linecolor=proof, fontcolor=white,
     rightline=false, topline=false, bottomline=false,
   },
 ]{thmreplacementproofbox}
@@ -881,25 +888,30 @@
 \declaretheoremstyle[
   headfont=\sffamily,
   headindent=24pt,
-  bodyfont=\itshape\color{white},
+  bodyfont=\itshape,
   notefont=\bfseries,
   notebraces={~ },
   headpunct=:,
+  mdframed={
+    backgroundcolor=pag, fontcolor=white,
+    leftline=false, rightline=false, topline=false, bottomline=false,
+  },
 ]{thmmainplainbox}
 
 \declaretheoremstyle[
   headfont=\sffamily\color{main},
   headformat=\parbox{\textwidth}{\centering\NAME~\NOTE},
   headindent=0mm,
-  bodyfont=\normalfont\color{white},
+  bodyfont=\normalfont,
   notefont=\bfseries,
   notebraces={~ },
   headpunct=,
   mdframed={
-    backgroundcolor=pag, linecolor=main, linewidth=0.5pt,
-    topline=true, bottomline=true, leftline=true, rightline=true,
+    backgroundcolor=pag, linecolor=main, linewidth=0.5pt, fontcolor=white,
   },
 ]{thmpurpleframebox}
+
+\newenvironment{envwithwhite}{\begingroup\color{white}}{\endgroup}
 
 \declaretheorem[              style=thmdefinitionbox,       name=Definition]      {definition}
 \declaretheorem[              style=thmtheorembox,          name=Theorem]         {theorem}
@@ -1052,6 +1064,18 @@
 \creflabelformat{equation}{#2\textup{#1}#3}
 \creflabelformat{table}{#2\textup{#1}#3}
 \creflabelformat{figure}{#2\textup{#1}#3}
+
+\AtBeginDocument{%
+  \newcommand*{\original@ref}{}%
+  \let\original@ref\ref
+  \renewcommand*{\ref}{\@ifstar\newrefstar\newref}
+  \newcommand*{\newrefstar}[1]{%
+    \textbf{\hyperref[{#1}]{\autoref*{#1} \nameref*{#1}}}
+  }%
+  \newcommand*{\newref}[1]{%
+    \textbf{\nameref{#1} (\hyperref[{#1}]{\autoref{#1})}}
+  }%
+}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                                                                     %
