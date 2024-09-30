@@ -112,5 +112,19 @@ College/Year-2/winter/mth-254/books/concepts-and-calculus/solutions/chap-13.pdf 
 #  Spring Term  #
 #################
 
-College/Year-2/spring/mth-256/books/the-ordinary-differential-equations-project/master.pdf filter=lfs diff=lfs merge=lfs -text
-# College/Year-2/spring/mth-256/books/the-ordinary-differential-equations-project/ filter=lfs diff=lfs merge=lfs -text
+College/Year-2/spring/mth-256/books/the-ordinary-differential-equations-project filter=lfs diff=lfs merge=lfs -text
+
+#######################################################################
+#                                                                     #
+#                             University                              #
+#                                                                     #
+#######################################################################
+
+###############
+#  Fall Term  #
+###############
+
+University/Year-1/fall/mth-281/books/... filter=lfs diff=lfs merge=lfs -text
+University/Year-1/fall/mth-307/books/... filter=lfs diff=lfs merge=lfs -text
+University/Year-1/fall/mth-316/books/understanding-analysis/master.pdf filter=lfs diff=lfs merge=lfs -text
+University/Year-1/fall/mth-316/books/understanding-analysis/solutions.pdf filter=lfs diff=lfs merge=lfs -text
