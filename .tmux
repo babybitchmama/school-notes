@@ -37,7 +37,30 @@ tmux new-session -d -s "$SESSION_NAME"
 # source ./College/Year-2/fall/.tmux
 # source ./College/Year-2/winter/.tmux
 # source ./College/Year-2/spring/.tmux
-source ./todo-list/.tmux
+
+#######################################################################
+#                                                                     #
+#                             University                              #
+#                                                                     #
+#######################################################################
+
+############
+#  Year 1  #
+############
+
+source ./University/Year-1/fall/.tmux
+# source ./University/Year-1/winter/.tmux
+# source ./University/Year-1/spring/.tmux
+
+############
+#  Year 2  #
+############
+
+# source ./University/Year-2/fall/.tmux
+# source ./University/Year-2/winter/.tmux
+# source ./University/Year-2/spring/.tmux
+
+# source ./todo-list/.tmux
 
 tmux new-window -t "$SESSION_NAME"
 
