@@ -587,6 +587,9 @@
 \newcommand\incorrect[1]{{\color{incorrect}#1}}
 \newcommand\inctocor[2]{\incorrect{#1} \ensuremath{\to} \correct{#2}}
 
+% hfill during math mode
+\newcommand{\pushright}[1]{\ifmeasuring@#1\else\omit\hfill$\displaystyle#1$\fi\ignorespaces}
+
 % Bracket
 \renewcommand\bra[1]{\left\langle#1\right|}
 \renewcommand\ket[1]{\left|#1\right\rangle}

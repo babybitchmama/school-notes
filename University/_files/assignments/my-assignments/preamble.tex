@@ -117,6 +117,18 @@
 %                                                                              %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+%%%%%%%%%%%%%%%%%%%%%%%%
+%  Create empty proof  %
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\declaretheoremstyle[
+  headfont=\sffamily\color{proof},
+  headformat=\vspace{-2em},
+  headpunct=,
+  qed=\qedsymbol,
+]{emptyproofbox}
+\declaretheorem[style=emptyproofbox, name=]{emptyproof}
+
 %%%%%%%%%%%%%%%%%%%
 % Create Counters %
 %%%%%%%%%%%%%%%%%%%

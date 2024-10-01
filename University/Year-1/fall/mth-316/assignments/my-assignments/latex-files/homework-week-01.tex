@@ -261,7 +261,7 @@
   \begin{enumerate}
     \item Show how induction can be used to conclude that
       \[%
-        (A_1 \cup A_2 \cup \cdots \cup A_n)^c = A_1^c \cap A_2^c \cap \cdots \cap
+        (A_1 \cup A_2 \cup \cdots \cup A_n)^c = A_1^c \cap A_2^c \cap \cdots \cap A_n^c
       ,\]%
       for any finite $n \in \N$.
 
@@ -284,11 +284,42 @@
 
 \begin{exersolution}[13]
   \begin{enumerate}
-    \item 
+    \item \textbf{Proof:} Exercise 1.2.5 will be our base case. Assume that the
+      statement $(A_1 \cup A_2 \cup \cdots \cup A_n)^c = A_1^c \cap A_2^c \cap
+      \cdots A_n^c$ is true. Then, we need to show that the statement is also
+      true for $n + 1$, giving us
+      \begin{emptyproof}
+        \begin{align*}
+          ((A_1 \cup A_2 \cup \cdots \cup A_n) \cup A_{n+1})^c &= (A_1 \cap A_2 \cap \cdots A_n)^c \cap A_{n+1}^c \\
+                                                              &= A_1^c \cap A_2^c \cap \cdots A_n^c \cap A_{n+1}^c
+        .\qedhere\end{align*}
+      \end{emptyproof}
 
-    \item 
+    \item The collection of sets are $B_1 = \{1, 2, \dots\}, B_2 = \{2, 3,
+      \dots\}, \dots$. If you take their intersection until $n$, you will always
+      get a number, i.e., $n = 100$, you get the singleton set $\{100\}$. But
+      the intersection of all the sets as $n \rightarrow \infty$, you get
+      $\emptyset$.
 
-    \item 
+    \item \textbf{Proof:} Suppose $x \in \left(\bigcup_{i=1}^{\infty}
+      A_i\right)^c$. Then, $x \notin \bigcup_{i=1}^{\infty} A_i$, meaning, $x
+      \notin A_i$ for all $i \in \N$. This implies that $x \in A_i^c$ for all $i
+      \in \N$, so $x \in \bigcap_{i=1}^{\infty} A_i^c$. Therefore,
+      $\left(\bigcup_{i=1}^{\infty} A_i\right)^c \subseteq
+      \bigcap_{i=1}^{\infty} A_i^c$.
+
+      Suppose $x \in \bigcap_{i=1}^{\infty} A_i^c$, meaning $i \in \N$, $x
+      \notin A_i$, for some $i \in \N$. This implies that $x \in A_i^c$, for
+      some $i \in \N$. Therefore, $x \notin \bigcup_{i=1}^{\infty} A_i$, meaning
+      $x \in \left(\bigcup_{i=1}^{\infty} A_i\right)^c$. Therefore,
+      $\bigcap_{i=1}^{\infty} A_i^c \subseteq \left(\bigcup_{i=1}^{\infty}
+      A_i\right)^c$.
+
+      Since $\left(\bigcup_{i=1}^{\infty} A_i\right)^c \subseteq
+      \bigcap_{i=1}^{\infty} A_i^c$ and $\bigcap_{i=1}^{\infty} A_i^c \subseteq
+      \left(\bigcup_{i=1}^{\infty} A_i\right)^c$, we have
+      $\left(\bigcup_{i=1}^{\infty} A_i\right)^c = \bigcap_{i=1}^{\infty}
+      A_i^c$. \hfill\qedsymbol
   \end{enumerate}
 \end{exersolution}
 
