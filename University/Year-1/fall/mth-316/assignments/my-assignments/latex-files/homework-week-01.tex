@@ -1,0 +1,149 @@
+\renewcommand\type{exercise}
+\setcounter{chapter}{1}
+\setcounter{section}{2}
+
+\begin{exercise}[1]
+  \begin{enumerate}
+    \item Prove that $\sqrt{3}$ is irrational. Does a similar argument work to
+      show $\sqrt{6}$ is irrational?
+
+    \item Where does the proof of Theorem 1.1.1 break down if we try to use it
+      to prove $\sqrt{4}$ is irrational?\vspace{-0.5cm}
+  \end{enumerate}
+\end{exercise}
+
+\begin{exersolution}[1]
+\end{exersolution}
+
+\newpage
+
+\begin{exercise}[5]
+  Let $A$ and $B$ be subsets of $\R$.
+  \begin{enumerate}
+    \item If $x \in (A \cap B)^c$, explain why $x \in A^c \cup B^c$. This shows
+      that $(A \cap B)^c \subseteq A^c \cup B^c$.
+
+    \item Prove the reverse inclusion $(A \cap B)^c \supseteq A^c \cup B^c$, and
+      conclude that $(A \cap B)^c = A^c \cup B^c$.
+
+    \item Show $(A \cup B)^c = A^c \cap B^c$ by demonstrating inclusion both
+      ways.\vspace{-0.5cm}
+  \end{enumerate}
+\end{exercise}
+
+\begin{exersolution}[5]
+  \begin{enumerate}
+    \item Suppose $x \in (A \cap B)^c$. Then $x \notin (A \cap B)$, meaning $x
+      \notin A$ or $x \notin B$, which is equivalent to $x \in A^c \cup B^c$.
+      Therefore, $(A \cap B)^c \subseteq A^c \cup B^c$.
+
+    \item Suppose $x \in A^c \cup B^c$. Then $x \in A^c$ or $x \in B^c$, which
+      is equivalent to $x \notin A$ or $x \notin B$. This means $x \notin A \cap
+      B$, so $x \in (A \cap B)^c$. Then, $A^c \cup B^c \subseteq (A \cap B)^c$.
+
+      Therefore, since $(A \cap B)^c \subseteq A^c \cup B^c$ and $A^c \cup B^c
+      \subseteq (A \cap B)^c$, we have $(A \cap B)^c = A^c \cup B^c$.
+
+    \item Suppose $x \in (A \cup B)^c$. Then $x \notin (A \cup B)$, meaning $x
+      \notin A$ and $x \notin B$. This is equivalent to $x \in A^c$ and $x \in
+      B^c$, so $x \in A^c \cap B^c$. Then, $(A \cup B)^c \subseteq A^c \cap
+      B^c$.
+
+      Now suppose $x \in A^c \cap B^c$. Then $x \in A^c$ and $x \in B^c$, which
+      is equivalent to $x \notin A$ and $x \notin B$. This means $x \notin A
+      \cup B$, so $x \in (A \cup B)^c$. Then, $A^c \cap B^c \subseteq (A
+      \cup B)^c$.
+
+      Therefore, since $(A \cup B)^c \subseteq A^c \cap B^c$ and $A^c \cap B^c
+      \subseteq (A \cup B)^c$, we have $(A \cup B)^c = A^c \cap B^c$.
+  \end{enumerate}
+\end{exersolution}
+
+\newpage
+
+\begin{exercise}[6]
+  \begin{enumerate}
+    \item Verify the triangle inequality in the special case where $a$ and $b$
+      have the same sign.
+
+    \item Find an efficient proof for all the cases at once by first
+      demonstrating $(a + b)^2 \le (\lvert a \rvert + \lvert b \rvert)^2$.
+
+    \item Prove $\lvert a - b \rvert \le \lvert a - c \rvert + \lvert c - d
+      \rvert + \lvert d - b \rvert$, for all $a$, $b$, $c$, and $d$.
+
+    \item Prove $\lvert \lvert a \rvert - \lvert b \rvert \rvert \le \lvert a -
+      b \rvert$. (The unremarkable identity $a = a - b + b$ may be useful.)
+  \end{enumerate}
+\end{exercise}
+
+\begin{exersolution}[6]
+  \begin{enumerate}
+    \item Let $a, b \in \R$ such that $a, b > 0$.
+
+      \textbf{Case 1 (Both Positive):} Using the triangle inequality, we have
+      $\lvert a + b \rvert \le \lvert a \rvert + \lvert b \rvert$, but since $a,
+      b > 0$, we have $\lvert a \rvert = a$ and $\lvert b \rvert = b$.
+      Therefore, we have $\lvert a + b \rvert = a + b = \lvert a \rvert + \lvert
+      b \rvert$.
+
+      \textbf{Case 2 (Both Negative):} Both $a$ and $b$ will be positive but
+      I'll add a negative to make things easier. Using the triangle inequality,
+      we have $\lvert (-a) + (-b) \rvert \le \lvert -a \rvert + \lvert -b
+      \rvert$. Factoring out the negative, we have $\lvert -(a + b) \rvert \le
+      \lvert -a \rvert + \lvert -b \rvert$. Applying the definition of absolute
+      value, we have $\lvert -(a + b) \rvert = a + b$, $\lvert -a \rvert = a$,
+      and $\lvert -b \rvert = b$. Therefore, we have $\lvert (-a) + (-b) \rvert
+      = a + b = \lvert -a \rvert + \lvert -b \rvert$.
+  \end{enumerate}
+\end{exersolution}
+
+\newpage
+
+\begin{exercise}[7]
+\end{exercise}
+
+\begin{exersolution}[7]
+\end{exersolution}
+
+\newpage
+
+\begin{exercise}[11]
+\end{exercise}
+
+\begin{exersolution}[11]
+\end{exersolution}
+
+\newpage
+
+\begin{exercise}[12]
+\end{exercise}
+
+\begin{exersolution}[12]
+\end{exersolution}
+
+\newpage
+
+\begin{exercise}[13]
+\end{exercise}
+
+\begin{exersolution}[13]
+\end{exersolution}
+
+\newpage
+
+\setcounter{section}{3}
+
+\begin{exercise}[3]
+\end{exercise}
+
+\begin{exersolution}[3]
+\end{exersolution}
+
+\newpage
+
+\begin{exercise}[8]
+\end{exercise}
+
+\begin{exersolution}[8]
+\end{exersolution}

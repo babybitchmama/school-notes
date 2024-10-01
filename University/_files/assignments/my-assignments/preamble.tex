@@ -12,6 +12,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \newcommand\point[1]{\hfill[\textbf{\textit{#1}}]{\parfillskip0pt\par}}
+\def\type{problem}
 
 %%%%%%%%%%%%%%%%%%%%%%%%
 %  Change Size of PDF  %
@@ -35,12 +36,28 @@
 
 \pagestyle{fancy}
 
+\makeatletter
+\def\removeSpaces#1{\zap@space#1 \@empty}
+
 \fancyhead[L]{\hmwkAuthorName}
 \fancyhead[C]{\hmwkClass: \hmwkTitle: \hmwkClassInstructorShortName}
-\fancyhead[R]{\firstxmark}
+\fancyhead[R]{
+  % check if \type equals problem
+  \ifx\type\problem
+    Problem \firstxmark
+  \else
+    Exercise \begingroup
+      \spaceskip=1sp
+      \xspaceskip=1sp
+      \arabic{chapter}.\arabic{section}.\arabic{tempHomeworkExerciseCounter}
+    \endgroup
+    \firstxmark
+  \fi
+}
 \fancyfoot[L]{\lastxmark}
 \fancyfoot[C]{\thepage}
 \fancyfoot[R]{}
+\makeatother
 
 \fancypagestyle{boxfooter}{
   \fancyfoot[R]{\setlength\unitlength{1cm}
@@ -57,11 +74,9 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \title{
-  \vspace{2in}
-  \textmd{\textmd{\textbf{\hmwkClass:\ \hmwkTitle}}}\\
-  \normalsize\vspace{0.1in}\small{Due\ on\ \hmwkDueDate\ at \hmwkDueTime}\\
-  \vspace{0.1in}\large{\textit{\hmwkClassInstructor\ \hmwkClassTime}}
-  \vspace{3in}
+  \vspace{2in}\textmd{\textmd{\textbf{\hmwkClass:\ \hmwkTitle}}} \\
+  \normalsize\vspace{0.1in}\small{Due\ on\ \hmwkDueDate\ at \hmwkDueTime} \\
+  \vspace{0.1in}\large{\textit{\hmwkClassInstructor\ \hmwkClassTime}}\vspace{3in}
 }
 
 \author{\hmwkAuthorName}
@@ -110,9 +125,21 @@
 \newcounter{partCounter}
 \newcounter{homeworkProblemCounter}
 \setcounter{homeworkProblemCounter}{1}
+
+\newcounter{homeworkExerciseCounter}
+\setcounter{homeworkExerciseCounter}{1}
+
+\newcounter{tempHomeworkExerciseCounter}
+\setcounter{tempHomeworkExerciseCounter}{1}
+
 \newcounter{homeworkSolutionCounter}
 \setcounter{homeworkSolutionCounter}{1}
-\nobreak\extramarks{Problem \arabic{homeworkProblemCounter}}{}\nobreak{}
+
+\nobreak\extramarks{
+  \ifx\type\problem
+    \arabic{homeworkProblemCounter}
+  \fi
+}{}\nobreak{}
 
 %%%%%%%%%%%%%%%%%%
 % Create Headers %
@@ -141,6 +168,28 @@
   }{}\nobreak{}
 }
 
+\newcommand{\enterExerciseHeader}[1]{
+  \nobreak\extramarks{}{
+    Exercise \arabic{chapter}.\arabic{section}.\arabic{#1} continued on next page \ldots
+  }\nobreak{}
+  \nobreak\extramarks{
+    (continued)
+  }{
+    Exercise \arabic{chapter}.\arabic{section}.\arabic{#1} continued on next page \ldots
+  }\nobreak{}
+}
+
+\newcommand{\exitExerciseHeader}[1]{
+  \nobreak\extramarks{
+    (continued)
+  }{
+    Exercise \arabic{chapter}.\arabic{section}.\arabic{#1} continued on next page\ldots
+  }\nobreak{}
+  \nobreak\extramarks{}{}\nobreak{}
+  \setcounter{tempHomeworkExerciseCounter}{\arabic{#1}}
+  \stepcounter{#1}
+}
+
 %%%%%%%%%%%%%%%%
 % Environments %
 %%%%%%%%%%%%%%%%
@@ -157,7 +206,7 @@
   \thispagestyle{boxfooter}
 }
 
-\renewenvironment{problem}[1][-1]{
+\newenvironment{problem}[1][-1]{
   \ifnum#1>0
     \setcounter{homeworkProblemCounter}{#1}
   \fi
@@ -166,6 +215,29 @@
   \enterProblemHeader{homeworkProblemCounter}
 }{
   \exitProblemHeader{homeworkProblemCounter}
+}
+
+\newenvironment{exersolution}[1][-1]{
+  \ifnum#1>0
+    \setcounter{homeworkSolutionCounter}{#1}
+  \fi
+  \section{Solution \arabic{chapter}.\arabic{section}.\arabic{homeworkSolutionCounter}}
+  \setcounter{partCounter}{1}
+  \enterExerciseHeader{homeworkSolutionCounter}
+}{
+  \exitExerciseHeader{homeworkSolutionCounter}
+  \thispagestyle{boxfooter}
+}
+
+\newenvironment{exercise}[1][-1]{
+  \ifnum#1>0
+    \setcounter{homeworkExerciseCounter}{#1}
+  \fi
+  \section{Exercise \arabic{chapter}.\arabic{section}.\arabic{homeworkExerciseCounter}}
+  \setcounter{partCounter}{1}
+  \enterExerciseHeader{homeworkExerciseCounter}
+}{
+  \exitExerciseHeader{homeworkExerciseCounter}
 }
 
 \crefname{problem}{problem}{problems}
