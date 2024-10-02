@@ -131,7 +131,10 @@
       \lvert (a - c) + (c - d) + (d - b) \rvert \le \lvert a - c \rvert + \lvert
       c - d \rvert + \lvert d - b \rvert$. \hfill\qedsymbol
 
-    \item \textbf{Proof:} \hfill\qedsymbol
+    \item \textbf{Proof:} Notice that $\lvert \lvert a \rvert - \lvert b \rvert
+      \rvert = \lvert a \rvert - \lvert b \rvert$. Then, $\lvert a \rvert -
+      \lvert b \rvert = \lvert (a - b) + b \rvert - \lvert b \rvert \le \lvert a
+      - b \rvert$. \hfill\qedsymbol
   \end{enumerate}
 \end{exersolution}
 
@@ -229,7 +232,7 @@
       all $n \in \N$. \textit{Intuition:} True.
 
     \item Between every two distinct real numbers there is an irrational number.
-      ??????? \textit{Intuition:} True.
+      \textit{Intuition:} True.
   \end{enumerate}
 \end{exersolution}
 
@@ -249,9 +252,23 @@
 
 \begin{exersolution}[12]
   \begin{enumerate}
-    \item 
+    \item \textbf{Proof:} Suppose that $y_n > -6$. The base case is $y_1 = 6$,
+      which is greater than $-6$. Assume it works until $n = k$. Then, let $n =
+      k + 1$. We have
+      \[%
+        y_{n+1} = \frac{2y_n - 6}{3} > \frac{2(-6) - 6}{3} = -6
+      .\]%
+      Therefore, $y_{n+1} > -6$ for all $n \in \N$. \hfill\qedsymbol
 
-    \item 
+    \item \textbf{Proof:} Suppose the base case is $y_{n+1} < y_n$, which is $2
+      < 6$, which is true. Multiplying both sides of the inequality by $2$,
+      subtracting by $6$, and dividing by $3$ gives us
+      \[%
+        \frac{2y_{n+1} - 6}{3} < \frac{2y_n - 6}{3}
+      ,\]%
+      showing us that $y_{n+2} < y_{n+1}$.
+
+      Therefore, $(y_n)$ is decreasing. \hfill\qedsymbol
   \end{enumerate}
 \end{exersolution}
 
