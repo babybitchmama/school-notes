@@ -252,23 +252,29 @@
 
 \begin{exersolution}[12]
   \begin{enumerate}
-    \item \textbf{Proof:} Suppose that $y_n > -6$. The base case is $y_1 = 6$,
-      which is greater than $-6$. Assume it works until $n = k$. Then, let $n =
-      k + 1$. We have
+    \item \textbf{Proof:} I'll use mathematical induction.
+
+      Base case: Setting $n = 1$, we get $y_1 = 6 > -6$ as required.
+
+      Induction step: Let $n$ be an arbitrary natural number and suppose that
+      $y_{k+1} > -6$. Then
       \[%
-        y_{n+1} = \frac{2y_n - 6}{3} > \frac{2(-6) - 6}{3} = -6
+        \frac{2y_n - 6}{3} > -6 \implies 2y_n - 6 > -18 \implies 2y_n > -12 \implies y_n > -6
       .\]%
-      Therefore, $y_{n+1} > -6$ for all $n \in \N$. \hfill\qedsymbol
+      Therefore, by induction, $y_n > -6$ for all $n \in \N$. \hfill\qedsymbol
 
-    \item \textbf{Proof:} Suppose the base case is $y_{n+1} < y_n$, which is $2
-      < 6$, which is true. Multiplying both sides of the inequality by $2$,
-      subtracting by $6$, and dividing by $3$ gives us
+    \item \textbf{Proof:} I'll use mathematical induction.
+
+      Base case: Setting $n = 1$, we get $y_1 = 6$. Setting $n = 2$, we get $y_2
+      = 2$, giving us $6 \ge 2$ as required.
+
+      Induction step: Let $n$ be an arbitrary natural number and suppose that
+      $y_n \ge y_{n+1}$. Then
       \[%
-        \frac{2y_{n+1} - 6}{3} < \frac{2y_n - 6}{3}
-      ,\]%
-      showing us that $y_{n+2} < y_{n+1}$.
-
-      Therefore, $(y_n)$ is decreasing. \hfill\qedsymbol
+        y_{n+1} - y_{n+2} = \frac{2y_n - 6}{3} - \frac{2y_{n+1} - 6}{3} = \frac{2}{3}\left(y_n - y_{n+1} + 6\right) \ge 0
+      .\]%
+      Therefore, by induction, $y_n \ge y_{n+1}$ for all $n \in \N$.
+      \hfill\qedsymbol
   \end{enumerate}
 \end{exersolution}
 
@@ -301,10 +307,12 @@
 
 \begin{exersolution}[13]
   \begin{enumerate}
-    \item \textbf{Proof:} Exercise 1.2.5 will be our base case. Assume that the
-      statement $(A_1 \cup A_2 \cup \cdots \cup A_n)^c = A_1^c \cap A_2^c \cap
-      \cdots A_n^c$ is true. Then, we need to show that the statement is also
-      true for $n + 1$, giving us
+    \item \textbf{Proof:} I'll use mathematical induction.
+
+      Base case: Exercise 1.2.5 will be our base case.
+
+      Induction step: Assume that the statement $(A_1 \cup A_2 \cup \cdots \cup
+      A_n)^c = A_1^c \cap A_2^c \cap \cdots A_n^c$ is true. Then
       \begin{emptyproof}
         \begin{align*}
           ((A_1 \cup A_2 \cup \cdots \cup A_n) \cup A_{n+1})^c &= (A_1 \cap A_2 \cap \cdots A_n)^c \cap A_{n+1}^c \\
