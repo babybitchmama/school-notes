@@ -48,12 +48,12 @@
     \item $\displaystyle\lvert a \rvert = \sqrt{(-2)^2 + 5^2 + 4^2} =
       \sqrt{45}$.
 
-      $\displaystyle\lvert b \rvert = \sqrt{4^2 + 8^2 + 1^2} = \sqrt{81}$.
+      $\displaystyle\lvert b \rvert = \sqrt{4^2 + 8^2 + 1^2} = \sqrt{81} = 9$.
 
     \item $\displaystyle\frac{\a \cdot \b}{\lvert \a \rvert \cdot \lvert \b
-      \rvert} = \frac{36}{\sqrt{45} \cdot \sqrt{81}} = \frac{4\sqrt{5}}{15}$.
-      This gives us $\displaystyle\arccos\left(\frac{4 \sqrt{5}}{15}\right)
-      \approx \SI{54}{\degree}$.
+      \rvert} = \frac{36}{\sqrt{45} \cdot 9} = \frac{4\sqrt{5}}{15}$. This gives
+      us $\displaystyle\arccos\left(\frac{4 \sqrt{5}}{15}\right) \approx
+      \SI{54}{\degree}$.
 
     \item The unit vector for $\a$ is $\displaystyle\frac{\a}{\lvert \a \rvert}
       = \frac{\langle -2, 5, 4 \rangle}{\sqrt{45}} = \left\langle
@@ -77,6 +77,19 @@
 \end{problem}
 
 \begin{probsolution}
+  Both vectors are orthogonal if and only if their dot product is zero. Thus,
+  solving for $x$ gives us
+  \begin{alignat*}{3}
+    \langle 6, 3x, x \rangle \cdot \langle -3, 1, x \rangle = 0 &\implies = 6(-3) + 3x(1) + x(x) &&= 0 \\
+                                                                &\implies -18 + 3x + x^2 &&= 0 \\
+                                                                &\implies (x - 3)(x + 6) &&= 0
+  .\end{alignat*}
+  This gives us $x = 3$ and $x = -6$. Therefore, the following vector pairs are
+  orthogonal to one another
+  \begin{align*}
+    \langle 6, 9, 3 \rangle &\aand \langle -3, 1, 3 \rangle \\
+    \langle 6, -18, -6 \rangle &\aand \langle -3, 1, -6 \rangle
+  .\end{align*}
 \end{probsolution}
 
 \newpage
@@ -89,6 +102,28 @@
 \end{problem}
 
 \begin{probsolution}
+  Expanding the expression gives us
+  \begin{alignat*}{3}
+    &\phantom{\implies}~(\r - \u) \cdot (\r - \v) &&= 0 \\
+         &\implies \langle x - u_1, y -u_2, z - u_3 \rangle \cdot \langle x - v_1, y - v_2, z - v_3 \rangle &&= 0 \\
+         &\implies (x - u_1)(x - v_1) + (y - u_2)(y - v_2) + (z - u_3)(z - v_3) &&= 0 \\
+         &\implies x^2 - (u_1 + v_1)x + u_1v_1 + y^2 - (u_2 + v_2)y + u_2v_2 + z^2 - (u_3 + v_3)z + u_3v_3 &&= 0 \\
+         &\implies x^2 - (u_1 + v_1)x + y^2 - (u_2 + v_2)y + z^2 - (u_3 + v_3)z &&= D_1
+  ,\end{alignat*}
+  where $D_n$ is the sum of all the constant terms. Lastly, we need to factor
+  everything by completing the square, giving us
+  \begin{alignat*}{3}
+    &\phantom{\implies}~x^2 - (u_1 + v_1)x + y^2 - (u_2 + v_2)y + z^2 - (u_3 + v_3)z &&= D_1 \\
+    &\implies x^2 - (u_1 + v_1)x + \left(\frac{u_1 + v_1}{2}\right)^2 + y^2 - (u_2 + v_2)y + \left(\frac{u_2 + v_2}{2}\right)^2 + z^2 - (u_3 + v_3)z + \left(\frac{u_3 + v_3}{2}\right)^2 &&= D_2 \\
+    &\implies \left(x - \frac{u_1 + v_1}{2}\right)^2 + \left(y - \frac{u_2 + v_2}{2}\right)^2 + \left(z - \frac{u_3 + v_3}{2}\right)^2 &&= D_3
+  ,\end{alignat*}
+  where $\displaystyle \frac{u_1 + v_1}{2} = h$, $\displaystyle\frac{u_2 +
+  v_2}{2} = k$, $\displaystyle\frac{u_3 + v_3}{2} = l$, and $\sqrt{D_3} = r$.
+  This gives us the following center and radius for the sphere:
+  \begin{align*}
+    \text{Center} &= (h, k, l) = \left(\frac{u_1 + v_1}{2}, \frac{u_2 + v_2}{2}, \frac{u_3 + v_3}{2}\right) \\
+    \text{Radius} &= r = \sqrt{D_3}
+  .\end{align*}
 \end{probsolution}
 
 \newpage

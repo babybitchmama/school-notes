@@ -45,16 +45,16 @@
 \fancyhead[C]{\hmwkClass: \hmwkTitle: \hmwkClassInstructorShortName}
 \fancyhead[R]{
   % check if \type equals problem
-  \ifx\type\problem
-    Problem \firstxmark
-  \else
-    Exercise \begingroup
-      \spaceskip=1sp
-      \xspaceskip=1sp
-      \arabic{chapter}.\arabic{section}.\arabic{tempHomeworkExerciseCounter}
-    \endgroup
-    \firstxmark
-  \fi
+  \ifthenelse{\equal{\type}{problem}}
+    {\firstxmark}
+    {
+      Exercise \begingroup
+        \spaceskip=1sp
+        \xspaceskip=1sp
+        \arabic{chapter}.\arabic{section}.\arabic{tempHomeworkExerciseCounter}
+      \endgroup
+      \firstxmark
+    }
 }
 \fancyfoot[L]{\lastxmark}
 \fancyfoot[C]{\thepage}
