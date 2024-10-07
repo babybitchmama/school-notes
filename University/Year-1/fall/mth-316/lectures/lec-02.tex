@@ -1,0 +1,77 @@
+\nte{Oct 2 2024 Wed (13:02:51)}{Triangle Inequality}
+
+\section{Functions}
+\label{sec:functions}
+
+\begin{definition}[Function]
+  \label{def:function}
+
+  Let $A$ and $B$ be two sets. A \textbf{function} $f : A \to B$ assigns an
+  element from the \textbf{domain} $A$ to the \textbf{range} $B$.
+\end{definition}
+
+\begin{example}
+  \label{exm:function_1}
+
+  Let $A$ be the set of chairs in a classroom and let $B$ be the set of all
+  students in the room. Then, $f : A \to B$ assigns each chair to a student,
+  like a seating chart.
+\end{example} $ $\vspace{-0.8cm}
+
+\begin{example}
+  \label{exm:function_2}
+
+  Let $f(x) = x^2 + 1$, where $f : \R \to \R$. Then, the domain of $f$ is $\R$
+  and the range is the interval $[1, \infty)$.
+\end{example}
+
+% section functions (end)
+
+\section{Triangle Inequality}
+\label{sec:triangle_inequality}
+
+The absolute value function is so important, that it has it's own notation,
+$\lvert x \rvert$ in place of the usual $f(x)$. It's defined as
+\begin{equation}\label{eq:abs_val}
+  \empheq{
+    \lvert x \rvert = \begin{cases}
+      x & \text{if}~x \geq 0, \\
+      -x & \text{if}~x < 0
+    \end{cases}
+  }
+\end{equation}
+
+The absolute value function satisfies the following properties
+\begin{enumerate}
+  \label{enum:abs_val_properties}
+
+  \item $\lvert ab \rvert = \lvert a \rvert \cdot \lvert b \rvert$.
+
+  \item $\lvert a + b \rvert \le \lvert a \rvert + \lvert b \rvert$.
+\end{enumerate}
+
+The second property is known as the \textbf{Triangle Inequality}, and it's
+mostly used with three numbers, $a$, $b$, and $c$. Rearranging the inequality,
+we get
+\[%
+  \lvert a - b \rvert = \lvert (a - c) + (c - b) \rvert \implies \lvert (a - c) + (c - b) \rvert \le \lvert a - c \rvert + \lvert c - b \rvert
+,\]%
+giving us
+\begin{equation}\label{eq:triangle_inequality}
+  \empheq{\lvert a - b \rvert \le \lvert a - c \rvert + \lvert c - b \rvert}
+\end{equation}
+
+\begin{note}
+  \label{nte:triangle_inequality}
+
+  The expression $\lvert a - b \rvert$ is the distance between $a$ and $b$ on
+  the real number line, which is also equivalent to $\lvert b - a \rvert$.
+\end{note}
+
+Restating the triangle inequality in terms of distance, we get that the distance
+between $a$ and $b$ is less than or equal to the sum of the distances between
+$a$ and $c$ and $c$ and $b$.
+
+% section triangle_inequality (end)
+
+\newpage

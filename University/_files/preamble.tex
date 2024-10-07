@@ -126,11 +126,10 @@
 \definecolor{red6}{HTML}{c9184a}
 \definecolor{red7}{HTML}{a4133c}
 \definecolor{red8}{HTML}{800f2f}
-\definecolor{red9}{HTML}{590d22} 
+\definecolor{red9}{HTML}{590d22}
 \definecolor{red10}{HTML}{c9181e}
 \definecolor{red11}{HTML}{c91876}
 \definecolor{red12}{HTML}{e5235a}
-\definecolor{pag}{HTML}{293133}
 \definecolor{cbada55}{RGB}{186,218,85}
 \definecolor{c2c2c2c}{RGB}{44,44,44}
 \definecolor{cc9184a}{RGB}{201,24,74}
@@ -278,15 +277,15 @@
 }
 
 \tikzset{balls/.pic={
-  \fill[red5!10!pag] (-.06cm,0) circle (2pt);
-  \fill[red5!20!pag] (-.045cm,0) circle (2pt);
-  \fill[red5!30!pag] (-.03cm,0) circle (2pt);
-  \fill[red5!40!pag] (-0.015cm,0) circle (2pt);
-  \fill[red5!50!pag] (0,0) circle (2pt);
-  \fill[red5!60!pag] (0.015cm,0) circle (2pt);
-  \fill[red5!70!pag] (.03cm,0) circle (2pt);
-  \fill[red5!80!pag] (.045cm,0) circle (2pt);
-  \fill[red5!90!pag] (.06cm,0) circle (2pt);}
+  \fill[red5!10] (-.06cm,0) circle (2pt);
+  \fill[red5!20] (-.045cm,0) circle (2pt);
+  \fill[red5!30] (-.03cm,0) circle (2pt);
+  \fill[red5!40] (-0.015cm,0) circle (2pt);
+  \fill[red5!50] (0,0) circle (2pt);
+  \fill[red5!60] (0.015cm,0) circle (2pt);
+  \fill[red5!70] (.03cm,0) circle (2pt);
+  \fill[red5!80] (.045cm,0) circle (2pt);
+  \fill[red5!90] (.06cm,0) circle (2pt);}
 }
 
 \tikzset{threedballs/.pic={
@@ -533,12 +532,11 @@
 
   \begin{tcolorbox}[
       enhanced,
+      colback=white,
       center upper,
       size=fbox,
       drop shadow southwest,
       sharp corners,
-      colback=pag,
-      coltext=white,
     ]
     \term: \academicyear, \\
     Last Update: \today, \\
@@ -635,6 +633,7 @@
 \newcommand\ce{\overset{\checkmark}{=}}
 \newcommand\proj{\text{proj}}
 \newcommand\comp{\text{comp}}
+\newcommand\st{\text{such that}}
 \newcommand\geogebra{\textsf{GeoGebra}}
 \newcommand\Sspan{\text{Span}}
 \renewcommand\Re{\text{Re}}
@@ -668,7 +667,6 @@
 
 \newcommand\Ta{\mathbf{T}}
 \newcommand\Taa{\mathbf{T}^{}}
-\newcommand\N{\mathbb{N}}
 
 \renewcommand\u{\mathbf{u}}
 \newcommand\uu{\mathbf{u}^{\prime}}
@@ -711,12 +709,14 @@
 \newcommand\D{\mathcal{D}}
 \newcommand\E{\mathcal{E}}
 \newcommand\F{\mathcal{F}}
+\newcommand\N{\mathbb{N}}
+\newcommand\Q{\mathbb{Q}}
 \newcommand\R{\mathbb{R}}
-\newcommand\Z{\mathbb{Z}}
 \newcommand\U{\mathcal{U}}
+\newcommand\W{\mathbf{w}}
 \newcommand\X{\mathcal{X}}
 \newcommand\Y{\mathcal{Y}}
-\newcommand\W{\mathbf{w}}
+\newcommand\Z{\mathbb{Z}}
 
 % Create command to box equations
 \newcommand*\colorboxed{}
@@ -816,7 +816,7 @@
   headformat=\fbox{\arabic{definition}}~\NAME\NOTE,
   bodyfont=\normalfont,
   headpunct=,
-  mdframed={backgroundcolor=pag, linecolor=definition, linewidth=0.5pt, fontcolor=white},
+  mdframed={linecolor=definition, linewidth=0.5pt},
 ]{thmdefinitionbox}
 
 \declaretheoremstyle[
@@ -824,7 +824,7 @@
   headformat=\fbox{\arabic{theorem}}~\NAME\NOTE,
   bodyfont=\normalfont,
   headpunct=,
-  mdframed={backgroundcolor=pag, linecolor=theorem, linewidth=0.5pt, fontcolor=white},
+  mdframed={linecolor=theorem, linewidth=0.5pt},
 ]{thmtheorembox}
 
 \declaretheoremstyle[
@@ -832,7 +832,7 @@
   headformat=\fbox{\arabic{corollary}}~\NAME\NOTE,
   bodyfont=\normalfont,
   headpunct=,
-  mdframed={backgroundcolor=pag, linecolor=corollary, linewidth=0.5pt, fontcolor=white},
+  mdframed={linecolor=corollary, linewidth=0.5pt},
 ]{thmcorollarybox}
 
 \declaretheoremstyle[
@@ -840,7 +840,7 @@
   headformat=\fbox{\arabic{lemma}}~\NAME\NOTE,
   bodyfont=\normalfont,
   headpunct=,
-  mdframed={backgroundcolor=pag, linecolor=lemma, linewidth=0.5pt, fontcolor=white},
+  mdframed={linecolor=lemma, linewidth=0.5pt},
 ]{thmlemmabox}
 
 \declaretheoremstyle[
@@ -848,9 +848,8 @@
   headformat=\NAME\NOTE,
   bodyfont=\normalfont,
   headpunct=,
-  spaceabove=\topsep,
   qed=\qedexample,
-  mdframed={fontcolor=white, backgroundcolor=pag, leftline=false, rightline=false, topline=false, bottomline=false},
+  mdframed={leftline=false, rightline=false, topline=false, bottomline=false},
 ]{thmexamplebox}
 
 \declaretheoremstyle[
@@ -861,7 +860,7 @@
   notefont={\color{black}\bfseries},
   notebraces={()},
   headpunct=,
-  mdframed={fontcolor=white, backgroundcolor=pag, leftline=false, rightline=false, topline=false, bottomline=false},
+  mdframed={leftline=false, rightline=false, topline=false, bottomline=false},
 ]{thmquestionbox}
 
 \declaretheoremstyle[
@@ -871,7 +870,7 @@
   notefont=\bfseries,
   headpunct=,
   mdframed={
-    backgroundcolor=pag, linecolor=remark, linewidth=0.5pt, fontcolor=white,
+    linecolor=remark, linewidth=0.5pt,
     rightline=false, topline=false, bottomline=false,
   },
 ]{thmremarkbox}
@@ -885,7 +884,7 @@
   headpunct=,
   qed=\qedproof,
   mdframed={
-    backgroundcolor=pag, linewidth=0.5pt, linecolor=proof, fontcolor=white,
+    linewidth=0.5pt, linecolor=proof,
     rightline=false, topline=false, bottomline=false,
   },
 ]{thmreplacementproofbox}
@@ -898,7 +897,6 @@
   notebraces={~ },
   headpunct=:,
   mdframed={
-    backgroundcolor=pag, fontcolor=white,
     leftline=false, rightline=false, topline=false, bottomline=false,
   },
 ]{thmmainplainbox}
@@ -912,7 +910,7 @@
   notebraces={~ },
   headpunct=,
   mdframed={
-    backgroundcolor=pag, linecolor=main, linewidth=0.5pt, fontcolor=white,
+    linecolor=main, linewidth=0.5pt,
   },
 ]{thmpurpleframebox}
 
@@ -951,8 +949,7 @@
 
 \newtcolorbox{solution}{
   tikznode boxed title,
-  colback=pag,
-  coltext=white,
+  colback=white,
   enhanced,
   attach boxed title to top center={
     yshift=-3mm,
@@ -960,7 +957,7 @@
   },
   boxed title style={
     size=small,
-    colback=pag,
+    colback=white,
     frame code={},
   },
   title={\sffamily\color{solution}SOLUTION~\arabic{question}},
@@ -971,10 +968,31 @@
   parskip=\baselineskip,
 }
 
+\newtcolorbox{solproof}{
+  tikznode boxed title,
+  colback=white,
+  enhanced,
+  attach boxed title to top center={
+    yshift=-3mm,
+    yshifttext=-1mm,
+  },
+  boxed title style={
+    size=small,
+    colback=white,
+    frame code={},
+  },
+  title={\sffamily\color{solution}PROOF~\arabic{question}},
+  frame hidden,
+  borderline north={0.5pt}{0pt}{question},
+  borderline south={0.5pt}{0pt}{question},
+  breakable,
+  parskip=\baselineskip,
+}
+
 \newcommand\prpl[1][]{%
   \begin{tcolorbox}[%
     title={\sffamily\color{main}#1},
-    colback=pag,
+    colback=white,
     enhanced,
     attach boxed title to top center={
       yshift=-3mm,
@@ -982,10 +1000,9 @@
     },
     boxed title style={
       size=small,
-      colback=pag,
+      colback=white,
       frame code={},
     },
-    coltext=white,
     frame hidden,
     borderline east={0.5pt}{0pt}{main},
     borderline west={0.5pt}{0pt}{main},
@@ -1020,6 +1037,9 @@
 
 \crefname{solution}{solution}{solutions}
 \Crefname{solution}{Solution}{Solutions}
+
+\crefname{solproof}{proof}{proofs}
+\Crefname{solproof}{Proof}{Proofs}
 
 \crefname{remark}{remark}{remarks}
 \Crefname{remark}{Remark}{Remarks}
