@@ -1,0 +1,81 @@
+\nte{Oct 07 2024 Mon (13:01:52)}{}
+
+If $s$ is an upper bound of a nonempty $S \subseteq \R$. Then, $-s$ is the lower
+bound of
+\[%
+  -S = \left\{-x \mid x \in S\right\}
+.\]%
+
+\begin{theorem}
+  \label{thm:}
+
+  Let $a_n < b_n$, $\forall n \in \N,$ where $n \ge 1$. Define $I_n = [a_n, b_n]
+  = \left\{x \mid a_n \le x \le b_n\right\}$. If $[a_n, b_n] \supseteq [a_{n+1},
+  b_{n+1}]$, $\forall n \in \N$, where $n \ge 1$, then $\exists x \in \R$ such
+  that $x \in \bigcap_{n = 1}^{\infty} [a_n, b_n]$.
+\end{theorem}
+
+\begin{example}
+  \label{exm:}
+
+  The interval $\displaystyle I_n = \left[0, \frac{1}{n}\right]$, which is
+  clearly $I_n \supset I_{n+1}$, since $\displaystyle\bigcap_{n=1}^{\infty} =
+  \{0\}$.
+
+  The counter example is $\displaystyle I_n = \left(0, \frac{1}{n}\right)$
+  because $\displaystyle\bigcap_{n=0}^{\infty} I_n = \emptyset$.
+\end{example}
+
+\begin{proof}
+  \label{prf:}
+
+  Let $A = \left\{a_n \mid n \in \N\right\}$. From this, we know that $a_n \le
+  b_n$ and $I_n \supseteq I_{n+1}$. From this, we know that $a_n \le b_1$,
+  $\forall n \in \N$. This means that $A$ is bounded.
+
+  By the Axiom of Completeness, $A$ has a least upper bound, $s = \sup(A)$.
+  Then, $a_n \le s$, $\forall a_n \in A$. Since $s$ is the least upper bound, we
+  get $s \le b_n$, giving us
+  \[%
+    a_n \le s \le b_n, \forall n \in \N \iff s \in \bigcup_{n=0}^{\infty} I_n
+  .\qedhere\]%
+\end{proof}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Prove the statement $\N$ is unbounded.
+
+Assume not, meaning assume $\N$ is bounded. Then, there is a least upper bound
+$s = \sup(\N)$. Then, $s - 1$ is not an upper bound. Then, there is an $n \in
+\N$ such that $s - 1 < n \implies s < n + 1$. But, $n + 1 \in \N$.
+
+That contradicts to $s$ being an upper bound of $\N$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{theorem}[Archimedian Property]
+  \label{thm:archimedian_property} $ $
+
+  \begin{enumerate}
+    \label{enum:archimedian_property}
+
+    \item Given any number $x \in \R$, $\exists n \in \N$ satisfying $n > x$.
+
+    \item Given any real number $y > 0$, $\exists n \in \N$ such that
+      $\sfrac{1}{n} < 1$.
+  \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+  \label{prf:archimedian_property} $ $
+
+  \begin{enumerate}
+    \label{enum:archimedian_property_prf}
+
+    \item Property $\circled{1}$ follows since $\N$ is unbounded.
+
+    \item Apply property $\circled{1}$ with $x = \sfrac{1}{y} > 0$.
+  \end{enumerate}
+\end{proof}
+
+\newpage
