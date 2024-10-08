@@ -1,3 +1,5 @@
+\renewcommand\type{problem}
+
 \begin{problem}
   Consider the following regions of $\R^3$ described by an inequality. Describe
   each region in words and sketch it to the best of your ability. Note:
@@ -17,8 +19,33 @@
 
     \item Since $y = 0$ in this inequality, that means the inequality is being
       drawn on the $xz$-plane. This is just a circle of radius $3$ centered at
-      the origin (see \cref{fig:1_b})
+      the origin (see \cref{fig:1_b}). NOTE: The disk should be drawn on the
+      $xz$-plane, but my artistic skills are very subpar.
   \end{enumerate}
+
+  \begin{figure}[H]
+    \centering
+
+    \begin{subfigure}[b]{0.45\textwidth}
+      \centering
+
+      \includegraphics[width=\textwidth]{./image-files/homework-01/1.jpg}
+
+      \caption{}
+      \label{fig:1_a}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.45\textwidth}
+      \centering
+
+      \includegraphics[width=\textwidth]{./image-files/homework-01/2.jpg}
+
+      \caption{}
+      \label{fig:1_b}
+    \end{subfigure}
+
+    \caption{}
+    \label{fig:1}
+  \end{figure}
 \end{probsolution}
 
 \newpage
@@ -134,4 +161,18 @@
 \end{problem}
 
 \begin{probsolution}
+  Suppose $\u + \v$ and $\u - \v$ are orthogonal. Then, by definition, we get
+  \begin{align*}
+    (\u + \v) \cdot (\u - \v) &= 0 \\
+    \u^2 - \u \cdot \v + \v \cdot \u - \v^2 &= 0 \\
+    \u^2 - \v^2 &= 0 \\
+    \u^2 &= \v^2 \\
+    \sqrt{\u \cdot \u} &= \sqrt{\v \cdot \v}
+  .\end{align*}
+  Expanding $\u \cdot \u$ and $\v \cdot \v$, we get
+  \[%
+    \underbrace{\sqrt{u_1^2 + u_2^2 + \cdots + u_n^2}}_{\lvert \u \rvert} = \underbrace{\sqrt{v_1^2 + v_2^2 + \cdots + v_n^2}}_{\lvert \v \rvert}
+  .\]%
+  Therefore, $\u$ and $\v$ have the same length if $\u + \v$ and $\u - \v$ are
+  orthogonal.
 \end{probsolution}

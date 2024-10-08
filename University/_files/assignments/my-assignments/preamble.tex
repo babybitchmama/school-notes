@@ -46,7 +46,14 @@
 \fancyhead[R]{
   % check if \type equals problem
   \ifthenelse{\equal{\type}{problem}}
-    {\firstxmark}
+    {
+      Problem \begingroup
+        \spaceskip=1sp
+        \xspaceskip=1sp
+        \arabic{tempHomeworkProblemCounter}
+      \endgroup
+      \firstxmark
+    }
     {
       Exercise \begingroup
         \spaceskip=1sp
@@ -137,8 +144,12 @@
 
 \setcounter{secnumdepth}{0}
 \newcounter{partCounter}
+
 \newcounter{homeworkProblemCounter}
 \setcounter{homeworkProblemCounter}{1}
+
+\newcounter{tempHomeworkProblemCounter}
+\setcounter{tempHomeworkProblemCounter}{1}
 
 \newcounter{homeworkExerciseCounter}
 \setcounter{homeworkExerciseCounter}{1}
@@ -172,14 +183,13 @@
 
 \newcommand{\exitProblemHeader}[1]{
   \nobreak\extramarks{
-    Problem \arabic{#1} (continued)
+    (continued)
   }{
-    Problem \arabic{#1} continued on next page\ldots
+    continued on next page\ldots
   }\nobreak{}
+  \setcounter{tempHomeworkProblemCounter}{\arabic{#1}}
   \stepcounter{#1}
-  \nobreak\extramarks{
-    Problem \arabic{#1}
-  }{}\nobreak{}
+  \nobreak\extramarks{}{}\nobreak{}
 }
 
 \newcommand{\enterExerciseHeader}[1]{
