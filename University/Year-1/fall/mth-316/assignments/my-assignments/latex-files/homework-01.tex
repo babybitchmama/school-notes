@@ -125,16 +125,16 @@
       sides which keeps the inequality, the original inequality $a + b \le
       \lvert a \rvert + \lvert b \rvert$ is true. \hfill\qedsymbol
 
-    \item \textbf{Proof:} Notice that $(a - c) + (c - d) + (d - b) = a - b$,
-      impliying that $\lvert a - b \rvert = \lvert (a - c) + (c - d) + (d - b)
-      \rvert$. Using the triangle inequality, we have $\lvert a - b \rvert =
+    \item \textbf{Proof:} Notice that $(a - c) + (c - d) + (d - b) = a - b$. We
+      can use the triangle inequality for multiple terms $\lvert a - b \rvert =
       \lvert (a - c) + (c - d) + (d - b) \rvert \le \lvert a - c \rvert + \lvert
       c - d \rvert + \lvert d - b \rvert$. \hfill\qedsymbol
 
-    \item \textbf{Proof:} Notice that $\lvert \lvert a \rvert - \lvert b \rvert
-      \rvert = \lvert a \rvert - \lvert b \rvert$. Then, $\lvert a \rvert -
-      \lvert b \rvert = \lvert (a - b) + b \rvert - \lvert b \rvert \le \lvert a
-      - b \rvert$. \hfill\qedsymbol
+    \item \textbf{Proof:} Assume $\lvert a \rvert > \lvert b \rvert$ since
+      $\lvert \lvert a \rvert - \lvert b \rvert \rvert$. Then $\lvert \lvert a
+      \rvert - \lvert b \rvert \rvert = \lvert a \rvert - \lvert b \rvert =
+      \lvert (a - b) + b \rvert - \lvert b \rvert \le \lvert a - b \rvert  +
+      \lvert b \rvert - \lvert b \rvert = \lvert a - b \rvert$. \hfill\qedsymbol
   \end{enumerate}
 \end{exersolution}
 
@@ -169,7 +169,7 @@
       2]) = [1, 4]$ and $f(A) \cap f(B) = f([0, 2]) \cap f([1, 4]) = [0, 4] \cap
       [1, 16] = [1, 4]$. Therefore, $f(A \cap B) = f(A) \cap f(B)$.
 
-      We have $f(A \cup B) = f([0, 2] \cap [1, 4]) = f([0, 4]) = [0, 16]$ and
+      We have $f(A \cup B) = f([0, 2] \cup [1, 4]) = f([0, 4]) = [0, 16]$ and
       $f(A) \cup f(B) = [0, 4] \cup [1, 16] = [0, 16]$. Therefore, $f(A \cup B)
       = f(A) \cup f(B)$.
 
@@ -218,8 +218,8 @@
     \item There exists a real number $x > 0$ such that $x < \frac{1}{n}$ for all
       $n \in \N$.
 
-    \item Between every two distinct real numbers there is a rational
-      number.\vspace{-0.5cm}
+    \item There exists two real numbers $a < b$ such that if $c < b$ then $c <
+      a$ for all $c \in \Q$.\vspace{-0.5cm}
   \end{enumerate}
 \end{exercise}
 
@@ -231,8 +231,8 @@
     \item There exists a real number $x > 0$ such that $x \ge \frac{1}{n}$ for
       all $n \in \N$. \textit{Intuition:} True.
 
-    \item Between every two distinct real numbers there is an irrational number.
-      \textit{Intuition:} True.
+    \item There exists two real numbers $a < b$ such that if $c < b$ then $c <
+      a$ for all $c \in \Q$. \textit{Intuition:} False.
   \end{enumerate}
 \end{exersolution}
 
@@ -256,25 +256,27 @@
 
       Base case: Setting $n = 1$, we get $y_1 = 6 > -6$ as required.
 
-      Induction step: Let $n$ be an arbitrary natural number and suppose that
-      $y_{k+1} > -6$. Then
+      Induction step: Suppose that $y_n > -6$ up to some number $k$. Then, by
+      induction, we get
       \[%
-        \frac{2y_n - 6}{3} > -6 \implies 2y_n - 6 > -18 \implies 2y_n > -12 \implies y_n > -6
+        y_{k+1} > -6 \implies \frac{2y_k - 6}{3} > -6 \implies 2y_k - 6 > -18 \implies 2y_k > -12 \implies y_k > -6
       .\]%
-      Therefore, by induction, $y_n > -6$ for all $n \in \N$. \hfill\qedsymbol
+      Therefore, by induction, $y_n > -6$ for all $n$. \hfill\qedsymbol
 
     \item \textbf{Proof:} I'll use mathematical induction.
 
       Base case: Setting $n = 1$, we get $y_1 = 6$. Setting $n = 2$, we get $y_2
       = 2$, giving us $6 \ge 2$ as required.
 
-      Induction step: Let $n$ be an arbitrary natural number and suppose that
-      $y_n \ge y_{n+1}$. Then
-      \[%
-        y_{n+1} - y_{n+2} = \frac{2y_n - 6}{3} - \frac{2y_{n+1} - 6}{3} = \frac{2}{3}\left(y_n - y_{n+1} + 6\right) \ge 0
-      .\]%
-      Therefore, by induction, $y_n \ge y_{n+1}$ for all $n \in \N$.
-      \hfill\qedsymbol
+      Induction step: Suppose that $y_n \ge y_{n+1}$ up to some number $k$.
+      Then, by induction, we get
+      \begin{align*}
+        y_k \ge y_{k+1} &\implies 2y_k \ge 2y_{k+1} \\
+                        &\implies 2y_k - 6 \ge 2y_{k+1} - 6 \\
+                        &\implies \frac{2y_k - 6}{3} \ge \frac{2y_{k+1} - 6}{3} \\
+                        &\implies y_{k+1} \ge y_{k+2}
+      .\end{align*}
+      Therefore, by induction, $y_n \ge y_{n+1}$, for all $n$. \hfill\qedsymbol
   \end{enumerate}
 \end{exersolution}
 
@@ -365,9 +367,11 @@
 
 \begin{exersolution}[3]
   \begin{enumerate}
-    \item 
+    \item By definition, $\sup(B)$ is the greatest lower bound for $A$, meaning
+      that it equals $\inf(A)$.
 
-    \item 
+    \item Part $\circled{1}$ proves that the greatest lower bound exists using
+      the least upper bound.
   \end{enumerate}
 \end{exersolution}
 
