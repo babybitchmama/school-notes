@@ -1,0 +1,232 @@
+\begin{problem}
+  Determine if the points $A(3, 1, 2)$, $B(1, -1, 1)$, $C(-2, 4, 3)$, and $D(-3,
+  -5, 0)$ are coplanar. That is, determine if the points lie in the same plane.
+\end{problem}
+
+\begin{probsolution}
+  We first find the vectors $\overrightarrow{AB}$, $\overrightarrow{AC}$, and
+  $\overrightarrow{AD}$.
+  \begin{alignat*}{3}
+    \overrightarrow{AB} &= \langle 1 - 3, -1 - 1, 1 - 2 \rangle &&= \langle -2, -2, -1 \rangle \\
+    \overrightarrow{AC} &= \langle -2 - 3, 4 - 1, 3 - 2 \rangle &&= \langle -5, 3, 1 \rangle \\
+    \overrightarrow{AD} &= \langle -3 - 3, -5 - 1, 0 - 2 \rangle &&= \langle -6, -6, -2 \rangle
+  .\end{alignat*}
+  Then, we compute the scalar triple product $\overrightarrow{AB} \cdot
+  (\overrightarrow{AC} \times \overrightarrow{AD})$.
+  \[%
+    \overrightarrow{AC} \times \overrightarrow{AD} = \begin{vmatrix}
+      \ui & \uj & \uk \\
+      -5 & 3 & 1 \\
+      -6 & -6 & -2
+    \end{vmatrix}
+    = \ui\begin{vmatrix}
+      3 & 1 \\
+      -6 & -2
+    \end{vmatrix}
+    - \uj\begin{vmatrix}
+      -5 & 1 \\
+      -6 & -2
+    \end{vmatrix}
+    + \uk\begin{vmatrix}
+      -5 & 3 \\
+      -6 & -6
+    \end{vmatrix}
+  .\]%
+  Therefore, we have $\overrightarrow{AC} \times \overrightarrow{AD} = \langle
+  0, -16, 48 \rangle$. Then, we have
+  \[%
+    \overrightarrow{AB} \cdot (\overrightarrow{AC} \times \overrightarrow{AD}) = \langle -2, -2, -1 \rangle \cdot \langle 0, -16, 48 \rangle = (-2)(0) + (-2)(-16) + (-1)(48) = -16
+  .\]%
+  Since the scalar triple product is not zero, the points $A$, $B$, $C$, and $D$
+  are not coplanar.
+\end{probsolution}
+
+\newpage
+
+\begin{problem}
+  Suppose $\a \ne 0$.
+  \begin{enumerate}
+    \item True or False : If $\a \cdot \b = \a \cdot \c$, then $\b = \c$.
+      Justify your answer.
+
+    \item True or False : If $\a \times \b = \a \times \c$, then $\b = \c$.
+      Justify your answer.
+
+    \item True or False : If $\a \cdot \b = \a \cdot \c$ and $\a \times \b = \a
+      \times \c$, then $\b = \c$. Justify your answer.
+  \end{enumerate}
+\end{problem}
+
+\begin{probsolution}
+  \begin{enumerate}
+    \item False: The dot product $\a \cdot \b = \a \cdot \c$ means that the
+      projections of $\b$ and $\c$ in the direction of $\a$ are equal. However,
+      the vectors $\b$ and $\c$ can be different.
+
+    \item False: The cross product $\a \times \b = \a \times \c$ means that the
+      vectors $\b$ and $\c$ have the same components perpendicular to $\a$.
+      However, the vectors $\b$ and $\c$ can be different.
+
+    \item True: If $\a \cdot \b = \a \cdot \c$, that means that $\b$ and $\c$
+      have the same projection in the direction of $\a$. If $\a \times \b = \a
+      \times \c$, that means that $\b$ and $\c$ have the same components
+      perpendicular to $\a$. Therefore, $\b$ and $\c$ must be the same.
+  \end{enumerate}
+\end{probsolution}
+
+\newpage
+
+\begin{problem}
+  \begin{enumerate}
+    \item Find parametric equations and symmetric equations for the line through the point $P(5, 3, 1)$ and $Q(7, 4, -3)$.
+
+    \item At what point does the line intersect the $xz$-plane?
+
+    \item Where does the line intersect the plane $x - 3y - 2z = 8$?
+  \end{enumerate}
+\end{problem}
+
+\begin{probsolution}
+  \begin{enumerate}
+    \item First, find $\overrightarrow{PQ}$
+      \[%
+        \overrightarrow{PQ} = \langle 7 - 5, 4 - 3, -3 - 1 \rangle = \langle 2, 1, -4 \rangle
+      .\]%
+      The parametric equations of a line with a point $P(x_0, y_0, z_0)$ and a
+      direction vector $\langle a, b, c \rangle$ are
+      \begin{align*}
+        x &= 5 + 2t \\
+        y &= 3 + t \\
+        z &= 1 - 4t
+      ,\end{align*}
+      and the symmetric equations are
+      \[%
+        \frac{x - 5}{2} = \frac{y - 3}{1} = \frac{z - 1}{-4}
+      .\]%
+
+    \item To find the intersection point, set $y = 0$ in the parametric
+      equations and solve for $t$, giving us $t = -3$. Substituting $t = -3$
+      into the parametric equations gives us the intersection point $(-1, 0,
+      13)$.
+
+    \item To find the intersection point, substitute the parametric equations
+      for $x$, $y$, and $z$ into the plane equation, giving us
+      \[%
+        (5 + 2t) - 3(3 + t) - 2(1 - 4t) = 8 \implies t = 2
+      .\]%
+      Substituting $t = 2$ into the parametric equations gives us the
+      intersection point $(9, 5, -7)$.
+  \end{enumerate}
+\end{probsolution}
+
+\newpage
+
+\begin{problem}
+  Consider the points $P(2, 6, -1)$, $Q(-1, 8, -2)$, and $R(3, 7, 0)$.
+  \begin{enumerate}
+    \item Find a vector orthogonal to the plane containing the points $P$, $Q$,
+      and $R$.
+
+    \item Find the area of the triangle with vertices $P$, $Q$, and $R$.
+
+    \item Find the equation of the plane containing the points $P$, $Q$, and
+      $R$.
+  \end{enumerate}
+\end{problem}
+
+\begin{probsolution}
+  \begin{enumerate}
+    \item First, find $\overrightarrow{PQ}$ and $\overrightarrow{PR}$
+      \begin{alignat*}{3}
+        \overrightarrow{PQ} &= \langle -1 - 2, 8 - 6, -2 - (-1) \rangle &&= \langle -3, 2, -1 \rangle \\
+        \overrightarrow{PR} &= \langle 3 - 2, 7 - 6, 0 - (-1) \rangle &&= \langle 1, 1, 1 \rangle
+      .\end{alignat*}
+      Now, find the cross product $\overrightarrow{PQ} \times
+      \overrightarrow{PR}$.
+      \[%
+        \overrightarrow{PQ} \times \overrightarrow{PR} = \begin{vmatrix}
+          \ui & \uj & \uk \\
+          -3 & 2 & -1 \\
+          1 & 1 & 1
+        \end{vmatrix}
+        = \ui\begin{vmatrix}
+          2 & -1 \\
+          1 & 1
+        \end{vmatrix}
+        - \uj\begin{vmatrix}
+          -3 & -1 \\
+          1 & 1
+        \end{vmatrix}
+        + \uk\begin{vmatrix}
+          -3 & 2 \\
+          1 & 1
+        \end{vmatrix}
+      .\]%
+      Therefore, we have $\overrightarrow{PQ} \times \overrightarrow{PR} =
+      \langle 3, 2, -5 \rangle$. Thus, the vector $\langle 3, 2, -5 \rangle$ is
+      orthogonal to the plane containing the points $P$, $Q$, and $R$.
+
+    \item The area of the triangle with vertices $P$, $Q$, and $R$ is given by
+      \[%
+        \frac{1}{2} \left\lvert \overrightarrow{PQ} \times \overrightarrow{PR} \right\rvert = \frac{1}{2} \sqrt{3^2 + 2^2 + (-5)^2} = \frac{1}{2} \sqrt{38}
+      .\]%
+
+    \item The general form of a plane equation is
+      \[%
+        a(x - x_0) + b(y - y_0) + c(z - z_0) = 0
+      ,\]%
+      where $\langle a, b, c \rangle$ is a normal vector to the plane, and
+      $(x_0, y_0, z_0)$ is a point on the plane. We can use the point $P(2, 6,
+      -1)$ and the normal vector $\langle 3, 2, -5 \rangle$ to find the equation
+      of the plane $3(x - 2) + 2(y - 6) - 5(z + 1) = 0$. Simplifying gives us
+      the final equation
+      \[%
+        3x + 2y - 5z - 23 = 0
+      .\]%
+  \end{enumerate}
+\end{probsolution}
+
+\newpage
+
+\begin{problem}
+  Find the equation of the plane that contains the points $A(2, 1, -1)$ and
+  $B(0, -2, 4)$ and is perpendicular to the plane $2x - y + 3z = 10$.
+\end{problem}
+
+\begin{probsolution}
+  We first need to find the direction vector
+  \[%
+    \overrightarrow{AB} = \langle 0 - 2, -2 - 1, 4 - (-1) \rangle = \langle -2, -3, 5 \rangle
+  .\]%
+  The normal vector to the plane $2x - y + 3z = 10$ is $\langle 2, -1, 3
+  \rangle$. Since the plane we are looking for is perpendicular to the given
+  plane, the normal vector to the plane we are looking for is the cross product
+  of the direction vector $\overrightarrow{AB}$ and the normal vector $\langle
+  2, -1, 3 \rangle$. Therefore, we have
+  \[%
+    \overrightarrow{AB} \times \langle 2, -1, 3 \rangle = \begin{vmatrix}
+      \ui & \uj & \uk \\
+      -2 & -3 & 5 \\
+      2 & -1 & 3
+    \end{vmatrix}
+    = \ui\begin{vmatrix}
+      -3 & 5 \\
+      -1 & 3
+    \end{vmatrix}
+    - \uj\begin{vmatrix}
+      -2 & 5 \\
+      2 & 3
+    \end{vmatrix}
+    + \uk\begin{vmatrix}
+      -2 & -3 \\
+      2 & -1
+    \end{vmatrix}
+  .\]%
+  Therefore, we have $\overrightarrow{AB} \times \langle 2, -1, 3 \rangle =
+  \langle -4, 16, 8 \rangle$. We can use the point $A(2, 1, -1)$ and the normal
+  vector $\langle -4, 16, 8 \rangle$ to find the equation of the plane $-4(x -
+  2) + 16(y - 1) + 8(z + 1) = 0$. Simplifying gives us the final equation
+  \[%
+    x - 4y - 2z = 0
+  .\]%
+\end{probsolution}

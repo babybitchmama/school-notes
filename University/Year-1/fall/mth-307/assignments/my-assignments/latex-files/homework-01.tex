@@ -1,0 +1,529 @@
+\begin{problem}
+  In English we have lots of different ways of expressing conditional
+  statements. For each of the following, rewrite it using the ``If-Then'' form
+  in a way that preserves the meaning:
+  \begin{enumerate}
+    \item Passing the rest requires getting $70\%$.
+    \item My cat gets scared when the phone rings.
+    \item I get mad whenever you do that.
+    \item Being first in line guarantees getting a ticket.
+    \item You will fail the class unless you hand in your exam.
+  \end{enumerate}
+\end{problem}
+
+\begin{probsolution}
+  \begin{enumerate}
+    \item If I get $70\%$ or more on the test, then I pass.
+
+    \item If the phone rings, then my cat gets scared.
+
+    \item If you do that, then I get mad.
+
+    \item If I'm first in line, then I'm guaranteed a ticket.
+
+    \item If you don't hand in your exam, then you will fail the class.
+  \end{enumerate}
+\end{probsolution}
+
+\newpage
+
+\begin{problem}
+  Recall the tautologies $\neg(P \land Q) \iff (\neg P \lor \neg Q)$, $\neg(P
+  \lor Q) \iff (\neg P \land \neg Q)$, and $\neg(P \implies Q) \iff (P \land
+  \neg Q)$. Use these to write English language versions for the negation of
+  each sentence below:
+  \begin{enumerate}
+    \item If you wash the dishes, I will pay you $10$.
+
+    \item I will wash the car or I will mow the lawn.
+
+    \item I ate steak last night and I ate cereal this morning.
+
+    \item If I go to the movies, then I will see Star Wars or I will see Harry
+      Potter.
+
+    \item If it is raining, then I will stay home or I will go to the movies.
+
+    \item If I am a monkey and you are a baboon then pigs can fly.
+  \end{enumerate}
+\end{problem}
+
+\begin{probsolution}
+  \begin{enumerate}
+    \item If you won't wash the dishes, then I won't pay you $\$10$.
+
+    \item I will not wash the car and I will not mow the lawn.
+
+    \item I did not eat steak last night or I did not eat cereal this morning.
+
+    \item If I am not going to the movies, then I will not see Star Wars and I
+      will not see Harry Potter.
+
+    \item If it is not raining, then I will not stay home and I will not go to
+      the movies.
+
+    \item If I am not a monkey and you are not a baboon, then pigs don't fly.
+  \end{enumerate}
+\end{probsolution}
+
+\newpage
+
+\begin{problem}
+  Give the truth table for each of the following statements. Say which of the
+  statements are tautologies.
+  \begin{enumerate}
+    \item $\neg [\neg P \land \neg Q]$.
+
+    \item $(P \lor Q) \iff (\neg P \implies Q)$.
+
+    \item $(Q \land \neg Q) \implies P$.
+
+    \item $Q \land (P \implies Q)$.
+
+    \item $(P \land Q) \implies (P \lor Q)$.
+
+    \item $(P \land Q) \iff (\neg Q \implies P)$.
+
+    \item $(P \lor Q) \iff (\neg Q \lor P)$.
+
+    \item $[P \implies (Q \implies R)] \iff [(P \land Q) \implies R]$.
+  \end{enumerate}
+\end{problem}
+
+\begin{probsolution}
+  \begin{table}[H]
+    \centering
+    \begin{tabular}{c|c|c|c|c|c|c||c|c|c|c}
+      $P$ & $Q$ & $P \lor Q$ & $\neg P \implies Q$ & $\implies$ & $\impliedby$ & $\iff$ & $P$ & $Q$ & $P \implies Q$ & $Q \land (P \implies Q)$ \\
+      \hline
+      True & True & True & True & True & True & True & True & True & True & True \\
+      True & False & True & True & True & True & True & True & False & False & False \\
+      False & True & True & True & True & True & True & False & True & True & True \\
+      False & False & False & True & False & True & True & False & False & True & False \\
+      \multicolumn{7}{c}{$(P \lor Q) \iff (\neg P \implies Q)$: Tautology} & \multicolumn{4}{c}{$Q \land (P \implies Q)$} \\
+    \end{tabular}
+  \end{table}
+
+  \begin{table}[H]
+    \centering
+    \begin{tabular}{c|c|c|c|c|c|c||c|c|c|c}
+      $P$ & $Q$ & $P \land Q$ & $\neg Q \implies P$ & $\implies$ & $\impliedby$ & $\iff$ & $P$ & $Q$ & $\neg P \land \neg Q$ & $\neg[\neg P \land \neg Q]$ \\
+      \hline
+      True & True & True & True & True & True & True & True & True & False & True \\
+      True & False & False & True & True & False & False & True & False & False & True \\
+      False & True & False & True & True & False & False & False & True & False & True \\
+      False & False & False & False & True & True & True & False & False & True & False \\
+      \multicolumn{7}{c}{$[P \land Q] \iff [\neg Q \implies P]$} & \multicolumn{4}{c}{$\neg[\neg P \land \neg Q]$} \\
+    \end{tabular}
+  \end{table}
+
+  \begin{table}[H]
+    \centering
+    \begin{tabular}{c|c|c|c|c||c|c|c|c|c}
+      $P$ & $Q$ & $P \land Q$ & $P \lor Q$ & $\implies$ & $P$ & $Q$ & $P \lor Q$ & $\neg Q \lor P$ & $\iff$ \\
+      \hline
+      True & True & True & True & True & True & True & True & True & True \\
+      True & False & False & True & True & True & False & True & True & True \\
+      False & True & False & True & True & False & True & True & False & False \\
+      False & False & False & False & True & False & False & False & True & True \\
+      \multicolumn{5}{c}{$(P \land Q) \implies (P \lor Q)$: Tautology} & \multicolumn{5}{c}{$[P \lor Q] \iff [\neg Q \lor P]$} \\
+    \end{tabular}
+  \end{table}
+
+  \begin{table}[H]
+    \centering
+    \begin{tabular}{c|c|c|c|c|c|c|c}
+      $P$ & $Q$ & $R$ & $P \implies [Q \implies R]$ & $[P \land Q] \implies R$ & $\implies$ & $\impliedby$ & $\iff$ \\
+      \hline
+      True & True & True & True & True & True & True & True \\
+      False & True & True & True & True & True & True & True \\
+      False & False & True & True & True & True & True & True \\
+      False & False & False & True & True & True & True & True \\
+      True & False & False & True & True & True & True & True \\
+      True & True & False & False & False & True & True & True \\
+      False & True & False & True & True & True & True & True \\
+      True & False & True & True & True & True & True & True \\
+      \multicolumn{8}{c}{$[P \implies (Q \implies R)] \iff [(P \land Q) \implies R]$: Tautology} \\
+    \end{tabular}
+  \end{table}
+\end{probsolution}
+
+\newpage
+
+\begin{problem}
+  Prove that $P$, $P \iff Q$ $\vdash$ $Q$ by filling in the blanks below. This
+  rule of logic is called ``Modus Ponens for the Biconditional (MPB)''. Once you
+  have proven it, you can use it in the other problems.
+  \begin{table}[H]
+    \centering
+    \begin{tabular}{lll}
+      & Statement & Explanation \\
+      1. & $P$ & ?? \\
+      2. & $P \iff Q$ & ?? \\
+      3. & $P \implies Q$ & ?? \\
+      4. & $Q$ & ?? \\
+    \end{tabular}
+  \end{table}
+\end{problem}
+
+\begin{probsolution}
+  \begin{table}[H]
+    \centering
+    \begin{tabular}{lll}
+      & Statement & Explanation \\
+      1. & $P$ & Hypothesis \\
+      2. & $P \iff Q$ & Hypothesis \\
+      3. & $P \implies Q$ & MPB, for 2, for 1 \\
+      4. & $Q$ & MP, for 3, for 1 \\
+    \end{tabular}
+  \end{table}
+\end{probsolution}
+
+\newpage
+
+\begin{problem}
+  Fill in the blanks to give a proof of $[P \land Q] \implies R$, $\neg R$, $P$
+  $\vdash$ $\neg Q$.
+  \begin{table}[H]
+    \centering
+    \begin{tabular}{lll}
+      & Statement & Explanation \\
+      1. & $[P \land Q] \implies R$ & ?? \\
+      2. & $\neg R$ & ?? \\
+      3. & $\neg[P \land Q]$ & ?? \\
+      4. & $\neg[P \land Q] \iff [\neg P \lor \neg Q]$ & ?? \\
+      5. & ?? & MPB, for 4, for 3 \\
+      6. & $[\neg P \lor \neg Q] \implies [P \implies \neg Q]$ & ?? \\
+      7. & $P \implies \neg Q$ & ?? \\
+      8. & ?? & Hypothesis \\
+      9. & ?? & ?? \\
+    \end{tabular}
+  \end{table}
+\end{problem}
+
+\begin{probsolution}
+  \begin{table}[H]
+    \centering
+    \begin{tabular}{lll}
+      & Statement & Explanation \\
+      1. & $[P \land Q] \implies R$ & Hypothesis \\
+      2. & $\neg R$ & Hypothesis \\
+      3. & $\neg[P \land Q]$ & MT, for 1, for 2 \\
+      4. & $\neg[P \land Q] \iff [\neg P \lor \neg Q]$ & DeMorgan's Law \\
+      5. & $[\neg P \land \neg Q]$ & MPB, for 4, for 3 \\
+      6. & $[\neg P \lor \neg Q] \implies [P \implies \neg Q]$ & Tautology \\
+      7. & $P \implies \neg Q$ & MPB, for 6 \\
+      8. & $P$ & Hypothesis \\
+      9. & $P \implies \neg Q$ & MP, for 7, for 8 \\
+    \end{tabular}
+  \end{table}
+\end{probsolution}
+
+\newpage
+
+\begin{problem}
+  Show that $\neg Q \implies \neg P$, $\neg Q \land R$ $\vdash$ $\neg P$.
+\end{problem}
+
+\begin{probsolution}
+  \begin{table}[H]
+    \centering
+    \begin{tabular}{lll}
+      & Statement & Explanation \\
+      1. & $\neg Q \implies \neg P$ & Hypothesis \\
+      2. & $\neg Q \land R$ & Hypothesis \\
+      3. & $\neg Q$ & LCS, for 2 \\
+      4. & $\neg P$ & MP, for 1, for 3 \\
+    \end{tabular}
+  \end{table}
+\end{probsolution}
+
+\newpage
+
+\begin{problem}
+  Show that $Q \lor R$, $\neg R$ $\vdash$ $Q$.
+\end{problem}
+
+\begin{probsolution}
+  \begin{table}[H]
+    \centering
+    \begin{tabular}{lll}
+      & Statement & Explanation \\
+      1. & $Q \lor R$ & Hypothesis \\
+      2. & $\neg R$ & Hypothesis \\
+      3. & $Q$ & DI, for 1, for 2 \\
+    \end{tabular}
+  \end{table}
+\end{probsolution}
+
+\newpage
+
+\begin{problem}
+  Show that $R \implies S$, $R \land Q$ $\vdash$ $R \land S$.
+\end{problem}
+
+\begin{probsolution}
+  \begin{table}[H]
+    \centering
+    \begin{tabular}{lll}
+      & Statement & Explanation \\
+      1. & $R \implies S$ & Hypothesis \\
+      2. & $R \land Q$ & Hypothesis \\
+      3. & $R$ & LCS, for 2 \\
+      4. & $S$ & MP, for 1, for 3 \\
+      5. & $R \land S$ & CI, for 3, for 4 \\
+    \end{tabular}
+  \end{table}
+\end{probsolution}
+
+\newpage
+
+\begin{problem}
+  Show that $\neg[P \land R] \implies \neg S$, $\neg S \implies Q$, $\neg[P
+  \land R]$ $\vdash$ $\neg S \land Q$.
+\end{problem}
+
+\begin{probsolution}
+  \begin{table}[H]
+    \centering
+    \begin{tabular}{lll}
+      & Statement & Explanation \\
+      1. & $\neg[P \land R] \implies \neg S$ & Hypothesis \\
+      2. & $\neg S \implies Q$ & Hypothesis \\
+      3. & $\neg[P \land R]$ & Hypothesis \\
+      4. & $\neg S$ & MP, for 1, for 3 \\
+      5. & $Q$ & MP, for 2, for 4 \\
+      6. & $\neg S \land Q$ & CI, for 4, for 5 \\
+    \end{tabular}
+  \end{table}
+\end{probsolution}
+
+\newpage
+
+\begin{problem}
+  Show that $[P \lor R] \implies Q$, $P$ $\vdash$ $P \land Q$.
+\end{problem}
+
+\begin{probsolution}
+  \begin{table}[H]
+    \centering
+    \begin{tabular}{lll}
+      & Statement & Explanation \\
+      1. & $[P \lor R] \implies Q$ & Hypothesis \\
+      2. & $P$ & Hypothesis \\
+      3. & $P \implies (P \lor R)$ & Tautology \\
+      4. & $Q$ & MP, for 1, for 3 \\
+      5. & $P \land Q$ & CI, for 2, for 4 \\
+    \end{tabular}
+  \end{table}
+\end{probsolution}
+
+\newpage
+
+\begin{problem}
+  Show that $R \land \neg Q$, $P \implies Q$ $\vdash$ $R \land \neg P$.
+\end{problem}
+
+\begin{probsolution}
+  \begin{table}[H]
+    \centering
+    \begin{tabular}{lll}
+      & Statement & Explanation \\
+      1. & $R \land \neg Q$ & Hypothesis \\
+      2. & $P \implies Q$ & Hypothesis \\
+      3. & $\neg Q$ & RCS, for 1 \\
+    \end{tabular}
+  \end{table}
+\end{probsolution}
+
+\newpage
+
+\begin{problem}
+  Show that $Q$, $[P \implies Q] \implies [R \land S]$ $\vdash$ $S$. (This can
+  be done in $6$ lines if you find the right tautology. Try working backwards).
+\end{problem}
+
+\begin{probsolution}
+  \begin{table}[H]
+    \centering
+    \begin{tabular}{lll}
+      & Statement & Explanation \\
+      1. & $Q$ & Hypothesis \\
+      2. & $[P \implies Q] \implies [R \land S]$ & Hypothesis \\
+      3. & $Q \implies [P \implies Q]$ & Tautology \\
+      4. & $P \implies Q$ & MP, for 3, for 1 \\
+      5. & $R \land S$ & MP, for 2, for 4 \\
+      6. & $S$ & LCS, for 5 \\
+    \end{tabular}
+  \end{table}
+  \noindent Here's the truth table to show that $Q \implies [P \implies Q]$
+  tautology:
+  \begin{table}[H]
+    \centering
+    \begin{tabular}{c|c|c|c}
+      $P$ & $Q$ & $P \implies Q$ & $Q \implies [P \implies Q]$ \\
+      \hline
+      True & True & True & True \\
+      True & False & False & True \\
+      False & True & True & True \\
+      False & False & True & True \\
+    \end{tabular}
+  \end{table}
+\end{probsolution}
+
+\newpage
+
+\begin{problem}
+  Show that $Q \implies S$, $\neg S \lor R$, $\neg R$ $\vdash$ $\neg Q$.
+\end{problem}
+
+\begin{probsolution}
+  \begin{table}[H]
+    \centering
+    \begin{tabular}{lll}
+      & Statement & Explanation \\
+      1. & $Q \implies S$ & Hypothesis \\
+      2. & $\neg S \lor R$ & Hypothesis \\
+      3. & $\neg R$ & Hypothesis \\
+      4. & $\neg S$ & DI, for 2, for 3 \\
+      5. & $\neg Q$ & MP, for 1, for 4 \\
+    \end{tabular}
+  \end{table}
+\end{probsolution}
+
+\newpage
+
+\begin{problem}
+  There are five people considering going to the beach: Amanda, Bill, Chris,
+  Debbie, and Eeyore. The following are true statements:
+  \begin{enumerate}
+    \item If Amanda goes to the beach, then Eeyore will not go.
+
+    \item If Debbie goes (to the beach), then Chris will go too.
+
+    \item If Debbie does not go, then Eeyore will go.
+
+    \item If Eeyore goes to the beach, then either Amanda will go or Bill will
+      not go.
+  \end{enumerate}
+
+  \noindent This is all too complicated for Chris, who gets fed up and decides
+  not to go to the beach. Determine who goes to the beach, and who stays home.
+
+  \noindent Convert this into a problem in symbolic logic. I suggest you use
+  ``A'' to stand for the proposition ``Amanda goes to the beach''. Give a
+  symbolic logic proof, as we have been doing in the above exercises, where you
+  use the rules of logic to deduce who does and does not go to the beach. You
+  should have five hypotheses.
+\end{problem}
+
+\begin{probsolution}
+  Let $A =$ Amanda goes to the beach, $B =$ Bill goes to the beach, $C =$ Chris
+  goes to the beach, $D =$ Debbie goes to the beach, and $E =$ Eeyore goes to
+  the beach. The statements can be written as:
+  \begin{table}[H]
+    \centering
+    \begin{tabular}{lll|lll}
+      & Statement & Explanation & & Statement & Explanation \\
+      1. & $A \implies \neg E$ & Hypothesis & 6. & $\neg D$ & MT, for 2, for 5 \\
+      2. & $D \implies C$ & Hypothesis & 7. & $E$ & MP, for 3, for 6 \\
+      3. & $\neg D \implies E$ & Hypothesis & 8. & $A \lor \neg B$ & MP, for 4, for 7 \\
+      4. & $E \implies (A \lor \neg B)$ & Hypothesis & 9. & $\neg A$ & MT, for 1, for 7 \\
+      5. & $\neg C$ & Hypothesis & 10. & $\neg B$ & DI, for 8, for 9 \\
+    \end{tabular}
+  \end{table}
+  \noindent Therefore, if Chris does not go to the beach, then only Eeyore goes
+  to the beach, while everyone else stays at home.
+\end{probsolution}
+
+\newpage
+
+\begin{problem}
+  I have a penny, a dime, and a quarter. If you make a true statement, I will give you one of the coins. If you make a false statement, I will give you nothing. What statement can you make that will \textit{guarantee} that you get the quarter?
+\end{problem}
+
+\begin{probsolution}
+  Let $P =$ ``I have a penny'', $D =$ ``I have a dime'', $Q =$ ``I have a
+  quarter'', $C =$ ``You will give me a coin''. The statement that guarantees
+  that you get the quarter is $Q \lor \neg Q \lor \neg C$. If they don't give me
+  a coin, then the statement is true; making them give me a quarter. If they do
+  give me a coin, say a penny, then the statement is still true, since they
+  aren't giving me a quarter.
+\end{probsolution}
+
+\newpage
+
+\begin{problem}
+  Write out the operation tables for $(\Z_5, \cdot_5)$ and $(\Z_5, +_5)$.
+\end{problem}
+
+\begin{probsolution}
+  \begin{table}[H]
+    \centering
+    \begin{tabular}{c|ccccccc|cccc}
+      $0$ & $1$ & $2$ & $3$ & $4$ &&& $0$ & $1$ & $2$ & $3$ & $4$ \\
+      $1$ & $2$ & $3$ & $4$ & $0$ &&& $1$ & $1$ & $2$ & $3$ & $4$ \\
+      $2$ & $3$ & $4$ & $0$ & $1$ &&& $2$ & $2$ & $4$ & $1$ & $3$ \\
+      $3$ & $4$ & $0$ & $1$ & $2$ &&& $3$ & $3$ & $1$ & $4$ & $2$ \\
+      $4$ & $0$ & $1$ & $2$ & $3$ &&& $4$ & $4$ & $3$ & $2$ & $1$ \\
+      \multicolumn{6}{c}{$(\Z_5, +_5)$} & \multicolumn{6}{c}{$(\Z_5, \cdot_5)$} \\
+    \end{tabular}
+  \end{table}
+\end{probsolution}
+
+\newpage
+
+\begin{problem}
+  Solve the equation $(7 \cdot_{11} x) +_{11} 10 = 4$ in $\Z_{11}$. (As always
+  in this course, you should explain your methods. Just writing down the answer
+  with no explanation will not earn many points.)
+\end{problem}
+
+\begin{probsolution}
+  Rewriting the equation gives us $7x + 10 = 4~(\mod~11)$, to reduce the
+  tediousness of writing $\cdot_{11}$ and $+_{11}$ every time. Adding $10$'s
+  additive inverse to both sides gives us $7x + 10 + 1 = 4 + 1~(\mod~11)
+  \implies 7x = 5 \mod(11)$. Multiplying the equation by $7$'s multiplicative
+  inverse gives us $8 \cdot 7x = 8 \cdot 5~(\mod~11) \implies x = 7$.
+
+  \noindent Checking to see if $x = 7$ is true gives us $7 \cdot 7 +
+  10~(\mod~11) = 5 + 10~(\mod~11) = 4~(\mod~11)$.
+\end{probsolution}
+
+\newpage
+
+\begin{problem}
+  Make a table showing all the perfect squares in $\Z_{11}$ (I mean $0^2$,
+  $1^2$, $2^2$, and so on). Use this to help you find all solutions to the
+  equation
+  \[%
+    x^2 + 4x + 10 = 0
+  ,\]%
+  in $\Z_{11}$. (Hint: Complete the square.) I strongly suggest that you check
+  your answers at the end, by plugging them back into the quadratic equation.
+\end{problem}
+
+\begin{probsolution}
+  Here's the table showing all the perfect squares in $\Z_{11}$:
+  \begin{table}[H]
+    \centering
+
+    \begin{tabular}{c|ccccccccccc}
+      $0$ & $1$ & $2$ & $3$ & $4$ & $5$ & $6$ & $7$ & $8$ & $9$ & $10$ \\
+      \hline
+      $m^2$ & $1$ & $4$ & $9$ & $5$ & $3$ & $3$ & $5$ & $9$ & $4$ & $1$ \\
+    \end{tabular}
+  \end{table}
+  \noindent Adding $10$'s additive inverse to both sides gives us $x^2 + 4x =
+  1~(\mod 11)$. We can re-write $4x$ as $(2 \cdot 2)x$. We can then add $a^2$ to
+  both sides of the equation to get
+  \[%
+    (x + 2)^2 = 5
+  .\]%
+  Using the table of perfect squares, we can see that $x + 2 = 4$ and $x + 2 =
+  7$ are the only solutions. Therefore, $x = 2$ and $x = 5$ are the solutions to
+  the equation.
+
+  \noindent Checking to see if $x = 2$ and $x = 5$ are true gives us $2^2 + 2
+  \cdot 4 + 10~(\mod 11)~\ce 0$ and $5^2 + 5 \cdot 4 + 10~(\mod 11)~\ce 0$.
+\end{probsolution}
