@@ -130,6 +130,9 @@
 %  Create empty proof  %
 %%%%%%%%%%%%%%%%%%%%%%%%
 
+\newcommand\proofheader{{\sffamily\textbf{Proof:}}}
+\newcommand\mcase[1]{{\sffamily\textbf{Case: #1}}}
+
 \declaretheoremstyle[
   headfont=\sffamily\color{proof},
   headformat=\vspace{-2em},
@@ -137,6 +140,14 @@
   qed=\qedsymbol,
 ]{emptyproofbox}
 \declaretheorem[style=emptyproofbox, name=]{emptyproof}
+
+\declaretheoremstyle[
+  headfont=\sffamily,
+  headformat=\textbf{\NAME},
+  headpunct=:,
+  qed=\qedsymbol,
+]{plainproofbox}
+\declaretheorem[style=plainproofbox, name=Proof]{plainproof}
 
 %%%%%%%%%%%%%%%%%%%
 % Create Counters %

@@ -1,0 +1,187 @@
+\renewcommand\type{exercise}
+\setcounter{chapter}{1}
+\setcounter{section}{3}
+
+\begin{exercise}[1]
+  \begin{enumerate}
+    \item Write a formal definition in the style of Definition 1.3.2 for the
+      \textit{infimum} or \textit{greatest lower bound} of a set.
+
+    \item Now, state and prove a version of Lemma 1.3.8 for greatest lower
+      bound.
+  \end{enumerate}
+\end{exercise}
+
+\begin{exersolution}[1]
+  \begin{enumerate}
+    \item \textbf{Definition 1.3.2B.} A real number $t$ is the \textit{infimum}
+      or \textit{greatest lower bound} of a set $S$ if
+      \begin{enumerate}
+        \item $t$ is a lower bound of $S$, and
+        \item if $t'$ is any lower bound of $S$, then $t \leq t'$.
+      \end{enumerate}
+
+    \item \textbf{Lemma 1.3.8B.} \textit{Assume $s \in \R$ is a lower bound for
+      a set $A \subseteq \R$. Then, $s = \inf(A)$ if and only if for all
+      $\epsilon > 0$, there exists an element $a \in A$ such that $s + \epsilon
+      > a$.}
+
+      \begin{plainproof}
+        Assume $s = \inf(A)$ and consider $s + \epsilon$ for some $\epsilon >
+        0$. Then, $s + \epsilon$ cannot be a lower bound on $A$ because (ii)
+        implies all lower bounds $b$ must be such that $s \leq b$. Therefore,
+        there must exist an element $a \in A$ such that $s + \epsilon > a$.
+
+        Conversely, for all $\epsilon > 0$, there exists an $a \in A$ such that
+        $s + \epsilon > a$. Then, $s + \epsilon$ is not a lower bound for all
+        $\epsilon$, which is the same as saying every lower bound $b$ must have
+        $b \le s$ (ii).
+      \end{plainproof}
+  \end{enumerate}
+\end{exersolution}
+
+\newpage
+
+\begin{exercise}[7]
+  Prove that if a is an upper bound for $A$, and if $a$ is also an element of
+  $A$, then it must be that $a = \sup(A)$.
+\end{exercise}
+
+\begin{exersolution}[7]
+  \begin{plainproof}
+    If $a$ is an upper bound for the set $A \subseteq \R$ and is an element of
+    $A$, then, by definition, $a = \max(A) = \sup(A)$.
+  \end{plainproof} 
+\end{exersolution}
+
+\newpage
+
+\begin{exercise}[9]
+  \begin{enumerate}
+    \item If $\sup(A) < \sup(B)$, show that there exists an element $b \in B$
+      that is an upper bound for $A$.
+
+    \item Give an example to show that this is not always the case if we only
+      assume $\sup(A) \le \sup(B)$.
+  \end{enumerate}
+\end{exercise}
+
+\begin{exersolution}[9]
+  \begin{enumerate}
+    \item \proofheader~ We'll prove this case by case.
+
+      \mcase{1} If $\sup(B) = \max(B)$, then we can choose $b = \sup(B)$ and $b
+      \in B$.
+
+      \mcase{2} Since $\sup(B) > \sup(A)$, then, by the Theorem 1.4.3 [Density
+      of $\Q$ in $\R$], there exists some $c$ in between $\sup(A)$ and
+      $\sup(B)$. Let $c = \sfrac{\sup(A) + \sup(B)}{2}$. Then, $c \in B$, since
+      $\sup(B) > c$. Therefore, $\sup(B) > c > \sup(A)$ and $c \in B$.
+      \hfill\qedsymbol
+
+    \item Let $A = (-\infty, 1]$ and $B = (-\infty, 1)$, then $\sup(A) = 1$ and
+      $\sup(B) = 1$. However, there is no element $b \in B$ that is an upper
+      bound for $A$.
+  \end{enumerate}
+\end{exersolution}
+
+\newpage
+
+\begin{exercise}[11]
+  Decide if the following statements about suprema and infima are true or false.
+  Give a short proof for those that are true. For any that are false, supply an
+  example where the claim in question does not appear to hold.
+  \begin{enumerate}
+    \item If $A$ and $B$ are nonempty, bounded, and satisfy $A \subseteq B$,
+      then $\sup(A) \le \sup(B)$.
+
+    \item If $\sup(A) < \inf(B)$ for sets $A$ and $B$, then there exists a $c
+      \in \R$ satisfying $a < c < b$ for all $a \in A$ and $b \in B$.
+
+    \item If there exists a $c \in \R$ satisfying $a < c < b$ for all $a \in A$
+      and $b \in B$, then $\sup(A) < \inf(B)$.
+  \end{enumerate}
+\end{exercise}
+
+\begin{exersolution}[11]
+  \begin{enumerate}
+    \item True: If $A \subseteq B$, this means that $\forall x \in A \implies x
+      \in B$. This means that $\sup(A) \in B$, but not always the case that
+      $\sup(B) \in A$. Therefore, $\sup(A) \le \sup(B)$.
+
+    \item True: Since $\sup(A) < \sup(B)$, then, by the Theorem 1.4.3 [Density
+      of $\Q$ in $\R$], there exists some $c$ in between $\sup(A)$ and
+      $\sup(B)$. Let $c = \sfrac{\sup(A) + \sup(B)}{2}$. Then, $c \in \R$ and
+      $a < c < b$ for all $a \in A$ and $b \in B$.
+
+    \item False: Let $A = (-\infty, 1]$ and $B = [1, \infty)$, then $1 < 1$.
+  \end{enumerate}
+\end{exersolution}
+
+\newpage
+\setcounter{section}{4}
+
+\begin{exercise}[1]
+  Recall that $\mathbf{I}$ stands for the set of irrational numbers.
+  \begin{enumerate}
+    \item Show that if $a, b \in \Q$, then $ab$ and $a + b$ are elements of $\Q$
+      as well.
+
+    \item Show that if $a \in \Q$ and $t \in \mathbf{I}$, then $a + t \in
+      \mathbf{I}$ and $at \in \mathbf{I}$ as long as $a \ne 0$.
+
+    \item Part $\circled{1}$ can be summarized by saying that $\Q$ is closed
+      under addition and multiplication. Is $\mathbf{I}$ closed under
+      addition and multiplication? Given two irrational numbers $s$ and $t$,
+      what can we say about $s + t$ and $st$?
+  \end{enumerate}
+\end{exercise}
+
+\begin{exersolution}[1]
+  \begin{enumerate}
+    \item \proofheader~The rational numbers $a$ and $b$ can be expressed as $a =
+      \sfrac{p}{q}$ and $b = \sfrac{r}{s}$, where $p, q, r, s \in \Z$ and $q, s
+      \ne 0$. Then, $a + b = \sfrac{p}{q} \sfrac{r}{s} = \frac{ps + rq}{qs}$,
+      where $ps + rq \in \Z$ and $qs \in \Z$. Therefore, $a + b \in \Q$. Then,
+      $ab = \sfrac{p}{q} \cdot \sfrac{r}{s} = \sfrac{pr}{qs}$, where $pr \in \Z$
+      and $qs \in \Z$. Therefore, $ab \in \Q$. \hfill\qedsymbol
+
+    \item \proofheader~ Suppose $a + t \in \Q$, then, by $\circled{1}$, $(a + t)
+      - a \in \Q$, contradicting the initial assumption that $t \in \mathbf{I}$.
+      \hfill\qedsymbol
+
+    \item No, $\mathbf{I}$ is not closed under addition and multiplication. For
+      example, $\sqrt{2} - \sqrt{2} = 0$ and $\sqrt{2} \cdot \sqrt{2} = 2$.
+  \end{enumerate}
+\end{exersolution}
+
+\newpage
+
+\begin{exercise}[3]
+  Prove that $\bigcap_{n=1}^{\infty} (0, \sfrac{1}{n}) = \emptyset$. Notice that
+  this demonstrates that the intervals in the Nested Interval Property must be
+  closed for the conclusion of the theorem to hold.
+\end{exercise}
+
+\begin{exersolution}[3]
+  \begin{plainproof}
+    Suppose $\displaystyle x \in \bigcap_{n=1}^{\infty} (0, \sfrac{1}{n})$, then
+    we have $0 < x < \sfrac{1}{n}$ for all $n \in \N$. However, this is
+    impossible by the Archimedean Property. Therefore,
+    $\displaystyle\bigcap_{n=1}^{\infty} (0, \sfrac{1}{n}) = \emptyset$.
+  \end{plainproof}
+\end{exersolution}
+
+\newpage
+
+\begin{exercise}[4]
+  Let $a < b$ be real numbers and consider the set $T = \Q \cap [a, b]$. Show
+  $\sup(T) = b$.
+\end{exercise}
+
+\begin{exersolution}[4]
+  \begin{plainproof}
+    The intersection of $\Q$ and $[a, b]$ is the interval $[a, b]$. Since $b$ is
+    an upper bound for $T$, then $b = \sup(T)$.
+  \end{plainproof}
+\end{exersolution}
