@@ -3,10 +3,10 @@
 \section{Single Sets}
 \label{sec:single_sets}
 
-\begin{definition}[Set]
+\begin{definition}
   \label{def:set}
 
-  A \textbf{set} is a collection of objects, called \textbf{elements} of the
+  A \textit{set} is a collection of objects, called \textbf{elements} of the
   set.
 \end{definition}
 
@@ -20,183 +20,181 @@ Let's define the following sets, as we'll be using them throughout the notes
 .\end{align*}
 
 \begin{note}
-  \label{nte:proper_definition_of_r}
-
   We won't properly define $\R$, as we don't have the necessary tools to do so.
 \end{note}
 
-Let $S$ be a set. We have the following notation regarding sets
-\begin{enumerate}
-  \label{enum:set_notation}
+% Let $S$ be a set. We have the following notation regarding sets
+% \begin{enumerate}
+%   \label{enum:set_notation}
 
-  \item $x \in S$: $x$ is an element of the set $S$.
+%   \item $x \in S$: $x$ is an element of the set $S$.
 
-  \item $A \cap B = \left\{x \mid x \in A \land x \in B\right\}$: the
-    intersection of sets $A$ and $B$.
+%   \item $A \cap B = \left\{x \mid x \in A \land x \in B\right\}$: the
+%     intersection of sets $A$ and $B$.
 
-  \item $A \cup B = \left\{x \mid x \in A \lor x \in B\right\}$: the union of
-    sets $A$ and $B$.
+%   \item $A \cup B = \left\{x \mid x \in A \lor x \in B\right\}$: the union of
+%     sets $A$ and $B$.
 
-  \item $A \subseteq S$: $A$ is a subset of $S$.
-\end{enumerate}
+%   \item $A \subseteq S$: $A$ is a subset of $S$.
+% \end{enumerate}
 
-\begin{note}
-  \label{nte:and_or_notation}
+% \begin{note}
+%   \label{nte:and_or_notation}
 
-  The notation $\land$ is the logical \textbf{and} operator, and $\lor$ is the
-  logical \textbf{or} operator. Or in math is an inclusive or, meaning that the
-  statement $A \lor B$ is true if at least one of $A$ or $B$ or both are true.
-\end{note}
+%   The notation $\land$ is the logical \textbf{and} operator, and $\lor$ is the
+%   logical \textbf{or} operator. Or in math is an inclusive or, meaning that the
+%   statement $A \lor B$ is true if at least one of $A$ or $B$ or both are true.
+% \end{note}
 
-I'll be using the following notation throughout the notes
-\begin{enumerate}
-  \label{enum:quantifiers}
+% I'll be using the following notation throughout the notes
+% \begin{enumerate}
+%   \label{enum:quantifiers}
 
-  \item $\forall x \in S$: for all $x$ in the set $S$.
-  \item $\exists x \in S$: there exists an $x$ in the set $S$.
-\end{enumerate}
+%   \item $\forall x \in S$: for all $x$ in the set $S$.
+%   \item $\exists x \in S$: there exists an $x$ in the set $S$.
+% \end{enumerate}
 
-So, for we can re-write all of the definitions as follows
-\[%
-  A \subseteq S \implies \forall x \in A, x \in S
-.\]%
+% So, for we can re-write all of the definitions as follows
+% \[%
+%   A \subseteq S \implies \forall x \in A, x \in S
+% .\]%
 
-A set $A$ is equal to another set $B$ if and only if $A \subseteq B$ and $B
-\subseteq A$.
+% A set $A$ is equal to another set $B$ if and only if $A \subseteq B$ and $B
+% \subseteq A$.
 
-\begin{note}
-  \label{nte:if_and_only_if}
+% \begin{note}
+%   \label{nte:if_and_only_if}
 
-  The symbol $\iff$ means \textbf{if and only if}. The statement $A \iff B$ is
-  shorthand notation for $(A \implies B) \land (B \implies A)$.
-\end{note}
+%   The symbol $\iff$ means \textbf{if and only if}. The statement $A \iff B$ is
+%   shorthand notation for $(A \implies B) \land (B \implies A)$.
+% \end{note}
 
-\begin{question}
-  \label{qst:prove_set_equality}
+% \begin{question}
+%   \label{qst:prove_set_equality}
 
-  Using that statement, prove the following statement: $A \cap (B \cup C) = (A
-  \cap B) \cup C$.
-\end{question}
+%   Using that statement, prove the following statement: $A \cap (B \cup C) = (A
+%   \cap B) \cup C$.
+% \end{question}
 
-\begin{solproof}
-  \label{solprf:prove_set_equality}
+% \begin{solproof}
+%   \label{solprf:prove_set_equality}
 
-  \begin{enumerate}
-    \label{enum:prove_set_equality_solprf}
+%   \begin{enumerate}
+%     \label{enum:prove_set_equality_solprf}
 
-    \item[$\subseteq$:] Suppose $x \in A \cap (B \cup C)$. That means $(x \in A)
-      \land (x \in B \cup C)$, implying $(x \in A) \land (x \in B \lor x \in
-      C)$. This is equivalent to $x \in (A \cap B) \cup C$, since $x$ must be in
-      $A$ and must be in either $B$ or $C$ (or both). If $x \in B$, then $x \in
-      A \cup B \implies x \in (A \cap B) \cup C$ and if $x \in C$, then $x \in
-      (A \cap B) \cup C$. Thus, $A \cap (B \cup C) \subseteq (A \cap B) \cup C$.
+%     \item[$\subseteq$:] Suppose $x \in A \cap (B \cup C)$. That means $(x \in A)
+%       \land (x \in B \cup C)$, implying $(x \in A) \land (x \in B \lor x \in
+%       C)$. This is equivalent to $x \in (A \cap B) \cup C$, since $x$ must be in
+%       $A$ and must be in either $B$ or $C$ (or both). If $x \in B$, then $x \in
+%       A \cup B \implies x \in (A \cap B) \cup C$ and if $x \in C$, then $x \in
+%       (A \cap B) \cup C$. Thus, $A \cap (B \cup C) \subseteq (A \cap B) \cup C$.
 
-    \item[$\supseteq$:] Suppose $x \in (A \cap B) \cup C$. That means $(x \in A
-      \land x \in B) \lor (x \in C)$. Notice that it isn't the same thing as the
-      previous statement, as $x$ doesn't have to be in $A \cap B$ and can be in
-      $C$. Example: $A = \{1, 2\}$, $B = \{1, 2\}$, and $C = \{1, 3\}$.
-      Therefore, we get
-      \[%
-        A \cap (B \cup C) = \{1, 2\} \cap (\{1, 2\} \cup \{1, 2, 3\}) = \{1, 2\}
-      ,\]%
-      but
-      \[%
-        (A \cap B) \cup C = (\{1, 2\} \cap \{1, 2\}) \cup \{1, 3\} = \{1, 2, 3\}
-      ,\]%
-      meaning $(A \cap B) \cup C \not\subseteq A \cap (B \cup C)$.
-  \end{enumerate}
+%     \item[$\supseteq$:] Suppose $x \in (A \cap B) \cup C$. That means $(x \in A
+%       \land x \in B) \lor (x \in C)$. Notice that it isn't the same thing as the
+%       previous statement, as $x$ doesn't have to be in $A \cap B$ and can be in
+%       $C$. Example: $A = \{1, 2\}$, $B = \{1, 2\}$, and $C = \{1, 3\}$.
+%       Therefore, we get
+%       \[%
+%         A \cap (B \cup C) = \{1, 2\} \cap (\{1, 2\} \cup \{1, 2, 3\}) = \{1, 2\}
+%       ,\]%
+%       but
+%       \[%
+%         (A \cap B) \cup C = (\{1, 2\} \cap \{1, 2\}) \cup \{1, 3\} = \{1, 2, 3\}
+%       ,\]%
+%       meaning $(A \cap B) \cup C \not\subseteq A \cap (B \cup C)$.
+%   \end{enumerate}
 
-  Therefore, $A \cap (B \cup C) \ne (A \cap B) \cup C$.
-\end{solproof}
+%   Therefore, $A \cap (B \cup C) \ne (A \cap B) \cup C$.
+% \end{solproof}
 
-\begin{definition}[Complement]
-  \label{def:complement}
+% \begin{definition}[Complement]
+%   \label{def:complement}
 
-  Given $A \subseteq \R$, the \textbf{complement} of $A$, written $A^c$, refers
-  to the set of all elements of $\R$ not in $A$, written as
-  \[%
-    A^c = \left\{x \in \R \mid x \notin A\right\}
-  .\]%
-\end{definition}
+%   Given $A \subseteq \R$, the \textbf{complement} of $A$, written $A^c$, refers
+%   to the set of all elements of $\R$ not in $A$, written as
+%   \[%
+%     A^c = \left\{x \in \R \mid x \notin A\right\}
+%   .\]%
+% \end{definition}
 
-This gives us our first
-\begin{theorem}[DeMorgan's Law]
-  \label{thm:demorgans_law}
+% This gives us our first
+% \begin{theorem}[DeMorgan's Law]
+%   \label{thm:demorgans_law}
 
-  Let $A$ and $B$ be sets. Then
-  \begin{enumerate}
-    \label{enum:demorgans_law_thm}
+%   Let $A$ and $B$ be sets. Then
+%   \begin{enumerate}
+%     \label{enum:demorgans_law_thm}
 
-    \item $(A \cup B)^c = A^c \cap B^c$.
+%     \item $(A \cup B)^c = A^c \cap B^c$.
 
-    \item $(A \cap B)^c = A^c \cup B^c$.
-  \end{enumerate}
-\end{theorem}
+%     \item $(A \cap B)^c = A^c \cup B^c$.
+%   \end{enumerate}
+% \end{theorem}
 
-\begin{proof}
-  \label{prf:demorgans_law} Suppose $A$ and $B$ are both sets.
+% \begin{proof}
+%   \label{prf:demorgans_law} Suppose $A$ and $B$ are both sets.
 
-  \begin{enumerate}
-    \label{enum:demorgans_law_prf}
+%   \begin{enumerate}
+%     \label{enum:demorgans_law_prf}
 
-    \item Suppose $x \in (A \cap B)^c$, then $x \notin A \cap B$ so $x \notin A
-      \lor x \notin B$, implying that $x \in A^c \lor x \in B^c$, which is
-      equivalent to $x \in A^c \cup B^c$.
+%     \item Suppose $x \in (A \cap B)^c$, then $x \notin A \cap B$ so $x \notin A
+%       \lor x \notin B$, implying that $x \in A^c \lor x \in B^c$, which is
+%       equivalent to $x \in A^c \cup B^c$.
 
-      Suppose $x \in A^c \cup B^c$, then $x \in A^c \lor x \in B^c$ so $x \notin
-      A \lor x \notin B$, implying that $x \notin A \cap B$, which is equivalent
-      to $x \in (A \cap B)^c$.
+%       Suppose $x \in A^c \cup B^c$, then $x \in A^c \lor x \in B^c$ so $x \notin
+%       A \lor x \notin B$, implying that $x \notin A \cap B$, which is equivalent
+%       to $x \in (A \cap B)^c$.
 
-    \item Suppose $x \in (A \cup B)^c$, then $x \notin A \cup B$ so $x \notin A
-      \land x \notin B$, implying that $x \in A^c \land x \in B^c$, which is
-      equivalent to $x \in A^c \cap B^c$.
+%     \item Suppose $x \in (A \cup B)^c$, then $x \notin A \cup B$ so $x \notin A
+%       \land x \notin B$, implying that $x \in A^c \land x \in B^c$, which is
+%       equivalent to $x \in A^c \cap B^c$.
 
-      Suppose $x \in A^c \cap B^c$, then $x \in A^c \land x \in B^c$ so $x
-      \notin A \land x \notin B$, implying that $x \notin A \cup B$, which is
-      equivalent to $x \in (A \cup B)^c$. \qedhere
-  \end{enumerate}
-\end{proof}
+%       Suppose $x \in A^c \cap B^c$, then $x \in A^c \land x \in B^c$ so $x
+%       \notin A \land x \notin B$, implying that $x \notin A \cup B$, which is
+%       equivalent to $x \in (A \cup B)^c$. \qedhere
+%   \end{enumerate}
+% \end{proof}
 
-% section single_sets (end)
+% % section single_sets (end)
 
-\section{Families of Sets}
-\label{sec:families_of_sets}
+% \section{Families of Sets}
+% \label{sec:families_of_sets}
 
-We will, in the upcoming notes, be dealing with families of sets. A family of
-sets is a set of sets.
+% We will, in the upcoming notes, be dealing with families of sets. A family of
+% sets is a set of sets.
 
-\begin{example}
-  \label{exm:family_of_sets}
+% \begin{example}
+%   \label{exm:family_of_sets}
 
-  Let $A_n = \left\{n, n + 1, n + 2, \ldots\right\}$, where $n \in \N$. The
-  result is a nest chain of sets $A_1 \supseteq A_2 \supseteq A_3 \supseteq
-  \ldots$, where each successive set is a subset of the previous set. The set
-  $\{ A_n \}$ is a family of sets.
-\end{example}
+%   Let $A_n = \left\{n, n + 1, n + 2, \ldots\right\}$, where $n \in \N$. The
+%   result is a nest chain of sets $A_1 \supseteq A_2 \supseteq A_3 \supseteq
+%   \ldots$, where each successive set is a subset of the previous set. The set
+%   $\{ A_n \}$ is a family of sets.
+% \end{example}
 
-Notationally, we denote the union of a family of sets as
-\[%
-  \bigcup_{n=1}^{\infty} A_n, \quad \bigcup_{n \in \N} A_n, \oor A_1 \cup A_2 \cup A_3 \cup \ldots
-.\]%
-Similarly, we denote the intersection of a family of sets as
-\[%
-  \bigcap_{n=1}^{\infty} A_n, \quad \bigcap_{n \in \N} A_n, \oor A_1 \cap A_2 \cap A_3 \cap \ldots
-.\]%
+% Notationally, we denote the union of a family of sets as
+% \[%
+%   \bigcup_{n=1}^{\infty} A_n, \quad \bigcup_{n \in \N} A_n, \oor A_1 \cup A_2 \cup A_3 \cup \ldots
+% .\]%
+% Similarly, we denote the intersection of a family of sets as
+% \[%
+%   \bigcap_{n=1}^{\infty} A_n, \quad \bigcap_{n \in \N} A_n, \oor A_1 \cap A_2 \cap A_3 \cap \ldots
+% .\]%
 
-What exactly does this mean? Let's re-write the unions and intersections using
-quantifiers
-\begin{align}
-  \begin{aligned}\label{eq:union_intersection_quantifiers}
-    \empheq{
-      x \in \bigcup_{n=1}^{\infty} A_n &\iff \exists n \in \N~\st~x \in A_n \\
-      x \in \bigcap_{n=1}^{\infty} A_n &\iff \forall n \in \N~\st~x \in A_n
-    }
-  \end{aligned}
-\end{align}
+% What exactly does this mean? Let's re-write the unions and intersections using
+% quantifiers
+% \begin{align}
+%   \begin{aligned}\label{eq:union_intersection_quantifiers}
+%     \empheq{
+%       x \in \bigcup_{n=1}^{\infty} A_n &\iff \exists n \in \N~\st~x \in A_n \\
+%       x \in \bigcap_{n=1}^{\infty} A_n &\iff \forall n \in \N~\st~x \in A_n
+%     }
+%   \end{aligned}
+% \end{align}
 
-\Cref{eq:union_intersection_quantifiers} will be very useful to prove statements
-regarding unions and intersections.
+% \Cref{eq:union_intersection_quantifiers} will be very useful to prove statements
+% regarding unions and intersections.
 
-% section families_of_sets (end)
+% % section families_of_sets (end)
 
 \newpage
