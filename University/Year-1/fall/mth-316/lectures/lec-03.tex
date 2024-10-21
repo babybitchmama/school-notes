@@ -7,14 +7,10 @@ The easiest proof to see as a beginner is the proof that $\sqrt{2}$ is
 irrational.
 
 \begin{theorem}
-  \label{thm:sqrt2_is_irrational}
-
   There is no rational number whose square is $2$.
 \end{theorem}
 
 \begin{proof}
-  \label{prf:sqrt2_is_irrational}
-
   Assume that $\sqrt{2}$ is rational, meaning that $\exists p, q \in \Z$. Assume
   that $\sfrac{p}{q}$ is in simpliest form, meaning $p$ and $q$ have no common
   factor. Then $\sqrt{2} = \sfrac{p}{q} \iff 2 = \sfrac{p^2}{q^2} \implies 2q^2
@@ -25,18 +21,12 @@ irrational.
 \end{proof}
 
 \begin{theorem}
-  \label{thm:a_eq_b_iff_a_minus_b_lt_epsilon}
-
   Let $a, b \in \R$. Then $a = b$ if and only if $\forall \epsilon > 0$, $\lvert
   a - b \rvert < \epsilon$.
 \end{theorem}
 
-\begin{proof}
-  \label{prf:a_eq_b_iff_a_minus_b_lt_epsilon} $ $
-
+\begin{proof} $ $
   \begin{enumerate}
-    \label{enum:a_eq_b_iff_a_minus_b_lt_epsilon_prf}
-
     \item[$\implies$:] Assume that $a = b$. Then $\forall \epsilon > 0$, $\lvert
       a - b \rvert = 0 < \epsilon$.
 
@@ -53,15 +43,11 @@ Let $S(n)$ be a statement. If $S(1)$ is true and $S(n) \implies S(n + 1)$ is
 true, then $S(n)$ is true, $\forall n \in \N$.
 
 \begin{question}
-  \label{qst:induction_1}
-
   Let $x_1 = 1$ and $x_{n+1} = \frac{1}{2} x_n + 1$. Show that $x_n$ is
   increasing ($x_n \le x_{n+1}$, $\forall n \in \N$).
 \end{question}
 
-\begin{solproof}
-  \label{solprf:induction_1}
-
+\begin{proof}
   Base case: $x_1 = 1$ and $x_2 = \sfrac{3}{2} > x_1$.
 
   Induction step: Let $n$ be an arbitrary natural number and suppose that
@@ -70,17 +56,13 @@ true, then $S(n)$ is true, $\forall n \in \N$.
     x_{n+2} - x_{n+1} &= \frac{1}{2}(x_{n+1} + 1) - \frac{1}{2}(x_n + 1) \\
                       &= \frac{1}{2}(x_{n+1} - x_n) > 0
   .\end{align*}
-\end{solproof}
+\end{proof}
 
 \begin{question}
-  \label{qst:induction_2}
-
   Show that $n^3 + 2n$ is divisible by $3$, $\forall n \in \N$.
 \end{question}
 
-\begin{solproof}
-  \label{solprf:induction_2}
-
+\begin{proof}
   Base case: $1^3 + 2 \cdot 1 = 3$ is divisible by $3$.
 
   Induction step: Let $n$ be an arbitrary natural number and suppose that $n^3 +
@@ -91,7 +73,7 @@ true, then $S(n)$ is true, $\forall n \in \N$.
   ,\end{align*}
   which is divisible by $3$, since both $n^3 + 2n$ and $3(n^2 + n + 1)$ are
   divisible by $3$.
-\end{solproof}
+\end{proof}
 
 % subsection induction (end)
 
@@ -102,18 +84,14 @@ true, then $S(n)$ is true, $\forall n \in \N$.
 
 The defining difference between $\R$ and $\Q$ is that $\R$ does not contain the
 gaps that permeate $\Q$. We will be precise about how we phrase this assumption.
-This is referred to as the \textbf{Axiom of Completeness}.
+This is referred to as the \textit{Axiom of Completeness}.
 
-\begin{purpleframe}[Axiom of Completeness]
-  \label{prpl:axiom_of_completeness}
-
+\begin{frame}[Axiom of Completeness]
   Every nonempty set of real numbers that is bounded above has a least upper
   bound.
-\end{purpleframe}
+\end{frame}
 
 \begin{note}
-  \label{nte:proof_axiom_of_completeness}
-
   We will never be able to prove the Axiom of Completeness, as axioms are meant
   to be taken as true. However, this will be the only statement that we naively
   accept without any rigorous proof. Everything else will be proven from this
@@ -126,63 +104,48 @@ Now, let's break down the definition of the least upper bound.
 \label{sub_sec:least_upper_bound_and_greatest_lower_bound}
 
 \begin{definition}[Upper Bound]
-  \label{def:upper_bound}
-
   A set $A \subseteq \R$ is bounded above if $\exists b \in \R$ such that $a \le
-  b$, $\forall a \in A$. The number $b$ is called the \textbf{upper bound} for
+  b$, $\forall a \in A$. The number $b$ is called the \textit{upper bound} for
   $A$.
 \end{definition}
 
 \begin{definition}[Least Upper Bound]
-  \label{def:least_upper_bound}
-
-  A real number $s$ is the \textbf{least upper bound} for a set $A \subseteq \R$
+  A real number $s$ is the \textit{least upper bound} for a set $A \subseteq \R$
   if it meets the following two criteria
   \begin{enumerate}
-    \label{enum:least_upper_bound_def}
-
     \item $s$ is an upper bound for $A$.
 
     \item If $b$ is any upper bound for $A$, then $s \le b$.
   \end{enumerate}
 \end{definition}
 
-The least upper bound is also called the \textbf{supremum} of the set $A$. The
-\textbf{greatest lower bound}/\textbf{infimum} for $A$ is also defined similarly
-(see \cref{fig:supremum_infimum_graphically} for a graphical representation).
+The least upper bound is also called the \textit{supremum} of the set $A$. The
+\textit{greatest lower bound}/\textit{infimum} for $A$ is also defined similarly
+(see figure \ref{fig:supremum_infimum_graphically} for a graphical
+representation).
 
 \begin{notation}
-  \label{nta:least_upper_bound}
-
   The supremum is denoted as $s = \sup(A)$ and the infimum is denoted as $s =
   \inf(A)$.
 \end{notation}
 
 \begin{claim}
-  \label{clm:supremum_and_infimum_are_unique}
-
   A set that's bounded can only have one least upper bound.
 \end{claim}
 
 \begin{proof}
-  \label{prf:supremum_and_infimum_are_unique}
-
-  By property $\circled{2}$ from \cref{def:least_upper_bound}, if $s$ and $t$
-  are both least upper bounds for $A$, then $s \le t$ and $t \le s$, implying
-  that $s = t$.
+  By property $\circled{2}$ of the definition of the least upper bound, if $s$
+  and $t$ are both least upper bounds for $A$, then $s \le t$ and $t \le s$,
+  implying that $s = t$.
 \end{proof}
 
 \begin{example}
-  \label{exm:supremum_and_infimum_1}
-
   The closed interval $[a, b]$ has a supremum of $b$ and an infimum of $a$. So
   does the open interval $(a, b)$. But what's the difference between the two?
   We'll investigate that later on.
 \end{example}
 
 \begin{example}
-  \label{exm:supremum_and_infimum_2}
-
   Let $\displaystyle A = \left\{\frac{1}{n} \mid n \in \N\right\} = \left\{1,
   \frac{1}{2}, \frac{1}{3}, \dots\right\}$. It's clear that $\sup(A) = 1$ and
   $\inf(A) = 0$.
@@ -194,38 +157,29 @@ The least upper bound is also called the \textbf{supremum} of the set $A$. The
 \label{sub_sec:maximum_and_minimum}
 
 \begin{definition}[Maximum and Minimum]
-  \label{def:maximum_and_minimum}
-
-  A real number $a_0$ is a \textbf{maximum} of the set $A$ if $a_0$ is an
+  A real number $a_0$ is a \textit{maximum} of the set $A$ if $a_0$ is an
   element of $A$ and $a_0 \ge a$, $\forall a \in A$. Similarly, $a_0$ is a
-  \textbf{minimum} of the set $A$ if $a_0$ is an element of $A$ and $a_0 \le a$,
+  \textit{minimum} of the set $A$ if $a_0$ is an element of $A$ and $a_0 \le a$,
   $\forall a \in A$.
 \end{definition}
 
-Take \cref{exm:supremum_and_infimum_1}. The closed interval $[a, b]$ has a
-maximum of $b$ and a minimum of $a$, since they're both elements of the set.
-However, the open interval $(a, b)$ has neither a maximum nor a minimum, since
-$a$ and $b$ aren't in the set.
+The closed interval $[a, b]$ has a maximum of $b$ and a minimum of $a$, since
+they're both elements of the set. However, the open interval $(a, b)$ has
+neither a maximum nor a minimum, since $a$ and $b$ aren't in the set.
 
 \begin{example}
-  \label{exm:maximum_and_minimum}
-
   Let $\displaystyle A = \left\{1 + \frac{1}{n} \mid n \in \N\right\}$, giving
   us $\sup(A) = \max(A) = 2$, but $\inf(A) = 1 \ne \min(A)$, as it does not
   exist.
 \end{example}
 
 \begin{question}
-  \label{qst:sup_c_plus_a_equals_c_plus_sup_a}
-
   Let $A \subseteq \R$ be nonempty and bounded above, let $c \in \R$. Define the
   set $\displaystyle c + A = \left\{c + a \mid a \in A\right\}$. Then, $\sup(c +
   A) = c + \sup(A)$.
 \end{question}
 
-\begin{solproof}
-  \label{solprf:sup_c_plus_a_equals_c_plus_sup_a}
-
+\begin{proof}
   Let $s = \sup(A)$. Since $s$ is an upper bound of $A$,
   \begin{align*}
     \forall a \in A, \quad a \le s &\implies a + c \le s + c \\
@@ -243,8 +197,8 @@ $a$ and $b$ aren't in the set.
     \phantom{\implies}&s = \sup(A) \le d - c \\
     \implies&s + c \le d \\
     \implies&s + c = \sup(c + A)
-  .\end{align*}
-\end{solproof}
+  .\qedhere\end{align*}
+\end{proof}
 
 % subsection maximum_and_minimum (end)
 
@@ -252,21 +206,17 @@ $a$ and $b$ aren't in the set.
 \label{sub_sec:proving_the_upper_bound}
 
 How do we actually show that $a$ is an upper bound for a set $A \subseteq \R$?
-We use the folloing
-\begin{lemma}
-  \label{lma:proving_upper_bound}
+We use the following
+\begin{nlemma}
+  \label{lem:proving_upper_bound}
 
   Assume $s \in \R$ is an upper bound for a set $A \subseteq \R$. Then, $s =
   \sup(A)$ if and only if, $\forall \epsilon > 0$, $\exists a \in A$ satisfying
   $s - \epsilon < a$.
-\end{lemma}
+\end{nlemma}
 
-\begin{proof}
-  \label{prf:proving_upper_bound}
-
+\begin{proof} $ $
   \begin{enumerate}
-    \label{enum:proving_upper_bound_prf} $ $
-
     \item[$\implies$:] Assume $s = \sup(A)$. Let $\epsilon > 0$. Then $s -
       \epsilon < s$, implying that $s - \epsilon$ is not an upper bound for $A$.
       Then, there must exist some $a \in A$ such that $s - \epsilon < a$,
@@ -280,23 +230,19 @@ We use the folloing
 \end{proof}
 
 \begin{question}
-  \label{qst:proving_upper_bound}
-
-  Define $A = \left\{1 - \frac{1}{n} \mid n \in \N\right\}$. Using
-  \cref{lma:proving_upper_bound}, show that $\sup(A) = 1$.
+  Define $A = \left\{1 - \frac{1}{n} \mid n \in \N\right\}$. Using lemma
+  \ref{lem:proving_upper_bound}, show that $\sup(A) = 1$.
 \end{question}
 
-\begin{solproof}
-  \label{solprf:proving_upper_bound}
-
+\begin{proof}
   Assume $s = \sup(A) = 1$. Then $\forall \epsilon > 0$, $\exists a = 1 -
   \sfrac{1}{n} \in A$ such that $s - \epsilon < a \iff 1 - \epsilon < 1 -
   \sfrac{1}{n} \iff 1 - (1 - \sfrac{1}{n}) < \epsilon \iff \sfrac{1}{n} <
   \epsilon$.
-\end{solproof}
+\end{proof}
 
-% subsection proving_the_upper_bound (end)
+% % subsection proving_the_upper_bound (end)
 
-% section axiom_of_completeness (end)
+% % section axiom_of_completeness (end)
 
 \newpage

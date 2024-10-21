@@ -1,0 +1,109 @@
+\nte{Oct 09 2024 Wed (13:02:05)}{Cardinality}
+
+\section{Types of Functions}
+\label{sec:types_of_functions}
+
+\begin{definition}[Cardinality]
+  The \textit{cardinality} of a set $A$ is the number of elements in $A$. If $A$
+  is finite, then the cardinality of $A$ is a natural number. If $A$ is
+  infinite, then the cardinality of $A$ is $\aleph_0$.
+\end{definition}
+
+\begin{notation}
+  If $A$ and $B$ have the same cardinality, we write $A \sim B$.
+\end{notation}
+
+\begin{definition}
+  Let $f$ be a function $f : A \to B$. We say $f$ is \textit{onto} if $\forall y
+  \in B$, $\exists x \in A$, $f(x) = y$. We say $f$ is \textit{one-to-one} if
+  $\forall x_1, x_2 \in A$, $f(x_1) = f(x_2) \implies x_1 = x_2$.
+\end{definition}
+
+\begin{example}
+  Let $A$ be the set of all the students in a room and $B$ be the set of all the
+  chairs in the room. Then, $f$ is onto if every chair has a student, and $f$ is
+  one-to-one if no two students are sitting in the same chair.
+\end{example}
+
+\begin{example}
+  The function $f : \N \to \{-1, 1\}$ defined by $f(n) = (-1)^n$ is onto, as all
+  natural numbers are being mapped to either $-1$ or $1$. However, $f$ is not
+  one-to-one, as $f(2) = f(4) = 1$.
+\end{example}
+
+\begin{definition}
+  Let $f$ be a function $f : A \to B$. If $f$ is both onto and one-to-one, then
+  we call $f$ a \textit{one-to-one correspondence} of $A$ and $B$.
+\end{definition}
+
+\begin{note}
+  Sometimes, onto is referred to as \textit{surjective}, and one-to-one is
+  referred to as \textit{injective}, and a one-to-one correspondence is referred
+  to as a \textit{bijection}.
+\end{note}
+
+\begin{claim}
+  If $f$ is a one-to-one correspondence of $A$ and $B$, then $A \sim B$.
+\end{claim}
+
+% section types_of_functions (end)
+
+\section{Countable Sets}
+\label{sec:countable_sets}
+
+\begin{definition}
+  A set $A$ is \textit{countable} if $A \sim \N$. An infinite set that is not
+  countable is called \textit{uncountable}.
+\end{definition}
+
+\begin{question}
+  Show that $\N \sim E$, where $E$ is the set of all even natural numbers. Also,
+  show that $\N \sim \Z$.
+\end{question}
+
+\begin{proof}
+  Let $f : \N \to E$ be defined by $f(n) = 2n$.
+  \[%
+    \begin{matrix}
+      \N: & 1 & 2 & 3 & 4 & \cdots & n & \cdots \\
+          & \updownarrow & \updownarrow & \updownarrow & \updownarrow & \cdots & \updownarrow & \\
+      E: & 2 & 4 & 6 & 8 & \cdots & 2n & \cdots \\
+    \end{matrix}
+  \]%
+
+  Let $f : \N \to \Z$ be defined by
+  \[%
+    f(n) = \begin{cases}
+      \frac{n - 1}{2} & \text{if $n$ is even} \\
+      -\frac{n}{2} & \text{if $n$ is odd}
+    \end{cases}
+  .\]%
+  Again, you can see that $f$ is a one-to-one correspondence.
+  \[%
+    \begin{matrix}
+      \N: & 1 & 2 & 3 & 4 & 5 & 6 & 7 & \cdots \\
+          & \updownarrow & \updownarrow & \updownarrow & \updownarrow & \updownarrow & \updownarrow & \updownarrow & \\
+      \Z: & 0 & 1 & -1 & 2 & -2 & 3 & -3 & \cdots \\
+    \end{matrix}
+  \qedhere\]%
+\end{proof}
+
+Since $E \subset \N$, it makes perfect sense that $\Card(E) < \Card(\N)$.
+However, we have shown that $E \sim \N$, and therefore, $E$ is just as large as
+$\N$. We've even shown that $\Z \sim \N$, even though $\N \subset \Z$. As the
+cardinality of the sets reach infinity, all common sense goes out the window,
+due to our overexposure to finite sets.
+
+\begin{example}
+  The interval $(-1, 1)$ and $\R$ have the same cardinality. Let $f : (-1, 1)
+  \to \R$ be defined by $f(x) = \tan\left(\frac{\pi}{2}x\right)$. This function
+  is a one-to-one correspondence between $(-1, 1)$.
+\end{example}
+
+% section countable_sets (end)
+
+\begin{note}
+  There will be no notes for the next lecture, as it's quiz day.
+\end{note}
+
+\newpage

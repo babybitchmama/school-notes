@@ -124,9 +124,9 @@
 \let\svsum\sum\def\sum{\svsum\limits}
 
 % Lists
-\setlist[itemize,1]{label=--}
-\setlist[itemize,2]{label=\textbullet}
-\setlist[enumerate,1]{label=\protect\circled{\arabic*}}
+\renewcommand{\labelitemi}{--}
+\renewcommand{\labelitemii}{$\circ$}
+\renewcommand{\labelenumi}{(\roman{*})}
 
 % Center Title Page
 \renewcommand\maketitlehooka{\null\mbox{}\vfill}
@@ -553,5 +553,41 @@
 \newtheorem*{remark}{Remark}
 \newtheorem*{note}{Note}
 \newtheorem*{warning}{Warning}
+
+\newtheorem{ntheorem}{Theorem}[chapter]
+\newtheorem{nlemma}{Lemma}[chapter]
+\newtheorem{nproposition}{Proposition}[chapter]
+\newtheorem{ncorollary}{Corollary}[chapter]
+
+\newcommand\frmebox[1][]{%
+  \begin{tcolorbox}[%
+    title={\sffamily\color{black}#1},
+    colback=white,
+    enhanced,
+    attach boxed title to top center={
+      yshift=-3mm,
+      yshifttext=-1mm,
+    },
+    boxed title style={
+      size=small,
+      colback=white,
+      frame code={},
+    },
+    coltext=black,
+    frame hidden,
+    borderline east={0.5pt}{0pt}{black},
+    borderline west={0.5pt}{0pt}{black},
+    borderline north={0.5pt}{0pt}{black},
+    borderline south={0.5pt}{0pt}{black},
+    breakable,
+    parskip=0pt,
+  ]
+}
+
+\renewenvironment{frame}[1][]{%
+  \frmebox[#1]%
+}{%
+  \end{tcolorbox}%
+}
 
 \makeatother
