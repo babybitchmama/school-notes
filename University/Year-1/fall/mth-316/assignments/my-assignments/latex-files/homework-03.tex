@@ -1,0 +1,105 @@
+\renewcommand\type{exercise}
+\setcounter{chapter}{2}
+\setcounter{section}{2}
+
+\begin{exercise}[1]
+\end{exercise}
+
+\begin{exersolution}[1]
+\end{exersolution}
+
+\newpage
+
+\begin{exercise}[2]
+  Verify, using the definition of convergence of a sequence, that the following
+  sequences converge to the proposed limit.
+  \begin{enumerate}
+    \item $\lim_{n \to \infty} \frac{2n + 1}{5n + 4} = \frac{2}{5}$.
+    \item $\lim_{n \to \infty} \frac{2n^2}{n^3 + 3} = 0$.
+    \item $\lim_{n \to \infty} \frac{\sin(n^2)}{\sqrt[3]{n}} = 0$.
+  \end{enumerate}
+\end{exercise}
+
+\begin{exersolution}[2]
+  The definition of convergence of a sequence is as follows
+  \[%
+    \empheq{\lim_{n \to \infty} a_n = a \iff \forall \epsilon > 0, \exists N~\st~\forall n > N \implies \lvert a_n - a \rvert < \epsilon}
+  \]%
+
+  \begin{enumerate}
+    \item \begin{proof}
+        Given $\epsilon > 0$, choose
+        \[%
+          N = \frac{3}{25\epsilon} - \frac{4}{5}
+        .\]%
+        Suppose $n > N > 0$. Then,
+        \[%
+          \lvert a_n - a \rvert = \left\lvert \frac{2n + 1}{5n + 4} - \frac{2}{5} \right\rvert = \frac{3}{5(5n + 4)} < \frac{3}{5(5N + 4)} < \frac{3}{5\left(5\left(\frac{3}{25\epsilon} - \frac{4}{5}\right) + 4\right)} = \frac{3}{5\left(\frac{3}{5\epsilon}\right)} = \epsilon
+        .\qedhere\]%
+      \end{proof}
+
+    \item \begin{proof}
+        Given $\epsilon > 0$, choose
+        \[%
+          N = \frac{1}{\epsilon}
+        .\]%
+        Suppose $n > N > 0$. Then,
+        \[%
+          \lvert a_n - a \rvert = \left\lvert \frac{2n^2}{n^3 + 3} - 0 \right\rvert = \frac{2n^2}{n^3 + 3} < \frac{2n^2}{n^3} = \frac{1}{n} < \frac{1}{N} < \epsilon
+        .\qedhere\]%
+      \end{proof}
+
+    \item \begin{proof}
+        Given $\epsilon > 0$, choose
+        \[%
+          N = \frac{1}{\epsilon^3}
+        .\]%
+        Suppose $n > N > 0$. Then,
+        \[%
+          \lvert a_n - a \rvert = \left\lvert \frac{\sin(n^2)}{\sqrt[3]{n}} \right\rvert \le \frac{1}{\sqrt[3]{n}} < \frac{1}{\sqrt[3]{N}} < \epsilon
+        .\qedhere\]%
+      \end{proof}
+  \end{enumerate}
+\end{exersolution}
+
+\newpage
+
+\begin{exercise}[3]
+\end{exercise}
+
+\begin{exersolution}[3]
+\end{exersolution}
+
+\newpage
+
+\begin{exercise}[4]
+\end{exercise}
+
+\begin{exersolution}[4]
+\end{exersolution}
+
+\newpage
+
+\begin{exercise}[6]
+\end{exercise}
+
+\begin{exersolution}[6]
+\end{exersolution}
+
+\newpage
+
+\setcounter{section}{3}
+
+\begin{exercise}[1]
+\end{exercise}
+
+\begin{exersolution}[1]
+\end{exersolution}
+
+\newpage
+
+\begin{exercise}[3]
+\end{exercise}
+
+\begin{exersolution}[3]
+\end{exersolution}

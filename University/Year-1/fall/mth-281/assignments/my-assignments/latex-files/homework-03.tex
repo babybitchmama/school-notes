@@ -1,0 +1,155 @@
+\begin{problem}
+  Use traces to identify the surfaces. Sketch the region bounded by the surfaces
+  and determine the curve of intersection. Find a vector function that
+  parametrizes the curves of intersection.
+  \begin{enumerate}
+    \item $z = \sqrt{x^2 + y^2}$ and $x^2 + y^2 + z^2 = 6$ for $z \ge 0$.
+
+    \item $z = x^2 + 3y^2$ and $z = 12 - 3x^2 - y^2$.
+  \end{enumerate}
+\end{problem}
+
+\begin{probsolution}
+  \begin{enumerate}
+    \item The first equation is the equation of a cone and the second equation
+      is the equation of a sphere.
+
+      To find the curve where the cone and the sphere intersect, substitute $z =
+      \sqrt{x^2 + y^2}$ into the equation of the sphere to get
+      \[%
+        x^2 + y^2 + x^2 + y^2 = 6 \implies 2x^2 + 2y^2 = 6 \implies x^2 + y^2 = 3
+      .\]%
+      So, their intersection creates a circle in the $xy$-plane with a radius of
+      $\sqrt{3}$. Therefore, the curve of intersection is parametrized by the
+      vector function
+      \[%
+        \r(t) = \langle \sqrt{3} \cos(t), \sqrt{3} \sin(t), \sqrt{3} \rangle, \quad 0 \le t \le 2\pi
+      .\]%
+
+    \item The first equation is the equation of an elliptic paraboloid and the
+      second equation is the equation of an elliptic paraboloid.
+
+      To find the curve where the two paraboloids intersect, set the two
+      equations equal to each other
+      \[%
+        x^2 + 3y^2 = 12 - 3x^2 - y^2 \implies x^2 + y^2 = 3
+      .\]%
+      So, their intersection creates a circle in the $xy$-plane with a radius of
+      $\sqrt{3}$. The circle of radius $\sqrt{3}$ in the $xy$-plane can be
+      parameterized as
+      \[%
+        x = \sqrt{3}\cos(t) \aand y = \sqrt{3}\sin(t)
+      .\]%
+      Substitute these into either equation to find $z$
+      \[%
+        z = 3\cos^2(t) + 9\sin^2(t)
+      .\]%
+      Therefore, the curve of intersection is parametrized by the vector function
+      \[%
+        \r(t) = \langle \sqrt{3}\cos(t), \sqrt{3}\sin(t), 3\cos^2(t) + 9\sin^2(t) \rangle, \quad 0 \le t \le 2\pi
+      .\]%
+  \end{enumerate}
+\end{probsolution}
+
+\newpage
+
+\begin{problem}
+  Consider the vector function $\displaystyle\r(t) = \left\langle \sqrt{16 - t^2}, t^2 - 2t + 1, \frac{t + 3}{t^2 - 2t - 3} \right\rangle$.
+  \begin{enumerate}
+    \item Find the domain of $\r(t)$.
+
+    \item Find $\r'(t)$.
+
+    \item Find the vector equation for the tangent line to the curve at the
+      point $(4, 1, -1)$.
+  \end{enumerate}
+\end{problem}
+
+\begin{probsolution}
+  \begin{enumerate}
+    \item The domain of $\r(t)$ is the intersection of the domain of all the
+      function components of $\r(t)$.
+
+      The domain of $f(t)\ui$ is $t \ge 4$, or $[-4, 4]$.
+
+      The domain of $g(t)\uj$ is $t \in \mathbb{R}$, or $(-\infty, \infty)$.
+
+      The domain of $h(t)\uk$ is $t \neq -1, 3$, or $(-\infty, -1) \cup (-1,
+      3) \cup (3, \infty)$.
+
+      Therefore, the domain of $\r(t)$ is [\textbf{NOTE:} I left out the
+      $(-\infty, \infty)$ interval, as it doesn't change anything]
+      \begin{align*}
+        [-4, 4] \cap [(-\infty, -1) \cup (-1, 3) \cup (3, \infty)] &= [4, \infty) \cap [(-\infty, -1) \cup (-1, 3) \cup (3, \infty)] \\
+                                                                   &= [-4, -1) \cap (-1, 3) \cap (3, 4] \\
+      .\end{align*}
+      Therefore, the domain of $\r(t)$ is $[-4, 4]~\backslash~\{-1, 3\}$.
+
+    \item The derivative of $\r(t)$ is just the derivatives of the components,
+      giving us
+      \begin{alignat*}{3}
+        f'(t) \ui &= \odv{}{t} \left[\sqrt{16 - t^2}\right] &&= \frac{-t}{\sqrt{16 - t^2}} \\
+        g'(t) \uj &= \odv{}{t} \left[t^2 - 2t + 1\right] &&= 2t - 2 \\
+        h'(t) \uk &= \odv{}{t} \left[\frac{t + 3}{t^2 - 2t - 3}\right] &&= \frac{(t^2 - 2t - 3) - (t + 3)(2t - 2)}{(t^2 - 2t - 3)^2} \\
+                    & &&= -\frac{t^2 + 6t - 3}{(t^2 - 2t - 3)^2}
+      .\end{alignat*}
+      Therefore, we get
+      \[%
+        \r'(t) = \left\langle -\frac{t}{\sqrt{16 - t^2}}, 2t - 2, -\frac{t^2 + 6t - 3}{(t^2 - 2t - 3)^2} \right\rangle
+      .\]%
+
+    \item Since $\r(0) = \langle 4, 1, -1 \rangle$ and $\r'(0) = \langle 0, -2,
+      -\sfrac{1}{2} \rangle$, the unit tangent vector at the point $(4, 1, -1)$
+      is
+      \[%
+        \Ta(0) = \frac{\r'(0)}{\lvert \r'(0) \rvert} = \frac{\langle 0, -2, -\sfrac{1}{2} \rangle}{\sqrt{0^2 + (-2)^2 + \left(-\frac{1}{2}\right)^2}} = \left\langle 0, -2 \cdot \frac{2}{\sqrt{17}}, -\frac{1}{2} \cdot \frac{2}{\sqrt{17}} \right\rangle = \left\langle 0, -\frac{4}{\sqrt{17}}, -\frac{1}{\sqrt{17}} \right\rangle
+      .\]%
+  \end{enumerate}
+\end{probsolution}
+
+\newpage
+
+\begin{problem}
+  In general, the magnitude of a vector function is a scalar function. We may
+  want to know the rate at which the magnitude of the position vector, $\r(t)$
+  changes along the space curve defined by the function. Suppose $\r(t) \ne 0$
+  is a differentiable vector function. Show that
+  \[%
+    \odv{}{t} [\r(t)] = \frac{1}{\lvert \r(t) \rvert} \r(t) \cdot \r'(t)
+  .\]%
+  Hint: rewrite $\lvert \r(t) \rvert^2$ using the dot product and differentiate
+  the result.
+\end{problem}
+
+\begin{probsolution}
+  \begin{proof}
+    The magnitude of a vector $\r(t)$ is given by $\lvert \r(t) \rvert$. The
+    square of this magnitude can be written using the dot product
+    \[%
+      \lvert \r(t) \rvert^2 = \r(t) \cdot \r(t)
+    .\]%
+    Now, differentiate both sides of the equation $\lvert \r(t) \rvert^2 = \r(t)
+    \cdot \r(t)$ with respect to $t$
+    \[%
+      \odv{}{t} \left[\r(t) \cdot \r(t)\right] = \r'(t) \cdot \r(t) + \r(t) \cdot \r'(t) = 2 \r(t) \cdot \r'(t)
+    .\]%
+    Now, observe that
+    \[%
+      \odv{}{t} \left[\lvert \r(t) \rvert^2 \right] = 2 \lvert \r(t) \rvert \odv{}{t} \left[\lvert \r(t) \rvert\right]
+    .\]%
+    Equating this with the result from Step 2 gives
+    \[%
+      2 \lvert \r(t) \rvert \odv{}{t} \left[\lvert \r(t) \rvert\right] = 2 \r(t) \cdot \r'(t)
+    .\]%
+    Finally, divide both sides by $2 \lvert \r(t) \rvert$ (assuming $\r(t) \neq
+    0$) to isolate $\odv{}{t} \lvert \r(t) \rvert$
+    \[%
+      \odv{}{t} \left[\lvert \r(t) \rvert\right] = \frac{\r(t) \cdot \r'(t)}{\lvert \r(t) \rvert}
+    .\]%
+
+    Thus, we have shown that
+    \[%
+      \odv{}{t} [\lvert \r(t) \rvert] = \frac{1}{\lvert \r(t) \rvert} \r(t) \cdot \r'(t)
+    .\qedhere\]%
+  \end{proof}
+\end{probsolution}
