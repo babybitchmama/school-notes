@@ -1,28 +1,70 @@
 \begin{problem}
-  Show that  $[U \land P] \implies [Q \land R]$, $P\iff [S \lor T]$, $R \land T$
-  $\vdash$ $U \implies Q$.
+  Show that  $[U \land P] \implies [Q \land R]$, $P \iff [S \lor T]$, $R \land
+  T$ $\vdash$ $U \implies Q$.
 \end{problem}
 
 \begin{probsolution}
+  \begin{tabular}{lll}
+      & Statement & Explanation \\
+    1. & $[U \land P] \implies [Q \land R]$ & Hypothesis \\
+    2. & $P \iff [S \lor T]$ & Hypothesis \\
+    3. & $R \land T$ & Hypothesis \\
+    4. & $R$ & LCS, for 3 \\
+    5. & $T$ & RCS, for 3 \\
+    6. & $P$ & MPB, for 5, for 2 \\
+    7. & Assume $U$ & Dischargeable Hypothesis \\
+    8. & $U \land P$ & CI, for 6, for 7 \\
+    9. & $Q \land R$ & MP, for 8, for 1 \\
+    10. & $Q$ & LCS, for 9 \\
+    11. & $U \implies Q$ & DT, discharge for 7 [(7) -- (10) unusable] \\
+  \end{tabular}
 \end{probsolution}
 
 \newpage
 
 \begin{problem}
-  Show that $\not P \implies Q$, $P \implies \not Q$, $P\iff R \vdash \not Q
-  \iff R$.  (Hint: Recall that $X\iff Y$ is an abbreviation for something.)
+  Show that $\neg P \implies Q$, $P \implies \neg Q$, $P\iff R$ $\vdash$ $\neg Q
+  \iff R$. (Hint: Recall that $X\iff Y$ is an abbreviation for something.)
 \end{problem}
 
 \begin{probsolution}
+  \begin{tabular}{lll}
+      & Statement & Explanation \\
+    1. & $\neg P \implies Q$ & Hypothesis \\
+    2. & $P \implies \neg Q$ & Hypothesis \\
+    3. & $P \iff R$ & Hypothesis \\
+    4. & Assume $\neg Q$ & Dischargeable Hypothesis \\
+    5. & $P$ & MT, for 5, for 1 \\
+    6. & $R$ & MPB, for 5, for 3 \\
+    7. & $\neg Q \implies R$ & DT, discharge for 5 [(5) -- (7) unusable] \\
+    8. & Assume $R$ & Dischargeable Hypothesis \\
+    9. & $P$ & MP, for 9, for 3 \\
+    10. & $\neg Q$ & MT, for 10, for 2 \\
+    11. & $R \implies \neg Q$ & DT, discharge for 9 [(9) -- (11) unusable] \\
+    12. & $\neg Q \iff R$ & For 8, for 12 \\
+  \end{tabular}
 \end{probsolution}
 
 \newpage
 
 \begin{problem}
-  Show that $R \lor S$, $\not P$, $Q \lor \not R$, $P \iff Q$ $\vdash$ $S$.
+  Show that $R \lor S$, $\neg P$, $Q \lor \neg R$, $P \iff Q$ $\vdash$ $S$.
 \end{problem}
 
 \begin{probsolution}
+  \begin{tabular}{lll}
+      & Statement & Explanation \\
+    1. & $R \lor S$ & Hypothesis \\
+    2. & $\neg P$ & Hypothesis \\
+    3. & $Q \lor \neg R$ & Hypothesis \\
+    4. & $P \iff Q$ & Hypothesis \\
+    5. & $\neg Q$ & MTB, for 2, for 4 \\
+    6. & $\neg R$ & DI, for 5, for 3 \\
+    7. & Assume $\neg S$ & Dischargeable Hypothesis \\
+    8. & $R$ & DI, for 7, for 1 \\
+    9. & $\neg R \land R$ & CI, for 6, for 8 \\
+    10. & $S$ & II, for 7 [(7) -- (9) unusable] \\
+  \end{tabular}
 \end{probsolution}
 
 \newpage
@@ -36,15 +78,33 @@
   says that ``Every divisor of 24 is a divisor of 48''.  It is True.
   \begin{enumerate}
     \item $(\forall x)[(x \in \N \land x \mid 13) \implies x \in \{1,13\}]$.
+
     \item $(\exists a)[a \in \N \land (a > 51 \land a < 52)]$.
+
     \item $(\forall x)[(x \in \N \land x^2 = 2) \implies x = 5]$.
+
     \item $(\forall x)[x \in \N \implies (\exists y)[y \in \N \land y \mid x]]$.
+
     \item $(\forall n)[(n \in \N \land (4 \mid n \land 6 \mid n)) \implies 24
       \mid n]$.
   \end{enumerate}
 \end{problem}
 
 \begin{probsolution}
+  \begin{enumerate}
+    \item Every divisor of $13$ is either $13$ or $1$, meaning $13$ is prime,
+      which is true.
+
+    \item There exists a natural number between $51$ and $52$, which is false.
+
+    \item Every natural number whose square is $2$ is $5$, which is false.
+
+    \item For every natural number, there exists a natural number which divides
+      it, which is true.
+
+    \item For every natural number that's a divisor of both $4$ and $6$, it is
+      also a divisor of $24$, which is true.
+  \end{enumerate}
 \end{probsolution}
 
 \newpage
@@ -77,16 +137,44 @@
     \item Every nonzero element of $\Z_5$ has a multiplicative inverse.
 
     \item For all integers $x$, if $x$ is congruent to three mod eight then
-      there exists an integer $y$ such that $x\cdot y$ is congruent to one mod
+      there exists an integer $y$ such that $x \cdot y$ is congruent to one mod
       eight.
 
-    \item There exists an integer $p$ with the following properties: $p$ is even
-      and for every pair of integers $a$ and $b$, if $p$ divides $ab$ then it
-      must divide either $a$ or $b$.
+    \item There exists an integer $p$ with the following properties: $p$ is even and for every pair of integers $a$ and $b$, if $p$ divides $ab$ then it must divide either $a$ or $b$.
   \end{enumerate}
 \end{problem}
 
 \begin{probsolution}
+  \begin{enumerate}
+    \item $(\forall a)([a \in \Z \land a \equiv_2 0] \implies 5 \mid a)$.
+
+    \item $(\forall x)(x \in \Z \implies 5 < x)$.
+
+    \item $(\forall x)([x \in Z \land \sqrt{x} \in \Z] \implies \sqrt[3]{x} \in
+      \Z)$.
+
+    \item $(\forall x)([x \in \Z \land x \neq 0] \implies [6 \mid x \lor 7 \mid
+      x])$.
+
+    \item $(\exists x)(\forall y)([x \in \Z \land y \in \Z] \implies x > y)$.
+
+    \item $(\exists a)(\forall b)([a \in A \land b \in A] \implies a \mid b)$.
+
+    \item $(\forall a)(a \in A \implies [a \equiv_2 0 \lor 13 \mid a])$.
+
+    \item $(\exists x)(x \in \Z \implies (\forall y)[y \in \Z \land y \mid 240
+      \implies x \nmid y])$.
+
+    \item $(\forall x)(x \in \Z_5 \land x \neq 0 \implies (\exists
+      x^{-1})[x^{-1} \in \Z_5 \land xy = 1])$.
+
+    \item $(\forall x)([x \in \Z \land x \equiv_8 3] \implies (\exists y)[y \in
+      \Z \land xy \equiv_8 1])$.
+
+    \item $(\exists x)(x \in \Z \implies [(x \equiv_2 0 \land (\forall
+      a)(\forall b)([a \in \Z \land b \in \Z \land x \mid ab] \implies [x \mid a
+      \lor x \mid b]))])$.
+  \end{enumerate}
 \end{probsolution}
 
 \newpage
@@ -95,7 +183,7 @@
   In each part, identify the given set by listing all of its elements.  For
   example:
   \[%
-    \textrm{Given the set $\{x\in \Z \mid x \equiv_4 3 \land 5 \leq x \land x \leq 20\}$ you would answer $\{7, 11, 15, 19\}$, as these two sets are equal.}
+    \textrm{Given the set $\{x\in \Z \mid x \equiv_4 3 \land 5 \leq x \land x \leq 20\}$ you would answer $\{7, 11, 15, 19\}$, as these two sets are equal}
   .\]%
   \begin{enumerate}
     \item $\{x \in \Z_4 \mid (\exists y)[y \in \Z_4 \land y \neq 0 \land xy =
@@ -114,12 +202,28 @@
 
     \item $\{(a,b) \mid a \in \Z_2 \land b \in \Z_2 \land a + b = 1\}$.
 
-    \item $\{x \in  \mid x \equiv_5 1 \land x \leq 40\} \cap \{x \in \N \mid x
+    \item $\{x \in \N \mid x \equiv_5 1 \land x \leq 40\} \cap \{x \in \N \mid x
       \equiv_6 4\}$.
   \end{enumerate}
 \end{problem}
 
 \begin{probsolution}
+  \begin{enumerate}
+    \item $\{0, 2\}$.
+
+    \item $\{2, 9, 28\}$.
+
+    \item $\{2, 5, 8, 10, 13, 17, 18, 20\}$. If we're including $0 \in \N$, then
+      we get the set $\{0, 1, 2, 4, 5, 8, 9, 10, 13, 16, 17, 18, 20\}$.
+
+    \item $\{1, 2, 3, 4, 5, 6, 9, 10, 15\}$.
+
+    \item $\emptyset$.
+
+    \item $\{(0, 1), (1, 0)\}$.
+
+    \item $\{16\}$.
+  \end{enumerate}
 \end{probsolution}
 
 \newpage
@@ -127,7 +231,7 @@
 \begin{problem}
   In each part below, use mathematical notation to write the negation of the
   given statement in such a way that no quantifier is immediately preceded by a
-  negation sign, every universal quantifer is applied to a conditional, and
+  negation sign, every universal quantifier is applied to a conditional, and
   every existential quantifier is applied to a conjunction. In each part, decide
   which statement is true: the given statement or its negation.
   \begin{enumerate}
@@ -160,6 +264,40 @@
 \end{problem}
 
 \begin{probsolution}
+  \begin{enumerate}
+    \item $(\exists y)[y \in \Z \land y \leq 0]$. The negation is \textit{true}.
+
+    \item $(\exists x)[(x \in \Z \land 2 \mid x) \land 4 \nmid x ]$. The
+      negation is \textit{true}.
+
+    \item $(\exists x)[x \in \Z_6 \land (\forall y)[y \in \Z_6 \implies x +_6
+      \ne 0]]$. The negation is \textit{false}.
+
+    \item $(\forall x)[x \in \Z_6 \implies (\exists y)[y \in \Z_6 \land x +_6 y
+      \ne 0]]$. The negation is \textit{true}.
+
+    \item $(\exists x)[x \in \Z \land (\forall y)[y \in \Z \implies x \ne
+      y^2]]$. The negation is \textit{true}.
+
+    \item $(\forall a)[a \in \N \implies (\exists b)[(b \in \N \land a \ne b)
+      \land b \le a]]$. The negation is \textit{true}.
+
+    \item $(\forall m)(\forall n)[m \in \Z \land n \in \N \implies m \le n]$.
+      The negation is \textit{false}.
+
+    \item $(\exists m)(\exists n)[m \in \N \land n \in \N \land m \le n]$. The
+      negation is \textit{true}.
+
+    \item $(\forall m)[m \in \N \implies (\exists n)[n \in \N \land m \le n]]$.
+      The negation is \textit{true}.
+
+    \item $(\exists m)[m \in \N \land (\forall n)[n \in \N \implies m \le n]]$.
+      The negation is \textit{true}.
+
+    \item $(\exists a)(\exists b)[(a \in \R \land b \in \R \land a < b) \land
+      (\forall c)[c \in \R \implies [a \ge c \lor c \ge b]]]$. The negation is
+      \textit{false}.
+  \end{enumerate}
 \end{probsolution}
 
 \newpage
@@ -172,13 +310,13 @@
   Proof:
 
   \begin{tabular}{lll}
-    1. & Assume $a, b, k \in \Z$ and $k \geq 1$ and $a \mid b$.\\
-    2. & $\fbox{\parbox{0.5in}{\ \ \ \ \ \par \ \ }} (y \in \Z \land b = y\cdot a)$. \\
+    1. & Assume $a, b, k \in \Z$ and $k \geq 1$ and $a \mid b$. \\
+    2. & $\fbox{\parbox{0.5in}{\ \ \ \ \ \par \ \ }} (y \in \Z \land b = y \cdot a)$. \\
     3. & $b = y \cdot a$ for some \fbox{\parbox{0.5in}{\ \ \ \ \ \par \ \ }}. \\
     4. & $b^k = \ $\fbox{\parbox{0.5in}{\ \ \ \ \ \par \ \ }}. \\
     5. & $(\exists u)(u \in \Z \land \ $\fbox{\parbox{0.5in}{\ \ \ \ \ \par \ \ }}$)$. \\
     6. & $a^k \mid b^k$. \\
-    7. & \fbox{\parbox{0.5in}{\ \ \ \ \ \par \ \ }}  & DT, discharge For 1. \\
+    7. & \fbox{\parbox{0.5in}{\ \ \ \ \ \par \ \ }}  & DT, discharge for 1, [(1) -- (6) unusable]. \\
     8. & $(\forall a, b, k)([a, b, k\in \Z \land (k \geq 1 \land a \mid b)] \implies a^k \mid b^k)$. \\
   \end{tabular}
 
@@ -190,20 +328,44 @@
       them in column 2 of your proof (the same column with DT in it).
 
     \item The definition of $a \mid b$ used $k$ for the variable in the
-      existential statement.  In step 2, why did we change and use $y$ instead?
+      existential statement. In step 2, why did we change and use $y$ instead?
 
     \item In step 5 we introduced the variable $u$ in the existential statement.
-      Could we have used $k$ here instead?  What about $y$?
+      Could we have used $k$ here instead? What about $y$?
   \end{enumerate}
 \end{problem}
 
 \begin{probsolution}
+  Proof:
+
+  \begin{tabular}{lll}
+    1. & Assume $a, b, k \in \Z$ and $k \geq 1$ and $a \mid b$. & Dischargeable Hypothesis \\
+    2. & $(\exists y)(y \in \Z \land b = y \cdot a)$. & IE \\
+    3. & $b = y \cdot a$ for some $y \in \Z$. & EI \\
+    4. & $b^k = (y \cdot a)^k$. \\
+    5. & $(\exists u)(u \in \Z \land b^k = u \cdot a^k)$. & IE \\
+    6. & $a^k \mid b^k$. \\
+    7. & $(a, b, k \in \Z \land k \ge 1 \land a \mid b) \implies a^k \mid b^k$  & DT, discharge for 1, [(1) -- (6) unusable]. \\
+    8. & $(\forall a, b, k)([a, b, k\in \Z \land (k \geq 1 \land a \mid b)] \implies a^k \mid b^k)$. & IU \\
+  \end{tabular}
+
+  \vspace{0.1in}
+
+  \begin{enumerate}
+    \item They are lines number 2, 3, 5, and 7.
+
+    \item We changed to $y$ because we needed to use $a$ in the existential
+      statement.
+
+    \item No, we could not have used $k$ or $y$ in step 5. We needed a new
+      variable to represent the integer that divides $b^k$.
+  \end{enumerate}
 \end{probsolution}
 
 \newpage
 
 \begin{problem}
-  Fill in the blanks in the outline below to prove that $(\forall a, b, c)[ [a,
+  Fill in the blanks in the outline below to prove that $(\forall a, b, c)[[a,
   b, c \in \Z \land (a \mid b \land b \mid c)] \implies a \mid c]$. [Hint: Notice
   that $p$ and $q$, from step 6, will have to appear in steps 1--5 somewhere.]
 
@@ -212,14 +374,14 @@
 
   \begin{tabular}{lll}
     1. & Assume \fbox{\parbox{0.5in}{\ \ \ \ \ \par \ \ }}. \\
-    2. & $(\exists k)[k \in \Z \land b = k\cdot a]$. \\
+    2. & $(\exists k)[k \in \Z \land b = k \cdot a]$. \\
     3. & \fbox{\parbox{0.5in}{\ \ \ \ \ \par \ \ }} for some \fbox{\parbox{0.5in}{\ \ \ \ \ \par \ \ }}. \\
-    4. & $(\exists k)[k \in \Z \land c = k\cdot b]$. \\
+    4. & $(\exists k)[k \in \Z \land c = k \cdot b]$. \\
     5. & \fbox{\parbox{0.5in}{\ \ \ \ \ \par \ \ }} for some \fbox{\parbox{0.5in}{\ \ \ \ \ \par \ \ }}. \\
-    6. & $c = q\cdot b = p\cdot (qa) = pq \cdot a$. \\
+    6. & $c = q \cdot b = p \cdot (qa) = pq \cdot a$. \\
     7. & $(\exists r)[r \in \Z \land \fbox{\parbox{0.5in}{\ \ \ \ \ \par \ \ }}\ ]$. \\
     8. & $a \mid c$. \\
-    9. & \fbox{\parbox{0.5in}{\ \ \ \ \ \par \ \ }}  & DT, discharge For 1. \\
+    9. & \fbox{\parbox{0.5in}{\ \ \ \ \ \par \ \ }}. & DT, discharge for 1 \\
     10. & \fbox{\parbox{0.5in}{\ \ \ \ \ \par \ \ }}. \\
   \end{tabular}
 
@@ -238,13 +400,38 @@
 \end{problem}
 
 \begin{probsolution}
+  Proof:
+
+  \begin{tabular}{lll}
+    1. & Assume $a, b, c \in \Z$ and $a \mid b$ and $b \mid c$. & Dischargeable Hypothesis \\
+    2. & $(\exists k)[k \in \Z \land b = k \cdot a]$. & IE \\
+    3. & $b = y \cdot a$ for some $y \in \Z$. & EI \\
+    4. & $(\exists k)[k \in \Z \land c = k \cdot b]$. & IE \\
+    5. & $c = q \cdot b$ for some $q \in \Z$. & EI \\
+    6. & $c = q \cdot b = p \cdot (qa) = pq \cdot a$. \\
+    7. & $(\exists r)[r \in \Z \land c = r \cdot a]$. & IE \\
+    8. & $a \mid c$. \\
+    9. & $(a, b, c \in \Z \land a \mid b \land b \mid c) \implies a \mid c$ & DT, discharge for 1. \\
+    10. & $(\forall a, b, c)[[a, b, c \in \Z \land a \mid b \land b \mid c] \implies a \mid c]$ & IU \\
+  \end{tabular}
+
+  \vspace{0.3in}
+
+  \begin{enumerate}
+    \item They are lines number 2, 3, 4, 5, 7, and 9.
+
+    \item It is okay to use $k$ in both steps $2$ and $4$. Because we wrote out
+      the definition of $a \mid b$ and $b \mid c$ and $k$ was just a
+      placeholder, which we then changed to $y$ and $q$ respectively in the line
+      right after each one.
+  \end{enumerate}
 \end{probsolution}
 
 \newpage
 
 \begin{problem}
   Fill in the blanks in the outline below to prove that $(\forall n)[(n \in \N
-  \land 3 \not \mid n) \implies n^2 \equiv_3 1]$. Also:
+  \land 3 \nmid n) \implies n^2 \equiv_3 1]$. Also:
   \begin{enumerate}
     \item There are three uses of the Deduction Theorem in this proof. Label the
       appropriate DT steps.
@@ -255,40 +442,79 @@
   \end{enumerate}
 
   \begin{table}[H]
-  \begin{tabular}{lll}
-    1. & Assume \fbox{\parbox{0.5in}{\ \ \ \ \ \par \ \ }}. \\
-    2. & $n \not\equiv_3 0$. \\
-    3. & So either $n \equiv_3 1$ or $n \equiv_3 2$. \\
-    4. & Assume $n \equiv_3 1$. \\
-    5. & Then $3 \mid \fbox{\parbox{0.5in}{\ \ \ \ \ \par \ \ }}$. \\
-    6. & So $n - 1 = 3\cdot P$ for some \fbox{\parbox{0.5in}{\ \ \ \ \ \par \ \ }}. \\
-    7. & $n = $\fbox{\parbox{0.5in}{\ \ \ \ \ \par \ \ }}. \\
-    8. & $n^2 = $\fbox{\parbox{0.5in}{\ \ \ \ \ \par \ \ }}$ = 3\cdot \fbox{\parbox{0.5in}{\ \ \ \ \ \par \ \ }} + 1$. \\
-    9. & $n^2 - 1 = \fbox{\parbox{0.5in}{\ \ \ \ \ \par \ \ }}$. \\
-    10. & $(\exists y)[y \in \Z \land \fbox{\parbox{0.5in}{\ \ \ \ \ \par \ \ }}]$. \\
-    11. & $3 \mid \fbox{\parbox{0.5in}{\ \ \ \ \ \par \ \ }}$. \\
-    12. & $n^2 \equiv_3 1$. \\
-    13. & So $n \equiv_3 1 \implies n^2 \equiv_3 1$. \\
-    14. & Now assume $n \equiv_3 2$.\\
-    16. & \fbox{\parbox{0.5in}{\ \ \ \ \ \par \ \ }}. \\
-    17. & \fbox{\parbox{0.5in}{\ \ \ \ \ \par \ \ }}. \\
-    18. & \fbox{\parbox{0.5in}{\ \ \ \ \ \par \ \ }}. \\
-    19. & \fbox{\parbox{0.5in}{\ \ \ \ \ \par \ \ }}. \\
-    20. & \fbox{\parbox{0.5in}{\ \ \ \ \ \par \ \ }}. \\
-    21. & \fbox{\parbox{0.5in}{\ \ \ \ \ \par \ \ }}. \\
-    22. & \fbox{\parbox{0.5in}{\ \ \ \ \ \par \ \ }}. \\
-    23. & \fbox{\parbox{0.5in}{\ \ \ \ \ \par \ \ }}. \\
-    24. & \fbox{\parbox{0.5in}{\ \ \ \ \ \par \ \ }}. \\
-    25. & So $n \equiv_3 2 \implies n^2 \equiv_3 1$. \\
-    26. & We therefore have $(n \equiv_3 1 \lor n \equiv_3 2) \implies n^2 \equiv_3 1$. & {\bf Logical rule?} \\
-    27. & So $n^2 \equiv_3 1$. & {\bf Logical rule?} \\
-    28. & $(n \in \N \land 3 \not\mid n) \implies n^2 \equiv_3 1$. \\
-    29. & \fbox{\parbox{0.5in}{\ \ \ \ \ \par \ \ }}. \\
-  \end{tabular}
+    \begin{tabular}{lll}
+      1. & Assume \fbox{\parbox{0.5in}{\ \ \ \ \ \par \ \ }}. \\
+      2. & $n \not\equiv_3 0$. \\
+      3. & So either $n \equiv_3 1$ or $n \equiv_3 2$. \\
+      4. & Assume $n \equiv_3 1$. \\
+      5. & Then $3 \mid \fbox{\parbox{0.5in}{\ \ \ \ \ \par \ \ }}$. \\
+      6. & So $n - 1 = 3 \cdot P$ for some \fbox{\parbox{0.5in}{\ \ \ \ \ \par \ \ }}. \\
+      7. & $n = $\fbox{\parbox{0.5in}{\ \ \ \ \ \par \ \ }}. \\
+      8. & $n^2 = $\fbox{\parbox{0.5in}{\ \ \ \ \ \par \ \ }}$ = 3 \cdot \fbox{\parbox{0.5in}{\ \ \ \ \ \par \ \ }} + 1$. \\
+      9. & $n^2 - 1 = \fbox{\parbox{0.5in}{\ \ \ \ \ \par \ \ }}$. \\
+      10. & $(\exists y)[y \in \Z \land \fbox{\parbox{0.5in}{\ \ \ \ \ \par \ \ }}]$. \\
+      11. & $3 \mid \fbox{\parbox{0.5in}{\ \ \ \ \ \par \ \ }}$. \\
+      12. & $n^2 \equiv_3 1$. \\
+      13. & So $n \equiv_3 1 \implies n^2 \equiv_3 1$. \\
+      14. & Now assume $n \equiv_3 2$.\\
+      15. & \fbox{\parbox{0.5in}{\ \ \ \ \ \par \ \ }}. \\
+      16. & \fbox{\parbox{0.5in}{\ \ \ \ \ \par \ \ }}. \\
+      17. & \fbox{\parbox{0.5in}{\ \ \ \ \ \par \ \ }}. \\
+      18. & \fbox{\parbox{0.5in}{\ \ \ \ \ \par \ \ }}. \\
+      19. & \fbox{\parbox{0.5in}{\ \ \ \ \ \par \ \ }}. \\
+      20. & \fbox{\parbox{0.5in}{\ \ \ \ \ \par \ \ }}. \\
+      21. & \fbox{\parbox{0.5in}{\ \ \ \ \ \par \ \ }}. \\
+      22. & \fbox{\parbox{0.5in}{\ \ \ \ \ \par \ \ }}. \\
+      23. & \fbox{\parbox{0.5in}{\ \ \ \ \ \par \ \ }}. \\
+      24. & So $n \equiv_3 2 \implies n^2 \equiv_3 1$. \\
+      25. & We therefore have $(n \equiv_3 1 \lor n \equiv_3 2) \implies n^2 \equiv_3 1$. & {\bf Logical rule?} \\
+      26. & So $n^2 \equiv_3 1$. & {\bf Logical rule?} \\
+      27. & $(n \in \N \land 3 \nmid n) \implies n^2 \equiv_3 1$. \\
+      28. & \fbox{\parbox{0.5in}{\ \ \ \ \ \par \ \ }}. \\
+    \end{tabular}
   \end{table}
 \end{problem}
 
 \begin{probsolution}
+  \begin{table}[H]
+    \begin{tabular}{lll}
+      1. & Assume $n \in N$ and $3 \nmid n$. & Dischargeable Hypothesis \\
+      2. & $n \not\equiv_3 0$. \\
+      3. & So either $n \equiv_3 1$ or $n \equiv_3 2$. \\
+      4. & Assume $n \equiv_3 1$. & Dischargeable Hypothesis \\
+      5. & Then $3 \mid (n - 1)$. \\
+      6. & So $n - 1 = 3 \cdot P$ for some $P \in \N$. \\
+      7. & $n = 3 \cdot P + 1$. \\
+      8. & $n^2 = (3 \cdot P + 1)^2 = 3 (3P^2 + 2P) + 1$. \\
+      9. & $n^2 - 1 = 3(3P^2 + 2P)$. \\
+      10. & $(\exists y)[y \in \Z \land n^2 - 1 = 3 \cdot y]$. \\
+      11. & $3 \mid (n^2 - 1)$. \\
+      12. & $n^2 \equiv_3 1$. \\
+      13. & So $n \equiv_3 1 \implies n^2 \equiv_3 1$. & DT, discharge for 4, [(4) -- (12) unusable]. \\
+      14. & Now assume $n \equiv_3 2$. & Dischargeable Hypothesis \\
+      15. & Then $3 \mid (n - 2)$. \\
+      16. & So $n - 2 = 3 \cdot Q$ for some $Q \in \N$. \\
+      17. & $n = 3 \cdot Q + 2$. \\
+      18. & $n^2 = (3 \cdot Q + 2)^2 = 3(3Q^2 + 4Q) + 4$ \\
+      19. & $n^2 - 2 = 3(3Q^2 + 4Q) + 2$. \\
+      20. & $3 \mid (n^2 - 2)$. \\
+      21. & $(\exists y)[y \in \Z \land n^2 - 2 = 3 \cdot y]$. \\
+      22. & $3 \mid (n^2 - 2)$. \\
+      23. & $n^2 \equiv_3 2$. \\
+      24. & So $n \equiv_3 2 \implies n^2 \equiv_3 1$. & DT, discharge for 14, [(15) -- (23) unusable]. \\
+      25. & We therefore have $(n \equiv_3 1 \lor n \equiv_3 2) \implies n^2 \equiv_3 1$. & IC, for 13, for 24 \\
+      26. & So $n^2 \equiv_3 1$. & MP, for 25, for 3 \\
+      27. & $(n \in \N \land 3 \nmid n) \implies n^2 \equiv_3 1$. & DT, discharge for 1, [(1) -- (26) unusable]. \\
+      28. & $(\forall n)[(n \in \N \land 3 \nmid n) \implies n^2 \equiv_3 1]$. & IU \\
+    \end{tabular}
+  \end{table}
+
+  \begin{enumerate}
+    \item The Deduction Theorem steps are lines 13, 24, and 27.
+
+    \item The logic rules used in lines 25 and 26 are Inference by Cases
+      (IC) and Modus Ponens (MP), respectively.
+  \end{enumerate}
 \end{probsolution}
 
 \newpage
@@ -299,17 +525,52 @@
 \end{problem}
 
 \begin{probsolution}
+  \begin{tabular}{lll}
+    1. & Assume $n \in \N$ and $n \equiv_6 3$. & Dischargeable Hypothesis \\
+    2. & Then $6 \mid (n - 3)$. \\
+    3. & So $n - 3 = 6 \cdot P$ for some $P \in \N$. \\
+    4. & $n = 6 \cdot P + 3$. \\
+    5. & $n^2 + 2n + 10 = (6 \cdot P + 3)^2 + 2(6 \cdot P + 3) + 10$ \\
+    6. & $n^2 + 2n + 10 = 36P^2 + 36P + 9 + 12P + 6 + 10$ \\
+    7. & $n^2 + 2n + 10 = 36P^2 + 48P + 25$ \\
+    8. & $n^2 + 2n + 10 = 12(3P^2 + 4P + 2) + 1$ \\
+    9. & $n^2 + 2n + 10 - 1 = 12(3P^2 + 4P + 2)$ \\
+    10. & $(\exists y)(y \in \Z \land n^2 + 2n + 10 - 1 = 12 \cdot y$. & IE \\
+    11. & $12 \mid (n^2 + 2n + 10 - 1)$. \\
+    12. & $n^2 + 2n + 10 \equiv_{12} 1$. \\
+    13. & So $(n \in \N \land n \equiv_6 3) \implies n^2 + 2n + 10 \equiv_{12} 1$. & DT, discharge for 1 [(1) -- (12) unusable]. \\
+    14. & $(\forall n)[(n \in \N \land n \equiv_6 3) \implies n^2 + 2n + 10 \equiv_{12} 1]$. & IU \\
+  \end{tabular}
 \end{probsolution}
 
 \newpage
 
 \begin{problem}
-  Prove $(\forall n)[(n \in \N \land n \equiv_5 2) \implies (2 \not\mid n \lor
-  n^2 \equiv_{20} 4)]$.
+  Prove $(\forall n)[(n \in \N \land n \equiv_5 2) \implies (2 \nmid n \lor n^2
+  \equiv_{20} 4)]$.
 
-  [Hint: Remember that $(X \lor Y) \iff (\not X \implies Y)$. Use DT twice in
+  [Hint: Remember that $(X \lor Y) \iff (\neg X \implies Y)$. Use DT twice in
   this proof.]
 \end{problem}
 
 \begin{probsolution}
+  \begin{tabular}{lll}
+    1. & Assume $n \in \N$ and $n \equiv_5 2$. & Dischargeable Hypothesis \\
+    2. & Then $5 \mid (n - 2)$. \\
+    3. & So $n - 2 = 5 \cdot P$ for some $P \in \N$. \\
+    4. & $n = 5 \cdot P + 2$. \\
+    5. & $n^2 = (5 \cdot P + 2)^2 = 25P^2 + 20P + 4$. \\
+    6. & $n^2 = 5(5P^2 + 4P) + 4$. \\
+    7. & $n^2 \equiv_{20} 4$. \\
+    8. & Let $X = 2 \nmid n$ and $Y = n^2 \equiv_{20} 4$. \\
+    9. & $(X \lor Y) \iff (\neg X \implies Y)$. & Tautology \\
+    10. & Assume $2 \mid n$. & Dischargeable Hypothesis \\
+    11. & Then $n = 2k$ for some $k \in \N$. \\
+    12. & But $n \equiv_5 2$ by assumption, so $n$ must take the form $n = 5P + 2$. \\
+    13. & Using step 7, $n^2 \equiv_{20} 4$. \\
+    14. & Thus, $2 \mid n \implies n^2 \equiv_{20} 4$. \\
+    15. & $2 \nmid n \lor n^2 \equiv_{20} 4$. & Tautology from 9 \\
+    16. & $(n \in \N \land n \equiv_5 2) \implies (2 \nmid n \lor n^2 \equiv_{20} 4)$. & DT, discharge for 1, [(1) -- (15) unusable]. \\
+    17. & $(\forall n)[(n \in \N \land n \equiv_5 2) \implies (2 \nmid n \lor n^2 \equiv_{20} 4)]$. & UI \\
+  \end{tabular}
 \end{probsolution}
