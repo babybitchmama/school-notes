@@ -11,24 +11,24 @@ irrational.
 \end{theorem}
 
 \begin{proof}
-  Assume that $\sqrt{2}$ is rational, meaning that $\exists p, q \in \Z$. Assume
-  that $\sfrac{p}{q}$ is in simpliest form, meaning $p$ and $q$ have no common
-  factor. Then $\sqrt{2} = \sfrac{p}{q} \iff 2 = \sfrac{p^2}{q^2} \implies 2q^2
-  = p^2$. This means $p^2$ is an even integer. Then $\exists r \in \N$ such that
-  $p = 2r$, giving us $4r^2 = 2q^2$. This means $q^2$ is also an even integer,
-  which is a contradiction, since $p$ and $q$ were assumed to be in simplest
-  form. Therefore, $\sqrt{2}$ is irrational.
+  Assume that $\sqrt{2}$ is rational, meaning that $(\exists p)(\exists q)[p \in
+  \Z \land q \in \Z]$. Assume that $\sfrac{p}{q}$ is in simplest form, meaning
+  $p$ and $q$ have no common factor. Then $\sqrt{2} = \sfrac{p}{q} \iff 2 =
+  \sfrac{p^2}{q^2} \implies 2q^2 = p^2$. This means $p^2$ is an even integer.
+  Then $(\exists r)[r \in \N]$ such that $p = 2r$, giving us $4r^2 = 2q^2$. This
+  means $q^2$ is also an even integer, which is a contradiction, since $p$ and
+  $q$ were assumed to be in simplest form. Therefore, $\sqrt{2}$ is irrational.
 \end{proof}
 
 \begin{theorem}
-  Let $a, b \in \R$. Then $a = b$ if and only if $\forall \epsilon > 0$, $\lvert
-  a - b \rvert < \epsilon$.
+  Let $a, b \in \R$. Then $a = b$ if and only if $(\forall \epsilon)[\epsilon >
+  0 \implies \lvert a - b \rvert < \epsilon]$.
 \end{theorem}
 
 \begin{proof} $ $
   \begin{enumerate}
-    \item[$\implies$:] Assume that $a = b$. Then $\forall \epsilon > 0$, $\lvert
-      a - b \rvert = 0 < \epsilon$.
+    \item[$\implies$:] Let $\epsilon > 0$. Assume that $a = b$. Then $\lvert a -
+      b \rvert = 0 < \epsilon$.
 
     \item[$\impliedby$:] Assume $a \ne b$. Then $\lvert a - b \rvert \ne 0$. Let
       $\epsilon = \lvert a - b \rvert > 0$. Then $\lvert a - b \rvert = \epsilon
@@ -40,11 +40,11 @@ irrational.
 \label{sub_sec:induction}
 
 Let $S(n)$ be a statement. If $S(1)$ is true and $S(n) \implies S(n + 1)$ is
-true, then $S(n)$ is true, $\forall n \in \N$.
+true, then $S(n)$ is true, $(\forall n)[n \in \N]$.
 
 \begin{question}
   Let $x_1 = 1$ and $x_{n+1} = \frac{1}{2} x_n + 1$. Show that $x_n$ is
-  increasing ($x_n \le x_{n+1}$, $\forall n \in \N$).
+  increasing, meaning, prove $(\forall n)[n \in \N \implies x_n \le x_{n+1}]$.
 \end{question}
 
 \begin{proof}
@@ -59,7 +59,7 @@ true, then $S(n)$ is true, $\forall n \in \N$.
 \end{proof}
 
 \begin{question}
-  Show that $n^3 + 2n$ is divisible by $3$, $\forall n \in \N$.
+  Show that $n^3 + 2n$ is divisible by $3$, $(\forall n)[n \in \N]$.
 \end{question}
 
 \begin{proof}
@@ -104,9 +104,9 @@ Now, let's break down the definition of the least upper bound.
 \label{sub_sec:least_upper_bound_and_greatest_lower_bound}
 
 \begin{definition}[Upper Bound]
-  A set $A \subseteq \R$ is bounded above if $\exists b \in \R$ such that $a \le
-  b$, $\forall a \in A$. The number $b$ is called the \textit{upper bound} for
-  $A$.
+  A set $A \subseteq \R$ is bounded above if $(\exists b)(\forall a)[(b \in \R
+  \land a \in A) \implies a \le b]$. The number $b$ is called the \textit{upper
+  bound} for $A$.
 \end{definition}
 
 \begin{definition}[Least Upper Bound]
@@ -121,8 +121,49 @@ Now, let's break down the definition of the least upper bound.
 
 The least upper bound is also called the \textit{supremum} of the set $A$. The
 \textit{greatest lower bound}/\textit{infimum} for $A$ is also defined similarly
-(see figure \ref{fig:supremum_infimum_graphically} for a graphical
-representation).
+(see the figure below for a graphical representation).
+\begin{figure}[H]
+  \centering
+
+  \begin{tikzpicture}[scale=0.9]
+    \draw[thick] (-7, 0) -- (7, 0);
+
+    % lower bounds from -6.8 to -2.4
+    \draw[decorate,decoration={mirror,brace,amplitude=5pt},thick] (-6.8, -0.4) -- (-2.4, -0.4) node[midway, below=5pt] {lower bounds};
+
+    % The set A from -2.2 to 2.2
+    \draw[thick,fill=black] (-2.2, 0) -- (-2.2, 0.15) -- (-1.2, 0.15) -- (-1.2, 0) -- cycle;
+    \node[above=15pt] (Inf) at (-2.2,0.15) {$\inf(A)$};
+    \node[above=1pt] (Box1) at (-2.2,0) {};
+    \draw[arrows={->}] (Inf) edge (Box1);
+
+    \draw[thick,fill=black] (-0.8, 0) -- (-0.8, 0.15) -- (0.8, 0.15) -- (0.8, 0) -- cycle;
+
+    \draw[soldot] (2.2,0.07) circle (0.08);
+    \draw[soldot] (2.1,0.07) circle (0.08);
+    \draw[soldot] (1.95,0.07) circle (0.08);
+    \draw[soldot] (1.75,0.07) circle (0.08);
+    \draw[soldot] (1.5,0.07) circle (0.08);
+    \draw[soldot] (1.2,0.07) circle (0.08);
+
+    \node[above=15pt] (Sup) at (2.2,0.15) {$\sup(A)$};
+    \node[above=1pt] (Box2) at (2.2,0) {};
+    \draw [arrows={->}] (Sup) edge (Box2);
+
+    \node[below=5pt] (A) at (0,-0.4) {$A$};
+    \node[below=1pt] (O) at (0,0.2) {};
+    \draw[arrows={->}] (A) edge (O);
+
+    \node[below=1pt] (AE1) at (-1.7,0.2) {};
+    \draw[->] (A.west) -- (AE1);
+
+    \node[below=1pt] (AE2) at (1.7,0.2) {};
+    \draw[->] (A.east) -- (AE2);
+
+    % upper bounds from 2.2 to 6.8
+    \draw[decorate,decoration={mirror,brace,amplitude=5pt},thick] (2.2, -0.4) -- (6.8, -0.4) node[midway, below=5pt] {upper bounds};
+  \end{tikzpicture}
+\end{figure}
 
 \begin{notation}
   The supremum is denoted as $s = \sup(A)$ and the infimum is denoted as $s =
@@ -134,9 +175,9 @@ representation).
 \end{claim}
 
 \begin{proof}
-  By property $\circled{2}$ of the definition of the least upper bound, if $s$
-  and $t$ are both least upper bounds for $A$, then $s \le t$ and $t \le s$,
-  implying that $s = t$.
+  By property (ii) of the definition of the least upper bound, if $s$ and $t$
+  are both least upper bounds for $A$, then $s \le t$ and $t \le s$, implying
+  that $s = t$.
 \end{proof}
 
 \begin{example}
@@ -158,9 +199,9 @@ representation).
 
 \begin{definition}[Maximum and Minimum]
   A real number $a_0$ is a \textit{maximum} of the set $A$ if $a_0$ is an
-  element of $A$ and $a_0 \ge a$, $\forall a \in A$. Similarly, $a_0$ is a
-  \textit{minimum} of the set $A$ if $a_0$ is an element of $A$ and $a_0 \le a$,
-  $\forall a \in A$.
+  element of $A$ and $(\forall a)[a \in A \implies a_0 \ge a]$. Similarly, $a_0$
+  is a \textit{minimum} of the set $A$ if $a_0$ is an element of $A$ and
+  $(\forall a)[a \in A \implies a_0 \le a]$.
 \end{definition}
 
 The closed interval $[a, b]$ has a maximum of $b$ and a minimum of $a$, since
@@ -211,8 +252,8 @@ We use the following
   \label{lem:proving_upper_bound}
 
   Assume $s \in \R$ is an upper bound for a set $A \subseteq \R$. Then, $s =
-  \sup(A)$ if and only if, $\forall \epsilon > 0$, $\exists a \in A$ satisfying
-  $s - \epsilon < a$.
+  \sup(A)$ if and only if, $(\forall \epsilon)(\exists a)[(\epsilon > 0 \land a
+  \in A) \implies s - \epsilon < a]$.
 \end{nlemma}
 
 \begin{proof} $ $
@@ -223,9 +264,9 @@ We use the following
       because otherwise, $s - \epsilon$ would be an upper bound.
 
     \item[$\impliedby$:] Assume $b$ is an upper bound for $A$. Assume $b < s
-      \iff s - b > 0$. Let $\epsilon = s - b$. Then, $\exists a \in A$ such that
-      $s - \epsilon < a \iff b < a$, which is a contradiction, since $b$ is an
-      upper bound. Therefore, $s = \sup(A)$. \qedhere
+      \iff s - b > 0$. Let $\epsilon = s - b$. Then, $(\exists a)[a \in A
+      \implies (s - \epsilon < a \iff b < a)]$, which is a contradiction, since
+      $b$ is an upper bound. Therefore, $s = \sup(A)$. \qedhere
   \end{enumerate}
 \end{proof}
 
@@ -235,10 +276,10 @@ We use the following
 \end{question}
 
 \begin{proof}
-  Assume $s = \sup(A) = 1$. Then $\forall \epsilon > 0$, $\exists a = 1 -
-  \sfrac{1}{n} \in A$ such that $s - \epsilon < a \iff 1 - \epsilon < 1 -
-  \sfrac{1}{n} \iff 1 - (1 - \sfrac{1}{n}) < \epsilon \iff \sfrac{1}{n} <
-  \epsilon$.
+  Assume $s = \sup(A) = 1$. Then $(\forall \epsilon)(\exists a)[(\epsilon > 0
+  \land a = 1 - \sfrac{1}{n} \in A) \implies (s - \epsilon < a \iff 1 - \epsilon
+  < 1 - \sfrac{1}{n} \iff 1 - (1 - \sfrac{1}{n}) < \epsilon \iff \sfrac{1}{n} <
+  \epsilon)]$.
 \end{proof}
 
 % % subsection proving_the_upper_bound (end)
