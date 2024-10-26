@@ -180,8 +180,54 @@ Here's a template for a proof of $(x_n) \to x$.
   Prove that $(\frac{1}{\sqrt{n}}) \to 0$.
 \end{question}
 
+\begin{worksheet}
+  Let's first explore the relationship between $\epsilon$ and $N$. Take
+  $\epsilon = \sfrac{1}{10}$. This gives us a target zone for the terms in the
+  sequence. By claiming that the limit of $(a_n)$ is $0$, we are saying that the
+  terms in the sequence get arbitrarily close to $0$. But how close? This is
+  where $\epsilon$ comes into play. We want to show that the terms in the
+  sequence are within $\sfrac{1}{10}$ of $0$ after a certain point and they stay
+  that way, if not get closer.
+  The $100$th term $a_{100} = \sfrac{1}{10}$ puts us right on the boundary,
+  giving us
+  \[%
+    \textrm{if}~n > 100, \qtq{then} a_n \in \left(-\frac{1}{10}, \frac{1}{10}\right)
+  .\]%
+  As you can see, the smaller we choose $\epsilon$, the larger we'll have to
+  make $n$. Now, let's try and find $N$ for all $\epsilon > 0$.
+  \begin{note}
+    We aren't using a fixed $\epsilon$, since, say $\epsilon = \frac{1}{10}$,
+    then $N > 100$, say $N = 101$, and were done, so that's just trivial
+  \end{note}
+  We have the inequality
+  \[%
+    \frac{1}{\sqrt{N}} < \epsilon \implies \sqrt{N} > \frac{1}{\epsilon} \implies N > \frac{1}{\epsilon^2}
+  .\]%
+  Now that' we've chosen our $N$, we can finalize and formalize our proof,
+  giving us the following.
+\end{worksheet}
+
+\begin{proof}
+  Let $\epsilon > 0$ be arbitrarily chosen. Chose a natural number $N$
+  satisfying
+  \[%
+    N > \frac{1}{\epsilon^2}
+  .\]%
+  We now verify that this choice of $N$ has the desired property. Let $n \ge N$.
+  Then,
+  \[%
+    n > \frac{1}{\epsilon^2} \implies \frac{1}{n} < \epsilon^2 \implies \frac{1}{\sqrt{n}} < \epsilon \qtq{hence} \lvert a_n - 0 \rvert < \epsilon
+  .\qedhere\]%
+\end{proof}
+
+\begin{theorem}[Uniqueness of Limits]
+  The limit of a sequence, when it exists, must be unique.
+\end{theorem}
+
 \begin{proof}
 \end{proof}
+
+This can be re-written as, if $(a_n) \to a$ and $(a_n) \to b$, then $a = b$.
 
 % subsection examples (end)
 
