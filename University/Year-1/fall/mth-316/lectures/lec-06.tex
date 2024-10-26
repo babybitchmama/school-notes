@@ -196,8 +196,9 @@ Here's a template for a proof of $(x_n) \to x$.
   As you can see, the smaller we choose $\epsilon$, the larger we'll have to
   make $n$. Now, let's try and find $N$ for all $\epsilon > 0$.
   \begin{note}
-    We aren't using a fixed $\epsilon$, since, say $\epsilon = \frac{1}{10}$,
-    then $N > 100$, say $N = 101$, and were done, so that's just trivial
+    \textit{We aren't using a fixed $\epsilon$, since, say $\epsilon =
+    \sfrac{1}{10}$, then $N > 100$, say $N = 101$, and were done, so that's just
+    trivial}
   \end{note}
   We have the inequality
   \[%
@@ -208,7 +209,7 @@ Here's a template for a proof of $(x_n) \to x$.
 \end{worksheet}
 
 \begin{proof}
-  Let $\epsilon > 0$ be arbitrarily chosen. Chose a natural number $N$
+  Let $\epsilon > 0$ be arbitrarily chosen. Choose a natural number $N$
   satisfying
   \[%
     N > \frac{1}{\epsilon^2}
@@ -220,23 +221,81 @@ Here's a template for a proof of $(x_n) \to x$.
   .\qedhere\]%
 \end{proof}
 
+\begin{question}
+  Prove that $\displaystyle\lim_{n \to \infty} \frac{2n + 1}{5n + 4} = \frac{2}{5}$.
+\end{question}
+
+\begin{worksheet}
+  In order to find an $N \in \N$ that satisfies the definition of convergence,
+  we need to find a relationship between $\epsilon$ and $N$. Let's first try
+  to solve for $n$ in the inequality $\lvert a_n - a \rvert < \epsilon$.
+  \[%
+    \left\lvert \frac{2n + 1}{5n + 4} - \frac{2}{5} \right\rvert = \frac{3}{5(5n + 4)}
+  .\]%
+  Now, we can go ahead and solve for $n$, to get
+  \[%
+    \frac{3}{5(5n + 4)} < \epsilon \implies \frac{5(5n + 4)}{3} < \frac{1}{\epsilon} \implies n > \frac{3}{25\epsilon} - \frac{4}{5}
+  .\]%
+  Therefore, we can chose
+  \[%
+    N = \frac{3}{25\epsilon} - \frac{4}{5}
+  .\]%
+  Now, all that's left is to show that this $N$ works, and we're done.
+\end{worksheet}
+
+\begin{proof}
+  Let $\epsilon > 0$ be arbitrarily chosen. Choose a natural number $N$ such
+  \[%
+    N = \frac{3}{25\epsilon} - \frac{4}{5}
+  .\]%
+  Assume $n > N > 0$. Then,
+  \[%
+    \lvert a_n - a \rvert = \left\lvert \frac{2n + 1}{5n + 4} - \frac{2}{5} \right\rvert = \frac{3}{5(5n + 4)} < \frac{3}{5(5N + 4)} = \frac{3}{5\left(5\left(\frac{3}{25\epsilon} - \frac{4}{5}\right) + 4\right)} = \frac{3}{5\left(\frac{3}{5\epsilon}\right)} = \epsilon
+  .\qedhere\]%
+\end{proof}
+
 \begin{theorem}[Uniqueness of Limits]
   The limit of a sequence, when it exists, must be unique.
 \end{theorem}
 
+\begin{worksheet}
+  We know that $(a_n) \to a$, meaning that there exists $N_1 \in \N$ such that
+  $\lvert a_n - a \rvert < \epsilon$ for all $n \ge N_1$. Same thing for $(b_n)
+  \to b$. But how do we show that $a = b$?
+
+  Choose $N = \max(\{N_1, N_2\})$. We just let $N$ be the biggest of the two
+  $N$'s from the two sequences. We can assume that $n > N$.
+
+  And then just use the triangle inequality to show that $a = b$.
+  \[%
+    \lvert a - b \rvert = \lvert a - a_n + a_n - b \rvert \le \lvert a - a_n \rvert + \lvert a_n - b \rvert < \epsilon + \epsilon = 2\epsilon
+  .\]%
+  Some people don't like the fact that everything is less than $2\epsilon$. To
+  show that it's less than $\epsilon$, we can let $\lvert a_n - a \rvert <
+  \sfrac{\epsilon}{2}$. Same thing for $(b_n)$. Using that, we get the new
+  inequality
+  \[%
+    \lvert a - b \rvert < \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon
+  .\]%
+  Formalizing it, we get the following proof.
+\end{worksheet}
+
 \begin{proof}
+  Let $\epsilon > 0$ be arbitrarily chosen. Since $(a_n) \to a$, there exists
+  $N_1 \in \N$ such that $\lvert a_n - a \rvert < \sfrac{\epsilon}{2}$ for all
+  $n \ge N_1$. Similarly, since $(a_n) \to b$, there exists $N_2 \in \N$ such
+  that $\lvert a_n - b \rvert < \sfrac{\epsilon}{2}$ for all $n \ge N_2$. Let $N
+  = \max(\{N_1, N_2\})$. Then, for all $n \ge N$,
+  \[%
+    \lvert a - b \rvert = \lvert a - a_n + a_n - b \rvert \le \lvert a - a_n \rvert + \lvert a_n - b \rvert < \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon
+  .\]%
+  Since $\epsilon > 0$ was arbitrary, we have $\lvert a - b \rvert = 0$, which
+  implies $a = b$.
 \end{proof}
 
 This can be re-written as, if $(a_n) \to a$ and $(a_n) \to b$, then $a = b$.
 
 % subsection examples (end)
-
-\subsection{Divergence}
-\label{sub_sec:divergence}
-
-
-
-% subsection divergence (end)
 
 % section working_with_limits (end)
 
