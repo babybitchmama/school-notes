@@ -48,7 +48,7 @@ I'll be using the following notation throughout the notes
 
 So, for we can re-write all of the definitions as follows
 \[%
-  A \subseteq S \implies (\forall x)[x \in A \implies x \in S]
+  A \subseteq S \implies (\forall x) x \in A \implies x \in S
 .\]%
 
 A set $A$ is equal to another set $B$ if and only if $A \subseteq B$ and $B
@@ -158,8 +158,8 @@ quantifiers
 \begin{align}
   \begin{aligned}\label{eq:union_intersection_quantifiers}
     \empheq{
-      x \in \bigcup_{n=1}^{\infty} A_n &\iff (\exists n)[n \in \N~\st~x \in A_n] \\
-      x \in \bigcap_{n=1}^{\infty} A_n &\iff (\forall n)(\exists x)[n \in \N \implies x \in A_n]
+      x \in \bigcup_{n=1}^{\infty} A_n &\iff (\exists n) n \in \N~\st~x \in A_n \\
+      x \in \bigcap_{n=1}^{\infty} A_n &\iff (\forall n)(\exists x) n \in \N \implies x \in A_n
     }
   \end{aligned}
 \end{align}
@@ -167,6 +167,6 @@ quantifiers
 Equation \ref{eq:union_intersection_quantifiers} will be very useful to prove
 statements regarding unions and intersections.
 
-% % section families_of_sets (end)
+% section families_of_sets (end)
 
 \newpage
