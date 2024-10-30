@@ -1,0 +1,264 @@
+\renewcommand\N{\mathbf{N}}
+
+\begin{problem}
+  Reparameterize the curve $\r(t) = \langle 1, t^2, t^3 \rangle$ with respect to
+  arc length measured from the point $(1, 0, 0)$ in the direction of $t$
+  increasing.
+\end{problem}
+
+\begin{probsolution}
+  To reparameterize the curve $\r(t) = \langle 1, t^2, t^3 \rangle$ with respect
+  to arc length $s$ measured from the point $(1, 0, 0)$ in the direction of
+  increasing $t$, we need to find $s$ as a function $t$, then invert it to
+  express $t$ as a function of $s$.
+
+  The derivative of $\r(t)$ is $\r'(t) = \langle 0, 2t, 3t^2 \rangle$. The speed
+  of the curve at time $t$ is given by the magnitude of $\r'(t)$.
+  \[%
+    \left\lvert \odv{\r}{t} \right\rvert = \sqrt{0^2 + (2t)^2 + (3t^2)^2} = \sqrt{4t^2 + 9t^4} = t\sqrt{4 + 9t^2}
+  .\]%
+  The arc length $s$ from $t = 0$ to an arbitrary point $t$ is
+  \begin{align*}
+    s = \int_0^t \left\lvert \odv{\r}{u} \right\rvert \,\du &= \int_0^t u \sqrt{4 + 9u^2} \,\du \\
+                                                            &= \int_4^{4+9t^2} \frac{\sqrt{v}}{18} \,\dv \\
+                                                            &= \frac{1}{18} \int_4^{4+9t^2} \sqrt{v} \,\dv \\
+                                                            &= \frac{1}{18} \cdot \frac{2}{3} [v^{\sfrac{3}{2}}]_4^{4+9t^2} \\
+                                                            &= \frac{1}{27} \left[\left(4 + 9t^2\right)^{\sfrac{3}{2}} - 4^{\sfrac{3}{2}}\right] \\
+                                                            &= \frac{1}{27} \left(\left(4 + 9t^2\right)^{\sfrac{3}{2}} - 8\right)
+  .\end{align*}
+  To find $t$ as a function of $s$, we need to solve the equation for $t$
+  \begin{alignat*}{3}
+    \phantom{\implies}\quad&\frac{1}{27} \left(\left(4 + 9t^2\right)^{\sfrac{3}{2}} - 8\right) &&= s \\
+    \implies\quad&\left(4 + 9t^2\right)^{\sfrac{3}{2}} - 8 &&= 27s \\
+    \implies\quad&\left(4 + 9t^2\right)^{\sfrac{3}{2}} &&= 27s + 8 \\
+    \implies\quad&4 + 9t^2 &&= \left(27s + 8\right)^{\sfrac{2}{3}} \\
+    \implies\quad&9t^2 &&= \left(27s + 8\right)^{\sfrac{2}{3}} - 4 \\
+    \implies\quad&t^2 &&= \frac{\left(27s + 8\right)^{\sfrac{2}{3}} - 4}{9} \\
+    \implies\quad&t &&= \pm\sqrt{\frac{\left(27s + 8\right)^{\sfrac{2}{3}} - 4}{9}}
+  .\end{alignat*}
+  But since $t$ is increasing, we choose the positive square root. Therefore,
+  \[%
+    \r(s) = \left\langle \sqrt{\frac{\left(27s + 8\right)^{\sfrac{2}{3}} - 4}{9}}, \left(\sqrt{\frac{\left(27s + 8\right)^{\sfrac{2}{3}} - 4}{9}}\right), \left(\sqrt{\frac{\left(27s + 8\right)^{\sfrac{2}{3}} - 4}{9}}\right)^3 \right\rangle
+  .\]%
+\end{probsolution}
+
+\newpage
+
+\begin{problem}
+  Find the curvature of $\r(t) = \langle t^2, \ln(t), t\ln(t) \rangle$ at the
+  point $(1, 0, 0)$.
+\end{problem}
+
+\begin{probsolution}
+  The curvature of a curve $\r(t)$ is given by the formula
+  \[%
+    \kappa = \frac{\left\lvert \r'(t) \times \r''(t) \right\rvert}{\left\lvert \r'(t) \right\rvert^3}
+  .\]%
+  The first and second derivatives of $\r(t)$ are
+  \[%
+    \r'(t) = \langle 2t, \frac{1}{t}, \ln(t) + 1 \rangle \aand \r''(t) = \langle 2, -\frac{1}{t^2}, \frac{1}{t} \rangle
+  .\]%
+  The cross product of $\r'(t)$ and $\r''(t)$ is
+  \[%
+    \r'(t) \times \r''(t) = \begin{vmatrix}
+      \ui & \uj & \uk \\
+      2t & \sfrac{1}{t} & \ln(t) + 1 \\
+      2 & -\sfrac{1}{t^2} & \sfrac{1}{t}
+    \end{vmatrix} = \left\langle \frac{\ln(t) + 2}{t^2}, 2\ln(t), -\frac{4}{t} \right\rangle
+  .\]%
+  The magnitude of $\r'(t) \times \r''(t)$ is
+  \[%
+    \left\lvert \r'(t) \times \r''(t) \right\rvert = \frac{\sqrt{t^2\left(\left(\frac{\ln(t) + 2}{t^2}\right)^2 + 4\ln^2(t)\right) + 16}}{t}
+  .\]%
+  The curvature is
+  \[%
+    \kappa(t) = \frac{\left\lvert \r'(t) \times \r''(t) \right\rvert}{\left\lvert \r'(t) \right\rvert^3} = \frac{\sqrt{t^2\left(\left(\frac{\ln(t) + 2}{t^2}\right)^2 + 4\ln^2(t)\right) + 16}}{(4t^2 + t^2(\ln(t) + 1)^2 + 1)^{\sfrac{3}{2}}}
+  .\]%
+  At $t = 1$, we get
+  \[%
+    \kappa(1) = \frac{\sqrt{30}}{18}
+  .\]%
+\end{probsolution}
+
+\newpage
+
+\begin{problem}
+  Show that for a smooth curve, $\displaystyle\odv{\Ta}{s} = \kappa \N(t)$.
+  Therefore, at each point along the curve, $\displaystyle\odv{\Ta}{s}$ and
+  $\N(t)$ are parallel and $\N$ points in the direction of curvature along the
+  curve.
+\end{problem}
+
+\begin{probsolution}
+  \begin{proof}
+    For a smooth curve $\r(t)$ parameterized by arc length $s$, the unit tangent
+    vector is defined a
+    \[%
+      \Ta = \odv{\r}{s}
+    .\]%
+    By definition, $\Ta$ has unit length $1$.
+
+    We now differentiate $\Ta$ with respect to $s$ to get
+    \[%
+      \odv{\Ta}{s}
+    .\]%
+    Since $\Ta$ has unit length, $\displaystyle \odv{\Ta}{s}$ is orthogonal to
+    $\Ta$. This is because
+    \[%
+      2\Ta \cdot \odv{\Ta}{s} = 0
+    .\]%
+    Therefore, $\displaystyle\odv{\Ta}{s}$ is perpendicular to $\Ta$.
+
+    By definition, the curvature $\kappa$ of the curve at a point is the magnitude
+    of the rate of change of $\Ta$ with respect to $s$
+    \[%
+      \kappa = \left\lvert \odv{\Ta}{s} \right\rvert
+    .\]%
+    We can write
+    \[%
+      \odv{\Ta}{s} = \kappa \N(t)
+    ,\]%
+    where $\N$ is a unit vector perpendicular to $\Ta$ that points in the
+    direction of $\displaystyle\odv{\Ta}{s}$. The principal normal vector of the
+    curve is $\N$.
+
+    This result tells us that
+    \[%
+      \odv{\Ta}{s} \aand \N(t)
+    ,\]%
+    are parallel, with $\N$ pointing in the direction of
+    $\displaystyle\odv{\Ta}{s}$. Thus, the principal normal vector $\N$ points in
+    the direction of curvature along the curve, and its magnitude is scaled by the
+    curvature $\kappa$.
+
+    In summary, we have shown that
+    \[%
+      \odv{\Ta}{s} = \kappa \N(t)
+    ,\]%
+    where $\displaystyle\odv{\Ta}{s}$ and $\N$ are parallel, and $\N$ points in
+    the direction of curvature along the curve.
+  \end{proof}
+\end{probsolution}
+
+\newpage
+
+\begin{problem}
+  Given a space curve with smooth parametrization, $\r(t)$, the binormal vector
+  is $\hat{B} = \hat{T} \times \hat{N}$. By properties of the cross product, it
+  is a unit vector orthogonal to both $\hat{T}$ and $\hat{N}$.
+
+  Note: Given $\hat{B} = \hat{B}(s)$, where $s(t)$ is the arc length, by Chain
+  Rule, $\displaystyle \odv{\hat{B}}{t} = \odv{\hat{B}}{s} [\r'(t)]$
+
+  \begin{enumerate}
+    \item Compute and simplify $\displaystyle \odv{\hat{B}}{s}$.
+
+    \item Show that $\displaystyle \odv{\hat{B}}{s}$ is orthogonal to $\hat{B}$.
+
+    \item Show that $\displaystyle \odv{\hat{B}}{s}$ is orthogonal to $\hat{T}$.
+
+    \item Explain why $\displaystyle \odv{\hat{B}}{s}$ is therefore parallel to
+      $\hat{N}$.
+
+      Note: Since $\displaystyle\odv{\hat{B}}{s}$ is parallel to $\hat{N}$, it
+      has the form $\displaystyle\odv{B}{s} = -\tau\hat{N}$. The scalar function
+      $\tau$ is called the torsion of the space curve. It measures the rate at
+      which the curve is twisting out of the osculating plane toward or away
+      from the binormal vector, $\hat{B}$. This is similar to how curvature
+      measures the rate at which the curve is bending towards the unit normal
+      vector.
+
+      The dot product can be used to solve for $\tau$.
+      \begin{align*}
+        -\tau\hat{N} &= \odv{\hat{B}}{s} \\
+        -\tau\hat{N} \cdot \hat{N} &= \odv{\hat{B}}{s} \cdot \hat{N} \\
+        \tau &= -\odv{\hat{B}}{s} \cdot \hat{N} \quad \textrm{since}~\hat{N} \cdot \hat{N} = 1
+      .\end{align*}
+      Similar to curvature, this is an unpleasant computation.
+  \end{enumerate}
+\end{problem}
+
+\begin{probsolution}
+  To compute $\displaystyle\odv{\hat{B}}{s}$, we differentiate $\hat{B}$ with
+  respect to $s$
+  \[%
+    \odv{\hat{B}}{s} = \odv{}{s} (\hat{T} \times \hat{N})
+  .\]%
+  Using the product rule for the cross product, we get
+  \[%
+    \odv{\hat{B}}{s} = \odv{\hat{T}}{s} \times \hat{N} + \hat{T} \times \odv{\hat{N}}{s}
+  .\]%
+  Since $\displaystyle\odv{\hat{T}}{s} = \kappa \hat{N}$, we substitute
+  \[%
+    \odv{\hat{B}}{s} = (\kappa \hat{N}) \times \hat{N} + \hat{T} \times \odv{\hat{N}}{s}
+  .\]%
+  The first term, $(\kappa \hat{N}) \times \hat{N} = 0$, because $\hat{N} \times
+  \hat{N} = 0$. Thus,
+  \[%
+    \odv{\hat{B}}{s} = \hat{T} \times \odv{\hat{N}}{s}
+  .\]%
+  To proceed, we note that $\displaystyle\odv{\hat{N}}{s}$ is in the direction
+  of $\hat{T}$ and $\hat{B}$ by the Frenet-Serret formulas. In fact,
+  $\displaystyle\odv{\hat{N}}{s} = -\kappa \hat{T} + \tau \hat{B}$, where $\tau$
+  is the torsion. Substituting, we get
+  \[%
+    \odv{\hat{B}}{s} = \hat{T} \times (-\kappa \hat{T} + \tau \hat{B}) = \tau (\hat{T} \times \hat{B})
+  .\]%
+  Since $\hat{T} \times \hat{B} = \hat{N}$, we have
+  \[%
+    \odv{\hat{B}}{s} = \tau \hat{N}
+  .\]%
+
+  We want to show that $\displaystyle\odv{\hat{B}}{s} \cdot \hat{B} = 0$.
+  Substituting from above,
+  \[%
+    \odv{\hat{B}}{s} = \tau \hat{N}
+  ,\]%
+  we get
+  \[%
+    \odv{\hat{B}}{s} \cdot \hat{B} = (\tau \hat{N}) \cdot \hat{B} = \tau (\hat{N} \cdot \hat{B})
+  .\]%
+  Since $\hat{N}$ and $\hat{B}$ are orthogonal unit vectors, $\hat{N} \cdot
+  \hat{B} = 0$. Therefore,
+  \[%
+    \odv{\hat{B}}{s} \cdot \hat{B} = 0
+  ,\]%
+  showing that $\displaystyle\odv{\hat{B}}{s}$ is orthogonal to $\hat{B}$.
+
+  We want to show that $\displaystyle\odv{\hat{B}}{s} \cdot \hat{T} = 0$. From
+  our previous result,
+  \[%
+    \odv{\hat{B}}{s} = \tau \hat{N}
+  .\]%
+  Thus,
+  \[%
+    \odv{\hat{B}}{s} \cdot \hat{T} = (\tau \hat{N}) \cdot \hat{T} = \tau (\hat{N} \cdot \hat{T})
+  .\]%
+  Since $\hat{N}$ and $\hat{T}$ are also orthogonal unit vectors, $\hat{N} \cdot
+  \hat{T} = 0$. Therefore,
+  \[%
+    \odv{\hat{B}}{s} \cdot \hat{T} = 0
+  ,\]%
+  showing that $\displaystyle\odv{\hat{B}}{s}$ is orthogonal to $\hat{T}$.
+
+  We have shown that $\displaystyle\odv{\hat{B}}{s}$ is orthogonal to both
+  $\hat{T}$ and $\hat{B}$. Since $\hat{T}$, $\hat{N}$, and $\hat{B}$ form an
+  orthonormal basis for the space around the curve,
+  $\displaystyle\odv{\hat{B}}{s}$ must be parallel to $\hat{N}$ (the only
+  remaining direction). Therefore, we can write
+  \[%
+    \odv{\hat{B}}{s} = -\tau \hat{N}
+  ,\]%
+  where $\tau$ is a scalar function called the torsion of the curve.
+
+  To compute the torsion, we can use the equation
+  \[%
+    \tau = -\odv{\hat{B}}{s} \cdot \hat{N}
+  .\]%
+  Since $\displaystyle\odv{\hat{B}}{s} = -\tau \hat{N}$, we have
+  \[%
+    \tau = -\odv{\hat{B}}{s} \cdot \hat{N}
+  ,\]%
+  which allows us to find the torsion by taking the dot product of
+  $\displaystyle\odv{\hat{B}}{s}$ with $\hat{N}$.
+\end{probsolution}

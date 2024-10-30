@@ -1,0 +1,283 @@
+\renewcommand\type{exercise}
+\setcounter{chapter}{2}
+\setcounter{section}{3}
+
+\begin{exercise}[5]
+  Let $(x_n)$ and $(y_n)$ be given, and define $(z_n)$ to be ``shuffled''
+  sequence $(x_1, y_1, x_2, y_2, x_3, y_3, \dots, x_n, y_n, \dots)$. Prove that
+  $(z_n)$ is convergent if and only if $(x_n)$ and $(y_n)$ are both convergent
+  with $\lim_{n \to \infty} x_n = \lim_{n \to \infty} y_n$.
+\end{exercise}
+
+\begin{exersolution}[5]
+  \begin{proof} $ $
+    \begin{enumerate}
+      \item \textbf{Forward Direction:} Suppose $(z_n)$ is convergent. Let
+        $\lim_{n \to \infty} z_n = L$ for some real number $L$.
+
+        The sequence $(z_n)$ is constructed by alternating elements from $(x_n)$
+        and $(y_n)$, so
+        \[%
+          (\forall n \in \N)[z_{2n-1} = x_n \land z_{2n} = y_n]
+        .\]%
+        Since $(z_n)$ converges to $L$, both subsequences $(z_{2n-1})$ and
+        $(z_{2n})$ must also converge to $L$ (by the property that every
+        subsequence of a convergent sequence converges to the same limit).
+
+        \begin{enumerate}
+          \item \textit{Convergence of $(x_n)$:} Since $z_{2n-1} = x_n$ for each
+            $n$, the sequence $(x_n)$ is the subsequence $(z_{2n-1})$. Thus,
+            $(x_n)$ converges to $L$.
+
+          \item \textit{Convergence of $(y_n)$:} Similarly, since $z_{2n} = y_n$
+            for each $n$, the sequence $(y_n)$ is the subsequence $(z_{2n})$.
+            Thus, $(y_n)$ also converges to $L$.
+        \end{enumerate}
+
+        Therefore, both $(x_n)$ and $(y_n)$ are convergent, and we have $\lim_{n
+        \to \infty} x_n = L = \lim_{n \to \infty} y_n$.
+
+      \item \textbf{Reverse Direction:} Suppose $(x_n)$ and $(y_n)$ are both
+        convergent with
+        \[%
+          \lim_{n \to \infty} x_n = L \aand \lim_{n \to \infty} y_n = L
+        .\]%
+        We need to show that $(z_n)$ converges to $L$.
+
+        For any $\epsilon > 0$, since $x_n \to L$ and $y_n \to L$, there exists
+        an integer $N$ such that for all $n \geq N$,
+        \[%
+          \lvert x_n - L \rvert < \epsilon \aand \lvert y_n - L \rvert < \epsilon
+        .\]%
+        In the sequence $(z_n)$, every $x_n$ and $y_n$ appears as an element,
+        specifically
+        \[%
+          z_{2n-1} = x_n \aand z_{2n} = y_n
+        .\]%
+        Thus, for all $m \geq 2N$, each term $z_m$ is either $x_n$ or $y_n$ for
+        some $n \geq N$. Therefore, for $m \geq 2N$,
+        \[%
+          \lvert z_m - L \rvert < \epsilon
+        .\]%
+        This shows that $z_n \to L$ as $n \to \infty$, so $(z_n)$ converges to
+        $L$.
+    \end{enumerate}
+
+    Therefore, we conclude that
+    \[%
+      \lim_{n \to \infty} z_n = L \iff \lim_{n \to \infty} x_n = L = \lim_{n \to \infty} y_n
+    .\qedhere\]%
+  \end{proof}
+\end{exersolution}
+
+\newpage
+
+\begin{exercise}[9]
+  \begin{enumerate}
+    \item Let $(a_n)$ be a bounded (not necessarily convergent) sequence, and
+      assume $\lim_{n \to \infty} b_n = 0$. Show that $\lim_{n \to \infty}
+      (a_nb_n) = 0$. Why are we not allowed to use the Algebraic Limit Theorem
+      to prove this?
+
+    \item Can we conclude anything about the convergence of $(a_nb_n)$ if we
+      assume that $(b_n)$ converges to some nonzero limit $b$?
+
+    \item Use (i) to prove Theorem 2.3.3, part (iii), for the case when $a = 0$.
+  \end{enumerate}
+\end{exercise}
+
+\begin{exersolution}[9]
+  \begin{enumerate}
+    \item \begin{proof}
+        Let $\epsilon > 0$ be arbitrary. Let $\lvert b_n \rvert <
+        \sfrac{\epsilon}{M}$. We can't use the ALT since $a_n$ might not
+        converge. However, since $a_n$ is bounded, we have
+        \[%
+          (\exists M \in \N)(\forall n \in \N)[\lvert a_nb_n \rvert \le M \lvert b_n \rvert < \epsilon]
+        .\qedhere\]%
+      \end{proof}
+
+    \item No, since all we know about $a_n$ is that it's bounded, not
+      necessarily convergent.
+
+    \item \begin{proof}
+        In part (i), we showed that if $(a_n)$ is bounded and $(b_n) \to 0$,
+        then $(a_nb_n) \to 0$. If $a = 0$, then $(a_n) \to 0$, so we can apply
+        the Algebraic Limit Theorem to conclude that $(a_nb_n) \to 0$.
+      \end{proof}
+  \end{enumerate}
+\end{exersolution}
+
+\newpage
+
+\begin{exercise}[10]
+  Consider the following list of conjectures. Provide a short proof for those
+  that are true and a counterexample for any that are false.
+  \begin{enumerate}
+    \item If $\lim_{n \to \infty} (a_n - b_n) = 0$, then $\lim_{n \to \infty}
+      a_n = \lim_{n \to \infty} b_n$.
+
+    \item If $(b_n) \to b$, then $\lvert b_n \rvert \to \lvert b \rvert$.
+
+    \item If $(a_n) \to a$ and $(b_n - a_n) \to 0$, then $(b_n) \to a$.
+
+    \item If $(a_n) \to 0$ and $\lvert b_n - b \rvert \le a_n$ for all $n \in
+      \N$, then $(b_n) \to b$.
+  \end{enumerate}
+\end{exercise}
+
+\begin{exersolution}[10]
+  \begin{enumerate}
+    \item False. Counterexample, let $a_n = n$ and $b_n = -n$.
+
+    \item True, since if $\lvert b_n - b \rvert < \epsilon$, then $\lvert \lvert
+      b_n \rvert - \lvert b \rvert \rvert \le \lvert b_n - b \rvert < \epsilon$.
+
+    \item True by ALT since $\lim_{n \to \infty} (b_n - a_n) + \lim_{n \to
+      \infty} a_n = \lim_{n \to \infty} b_n = a$.
+
+    \item True, since $0 \le \lvert b_n - b \rvert \le a_n$, we have $a_n \ge
+      0$. Let $\epsilon > 0$. Choose $N$ such that $(\forall n \ge N)[a_n <
+      \epsilon]$. Therefore, $\lvert b_n - b \rvert \le a_n < \epsilon$.
+  \end{enumerate}
+\end{exersolution}
+
+\newpage
+\setcounter{section}{4}
+
+\begin{exercise}[1]
+  \begin{enumerate}
+    \item Prove that the sequence defined by $x_1 = 3$ and
+      \[%
+        x_{n+1} = \frac{1}{4 - x_n}
+      \]%
+      converges.
+
+    \item Now that we know $\lim_{n \to \infty} x_n$ exists, explain why
+      $\lim_{n \to \infty} x_{n+1}$ must also exist and equal the same value.
+
+    \item Take the limit of each side of the recursive equation in part (i) to
+      explicitly compute $\lim_{n \to \infty} x_n$.
+  \end{enumerate}
+\end{exercise}
+
+\begin{exersolution}[1]
+  \begin{enumerate}
+    \item \begin{proof}
+        Let $L$ be the limit of the sequence, assuming it exists. If $x_n
+        \to L $ as $n \to \infty$, then $x_{n+1} \to L$ as well, and we
+        can take limits on both sides of the recurrence relation
+        \[%
+          L = \frac{1}{4 - L} \iff L(4 - L) = 1 \iff L^2 - 4L + 1 = 0 \implies x = 2 \pm \sqrt{3}
+        .\]%
+
+        Base Case: For $n = 1$, we have $x_1 = 3$, and indeed $2 - \sqrt{3}
+        \approx 0.27 < 3 < 2 + \sqrt{3} \approx 4.73$.
+
+        Inductive Step: Suppose $2 - \sqrt{3} < x_n < 2 + \sqrt{3}$ for some $ n
+        \geq 1$. Then
+        \[%
+          4 - (2 + \sqrt{3}) < 4 - x_n < 4 - (2 - \sqrt{3})
+        ,\]%
+        which simplifies to
+        \[%
+          2 - \sqrt{3} < 4 - x_n < 2 + \sqrt{3}
+        .\]%
+        Taking reciprocals, we get
+        \[%
+          \frac{1}{2 + \sqrt{3}} < \frac{1}{4 - x_n} < \frac{1}{2 - \sqrt{3}}
+        .\]%
+        Since $x_{n+1} = \frac{1}{4 - x_n}$, it follows that $2 - \sqrt{3} <
+        x_{n+1} < 2 + \sqrt{3}$.
+
+        By induction, $2 - \sqrt{3} < x_n < 2 + \sqrt{3}$ for all $n \geq 1$, so
+        the sequence is bounded.
+
+        Next, we analyze whether the sequence $(x_n)$ is increasing or
+        decreasing. Consider the difference $x_{n+1} - x_n$
+        \[%
+          x_{n+1} - x_n = \frac{1}{4 - x_n} - x_n
+        .\]%
+        Since the sequence is bounded and has only one possible limit within the
+        bounds (namely $2 - \sqrt{3}$), any accumulation point must be $2 -
+        \sqrt{3}$.
+      \end{proof}
+
+    \item Skipping a single term does not change the limit of the sequence.
+
+    \item Since $x = \lim_{n \to \infty} x_n = \lim_{n \to \infty} x_{n+1}$, we
+      get
+      \[%
+        x = \frac{1}{4 - x} \iff x^2 - 4x + 1 = 0 \iff (x - 2)^2 = 3 \iff x = 2 \pm \sqrt{3}
+      .\]%
+      Since $2 + \sqrt{3} > 3$ is impossible, we conclude $\lim_{n \to \infty}
+      x_n = 2 - \sqrt{3}$.
+  \end{enumerate}
+\end{exersolution}
+
+\newpage
+
+\begin{exercise}[2]
+  \begin{enumerate}
+    \item Consider the recursively defined sequence $y_1 = 1$,
+      \[%
+        y_{n+1} = 3 - y_n
+      ,\]%
+      and set $y = \lim_{n \to \infty} y_n$. Because $(y_n)$ and $(y_{n+1})$
+      have the same limit, taking the limit across the recursive equation gives
+      $y = 3 - y$. Solving for $y$, we conclude $\lim_{n \to \infty} y_n =
+      \sfrac{3}{2}$. What is wrong with this argument?
+
+    \item This time set $y_1 = 1$ and $y_{n+1} = 3 - \frac{1}{y_n}$. Can the
+      strategy in (i) be applied to compute the limit of this sequence.
+  \end{enumerate}
+\end{exercise}
+
+\begin{exersolution}[2]
+  \begin{enumerate}
+    \item The sequence $y_n = (1, 2, 1, 2, 1, \dots)$ is not convergent, so the
+      argument is invalid.
+
+    \item Yes, $y_n$ converges by the monotone convergence theorem, since
+      $(y_n)$ is bounded between $0 < y_n < 3$ and $y_n$ is increasing.
+  \end{enumerate}
+\end{exersolution}
+
+\newpage
+
+\begin{exercise}[6]
+  \begin{enumerate}
+    \item Explain why $\sqrt{xy} \le \frac{x + y}{2}$ for any two positive real
+      numbers $x$ and $y$. (The geometric mean is always less than the
+      arithmetic mean.)
+
+    \item Now let $0 \le x_1 \le y_1$ and define
+      \[%
+        x_{n+1} = \sqrt{x_ny_n} \aand y_{n+1} = \frac{x_n + y_n}{2}
+      .\]%
+      Show $\lim_{n \to \infty} x_n$ and $\lim_{n \to \infty} y_n$ both exist
+      and are equal.
+  \end{enumerate}
+\end{exercise}
+
+\begin{exersolution}[6]
+  \begin{enumerate}
+    \item \begin{proof}
+        Since $x, y > 0$, we have
+        \[%
+          \sqrt{xy} \le \frac{x + y}{2} \iff 2\sqrt{xy} \le x + y \iff 4xy \le x^2 + 2xy + y^2 \iff 0 \le (x - y)^2
+        .\]%
+        The last inequality is always true, so $\sqrt{xy} \le \sfrac{x + y}{2}$.
+      \end{proof}
+
+    \item \begin{proof}
+        The inequality $x_1 \le y_1$ is always true, since
+        \[%
+          \sqrt{x_ny_n} \le \frac{x_n + y_n}{2} \implies x_{n+1} \le y_{n+1}
+        .\]%
+        Also $x_n \le y_n$ implies $\frac{x_n + y_n}{2} = y_{n+1} \le y_n$.
+        Similarly, $\sqrt{x_ny_n} = x_{n+1} \ge x_n$. By MCT, both converge
+        since they are bounded and monotone.
+      \end{proof}
+  \end{enumerate}
+\end{exersolution}
