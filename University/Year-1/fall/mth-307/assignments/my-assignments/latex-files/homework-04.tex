@@ -1,0 +1,194 @@
+\begin{problem}
+  Identify each of the following statements as true or false. Where you can,
+  prove the statement by giving an example or disprove it by giving a
+  counterexample.
+  \begin{enumerate}
+    \item $(\exists x \in \Z_9)[x^2 \in \{5, 7\}]$.
+
+    \item $(\forall a \in \Z)[a^2 \equiv_{11} 16 \implies a \equiv_{11} 4]$.
+
+    \item $(\exists n \in \N)[\frac{1}{2}(n^2 + n) + 2~\textrm{is prime}]$.
+
+    \item $(\forall n \in \N)[\frac{1}{2}(n^2 + n) + 2~\textrm{is prime}]$.
+
+    \item $(\exists a, b \in \Z)[12a + 20b = 4]$.
+
+    \item $\{x \mid x \in \Z_8 \land 4 \cdot x = 0 \pmod{8}\} \cap \{4 \cdot x
+      \pmod{8} \mid x \in \Z_8\} = \emptyset$.
+
+    \item $(\forall n \in \N)[(n \equiv_2 1 \land n > 3) \implies 3 \mid n^2 -
+      1]$.
+
+    \item $(\forall a, b \in \Z)[12 \mid ab \implies (12 \mid a \lor 12 \mid
+      b)]$.
+  \end{enumerate}
+\end{problem}
+
+\begin{probsolution}
+  \begin{enumerate}
+    \item True. Example: $4^2 \equiv_9 7$ and $5^2 \equiv_9 7$.
+
+    \item False. Counterexample: $7^2 \equiv_{11} 49 \equiv_{11} 16$ since $7
+      \not\equiv_{11} 4$.
+
+    \item True. Example: $n = 1$ and $n = 2$.
+
+    \item False. Counterexample: $n = 4$.
+
+    \item True. Example: $a = 1$ and $b = -1$.
+
+    \item False. $\{0, 2\} \cap \{0, 4\} = \{0\} \ne \emptyset$.
+
+    \item True. For $n \equiv_2 1$ and $n > 3$, $n$ is an odd integer greater
+      than $3$. For any odd $n$, $n^2 - 1$ can be factored as $(n - 1)(n + 1)$.
+      Since $n$ is odd, both $n - 1$ and $n + 1$ are even. So one of them is
+      divisible by $3$. Thus $3 \mid n^2 - 1$, for all add $n > 3$.
+
+    \item False. Counterexample: $a = 6$ and $b = 4$.
+  \end{enumerate}
+\end{probsolution}
+
+\newpage
+
+\begin{problem}
+  Given a line proof that $(\forall n \in \N)[n^2 + (n + 1)^2 + (n + 2)^2
+  \equiv_3 2$.
+\end{problem}
+
+\begin{probsolution}
+  \begin{table}[H]
+    \begin{tabular}{lll}
+      1. & Assume $n \in \N$. & Dischargeable Hypothesis \\
+      2. & Then, $n^2 + (n + 1)^2 + (n + 2)^2 = 3(n^2 + 2n + 1) - 2$. \\
+      3. & $(\exists r \in \Z)[n^2 + (n + 1)^2 + (n + 2)^2 - 2 = 3r]$. & EI \\
+      4. & $3 \mid (n^2 + (n + 1)^2 + (n + 2)^2 - 2)$. \\
+      5. & $n^2 + (n + 1)^2 + (n + 2)^2 \equiv_3 2$. \\
+      6. & $n \in \N \implies n^2 + (n + 1)^2 + (n + 2)^2 \equiv_3 2$. & DT, discharge from 1 [(1) - (6) unusable] \\
+      7. & $(\forall n \in \N)[n^2 + (n + 1)^2 + (n + 2)^2 \equiv_3 2]$ & IU \\
+    \end{tabular}
+  \end{table}
+\end{probsolution}
+
+\newpage
+
+\begin{problem}
+  Decide if the following statement is true or false. If it is true, give a line
+  proof. If it is false, give a counterexample.
+  \[%
+    (\forall a, b, c \in \Z)[(a > 0 \land a \mid (b - 1) \land a \mid (c - 1)) \implies a \mid (bc - 1)]
+  .\]%
+\end{problem}
+
+\begin{probsolution}
+  \begin{table}[H]
+    \begin{tabular}{lll}
+      1. & Assume $a > 0$, $a \mid (b - 1)$, and $a \mid (c - 1)$. & Dischargeable Hypothesis \\
+      2. & Then, $b - 1 = ak$ and $c - 1 = aq$, for some $k, q \in \Z$. \\
+      3. & Then, $b = ak + 1$ and $c = aq + 1$. \\
+      4. & $bc = (ak + 1)(aq + 1) = a(akq + k + q) + 1$. \\
+      5. & $(\exists r \in \Z)[bc - 1 = ar]$. & EI \\
+      6. & $a \mid (bc - 1)$. \\
+      7. & $(a > 0 \land a \mid (b - 1) \land a \mid (c - 1)) \implies a \mid (bc - 1)$ & DT, discharge from 1 [(1) - (7) unusable] \\
+      8. & $(\forall a, b, c \in \Z)[(a > 0 \land a \mid (b - 1) \land a \mid (c - 1)) \implies a \mid (bc - 1)]$ & IU \\
+    \end{tabular}
+  \end{table}
+\end{probsolution}
+
+\newpage
+
+\begin{problem}
+  Here is an important property of prime numbers. If $p$ is prime, then
+  \[%
+    \textrm{Property (P):}\quad(\forall x, y \in \Z)[p \mid xy \implies (p \mid x \lor p \mid y)]
+  .\]%
+  Using this, fill in the blanks below to give a proof of the following theorem:
+
+  Theorem: $(\forall y \in \Z)[4y^2 \equiv_7 0 \implies y \equiv_7 0]$.
+\end{problem}
+
+\begin{probsolution}
+  \begin{table}[H]
+    \begin{tabular}{lll}
+      1. & Assume $\dots$. & Dischargeable Hypothesis \\
+    \end{tabular}
+  \end{table}
+\end{probsolution}
+
+\newpage
+
+\begin{problem}
+  Give a line proof that $(\forall n \in \N)[(3 \mid n \land n \equiv_5 3)
+  \implies n^2 + n \equiv_{15} 12]$.
+\end{problem}
+
+\begin{probsolution}
+  \begin{table}[H]
+    \begin{tabular}{lll}
+      1. & Assume $n \in \N$, $3 \mid n$, and $n \equiv_5 3$. \\
+      2. & $(\exists r \in \Z)[n^2 + n - 12 = 5r]$. & EI \\
+      3. & $5 \mid (n^2 + n - 12)$. \\
+      4. & $n = 5k + 3$, for some $k \in \Z$. \\
+      5. & $(5k + 3^{2} + (5k + 3) = 5(5k^2 + 7k) + 12$. \\
+      6. & $(\exists r \in \Z)[n^2 + n - 12 = 5r]$. & EI \\
+      7. & $3 \mid 5k + 3$. \\
+      8. & $(\exists l \in \Z)[5k + 3 = 3l]$. \\
+      9. & $5k = 3(l - 1)$. \\
+      10. & $(\exists m \in \Z)[5k = 3m]$. \\
+      11. & By Property P, we get $3 \mid 5$ or $3 \mid k$. \\
+      12. & Since $3 \nmid 5$, then $3 \mid k$. \\
+      13. & Then $n^2 + n - 12 = 5k(5k + 7)$. \\
+      14. & $(\exists n \in \Z)[k = 3n]$. \\
+      15. & $n^2 + n -12 = 3 \cdot (5n \cdot (5 \cdot 3n + 7))$. \\
+      16. & $3 \mid (n^2 + n - 12)$. \\
+      17. & $15 \mid (n^2 + n - 12)$. \\
+      18. & $n^2 + n \equiv_{15} 12$. \\
+      19. & $(3 \mid n \land n \equiv_5 3) \implies n^2 + n \equiv_{15} 12$. & DT, discharge from 1 [(1) - (19) unusable] \\
+      20. & $(\forall n \in \N)[(3 \mid n \land n \equiv_5 3) \implies n^2 + n \equiv_{15} 12]$ & IU \\
+    \end{tabular}
+  \end{table}
+\end{probsolution}
+
+\newpage
+
+\begin{problem}
+  A \textit{rational number} is a number of the form $\frac{a}{b}$ where $a, b
+  \in \Z$ and $b \ne 0$. As you learned in elementary school, a rational number
+  can always be written in the form where $\gcd(a, b) = 1$. Fill in the blanks
+  below to give a proof of the following theorem; feel free to insert extra
+  steps if you think it will help clarify the proof.
+
+  Theorem: $\sqrt{2}$ is not a rational number.
+\end{problem}
+
+\begin{probsolution}
+\end{probsolution}
+
+\newpage
+
+\begin{problem}
+  Give a line proof showing that $\sqrt{10}$ is not a rational number.
+\end{problem}
+
+\begin{probsolution}
+\end{probsolution}
+
+\newpage
+
+\begin{problem}
+  A $3 \times 3$ grid has $14$ squares in it:
+
+  There are $1 \times 1$ squares, $2 \times 2$ squares, and $3 \times 3$
+  squares, and if you count all the squares that you see in the above grid you
+  should get $14$.
+
+  Figure out how many squares there are in a $10 \times 10$ grid, and explain
+  your answer. Given a exact number, not just a formula for computing it.
+
+  Hints for doing this: Get a sense of the problem by tackling smaller version.
+  Try a $2 \times 2$ grid, you already did the $3 \times 3$ grid, maybe look at
+  $4 \times 4$ and $5 \times 5$ grids. Analyze these smaller problems and try to
+  find some underlying patterns.
+\end{problem}
+
+\begin{probsolution}
+\end{probsolution}
