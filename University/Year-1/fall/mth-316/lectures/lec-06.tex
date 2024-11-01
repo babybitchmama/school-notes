@@ -24,13 +24,18 @@ Given a function $f : \N \to \R$, $f(n)$ is just the $n$th term on the list.
 \end{example}
 
 \begin{definition}[Convergence of a Sequence]
-  A sequence $(a_n)$ \textit{converges} to a real number $a$ if, $(\forall
-  \epsilon > 0)(\exists N \in \N)(\forall n \ge N) \lvert a_n - a \rvert <
-  \epsilon$.
+  A sequence $(a_n)$ \textit{converges} to a real number $\ell$ if,
+  \[%
+    (\forall \epsilon > 0)(\exists N \in \N)(\forall n \ge N) \lvert a_n - \ell \rvert < \epsilon
+  .\]%
+  We say that $\ell$ is the limit of $(a_n)$.
 \end{definition}
 
-You may know this as $\lim_{n \to \infty} a_n = a$. This is a more formal
-definition of the limit of a sequence.
+One way to think of $(\exists N \in \N)(\forall n \ge N)$ as saying ``eventually
+always'', or as ``from some point on''. So, the definition means, if $a_n \to
+\ell$, then given any $\epsilon$, then eventually, everything in the sequence is
+within $\epsilon$ of $\ell$. You may know this as $\lim_{n \to \infty} a_n = a$.
+This is a more formal definition of the limit of a sequence.
 
 \begin{definition}
   Given a real number $a \in \R$ and an $\epsilon > 0$, the set
@@ -212,7 +217,7 @@ Here's a template for a proof of $(x_n) \to x$.
   Let $\epsilon > 0$ be arbitrarily chosen. Choose a natural number $N$
   satisfying
   \[%
-    N > \frac{1}{\epsilon^2}
+    N > \frac{1}{\epsilon^2}~\left(\textrm{say}~N = \max\left\{\left\lfloor \frac{1}{\epsilon^2} \right\rfloor + 1, 0\right\}~\right)
   .\]%
   We now verify that this choice of $N$ has the desired property. Let $n \ge N$.
   Then,
@@ -238,7 +243,7 @@ Here's a template for a proof of $(x_n) \to x$.
   .\]%
   Therefore, we can chose
   \[%
-    N = \frac{3}{25\epsilon} - \frac{4}{5}
+    N > \frac{3}{25\epsilon} - \frac{4}{5}~\left(\textrm{say}~N = \max\left\{\left\lfloor \frac{3}{25\epsilon} - \frac{4}{5} \right\rfloor + 1, 0\right\}~\right)
   .\]%
   Now, all that's left is to show that this $N$ works, and we're done.
 \end{worksheet}
@@ -246,7 +251,7 @@ Here's a template for a proof of $(x_n) \to x$.
 \begin{proof}
   Let $\epsilon > 0$ be arbitrarily chosen. Choose a natural number $N$ such
   \[%
-    N = \frac{3}{25\epsilon} - \frac{4}{5}
+    N > \frac{3}{25\epsilon} - \frac{4}{5}
   .\]%
   Assume $n > N > 0$. Then,
   \[%
@@ -263,7 +268,7 @@ Here's a template for a proof of $(x_n) \to x$.
   $\lvert a_n - a \rvert < \epsilon$ for all $n \ge N_1$. Same thing for $(b_n)
   \to b$. But how do we show that $a = b$?
 
-  Choose $N = \max(\{N_1, N_2\})$. We just let $N$ be the biggest of the two
+  Choose $N > \max(\{N_1, N_2\})$. We just let $N$ be the biggest of the two
   $N$'s from the two sequences. We can assume that $n > N$.
 
   And then just use the triangle inequality to show that $a = b$.

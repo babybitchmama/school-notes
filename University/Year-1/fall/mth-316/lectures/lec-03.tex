@@ -248,13 +248,11 @@ neither a maximum nor a minimum, since $a$ and $b$ aren't in the set.
 
 How do we actually show that $a$ is an upper bound for a set $A \subseteq \R$?
 We use the following
-\begin{nlemma}
-  \label{lem:proving_upper_bound}
-
+\begin{lemma}
   Assume $s \in \R$ is an upper bound for a set $A \subseteq \R$. Then, $s =
   \sup(A)$ if and only if, $(\forall \epsilon)(\exists a)[(\epsilon > 0 \land a
   \in A) \implies s - \epsilon < a]$.
-\end{nlemma}
+\end{lemma}
 
 \begin{proof} $ $
   \begin{enumerate}
@@ -271,8 +269,8 @@ We use the following
 \end{proof}
 
 \begin{question}
-  Define $A = \left\{1 - \frac{1}{n} \mid n \in \N\right\}$. Using lemma
-  \ref{lem:proving_upper_bound}, show that $\sup(A) = 1$.
+  Define $A = \left\{1 - \frac{1}{n} \mid n \in \N\right\}$. Using the lemma,
+  show that $\sup(A) = 1$.
 \end{question}
 
 \begin{proof}

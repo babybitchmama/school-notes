@@ -34,7 +34,7 @@ environments = {
   "con": "conclusion",
 }
 
-labelEnvironments = {
+namedEnvironments = {
   "ndef": "definition",
   "nthm": "theorem",
   "nexm": "example",
@@ -76,13 +76,11 @@ snippet "\b[a-z]+\b" "Custom Environments" rAbm
 \end{`!p snip.rv = environments[match[0]]`}
 endsnippet
 
-context "match[0] in labelEnvironments"
+context "match[0] in namedEnvironments"
 snippet "\b[a-z]+\b" "Custom Environments" rAbm
-\begin{`!p snip.rv = labelEnvironments[match[0]]`}[$1]
-	\label{`!p snip.rv = match[0][1:]`:${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:_:\L$1$2$3\E)/ga}}}
-
+\begin{`!p snip.rv = namedEnvironments[match[0]]`}[$1]
 	$3
-\end{`!p snip.rv = labelEnvironments[match[0]]`}
+\end{`!p snip.rv = namedEnvironments[match[0]]`}
 endsnippet
 
 context "text()"
