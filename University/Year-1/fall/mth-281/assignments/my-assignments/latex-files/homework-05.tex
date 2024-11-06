@@ -1,0 +1,88 @@
+\begin{problem}
+  A ball with mass $0.8$ kg is thrown southward into the air with a speed of
+  $20$ m/s at an angle of $30^{\circ}$ to the ground. A southwest
+  (S$45^{\circ}$W) wind applies a steady force of $2$ N to the ball. Where does
+  the ball land relative to where it was thrown and with what speed?
+\end{problem}
+
+\begin{probsolution}
+\end{probsolution}
+
+\newpage
+
+\begin{problem}
+  Given the position vector $\r(t) = \langle t, 2e^t, e^{2t} \rangle$, find the
+  curvature, velocity, speed, and the tangential and normal components of the
+  acceleration vector.
+\end{problem}
+
+\begin{probsolution}
+  Velocity is just the first derivative of the position vector
+  \[%
+    \v(t) = \odv{\r}{t} = \langle 1, 2e^t, 2e^{2t} \rangle
+  .\]%
+  The speed is the magnitude of the velocity vector
+  \[%
+    s(t) = \lvert \v(t) \rvert = \sqrt{1 + 4e^{2t} + 4e^{4t}}
+  .\]%
+  Acceleration is the second derivative of the position vector, or the first
+  derivative of the velocity vector
+  \[%
+    \a(t) = \odv{\v}{t} = \odv[order={2}]{\r}{t} = \langle 0, 2e^t, 4e^{2t} \rangle
+  .\]%
+  We can find the curvature using the following formula
+  \[%
+    \kappa = \frac{\lvert \v(t) \times \a(t) \rvert}{\lvert \v(t) \rvert^3}
+  .\]%
+  The cross product of $\v(t)$ and $\a(t)$ is
+  \[%
+    \v(t) \times \a(t) = \begin{vmatrix}
+      \ui & \uj & \uk \\
+      1 & 2e^t & 2e^{2t} \\
+      0 & 2e^t & 4e^{2t} \\
+    \end{vmatrix} = \langle 4e^{3t}, -4e^{2t}, 2e^t \rangle
+  .\]%
+  The magnitude of their cross product is
+  \[%
+    \lvert \v(t) \times \a(t) \rvert = \sqrt{(4e^{3t})^2 + (-4e^{2t})^2 + (2e^{2t})^2} = 2\sqrt{4e^{6t} + 5e^{4t}}
+  .\]%
+  We already know that $\lvert \v(t) \rvert = s(t)$. So, using that, we get the
+  curvature of the position vector as
+  \[%
+    \kappa = \frac{2\sqrt{4e^{6t} + 5e^{4t}}}{\left(1 + 4e^{2t} + 4e^{4t}\right)^{\sfrac{3}{2}}}
+  .\]%
+
+  The tangential and normal components of the acceleration vector are given as
+  follows
+  \begin{alignat*}{3}
+    a_{T}(t) &= \frac{(1)(0) + (2e^{t})(2e^{t}) + (2e^{2t})(4e^{2t})}{\sqrt{1 + 4e^{2t} + 4e^{4t}}} &&= \frac{4(e^{2t} + 2e^{4t})}{1 + 2e^{2t}} \\
+    a_{N}(t) &= \frac{2e^t \sqrt{4e^{3t} + 4e^{2t} + 1}}{\sqrt{1 + 4e^{2t} + 4e^{4t}}} &&= \frac{2e^t \sqrt{4e^{3t} + 4e^{2t} + 1}}{1+ 2e^{2t}}
+  .\end{alignat*}
+\end{probsolution}
+
+\newpage
+
+\begin{problem}
+  Find and sketch the domain of the functions
+  \begin{enumerate}
+    \item $f(x, y) = \sqrt{y + 2x - 3} \ln(x - y^2)$.
+    \item $f(x, y) = \arccos(x^2 + y^2 - 8)$.
+    \item $f(x, y, z) = \sqrt{36 - 4x^2 - y^2 - 9z^2}$.
+  \end{enumerate}
+\end{problem}
+
+\begin{probsolution}
+\end{probsolution}
+
+\newpage
+
+\begin{problem}
+  Describe and draw several level curves for the functions
+  \begin{enumerate}
+    \item $f(x, y) = xy$.
+    \item $f(x, y) = \ln(y) - x$.
+  \end{enumerate}
+\end{problem}
+
+\begin{probsolution}
+\end{probsolution}
