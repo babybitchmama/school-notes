@@ -1,0 +1,301 @@
+\renewcommand\type{exercise}
+\setcounter{chapter}{2}
+\setcounter{section}{4}
+
+\begin{exercise}[7]
+  Let $(a_n)$ be a bounded sequence.
+  \begin{enumerate}
+    \item Prove that the sequence defined by $y_n = \sup(\{a_k \mid k \ge n\})$
+      converges.
+
+    \item The \textit{limit superior} of $(a_n)$, or $\lim_{n \to \infty}
+      \sup(a_n)$, is defined by
+      \[%
+        \lim_{n \to \infty} \sup(a_n) = \lim_{n \to \infty} y_n
+      ,\]%
+      where $y_n$ is the sequence from part (i) of this exercise. Provide a
+      reasonable definition for $\lim_{n \to \infty} \inf(a_n)$ and briefly
+      explain why it always exists for any bounded sequence.
+
+    \item Prove that $\lim_{n \to \infty} \inf(a_n) \le \lim_{n \to \infty}
+      \sup(a_n)$ for every bounded sequence and give an example of a sequence
+      for which the inequality is strict.
+
+    \item Show that $\lim_{n \to \infty} \inf(a_n) = \lim_{n \to \infty}
+      \sup(a_n)$ if and only if $\lim_{n \to \infty} a_n$ exists. In this case,
+      all three share the same value.
+  \end{enumerate}
+\end{exercise}
+
+\begin{exersolution}[7]
+  \begin{enumerate}
+    \item \begin{proof}
+        Notice that as $n$ increases, the set $\{a_k \mid k \ge n\}$ becomes
+        smaller or stays the same. Thus,
+        \[%
+          \left\{a_k \mid k \ge n + 1\right\} \subseteq \left\{a_k \mid k \ge n\right\}
+        .\]%
+        Because the supremum of a subset cannot exceed the supremum of the
+        larger set containing it, we have
+        \[%
+          y_{n+1} = \sup\left(\left\{a_k \mid k \ge n + 1\right\}\right) \le \sup\left(\left\{a_k \mid k \ge n\right\}\right) = y_n
+        .\]%
+        Therefore, $(y_n)$ is a decreasing sequence. Since $(a_n)$ is bounded,
+        then there exists an $M$ such that $\lvert a_n \rvert \le M$, for all $n
+        \in \N$. This implies that $y_n \le M$, for all $n \in \N$. Thus,
+        $(y_n)$ is a decreasing sequence bounded below by $M$. By the Monotone
+        Convergence Theorem, $(y_n)$ converges.
+      \end{proof}
+
+    \item The \textit{limit inferior} of $(a_n)$, or $\lim_{n \to \infty}
+      \inf(a_n)$, is defined by
+      \[%
+        \lim_{n \to \infty} \inf(a_n) = \lim_{n \to \infty} x_n
+      ,\]%
+      where $x_n = \inf(\{a_k \mid k \ge n\})$. The limit inferior always exists
+      for any bounded sequence because $(x_n)$ is an increasing sequence bounded
+      above by $M$, where $M$ is the upper bound of $(a_n)$.
+
+    \item \begin{proof}
+        Assume $\lim_{n \to \infty} \sup(a_n) = \lim_{n \to \infty} y_n$, where
+        $y_n = \sup\left(\left\{a_k \mid k \ge n\right\}\right)$ and $\lim_{n
+        \to \infty} \inf(a_n) = \lim_{n \to \infty} z_n$, where $z_n =
+        \inf\left(\left\{a_k \mid k \ge n\right\}\right)$. Since $y_n$ is the
+        least upper bound for the set $\{a_k \mid k \ge n\}$ and $z_n$ is the
+        greatest lower bound for the set $\{a_k \mid k \ge n\}$, then
+        \[%
+          z_n \le y_n\quad\textrm{for all~}n \in \N
+        .\]%
+        Taking the limit of both sides, we get
+        \[%
+          \lim_{n \to \infty} z_n \le \lim_{n \to \infty} y_n
+        .\]%
+        Thus, we get
+        \[%
+          \lim_{n \to \infty} \inf(a_n) \le \lim_{n \to \infty} \sup(a_n)
+        .\qedhere\]%
+      \end{proof}
+
+      Consider the sequence $(a_n) = (-1)^n + \sfrac{1}{n}$ as $n \to \infty$.
+      \begin{enumerate}
+        \item For an even $n$, $a_n = 1 + \sfrac{1}{n}$.
+        \item For an odd $n$, $a_n = -1 + \sfrac{1}{n}$.
+      \end{enumerate}
+      For $\lim_{n \to \infty} \sup(a_n)$, for large $n$ the supremum of the
+      terms $\{a_k \mid k \ge n\}$ will be close to $1$. For $\lim_{n \to
+      \infty} \inf(a_n)$, for large $n$ the infimum of the terms $\{a_k \mid k
+      \ge n\}$ will be close to $-1$. Thus, $\lim_{n \to \infty} \inf(a_n) <
+      \lim_{n \to \infty} \sup(a_n)$.
+
+    \item \begin{proof}
+        Assume $\lim_{n \to \infty} a_n = a$ exists. Then, for any $\epsilon >
+        0$, there exists $N \in \N$ such that for all $n \ge N$, $\lvert a_n - a
+        \rvert < \epsilon$. This implies that for sufficiently large $n$, all
+        terms in the set $\{a_k \mid k \ge n\}$ are within $\epsilon$ of $a$, so
+        both $y_n = \sup(\{a_k \mid k \ge n\})$ and $z_n = \inf(\{a_k \mid k \ge
+        n\})$ are within $\epsilon$ of $a$. Thus, $y_n \to a$ and $z_n \to a$ as
+        $n \to \infty$. Therefore, $\lim_{n \to \infty} \inf(a_n) = \lim_{n \to
+        \infty} a_n = \lim_{n \to \infty} \sup(a_n)$.
+
+        Assume $\lim_{n \to \infty} \inf(a_n) = a = \lim_{n \to \infty}
+        \sup(a_n)$. Then, for any $\epsilon > 0$, there exists $N \in \N$ such
+        that for all $n \ge N$, $\lvert y_n - a \rvert < \epsilon$ and $\lvert
+        z_n - a \rvert < \epsilon$. Since $z_n \le a \le y_n$, then for all $n
+        \ge N$, it follows that $a_n$ is squeezed within $\epsilon$ of $a$. By
+        Squeeze Theorem, $\lim_{n \to \infty} a_n = a$.
+
+        Therefore, $\lim_{n \to \infty} \inf(a_n) = \lim_{n \to \infty} a_n =
+        \lim_{n \to \infty} \sup(a_n)$ if and only if $\lim_{n \to \infty} a_n$
+        exists.
+      \end{proof}
+  \end{enumerate}
+\end{exersolution}
+
+\newpage
+
+\setcounter{section}{5}
+
+\begin{exercise}[1]
+  Give an example of each of the following, or argue that such a request is
+  impossible.
+  \begin{enumerate}
+    \item A sequence that has a subsequence that is bounded but contains no
+      subsequence that converges.
+
+    \item A sequence that does not contain $0$ or $1$ as a term but contains
+      subsequences converging to each of these values.
+
+    \item A sequence that contains subsequences converging to every point in the
+      infinite set $\{1, \sfrac{1}{2}, \sfrac{1}{3}, \sfrac{1}{4}, \dots\}$.
+
+    \item A sequence that contains subsequences converging to every point in the
+      infinite set $\{1, \sfrac{1}{2}, \sfrac{1}{3}, \sfrac{1}{4}, \dots\}$, and
+      no subsequences converging to points outside of this set.
+  \end{enumerate}
+\end{exercise}
+
+\begin{exersolution}[1]
+  \begin{enumerate}
+    \item Impossible, as by the Bolzano-Weierstrass theorem, a convergent
+      subsequence of that subsequence exists, and that sub-subsequence is also a
+      subsequence of the original sequence.
+
+    \item Consider the sequence $(2 + \sfrac{1}{n}) \to 2$. The subsequences $(1
+      + \sfrac{1}{n}) \to 1$ and $(\sfrac{1}{n}) \to 0$ converge to $1$ and $0$
+      respectfully and the original sequence does not contain $0$ or $1$.
+
+    \item We can construct $(a_n)$ by defining it as follows
+      \begin{enumerate}
+        \item For each $k \in \N$, repeat the terms $1$, $\frac{1}{2}$,
+          $\frac{1}{3}$, $\dots$, $\frac{1}{k}$ in that order.
+
+        \item For example, start with $1$, $\frac{1}{2}$, $1$, $\frac{1}{3}$,
+          $1$, $\frac{1}{2}$, $\frac{1}{4}$, $\dots$ and continue so that every
+          $\frac{1}{k}$ appears infinitely many times.
+      \end{enumerate}
+
+      Each point $\frac{1}{k}$ in the set $\{1, \frac{1}{2}, \frac{1}{3},
+      \dots\}$ has an associated subsequence of $(a_n)$  consisting entirely of
+      terms equal to $\frac{1}{k}$, which converges to $\frac{1}{k}$ itself. For
+      example,
+      \begin{enumerate}
+        \item The subsequence $(a_{n_j})$ with $a_{n_j} = 1$ for all $j$
+          converges to $1$.
+
+        \item The subsequence $(a_{n_j}) = \frac{1}{2}$ for all $j$ converges to
+          $\frac{1}{2}$.
+
+        \item Similarly, there are subsequences converging to $\frac{1}{3}$,
+          $\frac{1}{4}$, and so on.
+      \end{enumerate}
+
+    \item Impossible, the sequence must converge to zero which is not in the
+      set.
+      \begin{proof}
+        Let $\epsilon > 0$. Choose $N$ large enough that $\sfrac{1}{n} <
+        \sfrac{\epsilon}{2}$ for all $n \ge N$. We can find a subsequence $(b_k)
+        \to \sfrac{1}{n}$, meaning $\lvert b_k - \sfrac{1}{n} \rvert <
+        \sfrac{\epsilon}{2}$ for some $k \in \N$. Using the Triangle Inequality,
+        we get $\lvert b_k - 0 \rvert \le \lvert b_n - \sfrac{1}{n} \rvert +
+        \lvert \sfrac{1}{n} + 0 \rvert < \sfrac{\epsilon}{2} +
+        \sfrac{\epsilon}{2} = \epsilon$.
+      \end{proof}
+  \end{enumerate}
+\end{exersolution}
+
+\newpage
+
+\begin{exercise}[3]
+  \begin{enumerate}
+    \item Prove that if an infinite series converges, then the associative
+      property holds. Assume $a_1 + a_2 + a_3 + a_4 + a_5 + \cdots$ converges to
+      a limit $L$ (i.e., the sequence of partial sums $(s_n) \to L$). Show that
+      any regrouping of the terms
+      \[%
+        (a_1 + a_2 + \cdots + a_{n_1}) + (a_{n_1 + 1} + \cdots + a_{n_2}) + (a_{n_2 + 1} + \cdots + a_{n_3}) + \cdots
+      \]%
+      leads to a series that also converges to $L$.
+
+    \item Compare this result to the example discussed at the end of Section 2.1
+      where infinite addition was shown not to be associate. Why doesn't our
+      proof in (i) apply to this example?
+  \end{enumerate}
+\end{exercise}
+
+\begin{exersolution}[3]
+  \begin{enumerate}
+    \item \begin{proof}
+        Let $s_n$ be the original grouping of the terms and converge to $L$. Let
+        $s_n'$ be a subsequence of $s_n$ that has a different grouping of
+        addition. By Theorem 2.5.2, since $s_n$, the original sequence,
+        converges, then $s_n'$, the subsequence, also converges to $L$.
+      \end{proof}
+
+    \item The example discussed at the end of Section 2.1 where infinite
+      addition was shown not to be associative was the series $1 - 1 + 1 - 1 +
+      \cdots$. The proof in (i) does not apply to this example because the
+      series does not converge. The series $1 - 1 + 1 - 1 + \cdots$ does not
+      converge because the sequence of partial sums oscillates between $0$ and
+      $1$.
+  \end{enumerate}
+\end{exersolution}
+
+\newpage
+
+\setcounter{section}{6}
+
+\begin{exercise}[2]
+  Give an example of each of the following, or argue that such a request is
+  impossible.
+  \begin{enumerate}
+    \item A Cauchy sequence that is not monotone.
+    \item A Cauchy sequence with an unbounded subsequence.
+    \item A divergent monotone sequence with a Cauchy subsequence.
+    \item An unbounded sequence containing a subsequence that is Cauchy.
+  \end{enumerate}
+\end{exercise}
+
+\begin{exersolution}[2]
+  \begin{enumerate}
+    \item By Theorem 2.6.2, a converging sequence is also Cauchy. Therefore, the
+      following sequence $x_n = \frac{(-1)^n}{n}$ is Cauchy.
+
+    \item Impossible, since all Cauchy sequences converge, meaning they are
+      bounded.
+
+    \item Impossible, if a subsequence was Cauchy, it would converge implying it
+      would be bounded. But this would also imply that the original sequence
+      would be bounded since the subsequence is a monotone sequence. That would
+      imply that the original sequence is monotone and bounded, meaning it would
+      converge.
+
+    \item The sequence $a_n = (2, \sfrac{1}{2}, 3, \sfrac{1}{3}, \dots)$ has the
+      subsequence $(\sfrac{1}{2}, \sfrac{1}{3}, \dots)$ which is Cauchy.
+  \end{enumerate}
+\end{exersolution}
+
+\newpage
+
+\begin{exercise}[3]
+  If $(x_n)$ and $(y_n)$ are Cauchy sequences, then one easy way to prove that
+  $(x_n + y_n)$ is Cauchy is to use the Cauchy Criterion. By Theorem 2.6.4,
+  $(x_n)$ and $(y_n)$ must be convergent, and the Algebraic Limit Theorem then
+  implies $(x_n + y_n)$ is convergent and hence Cauchy.
+  \begin{enumerate}
+    \item Give a direct argument that $(x_n + y_n)$ is a Cauchy sequence that
+      does not use the Cauchy Criterion or the Algebraic Limit Theorem.
+
+    \item Do the same for the product $(x_ny_n)$.
+  \end{enumerate}
+\end{exercise}
+
+\begin{exersolution}[3]
+  \begin{enumerate}
+    \item \begin{proof}
+        Let $\epsilon > 0$. Since $(x_n)$ converges, then $(\exists N_1 \in
+        \N)(\forall n \ge N_1)[\lvert x_n - x \rvert < \sfrac{\epsilon}{2}]$.
+        Same thing for $(y_n)$, $(\exists N_2 \in \N)(\forall n \ge N_2)[\lvert
+        y_n - y \rvert < \sfrac{\epsilon}{2}]$. Choose $N = \max(\{N_1, N_2\})$.
+        Then, for all $n \ge N$, we have $\lvert (x_n + y_n) - (x - y) \rvert
+        \le \lvert x_n - x \rvert + \lvert y_n - y \rvert < \sfrac{\epsilon}{2}
+        + \sfrac{\epsilon}{2} = \epsilon$. Therefore, $(x_n + y_n)$ converges,
+        meaning it's a Cauchy sequence.
+      \end{proof}
+
+    \item \begin{proof}
+        Let $\epsilon > 0$. Since $(x_n)$ converges, then $(\exists N_1 \in
+        \N)(\forall n \ge N_1)[\lvert x_n - x \rvert < \sfrac{\epsilon}{2M_1}]$.
+        Same thing for $(y_n)$, $(\exists N_2 \in \N)(\forall n \ge N_2)[\lvert
+        y_n - y \rvert < \sfrac{\epsilon}{2M_2}]$. Choose $N = \max(\{N_1,
+        N_2\})$. Bound $\lvert x_n \rvert \le M_1$ and $\lvert y_n \rvert \le
+        M_2$, for all $n \in \N$. Then, for all $n \ge N$, we have
+        \begin{align*}
+          \lvert (x_ny_n) - (xy) \rvert &= \lvert (x_ny_n) - (y_nx) + (y_nx) - (xy) \rvert \\
+                                        &\le \lvert x_ny_n - y_nx \rvert + \lvert y_nx - xy \rvert \\
+                                        &\le M_1 \cdot \lvert x_n - x \rvert + M_2 \cdot \lvert y_n - x \rvert \\
+                                        &< M_1 \cdot \frac{\epsilon}{2M_1} + M_2 \cdot \frac{\epsilon}{2M_2}  = \epsilon
+        .\end{align*}
+        Therefore, $(x_ny_n)$ converges, meaning it's a Cauchy sequence.
+      \end{proof}
+  \end{enumerate}
+\end{exersolution}

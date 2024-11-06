@@ -6,6 +6,67 @@
 \end{problem}
 
 \begin{probsolution}
+  The initial velocity vector $\v_0$ can be broken down into horizontal and
+  vertical components
+  \begin{alignat*}{6}
+    v_{0_x} &= v_0\cos(\theta) &&= 20\cos(30^{\circ}) &&= 20 \times \frac{\sqrt{3}}{2} &&= 10 \sqrt{3} &&\approx 17.32~\textrm{m/s} \\
+    v_{0_y} &= v_0\sin(\theta) &&= 20\sin(30^{\circ}) &&= 20 \times \frac{1}{2} && &&= 10~\textrm{m/s}
+  .\end{alignat*}
+  So, the horizontal component of the velocity is $10\sqrt{3}$ m/s and the
+  vertical component is $10$ m/s.
+
+  The wind force is directed southwest, or $45^{\circ}$ west of south. Decompose
+  this force into its $x-y$ components
+  \begin{alignat*}{5}
+    W_x &= W\cos(45^{\circ}) &&= 2 \cdot \frac{\sqrt{2}}{2} &&= \sqrt{2} &&\approx 1.141~\textrm{N} \\
+    W_y &= W\sin(45^{\circ}) &&= 2 \cdot \frac{\sqrt{2}}{2} &&= \sqrt{2} &&\approx 1.141~\textrm{N}
+  .\end{alignat*}
+
+  Using $F = ma$, the acceleration components due to the wind are
+  \begin{alignat*}{4}
+    a_x &= \frac{W_x}{m} &&= \frac{1.141}{0.8} &&\approx 1.43~\textrm{m/s$^2$} \\
+    a_y &= \frac{W_y}{m} &&= \frac{1.141}{0.8} &&\approx 1.43~\textrm{m/s$^2$}
+  .\end{alignat*}
+
+  For the vertical direction, we have the initial upward velocity $v_{0_y} = 10$
+  m/s and the acceleration is downward due to gravity
+  \[%
+    a_{\textrm{vertical}} = -g = -9.8~\textrm{m/s$^2$}
+  .\]%
+  The time $T$ of flight can be found by setting the vertical displacement to
+  zero (since it returns to the same height from which it was launched)
+  \[%
+    y(t) = v_{0_y} t + \frac{1}{2}(-g)t^2 = 0 \implies t = \frac{10}{4.9} \approx 2.04~\textrm{s}
+  .\]%
+  Therefore, the total flight time is around $2.04$ seconds.
+
+  The horizontal displacement has two components -- one due to the initial
+  southward velocity and one due to the wind’s effect. The southward
+  displacement is given by
+  \[%
+    d_{s} = v_{0_x}T + \frac{1}{2}a_yT^2 \approx 39
+  .\]%
+  The westward displacement is due to the wind’s westward force
+  \[%
+    d_{w} = \frac{1}{2}a_xT^2 = \frac{1}{2} \times 1.43 \times 2.04^2 \approx 2.98
+  .\]%
+
+  The ball lands approximately 40 meters south and 3 meters west of where it
+  was thrown. The resultant displacement $D$ from the starting point is
+  \[%
+    D = \sqrt{40^2 + 2.98^2} \approx 40.11~\textrm{m}
+  .\]%
+
+  The final speed can be found by considering the horizontal and vertical
+  velocity components at $t = T$
+  \begin{alignat*}{5}
+    v_x &= v_{0_x} + a_yT &&= 17.32 + (1.43)(2.04) &&\approx 20.24~\textrm{m/s} \\
+    v_y &= v_{0_y} - gT &&= 10 - (9.8)(2.04) &&\approx -10~\textrm{m/s}
+  .\end{alignat*}
+  Therefore, the final speed is
+  \[%
+    v = \sqrt{v_x^2 + v_y^2} = \sqrt{(20.24)^2 + (-10)^2} = \sqrt{509.6576} \approx 22.58
+  .\]%
 \end{probsolution}
 
 \newpage
@@ -72,6 +133,23 @@
 \end{problem}
 
 \begin{probsolution}
+  \begin{enumerate}
+    \item For the square root to be defined, $y + 2x - 3 \ge 0 \implies y \ge 3
+      - 2x$. For the natural logarithm to be defined, $x - y^2 > 0 \implies x >
+      y^2$. So, the domain of the function is $D = \left\{ (x, y) \in \R^2 \mid
+      y \ge 3 - 2x \land x > y^2 \right\}$.
+
+    \item The function arccos is defined between the interval $[-1, 1]$, meaning
+      the original function is only defined when $-1 \le x^2 - y^2 - 8 \le 1$.
+      For the upper bound, we have $x^2 + y^2 \le 9$ and for the lower bound, we
+      have $x^2 + y^2 \ge 7$. So, the domain of the function is $D = \left\{(x,
+      y) \in \R^2 \mid 7 \le x^2 + y^2 \le 9\right\}$.
+
+    \item The function is defined when $36 - 4x^2 - y^2 - 9z^2 \ge 0$. This
+      gives us $4x^2 + y^2 + 9z^2 \le 36$, which is an ellipsoid in 3D space.
+      So, the domain of the function is $\displaystyle D = \left\{(x, y, z) \in
+      \R^3 \mid \frac{x^2}{9} + \frac{y^2}{36} + \frac{z^2}{4} \le 1\right\}$.
+  \end{enumerate}
 \end{probsolution}
 
 \newpage
