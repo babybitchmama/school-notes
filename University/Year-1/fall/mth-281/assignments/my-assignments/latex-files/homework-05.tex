@@ -41,14 +41,14 @@
   Therefore, the total flight time is around $2.04$ seconds.
 
   The horizontal displacement has two components -- one due to the initial
-  southward velocity and one due to the wind’s effect. The southward
+  southward velocity and one due to the wind's effect. The southward
   displacement is given by
   \[%
-    d_{s} = v_{0_x}T + \frac{1}{2}a_yT^2 \approx 39
+    d_s = v_{0_x}T + \frac{1}{2}a_yT^2 \approx 39
   .\]%
-  The westward displacement is due to the wind’s westward force
+  The westward displacement is due to the wind's westward force
   \[%
-    d_{w} = \frac{1}{2}a_xT^2 = \frac{1}{2} \times 1.43 \times 2.04^2 \approx 2.98
+    d_w = \frac{1}{2}a_xT^2 = \frac{1}{2} \times 1.43 \times 2.04^2 \approx 2.98
   .\]%
 
   The ball lands approximately 40 meters south and 3 meters west of where it
@@ -139,16 +139,73 @@
       y^2$. So, the domain of the function is $D = \left\{ (x, y) \in \R^2 \mid
       y \ge 3 - 2x \land x > y^2 \right\}$.
 
+      \begin{figure}[H]
+        \centering
+
+        \begin{tikzpicture}
+          \begin{axis}[
+            xmin=-1, xmax=20,
+            grid=none,
+            ]
+            \addplot[domain=1:2.25, samples=100]{3 - 2*x};
+            \addplot[name path=A, domain=1:16, samples=100]{sqrt(x)};
+            \addplot[name path=B, domain=2.25:16, samples=100]{-sqrt(x)};
+
+            \addplot [
+              thick,
+              fill=gray,
+              fill opacity=0.5,
+            ]
+            fill between[
+              of=A and B,
+              soft clip={domain=1:16},
+            ];
+          \end{axis}
+        \end{tikzpicture}
+      \end{figure}
+
     \item The function arccos is defined between the interval $[-1, 1]$, meaning
       the original function is only defined when $-1 \le x^2 - y^2 - 8 \le 1$.
       For the upper bound, we have $x^2 + y^2 \le 9$ and for the lower bound, we
       have $x^2 + y^2 \ge 7$. So, the domain of the function is $D = \left\{(x,
       y) \in \R^2 \mid 7 \le x^2 + y^2 \le 9\right\}$.
 
+      \begin{figure}[H]
+        \centering
+
+        \begin{tikzpicture}
+          \begin{axis}[
+            xmin=-4, xmax=4,
+            ymin=-4, ymax=4,
+            grid=none,
+            ]
+            \draw[name path=A] (0, 0) circle (3);
+            \draw[name path=B] (0, 0) circle (2.64575131);
+
+            \addplot [
+              thick,
+              fill=gray,
+              fill opacity=0.5,
+            ]
+            fill between[
+              of=A and B,
+            ];
+          \end{axis}
+        \end{tikzpicture}
+      \end{figure}
+
     \item The function is defined when $36 - 4x^2 - y^2 - 9z^2 \ge 0$. This
       gives us $4x^2 + y^2 + 9z^2 \le 36$, which is an ellipsoid in 3D space.
-      So, the domain of the function is $\displaystyle D = \left\{(x, y, z) \in
-      \R^3 \mid \frac{x^2}{9} + \frac{y^2}{36} + \frac{z^2}{4} \le 1\right\}$.
+      This means that the function is defined on the surface of the ellipsoid
+      along with all the points inside it. So, the domain of the function is
+      $\displaystyle D = \left\{(x, y, z) \in \R^3 \mid \frac{x^2}{9} +
+      \frac{y^2}{36} + \frac{z^2}{4} \le 1\right\}$.
+
+      \begin{figure}[H]
+        \centering
+
+        \includegraphics[width=0.5\textwidth]{./image-files/homework-05/problem-3-c.png}
+      \end{figure}
   \end{enumerate}
 \end{probsolution}
 
@@ -163,4 +220,37 @@
 \end{problem}
 
 \begin{probsolution}
+  \begin{enumerate}
+    \item When $k = 0$, the level curve is along the $x$-axis and $y$-axis.
+
+      For $k > 0$, we get hyperbolas in the first and third quadrants, curving
+      away from the origin.
+
+      For $k < 0$, the hyperbolas lie in the second and fourth quadrants.
+
+      As $\lvert k \rvert$ increases, the hyperbolas get farther and farther
+      from the origin.
+
+      \begin{figure}[H]
+        \centering
+
+        \includegraphics[width=0.5\textwidth]{./image-files/homework-05/problem-4-a.png}
+      \end{figure}
+
+    \item For $k = 0$, the curve $y = e^x$ represents a standard exponential
+      growth function.
+
+      For $k > 0$, the exponential curves shift upwards, increasing the
+      $y$-values for each $x$.
+
+      For $k < 0$, the curves shift downwards.
+
+      As $\lvert k \rvert$ increases, the curves shift higher and higher.
+
+      \begin{figure}[H]
+        \centering
+
+        \includegraphics[width=0.5\textwidth]{./image-files/homework-05/problem-4-b.png}
+      \end{figure}
+  \end{enumerate}
 \end{probsolution}
