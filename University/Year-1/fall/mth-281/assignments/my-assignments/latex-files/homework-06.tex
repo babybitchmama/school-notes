@@ -1,0 +1,155 @@
+\begin{problem}
+  Find the limit, if it exists. If continuity is used, explain where the function is continuous. If the limit doesn't exist, show why not.
+  \begin{enumerate}
+    \item $\displaystyle\lim_{(x,y) \to (1,0)} \ln\left(\frac{1 - xy}{x^2 +
+      y^2}\right)$.
+
+    \item $\displaystyle\lim_{(x,y) \to (1,1)} \frac{x^2 - y^2}{x^4 - y^4}$.
+
+    \item $\displaystyle\lim_{(x,y) \to (0,0)} \frac{y\sin(x)}{x^2 + y^2}$.
+
+    \item $\displaystyle\lim_{(x,y) \to (0,0)} \frac{y^2\sin(x)}{x^2 + y^2}$.
+  \end{enumerate}
+\end{problem}
+
+\begin{probsolution}
+  \begin{enumerate}
+    \item Plugging in the coordinate $(1, 0)$, we get
+      \[%
+        \lim_{(x,y) \to (1,0)} \ln\left(\frac{1 - xy}{x^2 + y^2}\right) = \ln\left(\frac{1 - 1 \cdot 0}{1^2 + 0^2}\right) = \ln(1) = 0
+      .\]%
+      The function is continuous for all $(x, y) \ne (0, 0)$.
+
+    \item Simplifying the equation, we get
+      \[%
+        \frac{x^2 - y^2}{x^4 - y^4} = \frac{1}{x^2 + y^2}
+      .\]%
+      Plugging in the coordinate $(1, 1)$, we get
+      \[%
+        \lim_{(x,y) \to (1,1)} \frac{x^2 - y^2}{x^4 - y^4} = \frac{1}{1^2 + 1^2} = \frac{1}{2}
+      .\]%
+      The simplified function is continuous for all $(x, y) \ne (0, 0)$.
+
+    \item Trying two paths, we get
+      \begin{alignat*}{10}
+        &\textrm{Path 1:}~y &&= 0 \implies f(x, 0) &&= \frac{0\sin(x)}{x^2 + 0^2} &&= 0 &&\implies \lim_{x \to 0} f(x, 0) &&= 0 \\
+        &\textrm{Path 2:}~y &&= x \implies f(x, x) &&= \frac{x\sin(x)}{2x^2} &&= \frac{\sin(x)}{2x} &&\implies \lim_{x \to 0} f(x, x) &&= \frac{1}{2}
+      .\end{alignat*}
+      Since the limit is different for different paths, the limit does not
+      exist.
+
+    \item 
+  \end{enumerate}
+\end{probsolution}
+
+\newpage
+
+\begin{problem}
+  The intersection of the ellipsoid $4x^2 + y^2 + 2z^2 = 10$ and the plane $x =
+  1$ is an ellipse. Find the tangent line to the ellipse at the point $(1, 2,
+  -1)$.
+\end{problem}
+
+\begin{probsolution}
+  The intersection of the ellipsoid and the plane is the ellipse
+  \[%
+    4(1) + y^2 + 2z^2 = 10 \implies y^2 + 2z^2 = 6
+  .\]%
+  The gradient of the ellipse is
+  \[%
+    \nabla f = \left\langle \pdv{f}{x}, \pdv{f}{y}, \pdv{f}{z} \right\rangle = \left\langle 8, 2y, 4z \right\rangle
+  .\]%
+  At the point $(1, 2, -1)$, the gradient is
+  \[%
+    \nabla f(1, 2, -1) = \left\langle 8, 4, -4 \right\rangle
+  .\]%
+  This vector is normal to the ellipsoid at the point $(1, 2, -1)$.
+\end{probsolution}
+
+\newpage
+
+\begin{problem}
+  Use implicit differentiation to compute the partial derivatives $\displaystyle\pdv{z}{x}$ and $\displaystyle\pdv{z}{y}$, $x^2z^3 = \cos(x - y^2z)$
+\end{problem}
+
+\begin{probsolution}
+  For $\displaystyle\pdv{z}{x}$, we have
+  \begin{alignat*}{3}
+    \phantom{\implies}\quad&\pdv{}{x} \left(x^2z^3\right) &&= \pdv{}{x} \left(\cos(x - y^2z)\right) \\
+    \implies\quad&\pdv{}{x} \left(x^2z^3\right) &&= (-\sin(x - y^2z)) \cdot \left(1 - y^2\pdv{z}{x}\right) \\
+    \implies\quad&2xz^3 + 3x^2z^2\pdv{z}{x} &&= -\sin(x - y^2z) + y^2\sin(x - y^2z)\pdv{z}{x} \\
+    \implies\quad&\pdv{z}{x} \left(3x^2z^2 - y^2\sin(x - y^2z)\right) &&= -\sin(x - y^2z) - 2xz^3 \\
+    \implies\quad&\pdv{z}{x} &&= \frac{-\sin(x - y^2z) - 2xz^3}{3x^2z^2 - y^2\sin(x - y^2z)}
+  .\end{alignat*}
+
+  \noindent For $\displaystyle\pdv{z}{y}$, we have
+  \begin{alignat*}{3}
+    \phantom{\implies}\quad&\pdv{}{y} \left(x^2z^3\right) &&= \pdv{}{y} \left(\cos(x - y^2z)\right) \\
+    \implies\quad&3x^3z^2\pdv{z}{y} &&= \left(-\sin(x - y^2z)\right) \cdot \left(-2yz - y^2\pdv{z}{y}\right) \\
+    \implies\quad&3x^3z^2\pdv{z}{y} &&= 2yz\sin(x - y^2z) + y^2\sin(x - y^2)\pdv{z}{y} \\
+    \implies\quad&\pdv{z}{y} \left(3x^3z^2 - y^2\sin(x - y^2z)\right) &&= 2yz\sin(x - y^2z) \\
+    \implies\quad&\pdv{z}{y} &&= \frac{2yz\sin(x - y^2z)}{3x^3z^2 - y^2\sin(x - y^2z)}
+  .\end{alignat*}
+\end{probsolution}
+
+\newpage
+
+\begin{problem}
+  Let $\displaystyle f(x, y) = \frac{\sqrt{x^2 - 5y}}{3y - 2x}$.
+  \begin{enumerate}
+    \item Find the tangent plane to the surface at the point $(4, 3, 1)$.
+    \item Find the linearization of $f(x, y)$ at $(4, 3)$.
+    \item Use $L(x, y)$ to approximate $f(4.03, 2.98)$.
+  \end{enumerate}
+\end{problem}
+
+\begin{probsolution}
+  \begin{enumerate}
+    \item We know $(x_0, y_0) = (4, 3)$ and $z_0 = f(4, 3) = 1$. Then, by
+      Wolfram, we get
+      \begin{align*}
+        f_x(x, y) &= \frac{y(3x - 10)}{\sqrt{x^2 - 5y} \cdot (3y - 2x)^2} \\
+        f_y(x, y) &= \frac{-6x^2 + 10x + 15y}{2\sqrt{x^2 - 5y} \cdot (3y - 2x)^2}
+      .\end{align*}
+      Substituting $(4, 3)$ into $f_x(x, y)$ and $f_y(x, y)$, we get $f_x(4, 3)
+      = 6$ and $f_y(4, 3) = -\sfrac{11}{2}$. Now, we can write the equation of
+      the tangent plane
+      \[%
+        z = 1 + 6(x - 4) - \frac{11}{2}(y - 3) \implies z = 6x - \frac{11}{2}y - \frac{13}{2}
+      .\]%
+
+    \item The linearization of $f(x, y)$ at $(4, 3)$ is
+      \[%
+        L(x, y) = 6x - \frac{11}{2}y - \frac{13}{2}
+      .\]%
+
+    \item Now we use the linearization to approximate $f(4.03, 2.98)$
+      \[%
+        L(4.03, 2.98) = 6(4.03) - \frac{11}{2}(2.98) - \frac{13}{2} = 1.29
+      .\]%
+  \end{enumerate}
+\end{probsolution}
+
+\newpage
+
+\begin{problem}
+  Let $f(x, y) = x^2\ln(2x - 3y)$. Find the first and second Taylor polynomials for $f$ near the point $(2, 1)$.
+\end{problem}
+
+\begin{probsolution}
+  Finding the partial derivatives, we get
+  \begin{gather*}
+    f_x(x, y) = 2x\left(\frac{x}{2x - 3y} + \ln(2x - 3y)\right) \aand f_y(x, y) = -\frac{3x^2}{2x - 3y} \\
+    f_{xx}(x, y) = 2\left(\frac{6x(x - 2y)}{(2x - 3y)^2} + \ln(2x - 3y)\right), \quad f_{xy} = -\frac{6x(x - 3y)}{(2x - 3y)^2}, \aand f_{yy} = -\frac{9x^2}{(2x - 3y)^2}
+  .\end{gather*}
+  and the points are
+  \[%
+    f(2, 1) = 0, \quad f_x(2, 1) = 8, \quad f_y(2, 1) = -12, \quad f_{xx}(2, 1) = 0, \quad f_{xy}(2, 1) = 12, \aand f_{yy}(2, 1) = -36
+  .\]%
+
+  So, the first and second-order Taylor polynomials near $(2, 1)$ are
+  \begin{align*}
+    T_1(x, y) &= 8(x - 2) - 12(y - 1) \\
+    T_2(x, y) &= 8(x - 2) - 12(y - 1) + 12(x - 2)(y - 1) - 18(x - 2)^2
+  .\end{align*}
+\end{probsolution}
