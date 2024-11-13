@@ -12,4 +12,151 @@ every term in the sequence $(x_n)$.
   Every convergent sequence is bounded.
 \end{theorem}
 
+\begin{worksheet}
+  Given $(a_n)$, we need to show that if $\lim_{n \to \infty} a_n = a$, then
+  $(a_n)$ is bounded. Using the definition of a limit, $(\forall \epsilon >
+  0)(\exists N \in \N)(\forall n > N)[\lvert a_n - a \rvert < \epsilon]$.
+  Expanding the inequality using \ref{eq:triangle_inequality}, we get
+  \[%
+    \lvert a_n \rvert = \lvert a_n - a + a \rvert \le \lvert a_n + a \rvert - \lvert a \rvert < \epsilon + \lvert a \rvert
+  .\]%
+  We then can let $M$ be the biggest number in the set $\{\lvert a_1 \rvert,
+  \lvert a_2 \rvert, \cdots, \lvert a_n \rvert, \lvert a \rvert + \epsilon\}$.
+  Then, that means that every term in the sequence $(a_n)$ is less than or equal
+  to $M$, so $(a_n)$ is bounded.
+\end{worksheet}
+
+\begin{proof}
+  For $\epsilon > 1$, there exists an $N \in \N$ such that for all $n > N$,
+  $\lvert a_n - a \rvert < \epsilon$. Then, by the triangle inequality, we have
+  \[%
+    \lvert a_n \rvert = \lvert a_n - a + a \rvert \le \lvert a_n - a \rvert + \lvert a \rvert < \epsilon + \lvert a \rvert
+  .\]%
+  We let $M = \max(\{\lvert a_1 \rvert, \lvert a_2 \rvert, \cdots, \lvert a_n
+  \rvert, \lvert a \rvert + \epsilon \})$. Then, $(\forall n \in \N)[\lvert a_n
+  \rvert \le M]$, implying that $(a_n)$ is bounded.
+\end{proof}
+
+\section{Arithmetics of Limits}
+\label{sec:arithmetics_of_limits}
+
+\begin{theorem}[Algebraic Limit Theorem]
+  Let $\lim_{n \to \infty} a_n = a$, and $\lim_{n \to \infty} b_n = b$. Then,
+  \begin{enumerate}
+    \item $\lim_{n \to \infty} (ca_n) = ca$, for all $c \in \R$.
+
+    \item $\lim_{n \to \infty} (a_n + b_n) = a + b$.
+
+    \item $\lim_{n \to \infty} (a_nb_n) = ab$.
+
+    \item $\lim_{n \to \infty} \frac{a_n}{b_n} = \frac{a}{b}$, provided that $b
+      \ne 0$.
+  \end{enumerate}
+\end{theorem}
+
+\begin{worksheet} $ $
+  \begin{enumerate}
+    \item 
+
+    \item 
+
+    \item 
+
+    \item 
+  \end{enumerate}
+\end{worksheet}
+
+\begin{proof} $ $
+  \begin{enumerate}
+    \item Let $\epsilon > 0$. Then, there exists an $N \in \N$ such that for all
+      $n > N$, $\lvert a_n - a \rvert < \frac{\epsilon}{\lvert c \rvert}$. Then,
+      we have
+      \[%
+        \lvert ca_n - ca \rvert = \lvert c \rvert \cdot \lvert a_n - a \rvert < \lvert c \rvert \cdot \frac{\epsilon}{\lvert c \rvert} = \epsilon
+      .\]%
+
+    \item Let $\epsilon > 0$. Then, there exists an $N \in \N$ such that for all
+      $n > N$, $\lvert a_n - a \rvert < \frac{\epsilon}{2}$ and $\lvert b_n - b
+      \rvert < \frac{\epsilon}{2}$. Then, we have
+      \[%
+        \lvert (a_n + b_n) - (a + b) \rvert = \lvert (a_n - a) + (b_n - b) \rvert \le \lvert a_n - a \rvert + \lvert b_n - b \rvert < \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon
+      .\]%
+
+    \item Let $\epsilon > 0$. Observe the fact that
+      \begin{align*}
+        \lvert a_nb_n - ab \rvert &= \lvert a_nb_n - ab_n + ab_n - ab \rvert \\
+                                  &\le \lvert a_nb_n - ab_n \rvert + \lvert ab_n - ab \rvert \\
+                                  &= \lvert b_n \rvert \cdot \lvert a_n - a \rvert + \lvert a \rvert \cdot \lvert b_n - b \rvert
+      .\end{align*}
+      Since $(b_n)$ converges, that means it's bounded by some $M > 0$. Then, we
+      have
+      \[%
+        \lvert b_n \rvert \cdot \lvert a_n - a \rvert + \lvert a \rvert \cdot \lvert b_n - b \rvert \le M \cdot \lvert a_n - a \rvert + \lvert a \rvert \cdot \lvert b_n - b \rvert
+      .\]%
+      Choose an $N_1$ and $N_2$ such that
+      \[%
+        (\forall n \ge N_1)\left[\lvert b_n - b \rvert < \frac{1}{\lvert a \rvert} \cdot \frac{\epsilon}{2}\right] \aand (\forall n \ge N_2)\left[\lvert a_n - a \rvert < \frac{1}{M} \cdot \frac{\epsilon}{2}\right]
+      .\]%
+      Pick $N = \max(\{N_1, N_2\})$. If $n \ge N$, then we get
+      \begin{align*}
+        \lvert a_nb_n - ab \rvert &< M \cdot \lvert a_n - a \rvert + \lvert a \rvert \cdot \lvert b_n - b \rvert \\
+                                  &< M \left(\frac{\epsilon}{2M}\right) + \lvert a \rvert \cdot \left(\frac{\epsilon}{2 \lvert a \rvert}\right) = \epsilon
+      .\end{align*}
+
+    \item Using part (iii), we only need to show that $\lim_{n \to \infty}
+      \frac{1}{b_n} = \frac{1}{b}$. Let $\epsilon > 0$. Observe the fact that
+      \[%
+        \left\lvert \frac{1}{b_n} - \frac{1}{b} \right\rvert = \frac{\lvert b - b_n \rvert}{\lvert b \rvert \cdot \lvert b_n \rvert}
+      .\]%
+      Choose $N_1$ and $N_2$ such that
+      \[%
+        (\forall n \ge N_1)\left[\lvert a_n - b \rvert < \frac{\lvert b \rvert}{2}\right] \aand (\forall n \ge N_2)\left[\lvert b_n - b \rvert < \frac{\epsilon \lvert b \rvert^2}{2}\right]
+      .\]%
+      Pick $N = \max(\{N_1, N_2\})$, then we get
+      \[%
+        \left\lvert \frac{1}{b_n} - \frac{1}{b} \right\rvert = \lvert b - b_n \rvert < \frac{\epsilon \lvert b \rvert^2}{2} \cdot \frac{1}{\lvert b \rvert \cdot \frac{\lvert b \rvert}{2}} = \epsilon
+      .\qedhere\]%
+  \end{enumerate}
+\end{proof}
+
+% section arithmetics_of_limits (end)
+
+\section{Order Limit Theorem}
+\label{sec:order_limit_theorem}
+
+\begin{theorem}[Order Limith Theorem]
+  Assume $\lim_{n \to \infty} a_n = a$ and $\lim_{n \to \infty} b_n = b$.
+  \begin{enumerate}
+    \item If $a_n \ge 0$ for all $n \in \N$, then $a \ge 0$.
+
+    \item If $a_n \le b_n$ for all $n \in \N$, then $a \le b$.
+
+    \item If there exists $c \in \R$ for which $c \le b_n$ for all $n \in \N$,
+      then $c \le b$. Similarly, if $a_n \le c$ for all $n \in \N$, then $a \le
+      c$.
+  \end{enumerate}
+\end{theorem}
+
+\begin{worksheet} $ $
+  \begin{enumerate}
+    \item 
+
+    \item 
+
+    \item 
+  \end{enumerate}
+\end{worksheet}
+
+\begin{proof} $ $
+  \begin{enumerate}
+    \item 
+
+    \item 
+
+    \item 
+  \end{enumerate}
+\end{proof}
+
+% section order_limit_theorem (end)
+
 \newpage
