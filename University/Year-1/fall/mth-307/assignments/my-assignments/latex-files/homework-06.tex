@@ -1,0 +1,558 @@
+\begin{problem}
+  In each case, use mathematical notation to write the negation of the given statement, in such a way that no quantifier is immediately preceded by a negation sign. For parts (i) - (iv) decide which is true: the given statement or its negation.
+  \begin{enumerate}
+    \item $(\forall x \in \R)(\exists y \in \R)[x + y = 0]$.
+
+    \item $(\exists x \in \R)(\forall y \in \R)[x + y = 0]$.
+
+    \item $(\exists x, y \in \R)[x^2 + y^2 = -1]$.
+
+    \item $(\forall x \in \R)[x > 0 \implies (\forall y, z \in \R)[(y > 0 \land z > 0 \land y^2 = x \land z^2 = x) \implies y = z]]$.
+
+    \item $(\forall \epsilon \in \R)[\epsilon > 0 \implies (\exists \delta \in \R)[0 < \delta \land (\forall x \in \R)[1 - \delta < x < 1 + \delta \implies \lvert f(x) - 5 \rvert < \epsilon]]]$.
+
+    \item $(\forall a, b \in \R)(a < b) \implies (\exists c \in \R)\left[a < c < b \land f'(c) = \frac{f(b) - f(a)}{b - a}\right]$.
+  \end{enumerate}
+
+  Part (vi) is a statement which is true for differentiable functions $f : \R
+  \to \R$, and it is a well-known theorem taught in every calculus class. What
+  is the common name of this theorem?
+\end{problem}
+
+\begin{probsolution}
+  \begin{enumerate}
+    \item The negated statement is $(\exists x \in \R)(\forall y \in \R)[x + y
+      \ne 0]$. The original statement is true, because for every real number
+      $x$, there is a real number $y = -x$ such that $x + y = 0$.
+
+    \item The negated statement is $(\forall x \in \R)(\exists y \in \R)[x + y
+      \ne 0]$. The negation is true because there is no real number $x$ such
+      that for every real number $y$, $x + y = 0$.
+
+    \item The negated statement is $(\forall x, y \in \R)[x^2 + y^2 \ne -1]$.
+      The negation is true because the sum of two squares is always
+      non-negative.
+
+    \item The negated statement is $(\exists x \in \R)[x > 0 \land (\exists y, z
+      \in \R)[(y > 0 \land z > 0 \land y^2 = x \land z^2 = x) \land y \neq z]]$.
+      The original statement is true. For $x > 0$, if $y^2 = x$ and $z^2 = x$,
+      then $y = z$ must hold when both $y$ and $z$ are positive.
+
+    \item The negated statement is $(\exists \epsilon \in \R)[\epsilon > 0 \land
+      (\forall \delta \in \R)[0 < \delta \implies (\exists x \in \R)[1 - \delta
+      < x < 1 + \delta \land \lvert f(x) - 5 \rvert \geq \epsilon]]]$. Whether
+      the original statement or its negation is true depends on the behavior of
+      the function $f(x)$ near $x = 1$. If $f(x)$ is continuous at $x = 1$ and
+      $f(1) = 5$, then the original statement is true.
+
+    \item The negated statement is $(\exists a, b \in \R)\left[a < b \land
+      (\forall c \in \R)\left[a < c < b \implies f'(c) \neq \frac{f(b) - f(a)}{b
+    - a}\right]\right]$. The original statement is true for differentiable
+    functions $f : \R \to \R$ and is known as the ``Mean Value Theorem''.
+  \end{enumerate}
+\end{probsolution}
+
+\newpage
+
+\begin{problem}
+  In each part below I give the definition for a mathematical concept we have
+  encountered, but using the shorthand notation in quantifiers. Fill in each box
+  with the appropriate mathematical term or phrase that best completes the
+  definition. In parts (ii)-(iv), $f : S \to T$ and $A \subseteq S$.
+  \begin{enumerate}
+    \item $\fbox{\parbox{2in}{\ \ \ \ \ \par \ \ }} \iff (\forall x \in A)[x \in
+      B]$.
+
+    \item $\fbox{\parbox{2in}{\ \ \ \ \ \par \ \ }} \iff (\forall a, b \in
+      S)[f(a) = f(b) \implies a = b]$.
+
+    \item $\fbox{\parbox{2in}{\ \ \ \ \ \par \ \ }} \iff (\forall t \in
+      T)(\exists s \in S)[f(s) = t]$.
+
+    \item $\fbox{\parbox{2in}{\ \ \ \ \ \par \ \ }} = \{z \mid (\exists v \in
+      A)[z = f(v)]\}$.
+  \end{enumerate}
+\end{problem}
+
+\begin{probsolution}
+  \begin{enumerate}
+    \item $A \subseteq B \iff (\forall x \in A)[x \in B]$.
+
+    \item The function $f$ is one-to-one $\iff (\forall a, b \in S)[f(a) = f(b)
+      \implies a = b]$.
+
+    \item The function $f$ is onto $\iff (\forall t \in T)(\exists s \in S)[f(s)
+      = t]$.
+
+    \item Image of $A$ under $f$, $f(A) = \{z \mid (\exists v \in A)[z =
+      f(v)]\}$.
+  \end{enumerate}
+\end{probsolution}
+
+\newpage
+
+\begin{problem}
+  Suppose $f : S \to T$ is one-to-one, $A \subseteq S$, and $B \subseteq S$.
+  Give a line proof showing that $f(A) \cap f(B) \subseteq f(A \cap B)$.
+\end{problem}
+
+\begin{probsolution}
+  \begin{tabular}{ll}
+    1. & Assume $z \in f(A) \cap f(B)$. \\
+    2. & Then $z \in f(A)$ and $z \in f(B)$. \\
+    3. & Then $f^{-1}(z) \in A$ and $f^{-1}(z) \in B$. \\
+    4. & So $f^{-1}(z) \in A \cap B$. \\
+    5. & Then $z = f(f^{-1}(z)) \in f(A \cap B)$. \\
+    6. & Therefore, $f(A) \cap f(B) \subseteq f(A \cap B)$.
+  \end{tabular}
+\end{probsolution}
+
+\newpage
+
+\begin{problem}
+  Give a line proof showing that if $A \cap B = \emptyset$ and $B \cup C = A
+  \cup D$ then $B \subseteq D$.
+\end{problem}
+
+\begin{probsolution}
+  \begin{tabular}{ll}
+    1. & Assume $x \in B$. \\
+    2. & Then, $x \notin A$ since $A$ and $B$ are disjoint. \\
+    3. & Then, since $B \cup C = A \cup D$, $x \in D$. \\
+    4. & Therefore, $B \subseteq D$. \\
+  \end{tabular}
+\end{probsolution}
+
+\newpage
+
+\begin{problem}
+  Let $f : S \to T$ and suppose $f$ is onto. Let $A \subseteq S$. Give a line
+  proof that $T - f(A) \subseteq f(S - A)$.
+\end{problem}
+
+\begin{probsolution}
+  \begin{tabular}{ll}
+    1. & Suppose $y \in T - f(A)$. \\
+    2. & Since $f$ is onto, there exists some $x \in S$ such that $f(x) = y$. \\
+    3. & Since $y \notin f(A)$, $x \notin A$. \\
+    4. & Then, $x \in S - A$. \\
+    5. & Therefore, $f(x) \in f(S - A)$, where $f(x) = y$. \\
+    6. & Therefore, $T - f(A) \subseteq f(S - A)$. \\
+  \end{tabular}
+\end{probsolution}
+
+\newpage
+
+\begin{problem}
+  Give a line proof showing $A \cap (X - B) = (A \cap X) - (A \cap B)$.
+\end{problem}
+
+\begin{probsolution}
+  \begin{tabular}{ll}
+    1. & Suppose $x \in A \cap (X - B)$. \\
+    2. & Then, $x \in A$ and $x \in X - B$. \\
+    3. & Since $x \in X - B$, then $x \in X$ and $x \notin B$. \\
+    4. & Then, $x \in A \cap X$ and $x \notin A \cap B$. \\
+    5. & Therefore, $x \in (A \cap X) - (A \cap B)$. \\
+    6. & Therefore, $A \cap (X - B) \subseteq (A \cap X) - (A \cap B)$. \\
+    7. & Suppose $x \in (A \cap X) - (A \cap B)$. \\
+    8. & Then, $x \in A \cap X$ and $x \notin A \cap B$. \\
+    9. & Since $x \in A \cap X$, then $x \in A$ and $x \in X$. \\
+    10. & Since $x \notin A \cap B$, then $x \notin B$, since $x \in A$ on the previous line. \\
+    11. & Then, $x \in A$ and $x \in X - B$. \\
+    12. & Therefore, $x \in A \cap (X - B)$. \\
+    13. & Therefore, $(A \cap X) - (A \cap B) \subseteq A \cap (X - B)$. \\
+    14. & Therefore, $A \cap (X - B) = (A \cap X) - (A \cap B)$. \\
+  \end{tabular}
+\end{probsolution}
+
+\newpage
+
+\begin{problem}
+  Let $f : \R \to \R$ be given by $f(x) = 2e^{-x} + 5$.
+  \begin{enumerate}
+    \item Prove that $f$ is one-to-one.
+
+    \item Is $f$ onto? Justify your answer.
+
+    \item Let $g : \R \to \R$ be given by $g(x) = 5x^3 + 41$. Prove that $g$ is
+      onto.
+  \end{enumerate}
+\end{problem}
+
+\begin{probsolution}
+  \begin{enumerate}
+    \item Let $a, b \in \R$ such that $f(a) = f(b)$. Then, $2e^{-a} + 5 =
+      2e^{-b} + 5$. This implies $e^{-a} = e^{-b}$, which implies $a = b$.
+      Therefore, $f$ is one-to-one.
+
+    \item Let $y \in \R$. Suppose $y = f(x) = 2e^{-x} + 5$. Then $e^{-x} =
+      \frac{y - 5}{2}$. The function $e^{-x}$ only takes positive values,
+      specifically $e^{-x} > 0$ for all $x \in \R$. This implies that
+      \[%
+        \frac{y - 5}{2} > 0 \implies y > 5
+      .\]%
+      Therefore, $f$ is not onto.
+
+    \item Let $y \in \R$. Suppose $y = g(x) = 5x^3 + 41$. Then,
+      \[%
+        x = \sqrt[3]{\frac{y - 41}{5}}
+      .\]%
+      Since the cube root function is defined for all real numbers, $g$ is onto.
+  \end{enumerate}
+\end{probsolution}
+
+\newpage
+
+\begin{problem}
+  Suppose $f : A \to B$ and $g : B \to C$.
+  \begin{enumerate}
+    \item If $f$ and $g$ are one-to-one, prove that $g \circ f$ is onto.
+    \item If $f$ and $g$ are both onto, prove that $g \circ f$ is onto.
+  \end{enumerate}
+\end{problem}
+
+\begin{probsolution}
+  \begin{enumerate}
+    \item \begin{proof}
+        Assume $f$ and $g$ are both one-to-one. Suppose $(g \circ f)(x_1) = (g
+        \circ f)(x_2)$. Then, using the definition of composition, we have
+        $g(f(x_1)) = g(f(x_2))$. Since $g$ is one-to-one, this implies $f(x_1) =
+        f(x_2)$. Since $f$ is one-to-one, this implies $x_1 = x_2$. Therefore,
+        $g \circ f$ is one-to-one.
+      \end{proof}
+
+    \item \begin{proof}
+        Assume $f$ and $g$ are both onto. Let $z \in C$. Since $g$ is onto, then
+        there exists some $y$ such that $g(y) = z$. Since $f$ is onto, then
+        there exists some $x$ such that $f(x) = y$. Therefore, $(g \circ f)(x) =
+        g(f(x)) = g(y) = z$. Therefore, $g \circ f$ is onto.
+      \end{proof}
+  \end{enumerate}
+\end{probsolution}
+
+\newpage
+
+\begin{problem}
+  Suppose $f : \R \to \R$ has the property that $(\forall x, y \in\ R)[x < y
+  \implies f(x) < f(y)]$.
+  \begin{enumerate}
+    \item Prove that $f$ is one-to-one.
+
+    \item Give an example of a function $f$ satisfying the given property but
+      which is not onto.
+  \end{enumerate}
+\end{problem}
+
+\begin{probsolution}
+  \begin{enumerate}
+    \item \begin{proof}
+        Assume $f(x_1) = f(x_2)$, for some $x_1, x_2 \in \R$. By the trichotomy
+        property of real numbers, we know that $x_1 < x_2$, $x_1 = x_2$, or $x_1
+        > x_2$. If $x_1 < x_2$, then by the property of $f$, $f(x_1) < f(x_2)$.
+        This contradicts our assumption that $f(x_1) = f(x_2)$. If $x_1 > x_2$,
+        then by the property of $f$, $f(x_1) > f(x_2)$. This also contradicts
+        our assumption that $f(x_1) = f(x_2)$. Therefore, $x_1 = x_2$.
+        Therefore, $f$ is one-to-one.
+      \end{proof}
+
+    \item The function $\displaystyle f(x) = \frac{x}{x - 1}$, which holds the
+      property that if $x_1 < x_2$, for some $x_1, x_2 \in \R$, then $f(x_1) <
+      f(x_2)$. But $f(x)$ is not onto, since there doesn't exist any $x \in \R$
+      such that $f(x) = 1$.
+  \end{enumerate}
+\end{probsolution}
+
+\newpage
+
+\begin{problem}
+  \begin{enumerate}
+    \item If $f : \Z \to \Z$ is given by $f(x) = x^2 - 1$ and $g : \Z \to \Z$ is
+      given by $g(x) = 3x + 2$, determine $(g \circ f)(0)$ and $(g \circ f)(2)$.
+      Determine an algebraic formula for $(g \circ f)(x)$ for any integer $x$.
+
+    \item Suppose that $f : S \to T$ and $g : T \to U$. If $A \subseteq S$, give
+      a line proof that $(g \circ f)(A) = g(f(A))$.
+  \end{enumerate}
+\end{problem}
+
+\begin{probsolution}
+  \begin{enumerate}
+    \item The composition $(g \circ f)(x)$ is given by
+      \[%
+        (g \circ f)(x) = g(f(x)) = g(x^2 - 1) = 3(x^2 - 1) + 2 = 3x^2 - 1
+      .\]%
+      Therefore, $(g \circ f)(0) = -1$ and $(g \circ f)(2) = 11$.
+
+    \item Here's the line proof for $(g \circ f)(A) = g(f(A))$.
+
+      \hspace*{-0.5em}\begin{tabular}{ll}
+        1. & By definition, $(g \circ f)(A) = \{(g \circ f) \mid a \in A\}$. \\
+        2. & Then, $(\forall a \in A)[(g \circ f)(a) = g(f(a)]$. \\
+        3. & Thus, $(g \circ f)(A) = \{g(f(a)) \mid a \in A\}$. \\
+        4. & By definition, $g(f(A)) = \{g(f(a)) \mid a \in A\}$. \\
+        5. & Therefore, $g(f(A)) = \{g(t) \mid t \in f(A)\} = \{g(f(a)) \mid a \in A\}$. \\
+        6. & Therefore, $(g \circ f)(A) = g(f(A))$. \\
+      \end{tabular}
+  \end{enumerate}
+\end{probsolution}
+
+\newpage
+
+\begin{problem}
+  Consider the function $f : \Z_7 \to \Z_7$ given by $f(x) = x^3 + 1$. Answer
+  the following questions
+  \begin{enumerate}
+    \item Is $f$ is one-to-one? Explain why or why not.
+
+    \item Is $f$ onto? Explain why or why not.
+
+    \item Determine $f(S)$, where $S = \{0, 2, 4, 6\}$.
+
+    \item What is $f^{-1}(\{0\})$.
+
+    \item If $A = \{1, 2, 3, 4\}$ and $B = \{0, 4, 5, 6\}$, determine
+      $f^{-1}(A)$ and $f^{-1}(B)$. Also, determine $f^{-1}(A \cap B)$.
+  \end{enumerate}
+\end{problem}
+
+\begin{probsolution}
+  \begin{enumerate}
+    \item To check if $f$ is one-to-one, we must create a table of values to see
+      if any two distinct elements in the domain map to the same element in the
+      codomain. The table is shown below.
+
+      \begin{tabular}{c|ccccccc}
+        $x$ & $0$ & $1$ & $2$ & $3$ & $4$ & $5$ & $6$ \\
+        $f(x)$ & $1$ & $2$ & $2$ & $0$ & $2$ & $0$ & $1$ \\
+      \end{tabular}
+
+      Since $f(3) = f(5) = 0$, $f(0) = f(6) = 1$, and $f(1) = f(2) = f(4) = 2$,
+      $f$ is not one-to-one.
+
+    \item To check if $f$ is onto, we must check if every element in the
+      codomain is mapped to by some element in the domain. The table of values
+      shows that $f$ is not onto, since $f$ does not map $3$, $4$, $5$, or $6$
+      to any element in the codomain.
+
+    \item The set $f(S)$ is given by $\{f(0), f(2), f(4), f(6)\} = \{1, 2, 2,
+      1\} = \{0, 1, 2\}$.
+
+    \item The set $f^{-1}(\{0\})$ is given by $\{x \in \Z_7 \mid f(x) = 0\} =
+      \{3, 5\}$.
+
+    \item The set $f^{-1}(A) = \{f(1), f(2), f(3), f(4)\} = \{2, 2, 0, 4\} =
+      \{0, 2, 4\}$ and $f^{-1}(B) = \{f(0), f(4), f(5), f(6)\} = \{1, 2, 0,
+      1\}$. The set $f^{-1}(A \cap B) = \{f(4)\} = \{2\}$.
+  \end{enumerate}
+\end{probsolution}
+
+\newpage
+
+\begin{problem}
+  Suppose $f : S \to T$, $A \subseteq S$, and $B \subseteq T$. Give a line proof
+  for each of the following
+  \begin{enumerate}
+    \item $f(A) \subseteq B \implies A \subseteq f^{-1}(B)$.
+    \item $f(A) \cap B = \emptyset \implies A \subseteq - f^{-1}(B)$.
+  \end{enumerate}
+\end{problem}
+
+\begin{probsolution}
+  \begin{enumerate}
+    \item Here's the line proof for $f(A) \subseteq B \implies A \subseteq
+      f^{-1}(B)$.
+
+      \hspace*{-0.5em}\begin{tabular}{ll}
+        1. & Suppose $x \in A$. \\
+        2. & Then, $f(x) \in f(A)$. \\
+        3. & Since $f(A) \subseteq B$, then $f(x) \in B$. \\
+        4. & Then, $x \in f^{-1}(B)$. \\
+        5. & Then, $A \subseteq f^{-1}(B)$. \\
+        6. & Therefore, $f(A) \subseteq B \implies A \subseteq f^{-1}(B)$. \\
+      \end{tabular}
+
+    \item Here's the line proof for $f(A) \cap B = \emptyset \implies A \subseteq
+      - f^{-1}(B)$.
+
+      \hspace*{-0.5em}\begin{tabular}{ll}
+        1. & Suppose $x \in A$. \\
+        2. & Then, $f(x) \in f(A)$. \\
+        3. & Then, $f(x) \notin B$. \\
+        4. & Then, $x \notin f^{-1}(B)$. \\
+        5. & Then, $A \subseteq - f^{-1}(B)$. \\
+        6. & Therefore, $f(A) \cap B = \emptyset \implies A \subseteq - f^{-1}(B)$. \\
+      \end{tabular}
+  \end{enumerate}
+\end{probsolution}
+
+\newpage
+
+\begin{problem}
+  Suppose $f : S \to T$, $A \subseteq T$, $B \subseteq T$, and $C \subseteq S$.
+  Give a line proof of each of the following
+  \begin{enumerate}
+    \item $f^{-1}(A \cap B) = f^{-1}(A) \cap f^{-1}(B)$.
+    \item $f^{-1}(A \cup B) = f^{-1}(A) \cup f^{-1}(B)$.
+    \item $f(f^{-1}(A)) \subseteq A$.
+    \item $C \subseteq f^{-1}(f(c))$.
+    \item If $f$ is onto, then $f(f^{-1}(A)) = A$.
+    \item If $f$ is one-to-one, then $C = f^{-1}(f(C))$.
+  \end{enumerate}
+\end{problem}
+
+\begin{probsolution}
+  \begin{enumerate}
+    \item Here's the line proof for $f^{-1}(A \cap B) = f^{-1}(A) \cap
+      f^{-1}(B)$.
+
+      \hspace*{-0.5em}\begin{tabular}{ll}
+        1. & Suppose $x \in f^{-1}(A \cap B)$. \\
+        2. & Then, $f(x) \in A \cap B$. \\
+        3. & Then, $f(x) \in A$ and $f(x) \in B$. \\
+        4. & Then, $x \in f^{-1}(A)$ and $x \in f^{-1}(B)$. \\
+        5. & Therefore, $x \in f^{-1}(A) \cap f^{-1}(B)$. \\
+        6. & Therefore, $f^{-1}(A \cap B) \subseteq f^{-1}(A) \cap f^{-1}(B)$. \\
+        7. & Suppose $x \in f^{-1}(A) \cap f^{-1}(B)$. \\
+        8. & Then, $x \in f^{-1}(A)$ and $x \in f^{-1}(B)$. \\
+        9. & Then, $f(x) \in A$ and $f(x) \in B$. \\
+        10. & Then, $f(x) \in A \cap B$. \\
+        11. & Therefore, $x \in f^{-1}(A \cap B)$. \\
+        12. & Therefore, $f^{-1}(A) \cap f^{-1}(B) \subseteq f^{-1}(A \cap B)$. \\
+        13. & Therefore, $f^{-1}(A \cap B) = f^{-1}(A) \cap f^{-1}(B)$. \\
+      \end{tabular}
+
+    \item Here's the line proof for $f^{-1}(A \cup B) = f^{-1}(A) \cup
+      f^{-1}(B)$.
+
+      \hspace*{-0.5em}\begin{tabular}{ll}
+        1. & Suppose $x \in f^{-1}(A \cup B)$. \\
+        2. & Then, $f(x) \in A \cup B$. \\
+        3. & Then, $f(x) \in A$ or $f(x) \in B$. \\
+        4. & Then, $x \in f^{-1}(A)$ or $x \in f^{-1}(B)$. \\
+        5. & Therefore, $x \in f^{-1}(A) \cup f^{-1}(B)$. \\
+        6. & Therefore, $f^{-1}(A \cup B) \subseteq f^{-1}(A) \cup f^{-1}(B)$. \\
+        7. & Suppose $x \in f^{-1}(A) \cup f^{-1}(B)$. \\
+        8. & Then, $x \in f^{-1}(A)$ or $x \in f^{-1}(B)$. \\
+        9. & Then, $f(x) \in A$ or $f(x) \in B$. \\
+        10. & Then, $f(x) \in A \cup B$. \\
+        11. & Therefore, $x \in f^{-1}(A \cup B)$. \\
+        12. & Therefore, $f^{-1}(A) \cup f^{-1}(B) \subseteq f^{-1}(A \cup B)$. \\
+        13. & Therefore, $f^{-1}(A \cup B) = f^{-1}(A) \cup f^{-1}(B)$. \\
+      \end{tabular}
+
+    \item Here's the line proof for $f(f^{-1}(A)) \subseteq A$.
+
+      \hspace*{-0.5em}\begin{tabular}{ll}
+        1. & Suppose $y \in f(f^{-1}(A))$. \\
+        2. & Then, $y = f(x)$ for some $x \in f^{-1}(A)$. \\
+        3. & Then, $x \in f^{-1}(A)$. \\
+        4. & Then, $f(x) \in A$. \\
+        5. & Therefore, $y \in A$. \\
+        6. & Therefore, $f(f^{-1}(A)) \subseteq A$. \\
+      \end{tabular}
+
+    \item Here's the line proof for $C \subseteq f^{-1}(f(C))$.
+
+      \hspace*{-0.5em}\begin{tabular}{ll}
+        1. & Suppose $x \in C$. \\
+        2. & Then, $f(x) \in f(C)$. \\
+        3. & Then, $x \in f^{-1}(f(C))$. \\
+        4. & Therefore, $C \subseteq f^{-1}(f(C))$. \\
+      \end{tabular}
+
+    \item Here's the line proof for if $f$ is onto, then $f(f^{-1}(A)) = A$.
+
+      \hspace*{-0.5em}\begin{tabular}{ll}
+        1. & From (iii), we know that $f(f^{-1}(A)) \subseteq A$. \\
+        2. & If $f$ is onto, then for $y \in A$, there exists $x \in f^{-1}(A)$ such that $f(x) = y$. \\
+        3. & Thus, $y \in f(f^{-1}(A))$. \\
+        4. & So $A \subseteq f(f^{-1}(A))$. \\
+        5. & Therefore, $f(f^{-1}(A)) = A$. \\
+      \end{tabular}
+
+    \item Here's the line proof for if $f$ is one-to-one, then $C = f^{-1}(f(C))$.
+
+      \hspace*{-0.5em}\begin{tabular}{ll}
+        1. & From (iv), we know that $C \subseteq f^{-1}(f(C))$. \\
+        2. & If $f$ is one-to-one and $x \in f^{-1}(f(C))$, then $f(x) = f(c)$, for some $c \in C$. \\
+        3. & This implies that $x = c$. \\
+        4. & So, $f^{-1}(f(C)) \subseteq C$. \\
+        5. & Therefore, $C = f^{-1}(f(C))$. \\
+      \end{tabular}
+  \end{enumerate}
+\end{probsolution}
+
+\newpage
+
+\begin{problem}
+  Construct an example of a function $f : \{0, 1, 2\} \to \{0, 1\}$ and a subset
+  $A \subseteq \{0, 1\}$ where $f(f^{-1}(A)) \ne A$. Also construct an example
+  of a function $g : \{0, 1, 2\} \to \{0, 1\}$ and a subset $C \subseteq \{0, 1,
+  2\}$ where $C \ne g^{-1}(g(C))$.
+\end{problem}
+
+\begin{probsolution}
+  We cannot construct such examples, because for any function $f : S \to T$ and
+  any subset $A \subseteq T$, we have $f(f^{-1}(A)) = A$.
+
+  We cannot construct such examples, because for any function $g : S \to T$ and
+  any subset $C \subseteq S$, we have $C = g^{-1}(g(C))$.
+\end{probsolution}
+
+\newpage
+
+\begin{problem}
+  Suppose $f, g : \Z \to \Z$ are two functions such that $f(M_3) \subseteq M_6$,
+  $g(M_2) \subseteq M_7$, and $g^{-1}(M_5) = M_3$. Prove that for all $x \in
+  \Z$, if $3 \mid x$ then $35 \mid g(f(x))$.
+\end{problem}
+
+\begin{probsolution}
+  \begin{tabular}{ll}
+    1. & Assume $x \in \Z$ such that $3 \mid x$. \\
+    2. & By the property of $f$, $f(M_3) \subseteq M_6$. \\
+    3. & Thus, $f(x) \in M_6$. \\
+    4. & Since $6 \mid f(x)$, we have $2 \mid f(x)$ and $3 \mid f(x)$. \\
+    5. & Because $2 \mid f(x)$, $f(x) \in M_2$. \\
+    6. & By condition 2, $g(M_2) \subseteq M_7$. \\
+    7. & Thus, $g(f(x)) \in M_7$. \\
+    8. & This means $7 \mid g(f(x))$. \\
+    9. & By condition 3, $g^{-1}(M_5) = M_3$. \\
+    10. & So, $f(x) \in M_3$, which means $g(f(x) \in M_5$. \\
+    11. & This means $5 \mid g(f(x)$. \\
+    12. & Since $g(f(x))$ is divisible by both $5$ and $7$, then $35 \mid g(f(x))$. \\
+    13. & Therefore, for all $x \in \Z$, if $3 \mid x$ then $35 \mid g(f(x))$. \\
+  \end{tabular}
+\end{probsolution}
+
+\newpage
+
+\begin{problem}
+  Given $[Q \land S] \implies R$ and $\neg S \implies T$, prove $[P \implies Q]
+  \implies [\neg T \implies [\neg P \lor R]]$
+\end{problem}
+
+\begin{probsolution}
+  \begin{tabular}{lll}
+    1. & $[Q \land S] \implies R$ & Hypothesis \\
+    2. & $\neg S \implies T$ & Hypothesis \\
+    3. & Assume $P \implies Q$. & Dischargeable Hypothesis \\
+    4. & Assume $\neg T$. & Dischargeable Hypothesis \\
+    5. & Assume $P \land \neg R$. & Dischargeable Hypothesis \\
+    6. & $\neg R$. & RCS, for 5 \\
+    7. & $P$ & LCS, for 5 \\
+    8. & $\neg[Q \land S]$. & MT, for 6, for 1 \\
+    9. & $\neg[Q \land S] \iff \neg Q \lor \neg S$. & Tautology \\
+    10. & $\neg Q \lor \neg S$. & MPB, for 8, for 9 \\
+    11. & $Q$. & MP, for 7, for 3 \\
+    12. & $\neg S$. & DI, for 10, for 11 \\
+    13. & $T$. & MP, for 12, for 2 \\
+    14. & $\neg T \land T$ & CI, for 4, for 13 \\
+    15. & $\neg [P \land \neg R]$. & II, discharge for 5 [5 - 14 unusable] \\
+    16. & $\neg [P \land \neg R] \iff \neg P \lor R$. & Tautology \\
+    17. & $\neg P \lor R$. & MPB, for 15, for 16 \\
+    15. & $\neg T \implies [\neg P \lor R]$. & DT, discharge for 4 [4 - 17 unusable] \\
+    16. & $[P \implies Q] \implies [\neg T \implies [\neg P \lor R]]$. & DT, discharge for 3 [3 - 15 unusable] \\
+  \end{tabular}
+\end{probsolution}

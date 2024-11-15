@@ -1,5 +1,113 @@
-\nte[Section 2.4]{Oct 22 2024 Mon (13:02:06)}{Monotone Convergence Theorem}
+\nte[Section 2.4]{Oct 22 2024 Mon (13:02:06)}{MCT and Infinite Series}
+
+\section{Monotone Convergence Theorem}
+\label{sec:monotone_convergence_theorem}
+
+\begin{definition}[Monotone]
+  A sequence $(a_n)$ is \textit{increasing} if $(\forall n \in \N)[a_n \le
+  a_{n+1}]$ and \textit{decreasing} if $(\forall n \in \N)[a_n \ge a_{n+1}]$. A
+  sequence is \textit{monotone} if it is either increasing or decreasing.
+\end{definition}
+
+\begin{theorem}[Monotone Convergence Theorem]
+  Every bounded monotone sequence converges.
+\end{theorem}
+
+\begin{proof}
+
+\end{proof}
+
+We now have another tool to prove the Nested Interval Property.
+\begin{theorem}[Nested Interval Property]
+  For each $n \in \N$, assume we are given a closed interval $I_n = [a_n, b_n] =
+  \left\{x \in \R \mid a_n \le x \le b_n\right\}$. Assume also that each $I_n$
+  contains the next interval, i.e., $I_n \supseteq I_{n+1}$. Then, the resulting
+  sequence of closed intervals
+  \[%
+    I_1 \supseteq I_2 \supseteq I_3 \supseteq \cdots
+  ,\]%
+  has a nonempty intersection. That is,
+  \[%
+    \bigcap_{n=1}^{\infty} I_n \neq \emptyset
+  .\]%
+\end{theorem}
+
+\begin{proof}
+  Assume we have the following interval $I_n = [a_n, b_n]$ for each $n \in \N$.
+  Since all $I_n \supseteq I_{n+1}$, then we have the following inequality
+  \[%
+    I_n = [a_n, b_n] \supseteq I_{n+1} = [a_{n+1}, b_{n+1}] \implies \begin{cases*}
+      a_n \le a_{n+1} \\
+      b_n \ge b_{n+1}
+    \end{cases*}
+  .\]%
+  This means that $(a_n)$ is bounded by $b_1$ from above and $(b_n)$ is bounded
+  by $a_1$ from below. Then, by the MCT, $(a_n)$ converges to $a$ and $(b_n)$
+  converges to $b$. Hence,
+  \[%
+    [a, b] \in \bigcap_{n=1}^{\infty} I_n
+  .\qedhere\]%
+\end{proof}
+
+\begin{question}
+  Let $S_1 = 1$ and $S_{n+1} = \sqrt{S_n + 1}$, for $n \ge 1$. Show $S_n$
+  converges and find the limit.
+\end{question}
+
+\begin{proof}
+  Let's find the first few terms of the sequence
+  \[%
+    S_1 = 1, \quad S_2 = \sqrt{2}, \quad S_3 = \sqrt{\sqrt{2} + 1}, \quad S_4 = \sqrt{\sqrt{\sqrt{2} + 1} + 1}
+  .\]%
+  Then, we get the following inequality
+  \[%
+    S_1 < S_2 < S_3 < S_4 < \cdots
+  .\]%
+
+  We can then use induction to show that $S_n < S_{n+1}$ for all $n \in \N$ and
+  then show that the sequence is bounded. Then, we can conclude by the MTC that
+  the sequence must converge.
+
+  Using induction, assume $S_{n-1} \le S_n$. Now, we show that $S_n \le
+  S_{n+1}$. We have
+  \begin{align*}
+    S_{n+1} - S_n &= \sqrt{S_n + 1} - \sqrt{S_{n-1} + 1} \\
+                  &= \frac{(S_n + 1) - (S_{n-1} + 1)}{\sqrt{S_n + 1} + \sqrt{S_{n-1} + 1}} \\
+                  &= \frac{S_n - S_{n-1}}{\sqrt{S_n + 1} + \sqrt{S_{n-1} + 1}} \ge 0
+  .\end{align*}
+  Therefore, $S_n \le S_{n+1}$ for all $n \in \N$, meaning that $S_n$ is
+  increasing.
+
+  We now show that $S_n$ is bounded. Assume $S_n \le 2$. Then $S_{n+1} =
+  \sqrt{S_n + 1} \le \sqrt{2 + 1} = \sqrt{3} \le \sqrt{2}$.
+
+  Hence, by induction, $S_n \le 2$ for all $n$. So, $(S_n)$ is an increasing
+  bounded sequence. By MCT, $(S_n)$ converges to $L$.
+
+  Now, all that's left is to find the limit of the sequence.
+  \[%
+    \lim_{n \to \infty} S_n = \lim_{n \to \infty} S_{n+1} = S \implies S = \sqrt{S + 1} \implies S^2 = S + 1
+  .\]%
+  Solving the equation using the quadratic equation, we get
+  \[%
+    S = \frac{1 \pm \sqrt{5}}{2}
+  .\]%
+  But, as we've seen before, the limit value of a sequence is always unique.
+  So, how do we choose which one the limit is? We'll, it must be the positive
+  term, since $S_n \ge 1$ for all $n \in \N$. Therefore, the limit of the
+  sequence is
+  \[%
+    \lim_{n \to \infty} S_n = \frac{1 + \sqrt{5}}{2}
+  .\qedhere\]%
+\end{proof}
+
+% section monotone_convergence_theorem (end)
+
+\section{Infinite Series}
+\label{sec:infinite_series}
 
 
+
+% section infinite_series (end)
 
 \newpage

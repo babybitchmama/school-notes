@@ -38,7 +38,29 @@
       Since the limit is different for different paths, the limit does not
       exist.
 
-    \item 
+    \item We have the following inequality
+      \[%
+        (\forall (x,y) \ne (0,0))\left[y^2 \le x^2 + y^2 \implies \frac{y^2}{x^2 + y^2} \le 1\right]
+      .\]%
+      We cannot multiply both sides by $\sin(x)$, since sometimes $\sin(x)$ is
+      positive, and other times it's negative. So, we multiply both sides by the
+      absolute value of $\sin(x)$ to get
+      \[%
+        \frac{y^2\lvert \sin(x) \rvert}{x^2 + y^2} \le \lvert \sin(x) \rvert
+      ,\]%
+      which is equivalent to the inequality
+      \[%
+        \left\lvert \frac{y^2\sin(x)}{x^2 + y^2} \right\rvert \le \lvert \sin(x) \rvert
+      .\]%
+      We can expand the absolute value to get
+      \[%
+        -\lvert \sin(x) \rvert \le \frac{y^2\sin(x)}{x^2 + y^2} \le \lvert \sin(x) \rvert
+      .\]%
+      Since $\lim_{x \to 0} -\lvert \sin(x) \rvert = 0 = \lim_{x \to \infty}
+      \lvert \sin(x) \rvert$, by the squeeze theorem, we have
+      \[%
+        \lim_{(x,y) \to (0,0)} \frac{y^2\sin(x)}{x^2 + y^2} = 0
+      .\]%
   \end{enumerate}
 \end{probsolution}
 
@@ -51,25 +73,28 @@
 \end{problem}
 
 \begin{probsolution}
-  The intersection of the ellipsoid and the plane is the ellipse
+  To find the intersection of the ellipsoid and the plane, substitute $x = 1$
+  into the equation of the ellipsoid to obtain $y^2 + 2z^2 = 6$. This describes
+  an ellipse in the $yz$-plane, with the point $(1, 2, -1)$ lying on this curve.
+
+  Next, we need the direction vector of the tangent line. Since the $x$-value is
+  fixed at $1$, there is no movement in the $x$-direction. The direction of the
+  tangent line will therefore be determined by changes in $y$ and $z$ alone.
+
+  At the point $(2, -1)$ in the $yz$-plane, the rate of change in the
+  $z$-direction relative to $y$ is given by $\pdv{z}{y}$. Thus, the tangent line
+  to the ellipse at $(1, 2, -1)$ is
   \[%
-    4(1) + y^2 + 2z^2 = 10 \implies y^2 + 2z^2 = 6
+    L(t) = \langle 1, 2, -1 \rangle + t \left\langle 0, 1, \pdv{z}{y}_{(2,-1)} \right\rangle
   .\]%
-  The gradient of the ellipse is
-  \[%
-    \nabla f = \left\langle \pdv{f}{x}, \pdv{f}{y}, \pdv{f}{z} \right\rangle = \left\langle 8, 2y, 4z \right\rangle
-  .\]%
-  At the point $(1, 2, -1)$, the gradient is
-  \[%
-    \nabla f(1, 2, -1) = \left\langle 8, 4, -4 \right\rangle
-  .\]%
-  This vector is normal to the ellipsoid at the point $(1, 2, -1)$.
 \end{probsolution}
 
 \newpage
 
 \begin{problem}
-  Use implicit differentiation to compute the partial derivatives $\displaystyle\pdv{z}{x}$ and $\displaystyle\pdv{z}{y}$, $x^2z^3 = \cos(x - y^2z)$
+  Use implicit differentiation to compute the partial derivatives
+  $\displaystyle\pdv{z}{x}$ and $\displaystyle\pdv{z}{y}$, $x^2z^3 = \cos(x -
+  y^2z)$
 \end{problem}
 
 \begin{probsolution}
