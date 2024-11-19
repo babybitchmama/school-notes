@@ -10,15 +10,42 @@
 \end{exercise}
 
 \begin{exersolution}[4]
+  \begin{enumerate}
+    \item \begin{proof}
+        Since every $s - \epsilon$ has an $a \in A$ with $a > s - \epsilon$, we
+        can find $a \in V_{\epsilon}(s)$, for any $\epsilon > 0$. This implies
+        that $s$ is a limit point of $A$. Therefore, $s \in \bar{A}$.
+      \end{proof}
+
+    \item No, there doesn't exist any $\epsilon$-neighborhood of $s$ such that
+      $V_{\epsilon}(s) \not\subseteq (s, s + \epsilon)$.
+  \end{enumerate}
 \end{exersolution}
 
 \newpage
 
 \begin{exercise}[5]
   Prove Theorem 3.2.8.
+
+  \begin{theorem}
+    A set $F \subseteq \R$ is closed if and only if every Cauchy sequence
+    contained in $F$ has a limit that is also an element of $F$.
+  \end{theorem}
 \end{exercise}
 
 \begin{exersolution}[5]
+  \begin{proof}
+    Let $F \subseteq \R$ be closed. Given an arbitrary Cauchy sequence $(a_n)$
+    contained in $F$, we know that $(a_n)$ converges to some $a \in \R$. Since
+    $F$ is closed and $(a_n)$ is contained in $F$, $a \in F$.
+
+    Suppose that every Cauchy sequence contained in $F$ converges to a point,
+    $l$, in $F$. Since $l$ is a limit point of $F$, there exists a sequence
+    $(a_n)$ contained in $F$ with $\lim_{n \to \infty} (a_n) = l$. Since $(a_n)$
+    converges, it must be a Cauchy sequence (by the Cauchy Criterion). Since
+    every Cauchy sequence converges to a limit inside $F$, we have $l \in F$,
+    meaning that $F$ is closed.
+  \end{proof}
 \end{exersolution}
 
 \newpage
@@ -27,25 +54,56 @@
   Given $A \subseteq \R$, let $L$ be the set of all limit points of $A$.
   \begin{enumerate}
     \item Show that the set $L$ is closed.
-
-    \item Argue that if $x$ is a limit point of $A \cup L$, then $x$ is a limit
-      point of $A$. Use this observation to furnish a proof for Theorem 3.2.12.
   \end{enumerate}
 \end{exercise}
 
 \begin{exersolution}[7]
+  \begin{enumerate}
+    \item \begin{proof}
+        Assume $l$ is a limit point of $L$. Then, by definition, for every
+        $\epsilon > 0$, we have
+        \[%
+          L_1 = V_{\epsilon}(l) \cap (L - \{l\}) \ne \emptyset
+        .\]%
+        But, since $L_1 \subseteq L$, for every $y \in L_1$ and $\delta > 0$, we have
+        \[%
+          L_2 = V_{\delta}(y) \cap (A - \{y\}) \ne \emptyset
+        .\]%
+        Now, since $l$ is a limit point of $L$, for any $\epsilon > 0$, there
+        exists $y \in L - \{l\}$ such that $y \in V_{\epsilon}(l)$. By the
+        definition of $y \in L$, there exists $z \in A$, distinct from $y$, such
+        that $z \in V_{\delta}(y)$.
+
+        Choose $\delta > 0$ small enough so that $V_{\delta}(y) \subseteq
+        V_{\epsilon}(l)$. Then, $z \in V_{\delta}(y) \subseteq V_{\epsilon}(l)$,
+        and since $z \neq y$ and $y \neq l$, it follows that $z \neq l$.
+        Therefore, $z \in V_{\epsilon}(l) - \{l\}$.
+
+        Since this holds for every $\epsilon > 0$, $l$ is a limit point of $A$.
+        By definition of $L$, we have $l \in L$.
+      \end{proof}
+  \end{enumerate}
 \end{exersolution}
 
 \newpage
 
 \begin{exercise}[11]
   \begin{enumerate}
-    \item Prove that $\bar{A \cup B} = \bar{A} \cup \bar{B}$.
+    \item Prove that $\overline{A \cup B} = \bar{A} \cup \bar{B}$.
     \item Does this result about closures extend to infinite unions of sets?
   \end{enumerate}
 \end{exercise}
 
 \begin{exersolution}[11]
+  \begin{enumerate}
+    \item \begin{proof}
+        Let $L$ be the set of limit points of $A \cup B$, $L_a$ and $L_b$ be the
+        sets of limit points of $A$ and $B$, respectively.
+
+        Let $x \in L$. Thus, there exists $a_n \in A \cup B$ with $x = \lim_{n
+        \to \infty} x_n$ such that $x_n$ is bounded in $A \cup B$.
+      \end{proof}
+  \end{enumerate}
 \end{exersolution}
 
 \newpage

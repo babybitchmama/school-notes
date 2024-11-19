@@ -1,0 +1,182 @@
+\begin{problem}
+  Use the chain rule to find $\displaystyle\pdv{u}{s}$ and
+  $\displaystyle\pdv{u}{t}$ for $u(x, y, z) = x^2\ln(y^2 + z^2) + e^{-xy^3}$
+  where $\displaystyle x(s, y) = \frac{t^2}{1 - 3s}$, $y(s, t) = t^2\cos(3s)$,
+  and $z(s, t) = t^5 s^{-4}$.
+
+  Note: Please leave your answer in terms of $x$, $y$, $z$, $s$, and $t$.
+\end{problem}
+
+\begin{probsolution}
+  Let $x_1 = x$, $x_2 = y$, and $x_3 = z$. Then, we have
+  \begin{alignat*}{4}
+    \pdv{u}{s} &= \sum_{k=3}^3 \left[\pdv{u}{x_k} \cdot \pdv{x_k}{s}\right] &&\aand \pdv{u}{t} &&= \sum_{k=3}^3 \left[\pdv{u}{x_k} \cdot \pdv{x_k}{t}\right] \\
+                    &= \pdv{u}{x} \cdot \pdv{x}{s} + \pdv{u}{y} \cdot \pdv{y}{s} + \pdv{u}{z} \cdot \pdv{z}{s} &&\aand &&= \pdv{u}{x} \cdot \pdv{x}{t} + \pdv{u}{y} \cdot \pdv{y}{t} + \pdv{u}{z} \cdot \pdv{z}{t}
+  .\end{alignat*}
+  Performing each one gives us
+  \begin{align*}
+    \pdv{u}{x} &= 2x\ln(y^2 + z^2) - y^3e^{-xy^3} & \pdv{u}{y} &= \frac{2x^2y}{y^2 + z^2} - 3xy^2e^{-xy^3} & \pdv{u}{z} &= \frac{2x^2z}{y^2 + z^2} \\
+    \pdv{x}{s} &= \frac{3t^2}{(1 - 3s)^2} & \pdv{y}{s} &= -3t^2\sin(3s) & \pdv{z}{s} &= -\frac{4t^5}{s^5} \\
+    \pdv{x}{t} &= \frac{2t}{1 - 3s} & \pdv{y}{t} &= 2t\cos(3s) & \pdv{z}{t} &= 5t^4s^{-4}
+  .\end{align*}
+
+  Therefore, we have
+  \begin{align*}
+    \pdv{u}{s} &= \frac{3t^2(x\ln(y^2 + z^2)^2) - y^3e^{-xy^3}}{(1 - 3s)^2} + \left[\frac{2x^2y}{y^2 + z^2} - 3xy^2e^{-xy^3}\right] \cdot \left[-3t^2\sin(3s)\right] - \frac{8t^5x^2z}{s^5(y^2 + z^2)} \\
+    \pdv{u}{t} &= \frac{2t(x\ln(y^2 + z^2)^2) - y^3e^{-xy^3}}{1 - 3s} + \frac{2xyt\cos(3s)(2x - 3y^3e^{-xy^3} - 3yz^2e^{-xy^3})}{y^2 + z^2} + \frac{10x^2zt^4}{s^4(y^2 + z^2)}
+  .\end{align*}
+\end{probsolution}
+
+\newpage
+
+\begin{problem}
+  Find $\displaystyle\pdv{z}{x}$ and $\displaystyle\pdv{z}{y}$ assuming $z =
+  f(x, y)$ for the implicitly defined surface.
+  \[%
+    \tan(x^2 - 3yz) = xz^2 - y^2
+  .\]%
+\end{problem}
+
+\begin{probsolution}
+  For $\displaystyle\pdv{z}{x}$:
+  \begin{alignat*}{3}
+    \phantom{\implies}\quad&\tan(x^2 - 3yz) &&= xz^2 - y^2 \\
+    \implies\quad&\pdv{}{x}\left[\tan(x^2 - 3yz)\right] &&= \pdv{}{x}\left[xz^2 - y^2\right] \\
+    \implies\quad&\sec^2(x^2 - 3yz) \cdot \pdv{}{x}\left[x^2 - 3yz\right] &&= z^2 + 2xz\pdv{z}{x} \\
+    \implies\quad&\sec^2(x^2 - 3yz) \cdot \left[2x - 3y\pdv{z}{x}\right] - 2xz\pdv{z}{x} &&= z^2 \\
+    \implies\quad&\pdv{z}{x}\left[-2xz - 3y\sec^2(x^2 - 3yz)\right] &&= z^2 - 2x\sec^2(x^2 - 3yz) \\
+    \implies\quad&\pdv{z}{x} &&= \frac{z^2 - 2x\sec^2(x^2 - 3yz)}{-2xz - 3y\sec^2(x^2 - 3yz)}
+  .\end{alignat*}
+
+  For $\displaystyle\pdv{z}{y}$:
+  \begin{alignat*}{3}
+    \phantom{\implies}\quad&\tan(x^2 - 3yz) &&= xz^2 - y^2 \\
+    \implies\quad&\pdv{}{y}\left[\tan(x^2 - 3yz)\right] &&= \pdv{}{y}\left[xz^2 - y^2\right] \\
+    \implies\quad&\sec^2(x^2 - 3yz) \cdot \pdv{}{y} \left[x^2 - 3yz\right] &&= -2y \\
+    \implies\quad&\sec^2(x^2 - 3yz) \cdot \left[-3y - 3y\pdv{z}{y}\right] &&= -2y \\
+    \implies\quad&\pdv{z}{y} \left(-3y\sec^2(x^2 - 3yz)\right) &&= -2y + 3y\sec^2(x^2 - 3yz) \\
+    \implies\quad&\pdv{z}{y} &&= \frac{-2y + 3y\sec^2(x^2 - 3yz)}{-3y\sec^2(x^2 - 3yz)}
+  .\end{alignat*}
+\end{probsolution}
+
+\newpage
+
+\begin{problem}
+  Let $f(x, y)$ be an arbitrary function of $(x, y)$ where $x(r, \epsilon) =
+  r\cos(\theta)$ and $y(r, \theta) = r\sin(\theta)$. Assume that $f(x, y)$ and
+  all of its derivatives are continuous.
+  \begin{enumerate}
+    \item Use the chain rule to find $f_r$, $f_{\theta}$, $f_{rr}$, and $f_{\theta\theta}$.
+
+    \item Evaluate $\displaystyle f_{rr} + \frac{1}{r^2} f_{\theta\theta} +
+      \frac{1}{r} f_r$ to show that
+      \[%
+        f_{xx} + f_{yy} = f_{rr} + \frac{1}{r^2} f_{\theta\theta} + \frac{1}{r} f_r
+      .\]%
+  \end{enumerate}
+\end{problem}
+
+\begin{probsolution}
+  \begin{enumerate}
+    \item Using the chain rule, we get the following
+      \[%
+        \pdv{f}{r} = \pdv{f}{x} \pdv{x}{r} + \pdv{f}{y} \pdv{y}{r} \aand \pdv{f}{\theta} = \pdv{f}{x} \pdv{x}{\theta} + \pdv{f}{y} \pdv{y}{\theta}
+      .\]%
+      Next, we need to compute the partial derivatives, giving us
+      \[%
+        \pdv{x}{r} = \cos(\theta), \quad \pdv{y}{r} = \sin(\theta), \quad \pdv{x}{\theta} = -r\sin(\theta) \aand \pdv{y}{\theta} = r\cos(\theta)
+      .\]%
+
+      Substituting these into $f_r$ and $f_\theta$
+      \[%
+        \pdv{f}{r} = \pdv{f}{x} \cos\theta + \pdv{f}{y} \sin\theta \aand \pdv{f}{\theta} = -\pdv{f}{x} r\sin\theta + \pdv{f}{y} r\cos\theta
+      .\]%
+
+      To find $f_{rr}$, differentiate $f_r$ with respect to $r$
+      \[%
+        \pdv[2]{f}{r} = \pdv{}{r} \left(\pdv{f}{x} \cos\theta + \pdv{f}{y} \sin\theta\right)
+      .\]%
+
+      Expanding using the chain rule
+      \[%
+        \pdv[2]{f}{r} = \pdv[2]{f}{x} \cos^2(\theta) + 2 \pdv[2]{f}{x}{y} \cos(\theta) \sin(\theta) + \pdv[2]{f}{y} \sin^2(\theta)
+      .\]%
+
+      Similarly, for $f_{\theta\theta}$
+      \begin{align*}
+        \pdv[2]{f}{\theta} &= \pdv{}{\theta} \left[-\pdv{f}{x} r\sin(\theta) + \pdv{f}{y} r\cos(\theta)\right] \\
+                           &= \pdv[2]{f}{x} \left(-r\sin(\theta)\right)^2 + 2\pdv[2]{f}{x}{y} \left(-r\sin(\theta)\right)\left(r\cos(\theta)\right) + \pdv[2]{f}{y} \left(r\cos(\theta)\right)^2 \\
+                           &= r^2 \left(\pdv[2]{f}{x} \sin^2(\theta) - 2\pdv[2]{f}{x}{y} \sin(\theta)\cos(\theta) + \pdv[2]{f}{y} \cos^2(\theta)\right)
+      .\end{align*}
+
+    \item Using the chain rule in Cartesian coordinates
+      \[%
+        \pdv[2]{f}{x} + \pdv[2]{f}{y} = \pdv[2]{f}{r} + \frac{1}{r} \pdv{f}{r} + \frac{1}{r^2} \pdv[2]{f}{\theta}
+      .\]%
+
+      Therefore, we have shown that
+      \[%
+        \pdv[2]{f}{x} + \pdv[2]{f}{y} = \pdv[2]{f}{r} + \frac{1}{r^2} \pdv[2]{f}{\theta} + \frac{1}{r} \pdv{f}{r}
+      .\]%
+  \end{enumerate}
+\end{probsolution}
+
+\newpage
+
+\begin{problem}
+  Consider the function $f(x, y) = 2xy^3 + \ln(3y - x)$.
+  \begin{enumerate}
+    \item Find the directional derivative of $f$ in the direction of $\u = \langle 3, 4 \rangle$ at the point $(2, 1)$.
+
+    \item What is the maximum rate of change of $f$ at $(2, 1)$? In what direction does the maximum rate of change occur?
+
+    \item Find all directions in which the directional derivative of $f$ at $(2, 1)$ has the value $1$.
+  \end{enumerate}
+\end{problem}
+
+\begin{probsolution}
+  \begin{enumerate}
+    \item The directional derivative is given by multiplying the gradient by the
+      unit vector $\u$
+      \[%
+        D_{\u} f(x, y) = \nabla f(x, y) \cdot \frac{\u}{\lvert \u \rvert}
+      .\]%
+      So first, find the gradient of $f$
+      \[%
+        \nabla f(x, y) = \left\langle \pdv{f}{x}, \pdv{f}{y} \right\rangle \implies \nabla f(x, y) = \left\langle 2y^3 - \frac{1}{3y - x}, 6xy^2 + \frac{3}{3y - x} \right\rangle
+      .\]%
+      Then, find the unit vector $\u$
+      \[%
+        \frac{\u}{\lvert \u \rvert} = \frac{\langle 3, 4 \rangle}{\sqrt{3^2 + 4^2}} = \frac{\langle 3, 4 \rangle}{5} = \left\langle \frac{3}{5}, \frac{4}{5} \right\rangle
+      .\]%
+      Therefore, the general directional derivative is given by
+      \[%
+        D_{\u} f(x, y) = \left\langle 2y^3 - \frac{1}{3y - x}, 6xy^2 + \frac{3}{3y - x} \right\rangle \cdot \left\langle \frac{3}{5}, \frac{4}{5} \right\rangle
+      .\]%
+      So, at $(2, 1)$, we have
+      \[%
+        D_{\u} f(2, 1) = \left\langle 1, 15 \right\rangle \cdot \left\langle \frac{3}{5}, \frac{4}{5} \right\rangle = (1) \cdot \left(\frac{3}{5}\right) + (15) \cdot \left(\frac{4}{5}\right) = \frac{63}{5}
+      .\]%
+
+    \item The maximum rate of change of $f$ at $(2, 1)$ is the magnitude of the
+      gradient
+      \[%
+        \lvert \nabla f(2, 1) \rvert = \sqrt{\left(1\right)^2 + \left(15\right)^2} = \sqrt{1 + 225} = \sqrt{226}
+      .\]%
+      The direction of the maximum rate of change is in the direction of the
+      gradient, which is $\langle 1, 15 \rangle$.
+
+    \item To find all directions in which the directional derivative of $f$ at
+      $(2, 1)$ is $1$, use the formula (where $\v = \langle v_1, v_2 \rangle$ is
+      a unit vector)
+      \[%
+        D_{\v} f(2, 1) = \nabla f(2, 1) \cdot \v = 1
+      ,\]%
+      which simplifies to $\langle 1, 15 \rangle \cdot \langle v_1, v_2 \rangle
+      = v_1 + 15v_2 = 1$. Since $\v$ is a unit vector, we have $v_1^2 + v_2^2 =
+      1$. Using Wolfram, we get
+      \[%
+        \v = \langle 1, 0 \rangle \oor \v = \left\langle -\frac{112}{113}, \frac{15}{113} \right\rangle
+      .\]%
+  \end{enumerate}
+\end{probsolution}
