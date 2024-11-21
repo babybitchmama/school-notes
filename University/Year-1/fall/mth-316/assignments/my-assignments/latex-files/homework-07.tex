@@ -60,27 +60,24 @@
 \begin{exersolution}[7]
   \begin{enumerate}
     \item \begin{proof}
-        Assume $l$ is a limit point of $L$. Then, by definition, for every
-        $\epsilon > 0$, we have
+        Let $L'$ be the set of all limit points of $L$. Assume $\ell \in L'$.
+        Then, by definition, for every $\epsilon > 0$, we have
         \[%
-          L_1 = V_{\epsilon}(l) \cap (L - \{l\}) \ne \emptyset
+          L_1 = V_{\epsilon}(\ell) \cap (L - \{\ell\}) \ne \emptyset \subseteq L
         .\]%
-        But, since $L_1 \subseteq L$, for every $y \in L_1$ and $\delta > 0$, we have
+        Then,
         \[%
-          L_2 = V_{\delta}(y) \cap (A - \{y\}) \ne \emptyset
+          (\forall y \in L_1)(\forall \epsilon > 0)[L_2 = V_{\delta}(y) \cap (A - \{y\}) \ne \emptyset]
         .\]%
-        Now, since $l$ is a limit point of $L$, for any $\epsilon > 0$, there
-        exists $y \in L - \{l\}$ such that $y \in V_{\epsilon}(l)$. By the
+        Now, since $\ell$ is a limit point of $L$, for any $\epsilon > 0$, there
+        exists $y \in L - \{\ell\}$ such that $y \in V_{\epsilon}(l)$. By the
         definition of $y \in L$, there exists $z \in A$, distinct from $y$, such
         that $z \in V_{\delta}(y)$.
 
-        Choose $\delta > 0$ small enough so that $V_{\delta}(y) \subseteq
-        V_{\epsilon}(l)$. Then, $z \in V_{\delta}(y) \subseteq V_{\epsilon}(l)$,
-        and since $z \neq y$ and $y \neq l$, it follows that $z \neq l$.
-        Therefore, $z \in V_{\epsilon}(l) - \{l\}$.
-
-        Since this holds for every $\epsilon > 0$, $l$ is a limit point of $A$.
-        By definition of $L$, we have $l \in L$.
+        Choose $0 < \delta < \epsilon$ so $V_{\delta}(x) \subseteq
+        V_{\epsilon}(l)$. Since $z \in V_{\delta}(y) \cap (A - \{y\})$, then $z
+        \in V_{\epsilon}(\ell)$ and $z \in A$. So, $\ell$ is a limit point of
+        $A$. Therefore, $\ell \in L$ and $L$ is closed.
       \end{proof}
   \end{enumerate}
 \end{exersolution}
@@ -97,12 +94,32 @@
 \begin{exersolution}[11]
   \begin{enumerate}
     \item \begin{proof}
-        Let $L$ be the set of limit points of $A \cup B$, $L_a$ and $L_b$ be the
-        sets of limit points of $A$ and $B$, respectively.
-
-        Let $x \in L$. Thus, there exists $a_n \in A \cup B$ with $x = \lim_{n
-        \to \infty} x_n$ such that $x_n$ is bounded in $A \cup B$.
+        Let $L_a$ and $L_b$ be the set of limit points for $A$ and $B$
+        respectively. Let $\ell$ be a limit point for $A \cup B$. Then, $\ell
+        \in L_a$ or $\ell \in L_b$. So, $\ell \in L_a \cup L_b$. Then, by
+        definition $\overline{A \cup B} = (A \cup B) \cup (L_a \cup L_b) = (A
+        \cup L_a) \cup (B \cup L_b) = \bar{A} \cup \bar{B}$.
       \end{proof}
+
+    \item No, the result does not extend to infinite unions of sets.
+      Specifically,
+      \[%
+        \overline{\bigcup_{i \in I} A_i} \ne \bigcup_{i \in I} \bar{A_i}
+      ,\]%
+      where $\{A_i\}_{i \in I}$ is a collection of sets, indexed by $I$.
+
+      For a finite union of sets $\overline{A \cup B} = \bar{A} \cup \bar{B}$
+      holds because any limit point of $A \cup B$ must lie in $\bar{A} \cup
+      \bar{B}$, and the closure distributes over a finite union.
+
+      For an infinite union, however, the equality may fail because the closure
+      of an infinite union may include points that are limit points of the
+      entire union, but not limit points of any single set in the collection.
+
+      Let $A_n = \{\sfrac{1}{n} \mid n \in \N\}$ as a counterexample. Then,
+      \[%
+        \overline{\bigcup_{n=1}^{\infty} A_n} = \left.\left\{\frac{1}{n} \right\rvert n \in \N\right\} \cup \{0\} \ne \left.\left\{\frac{1}{n} \right\rvert n \in \N\right\} = \bigcup_{n=1}^{\infty} \bar{A}_n
+      .\]%
   \end{enumerate}
 \end{exersolution}
 
@@ -111,11 +128,20 @@
 \setcounter{section}{3}
 
 \begin{exercise}[1]
-  Show that if $K$ is compact and nonempty, then $\sup(K)$ and $\inf(K)$ both
-  exist and are elements of $K$.
+  Show that if $K$ is compact and nonempty, then $\sup(K)$ and $\inf(K)$ both exist and are elements of $K$.
 \end{exercise}
 
 \begin{exersolution}[1]
+  \begin{proof}
+    By Theorem 3.3.4, $K$ is compact if and only if it is closed and bounded.
+    Since $K \neq \emptyset$, it follows that $K$ is bounded above and bounded
+    below. By the Axiom of Completeness, $\sup(K)$ exists because $K$ is bounded
+    above, and $\inf(K)$ exists because $K$ is bounded below. To show $\sup(K)
+    \in K$, note that $\sup(K)$ is a limit point of $K$ (by definition of the
+    least upper bound). Since $K $ is closed, it contains all its limit points,
+    so $\sup(K) \in K$. Similarly, $\inf(K)$ is a limit point of $K$, and by the
+    closedness of $K$, $\inf(K) \in K$.
+  \end{proof}
 \end{exersolution}
 
 \newpage
@@ -130,12 +156,21 @@
 
     \item $Q \cap [0, 1]$.
 
-    \item $\{1, \sfrac{1}{2}, \sfrac{2}{3}, \sfrac{3}{4}, \sfrac{4}{5},
+    \item $S = \{1, \sfrac{1}{2}, \sfrac{2}{3}, \sfrac{3}{4}, \sfrac{4}{5},
       \dots\}$.
   \end{enumerate}
 \end{exercise}
 
 \begin{exersolution}[2]
+  \begin{enumerate}
+    \item No, since the sequence $x_n = n$ doesn't diverges.
+
+    \item No, since the sequence $x_n = \sfrac{1}{\sqrt{2}} + \frac{1}{n}$
+      converges to $\sfrac{1}{\sqrt{2}} \notin Q \cap [0, 1]$.
+
+    \item Compact, since, it's bounded, closed, and every sequence converges to
+      the limit value of $1 \in S$.
+  \end{enumerate}
 \end{exersolution}
 
 \newpage
@@ -146,4 +181,35 @@
 \end{exercise}
 
 \begin{exersolution}[3]
+  \begin{theorem}[Characterization of Compactness in $\R$]
+    A set $K \subseteq \R$ is compact if and only if it is closed and bounded.
+  \end{theorem}
+
+  \begin{proof} $ $
+    \begin{enumerate}
+      \item[$\implies$)] Suppose $K \subseteq \R$ is compact. Suppose $K$ isn't
+        bounded. Let $(a_n)$ be a sequence in $K$. Since $K$ is unbounded, then
+        given any $n \in \N$, we can produce $a_n \in K$ such that $\lvert a_n
+        \rvert > n$. Now, since $K$ is compact, there must exist a subsequence
+        $(a_{n_k})$ that converges to a limit $a \in K$. But the elements of
+        $(a_{n_k})$ must satisfy $\lvert a_{n_k} \rvert > n_k$, which implies
+        that $(a_{n_k})$ is unbounded, meaning it doesn't converge. This gives
+        us a contradiction since every sequence must contain a converging
+        subsequence to be called compact. This implies that $K$ must be bounded.
+
+        Now that we know $K$ is bounded, then suppose we are given a sequence
+        $(a_n)$ that's contained in $K$. By the BWT, there exists a converging
+        subsequence $(a_{n_k})$ that converges to a limit $a$. By definition of
+        compactness, $a \in K$. Suppose that $(a_n)$ converges to a limit point.
+        Then, by Theorem 2.5.2, all subsequences converge to the same limit as
+        the original sequence. So, $(a_n) \to x$ and $a \in K$, making $a$ a
+        limit point. Therefore, $K$ is closed.
+
+      \item[$\impliedby$)] Suppose $K \subseteq \R$ is closed and bounded. Let
+        $(a_n)$ be a sequence contained in $K$. Since $K$ is bounded, by the
+        BWT, there exists a converging subsequence $(a_{n_k})$ that converges to
+        a limit $a$. Since $K$ is closed, $a \in K$. Therefore, $K$ is compact.
+        \qedhere
+    \end{enumerate}
+  \end{proof}
 \end{exersolution}
