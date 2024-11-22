@@ -1,0 +1,145 @@
+\setcounter{chapter}{3}
+\setcounter{section}{3}
+
+\begin{exercise}[5]
+  \begin{enumerate}
+    \item The arbitrary intersection of compact sets is compact.
+
+    \item The arbitrary union of compact sets is compact.
+
+    \item Let $A$ be arbitrary, and let $K$ be compact. Then, the intersection
+      $A \cap K$ is compact.
+
+    \item If $f_1 \supseteq F_2 \supseteq F_3 \supseteq \cdots$ is a nested
+      sequence of nonempty closed sets, then the intersection
+      $\displaystyle\bigcap_{n=1}^{\infty} F_n \ne \emptyset$.
+  \end{enumerate}
+\end{exercise}
+
+\begin{exersolution}[5]
+  \begin{enumerate}
+    \item True, since the intersection will be closed and bounded.
+
+    \item False, since $\displaystyle \bigcup_{n=1}^{\infty} [0, n]$ is
+      unbounded.
+
+    \item False, since $(0, 1] \cap [0, 1] = (0, 1]$ is not closed, as $0$ is a
+      limit point of $(0, 1]$, since $\displaystyle\left.\left\{\frac{1}{n} \right\rvert n \in
+      \N\right\}$ is a sequence that converges to $0$.
+
+    \item False, since $\displaystyle \bigcap_{n=1}^{\infty} [n, \infty) =
+      \emptyset$.
+  \end{enumerate}
+\end{exersolution}
+
+\newpage
+
+\begin{exercise}[9]
+\end{exercise}
+
+\begin{exersolution}[9]
+\end{exersolution}
+
+\newpage
+
+\setcounter{chapter}{4}
+\setcounter{section}{2}
+
+\begin{exercise}[2]
+\end{exercise}
+
+\begin{exersolution}[2]
+\end{exersolution}
+
+\newpage
+
+\begin{exercise}[5]
+  Use Definition 4.2.1 to supply a proper proof for the following limit
+  statements
+  \begin{enumerate}
+    \item $\lim_{x \to 2} (3x + 4) = 10$.
+    \item $\lim_{x \to 0} x^3 = 0$.
+    \item $\lim_{x \to 2} (x^2 + x - 1) = 5$.
+    \item $\lim_{x \to 3} \frac{1}{x} = \frac{1}{3}$.
+  \end{enumerate}
+\end{exercise}
+
+\begin{exersolution}[5]
+  \begin{enumerate}
+    \item \begin{proof}
+        Let $\epsilon > 0$. Define $\delta = 3\epsilon$. Then, for all $x \in
+        A$, we get Let $\epsilon$ be an arbitrary positive number. Let $\delta =
+        3\epsilon$. Let $x$ be arbitrary. Suppose $0 < \lvert x - 2 \rvert <
+        \delta$ Multiplying both sides by $3$ gives us
+        \[%
+          3 \cdot \lvert x - 2 \rvert < 3\delta \implies \lvert 3x - 6 \rvert < 3 \cdot \frac{\epsilon}{3} \implies \lvert (3x + 4) - 10 \rvert < \epsilon
+        .\]%
+        Therefore, $0 < \lvert x - 2 \rvert < \delta \implies \lvert (3x + 4) -
+        10 \rvert < \epsilon$.
+
+        It follows that $(\forall \epsilon > 0)(\exists \delta > 0)(\forall x
+        \in A)[0 < \lvert x - 2 \rvert < \delta \implies \lvert (3x + 4) - 10
+        \rvert < \epsilon]$.
+      \end{proof}
+
+    \item \begin{proof}
+        Let $\epsilon$ be an arbitrary positive number. Let $\delta =
+        \epsilon^{\sfrac{1}{3}}$. Let $x$ be arbitrary. Suppose $0 < \lvert x
+        \rvert < \delta$. Cubing both sides gives
+        us
+        \[%
+          0 < (\lvert x \rvert)^3 < \delta^3 \implies \lvert x^3 - 0 \rvert < \epsilon
+        .\]%
+        Therefore, $0 < \lvert x - 0 \rvert < \delta \implies \lvert x^3 - 0
+        \rvert < \epsilon$.
+
+        It follows that $(\forall \epsilon >
+        0)(\exists \delta > 0)(\forall x \in A)[0 < \lvert x - 0 \rvert < \delta
+          \implies \lvert x^3 - 0 \rvert < \epsilon]$.
+      \end{proof}
+
+    \item \begin{proof}
+        Let $\epsilon$ be an arbitrary positive number. Let $\delta = \min(\{1,
+        \frac{\epsilon}{6}\})$. Let $x$ be arbitrary. Suppose $0 < \lvert x - 2
+        \rvert < \delta$. Multiplying both sides by $6$ gives us $6 \cdot \lvert
+        x - 2 \rvert < 6\delta$. Playing with the inequality on the left hand
+        side gives us
+        \[%
+          6\delta > 6 \cdot \lvert x - 2 \rvert = \lvert 6x - 12 \rvert = \lvert (3 + 3)(x - 2) \rvert \ge \lvert (x + 3)(x - 2) \rvert
+        .\]%
+        Therefore, we get
+        \[%
+          \lvert (x + 3)(x - 2) \rvert < 6\delta \implies \lvert x^2 + x - 6 \rvert < 6 \cdot \frac{\epsilon}{6} \implies \lvert (x^2 + x - 1) - 5 \rvert < \epsilon
+        .\]%
+        Therefore $0 < \lvert x - 2 \rvert < 6 \implies \lvert (x^2 + x - 1) - 5
+        \rvert < \epsilon$.
+
+        It follows that $(\forall \epsilon > 0)(\exists \delta > 0)(\forall x
+        \in A)[0 < \lvert x - 2 \rvert < \delta \implies \lvert (x^2 + x - 1) -
+        5 \rvert < \epsilon]$.
+      \end{proof}
+
+    \item \begin{proof}
+        Let $\epsilon$ be an arbitrary positive number. Let $\delta = \min(\{1,
+        6\epsilon\})$. Let $x$ be arbitrary. Suppose $0 < \lvert x - 3 \rvert <
+        \delta$. Dividing the middle inequality by $6$ gives us
+        \[%
+          \frac{\lvert x - 3 \rvert}{6} = \frac{\lvert x - 3 \rvert}{3 \cdot 2} \le \frac{\lvert x - 3 \rvert}{3 \cdot \lvert x \rvert} = \left\lvert \frac{1}{x} - \frac{1}{3} \right\rvert < \epsilon
+        .\]%
+        Therefore $0 < \lvert x - 3 \rvert < 6 \implies \left\lvert \frac{1}{x}
+        - \frac{1}{3} \right\rvert < \epsilon$.
+
+        It follows that $(\forall \epsilon > 0)(\exists \delta > 0)(\forall x
+        \in A)[0 < \lvert x - 3 \rvert < \delta \implies \left\lvert \frac{1}{x}
+        - \frac{1}{3} \right\rvert < \epsilon]$.
+      \end{proof}
+  \end{enumerate}
+\end{exersolution}
+
+\newpage
+
+\begin{exercise}[6]
+\end{exercise}
+
+\begin{exersolution}[6]
+\end{exersolution}
