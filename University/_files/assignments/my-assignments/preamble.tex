@@ -1,23 +1,7 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%                                                                              %
-%                                Basic Settings                                %
-%                                                                              %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 \usepackage{extramarks}
-
 \input{../../preamble.tex}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%
-%  Helpful New Commands  %
-%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\newcommand\point[1]{\hfill[\textbf{\textit{#1}}]{\parfillskip0pt\par}}
 \def\type{problem}
-
-%%%%%%%%%%%%%%%%%%%%%%%%
-%  Change Size of PDF  %
-%%%%%%%%%%%%%%%%%%%%%%%%
 
 \topmargin=-0.45in
 \evensidemargin=0in
@@ -25,10 +9,6 @@
 \textwidth=6.5in
 \textheight=9.0in
 \headsep=0.25in
-
-%%%%%%%%%%%%%%%%
-% Fancy Header %
-%%%%%%%%%%%%%%%%
 
 \linespread{1.1}
 
@@ -46,14 +26,6 @@
 \fancyfoot[L]{\lastxmark}
 \fancyfoot[C]{\thepage}
 \fancyfoot[R]{}
-\makeatother
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%                                                                              %
-%                                  Title Page                                  %
-%                                                                              %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \title{
   \vspace{2in}\textmd{\textmd{\textbf{\hmwkClass:\ \hmwkTitle}}} \\
@@ -63,71 +35,12 @@
 
 \author{\hmwkAuthorName\\[-1em] \small{UO ID: 952102243}}
 \date{}
-
-\newcounter{countitems}
-\newcounter{nextitemizecount}
-\newcommand{\setupcountitems}{%
-  \stepcounter{nextitemizecount}%
-  \setcounter{countitems}{0}%
-  \preto\item{\stepcounter{countitems}}%
-}
-
-\makeatletter
-\newcommand{\computecountitems}{%
-  \edef\@currentlabel{\number\c@countitems}%
-}
-\newcommand{\nextitemizecount}{%
-  \getrefnumber{countitems@\number\c@nextitemizecount}%
-}
-\newcommand{\previtemizecount}{%
-  \getrefnumber{countitems@\number\numexpr\value{nextitemizecount}-1\relax}%
-}
 \makeatother
 
-\newenvironment{AutoMultiColItemize}{%
-  \ifnumcomp{\nextitemizecount}{>}{3}{\begin{multicols}{2}}{}%
-    \setupcountitems\begin{itemize}}%
-    {\end{itemize}%
-  \unskip\computecountitems\ifnumcomp{\previtemizecount}{>}{3}{\end{multicols}}{}}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%                                                                              %
-%                                 Environments                                 %
-%                                                                              %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%%%%%%%%%%%%
-%  Create empty proof  %
-%%%%%%%%%%%%%%%%%%%%%%%%
-
-\newcounter{homeworkProblemCounter}
-\setcounter{homeworkProblemCounter}{1}
-
-\newcounter{homeworkExerciseCounter}
-\setcounter{homeworkExerciseCounter}{1}
-
-%%%%%%%%%%%%%%%%
-% Environments %
-%%%%%%%%%%%%%%%%
-
-\newenvironment{probsolution}[1][-1]{
-  \ifnum#1>0
-    \setcounter{homeworkSolutionCounter}{#1}
-  \fi
-  \section{Solution \arabic{homeworkSolutionCounter}}
-}{}
-
 \renewenvironment{problem}[1][-1]{
-  \ifnum#1>0
-    \setcounter{homeworkProblemCounter}{#1}
-  \fi
-  \section{Problem \arabic{homeworkProblemCounter}}
-}{}
-
-\newenvironment{exercise}[1][-1]{
-  \ifnum#1>0
-    \setcounter{homeworkExerciseCounter}{#1}
-  \fi
-  \noindent \textbf{Exercise \arabic{chapter}.\arabic{section}.\arabic{homeworkExerciseCounter}}
+  \ifthenelse{\equal{\type}{problem}}{
+    \noindent \textbf{Problem #1}
+  }{
+    \noindent \textbf{Exercise #1}
+  }
 }{}

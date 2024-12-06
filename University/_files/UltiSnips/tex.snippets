@@ -7,7 +7,9 @@
 global !p
 
 
+from builtin import writeRoman
 from latex_.matrix import createMatrix
+from latex_.cmdsub import createProblemSolution
 from latex_.scopes import text, math, displayMath
 environments = {
   "def": "definition",
@@ -76,22 +78,26 @@ snippet "\b[a-z]+\b" "Custom Environments" rAbm
 \end{`!p snip.rv = environments[match[0]]`}
 endsnippet
 
+context "text()"
+snippet sprb "Problem and Solution" Abm
+\begin{problem}[$1]
+	$2
+\end{problem}
+
+\begin{proof}[Solution]
+	$3
+\end{proof}
+endsnippet
+
+pre_expand "createProblemSolution(snip, match)"
+snippet "([0-9]+)sprb" "Problem and Solution" rAbm
+endsnippet
+
 context "match[0] in namedEnvironments"
 snippet "\b[a-z]+\b" "Custom Environments" rAbm
 \begin{`!p snip.rv = namedEnvironments[match[0]]`}[$1]
 	$3
 \end{`!p snip.rv = namedEnvironments[match[0]]`}
-endsnippet
-
-context "text()"
-snippet ps "Problem/Solution" bm
-\begin{problem}
-	$1
-\end{problem}
-
-\begin{probsolution}
-	$2
-\end{probsolution}
 endsnippet
 
 context "text()"
