@@ -1,3 +1,7 @@
+\begin{center}
+  SECTION 2.2
+\end{center}
+
 \setcounter{chapter}{2}
 \setcounter{section}{2}
 
@@ -13,13 +17,13 @@
   What exactly is being described in this strange definition?
 \end{exercise}
 
-\begin{exersolution}[1]
+\begin{proof}[Solution]
   A series $(x_n)$ \textit{verconges} to $x$ if $\lvert x_n - x \rvert$ is
   bounded. Meaning, the sequence is vercongent \textit{if and only if} it is
   bounded.
-\end{exersolution}
+\end{proof}
 
-\newpage
+\medskip
 
 \begin{exercise}[2]
   Verify, using the definition of convergence of a sequence, that the following
@@ -31,49 +35,45 @@
   \end{enumerate}
 \end{exercise}
 
-\begin{exersolution}[2]
-  The definition of convergence of a sequence is as follows
+The definition of convergence of a sequence is as follows
+\[%
+  \empheq{\lim_{n \to \infty} a_n = a \iff (\forall \epsilon > 0)(\exists N \in \N)(\forall n > N)[\lvert a_n - a \rvert < \epsilon]}
+\]%
+
+\begin{proof}[Solution to (i)]
+  Given $\epsilon > 0$, choose
   \[%
-    \empheq{\lim_{n \to \infty} a_n = a \iff \forall \epsilon > 0, \exists N~\st~\forall n > N \implies \lvert a_n - a \rvert < \epsilon}
-  \]%
+    N = \frac{3}{25\epsilon} - \frac{4}{5}
+  .\]%
+  Suppose $n > N > 0$. Then,
+  \[%
+    \lvert a_n - a \rvert = \left\lvert \frac{2n + 1}{5n + 4} - \frac{2}{5} \right\rvert = \frac{3}{5(5n + 4)} < \frac{3}{5(5N + 4)} = \frac{3}{5\left(5\left(\frac{3}{25\epsilon} - \frac{4}{5}\right) + 4\right)} = \frac{3}{5\left(\frac{3}{5\epsilon}\right)} = \epsilon
+  .\qedhere\]%
+\end{proof}
 
-  \begin{enumerate}
-    \item \begin{proof}
-        Given $\epsilon > 0$, choose
-        \[%
-          N = \frac{3}{25\epsilon} - \frac{4}{5}
-        .\]%
-        Suppose $n > N > 0$. Then,
-        \[%
-          \lvert a_n - a \rvert = \left\lvert \frac{2n + 1}{5n + 4} - \frac{2}{5} \right\rvert = \frac{3}{5(5n + 4)} < \frac{3}{5(5N + 4)} = \frac{3}{5\left(5\left(\frac{3}{25\epsilon} - \frac{4}{5}\right) + 4\right)} = \frac{3}{5\left(\frac{3}{5\epsilon}\right)} = \epsilon
-        .\qedhere\]%
-      \end{proof}
+\begin{proof}[Solution to (ii)]
+  Given $\epsilon > 0$, choose
+  \[%
+    N = \frac{1}{\epsilon}
+  .\]%
+  Suppose $n > N > 0$. Then,
+  \[%
+    \lvert a_n - a \rvert = \left\lvert \frac{2n^2}{n^3 + 3} - 0 \right\rvert = \frac{2n^2}{n^3 + 3} < \frac{2n^2}{n^3} = \frac{1}{n} < \frac{1}{N} < \epsilon
+  .\qedhere\]%
+\end{proof}
 
-    \item \begin{proof}
-        Given $\epsilon > 0$, choose
-        \[%
-          N = \frac{1}{\epsilon}
-        .\]%
-        Suppose $n > N > 0$. Then,
-        \[%
-          \lvert a_n - a \rvert = \left\lvert \frac{2n^2}{n^3 + 3} - 0 \right\rvert = \frac{2n^2}{n^3 + 3} < \frac{2n^2}{n^3} = \frac{1}{n} < \frac{1}{N} < \epsilon
-        .\qedhere\]%
-      \end{proof}
+\begin{proof}[Solution to (iii)]
+  Given $\epsilon > 0$, choose
+  \[%
+    N = \frac{1}{\epsilon^3}
+  .\]%
+  Suppose $n > N > 0$. Then,
+  \[%
+    \lvert a_n - a \rvert = \left\lvert \frac{\sin(n^2)}{\sqrt[3]{n}} \right\rvert \le \frac{1}{\sqrt[3]{n}} < \frac{1}{\sqrt[3]{N}} < \epsilon
+  .\qedhere\]%
+\end{proof}
 
-    \item \begin{proof}
-        Given $\epsilon > 0$, choose
-        \[%
-          N = \frac{1}{\epsilon^3}
-        .\]%
-        Suppose $n > N > 0$. Then,
-        \[%
-          \lvert a_n - a \rvert = \left\lvert \frac{\sin(n^2)}{\sqrt[3]{n}} \right\rvert \le \frac{1}{\sqrt[3]{n}} < \frac{1}{\sqrt[3]{N}} < \epsilon
-        .\qedhere\]%
-      \end{proof}
-  \end{enumerate}
-\end{exersolution}
-
-\newpage
+\medskip
 
 \begin{exercise}[3]
   Describe what we would have to demonstrate in order to disprove each of the
@@ -90,20 +90,22 @@
   \end{enumerate}
 \end{exercise}
 
-\begin{exersolution}[3]
-  \begin{enumerate}
-    \item Find a college in the United States where all students are less than
-      seven feet tall.
+\begin{proof}[Solution to (i)]
+  Find a college in the United States where all students are less than seven
+  feet tall.
+\end{proof}
 
-    \item Find a college in the United States where every professor does not
-      only give A's or B's.
+\begin{proof}[Solution to (ii)]
+  Find a college in the United States where every professor does not only give
+  A's or B's.
+\end{proof}
 
-    \item Show that all colleges in the United States have at least one student
-      that's shorter than six feet tall.
-  \end{enumerate}
-\end{exersolution}
+\begin{proof}[Solution to (iii)]
+  Show that all colleges in the United States have at least one student that's
+  shorter than six feet tall.
+\end{proof}
 
-\newpage
+\medskip
 
 \begin{exercise}[4]
   Give an example of each or state that the request is impossible. For any that
@@ -120,19 +122,21 @@
   \end{enumerate}
 \end{exercise}
 
-\begin{exersolution}[4]
-  \begin{enumerate}
-    \item $a_n = (-1)^n$.
+\begin{proof}[Solution to (i)]
+  $a_n = (-1)^n$.
+\end{proof}
 
-    \item Impossible, if $\lim_{n \to \infty} a_n = a \ne 1$ then for any $n \ge
-      N$ we can find a $n$ with $a_n = 1$, meaning $\lvert 1 - a \rvert <
-      \epsilon$ is impossible.
+\begin{proof}[Solution to (ii)]
+  Impossible, if $\lim_{n \to \infty} a_n = a \ne 1$ then for any $n \ge N$ we
+  can find a $n$ with $a_n = 1$, meaning $\lvert 1 - a \rvert < \epsilon$ is
+  impossible.
+\end{proof}
 
-    \item $a_n = (1, 2, 1, 1, 3, 1, 1, 1, \dots)$.
-  \end{enumerate}
-\end{exersolution}
+\begin{proof}[Solution to (iii)]
+  $a_n = (1, 2, 1, 1, 3, 1, 1, 1, \dots)$.
+\end{proof}
 
-\newpage
+\medskip
 
 \begin{exercise}[6]
   \textbf{Theorem 2.2.7 (Uniqueness of Limits).} \textit{The limit of a
@@ -142,22 +146,24 @@
   \to b$. Now argue $a = b$.
 \end{exercise}
 
-\begin{exersolution}[6]
-  \begin{proof}
-    Let $\epsilon > 0$. Since $(a_n) \to a$, then, by the definition of the
-    limit, we get $\exists N_1~\st~\forall n > N \implies \lvert a_n - a \rvert
-    < \sfrac{\epsilon}{2}$. We get a similar thing for $(a_n) \to b$, $\exists
-    N_2~\st~\forall n > N \implies \lvert a_n - b \rvert < \sfrac{\epsilon}{2}$
+\begin{proof}[Solution]
+  Let $\epsilon > 0$. Since $(a_n) \to a$, then, by the definition of the limit,
+  we get $\exists N_1~\st~\forall n > N \implies \lvert a_n - a \rvert <
+  \sfrac{\epsilon}{2}$. We get a similar thing for $(a_n) \to b$, $\exists
+  N_2~\st~\forall n > N \implies \lvert a_n - b \rvert < \sfrac{\epsilon}{2}$
 
-    Let $N = \max(\{N_1, N_2\})$. Then, for all $n > N$, we get
-    \[%
-      \lvert a - b \rvert \le \lvert (a_n - a) + (a_n - b) \rvert \le \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon
-    .\]%
-    Therefore, $a = b$.
-  \end{proof}
-\end{exersolution}
+  Let $N = \max(\{N_1, N_2\})$. Then, for all $n > N$, we get
+  \[%
+    \lvert a - b \rvert \le \lvert (a_n - a) + (a_n - b) \rvert \le \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon
+  .\]%
+  Therefore, $a = b$.
+\end{proof}
 
-\newpage
+\medskip
+
+\begin{center}
+  SECTION 2.3
+\end{center}
 
 \setcounter{section}{3}
 
@@ -168,37 +174,33 @@
   \end{enumerate}
 \end{exercise}
 
-\begin{exersolution}[1]
-  \begin{enumerate}
-    \item \begin{proof}
-        Let $\epsilon > 0$. Since $(x_n) \to 0$, by the definition of
-        convergence, there exists $N$ such that for all $n > N$, we get $\lvert
-        x_n \rvert < \epsilon^2$. This means $x_n < \epsilon^2$ for a large
-        enough $n$. Taking the square root of both sides we get $\sqrt{x_n} <
-        \epsilon$ (this is allowed, as $x_n \ge 0 $).
+\begin{proof}[Solution to (i)]
+  Let $\epsilon > 0$. Since $(x_n) \to 0$, by the definition of convergence,
+  there exists $N$ such that for all $n > N$, we get $\lvert x_n \rvert <
+  \epsilon^2$. This means $x_n < \epsilon^2$ for a large enough $n$. Taking the
+  square root of both sides we get $\sqrt{x_n} < \epsilon$ (this is allowed, as
+  $x_n \ge 0 $).
 
-        Thus, for all $n > N$, we get $\lvert \sqrt{x_n} - 0 \rvert < \epsilon$,
-        showing that if $(x_n) \to 0$, then $(\sqrt{x_n}) \to 0$.
-      \end{proof}
+  Thus, for all $n > N$, we get $\lvert \sqrt{x_n} - 0 \rvert < \epsilon$,
+  showing that if $(x_n) \to 0$, then $(\sqrt{x_n}) \to 0$.
+\end{proof}
 
-    \item \begin{proof}
-        Let $\epsilon > 0$. Since $(x_n) \to x$, by the definition of
-        convergence, there exists $N$ such that for all $n > N$, we get $\lvert
-        x_n - x \rvert < \epsilon^2$. Multiplying by $(\sqrt{x_n} + \sqrt{x})$
-        gives $\lvert x_n - x \rvert < (\sqrt{x_n} + \sqrt{x})\epsilon$. Since
-        $x_n$ is convergent, it is bounded $\lvert x_n \rvert \le M$ implying
-        $\sqrt{\lvert x_n \rvert} \le \sqrt{M}$. This implies that
-        \[%
-          \lvert \sqrt{x_n} - \sqrt{x} \rvert \le \frac{\lvert x_n - x \rvert}{\sqrt{M} + \sqrt{x}} < \epsilon
-        .\]%
+\begin{proof}[Solution to (ii)]
+  Let $\epsilon > 0$. Since $(x_n) \to x$, by the definition of convergence,
+  there exists $N$ such that for all $n > N$, we get $\lvert x_n - x \rvert <
+  \epsilon^2$. Multiplying by $(\sqrt{x_n} + \sqrt{x})$ gives $\lvert x_n - x
+  \rvert < (\sqrt{x_n} + \sqrt{x})\epsilon$. Since $x_n$ is convergent, it is
+  bounded $\lvert x_n \rvert \le M$ implying $\sqrt{\lvert x_n \rvert} \le
+  \sqrt{M}$. This implies that
+  \[%
+    \lvert \sqrt{x_n} - \sqrt{x} \rvert \le \frac{\lvert x_n - x \rvert}{\sqrt{M} + \sqrt{x}} < \epsilon
+  .\]%
 
-        Thus, for all $n > N$, we get $\lvert \sqrt{x_n} - x \rvert < \epsilon$,
-        showing that if $(x_n) \to x$, then $(\sqrt{x_n}) \to x$.
-      \end{proof}
-  \end{enumerate}
-\end{exersolution}
+  Thus, for all $n > N$, we get $\lvert \sqrt{x_n} - x \rvert < \epsilon$,
+  showing that if $(x_n) \to x$, then $(\sqrt{x_n}) \to x$.
+\end{proof}
 
-\newpage
+\medskip
 
 \begin{exercise}[3]
   \textbf{Theorem (Squeeze Theorem).} Show that if $x_n \le y_n \le z_n$ for all
@@ -206,27 +208,25 @@
   \infty} y_n = l$ as well.
 \end{exercise}
 
-\begin{exersolution}[3]
-  \begin{proof}
-    Let $\epsilon > 0$. Since $\lim_{n \to \infty} x_n = z_n = l$, then there
-    exists $N_1$, $N_2$ such that for all $n > N_1$, $\lvert x_n - l \rvert <
-    \sfrac{\epsilon}{2}$ and for all $n > N_2$ $\lvert z_n - l \rvert <
-    \sfrac{\epsilon}{2}$. Define $N = \max(\{N_1, N_2\})$. Then, for all $n >
-    N$, we get $\lvert x_n - l \rvert < \sfrac{\epsilon}{2}$ and $\lvert z_n - l
-    \rvert < \sfrac{\epsilon}{2}$.
+\begin{proof}[Solution]
+  Let $\epsilon > 0$. Since $\lim_{n \to \infty} x_n = z_n = l$, then there
+  exists $N_1$, $N_2$ such that for all $n > N_1$, $\lvert x_n - l \rvert <
+  \sfrac{\epsilon}{2}$ and for all $n > N_2$ $\lvert z_n - l \rvert <
+  \sfrac{\epsilon}{2}$. Define $N = \max(\{N_1, N_2\})$. Then, for all $n > N$,
+  we get $\lvert x_n - l \rvert < \sfrac{\epsilon}{2}$ and $\lvert z_n - l
+  \rvert < \sfrac{\epsilon}{2}$.
 
-    Using the triangle inequality, we get
-    \[%
-      \lvert x_n - z_n \rvert \le \lvert x_n - l \rvert + \lvert z_n - l \rvert < \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon
-    .\]%
+  Using the triangle inequality, we get
+  \[%
+    \lvert x_n - z_n \rvert \le \lvert x_n - l \rvert + \lvert z_n - l \rvert < \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon
+  .\]%
 
-    Since $x_n \le y_n \le z_n$, it follows that
-    \[%
-      \lvert y_n - l \rvert \le \lvert y_n - x_n \rvert + \lvert x_n - l \rvert < \lvert z_n - x_n \rvert + \lvert x_n - l \rvert < \epsilon
-    .\]%
+  Since $x_n \le y_n \le z_n$, it follows that
+  \[%
+    \lvert y_n - l \rvert \le \lvert y_n - x_n \rvert + \lvert x_n - l \rvert < \lvert z_n - x_n \rvert + \lvert x_n - l \rvert < \epsilon
+  .\]%
 
-    Thus, for all $n > N$, we get $\lvert y_n - l \rvert < \epsilon$, showing
-    that if $\lim_{n \to \infty} x_n = z_n = l$ and $x_n \le y_n \le z_n$, then
-    $\lim_{n \to \infty} y_n = l$.
-  \end{proof}
-\end{exersolution}
+  Thus, for all $n > N$, we get $\lvert y_n - l \rvert < \epsilon$, showing that
+  if $\lim_{n \to \infty} x_n = z_n = l$ and $x_n \le y_n \le z_n$, then
+  $\lim_{n \to \infty} y_n = l$.
+\end{proof}

@@ -1,0 +1,70 @@
+\documentclass[12pt]{amsart} % if you want a smaller fond, change 12 to 11
+\usepackage{amssymb}
+\usepackage{amscd}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{enumerate}
+ 
+\newcommand{\N}{{\mathbb{N}}}  % define a short-hand \N for the set of natural integers
+\newcommand{\Q}{{\mathbb{Q}}}
+\newcommand{\R}{{\mathbb{R}}}
+\newcommand{\Z}{{\mathbb{Z}}}
+
+\newcommand{\ve}{{\varepsilon}}
+
+\begin{document}
+ 
+\title{Math 316: Assignment 1}
+\author{Your Name}
+
+\maketitle
+
+\noindent\medskip
+{\bf Exercise 1. } Let $a$ and $b$ be two real numbers. Prove $a \le b$ if and only if, for any $\ve > 0$, $a < b+\ve$. 
+
+\begin{proof}[Solution]
+One direction is simple: if $a \le b$, then $a \le b < b+\ve$ for any $\ve > 0$. 
+
+\medskip  % you can use \medskip for a medium skip of space, and use \bigskip for a bigger skip
+
+On the other direction, assume $a < b+\ve$ for any $\ve > 0$ but $a > b$. Then $\ve_0 = a-b > 0$ 
+and $a = a-b+b = b+ \ve_0$, which contradicts to $a < b + \ve$ fails for all $\ve > 0$. 
+\end{proof} 
+
+\noindent\medskip
+{\bf Exercise 1.2.5.} 
+Using the triangle inequality to establish the inequalities 
+\begin{enumerate}
+\item[(a)]  $|a-b| \le |a| + |b|$
+\item[(b)]  $||a|-|b|| \le |a-b|$.
+\end{enumerate}
+
+\begin{proof}[Solution]
+This gives an example on how to type a list. 
+\end{proof}
+
+\bigskip
+
+\noindent\medskip
+{\bf Example.} 
+Here are example of displayed formulas: 
+$$
+   f(x) = 1 + x^2 \sin x + \sqrt{x} 
+$$
+and (this one has the equation number)
+\begin{equation}
+   \frac{1}{1-x}  = \sum_{n=0}^\infty x^n, \qquad -1 < x < 1.
+\end{equation}
+Here is an example of multi-lined equations: 
+\begin{align*}
+   f(x) & = \frac{1}{1-x} \\
+         & = \sum_{n=0}^\infty x^n, \qquad -1 < x < 1.
+\end{align*}
+
+ 
+\end{document}
+
+
+
+
+ 

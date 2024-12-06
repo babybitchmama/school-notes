@@ -1,3 +1,9 @@
+\begin{center}
+  SECTION 3.3
+\end{center}
+
+\medskip
+
 \setcounter{chapter}{3}
 \setcounter{section}{3}
 
@@ -12,27 +18,29 @@
 
     \item If $f_1 \supseteq F_2 \supseteq F_3 \supseteq \cdots$ is a nested
       sequence of nonempty closed sets, then the intersection
-      $\displaystyle\bigcap_{n=1}^{\infty} F_n \ne \emptyset$.
+      $\bigcap_{n=1}^{\infty} F_n \ne \emptyset$.
   \end{enumerate}
 \end{exercise}
 
-\begin{exersolution}[5]
-  \begin{enumerate}
-    \item True, since the intersection will be closed and bounded.
+\begin{proof}[Solution to (i)]
+  True, since the intersection will be closed and bounded.
+\end{proof}
 
-    \item False, since $\displaystyle \bigcup_{n=1}^{\infty} [0, n]$ is
-      unbounded.
+\begin{proof}[Solution to (ii)]
+  False, since $\bigcup_{n=1}^{\infty} [0, n]$ is unbounded.
+\end{proof}
 
-    \item False, since $(0, 1] \cap [0, 1] = (0, 1]$ is not closed, as $0$ is a
-      limit point of $(0, 1]$, since $\displaystyle\left.\left\{\frac{1}{n} \right\rvert n \in
-      \N\right\}$ is a sequence that converges to $0$.
+\begin{proof}[Solution to (iii)]
+  False, since $(0, 1] \cap [0, 1] = (0, 1]$ is not closed, as $0$ is a limit
+  point of $(0, 1]$, since $\left.\left\{\frac{1}{n} \right\rvert n \in
+  \N\right\}$ is a sequence that converges to $0$.
+\end{proof}
 
-    \item False, since $\displaystyle \bigcap_{n=1}^{\infty} [n, \infty) =
-      \emptyset$.
-  \end{enumerate}
-\end{exersolution}
+\begin{proof}[Solution to (iv)]
+  False, since $\bigcap_{n=1}^{\infty} [n, \infty) = \emptyset$.
+\end{proof}
 
-\newpage
+\medskip
 
 \begin{exercise}[9]
   Follow these steps to prove that being compact implies every open cover has a
@@ -56,26 +64,33 @@
   \end{enumerate}
 \end{exercise}
 
-\begin{exersolution}[9]
-  \begin{enumerate}
-    \item Bisect $I_0$ into two intervals. Let $I_1$ be the interval where $I_1
-      \cap K$ cannot be finitely covered. Repeating this process gets us
-      $\displaystyle\lim_{n \to \infty} \lvert I_n \rvert = \lim_{n \to \infty}
-      \lvert I_0 \rvert \left(\frac{1}{2}\right)^n = 0$.
+\begin{proof}[Solution to (i)]
+  Bisect $I_0$ into two intervals. Let $I_1$ be the interval where $I_1 \cap K$
+  cannot be finitely covered. Repeating this process gets us
+  $\displaystyle\lim_{n \to \infty} \lvert I_n \rvert = \lim_{n \to \infty}
+  \lvert I_0 \rvert \left(\frac{1}{2}\right)^n = 0$.
+\end{proof}
 
-    \item The nested compact set property $K_n = I_n \cap K$ gives
-      $\displaystyle x \in \bigcap_{n=1}^{\infty} K_n$, meaning $x \in K$ and $x
-      \in I_n$ for all $n$.
+\begin{proof}[Solution to (ii)]
+  The nested compact set property $K_n = I_n \cap K$ gives $\displaystyle x \in
+  \bigcap_{n=1}^{\infty} K_n$, meaning $x \in K$ and $x \in I_n$ for all $n$.
+\end{proof}
 
-    \item Since $x \in O_{\lambda_0}$ and $\lvert I_n \rvert \to 0$ with $x \in
-      I_n$ for all $n$, there exists an $N$ where $n > N$ implies $I_n \subseteq
-      O_{\lambda_0}$ contradicting the assumption that $I_n \cap K$ cannot be
-      finitely covered since $\{O_{\lambda_0}\}$ is a finite subcover for $I_n
-      \cap K$.
-  \end{enumerate}
-\end{exersolution}
+\begin{proof}[Solution to (iii)]
+  Since $x \in O_{\lambda_0}$ and $\lvert I_n \rvert \to 0$ with $x \in I_n$ for
+  all $n$, there exists an $N$ where $n > N$ implies $I_n \subseteq
+  O_{\lambda_0}$ contradicting the assumption that $I_n \cap K$ cannot be
+  finitely covered since $\{O_{\lambda_0}\}$ is a finite subcover for $I_n \cap
+  K$.
+\end{proof}
 
-\newpage
+\medskip
+
+\begin{center}
+  SECTION 4.2
+\end{center}
+
+\medskip
 
 \setcounter{chapter}{4}
 \setcounter{section}{2}
@@ -91,38 +106,39 @@
   \end{enumerate}
 \end{exercise}
 
-\begin{exersolution}[2]
-  \begin{enumerate}
-    \item The largest possible $\delta$-neighborhood is
-      \[%
-        \lvert (5x - 6) - 9 \rvert = \lvert 5x - 15 \rvert = 5 \cdot \lvert x - 3 \rvert < 5\delta \implies \delta = \frac{1}{5}
-      .\]%
+\begin{proof}[Solution to (i)]
+  The largest possible $\delta$-neighborhood is
+  \[%
+    \lvert (5x - 6) - 9 \rvert = \lvert 5x - 15 \rvert = 5 \cdot \lvert x - 3 \rvert < 5\delta \implies \delta = \frac{1}{5}
+  .\qedhere\]%
+\end{proof}
 
-    \item Expanding $\lvert \sqrt{x} - 2 \rvert < 1$ gives us
-      \[%
-        1 < \sqrt{x} < 3 \implies \delta = 3
-      .\]%
+\begin{proof}[Solution to (ii)]
+  Expanding $\lvert \sqrt{x} - 2 \rvert < 1$ gives us
+  \[%
+    1 < \sqrt{x} < 3 \implies \delta = 3
+  .\qedhere\]%
+\end{proof}
 
-    \item To satisfy $\lvert [[x]] - 1 \rvert < 1$, we require
-      \[%
-        [[x]] = 3
-      ,\]%
-      which happens when $3 \le x < 4$. Thus,
-      \[%
-        \lvert x - \pi \rvert < \min(\{\pi - 3, 4 - \pi\}) \implies \delta = \min(\{\pi - 3, 4 - \pi\}) = \pi - 3 \approx 0.1416
-      .\]%
+\begin{proof}[Solution to (iii)]
+  To satisfy $\lvert [[x]] - 1 \rvert < 1$, we require $[[x]] = 3$, which
+  happens when $3 \le x < 4$. Thus,
+  \[%
+    \lvert x - \pi \rvert < \min(\{\pi - 3, 4 - \pi\}) \implies \delta = \min(\{\pi - 3, 4 - \pi\}) = \pi - 3 \approx 0.1416
+  .\qedhere\]%
+\end{proof}
 
-    \item For $\epsilon = 0.01$, we still need $\lvert [[x]] - 3 \rvert < 0.01$.
-      Since $[[x]]$ is piecewise constant, this requires $[[x] = 3$. This occurs
-      only when $3 \le x < 4$. The analysis of $\lvert x - \pi \rvert < \delta$
-      is the same as before
-      \[%
-        \delta = \min(\{\pi - 3, 4 - \pi\}) = \pi - 3 \approx 0.1416
-      .\]%
-  \end{enumerate}
-\end{exersolution}
+\begin{proof}[Solution to (iv)]
+  For $\epsilon = 0.01$, we still need $\lvert [[x]] - 3 \rvert < 0.01$. Since
+  $[[x]]$ is piecewise constant, this requires $[[x] = 3$. This occurs only when
+  $3 \le x < 4$. The analysis of $\lvert x - \pi \rvert < \delta$ is the same as
+  before
+  \[%
+    \delta = \min(\{\pi - 3, 4 - \pi\}) = \pi - 3 \approx 0.1416
+  .\qedhere\]%
+\end{proof}
 
-\newpage
+\medskip
 
 \begin{exercise}[5]
   Use Definition 4.2.1 to supply a proper proof for the following limit
@@ -135,79 +151,77 @@
   \end{enumerate}
 \end{exercise}
 
-\begin{exersolution}[5]
-  \begin{enumerate}
-    \item \begin{proof}
-        Let $\epsilon > 0$. Define $\delta = 3\epsilon$. Then, for all $x \in
-        A$, we get Let $\epsilon$ be an arbitrary positive number. Let $\delta =
-        3\epsilon$. Let $x$ be arbitrary. Suppose $0 < \lvert x - 2 \rvert <
-        \delta$ Multiplying both sides by $3$ gives us
-        \[%
-          3 \cdot \lvert x - 2 \rvert < 3\delta \implies \lvert 3x - 6 \rvert < 3 \cdot \frac{\epsilon}{3} \implies \lvert (3x + 4) - 10 \rvert < \epsilon
-        .\]%
-        Therefore, $0 < \lvert x - 2 \rvert < \delta \implies \lvert (3x + 4) -
-        10 \rvert < \epsilon$.
+\begin{proof}[Solution to (i)]
+  Let $\epsilon > 0$. Define $\delta = 3\epsilon$. Then, for all $x \in A$, we
+  get Let $\epsilon$ be an arbitrary positive number. Let $\delta = 3\epsilon$.
+  Let $x$ be arbitrary. Suppose $0 < \lvert x - 2 \rvert < \delta$ Multiplying
+  both sides by $3$ gives us
+  \[%
+    3 \cdot \lvert x - 2 \rvert < 3\delta \implies \lvert 3x - 6 \rvert < 3 \cdot \frac{\epsilon}{3} \implies \lvert (3x + 4) - 10 \rvert < \epsilon
+  .\]%
 
-        It follows that $(\forall \epsilon > 0)(\exists \delta > 0)(\forall x
-        \in A)[0 < \lvert x - 2 \rvert < \delta \implies \lvert (3x + 4) - 10
-        \rvert < \epsilon]$.
-      \end{proof}
+  Therefore, $0 < \lvert x - 2 \rvert < \delta \implies \lvert (3x + 4) -
+  10 \rvert < \epsilon$.
 
-    \item \begin{proof}
-        Let $\epsilon$ be an arbitrary positive number. Let $\delta =
-        \epsilon^{\sfrac{1}{3}}$. Let $x$ be arbitrary. Suppose $0 < \lvert x
-        \rvert < \delta$. Cubing both sides gives
-        us
-        \[%
-          0 < (\lvert x \rvert)^3 < \delta^3 \implies \lvert x^3 - 0 \rvert < \epsilon
-        .\]%
-        Therefore, $0 < \lvert x - 0 \rvert < \delta \implies \lvert x^3 - 0
-        \rvert < \epsilon$.
+  It follows that $(\forall \epsilon > 0)(\exists \delta > 0)(\forall x \in A)[0
+  < \lvert x - 2 \rvert < \delta \implies \lvert (3x + 4) - 10 \rvert <
+  \epsilon]$.
+\end{proof}
 
-        It follows that $(\forall \epsilon >
-        0)(\exists \delta > 0)(\forall x \in A)[0 < \lvert x - 0 \rvert < \delta
-          \implies \lvert x^3 - 0 \rvert < \epsilon]$.
-      \end{proof}
+\begin{proof}[Solution to (ii)]
+  Let $\epsilon$ be an arbitrary positive number. Let $\delta =
+  \epsilon^{\sfrac{1}{3}}$. Let $x$ be arbitrary. Suppose $0 < \lvert x \rvert <
+  \delta$. Cubing both sides gives us
+  \[%
+    0 < (\lvert x \rvert)^3 < \delta^3 \implies \lvert x^3 - 0 \rvert < \epsilon
+  .\]%
 
-    \item \begin{proof}
-        Let $\epsilon$ be an arbitrary positive number. Let $\delta = \min(\{1,
-        \frac{\epsilon}{6}\})$. Let $x$ be arbitrary. Suppose $0 < \lvert x - 2
-        \rvert < \delta$. Multiplying both sides by $6$ gives us $6 \cdot \lvert
-        x - 2 \rvert < 6\delta$. Playing with the inequality on the left hand
-        side gives us
-        \[%
-          6\delta > 6 \cdot \lvert x - 2 \rvert = \lvert 6x - 12 \rvert = \lvert (3 + 3)(x - 2) \rvert \ge \lvert (x + 3)(x - 2) \rvert
-        .\]%
-        Therefore, we get
-        \[%
-          \lvert (x + 3)(x - 2) \rvert < 6\delta \implies \lvert x^2 + x - 6 \rvert < 6 \cdot \frac{\epsilon}{6} \implies \lvert (x^2 + x - 1) - 5 \rvert < \epsilon
-        .\]%
-        Therefore $0 < \lvert x - 2 \rvert < 6 \implies \lvert (x^2 + x - 1) - 5
-        \rvert < \epsilon$.
+  Therefore, $0 < \lvert x - 0 \rvert < \delta \implies \lvert x^3 - 0 \rvert <
+  \epsilon$.
 
-        It follows that $(\forall \epsilon > 0)(\exists \delta > 0)(\forall x
-        \in A)[0 < \lvert x - 2 \rvert < \delta \implies \lvert (x^2 + x - 1) -
-        5 \rvert < \epsilon]$.
-      \end{proof}
+  It follows that $(\forall \epsilon >
+  0)(\exists \delta > 0)(\forall x \in A)[0 < \lvert x - 0 \rvert < \delta
+    \implies \lvert x^3 - 0 \rvert < \epsilon]$.
+\end{proof}
 
-    \item \begin{proof}
-        Let $\epsilon$ be an arbitrary positive number. Let $\delta = \min(\{1,
-        6\epsilon\})$. Let $x$ be arbitrary. Suppose $0 < \lvert x - 3 \rvert <
-        \delta$. Dividing the middle inequality by $6$ gives us
-        \[%
-          \frac{\lvert x - 3 \rvert}{6} = \frac{\lvert x - 3 \rvert}{3 \cdot 2} \le \frac{\lvert x - 3 \rvert}{3 \cdot \lvert x \rvert} = \left\lvert \frac{1}{x} - \frac{1}{3} \right\rvert < \epsilon
-        .\]%
-        Therefore $0 < \lvert x - 3 \rvert < 6 \implies \left\lvert \frac{1}{x}
-        - \frac{1}{3} \right\rvert < \epsilon$.
+\begin{proof}[Solution to (iii)]
+  Let $\epsilon$ be an arbitrary positive number. Let $\delta = \min(\{1,
+  \frac{\epsilon}{6}\})$. Let $x$ be arbitrary. Suppose $0 < \lvert x - 2 \rvert
+  < \delta$. Multiplying both sides by $6$ gives us $6 \cdot \lvert x - 2 \rvert
+  < 6\delta$. Playing with the inequality on the left hand side gives us
+  \[%
+    6\delta > 6 \cdot \lvert x - 2 \rvert = \lvert 6x - 12 \rvert = \lvert (3 + 3)(x - 2) \rvert \ge \lvert (x + 3)(x - 2) \rvert
+  .\]%
+  Therefore, we get
+  \[%
+    \lvert (x + 3)(x - 2) \rvert < 6\delta \implies \lvert x^2 + x - 6 \rvert < 6 \cdot \frac{\epsilon}{6} \implies \lvert (x^2 + x - 1) - 5 \rvert < \epsilon
+  .\]%
 
-        It follows that $(\forall \epsilon > 0)(\exists \delta > 0)(\forall x
-        \in A)[0 < \lvert x - 3 \rvert < \delta \implies \left\lvert \frac{1}{x}
-        - \frac{1}{3} \right\rvert < \epsilon]$.
-      \end{proof}
-  \end{enumerate}
-\end{exersolution}
+  Therefore $0 < \lvert x - 2 \rvert < 6 \implies \lvert (x^2 + x - 1) - 5
+  \rvert < \epsilon$.
 
-\newpage
+  It follows that $(\forall \epsilon > 0)(\exists \delta > 0)(\forall x \in A)[0
+  < \lvert x - 2 \rvert < \delta \implies \lvert (x^2 + x - 1) -
+  5 \rvert < \epsilon]$.
+\end{proof}
+
+\begin{proof}[Solution to (iv)]
+  Let $\epsilon$ be an arbitrary positive number. Let $\delta = \min(\{1,
+  6\epsilon\})$. Let $x$ be arbitrary. Suppose $0 < \lvert x - 3 \rvert <
+  \delta$. Dividing the middle inequality by $6$ gives us
+  \[%
+    \frac{\lvert x - 3 \rvert}{6} = \frac{\lvert x - 3 \rvert}{3 \cdot 2} \le \frac{\lvert x - 3 \rvert}{3 \cdot \lvert x \rvert} = \left\lvert \frac{1}{x} - \frac{1}{3} \right\rvert < \epsilon
+  .\]%
+
+  Therefore $0 < \lvert x - 3 \rvert < 6 \implies \left\lvert \frac{1}{x} -
+  \frac{1}{3} \right\rvert < \epsilon$.
+
+  It follows that $(\forall \epsilon > 0)(\exists \delta > 0)(\forall x \in A)[0
+  < \lvert x - 3 \rvert < \delta \implies \left\lvert \frac{1}{x} - \frac{1}{3}
+  \right\rvert < \epsilon]$.
+\end{proof}
+
+\medskip
 
 \begin{exercise}[6]
   \begin{enumerate}
@@ -226,20 +240,23 @@
   \end{enumerate}
 \end{exercise}
 
-\begin{exersolution}[6]
-  \begin{enumerate}
-    \item True, since $\lvert x - a \rvert < \delta_2 < \delta$.
+\begin{proof}[Solution to (i)]
+  True, since $\lvert x - a \rvert < \delta_2 < \delta$.
+\end{proof}
 
-    \item False. Counterexample: If $x = 0$, then $f(x) = 1$. Otherwise, $f(x) =
-      0$. The definition of the limit of a function states that $\lvert x - a
-      \rvert < \delta$ implies that $\lvert f(x) - L \rvert < \epsilon$ for all
-      $x$ that's not equal to $a$.
+\begin{proof}[Solution to (ii)]
+  False. Counterexample: If $x = 0$, then $f(x) = 1$. Otherwise, $f(x) = 0$. The
+  definition of the limit of a function states that $\lvert x - a \rvert <
+  \delta$ implies that $\lvert f(x) - L \rvert < \epsilon$ for all $x$ that's
+  not equal to $a$.
+\end{proof}
 
-    \item True, as you can use the Algebraic Limit Theorem.
+\begin{proof}[Solution to (iii)]
+  True, as you can use the Algebraic Limit Theorem.
+\end{proof}
 
-    \item False. Counterexample: Given two functions $f(x) = x$ and $g(x) =
-      \sfrac{1}{x}$, then the limit $\lim_{x \to 0} f(x) = 0$, but $\lim_{x \to
-      0} g(x)$ does not exist, as $\sfrac{1}{0}$ isn't defined as it's not
-      continuous.
-  \end{enumerate}
-\end{exersolution}
+\begin{proof}[Solution to (iv)]
+  False. Counterexample: Given two functions $f(x) = x$ and $g(x) =
+  \sfrac{1}{x}$, then the limit $\lim_{x \to 0} f(x) = 0$, but $\lim_{x \to 0}
+  g(x)$ does not exist, as $\sfrac{1}{0}$ isn't defined as it's not continuous.
+\end{proof}

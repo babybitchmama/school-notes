@@ -1,3 +1,9 @@
+\begin{center}
+  SECTION 2.7
+\end{center}
+
+\medskip
+
 \setcounter{chapter}{2}
 \setcounter{section}{7}
 
@@ -19,32 +25,36 @@
   \end{enumerate}
 \end{exercise}
 
-\begin{exersolution}[4]
-  \begin{enumerate}
-    \item Let $x_n = \sfrac{1}{n}$ and $y_n = \sfrac{1}{n}$. Then, $\sum x_n =
-      \sum \sfrac{1}{n}$ and $\sum y_n = \sum \sfrac{1}{n}$ diverges, but $\sum
-      x_ny_n = \sum \sfrac{1}{n^2}$ converges to $\frac{\pi^2}{6}$.
+\begin{proof}[Solution to (i)]
+  Let $x_n = \sfrac{1}{n}$ and $y_n = \sfrac{1}{n}$. Then, $\sum x_n = \sum
+  \sfrac{1}{n}$ and $\sum y_n = \sum \sfrac{1}{n}$ diverges, but $\sum x_ny_n =
+  \sum \sfrac{1}{n^2}$ converges to $\frac{\pi^2}{6}$.
+\end{proof}
 
-    \item Let $x_n = \sfrac{(-1)^n}{n}$ and $y_n = (-1)^n$. Then, $\sum x_n =
-      \sum \frac{(-1)^n}{n}$ converges, and $(y_n)$ is bounded, but $\sum x_ny_n
-      = \sum \sfrac{1}{n}$ diverges.
+\begin{proof}[Solution to (ii)]
+  Let $x_n = \sfrac{(-1)^n}{n}$ and $y_n = (-1)^n$. Then, $\sum x_n = \sum
+  \frac{(-1)^n}{n}$ converges, and $(y_n)$ is bounded, but $\sum x_ny_n = \sum
+  \sfrac{1}{n}$ diverges.
+\end{proof}
 
-    \item Impossible, since the algebraic limit theorem for series tells us that
-      $\sum (x_n + y_n) - \sum x_n = \sum y_n$ converges.
+\begin{proof}[Solution to (iii)]
+  Impossible, since the algebraic limit theorem for series tells us that $\sum
+  (x_n + y_n) - \sum x_n = \sum y_n$ converges.
+\end{proof}
 
-    \item The sequence
-      \[%
-        x_n = \begin{cases*}
-          \sfrac{1}{n} & \textrm{if $n$ is even} \\
-          0 & \textrm{if $n$ is odd}
-        \end{cases*}
-      \]%
-      satisfies $0 \le x_n \le \sfrac{1}{n}$, but $\sum (-1)^nx_n$, since it's
-      always bouncing between $0$ and $\sfrac{1}{n}$.
-  \end{enumerate}
-\end{exersolution}
+\begin{proof}[Solution to (iv)]
+  The sequence
+  \[%
+    x_n = \begin{cases*}
+      \sfrac{1}{n} & \textrm{if $n$ is even} \\
+      0 & \textrm{if $n$ is odd}
+    \end{cases*}
+  \]%
+  satisfies $0 \le x_n \le \sfrac{1}{n}$, but $\sum (-1)^nx_n$, since it's
+  always bouncing between $0$ and $\sfrac{1}{n}$.
+\end{proof}
 
-\newpage
+\medskip
 
 \begin{exercise}[7]
   \begin{enumerate}
@@ -56,50 +66,45 @@
   \end{enumerate}
 \end{exercise}
 
-\begin{exersolution}[7]
-  \begin{enumerate}
-    \item \begin{proof}
-        Setting $\epsilon = \frac{|l|}{2}$, there exists $N \in \mathbb{N}$ such
-        that for all $n \ge N$, we have
-        \[%
-          |n a_n - l| < \frac{|l|}{2} \implies \frac{|l|}{2} < n a_n < \frac{3|l|}{2}
-        .\]%
-        Therefore, for all $n \ge N$,
-        \[%
-          a_n > \frac{|l|}{2n}
-        .\]%
-        Now, since $\sum \frac{1}{n}$ (the harmonic series) diverges, and $a_n$
-        is greater than a constant multiple of $\frac{1}{n}$ for large $n$, we
-        conclude by the Comparison Test that $\sum a_n$ must also diverge.
-      \end{proof}
+\begin{proof}[Solution to (i)]
+  Setting $\epsilon = \frac{|l|}{2}$, there exists $N \in \mathbb{N}$ such that
+  for all $n \ge N$, we have
+  \[%
+    |n a_n - l| < \frac{|l|}{2} \implies \frac{|l|}{2} < n a_n < \frac{3|l|}{2}
+  .\]%
+  Therefore, for all $n \ge N$,
+  \[%
+    a_n > \frac{|l|}{2n}
+  .\]%
+  Now, since $\sum \frac{1}{n}$ (the harmonic series) diverges, and $a_n$ is
+  greater than a constant multiple of $\frac{1}{n}$ for large $n$, we conclude
+  by the Comparison Test that $\sum a_n$ must also diverge.
+\end{proof}
 
-    \item \begin{proof}
-        Setting $\epsilon = \frac{\lvert l \rvert}{2}$, there exists $N \in
-        \N$ such that for all $n \ge N$, we have
-        \[%
-          \lvert n^2a_n - l \rvert < \epsilon \implies \frac{\lvert l \rvert}{2n^2} < a_n < \frac{3\lvert l \rvert}{2n^2}
-        .\]%
-        If that's the case, then for all $n \ge N$, we have
-        \[%
-          a_n > \frac{\lvert l \rvert}{2n^2}
-        .\]%
-        Since $\sum \frac{1}{n^2}$ converges, and $a_n \ge 0$, for all $n$,
-        then, we can use the limit comparison test to conclude that $\sum a_n$
-        converges
-        \[%
-          \lim_{n \to \infty} \frac{\frac{\lvert l \rvert}{2n^2}}{\frac{1}{n^2}}
-        .\]%
-        Using the properties from the algebraic limit theorem, we have
-        \[%
-          \lim_{n \to \infty} \frac{\frac{\lvert l \rvert}{2n^2}}{\frac{1}{n^2}} = \lim_{n \to \infty} \frac{\lvert l \rvert}{2n^2} \cdot \frac{n^2}{1} = \lim_{n \to \infty} \frac{\lvert l \rvert}{2} = \frac{\lvert l \rvert}{2}
-        .\]%
-        Since $\frac{\lvert l \rvert}{2}$ is a positive constant, then $\sum
-        a_n$ converges.
-      \end{proof}
-  \end{enumerate}
-\end{exersolution}
+\begin{proof}[Solution to (ii)]
+  Setting $\epsilon = \frac{\lvert l \rvert}{2}$, there exists $N \in \N$ such
+  that for all $n \ge N$, we have
+  \[%
+    \lvert n^2a_n - l \rvert < \epsilon \implies \frac{\lvert l \rvert}{2n^2} < a_n < \frac{3\lvert l \rvert}{2n^2}
+  .\]%
+  If that's the case, then for all $n \ge N$, we have
+  \[%
+    a_n > \frac{\lvert l \rvert}{2n^2}
+  .\]%
+  Since $\sum \frac{1}{n^2}$ converges, and $a_n \ge 0$, for all $n$, then, we
+  can use the limit comparison test to conclude that $\sum a_n$ converges
+  \[%
+    \lim_{n \to \infty} \frac{\frac{\lvert l \rvert}{2n^2}}{\frac{1}{n^2}}
+  .\]%
+  Using the properties from the algebraic limit theorem, we have
+  \[%
+    \lim_{n \to \infty} \frac{\frac{\lvert l \rvert}{2n^2}}{\frac{1}{n^2}} = \lim_{n \to \infty} \frac{\lvert l \rvert}{2n^2} \cdot \frac{n^2}{1} = \lim_{n \to \infty} \frac{\lvert l \rvert}{2} = \frac{\lvert l \rvert}{2}
+  .\]%
+  Since $\frac{\lvert l \rvert}{2}$ is a positive constant, then $\sum a_n$
+  converges.
+\end{proof}
 
-\newpage
+\medskip
 
 \begin{exercise}[8]
   Consider each of the following proportions. Provide short proofs for those
@@ -115,37 +120,43 @@
   \end{enumerate}
 \end{exercise}
 
-\begin{exersolution}[8]
-  \begin{enumerate}
-    \item The statement is true.
-      \begin{proof}
-        If $\sum a_n$ converges absolutely, then $\sum |a_n|$ converges. Since
-        $|a_n| \le |a_n|^2$ for all $n$, then by the comparison test, $\sum
-        a_n^2$ converges absolutely.
-      \end{proof}
+\begin{proof}[Solution to (i)]
+  The statement is true.
 
-    \item The statement is false.
+  If $\sum a_n$ converges absolutely, then $\sum |a_n|$ converges. Since $|a_n|
+  \le |a_n|^2$ for all $n$, then by the comparison test, $\sum a_n^2$ converges
+  absolutely.
+\end{proof}
 
-      Counterexample: Let $\displaystyle a_n = \frac{(-1)^n}{\sqrt{n}}$, which
-      converges conditionally by the alternating series test, and let $b_n =
-      a_n$, which converges to $0$. Then
-      \[%
-        a_nb_n = \frac{(-1)^n}{\sqrt{n}} \cdot \frac{(-1)^n}{\sqrt{n}} = \frac{1}{n}
-      .\]%
-      Now, $\sum \frac{1}{n}$ diverges by the $p$-series test, as it is a
-      $p$-series with $p = 1 \nless 1$. Therefore, $\sum a_nb_n$ diverges.
+\begin{proof}[Solution to (ii)]
+  The statement is false.
 
-    \item The statement is true.
-      \begin{proof}
-        If $\sum a_n$ converges conditionally, then $\sum \lvert a_n \rvert$
-        diverges. Since $a_n^2 \le \lvert a_n \rvert$ but $a_n^2$ does not tend
-        to zero fast enough to allow $\sum a_n^2$ to converge when $\sum \lvert
-        a_n \rvert$ diverges, $\sum a_n^2$ must diverge.
-      \end{proof}
-  \end{enumerate}
-\end{exersolution}
+  Counterexample: Let $a_n = \frac{(-1)^n}{\sqrt{n}}$, which
+  converges conditionally by the alternating series test, and let $b_n = a_n$,
+  which converges to $0$. Then
+  \[%
+    a_nb_n = \frac{(-1)^n}{\sqrt{n}} \cdot \frac{(-1)^n}{\sqrt{n}} = \frac{1}{n}
+  .\]%
+  Now, $\sum \frac{1}{n}$ diverges by the $p$-series test, as it is a $p$-series
+  with $p = 1 \nless 1$. Therefore, $\sum a_nb_n$ diverges.
+\end{proof}
 
-\newpage
+\begin{proof}[Solution to (iii)]
+  The statement is true.
+
+  If $\sum a_n$ converges conditionally, then $\sum \lvert a_n \rvert$ diverges.
+  Since $a_n^2 \le \lvert a_n \rvert$ but $a_n^2$ does not tend to zero fast
+  enough to allow $\sum a_n^2$ to converge when $\sum \lvert a_n \rvert$
+  diverges, $\sum a_n^2$ must diverge.
+\end{proof}
+
+\medskip
+
+\begin{center}
+  SECTION 3.2
+\end{center}
+
+\medskip
 
 \setcounter{chapter}{3}
 \setcounter{section}{2}
@@ -156,22 +167,22 @@
       the collection of open sets be finite get used?
 
     \item Give an example of a countable collection of open sets $\{O_1, O_2,
-      O_3, \dots\}$ whose intersection $\displaystyle \bigcap_{n=1}^{\infty}
+      O_3, \dots\}$ whose intersection $\bigcap_{n=1}^{\infty}
       O_n$ is closed, not empty, and not all of $\R$.
   \end{enumerate}
 \end{exercise}
 
-\begin{exersolution}[1]
-  \begin{enumerate}
-    \item Taking the $\min(\{\epsilon_1, \epsilon_2, \cdots, \epsilon_N\})$ is
-      only possible for finite sets.
+\begin{proof}[Solution to (i)]
+  Taking the $\min(\{\epsilon_1, \epsilon_2, \cdots, \epsilon_N\})$ is only
+  possible for finite sets.
+\end{proof}
 
-    \item Let $O_n = \left(-\sfrac{1}{n}, 1 + \sfrac{1}{n}\right)$. Then,
-      $\displaystyle\bigcap_{n=1}^{\infty} O_n = [0, 1]$.
-  \end{enumerate}
-\end{exersolution}
+\begin{proof}[Solution to (ii)]
+  Let $O_n = \left(-\sfrac{1}{n}, 1 + \sfrac{1}{n}\right)$. Then,
+  $\bigcap_{n=1}^{\infty} O_n = [0, 1]$.
+\end{proof}
 
-\newpage
+\medskip
 
 \begin{exercise}[3]
   Decide whether the following sets are open, closed, or neither. If a set is
@@ -187,23 +198,24 @@
   \end{enumerate}
 \end{exercise}
 
-\begin{exersolution}[3]
-  \begin{enumerate}
-    \item $\Q$ is neither open nor closed, as $(a, b) \subseteq \Q$ is
-      impossible since $\Q$ contains no irrationals but $(a, b)$ does. It's not
-      closed since every irrationals are limit points of $\Q$, as they can be
-      reached as a limit of rational numbers. Take $\sqrt{2}$ for instance.
+\begin{proof}[Solution to (i)]
+  $\Q$ is neither open nor closed, as $(a, b) \subseteq \Q$ is impossible since
+  $\Q$ contains no irrationals but $(a, b)$ does. It's not closed since every
+  irrationals are limit points of $\Q$, as they can be reached as a limit of
+  rational numbers. Take $\sqrt{2}$ for instance.
+\end{proof}
 
-    \item $\N$ is not open since it doesn't have any boundaries. It is closed,
-      since it doesn't have any limit points.
+\begin{proof}[Solution to (ii)]
+  $\N$ is not open since it doesn't have any boundaries. It is closed, since it
+  doesn't have any limit points.
+\end{proof}
 
-    \item $\{x \in \R \mid x \ne 0\}$ is open, since it's the complement of
-      $\{0\}$, which is closed. It's not closed, since $0$ is a limit point of
-      the set.
-  \end{enumerate}
-\end{exersolution}
+\begin{proof}[Solution to (iii)]
+  $\{x \in \R \mid x \ne 0\}$ is open, since it's the complement of $\{0\}$,
+  which is closed. It's not closed, since $0$ is a limit point of the set.
+\end{proof}
 
-\newpage
+\medskip
 
 \begin{exercise}[6]
   Decide whether the following statements are true or false. Provide
@@ -222,32 +234,33 @@
   \end{enumerate}
 \end{exercise}
 
-\begin{exersolution}[6]
-  \begin{enumerate}
-    \item The statement is false.
+\begin{proof}[Solution to (i)]
+  The statement is false.
 
-      Counterexample: Let $A = (-\infty, \sqrt{5}) \cup (\sqrt{5}, \infty)$.
-      Then, $A$ is open and contains every rational number except for $\sqrt{5}$
-      and it's not all of $\R$.
+  Counterexample: Let $A = (-\infty, \sqrt{5}) \cup (\sqrt{5}, \infty)$. Then,
+  $A$ is open and contains every rational number except for $\sqrt{5}$ and it's
+  not all of $\R$.
+\end{proof}
 
-    \item The statement is false.
+\begin{proof}[Solution to (ii)]
+  The statement is false.
 
-      Counterexample: Let $C_n = [n, \infty)$ is closed. It has $C_{n+1}
-      \supseteq C_n$ and $C_n \ne \emptyset$ but $\bigcap_{n=1}^{\infty} C_n =
-      \emptyset$.
+  Counterexample: Let $C_n = [n, \infty)$ is closed. It has $C_{n+1} \supseteq
+  C_n$ and $C_n \ne \emptyset$ but $\bigcap_{n=1}^{\infty} C_n = \emptyset$.
+\end{proof}
 
-    \item The statement is true.
+\begin{proof}[Solution to (iii)]
+  The statement is true.
 
-      \begin{proof}
-        Let $x \in A$. Since $A$ is open, we have $(a, b) \subseteq A$ with $x
-        \in (a, b)$, and by the density of the rationals, there exists $q \in
-        \Q$ such that $q \in (a, b) \subseteq A$.
-      \end{proof}
+  Let $x \in A$. Since $A$ is open, we have $(a, b) \subseteq A$ with $x \in (a,
+  b)$, and by the density of the rationals, there exists $q \in \Q$ such that $q
+  \in (a, b) \subseteq A$.
+\end{proof}
 
-    \item The statement is false.
+\begin{proof}[Solution to (iv)]
+  The statement is false.
 
-      Counterexample: Let $A = \{\sfrac{1}{n} + \sqrt{2} \mid n \in \N\} \cup
-      \{\sqrt{2}\}$. Then, $A$ is closed, bounded, and infinite, but contains no
-      rational numbers.
-  \end{enumerate}
-\end{exersolution}
+  Counterexample: Let $A = \{\sfrac{1}{n} + \sqrt{2} \mid n \in \N\} \cup
+  \{\sqrt{2}\}$. Then, $A$ is closed, bounded, and infinite, but contains no
+  rational numbers.
+\end{proof}

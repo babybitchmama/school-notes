@@ -1,3 +1,9 @@
+\begin{center}
+  SECTION 1.2
+\end{center}
+
+\medskip
+
 \setcounter{chapter}{1}
 \setcounter{section}{2}
 
@@ -7,31 +13,31 @@
       show $\sqrt{6}$ is irrational?
 
     \item Where does the proof of Theorem 1.1.1 break down if we try to use it
-      to prove $\sqrt{4}$ is irrational?\vspace{-0.5cm}
+      to prove $\sqrt{4}$ is irrational?
   \end{enumerate}
 \end{exercise}
 
-\begin{exersolution}[1]
-  \begin{enumerate}
-    \item \textbf{Proof:} Suppose $\sqrt{3}$ is rational. This means that there
-      exists $p, q \in \Z$ such that $\frac{p}{q} = \sqrt{3}$. Suppose $p$ and
-      $q$ have no common factors. Then we have $p^2 = 3q^2$, which means $p^2$
-      is divisible by $3$. This implies that $p$ is divisible by 3, so $p = 3k$
-      for some $k \in \Z$. Substituting this back into the equation, we have
-      $9k^2 = 3q^2$, which simplifies to $3k^2 = q^2$. This means $q$ is also
-      divisible by $3$, which contradicts our assumption that $p$ and $q$ have
-      no common factors. Therefore, $\sqrt{3}$ is irrational. \hfill\qedsymbol
+\begin{proof}[Solution to (i)]
+  Suppose $\sqrt{3}$ is rational. This means that there exists $p, q \in \Z$
+  such that $\frac{p}{q} = \sqrt{3}$. Suppose $p$ and $q$ have no common
+  factors. Then we have $p^2 = 3q^2$, which means $p^2$ is divisible by $3$.
+  This implies that $p$ is divisible by 3, so $p = 3k$ for some $k \in \Z$.
+  Substituting this back into the equation, we have $9k^2 = 3q^2$, which
+  simplifies to $3k^2 = q^2$. This means $q$ is also divisible by $3$, which
+  contradicts our assumption that $p$ and $q$ have no common factors. Therefore,
+  $\sqrt{3}$ is irrational.
 
-      The same argument does show that $\sqrt{6}$ is irrational.
+  The same argument does show that $\sqrt{6}$ is irrational.
+\end{proof}
 
-    \item The fact that breaks the proof for Theorem 1.1.1 is that $\sqrt{4}$ is
-      a perfect square, meaning that $p^2 = 4q^2$ doesn't imply that $p$ is a
-      multiple of $4$. In fact, $p = 2q$ implies that $p$ is a multiple of $2$,
-      which isn't a contradiction.
-  \end{enumerate}
-\end{exersolution}
+\begin{proof}[Solution to (ii)]
+  The fact that breaks the proof for Theorem 1.1.1 is that $\sqrt{4}$ is a
+  perfect square, meaning that $p^2 = 4q^2$ doesn't imply that $p$ is a multiple
+  of $4$. In fact, $p = 2q$ implies that $p$ is a multiple of $2$, which isn't a
+  contradiction.
+\end{proof}
 
-\newpage
+\medskip
 
 \begin{exercise}[5]
   Let $A$ and $B$ be subsets of $\R$.
@@ -43,43 +49,31 @@
       A^c \cup B^c$, and conclude that $(A \cap B)^c = A^c \cup B^c$.
 
     \item Show $(A \cup B)^c = A^c \cap B^c$ by demonstrating
-      inclusion both ways.\vspace{-0.5cm}
+      inclusion both ways.
   \end{enumerate}
 \end{exercise}
 
-\begin{exersolution}[5]
-  \begin{enumerate}
-    \item \textbf{Proof:} Suppose $x \in (A \cap B)^c$. Then $x \notin (A \cap
-      B)$, meaning $x \notin A$ or $x \notin B$, which is equivalent to $x \in
-      A^c \cup B^c$. Therefore, $(A \cap B)^c \subseteq A^c \cup B^c$.
-      \hfill\qedsymbol
+\begin{proof}[Solution to (i)]
+  Suppose $x \in (A \cap B)^c$. Then $x \notin (A \cap B)$, meaning $x \notin A$
+  or $x \notin B$, which is equivalent to $x \in A^c \cup B^c$. Therefore, $(A
+  \cap B)^c \subseteq A^c \cup B^c$.
+\end{proof}
 
-    \item \textbf{Proof:} Suppose $x \in A^c \cup B^c$. Then $x \in A^c$ or $x
-      \in B^c$, which is equivalent to $x \notin A$ or $x \notin B$. This means
-      $x \notin A \cap B$, so $x \in (A \cap B)^c$. Then, $A^c \cup B^c
-      \subseteq (A \cap B)^c$.
+\begin{proof}[Solution to (ii)]
+  Suppose $x \in A^c \cup B^c$. Then $x \in A^c$ or $x \in B^c$, which is equivalent to $x \notin A$ or $x \notin B$. This means $x \notin A \cap B$, so $x \in (A \cap B)^c$. Then, $A^c \cup B^c \subseteq (A \cap B)^c$.
 
-      Therefore, since $(A \cap B)^c \subseteq A^c \cup B^c$ and $A^c \cup B^c
-      \subseteq (A \cap B)^c$, we have $(A \cap B)^c = A^c \cup B^c$.
-      \hfill\qedsymbol
+  Therefore, since $(A \cap B)^c \subseteq A^c \cup B^c$ and $A^c \cup B^c \subseteq (A \cap B)^c$, we have $(A \cap B)^c = A^c \cup B^c$.
+\end{proof}
 
-    \item \textbf{Proof:} Suppose $x \in (A \cup B)^c$. Then $x \notin (A \cup
-      B)$, meaning $x \notin A$ and $x \notin B$. This is equivalent to $x \in
-      A^c$ and $x \in B^c$, so $x \in A^c \cap B^c$. Then, $(A \cup B)^c
-      \subseteq A^c \cap B^c$.
+\begin{proof}[Solution to (iii)]
+  Suppose $x \in (A \cup B)^c$. Then $x \notin (A \cup B)$, meaning $x \notin A$ and $x \notin B$. This is equivalent to $x \in A^c$ and $x \in B^c$, so $x \in A^c \cap B^c$. Then, $(A \cup B)^c \subseteq A^c \cap B^c$.
 
-      Now suppose $x \in A^c \cap B^c$. Then $x \in A^c$ and $x \in B^c$, which
-      is equivalent to $x \notin A$ and $x \notin B$. This means $x \notin A
-      \cup B$, so $x \in (A \cup B)^c$. Then, $A^c \cap B^c \subseteq (A \cup
-      B)^c$.
+  Now suppose $x \in A^c \cap B^c$. Then $x \in A^c$ and $x \in B^c$, which is equivalent to $x \notin A$ and $x \notin B$. This means $x \notin A \cup B$, so $x \in (A \cup B)^c$. Then, $A^c \cap B^c \subseteq (A \cup B)^c$.
 
-      Therefore, since $(A \cup B)^c \subseteq A^c \cap B^c$ and $A^c \cap B^c
-      \subseteq (A \cup B)^c$, we have $(A \cup B)^c = A^c \cap B^c$.
-      \hfill\qedsymbol
-  \end{enumerate}
-\end{exersolution}
+  Therefore, since $(A \cup B)^c \subseteq A^c \cap B^c$ and $A^c \cap B^c \subseteq (A \cup B)^c$, we have $(A \cup B)^c = A^c \cap B^c$.
+\end{proof}
 
-\newpage
+\medskip
 
 \begin{exercise}[6]
   \begin{enumerate}
@@ -94,50 +88,54 @@
 
     \item Prove $\lvert \lvert a \rvert - \lvert b \rvert \rvert \le \lvert a -
       b \rvert$. (The unremarkable identity $a = a - b + b$ may be
-      useful.)\vspace{-0.5cm}
+      useful.)
   \end{enumerate}
 \end{exercise}
 
-\begin{exersolution}[6]
+\begin{proof}[Solution to (i)]
+  Let $a, b \in \R$ such that $a, b > 0$.
+
   \begin{enumerate}
-    \item \textbf{Proof:} Let $a, b \in \R$ such that $a, b > 0$.
+    \item Using the triangle inequality, we have $\lvert a + b \rvert \le \lvert
+      a \rvert + \lvert b \rvert$, but since $a, b > 0$, we have $\lvert a
+      \rvert = a$ and $\lvert b \rvert = b$. Therefore, we have $\lvert a + b
+      \rvert = a + b = \lvert a \rvert + \lvert b \rvert$.
 
-      \textbf{Case 1 (Both Positive):} Using the triangle inequality, we have
-      $\lvert a + b \rvert \le \lvert a \rvert + \lvert b \rvert$, but since $a,
-      b > 0$, we have $\lvert a \rvert = a$ and $\lvert b \rvert = b$.
-      Therefore, we have $\lvert a + b \rvert = a + b = \lvert a \rvert + \lvert
-      b \rvert$.
-
-      \textbf{Case 2 (Both Negative):} Both $a$ and $b$ will be positive but
-      I'll add a negative to make things easier. Using the triangle inequality,
-      we have $\lvert (-a) + (-b) \rvert \le \lvert -a \rvert + \lvert -b
-      \rvert$. Factoring out the negative, we have $\lvert -(a + b) \rvert \le
-      \lvert -a \rvert + \lvert -b \rvert$. Applying the definition of absolute
-      value, we have $\lvert -(a + b) \rvert = a + b$, $\lvert -a \rvert = a$,
-      and $\lvert -b \rvert = b$. Therefore, we have $\lvert (-a) + (-b) \rvert
-      = a + b = \lvert -a \rvert + \lvert -b \rvert$. \hfill\qedsymbol
-
-    \item \textbf{Proof:} Simplifying the expression $(a + b)^2 \le (\lvert a
-      \rvert + \lvert b \rvert)^2$ gives us $2ab \le 2\lvert a \rvert \cdot
-      \lvert b \rvert$, which is always true, as the left side can be negative,
-      but the right side will always be positive. As we've just squared both
-      sides which keeps the inequality, the original inequality $a + b \le
-      \lvert a \rvert + \lvert b \rvert$ is true. \hfill\qedsymbol
-
-    \item \textbf{Proof:} Notice that $(a - c) + (c - d) + (d - b) = a - b$. We
-      can use the triangle inequality for multiple terms $\lvert a - b \rvert =
-      \lvert (a - c) + (c - d) + (d - b) \rvert \le \lvert a - c \rvert + \lvert
-      c - d \rvert + \lvert d - b \rvert$. \hfill\qedsymbol
-
-    \item \textbf{Proof:} Assume $\lvert a \rvert > \lvert b \rvert$ since
-      $\lvert \lvert a \rvert - \lvert b \rvert \rvert$. Then $\lvert \lvert a
-      \rvert - \lvert b \rvert \rvert = \lvert a \rvert - \lvert b \rvert =
-      \lvert (a - b) + b \rvert - \lvert b \rvert \le \lvert a - b \rvert  +
-      \lvert b \rvert - \lvert b \rvert = \lvert a - b \rvert$. \hfill\qedsymbol
+    \item Both $a$ and $b$ will be positive but I'll add a negative to make
+      things easier. Using the triangle inequality, we have $\lvert (-a) + (-b)
+      \rvert \le \lvert -a \rvert + \lvert -b \rvert$. Factoring out the
+      negative, we have $\lvert -(a + b) \rvert \le \lvert -a \rvert + \lvert -b
+      \rvert$. Applying the definition of absolute value, we have $\lvert -(a +
+      b) \rvert = a + b$, $\lvert -a \rvert = a$, and $\lvert -b \rvert = b$.
+      Therefore, we have $\lvert (-a) + (-b) \rvert = a + b = \lvert -a \rvert +
+      \lvert -b \rvert$. \qedhere
   \end{enumerate}
-\end{exersolution}
+\end{proof}
 
-\newpage
+\begin{proof}[Solution to (ii)]
+  Simplifying the expression $(a + b)^2 \le (\lvert a \rvert + \lvert b
+  \rvert)^2$ gives us $2ab \le 2\lvert a \rvert \cdot \lvert b \rvert$, which is
+  always true, as the left side can be negative, but the right side will always
+  be positive. As we've just squared both sides which keeps the inequality, the
+  original inequality $a + b \le \lvert a \rvert + \lvert b \rvert$ is true.
+\end{proof}
+
+\begin{proof}[Solution to (iii)]
+  Notice that $(a - c) + (c - d) + (d - b) = a - b$. We can use the triangle
+  inequality for multiple terms $\lvert a - b \rvert = \lvert (a - c) + (c - d)
+  + (d - b) \rvert \le \lvert a - c \rvert + \lvert c - d \rvert + \lvert d - b
+  \rvert$.
+\end{proof}
+
+\begin{proof}[Solution to (iv)]
+  Assume $\lvert a \rvert > \lvert b \rvert$ since $\lvert \lvert a \rvert -
+  \lvert b \rvert \rvert$. Then $\lvert \lvert a \rvert - \lvert b \rvert \rvert
+  = \lvert a \rvert - \lvert b \rvert = \lvert (a - b) + b \rvert - \lvert b
+  \rvert \le \lvert a - b \rvert  + \lvert b \rvert - \lvert b \rvert = \lvert a
+  - b \rvert$.
+\end{proof}
+
+\medskip
 
 \begin{exercise}[7]
   Given a function $f$ and a subset $A$ of its domain, let $f(A)$ represent the
@@ -157,51 +155,50 @@
       \subseteq \R$.
 
     \item Form and prove a conjecture about the relationship between $g(A \cup
-      B)$ and $g(A) \cup g(B)$ for all sets $A, B \subseteq \R$.\vspace{-0.5cm}
+      B)$ and $g(A) \cup g(B)$ for all sets $A, B \subseteq \R$.
   \end{enumerate}
 \end{exercise}
 
-\begin{exersolution}[7]
-  \begin{enumerate}
-    \item The value of $f(A) = f([0, 2]) = [0, 4]$ and the value of $f(B) =
-      f([1, 4]) = [1, 16]$. We have $f(A \cap B) = f([0, 2] \cap [1, 4]) = f([1,
-      2]) = [1, 4]$ and $f(A) \cap f(B) = f([0, 2]) \cap f([1, 4]) = [0, 4] \cap
-      [1, 16] = [1, 4]$. Therefore, $f(A \cap B) = f(A) \cap f(B)$.
+\begin{proof}[Solution to (i)]
+  The value of $f(A) = f([0, 2]) = [0, 4]$ and the value of $f(B) = f([1, 4]) =
+  [1, 16]$. We have $f(A \cap B) = f([0, 2] \cap [1, 4]) = f([1, 2]) = [1, 4]$
+  and $f(A) \cap f(B) = f([0, 2]) \cap f([1, 4]) = [0, 4] \cap [1, 16] = [1,
+  4]$. Therefore, $f(A \cap B) = f(A) \cap f(B)$.
 
-      We have $f(A \cup B) = f([0, 2] \cup [1, 4]) = f([0, 4]) = [0, 16]$ and
-      $f(A) \cup f(B) = [0, 4] \cup [1, 16] = [0, 16]$. Therefore, $f(A \cup B)
-      = f(A) \cup f(B)$.
+  We have $f(A \cup B) = f([0, 2] \cup [1, 4]) = f([0, 4]) = [0, 16]$ and $f(A)
+  \cup f(B) = [0, 4] \cup [1, 16] = [0, 16]$. Therefore, $f(A \cup B) = f(A)
+  \cup f(B)$.
+\end{proof}
 
-    \item Let $A = [-1]$ and $B = [1]$. The value of $f(A) = f([-1]) = [1]$ and
-      $f(B) = [1] = [1]$. We have $f(A \cap B) = f([-1] \cap [1]) =
-      f(\emptyset)$ and $f(A) \cap f(B) = f([-1]) \cap f([1]) = [1] \cap [1] =
-      [1]$.
+\begin{proof}[Solution to (ii)]
+  Let $A = [-1]$ and $B = [1]$. The value of $f(A) = f([-1]) = [1]$ and $f(B) =
+  [1] = [1]$. We have $f(A \cap B) = f([-1] \cap [1]) = f(\emptyset)$ and $f(A)
+  \cap f(B) = f([-1]) \cap f([1]) = [1] \cap [1] = [1]$.
+\end{proof}
 
-    \item \textbf{Proof:} Suppose $g(x) \in g(A \cap B)$. Then, $x \in A \cap
-      B$, meaning $x \in A$ and $x \in B$.This implies that $g(x) \in g(A)$ and
-      $g(x) \in g(B)$. Then, $g(x) \in g(A) \cap g(B)$. Therefore, $g(A \cap B)
-      \subseteq g(A) \cap g(B)$. \hfill\qedsymbol
+\begin{proof}[Solution to (iii)]
+  Suppose $g(x) \in g(A \cap B)$. Then, $x \in A \cap B$, meaning $x \in A$ and
+  $x \in B$.This implies that $g(x) \in g(A)$ and $g(x) \in g(B)$. Then, $g(x)
+  \in g(A) \cap g(B)$. Therefore, $g(A \cap B) \subseteq g(A) \cap g(B)$.
+\end{proof}
 
-    \item \textbf{Conjecture:} \textit{Given an arbitrary function $g : \R \to
-      \R$, it is always true that $g(A \cup B) = g(A) \cup g(B)$ for all sets
-      $A, B \subseteq \R$.}
+\begin{proof}[Solution to (iv)]
+  Given an arbitrary function $g : \R \to \R$, it is always true that $g(A \cup
+  B) = g(A) \cup g(B)$ for all sets $A, B \subseteq \R$.
 
-      \textbf{Proof:} Suppose $g(x) \in g(A \cup B)$. Then, $x \in A \cup B$,
-      meaning $x \in A$ or $x \in B$. This implies that $g(x) \in g(A)$ or $g(x)
-      \in g(B)$. Then, $g(x) \in g(A) \cup g(B)$. Therefore, $g(A \cup B)
-      \subseteq g(A) \cup g(B)$.
+  Suppose $g(x) \in g(A \cup B)$. Then, $x \in A \cup B$, meaning $x \in A$ or
+  $x \in B$. This implies that $g(x) \in g(A)$ or $g(x) \in g(B)$. Then, $g(x)
+  \in g(A) \cup g(B)$. Therefore, $g(A \cup B) \subseteq g(A) \cup g(B)$.
 
-      Suppose $g(x) \in g(A) \cup g(B)$. Then, $g(x) \in g(A)$ or $g(x) \in
-      g(B)$, meaning $x \in A$ or $x \in B$. This implies that $x \in A \cup B$.
-      Then, $g(x) \in g(A \cup B)$. Therefore, $g(A) \cup g(B) \subseteq g(A
-      \cup B)$.
+  Suppose $g(x) \in g(A) \cup g(B)$. Then, $g(x) \in g(A)$ or $g(x) \in g(B)$,
+  meaning $x \in A$ or $x \in B$. This implies that $x \in A \cup B$. Then,
+  $g(x) \in g(A \cup B)$. Therefore, $g(A) \cup g(B) \subseteq g(A \cup B)$.
 
-      Since $g(A \cup B) \subseteq g(A) \cup g(B)$ and $g(A) \cup g(B) \subseteq
-      g(A \cup B)$, we have $g(A \cup B) = g(A) \cup g(B)$. \hfill\qedsymbol
-  \end{enumerate}
-\end{exersolution}
+  Since $g(A \cup B) \subseteq g(A) \cup g(B)$ and $g(A) \cup g(B) \subseteq g(A
+  \cup B)$, we have $g(A \cup B) = g(A) \cup g(B)$.
+\end{proof}
 
-\newpage
+\medskip
 
 \begin{exercise}[11]
   Form the logical negation of each claim. One trivial way to do this is to
@@ -218,24 +215,26 @@
       $n \in \N$.
 
     \item There exists two real numbers $a < b$ such that if $c < b$ then $c <
-      a$ for all $c \in \Q$.\vspace{-0.5cm}
+      a$ for all $c \in \Q$.
   \end{enumerate}
 \end{exercise}
 
-\begin{exersolution}[11]
-  \begin{enumerate}
-    \item For all real numbers satisfying $a < b$, there exists an $n \in \N$
-      such that $\frac{a + 1}{n} \ge b$. \textit{Intuition:} False.
+\begin{proof}[Solution to (i)]
+  For all real numbers satisfying $a < b$, there exists an $n \in \N$ such that
+  $\frac{a + 1}{n} \ge b$. \textit{Intuition:} False.
+\end{proof}
 
-    \item There exists a real number $x > 0$ such that $x \ge \frac{1}{n}$ for
-      all $n \in \N$. \textit{Intuition:} True.
+\begin{proof}[Solution to (ii)]
+  There exists a real number $x > 0$ such that $x \ge \frac{1}{n}$ for all $n
+  \in \N$. \textit{Intuition:} True.
+\end{proof}
 
-    \item There exists two real numbers $a < b$ such that if $c < b$ then $c <
-      a$ for all $c \in \Q$. \textit{Intuition:} False.
-  \end{enumerate}
-\end{exersolution}
+\begin{proof}[Solution to (iii)]
+  There exists two real numbers $a < b$ such that if $c < b$ then $c < a$ for
+  all $c \in \Q$. \textit{Intuition:} False.
+\end{proof}
 
-\newpage
+\medskip
 
 \begin{exercise}[12]
   Let $y_1 = 6$, and for each $n \in \N$ define $y_{n+1} = \frac{2y_n - 6}{3}$.
@@ -245,41 +244,41 @@
       $n \in \N$.
 
     \item Use another induction argument to show the sequence $(y_1, y_2, y_3,
-      \dots)$ is decreasing.\vspace{-0.5cm}
+      \dots)$ is decreasing.
   \end{enumerate}
 \end{exercise}
 
-\begin{exersolution}[12]
-  \begin{enumerate}
-    \item \textbf{Proof:} I'll use mathematical induction.
+\begin{proof}[Solution to (i)]
+  I'll use mathematical induction.
 
-      Base case: Setting $n = 1$, we get $y_1 = 6 > -6$ as required.
+  Base case: Setting $n = 1$, we get $y_1 = 6 > -6$ as required.
 
-      Induction step: Suppose that $y_n > -6$ up to some number $k$. Then, by
-      induction, we get
-      \[%
-        y_{k+1} > -6 \implies \frac{2y_k - 6}{3} > -6 \implies 2y_k - 6 > -18 \implies 2y_k > -12 \implies y_k > -6
-      .\]%
-      Therefore, by induction, $y_n > -6$ for all $n$. \hfill\qedsymbol
+  Induction step: Suppose that $y_n > -6$ up to some number $k$. Then, by
+  induction, we get
+  \[%
+    y_{k+1} > -6 \implies \frac{2y_k - 6}{3} > -6 \implies 2y_k - 6 > -18 \implies 2y_k > -12 \implies y_k > -6
+  .\]%
+  Therefore, by induction, $y_n > -6$ for all $n$.
+\end{proof}
 
-    \item \textbf{Proof:} I'll use mathematical induction.
+\begin{proof}[Solution to (ii)]
+  I'll use mathematical induction.
 
-      Base case: Setting $n = 1$, we get $y_1 = 6$. Setting $n = 2$, we get $y_2
-      = 2$, giving us $6 \ge 2$ as required.
+  Base case: Setting $n = 1$, we get $y_1 = 6$. Setting $n = 2$, we get $y_2 =
+  2$, giving us $6 \ge 2$ as required.
 
-      Induction step: Suppose that $y_n \ge y_{n+1}$ up to some number $k$.
-      Then, by induction, we get
-      \begin{align*}
-        y_k \ge y_{k+1} &\implies 2y_k \ge 2y_{k+1} \\
-                        &\implies 2y_k - 6 \ge 2y_{k+1} - 6 \\
-                        &\implies \frac{2y_k - 6}{3} \ge \frac{2y_{k+1} - 6}{3} \\
-                        &\implies y_{k+1} \ge y_{k+2}
-      .\end{align*}
-      Therefore, by induction, $y_n \ge y_{n+1}$, for all $n$. \hfill\qedsymbol
-  \end{enumerate}
-\end{exersolution}
+  Induction step: Suppose that $y_n \ge y_{n+1}$ up to some number $k$. Then, by
+  induction, we get
+  \begin{align*}
+    y_k \ge y_{k+1} &\implies 2y_k \ge 2y_{k+1} \\
+                    &\implies 2y_k - 6 \ge 2y_{k+1} - 6 \\
+                    &\implies \frac{2y_k - 6}{3} \ge \frac{2y_{k+1} - 6}{3} \\
+                    &\implies y_{k+1} \ge y_{k+2}
+  .\end{align*}
+  Therefore, by induction, $y_n \ge y_{n+1}$, for all $n$.
+\end{proof}
 
-\newpage
+\medskip
 
 \begin{exercise}[13]
   \begin{enumerate}
@@ -300,56 +299,58 @@
       where $\bigcap_{i=1}^n B_i \ne \emptyset$ is true for every $n \in \N$,
       but $\bigcap_{i=1}^{\infty} B_i \ne \emptyset$ fails.
 
-    \item Nevertheless, the infinite version of De Morgan's Law stated in
-      $\circled{2}$ is a valid statement. Provide a proof that does not use
-      induction.\vspace{-0.5cm}
+    \item Nevertheless, the infinite version of De Morgan's Law stated in (ii)
+      is a valid statement. Provide a proof that does not use
+      induction.
   \end{enumerate}
 \end{exercise}
 
-\begin{exersolution}[13]
-  \begin{enumerate}
-    \item \textbf{Proof:} I'll use mathematical induction.
+\begin{proof}[Solution to (i)]
+  I'll use mathematical induction.
 
-      Base case: Exercise 1.2.5 will be our base case.
+  Base case: Exercise 1.2.5 will be our base case.
 
-      Induction step: Assume that the statement $(A_1 \cup A_2 \cup \cdots \cup
-      A_n)^c = A_1^c \cap A_2^c \cap \cdots A_n^c$ is true. Then
-      \begin{emptyproof}
-        \begin{align*}
-          ((A_1 \cup A_2 \cup \cdots \cup A_n) \cup A_{n+1})^c &= (A_1 \cap A_2 \cap \cdots A_n)^c \cap A_{n+1}^c \\
-                                                              &= A_1^c \cap A_2^c \cap \cdots A_n^c \cap A_{n+1}^c
-        .\qedhere\end{align*}
-      \end{emptyproof}
+  Induction step: Assume that the statement $(A_1 \cup A_2 \cup \cdots \cup
+  A_n)^c = A_1^c \cap A_2^c \cap \cdots A_n^c$ is true. Then
+  \begin{align*}
+    ((A_1 \cup A_2 \cup \cdots \cup A_n) \cup A_{n+1})^c &= (A_1 \cap A_2 \cap \cdots A_n)^c \cap A_{n+1}^c \\
+                                                         &= A_1^c \cap A_2^c \cap \cdots A_n^c \cap A_{n+1}^c
+  .\qedhere\end{align*}
+\end{proof}
 
-    \item The collection of sets are $B_1 = \{1, 2, \dots\}, B_2 = \{2, 3,
-      \dots\}, \dots$. If you take their intersection until $n$, you will always
-      get a number, i.e., $n = 100$, you get the singleton set $\{100\}$. But
-      the intersection of all the sets as $n \rightarrow \infty$, you get
-      $\emptyset$.
+\begin{proof}[Solution to (ii)]
+  The collection of sets are $B_1 = \{1, 2, \dots\}, B_2 = \{2, 3, \dots\},
+  \dots$. If you take their intersection until $n$, you will always get a
+  number, i.e., $n = 100$, you get the singleton set $\{100\}$. But the
+  intersection of all the sets as $n \rightarrow \infty$, you get $\emptyset$.
+\end{proof}
 
-    \item \textbf{Proof:} Suppose $x \in \left(\bigcup_{i=1}^{\infty}
-      A_i\right)^c$. Then, $x \notin \bigcup_{i=1}^{\infty} A_i$, meaning, $x
-      \notin A_i$ for all $i \in \N$. This implies that $x \in A_i^c$ for all $i
-      \in \N$, so $x \in \bigcap_{i=1}^{\infty} A_i^c$. Therefore,
-      $\left(\bigcup_{i=1}^{\infty} A_i\right)^c \subseteq
-      \bigcap_{i=1}^{\infty} A_i^c$.
+\begin{proof}[Solution to (iii)]
+  Suppose $x \in \left(\bigcup_{i=1}^{\infty} A_i\right)^c$. Then, $x \notin
+  \bigcup_{i=1}^{\infty} A_i$, meaning, $x \notin A_i$ for all $i \in \N$. This
+  implies that $x \in A_i^c$ for all $i \in \N$, so $x \in
+  \bigcap_{i=1}^{\infty} A_i^c$. Therefore, $\left(\bigcup_{i=1}^{\infty}
+  A_i\right)^c \subseteq \bigcap_{i=1}^{\infty} A_i^c$.
 
-      Suppose $x \in \bigcap_{i=1}^{\infty} A_i^c$, meaning $i \in \N$, $x
-      \notin A_i$, for some $i \in \N$. This implies that $x \in A_i^c$, for
-      some $i \in \N$. Therefore, $x \notin \bigcup_{i=1}^{\infty} A_i$, meaning
-      $x \in \left(\bigcup_{i=1}^{\infty} A_i\right)^c$. Therefore,
-      $\bigcap_{i=1}^{\infty} A_i^c \subseteq \left(\bigcup_{i=1}^{\infty}
-      A_i\right)^c$.
+  Suppose $x \in \bigcap_{i=1}^{\infty} A_i^c$, meaning $i \in \N$, $x \notin
+  A_i$, for some $i \in \N$. This implies that $x \in A_i^c$, for some $i \in
+  \N$. Therefore, $x \notin \bigcup_{i=1}^{\infty} A_i$, meaning $x \in
+  \left(\bigcup_{i=1}^{\infty} A_i\right)^c$. Therefore, $\bigcap_{i=1}^{\infty}
+  A_i^c \subseteq \left(\bigcup_{i=1}^{\infty} A_i\right)^c$.
 
-      Since $\left(\bigcup_{i=1}^{\infty} A_i\right)^c \subseteq
-      \bigcap_{i=1}^{\infty} A_i^c$ and $\bigcap_{i=1}^{\infty} A_i^c \subseteq
-      \left(\bigcup_{i=1}^{\infty} A_i\right)^c$, we have
-      $\left(\bigcup_{i=1}^{\infty} A_i\right)^c = \bigcap_{i=1}^{\infty}
-      A_i^c$. \hfill\qedsymbol
-  \end{enumerate}
-\end{exersolution}
+  Since $\left(\bigcup_{i=1}^{\infty} A_i\right)^c \subseteq
+  \bigcap_{i=1}^{\infty} A_i^c$ and $\bigcap_{i=1}^{\infty} A_i^c \subseteq
+  \left(\bigcup_{i=1}^{\infty} A_i\right)^c$, we have
+  $\left(\bigcup_{i=1}^{\infty} A_i\right)^c = \bigcap_{i=1}^{\infty} A_i^c$.
+\end{proof}
 
-\newpage
+\medskip
+
+\begin{center}
+  SECTION 1.3
+\end{center}
+
+\medskip
 
 \setcounter{section}{3}
 
@@ -359,22 +360,22 @@
       \mid b \textrm{ is a lower bound for } A\right\}$. Show that $\sup(B) =
       \inf(A)$.
 
-    \item Use \circled{1} to explain why there is no need to assert that
-      greatest lower bounds exist as part of the Axiom of Completeness.
+    \item Use (i) to explain why there is no need to assert that greatest lower
+      bounds exist as part of the Axiom of Completeness.
   \end{enumerate}
 \end{exercise}
 
-\begin{exersolution}[3]
-  \begin{enumerate}
-    \item By definition, $\sup(B)$ is the greatest lower bound for $A$, meaning
-      that it equals $\inf(A)$.
+\begin{proof}[Solution to (i)]
+  By definition, $\sup(B)$ is the greatest lower bound for $A$, meaning that it
+  equals $\inf(A)$.
+\end{proof}
 
-    \item Part $\circled{1}$ proves that the greatest lower bound exists using
-      the least upper bound.
-  \end{enumerate}
-\end{exersolution}
+\begin{proof}[Solution to (i)]
+  Part (i) proves that the greatest lower bound exists using the least upper
+  bound.
+\end{proof}
 
-\newpage
+\medskip
 
 \begin{exercise}[8]
   Compute, without proofs, the suprema and infima (if they exist) of the
@@ -390,14 +391,18 @@
   \end{enumerate}
 \end{exercise}
 
-\begin{exersolution}[8]
-  \begin{enumerate}
-    \item $\sup(S) = 1$ and $\inf(S) = 0$.
+\begin{proof}[Solution to (i)]
+  $\sup(S) = 1$ and $\inf(S) = 0$.
+\end{proof}
 
-    \item $\sup(S) = 1$ and $\inf(S) = -1$.
+\begin{proof}[Solution to (ii)]
+  $\sup(S) = 1$ and $\inf(S) = -1$.
+\end{proof}
 
-    \item $\sup(S) = \frac{1}{3}$ and $\inf(S) = \frac{1}{4}$.
+\begin{proof}[Solution to (iii)]
+  $\sup(S) = \frac{1}{3}$ and $\inf(S) = \frac{1}{4}$.
+\end{proof}
 
-    \item $\sup(S) = 1$ and $\inf(S) = 0$.
-  \end{enumerate}
-\end{exersolution}
+\begin{proof}[Solution to (iv)]
+  $\sup(S) = 1$ and $\inf(S) = 0$.
+\end{proof}

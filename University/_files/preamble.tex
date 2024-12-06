@@ -194,31 +194,49 @@
 %  PgfPlots  %
 %%%%%%%%%%%%%%
 
-\pgfplotsset{compat=1.18}
+\pgfplotsset{width=7cm,compat=1.8}
+\pgfplotsset{compat=newest}
 
-\usepgfplotslibrary{colormaps,patchplots}
-\usepgfplotslibrary{groupplots}
+\usepgfplotslibrary{patchplots}
 \usepgfplotslibrary{fillbetween}
-\usepgfplotslibrary{external}
-\usepgfplotslibrary{colorbrewer}
+\usetikzlibrary{intersections}
+
+\pgfplotsset{plot/.style={color=red,mark=none,line width=1pt,<->,solid}}
+\pgfplotsset{asymptote/.style={color=gray,mark=none,line width=1pt,<->,dashed}}
+\pgfplotsset{soldot/.style={color=red,only marks,mark=*}}
+\pgfplotsset{holdot/.style={color=red,fill=white,only marks,mark=*}}
+\pgfplotsset{blankgraph/.style={xmin=-10,xmax=10,ymin=-10,ymax=10,axis line style= {-, draw opacity=0 },axis lines=box,major tick length=0mm,xtick={-10,-9,...,10},ytick={-10,-9,...,10},grid=major,yticklabels={,,},xticklabels={,,},minor xtick=,minor ytick=,xlabel={},ylabel={},width=0.75\textwidth,grid style={solid,gray!40}}}
+
+\pgfplotscreateplotcyclelist{stylelist}{
+  plot \\
+}
 
 \def\axisdefaultwidth{175pt}
 \def\axisdefaultheight{\axisdefaultwidth}
-\pgfplotsset{
-  every axis/.append style={
-    axis x line=middle, x axis line style={name path=xaxis},
-    axis y line=middle, y axis line style={name path=yaxis},
-    ticks=none,
-    axis line style={->},
+
+\pgfplotsset{every axis/.append style={
+    axis x line=middle,
+    axis y line=middle,
+    axis line style={<->},
     xlabel={$x$},
     ylabel={$y$},
-    samples=1000,
+    xmin=-7,xmax=7,
+    ymin=-7,ymax=7,
+    yticklabel style={inner sep=0.333ex},
+    minor xtick={-7,-6,...,7},
+    minor ytick={-7,-6,...,7},
+    scale only axis,
+    cycle list name=stylelist,
+    tick label style={font=\footnotesize},
+    legend cell align=left,
+    grid=minor,
+    grid style={solid,gray!40},
+    try min ticks=6,
   },
+  framed/.style={axis background/.style={draw=gray}}
 }
 
-\pgfplotsset{asymptote/.style={color=gray,mark=none,line width=1pt,<->,dashed}}
-\pgfplotsset{soldot/.style={color=black,only marks,mark=*}}
-\pgfplotsset{holdot/.style={color=black,fill=white,only marks,mark=*}}
+\pgfplotsset{axis background/.style={draw=gray}}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -399,6 +417,7 @@
 \newcommand\dz{\textrm{d}z}
 
 % Helpful text in math
+\newcommand\abs{\text{abs}}
 \newcommand\echelon{\underrightarrow{\textrm{ echelon form }}}
 \newcommand\rref{\underrightarrow{\textrm{ rref }}}
 \newcommand\pick[1]{\xrightarrow[#1]{\textrm{ pick }}}

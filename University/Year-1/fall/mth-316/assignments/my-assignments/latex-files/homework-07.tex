@@ -1,3 +1,9 @@
+\begin{center}
+  SECTION 3.2
+\end{center}
+
+\medskip
+
 \setcounter{chapter}{3}
 \setcounter{section}{2}
 
@@ -9,46 +15,37 @@
   \end{enumerate}
 \end{exercise}
 
-\begin{exersolution}[4]
-  \begin{enumerate}
-    \item \begin{proof}
-        Since every $s - \epsilon$ has an $a \in A$ with $a > s - \epsilon$, we
-        can find $a \in V_{\epsilon}(s)$, for any $\epsilon > 0$. This implies
-        that $s$ is a limit point of $A$. Therefore, $s \in \bar{A}$.
-      \end{proof}
+\begin{proof}[Solution to (i)]
+  Since every $s - \epsilon$ has an $a \in A$ with $a > s - \epsilon$, we can
+  find $a \in V_{\epsilon}(s)$, for any $\epsilon > 0$. This implies that $s$ is
+  a limit point of $A$. Therefore, $s \in \bar{A}$.
+\end{proof}
 
-    \item No, there doesn't exist any $\epsilon$-neighborhood of $s$ such that
-      $V_{\epsilon}(s) \not\subseteq (s, s + \epsilon)$.
-  \end{enumerate}
-\end{exersolution}
+\begin{proof}[Solution to (ii)]
+  No, there doesn't exist any $\epsilon$-neighborhood of $s$ such that
+  $V_{\epsilon}(s) \not\subseteq (s, s + \epsilon)$.
+\end{proof}
 
-\newpage
+\medskip
 
 \begin{exercise}[5]
   Prove Theorem 3.2.8.
-
-  \begin{theorem}
-    A set $F \subseteq \R$ is closed if and only if every Cauchy sequence
-    contained in $F$ has a limit that is also an element of $F$.
-  \end{theorem}
 \end{exercise}
 
-\begin{exersolution}[5]
-  \begin{proof}
-    Let $F \subseteq \R$ be closed. Given an arbitrary Cauchy sequence $(a_n)$
-    contained in $F$, we know that $(a_n)$ converges to some $a \in \R$. Since
-    $F$ is closed and $(a_n)$ is contained in $F$, $a \in F$.
+\begin{proof}[Solution]
+  Let $F \subseteq \R$ be closed. Given an arbitrary Cauchy sequence $(a_n)$
+  contained in $F$, we know that $(a_n)$ converges to some $a \in \R$. Since $F$
+  is closed and $(a_n)$ is contained in $F$, $a \in F$.
 
-    Suppose that every Cauchy sequence contained in $F$ converges to a point,
-    $l$, in $F$. Since $l$ is a limit point of $F$, there exists a sequence
-    $(a_n)$ contained in $F$ with $\lim_{n \to \infty} (a_n) = l$. Since $(a_n)$
-    converges, it must be a Cauchy sequence (by the Cauchy Criterion). Since
-    every Cauchy sequence converges to a limit inside $F$, we have $l \in F$,
-    meaning that $F$ is closed.
-  \end{proof}
-\end{exersolution}
+  Suppose that every Cauchy sequence contained in $F$ converges to a point, $l$,
+  in $F$. Since $l$ is a limit point of $F$, there exists a sequence $(a_n)$
+  contained in $F$ with $\lim_{n \to \infty} (a_n) = l$. Since $(a_n)$
+  converges, it must be a Cauchy sequence (by the Cauchy Criterion). Since every
+  Cauchy sequence converges to a limit inside $F$, we have $l \in F$, meaning
+  that $F$ is closed.
+\end{proof}
 
-\newpage
+\medskip
 
 \begin{exercise}[7]
   Given $A \subseteq \R$, let $L$ be the set of all limit points of $A$.
@@ -57,32 +54,28 @@
   \end{enumerate}
 \end{exercise}
 
-\begin{exersolution}[7]
-  \begin{enumerate}
-    \item \begin{proof}
-        Let $L'$ be the set of all limit points of $L$. Assume $\ell \in L'$.
-        Then, by definition, for every $\epsilon > 0$, we have
-        \[%
-          L_1 = V_{\epsilon}(\ell) \cap (L - \{\ell\}) \ne \emptyset \subseteq L
-        .\]%
-        Then,
-        \[%
-          (\forall y \in L_1)(\forall \epsilon > 0)[L_2 = V_{\delta}(y) \cap (A - \{y\}) \ne \emptyset]
-        .\]%
-        Now, since $\ell$ is a limit point of $L$, for any $\epsilon > 0$, there
-        exists $y \in L - \{\ell\}$ such that $y \in V_{\epsilon}(l)$. By the
-        definition of $y \in L$, there exists $z \in A$, distinct from $y$, such
-        that $z \in V_{\delta}(y)$.
+\begin{proof}[Solution to (i)]
+  Let $L'$ be the set of all limit points of $L$. Assume $\ell \in L'$. Then, by
+  definition, for every $\epsilon > 0$, we have
+  \[%
+    L_1 = V_{\epsilon}(\ell) \cap (L - \{\ell\}) \ne \emptyset \subseteq L
+  .\]%
+  Then,
+  \[%
+    (\forall y \in L_1)(\forall \epsilon > 0)[L_2 = V_{\delta}(y) \cap (A - \{y\}) \ne \emptyset]
+  .\]%
+  Now, since $\ell$ is a limit point of $L$, for any $\epsilon > 0$, there
+  exists $y \in L - \{\ell\}$ such that $y \in V_{\epsilon}(l)$. By the
+  definition of $y \in L$, there exists $z \in A$, distinct from $y$, such that
+  $z \in V_{\delta}(y)$.
 
-        Choose $0 < \delta < \epsilon$ so $V_{\delta}(x) \subseteq
-        V_{\epsilon}(l)$. Since $z \in V_{\delta}(y) \cap (A - \{y\})$, then $z
-        \in V_{\epsilon}(\ell)$ and $z \in A$. So, $\ell$ is a limit point of
-        $A$. Therefore, $\ell \in L$ and $L$ is closed.
-      \end{proof}
-  \end{enumerate}
-\end{exersolution}
+  Choose $0 < \delta < \epsilon$ so $V_{\delta}(x) \subseteq V_{\epsilon}(l)$.
+  Since $z \in V_{\delta}(y) \cap (A - \{y\})$, then $z \in V_{\epsilon}(\ell)$
+  and $z \in A$. So, $\ell$ is a limit point of $A$. Therefore, $\ell \in L$ and
+  $L$ is closed.
+\end{proof}
 
-\newpage
+\medskip
 
 \begin{exercise}[11]
   \begin{enumerate}
@@ -91,60 +84,62 @@
   \end{enumerate}
 \end{exercise}
 
-\begin{exersolution}[11]
-  \begin{enumerate}
-    \item \begin{proof}
-        Let $L_a$ and $L_b$ be the set of limit points for $A$ and $B$
-        respectively. Let $\ell$ be a limit point for $A \cup B$. Then, $\ell
-        \in L_a$ or $\ell \in L_b$. So, $\ell \in L_a \cup L_b$. Then, by
-        definition $\overline{A \cup B} = (A \cup B) \cup (L_a \cup L_b) = (A
-        \cup L_a) \cup (B \cup L_b) = \bar{A} \cup \bar{B}$.
-      \end{proof}
+\begin{proof}[Solution to (i)]
+  Let $L_a$ and $L_b$ be the set of limit points for $A$ and $B$ respectively.
+  Let $\ell$ be a limit point for $A \cup B$. Then, $\ell \in L_a$ or $\ell \in
+  L_b$. So, $\ell \in L_a \cup L_b$. Then, by definition $\overline{A \cup B} =
+  (A \cup B) \cup (L_a \cup L_b) = (A \cup L_a) \cup (B \cup L_b) = \bar{A} \cup
+  \bar{B}$.
+\end{proof}
 
-    \item No, the result does not extend to infinite unions of sets.
-      Specifically,
-      \[%
-        \overline{\bigcup_{i \in I} A_i} \ne \bigcup_{i \in I} \bar{A_i}
-      ,\]%
-      where $\{A_i\}_{i \in I}$ is a collection of sets, indexed by $I$.
+\begin{proof}[Solution to (ii)]
+  No, the result does not extend to infinite unions of sets. Specifically,
+  \[%
+    \overline{\bigcup_{i \in I} A_i} \ne \bigcup_{i \in I} \bar{A_i}
+  ,\]%
+  where $\{A_i\}_{i \in I}$ is a collection of sets, indexed by $I$.
 
-      For a finite union of sets $\overline{A \cup B} = \bar{A} \cup \bar{B}$
-      holds because any limit point of $A \cup B$ must lie in $\bar{A} \cup
-      \bar{B}$, and the closure distributes over a finite union.
+  For a finite union of sets $\overline{A \cup B} = \bar{A} \cup \bar{B}$ holds
+  because any limit point of $A \cup B$ must lie in $\bar{A} \cup \bar{B}$, and
+  the closure distributes over a finite union.
 
-      For an infinite union, however, the equality may fail because the closure
-      of an infinite union may include points that are limit points of the
-      entire union, but not limit points of any single set in the collection.
+  For an infinite union, however, the equality may fail because the closure of
+  an infinite union may include points that are limit points of the entire
+  union, but not limit points of any single set in the collection.
 
-      Let $A_n = \{\sfrac{1}{n} \mid n \in \N\}$ as a counterexample. Then,
-      \[%
-        \overline{\bigcup_{n=1}^{\infty} A_n} = \left.\left\{\frac{1}{n} \right\rvert n \in \N\right\} \cup \{0\} \ne \left.\left\{\frac{1}{n} \right\rvert n \in \N\right\} = \bigcup_{n=1}^{\infty} \bar{A}_n
-      .\]%
-  \end{enumerate}
-\end{exersolution}
+  Let $A_n = \{\sfrac{1}{n} \mid n \in \N\}$ as a counterexample. Then,
+  \[%
+    \overline{\bigcup_{n=1}^{\infty} A_n} = \left.\left\{\frac{1}{n} \right\rvert n \in \N\right\} \cup \{0\} \ne \left.\left\{\frac{1}{n} \right\rvert n \in \N\right\} = \bigcup_{n=1}^{\infty} \bar{A}_n
+  .\qedhere\]%
+\end{proof}
 
-\newpage
+\medskip
+
+\begin{center}
+  SECTION 3.3
+\end{center}
+
+\medskip
 
 \setcounter{section}{3}
 
 \begin{exercise}[1]
-  Show that if $K$ is compact and nonempty, then $\sup(K)$ and $\inf(K)$ both exist and are elements of $K$.
+  Show that if $K$ is compact and nonempty, then $\sup(K)$ and $\inf(K)$ both
+  exist and are elements of $K$.
 \end{exercise}
 
-\begin{exersolution}[1]
-  \begin{proof}
-    By Theorem 3.3.4, $K$ is compact if and only if it is closed and bounded.
-    Since $K \neq \emptyset$, it follows that $K$ is bounded above and bounded
-    below. By the Axiom of Completeness, $\sup(K)$ exists because $K$ is bounded
-    above, and $\inf(K)$ exists because $K$ is bounded below. To show $\sup(K)
-    \in K$, note that $\sup(K)$ is a limit point of $K$ (by definition of the
-    least upper bound). Since $K $ is closed, it contains all its limit points,
-    so $\sup(K) \in K$. Similarly, $\inf(K)$ is a limit point of $K$, and by the
-    closedness of $K$, $\inf(K) \in K$.
-  \end{proof}
-\end{exersolution}
+\begin{proof}[Solution]
+  By Theorem 3.3.4, $K$ is compact if and only if it is closed and bounded.
+  Since $K \neq \emptyset$, it follows that $K$ is bounded above and bounded
+  below. By the Axiom of Completeness, $\sup(K)$ exists because $K$ is bounded
+  above, and $\inf(K)$ exists because $K$ is bounded below. To show $\sup(K)
+  \in K$, note that $\sup(K)$ is a limit point of $K$ (by definition of the
+  least upper bound). Since $K $ is closed, it contains all its limit points,
+  so $\sup(K) \in K$. Similarly, $\inf(K)$ is a limit point of $K$, and by the
+  closedness of $K$, $\inf(K) \in K$.
+\end{proof}
 
-\newpage
+\medskip
 
 \begin{exercise}[2]
   Decide which of the following sets are compact. For those that are not
@@ -161,55 +156,56 @@
   \end{enumerate}
 \end{exercise}
 
-\begin{exersolution}[2]
-  \begin{enumerate}
-    \item No, since the sequence $x_n = n$ doesn't diverges.
+\begin{proof}[Solution to (i)]
+  No, since the sequence $x_n = n$ doesn't diverges.
+\end{proof}
 
-    \item No, since the sequence $x_n = \sfrac{1}{\sqrt{2}} + \frac{1}{n}$
-      converges to $\sfrac{1}{\sqrt{2}} \notin Q \cap [0, 1]$.
+\begin{proof}[Solution to (ii)]
+  No, since the sequence $x_n = \sfrac{1}{\sqrt{2}} + \frac{1}{n}$ converges to
+  $\sfrac{1}{\sqrt{2}} \notin Q \cap [0, 1]$.
+\end{proof}
 
-    \item Compact, since, it's bounded, closed, and every sequence converges to
-      the limit value of $1 \in S$.
-  \end{enumerate}
-\end{exersolution}
+\begin{proof}[Solution to (iii)]
+  No, since the sequence $x_n = \sfrac{1}{\sqrt{2}} + \frac{1}{n}$ converges to
+  $\sfrac{1}{\sqrt{2}} \notin Q \cap [0, 1]$.
+\end{proof}
 
-\newpage
+\begin{proof}[Solution to (iv)]
+  Compact, since, it's bounded, closed, and every sequence converges to the
+  limit value of $1 \in S$.
+\end{proof}
+
+\medskip
 
 \begin{exercise}[3]
   Prove the converse of Theorem 3.3.4 by showing that if a set $K \subseteq \R$
   is closed and bounded, then it is compact.
 \end{exercise}
 
-\begin{exersolution}[3]
-  \begin{theorem}[Characterization of Compactness in $\R$]
-    A set $K \subseteq \R$ is compact if and only if it is closed and bounded.
-  \end{theorem}
+\begin{proof}[Solution] $ $
+  \begin{enumerate}
+    \item[$\implies$)] Suppose $K \subseteq \R$ is compact. Suppose $K$ isn't
+      bounded. Let $(a_n)$ be a sequence in $K$. Since $K$ is unbounded, then
+      given any $n \in \N$, we can produce $a_n \in K$ such that $\lvert a_n
+      \rvert > n$. Now, since $K$ is compact, there must exist a subsequence
+      $(a_{n_k})$ that converges to a limit $a \in K$. But the elements of
+      $(a_{n_k})$ must satisfy $\lvert a_{n_k} \rvert > n_k$, which implies that
+      $(a_{n_k})$ is unbounded, meaning it doesn't converge. This gives us a
+      contradiction since every sequence must contain a converging subsequence
+      to be called compact. This implies that $K$ must be bounded.
 
-  \begin{proof} $ $
-    \begin{enumerate}
-      \item[$\implies$)] Suppose $K \subseteq \R$ is compact. Suppose $K$ isn't
-        bounded. Let $(a_n)$ be a sequence in $K$. Since $K$ is unbounded, then
-        given any $n \in \N$, we can produce $a_n \in K$ such that $\lvert a_n
-        \rvert > n$. Now, since $K$ is compact, there must exist a subsequence
-        $(a_{n_k})$ that converges to a limit $a \in K$. But the elements of
-        $(a_{n_k})$ must satisfy $\lvert a_{n_k} \rvert > n_k$, which implies
-        that $(a_{n_k})$ is unbounded, meaning it doesn't converge. This gives
-        us a contradiction since every sequence must contain a converging
-        subsequence to be called compact. This implies that $K$ must be bounded.
+      Now that we know $K$ is bounded, then suppose we are given a sequence
+      $(a_n)$ that's contained in $K$. By the BWT, there exists a converging
+      subsequence $(a_{n_k})$ that converges to a limit $a$. By definition of
+      compactness, $a \in K$. Suppose that $(a_n)$ converges to a limit point.
+      Then, by Theorem 2.5.2, all subsequences converge to the same limit as the
+      original sequence. So, $(a_n) \to x$ and $a \in K$, making $a$ a limit
+      point. Therefore, $K$ is closed.
 
-        Now that we know $K$ is bounded, then suppose we are given a sequence
-        $(a_n)$ that's contained in $K$. By the BWT, there exists a converging
-        subsequence $(a_{n_k})$ that converges to a limit $a$. By definition of
-        compactness, $a \in K$. Suppose that $(a_n)$ converges to a limit point.
-        Then, by Theorem 2.5.2, all subsequences converge to the same limit as
-        the original sequence. So, $(a_n) \to x$ and $a \in K$, making $a$ a
-        limit point. Therefore, $K$ is closed.
-
-      \item[$\impliedby$)] Suppose $K \subseteq \R$ is closed and bounded. Let
-        $(a_n)$ be a sequence contained in $K$. Since $K$ is bounded, by the
-        BWT, there exists a converging subsequence $(a_{n_k})$ that converges to
-        a limit $a$. Since $K$ is closed, $a \in K$. Therefore, $K$ is compact.
-        \qedhere
-    \end{enumerate}
-  \end{proof}
-\end{exersolution}
+    \item[$\impliedby$)] Suppose $K \subseteq \R$ is closed and bounded. Let
+      $(a_n)$ be a sequence contained in $K$. Since $K$ is bounded, by the BWT,
+      there exists a converging subsequence $(a_{n_k})$ that converges to a
+      limit $a$. Since $K$ is closed, $a \in K$. Therefore, $K$ is compact.
+      \qedhere
+  \end{enumerate}
+\end{proof}
