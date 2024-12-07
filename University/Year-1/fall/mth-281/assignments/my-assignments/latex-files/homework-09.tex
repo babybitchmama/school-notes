@@ -1,0 +1,271 @@
+\begin{problem}[1]
+  Find the absolute maximum and minimum values of $f(x, y) = (x - 1)y^2 - 2x$ on
+  the set $D = \{(x, y) \mid x \geq 0, y \geq 0, x^2 + y^2 \leq 10\}$.
+\end{problem}
+
+\begin{proof}[Solution]
+  We start by finding the partial derivatives of $f(x, y)$
+  \[%
+    f_x(x, y) = \pdv{}{x} \left[(x - 1)y^2 - 2x\right] = y^2 - 2 \aand f_y(x, y) = \pdv{}{y} \left[(x - 1)y^2 - 2x\right] = 2(x - 1)y
+  .\]%
+  Next, we set these partial derivatives equal to zero to find the critical
+  points
+  \begin{align*}
+    f_x(x, y) = 0 &\implies y^2 = 2 \implies y = \sqrt{2} \quad\textrm{(since $y \geq 0$)} \\
+    f_y(x, y) = 0 &\implies 2(x - 1)y = 0 \implies y = 0 \oor x = 1
+  .\end{align*}
+  Combining these, the critical point inside $D$ is $(x, y) = (1, \sqrt{2})$.
+  Evaluating the function at this point, we find
+  \[%
+    f(1, \sqrt{2}) = (1 - 1)(\sqrt{2})^2 - 2(1) = -2
+  .\]%
+
+  Next, we examine the boundary of $D$, which consists of
+  \begin{enumerate}
+    \item The line $x = 0$, where $0 \leq y \leq \sqrt{10}$,
+
+      On this boundary, $f(0, y) = (0 - 1)y^2 - 2(0) = -y^2$. Evaluating this,
+      we find
+      \[%
+        f(0, 0) = 0 \aand f(0, \sqrt{10}) = -(\sqrt{10})^2 = -10
+      .\]%
+
+    \item The line $y = 0$, where $0 \leq x \leq \sqrt{10}$,
+
+      On this boundary, $f(x, 0) = (x - 1)(0)^2 - 2x = -2x$. Evaluating this, we
+      find
+      \[%
+        f(0, 0) = 0 \aand f(\sqrt{10}, 0) = -2\sqrt{10}
+      .\]%
+
+    \item The circular arc $x^2 + y^2 = 10$, where $x \geq 0$ and $y \geq 0$.
+
+      We parametrize the boundary using $x = \sqrt{10}\cos(\theta)$ and $y =
+      \sqrt{10}\sin(\theta)$, where $0 \leq \theta \leq \frac{\pi}{2}$.
+      Substituting into $f(x, y)$, we get
+      \[%
+        f(x, y) = \left(\sqrt{10} \cos(\theta) - 1\right)(\sqrt{10} \sin(\theta))^2 - 2 \sqrt{10} \cos(\theta)
+      .\]%
+      Simplifying, we find
+      \[%
+        f(x, y) = 10\left(\sqrt{10} \cos(\theta) - 1\right)\sin^2(\theta) - 2\sqrt{10}\cos(\theta)
+      .\]%
+      To find the extrema on this arc, we examine $f(x, y)$ at key points
+      \begin{itemize}
+        \item At $\theta = 0$, $\cos(\theta) = 1$ and $\sin(\theta) = 0$, so
+          \[%
+            f(x, y) = -2\sqrt{10}
+          .\]%
+        \item At $\theta = \frac{\pi}{2}$, $\cos(\theta) = 0$ and $\sin(\theta) = 1$, so
+          \[%
+            f(x, y) = -10
+          .\]%
+      \end{itemize}
+      Since $f(x, y)$ does not achieve any values larger than $0$ or smaller
+      than $-10$ on this arc, we conclude that no new extrema arise here.
+  \end{enumerate}
+
+  Thus, the absolute extrema of $f(x, y)$ on the domain $D$ are
+  \begin{enumerate}
+    \item Absolute maximum: $f(0, 0) = 0$,
+    \item Absolute minimum: $f(0, \sqrt{10}) = -10$. \qedhere
+  \end{enumerate}
+\end{proof}
+
+\medskip
+
+\begin{problem}[2]
+  Find the volume of the largest rectangular box in the first octant with three sides in the coordinate planes and one vertex in the plane $2x + 3y + z = 6$.
+
+  Complete this problem using two methods.
+
+  \begin{enumerate}
+    \item Substitute the constraint into the volume function and apply second derivative test to verify it is a maximum.
+
+    \item Use the method of Lagrange Multipliers to find the maximum.
+  \end{enumerate}
+\end{problem}
+
+\begin{proof}[Solution to (i)]
+  Let the vertex of the rectangular box in the plane $2x + 3y + z = 6$ be $(x,
+  y, z)$, where $x, y, z \geq 0$. The volume of the box is
+  \[%
+    V(x, y, z) = xyz
+  .\]%
+  Since the vertex lies on the plane $2x + 3y + z = 6$, we substitute
+  \[%
+    z = 6 - 2x - 3y
+  \]%
+  into $V(x, y, z)$ to express the volume as
+  \[%
+    V(x, y) = xy(6 - 2x - 3y) = 6xy - 2x^2y - 3xy^2
+  .\]%
+
+  To find critical points, we compute the partial derivatives
+  \begin{align*}
+    V_x(x, y) &= \pdv{}{x} \left( 6xy - 2x^2y - 3xy^2 \right) = 6y - 4xy - 3y^2 \\
+    V_y(x, y) &= \pdv{}{y} \left( 6xy - 2x^2y - 3xy^2 \right) = 6x - 2x^2 - 6xy
+  .\end{align*}
+  Setting these equal to zero, we solve
+  \begin{align*}
+    V_x(x, y) = 0 &\implies y(6 - 4x - 3y) = 0 \\
+    V_y(x, y) = 0 &\implies x(3 - x - 3y) = 0
+  .\end{align*}
+  Since $x, y > 0$, we solve the nonzero factors
+  \begin{align*}
+    6 - 4x - 3y &= 0 \implies y = 2 - \frac{4x}{3} \\
+    3 - x - 3y &= 0 \implies x = 3 - 3y
+  .\end{align*}
+  Substituting $y = 2 - \frac{4x}{3}$ into $x = 3 - 3y$, we get
+  \[%
+    x = 3 - 3\left(2 - \frac{4x}{3}\right) = 3 - 6 + 4x = -3 + 4x \implies x = \frac{3}{4}
+  .\]%
+  Substituting $x = \frac{3}{4}$ into $y = 2 - \frac{4x}{3}$, we find
+  \[%
+    y = 2 - \frac{4\left(\frac{3}{4}\right)}{3} = 2 - \frac{4}{3} = \frac{2}{3}
+  .\]%
+  Finally, substituting $x = \frac{3}{4}$ and $y = \frac{2}{3}$ into $z = 6 - 2x
+  - 3y$, we get
+  \[%
+    z = 6 - 2\left(\frac{3}{4}\right) - 3\left(\frac{2}{3}\right) = 6 - \frac{3}{2} - 2 = \frac{5}{2}
+  .\]%
+
+  The critical point is $(x, y, z) = \left(\frac{3}{4}, \frac{2}{3},
+  \frac{5}{2}\right)$. The volume is
+  \[%
+    V\left(\frac{3}{4}, \frac{2}{3}, \frac{5}{2}\right) = \frac{3}{4} \cdot \frac{2}{3} \cdot \frac{5}{2} = \frac{4}{3}
+  .\]%
+  To confirm this is a maximum, we examine the second derivatives:
+  \begin{align*}
+    V_{xx}(x, y) &= -4y, & V_{yy}(x, y) &= -6x, & V_{xy}(x, y) &= 6 - 4x - 6y
+  .\end{align*}
+  The Hessian determinant is
+  \[%
+    H = V_{xx}(x, y)V_{yy}(x, y) - \left(V_{xy}(x, y)\right)^2 = (-4y)(-6x) - (6 - 4x - 6y)^2
+  .\]%
+  At $(x, y) = \left(\frac{3}{4}, \frac{2}{3}\right)$, this evaluates to
+  \[%
+    H = \left(-4 \cdot \frac{2}{3}\right)\left(-6 \cdot \frac{3}{4}\right) - \left(6 - 4 \cdot \frac{3}{4} - 6 \cdot \frac{2}{3}\right)^2 > 0
+  ,\]%
+  confirming that $V(x, y)$ has a local maximum. Thus, the maximum volume is
+  $\frac{4}{3}$ cubic units.
+\end{proof}
+
+\begin{proof}[Solution to (ii)]
+  Using the method of Lagrange multipliers, we maximize $V(x, y, z) = xyz$
+  subject to $g(x, y, z) = 2x + 3y + z - 6 = 0$. The gradients are
+  \[%
+    \nabla V = \langle yz, xz, xy \rangle \aand \nabla g = \langle 2, 3, 1 \rangle
+  .\]%
+  Setting $\nabla V = \lambda \nabla g$, we have
+  \begin{align*}
+    yz &= 2\lambda \\
+    xz &= 3\lambda \\
+    xy &= \lambda
+  .\end{align*}
+  From $yz = 2\lambda$ and $xy = \lambda$, we find
+  \[%
+    yz = 2xy \implies z = 2
+  .\]%
+  From $xz = 3\lambda$ and $xy = \lambda$, we find
+  \[%
+    xz = 3xy \implies z = 3y
+  .\]%
+  Equating $z = 2x$ and $z = 3y$, we find
+  \[%
+    2x = 3y \implies y = \frac{2x}{3}
+  .\]%
+  Substituting $y = \frac{2x}{3}$ and $z = 2x$ into $g(x, y, z) = 0$, we get
+  \[%
+    2x + 3\left(\frac{2x}{3}\right) + 2x = 6 \implies 6x = 6 \implies x = 1
+  .\]%
+  Substituting $x = 1$ into $y = \frac{2x}{3}$ and $z = 2x$, we find
+  \[%
+    y = \frac{2}{3}, \quad z = 2
+  .\]%
+  The maximum volume is
+  \[%
+    V(1, \frac{2}{3}, 2) = 1 \cdot \frac{2}{3} \cdot 2 = \frac{4}{3}
+  .\]%
+
+  Thus, the maximum volume is $\frac{4}{3}$ cubic units.
+\end{proof}
+
+\medskip
+
+\begin{problem}[3]
+  Use the method of Lagrange Multipliers to find the maximum and minimum values
+  of $f(x, y, z) = xy - z^2$ for all points on the ellipsoid  $x^2 + 8y^2 + z^2
+  = 64$.
+\end{problem}
+
+\begin{proof}[Solution]
+  Using the method of Lagrange multipliers, we maximize and minimize $f(x, y, z)
+  = xy - z^2$ subject to $g(x, y, z) = x^2 + 8y^2 + z^2 - 64 = 0$. The gradients
+  are
+  \[%
+    \nabla f = \langle y, x, -2z \rangle \and \nabla g = \langle 2x, 16y, 2z \rangle
+  .\]%
+  Setting $\nabla f = \lambda \nabla g$, we have the system
+  \begin{align*}
+    y &= 2\lambda x \\
+    x &= 16\lambda y \\
+    -2z &= 2\lambda z
+  .\end{align*}
+
+  From $-2z = 2\lambda z$, we find
+  \[%
+    z = 0 \oor \lambda = -1
+  .\]%
+
+  \textit{Case 1: $z = 0$.} If $z = 0$, substituting into $y = 2\lambda x$ and
+  $x = 16\lambda y$, we eliminate $\lambda$
+  \[%
+    y = 2\lambda x \quad \text{and} \quad x = 16\lambda y \implies y = 2\lambda (16\lambda y)
+  .\]%
+  Simplifying, $y(1 - 32\lambda^2) = 0$. Thus, $y = 0$ or $\lambda = \pm
+  \frac{1}{4}$.
+  \begin{enumerate}
+    \item If $y = 0$, then $x = 0$, which is invalid as $x^2 + 8y^2 + z^2 = 64$
+      must hold.
+
+    \item If $\lambda = \pm \frac{1}{4}$, substituting back gives
+      \[%
+        y = \pm 2, \quad x = \pm 4\sqrt{2}
+      .\]%
+  \end{enumerate}
+
+  The points are $(\pm 4\sqrt{2}, \pm 2, 0)$.
+
+  \textit{Case 2: $\lambda = -1$.} If $\lambda = -1$, the equations become
+  \[%
+    y = -2x, \quad x = -16y 
+  .\]%
+  Solving $y = -2x$ and $x = -16(-2x)$, we find
+  \[%
+    y = -2x, \quad x = \frac{1}{8}x \implies x = 0 \implies y = 0
+  .\]%
+  Substituting $x = 0$ and $y = 0$ into $x^2 + 8y^2 + z^2 = 64$, we find $z =
+  \pm 8$. The points are $(0, 0, \pm 8)$.
+
+  \begin{itemize}
+    \item At $(4\sqrt{2}, 2, 0)$ and $(-4\sqrt{2}, -2, 0)$
+    \[%
+      f(x, y, z) = xy - z^2 = (4\sqrt{2})(2) - 0 = 8\sqrt{2}
+    .\]%
+
+    \item At $(0, 0, 8)$ and $(0, 0, -8)$
+    \[%
+      f(x, y, z) = xy - z^2 = 0 - (8)^2 = -64
+    .\]%
+  \end{itemize}
+
+  Therefore, we get
+  \begin{enumerate}
+    \item The maximum value of $f(x, y, z)$ is $8\sqrt{2}$, occurring at
+      $(4\sqrt{2}, 2, 0)$ and $(-4\sqrt{2}, -2, 0)$.
+
+    \item The minimum value of $f(x, y, z)$ is $-64$, occurring at $(0, 0, 8)$
+      and $(0, 0, -8)$. \qedhere
+  \end{enumerate}
+\end{proof}
