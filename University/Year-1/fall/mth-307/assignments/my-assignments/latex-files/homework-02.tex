@@ -1,5 +1,6 @@
-\begin{problem}
-  In each of the following give a disjunction that is equivalent to the given proposition:
+\begin{problem}[1]
+  In each of the following give a disjunction that is equivalent to the given
+  proposition:
   \begin{enumerate}
     \item $P \implies Q$.
     \item $\neg P \implies Q$.
@@ -7,79 +8,75 @@
   \end{enumerate}
 \end{problem}
 
-\begin{probsolution}
-  \begin{enumerate}
-    \item $\neg P \lor Q$.
-    \item $P \lor Q$.
-    \item $\neg P \lor \neg Q$.
-  \end{enumerate}
-\end{probsolution}
+\begin{proof}[Solution to (i)]
+  $\neg P \lor Q$.
+\end{proof}
 
-\newpage
+\begin{proof}[Solution to (ii)]
+  $P \lor Q$.
+\end{proof}
 
-\begin{problem}
+\begin{proof}[Solution to (iii)]
+  $\neg P \lor \neg Q$.
+\end{proof}
+
+\medskip
+
+\begin{problem}[2]
   Translate the following into a symbolic logic problem, then provide a proof:
 
-  \noindent Given: If Smith wins the nomination, he will be happy, and if he is
-  happy, he is not a good campaigner. But if he loses the nomination, he will
-  lose the confidence of the party. He is not a good campaigner if he loses the
+  Given: If Smith wins the nomination, he will be happy, and if he is happy, he
+  is not a good campaigner. But if he loses the nomination, he will lose the
+  confidence of the party. He is not a good campaigner if he loses the
   confidence of the party. If he is not a good campaigner, then he should resign
   from the party. Either Smith wins the nomination or he loses it.
 
-  \noindent Prove: Smith should resign from the party.
+  Prove: Smith should resign from the party.
 \end{problem}
 
-\begin{probsolution}
+\begin{proof}[Solution]
   Let $W =$ ``Smith wins the nomination'', $H =$ ``Smith is happy'', $G =$
   ``Smith is a good campaigner'', $C =$ ``Smith has the confidence of the
   party'', and $R =$ ``Smith should resign from the party''.
 
-  \noindent Translating the given information into symbolic logic:
-  \begin{table}[H]
-    \centering
-    \begin{tabular}{lll}
-      & Statement & Explanation \\
-      1. & $W \implies H$ & Hypothesis \\
-      2. & $H \implies \neg G$ & Hypothesis \\
-      3. & $\neg W \implies \neg C$ & Hypothesis \\
-      4. & $\neg G \implies R$ & Hypothesis \\
-      5. & $W \lor \neg W$ & Hypothesis \\
-      6. & $W$ & Dischargeable Hypothesis \\
-      7. & $H$ & MP, for 6, for 1 \\
-      8. & $\neg G$ & MP, for 7, for 2 \\
-      9. & $R$ & MP, for 8, for 4 \\
-      10 & $W \implies R$ & DT, discharge for 6 [(6) - (9) unusable] \\
-    \end{tabular}
-  \end{table}
-\end{probsolution}
+  Translating the given information into symbolic logic
 
-\newpage
+  \begin{tabular}[t]{lll}
+    1. & $W \implies H$ & Hypothesis \\
+    2. & $H \implies \neg G$ & Hypothesis \\
+    3. & $\neg W \implies \neg C$ & Hypothesis \\
+    4. & $\neg G \implies R$ & Hypothesis \\
+    5. & $W \lor \neg W$ & Hypothesis \\
+    6. & $W$ & Dischargeable Hypothesis \\
+    7. & $H$ & MP, for 6, for 1 \\
+    8. & $\neg G$ & MP, for 7, for 2 \\
+    9. & $R$ & MP, for 8, for 4 \\
+    10 & $W \implies R$ & DT, discharge for 6 [(6) - (9) unusable] \\
+  \end{tabular}\qedhere
+\end{proof}
 
-\begin{problem}
+\medskip
+
+\begin{problem}[3]
   Fill in the blanks to give a proof of $R \lor [P \land Q]$, $\neg Q$ $\vdash$
   $R$.
-  \begin{table}[H]
-    \centering
-    \begin{tabular}{lll}
-      & Statement & Explanation \\
-      1. & $R \lor [P \land Q]$ & ?? \\
-      2. & $\neg R$ & ?? \\
-      3. & ?? & Tautology \\
-      4. & $\neg R \implies [P \land Q]$ & ?? \\
-      5. & $P \land Q$ & ?? \\
-      6. & ?? & RCS, ?? \\
-      7. & ?? & Hypothesis \\
-      8. & $Q \land \neg Q$ & ?? \\
-      9. & $R$ & ?? \\
-    \end{tabular}
-  \end{table}
+
+  \begin{tabular}[t]{lll}
+    1. & $R \lor [P \land Q]$ & ?? \\
+    2. & $\neg R$ & ?? \\
+    3. & ?? & Tautology \\
+    4. & $\neg R \implies [P \land Q]$ & ?? \\
+    5. & $P \land Q$ & ?? \\
+    6. & ?? & RCS, ?? \\
+    7. & ?? & Hypothesis \\
+    8. & $Q \land \neg Q$ & ?? \\
+    9. & $R$ & ?? \\
+  \end{tabular}
 \end{problem}
 
-\begin{probsolution}
-  \begin{table}[H]
-    \centering
-    \begin{tabular}{lll}
-      & Statement & Explanation \\
+\begin{proof}[Solution]
+  $\textrm{%
+    \begin{tabular}[t]{lll}
       1. & $R \lor [P \land Q]$ & Hypothesis \\
       2. & $\neg R$ & Dischargeable Hypothesis \\
       3. & $\neg R \lor R$ & Tautology \\
@@ -89,42 +86,37 @@
       7. & $\neg Q$ & Hypothesis \\
       8. & $Q \land \neg Q$ & CI, for 6, for 7 \\
       9. & $R$ & II, discharge for 2 [(2) - (8) unusable] \\
-    \end{tabular}
-  \end{table}
-\end{probsolution}
+    \end{tabular}\qedhere
+  }$%
+\end{proof}
 
-\newpage
+\medskip
 
-\begin{problem}
+\begin{problem}[4]
   Fill in the blanks to give a proof of $(P \land \neg Q) \implies (R \implies
   Q)$ $\vdash$ $P \implies [Q \lor \neg R]$. [Note: This proof uses both DT and
   Indirect Inference].
-  \begin{table}[H]
-    \centering
-    \begin{tabular}{lll}
-      & Statement & Explanation \\
-      1. & $(P \land \neg Q) \implies (R \implies Q)$ & ?? \\
-      2. & $P$ & Dischargeable Hypothesis \\
-      3. & $\neg[Q \lor \neg R]$ & Dischargeable Hypothesis \\
-      4. & ?? & Tautology \\
-      5. & $\neg Q \land R$ & ?? \\
-      6. & $\neg Q$ & ?? \\
-      7. & $P \land \neg Q$ & ?? \\
-      8. & $R \implies Q$ & ?? \\
-      9. & $\neg R$ & ?? \\
-      10. & $R$ & ?? \\
-      11. & $R \land \neg R$ & ?? \\
-      12. & $Q \lor \neg R$ & ?? \\
-      13. & $P \implies [Q \lor \neg R$ & ?? \\
-    \end{tabular}
-  \end{table}
+
+  \begin{tabular}[t]{lll}
+    1. & $(P \land \neg Q) \implies (R \implies Q)$ & ?? \\
+    2. & $P$ & Dischargeable Hypothesis \\
+    3. & $\neg[Q \lor \neg R]$ & Dischargeable Hypothesis \\
+    4. & ?? & Tautology \\
+    5. & $\neg Q \land R$ & ?? \\
+    6. & $\neg Q$ & ?? \\
+    7. & $P \land \neg Q$ & ?? \\
+    8. & $R \implies Q$ & ?? \\
+    9. & $\neg R$ & ?? \\
+    10. & $R$ & ?? \\
+    11. & $R \land \neg R$ & ?? \\
+    12. & $Q \lor \neg R$ & ?? \\
+    13. & $P \implies [Q \lor \neg R$ & ?? \\
+  \end{tabular}
 \end{problem}
 
-\begin{probsolution}
-  \begin{table}[H]
-    \centering
-    \begin{tabular}{lll}
-      & Statement & Explanation \\
+\begin{proof}[Solution]
+  $\textrm{%
+    \begin{tabular}[t]{lll}
       1. & $(P \land \neg Q) \implies (R \implies Q)$ & Hypothesis \\
       2. & $P$ & Dischargeable Hypothesis \\
       3. & $\neg[Q \lor \neg R]$ & Dischargeable Hypothesis \\
@@ -138,21 +130,19 @@
       11. & $R \land \neg R$ & CI, for 10, for 9 \\
       12. & $Q \lor \neg R$ & II, discharge for 3 [(3) - (11) unusable] \\
       13. & $P \implies [Q \lor \neg R]$ & DT, discharge for 2 [(2) - (12) unusable] \\
-    \end{tabular}
-  \end{table}
-\end{probsolution}
+    \end{tabular}\qedhere
+  }$%
+\end{proof}
 
-\newpage
+\medskip
 
-\begin{problem}
+\begin{problem}[5]
   Show that $[P \land Q] \implies R$, $\neg R$, $P$ $\vdash$ $\neg Q$.
 \end{problem}
 
-\begin{probsolution}
-  \begin{table}[H]
-    \centering
-    \begin{tabular}{lll}
-      & Statement & Explanation \\
+\begin{proof}[Solution]
+  $\textrm{%
+    \begin{tabular}[t]{lll}
       1. & $[P \land Q] \implies R$ & Hypothesis \\
       2. & $\neg R$ & Hypothesis \\
       3. & $P$ & Hypothesis \\
@@ -160,62 +150,56 @@
       5. & $\neg[P \land Q] \iff [\neg P \lor \neg Q]$ & Tautology \\
       6. & $\neg P \lor \neg Q$ & MPB, for 4, for 5 \\
       7. & $\neg Q$ & DI, for 3, for 6 \\
-    \end{tabular}
-  \end{table}
-\end{probsolution}
+    \end{tabular}\qedhere
+  }$%
+\end{proof}
 
-\newpage
+\medskip
 
-\begin{problem}
+\begin{problem}[6]
   Show that $P \implies Q$, $R$, $R \implies [Q \implies P]$ $\vdash$ $P \iff
   Q$.
 \end{problem}
 
-\begin{probsolution}
-  \begin{table}[H]
-    \centering
-    \begin{tabular}{lll}
-      & Statement & Explanation \\
+\begin{proof}[Solution]
+  $\textrm{%
+    \begin{tabular}[t]{lll}
       1. & $P \implies Q$ & Hypothesis \\
       2. & $R$ & Hypothesis \\
       3. & $R \implies [Q \implies P]$ & Hypothesis \\
       4. & $Q \implies P$ & MP, for 2, for 3 \\
       5. & $P \iff Q$ & For 1, for 4 \\
-    \end{tabular}
-  \end{table}
-\end{probsolution}
+    \end{tabular}\qedhere
+  }$%
+\end{proof}
 
-\newpage
+\medskip
 
-\begin{problem}
+\begin{problem}[7]
   Show that $P \implies \neg Q$, $\neg R \implies Q$ $\vdash$ $P \implies R$.
 \end{problem}
 
-\begin{probsolution}
-  \begin{table}[H]
-    \centering
-    \begin{tabular}{lll}
-      & Statement & Explanation \\
+\begin{proof}[Solution]
+  $\textrm{%
+    \begin{tabular}[t]{lll}
       1. & $P \implies \neg Q$ & Hypothesis \\
       2. & $\neg R \implies Q$ & Hypothesis \\
       3. & $\neg Q \implies R$ & Contrapositive, for 2 \\
       4. & $P \implies R$ & SI, for 1, for 3 \\
-    \end{tabular}
-  \end{table}
-\end{probsolution}
+    \end{tabular}\qedhere
+  }$%
+\end{proof}
 
-\newpage
+\medskip
 
-\begin{problem}
+\begin{problem}[8]
   Show that $\neg P \implies Q$, $T \implies \neg P$, $\neg[Q \lor R]$ $\vdash$
   $\neg T$
 \end{problem}
 
-\begin{probsolution}
-  \begin{table}[H]
-    \centering
-    \begin{tabular}{lll}
-      & Statement & Explanation \\
+\begin{proof}[Solution]
+  $\textrm{%
+    \begin{tabular}[t]{lll}
       1. & $\neg P \implies Q$ & Hypothesis \\
       2. & $T \implies \neg P$ & Hypothesis \\
       3. & $\neg[Q \lor R]$ & Hypothesis \\
@@ -224,22 +208,20 @@
       6. & $\neg Q$ & RCS, for 5 \\
       7. & $P$ & MT, for 6, for 1 \\
       8. & $\neg T$ & MT, for 7, for 2 \\
-    \end{tabular}
-  \end{table}
-\end{probsolution}
+    \end{tabular}\qedhere
+  }$%
+\end{proof}
 
-\newpage
+\medskip
 
-\begin{problem}
+\begin{problem}[9]
   Show that $\neg P \implies Q$, $Q \implies [R \implies S]$, $\neg S$ $\vdash$
   $R \implies P$.
 \end{problem}
 
-\begin{probsolution}
-  \begin{table}[H]
-    \centering
-    \begin{tabular}{lll}
-      & Statement & Explanation \\
+\begin{proof}[Solution]
+  $\textrm{%
+    \begin{tabular}[t]{lll}
       1. & $\neg P \implies Q$ & Hypothesis \\
       2. & $Q \implies [R \implies S]$ & Hypothesis \\
       3. & $\neg S$ & Hypothesis \\
@@ -249,22 +231,20 @@
       7. & $\neg R$ & MT, for 3, for 6 \\
       8. & $\neg P \implies \neg R$ & DT, discharge for 4 [(4) - (7) unusable] \\
       9. & $R \implies P$ & Contrapositive \\
-    \end{tabular}
-  \end{table}
-\end{probsolution}
+    \end{tabular}\qedhere
+  }$%
+\end{proof}
 
-\newpage
+\medskip
 
-\begin{problem}
+\begin{problem}[10]
   Show that $P \implies T$, $Q \implies T$, $R \iff [P \lor Q]$, $R$ $\vdash$
   $T$.
 \end{problem}
 
-\begin{probsolution}
-  \begin{table}[H]
-    \centering
-    \begin{tabular}{lll}
-      & Statement & Explanation \\
+\begin{proof}[Solution]
+  $\textrm{%
+    \begin{tabular}[t]{lll}
       1. & $P \implies T$ & Hypothesis \\
       2. & $Q \implies T$ & Hypothesis \\
       3. & $R \iff [P \lor Q]$ & Hypothesis \\
@@ -272,21 +252,19 @@
       5. & $P \lor Q$ & MPB, for 4, for 3 \\
       6. & $[P \lor Q] \implies T$ & IC, for 1, for 2 \\
       7. & $T$ & MP, for 5, for 6 \\
-    \end{tabular}
-  \end{table}
-\end{probsolution}
+    \end{tabular}\qedhere
+  }$%
+\end{proof}
 
-\newpage
+\medskip
 
-\begin{problem}
+\begin{problem}[11]
   Show that $S \implies P$, $Q \implies R$, $S$ $\vdash$ $[P \implies Q] \implies R$.
 \end{problem}
 
-\begin{probsolution}
-  \begin{table}[H]
-    \centering
-    \begin{tabular}{lll}
-      & Statement & Explanation \\
+\begin{proof}[Solution]
+  $\textrm{%
+    \begin{tabular}[t]{lll}
       1. & $S \implies P$ & Hypothesis \\
       2. & $Q \implies R$ & Hypothesis \\
       3. & $S$ & Hypothesis \\
@@ -295,22 +273,20 @@
       6. & $Q$ & MP, for 4, for 5 \\
       7. & $R$ & MP, for 6, for 2 \\
       8. & $[P \implies Q] \implies R$ & DT, discharge for 5 [(5) - (7) unusable] \\
-    \end{tabular}
-  \end{table}
-\end{probsolution}
+    \end{tabular}\qedhere
+  }$%
+\end{proof}
 
-\newpage
+\medskip
 
-\begin{problem}
+\begin{problem}[12]
   Show that $R \implies T$, $\neg T \iff S$, $[R \land \neg S] \implies \neg Q$
   $\vdash$ $R \implies \neg Q$.
 \end{problem}
 
-\begin{probsolution}
-  \begin{table}[H]
-    \centering
-    \begin{tabular}{lll}
-      & Statement & Explanation \\
+\begin{proof}[Solution]
+  $\textrm{%
+    \begin{tabular}[t]{lll}
       1. & $R \implies T$ & Hypothesis \\
       2. & $\neg T \iff S$ & Hypothesis \\
       3. & $[R \land \neg S] \implies \neg Q$ & Hypothesis \\
@@ -320,22 +296,20 @@
       7. & $R \land \neg S$ & CI, for 4, for 6 \\
       8. & $\neg Q$ & MP, for 7, for 3 \\
       9. & $R \implies \neg Q$ & DT, discharge for 4 [(4) - (8) unusable] \\
-    \end{tabular}
-  \end{table}
-\end{probsolution}
+    \end{tabular}\qedhere
+  }$%
+\end{proof}
 
-\newpage
+\medskip
 
-\begin{problem}
+\begin{problem}[13]
   Show that $\neg P \implies Q$, $[R \implies Q] \implies S$, $\neg S \lor T$,
   $R \implies \neg P$ $\vdash$ $T \lor V$.
 \end{problem}
 
-\begin{probsolution}
-  \begin{table}[H]
-    \centering
-    \begin{tabular}{lll}
-      & Statement & Explanation \\
+\begin{proof}[Solution]
+  $\textrm{%
+    \begin{tabular}[t]{lll}
       1. & $\neg P \implies Q$ & Hypothesis \\
       2. & $[R \implies Q] \implies S$ & Hypothesis \\
       3. & $\neg S \lor T$ & Hypothesis \\
@@ -347,22 +321,20 @@
       9. & $S$ & MP, for 8, for 2 \\
       10. & $T$ & DI, for 9, for 3 \\
       11. & $T \lor V$ & CI, for 10 \\
-    \end{tabular}
-  \end{table}
-\end{probsolution}
+    \end{tabular}\qedhere
+  }$%
+\end{proof}
 
-\newpage
+\medskip
 
-\begin{problem}
+\begin{problem}[14]
   Show that $[R \land \neg Q] \implies P$, $[T \implies S] \iff [R \implies Q]$,
   $R$ $\vdash$ $[\neg P \lor [T \implies S]] \implies Q$.
 \end{problem}
 
-\begin{probsolution}
-  \begin{table}[H]
-    \centering
-    \begin{tabular}{lll}
-      & Statement & Explanation \\
+\begin{proof}[Solution]
+  $\textrm{%
+    \begin{tabular}[t]{lll}
       1. & $[R \land \neg Q] \implies P$ & Hypothesis \\
       2. & $[T \implies S] \iff [R \implies Q]$ & Hypothesis \\
       3. & $R$ & Hypothesis \\
@@ -376,17 +348,18 @@
       12. & $\neg R \lor Q$ & MP, for 10, for 11 \\
       13. & $Q$ & DI, for 3, for 12 \\
       14. & $[\neg P \lor [T \implies S]] \implies Q$ & DT, discharge for 4 [(4) - (13) unusable] \\
-    \end{tabular}
-  \end{table}
-\end{probsolution}
+    \end{tabular}\qedhere
+  }$%
+\end{proof}
 
-\newpage
+\medskip
 
-\begin{problem}
-  Use the Euclidean Algorithm to find integers $a$ and $b$ such that $37a + 100b = 1$. Use this information to solve $37x + 42 = 15$ in $\Z_{100}$.
+\begin{problem}[15]
+  Use the Euclidean Algorithm to find integers $a$ and $b$ such that $37a + 100b
+  = 1$. Use this information to solve $37x + 42 = 15$ in $\Z_{100}$.
 \end{problem}
 
-\begin{probsolution}
+\begin{proof}[Solution]
   \begin{enumerate}
     \item $100 = 2 \cdot 37 + 26 \implies 100 - 2 \cdot 37 = 26$,
     \item $37 = 1 \cdot 26 + 11 \implies 37 - 1 \cdot 26 = 11$,
@@ -411,30 +384,29 @@
       7 \cdot 37 = 10 \cdot 100 - 27 \cdot 37$.
   \end{enumerate}
 
-  \noindent So, we find $a = -27, \quad b = 10$. Now we can solve the
-  congruence.
+  So, we find $a = -27, \quad b = 10$. Now we can solve the congruence.
 
-  \noindent First, subtract 42 from both sides: $37x \equiv -27 \pmod{100}$.
-  Since $-27 \equiv 73 \pmod{100}$, we can rewrite this as $37x \equiv 73
-  \pmod{100}$. From Step 1, we found that $37 \cdot (-27) \equiv 1 \pmod{100}$,
-  so the inverse of $37$ modulo $100$ is $-27 \equiv 73 \pmod{100}$. Now
-  multiply both sides of the congruence by $73$: $x \equiv 73 \cdot 73
-  \pmod{100}$ Calculate $73 \cdot 73 \pmod{100}$: $73 \cdot 73 = 5329.$ Find
-  $5329 \pmod{100}$: $5329 \pmod{100} = 29$
+  First, subtract 42 from both sides: $37x \equiv -27 \pmod{100}$. Since $-27
+  \equiv 73 \pmod{100}$, we can rewrite this as $37x \equiv 73 \pmod{100}$. From
+  Step 1, we found that $37 \cdot (-27) \equiv 1 \pmod{100}$, so the inverse of
+  $37$ modulo $100$ is $-27 \equiv 73 \pmod{100}$. Now multiply both sides of
+  the congruence by $73$: $x \equiv 73 \cdot 73 \pmod{100}$ Calculate $73 \cdot
+  73 \pmod{100}$: $73 \cdot 73 = 5329.$ Find $5329 \pmod{100}$: $5329 \pmod{100}
+  = 29$
 
-  \noindent Thus, $x = 29$ is the solution to $37x + 42 \equiv 15 \pmod{100}$.
-\end{probsolution}
+  Thus, $x = 29$ is the solution to $37x + 42 \equiv 15 \pmod{100}$.
+\end{proof}
 
-\newpage
+\medskip
 
-\begin{problem}
+\begin{problem}[16]
   For what primes $p$ is the element $p - 1$ a perfect square in $\Z_p$?
   Investigate this question by working out the cases $p = 2$, $p = 3$, $p = 5$,
   $p = 7$, $p = 11$, $p = 13$, $p = 17$, and $p = 19$. See if you notice any
   patterns an try to make a conjecture.
 \end{problem}
 
-\begin{probsolution}
+\begin{proof}[Solution]
   To see, we'll use the equation $x^2 = p - 1 \pmod{p}$. I'll use the Legendre
   symbol $\left(\frac{a}{p}\right)$ to determine if $a$ is a quadratic residue
   module $p$. For $a = p - 1$, we have $\left(\frac{p - 1}{p}\right)$ will
@@ -484,9 +456,10 @@
   \end{enumerate}
 
   Here's a summary table of everything
+
   \begin{table}[H]
     \centering
-    \begin{tabular}{llll}
+    \begin{tabular}[t]{llll}
       $p$ & $p - 1$ & Quadratic Residue & $p \pmod{4}$ \\
       $2$ & $1$ & Yes & $2$ \\
       $3$ & $2$ & No & $3$ \\
@@ -510,16 +483,16 @@
       \phantom{-}1 \quad \textrm{if}~p \equiv 1 \pmod{4}, \\
       -1 \quad \textrm{if}~p \equiv 1 \pmod{3}.
     \end{cases}
-  \]%
-\end{probsolution}
+  \qedhere\]%
+\end{proof}
 
-\newpage
+\medskip
 
-\begin{problem}
+\begin{problem}[17]
   Find $2^{1000}$ in $\Z_7$. Then find $3^{1000}$ in $\Z_7$. Explain how you got your answers.
 \end{problem}
 
-\begin{probsolution}
+\begin{proof}[Solution]
   I'll write out all the squares of $2$ in $\Z_7$ until we start seeing a
   pattern or we get $2^n = 1$.
   \[%
@@ -541,11 +514,11 @@
   1000$. That number was $166$, giving us $166 \cdot 6 = 996$. And we know that
   any number that's divisible by $6$, then $3^{6x} = 1$. Therefore, $3^{1000} =
   3^{996} \cdot 3^4 = 3^4 = 4$.
-\end{probsolution}
+\end{proof}
 
-\newpage
+\medskip
 
-\begin{problem}
+\begin{problem}[18]
   Consider a sum of three consecutive squares (like $7^2 + 8^2 + 9^2$). What do
   you get when you reduce this $\mod$ $3$ (that is, when you compute the
   remainder when you divided by $3$)? Pick another sum of three consecutive
@@ -553,64 +526,59 @@
   you can prove it.
 \end{problem}
 
-\begin{probsolution}
+\begin{proof}[Solution]
   The sum of $7^2 + 8^2 + 9^2  = 194$. Finding $194 \pmod{3}$, we get $194 -
   3 \cdot 64 = 2$. The sum of another three consecutive squares $10^2 + 11^2 +
   12^2 = 365$. Computing $365 \pmod{3}$, we get $365 - 3 \cdot 121 = 2$. Another
   three consecutive squares $4^2 + 5^2 + 6^2 = 77$, and $77 \pmod{3} \equiv 77 -
   3 \cdot 25 = 2$.
 
-  \noindent {\sffamily\textbf{Conjecture:}} \textit{The sum of the squares of
+  \noindent{\sffamily\textbf{Conjecture:}} \textit{The sum of the squares of
   three consecutive integers is congruent to $2 \pmod{3}$.}
 
-  \begin{plainproof}
-    Let the three consecutive integers be $n - 1$, $n$, and $n + 1$. Then their
-    squares are $(n - 1)^2$, $n^2$, and $(n + 1)^2$. We want to evaluate
-    \[%
-      (n - 1)^2 + n^2 + (n + 1)^2 \pmod{3}
-    .\]%
-    Expanding each term, we get
-    \[%
-      (n - 1)^2 = n^2 - 2n + 1, \quad n^2 = n^2, \quad (n + 1)^2 = n^2 + 2n + 1
-    .\]%
-    Adding them together we get
-    \[%
-      (n^2 - 2n + 1) + (n^2) + (n^2 + 2n + 1) = 3n^2 + 2
-    .\]%
-    Since we are multiplying $n^2$ by $3$, then $3n^2 \pmod{3} = 0$, leaving a
-    remainder of $2$.
-  \end{plainproof}
-\end{probsolution}
+  Let the three consecutive integers be $n - 1$, $n$, and $n + 1$. Then their
+  squares are $(n - 1)^2$, $n^2$, and $(n + 1)^2$. We want to evaluate
+  \[%
+    (n - 1)^2 + n^2 + (n + 1)^2 \pmod{3}
+  .\]%
+  Expanding each term, we get
+  \[%
+    (n - 1)^2 = n^2 - 2n + 1, \quad n^2 = n^2, \quad (n + 1)^2 = n^2 + 2n + 1
+  .\]%
+  Adding them together we get
+  \[%
+    (n^2 - 2n + 1) + (n^2) + (n^2 + 2n + 1) = 3n^2 + 2
+  .\]%
+  Since we are multiplying $n^2$ by $3$, then $3n^2 \pmod{3} = 0$, leaving a
+  remainder of $2$.
+\end{proof}
 
-\newpage
+\medskip
 
-\begin{problem}
+\begin{problem}[19]
   The following proof has a mistake. Find what is wrong, and explain. $(R \lor
   \neg S) \implies \neg P$, $Q \implies R$, $S \implies T$ $\vdash$ $(P \implies
   \neg R) \land (Q \implies T)$.
-  \begin{table}[H]
-    \centering
-    \begin{tabular}{lll}
-      & Statement & Explanation \\
-      1. & $(R \lor \neg S) \implies \neg P$ & Hypothesis \\
-      2. & $Q \implies R$ & Hypothesis \\
-      3. & $P$ & Dischargeable Hypothesis \\
-      4. & $\neg(R \lor \neg S)$ & MT, for 1, for 3 \\
-      5. & $\neg(R \lor \neg S) \iff (\neg R \land S)$ & Tautology \\
-      6. & $\neg R \land S$ & MPB, for 5, for 4 \\
-      7. & $S$ & RCS, for 6 \\
-      8. & $\neg R$ & LCS for 6 \\
-      9. & $P \implies \neg R$ & DT, discharge for 3 [(3) - (8) unusable] \\
-      10. & $Q$ & Dischargeable Hypothesis \\
-      11. & $S \implies T$ & Hypothesis \\
-      12. & $T$ & MP, for 11, for 7 \\
-      13. & $Q \implies T$ & DT, discharge for 10 [(10) - (12) unusable] \\
-      14. & $(P \implies \neg R) \land (Q \implies T)$ & CI, for 9, for 13 \\
-    \end{tabular}
-  \end{table}
+
+  \begin{tabular}[t]{lll}
+    1. & $(R \lor \neg S) \implies \neg P$ & Hypothesis \\
+    2. & $Q \implies R$ & Hypothesis \\
+    3. & $P$ & Dischargeable Hypothesis \\
+    4. & $\neg(R \lor \neg S)$ & MT, for 1, for 3 \\
+    5. & $\neg(R \lor \neg S) \iff (\neg R \land S)$ & Tautology \\
+    6. & $\neg R \land S$ & MPB, for 5, for 4 \\
+    7. & $S$ & RCS, for 6 \\
+    8. & $\neg R$ & LCS for 6 \\
+    9. & $P \implies \neg R$ & DT, discharge for 3 [(3) - (8) unusable] \\
+    10. & $Q$ & Dischargeable Hypothesis \\
+    11. & $S \implies T$ & Hypothesis \\
+    12. & $T$ & MP, for 11, for 7 \\
+    13. & $Q \implies T$ & DT, discharge for 10 [(10) - (12) unusable] \\
+    14. & $(P \implies \neg R) \land (Q \implies T)$ & CI, for 9, for 13 \\
+  \end{tabular}
 \end{problem}
 
-\begin{probsolution}
+\begin{proof}[Solution]
   The mistake is on line $12$. The proof incorrectly uses the fact that $S$ is
   true from line $7$. This is not valid though, because the deduction ending on
   line $8$ was based on assuming that $P$ is true, which is not a given and was
@@ -618,20 +586,18 @@
   DT, once the assumption is discharged, all intermediate steps derived from
   that assumption (lines 3 to 8) become invalid outside the scope of the
   assumption.
-\end{probsolution}
+\end{proof}
 
-\newpage
+\medskip
 
-\begin{problem}
+\begin{problem}[20]
   Show that $(R \lor \neg S) \implies \neg P$, $Q \implies R$, $S \implies T$
   $\vdash$ $(P \implies S) \land (Q \implies (\neg P \land R))$.
 \end{problem}
 
-\begin{probsolution}
-  \begin{table}[H]
-    \centering
-    \begin{tabular}{lll}
-      & Statement & Explanation \\
+\begin{proof}[Solution]
+  $\textrm{%
+    \begin{tabular}[t]{lll}
       1. & $(R \lor \neg S) \implies \neg P$ & Hypothesis \\
       2. & $Q \implies R$ & Hypothesis \\
       3. & $S \implies T$ & Hypothesis \\
@@ -647,6 +613,6 @@
       13. & $\neg P \land R$ & CI, for 12, for 11 \\
       14. & $Q \implies (R \land \neg P)$ & DT, discharge for 10 [(10) - (13) unusable] \\
       15. & $(P = S) \land (Q \implies (\neg P \land R))$ & CI, for 9, for 14 \\
-    \end{tabular}
-  \end{table}
-\end{probsolution}
+    \end{tabular}\qedhere
+  }$%
+\end{proof}

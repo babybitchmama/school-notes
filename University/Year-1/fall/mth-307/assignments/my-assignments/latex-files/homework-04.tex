@@ -1,4 +1,4 @@
-\begin{problem}
+\begin{problem}[1]
   Identify each of the following statements as true or false. Where you can,
   prove the statement by giving an example or disprove it by giving a
   counterexample.
@@ -24,40 +24,51 @@
   \end{enumerate}
 \end{problem}
 
-\begin{probsolution}
-  \begin{enumerate}
-    \item True. Example: $4^2 \equiv_9 7$ and $5^2 \equiv_9 7$.
+\begin{proof}[Solution to (i)]
+  True. Example: $4^2 \equiv_9 7$ and $5^2 \equiv_9 7$.
+\end{proof}
 
-    \item False. Counterexample: $7^2 \equiv_{11} 49 \equiv_{11} 16$ since $7
-      \not\equiv_{11} 4$.
+\begin{proof}[Solution to (ii)]
+  False. Counterexample: $7^2 \equiv_{11} 49 \equiv_{11} 16$ since $7 \not\equiv_{11} 4$.
+\end{proof}
 
-    \item True. Example: $n = 1$ and $n = 2$.
+\begin{proof}[Solution to (iii)]
+  True. Example: $n = 1$ and $n = 2$.
+\end{proof}
 
-    \item False. Counterexample: $n = 4$.
+\begin{proof}[Solution to (iv)]
+  False. Counterexample: $n = 4$.
+\end{proof}
 
-    \item True. Example: $a = 1$ and $b = -1$.
+\begin{proof}[Solution to (v)]
+  True. Example: $a = 1$ and $b = -1$.
+\end{proof}
 
-    \item False. $\{0, 2\} \cap \{0, 4\} = \{0\} \ne \emptyset$.
+\begin{proof}[Solution to (vi)]
+  False. $\{0, 2\} \cap \{0, 4\} = \{0\} \ne \emptyset$.
+\end{proof}
 
-    \item True. For $n \equiv_2 1$ and $n > 3$, $n$ is an odd integer greater
-      than $3$. For any odd $n$, $n^2 - 1$ can be factored as $(n - 1)(n + 1)$.
-      Since $n$ is odd, both $n - 1$ and $n + 1$ are even. So one of them is
-      divisible by $3$. Thus $3 \mid n^2 - 1$, for all add $n > 3$.
+\begin{proof}[Solution to (vii)]
+  True. For $n \equiv_2 1$ and $n > 3$, $n$ is an odd integer greater than $3$.
+  For any odd $n$, $n^2 - 1$ can be factored as $(n - 1)(n + 1)$. Since $n$ is
+  odd, both $n - 1$ and $n + 1$ are even. So one of them is divisible by $3$.
+  Thus $3 \mid n^2 - 1$, for all add $n > 3$.
+\end{proof}
 
-    \item False. Counterexample: $a = 6$ and $b = 4$.
-  \end{enumerate}
-\end{probsolution}
+\begin{proof}[Solution to (viii)]
+  False. Counterexample: $a = 6$ and $b = 4$.
+\end{proof}
 
-\newpage
+\medskip
 
-\begin{problem}
+\begin{problem}[2]
   Given a line proof that $(\forall n \in \N)[n^2 + (n + 1)^2 + (n + 2)^2
   \equiv_3 2$.
 \end{problem}
 
-\begin{probsolution}
-  \begin{table}[H]
-    \begin{tabular}{ll}
+\begin{proof}[Solution]
+  $\textrm{%
+    \begin{tabular}[t]{ll}
       1. & Assume $n \in \N$. \\
       2. & Then, $n^2 + (n + 1)^2 + (n + 2)^2 = 3(n^2 + 2n + 1) - 2$. \\
       3. & $(\exists r \in \Z)[n^2 + (n + 1)^2 + (n + 2)^2 - 2 = 3r]$. \\
@@ -65,13 +76,13 @@
       5. & $n^2 + (n + 1)^2 + (n + 2)^2 \equiv_3 2$. \\
       6. & $n \in \N \implies n^2 + (n + 1)^2 + (n + 2)^2 \equiv_3 2$. \\
       7. & $(\forall n \in \N)[n^2 + (n + 1)^2 + (n + 2)^2 \equiv_3 2]$ \\
-    \end{tabular}
-  \end{table}
-\end{probsolution}
+    \end{tabular}\qedhere
+  }$%
+\end{proof}
 
-\newpage
+\medskip
 
-\begin{problem}
+\begin{problem}[3]
   Decide if the following statement is true or false. If it is true, give a line
   proof. If it is false, give a counterexample.
   \[%
@@ -79,9 +90,9 @@
   .\]%
 \end{problem}
 
-\begin{probsolution}
-  \begin{table}[H]
-    \begin{tabular}{ll}
+\begin{proof}[Solution]
+  $\textrm{%
+    \begin{tabular}[t]{ll}
       1. & Assume $a > 0$, $a \mid (b - 1)$, and $a \mid (c - 1)$. \\
       2. & Then, $b - 1 = ak$ and $c - 1 = aq$, for some $k, q \in \Z$. \\
       3. & Then, $b = ak + 1$ and $c = aq + 1$. \\
@@ -90,13 +101,13 @@
       6. & $a \mid (bc - 1)$. \\
       7. & $(a > 0 \land a \mid (b - 1) \land a \mid (c - 1)) \implies a \mid (bc - 1)$ \\
       8. & $(\forall a, b, c \in \Z)[(a > 0 \land a \mid (b - 1) \land a \mid (c - 1)) \implies a \mid (bc - 1)]$ \\
-    \end{tabular}
-  \end{table}
-\end{probsolution}
+    \end{tabular}\qedhere
+  }$%
+\end{proof}
 
-\newpage
+\medskip
 
-\begin{problem}
+\begin{problem}[4]
   Here is an important property of prime numbers. If $p$ is prime, then
   \[%
     \textrm{Property (P):}\quad(\forall x, y \in \Z)[p \mid xy \implies (p \mid x \lor p \mid y)]
@@ -106,7 +117,7 @@
   Theorem: $(\forall y \in \Z)[4y^2 \equiv_7 0 \implies y \equiv_7 0]$.
 
   \begin{table}[H]
-    \begin{tabular}{ll}
+    \begin{tabular}[t]{ll}
       1. & Assume $y\in \Z$ and $4y^2\equiv_7 0$. \\
       2. & Then \fbox{\parbox{1in}{\ \ \par \ \ }}.\\
       3. & 7 is prime, so by property (P) we know $7 \mid 4$ or \fbox{\parbox{1in}{\ \ \par \ \ }}.\\
@@ -120,9 +131,9 @@
   \end{table}
 \end{problem}
 
-\begin{probsolution}
-  \begin{table}[H]
-    \begin{tabular}{ll}
+\begin{proof}[Solution]
+  $\textrm{%
+    \begin{tabular}[t]{ll}
       1. & Assume $y \in \Z$ and $4y^2 \equiv_7 0$. \\
       2. & Then $7 \mid 4y^2$. \\
       3. & 7 is prime, so by property (P) we know $7 \mid 4$ or $7 \mid y^2$. \\
@@ -132,20 +143,20 @@
       7. & $4y^2 \equiv_7 0 \implies 7 \mid y$. \\
       8. & $(y \in \Z \land 4y^2 \equiv_7 0) \implies 7 \mid y$. \\
       9. & $(\forall x, y \in \Z)[p \mid xy \implies (p \mid x \lor p \mid y)]$. \\
-    \end{tabular}
-  \end{table}
-\end{probsolution}
+    \end{tabular}\qedhere
+  }$%
+\end{proof}
 
-\newpage
+\medskip
 
-\begin{problem}
+\begin{problem}[5]
   Give a line proof that $(\forall n \in \N)[(3 \mid n \land n \equiv_5 3)
   \implies n^2 + n \equiv_{15} 12]$.
 \end{problem}
 
-\begin{probsolution}
-  \begin{table}[H]
-    \begin{tabular}{ll}
+\begin{proof}[Solution]
+  $\textrm{%
+    \begin{tabular}[t]{ll}
       1. & Assume $n \in \N$, $3 \mid n$, and $n \equiv_5 3$. \\
       2. & $(\exists r \in \Z)[n^2 + n - 12 = 5r]$. \\
       3. & $5 \mid (n^2 + n - 12)$. \\
@@ -166,13 +177,13 @@
       18. & $n^2 + n \equiv_{15} 12$. \\
       19. & $(3 \mid n \land n \equiv_5 3) \implies n^2 + n \equiv_{15} 12$. \\
       20. & $(\forall n \in \N)[(3 \mid n \land n \equiv_5 3) \implies n^2 + n \equiv_{15} 12]$ \\
-    \end{tabular}
-  \end{table}
-\end{probsolution}
+    \end{tabular}\qedhere
+  }$%
+\end{proof}
 
-\newpage
+\medskip
 
-\begin{problem}
+\begin{problem}[6]
   A \textit{rational number} is a number of the form $\frac{a}{b}$ where $a, b
   \in \Z$ and $b \ne 0$. As you learned in elementary school, a rational number
   can always be written in the form where $\gcd(a, b) = 1$. Fill in the blanks
@@ -182,7 +193,7 @@
   Theorem: $\sqrt{2}$ is not a rational number.
 
   \begin{table}[H]
-    \begin{tabular}{ll}
+    \begin{tabular}[t]{ll}
       1. & Assume that $\sqrt{2}$ is a rational number. \\
       2. & Then $\sqrt{2} = \frac{a}{b}$ for some $a, b \in \Z$ where $b \neq 0$ and $\gcd(a, b) = 1$.  \\
       3. & So $2 = \frac{a^2}{b^2}$, and therefore $a^2 = \fbox{\parbox{1in}{\ \par \ }}$. \\
@@ -200,9 +211,9 @@
   \end{table}
 \end{problem}
 
-\begin{probsolution}
-  \begin{table}[H]
-    \begin{tabular}{ll}
+\begin{proof}[Solution]
+  $\textrm{%
+    \begin{tabular}[t]{ll}
       1. & Assume that $\sqrt{2}$ is a rational number. \\
       2. & Then $\sqrt{2} = \frac{a}{b}$ for some $a, b \in \Z$ where $b \neq 0$ and $\gcd(a, b) = 1$.  \\
       3. & So $2 = \frac{a^2}{b^2}$, and therefore $a^2 = 2b^2$. \\
@@ -216,19 +227,19 @@
       11. & $b = 2s$ for some $s \in \Z$.\\
       12. & This is a contradiction, because $\gcd(a, b) = 1$. \\
       13. & Therefore, $\sqrt{2}$ is irrational. \\
-    \end{tabular}
-  \end{table}
-\end{probsolution}
+    \end{tabular}\qedhere
+  }$%
+\end{proof}
 
-\newpage
+\medskip
 
-\begin{problem}
+\begin{problem}[7]
   Give a line proof showing that $\sqrt{10}$ is not a rational number.
 \end{problem}
 
-\begin{probsolution}
-  \begin{table}[H]
-    \begin{tabular}{ll}
+\begin{proof}[Solution]
+  $\textrm{%
+    \begin{tabular}[t]{ll}
       1. & Assume that $\sqrt{10}$ is a rational number. \\
       2. & Then $\sqrt{10} = \frac{a}{b}$ for some $a, b \in \Z$ where $b \neq 0$ and $\gcd(a, b) = 1$.  \\
       3. & So $10 = \frac{a^2}{b^2}$, and therefore $a^2 = 10b^2$. \\
@@ -242,13 +253,13 @@
       11. & $b = 10s$ for some $s \in \Z$.\\
       12. & This is a contradiction, because $\gcd(a, b) = 1$. \\
       13. & Therefore, $\sqrt{10}$ is irrational. \\
-    \end{tabular}
-  \end{table}
-\end{probsolution}
+    \end{tabular}\qedhere
+  }$%
+\end{proof}
 
-\newpage
+\medskip
 
-\begin{problem}
+\begin{problem}[8]
   A $3 \times 3$ grid has $14$ squares in it:
 
   \begin{picture}(300,100)
@@ -279,7 +290,7 @@
   find some underlying patterns.
 \end{problem}
 
-\begin{probsolution}
+\begin{proof}[Solution]
   \begin{enumerate}
     \item[$2 \times 2$:] There are $4$ small squares and $1$ square that covers
       the entire grid, giving us a total of $5$ squares.
@@ -303,4 +314,4 @@
   .\]%
   Using this formula, we can calculate the total number of squares in a $10
   \times 10$ grid as $385$ squares.
-\end{probsolution}
+\end{proof}
