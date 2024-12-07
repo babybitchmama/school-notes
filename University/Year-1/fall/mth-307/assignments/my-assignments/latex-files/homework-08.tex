@@ -1,4 +1,4 @@
-\begin{problem}
+\begin{problem}[1]
   In this problem we have four functions, as indicated in the diagram below.
 
   You are given that $q \circ f = g \circ p$. Let $X \subseteq C$.
@@ -10,11 +10,9 @@
   \end{enumerate}
 \end{problem}
 
-\begin{probsolution}
-  \begin{enumerate}
-    \item Here's the line proof for $f(p^{-1}(X)) \subseteq q^{-1}(g(X))$.
-
-      \hspace*{-0.5em}\begin{tabular}{ll}
+\begin{proof}[Solution to (i)]
+  $\textrm{
+      \begin{tabular}[t]{ll}
         1. & Assume $x \in f(p^{-1}(X))$. \\
         2. & Then, $y = f(s)$, where $s \in p^{-1}(X)$. \\
         3. & So, $p(s) \in X$. \\
@@ -22,90 +20,88 @@
         5. & Using the property $q \circ f = g \circ p$, we have $q(f(s)) \in g(x)$. \\
         6. & Hence, $y = f(s) \in q^{-1}(g(X))$. \\
         7. & Therefore, $f(p^{-1}(X)) \subseteq q^{-1}(g(X))$. \\
-      \end{tabular}
+      \end{tabular}\qedhere
+    }$
+\end{proof}
 
-    \item here's the line proof for $f(p^{-1}(X)) = q^{-1}(g(X))$.
+\begin{proof}[Solution to (ii)]
+  $\textrm{
+    \begin{tabular}[t]{ll}
+      1. & Assume $y \in f(p^{-1}(X))$. \\
+      2. & Then $q(y) \in g(X)$. \\
+      3. & So, $q(t) = g(s)$, for $s \in X$. \\
+      4. & Hence, $q(y) = g(p(t))$, for some $t \in p^{-1}(X)$. \\
+      5. & Then $q(y) = g(p(t)) = q(f(t))$. \\
+      6. & Since $q$ is one-to-one, we have $y = f(t)$. \\
+      7. & Therefore, $q^{-1}(g(X)) \subseteq f(p^{-1}(X))$. \\
+      8. & Hence, $f(p^{-1}(X)) = q^{-1}(g(X))$. \\
+    \end{tabular}\qedhere
+  }$
+\end{proof}
 
-      \hspace*{-0.5em}\begin{tabular}{ll}
-        1. & Assume $y \in f(p^{-1}(X))$. \\
-        2. & Then $q(y) \in g(X)$. \\
-        3. & So, $q(t) = g(s)$, for $s \in X$. \\
-        4. & Hence, $q(y) = g(p(t))$, for some $t \in p^{-1}(X)$. \\
-        5. & Then $q(y) = g(p(t)) = q(f(t))$. \\
-        6. & Since $q$ is one-to-one, we have $y = f(t)$. \\
-        7. & Therefore, $q^{-1}(g(X)) \subseteq f(p^{-1}(X))$. \\
-        8. & Hence, $f(p^{-1}(X)) = q^{-1}(g(X))$. \\
-      \end{tabular}
-  \end{enumerate}
-\end{probsolution}
+\medskip
 
-\newpage
-
-\begin{problem}
+\begin{problem}[2]
   For all $n \ge 2$, $\displaystyle\sum_{k=2}^{n} \frac{1}{k^2 - 1} = \frac{(n -
   1)(3n + 2)}{4n(n + 1)}$.
 \end{problem}
 
-\begin{probsolution}
-  \begin{proof}
-    Let $\displaystyle P(n) : \sum_{k=2}^{n} \frac{1}{k^2 - 1} = \frac{(n -
-    1)(3n + 2)}{4n(n + 1)}$.
+\begin{proof}[Solution]
+  Let $\displaystyle P(n) : \sum_{k=2}^{n} \frac{1}{k^2 - 1} = \frac{(n -
+  1)(3n + 2)}{4n(n + 1)}$.
 
-    Base Case: $P(2) : \frac{1}{3} \ce \frac{1}{3}$.
+  Base Case: $P(2) : \frac{1}{3} \ce \frac{1}{3}$.
 
-    Induction Step: Assume $P(k)$ up to $k = n$. Then, adding the next term
-    $\frac{1}{(n + 1)^2 - 1}$ to both sides, we get
-    \[%
-      \left(\sum_{k=2}^{n} \frac{1}{k^2 - 1}\right) + \frac{1}{(n + 1)^2 - 1} = \frac{(n - 1)(3n + 2)}{4n(n + 1)} + \frac{1}{(n + 1)^2 - 1}
-    .\]%
-    If $P(n) \implies P(n + 1)$, then the following statement must be true
-    \begin{align*}
-      \frac{(n - 1)(3n + 2)}{4n(n + 1)} + \frac{1}{(n + 1)^2 - 1} &= \frac{n(3n + 5)}{4(n + 1)(n + 2)} \\
-      \frac{[(n - 1)(3n + 2)][(n + 1)^2 - 1] + 4n(n + 1)}{[4n(n + 1)][(n + 1)^2 - 1]} &= \frac{n(3n + 5)}{4(n + 1)(n + 2)} \\
-      \frac{3n^4 + 5n^3}{4n^4 + 12n^3 + 8n^2} &= \frac{3n^2 + 5n}{412n^2 + 12n + 8} \\
-      \frac{3n^4 + 5n^3}{4n^4 + 12n^3 + 8n^2} &= \frac{3n^2 + 5n}{412n^2 + 12n + 8} \cdot \frac{n^2}{n^2} \\
-      \frac{3n^4 + 5n^3}{4n^4 + 12n^3 + 8n^2} &\ce \frac{3n^4 + 5n^3}{4n^4 + 12n^3 + 8n^2}
-    .\end{align*}
-    Therefore, $(\forall n \in \N)[P(n) \implies P(n + 1)]$. Hence, by the EPMI,
-    we have proven the statement.
-  \end{proof}
-\end{probsolution}
+  Induction Step: Assume $P(k)$ up to $k = n$. Then, adding the next term
+  $\frac{1}{(n + 1)^2 - 1}$ to both sides, we get
+  \[%
+    \left(\sum_{k=2}^{n} \frac{1}{k^2 - 1}\right) + \frac{1}{(n + 1)^2 - 1} = \frac{(n - 1)(3n + 2)}{4n(n + 1)} + \frac{1}{(n + 1)^2 - 1}
+  .\]%
+  If $P(n) \implies P(n + 1)$, then the following statement must be true
+  \begin{align*}
+    \frac{(n - 1)(3n + 2)}{4n(n + 1)} + \frac{1}{(n + 1)^2 - 1} &= \frac{n(3n + 5)}{4(n + 1)(n + 2)} \\
+    \frac{[(n - 1)(3n + 2)][(n + 1)^2 - 1] + 4n(n + 1)}{[4n(n + 1)][(n + 1)^2 - 1]} &= \frac{n(3n + 5)}{4(n + 1)(n + 2)} \\
+    \frac{3n^4 + 5n^3}{4n^4 + 12n^3 + 8n^2} &= \frac{3n^2 + 5n}{412n^2 + 12n + 8} \\
+    \frac{3n^4 + 5n^3}{4n^4 + 12n^3 + 8n^2} &= \frac{3n^2 + 5n}{412n^2 + 12n + 8} \cdot \frac{n^2}{n^2} \\
+    \frac{3n^4 + 5n^3}{4n^4 + 12n^3 + 8n^2} &\ce \frac{3n^4 + 5n^3}{4n^4 + 12n^3 + 8n^2}
+  .\end{align*}
+  Therefore, $(\forall n \in \N)[P(n) \implies P(n + 1)]$. Hence, by the EPMI,
+  we have proven the statement.
+\end{proof}
 
-\newpage
+\medskip
 
-\begin{problem}
+\begin{problem}[3]
   Let $a_n = 1 - 2 + 3 - 4 + \cdots + (-1)^{n+1} n$. Prove by induction that
   $a_{2n} = -n$ for all $n \ge 1$.
 \end{problem}
 
-\begin{probsolution}
-  \begin{proof}
-    Let $P(n) : a_{2n} = -n$ for all $n \ge 1$.
+\begin{proof}[Solution]
+  Let $P(n) : a_{2n} = -n$ for all $n \ge 1$.
 
-    Base Case: $P(1) : a_{2 \cdot 1} = a_2 = 1 - 2 = -1$.
+  Base Case: $P(1) : a_{2 \cdot 1} = a_2 = 1 - 2 = -1$.
 
-    Induction Step: Assume $P(k)$ up to $k = n$. We need to prove that
-    $a_{2(n+1)} = -(n+1)$. By definition,
-    \[%
-      a_{2(n+1)} = a_{2n} + (-1)^{2n+1}(2n + 1) + (-1)^{2n+2}(2n + 2)
-    .\]%
-    Substitute $(-1)^{2n+1} = -1$ and $(-1)^{2n+2} = 1$ to get
-    \[%
-      a_{2(n+1)} = a_{2n} - (2n + 1) + (2n + 2) \implies a_{2(n+1)} = a_{2n} + 1
-    .\]%
-    Using the inductive hypothesis that $a_{2n} = -n$, we get
-    \[%
-      a_{2(n+1)} = -n + 1 = -(n + 1)
-    .\]%
+  Induction Step: Assume $P(k)$ up to $k = n$. We need to prove that $a_{2(n+1)}
+  = -(n+1)$. By definition,
+  \[%
+    a_{2(n+1)} = a_{2n} + (-1)^{2n+1}(2n + 1) + (-1)^{2n+2}(2n + 2)
+  .\]%
+  Substitute $(-1)^{2n+1} = -1$ and $(-1)^{2n+2} = 1$ to get
+  \[%
+    a_{2(n+1)} = a_{2n} - (2n + 1) + (2n + 2) \implies a_{2(n+1)} = a_{2n} + 1
+  .\]%
+  Using the inductive hypothesis that $a_{2n} = -n$, we get
+  \[%
+    a_{2(n+1)} = -n + 1 = -(n + 1)
+  .\]%
 
-    Therefore, $(\forall n \in \N)[P(n) \implies P(n + 1)]$. Hence, by the PMI,
-    we have proven the statement.
-  \end{proof}
-\end{probsolution}
+  Therefore, $(\forall n \in \N)[P(n) \implies P(n + 1)]$. Hence, by the PMI, we
+  have proven the statement.
+\end{proof}
 
-\newpage
+\medskip
 
-\begin{problem}
+\begin{problem}[4]
   Suppose $f : \Z \to \Z$ is a function with the property that $(\forall x \in
   \Z)(\forall y \in \Z)[f(x + y) = f(x) + f(y)]$.
   \begin{enumerate}
@@ -116,110 +112,102 @@
   \end{enumerate}
 \end{problem}
 
-\begin{probsolution}
-  \begin{enumerate}
-    \item \begin{proof}
-        Let $P(n) : n \geq 1 \implies (\forall x \in \Z)[f(nx) = n \cdot f(x)].$
+\begin{proof}[Solution to (i)]
+  Let $P(n) : n \geq 1 \implies (\forall x \in \Z)[f(nx) = n \cdot f(x)].$
 
-        Base Case: $P(1) : f(1 \cdot x) = 1 \cdot f(x) = f(x)$.
+  Base Case: $P(1) : f(1 \cdot x) = 1 \cdot f(x) = f(x)$.
 
-        Induction Step: Assume $P(k)$ is true for some $k \geq 1$, i.e.,
-        \[%
-          (\forall x \in \Z)[f(nx) = n \cdot f(x)]
-        .\]%
-        We must show $P(n + 1)$, i.e.,
-        \[%
-          (\forall x \in \Z)[f((n + 1)x) = (n + 1) \cdot f(x)]
-        .\]%
-        Let's consider $f((n + 1)x) = f(nx + x)$. By the given property of $f$,
-        we get
-        \[%
-          f(nx + x) = f(nx) + f(x)
-        .\]%
-        Using the inductive hypothesis, $f(nx) = n \cdot f(x)$, we get
-        \[%
-          f((n + 1)x) = n \cdot f(x) + f(x) = (n + 1) \cdot f(x)
-        .\]%
-        Therefore, $(\forall n \in \N)[P(n) \implies P(n+1)]$. Hence, by the
-        PMI, $(\forall n \in \N)[P(n) \implies P(n + 1)]$, and the result is
-        proven.
-      \end{proof}
+  Induction Step: Assume $P(k)$ is true for some $k \geq 1$, i.e.,
+  \[%
+    (\forall x \in \Z)[f(nx) = n \cdot f(x)]
+  .\]%
+  We must show $P(n + 1)$, i.e.,
+  \[%
+    (\forall x \in \Z)[f((n + 1)x) = (n + 1) \cdot f(x)]
+  .\]%
+  Let's consider $f((n + 1)x) = f(nx + x)$. By the given property of $f$, we get
+  \[%
+    f(nx + x) = f(nx) + f(x)
+  .\]%
+  Using the inductive hypothesis, $f(nx) = n \cdot f(x)$, we get
+  \[%
+    f((n + 1)x) = n \cdot f(x) + f(x) = (n + 1) \cdot f(x)
+  .\]%
+  Therefore, $(\forall n \in \N)[P(n) \implies P(n+1)]$. Hence, by the PMI,
+  $(\forall n \in \N)[P(n) \implies P(n + 1)]$, and the result is proven.
+\end{proof}
 
-    \item \begin{proof}
-        Let $M_k = \{y \in \Z \mid y \equiv 0 \pmod{k}\}$. We need to prove
-        \[%
-          (\forall k \in \N)[f(M_k) \subseteq M_k]
-        .\]%
-        Fix $k \in \N$ and let $y \in M_k$. Then, by definition, $y = kx$ for
-        some $x \in \Z$. From Part (1), $f(y) = f(kx) = k \cdot f(x)$. Since $k
-        \cdot f(x)$ is a multiple of $k$, we have $f(y) \in M_k$. Therefore,
-        $f(M_k) \subseteq M_k$ for all $k \in \N$.
-      \end{proof}
-  \end{enumerate}
-\end{probsolution}
+\begin{proof}[Solution to (ii)]
+  Let $M_k = \{y \in \Z \mid y \equiv 0 \pmod{k}\}$. We need to prove
+  \[%
+    (\forall k \in \N)[f(M_k) \subseteq M_k]
+  .\]%
+  Fix $k \in \N$ and let $y \in M_k$. Then, by definition, $y = kx$ for some $x
+  \in \Z$. From Part (1), $f(y) = f(kx) = k \cdot f(x)$. Since $k \cdot f(x)$ is
+  a multiple of $k$, we have $f(y) \in M_k$. Therefore, $f(M_k) \subseteq M_k$
+  for all $k \in \N$.
+\end{proof}
 
-\newpage
+\medskip
 
-\begin{problem}
+\begin{problem}[5]
   For all $n \ge 2$, $\sqrt{n} < \frac{1}{\sqrt{1}} + \frac{1}{\sqrt{2}} +
   \frac{1}{\sqrt{3}} + \cdots + \frac{1}{\sqrt{n}}$.
 \end{problem}
 
-\begin{probsolution}
-  \begin{proof}
-    Let $P(n) : n \geq 2 \implies \sqrt{n} < \sum_{k=1}^n \frac{1}{\sqrt{k}}.$
+\begin{proof}[Solution]
+  Let $P(n) : n \geq 2 \implies \sqrt{n} < \sum_{k=1}^n \frac{1}{\sqrt{k}}.$
 
-    Base Case: $P(2) : \sqrt{2} < \frac{1}{\sqrt{1}} + \frac{1}{\sqrt{2}} = 1 +
-    \frac{1}{\sqrt{2}}$, which is true.
+  Base Case: $P(2) : \sqrt{2} < \frac{1}{\sqrt{1}} + \frac{1}{\sqrt{2}} = 1 +
+  \frac{1}{\sqrt{2}}$, which is true.
 
-    Induction Step: Assume $P(n)$ is true for some $n \geq 2$. We must show
-    $P(k+1)$, i.e.,
-    \[%
-      \sqrt{n + 1} < \sum_{k=1}^{n+1} \frac{1}{\sqrt{k}}
-    .\]%
-    Start with the right-hand side:
-    \[
-      \sum_{k=1}^{n+1} \frac{1}{\sqrt{k}} = \sum_{k=1}^n \frac{1}{\sqrt{k}} + \frac{1}{\sqrt{n + 1}}
-    .\]%
-    By the inductive hypothesis, $\sqrt{n} < \sum_{k=1}^n \frac{1}{\sqrt{k}}$,
-    so
-    \[%
-      \sqrt{n + 1} < \sqrt{n} + \frac{1}{\sqrt{n + 1}}
-    .\]%
-    To prove this inequality, we show
-    \[
-      \sqrt{n + 1} - \sqrt{n} < \frac{1}{\sqrt{n + 1}}
-    .\]%
-    Rewrite $\sqrt{n + 1} - \sqrt{n}$ to get
-    \[%
-      \sqrt{n + 1} - \sqrt{n} = \frac{(n + 1) - n}{\sqrt{n + 1} + \sqrt{n}} = \frac{1}{\sqrt{n + 1} + \sqrt{n}}
-    .\]%
-    Since $\sqrt{n + 1} + \sqrt{n} > \sqrt{n + 1}$, it follows that
-    \[%
-      \frac{1}{\sqrt{n + 1} + \sqrt{n}} < \frac{1}{\sqrt{n + 1}}
-    .\]%
-    Hence,
-    \[%
-      \sqrt{n + 1} - \sqrt{n} < \frac{1}{\sqrt{n + 1}} \aand \sqrt{n + 1} < \sqrt{n} + \frac{1}{\sqrt{n + 1}}
-    .\]%
+  Induction Step: Assume $P(n)$ is true for some $n \geq 2$. We must show
+  $P(k+1)$, i.e.,
+  \[%
+    \sqrt{n + 1} < \sum_{k=1}^{n+1} \frac{1}{\sqrt{k}}
+  .\]%
+  Start with the right-hand side:
+  \[%
+    \sum_{k=1}^{n+1} \frac{1}{\sqrt{k}} = \sum_{k=1}^n \frac{1}{\sqrt{k}} + \frac{1}{\sqrt{n + 1}}
+  .\]%
+  By the inductive hypothesis, $\sqrt{n} < \sum_{k=1}^n \frac{1}{\sqrt{k}}$, so
+  \[%
+    \sqrt{n + 1} < \sqrt{n} + \frac{1}{\sqrt{n + 1}}
+  .\]%
+  To prove this inequality, we show
+  \[
+    \sqrt{n + 1} - \sqrt{n} < \frac{1}{\sqrt{n + 1}}
+  .\]%
+  Rewrite $\sqrt{n + 1} - \sqrt{n}$ to get
+  \[%
+    \sqrt{n + 1} - \sqrt{n} = \frac{(n + 1) - n}{\sqrt{n + 1} + \sqrt{n}} = \frac{1}{\sqrt{n + 1} + \sqrt{n}}
+  .\]%
+  Since $\sqrt{n + 1} + \sqrt{n} > \sqrt{n + 1}$, it follows that
+  \[%
+    \frac{1}{\sqrt{n + 1} + \sqrt{n}} < \frac{1}{\sqrt{n + 1}}
+  .\]%
+  Hence,
+  \[%
+    \sqrt{n + 1} - \sqrt{n} < \frac{1}{\sqrt{n + 1}} \aand \sqrt{n + 1} < \sqrt{n} + \frac{1}{\sqrt{n + 1}}
+  .\]%
 
-    Therefore, $(\forall n \in \N)[P(n) \implies P(n+1)]$. By the PMI, $(\forall
-    n \geq 2)[P(n) \implies P(n + 1)]$ is true, and the result is proven.
-  \end{proof}
-\end{probsolution}
+  Therefore, $(\forall n \in \N)[P(n) \implies P(n+1)]$. By the PMI, $(\forall n
+  \geq 2)[P(n) \implies P(n + 1)]$ is true, and the result is proven.
+\end{proof}
 
-\newpage
+\medskip
 
-\begin{problem}
+\begin{problem}[6]
   For all $n \ge 2$, $\left(\frac{2^2 - 1}{2^2}\right) \cdot \left(\frac{3^2 -
   1}{3^2}\right) \cdots \left(\frac{n^2 - 1}{n}\right) = \frac{n + 1}{2n}$.
 \end{problem}
 
-\begin{probsolution}
-\begin{proof}
-  Let $\displaystyle P(n) : n \geq 2 \implies \prod_{k=2}^n \frac{k^2 - 1}{k^2} = \frac{n+1}{2n}$.
+\begin{proof}[Solution]
+  Let $\displaystyle P(n) : n \geq 2 \implies \prod_{k=2}^n \frac{k^2 - 1}{k^2}
+  = \frac{n+1}{2n}$.
 
-  Base Case: $\displaystyle P(2) : \prod_{k=2}^2 \frac{k^2 - 1}{k^2} = \frac{n+1}{2n} \implies \frac{3}{4} \ce \frac{3}{4}$.
+  Base Case: $\displaystyle P(2) : \prod_{k=2}^2 \frac{k^2 - 1}{k^2} =
+  \frac{n+1}{2n} \implies \frac{3}{4} \ce \frac{3}{4}$.
 
   Induction Step: Assume $P(n)$ is true for some $n \geq 2$, i.e.,
   \[%
@@ -237,55 +225,53 @@
   Therefore, $(\forall n \in \N)[P(n) \implies P(n+1)]$. By the PMI, $(\forall n
   \geq 2)[P(n) \implies P(n + 1)]$, and the result is proven.
 \end{proof}
-\end{probsolution}
 
-\newpage
+\medskip
 
-\begin{problem}
+\begin{problem}[7]
   For all $n \ge 2$, $\frac{1}{2} + \frac{2}{3} + \frac{3}{4} + \cdots + \frac{n}{n + 1} < \frac{n^2}{n + 1}$.
 \end{problem}
 
-\begin{probsolution}
-  \begin{proof}
-    Let $P(n) : n \geq 2 \implies \sum_{k=2}^n \frac{k}{k+1} < \frac{n^2}{n+1}.$
+\begin{proof}[Solution]
+  Let $P(n) : n \geq 2 \implies \sum_{k=2}^n \frac{k}{k+1} < \frac{n^2}{n+1}.$
 
-    Base Case: $P(2) : \frac{2}{3} < \frac{2^2}{2+1} \implies \frac{2}{3} < \frac{4}{3}$.
+  Base Case: $P(2) : \frac{2}{3} < \frac{2^2}{2+1} \implies \frac{2}{3} <
+  \frac{4}{3}$.
 
-    Induction Step: Assume $P(n)$ is true for some $n \geq 2$. We must show
-    $P(n) \implies P(n+1)$. Starting with $P(n + 1)$,
-    \[%
-      \sum_{k=2}^{n+1} \frac{k}{k + 1} = \sum_{k=2}^n \frac{k}{k + 1} + \frac{n + 1}{n + 2}
-    .\]%
-    By the inductive hypothesis, $\sum_{k=2}^n \frac{k}{k + 1} < \frac{n^2}{n + 1}$, so
-    \[%
-      \sum_{k=2}^{n+1} \frac{k}{k + 1} < \frac{n^2}{n + 1} + \frac{n + 1}{n + 2}
-    .\]%
-    We now need to prove
-    \[%
-      \frac{n^2}{n+1} + \frac{n+1}{n+2} < \frac{(n+1)^2}{n+2}
-    .\]%
-    Combine the terms on the left-hand side over a common denominator
-    \[%
-      \frac{n^2}{n + 1} + \frac{n + 1}{n + 2} = \frac{n^2(n + 2) + (n + 1)^2(n + 1)}{(n + 1)(n + 2)}
-    .\]%
-    Expanding the numerator gives us $n^2(n + 2) + (n + 1)^2(n + 1) = n^3 + 2n^2
-    + n^3 + 2n^2 + n + 1 = 2n^3 + 4n^2 + n + 1$. Thus, the right hand side
-    becomes
-    \[%
-      \frac{(n + 1)^2}{n + 2} = \frac{(n^2 + 2n + 1)(n + 2)}{(n + 1)(n + 2)} = \frac{n^3 + 2n^2 + n^2 + 2n + 2n + 4}{(n + 1)(n + 2)}
-    .\]%
-    Again, simplifying the numerator yields $n^3 + 3n^2 + 4n + 4$. Comparing the
-    two numerators, $2n^3 + 4n^2 + n + 1 < n^3 + 3n^2 + 4n + 4$ holds for all $n
-    \geq 2$ because the inequality simplifies to a valid comparison.
+  Induction Step: Assume $P(n)$ is true for some $n \geq 2$. We must show $P(n)
+  \implies P(n+1)$. Starting with $P(n + 1)$,
+  \[%
+    \sum_{k=2}^{n+1} \frac{k}{k + 1} = \sum_{k=2}^n \frac{k}{k + 1} + \frac{n + 1}{n + 2}
+  .\]%
+  By the inductive hypothesis, $\sum_{k=2}^n \frac{k}{k + 1} < \frac{n^2}{n +
+  1}$, so
+  \[%
+    \sum_{k=2}^{n+1} \frac{k}{k + 1} < \frac{n^2}{n + 1} + \frac{n + 1}{n + 2}
+  .\]%
+  We now need to prove
+  \[%
+    \frac{n^2}{n+1} + \frac{n+1}{n+2} < \frac{(n+1)^2}{n+2}
+  .\]%
+  Combine the terms on the left-hand side over a common denominator
+  \[%
+    \frac{n^2}{n + 1} + \frac{n + 1}{n + 2} = \frac{n^2(n + 2) + (n + 1)^2(n + 1)}{(n + 1)(n + 2)}
+  .\]%
+  Expanding the numerator gives us $n^2(n + 2) + (n + 1)^2(n + 1) = n^3 + 2n^2 +
+  n^3 + 2n^2 + n + 1 = 2n^3 + 4n^2 + n + 1$. Thus, the right hand side becomes
+  \[%
+    \frac{(n + 1)^2}{n + 2} = \frac{(n^2 + 2n + 1)(n + 2)}{(n + 1)(n + 2)} = \frac{n^3 + 2n^2 + n^2 + 2n + 2n + 4}{(n + 1)(n + 2)}
+  .\]%
+  Again, simplifying the numerator yields $n^3 + 3n^2 + 4n + 4$. Comparing the
+  two numerators, $2n^3 + 4n^2 + n + 1 < n^3 + 3n^2 + 4n + 4$ holds for all $n
+  \geq 2$ because the inequality simplifies to a valid comparison.
 
-    Therefore, $(\forall n \in \N)[P(n) \implies P(n+1)]$. Hence, by the EPMI,
-    $(\forall n \geq 2)[P(n) \implies P(n + 1)]$, and the result is proven.
-  \end{proof}
-\end{probsolution}
+  Therefore, $(\forall n \in \N)[P(n) \implies P(n + 1)]$. Hence, by the EPMI,
+  $(\forall n \geq 2)[P(n) \implies P(n + 1)]$, and the result is proven.
+\end{proof}
 
-\newpage
+\medskip
 
-\begin{problem}
+\begin{problem}[8]
   You have a huge collection of ``trionimo'' tiles. Prove by induction that for
   all $k \in \N$ such that $k \ge 1$, a $2^k \times 2^k$ checkerboard with the
   upper-right corner square removed can be tiled using trionimos. [Hint to get
@@ -294,40 +280,38 @@
   2^k$ case].
 \end{problem}
 
-\begin{probsolution}
-  \begin{proof}
-    Let $P(k)$ denote the statement: ``A $2^k \times 2^k$ checkerboard with one
-    square removed can be tiled using trionimos.''
+\begin{proof}[Solution]
+  Let $P(k)$ denote the statement: ``A $2^k \times 2^k$ checkerboard with one
+  square removed can be tiled using trionimos.''
 
-    Base Case: For $P(1)$, the checkerboard is a $2 \times 2$ square with one
-    square removed, leaving three squares. These three squares can be covered by
-    a single trionimo.
+  Base Case: For $P(1)$, the checkerboard is a $2 \times 2$ square with one
+  square removed, leaving three squares. These three squares can be covered by a
+  single trionimo.
 
-    Induction Step: Assume $P(k)$ is true for some $k \geq 1$, i.e., any $2^k
-    \times 2^k$ checkerboard with one square removed can be tiled using
-    trionimos. We need to show $P(k + 1)$, i.e., a $2^{k+1} \times 2^{k+1}$
-    checkerboard with one square removed can also be tiled using trionimos.
+  Induction Step: Assume $P(k)$ is true for some $k \geq 1$, i.e., any $2^k
+  \times 2^k$ checkerboard with one square removed can be tiled using trionimos.
+  We need to show $P(k + 1)$, i.e., a $2^{k+1} \times 2^{k+1}$ checkerboard with
+  one square removed can also be tiled using trionimos.
 
-    Divide the $2^{k+1} \times 2^{k+1}$ checkerboard into four $2^k \times 2^k$
-    subboards: top-left ($A$), top-right ($B$), bottom-left ($C$), and
-    bottom-right ($D$). The removed square lies in one of these subboards. Place
-    a single trionimo at the lower-left corner of $A$, the lower-right corner of
-    $B$, and the upper-left corner of $D$, leaving one square removed from each
-    of $A$, $C$, and $D$, while $B$ retains its removed square in the
-    upper-right corner.
+  Divide the $2^{k+1} \times 2^{k+1}$ checkerboard into four $2^k \times 2^k$
+  subboards: top-left ($A$), top-right ($B$), bottom-left ($C$), and
+  bottom-right ($D$). The removed square lies in one of these subboards. Place a
+  single trionimo at the lower-left corner of $A$, the lower-right corner of
+  $B$, and the upper-left corner of $D$, leaving one square removed from each of
+  $A$, $C$, and $D$, while $B$ retains its removed square in the upper-right
+  corner.
 
-    By the inductive hypothesis, each of the four $2^k \times 2^k$ subboards
-    with one square removed can be tiled using trionimos. Thus, the entire
-    $2^{k+1} \times 2^{k+1}$ checkerboard can be tiled.
+  By the inductive hypothesis, each of the four $2^k \times 2^k$ subboards with
+  one square removed can be tiled using trionimos. Thus, the entire $2^{k+1}
+  \times 2^{k+1}$ checkerboard can be tiled.
 
-    Therefore, $(\forall k \in \N)[P(k) \implies P(k + 1)]$. By the PMI,
-    $(\forall k \geq 1)[P(k)]$, and the result is proven.
-  \end{proof}
-\end{probsolution}
+  Therefore, $(\forall k \in \N)[P(k) \implies P(k + 1)]$. By the PMI, $(\forall
+  k \geq 1)[P(k)]$, and the result is proven.
+\end{proof}
 
-\newpage
+\medskip
 
-\begin{problem}
+\begin{problem}[9]
   There is a famous proof that all horses are the same color. Let $P(n)$ be the
   statement ``for all sets of n horses, all the horses in the set have the same
   color''. We will prove this by induction. The base case $n = 1$ is clear,
@@ -344,7 +328,7 @@
   Find the mistake in the above proof.
 \end{problem}
 
-\begin{probsolution}
+\begin{proof}[Solution]
   The mistake in the proof lies in a subtle flaw in the inductive step. The
   argument does not hold for $n = 2$. For the base case, it's valid because a
   single horse trivially has the same color as itself. The argument fails for $n
@@ -355,4 +339,4 @@
   horses in $S$ have the same color because there is no information linking
   horse $1$ with horse $3$. The inductive step fails to establish that the color
   of horse $1$ is the same as the color of horse $3$.
-\end{probsolution}
+\end{proof}

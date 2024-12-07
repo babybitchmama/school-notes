@@ -1,9 +1,374 @@
 \begin{problem}[1]
-  Prove that $\odv[n]{}{x} (x^2 e^x) = (x^2 + 2nx + n(n - 1))e^x$, for all $n
-  \in \N$.
+  Prove that $\odv[n]{}{x} (x^2 e^x) = (x^2 + 2nx + n(n - 1))e^x$, for all $n \in \N$.
 \end{problem}
 
 \begin{proof}[Solution]
+  Let $P(n) : \odv[n]{}{x} (x^2 e^x) = (x^2 + 2nx + n(n - 1))e^x$, for all $n
+  \in \N$.
+
+  Base Case: $P(1) : \odv{}{x} (x^2 e^x) = e^x(x^2 + 2x) = e^x(x^2 + 2(1)x + 1(1
+  - 1))$.
+
+  Induction Step: Assume $P(n)$ is true for some $n \in \N$. Then,
+  \[%
+    P(n + 1) = \odv[n+1]{}{x} (x^2 e^x) = \odv{}{x} \left[(x^2 + 2nx + n(n - 1))e^x\right] = (2x + 2n + x^2 + 2nx + n(n - 1)) e^x
+  .\]%
+  If the original statement is true, then we get the following
+  \begin{alignat*}{3}
+    \phantom{\implies}&(2x + 2n + x^2 + 2nx + n(n - 1))e^x &&= (x^2 + 2(n + 1)x + (n + 1)(n + 1 - 1))e^{x} \\
+    \implies\quad&2x + 2n + x^2 + 2nx + n(n - 1) &&= x^2 + 2(n + 1)x + n(n + 1) \\
+    \implies\quad&2x + 2n + 2nx + n(n - 1) &&= 2x + 2nx + n(n + 1) \\
+    \implies\quad&2n + n^2 - n &&= n^2 + n \\
+    \implies\quad&n^2 &&= n^2
+  .\end{alignat*}
+  Thus, $P(n + 1)$ is true.
+
+  Hence, by the PMI, we've show that $(\forall n \in \N)[P(n) \implies P(n +
+  1)]$.
 \end{proof}
 
-sprob
+\medskip
+
+\begin{problem}[2]
+  Here are two facts that hold for all real numbers $x$ and $y$:
+  \begin{align*}
+    \sin(x + y) = \sin(x) \cos(y) + \cos(x) \sin(y) \quad\quad& \textrm{(addition formula for sine)} \\
+    \lvert x + y \rvert \le \lvert x \rvert + \lvert y \rvert \quad\quad& \textrm{(triangle inequality)}
+  .\end{align*}
+  Using these together with induction, prove that $(\forall x \in \R)(\forall n
+  \in \N)[~\lvert \sin(nx) \rvert \le n \lvert \sin(x) \rvert~]$.
+\end{problem}
+
+\begin{proof}[Solution]
+  Let $P(n): \lvert \sin(nx) \rvert \le n \lvert \sin(x) \rvert$ for all $x \in \R$.
+
+  Base Case: $P(1) : \lvert \sin(1 \cdot x) \rvert = \lvert \sin(x) \rvert$.
+
+  Induction Step: Assume $P(n)$ is true for some $n \in \N$. Using the addition
+  formula for sine
+  \[%
+    \sin((n + 1)x) = \sin(nx + x) = \sin(nx)\cos(x) + \cos(nx)\sin(x)
+  .\]%
+  Taking the absolute value and applying the triangle inequality
+  \[%
+    \lvert \sin((n + 1)x) \rvert = \lvert \sin(nx)\cos(x) + \cos(nx)\sin(x) \rvert \le \lvert \sin(nx)\cos(x) \rvert + \lvert \cos(nx)\sin(x) \rvert
+  .\]%
+  Using the fact that $\lvert \cos(x) \rvert \le 1$, this becomes
+  \[%
+    \lvert \sin((n + 1)x) \rvert \le \lvert \sin(nx) \rvert + \lvert \sin(x) \rvert
+  .\]%
+  By the induction hypothesis, $\lvert \sin(nx) \rvert \le n \lvert \sin(x)
+  \rvert$, so
+  \[%
+    \lvert \sin((n + 1)x) \rvert \le n \lvert \sin(x) \rvert + \lvert \sin(x) \rvert \implies \lvert \sin((n + 1)x) \rvert \le (n + 1) \lvert \sin(x) \rvert
+  .\]%
+  Thus, $P(n + 1)$ is true.
+
+  Hence, by the PMI, we've shown that $(\forall n \in \N)[P(n) \implies P(n +
+  1)]$.
+\end{proof}
+
+\medskip
+
+\begin{problem}[3]
+  Let $f_n$ denote the Fibonacci sequence: $f_0 = 0$, $f_1 = 1$, and $f_n =
+  f_{n-1} + f_{n-2}$ for all $n \ge 2$. Prove that $f_n <
+  \left(\frac{7}{4}\right)^n$ for all $n \in \N$.
+\end{problem}
+
+\begin{proof}[Solution]
+  Let $P(n) : f_n < \left(\frac{7}{4}\right)^n$, for all $n \in \N$.
+
+  Base Case: For $n = 0$, $f_0 = 0$ and $\left(\frac{7}{4}\right)^0 = 1$.
+  Clearly, $f_0 < \left(\frac{7}{4}\right)^0$.  For $n = 1$, $f_1 = 1$ and
+  $\left(\frac{7}{4}\right)^1 = \frac{7}{4}$. Since $1 < \frac{7}{4}$, $P(1)$
+  holds.
+
+  Induction Step: Assume $P(k)$ is true for some $k \in \N$ and $f_{k-1} <
+  \left(\frac{7}{4}\right)^{k-1}$. We must show that $P(k + 1)$ is true.  By the
+  recurrence relation for the Fibonacci sequence,
+  \[%
+    f_{k+1} = f_k + f_{k-1}
+  .\]%
+  By the induction hypothesis,
+  \[%
+    f_k < \left(\frac{7}{4}\right)^k \aand f_{k-1} < \left(\frac{7}{4}\right)^{k-1}
+  .\]%
+  Adding these inequalities gives
+  \[%
+    f_{k+1} = f_k + f_{k-1} < \left(\frac{7}{4}\right)^k + \left(\frac{7}{4}\right)^{k-1}
+  .\]%
+  Factorizing $\left(\frac{7}{4}\right)^k$
+  \[%
+    \left(\frac{7}{4}\right)^k + \left(\frac{7}{4}\right)^{k-1} = \left(\frac{7}{4}\right)^{k-1} \left(1 + \frac{7}{4}\right)
+  .\]%
+  Since $1 + \frac{7}{4} = \frac{11}{4}$, this becomes
+  \[%
+    f_{k+1} < \left(\frac{7}{4}\right)^{k-1} \cdot \frac{11}{4}
+  .\]%
+  Using $\frac{11}{4} < \left(\frac{7}{4}\right)^2$, we get
+  \[%
+    \left(\frac{7}{4}\right)^{k-1} \cdot \frac{11}{4} < \left(\frac{7}{4}\right)^{k+1}
+  .\]%
+  Hence,
+  \[%
+    f_{k+1} < \left(\frac{7}{4}\right)^{k+1}
+  .\]%
+
+  Thus, $P(k+1)$ is true.
+
+  Hence, by the PMI, we have shown that $f_n < \left(\frac{7}{4}\right)^n$ for all $n \in \N$.
+\end{proof}
+
+\medskip
+
+\begin{problem}[4]
+  Consider the sequence given by $a_n = 2a_{n-1} + 4a_{n-2}$ and initial
+  conditions $a_0 = 0$, $a_1 = 3$. Prove that $3 \mid a_n$ for all $n \ge 0$.
+\end{problem}
+
+\begin{proof}[Solution]
+  Let $P(n) : 3 \mid a_n$ for all $n \ge 0$.
+
+  Base Case: For $n = 0$, $a_0 = 0$. Clearly, $3 \mid a_0$. For $n = 1$, $a_1 =
+  3$, and $3 \mid 3$. Thus, $P(0)$ and $P(1)$ are true.
+
+  Induction Step: Assume $P(k)$ and $P(k - 1)$ are true for some $k \ge 1$. We
+  must show that $P(k + 1)$ is true. By the recurrence relation,
+  \[%
+    a_{k+1} = 2a_k + 4a_{k-1}
+  .\]%
+  Since $3 \mid a_k$ and $3 \mid a_{k-1}$ by the induction hypothesis, there
+  exist integers $m$ and $n$ such that $a_k = 3m$ and $a_{k-1} = 3n$.
+  Substituting these into the recurrence relation gives
+  \[%
+    a_{k+1} = 2(3m) + 4(3n) = 6m + 12n = 3(2m + 4n)
+  .\]%
+  Since $2m + 4n$ is an integer, it follows that $3 \mid a_{k+1}$.
+
+  Thus, $P(k + 1)$ is true.
+
+  Hence, by the PMI, we've shown that $(\forall n \ge 0)[P(n) \implies P(n +
+  1)]$.
+\end{proof}
+
+\medskip
+
+\begin{problem}[5]
+  Imagine that you have an infinite supply of 6-cent and 11-cent stamps. Prove
+  that for all $n \ge 50$, you can make a combination of your stamps that
+  exactly totals $n$ cents. Use 2nd principle of mathematical induction.
+\end{problem}
+
+\begin{proof}[Solution]
+  Let $P(n): \text{For all } n \geq 50, \text{ there exists a combination of }
+  6\text{-cent and } 11\text{-cent stamps that totals } n \text{ cents.}$
+
+  Base Cases: We verify $P(50)$, $P(51)$, $P(52)$, $P(53)$, $P(54)$, and
+  $P(55)$.
+
+  \begin{itemize}
+    \item For $n = 50$, use $50 = 4 \cdot 11 + 1 \cdot 6$ (4 stamps of 11 cents
+      and 1 stamp of 6 cents).
+
+    \item For $n = 51$, use $51 = 3 \cdot 11 + 3 \cdot 6$.
+
+    \item For $n = 52$, use $52 = 2 \cdot 11 + 5 \cdot 6$.
+
+    \item For $n = 53$, use $53 = 1 \cdot 11 + 7 \cdot 6$.
+
+    \item For $n = 54$, use $54 = 9 \cdot 6$.
+
+    \item For $n = 55$, use $55 = 5 \cdot 11$.
+  \end{itemize}
+
+  Thus, $P(50)$, $P(51)$, $P(52)$, $P(53)$, $P(54)$, and $P(55)$ are true.
+
+  Induction Step: Assume $P(k)$ is true for all $k$ such that $50 \leq k \leq m$
+  for some $m \geq 55$. We must show that $P(m + 1)$ is true. By the inductive
+  hypothesis, there exists a combination of 6-cent and 11-cent stamps that
+  totals $m - 5$ cents (since $m - 5 \geq 50$). Adding one more 6-cent stamp to
+  this combination gives a total of $(m - 5) + 6 = m + 1$ cents.
+
+  Hence, $P(m + 1)$ is true.
+
+  By the 2nd PMI, we've shown that $(\forall n \geq 50)[P(n) \implies P(n +
+  1)]$.
+\end{proof}
+
+\medskip
+
+\begin{problem}[6]
+  Define the ``Tribonacci'' sequence as follows: $T_1 = T_2 = T_3 = 1$ and $T_n
+  = T_{n-1} + T_{n-2} + T_{n-3}$ for all $n \ge 4$. Prove that for all natural
+  numbers $n \ge 1$ one has $T_n < 2^n$.
+\end{problem}
+
+\begin{proof}[Solution]
+  Let $P(n): T_n < 2^n$, for all $n \geq 1$.
+
+  Base Cases: For $n = 1, 2, 3$, we have $T_1 = T_2 = T_3 = 1$. Clearly, $1 <
+  2^1$, $1 < 2^2$, and $1 < 2^3$. Thus, $P(1)$, $P(2)$, and $P(3)$ hold.
+
+  Induction Step: Assume $P(n)$ is true for some $n \geq 3$ and for $n - 1$ and
+  $n - 2$. That is, assume $T_n < 2^n$, $T_{n-1} < 2^{n-1}$, and $T_{n-2} <
+  2^{n-2}$. We must show that $P(n + 1)$ is true. By the recurrence relation for
+  the Tribonacci sequence,  $T_{n+1} = T_n + T_{n-1} + T_{n-2}$. Applying the
+  induction hypothesis, we have $T_{n+1} < 2^n + 2^{n-1} + 2^{n-2}$. Factorizing
+  powers of $2$, $T_{n+1} < 2^{n-2}(2^2 + 2^1 + 1) = 2^{n-2} \cdot 7$. Since $7
+  < 2^3$, this simplifies to
+  \[%
+    T_{n+1} < 2^{n-2} \cdot 2^3 = 2^{n+1}
+  .\]%
+  Hence, $P(n + 1)$ is true.
+
+  By the PMI, we've shown that $(\forall n \geq 1)[P(n) \implies P(n + 1)]$.
+\end{proof}
+
+\medskip
+
+\begin{problem}[7]
+  Recall the Finonacci sequence $f_0$, $f_1$, $f_2$, $\dots$. The following is a
+  faulty proof (using the 2nd principle of mathematical induction) that all
+  Fibonacci numbers are even:
+
+  I. $f_0 = 0$ which is even.
+
+  II. Suppose $n \in \N$ and $f_k$ is even for all $0 \le k \le n$.
+
+  Then $f_{n+1} = f_n + f_{n-1}$. By the induction hypothesis, both $f_n$ and
+  $f_{n-1}$ are even. So $f_{n+1}$ is the sum of two even numbers, hence even.
+
+  III. By PSMI, $f_n$ is even for all $n \in \N$.
+
+  Goal: Find the mistake in the above proof.
+\end{problem}
+
+\begin{proof}[Solution]
+  The mistake in the proof lies in the induction hypothesis and its application.
+
+  Specifically, the induction hypothesis assumes that all Fibonacci numbers
+  $f_k$ are even for all $0 \leq k \leq n$. However, this is not true because
+  Fibonacci numbers alternate (even, odd, odd, even, odd, odd, and so
+  on). For instance
+  \[%
+    f_0 = 0~\textrm{(even)}, \quad f_1 = 1~\textrm{(odd)}, \quad f_2 = 1~\textrm{(odd)}, \quad f_3 = 2~\textrm{(even)}, \quad \cdots
+  .\]%
+  In particular
+  \begin{itemize}
+    \item The induction step incorrectly applies the hypothesis to $f_n$ and
+      $f_{n-1}$, asserting that both are even. This assumption fails because
+      Fibonacci numbers alternate, meaning if $f_n$ is even, then
+      $f_{n-1}$ is odd (and vice versa).
+
+    \item For $f_{n+1} = f_n + f_{n-1}$, if $f_n$ is even and $f_{n-1}$ is odd
+      (or vice versa), $f_{n+1}$ will be odd, not even.
+  \end{itemize}
+
+  Thus, the proof incorrectly assumes that $f_n$ and $f_{n-1}$ are both even,
+  leading to the false conclusion that all Fibonacci numbers are even.
+
+  Key Counterexample: The Fibonacci sequence quickly disproves the claim
+  \[%
+    f_0 = 0 \text{ (even)}, \, f_1 = 1 \text{ (odd)}, \, f_2 = 1 \text{ (odd)}, \, f_3 = 2 \text{ (even)}, \, f_4 = 3 \text{ (odd)}, \, \dots
+  .\]%
+  Hence, the proof fails to account for the actual behavior of the Fibonacci
+  sequence.
+\end{proof}
+
+\medskip
+
+\begin{problem}[8]
+  In this question we will prove that you can lift any cow. Let $P(n)$ be the
+  statement ``you Can lif the cow on day $n$ of its life.'' We will use
+  induction to prove $(\forall n \in \N)[n \ge 1 \implies P(n)]$.
+
+  I. When the cow is bornw, it is very small, and of course you can lift it.
+  This proves $P(1)$.
+
+  II. Suppose that you can lift the cow on day $n$. It grows very little by the
+  next day, so you will still be able to lift it on day $n + 1$.
+
+  III. By induction, we have proven that you can lift the cow on every day of
+  its life. Boy, you are strong.
+
+  Explain what you think is wrong with this proof.
+\end{problem}
+
+\begin{proof}[Solution]
+  The flaw in the proof is in the implicit assumption in the induction step. The
+  proof claims that the growth of the cow between days $n$ and $n + 1$ is
+  negligible. But this assumption does not hold indefinitely.
+
+  \begin{itemize}
+    \item The base case $P(1)$ is correct: when the cow is born, it is small,
+      and it is reasonable to assume that you can lift it. Thus, $P(1)$ holds.
+
+    \item The induction step assumes that if you can lift the cow on day $n$,
+      then you can also lift it on day $n + 1$ because the cow grows ``very
+      little'' between consecutive days. But this reasoning doesn't consider
+      cumulative growth. While the cow's daily growth may be negligible at
+      first, over time, this growth becomes significant, eventually making the
+      cow too heavy to lift.
+
+    \item The critical error is that the proof relies on the inductive step
+      indefinitely without addressing the increasing weight of the cow over
+      time. At some point, the assumption that ``you can lift the cow on day $n$
+      implies you can lift it on day $n+1$'' breaks down because the cow's
+      weight exceeds your lifting capacity.
+
+    \item This reasoning leads to a contradiction with reality: cows grow to be
+      large animals that are impossible to lift manually. Thus, the inductive
+      argument fails because the assumption about negligible growth does not
+      hold for all $n \ge 1$.
+  \end{itemize}
+
+  Therefore, the proof incorrectly extends the inductive step without accounting
+  for the physical limits of lifting a growing cow over time.
+\end{proof}
+
+\medskip
+
+\begin{problem}[9]
+  Prove that $(A \cap B) \times C = (A \times C) \cap (B \times C)$.
+\end{problem}
+
+\begin{proof}[Solution]
+  Assume $(x, y) \in (A \cap B) \times C$. Then, $x \in A \cap B$ and $y \in C$.
+  Then, by definition, $x \in A$ and $x \in B$. Thus, $(x, y) \in A \times C$
+  and $(x, y) \in B \times C$. Therefore, $(x, y) \in (A \times C) \cap (B
+  \times C)$. Therefore, $(A \cap B) \times C \subseteq (A \times C) \cap (B
+  \times C)$.
+
+  Assume $(x, y) \in (A \times C) \cap (B \times C)$. Then, $(x, y) \in A \times
+  C$ and $(x, y) \in B \times C$. Thus, $x \in A$ and $x \in B$. Therefore, $x
+  \in A \cap B$. Thus, $(x, y) \in (A \cap B) \times C$. Therefore, $(A \times
+  C) \cap (B \times C) \subseteq (A \cap B) \times C$.
+
+  Hence, $(A \cap B) \times C = (A \times C) \cap (B \times C)$.
+\end{proof}
+
+\medskip
+
+\begin{problem}[10]
+  Suppose $A \subseteq X$ and $B \subseteq Y$. Prove that $(X \times Y) - [(A
+  \times Y) \cup (X \times B)] = (X - A) \times (Y - B)$.
+\end{problem}
+
+\begin{proof}[Solution]
+  Assume $(x, y) \in (X \times Y) - [(A \times Y) \cup (X \times B)]$. Then, $x
+  \in X$ and $x \notin A \cup X$. Since $A \subseteq X$, then $x \notin A$.
+  Therefore, $x \in X - A$. Similarly, $y \in Y - B$. Thus, $(x, y) \in (X - A)
+  \times (Y - B)$. Therefore, $(X \times Y) - [(A \times Y) \cup (X \times B)]
+  \subseteq (X - A) \times (Y - B)$.
+
+  Assume $(x, y) \in (X - A) \times (Y - B)$. Then, $x \in X - A$ and $y \in Y -
+  B$. Thus, $x \in X$ and $x \notin A$ and $y \in Y$ and $y \notin B$. Thus,
+  $(x, y) \in X \times Y$ and $(x, y) \notin A \times Y$ and $(x, y) \notin X
+  \times B$. Therefore, $(x, y) \in (X \times Y) - [(A \times Y) \cup (X \times
+  B)]$. Therefore, $(X - A) \times (Y - B) \subseteq (X \times Y) - [(A \times
+  Y) \cup (X \times B)]$.
+
+  Hence, $(X \times Y) - [(A \times Y) \cup (X \times B)] = (X - A) \times (Y -
+  B)$.
+\end{proof}

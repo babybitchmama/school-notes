@@ -1,11 +1,11 @@
-\begin{problem}
+\begin{problem}[1]
   Given $Q \implies R$, prove $[P \implies T] \implies [(Q \lor \neg T) \implies
   (\neg P \lor R)]$.
 \end{problem}
 
-\begin{probsolution}
-  \begin{table}[H]
-    \begin{tabular}{lll}
+\begin{proof}[Solution]
+  $\textrm{%
+    \begin{tabular}[t]{lll}
       1. & $Q \implies R$ & Hypothesis \\
       2. & Assume $P \implies T$ & Dischargeable hypothesis \\
       3. & Assume $Q \lor \neg T$ & Dischargeable hypothesis \\
@@ -20,13 +20,13 @@
       12. & $\neg P \lor R$ & MPB, for 10, for 11 \\
       13. & $[Q \lor \neg T] \implies (\neg P \lor R)$ & DT, discharge for 3 [3 - 12 unusable] \\
       14. & $[P \implies T] \implies [(Q \lor \neg T) \implies (\neg P \lor R)]$ & DT, discharge for 2 [2 - 13 unusable] \\
-    \end{tabular}
-  \end{table}
-\end{probsolution}
+    \end{tabular}\qedhere
+  }$%
+\end{proof}
 
-\newpage
+\medskip
 
-\begin{problem}
+\begin{problem}[2]
   \begin{enumerate}
     \item If $C \subseteq A$ and $D \subseteq B$, then prove $D - A \subseteq B
       - C$.
@@ -37,61 +37,63 @@
   \end{enumerate}
 \end{problem}
 
-\begin{probsolution}
-  \begin{enumerate}
-    \item Here's the line proof for $D - A \subseteq B - C$.
+\begin{proof}[Solution to (i)]
+  $\textrm{
+    \begin{tabular}[t]{ll}
+      1. & Assume $C \subseteq A$ and $D \subseteq B$. \\
+      2. & Assume $x \in D - A$. \\
+      3. & Then, $x \in D$ and $x \notin A$. \\
+      4. & Since $C \subseteq A$ and $D \subseteq B$, then $x \in B$ and $x \notin C$. \\
+      5. & By the definition of set difference, $x \in B - C$. \\
+      6. & Hence, $D - A \subseteq B - C$. \\
+      7. & Therefore, $(C \subseteq A \land D \subseteq B) \implies (D - A \subseteq B - C)$. \\
+    \end{tabular}\qedhere
+  }$
+\end{proof}
 
-      \hspace*{-0.5em}\begin{tabular}{ll}
-        1. & Assume $C \subseteq A$ and $D \subseteq B$. \\
-        2. & Assume $x \in D - A$. \\
-        3. & Then, $x \in D$ and $x \notin A$. \\
-        4. & Since $C \subseteq A$ and $D \subseteq B$, then $x \in B$ and $x \notin C$. \\
-        5. & By the definition of set difference, $x \in B - C$. \\
-        6. & Hence, $D - A \subseteq B - C$. \\
-        7. & Therefore, $(C \subseteq A \land D \subseteq B) \implies (D - A \subseteq B - C)$. \\
-      \end{tabular}
+\begin{proof}[Solution to (ii)]
+  $\textrm{
+    \begin{tabular}[t]{ll}
+      1. & Assume $A = X \cap A$. \\
+      2. & Assume $x \in A$. \\
+      3. & Then $x \in X$ and $x \in A$. \\
+      4. & Hence, $x \in X$. \\
+      5. & Therefore, $A \subseteq X$. \\
+      6. & Assume $A \subseteq X$. \\
+      7. & Then, by the definition of a subset, $x \in A \implies x \in X$. \\
+      8. & Thus, $x \in A \implies x \in X \cap A$. \\
+      9. & Similarly, if $x \in X \cap A$, then $x \in A$. \\
+      10. & Therefore, $A = X \cap A$. \\
+      11. & Therefore, $A = X \cap A \iff A \subseteq X$. \\
+    \end{tabular}\qedhere
+  }$
+\end{proof}
 
-    \item Here's the line prove for $A = X \cap A$.
+\begin{proof}[Solution to (iii)]
+  $\textrm{
+    \begin{tabular}[t]{ll}
+      1. & Assume $A = X \cup A$. \\
+      2. & Assume $x \in X \cup A = A$. \\
+      3. & If $x \in X$, then $x \in A$. \\
+      4. & Hence, $X \subseteq A$. \\
+      5. & Assume $X \subseteq A$. \\
+      6. & Then, by the definition of a subset, $x \in X \implies x \in A$. \\
+      7. & Then, $x \in X \cup A$. \\
+      8. & Therefore, $A = X \cup A$. \\
+    \end{tabular}\qedhere
+  }$
+\end{proof}
 
-      \hspace*{-0.5em}\begin{tabular}{ll}
-        1. & Assume $A = X \cap A$. \\
-        2. & Assume $x \in A$. \\
-        3. & Then $x \in X$ and $x \in A$. \\
-        4. & Hence, $x \in X$. \\
-        5. & Therefore, $A \subseteq X$. \\
-        6. & Assume $A \subseteq X$. \\
-        7. & Then, by the definition of a subset, $x \in A \implies x \in X$. \\
-        8. & Thus, $x \in A \implies x \in X \cap A$. \\
-        9. & Similarly, if $x \in X \cap A$, then $x \in A$. \\
-        10. & Therefore, $A = X \cap A$. \\
-        11. & Therefore, $A = X \cap A \iff A \subseteq X$. \\
-      \end{tabular}
+\medskip
 
-    \item Here's the line proof for $A = X \cup A$.
-
-      \hspace*{-0.5em}\begin{tabular}{ll}
-        1. & Assume $A = X \cup A$. \\
-        2. & Assume $x \in X \cup A = A$. \\
-        3. & If $x \in X$, then $x \in A$. \\
-        4. & Hence, $X \subseteq A$. \\
-        5. & Assume $X \subseteq A$. \\
-        6. & Then, by the definition of a subset, $x \in X \implies x \in A$. \\
-        7. & Then, $x \in X \cup A$. \\
-        8. & Therefore, $A = X \cup A$. \\
-      \end{tabular}
-  \end{enumerate}
-\end{probsolution}
-
-\newpage
-
-\begin{problem}
+\begin{problem}[3]
   Let $f : S \to T$ be a function. Prove that if $X \subseteq T$ and $Y
   \subseteq T$, then $f^{-1}(X) - f^{-1}(Y) = f^{-1}(X - Y)$.
 \end{problem}
 
-\begin{probsolution}
-  \begin{table}[H]
-    \begin{tabular}{ll}
+\begin{proof}[Solution]
+  $\textrm{
+    \begin{tabular}[t]{ll}
       1. & Assume $X \subseteq T$ and $Y \subseteq T$ \\
       2. & Assume $x \in f^{-1}(X) - f^{-1}(Y)$ \\
       3. & Then, $x \in f^{-1}(X)$ and $x \notin f^{-1}(Y)$ \\
@@ -106,13 +108,13 @@
       12. & Then, $x \in f^{-1}(X) - f^{-1}(Y)$ \\
       13. & Therefore, $f^{-1}(X - Y) \subseteq f^{-1}(X) - f^{-1}(Y)$ \\
       14. & Therefore, $f^{-1}(X) - f^{-1}(Y) = f^{-1}(X - Y)$ \\
-    \end{tabular}
-  \end{table}
-\end{probsolution}
+    \end{tabular}\qedhere
+  }$
+\end{proof}
 
-\newpage
+\medskip
 
-\begin{problem}
+\begin{problem}[4]
   Let $f : S \to T$ be a function, let $A \subseteq S$ and $B \subseteq S$.
   \begin{enumerate}
     \item Prove $f(A) - f(B) \subseteq f(A - B)$.
@@ -124,50 +126,53 @@
   \end{enumerate}
 \end{problem}
 
-\begin{probsolution}
-  \begin{enumerate}
-    \item Here's the line proof for $f(A) - f(B) \subseteq f(A - B)$.
+\begin{proof}[Solution to (i)]
+  $\textrm{
+    \begin{tabular}[t]{ll}
+      1. & Let $f : S \to T$ be a function. \\
+      2. & Assume $A \subseteq S$ and $B \subseteq S$. \\
+      3. & Assume $y \in f(A) - f(B)$. \\
+      4. & Then, $y \in f(A)$ and $y \notin f(B)$. \\
+      5. & Then, there exists $x \in A$ such that $f(x) = y$. \\
+      6. & There does not exist $x \in B$ such that $f(x) = y$. \\
+      7. & Then, $x \in A$ and $x \notin B$. \\
+      8. & Then, $x \in A - B$. \\
+      9. & Then, $y \in f(A - B)$. \\
+      10. & Therefore, $f(A) - f(B) \subseteq f(A - B)$. \\
+    \end{tabular}\qedhere
+  }$
+\end{proof}
 
-      \hspace*{-0.5em}\begin{tabular}{ll}
-        1. & Let $f : S \to T$ be a function. \\
-        2. & Assume $A \subseteq S$ and $B \subseteq S$. \\
-        3. & Assume $y \in f(A) - f(B)$. \\
-        4. & Then, $y \in f(A)$ and $y \notin f(B)$. \\
-        5. & Then, there exists $x \in A$ such that $f(x) = y$ and there does not exist $x \in B$ such that $f(x) = y$. \\
-        6. & Then, $x \in A$ and $x \notin B$. \\
-        7. & Then, $x \in A - B$. \\
-        8. & Then, $y \in f(A - B)$. \\
-        9. & Therefore, $f(A) - f(B) \subseteq f(A - B)$. \\
-      \end{tabular}
+\begin{proof}[Solution to (ii)]
+  $\textrm{
+    \begin{tabular}[t]{ll}
+      1. & Let $f : S \to T$ be a one-to-one function. \\
+      2. & Assume $A \subseteq S$ and $B \subseteq S$. \\
+      3. & Assume $y \in f(A - B)$. \\
+      4. & Then, there exists $x \in A - B$ such that $f(x) = y$. \\
+      5. & Then, $x \in A$ and $x \notin B$. \\
+      6. & Then, $f(x) \in f(A)$ and $f(x) \notin f(B)$. \\
+      7. & Then, $y \in f(A) - f(B)$. \\
+      8. & Therefore, $f(A - B) \subseteq f(A) - f(B)$. \\
+    \end{tabular}\qedhere
+  }$
+\end{proof}
 
-    \item Here's the line proof for $f(A - B) \subseteq f(A) - f(B)$.
+\begin{proof}[Solution to (iii)]
+  Let $S = \{1, 2, 3, 4, 5\}$ and $T = \R$. Let
+  \[%
+    f(X) = \Card(X) + 1
+  .\]%
+  Let $A = \{1, 2, 3\}$ and $B = \{2, 3\}$. Then, $A - B = \{1\}$. Then, we get
+  \[%
+    f(A) = 4, \quad f(B) = 3, \quad f(A) - f(B) = 1, \aand f(A - B) = 2
+  .\]%
+  Therefore, $f(A) - f(B) \ne f(A - B)$.
+\end{proof}
 
-      \hspace*{-0.5em}\begin{tabular}{ll}
-        1. & Let $f : S \to T$ be a one-to-one function. \\
-        2. & Assume $A \subseteq S$ and $B \subseteq S$. \\
-        3. & Assume $y \in f(A - B)$. \\
-        4. & Then, there exists $x \in A - B$ such that $f(x) = y$. \\
-        5. & Then, $x \in A$ and $x \notin B$. \\
-        6. & Then, $f(x) \in f(A)$ and $f(x) \notin f(B)$. \\
-        7. & Then, $y \in f(A) - f(B)$. \\
-        8. & Therefore, $f(A - B) \subseteq f(A) - f(B)$. \\
-      \end{tabular}
+\medskip
 
-    \item Let $S = \{1, 2, 3, 4, 5\}$ and $T = \R$. Let
-      \[%
-        f(X) = \Card(X) + 1
-      .\]%
-      Let $A = \{1, 2, 3\}$ and $B = \{2, 3\}$. Then, $A - B = \{1\}$. Then, we get
-      \[%
-        f(A) = 4, \quad f(B) = 3, \quad f(A) - f(B) = 1, \aand f(A - B) = 2
-      .\]%
-      Therefore, $f(A) - f(B) \ne f(A - B)$.
-  \end{enumerate}
-\end{probsolution}
-
-\newpage
-
-\begin{problem}
+\begin{problem}[5]
   Suppose $f : A \to B$, $X \subseteq A$, $W \subseteq B$, $f(X) \cap W = \emptyset$, and $f(X) \cup W = B$.
   \begin{enumerate}
     \item Prove that $X \cap f^{-1}(W) = \emptyset$.
@@ -176,454 +181,464 @@
   \end{enumerate}
 \end{problem}
 
-\begin{probsolution}
-  \begin{enumerate}
-    \item Here's the line proof for $X \cap f^{-1}(W) = \emptyset$.
+\begin{proof}[Solution to (i)]
+  $\textrm{
+    \begin{tabular}[t]{ll}
+      1. & Assume $f : A \to B$, $X \subseteq A$, $W \subseteq B$, $f(X) \cap W = \emptyset$, and $f(X) \cup W = B$. \\
+      2. & Assume $x \in X \cap f^{-1}(W)$. \\
+      3. & Then, $x \in X$ and $x \in f^{-1}(W)$. \\
+      4. & Then, $f(x) \in f(X)$ and $f(x) \in W$. \\
+      5. & That implies that $f(x) \in f(X) \cap W$. \\
+      6. & But that's a contradiction from the fact that $(X) \cap W = \emptyset$. \\
+      7. & Therefore, $X \cup f^{-1}(W) = \emptyset$.
+    \end{tabular}\qedhere
+  }$
+\end{proof}
 
-      \hspace*{-0.5em}\begin{tabular}{ll}
-        1. & Assume $f : A \to B$, $X \subseteq A$, $W \subseteq B$, $f(X) \cap W = \emptyset$, and $f(X) \cup W = B$. \\
-        2. & Assume $x \in X \cap f^{-1}(W)$. \\
-        3. & Then, $x \in X$ and $x \in f^{-1}(W)$. \\
-        4. & Then, $f(x) \in f(X)$ and $f(x) \in W$. \\
-        5. & That implies that $f(x) \in f(X) \cap W$. \\
-        6. & But that's a contradiction from the fact that $(X) \cap W = \emptyset$. \\
-        7. & Therefore, $X \cup f^{-1}(W) = \emptyset$.
-      \end{tabular}
+\begin{proof}[Solution to (ii)]
+  $\textrm{
+    \begin{tabular}[t]{ll}
+      1. & Assume $f: A \to B$, $X \subseteq A$, $W \subseteq B$, $f(X) \cap W = \emptyset$, and $f(X) \cup W = B$. \\
+      2. & Take any $a \in A$. \\
+      3. & Then $f(a) \in B$. By $f(X) \cup W = B$, we have $f(a) \in f(X)$ or $f(a) \in W$. \\
+      4. & If $f(a) \in f(X)$, then $a \in X$ (since $f$ is one-to-one). \\
+      5. & If $f(a) \in W$ then, $a \in f^{-1}(W)$. \\
+      6. & Thus, $a \in X \cup f^{-1}(W)$. \\
+      7. & Therefore, $A \subseteq X \cup f^{-1}(W)$. \\
+      8. & Conversely, observe that $X \subseteq A$ and $f^{-1}(W) \subseteq A$. \\
+      9. & Thus, $X \cup f^{-1}(W) \subseteq A$. \\
+      10. & Combining both inclusions, $A = X \cup f^{-1}(W)$. \\
+    \end{tabular}\qedhere
+  }$
+\end{proof}
 
-    \item Here's the line proof for $A = X \cup f^{-1}(W)$.
+\begin{proof}[Solution to (iii)]
+  $\textrm{
+    \begin{tabular}[t]{ll}
+      1. & Assume $f: A \to B$, $X \subseteq A$, $W \subseteq B$, $f(X) \cap W = \emptyset$, and $f(X) \cup W = B$. \\
+      2. & Assume $f(A - X) = W$. \\
+      3. & Definition of onto is $(\forall b \in B)(\exists a \in A)[f(a) = b]$. \\
+      4. & Take any $b \in B$. \\
+      5. & Since $f(X) \cup W = B$, $b \in f(X)$ or $b \in W$. \\
+      6. & Case 1: If $b \in f(X)$, then there exists $a \in X$ such that $f(a) = b$. \\
+      7. & Case 2: If $b \in W$, then there exists $a \in A - X$ such that $f(a) = b$. \\
+      8. & In both cases, there exists $a \in A$ such that $f(a) = b$. \\
+      9. & Therefore, $f$ is onto. \\
+    \end{tabular}\qedhere
+  }$
+\end{proof}
 
-      \hspace*{-0.5em}\begin{tabular}{ll}
-        1. & Assume $f: A \to B$, $X \subseteq A$, $W \subseteq B$, $f(X) \cap W = \emptyset$, and $f(X) \cup W = B$. \\
-        2. & Take any $a \in A$. \\
-        3. & Then $f(a) \in B$. By $f(X) \cup W = B$, we have $f(a) \in f(X)$ or $f(a) \in W$. \\
-        4. & If $f(a) \in f(X)$, then $a \in X$ (since $f$ is one-to-one). \\
-        5. & If $f(a) \in W$ then, $a \in f^{-1}(W)$. \\
-        6. & Thus, $a \in X \cup f^{-1}(W)$. \\
-        7. & Therefore, $A \subseteq X \cup f^{-1}(W)$. \\
-        8. & Conversely, observe that $X \subseteq A$ and $f^{-1}(W) \subseteq A$. \\
-        9. & Thus, $X \cup f^{-1}(W) \subseteq A$. \\
-        10. & Combining both inclusions, $A = X \cup f^{-1}(W)$. \\
-      \end{tabular}
+\medskip
 
-    \item Here's the line proof for $f$ is onto.
-
-      \hspace*{-0.5em}\begin{tabular}{ll}
-        1. & Assume $f: A \to B$, $X \subseteq A$, $W \subseteq B$, $f(X) \cap W = \emptyset$, and $f(X) \cup W = B$. \\
-        2. & Assume $f(A - X) = W$. \\
-        3. & Definition of onto is $(\forall b \in B)(\exists a \in A)[f(a) = b]$. \\
-        4. & Take any $b \in B$. \\
-        5. & Since $f(X) \cup W = B$, $b \in f(X)$ or $b \in W$. \\
-        6. & Case 1: If $b \in f(X)$, then there exists $a \in X$ such that $f(a) = b$ (definition of $f(X)$). \\
-        7. & Case 2: If $b \in W$, then there exists $a \in A - X$ such that $f(a) = b$ (since $f(A - X) = W$). \\
-        8. & In both cases, there exists $a \in A$ such that $f(a) = b$. \\
-        9. & Therefore, $f$ is onto. \\
-      \end{tabular}
-  \end{enumerate}
-\end{probsolution}
-
-\newpage
-
-\begin{problem}
+\begin{problem}[6]
   Prove the statement $1 + 3 + 5 + 7 + \cdots + (2n + 1) = (n + 1)^2$, for all
   $n \ge 0$.
 \end{problem}
 
-\begin{probsolution}
-  \begin{proof}
-    Let $P(n) : 1 + 3 + 5 + 7 + \cdots + (2n + 1) = (n + 1)^2$.
+\begin{proof}[Solution]
+  Let $P(n) : 1 + 3 + 5 + 7 + \cdots + (2n + 1) = (n + 1)^2$.
 
-    Base Case: $P(0) : 1 = (0 + 1)^2 = 1$.
+  Base Case: $P(0) : 1 = (0 + 1)^2 = 1$.
 
-    Induction Step: Assume $P(n)$ up to $n = k$. Then, adding the next term $2n
-    + 3$ to both sides gives us $1 + 3 + 5 + 7 + \cdots + (2n + 1) + (2n + 3) =
-    (n + 1)^2 + (2n + 3)$. Simplifying the right hand side gives us
-    \[%
-      (n + 1)^2 + (2n + 3) = n^2 + 2n + 1 + 2n + 3 = n^2 + 4n + 4 = (n + 2)^2 = ((n + 1) + 1)
-    ,\]%
-    which is equivalent to $P(n + 1)$. Hence, $(\forall n \in \N \cup
-    \{0\})[P(n) \implies P(n + 1)]$.
+  Induction Step: Assume $P(n)$ up to $n = k$. Then, adding the next term $2n +
+  3$ to both sides gives us $1 + 3 + 5 + 7 + \cdots + (2n + 1) + (2n + 3) = (n +
+  1)^2 + (2n + 3)$. Simplifying the right hand side gives us
+  \[%
+    (n + 1)^2 + (2n + 3) = n^2 + 2n + 1 + 2n + 3 = n^2 + 4n + 4 = (n + 2)^2 = ((n + 1) + 1)
+  ,\]%
+  which is equivalent to $P(n + 1)$. Hence, $(\forall n \in \N \cup \{0\})[P(n)
+  \implies P(n + 1)]$.
 
-    By PMI, we proved that $1 + 3 + 5 + 7 + \cdots + (2n + 1) = (n + 1)^2$ for
-    all $n \ge 0$.
-  \end{proof}
-\end{probsolution}
+  By PMI, we proved that $1 + 3 + 5 + 7 + \cdots + (2n + 1) = (n + 1)^2$ for all
+  $n \ge 0$.
+\end{proof}
 
-\newpage
+\medskip
 
-\begin{problem}
+\begin{problem}[7]
   Prove the statement $\displaystyle 1^3 + 2^3 + \cdots + n^3 = \left[\frac{n(n
   + 1)}{2}\right]^2$, for all $n \ge 1$.
 \end{problem}
 
-\begin{probsolution}
-  \begin{proof}
-    Let $P(n) : 1^3 + 2^3 + \cdots + n^3 = \left[\frac{n(n + 1)}{2}\right]^2$.
+\begin{proof}[Solution]
+  Let $P(n) : 1^3 + 2^3 + \cdots + n^3 = \left[\frac{n(n + 1)}{2}\right]^2$.
 
-    Base Case: $P(1) : 1^3 = \left[\frac{1(1 + 1)}{2}\right]^2 = 1$.
+  Base Case: $P(1) : 1^3 = \left[\frac{1(1 + 1)}{2}\right]^2 = 1$.
 
-    Induction Step: Assume $P(n)$ up to $n = k$. Then, adding the next term $(n
-    + 1)^3$ to both sides gives us $\displaystyle 1^3 + \cdots + n^3 + (n + 1)^3
-    = \left[\frac{n(n + 1)}{2}\right]^2 + (n + 1)^3$. If the statement is true,
-    then we get the following
-    \[%
-      \left[\frac{n(n + 1)}{2}\right]^2 + (n + 1)^3 = \left[\frac{(n + 1)(n + 2)}{2}\right]^2
-    .\]%
-    Performing some algebra gives us
-    \begin{align*}
-      \frac{n^2(n + 1)^2}{4} + (n + 1)^3 &= \frac{(n + 1)^2(n + 2)^2}{4} \\
-      \frac{n^2(n + 1)^2 + 4(n + 1)^3}{4} &= \frac{(n + 1)^2(n + 2)^2}{4} \\
-      n^2(n + 1)^2 + 4(n + 1)^3 &= (n + 1)^2(n + 2)^2 \\
-      (n + 1)^2(n^2 + 4(n + 1)) &= (n + 1)^2(n + 2)^2 \\
-      n^2 + 4(n + 1) &= (n + 2)^2 \\
-      n^2 + 4n + 4 &= n^2 + 4n + 4
-    .\end{align*}
-    Therefore, we've shown that
-    \[%
-      \left[\frac{n(n + 1)}{2}\right]^2 + (n + 1)^3 = \left[\frac{(n + 1)(n + 2)}{2}\right]^2
-    .\]%
+  Induction Step: Assume $P(n)$ up to $n = k$. Then, adding the next term $(n +
+  1)^3$ to both sides gives us $\displaystyle 1^3 + \cdots + n^3 + (n + 1)^3 =
+  \left[\frac{n(n + 1)}{2}\right]^2 + (n + 1)^3$. If the statement is true, then
+  we get the following
+  \[%
+    \left[\frac{n(n + 1)}{2}\right]^2 + (n + 1)^3 = \left[\frac{(n + 1)(n + 2)}{2}\right]^2
+  .\]%
+  Performing some algebra gives us
+  \begin{align*}
+    \frac{n^2(n + 1)^2}{4} + (n + 1)^3 &= \frac{(n + 1)^2(n + 2)^2}{4} \\
+    \frac{n^2(n + 1)^2 + 4(n + 1)^3}{4} &= \frac{(n + 1)^2(n + 2)^2}{4} \\
+    n^2(n + 1)^2 + 4(n + 1)^3 &= (n + 1)^2(n + 2)^2 \\
+    (n + 1)^2(n^2 + 4(n + 1)) &= (n + 1)^2(n + 2)^2 \\
+    n^2 + 4(n + 1) &= (n + 2)^2 \\
+    n^2 + 4n + 4 &= n^2 + 4n + 4
+  .\end{align*}
+  Therefore, we've shown that
+  \[%
+    \left[\frac{n(n + 1)}{2}\right]^2 + (n + 1)^3 = \left[\frac{(n + 1)(n + 2)}{2}\right]^2
+  .\]%
 
-    By EPMI, we proved that $\displaystyle 1^3 + 2^3 + \cdots + n^3 =
-    \left[\frac{n(n + 1)}{2}\right]^2$ for all $n \ge 1$.
-  \end{proof}
-\end{probsolution}
+  By EPMI, we proved that $\displaystyle 1^3 + 2^3 + \cdots + n^3 =
+  \left[\frac{n(n + 1)}{2}\right]^2$ for all $n \ge 1$.
+\end{proof}
 
-\newpage
+\medskip
 
-\begin{problem}
+\begin{problem}[8]
   Prove the statement $\displaystyle\sum_{k=1}^{n} (-1)^k k^2 = (-1)^n \frac{n(n
   + 1)}{2}$, for all $n \ge 1$.
 \end{problem}
 
-\begin{probsolution}
-  \begin{proof}
-    Let $P(n) : \displaystyle\sum_{k=1}^{n} (-1)^k k^2 = (-1)^n \frac{n(n + 1)}{2}$.
+\begin{proof}[Solution]
+  Let $P(n) : \displaystyle\sum_{k=1}^{n} (-1)^k k^2 = (-1)^n \frac{n(n +
+  1)}{2}$.
 
-    Base Case: $P(1) : (-1)^1 1^2 = (-1)^1 \frac{1(1 + 1)}{2} = -1$.
+  Base Case: $P(1) : (-1)^1 1^2 = (-1)^1 \frac{1(1 + 1)}{2} = -1$.
 
-    Induction Step: Assume $P(n)$ up to $n$. Then, adding the next term
-    $(-1)^{n+1}(n + 1)^2$ to both sides gives us
-    \[%
-      \left(\sum_{k=1}^{n} (-1)^k k^2\right) + (-1)^{n+1} (n + 1)^2 = (-1)^n \frac{n(n + 1)}{2} + (-1)^{n+1} (n + 1)^2
-    .\]%
-    If the statement is true, then we get the following
-    \[%
-      (-1)^n \frac{n(n + 1)}{2} + (-1)^{n+1} (n + 1)^2 = (-1)^{n+1} \frac{(n + 1)(n + 2)}{2}
-    .\]%
-    Performing some algebra gives us
-    \begin{align*}
-      (-1)^n \frac{n(n + 1)}{2} + (-1)^{n+1} (n + 1)^2 &= (-1)^{n+1} \frac{(n + 1)(n + 2)}{2} \\
-      (n + 1) \left((-1)^n \cdot \frac{n}{2} + (-1)^{n+1} \cdot (n + 1)\right) &= (n + 1) \cdot \left(\frac{(-1)^{n+1} \cdot (n + 2)}{2}\right) \\
-      (-1)^n \cdot \frac{n}{2} + (-1)^{n+1} &= (-1)^{n+1} \cdot \frac{(n + 2)}{2} \\
-      \frac{(-1)^n \cdot n +2 (-1)^{n+1} \cdot (n + 1)}{2} &= \frac{(-1)^{n+1} \cdot (n + 2)}{2} \\
-      (-1)^n \cdot n + (-1)^{n+1} \cdot 2(n + 1) &= (-1)^{n+1} \cdot (n + 2) \\
-      (-1)^n \left(n - 2(n + 1)\right) &= (-1)^n \left(-(n + 2)\right) \\
-      n - 2n - 2 &= -n - 2 \\
-      -n - 2 &= -n - 2
-    .\end{align*}
-    Therefore, we've shown that
-    \[%
-      (-1)^n \frac{n(n + 1)}{2} + (-1)^{n+1} (n + 1)^2 = (-1)^{n+1} \frac{(n + 1)(n + 2)}{2}
-    .\]%
+  Induction Step: Assume $P(n)$ up to $n$. Then, adding the next term
+  $(-1)^{n+1}(n + 1)^2$ to both sides gives us
+  \[%
+    \left(\sum_{k=1}^{n} (-1)^k k^2\right) + (-1)^{n+1} (n + 1)^2 = (-1)^n \frac{n(n + 1)}{2} + (-1)^{n+1} (n + 1)^2
+  .\]%
+  If the statement is true, then we get the following
+  \[%
+    (-1)^n \frac{n(n + 1)}{2} + (-1)^{n+1} (n + 1)^2 = (-1)^{n+1} \frac{(n + 1)(n + 2)}{2}
+  .\]%
+  Performing some algebra gives us
+  \begin{align*}
+    (-1)^n \frac{n(n + 1)}{2} + (-1)^{n+1} (n + 1)^2 &= (-1)^{n+1} \frac{(n + 1)(n + 2)}{2} \\
+    (n + 1) \left((-1)^n \cdot \frac{n}{2} + (-1)^{n+1} \cdot (n + 1)\right) &= (n + 1) \cdot \left(\frac{(-1)^{n+1} \cdot (n + 2)}{2}\right) \\
+    (-1)^n \cdot \frac{n}{2} + (-1)^{n+1} &= (-1)^{n+1} \cdot \frac{(n + 2)}{2} \\
+    \frac{(-1)^n \cdot n +2 (-1)^{n+1} \cdot (n + 1)}{2} &= \frac{(-1)^{n+1} \cdot (n + 2)}{2} \\
+    (-1)^n \cdot n + (-1)^{n+1} \cdot 2(n + 1) &= (-1)^{n+1} \cdot (n + 2) \\
+    (-1)^n \left(n - 2(n + 1)\right) &= (-1)^n \left(-(n + 2)\right) \\
+    n - 2n - 2 &= -n - 2 \\
+    -n - 2 &= -n - 2
+  .\end{align*}
+  Therefore, we've shown that
+  \[%
+    (-1)^n \frac{n(n + 1)}{2} + (-1)^{n+1} (n + 1)^2 = (-1)^{n+1} \frac{(n + 1)(n + 2)}{2}
+  .\]%
 
-    By EPMI, we proved that $\displaystyle\sum_{k=1}^{n} (-1)^k k^2 = (-1)^n
-    \frac{n(n + 1)}{2}$ for all $n \ge 1$.
-  \end{proof}
-\end{probsolution}
+  By EPMI, we proved that $\displaystyle\sum_{k=1}^{n} (-1)^k k^2 = (-1)^n
+  \frac{n(n + 1)}{2}$ for all $n \ge 1$.
+\end{proof}
 
-\newpage
+\medskip
 
-\begin{problem}
+\begin{problem}[9]
   Prove the statement $\frac{(2n)!}{n! \cdot 2^n}$ is an odd number, for every
   $n \in \N$.
 \end{problem}
 
-\begin{probsolution}
-  \begin{proof}
-    Let $P(n) : \frac{(2n)!}{n! \cdot 2^n}$ is an odd number.
+\begin{proof}[Solution]
+  Let $P(n) : \frac{(2n)!}{n! \cdot 2^n}$ is an odd number.
 
-    Base Case: $P(1)$. For $n = 1$,
-    \[
-      \frac{(2 \cdot 1)!}{1! \cdot 2^1} = \frac{2!}{1 \cdot 2} = \frac{2}{2} = 1
-    .\]%
-    Since $1$ is an odd number, $P(1)$ holds.
+  Base Case: $P(1)$. For $n = 1$,
+  \[%
+    \frac{(2 \cdot 1)!}{1! \cdot 2^1} = \frac{2!}{1 \cdot 2} = \frac{2}{2} = 1
+  .\]%
+  Since $1$ is an odd number, $P(1)$ holds.
 
-    Induction Step: Assume $P(n)$ holds for some $n \in \N$, i.e.,
-    \[
-      \frac{(2n)!}{n! \cdot 2^n} \text{ is odd.}
-    \]%
-    We need to show that $P(n + 1)$, i.e., $\frac{(2(n + 1))!}{(n + 1)! \cdot 2^{n + 1}}$, is also odd. Starting with
-    \[
-      \frac{(2(n + 1))!}{(n + 1)! \cdot 2^{n + 1}} = \frac{(2n + 2)!}{(n + 1)! \cdot 2^{n + 1}}
-    .\]%
-    Using the factorial property $(2n + 2)! = (2n + 2)(2n + 1)(2n)!$, this becomes
-    \[
-      \frac{(2n + 2)(2n + 1)(2n)!}{(n + 1)! \cdot 2^{n + 1}}
-    .\]%
-    Rearranging, we write it as
-    \[
-      \frac{(2n + 2)(2n + 1)}{(n + 1) \cdot 2} \cdot \frac{(2n)!}{n! \cdot 2^n}
-    .\]%
-    By the induction hypothesis, $\frac{(2n)!}{n! \cdot 2^n}$ is odd. Now consider the term
-    \[
-      \frac{(2n + 2)(2n + 1)}{(n + 1) \cdot 2}
-    .\]%
-    Factor $2$ from $(2n + 2)$, giving
-    \[
-      \frac{2(n + 1)(2n + 1)}{(n + 1) \cdot 2} = 2n + 1
-    .\]%
-    Since $2n + 1$ is odd, the product
-    \[
-      \frac{(2n + 2)(2n + 1)}{(n + 1) \cdot 2} \cdot \frac{(2n)!}{n! \cdot 2^n}
-    \]%
-    is odd because the product of odd numbers is odd.
+  Induction Step: Assume $P(n)$ holds for some $n \in \N$, i.e.,
+  \[%
+    \frac{(2n)!}{n! \cdot 2^n} \text{ is odd.}
+  \]%
+  We need to show that $P(n + 1)$, i.e., $\frac{(2(n + 1))!}{(n + 1)! \cdot 2^{n
+  + 1}}$, is also odd. Starting with
+  \[%
+    \frac{(2(n + 1))!}{(n + 1)! \cdot 2^{n + 1}} = \frac{(2n + 2)!}{(n + 1)! \cdot 2^{n + 1}}
+  .\]%
+  Using the factorial property $(2n + 2)! = (2n + 2)(2n + 1)(2n)!$, this becomes
+  \[%
+    \frac{(2n + 2)(2n + 1)(2n)!}{(n + 1)! \cdot 2^{n + 1}}
+  .\]%
+  Rearranging, we write it as
+  \[%
+    \frac{(2n + 2)(2n + 1)}{(n + 1) \cdot 2} \cdot \frac{(2n)!}{n! \cdot 2^n}
+  .\]%
+  By the induction hypothesis, $\frac{(2n)!}{n! \cdot 2^n}$ is odd. Now consider
+  the term
+  \[%
+    \frac{(2n + 2)(2n + 1)}{(n + 1) \cdot 2}
+  .\]%
+  Factor $2$ from $(2n + 2)$, giving
+  \[%
+    \frac{2(n + 1)(2n + 1)}{(n + 1) \cdot 2} = 2n + 1
+  .\]%
+  Since $2n + 1$ is odd, the product
+  \[%
+    \frac{(2n + 2)(2n + 1)}{(n + 1) \cdot 2} \cdot \frac{(2n)!}{n! \cdot 2^n}
+  \]%
+  is odd because the product of odd numbers is odd.
 
-    Therefore, $P(n + 1)$ holds, and $\frac{(2n)!}{n! \cdot 2^n}$ is odd for all $n \in \N$ by the principle of mathematical induction.
-  \end{proof}
-\end{probsolution}
+  Therefore, $P(n + 1)$ holds, and $\frac{(2n)!}{n! \cdot 2^n}$ is odd for all
+  $n \in \N$ by the principle of mathematical induction.
+\end{proof}
 
-\newpage
+\medskip
 
-\begin{problem}
+\begin{problem}[10]
   Prove the statement $2^n > n^2$, for all $n > 4$.
 \end{problem}
 
-\begin{probsolution}
-  \begin{proof}
-    Let $P(n) : 2^n > n^2$.
+\begin{proof}[Solution]
+  Let $P(n) : 2^n > n^2$.
 
-    Base Case: $P(5) : 2^5 = 32 > 25 = 5^2$.
+  Base Case: $P(5) : 2^5 = 32 > 25 = 5^2$.
 
-    Induction Step: Assume $P(n)$ holds for some $n > 4$, i.e., $2^n > n^2$. We
-    need to show that $P(n + 1)$, i.e., $2^{n+1} > (n+1)^2$, is true. Starting
-    with the left-hand side
-    \[%
-      2^{n+1} = 2 \cdot 2^n
-    .\]%
-    By the induction hypothesis, $2^n > n^2$, so
-    \[%
-      2^{n+1} = 2 \cdot 2^n > 2 \cdot n^2
-    .\]%
-    Now compare $2 \cdot n^2$ to $(n + 1)^2$
-    \[%
-      2 \cdot n^2 > (n+1)^2 \quad \iff \quad 2 \cdot n^2 > n^2 + 2n + 1
-    .\]%
-    Simplifying gives u
-    \[%
-      2 \cdot n^2 - n^2 > 2n + 1 \quad \iff \quad n^2 > 2n + 1
-    .\]%
-    Since $n > 4$, this inequality holds because
-    \[%
-      n^2 - 2n - 1 = (n - 1)^2 - 2 > 0 \quad \text{for all}~n > 4
-    .\]%
-    Therefore, $2^{n+1} > (n + 1)^2$.
+  Induction Step: Assume $P(n)$ holds for some $n > 4$, i.e., $2^n > n^2$. We
+  need to show that $P(n + 1)$, i.e., $2^{n+1} > (n+1)^2$, is true. Starting
+  with the left-hand side
+  \[%
+    2^{n+1} = 2 \cdot 2^n
+  .\]%
+  By the induction hypothesis, $2^n > n^2$, so
+  \[%
+    2^{n+1} = 2 \cdot 2^n > 2 \cdot n^2
+  .\]%
+  Now compare $2 \cdot n^2$ to $(n + 1)^2$
+  \[%
+    2 \cdot n^2 > (n+1)^2 \quad \iff \quad 2 \cdot n^2 > n^2 + 2n + 1
+  .\]%
+  Simplifying gives u
+  \[%
+    2 \cdot n^2 - n^2 > 2n + 1 \quad \iff \quad n^2 > 2n + 1
+  .\]%
+  Since $n > 4$, this inequality holds because
+  \[%
+    n^2 - 2n - 1 = (n - 1)^2 - 2 > 0 \quad \text{for all}~n > 4
+  .\]%
+  Therefore, $2^{n+1} > (n + 1)^2$.
 
-    By EPMI, we have proven that $2^n > n^2$ for all $n > 4$.
-  \end{proof}
-\end{probsolution}
+  By EPMI, we have proven that $2^n > n^2$ for all $n > 4$.
+\end{proof}
 
-\newpage
+\medskip
 
-\begin{problem}
+\begin{problem}[11]
   Consider the sequence given recursively by $a_0 = 0$ and $a_n = \sqrt{2 +
   a_{n-1}}$ for all $n \ge 1$. So $a_1 = \sqrt{2}$, $a_2 = \sqrt{2 + \sqrt{2}}$,
   $a_3 = \sqrt{2 + \sqrt{2 + \sqrt{2}}}$, and so forth. Then, prove that $a_n
   \le 2$ for all $n \ge 0$.
 \end{problem}
 
-\begin{probsolution}
-  \begin{proof}
-    Let $P(n) : a_n \le 2$.
+\begin{proof}[Solution]
+  Let $P(n) : a_n \le 2$.
 
-    Base Case: $P(0) : a_0 = 0 \le 2$.
+  Base Case: $P(0) : a_0 = 0 \le 2$.
 
-    Induction Step: Assume $P(n)$ holds for some $n \geq 0$, i.e., assume $a_n \leq 2$. We need to show that $a_{n+1} \leq 2$.
-    By the recursive definition of the sequence,
-    \[%
-      a_{n+1} = \sqrt{2 + a_n}
-    .\]%
-    Starting with the inductive hypothesis $a_n \leq 2$, we add $2$ to both
-    sides
-    \[%
-      2 + a_n \leq 2 + 2 = 4
-    .\]%
-    Taking the square root of both sides (noting that square roots preserve
-    inequalities for non-negative numbers), we get
-    \[%
-      \sqrt{2 + a_n} \leq \sqrt{4}
-    .\]%
-    Since $\sqrt{4} = 2$, it follows that
-    \[%
-      a_{n+1} = \sqrt{2 + a_n} \leq 2
-    .\]%
-    Therefore, $P(n + 1)$ holds.
+  Induction Step: Assume $P(n)$ holds for some $n \geq 0$, i.e., assume $a_n
+  \leq 2$. We need to show that $a_{n+1} \leq 2$. By the recursive definition of
+  the sequence,
+  \[%
+    a_{n+1} = \sqrt{2 + a_n}
+  .\]%
+  Starting with the inductive hypothesis $a_n \leq 2$, we add $2$ to both sides
+  \[%
+    2 + a_n \leq 2 + 2 = 4
+  .\]%
+  Taking the square root of both sides (noting that square roots preserve
+  inequalities for non-negative numbers), we get
+  \[%
+    \sqrt{2 + a_n} \leq \sqrt{4}
+  .\]%
+  Since $\sqrt{4} = 2$, it follows that
+  \[%
+    a_{n+1} = \sqrt{2 + a_n} \leq 2
+  .\]%
+  Therefore, $P(n + 1)$ holds.
 
-    By the principle of mathematical induction, $a_n \leq 2$ for all $n \geq 0$.
-  \end{proof}
-\end{probsolution}
+  By the principle of mathematical induction, $a_n \leq 2$ for all $n \geq 0$.
+\end{proof}
 
-\newpage
+\medskip
 
-\begin{problem}
+\begin{problem}[12]
   Prove the statement $\left(1 + \frac{1}{2}\right)^n > 1 + \frac{n}{2}$ for all
   $n \ge 2$.
 \end{problem}
 
-\begin{probsolution}
-  \begin{proof}
-    Let $P(n)$ denote the statement $\left(1 + \frac{1}{2}\right)^n > 1 + \frac{n}{2}$.
+\begin{proof}[Solution]
+  Let $P(n)$ denote the statement $\left(1 + \frac{1}{2}\right)^n > 1 +
+  \frac{n}{2}$.
 
-    Base Case: $P(2)$ states $\left(1 + \frac{1}{2}\right)^2 > 1 + \frac{2}{2}$.
-    Compute the both sides gives us
-    \[%
-      \left(1 + \frac{1}{2}\right)^2 = \frac{3}{2} \cdot \frac{3}{2} = \frac{9}{4} \aand 1 + \frac{2}{2} = 2
-    .\]%
-    Clearly, $\frac{9}{4} = 2.25 > 2$, so $P(2)$ holds.
+  Base Case: $P(2)$ states $\left(1 + \frac{1}{2}\right)^2 > 1 + \frac{2}{2}$.
+  Compute the both sides gives us
+  \[%
+    \left(1 + \frac{1}{2}\right)^2 = \frac{3}{2} \cdot \frac{3}{2} = \frac{9}{4} \aand 1 + \frac{2}{2} = 2
+  .\]%
+  Clearly, $\frac{9}{4} = 2.25 > 2$, so $P(2)$ holds.
 
-    Induction Step: Assume $P(n)$ is true for some $k \geq 2$, i.e., assume
-    \[%
-      \left(1 + \frac{1}{2}\right)^n > 1 + \frac{n}{2}
-    .\]%
-    We need to show that $P(n + 1)$ is true, i.e.,
-    \[%
-      \left(1 + \frac{1}{2}\right)^{n+1} > 1 + \frac{n + 1}{2}
-    .\]%
-    Starting with the left-hand side of $P(n + 1)$
-    \[%
-      \left(1 + \frac{1}{2}\right)^{n+1} = \left(1 + \frac{1}{2}\right)^n \cdot \left(1 + \frac{1}{2}\right)
-    .\]%
-    By the induction hypothesis, $\left(1 + \frac{1}{2}\right)^n > 1 +
-    \frac{n}{2}$. Substituting this
-    \[%
-      \left(1 + \frac{1}{2}\right)^{n+1} > \left(1 + \frac{n}{2}\right) \cdot \left(1 + \frac{1}{2}\right)
-    .\]%
-    Expanding the product on the right-hand side
-    \begin{align*}
-      \left(1 + \frac{n}{2}\right) \cdot \left(1 + \frac{1}{2}\right) &= \left(1 + \frac{n}{2}\right) + \frac{1}{2} \left(1 + \frac{n}{2}\right) \\
-                                                                      &= 1 + \frac{n}{2} + \frac{1}{2} + \frac{n}{4} = 1 + \frac{1}{2} + \frac{n}{2} + \frac{n}{4} \\
-                                                                      &= 1 + \frac{n+2}{2} + \frac{n}{4}
-    .\end{align*}
-    Since $\frac{n}{4} > 0$ for $n \geq 2$, it follows that
-    \[%
-      \left(1 + \frac{n}{2}\right) \cdot \left(1 + \frac{1}{2}\right) > 1 + \frac{n+2}{2} = 1 + \frac{n+1}{2}
-    .\]%
-    Therefore, $\left(1 + \frac{1}{2}\right)^{n+1} > 1 + \frac{n + 1}{2}$.
+  Induction Step: Assume $P(n)$ is true for some $k \geq 2$, i.e., assume
+  \[%
+    \left(1 + \frac{1}{2}\right)^n > 1 + \frac{n}{2}
+  .\]%
+  We need to show that $P(n + 1)$ is true, i.e.,
+  \[%
+    \left(1 + \frac{1}{2}\right)^{n+1} > 1 + \frac{n + 1}{2}
+  .\]%
+  Starting with the left-hand side of $P(n + 1)$
+  \[%
+    \left(1 + \frac{1}{2}\right)^{n+1} = \left(1 + \frac{1}{2}\right)^n \cdot \left(1 + \frac{1}{2}\right)
+  .\]%
+  By the induction hypothesis, $\left(1 + \frac{1}{2}\right)^n > 1 +
+  \frac{n}{2}$. Substituting this
+  \[%
+    \left(1 + \frac{1}{2}\right)^{n+1} > \left(1 + \frac{n}{2}\right) \cdot \left(1 + \frac{1}{2}\right)
+  .\]%
+  Expanding the product on the right-hand side
+  \begin{align*}
+    \left(1 + \frac{n}{2}\right) \cdot \left(1 + \frac{1}{2}\right) &= \left(1 + \frac{n}{2}\right) + \frac{1}{2} \left(1 + \frac{n}{2}\right) \\
+                                                                    &= 1 + \frac{n}{2} + \frac{1}{2} + \frac{n}{4} = 1 + \frac{1}{2} + \frac{n}{2} + \frac{n}{4} \\
+                                                                    &= 1 + \frac{n+2}{2} + \frac{n}{4}
+  .\end{align*}
+  Since $\frac{n}{4} > 0$ for $n \geq 2$, it follows that
+  \[%
+    \left(1 + \frac{n}{2}\right) \cdot \left(1 + \frac{1}{2}\right) > 1 + \frac{n+2}{2} = 1 + \frac{n+1}{2}
+  .\]%
+  Therefore, $\left(1 + \frac{1}{2}\right)^{n+1} > 1 + \frac{n + 1}{2}$.
 
-    By the EPMI, $\left(1 + \frac{1}{2}\right)^n > 1 + \frac{n}{2}$ for all $n
-    \geq 2$.
-  \end{proof}
-\end{probsolution}
+  By the EPMI, $\left(1 + \frac{1}{2}\right)^n > 1 + \frac{n}{2}$ for all $n
+  \geq 2$.
+\end{proof}
 
-\newpage
+\medskip
 
-\begin{problem}
+\begin{problem}[13]
   Prove the statement $\frac{1}{1^2} + \frac{1}{2^2} + \frac{1}{3^2} + \cdots
   \frac{1}{n^2} \le 2 - \frac{1}{n}$, for all $n \in \Z_{\ge 1}$.
 \end{problem}
 
-\begin{probsolution}
-  \begin{proof}
-    Let $P(n)$ denote the statement $\displaystyle \frac{1}{1^2} + \frac{1}{2^2}
-    + \frac{1}{3^2} + \cdots + \frac{1}{n^2} \leq 2 - \frac{1}{n}$.
+\begin{proof}[Solution]
+  Let $P(n)$ denote the statement $\displaystyle \frac{1}{1^2} + \frac{1}{2^2} +
+  \frac{1}{3^2} + \cdots + \frac{1}{n^2} \leq 2 - \frac{1}{n}$.
 
-    Base Case: $P(1)$ states $\displaystyle \frac{1}{1^2} \leq 2 - \frac{1}{1}$.
-    Compute both sides
-    \[%
-      \frac{1}{1^2} = 1 \aand 2 - \frac{1}{1} = 1
-    .\]%
-    Clearly, $1 \leq 1$, so $P(1)$ holds.
+  Base Case: $P(1)$ states $\displaystyle \frac{1}{1^2} \leq 2 - \frac{1}{1}$.
+  Compute both sides
+  \[%
+    \frac{1}{1^2} = 1 \aand 2 - \frac{1}{1} = 1
+  .\]%
+  Clearly, $1 \leq 1$, so $P(1)$ holds.
 
-    Induction Step: Assume $P(n)$ holds for some $n \geq 1$, i.e.,
-    \[%
-      \frac{1}{1^2} + \frac{1}{2^2} + \cdots + \frac{1}{n^2} \leq 2 - \frac{1}{n}
-    .\]%
-    We need to show that $P(n + 1)$ is true, i.e.,
-    \[%
-      \frac{1}{1^2} + \frac{1}{2^2} + \cdots + \frac{1}{n^2} + \frac{1}{(n+1)^2} \leq 2 - \frac{1}{n+1}
-    .\]%
-    Starting with the left-hand side of $P(n+1)$
-    \[%
-      \frac{1}{1^2} + \frac{1}{2^2} + \cdots + \frac{1}{n^2} + \frac{1}{(n+1)^2}
-    .\]%
-    By the induction hypothesis, we know
-    \[%
-      \frac{1}{1^2} + \frac{1}{2^2} + \cdots + \frac{1}{n^2} \leq 2 - \frac{1}{n}
-    .\]%
-    Adding $\frac{1}{(n+1)^2}$ to both sides gives
-    \[%
-      \frac{1}{1^2} + \frac{1}{2^2} + \cdots + \frac{1}{n^2} + \frac{1}{(n+1)^2} \leq 2 - \frac{1}{n} + \frac{1}{(n+1)^2}
-    .\]%
-    Performing some algebra gives us
-    \begin{align*}
-      2 - \frac{1}{n} + \frac{1}{(n + 1)^2} &\leq 2 - \frac{1}{n + 1} \\
-      -\frac{1}{n} + \frac{1}{(n + 1)^2} &\leq -\frac{1}{n + 1} \\
-      \frac{1}{(n + 1)^2} &\leq \frac{1}{n} - \frac{1}{n + 1} \\
-      \frac{1}{n} - \frac{1}{n + 1} &= \frac{n + 1 - n}{n(n + 1)} = \frac{1}{n(n + 1)} \\
-      \frac{1}{(n + 1)^2} &\leq \frac{1}{n(n + 1)}
-    .\end{align*}
-    Since $n + 1 > n$, we have $(n + 1)^2 > n(n + 1)$, which implies
-    \[%
-      \frac{1}{(n + 1)^2} < \frac{1}{n(n + 1)}
-    .\]%
-    Hence, the inequality holds.
+  Induction Step: Assume $P(n)$ holds for some $n \geq 1$, i.e.,
+  \[%
+    \frac{1}{1^2} + \frac{1}{2^2} + \cdots + \frac{1}{n^2} \leq 2 - \frac{1}{n}
+  .\]%
+  We need to show that $P(n + 1)$ is true, i.e.,
+  \[%
+    \frac{1}{1^2} + \frac{1}{2^2} + \cdots + \frac{1}{n^2} + \frac{1}{(n+1)^2} \leq 2 - \frac{1}{n+1}
+  .\]%
+  Starting with the left-hand side of $P(n+1)$
+  \[%
+    \frac{1}{1^2} + \frac{1}{2^2} + \cdots + \frac{1}{n^2} + \frac{1}{(n+1)^2}
+  .\]%
+  By the induction hypothesis, we know
+  \[%
+    \frac{1}{1^2} + \frac{1}{2^2} + \cdots + \frac{1}{n^2} \leq 2 - \frac{1}{n}
+  .\]%
+  Adding $\frac{1}{(n+1)^2}$ to both sides gives
+  \[%
+    \frac{1}{1^2} + \frac{1}{2^2} + \cdots + \frac{1}{n^2} + \frac{1}{(n+1)^2} \leq 2 - \frac{1}{n} + \frac{1}{(n+1)^2}
+  .\]%
+  Performing some algebra gives us
+  \begin{align*}
+    2 - \frac{1}{n} + \frac{1}{(n + 1)^2} &\leq 2 - \frac{1}{n + 1} \\
+    -\frac{1}{n} + \frac{1}{(n + 1)^2} &\leq -\frac{1}{n + 1} \\
+    \frac{1}{(n + 1)^2} &\leq \frac{1}{n} - \frac{1}{n + 1} \\
+    \frac{1}{n} - \frac{1}{n + 1} &= \frac{n + 1 - n}{n(n + 1)} = \frac{1}{n(n + 1)} \\
+    \frac{1}{(n + 1)^2} &\leq \frac{1}{n(n + 1)}
+  .\end{align*}
+  Since $n + 1 > n$, we have $(n + 1)^2 > n(n + 1)$, which implies
+  \[%
+    \frac{1}{(n + 1)^2} < \frac{1}{n(n + 1)}
+  .\]%
+  Hence, the inequality holds.
 
-    By EPMI, we have proven that $\displaystyle \frac{1}{1^2} + \frac{1}{2^2} + \cdots + \frac{1}{n^2} \leq 2 - \frac{1}{n}$ for all $n \geq 1$.
-  \end{proof}
-\end{probsolution}
+  By EPMI, we have proven that $\displaystyle \frac{1}{1^2} + \frac{1}{2^2} +
+  \cdots + \frac{1}{n^2} \leq 2 - \frac{1}{n}$ for all $n \geq 1$.
+\end{proof}
 
-\newpage
+\medskip
 
-\begin{problem}
+\begin{problem}[14]
   Fill in each box below with a mathematical proposition that makes the
   biconditional true, and is not a tautology (for example, I don’t want you to
   write ``$A \subseteq B$'' in the first box, even though this makes the
   biconditional true). Copy the complete biconditional statements into your
   homework; do not actually write in the boxes on this worksheet.
-  \begin{enumerate}
-    \item $A \subseteq B \iff $
-    \item $A = B \iff $
-    \item $x \in f(A) \iff $
-    \item $y \in f^{-1}(B) \iff $
-    \item $x \in A \cup B \iff $
-    \item $x \in A \cap B \iff $
-    \item $x \in A - B \iff $
-    \item $f : S \to T$ is onto $\iff $
-    \item $f : S \to T$ is one-to-one $\iff $
-    \item $x \in A \cup (B - C) \iff $
-    \item $X = \emptyset \iff $
-  \end{enumerate}
+  \begin{multicols}{2}
+    \begin{enumerate}
+      \item $A \subseteq B \iff $
+      \item $A = B \iff $
+      \item $x \in f(A) \iff $
+      \item $y \in f^{-1}(B) \iff $
+      \item $x \in A \cup B \iff $
+      \item $x \in A \cap B \iff $
+      \item $x \in A - B \iff $
+      \item $f : S \to T$ is onto $\iff $
+      \item $f : S \to T$ is one-to-one $\iff $
+      \item $x \in A \cup (B - C) \iff $
+      \item $X = \emptyset \iff $
+    \end{enumerate}
+  \end{multicols}
 \end{problem}
 
-\begin{probsolution}
-  \begin{enumerate}
-    \item $A \subseteq B \iff (\forall x \in A)[x \notin B^c]$.
+\begin{proof}[Solution to (i)]
+  $A \subseteq B \iff (\forall x \in A)[x \notin B^c]$.
+\end{proof}
 
-    \item $A = B \iff A \subseteq B \land B \subseteq A$.
+\begin{proof}[Solution to (ii)]
+  $A = B \iff A \subseteq B \land B \subseteq A$.
+\end{proof}
 
-    \item $x \in f(A) \iff (\exists a \in A)[f(a) = x]$.
-    \item $y \in f^{-1}(B) \iff f(y) \in B$.
+\begin{proof}[Solution to (iii)]
+  $x \in f(A) \iff (\exists a \in A)[f(a) = x]$.
+\end{proof}
 
+\begin{proof}[Solution to (iv)]
+  $y \in f^{-1}(B) \iff f(y) \in B$.
+\end{proof}
 
-    \item $x \in A \cup B \iff x \in A \lor x \in B$.
-    \item $x \in A \cap B \iff x \in A \land x \in B$.
+\begin{proof}[Solution to (v)]
+  $x \in A \cup B \iff x \in A \lor x \in B$.
+\end{proof}
 
+\begin{proof}[Solution to (vi)]
+  $x \in A \cap B \iff x \in A \land x \in B$.
+\end{proof}
 
-    \item $x \in A - B \iff x \in A \land x \notin B$.
+\begin{proof}[Solution to (vii)]
+  $x \in A - B \iff x \in A \land x \notin B$.
+\end{proof}
 
-    \item $f : S \to T$ is onto $\iff (\forall t \in T)(\exists s \in S)[f(s) =
-      t]$.
+\begin{proof}[Solution to (viii)]
+  $f : S \to T$ is onto $\iff (\forall t \in T)(\exists s \in S)[f(s) = t]$.
+\end{proof}
 
-    \item $f : S \to T$ is one-to-one $\iff (\forall s_1, s_2 \in S)[(f(s_1) =
-      f(s_2)) \implies (s_1 = s_2)]$.
+\begin{proof}[Solution to (ix)]
+  $f : S \to T$ is one-to-one $\iff (\forall s_1, s_2 \in S)[(f(s_1) = f(s_2)) \implies (s_1 = s_2)]$.
+\end{proof}
 
-    \item $x \in A \cup (B - C) \iff x \in A \lor (x \in B \land x \notin C$.
+\begin{proof}[Solution to (x)]
+  $x \in A \cup (B - C) \iff x \in A \lor (x \in B \land x \notin C$.
+\end{proof}
 
-    \item $X = \emptyset \iff (\forall x)[x \notin X]$.
-  \end{enumerate}
-\end{probsolution}
+\begin{proof}[Solution to (xi)]
+  $X = \emptyset \iff (\forall x)[x \notin X]$.
+\end{proof}
 
-\newpage
+\medskip
 
-\begin{problem}
+\begin{problem}[15]
   Write definitions for the following sets, using set-builder notation. The
   first one is done for you.
   \begin{enumerate}
@@ -635,12 +650,22 @@
   \end{enumerate}
 \end{problem}
 
-\begin{probsolution}
-  \begin{enumerate}
-    \item $X - A = \{x \in X \mid x \notin A\}$.
-    \item $f^{-1}(B) = \{x \in A \mid f(x) \in B\}$.
-    \item $A \cup B = \{x \mid x \in A \lor x \in B\}$.
-    \item $f(A) = \{y \in B \mid (\exists x \in A)[f(x) = y]\}$.
-    \item $C \cap f^{-1}(B) = \{x \in C \mid f(x) \in B\}$.
-  \end{enumerate}
-\end{probsolution}
+\begin{proof}[Solution to (i)]
+  $X - A = \{x \in X \mid x \notin A\}$.
+\end{proof}
+
+\begin{proof}[Solution to (ii)]
+  $f^{-1}(B) = \{x \in A \mid f(x) \in B\}$.
+\end{proof}
+
+\begin{proof}[Solution to (iii)]
+  $A \cup B = \{x \mid x \in A \lor x \in B\}$.
+\end{proof}
+
+\begin{proof}[Solution to (iv)]
+  $f(A) = \{y \in B \mid (\exists x \in A)[f(x) = y]\}$.
+\end{proof}
+
+\begin{proof}[Solution to (v)]
+  $C \cap f^{-1}(B) = \{x \in C \mid f(x) \in B\}$.
+\end{proof}
