@@ -1,4 +1,4 @@
-\nte[Section 2.2]{Oct 14 2024 Mon (13:00:26)}{Limit of a Sequence}
+\lecture{6}{Oct 14 2024 Mon (13:00:26)}{Limit of a Sequence}
 
 \section{Required Definitions}
 \label{sec:required_definitions}
@@ -12,10 +12,10 @@ Given a function $f : \N \to \R$, $f(n)$ is just the $n$th term on the list.
 \begin{example}
   Each of the following are common ways to describe sequences.
   \begin{enumerate}
-    \item $(1, \frac{1}{2}, \frac{1}{3}, \frac{1}{4}, \dots)$.
+    \item $\left(1, \frac{1}{2}, \frac{1}{3}, \frac{1}{4}, \dots\right)$.
 
-    \item $(\frac{1 + n}{n})_{n=1}^{\infty} = (\frac{2}{1}, \frac{3}{2},
-      \frac{4}{5}, \dots)$.
+    \item $\left(\frac{1 + n}{n}\right)_{n=1}^{\infty} = \left(\frac{2}{1},
+      \frac{3}{2}, \frac{4}{5}, \dots\right)$.
 
     \item $(a_n)$, where $a_n = 2^n$ for each $n \in \N$.
 
@@ -26,7 +26,7 @@ Given a function $f : \N \to \R$, $f(n)$ is just the $n$th term on the list.
 \begin{definition}[Convergence of a Sequence]
   A sequence $(a_n)$ \textit{converges} to a real number $\ell$ if,
   \[%
-    (\forall \epsilon > 0)(\exists N \in \N)(\forall n \ge N) \lvert a_n - \ell \rvert < \epsilon
+    (\forall \epsilon > 0)(\exists N \in \N)(\forall n \ge N)[\lvert a_n - \ell \rvert < \epsilon]
   .\]%
   We say that $\ell$ is the limit of $(a_n)$.
 \end{definition}
@@ -141,9 +141,9 @@ the larger $N$ may need to be.
 \subsection{Quantifiers}
 \label{sub_sec:quantifiers}
 
-The definition begins with $(\forall \epsilon > 0)$. This means that we are
-trying to prove that the sequence converges for all $\epsilon > 0$. Say,
-$\epsilon = 0.00000001$, or $\epsilon = 100000000$, and so on.
+The definition begins with $\forall \epsilon > 0$. This means that we are trying
+to prove that the sequence converges for all $\epsilon > 0$. Say, $\epsilon =
+0.00000001$, or $\epsilon = 100000000$, and so on.
 
 The next quantifier is $(\exists N \in \N)$. This means that we need to find a
 natural number $N$ such that the condition holds for all $n \ge N$. This doesn't
@@ -182,7 +182,7 @@ Here's a template for a proof of $(x_n) \to x$.
 \label{sub_sec:examples}
 
 \begin{question}
-  Prove that $(\frac{1}{\sqrt{n}}) \to 0$.
+  Prove that $\left(\frac{1}{\sqrt{n}}\right) \to 0$.
 \end{question}
 
 \begin{worksheet}
@@ -217,13 +217,14 @@ Here's a template for a proof of $(x_n) \to x$.
   Let $\epsilon > 0$ be arbitrarily chosen. Choose a natural number $N$
   satisfying
   \[%
-    N > \frac{1}{\epsilon^2}~\left(\textrm{say}~N = \max\left\{\left\lfloor \frac{1}{\epsilon^2} \right\rfloor + 1, 0\right\}~\right)
+    N > \frac{1}{\epsilon^2}
   .\]%
   We now verify that this choice of $N$ has the desired property. Let $n \ge N$.
   Then,
   \[%
-    n > \frac{1}{\epsilon^2} \implies \frac{1}{n} < \epsilon^2 \implies \frac{1}{\sqrt{n}} < \epsilon \qtq{hence} \lvert a_n - 0 \rvert < \epsilon
-  .\qedhere\]%
+    n > \frac{1}{\epsilon^2} \implies \frac{1}{n} < \epsilon^2 \implies \frac{1}{\sqrt{n}} < \epsilon \implies \lvert a_n - 0 \rvert < \epsilon
+  .\]%
+  Hence, $(\frac{1}{\sqrt{n}}) \to 0$.
 \end{proof}
 
 \begin{question}
@@ -265,7 +266,7 @@ Here's a template for a proof of $(x_n) \to x$.
 
 \begin{worksheet}
   We know that $(a_n) \to a$, meaning that there exists $N_1 \in \N$ such that
-  $\lvert a_n - a \rvert < \epsilon$ for all $n \ge N_1$. Same thing for $(b_n)
+  $\lvert a_n - a \rvert < \epsilon$ for all $n \ge N_1$. Same thing for $(a_n)
   \to b$. But how do we show that $a = b$?
 
   Choose $N > \max(\{N_1, N_2\})$. We just let $N$ be the biggest of the two
@@ -277,7 +278,7 @@ Here's a template for a proof of $(x_n) \to x$.
   .\]%
   Some people don't like the fact that everything is less than $2\epsilon$. To
   show that it's less than $\epsilon$, we can let $\lvert a_n - a \rvert <
-  \sfrac{\epsilon}{2}$. Same thing for $(b_n)$. Using that, we get the new
+  \sfrac{\epsilon}{2}$. Same thing for $(a_n) \to b$. Using that, we get the new
   inequality
   \[%
     \lvert a - b \rvert < \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon
@@ -303,5 +304,3 @@ This can be re-written as, if $(a_n) \to a$ and $(a_n) \to b$, then $a = b$.
 % subsection examples (end)
 
 % section working_with_limits (end)
-
-\newpage

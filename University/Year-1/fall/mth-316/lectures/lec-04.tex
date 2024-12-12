@@ -1,4 +1,4 @@
-\nte{Oct 07 2024 Mon (13:01:52)}{Consequences of Completeness}
+\lecture{4}{Oct 07 2024 Mon (13:01:52)}{Consequences of Completeness}
 
 \section{Nested Interval Property}
 \label{sec:nested_interval_property}
@@ -89,10 +89,9 @@ The Nested Interval Property can be viewed graphically, as shown below.
 
 \begin{theorem}[Archimedian Property] $ $
   \begin{enumerate}
-    \item Given any number $x \in \R$, $\exists n \in \N$ satisfying $n > x$.
+    \item $(\forall x \in \R)(\exists n \in \N)[n > x]$.
 
-    \item Given any real number $y > 0$, $\exists n \in \N$ such that
-      $\sfrac{1}{n} < 1$.
+    \item $(\forall y > 0)(\exists n \in \N)[\sfrac{1}{n} < 1]$.
   \end{enumerate}
 \end{theorem}
 
@@ -116,8 +115,8 @@ The Nested Interval Property can be viewed graphically, as shown below.
 
 \begin{proof}
   Let $a > 0$, giving us $0 < a < b$. Then, $b - a > 0$. By the archimedean
-  property, $\exists n \in \N$ such that $\sfrac{1}{n} < b - a \iff a < b -
-  \sfrac{1}{n}$.
+  property, $(\exists n \in \N)[\sfrac{1}{n} < b - a \iff a < b -
+  \sfrac{1}{n}]$.
 
   There is an $m \in \N$ such that $m - 1 \le na \le m \iff \frac{m - 1}{n} \le
   a \le \frac{m}{n}$.
@@ -144,8 +143,8 @@ real numbers, giving us
 
 \begin{proof}
   Assume $a > 0$. Given $a < b$, then $a - \sqrt{2} < b - \sqrt{2}$. By the
-  density of $\Q$, then $\exists r \in \Q$ such that $a - \sqrt{2} < r_1 < b -
-  \sqrt{2} \implies a < r + \sqrt{2} < b$. Since $r$ is rational, then $r +
+  density of $\Q$, then there exists $r \in \Q$ such that $a - \sqrt{2} < r_1 <
+  b - \sqrt{2} \implies a < r + \sqrt{2} < b$. Since $r$ is rational, then $r +
   \sqrt{2}$ is irrational.
 \end{proof}
 
@@ -197,5 +196,3 @@ real numbers, giving us
 \end{proof}
 
 % section square_roots (end)
-
-\newpage

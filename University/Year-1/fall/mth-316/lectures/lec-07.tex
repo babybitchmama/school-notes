@@ -1,4 +1,4 @@
-\nte[Section 2.3]{Oct 16 2024 Wed (13:01:48)}{Algebraic and Order Limit Theorem}
+\lecture{7}{Oct 16 2024 Wed (13:01:48)}{Algebraic Limit Theorem}
 
 \begin{definition}[Bounded]
   A sequence $(x_n)$ is \textit{bounded} if there exists a number $M > 0$ such
@@ -108,44 +108,3 @@ every term in the sequence $(x_n)$.
 \end{proof}
 
 % section arithmetics_of_limits (end)
-
-\section{Order Limit Theorem}
-\label{sec:order_limit_theorem}
-
-\begin{theorem}[Order Limith Theorem]
-  Assume $\lim_{n \to \infty} a_n = a$ and $\lim_{n \to \infty} b_n = b$.
-  \begin{enumerate}
-    \item If $a_n \ge 0$ for all $n \in \N$, then $a \ge 0$.
-
-    \item If $a_n \le b_n$ for all $n \in \N$, then $a \le b$.
-
-    \item If there exists $c \in \R$ for which $c \le b_n$ for all $n \in \N$,
-      then $c \le b$. Similarly, if $a_n \le c$ for all $n \in \N$, then $a \le
-      c$.
-  \end{enumerate}
-\end{theorem}
-
-\begin{proof} $ $
-  \begin{enumerate}
-    \item Assume $a < 0$. Consider the particular value $\epsilon = \lvert a
-      \rvert$. Then, we can find an $N$ such that $\lvert a_n - a \rvert <
-      \lvert a \rvert$, for all $n \ge N$. This would mean that $\lvert a_N - a
-      \rvert < \lvert a \rvert$, which implies that $a_N < 0$, which contradicts
-      our hypothesis. Therefore, $a \ge 0$
-
-    \item By the Algebraic Limit Theorem, the sequence $(b_n - a_n)$ converges
-      to $b - a$. Because $b_n - a_n > 0$, we can apply part (i) to get $b - a
-      \ge 0$, which implies that $a \le b$.
-
-    \item Take $a_n = c$ or $b_n = c$ in part (ii) to get the desired result.
-      \qedhere
-  \end{enumerate}
-\end{proof}
-
-Limits and their properties don't depend on the first few terms of the sequence.
-Changing the value of the first ten or even ten thousand terms doesn't change
-the limit of the sequence.
-
-% section order_limit_theorem (end)
-
-\newpage

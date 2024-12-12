@@ -268,50 +268,14 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \def\notenum{}
-\newcommand\includenote[1]{
-  \ifnum #1<10
-    \def\notenum{0#1}
-  \else
-    \def\notenum{#1}
-  \fi
-
-  \setcounter{chapter}{#1}
-  \resetcounters
-  \IfFileExists{\noteloc-\notenum.tex}{\input{\noteloc-\notenum.tex}}{}
-}
-
-\newcommand\includenotes[2]{
-  \foreach \n in {#1,...,#2}{
-    \includenote{\n}
-  }
-}
-
-\newcommand\localtoc{
-  \startcontents
-  \printcontents{}{1}{\noindent{\color{black}\rule{\textwidth}{0.4pt}\par}\vspace*{-0.3cm}\subsection*{{\color{black}Lecture Note Overview}}}
-  \noindent{{\color{black}\rule{\textwidth}{0.4pt}\par}}
-}
-
-\newcounter{nte}[chapter]
-\def\@note{}
-\NewDocumentCommand\nte{O{} O{} m m}{%
-  \cleartoleftpage
-  \setcounter{nte}{\arabic{chapter}}
-  \resetcounters
+\def\@note{}%
+\newcommand{\lecture}[3]{
   \ifthenelse{\isempty{#3}}{%
-    \def\@note{\lecorchap~\arabic{chapter}}
+    \def\@note{Lecture #1}%
   }{%
-    \def\@note{\lecorchap~\arabic{chapter}: #4}
+    \def\@note{Lecture #1: #3}%
   }%
-  \phantomsection\addcontentsline{toc}{chapter}{\protect\numberline{\thechapter}#4}
-  {\fontsize{10}{12}\selectfont\sffamily\ifstrequal{#1}{}{}{\noindent#1}\ifstrequal{#3}{}{}{\hfill#3}}
-  \vspace*{0.03cm}
-  \hrule
-  \vspace*{0.3cm}
-  \noindent{\bfseries\sffamily\fontsize{20}{30}\selectfont\@note}
-
-  \ifstrequal{#2}{false}{\vspace{0.25cm}}{\localtoc}
-  \setcounter{section}{0}
+  \section*{\@note\hfill{\small\textnormal{#2}}}
 }
 
 % Intro
@@ -374,15 +338,15 @@
   }
 }
 
-% Import Figures
-\newcommand\incimg[2][1]{%
-  \includegraphics[width=#1\columnwidth]{\figloc-\notenum/#2}%
-}
+% % Import Figures
+% \newcommand\incimg[2][1]{%
+%   \includegraphics[width=#1\columnwidth]{\figloc-\notenum/#2}%
+% }
 
-\newcommand\incfig[2][1]{
-  \def\svgwidth{#1\columnwidth}
-  \import{\figloc-\notenum}{#2.pdf_tex}
-}
+% \newcommand\incfig[2][1]{
+%   \def\svgwidth{#1\columnwidth}
+%   \import{\figloc-\notenum}{#2.pdf_tex}
+% }
 
 % Correct
 \newcommand\correct[1]{\textcolor{correct}{#1}}
