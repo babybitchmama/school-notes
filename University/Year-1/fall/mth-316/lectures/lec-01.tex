@@ -1,7 +1,6 @@
 \lecture{1}{Sep 30 2024 Mon (13:01:47)}{Set theory}
 
 \section{Single Sets}
-\label{sec:single_sets}
 
 \begin{definition}
   A \textit{set} is a collection of objects, called \textit{elements} of the
@@ -13,7 +12,7 @@ Let's define the following sets, as we'll be using them throughout the notes
   \N &= \{1, 2, 3, \ldots\} \\
   \N_0 &= \{0, 1, 2, 3, \ldots\} \\
   \Z &= \{\ldots, -2, -1, 0, 1, 2, \ldots\} \\
-  \Q &= \left\{\frac{m}{n} \mid m \in \Z, n \in \N\right\} \\
+  \Q &= \left.\left\{\frac{m}{n} \right\rvert m \in \Z, n \in \N\right\} \\
   \R &= \textrm{real numbers}
 .\end{align*}
 
@@ -40,15 +39,20 @@ Let $S$ be a set. We have the following notation regarding sets
   statement $A \lor B$ is true if at least one of $A$ or $B$ or both are true.
 \end{note}
 
-I'll be using the following notation throughout the notes
-\begin{enumerate}
-  \item $\forall x \in S$: for all $x$ in the set $S$.
-  \item $\exists x \in S$: there exists an $x$ in the set $S$.
-\end{enumerate}
+\begin{note}
+  I'll be using the following notation throughout the notes
+  \begin{enumerate}
+    \item $\forall x \in S$: for all $x$ in the set $S$.
+    \item $\exists x \in S$: there exists an $x$ in the set $S$.
+  \end{enumerate}
+  When I combine quantifiers, I do so as such $(\forall x \in S)(\exists y \in
+  S)[P(x, y)]$. This means that for all $x$ in the set $S$, there exists a $y$
+  in the set $S$ such that the statement $P(x, y)$ is true.
+\end{note}
 
 So, for we can re-write all of the definitions as follows
 \[%
-  A \subseteq S \implies (\forall x) x \in A \implies x \in S
+  A \subseteq S \implies (\forall x \in A)[x \in S]
 .\]%
 
 A set $A$ is equal to another set $B$ if and only if $A \subseteq B$ and $B
@@ -132,7 +136,6 @@ This gives us our first
 % section single_sets (end)
 
 \section{Families of Sets}
-\label{sec:families_of_sets}
 
 We will, in the upcoming notes, be dealing with families of sets. A family of
 sets is a set of sets.
@@ -156,15 +159,12 @@ Similarly, we denote the intersection of a family of sets as
 What exactly does this mean? Let's re-write the unions and intersections using
 quantifiers
 \begin{align}
-  \begin{aligned}\label{eq:union_intersection_quantifiers}
+  \begin{aligned}
     \empheq{
       x \in \bigcup_{n=1}^{\infty} A_n &\iff (\exists n \in \N)[x \in A_n] \\
-      x \in \bigcap_{n=1}^{\infty} A_n &\iff (\forall n \in \N)[\exists x \in A_n]
+      x \in \bigcap_{n=1}^{\infty} A_n &\iff (\forall n \in \N)[x \in A_n]
     }
   \end{aligned}
 \end{align}
-
-Equation \ref{eq:union_intersection_quantifiers} will be very useful to prove
-statements regarding unions and intersections.
 
 % section families_of_sets (end)

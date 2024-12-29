@@ -1,7 +1,6 @@
 \lecture{3}{Oct 4 2024 Fri (13:00:10)}{Axiom of Completeness}
 
 \section{Logic}
-\label{sec:logic}
 
 The easiest proof to see as a beginner is the proof that $\sqrt{2}$ is
 irrational.
@@ -12,13 +11,12 @@ irrational.
 
 \begin{proof}
   Assume that $\sqrt{2}$ is rational, meaning that $(\exists p \in \Z)(\exists q
-  \in \Z)[\sfrac{p}{q} \in \Z]$. Assume that $\sfrac{p}{q}$ is in simplest form,
+  \in \Z)[2 = \sfrac{p}{q}]$. Assume that $\sfrac{p}{q}$ is in simplest form,
   meaning $p$ and $q$ have no common factor. Then $\sqrt{2} = \sfrac{p}{q} \iff
   2 = \sfrac{p^2}{q^2} \implies 2q^2 = p^2$. This means $p^2$ is an even
-  integer. Then $(\exists r)[r \in \N]$ such that $p = 2r$, giving us $4r^2 =
-  2q^2$. This means $q^2$ is also an even integer, which is a contradiction,
-  since $p$ and $q$ were assumed to be in simplest form. Therefore, $\sqrt{2}$
-  is irrational.
+  integer. Then $(\exists r \in \N)[p = 2r]$, giving us $4r^2 = 2q^2$. This
+  means $q^2$ is also an even integer, which is a contradiction, since $p$ and
+  $q$ were assumed to be in simplest form. Therefore, $\sqrt{2}$ is irrational.
 \end{proof}
 
 \begin{theorem}
@@ -38,7 +36,6 @@ irrational.
 \end{proof}
 
 \subsection{Induction}
-\label{sub_sec:induction}
 
 Let $S(n)$ be a statement. If $S(1)$ is true and $S(n) \implies S(n + 1)$ is
 true, $(\forall n \in \N)[S(n)]$.
@@ -91,7 +88,6 @@ true, $(\forall n \in \N)[S(n)]$.
 % section logic (end)
 
 \section{Axiom of Completeness}
-\label{sec:axiom_of_completeness}
 
 The defining difference between $\R$ and $\Q$ is that $\R$ does not contain the
 gaps that permeate $\Q$. We will be precise about how we phrase this assumption.
@@ -114,7 +110,6 @@ This is referred to as the \textit{Axiom of Completeness}.
 Now, let's break down the definition of the least upper bound.
 
 \subsection{Least Upper Bound and Greatest Lower Bound}
-\label{sub_sec:least_upper_bound_and_greatest_lower_bound}
 
 \begin{definition}[Upper Bound]
   A set $A \subseteq \R$ is bounded above if $(\exists b \in \R)(\forall a \in
@@ -207,7 +202,6 @@ The least upper bound is also called the \textit{supremum} of the set $A$. The
 % subsection least_upper_bound_and_greatest_lower_bound (end)
 
 \subsection{Maximum and Minimum}
-\label{sub_sec:maximum_and_minimum}
 
 \begin{definition}[Maximum and Minimum]
   A real number $a_0$ is a \textit{maximum} of the set $A$ if $a_0$ is an
@@ -222,7 +216,7 @@ neither a maximum nor a minimum, since $a$ and $b$ aren't in the set.
 
 \begin{example}
   Let $\displaystyle A = \left.\left\{1 + \frac{1}{n}~\right\rvert n \in
-  \N\right\}$, giving us $\sup(A) = \max(A) = 2$, but $\inf(A) = 1 \ne \min(A)$,
+  \N\right\}$, giving us $\sup(A) = 2 = \max(A)$, but $\inf(A) = 1 \ne \min(A)$,
   as it does not exist.
 \end{example}
 
@@ -233,30 +227,22 @@ neither a maximum nor a minimum, since $a$ and $b$ aren't in the set.
 \end{question}
 
 \begin{proof}[Solution]
-  Let $s = \sup(A)$. Since $s$ is an upper bound of $A$,
+  Let $s = \sup(A)$. Let $a \in A$. Since $s$ is an upper bound of $A$, then $a
+  \le s \implies a + c \le s + c$ implies that $c + s$ is an upper bound of $c +
+  A$. Then, $a \le s \implies a + c \le s + c \implies c + s$ is an upper bound
+  of $c + A$. If $b$ is an upper bound of $A$, then $s \le b$. Now, let $d$ be
+  an upper bound of $c + A$. Then, $c + a \le d \implies a \le d - c \iff d - c$
+  is an upper bound of $A$. Then,
   \begin{align*}
-    \forall a \in A, \quad a \le s &\implies a + c \le s + c \\
-                                   &\implies c + s~\textrm{is an upper bound of $c + A$}
-  .\end{align*}
-  If $b$ is an upper bound of $A$, then $s \le b$. Now, let $d$ be an upper
-  bound of $c + A$
-  \begin{align*}
-    \forall a \in A &\implies c + a \le d \\
-                    &\implies a \le d - c \\
-                    &\iff d - c~\textrm{is an upper bound of $A$}
-  .\end{align*}
-  Then,
-  \begin{align*}
-    \phantom{\implies}&s = \sup(A) \le d - c \\
-    \implies&s + c \le d \\
-    \implies&s + c = \sup(c + A)
+    \phantom{\implies}\quad&s = \sup(A) \le d - c \\
+    \implies\quad&s + c \le d \\
+    \implies\quad&s + c = \sup(c + A)
   .\qedhere\end{align*}
 \end{proof}
 
 % subsection maximum_and_minimum (end)
 
 \subsection{Proving the upper bound}
-\label{sub_sec:proving_the_upper_bound}
 
 How do we actually show that $a$ is an upper bound for a set $A \subseteq \R$?
 We use the following
@@ -292,6 +278,6 @@ We use the following
   all $n \in \N$. Therefore, $s = 1$.
 \end{proof}
 
-% % subsection proving_the_upper_bound (end)
+% subsection proving_the_upper_bound (end)
 
-% % section axiom_of_completeness (end)
+% section axiom_of_completeness (end)
