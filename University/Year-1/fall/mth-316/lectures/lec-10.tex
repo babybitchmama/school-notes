@@ -1,1 +1,50 @@
 \lecture{10}{Oct 23 2024 Wed (13:00:51)}{Intro to Infinite Series}
+
+\section{Infinite Series}
+\label{sec:infinite_series}
+
+\begin{definition}[Infinite Series and Partial Sums]
+  Let $b_n$ be a sequence. An \textit{infinite series} is a formal expression of
+  the form
+  \[%
+    \sum_{n=1}^{\infty} b_n = b_1 + b_2 + b_3 + \cdots
+  .\]%
+  The $n$-th \textit{partial sum} of the series s
+  \[%
+    s_m = \sum_{n=1}^{m} b_n = b_1 + b_2 + \cdots + b_m
+  .\]%
+\end{definition}
+
+If $(b_n)$ converges to $L$, then we say $\sum_{n=1}^{\infty} b_n$ converges.
+The following are equivalent
+\[%
+  \lim_{n \to \infty} s_n = L = \lim_{n \to \infty} \sum_{k=1}^n b_k
+.\]%
+
+\begin{theorem}
+  If $(\forall n \in \N)[a_n \ge 0]$, then $\sum_{n=1}^{\infty} a_n$ converges
+  if and only if the sequence of partial sums $(s_n)$ is bounded.
+\end{theorem}
+
+\begin{proof}
+  If $a_n \ge 0$, then $s_{n+1} = s_n + a_n \ge s_n$. By the Monotone
+  Convergence Theorem, $(s_n)$ converges if and only if it is bounded.
+\end{proof}
+
+\begin{example}
+  Given the sequence $a_n = \frac{1}{n^2}$. We can re-write this as
+  \[%
+    \sum_{n=1}^N \frac{1}{n^2} = 1 + \sum_{n=2}^N \frac{1}{n^2}
+  .\]%
+  This gives us
+  \begin{align*}
+    n^2 &\ge n(n - 1) \\
+        &< 1 + \sum_{n=2}^N \frac{1}{n(n - 1)} = 1 + \sum_{n=2}^N \left(\frac{1}{n - 1} - \frac{1}{n}\right) \\
+        &= 1 + \left(1 - \frac{1}{N}\right) = 2 - \frac{1}{N} < 2
+  .\end{align*}
+  So, $n^2 \ge 2$ for all $n \in \N$. Thus, $a_n = \frac{1}{n^2}$ is bounded
+  below by $0$ and above by $2$. Therefore, $\sum_{n=1}^{\infty} \frac{1}{n^2}$
+  converges.
+\end{example}
+
+% section infinite_series (end)
