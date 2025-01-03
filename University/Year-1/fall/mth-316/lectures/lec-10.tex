@@ -9,30 +9,30 @@
   \[%
     \sum_{n=1}^{\infty} b_n = b_1 + b_2 + b_3 + \cdots
   .\]%
-  The $n$-th \textit{partial sum} of the series s
+  The $n$-th \textit{partial sum} of the series is
   \[%
-    s_m = \sum_{n=1}^{m} b_n = b_1 + b_2 + \cdots + b_m
+    S_N = \sum_{n=1}^{N} b_n = b_1 + b_2 + \cdots + b_N
   .\]%
 \end{definition}
 
 If $(b_n)$ converges to $L$, then we say $\sum_{n=1}^{\infty} b_n$ converges.
 The following are equivalent
 \[%
-  \lim_{n \to \infty} s_n = L = \lim_{n \to \infty} \sum_{k=1}^n b_k
+  \lim_{n \to \infty} S_n = L = \lim_{n \to \infty} \sum_{k=1}^n b_k
 .\]%
 
 \begin{theorem}
   If $(\forall n \in \N)[a_n \ge 0]$, then $\sum_{n=1}^{\infty} a_n$ converges
-  if and only if the sequence of partial sums $(s_n)$ is bounded.
+  if and only if the sequence of partial sums $(S_n)$ is bounded.
 \end{theorem}
 
 \begin{proof}
-  If $a_n \ge 0$, then $s_{n+1} = s_n + a_n \ge s_n$. By the Monotone
-  Convergence Theorem, $(s_n)$ converges if and only if it is bounded.
+  If $a_n \ge 0$, then $S_{n+1} = S_n + a_n \ge S_n$. By the Monotone
+  Convergence Theorem, $(S_n)$ converges if and only if it is bounded.
 \end{proof}
 
 \begin{example}
-  Given the sequence $a_n = \frac{1}{n^2}$. We can re-write this as
+  Given the sequence $a_n = \frac{1}{n^2}$, we can re-write this as
   \[%
     \sum_{n=1}^N \frac{1}{n^2} = 1 + \sum_{n=2}^N \frac{1}{n^2}
   .\]%
@@ -47,4 +47,173 @@ The following are equivalent
   converges.
 \end{example}
 
+\begin{example}[Harmonic Series]
+  Let $a_n = \frac{1}{n}$, then $a_n \to 0$ but $\sum_{n=1}^{\infty}
+  \frac{1}{n} \to \infty$. This can be shown by
+  \[%
+    S_{2^n} - S_{2^{n-1}} = \frac{1}{S^{n-1} + 1} + \cdots + \frac{1}{S^n} \ge \frac{2^{n-1}}{2^n} = \frac{1}{2}
+  .\]%
+  Therefore, $S_{2^n} \ge S_1 + \frac{n}{2}$, meaning that the harmonic series
+  diverges.
+\end{example}
+
+\begin{example}[Geometric Series]
+  Let $\lvert \rho \rvert < 1$. Then
+  \[%
+    \sum_{n=0}^{\infty} \rho^n = \frac{1}{1 - \rho}
+  .\]%
+  Consider the partial sum
+  \[%
+    S_N = \sum_{n=0}^N \rho^N = \frac{1 - \rho^{N+1}}{1 - \rho}
+  .\]%
+  Therefore, $\sum_{n=0}^{\infty} \rho^n$ converges to $\frac{1}{1 - \rho}$.
+\end{example}
+
+\subsection{Cauchy Condensation Test}
+\label{sub_sec:cauchy_condensation_test}
+
+\begin{theorem}[Cauchy Condensation Test]
+  Suppose $(b_n)$ is decreasing and satisfies $b_n \ge 0$ for all $n \in \N$.
+  Then, the series $\sum_{n=1}^{\infty} b_n$ converges if and only if the series
+  \[%
+    \sum_{n=0}^{\infty} 2^nb_{2^n} = b_1 + 2b_2 + 4b_4 + 8b_8 + 16b_{16} + \cdots
+  ,\]%
+  converges.
+\end{theorem}
+
+\begin{proof}
+  First, assume that $\sum_{n=0}^{\infty} 2^nb_{2^n}$ converges. Then, the
+  partial sum
+  \[%
+    t_k = b_1 + 2b_2 + 4b_4 + \cdots + 2^kb_{2^k}
+  ,\]%
+  is bounded, by some number $M$. Because $b_n \ge 0$, we know that the partial
+  sums are increasing. Let $S_m = b_1 + b_2 + b_3 + \cdots + b_m$. Fix $m$ and
+  let $k$ be large enough to ensure $m \le 2_{k+1} - 1$. Then, $S_m \le S_{2^k +
+  1} - 1$ and
+  \begin{align*}
+    S_{2^{k+1}} - 1 &= b_1 + (b_2 + b_3) + (b_4 + \cdots + b_7) + \cdots + (b_{2^k} + \cdots + b_{2^{k+1} - 1}) \\
+                    &\le b_1 + 2b_2 + 4b_4 + \cdots + 2^kb_{2^k} \\
+                    &= t_k
+  .\end{align*}
+  Therefore, $S_m \le t_k \le M$ for all $m \in \N$. This implies that $(S_m)$
+  is bounded and therefore converges.
+\end{proof}
+
+That was essentially a proof that the sum $\sum_{n=1}^{\infty} \frac{1}{n}$
+diverges and that $\sum_{n=1}^{\infty} \frac{1}{n^{\rho}}$ converges for $\rho >
+1$.
+
+\begin{corollary}
+  The series
+  \[%
+    \sum_{n=1}^{\infty} \frac{1}{n^{\rho}}
+  .\]%
+  converges if and only if $\rho > 1$.
+\end{corollary}
+
+\begin{proof}
+  Let $b_n = \frac{1}{n^{\rho}}$. By the Cauchy Condensation Test, the series
+  $\sum_{n=1}^{\infty} b_n$ converges if and only if the series
+  \[%
+    \sum_{n=0}^{\infty} 2^n \cdot \frac{1}{(2^n)^{\rho}} = \sum_{n=0}^{\infty} \frac{1}{2^{n(\rho-1)}}
+  .\]%
+  converges. The latter is a geometric series with common ratio $r =
+  \frac{1}{2^{\rho-1}}$. A geometric series converges if and only if $\lvert r
+  \rvert < 1$. Thus, $\lvert r \rvert < 1$ implies
+  \[%
+    \frac{1}{2^{\rho-1}} < 1,
+  \]%
+  which holds if and only if $\rho - 1 > 0$, or equivalently, $\rho > 1$.
+  Therefore, $\sum_{n=1}^{\infty} \frac{1}{n^{\rho}}$ converges if and only if
+  $\rho > 1$.
+\end{proof}
+
+% subsection cauchy_condensation_test (end)
+
 % section infinite_series (end)
+
+\section{Infinite Products}
+\label{sec:infinite_products}
+
+\begin{note}
+  This isn't part of the course, but it's interesting to know.
+\end{note}
+
+Infinite products are an extension of finite products, where an infinite
+sequence of terms is multiplied together. They are often used in advanced
+mathematics to study sequences, series, and special functions. An infinite
+product takes the form
+\[%
+  \prod_{n=1}^{\infty} (1 + a_n) = (1 + a_1)(1 + a_2)(1 + a_3) \cdots
+.\]%
+Similar to infinite series, the convergence of an infinite product depends on
+the behavior of the terms $a_n$.
+
+\subsection{Convergence of Infinite Products}
+\label{sub_sec:convergence_of_infinite_products}
+
+An infinite product $\prod_{n=1}^{\infty} (1 + a_n)$ converges if the partial
+product
+\[%
+  P_N = \prod_{n=1}^{N} (1 + a_n)
+.\]%
+converges to a finite, nonzero limit as $N \to \infty$. For convergence, a
+necessary condition is that $a_n \to 0$ as $n \to \infty$, since large terms
+would make the product diverge.
+
+\begin{remark}
+  If $\prod_{n=1}^{\infty} (1 + a_n)$ converges, then $\sum_{n=1}^{\infty} \ln(1
+  + a_n)$ must also converge, provided $\ln(1 + a_n)$ is well-defined. Thus,
+  infinite products can often be analyzed by studying the associated series
+  $\sum_{n=0}^{\infty} \ln(1 + a_n)$.
+\end{remark}
+
+% subsection convergence_of_infinite_products (end)
+
+\subsection{Relation to Infinite Series}
+\label{sub_sec:relation_to_infinite_series}
+
+Infinite products are closely related to infinite series via the logarithm
+function. For small $a_n$, the approximation $\ln(1 + a_n) \approx a_n$ can be
+used to study the convergence of the series
+\[%
+  \ln\left(\prod_{n=1}^{\infty} (1 + a_n) \right) = \sum_{n=1}^{\infty} \ln(1 + a_n)
+.\]%
+This connection allows us to convert between infinite products and infinite
+series in many cases.
+
+% subsection relation_to_infinite_series (end)
+
+\subsection{Examples}
+\label{sub_sec:examples}
+
+\begin{example}[Geometric Infinite Product]
+  Consider $a_n = \rho^n$ with $\lvert \rho \rvert < 1$. Then the infinite
+  product is
+  \[%
+    \prod_{n=1}^{\infty} (1 + \rho^n)
+  .\]%
+  By taking the logarithm, this can be related to the sum $\sum_{n=0}^{\infty}
+  \ln(1 + \rho^n)$, and convergence is determined by the geometric series
+  properties of $\rho^n$.
+\end{example}
+
+\begin{example}[Euler's Product Formula for Primes]
+  A famous infinite product representation of the Riemann zeta function is
+  \[%
+    \zeta(s) = \prod_{p~\textrm{prime}} \frac{1}{1 - p^{-s}}
+  ,\]%
+  for $s > 1$. This connects infinite products to the distribution of prime
+  numbers and is a cornerstone in analytic number theory.
+\end{example}
+
+Infinite products often appear in advanced topics such as special functions,
+infinite series transformations, and number theory. While not covered in depth
+here, they are worth exploring further in future courses.
+
+% subsection examples (end)
+
+% section infinite_products (end)
+
+\newpage
