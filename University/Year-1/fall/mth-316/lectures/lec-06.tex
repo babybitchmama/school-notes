@@ -155,7 +155,7 @@ which is typically the hardest part of the proof.
   for all $\epsilon$, which is not possible.
 \end{note}
 
-Here's a template for a proof of $(x_n) \to x$.
+Here's a template for a proof of $x_n \to x$.
 
 \begin{proof} $ $
   \begin{itemize}
@@ -178,7 +178,7 @@ Here's a template for a proof of $(x_n) \to x$.
 \subsection{Examples}
 
 \begin{question}
-  Prove that $\left(\frac{1}{\sqrt{n}}\right) \to 0$.
+  Prove that $\frac{1}{\sqrt{n}} \to 0$.
 \end{question}
 
 \begin{worksheet}
@@ -220,7 +220,7 @@ Here's a template for a proof of $(x_n) \to x$.
   \[%
     n > \frac{1}{\epsilon^2} \implies \frac{1}{n} < \epsilon^2 \implies \frac{1}{\sqrt{n}} < \epsilon \implies \lvert a_n - 0 \rvert < \epsilon
   .\]%
-  Hence, $(\frac{1}{\sqrt{n}}) \to 0$.
+  Hence, $\frac{1}{\sqrt{n}} \to 0$.
 \end{proof}
 
 \begin{question}
@@ -261,7 +261,7 @@ Here's a template for a proof of $(x_n) \to x$.
 \end{theorem}
 
 \begin{worksheet}
-  We know that $(a_n) \to a$, meaning that there exists $N_1 \in \N$ such that
+  We know that $a_n \to a$, meaning that there exists $N_1 \in \N$ such that
   $\lvert a_n - a \rvert < \epsilon$ for all $n \ge N_1$. Same thing for $(a_n)
   \to b$. But how do we show that $a = b$?
 
@@ -274,7 +274,7 @@ Here's a template for a proof of $(x_n) \to x$.
   .\]%
   Some people don't like the fact that everything is less than $2\epsilon$. To
   show that it's less than $\epsilon$, we can let $\lvert a_n - a \rvert <
-  \sfrac{\epsilon}{2}$. Same thing for $(a_n) \to b$. Using that, we get the new
+  \sfrac{\epsilon}{2}$. Same thing for $a_n \to b$. Using that, we get the new
   inequality
   \[%
     \lvert a - b \rvert < \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon
@@ -283,11 +283,11 @@ Here's a template for a proof of $(x_n) \to x$.
 \end{worksheet}
 
 \begin{proof}
-  Let $\epsilon > 0$ be arbitrarily chosen. Since $(a_n) \to a$, there exists
-  $N_1 \in \N$ such that $\lvert a_n - a \rvert < \sfrac{\epsilon}{2}$ for all
-  $n \ge N_1$. Similarly, since $(a_n) \to b$, there exists $N_2 \in \N$ such
-  that $\lvert a_n - b \rvert < \sfrac{\epsilon}{2}$ for all $n \ge N_2$. Let $N
-  = \max(\{N_1, N_2\})$. Then, for all $n \ge N$,
+  Let $\epsilon > 0$ be arbitrarily chosen. Since $a_n \to a$, there exists $N_1
+  \in \N$ such that $\lvert a_n - a \rvert < \sfrac{\epsilon}{2}$ for all $n \ge
+  N_1$. Similarly, since $a_n \to b$, there exists $N_2 \in \N$ such that
+  $\lvert a_n - b \rvert < \sfrac{\epsilon}{2}$ for all $n \ge N_2$. Let $N =
+  \max(\{N_1, N_2\})$. Then, for all $n \ge N$,
   \[%
     \lvert a - b \rvert = \lvert a - a_n + a_n - b \rvert \le \lvert a - a_n \rvert + \lvert a_n - b \rvert < \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon
   .\]%
@@ -295,7 +295,7 @@ Here's a template for a proof of $(x_n) \to x$.
   implies $a = b$.
 \end{proof}
 
-This can be re-written as, if $(a_n) \to a$ and $(a_n) \to b$, then $a = b$.
+This can be re-written as, if $a_n \to a$ and $a_n \to b$, then $a = b$.
 
 % subsection examples (end)
 
