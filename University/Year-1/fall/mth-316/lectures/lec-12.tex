@@ -122,16 +122,56 @@ letting $n \to \infty$, we focus on how the sequence behaves ``eventually.''
 \subsection{Properties of Limsup and Liminf}
 \label{subsec:properties_of_limsup_and_liminf}
 
-\begin{enumerate}
-  \item $\liminf_{n \to \infty} a_n \leq \limsup_{n \to \infty} a_n$.
+\begin{theorem} $ $
+  \begin{enumerate}
+    \item $\liminf_{n \to \infty} a_n \leq \limsup_{n \to \infty} a_n$.
 
-  \item If $\liminf_{n \to \infty} a_n = \limsup_{n \to \infty} a_n = L$, then
-    the sequence converges to $L$.
+    \item If $\liminf_{n \to \infty} a_n = \limsup_{n \to \infty} a_n = L$, then the sequence converges to $L$.
 
-  \item $\limsup_{n \to \infty} a_n$ is finite if and only if the sequence is
-    bounded above, and $\liminf_{n \to \infty} a_n$ is finite if and only if the
-    sequence is bounded below.
-\end{enumerate}
+    \item $\limsup_{n \to \infty} a_n$ is finite if and only if the sequence is bounded above, and $\liminf_{n \to \infty} a_n$ is finite if and only if the sequence is bounded below.
+  \end{enumerate}
+\end{theorem}
+
+\begin{proof} $ $
+  \begin{enumerate}
+    \item To prove $\liminf_{n \to \infty} a_n \leq \limsup_{n \to \infty} a_n$,
+      note that by definition
+    \[%
+      \liminf_{n \to \infty} a_n = \sup_{n \in \N} \inf_{k \geq n} a_k \aand \limsup_{n \to \infty} a_n = \inf_{n \in \N} \sup_{k \geq n} a_k
+    .\]%
+    For every $n$, $\inf_{k \geq n} a_k \leq \sup_{k \geq n} a_k$. Taking the
+    supremum over all $n$ for the infimum and the infimum over all $n$ for the
+    supremum preserves this inequality. Hence
+    \[%
+      \liminf_{n \to \infty} a_n \leq \limsup_{n \to \infty} a_n
+    .\]%
+
+    \item Assume $\liminf_{n \to \infty} a_n = \limsup_{n \to \infty} a_n = L$.
+      By definition of $\limsup$ and $\liminf$, for every $\epsilon > 0$, there
+      exists $N \in \N$ such that for all $n > N$,
+    \[%
+      L - \epsilon < \inf_{k \geq n} a_k \leq a_n \leq \sup_{k \geq n} a_k < L + \epsilon
+    .\]%
+    This implies $|a_n - L| < \epsilon$ for all $n > N$, so $(a_n) \to L$.
+
+    \item To show $\limsup_{n \to \infty} a_n$ is finite if and only if $(a_n)$
+      is bounded above.
+      \begin{itemize}
+        \item If $\limsup_{n \to \infty} a_n$ is finite, then for every
+          $\epsilon > 0$, there exists $N \in \N$ such that for all $n > N$,
+          $\sup_{k \geq n} a_k < \limsup_{n \to \infty} a_n + \epsilon$. Thus,
+          $a_k$ is bounded above.
+
+        \item Conversely, if $(a_n)$ is bounded above, then $\sup_{k \geq n}
+          a_k$ is finite for every $n$, and $\limsup_{n \to \infty} a_n =
+          \inf_{n} \sup_{k \geq n} a_k$ is also finite.
+      \end{itemize}
+
+      Similarly, $\liminf_{n \to \infty} a_n$ is finite if and only if $(a_n)$
+      is bounded below. The argument follows the same structure as above by
+      considering $\inf_{k \geq n} a_k$. \qedhere
+  \end{enumerate}
+\end{proof}
 
 \begin{example}[Convergent Sequence]
   Let $a_n = \frac{1}{n}$. Since the sequence converges to $0$, we have
@@ -143,10 +183,10 @@ letting $n \to \infty$, we focus on how the sequence behaves ``eventually.''
 
 \begin{example}[Oscillating Sequence]
   Let $a_n = (-1)^n$. The sequence oscillates between $1$ and $-1$, so
-  \begin{align*}
-    \sup_{k \geq n} a_k &= 1 \quad \text{(since $a_k = 1$ infinitely often)} \\
-    \inf_{k \geq n} a_k &= -1 \quad \text{(since $a_k = -1$ infinitely often)}
-  .\end{align*}
+  \begin{alignat*}{3}
+    \sup_{k \geq n} a_k &= 1\quad&&\textrm{(since $a_k = 1$ infinitely often)} \\
+    \inf_{k \geq n} a_k &= -1\quad&&\textrm{(since $a_k = -1$ infinitely often)}
+  .\end{alignat*}
   Thus
   \begin{align*}
     \limsup_{n \to \infty} a_n &= 1 \\

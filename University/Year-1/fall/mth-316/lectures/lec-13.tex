@@ -1,1 +1,89 @@
 \lecture{13}{Nov 4 2024 Mon (13:02:06)}{Properties of Infinite Series}
+
+\section{Properties of Infinite Series}
+\label{sec:properties_of_infinite_series}
+
+Just as we had an algebraic limit theorem for sequences, we have a similar
+theorem for series.
+\begin{theorem}[Algebraic Limit Theorem for Series] If $\sum_{k=1}^{\infty} a_k
+  = A$ and $\sum_{k=1}^{\infty} b_k = B$, then
+  \begin{enumerate}
+    \item $\sum_{k=1}^{\infty} ca_k = cA$ for all $c \in \R$.
+    \item $\sum_{k=1}^{\infty} (a_k + b_k) = A + B$.
+  \end{enumerate}
+\end{theorem}
+
+\begin{proof} $ $
+  \begin{enumerate}
+    \item 
+
+    \item \qedhere
+  \end{enumerate}
+\end{proof}
+
+\subsection{Cauchy Series}
+\label{sub_sec:cauchy_series}
+
+Just as we had the Cauchy criterion for sequences, we have a similar criterion
+for series.
+\begin{theorem}[Cauchy Criterion for Series]
+  The series $\sum_{k=1}^{\infty} a_k$ converges if and only if, given $\epsilon
+  > 0$, there exists an $N \in \N$ such that whenever $n > m > N$, it follows
+  that
+  \[%
+    \lvert a_{m+1} + a_{m+2} + \cdots + a_n \rvert < \epsilon
+  .\]%
+\end{theorem}
+
+\begin{proof}
+  Notice that
+  \[%
+    \left\lvert \sum_{k=1}^n a_k - \sum_{k=1}^m a_k \right\rvert = \lvert S_n - S_m \rvert = \lvert a_{m+1} + a_{m+2} + \cdots + a_n \rvert
+  .\]%
+  Thus, the series converges if and only if the sequence of partial sums is a
+  Cauchy sequence.
+\end{proof}
+
+We can use this very basic fact to prove multiple basic facts about series.
+
+\begin{theorem}
+  If the series $\sum_{k=1}^{\infty} a_k$ converges, then $a_k \to 0$.
+\end{theorem}
+
+\begin{proof}
+  Let $S_n = \sum_{k=1}^n a_k$. Then, $a_n = S_n - S_{n-1}$. Since the series
+  converges, the sequence of partial sums is Cauchy. Thus, given $\epsilon > 0$,
+  there exists an $N \in \N$ such that whenever $n > m > N$, it follows that
+  \[%
+    \lvert S_n - S_m \rvert = \lvert a_{m+1} + a_{m+2} + \cdots + a_n \rvert < \epsilon
+  .\]%
+  In particular, if we take $m = n - 1$, we have
+  \[%
+    \lvert a_n \rvert = \lvert S_n - S_{n-1} \rvert < \epsilon
+  .\]%
+  Thus, $a_n \to 0$.
+\end{proof}
+
+\begin{note}
+  The converse isn't true. Take, for example, the harmonic series
+  $\sum_{k=1}^{\infty} \frac{1}{k}$. This series diverges, but $\frac{1}{k} \to
+  0$.
+\end{note}
+
+% subsection cauchy_series (end)
+
+\subsection{Absolute and Conditional Convergence}
+\label{sub_sec:absolute_and_conditional_convergence}
+
+
+
+% subsection absolute_and_conditional_convergence (end)
+
+\subsection{Rearrangements}
+\label{sub_sec:rearrangements}
+
+
+
+% subsection rearrangements (end)
+
+% section properties_of_infinite_series (end)
