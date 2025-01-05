@@ -90,7 +90,7 @@
 \else
 \fi
 
-\newcommand{\globalcolor}[1]{%
+\newcommand\globalcolor[1]{%
   \color{#1}\global\let\default@color\current@color
 }
 
@@ -273,7 +273,7 @@
 
 \def\notenum{}
 \def\@note{}%
-\newcommand{\lecture}[3]{
+\newcommand\lecture[3]{
   \ifthenelse{\isempty{#3}}{%
     \def\@note{Lecture #1}%
   }{%
@@ -343,15 +343,15 @@
   }
 }
 
-% % Import Figures
-% \newcommand\incimg[2][1]{%
-%   \includegraphics[width=#1\columnwidth]{\figloc-\notenum/#2}%
-% }
+% Import Figures
+\newcommand\incimg[2][1]{%
+  \includegraphics[width=#1\columnwidth]{figures/#2}%
+}
 
-% \newcommand\incfig[2][1]{
-%   \def\svgwidth{#1\columnwidth}
-%   \import{\figloc-\notenum}{#2.pdf_tex}
-% }
+\newcommand\incfig[2][1]{
+  \def\svgwidth{#1\columnwidth}
+  \import{figures}{#2.pdf_tex}
+}
 
 % Correct
 \newcommand\correct[1]{\textcolor{correct}{#1}}
@@ -363,9 +363,6 @@
 \renewcommand\ket[1]{\left|#1\right\rangle}
 \renewcommand\braket[2]{\left\langle#1\middle|#2\right\rangle}
 \renewcommand\ang[1]{\left\langle#1\right\rangle}
-
-% Important
-\newcommand\imp[1]{{\color{cyan}#1}}
 
 % For diagonal strikeout in red
 \newcommand\rcancel[1]{\renewcommand\CancelColor{\color{red}}\cancel{#1}}
@@ -523,9 +520,7 @@
 
 \theoremstyle{definition}
 \newtheorem*{assumption}{Assumption}
-\newtheorem*{axiom}{Axiom}
 \newtheorem*{claim}{Claim}
-\newtheorem*{corollary}{Corollary}
 \newtheorem*{conjecture}{Conjecture}
 \newtheorem*{definition}{Definition}
 \newtheorem*{example}{Example}
@@ -540,6 +535,7 @@
 \newtheorem*{warning}{Warning}
 
 \theoremstyle{plain}
+\newtheorem*{corollary}{Corollary}
 \newtheorem*{lemma}{Lemma}
 \newtheorem*{theorem}{Theorem}
 \newtheorem*{worksheet}{Worksheet}

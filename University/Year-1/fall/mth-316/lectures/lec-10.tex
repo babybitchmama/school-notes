@@ -4,25 +4,25 @@
 \label{sec:infinite_series}
 
 \begin{definition}[Infinite Series and Partial Sums]
-  Let $b_n$ be a sequence. An \textit{infinite series} is a formal expression of
+  Let $b_n$ be a sequence. An \emph{infinite series} is a formal expression of
   the form
   \[%
-    \sum_{n=1}^{\infty} b_n = b_1 + b_2 + b_3 + \cdots
+    \sum_{n=1}^\infty b_n = b_1 + b_2 + b_3 + \cdots
   .\]%
-  The $n$-th \textit{partial sum} of the series is
+  The $n$-th \emph{partial sum} of the series is
   \[%
     S_N = \sum_{n=1}^{N} b_n = b_1 + b_2 + \cdots + b_N
   .\]%
 \end{definition}
 
-If $(b_n)$ converges to $L$, then we say $\sum_{n=1}^{\infty} b_n$ converges.
+If $(b_n)$ converges to $L$, then we say $\sum_{n=1}^\infty b_n$ converges.
 The following are equivalent
 \[%
   \lim_{n \to \infty} S_n = L = \lim_{n \to \infty} \sum_{k=1}^n b_k
 .\]%
 
 \begin{theorem}
-  If $(\forall n \in \N)[a_n \ge 0]$, then $\sum_{n=1}^{\infty} a_n$ converges
+  If $(\forall n \in \N)[a_n \ge 0]$, then $\sum_{n=1}^\infty a_n$ converges
   if and only if the sequence of partial sums $(S_n)$ is bounded.
 \end{theorem}
 
@@ -43,7 +43,7 @@ The following are equivalent
         &= 1 + \left(1 - \frac{1}{N}\right) = 2 - \frac{1}{N} < 2
   .\end{align*}
   So, $n^2 \ge 2$ for all $n \in \N$. Thus, $a_n = \frac{1}{n^2}$ is bounded
-  below by $0$ and above by $2$. Therefore, $\sum_{n=1}^{\infty} \frac{1}{n^2}$
+  below by $0$ and above by $2$. Therefore, $\sum_{n=1}^\infty \frac{1}{n^2}$
   converges.
 \end{example}
 
@@ -53,17 +53,17 @@ The following are equivalent
 \begin{example}[Geometric Series]
   Let $\lvert \rho \rvert < 1$. Then
   \[%
-    \sum_{n=0}^{\infty} \rho^n = \frac{1}{1 - \rho}
+    \sum_{n=0}^\infty \rho^n = \frac{1}{1 - \rho}
   .\]%
   Consider the partial sum
   \[%
     S_N = \sum_{n=0}^N \rho^N = \frac{1 - \rho^{N+1}}{1 - \rho}
   .\]%
-  Therefore, $\sum_{n=0}^{\infty} \rho^n$ converges to $\frac{1}{1 - \rho}$.
+  Therefore, $\sum_{n=0}^\infty \rho^n$ converges to $\frac{1}{1 - \rho}$.
 \end{example}
 
 \begin{example}[Harmonic Series]
-  Let $a_n = \frac{1}{n}$, then $a_n \to 0$ but $\sum_{n=1}^{\infty}
+  Let $a_n = \frac{1}{n}$, then $a_n \to 0$ but $\sum_{n=1}^\infty
   \frac{1}{n} \to \infty$. This can be shown by
   \[%
     S_{2^n} - S_{2^{n-1}} = \frac{1}{S^{n-1} + 1} + \cdots + \frac{1}{S^n} \ge \frac{2^{n-1}}{2^n} = \frac{1}{2}
@@ -94,7 +94,7 @@ sequence of terms is multiplied together. They are often used in advanced
 mathematics to study sequences, series, and special functions. An infinite
 product takes the form
 \[%
-  \prod_{n=1}^{\infty} (1 + a_n) = (1 + a_1)(1 + a_2)(1 + a_3) \cdots
+  \prod_{n=1}^\infty (1 + a_n) = (1 + a_1)(1 + a_2)(1 + a_3) \cdots
 .\]%
 Similar to infinite series, the convergence of an infinite product depends on
 the behavior of the terms $a_n$.
@@ -102,7 +102,7 @@ the behavior of the terms $a_n$.
 \subsection{Convergence of Infinite Products}
 \label{sub_sec:convergence_of_infinite_products}
 
-An infinite product $\prod_{n=1}^{\infty} (1 + a_n)$ converges if the partial
+An infinite product $\prod_{n=1}^\infty (1 + a_n)$ converges if the partial
 product
 \[%
   P_N = \prod_{n=1}^{N} (1 + a_n)
@@ -112,10 +112,10 @@ necessary condition is that $a_n \to 0$ as $n \to \infty$, since large terms
 would make the product diverge.
 
 \begin{remark}
-  If $\prod_{n=1}^{\infty} (1 + a_n)$ converges, then $\sum_{n=1}^{\infty} \ln(1
+  If $\prod_{n=1}^\infty (1 + a_n)$ converges, then $\sum_{n=1}^\infty \ln(1
   + a_n)$ must also converge, provided $\ln(1 + a_n)$ is well-defined. Thus,
   infinite products can often be analyzed by studying the associated series
-  $\sum_{n=0}^{\infty} \ln(1 + a_n)$.
+  $\sum_{n=0}^\infty \ln(1 + a_n)$.
 \end{remark}
 
 % subsection convergence_of_infinite_products (end)
@@ -127,7 +127,7 @@ Infinite products are closely related to infinite series via the logarithm
 function. For small $a_n$, the approximation $\ln(1 + a_n) \approx a_n$ can be
 used to study the convergence of the series
 \[%
-  \ln\left(\prod_{n=1}^{\infty} (1 + a_n) \right) = \sum_{n=1}^{\infty} \ln(1 + a_n)
+  \ln\left(\prod_{n=1}^\infty (1 + a_n) \right) = \sum_{n=1}^\infty \ln(1 + a_n)
 .\]%
 This connection allows us to convert between infinite products and infinite
 series in many cases.
@@ -141,9 +141,9 @@ series in many cases.
   Consider $a_n = \rho^n$ with $\lvert \rho \rvert < 1$. Then the infinite
   product is
   \[%
-    \prod_{n=1}^{\infty} (1 + \rho^n)
+    \prod_{n=1}^\infty (1 + \rho^n)
   .\]%
-  By taking the logarithm, this can be related to the sum $\sum_{n=0}^{\infty}
+  By taking the logarithm, this can be related to the sum $\sum_{n=0}^\infty
   \ln(1 + \rho^n)$, and convergence is determined by the geometric series
   properties of $\rho^n$.
 \end{example}

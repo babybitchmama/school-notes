@@ -3,8 +3,7 @@
 \section{Single Sets}
 
 \begin{definition}
-  A \textit{set} is a collection of objects, called \textit{elements} of the
-  set.
+  A \emph{set} is a collection of objects, called \emph{elements} of the set.
 \end{definition}
 
 Let's define the following sets, as we'll be using them throughout the notes
@@ -34,8 +33,8 @@ Let $S$ be a set. We have the following notation regarding sets
 \end{enumerate}
 
 \begin{note}
-  The notation $\land$ is the logical \textit{and} operator, and $\lor$ is the
-  logical \textit{or} operator. Or in math is an inclusive or, meaning that the
+  The notation $\land$ is the logical \emph{and} operator, and $\lor$ is the
+  logical \emph{or} operator. Or in math is an inclusive or, meaning that the
   statement $A \lor B$ is true if at least one of $A$ or $B$ or both are true.
 \end{note}
 
@@ -57,9 +56,8 @@ So, for we can re-write all of the definitions as follows
 
 A set $A$ is equal to another set $B$ if and only if $A \subseteq B$ and $B
 \subseteq A$.
-
 \begin{note}
-  The symbol $\iff$ means \textit{if and only if}. The statement $A \iff B$ is
+  The symbol $\iff$ means \emph{if and only if}. The statement $A \iff B$ is
   shorthand notation for $(A \implies B) \land (B \implies A)$.
 \end{note}
 
@@ -96,8 +94,8 @@ A set $A$ is equal to another set $B$ if and only if $A \subseteq B$ and $B
 \end{proof}
 
 \begin{definition}[Complement]
-  Given $A \subseteq \R$, the \textit{complement} of $A$, written $A^c$, refers
-  to the set of all elements of $\R$ not in $A$, written as
+  Given $A \subseteq \R$, the \emph{complement} of $A$, written $A^c$, refers to
+  the set of all elements of $\R$ not in $A$, written as
   \[%
     A^c = \left\{x \in \R \mid x \notin A\right\}
   .\]%
@@ -149,11 +147,11 @@ sets is a set of sets.
 
 Notationally, we denote the union of a family of sets as
 \[%
-  \bigcup_{n=1}^{\infty} A_n, \quad \bigcup_{n \in \N} A_n, \oor A_1 \cup A_2 \cup A_3 \cup \ldots
+  \bigcup_{n=1}^\infty A_n, \quad \bigcup_{n \in \N} A_n, \oor A_1 \cup A_2 \cup A_3 \cup \ldots
 .\]%
 Similarly, we denote the intersection of a family of sets as
 \[%
-  \bigcap_{n=1}^{\infty} A_n, \quad \bigcap_{n \in \N} A_n, \oor A_1 \cap A_2 \cap A_3 \cap \ldots
+  \bigcap_{n=1}^\infty A_n, \quad \bigcap_{n \in \N} A_n, \oor A_1 \cap A_2 \cap A_3 \cap \ldots
 .\]%
 
 What exactly does this mean? Let's re-write the unions and intersections using
@@ -161,8 +159,8 @@ quantifiers
 \begin{align}
   \begin{aligned}
     \empheq{
-      x \in \bigcup_{n=1}^{\infty} A_n &\iff (\exists n \in \N)[x \in A_n] \\
-      x \in \bigcap_{n=1}^{\infty} A_n &\iff (\forall n \in \N)[x \in A_n]
+      x \in \bigcup_{n=1}^\infty A_n &\iff (\exists n \in \N)[x \in A_n] \\
+      x \in \bigcap_{n=1}^\infty A_n &\iff (\forall n \in \N)[x \in A_n]
     }
   \end{aligned}
 \end{align}

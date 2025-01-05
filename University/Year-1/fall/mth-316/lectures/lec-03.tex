@@ -1,6 +1,7 @@
 \lecture{3}{Oct 4 2024 Fri (13:00:10)}{Axiom of Completeness}
 
 \section{Logic}
+\label{sec:logic}
 
 The easiest proof to see as a beginner is the proof that $\sqrt{2}$ is
 irrational.
@@ -36,6 +37,7 @@ irrational.
 \end{proof}
 
 \subsection{Induction}
+\label{sub_sec:induction}
 
 Let $S(n)$ be a statement. If $S(1)$ is true and $S(n) \implies S(n + 1)$ is
 true, $(\forall n \in \N)[S(n)]$.
@@ -88,11 +90,11 @@ true, $(\forall n \in \N)[S(n)]$.
 % section logic (end)
 
 \section{Axiom of Completeness}
+\label{sec:axiom_of_completeness}
 
 The defining difference between $\R$ and $\Q$ is that $\R$ does not contain the
 gaps that permeate $\Q$. We will be precise about how we phrase this assumption.
-This is referred to as the \textit{Axiom of Completeness}.
-
+This is referred to as the \emph{Axiom of Completeness}.
 \begin{frame}[Axiom of Completeness]
   \begin{center}
     Every nonempty set of real numbers that is bounded above has a least upper
@@ -110,24 +112,24 @@ This is referred to as the \textit{Axiom of Completeness}.
 Now, let's break down the definition of the least upper bound.
 
 \subsection{Least Upper Bound and Greatest Lower Bound}
+\label{sub_sec:least_upper_bound_and_greatest_lower_bound}
 
 \begin{definition}[Upper Bound]
   A set $A \subseteq \R$ is bounded above if $(\exists b \in \R)(\forall a \in
-  A)[a \le b]$. The number $b$ is called the \textit{upper bound} for $A$.
+  A)[a \le b]$. The number $b$ is called the \emph{upper bound} for $A$.
 \end{definition}
 
 \begin{definition}[Least Upper Bound]
-  A real number $s$ is the \textit{least upper bound} for a set $A \subseteq \R$
+  A real number $s$ is the \emph{least upper bound} for a set $A \subseteq \R$
   if it meets the following two criteria
   \begin{enumerate}
     \item $s$ is an upper bound for $A$.
-
     \item If $b$ is any upper bound for $A$, then $s \le b$.
   \end{enumerate}
 \end{definition}
 
-The least upper bound is also called the \textit{supremum} of the set $A$. The
-\textit{greatest lower bound}/\textit{infimum} for $A$ is also defined similarly
+The least upper bound is also called the \emph{supremum} of the set $A$. The
+\emph{greatest lower bound}/\emph{infimum} for $A$ is also defined similarly
 (see the figure below for a graphical representation).
 \begin{figure}[H]
   \centering
@@ -194,19 +196,20 @@ The least upper bound is also called the \textit{supremum} of the set $A$. The
 \end{example}
 
 \begin{example}
-  Let $\displaystyle A = \left.\left\{\frac{1}{n}~\right\rvert n \in \N\right\}
-  = \left\{1, \frac{1}{2}, \frac{1}{3}, \dots\right\}$. It's clear that $\sup(A)
-  = 1$ and $\inf(A) = 0$.
+  Let $A = \left.\left\{\frac{1}{n}~\right\rvert n \in \N\right\} = \left\{1,
+  \frac{1}{2}, \frac{1}{3}, \dots\right\}$. It's clear that $\sup(A) = 1$ and
+  $\inf(A) = 0$.
 \end{example}
 
 % subsection least_upper_bound_and_greatest_lower_bound (end)
 
 \subsection{Maximum and Minimum}
+\label{sub_sec:maximum_and_minimum}
 
 \begin{definition}[Maximum and Minimum]
-  A real number $a_0$ is a \textit{maximum} of the set $A$ if $a_0$ is an
-  element of $A$ and $(\forall a \in A)[a_0 \ge a]$. Similarly, $a_0$ is a
-  \textit{minimum} of the set $A$ if $a_0$ is an element of $A$ and $(\forall a
+  A real number $a_0$ is a \emph{maximum} of the set $A$ if $a_0$ is an element
+  of $A$ and $(\forall a \in A)[a_0 \ge a]$. Similarly, $a_0$ is a
+  \emph{minimum} of the set $A$ if $a_0$ is an element of $A$ and $(\forall a
   \in A)[a_0 \le a]$.
 \end{definition}
 
@@ -215,15 +218,15 @@ they're both elements of the set. However, the open interval $(a, b)$ has
 neither a maximum nor a minimum, since $a$ and $b$ aren't in the set.
 
 \begin{example}
-  Let $\displaystyle A = \left.\left\{1 + \frac{1}{n}~\right\rvert n \in
-  \N\right\}$, giving us $\sup(A) = 2 = \max(A)$, but $\inf(A) = 1 \ne \min(A)$,
-  as it does not exist.
+  Let $A = \left.\left\{1 + \frac{1}{n}~\right\rvert n \in \N\right\}$, giving
+  us $\sup(A) = 2 = \max(A)$, but $\inf(A) = 1 \ne \min(A)$, as it does not
+  exist.
 \end{example}
 
 \begin{question}
   Let $A \subseteq \R$ be nonempty and bounded above, let $c \in \R$. Define the
-  set $\displaystyle c + A = \left\{c + a \mid a \in A\right\}$. Then, $\sup(c +
-  A) = c + \sup(A)$.
+  set $c + A = \left\{c + a \mid a \in A\right\}$. Then, $\sup(c + A) = c +
+  \sup(A)$.
 \end{question}
 
 \begin{proof}[Solution]
@@ -243,6 +246,7 @@ neither a maximum nor a minimum, since $a$ and $b$ aren't in the set.
 % subsection maximum_and_minimum (end)
 
 \subsection{Proving the upper bound}
+\label{sub_sec:proving_the_upper_bound}
 
 How do we actually show that $a$ is an upper bound for a set $A \subseteq \R$?
 We use the following
@@ -267,8 +271,8 @@ We use the following
 \end{proof}
 
 \begin{question}
-  Define $\displaystyle A = \left.\left\{1 - \frac{1}{n}~\right\rvert n \in
-  \N\right\}$. Using the lemma, show that $\sup(A) = 1$.
+  Define $A = \left.\left\{1 - \frac{1}{n}~\right\rvert n \in \N\right\}$. Using
+  the lemma, show that $\sup(A) = 1$.
 \end{question}
 
 \begin{proof}[Solution]

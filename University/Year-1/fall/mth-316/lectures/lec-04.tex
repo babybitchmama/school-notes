@@ -1,18 +1,19 @@
 \lecture{4}{Oct 07 2024 Mon (13:01:52)}{Consequences of Completeness}
 
 \section{Nested Interval Property}
+\label{sec:nested_interval_property}
 
 \begin{theorem}[Nested Interval Property]
   For each $n \in \N$, assume we are given a closed interval $I_n = [a_n, b_n] =
   \left\{x \in \R \mid a_n \le x \le b_n\right\}$. Assume also that each $I_n$
-  contains the next interval, i.e., $I_n \supseteq I_{n+1}$. Then, the
-  resulting sequence of closed intervals
+  contains the next interval, i.e., $I_n \supseteq I_{n+1}$. Then, the resulting
+  sequence of closed intervals
   \[%
     I_1 \supseteq I_2 \supseteq I_3 \supseteq \cdots
   ,\]%
   has a nonempty intersection. That is,
   \[%
-    \bigcap_{n=1}^{\infty} I_n \neq \emptyset
+    \bigcap_{n=1}^\infty I_n \neq \emptyset
   .\]%
 \end{theorem}
 
@@ -23,7 +24,7 @@
   an upper bound for $A$, we have $a_n \le x$. Since $x$ is the least upper
   bound, we have $x \le b_n$. This implies that $a_n \le x \le b_n$, which means
   $x \in I_n$, for every choice of $n \in \N$. Therefore, $x \in
-  \bigcap_{n=1}^{\infty} I_n$.
+  \bigcap_{n=1}^\infty I_n$.
 \end{proof}
 
 The Nested Interval Property can be viewed graphically, as shown below.
@@ -54,10 +55,10 @@ The Nested Interval Property can be viewed graphically, as shown below.
 
 \begin{example}
   The interval $I_n = \left[0, \frac{1}{n}\right]$, which is clearly $I_n
-  \supset I_{n+1}$, since $\bigcap_{n=1}^{\infty} = \{0\}$.
+  \supset I_{n+1}$, since $\bigcap_{n=1}^\infty = \{0\}$.
 
   The counter example is $I_n = \left(0, \frac{1}{n}\right)$ because
-  $\bigcap_{n=0}^{\infty} I_n = \emptyset$.
+  $\bigcap_{n=0}^\infty I_n = \emptyset$.
 \end{example}
 
 \begin{proof}
@@ -69,7 +70,7 @@ The Nested Interval Property can be viewed graphically, as shown below.
   Then, $a_n \le s$, $\forall a_n \in A$. Since $s$ is the least upper bound, we
   get $s \le b_n$, giving us
   \[%
-    a_n \le s \le b_n, \forall n \in \N \iff s \in \bigcup_{n=0}^{\infty} I_n
+    a_n \le s \le b_n, \forall n \in \N \iff s \in \bigcup_{n=0}^\infty I_n
   .\qedhere\]%
 \end{proof}
 
@@ -89,7 +90,6 @@ The Nested Interval Property can be viewed graphically, as shown below.
 \begin{theorem}[Archimedian Property] $ $
   \begin{enumerate}
     \item $(\forall x \in \R)(\exists n \in \N)[n > x]$.
-
     \item $(\forall y > 0)(\exists n \in \N)[\sfrac{1}{n} < 1]$.
   \end{enumerate}
 \end{theorem}
@@ -105,6 +105,7 @@ The Nested Interval Property can be viewed graphically, as shown below.
 % section nested_interval_property (end)
 
 \section{Density of $\Q$ in $\R$}
+\label{sec:density_of_q_in_r}
 
 \begin{theorem}[Density of $\Q$ in $\R$]
   Between any two real numbers $a$ and $b$ with $a < b$, there exists a rational
@@ -149,6 +150,7 @@ real numbers, giving us
 % section density_of_q_in_r_ (end)
 
 \section{Square Roots}
+\label{sec:square_roots}
 
 \begin{proposition}
   There exists a real number $\alpha$ satisfying $\alpha^2 = 2$.

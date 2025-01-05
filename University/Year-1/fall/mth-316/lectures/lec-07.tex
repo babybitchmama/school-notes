@@ -1,7 +1,7 @@
 \lecture{7}{Oct 16 2024 Wed (13:01:48)}{Algebraic Limit Theorem}
 
 \begin{definition}[Bounded]
-  A sequence $(x_n)$ is \textit{bounded} if there exists a number $M > 0$ such
+  A sequence $(x_n)$ is \emph{bounded} if there exists a number $M > 0$ such
   that $\lvert x_n \rvert \le M$ for all $n \in \N$.
 \end{definition}
 
@@ -16,7 +16,7 @@ every term in the sequence $(x_n)$.
   Given $(a_n)$, we need to show that if $\lim_{n \to \infty} a_n = a$, then
   $(a_n)$ is bounded. Using the definition of a limit, $(\forall \epsilon >
   0)(\exists N \in \N)(\forall n > N)[\lvert a_n - a \rvert < \epsilon]$.
-  Expanding the inequality using \ref{eq:triangle_inequality}, we get
+    Expanding the inequality using \ref{eq:triangle_inequality}, we get
   \[%
     \lvert a_n \rvert = \lvert a_n - a + a \rvert \le \lvert a_n + a \rvert - \lvert a \rvert < \epsilon + \lvert a \rvert
   .\]%
@@ -38,6 +38,7 @@ every term in the sequence $(x_n)$.
 \end{proof}
 
 \section{Arithmetics of Limits}
+\label{sec:arithmetics_of_limits}
 
 \begin{theorem}[Algebraic Limit Theorem]
   Let $\lim_{n \to \infty} a_n = a$, and $\lim_{n \to \infty} b_n = b$. Then,

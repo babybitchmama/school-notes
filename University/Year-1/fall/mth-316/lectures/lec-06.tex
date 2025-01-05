@@ -1,9 +1,10 @@
 \lecture{6}{Oct 14 2024 Mon (13:00:26)}{Limit of a Sequence}
 
 \section{Required Definitions}
+\label{sec:required_definitions}
 
 \begin{definition}
-  A \textit{sequence} is a function whose domain is $\N$.
+  A \emph{sequence} is a function whose domain is $\N$.
 \end{definition}
 
 Given a function $f : \N \to \R$, $f(n)$ is just the $n$th term on the list.
@@ -13,7 +14,7 @@ Given a function $f : \N \to \R$, $f(n)$ is just the $n$th term on the list.
   \begin{enumerate}
     \item $\left(1, \frac{1}{2}, \frac{1}{3}, \frac{1}{4}, \dots\right)$.
 
-    \item $\left(\frac{1 + n}{n}\right)_{n=1}^{\infty} = \left(\frac{2}{1},
+    \item $\left(\frac{1 + n}{n}\right)_{n=1}^\infty = \left(\frac{2}{1},
       \frac{3}{2}, \frac{4}{5}, \dots\right)$.
 
     \item $(a_n)$, where $a_n = 2^n$ for each $n \in \N$.
@@ -23,7 +24,7 @@ Given a function $f : \N \to \R$, $f(n)$ is just the $n$th term on the list.
 \end{example}
 
 \begin{definition}[Convergence of a Sequence]
-  A sequence $(a_n)$ \textit{converges} to a real number $\ell$ if,
+  A sequence $(a_n)$ \emph{converges} to a real number $\ell$ if,
   \[%
     (\forall \epsilon > 0)(\exists N \in \N)(\forall n \ge N)[\lvert a_n - \ell \rvert < \epsilon]
   .\]%
@@ -41,7 +42,7 @@ This is a more formal definition of the limit of a sequence.
   \[%
     V_{\epsilon} (a) = \{x \in \R \mid \lvert x - a \rvert < \epsilon\}
   ,\]%
-  is called the \textit{$\epsilon$-neighborhood} of $a$.
+  is called the \emph{$\epsilon$-neighborhood} of $a$.
 \end{definition}
 
 The $V_{\epsilon}(a)$ is just an interval centered at $a$ with radius
@@ -135,8 +136,10 @@ the larger $N$ may need to be.
 % section required_definitions (end)
 
 \section{Working with Limits}
+\label{sec:working_with_limits}
 
 \subsection{Quantifiers}
+\label{sub_sec:quantifiers}
 
 The definition begins with $\forall \epsilon > 0$. This means that we are trying
 to prove that the sequence converges for all $\epsilon > 0$. Say, $\epsilon =
@@ -176,6 +179,7 @@ Here's a template for a proof of $x_n \to x$.
 % subsection quantifiers (end)
 
 \subsection{Examples}
+\label{sub_sec:examples_lec_6}
 
 \begin{question}
   Prove that $\frac{1}{\sqrt{n}} \to 0$.
@@ -188,16 +192,15 @@ Here's a template for a proof of $x_n \to x$.
   terms in the sequence get arbitrarily close to $0$. But how close? This is
   where $\epsilon$ comes into play. We want to show that the terms in the
   sequence are within $\sfrac{1}{10}$ of $0$ after a certain point and they stay
-  that way, if not get closer.
-  The $100$th term $a_{100} = \sfrac{1}{10}$ puts us right on the boundary,
-  giving us
+  that way, if not get closer. The $100$th term $a_{100} = \sfrac{1}{10}$ puts
+  us right on the boundary, giving us
   \[%
     \textrm{if}~n > 100, \qtq{then} a_n \in \left(-\frac{1}{10}, \frac{1}{10}\right)
   .\]%
   As you can see, the smaller we choose $\epsilon$, the larger we'll have to
   make $n$. Now, let's try and find $N$ for all $\epsilon > 0$.
   \begin{note}
-    \textit{We aren't using a fixed $\epsilon$, since, say $\epsilon =
+    \emph{We aren't using a fixed $\epsilon$, since, say $\epsilon =
     \sfrac{1}{10}$, then $N > 100$, say $N = 101$, and were done, so that's just
     trivial}
   \end{note}
@@ -224,13 +227,13 @@ Here's a template for a proof of $x_n \to x$.
 \end{proof}
 
 \begin{question}
-  Prove that $\displaystyle\lim_{n \to \infty} \frac{2n + 1}{5n + 4} = \frac{2}{5}$.
+  Prove that $\lim_{n \to \infty} \frac{2n + 1}{5n + 4} = \frac{2}{5}$.
 \end{question}
 
 \begin{worksheet}
   In order to find an $N \in \N$ that satisfies the definition of convergence,
-  we need to find a relationship between $\epsilon$ and $N$. Let's first try
-  to solve for $n$ in the inequality $\lvert a_n - a \rvert < \epsilon$.
+  we need to find a relationship between $\epsilon$ and $N$. Let's first try to
+  solve for $n$ in the inequality $\lvert a_n - a \rvert < \epsilon$.
   \[%
     \left\lvert \frac{2n + 1}{5n + 4} - \frac{2}{5} \right\rvert = \frac{3}{5(5n + 4)}
   .\]%

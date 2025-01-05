@@ -7,8 +7,9 @@ that they're in equal proportions. But, we'll see there are way more irrational
 numbers than rational numbers.
 
 \section{Types of Functions}
+\label{sec:types_of_functions}
 
-The term \textit{cardinality} is used to refer to the size of a set. The
+The term \emph{cardinality} is used to refer to the size of a set. The
 cardinalities of finite sets can be compared by attaching a natural number to
 them and using the property that $\N$ is an ordered and you can compare numbers,
 i.e., $5 > 3$, $10 < 17$, and so on. But how do we do the same thing when we
@@ -21,14 +22,14 @@ elements. First, let's define a few more definitions before going into
 one-to-one correspondences.
 
 \begin{definition}[Cardinality]
-  The \textit{cardinality} of a set $A$ is the number of elements in $A$. If $A$
+  The \emph{cardinality} of a set $A$ is the number of elements in $A$. If $A$
   is finite, then the cardinality of $A$ is a natural number. If $A$ is
   infinite, then the cardinality of $A$ is $\aleph_0$.
 \end{definition}
 
 \begin{definition}
-  Let $f$ be a function $f : A \to B$. We say $f$ is \textit{onto} if $(\forall
-  y \in B)(\exists x \in A)[f(x) = y]$. We say $f$ is \textit{one-to-one} if
+  Let $f$ be a function $f : A \to B$. We say $f$ is \emph{onto} if $(\forall y
+  \in B)(\exists x \in A)[f(x) = y]$. We say $f$ is \emph{one-to-one} if
   $(\forall x_1 \in A)(\forall x_2 \in A)[f(x_1) = f(x_2) \implies x_1 = x_2]$.
 \end{definition}
 
@@ -46,27 +47,28 @@ one-to-one correspondences.
 
 \begin{definition}
   Let $f$ be a function $f : A \to B$. If $f$ is both onto and one-to-one, then
-  we call $f$ a \textit{one-to-one correspondence} of $A$ and $B$.
+  we call $f$ a \emph{one-to-one correspondence} of $A$ and $B$.
 \end{definition}
 
 \begin{note}
-  Sometimes, onto is referred to as \textit{surjective}, one-to-one is referred
-  to as \textit{injective}, and a one-to-one correspondence is referred to as a
-  \textit{bijection}.
+  Sometimes, onto is referred to as \emph{surjective}, one-to-one is referred to
+  as \emph{injective}, and a one-to-one correspondence is referred to as a
+  \emph{bijection}.
 \end{note}
 
 \begin{definition}
-  The set $A$ \textit{has the same cardinality as} $B$ if there exists $f : A
-  \to B$ that is a one-to-one correspondence. In this case, we write $A \sim B$.
+  The set $A$ \emph{has the same cardinality as} $B$ if there exists $f : A \to
+  B$ that is a one-to-one correspondence. In this case, we write $A \sim B$.
 \end{definition}
 
 % section types_of_functions (end)
 
 \section{Countable Sets}
+\label{sec:countable_sets}
 
 \begin{definition}
-  A set $A$ is \textit{countable} if $A \sim \N$. An infinite set that is not
-  countable is called \textit{uncountable}.
+  A set $A$ is \emph{countable} if $A \sim \N$. An infinite set that is not
+  countable is called \emph{uncountable}.
 \end{definition}
 
 \begin{question}
@@ -116,7 +118,6 @@ due to our overexposure to finite sets.
 \begin{theorem} $ $
   \begin{enumerate}
     \item The set $\Q$ is is countable.
-
     \item The set $\R$ is uncountable.
   \end{enumerate}
 \end{theorem}
@@ -170,16 +171,16 @@ due to our overexposure to finite sets.
       If $x_{n_0}$ is some real number from the list in \ref{eq:real_numbers},
       then we have $x_{n_0} \notin I_{n_0}$, and it follows that
       \[%
-        x_{n_0} \notin \bigcap_{n=1}^{\infty} I_n
+        x_{n_0} \notin \bigcap_{n=1}^\infty I_n
       .\]%
       Assume that the list in created in \ref{eq:real_numbers} is complete,
       meaning it contains every real number. Then this to the conclusion that
       \[%
-        \bigcap_{n=1}^{\infty} I_n = \emptyset
+        \bigcap_{n=1}^\infty I_n = \emptyset
       .\]%
       However, the Nested Interval Property asserts that the intersection of
       nested intervals is nonempty. By NIP, there exists at least one $x \in
-      \bigcap_{n=1}^{\infty} I_n$ that cannot be in the list in
+      \bigcap_{n=1}^\infty I_n$ that cannot be in the list in
       \ref{eq:real_numbers}. This is a contradiction. Therefore, $\R$ is
       uncountable. \qedhere
   \end{enumerate}
@@ -205,11 +206,12 @@ natural numbers onto the reals, there'll always be some reals left over.
   $g(x) = f(x)$, for all $x \in A$. Since $f$ one-to-one, $g$ is also
   one-to-one. Now, we consider two cases.
 
-  \textbf{Case 1 ($A$'s finite):} If $A$ is finite, then, trivially, $A$ is countable.
+  \textbf{Case 1 ($A$'s finite):} If $A$ is finite, then, trivially, $A$ is
+  countable.
 
-  \textbf{Case 2 ($A$'s infinite):} In this case, $g : A \to \N$
-  is an one-to-one function from an infinite subset $A$ of the countable set $B$
-  to $\N$. This implies that $A$ itself is countable, as it can be put in a
+  \textbf{Case 2 ($A$'s infinite):} In this case, $g : A \to \N$ is an
+  one-to-one function from an infinite subset $A$ of the countable set $B$ to
+  $\N$. This implies that $A$ itself is countable, as it can be put in a
   one-to-one correspondence with a subset of $\N$.
 \end{proof}
 
@@ -219,7 +221,7 @@ natural numbers onto the reals, there'll always be some reals left over.
       union $A_1 \cup A_2 \cup A_3 \cup \cdots \cup A_m$ is countable.
 
     \item If $A_n$ is a countable set for each $n \in \N$, then
-      $\bigcup_{n=1}^{\infty} A_n$ is countable.
+      $\bigcup_{n=1}^\infty A_n$ is countable.
   \end{enumerate}
 \end{theorem}
 
@@ -242,24 +244,24 @@ natural numbers onto the reals, there'll always be some reals left over.
       \cup \cdots \cup A_m$ to $\N$, and hence $A_1 \cup A_2 \cup A_3 \cup
       \cdots \cup A_m$ is countable.
 
-    \item Let $A_n$ be a countable set for each $n \in \N$. Since each $A_n$
-      is countable, there exists a one-to-one correspondence $f_n : A_n \to \N$.
+    \item Let $A_n$ be a countable set for each $n \in \N$. Since each $A_n$ is
+      countable, there exists a one-to-one correspondence $f_n : A_n \to \N$.
       Define a function
       \[%
-        g : \bigcup_{n=1}^{\infty} \to \N \times \N
+        g : \bigcup_{n=1}^\infty \to \N \times \N
       ,\]%
       by $g(x) = (n, f(n))$, where $x \in A_n$. This function $g$ pairs each
       element $x \in A_n$ with its ``index'' $n$ and its mapped value $f_n(x)$,
       thereby creating a unique ordered pair for each element in
-      $\bigcup_{n=1}^{\infty} A_n$.
+      $\bigcup_{n=1}^\infty A_n$.
 
       Now, since $\N \times \N$ is countable, there exists a one-to-one
       correspondence $h : \N \times \N \to \N$. Therefore, the composition
       \[%
-        h \circ g : \bigcup_{n=1}^{\infty} A_n \to \N
-      \]%
-      is a one-to-one correspondence from $\bigcup_{n=1}^{\infty} A_n$ into
-      $\N$, proving that $\bigcup_{n=1}^{\infty} A_n$ is countable. \qedhere
+        h \circ g : \bigcup_{n=1}^\infty A_n \to \N
+      ,\]%
+      is a one-to-one correspondence from $\bigcup_{n=1}^\infty A_n$ into $\N$,
+      proving that $\bigcup_{n=1}^\infty A_n$ is countable. \qedhere
   \end{enumerate}
 \end{proof}
 
