@@ -13,16 +13,19 @@ theorem for series.
   \end{enumerate}
 \end{theorem}
 
-\begin{proof} $ $
+\begin{proof}\leavevmode
   \begin{enumerate}
-    \item 
+    \item Let $S_n = \sum_{k=1}^n a_k$. Then, $\lim_{m \to \infty} S_m = A$.
+      Thus, by the Algebraic Limit Theorem for Sequences, $c\lim_{m \to \infty}
+      S_m = \lim_{m \to \infty} (cS_m) = cA$. Thus, $\sum_{k=1}^{\infty} ca_k =
+      cA$.
 
-    \item \qedhere
+    \item Let $S_n = \sum_{k=1}^n a_k$ and $T_n = \sum_{k=1}^n b_k$. Then,
+      $\lim_{m \to \infty} S_m = A$ and $\lim_{m \to \infty} T_m = B$. Thus, by
+      the Algebraic Limit Theorem for Sequences, $\lim_{m \to \infty} (S_m +
+      T_m) = A + B$. Thus, $\sum_{k=1}^{\infty} (a_k + b_k) = A + B$. \qedhere
   \end{enumerate}
 \end{proof}
-
-\subsection{Cauchy Series}
-\label{sub_sec:cauchy_series}
 
 Just as we had the Cauchy criterion for sequences, we have a similar criterion
 for series.
@@ -44,11 +47,28 @@ for series.
   Cauchy sequence.
 \end{proof}
 
-We can use this very basic fact to prove multiple basic facts about series.
+This is a very powerful criterion. We use this theorem to prove all of the basic
+tests for series in section \ref{sub_sec:conversion_tests}.
 
-\begin{theorem}
+\begin{definition}[Absolute Convergence]
+  A series $\sum_{k=1}^{\infty} a_k$ is said to \textit{converge absolutely} if
+  the series $\sum_{k=1}^{\infty} \lvert a_k \rvert$ converges.
+\end{definition}
+
+\begin{definition}[Conditional Convergence]
+  A series $\sum_{k=1}^{\infty} a_k$ is said to \textit{converge conditionally}
+  if the series $\sum_{k=1}^{\infty} a_k$ converges, but the series
+  $\sum_{k=1}^{\infty} \lvert a_k \rvert$ diverges.
+\end{definition}
+
+\subsection{Conversion Tests}
+\label{sub_sec:conversion_tests}
+
+Now, we can start proving tests that have some substance.
+
+\begin{lemma}
   If the series $\sum_{k=1}^{\infty} a_k$ converges, then $a_k \to 0$.
-\end{theorem}
+\end{lemma}
 
 \begin{proof}
   Let $S_n = \sum_{k=1}^n a_k$. Then, $a_n = S_n - S_{n-1}$. Since the series
@@ -70,14 +90,313 @@ We can use this very basic fact to prove multiple basic facts about series.
   0$.
 \end{note}
 
-% subsection cauchy_series (end)
+\begin{lemma}[Absolute Convergence Test]
+  If $\sum_{k=1}^{\infty} \lvert a_k \rvert$ converges, then
+  $\sum_{k=1}^{\infty} a_k$ converges.
+\end{lemma}
 
-\subsection{Absolute and Conditional Convergence}
-\label{sub_sec:absolute_and_conditional_convergence}
+\begin{proof}
+  Assume $\sum_{k=1}^{\infty} \lvert a_k \rvert$ converges. Let $\epsilon > 0$.
+  Then, there exists an $N \in \N$ such that for every $n > m > N$, we have
+  \[%
+    \lvert a_{m+1} \rvert + \lvert a_{m+2} \rvert + \cdots + \lvert a_n \rvert < \epsilon
+  .\]%
+  Notice that
+  \[%
+    \lvert a_{m+1} + a_{m+2} + \cdots + a_n \rvert \leq \lvert a_{m+1} \rvert + \lvert a_{m+2} \rvert + \cdots + \lvert a_n \rvert < \epsilon
+  .\]%
+  Thus, by the Cauchy Criterion for Series, $\sum_{k=1}^{\infty} a_k$ converges.
+\end{proof}
 
+\begin{lemma}[Comparison Test]
+  Assume $(a_k)$ and $(b_k)$ are sequences satisfying $(\forall k \in \N)[0 \le a_k \le b_k]$
+  \begin{enumerate}
+    \item If $\sum_{k=1}^{\infty} b_k$ converges, then $\sum_{k=1}^{\infty} a_k$ converges.
 
+    \item If $\sum_{k=1}^{\infty} a_k$ diverges, then $\sum_{k=1}^{\infty} b_k$ diverges.
+  \end{enumerate}
+\end{lemma}
 
-% subsection absolute_and_conditional_convergence (end)
+\begin{proof}\leavevmode
+  Both statements follow directly from the Cauchy Criterion for Series.
+  \[%
+    \lvert a_{m+1} + a_{m+2} + \cdots + a_n \rvert \le \lvert b_{m+1} + b_{m+2} + \cdots + b_n \rvert
+  .\]%
+  If the right-hand side is less than $\epsilon$, then the left-hand side is
+  less than $\epsilon$. Thus, the series converges. The second statement follows
+  from the contrapositive of the first statement.
+\end{proof}
+
+\begin{lemma}[Limit Comparison Test]
+  Assume $(a_k)$ and $(b_k)$ are sequences satisfying $(\forall k \in \N)[0 < a_k \le b_k]$. If
+  \[%
+    \lim_{k \to \infty} \frac{a_k}{b_k} = c
+  ,\]%
+  where $c$ is a positive real number, then $\sum_{k=1}^{\infty} a_k$ converges
+  if and only if $\sum_{k=1}^{\infty} b_k$ converges.
+\end{lemma}
+
+\begin{proof}
+  Let $c > 0$ such that $\lim_{k \to \infty} \frac{a_k}{b_k} = c$. This means
+  for any $\epsilon > 0$, there exists an $N \in \N$ such that for all $k \geq
+  N$, we have
+  \[%
+    c - \epsilon < \frac{a_k}{b_k} < c + \epsilon
+  .\]%
+  Multiplying through by $b_k$ (which is positive), we get
+  \[%
+    (c - \epsilon)b_k < a_k < (c + \epsilon)b_k
+  .\]%
+  Choose $\epsilon$ such that $0 < \epsilon < c$, so $c - \epsilon > 0$. For $k
+  \geq N$, we now have
+  \[%
+    0 < (c - \epsilon) b_k \leq a_k \leq (c + \epsilon) b_k
+  .\]%
+
+  \begin{enumerate}
+    \item Convergence of $\sum_{k=1}^{\infty} b_k$:
+
+      If $\sum_{k=1}^{\infty} b_k$ converges, then $(c -
+      \epsilon)\sum_{k=1}^{\infty} b_k$ converges because $c - \epsilon > 0$ is
+      a constant multiple. By the Comparison Test applied to $(c - \epsilon)b_k
+      \leq a_k$, it follows that $\sum_{k=1}^{\infty} a_k$ also converges.
+
+    \item Case 2: Divergence of $\sum_{k=1}^{\infty} b_k$:
+
+      If $\sum_{k=1}^{\infty} b_k$ diverges, then $(c +
+      \epsilon)\sum_{k=1}^{\infty} b_k$ also diverges because $c + \epsilon > 0$
+      is a constant multiple. By the Comparison Test applied to $a_k \geq (c -
+      \epsilon)b_k$, it follows that $\sum_{k=1}^{\infty} a_k$ also diverges.
+  \end{enumerate}
+
+  Hence, $\sum_{k=1}^{\infty} a_k$ converges if and only if $\sum_{k=1}^{\infty}
+  b_k$ converges.
+\end{proof}
+
+\begin{lemma}[Ratio Test]
+  Let $(a_n)$ be a sequence. If
+  \[%
+    \lim_{n \to \infty} \left\lvert \frac{a_{n+1}}{a_n} \right\rvert = L
+  ,\]%
+  then
+  \begin{enumerate}
+    \item If $L < 1$, then $\sum_{n=1}^{\infty} a_n$ converges absolutely.
+
+    \item If $L > 1$, then $\sum_{n=1}^{\infty} a_n$ diverges.
+
+    \item If $L = 1$, then the test is inconclusive.
+  \end{enumerate}
+\end{lemma}
+
+\begin{proof}\leavevmode
+  Let $L = \lim_{n \to \infty} \left\lvert \frac{a_{n+1}}{a_n} \right\rvert$.
+  \begin{enumerate}
+    \item $L < 1$:
+
+      Choose $\epsilon > 0$ such that $L + \epsilon < 1$. By the definition of
+      the limit,
+      \[%
+        (\exists N \in \N)(\forall n \ge N)\left[\left\lvert \frac{a_{n+1}}{a_n} \right\rvert < L + \epsilon\right]
+      .\]%
+      This implies that for $n \geq N$
+      \[%
+        \lvert a_{n+1} \rvert < (L + \epsilon) \lvert a_n \rvert
+      .\]%
+      Iterating this inequality, we get
+      \[%
+        \lvert a_{n+1} \rvert < (L + \epsilon)^{n-N+1} \lvert a_N \rvert
+      .\]%
+      Since $L + \epsilon < 1$, the geometric series $\sum_{n=N}^{\infty} (L +
+      \epsilon)^{n-N+1}$ converges. Therefore, by the Comparison Test,
+      $\sum_{n=N}^{\infty} \lvert a_n \rvert$ converges, which implies that
+      $\sum_{n=1}^{\infty} \lvert a_n \rvert$ converges. Thus,
+      $\sum_{n=1}^{\infty} a_n$ converges absolutely.
+
+    \item $L > 1$:
+
+      Choose $\epsilon > 0$ such that $L - \epsilon > 1$. By the definition of
+      the limit,
+      \[%
+        (\exists N \in \N)(\forall n \ge N)\left[\left\lvert \frac{a_{n+1}}{a_n} \right\rvert > L - \epsilon\right]
+      .\]%
+      This implies that for $n \geq N$
+      \[%
+        \lvert a_{n+1} \rvert > (L - \epsilon) \lvert a_n \rvert
+      .\]%
+      Iterating this inequality, we get
+      \[%
+        \lvert a_{n+1} \rvert > (L - \epsilon)^{n-N+1} \lvert a_N \rvert
+      .\]%
+      Since $L - \epsilon > 1$, the terms $\lvert a_n \rvert$ do not approach
+      zero, and hence $\sum_{n=1}^{\infty} \lvert a_n \rvert$ diverges. Thus,
+      $\sum_{n=1}^{\infty} a_n$ diverges.
+
+    \item $L = 1$:
+
+      The test provides no information about the convergence or divergence of
+      the series. For example, the series $\sum_{n=1}^{\infty} \frac{1}{n}$
+      diverges, but $\sum_{n=1}^{\infty} \frac{1}{n^2}$ converges, and both
+      satisfy $\lim_{n \to \infty} \left\lvert \frac{a_{n+1}}{a_n} \right\rvert
+      = 1$. Therefore, the test is inconclusive in this case. \qedhere
+  \end{enumerate}
+\end{proof}
+
+\begin{lemma}[Root Test]
+  Let $(a_n)$ be a sequence. If
+  \[%
+    \limsup_{n \to \infty} \sqrt[n]{\lvert a_n \rvert} = L
+  ,\]%
+  then
+  \begin{enumerate}
+    \item If $L < 1$, then $\sum_{n=1}^\infty a_n$ converges absolutely.
+    \item If $L > 1$, then $\sum_{n=1}^\infty a_n$ diverges.
+    \item If $L = 1$, then the test is inconclusive.
+  \end{enumerate}
+\end{lemma}
+
+\begin{proof}
+  Let $L = \limsup_{n \to \infty} \sqrt[n]{\lvert a_n \rvert}$.
+
+  \begin{enumerate}
+    \item $L < 1$:
+
+      Choose $\epsilon > 0$ such that $L + \epsilon < 1$. By the definition of
+      the $\limsup$, there exists $N \in \mathbb{N}$ such that for all $n \geq
+      N$
+      \[%
+        \sqrt[n]{\lvert a_n \rvert} < L + \epsilon
+      .\]%
+      Raising both sides to the $n$th power, we have
+      \[%
+        (\forall n \geq N)\left[\lvert a_n \rvert < (L + \epsilon)^n\right]
+      .\]%
+      Since $L + \epsilon < 1$, the series $\sum_{n=N}^\infty (L + \epsilon)^n$
+      converges because it is a geometric series with ratio less than $1$. By
+      the Comparison Test, $\sum_{n=N}^\infty \lvert a_n \rvert$ converges, and
+      therefore $\sum_{n=1}^\infty \lvert a_n \rvert$ converges. Thus,
+      $\sum_{n=1}^\infty a_n$ converges absolutely.
+
+    \item $L > 1$:
+
+      By the definition of $\limsup$, there exists a subsequence $(a_{n_k})$
+      such that
+      \[%
+        \sqrt[n_k]{\lvert a_{n_k} \rvert} \to L~\textrm{as}~k \to \infty
+      .\]%
+      Since $L > 1$, for sufficiently large $k$, we have
+      \[%
+        \sqrt[n_k]{\lvert a_{n_k} \rvert} > 1
+      ,\]%
+      which implies
+      \[%
+        \lvert a_{n_k} \rvert > 1^n = 1
+      .\]%
+      Thus, $\lvert a_{n_k} \rvert$ does not approach $0$, so the series
+      $\sum_{n=1}^\infty a_n$ diverges.
+
+    \item $L = 1$:
+
+      The test is inconclusive because series with $L = 1$ may
+      either converge or diverge. For instance
+      \[%
+        \sum_{n=1}^\infty \frac{1}{n^2}~\textrm{converges, while}~\sum_{n=1}^\infty \frac{1}{n}~\textrm{diverges}
+      .\]%
+      Both of these series satisfy $\limsup_{n \to \infty} \sqrt[n]{\lvert a_n
+      \rvert} = 1$.\qedhere
+  \end{enumerate}
+\end{proof}
+
+\begin{lemma}[Alternating Series Test]
+  Let $(a_n)$ be a sequence satisfying the following requirements
+  \begin{enumerate}
+    \item $a_1 \ge a_2 \ge a_3 \ge \cdots \ge a_n \ge a_{n+1} \ge \cdots$,
+
+    \item $a_n \to 0$,
+  \end{enumerate}
+  Then, the alternating series $\sum_{n=1}^{\infty} (-1)^{n+1} a_n$ converges.
+\end{lemma}
+
+\begin{proof}
+  Let $S_n = \sum_{k=1}^n (-1)^{k+1} a_k$. Then, $S_{2n} = a_1 - a_2 + a_3 - a_4
+  + \cdots + a_{2n-1} - a_{2n}$. Since $a_n \to 0$, we have
+  \[%
+    \lvert S_{2n} - S_{2n-2} \rvert = \lvert a_{2n-1} - a_{2n} \rvert \to 0
+  .\]%
+  Thus, $(S_{2n})$ is a Cauchy sequence. Similarly, $(S_{2n+1})$ is also a
+  Cauchy sequence. Thus, both sequences converge. Since the series is the sum of
+  these two sequences, the series converges.
+\end{proof}
+
+\begin{lemma}[Condensation Test]
+  Suppose $(b_n)$ is decreasing and satisfies $b_n \ge 0$ for all $n \in \N$.
+  Then, the series $\sum_{n=1}^{\infty} b_n$ converges if and only if the series
+  \[%
+    \sum_{n=0}^{\infty} 2^nb_{2^n} = b_1 + 2b_2 + 4b_4 + 8b_8 + 16b_{16} + \cdots
+  ,\]%
+  converges.
+\end{lemma}
+
+\begin{proof}
+  First, assume that $\sum_{n=0}^{\infty} 2^nb_{2^n}$ converges. Then, the
+  partial sum
+  \[%
+    T_k = b_1 + 2b_2 + 4b_4 + \cdots + 2^kb_{2^k}
+  ,\]%
+  is bounded, by some number $M$. Because $b_n \ge 0$, we know that the partial
+  sums are increasing. Let $S_m = b_1 + b_2 + b_3 + \cdots + b_m$. Fix $m$ and
+  let $k$ be large enough to ensure $m \le 2_{k+1} - 1$. Then, $S_m \le S_{2^k +
+  1} - 1$ and
+  \begin{align*}
+    S_{2^{k+1}} - 1 &= b_1 + (b_2 + b_3) + (b_4 + \cdots + b_7) + \cdots + (b_{2^k} + \cdots + b_{2^{k+1} - 1}) \\
+                    &\le b_1 + 2b_2 + 4b_4 + \cdots + 2^kb_{2^k} \\
+                    &= T_k
+  .\end{align*}
+  Therefore, $S_m \le T_k \le M$ for all $m \in \N$. This implies that $(S_m)$
+  is bounded and therefore converges.
+\end{proof}
+
+This is a more general statement of the statement that the sum
+$\sum_{n=1}^{\infty} \frac{1}{n}$ diverges and that $\sum_{n=1}^{\infty}
+\frac{1}{n^{\rho}}$ converges for $\rho > 1$.
+
+\begin{corollary}[P-Series Test]
+  The series
+  \[%
+    \sum_{n=1}^{\infty} \frac{1}{n^{\rho}}
+  .\]%
+  converges if and only if $\rho > 1$.
+\end{corollary}
+
+\begin{proof}
+  Let $b_n = \frac{1}{n^{\rho}}$. By the Cauchy Condensation Test, the series
+  $\sum_{n=1}^{\infty} b_n$ converges if and only if the series
+  \[%
+    \sum_{n=0}^{\infty} 2^n \cdot \frac{1}{(2^n)^{\rho}} = \sum_{n=0}^{\infty} \frac{1}{2^{n(\rho-1)}}
+  .\]%
+  converges. The latter is a geometric series with common ratio $r =
+  \frac{1}{2^{\rho-1}}$. A geometric series converges if and only if $\lvert r
+  \rvert < 1$. Thus, $\lvert r \rvert < 1$ implies
+  \[%
+    \frac{1}{2^{\rho-1}} < 1,
+  \]%
+  which holds if and only if $\rho - 1 > 0$, or equivalently, $\rho > 1$.
+  Therefore, $\sum_{n=1}^{\infty} \frac{1}{n^{\rho}}$ converges if and only if
+  $\rho > 1$.
+\end{proof}
+
+\begin{lemma}[Abel's Test]
+\end{lemma}
+
+\begin{proof}
+\end{proof}
+
+\begin{lemma}[Dirichlet's Test]
+\end{lemma}
+
+\begin{proof}
+\end{proof}
+
+% subsection conversion_tests (end)
 
 \subsection{Rearrangements}
 \label{sub_sec:rearrangements}
@@ -85,5 +404,40 @@ We can use this very basic fact to prove multiple basic facts about series.
 
 
 % subsection rearrangements (end)
+
+\subsection{Double Summations of Infinite Series}
+\label{sub_sec:double_summations_of_infinite_series}
+
+\begin{note}
+  These next two sections aren't a part of the course, but they are interesting
+  to know and in future courses, professors assume you already know this, like
+  in Complex Analysis.
+\end{note}
+
+\begin{definition}[Iterated Summation]
+  Given a doubly indexed array of real numbers $\{a_{ij} \mid i, j \in \N\}$,
+  the \textit{iterated sum} of the array is defined as
+  \[%
+    S_{mn} = \sum_{i=1}^m \sum_{j=1}^n a_{ij} = \sum_{i,j=1}^{\infty} a_{ij}
+  .\]%
+\end{definition}
+
+\begin{note}
+  Notice that the order of summation matters, giving us
+  \[%
+    \sum_{i=1}^{\infty} \sum_{j=1}^{\infty} a_{ij} \neq \sum_{j=1}^{\infty} \sum_{i=1}^{\infty} a_{ij}
+  .\]%
+  But when it comes to using partial sums, as long as the series converges, then
+  the order of summation doesn't matter.
+\end{note}
+
+% subsection double_summations_of_infinite_series (end)
+
+\subsection{Products of Infinite Series}
+\label{sub_sec:products_of_infinite_series}
+
+
+
+% subsection products_of_infinite_series (end)
 
 % section properties_of_infinite_series (end)

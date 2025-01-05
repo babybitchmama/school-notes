@@ -47,15 +47,8 @@ The following are equivalent
   converges.
 \end{example}
 
-\begin{example}[Harmonic Series]
-  Let $a_n = \frac{1}{n}$, then $a_n \to 0$ but $\sum_{n=1}^{\infty}
-  \frac{1}{n} \to \infty$. This can be shown by
-  \[%
-    S_{2^n} - S_{2^{n-1}} = \frac{1}{S^{n-1} + 1} + \cdots + \frac{1}{S^n} \ge \frac{2^{n-1}}{2^n} = \frac{1}{2}
-  .\]%
-  Therefore, $S_{2^n} \ge S_1 + \frac{n}{2}$, meaning that the harmonic series
-  diverges.
-\end{example}
+\subsection{Types of Series}
+\label{sub_sec:types_of_series}
 
 \begin{example}[Geometric Series]
   Let $\lvert \rho \rvert < 1$. Then
@@ -69,67 +62,23 @@ The following are equivalent
   Therefore, $\sum_{n=0}^{\infty} \rho^n$ converges to $\frac{1}{1 - \rho}$.
 \end{example}
 
-\subsection{Cauchy Condensation Test}
-\label{sub_sec:cauchy_condensation_test}
-
-\begin{theorem}[Cauchy Condensation Test]
-  Suppose $(b_n)$ is decreasing and satisfies $b_n \ge 0$ for all $n \in \N$.
-  Then, the series $\sum_{n=1}^{\infty} b_n$ converges if and only if the series
+\begin{example}[Harmonic Series]
+  Let $a_n = \frac{1}{n}$, then $a_n \to 0$ but $\sum_{n=1}^{\infty}
+  \frac{1}{n} \to \infty$. This can be shown by
   \[%
-    \sum_{n=0}^{\infty} 2^nb_{2^n} = b_1 + 2b_2 + 4b_4 + 8b_8 + 16b_{16} + \cdots
-  ,\]%
-  converges.
-\end{theorem}
-
-\begin{proof}
-  First, assume that $\sum_{n=0}^{\infty} 2^nb_{2^n}$ converges. Then, the
-  partial sum
-  \[%
-    t_k = b_1 + 2b_2 + 4b_4 + \cdots + 2^kb_{2^k}
-  ,\]%
-  is bounded, by some number $M$. Because $b_n \ge 0$, we know that the partial
-  sums are increasing. Let $S_m = b_1 + b_2 + b_3 + \cdots + b_m$. Fix $m$ and
-  let $k$ be large enough to ensure $m \le 2_{k+1} - 1$. Then, $S_m \le S_{2^k +
-  1} - 1$ and
-  \begin{align*}
-    S_{2^{k+1}} - 1 &= b_1 + (b_2 + b_3) + (b_4 + \cdots + b_7) + \cdots + (b_{2^k} + \cdots + b_{2^{k+1} - 1}) \\
-                    &\le b_1 + 2b_2 + 4b_4 + \cdots + 2^kb_{2^k} \\
-                    &= t_k
-  .\end{align*}
-  Therefore, $S_m \le t_k \le M$ for all $m \in \N$. This implies that $(S_m)$
-  is bounded and therefore converges.
-\end{proof}
-
-That was essentially a proof that the sum $\sum_{n=1}^{\infty} \frac{1}{n}$
-diverges and that $\sum_{n=1}^{\infty} \frac{1}{n^{\rho}}$ converges for $\rho >
-1$.
-
-\begin{corollary}
-  The series
-  \[%
-    \sum_{n=1}^{\infty} \frac{1}{n^{\rho}}
+    S_{2^n} - S_{2^{n-1}} = \frac{1}{S^{n-1} + 1} + \cdots + \frac{1}{S^n} \ge \frac{2^{n-1}}{2^n} = \frac{1}{2}
   .\]%
-  converges if and only if $\rho > 1$.
-\end{corollary}
+  Therefore, $S_{2^n} \ge S_1 + \frac{n}{2}$, meaning that the harmonic series
+  diverges.
+\end{example}
 
-\begin{proof}
-  Let $b_n = \frac{1}{n^{\rho}}$. By the Cauchy Condensation Test, the series
-  $\sum_{n=1}^{\infty} b_n$ converges if and only if the series
-  \[%
-    \sum_{n=0}^{\infty} 2^n \cdot \frac{1}{(2^n)^{\rho}} = \sum_{n=0}^{\infty} \frac{1}{2^{n(\rho-1)}}
-  .\]%
-  converges. The latter is a geometric series with common ratio $r =
-  \frac{1}{2^{\rho-1}}$. A geometric series converges if and only if $\lvert r
-  \rvert < 1$. Thus, $\lvert r \rvert < 1$ implies
-  \[%
-    \frac{1}{2^{\rho-1}} < 1,
-  \]%
-  which holds if and only if $\rho - 1 > 0$, or equivalently, $\rho > 1$.
-  Therefore, $\sum_{n=1}^{\infty} \frac{1}{n^{\rho}}$ converges if and only if
-  $\rho > 1$.
-\end{proof}
+\begin{example}[Alternating Series]
+\end{example}
 
-% subsection cauchy_condensation_test (end)
+\begin{example}[P-Series]
+\end{example}
+
+% subsection types_of_series (end)
 
 % section infinite_series (end)
 

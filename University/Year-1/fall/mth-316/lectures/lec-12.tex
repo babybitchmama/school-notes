@@ -173,27 +173,6 @@ letting $n \to \infty$, we focus on how the sequence behaves ``eventually.''
   \end{enumerate}
 \end{proof}
 
-\begin{example}[Convergent Sequence]
-  Let $a_n = \frac{1}{n}$. Since the sequence converges to $0$, we have
-  \begin{align*}
-    \limsup_{n \to \infty} a_n &= 0 \\
-    \liminf_{n \to \infty} a_n &= 0
-  .\end{align*}
-\end{example}
-
-\begin{example}[Oscillating Sequence]
-  Let $a_n = (-1)^n$. The sequence oscillates between $1$ and $-1$, so
-  \begin{alignat*}{3}
-    \sup_{k \geq n} a_k &= 1\quad&&\textrm{(since $a_k = 1$ infinitely often)} \\
-    \inf_{k \geq n} a_k &= -1\quad&&\textrm{(since $a_k = -1$ infinitely often)}
-  .\end{alignat*}
-  Thus
-  \begin{align*}
-    \limsup_{n \to \infty} a_n &= 1 \\
-    \liminf_{n \to \infty} a_n &= -1
-  .\end{align*}
-\end{example}
-
 If a sequence is Cauchy, then
 \begin{itemize}
   \item $\limsup_{n \to \infty} a_n = \liminf_{n \to \infty} a_n$,
