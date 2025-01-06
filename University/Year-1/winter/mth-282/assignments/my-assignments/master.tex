@@ -1,0 +1,32 @@
+\documentclass{report}
+\def\class{report}
+
+\newcommand\hmwkTitle{TITLE}
+\newcommand\hmwkDueDate{January 06, 2025}
+
+\newcommand\hmwkDueTime{11:59 PM}
+\newcommand\hmwkClass{Several-Variab Calc II}
+\newcommand\hmwkClassTime{TIME}
+\newcommand\hmwkClassInstructor{Jennifer Thorenson}
+\newcommand\hmwkClassInstructorShortName{Jennifer}
+\newcommand\hmwkAuthorName{\textbf{Hashem A. Damrah}}
+
+\input{preamble.tex}
+
+%%%%%%%%%%%%%%%
+%  Citations  %
+%%%%%%%%%%%%%%%
+
+\usepackage[backend=bibtex,style=mla]{biblatex}
+\bibliography{bibtex-files/ASSIGNMENT.bib}
+
+\begin{document}
+  \maketitle
+  \pagestyle{plain}
+  \mbox{}\newpage
+  \pagestyle{fancy}
+  \input{latex-files/ASSIGNMENT.tex}
+
+  \nocite{*}
+  \printbibliography
+\end{document}

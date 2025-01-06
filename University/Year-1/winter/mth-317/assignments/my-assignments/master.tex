@@ -1,0 +1,32 @@
+\documentclass{report}
+\def\class{report}
+
+\newcommand\hmwkTitle{TITLE}
+\newcommand\hmwkDueDate{January 06, 2025}
+
+\newcommand\hmwkDueTime{11:59 PM}
+\newcommand\hmwkClass{Fundamentals of Analysis II}
+\newcommand\hmwkClassTime{TIME}
+\newcommand\hmwkClassInstructor{Yuan Xu}
+\newcommand\hmwkClassInstructorShortName{Yuan}
+\newcommand\hmwkAuthorName{\textbf{Hashem A. Damrah}}
+
+\input{preamble.tex}
+
+%%%%%%%%%%%%%%%
+%  Citations  %
+%%%%%%%%%%%%%%%
+
+\usepackage[backend=bibtex,style=mla]{biblatex}
+\bibliography{bibtex-files/ASSIGNMENT.bib}
+
+\begin{document}
+  \maketitle
+  \pagestyle{plain}
+  \mbox{}\newpage
+  \pagestyle{fancy}
+  \input{latex-files/ASSIGNMENT.tex}
+
+  \nocite{*}
+  \printbibliography
+\end{document}
