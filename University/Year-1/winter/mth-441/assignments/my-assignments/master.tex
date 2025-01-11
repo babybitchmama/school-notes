@@ -1,0 +1,32 @@
+\documentclass{report}
+\def\class{report}
+
+\newcommand\hmwkTitle{Homework 1}
+\newcommand\hmwkDueDate{January 8, 2025}
+
+\newcommand\hmwkDueTime{12:00}
+\newcommand\hmwkClass{Abstract Linear Algebra}
+\newcommand\hmwkClassTime{}
+\newcommand\hmwkClassInstructor{Xiaojing Chen–Murphy}
+\newcommand\hmwkClassInstructorShortName{Xiaojing}
+\newcommand\hmwkAuthorName{\textbf{Hashem A. Damrah}}
+
+\input{preamble.tex}
+
+%%%%%%%%%%%%%%%
+%  Citations  %
+%%%%%%%%%%%%%%%
+
+\usepackage[backend=bibtex,style=mla]{biblatex}
+\bibliography{bibtex-files/homework-01.bib}
+
+\begin{document}
+  \maketitle
+  \pagestyle{plain}
+  \mbox{}\newpage
+  \pagestyle{fancy}
+  \input{latex-files/homework-01.tex}
+
+  \nocite{*}
+  \printbibliography
+\end{document}

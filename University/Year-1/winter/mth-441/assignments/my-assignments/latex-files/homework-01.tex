@@ -1,0 +1,181 @@
+\begin{problem}[1]
+  State the rank-nullity theorem for an $m \times n$ matrix with real entries.
+\end{problem}
+
+\begin{proof}[Solution]
+  Let $A$ be an $m \times n$ matrix with real entries. Then the rank-nullity theorem states that
+  \[%
+    \rank(A) + \Nul(A) = n \aand \rank(A^T) + \Nul(A) = m
+  .\qedhere\]%
+\end{proof}
+
+\begin{problem}[2]
+  Given that $\displaystyle A = \begin{bmatrix}
+    1 & 2 & -5 & 11 & -3 \\
+    2 & 4 & -5 & 15 & 2 \\
+    1 & 2 & 0 & 4 & 5 \\
+    3 & 6 & -5 & 19 & -2 \\
+  \end{bmatrix}$
+  is row equivalent to $B = \begin{bmatrix}
+    1 & 2 & 0 & 4 & 5 \\
+    0 & 0 & 5 & -7 & 8 \\
+    0 & 0 & 0 & 0 & -9 \\
+    0 & 0 & 0 & 0 & 0 \\
+  \end{bmatrix}$, find a basis for $\Nul(A)$ and a basis for $\range(A)$.
+\end{problem}
+
+\begin{proof}[Solution]
+  The null space of $A$ consists of all solutions to the equation $A\x = \zero$.
+  We need to convert $B$ into reduced row echelon form to find the basis for the
+  null space of $A$. The reduced row echelon form of $B$ is
+  \[%
+    \begin{bmatrix}
+      1 & 2 & 0 & 4 & 0 \\
+      0 & 0 & 1 & -\frac{7}{5} & 0 \\
+      0 & 0 & 0 & 0 & 1 \\
+      0 & 0 & 0 & 0 & 0 \\
+    \end{bmatrix} \rightarrow
+    \begin{aligned}
+      x_1 &= -2x_2 - 4x_4 \\
+      x_2 &= x_2 \\
+      x_3 &= \frac{7}{5}x_4 \\
+      x_4 &= x_4 \\
+      x_5 &= 0
+    \end{aligned}
+  .\]%
+  Parametrizing the solution, we have
+  \[%
+     \x = \begin{bmatrix}
+       -2x_2 - 4x_4 \\
+       x_2 \\
+       \frac{7}{5}x_4 \\
+       x_4 \\
+       0 \\
+     \end{bmatrix} =
+     x_2\begin{bmatrix}
+       -2 \\
+       1 \\
+       0 \\
+       0 \\
+       0 \\
+     \end{bmatrix} +
+     x_4\begin{bmatrix}
+       -4 \\
+       0 \\
+       \frac{7}{5} \\
+       1 \\
+       0 \\
+     \end{bmatrix}
+  .\]%
+  Therefore, a basis for $\Nul(A)$ is
+  \[%
+    \left\{
+     \begin{bmatrix}
+       -2 \\
+       1 \\
+       0 \\
+       0 \\
+       0 \\
+     \end{bmatrix},
+     \begin{bmatrix}
+       -4 \\
+       0 \\
+       \frac{7}{5} \\
+       1 \\
+       0 \\
+     \end{bmatrix}
+    \right\}
+  .\]%
+
+  The basis for the range of $A$ (or $\Col(A)$) is the set of pivot columns of
+  $A$. The pivot columns of $A$ are the first, third, and fourth columns.
+  Therefore, a basis for $\range(A)$ is
+  \[%
+    \left\{
+      \begin{bmatrix}
+        1 \\
+        2 \\
+        1 \\
+        3 \\
+      \end{bmatrix},
+      \begin{bmatrix}
+        -5 \\
+        -5 \\
+        0 \\
+        -5 \\
+      \end{bmatrix},
+      \begin{bmatrix}
+        -3 \\
+        2 \\
+        5 \\
+        -2 \\
+      \end{bmatrix}
+    \right\}
+  .\qedhere\]%
+\end{proof}
+
+\begin{problem}[3]
+  Let $A$ be an $m \times n$ matrix with real entires. Prove that $A = 0$ if and
+  only if $\Tr(A^TA) = 0$.
+\end{problem}
+
+\begin{proof}[Solution] $ $
+  \begin{enumerate}
+    \item[$\implies)$] Assume $A = 0$, where $0$ is the $m \times n$
+      zero matrix. Then,
+      \[%
+        A^T A = 0^T 0 = 0
+      ,\]%
+      and the trace of the zero matrix is
+      \[%
+        \Tr(A^T A) = \Tr(0) = 0
+      .\]%
+      Thus, if $A = 0$, we have $\Tr(A^T A) = 0$.
+
+    \item[$\impliedby)$] Assume $\Tr(A^T A) = 0$. By the definition of $A^T A$,
+      \[%
+        A^T A = \begin{bmatrix}
+          \langle \mathbf{a}_1, \mathbf{a}_1 \rangle & \langle \mathbf{a}_1, \mathbf{a}_2 \rangle & \cdots & \langle \mathbf{a}_1, \mathbf{a}_n \rangle \\
+          \langle \mathbf{a}_2, \mathbf{a}_1 \rangle & \langle \mathbf{a}_2, \mathbf{a}_2 \rangle & \cdots & \langle \mathbf{a}_2, \mathbf{a}_n \rangle \\
+          \vdots & \vdots & \ddots & \vdots \\
+          \langle \mathbf{a}_n, \mathbf{a}_1 \rangle & \langle \mathbf{a}_n, \mathbf{a}_2 \rangle & \cdots & \langle \mathbf{a}_n, \mathbf{a}_n \rangle
+        \end{bmatrix}
+      ,\]%
+      where $\a_i$ are the column vectors of $A$. The trace of $A^T A$ is
+      \[%
+        \Tr(A^T A) = \sum_{i=1}^n \langle \a_i, \a_i \rangle = \sum_{i=1}^n \lVert \a_i \rVert^2
+      .\]%
+      \[%
+        \text{Tr}(A^T A) = \sum_{i=1}^n \langle \mathbf{a}_i, \mathbf{a}_i \rangle = \sum_{i=1}^n \lVert \a_i \rVert^2
+      .\]%
+      Since $\Tr(A^T A) = 0$, it follows that
+      \[%
+        \sum_{i=1}^n \lVert \a_i \rVert^2 = 0
+      .\]%
+      Each term $\lVert \a_i \rVert^2$ is a sum of squares of the entries of
+      $\a_i$ and is non-negative. Therefore, $\lVert \a_i \rVert^2 = 0$ for all
+      $i$, which implies $\a_i = 0$ for all $i$.
+
+      Thus, $A = 0$. \qedhere
+  \end{enumerate}
+\end{proof}
+
+\begin{problem}[4]
+  True or False. No explanation needed.
+  \begin{enumerate}
+    \item If $A$ is a $3 \times 3$ matrix, then $\det(3A) = 9 \det(A)$.
+
+    \item If $A$, $B$ are invertible $n \times n$ matrices, then $[(AB)^T]^{-1} = (B^T)^{-1}(A^T)^{-1}$
+  \end{enumerate}
+\end{problem}
+
+\begin{proof}[Solution] $ $
+  \begin{enumerate}
+    \item False. If $A$ is a $3 \times 3$ matrix, then $\det(3A) = 3^3 \det(A) =
+      27 \det(A)$, not $9 \det(A)$.
+
+    \item True. The inverse of the transpose of a product of matrices is the
+      product of the transposes of the inverses, i.e., $[(AB)^T]^{-1} =
+      (B^T)^{-1}(A^T)^{-1}$.
+  \end{enumerate}
+\end{proof}

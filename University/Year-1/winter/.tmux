@@ -5,8 +5,8 @@ tmux send-keys -t "$SESSION_NAME" "cd ./University/Year-1/winter/mth-282/; clear
 
 tmux new-window -t "$SESSION_NAME"
 
-tmux rename-window -t "$SESSION_NAME" "MTH-342"
-tmux send-keys -t "$SESSION_NAME" "cd ./University/Year-1/winter/mth-342/; clear" Enter
+tmux rename-window -t "$SESSION_NAME" "MTH-441"
+tmux send-keys -t "$SESSION_NAME" "cd ./University/Year-1/winter/mth-441/; clear" Enter
 
 tmux new-window -t "$SESSION_NAME"
 
