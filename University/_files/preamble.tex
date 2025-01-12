@@ -9,6 +9,8 @@
 \usepackage[T1]{fontenc}
 \RequirePackage{etex}
 
+\usepackage{etoolbox}
+
 % Required math packages
 \usepackage{amsmath}
 \usepackage{amsfonts}
@@ -17,36 +19,28 @@
 \usepackage{amssymb}
 \usepackage{mathrsfs}
 
-\usepackage{multicol} % for multiple columns
 \usepackage[usenames,dvipsnames,pdftex]{color} % Required for nicer colors
 \usepackage{hyperref} % Required for hyperlinks
-\usepackage{xparse} % Required for \NewDocumentCommand
 \usepackage{graphicx} % Required for including images
 \usepackage{enumitem} % Required for customizing lists
 \usepackage{float} % Required for positioning figures and tables
 \usepackage{array} % Required for customizing tables
-\usepackage{systeme} % Required for \systeme
 \usepackage{cancel} % Required for \cancel
 \usepackage{derivative} % Required for \odv and \pdv
-\usepackage{authoraftertitle} % Required for \MyTitle
 \usepackage{geometry} % Required for customizing page layout
 \usepackage{textgreek} % Required for greek letters in text mode
 \usepackage{multirow} % Required for multirow in tables
-\usepackage{emptypage} % Required for removing page numbers on empty pages
 \usepackage{nicematrix} % Required for better matrices
-\usepackage{booktabs} % Required for better tables
 \usepackage{cellspace} % Required for better spacing in tables
-\usepackage{longtable} % Required for long tables
 \usepackage{xfrac} % Required for extra fraction options
-\usepackage{diagbox} % Required for creating diagonal boxes
-\usepackage{polynom} % Required for polynomial long division
-\usepackage{setspace} % For line spacing
-
+\usepackage{xifthen} % Required for if-then-else statements
+\usepackage{fancyhdr} % Required for customizing headers and footers
+\usepackage{import} % Required for importing pdf_tex files
 \usepackage[font=bf]{caption} % Required for customizing captions
 \usepackage{subcaption} % Required for creating subfigures
 \usepackage{siunitx} % Required for SI units
 \usepackage{titletoc} % Required for customizing table of contents
-\usepackage{braket} % Required for creating braket notation
+\usepackage[most,many,breakable]{tcolorbox} % Required for creating boxes
 
 % Required for drawing figures
 \usepackage{tikz}
@@ -54,22 +48,10 @@
 \usepackage{tkz-euclide}
 \usepackage{tikz-cd}
 \usepackage{tikz-3dplot}
-\usepackage{circuitikz}
 
 % Required for creating plots
 \usepackage{pgfplots}
 \usepackage{pgfplotstable}
-
-\usepackage{titling} % Required for customizing title page
-\usepackage{ifthen} % Required for if-then-else statements
-\usepackage{xifthen} % Required for if-then-else statements
-\usepackage{fancyhdr} % Required for customizing headers and footers
-\usepackage{import} % Required for importing pdf_tex files
-\usepackage{titlesec} % Required for customizing sectioning commands
-\usepackage{etex} % Required for more registers
-
-% Required for creating boxes
-\usepackage[most,many,breakable]{tcolorbox}
 
 \makeatletter
 
@@ -79,6 +61,8 @@
 %                                Basic Settings                                %
 %                                                                              %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\setcounter{tocdepth}{2}
 
 \ifx\nauthor\undefined
   \def\nauthor{Hashem A. Damrah}
@@ -102,7 +86,7 @@
 % Geometry
 \geometry{
   top=1in,
-  bottom=1in,
+  bottom=1.5in,
   right=1in,
   left=1in,
 }
@@ -121,35 +105,6 @@
 \renewcommand{\labelitemi}{--}
 \renewcommand{\labelitemii}{$\circ$}
 \renewcommand{\labelenumi}{\textnormal{(\roman{*})}}
-
-% Center Title Page
-\let\@real@maketitle\maketitle
-% \renewcommand\maketitle{
-%   \@real@maketitle
-%   \begin{center}
-%     \begin{minipage}[c]{0.9\textwidth}
-%       \centering\footnotesize
-%       These notes are not endorsed by the lecturers, and
-%       I have modified them (often significantly) after lectures. They are
-%       nowhere near accurate representations of what was actually lectured, and
-%       in particular, all errors are almost surely mine.
-
-%       \textit{Disclaimer:} This document will inevitably contain some
-%       mistakes--both simple typos and legitimate errors. Keep in mind that these
-%       are the notes of an undergraduate student in the process of learning the
-%       material himself, so take what you read with a grain of salt. If you find
-%       mistakes and feel like telling me, I will be grateful and happy to hear
-%       from you, even for the most trivial of errors. You can reach me by email,
-%       in English, Arabic, Hebrew, or Spanish at
-%       \href{mailto:singularisartt@gmail.com}{singularisartt@gmail.com}.
-%     \end{minipage}
-%   \end{center}
-% }
-\renewcommand\maketitlehooka{\null\mbox{}\vfill}
-\renewcommand\maketitlehookd{\vfill\null}
-
-% Footnote Line
-\renewcommand\footnoterule{\hrule\vspace{0.1cm}}
 
 % Modify Links Color
 \hypersetup{
@@ -278,12 +233,6 @@
   \setcounter{subparagraph}{0}
 }
 
-\newcommand*\cleartoleftpage{%
-  \clearpage
-  \thispagestyle{empty}
-  \ifodd\value{page}\else\hbox{}\newpage\fi
-}
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %  Lecture/Chapter Command  %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -299,14 +248,44 @@
   \section*{\@note\hfill{\small\textnormal{#2}}}
 }
 
+\patchcmd{\maketitle}
+  {\end{titlepage}}
+  {\thispagestyle{titlepagestyle}\end{titlepage}}
+  {}{}
+
+\fancypagestyle{titlepagestyle}{%
+   \fancyhf{}%
+    \fancyfoot[C]{%
+      \textit{For more notes like this, visit \href{\othernotes}{\othernotes}}. \\%
+      \noindent\makebox[\linewidth]{\rule{0.8\textwidth}{0.4pt}}
+      \nterm: \nyear, \\%
+      Last Update: \today, \\%
+      \faculty, \location.%
+    }%
+    \renewcommand{\headrulewidth}{0 mm}
+}%
+
 % Intro
+\pagestyle{plain}
 \newcommand\createintro{
-  \maketitle
+  \author{Based on lectures by \nlecturer \\\small Notes taken by \nauthor}
 
   \pagenumbering{roman}
+  \renewcommand\headrulewidth{0pt}
+  \maketitle
+  \thispagestyle{titlepagestyle}
+
   \begin{center}
-    \textbf{{\LARGE Introduction}}
-    \phantomsection\addcontentsline{toc}{chapter}{0\hspace{0.8em}Introduction}
+    \begin{minipage}[c]{0.9\textwidth}
+      \centering\footnotesize \textit{Disclaimer:} This document will inevitably
+      contain some mistakes--both simple typos and legitimate errors. Keep in
+      mind that these are the notes of an undergraduate student in the process
+      of learning the material himself, so take what you read with a grain of
+      salt. If you find mistakes and feel like telling me, I will be grateful
+      and happy to hear from you, even for the most trivial of errors. You can
+      reach me by email, in English, Arabic, Hebrew, or Spanish at
+      \href{mailto:singularisartt@gmail.com}{singularisartt@gmail.com}.
+    \end{minipage}
   \end{center}
 
   \begingroup
@@ -316,30 +295,18 @@
   }{}
   \endgroup
 
-  \pagestyle{fancy}
-  \renewcommand\headrulewidth{0pt}
-
-  \fancyhead{}
-  \fancyfoot[C]{%
-    \textit{For more notes like this, visit \href{\linktootherpages}{\shortlinkname}}.%
-  }%
-
-  \begin{tcolorbox}[
-      enhanced,
-      colback=white,
-      center upper,
-      size=fbox,
-      drop shadow southwest,
-      sharp corners,
-    ]
-    \term: \academicyear, \\
-    Last Update: \today, \\
-    \faculty, \location.
-  \end{tcolorbox}
-
   \newpage
+
+  \newgeometry{
+    top=1in,
+    bottom=1in,
+    right=1in,
+    left=1in,
+  }
+
   \tableofcontents
 
+  \pagestyle{fancy}
   \pagenumbering{arabic}
   \setcounter{page}{1}
 
@@ -370,22 +337,27 @@
   \import{figures}{#2.pdf_tex}
 }
 
-% Correct
-\newcommand\correct[1]{\textcolor{correct}{#1}}
-\newcommand\incorrect[1]{{\color{incorrect}#1}}
-\newcommand\inctocor[2]{\incorrect{#1} \ensuremath{\to} \correct{#2}}
-
-% Bracket
-\renewcommand\bra[1]{\left\langle#1\right|}
-\renewcommand\ket[1]{\left|#1\right\rangle}
-\renewcommand\braket[2]{\left\langle#1\middle|#2\right\rangle}
-\renewcommand\ang[1]{\left\langle#1\right\rangle}
-
 % For diagonal strikeout in red
 \newcommand\rcancel[1]{\renewcommand\CancelColor{\color{red}}\cancel{#1}}
 
 % Logic
 \renewcommand\nmid{\not|~}
+
+%%%%%%%%%%%%%%%%%%
+%  Math Symbols  %
+%%%%%%%%%%%%%%%%%%
+
+\let\U\relax
+\let\C\relax
+\let\G\relax
+
+% Brackets
+\newcommand\abs[1]{\left\lvert #1\right\rvert}
+\newcommand\bket[1]{\left\lvert #1\right\rangle}
+\newcommand\brak[1]{\left\langle #1 \right\rvert}
+\newcommand\braket[2]{\left\langle #1\middle\vert #2 \right\rangle}
+\newcommand\bra{\langle}
+\newcommand\ket{\rangle}
 
 % For differentials
 \newcommand\dd[1]{\textrm{d}#1}
@@ -400,107 +372,82 @@
 \newcommand\dz{\textrm{d}z}
 
 % Helpful text in math
-\newcommand\abs{\text{abs}}
-\newcommand\echelon{\underrightarrow{\textrm{ echelon form }}}
-\newcommand\rref{\underrightarrow{\textrm{ rref }}}
-\newcommand\pick[1]{\xrightarrow[#1]{\textrm{ pick }}}
-\newcommand\generalsol{\xrightarrow[\textrm{solution}]{\textrm{ general }}}
-\newcommand\ngeneralsol{\parbox{4em}{general \\ solution}\textrm{:}}
-\renewcommand\and{\text{and}}
 \newcommand\aand{\quad\text{and}\quad}
-\newcommand\adj{\text{adj}}
-\newcommand\qtq[1]{\quad\textrm{#1}\quad}
 \newcommand\oor{\quad\text{or}\quad}
+\renewcommand\and{\text{and}}
+\newcommand\qtq[1]{\quad\textrm{#1}\quad}
 \newcommand\Col{\textrm{Col}}
 \newcommand\Nul{\textrm{Null}}
-\newcommand\range{\textrm{Range}}
+\newcommand\Range{\textrm{Range}}
 \newcommand\Tr{\textrm{Tr}}
-\newcommand\Row{\textrm{Row}}
-\newcommand\rank{\textrm{rank}}
-\newcommand\dist{\text{dist}}
-\newcommand\sz{\stackrel{\textrm{set}}{=}}
-\newcommand\ce{\overset{\checkmark}{=}}
+\newcommand\Rank{\textrm{Rank}}
 \newcommand\proj{\text{proj}}
 \newcommand\comp{\text{comp}}
-\newcommand\Card{\text{Card}}
-\renewcommand\mod{\text{mod}}
-\newcommand\st{\text{such that}}
-\newcommand\geogebra{\textsf{GeoGebra}}
 \newcommand\Sspan{\text{Span}}
 \renewcommand\Re{\text{Re}}
 \renewcommand\Im{\text{Im}}
 
-% Laplace
-\newcommand\laplace[1]{\mathscr{L}\left\{#1\right\}}
-\newcommand\ilaplace[1]{\mathscr{L}^{-1}\left\{#1\right\}}
-
 % Vectors
-\newcommand\vectype{bold}
-\newcommand\vectortype[1]{
-  \ifthenelse{\equal{\vectype}{bold}}{%
-    \mathbf{#1}
-  }{%
-    \vec{#1}
-  }
-}
-\newcommand\hattype[1]{
-  \ifthenelse{\equal{\vectype}{bold}}{%
-    \mathbf{\hat{#1}}
-  }{%
-    \hat{#1}
-  }
-}
-
-\renewcommand\a{\vectortype{a}}
-\renewcommand\b{\vectortype{b}}
-\renewcommand\c{\vectortype{c}}
-\renewcommand\d{\vectortype{d}}
-\newcommand\e{\vectortype{e}}
-\newcommand\f{\vectortype{f}}
-\newcommand\g{\vectortype{g}}
-\newcommand\n{\vectortype{n}}
-\newcommand\p{\vectortype{p}}
-
-\renewcommand\r{\vectortype{r}}
-\newcommand\rr{\vectortype{r}^{\prime}}
-\newcommand\rrr{\vectortype{r}^{\prime\prime}}
-
-\newcommand\Ta{\vectortype{T}}
-\newcommand\Taa{\vectortype{T}^{}}
-
-\renewcommand\u{\vectortype{u}}
-\newcommand\uu{\vectortype{u}^{\prime}}
-\newcommand\uuu{\vectortype{u}^{\prime\prime}}
-
-\renewcommand\v{\vectortype{v}}
-\newcommand\vv{\vectortype{v}^{\prime}}
-\newcommand\vvv{\vectortype{v}^{\prime\prime}}
-
-\newcommand\w{\vectortype{w}}
-\newcommand\x{\vectortype{x}}
-\newcommand\y{\vectortype{y}}
-\newcommand\z{\vectortype{z}}
-
-\newcommand\zero{\vectortype{0}}
+\renewcommand\a{\mathbf{a}}
+\renewcommand\b{\mathbf{b}}
+\renewcommand\c{\mathbf{c}}
+\renewcommand\d{\mathbf{d}}
+\newcommand\e{\mathbf{e}}
+\newcommand\f{\mathbf{f}}
+\newcommand\g{\mathbf{g}}
+\newcommand\n{\mathbf{n}}
+\newcommand\p{\mathbf{p}}
+\renewcommand\r{\mathbf{r}}
+\newcommand\Ta{\mathbf{T}}
+\renewcommand\u{\mathbf{u}}
+\renewcommand\v{\mathbf{v}}
+\newcommand\w{\mathbf{w}}
+\newcommand\x{\mathbf{x}}
+\newcommand\y{\mathbf{y}}
+\newcommand\z{\mathbf{z}}
+\newcommand\zero{\mathbf{0}}
 
 % Hat vectors
-\newcommand\ah{\hattype{a}}
-\newcommand\bh{\hattype{b}}
-\newcommand\ch{\hattype{c}}
-\renewcommand\dh{\hattype{d}}
-\newcommand\eh{\hattype{e}}
-\newcommand\ph{\hattype{p}}
-\newcommand\uh{\hattype{u}}
-\newcommand\vh{\hattype{v}}
-\newcommand\wh{\hattype{w}}
-\newcommand\xh{\hattype{x}}
-\newcommand\yh{\hattype{y}}
-\newcommand\zh{\hattype{z}}
+\newcommand\ah{\mathbf{a}}
+\newcommand\bh{\mathbf{b}}
+\newcommand\ch{\mathbf{c}}
+\renewcommand\dh{\mathbf{d}}
+\newcommand\eh{\mathbf{e}}
+\newcommand\ph{\mathbf{p}}
+\newcommand\uh{\mathbf{u}}
+\newcommand\vh{\mathbf{v}}
+\newcommand\wh{\mathbf{w}}
+\newcommand\xh{\mathbf{x}}
+\newcommand\yh{\mathbf{y}}
+\newcommand\zh{\mathbf{z}}
 
 % Unit vectors
-\newcommand\ui{\ifthenelse{\equal{\vectype}{bold}}{\mathbf{i}}{\hat{\imath}}}
-\newcommand\uj{\ifthenelse{\equal{\vectype}{bold}}{\mathbf{j}}{\hat{\jmath}}}
-\newcommand\uk{\ifthenelse{\equal{\vectype}{bold}}{\mathbf{k}}{\hat{k}}}
+\newcommand\ui{\mathbf{\imath}}
+\newcommand\uj{\mathbf{\jmath}}
+\newcommand\uk{\mathbf{k}}
+
+% Matrix groups
+\newcommand\GL{\mathrm{GL}}
+\newcommand\Or{\mathrm{O}}
+\newcommand\PGL{\mathrm{PGL}}
+\newcommand\PSL{\mathrm{PSL}}
+\newcommand\PSO{\mathrm{PSO}}
+\newcommand\PSU{\mathrm{PSU}}
+\newcommand\SL{\mathrm{SL}}
+\newcommand\SO{\mathrm{SO}}
+\newcommand\Spin{\mathrm{Spin}}
+\newcommand\Sp{\mathrm{Sp}}
+\newcommand\SU{\mathrm{SU}}
+\newcommand\U{\mathrm{U}}
+\newcommand\Mat{\mathrm{Mat}}
+
+% Matrix algebras
+\newcommand\gl{\mathfrak{gl}}
+\newcommand\ort{\mathfrak{o}}
+\newcommand\so{\mathfrak{so}}
+\newcommand\su{\mathfrak{su}}
+\newcommand\uu{\mathfrak{u}}
+\renewcommand\sl{\mathfrak{sl}}
 
 % Subspaces
 \newcommand\B{\mathbb{B}}
@@ -512,10 +459,6 @@
 \newcommand\N{\mathbb{N}}
 \newcommand\Q{\mathbb{Q}}
 \newcommand\R{\mathbb{R}}
-\newcommand\U{\mathcal{U}}
-\newcommand\W{\mathbf{w}}
-\newcommand\X{\mathcal{X}}
-\newcommand\Y{\mathcal{Y}}
 \newcommand\Z{\mathbb{Z}}
 
 % Create command to box equations
