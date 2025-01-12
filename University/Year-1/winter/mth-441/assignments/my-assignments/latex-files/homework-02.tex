@@ -1,0 +1,153 @@
+\begin{problem}[1]
+  The \textit{trace} of an $n \times n$ matrix $A = (a_{ij})$ is defined as the
+  sum of the diagonal elements of $A$, i.e., $\Tr(A) = \sum_{j=1}^n a_{jj}$.
+  Prove that $\Tr(AB) = \Tr(BA)$ for any $n \times n$ matrices $A$ and $B$.
+\end{problem}
+
+\begin{proof}[Solution]
+\end{proof}
+
+\begin{problem}[2]
+  State the replacement theorem.
+\end{problem}
+
+\begin{proof}[Solution]
+  Let $V$ be a vector space, and let $\{v_1, v_2, \dots, v_n\}$ be a linearly
+  independent set of vectors in $V$. If $\{w_1, w_2, \dots, w_m\}$ is a spanning
+  set of $V$, then
+  \begin{enumerate}
+    \item $n \leq m$, and
+
+    \item It is possible to replace $n$ vectors in $\{w_1, w_2, \dots, w_m\}$
+      with $\{v_1, v_2, \dots, v_n\}$ such that the resulting set still spans
+      $V$.\qedhere
+  \end{enumerate}
+\end{proof}
+
+\begin{problem}[3]
+  Let $V$ be a vector space. Prove that the zero vector in $V$ is unique.
+\end{problem}
+
+\begin{proof}[Solution]
+  \renewcommand\e{\mathbf{e}}\renewcommand\f{\mathbf{f}}
+  Let $\e$ and $\f$ be zero vectors in $V$. Since $(\forall \a \in V)[\e \cdot
+  \a = \a]$, then, we have $\e \cdot \f = \f$. Since $(\forall \b \in V)[\b
+  \cdot \f = \b]$, then, we have $\e \cdot \f = \e$. Therefore, $\e = \f$.
+\end{proof}
+
+\begin{problem}[4]
+  Let $V = \{(a_1, a_2) \mid a_1, a_2 \in \C\}$. Define
+  \[%
+    (a_1, a_2) + (b_1, b_2) = (a_1 + b_1, a_2 + b_2) \aand c(a_1, a_2) = (a_1, 0)
+  .\]%
+  Determine whether or not $V$ is a vector space over $\C$ with these
+  operations. Justify your answer.
+\end{problem}
+
+\begin{proof}[Solution]
+\end{proof}
+
+\begin{problem}[5]
+  Let $V = \{(a_1, a_2) \mid a_1, a_2 \in \C\}$. Define
+  \[%
+    (a_1, a_2) + (b_1, b_2) = (a_1 + 2b_1, a_2 + 3b_2) \aand c(a_1, a_2) = (ca_1, ca_2)
+  .\]%
+  Determine whether or not $V$ is a vector space over $\C$ with these
+  operations. Justify your answer.
+\end{problem}
+
+\begin{proof}[Solution]
+\end{proof}
+
+\begin{problem}[6]
+  If $W_1$ and $W_2$ are subspaces of a vector space $V$, prove that $W_1 \cap
+  W_2$ is a subspace of $V$.
+\end{problem}
+
+\begin{proof}[Solution]
+\end{proof}
+
+\begin{problem}[7]
+  Consider the following subsets in $\C^n$:
+  \[%
+    W_1 = \left\{
+      \begin{bmatrix}
+        a_1 \\
+        a_2 \\
+        \vdots \\
+        a_n \\
+      \end{bmatrix} \in \C^n \mid a_1 + \cdots + a_n = 0
+    \right\},
+    W_2 = \left\{
+      \begin{bmatrix}
+        a_1 \\
+        a_2 \\
+        \vdots \\
+        a_n \\
+      \end{bmatrix} \in \C^n \mid a_1 + \cdots + a_n = c~\textrm{where}~c \ne 0
+    \right\}
+  .\]%
+  Prove that $W_1$ is a subspace of $\C^n$, but $W_2$ is not a subspace of
+  $\C^n$.
+\end{problem}
+
+\begin{proof}[Solution]
+\end{proof}
+
+\begin{problem}[8]
+  Let $S$ be the subset of all symmetric matrices in $\R^{n \times n}$, i.e.,
+  $\displaystyle S = \left.\left\{A \in \R^{n \times n} \right\rvert A^T =
+  A\right\}$. Prove that S is a subspace of $\R^{n \times n}$.
+\end{problem}
+
+\begin{proof}[Solution]
+\end{proof}
+
+\begin{problem}[9]
+  Let $V$ be a finite-dimensional vector space over $\R$ or $\C$. Let $\B =
+  \{\x_1,\x_2, \cdots, \x_n\}$ be an ordered basis for $V$. Prove that for any
+  $\x \in V$, there exists a unique set of scalars $\{a_1, a_2, \cdots, a_n\}$
+  such that
+  \[%
+    \x = a_1\x_1 + a_2\x_2 + \cdots + a_n\x_n
+  .\]%
+\end{problem}
+
+\begin{proof}[Solution]
+\end{proof}
+
+\begin{problem}[10]
+  True or False. (No explanation needed).
+  \begin{enumerate}
+    \item A vector space may have more than one zero vector.
+
+    \item If $f$ and $g$ are polynomials of degree $n$, then $f + g$ is a polynomial of degree $n$.
+
+    \item If $V$ is a vector space and $W$ is a subset of $V$ that is a vector space, then $W$ is a subspace.
+
+    \item If $W$ and $U$ are subspaces of $V$, then $W \cup U$ is a subspace of
+      $V$.
+  \end{enumerate}
+\end{problem}
+
+\begin{proof}[Solution to (i)]
+  False, since by problem 3, I've shown that the zero vector in a vector space
+  is unique.
+\end{proof}
+
+\begin{proof}[Solution to (ii)]
+  No, take $f(x) = x^2 + x$ and $g(x) = -x^2 + x$. Then, $(f + g)(x) = 2x$.
+\end{proof}
+
+\begin{proof}[Solution to (iii)]
+  Yes, by definition, a subset $W$ of a vector space $V$ if it's not empty and
+  closed under addition and scalar multiplication. But since $W$ is already a
+  vector space, that means it's not empty and closed under addition and scalar
+  multiplication, so it's a subspace of $V$.
+\end{proof}
+
+\begin{proof}[Solution to (iv)]
+  No, as it might not be closed under addition or scalar multiplication. For
+  example, let $W = \{(x, 0) \mid x \in \R\}$ and $U = \{(0, y) \mid y \in
+  \R\}$. Then, $(1, 0) + (0, 1) = (1, 1) \notin W \cup U$.
+\end{proof}

@@ -85,11 +85,6 @@
 \else
 \fi
 
-\ifx\class\undefined
-  \def\class{report}
-\else
-\fi
-
 \newcommand\globalcolor[1]{%
   \color{#1}\global\let\default@color\current@color
 }
@@ -440,67 +435,79 @@
 \newcommand\ilaplace[1]{\mathscr{L}^{-1}\left\{#1\right\}}
 
 % Vectors
-\renewcommand\a{\mathbf{a}}
-\renewcommand\b{\mathbf{b}}
-\renewcommand\c{\mathbf{c}}
-\renewcommand\d{\mathbf{d}}
-\newcommand\e{\mathbf{e}}
-\newcommand\f{\mathbf{f}}
-\newcommand\g{\mathbf{g}}
-\newcommand\n{\mathbf{n}}
-\newcommand\p{\mathbf{p}}
+\newcommand\vectype{bold}
+\newcommand\vectortype[1]{
+  \ifthenelse{\equal{\vectype}{bold}}{%
+    \mathbf{#1}
+  }{%
+    \vec{#1}
+  }
+}
+\newcommand\hattype[1]{
+  \ifthenelse{\equal{\vectype}{bold}}{%
+    \mathbf{\hat{#1}}
+  }{%
+    \hat{#1}
+  }
+}
 
-\newcommand\RR{\mathbf{R}}
-\newcommand\FF{\mathbf{F}}
+\renewcommand\a{\vectortype{a}}
+\renewcommand\b{\vectortype{b}}
+\renewcommand\c{\vectortype{c}}
+\renewcommand\d{\vectortype{d}}
+\newcommand\e{\vectortype{e}}
+\newcommand\f{\vectortype{f}}
+\newcommand\g{\vectortype{g}}
+\newcommand\n{\vectortype{n}}
+\newcommand\p{\vectortype{p}}
 
-\renewcommand\r{\mathbf{r}}
-\newcommand\rr{\mathbf{r}^{\prime}}
-\newcommand\rrr{\mathbf{r}^{\prime\prime}}
+\renewcommand\r{\vectortype{r}}
+\newcommand\rr{\vectortype{r}^{\prime}}
+\newcommand\rrr{\vectortype{r}^{\prime\prime}}
 
-\newcommand\Ta{\mathbf{T}}
-\newcommand\Taa{\mathbf{T}^{}}
+\newcommand\Ta{\vectortype{T}}
+\newcommand\Taa{\vectortype{T}^{}}
 
-\renewcommand\u{\mathbf{u}}
-\newcommand\uu{\mathbf{u}^{\prime}}
-\newcommand\uuu{\mathbf{u}^{\prime\prime}}
+\renewcommand\u{\vectortype{u}}
+\newcommand\uu{\vectortype{u}^{\prime}}
+\newcommand\uuu{\vectortype{u}^{\prime\prime}}
 
-\renewcommand\v{\mathbf{v}}
-\newcommand\vv{\mathbf{v}^{\prime}}
-\newcommand\vvv{\mathbf{v}^{\prime\prime}}
+\renewcommand\v{\vectortype{v}}
+\newcommand\vv{\vectortype{v}^{\prime}}
+\newcommand\vvv{\vectortype{v}^{\prime\prime}}
 
-\newcommand\w{\mathbf{w}}
-\newcommand\x{\mathbf{x}}
-\newcommand\y{\mathbf{y}}
-\newcommand\z{\mathbf{z}}
+\newcommand\w{\vectortype{w}}
+\newcommand\x{\vectortype{x}}
+\newcommand\y{\vectortype{y}}
+\newcommand\z{\vectortype{z}}
 
-\newcommand\zero{\mathbf{0}}
+\newcommand\zero{\vectortype{0}}
 
 % Hat vectors
-\newcommand\ah{\hat{\mathbf{a}}}
-\newcommand\bh{\hat{\mathbf{b}}}
-\newcommand\ch{\hat{\mathbf{c}}}
-\renewcommand\dh{\hat{\mathbf{d}}}
-\newcommand\eh{\hat{\mathbf{e}}}
-\newcommand\ph{\hat{\mathbf{p}}}
-\newcommand\uh{\hat{\mathbf{u}}}
-\newcommand\vh{\hat{\mathbf{v}}}
-\newcommand\wh{\hat{\mathbf{w}}}
-\newcommand\xh{\hat{\mathbf{x}}}
-\newcommand\yh{\hat{\mathbf{y}}}
-\newcommand\zh{\hat{\mathbf{z}}}
+\newcommand\ah{\hattype{a}}
+\newcommand\bh{\hattype{b}}
+\newcommand\ch{\hattype{c}}
+\renewcommand\dh{\hattype{d}}
+\newcommand\eh{\hattype{e}}
+\newcommand\ph{\hattype{p}}
+\newcommand\uh{\hattype{u}}
+\newcommand\vh{\hattype{v}}
+\newcommand\wh{\hattype{w}}
+\newcommand\xh{\hattype{x}}
+\newcommand\yh{\hattype{y}}
+\newcommand\zh{\hattype{z}}
 
 % Unit vectors
-\newcommand\ui{\mathbf{i}}
-\newcommand\uj{\mathbf{j}}
-\newcommand\uk{\mathbf{k}}
+\newcommand\ui{\ifthenelse{\equal{\vectype}{bold}}{\mathbf{i}}{\hat{\imath}}}
+\newcommand\uj{\ifthenelse{\equal{\vectype}{bold}}{\mathbf{j}}{\hat{\jmath}}}
+\newcommand\uk{\ifthenelse{\equal{\vectype}{bold}}{\mathbf{k}}{\hat{k}}}
 
 % Subspaces
-\newcommand\B{\mathcal{B}}
-\newcommand\CC{\mathbb{C}}
-\newcommand\C{\mathcal{C}}
-\newcommand\D{\mathcal{D}}
-\newcommand\E{\mathcal{E}}
-\newcommand\F{\mathcal{F}}
+\newcommand\B{\mathbb{B}}
+\newcommand\C{\mathbb{C}}
+\newcommand\D{\mathbb{D}}
+\newcommand\E{\mathbb{E}}
+\newcommand\F{\mathbb{F}}
 \newcommand\I{\mathbb{I}}
 \newcommand\N{\mathbb{N}}
 \newcommand\Q{\mathbb{Q}}
