@@ -1,12 +1,12 @@
 \documentclass{report}
 \def\class{report}
 
-\newcommand\hmwkTitle{TITLE}
-\newcommand\hmwkDueDate{January 06, 2025}
+\newcommand\hmwkTitle{Homework 1}
+\newcommand\hmwkDueDate{January 14, 2025}
 
-\newcommand\hmwkDueTime{11:59 PM}
+\newcommand\hmwkDueTime{9:00}
 \newcommand\hmwkClass{Several-Variab Calc II}
-\newcommand\hmwkClassTime{TIME}
+\newcommand\hmwkClassTime{}
 \newcommand\hmwkClassInstructor{Jennifer Thorenson}
 \newcommand\hmwkClassInstructorShortName{Jennifer}
 \newcommand\hmwkAuthorName{\textbf{Hashem A. Damrah}}
@@ -18,14 +18,17 @@
 %%%%%%%%%%%%%%%
 
 \usepackage[backend=bibtex,style=mla]{biblatex}
-\bibliography{bibtex-files/ASSIGNMENT.bib}
+\bibliography{bibtex-files/homework-01.bib}
 
 \begin{document}
   \maketitle
   \pagestyle{plain}
-  \mbox{}\newpage
+  \mbox{}
+  \thispagestyle{empty}
+  \newpage
   \pagestyle{fancy}
-  \input{latex-files/ASSIGNMENT.tex}
+  \setcounter{page}{1}
+  \input{latex-files/homework-01.tex}
 
   \nocite{*}
   \printbibliography
