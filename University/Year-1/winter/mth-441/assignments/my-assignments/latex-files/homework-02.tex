@@ -5,6 +5,18 @@
 \end{problem}
 
 \begin{proof}[Solution]
+  Let $A = (a_{ij})$ and $B = (b_{ij})$ be $n \times n$ matrices. The $(i,
+  i)$-th element of $AB$ and $BA$ are given as follows
+  \[%
+    (AB)_{ii} = \sum_{k=1}^n a_{ik} b_{ki} \aand (BA)_{ii} = \sum_{k=1}^n b_{ik} a_{ki}
+  .\]%
+  Substituting both of these into the definition of the trace gives us
+  \[%
+    \Tr(AB) = \sum_{i=1}^n \sum_{k=1}^n a_{ik} b_{ki} \aand \Tr(BA) = \sum_{i=1}^n \sum_{k=1}^n b_{ik} a_{ki}
+  .\]%
+  Notice that both expressions involve summing over all pairs $(i, k)$. Since
+  addition is commutative, the order of summation does not matter, and thus
+  $\Tr(AB) = \Tr(BA)$.
 \end{proof}
 
 \begin{problem}[2]
@@ -12,14 +24,14 @@
 \end{problem}
 
 \begin{proof}[Solution]
-  Let $V$ be a vector space, and let $\{v_1, v_2, \dots, v_n\}$ be a linearly
-  independent set of vectors in $V$. If $\{w_1, w_2, \dots, w_m\}$ is a spanning
+  Let $V$ be a vector space, and let $\{\v_1, \v_2, \dots, \v_n\}$ be a linearly
+  independent set of vectors in $V$. If $\{\w_1, \w_2, \dots, \w_m\}$ is a spanning
   set of $V$, then
   \begin{enumerate}
     \item $n \leq m$, and
 
-    \item It is possible to replace $n$ vectors in $\{w_1, w_2, \dots, w_m\}$
-      with $\{v_1, v_2, \dots, v_n\}$ such that the resulting set still spans
+    \item It is possible to replace $n$ vectors in $\{\w_1, \w_2, \dots, \w_m\}$
+      with $\{\v_1, \v_2, \dots, \v_n\}$ such that the resulting set still spans
       $V$.\qedhere
   \end{enumerate}
 \end{proof}
@@ -45,6 +57,10 @@
 \end{problem}
 
 \begin{proof}[Solution]
+  It isn't a vector space over $\C$ as it doesn't have an identity scalar
+  element, as $(\forall c \in \C)[c(a_1, a_2) = (a_1, 0)]$, but in order for $V$
+  to be a vector space over $\C$, $(\exists c \in \C)[c(a_1, a_2) = (a_1,
+  a_2)]$.
 \end{proof}
 
 \begin{problem}[5]
@@ -57,6 +73,8 @@
 \end{problem}
 
 \begin{proof}[Solution]
+  It isn't a vector space over $\C$ since it isn't commutative, as $(a_1, a_2) +
+  (b_1, b_2) \ne (b_1, b_2) + (a_1, a_2)$.
 \end{proof}
 
 \begin{problem}[6]
@@ -65,6 +83,11 @@
 \end{problem}
 
 \begin{proof}[Solution]
+  Let $\x, \y \in W_1 \cap W_2$. This means that $\x, \y \in W_1$ and $\x, \y
+  \in W_2$. Since they both are subspaces of the vector space $V$, then
+  $(\forall c \in \F)[c\x + \y \in W_1]$ and $(\forall c \in \F)[c\x + \y \in
+  W_2]$. Then, by definition, we get, $(\forall c \in \F)[c\x + \y \in W_1 \cap
+  W_2]$. Therefore, $W_1 \cap W_2$ must be a subspace of the vector space $V$.
 \end{proof}
 
 \begin{problem}[7]
@@ -92,19 +115,28 @@
 \end{problem}
 
 \begin{proof}[Solution]
+  The set $W_1$ is a subspace of $\C^n$ as $(\forall c \in \F)(\forall \x, \y
+  \in W_1)[c\x + \y \in W_1]$, since $c(a_1 + \cdots + a_n) + (b_1 + \cdots +
+  b_n) = c \zero + \zero = \zero \in W_1$.
+
+  The set $W_2$ is not a subspace of $\C^n$ as $(\nexists \e \in W_2)(\forall \v
+  \in W_2)[\v + \e = \v = \e + \v]$, since $a_1 + \cdots + a_n \ne 0$.
 \end{proof}
 
 \begin{problem}[8]
   Let $S$ be the subset of all symmetric matrices in $\R^{n \times n}$, i.e.,
   $\displaystyle S = \left.\left\{A \in \R^{n \times n} \right\rvert A^T =
-  A\right\}$. Prove that S is a subspace of $\R^{n \times n}$.
+  A\right\}$. Prove that $S$ is a subspace of $\R^{n \times n}$.
 \end{problem}
 
 \begin{proof}[Solution]
+  The set $S$ is a subspace of $\R^{n \times n}$ since $(\forall c \in
+  \F)(\forall A, B \in S)[cA + B \in S]$, since $cA + B = (cA + B)^T = (cA)^T +
+  (B)^T = cA^T + B^T = cA + B$.
 \end{proof}
 
 \begin{problem}[9]
-  Let $V$ be a finite-dimensional vector space over $\R$ or $\C$. Let $\B =
+  Let $V$ be a finite-dimensional vector space over $\R$ or $\C$. Let $\BB =
   \{\x_1,\x_2, \cdots, \x_n\}$ be an ordered basis for $V$. Prove that for any
   $\x \in V$, there exists a unique set of scalars $\{a_1, a_2, \cdots, a_n\}$
   such that
@@ -114,6 +146,15 @@
 \end{problem}
 
 \begin{proof}[Solution]
+  Let $\x \in V$. Since $\BB$ is a basis for $V$, then $\x$ can be written as a
+  linear combination of the vectors in $\BB$. By the spanning property, there
+  exist scalars $\{a_1, \cdots, a_n\}$ such that $\x = \sum_{i=1}^n a_i\x_i$.
+  Suppose there's another set of scalars $\{b_1, \cdots, b_n\}$ such that $\x =
+  \sum_{i=1}^n b_i\x_i$. Subtracting the two equations gives us $0 =
+  \sum_{i=1}^n (a_i - b_i)\x_i$. Let $c_i = a_i - b_i$. Since $\BB$ is a basis,
+  the vectors $\{\x_1, \cdots, \x_n\}$ are linearly independent. Therefore, $c_i
+  = 0$ for all $i$. Thus, $a_i = b_i$ for all $i$, and the set of scalars is
+  unique.
 \end{proof}
 
 \begin{problem}[10]
