@@ -1,31 +1,35 @@
 \documentclass{report}
 \def\class{report}
 
-\newcommand\hmwkTitle{TITLE}
-\newcommand\hmwkDueDate{January 06, 2025}
+\newcommand\hmwkTitle{Homework 1}
+\newcommand\hmwkDueDate{January 15, 2025}
 
-\newcommand\hmwkDueTime{11:59 PM}
+\newcommand\hmwkDueTime{23:59}
 \newcommand\hmwkClass{Fundamentals of Analysis II}
-\newcommand\hmwkClassTime{TIME}
+\newcommand\hmwkClassTime{13:00}
 \newcommand\hmwkClassInstructor{Yuan Xu}
 \newcommand\hmwkClassInstructorShortName{Yuan}
 \newcommand\hmwkAuthorName{\textbf{Hashem A. Damrah}}
 
 \input{preamble.tex}
+\def\type{exercise}
 
 %%%%%%%%%%%%%%%
 %  Citations  %
 %%%%%%%%%%%%%%%
 
 \usepackage[backend=bibtex,style=mla]{biblatex}
-\bibliography{bibtex-files/ASSIGNMENT.bib}
+\bibliography{bibtex-files/homework-01.bib}
 
 \begin{document}
   \maketitle
   \pagestyle{plain}
-  \mbox{}\newpage
+  \mbox{}
+  \thispagestyle{empty}
+  \newpage
   \pagestyle{fancy}
-  \input{latex-files/ASSIGNMENT.tex}
+  \setcounter{page}{1}
+  \input{latex-files/homework-01.tex}
 
   \nocite{*}
   \printbibliography

@@ -24,15 +24,13 @@
 \end{problem}
 
 \begin{proof}[Solution]
-  Let $V$ be a vector space, and let $\{\v_1, \v_2, \dots, \v_n\}$ be a linearly
-  independent set of vectors in $V$. If $\{\w_1, \w_2, \dots, \w_m\}$ is a spanning
-  set of $V$, then
+  Let $V$ be a vector space. Let $G \subseteq V$ such that $\Sspan(G) = V$ and
+  $\lvert G \rvert = n$. If $L \subseteq V$ is an empty set or linearly
+  independent set with $\lvert L \rvert = n$, then
   \begin{enumerate}
-    \item $n \leq m$, and
-
-    \item It is possible to replace $n$ vectors in $\{\w_1, \w_2, \dots, \w_m\}$
-      with $\{\v_1, \v_2, \dots, \v_n\}$ such that the resulting set still spans
-      $V$.\qedhere
+    \item $m \le n$.
+    \item There exists $H \subseteq G$ with $\lvert H \rvert = n - m$ such that
+      $\Sspan(H \cup L) = V$. \qedhere
   \end{enumerate}
 \end{proof}
 
@@ -42,9 +40,9 @@
 
 \begin{proof}[Solution]
   \renewcommand\e{\mathbf{e}}\renewcommand\f{\mathbf{f}}
-  Let $\e$ and $\f$ be zero vectors in $V$. Since $(\forall \a \in V)[\e \cdot
-  \a = \a]$, then, we have $\e \cdot \f = \f$. Since $(\forall \b \in V)[\b
-  \cdot \f = \b]$, then, we have $\e \cdot \f = \e$. Therefore, $\e = \f$.
+  Let $\e$ and $\f$ be zero vectors in $V$. Since $(\forall \a \in V)[\e + \a =
+  \a]$, then, we have $\e + \f = \f$. Since $(\forall \b \in V)[\b + \f = \b]$,
+  then, we have $\e + \f = \e$. Therefore, $\e = \f$.
 \end{proof}
 
 \begin{problem}[4]
@@ -181,10 +179,10 @@
 \end{proof}
 
 \begin{proof}[Solution to (iii)]
-  Yes, by definition, a subset $W$ of a vector space $V$ if it's not empty and
-  closed under addition and scalar multiplication. But since $W$ is already a
-  vector space, that means it's not empty and closed under addition and scalar
-  multiplication, so it's a subspace of $V$.
+  Yes, by definition, $W$ is a subspace of if it's not empty and closed under
+  addition and scalar multiplication. But since $W$ is already a vector space,
+  that means it's not empty and closed under addition and scalar multiplication,
+  so it's a subspace of $V$.
 \end{proof}
 
 \begin{proof}[Solution to (iv)]

@@ -12,7 +12,7 @@
 \end{problem}
 
 \begin{proof}[Solution to (i)]
-  Graphing the bounds gives us
+  Graphing the bounds gives us the following figure.
   \begin{center}
     \begin{tikzpicture}
       \begin{axis}[
@@ -34,17 +34,17 @@
   \end{center}
   Therefore, we get the bounds $0 \le x \le 2$ and $0 \le y \le 4$. Expanding
   the double integral into an iterated integral and evaluating gives us
-  \begin{alignat*}{3}
+  \begin{align*}
     \iint_R ye^{xy} \,\dA &= \int_0^4 \int_0^2 ye^{xy} \,\dx \,\dy \\
                           &= \int_0^4 \left[e^{xy}\right]_0^2 \,\dy \\
                           &= \int_0^4 e^{2y} - 1 \,\dy \\
                           &= \left[\frac{e^{2y}}{2} - y\right]_0^4 \\
                           &= \frac{1}{2}(e^8 - 9)
-  .\qedhere\end{alignat*}
+  .\qedhere\end{align*}
 \end{proof}
 
 \begin{proof}[Solution to (ii)]
-  Graphing the bounds gives us
+  Graphing the bounds gives us the following figure.
   \begin{center}
     \begin{tikzpicture}
       \begin{axis}[
@@ -73,13 +73,21 @@
   from $0 \mapsto 0$ and $x \mapsto x^2$. This simplifies the integral to
   \begin{align*}
     \int_0^2 \int_0^x y\sqrt{x^2 - y^2} \,\dy \,\dx &= \int_0^2 \int_0^{x^2} \frac{1}{2} \sqrt{x^2 - u} \,\du \,\dx \\
-                                                    &= \frac{1}{2} \int_0^2 \left.-\frac{(x^2 - u)^{\sfrac{3}{2}}}{\sfrac{3}{2}}\right\rvert_0^{x^2} \,\dx \\
-                                                    &= \frac{1}{2} \int_0^2 \frac{2}{3}x^3 \,\dx = \frac{4}{3}
+                                                    &= \int_0^2 \int_0^{x^2} \frac{1}{2} (x^2 - u)^{\sfrac{1}{2}} \,\du \,\dx \\
+                                                    &= \int_0^2 \frac{1}{2} \left[-\frac{(x^2 - u)^{\sfrac{3}{2}}}{\sfrac{3}{2}}\right]_0^{x^2} \,\dx \\
+                                                    &= \int_0^2 \frac{1}{\rcancel{2}} \cdot \frac{\rcancel{2}}{3} \left[-\frac{(x^2 - u)^{\sfrac{3}{2}}}{\sfrac{3}{2}}\right]_0^{x^2} \,\dx \\
+                                                    &= \int_0^2 -\frac{1}{3} \left[(x^2 - 0)^{\sfrac{3}{2}}\right] - \left[(x^2 - 0)^{\sfrac{3}{2}}\right] \,\dx \\
+                                                    &= \int_0^2 \frac{1}{3} \left(x^2\right)^{\sfrac{3}{2}} \,\dx \\
+                                                    &= \int_0^2 \frac{1}{3} x^3 \,\dx \\
+                                                    &= \frac{1}{3} \cdot \left. \frac{x^4}{4} \right\rvert_0^2 \\
+                                                    &= \frac{1}{3} \cdot \left[\frac{2^4}{4} - \frac{0^4}{4}\right] \\
+                                                    &= \frac{1}{3} \cdot \frac{16}{4} \\
+                                                    &= \frac{4}{3}
   .\qedhere\end{align*}
 \end{proof}
 
 \begin{proof}[Solution to (iii)]
-  Graphing the bounds gives us
+  Graphing the bounds gives us the following figure.
   \begin{center}
     \begin{tikzpicture}
       \begin{axis}[
@@ -92,8 +100,6 @@
         \addplot[domain=1:2] {x} node[midway, right] {$y = x$};
         \addplot[domain=0.5:1] {1/x} node[midway, right] {$y = \frac{1}{x}$};
         \addplot[domain=0.5:2] {2} node[midway, below] {$y = 2$};
-        \addplot[-, domain=0:2, dashed] {1};
-        \addplot[-, domain=0:2, dashed] {2};
       \end{axis}
     \end{tikzpicture}
   \end{center}
@@ -118,7 +124,7 @@
 \end{problem}
 
 \begin{proof}[Solution]
-  Graphing the bounds gives us
+  Graphing the bounds gives us the following figure.
   \begin{center}
     \begin{tikzpicture}
       \begin{axis}[
@@ -131,8 +137,6 @@
       ]
         \addplot[-, samples=1000, domain=0:2] {x^2} node[midway, right] {$y = x^2$};
         \addplot[-, domain=0:2] {4} node[midway, below] {$y = 4$};
-        \addplot[-, domain=0:4, dashed] ({2}, x);
-        \addplot[-, domain=0:4, dashed] ({0}, x);
       \end{axis}
     \end{tikzpicture}
   \end{center}
@@ -164,8 +168,8 @@
       Note: This solid is a tetrahedron. It can be easily drawn by using the
       lines of intersection between the slant plane and the coordinate planes.
 
-    \item The solid enclosed by the parabolic cylinder $y = 2 - x^2$ and the
-      planes $z = 1 - y$, $y = x$, and $z = 0$
+   \item The solid enclosed by the parabolic cylinder $y = 2 - x^2$ and the
+     planes $z = 2 - y$, $y = x$, and $z = 0$
 
       Note : Surfaces that do not depend on $z$ are vertical surfaces.
   \end{enumerate}
@@ -184,7 +188,7 @@
   \[%
     y = -\frac{2}{3}x + 2
   .\]%
-  Graphing the bounds gives us
+  Graphing the bounds gives us the following figure.
   \begin{center}
     \begin{tikzpicture}
       \begin{axis}[
@@ -209,48 +213,50 @@
   Therefore, we get the bounds for $x$ to be $0 \le x \le 3$ and the bounds for
   $y$ to be $0 \le y \le -\frac{2}{3}x + 2$. The volume is then and evaluating
   using Wolfram Alpha to get
-  \[%
-    V = \int_0^3 \int_0^{-\frac{2}{3}x + 2} 6 - 2x - 3y \,\dy \,\dx = 6
-  .\qedhere\]%
+  \begin{align*}
+    V = \int_0^3 \int_0^{-\frac{2}{3}x + 2} 6 - 2x - 3y \,\dy \,\dx &= \int_0^3 6\left[-\frac{2}{3}x + 2\right] - 2\left[-\frac{2}{3}x + 2\right] - \frac{3}{2} \left[-\frac{2}{3} + 2\right]^2 \,\dy \,\dx \\
+                                                                    &= \int_0^3 12 - 4x - 4x + \frac{4x^2}{3} - \frac{3}{2}\left[4 - \frac{4}{3}x - \frac{4}{3}x + \frac{4}{9}x^2\right] \,\dx \\
+                                                                    &= \int_0^3 12 - 4x - 4x + \frac{4x^2}{3} - 6 + 2x + 2x - \frac{72x^2}{78} \,\dx \\
+                                                                    &= \int_0^3 6 - 4x + \frac{2x^2}{3} \,\dx \\
+                                                                    &= \left. 6x - \frac{4x^2}{2} + \frac{2x^3}{9} \right\rvert_0^3 = 18 - 18 + 6 = 6
+  .\qedhere\end{align*}
 \end{proof}
 
 \begin{proof}[Solution to (ii)]
-  The points of intersection are
-  \[%
-    \textrm{At}~z = 0 \implies 0 = 1 - y \implies y = 1 \implies 1 = 2 - x^2 \implies x = \pm 1
-  .\]%
-  Therefore, we get the bounds $-1 \le x \le 1$ and $x^2 \le y \le 1$.
-  Graphing the bounds gives us
+  Since $x = y = 2 - x^2$, we get $x^2 + x - 2 = 0$. Solving for $x$ gives us $x
+  = -2$ and $x = 1$. Therefore, the bounds for $x$ are $-2 \le x \le 1$. The
+  bounds for $y$ are $x \le y \le 2 - x^2$. Graphing the bounds gives us the
+  following figure.
   \begin{center}
     \begin{tikzpicture}
       \begin{axis}[
         axis lines = center,
         xlabel = $x$,
         ylabel = $y$,
-        xmin = -2, xmax = 2,
-        ymin = -1, ymax = 2,
+        xmin = -2.5, xmax = 2.5,
+        ymin = -2.5, ymax = 3,
         xtick = {-1, 1},
         ytick = {1},
         xticklabels = {$-1$, $1$},
         yticklabels = {$1$},
       ]
-        \addplot[samples=1000, domain=-1.4:1.4] {x^2} node[midway, below] {$y = x^2$};
-        \addplot[samples=1000, domain=-1:1] {1} node[midway, above] {$y = 1$};
+        \addplot[samples=1000, domain=-3:3] {2 - x^2};
+        \addplot[samples=1000] {x};
 
-        \addplot[-, dashed, restrict y to domain=-0.01:2.5] ({1}, x);
-        \addplot[-, dashed, restrict y to domain=-0.01:2.5] ({-1}, x);
+        \draw (0, 2) node[above right] {$y = x^2$};
+        \draw (-1, -1) node[below right] {$y = x$};
       \end{axis}
     \end{tikzpicture}
   \end{center}
-
-  Expanding the double integral into an iterated integral and evaluating gives
-  us
+  Therefore, expanding the double integral into an iterated integral gives us
   \begin{align*}
-    V = \int_{-1}^1 \int_{x^2}^1 1 - y \,\dy \,\dx &= \int_{-1}^1 \left. y - \frac{y^2}{2} \right\rvert_{x^2}^1 \,\dx \\
-                                                   &= \int_{-1}^1 \left[1 - \frac{1}{2}\right] - \left[x^2 - \frac{x^4}{2}\right] \,\dx \\
-                                                   &= \int_{-1}^1 \frac{1}{2} - x^2 + \frac{x^4}{2} \,\dx \\
-                                                   &= \left. \frac{1}{2}x - \frac{x^3}{3} + \frac{x^5}{10} \right\rvert_{-1}^1 \\
-                                                   &= \left[\frac{1}{2} - \frac{1}{3} + \frac{1}{10}\right] - \left[-\frac{1}{2} + \frac{1}{3} - \frac{1}{10}\right] \\
-                                                   &= \frac{8}{15}
+    V = \int_{-2}^1 \int_x^{2 - x^2} 2 - y \,\dy \,\dx &= \int_{-2}^1 \left. 2y - \frac{y^2}{2} \right\rvert_x^{2 - x^2} \,\dx \\
+                                                       &= \int_{-2}^1 \left[2(2 - x^2) - \frac{(2 - x^2)^2}{2}\right] - \left[2x - \frac{x^2}{2}\right] \,\dx \\
+                                                       &= \int_{-2}^1 \left[4 - 2x^2 - \frac{4 - 4x^2 + x^4}{2}\right] - \left[2x - \frac{x^2}{2}\right] \,\dx \\
+                                                       &= \int_{-2}^1 4 - 2x^2 - 2 + 2x^2 - \frac{x^4}{2} - 2x + \frac{x^2}{2} \,\dx \\
+                                                       &= \int_{-2}^1 2 - 2x + \frac{x^2}{2} - \frac{x^4}{2} \,\dx \\
+                                                       &= \left. 2x - x^2 + \frac{x^3}{6} - \frac{x^5}{10} \right\rvert_{-2}^1 \\
+                                                       &= \left[2 - 1 + \frac{1}{6} - \frac{1}{10}\right] - \left[-4 - 4 - \frac{8}{6} + \frac{32}{10}\right] \\
+                                                       &= \frac{36}{5}
   .\qedhere\end{align*}
 \end{proof}

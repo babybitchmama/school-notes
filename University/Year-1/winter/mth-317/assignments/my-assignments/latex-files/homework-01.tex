@@ -1,0 +1,138 @@
+\begin{center}
+  SECTION 4.3
+\end{center}
+
+\begin{problem}[4.3.3]
+  Supply a proof for Theorem 4.3.9 (Composition of continuous functions) using
+  $\epsilon$ - $\delta$ characterization of continuity.
+\end{problem}
+
+\begin{proof}[Solution]
+  Let $f$ be continuous at $c$ and $g$ be continuous at $f(c)$. Let $\epsilon >
+  0$ be arbitrary. Pick a $\delta_1 > 0$ such that $\lvert y - f(c) \rvert <
+  \delta_1$ implies that $\lvert g(y) - g(f(c)) \rvert < \epsilon$. Pick a
+  $\delta_2 > 0$ such that $\lvert x - c \rvert < \delta_2$ implies $\lvert f(x)
+  - f(c) \rvert < \delta_2$. Therefore, we get
+  \[%
+    \lvert x - c \rvert < \delta_2 \implies \lvert f(x) - f(c) \rvert < \delta_1 \implies \lvert g(f(x)) - g(f(c)) \rvert < \epsilon
+  .\qedhere\]%
+\end{proof}
+
+\begin{problem}[4.3.4]
+  Assume $f$ and $g$ are defined on all of $\R$ and that $\lim_{x \to p} f(x) = q$ and $\lim_{x \to q} g(x) = r$.
+  \begin{enumerate}
+    \item Give an example to show that it may not be true that
+      \[%
+        \lim_{x \to p} g(f(x)) = r
+      .\]%
+
+    \item Show that the result in (i) does follow if we assume $f$ and $g$ are continuous.
+
+    \item Does the result in (i) hold if we only assume $f$ is continuous? How
+      about if we only assume that $g$ is continuous?
+  \end{enumerate}
+\end{problem}
+
+\begin{proof}[Solution to (i)]
+\end{proof}
+
+\begin{proof}[Solution to (ii)]
+\end{proof}
+
+\begin{proof}[Solution to (iii)]
+\end{proof}
+
+\begin{problem}[4.3.6]
+  Provide an example of each or explain why the request is impossible.
+  \begin{enumerate}
+    \item Two functions $f$ and $g$, neither of which is continuous at $0$ but
+      such that $f(x)g(x)$ and $f(x) + g(x)$ are continuous at $0$.
+
+    \item A function $f(x)$ continuous at $0$ and $g(x)$ not continuous at $0$
+      such that $f(x) + g(x)$ is continuous at $0$.
+
+    \item A function $f(x)$ continuous at $0$ and $g(x)$ not continuous at $0$
+      such that $f(x)g(x)$ is continuous at $0$.
+  \end{enumerate}
+\end{problem}
+
+\begin{proof}[Solution to (i)]
+  Define $f(x)$ and $g(x)$ as follows
+  \begin{align*}
+    f(x) &= \begin{cases}
+      1 & \textrm{if}~x \ne 0 \\
+      1 & \textrm{if}~x = 0
+    \end{cases} \\
+    g(x) &= -f(x)
+  .\end{align*}
+  As $x \to 0$, $f(x) \to 0$, but $f(0) = 1$. Similarly, as $x \to 0$, $g(x) \to
+  0$, but $g(0) = -1$. Therefore, $f$ and $g$ are discontinuous at $0$.
+
+  Notice that as $x \to 0$, $f(x) + g(x) \to 0$ and $f(x) + g(x) = 0$.
+  Therefore, $f(x) + g(x)$ is continuous at $0$. Similarly, as $x \to 0$,
+  $f(x)g(x) = -1$ and $f(x)g(x) \to -1$. Therefore, $f(x)g(x)$ is continuous at
+  $0$.
+\end{proof}
+
+\begin{proof}[Solution to (ii)]
+  Impossible, because the sum of a continuous function and a discontinuous
+  function is always discontinuous.
+\end{proof}
+
+\begin{proof}[Solution to (iii)]
+  Let $f(x)$ be a constant function at $0$. Then, as long as $g(x)$ is bounded,
+  then by exercise 4.2.7, $f(x)g(x) = 0$.
+\end{proof}
+
+\begin{problem}[4.3.8]
+  Decide if the following claims are true or false, providing either a short
+  proof or counterexample to justify each conclusion. Assume throughout that $g$
+  is defined and continuous on all of $\R$.
+  \begin{enumerate}
+    \item If $g(x) \ge 0$ for all $x < 1$, then $g(1) \ge 0$ as well.
+
+    \item If $g(r) = 0$ for all $r \in \Q$, then $g(x) = 0$ for all $x \in \R$.
+
+    \item If $g(x_0) > 0$ for a single point $x_0 \in \R$, then $g(x)$ is in
+      fact strictly positive for uncountably many points.
+  \end{enumerate}
+\end{problem}
+
+\begin{proof}[Solution to (i)]
+\end{proof}
+
+\begin{proof}[Solution to (ii)]
+\end{proof}
+
+\begin{proof}[Solution to (iii)]
+\end{proof}
+
+\begin{problem}[4.3.9]
+  Assume $h : \R \to \R$ is continuous on $\R$ and let $K = \{x \mid h(x) =
+  0\}$. Show that $K$ is a closed set.
+\end{problem}
+
+\begin{proof}[Solution]
+\end{proof}
+
+\begin{center}
+  SECTION 4.5
+\end{center}
+
+\begin{problem}[4.5.3]
+\end{problem}
+
+\begin{proof}[Solution]
+\end{proof}
+
+\begin{problem}[4.5.6]
+\end{problem}
+
+\begin{proof}[Solution]
+\end{proof}
+
+\begin{problem}[4.5.7]
+\end{problem}
+
+\begin{proof}[Solution]
+\end{proof}
