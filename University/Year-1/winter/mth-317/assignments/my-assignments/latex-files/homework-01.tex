@@ -1,32 +1,33 @@
-\begin{center}
-  SECTION 4.3
-\end{center}
-
 \begin{problem}[4.3.3]
   Supply a proof for Theorem 4.3.9 (Composition of continuous functions) using
-  $\epsilon$ - $\delta$ characterization of continuity.
+  $\epsilon - \delta$ characterization of continuity.
 \end{problem}
 
 \begin{proof}[Solution]
-  Let $f$ be continuous at $c$ and $g$ be continuous at $f(c)$. Let $\epsilon >
-  0$ be arbitrary. Pick a $\delta_1 > 0$ such that $\lvert y - f(c) \rvert <
-  \delta_1$ implies that $\lvert g(y) - g(f(c)) \rvert < \epsilon$. Pick a
-  $\delta_2 > 0$ such that $\lvert x - c \rvert < \delta_2$ implies $\lvert f(x)
-  - f(c) \rvert < \delta_2$. Therefore, we get
-  \[%
-    \lvert x - c \rvert < \delta_2 \implies \lvert f(x) - f(c) \rvert < \delta_1 \implies \lvert g(f(x)) - g(f(c)) \rvert < \epsilon
-  .\qedhere\]%
+  Let $f$ be continuous at $c$, and let $g$ be continuous at $f(c)$. Let
+  $\epsilon > 0$ be arbitrary. Since $g$ is continuous at $f(c)$, there exists
+  $\delta_1 > 0$ such that $\lvert y - f(c) \rvert < \delta_1 \implies \lvert
+  g(y) - g(f(c)) \rvert < \epsilon$. Since $f$ is continuous at $c$, there
+  exists $\delta_2 > 0$ such that $\lvert x - c \rvert < \delta_2 \implies
+  \lvert f(x) - f(c) \rvert < \delta_1$. Now, consider $\delta = \delta_2$. If
+  $\lvert x - c \rvert < \delta$, then by the continuity of $f$, we have $\lvert
+  f(x) - f(c) \rvert < \delta_1$. Using the continuity of $g$, this implies
+  $\lvert g(f(x)) - g(f(c)) \rvert < \epsilon$. Thus, $\lvert x - c \rvert <
+  \delta$ implies $\lvert g(f(x)) - g(f(c)) \rvert < \epsilon$. Since $\epsilon
+  > 0$ was arbitrary, we conclude that $g \circ f$ is continuous at $c$.
 \end{proof}
 
 \begin{problem}[4.3.4]
-  Assume $f$ and $g$ are defined on all of $\R$ and that $\lim_{x \to p} f(x) = q$ and $\lim_{x \to q} g(x) = r$.
+  Assume $f$ and $g$ are defined on all of $\R$ and that $\lim_{x \to p} f(x) =
+  q$ and $\lim_{x \to q} g(x) = r$.
   \begin{enumerate}
     \item Give an example to show that it may not be true that
       \[%
         \lim_{x \to p} g(f(x)) = r
       .\]%
 
-    \item Show that the result in (i) does follow if we assume $f$ and $g$ are continuous.
+    \item Show that the result in (i) does follow if we assume $f$ and $g$ are
+      continuous.
 
     \item Does the result in (i) hold if we only assume $f$ is continuous? How
       about if we only assume that $g$ is continuous?
@@ -34,12 +35,34 @@
 \end{problem}
 
 \begin{proof}[Solution to (i)]
+  Define $f(x)$ and $g(x)$ as follows
+  \[%
+    f(x) = q \aand g(x) = \begin{cases}
+      \frac{xr}{q} & \text{if}~x \neq q \\
+      0 & \text{if}~x = q
+    \end{cases}
+  .\]%
+  Observe that $\lim_{x \to p} f(x) = q$ holds trivially, since $f(x) = q$ for
+  all $x$. For $g(x)$,
+  \[%
+    \lim_{x \to q} g(x) = \lim_{x \to q} \frac{xr}{q} = \frac{qr}{q} = r
+  .\]%
+  Thus, $\lim_{x \to q} g(x) = r$. However, for the composition
+  \[%
+    \lim_{x \to p} g(f(x)) = g(f(p)) = g(q) = 0
+  .\]%
+  Therefore, $\lim_{x \to p} g(f(x)) = 0 \neq r$, even though $\lim_{x \to p}
+  f(x) = q$ and $\lim_{x \to q} g(x) = r$.
 \end{proof}
 
 \begin{proof}[Solution to (ii)]
+  If $f$ and $g$ are both continuous, then we use Theorem 4.3.9, which is proven
+  in Exercise 4.3.3.
 \end{proof}
 
 \begin{proof}[Solution to (iii)]
+  Not if $f$ is continuous, as in the example I provided, $f$ is continuous. But
+  if $g$ is continuous, then yes.
 \end{proof}
 
 \begin{problem}[4.3.6]
@@ -58,20 +81,19 @@
 
 \begin{proof}[Solution to (i)]
   Define $f(x)$ and $g(x)$ as follows
-  \begin{align*}
-    f(x) &= \begin{cases}
-      1 & \textrm{if}~x \ne 0 \\
-      1 & \textrm{if}~x = 0
-    \end{cases} \\
-    g(x) &= -f(x)
-  .\end{align*}
-  As $x \to 0$, $f(x) \to 0$, but $f(0) = 1$. Similarly, as $x \to 0$, $g(x) \to
-  0$, but $g(0) = -1$. Therefore, $f$ and $g$ are discontinuous at $0$.
-
-  Notice that as $x \to 0$, $f(x) + g(x) \to 0$ and $f(x) + g(x) = 0$.
-  Therefore, $f(x) + g(x)$ is continuous at $0$. Similarly, as $x \to 0$,
-  $f(x)g(x) = -1$ and $f(x)g(x) \to -1$. Therefore, $f(x)g(x)$ is continuous at
-  $0$.
+  \[%
+    f(x) = \begin{cases}
+      \phantom{-}1 & \textrm{if}~x \ge 0 \\
+      -1 & \textrm{if}~x < 0 \\
+    \end{cases} \aand g(x) = \begin{cases}
+      -1 & \textrm{if}~x \ge 0 \\
+      \phantom{-}1 & \textrm{if}~x < 0 \\
+    \end{cases}
+  .\]%
+  Notice that $f(x)$ and $g(x)$ are both not continuous at $0$. Then, we get the
+  constant function $f(x) + g(x) = 0$ no matter the $x$-value, which is
+  continuous at $0$. Same thing for their product, we get a constant function
+  $f(x) \cdot g(x) = -1$ no matter the $x$-value, making it continuous at $0$.
 \end{proof}
 
 \begin{proof}[Solution to (ii)]
@@ -81,7 +103,7 @@
 
 \begin{proof}[Solution to (iii)]
   Let $f(x)$ be a constant function at $0$. Then, as long as $g(x)$ is bounded,
-  then by exercise 4.2.7, $f(x)g(x) = 0$.
+  regardless if it's continuous or not, then by exercise 4.2.7, $f(x)g(x) = 0$.
 \end{proof}
 
 \begin{problem}[4.3.8]
@@ -99,12 +121,25 @@
 \end{problem}
 
 \begin{proof}[Solution to (i)]
+  True, using the Sequential Definition for Functional Limits, letting $x_n \to
+  1$, we have $g(x_n) \ge 0$ and $g(x_n) \to g(1)$. Then, by the Order Limit
+  Theorem, $g(1) \ge 0$.
 \end{proof}
 
 \begin{proof}[Solution to (ii)]
+  True. Assume $(\exists c \in \R - \Q)[g(c) \ne 0]$. That would cause $g$ to
+  not be continuous at $x$ because we can't make $\epsilon$ smaller than $\lvert
+  g(x) \rvert$ because we can find a rational number $r$ such that $g(r) = 0$
+  inside any $\delta$-neighborhood.
 \end{proof}
 
 \begin{proof}[Solution to (iii)]
+  True, since $g$ is continuous on all of $\R$, the positivity of $g(x_0)$
+  implies that there exists an open interval $I = (x_0 - \epsilon, x_0 +
+  \epsilon)$ around $x_0$, where $g(x) > 0$ for all $x \in I$. Then, using the
+  fact that any non-empty interval $I \subset \R$ contains uncountably many
+  points. Since $g(x) > 0$ for all $x \in I$, this means $g(x)$ is strictly
+  positive for uncountably many points.
 \end{proof}
 
 \begin{problem}[4.3.9]
@@ -113,26 +148,95 @@
 \end{problem}
 
 \begin{proof}[Solution]
+  If $K = \emptyset$, then $K$ is closed since $\emptyset^c = \R$, which is
+  open. Let $K'$ be the collection of limit points of $K$. Let $a \in K'$. Then,
+  there exists a sequence in $K$ such that $x_n \to a$. Since $h$ is continuous
+  on $\R$, then $f(a_n) \to f(a)$. But $f(x_n) = 0$, for all $n$. So, $h(a) =
+  0$, implying $a \in K'$. Therefore, $K' \subseteq K$, meaning $K$ is closed.
 \end{proof}
-
-\begin{center}
-  SECTION 4.5
-\end{center}
 
 \begin{problem}[4.5.3]
+  A function $f$ is increasing on $A$ if $f(x) \le f(y)$ for all $x < y$ in $A$.
+  Show that if $f$ is increasing on $[a, b]$ and satisfies the intermediate
+  value property (Definition 4.5.3), then $f$ is continuous on $[a, b]$.
 \end{problem}
 
 \begin{proof}[Solution]
+  Let $x \in [a, b]$ and choose $\epsilon > 0$. Let $\ell_1 \in (f(a), f(x))
+  \cap (f(x) - \epsilon, f(x))$, as this ensures that $\ell_1$ is both within
+  range of $[a, x]$ and close to $f(x)$. Since $f$ satisfies the intermediate
+  value property, there must exist a $c_1 \in (a, x)$ such that $f(c_1) =
+  \ell_1$. Since $\ell_1$ was chosen to satisfy $\lvert f(x) - \ell_1 \rvert <
+  \epsilon$, we get $\lvert f(x) - f(c_1) \rvert < \epsilon$. Similarly, choose
+  an $\ell_2 \in (f(x), f(b)) \cap (f(b) - \epsilon, f(b))$. Like before, there
+  must exist a $c_2 \in (x, b)$ such that $f(c_2) = \ell_2$. Then, we get
+  $\lvert f(x) - f(c_2) \rvert < \epsilon$.
+
+  Since $f$ is increasing, for all $y \in [c_1, c_2]$, we have $f(c_1) \leq f(y)
+  \leq f(c_2)$. Thus,
+  \[%
+    \lvert f(x) - f(y) \rvert \leq \max\{\lvert f(x) - f(c_1) \rvert, \lvert f(x) - f(c_2) \rvert\}
+  .\]%
+  From earlier, we know that $\lvert f(x) - f(c_1) \rvert < \epsilon$ and
+  $\lvert f(x) - f(c_2) \rvert < \epsilon$, so this implies $\lvert f(x) - f(y)
+  \rvert < \epsilon$ for all $y \in [c_1, c_2]$. To ensure $y \in [c_1, c_2]$,
+  set $\delta = \min\{x - c_1, c_2 - x\}$. Then, for all $y \in [a, b]$ with
+  $\lvert x - y \rvert < \delta$, it follows that $y \in [c_1, c_2]$, and hence
+  $\lvert f(x) - f(y) \rvert < \epsilon$.
 \end{proof}
 
-\begin{problem}[4.5.6]
+\begin{problem}[4.5.6a]
+  Let $f : [0, 1] \to \R$ be continuous with $f(0) = f(1)$. Show that there must
+  exist $x, y \in [0, 1]$ satisfying $\lvert x - y \rvert = \sfrac{1}{2}$ and
+  $f(x) = f(y)$.
 \end{problem}
 
 \begin{proof}[Solution]
+  Using the hint, this reduces to finding $x \in \left[0, \sfrac{1}{2}\right]$
+  such that $F(x) = 0$, where
+  \[%
+    F(x) = f\left(x + \frac{1}{2}\right) - f(x)
+  .\]%
+  Since $f$ is continuous on $[0, 1]$, $F(x)$ is also continuous on the interval
+  where it is defined, which is $\left[0, \sfrac{1}{2}\right]$, because the
+  argument $x + \sfrac{1}{2}$ remains within $[0, 1]$ when $x \in \left[0,
+  \sfrac{1}{2}\right]$. Evaluating $F(x)$ at certain points gives us
+  \begin{align*}
+    \textrm{At}~x = 0 &\implies F(0) = f\left(0 + \frac{1}{2}\right) - f(0) \\
+    \textrm{At}~x = \frac{1}{2} &\implies F(0) = f(1) - f(0)
+  .\end{align*}
+  Since $f(0) = f(1)$, it follows that
+  \[%
+    F\left(\frac{1}{2}\right) = f(0) - f\left(\frac{1}{2}\right)
+  .\]%
+  Therefore,
+  \[%
+    F(0) = f\left(\frac{1}{2}\right) - f(0) \aand F\left(\frac{1}{2}\right) = f(0) - f\left(\frac{1}{2}\right)
+  .\]%
+  From the previous expression, notice that $F(0) = -F(\sfrac{1}{2})$, meaning
+  $F(0)$ and $F(\sfrac{1}{2})$ have opposite signs or at least one of them is
+  zero. Since $F(x)$ is continuous on $\left[0, \sfrac{1}{2}\right]$, by the
+  Intermediate Value Theorem, there exists $c \in \left[0, \sfrac{1}{2}\right]$
+  such that $F(c) = 0$. Therefore, we have
+  \[%
+    F(c) = f\left(c + \frac{1}{2}\right) - f(c) = 0 \implies f\left(c + \frac{1}{2}\right) = f(c)
+  .\]%
+  Setting $x = c$ and $y = c + \sfrac{1}{2}$, we found $\lvert x - y \rvert =
+  \sfrac{1}{2}$ and $f(x) = f(y)$.
 \end{proof}
 
 \begin{problem}[4.5.7]
+  Let $f$ be a continuous function on the closed interval $[0, 1]$ with range
+  also contained in $[0, 1]$. Prove that $f$ must have a fixed point; that is,
+  show $f(x) = x$ for at least one value of $x \in [0, 1]$.
 \end{problem}
 
 \begin{proof}[Solution]
+  Define $g(x) = f(x) - x$, which is continuous on $[0, 1]$, since it's the sum
+  of two continuous functions. At $x = 0$, $g(0) = f(0)$. Since the range of $f$
+  is contained in $[0, 1]$, we know $f(0) \ge 0$, so $g(0) \ge 0$. At $x = 1$,
+  $g(1) = f(1) \le 1$, so $g(1) \le 0$. Then, since $g(x)$ is continuous on $[0,
+  1]$, $g(0) \ge 0$, and $g(1) \le 0$, the intermediate value theorem grantees
+  us that there exist a $c \in [0, 1]$ such that $g(c) = 0$. Notice that $f(c) -
+  c = 0 \implies f(c) = c$, meaning at we have a fixed point at $x = c$.
 \end{proof}
