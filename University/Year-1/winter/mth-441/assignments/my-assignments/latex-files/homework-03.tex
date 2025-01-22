@@ -1,0 +1,475 @@
+\begin{problem}[1]
+  Let $V$ be a $n$-dimensional vector space. Suppose $S = \{\v_1, \v_2, \cdots,
+  \v_n\} \subset V$ is a spanning set of $V$, i.e. $\Sspan(S) = V$. Prove that
+  $S$ is a basis of $V$.
+\end{problem}
+
+\begin{proof}[Solution]
+  Let $S = \{\v_1, \v_2, \dots, \v_n\}$ and suppose that the vectors in $S$ are
+  not linearly independent. Then, there exists a nontrivial linear combination
+  of the vectors in $S$ that equals the zero vector. That is, there exist
+  scalars $c_1, c_2, \cdots, c_n \in \F$ such that
+  \[%
+    c_1\v_1 + c_2\v_2 + \cdots + c_n\v_n = \zero
+  ,\]%
+  where not all $c_i$ are zero.
+
+  If $S$ is not linearly independent, then at least one vector in $S$ can be
+  written as a linear combination of the other vectors in $S$. This would imply
+  that the number of linearly independent vectors in $S$ is strictly less than
+  $n$.
+
+  However, $\dim(V) = n$, and the number of linearly independent vectors in a
+  spanning set cannot be less than $n$ (because a spanning set must contain at
+  least $n$ linearly independent vectors to span an $n$-dimensional vector
+  space).
+
+  This contradiction shows that our assumption that $S$ is not linearly
+  independent is false. Hence $S$ must be linearly independent.
+\end{proof}
+
+\begin{problem}[2]
+  Consider $V = \R^{n \times n}$ and let $S = \{A \in V \mid \Tr(A) = 0\}$.
+  \begin{enumerate}
+    \item Prove that $S$ is a subspace of $V$.
+
+    \item Find a basis for $S$. Make sure to justify that the set you give is a
+      basis.
+  \end{enumerate}
+\end{problem}
+
+\begin{proof}[Solution to (i)]
+  The zero matrix $0 \in \R^{n \times n}$ has all entries equal to zero. Its
+  trace is $\Tr(0) = 0$. Thus, $0 \in S$.
+
+  Let $A, B \in S$ and $c \in \F$. Then, by definition of $S$, $\Tr(A) = 0$ and
+  $\Tr(B) = 0$. Consider the matrix $cA + B$. The trace of $cA + B$ is
+  \[%
+    \Tr(cA + B) = \Tr(cA) + \Tr(B) = c\Tr(A) + \Tr(B) = c(0) + 0 = 0
+  .\]%
+  Thus, $cA + B \in S$. Therefore, $S$ is closed under scalar multiplication.
+  Therefore, $S$ is a subspace of $V$.
+\end{proof}
+
+\begin{proof}[Solution to (ii)]
+  The vector space $V = \R^{n \times n}$ has dimension $n^2$, since it consists
+  of $n \times n$ matrices with $n^2$ independent entries.
+
+  The subspace $S \subset V$ imposes one linear condition on the matrices in
+  $V$, the trace must be zero. The trace of a matrix $A = (a_{ij})$ is
+  \[%
+    \Tr(A) = \sum_{i=1}^n a_{ii}
+  .\]%
+  This condition restricts the diagonal entries $a_{11}, a_{22}, a_{33}, \cdots,
+  a_{nn}$ such that their sum is zero, reducing the degrees of freedom by $1$.
+  Thus $\dim(S) = n^2 - 1$.
+
+  To construct a basis for $S$, we need to find $n^2 - 1$ linearly independent
+  matrices in $S$. We can construct these matrices by considering the following
+  structure
+  \begin{enumerate}
+    \item For each pair $(i, j)$ with $i \ne j$, define $E_{ij}$ to be the
+      matrix with a $1$ in the $(i, j)$-th entry and $0$ elsewhere. These
+      matrices are clearly linearly independent and satisfy $\Tr(E_{ij}) = 0$
+      since all diagonal entries are $0$.
+
+    \item For the diagonal entries, we require matrices such that their trace is
+      0. We can construct $n - 1$ linearly independent matrices of this type by
+      defining
+      \[%
+        D_k = E_{kk} - E_{nn}, \quad\textrm{for}~k = 1, 2, \cdots, n - 1
+      ,\]%
+      where $E_{kk}$ is the matrix with a $1$ in the $(k, k)$-entry and $0$
+      elsewhere. The trace of $D_k$ is
+      \[%
+        \Tr(D_k) = \Tr(E_{kk}) - \Tr(E_{nn}) = 1 - 1 = 0
+      .\]%
+  \end{enumerate}
+
+  The total number of matrices in this set is $(n^2 - n) + (n - 1) = n^2 - 1$,
+  which matches $\dim(S)$. The matrices $E_{ij}$ and $D_k$ are constructed to be
+  linearly independent, since each matrix has a unique pattern of nonzero
+  entries. Any $A \in S$ can be written as a linear combination of $E_{ij}$ and
+  $D_k$. For the diagonal entries of $A$j, we use $D_k$ to ensure the trace is
+  $0$. For the off-diagonal entries, we use $E_{ij}$. Therefore, the set of
+  matrices $B = \{E_{ij} \mid i \ne j\} \cup \{D_k \mid k = 1, 2, \cdots, n -
+  1\}$ is a basis for $S$ and $\Sspan(B) = S$.
+\end{proof}
+
+\begin{problem}[3]
+  Let $W_1$ and $W_2$ be subspaces of a vector space $V$. Let $\dim(W_1) = m$
+  and $\dim(W_2) = p$. Define $W_1 + W_2 = \{x_1 + x_2 \mid x_1 \in W_1, x_2 \in
+  W_2\}$. Prove that
+  \begin{enumerate}
+    \item $W_1 + W_2$ is a subspace of $V$.
+    \item $\dim(W_1 + W_2) = m + p - \dim(W_1 \cap W_2)$.
+  \end{enumerate}
+\end{problem}
+
+\begin{proof}[Solution to (i)]
+  The zero vector $\zero \in V$ are in both $\zero \in W_1$ and $\zero \in W_2$,
+  as they are both subspaces. Thus, $\zero \in W_1 + W_2$.
+
+  Let $\u, \v \in W_1 + W_2$ and $c \in \F$. Then, by definition of $W_1 + W_2$,
+  there exists $\x_1, \x_2 \in W_1$ and $\y_1, \y_2 \in W_2$ such that $\u =
+  \x_1 + \y_1$ and $\v = \x_2 + \y_2$. Now, consider $c\u + \v = c(\x_1 + \y_1)
+  + (\x_2 + \y_2) = (c\x_1 + \x_2) + (\y_1 + c\y_2)$. Since $W_1$ and $W_2$ are
+  subspaces, $c\x_1 + \x_2 \in W_1$ and $\y_1 + c\y_2 \in W_2$. Thus, $\u + \v
+  \in W_1 + W_2$. Therefore, $W_1 + W_2$ is a subspace of $V$.
+\end{proof}
+
+\begin{proof}[Solution to (ii)]
+  The intersection $W_1 \cap W_2$ is also a subspace of $V$, and by definition,
+  any element in $W_1 \cap W_2$ belongs to both $W_1$ and $W_2$. Let $\dim(W_1
+  \cap W_2) = k$, and let $\{z_1, z_2, \cdots, z_k\}$ be a basis for $W_1 \cap
+  W_2$. Extend $\{z_1, z_2, \cdots, z_k\}$ to a basis of $W_1$. Let $\{z_1, z_2,
+  \cdots, z_k, u_1, u_2, \cdots, u_{m-k}\}$ be a basis for $W_1$, where $m =
+  \dim(W_1)$. Similarly, extend $\{z_1, z_2, \cdots, z_k\}$ to a basis of $W_2$.
+  Let $\{z_1, z_2, \cdots, z_k, v_1, v_2, \cdots, v_{p-k}\}$ be a basis for
+  $W_2$, where $p = \dim(W_2)$.
+
+  To construct a basis for $W_1 + W_2$, consider the union of the basis elements
+  of $W_1$ and $W_2$.
+  \begin{enumerate}
+    \item Start with the $m - k$ additional basis vectors from $W_1$, $\{u_1,
+      u_2, \cdots, u_{m-k}\}$, which are linearly independent and not in $W_2$.
+
+    \item Add the $p - k$ additional basis vectors from $W_2$, $\{v_1, v_2,
+      \cdots, v_{p-k}\}$, which are linearly independent and not in $W_1$.
+
+    \item Include the $k$ basis vectors from $W_1 \cap W_2$, $\{z_1, z_2,
+      \cdots, z_k\}$.
+  \end{enumerate}
+  Thus, a basis for $W_1 + W_2$ is given by $\{z_1, z_2, \cdots, z_k, u_1, u_2,
+  \cdots, u_{m-k}, v_1, v_2, \cdots, v_{p-k}\}$. The total number of basis
+  vectors in $W_1 + W_2$ is $k + (m - k) + (p - k) = m + p - k$. Since $k =
+  \dim(W_1 \cap W_2)$, we have $\dim(W_1 + W_2) = m + p - \dim(W_1 \cap W_2)$.
+  Therefore, $W_1 + W_2$ is a subspace of $V$ with dimension $\dim(W_1 + W_2) =
+  \dim(W_1) + \dim(W_2) - \dim(W_1 \cap W_2)$.
+\end{proof}
+
+\begin{problem}[4]
+  Consider the following subspaces of $\R^{2 \times 2}$,
+  \[%
+    W_1 = \left\{
+      \begin{pmatrix}
+        a & b \\
+        c & a \\
+      \end{pmatrix} \in \R^{2 \times 2}, a, b, c \in \R
+    \right\} \aand
+    W_2 = \left\{
+      \begin{pmatrix}
+        b & a \\
+        -a & b \\
+      \end{pmatrix} \in \R^{2 \times 2}, a, b \in \R
+    \right\}
+  .\]%
+  Compute the dimension of the subspace $W_1 + W_2$. Explain your answer. (Note:
+  the definition of $W_1 + W_2$ is given in Problem $3$).
+\end{problem}
+
+\begin{proof}[Solution]
+  Every matrix in $W_1$ can be written as
+  \[%
+    a\begin{pmatrix}
+      1 & 0 \\
+      0 & 1 \\
+    \end{pmatrix} + b\begin{pmatrix}
+      0 & 1 \\
+      0 & 0 \\
+    \end{pmatrix} + c\begin{pmatrix}
+      0 & 0 \\
+      1 & 0 \\
+    \end{pmatrix}
+  .\]%
+  Therefore, $\dim(W_1) = 3$.
+
+  Every matrix in $W_2$ can be written as
+  \[%
+    a\begin{pmatrix}
+      0 & 1 \\
+      -1 & 0 \\
+    \end{pmatrix} + b\begin{pmatrix}
+      1 & 0 \\
+      0 & 1 \\
+    \end{pmatrix}
+  .\]%
+  Therefore, $\dim(W_2) = 2$.
+
+  For a matrix $A \in W_1 + W_2$, it must satisfy both forms of $W_1$ and $W_2$,
+  meaning
+  \[%
+    \begin{pmatrix}
+      a & b \\
+      c & a \\
+    \end{pmatrix} =
+    \begin{pmatrix}
+      b & a \\
+      -a & b \\
+    \end{pmatrix}
+  .\]%
+  Therefore, we have $a = b$, $ b = a$, $c = -a$, and $a = b$. From these
+  equations, we have that $a = b$ and $c = -a$. Thus, any matrix in $W_1 \cap
+  W_2$ is of the form
+  \[%
+    \begin{pmatrix}
+      a & a \\
+      -a & a \\
+    \end{pmatrix}
+  .\]%
+  This means that $W_1 \cap W_2$ is spanned by
+  \[%
+    \begin{pmatrix}
+      1 & 1 \\
+      -1 & 1 \\
+    \end{pmatrix}
+  .\]%
+  Therefore, $\dim(W_1 \cap W_2) = 1$. Then, by Problem $3$, we have
+  \[%
+    \dim(W_1 + W_2) = \dim(W_1) + \dim(W_2) - \dim(W_1 \cap W_2) = 3 + 2 - 1 = 4
+  .\qedhere\]%
+\end{proof}
+
+\begin{problem}[5]
+  Show that the polynomials $2$, $1 + t$, $t + t^2$ form a basis for $\P^2(\R)$.
+  Then find the coordinate of $3 + t + 2t^2$ in this basis.
+\end{problem}
+
+\begin{proof}[Solution]
+  A set of vectors (or functions) is linearly independent if the only solution
+  to a linear combination equaling zero is the trivial solution. Suppose $c_1(2)
+  + c_2(1 + t) + c_3(t + t^2) = 0$. Expanding and grouping, we have $(2c_1 +
+  c_2) + (c_2 + c_3)t + c_3t^2 = 0$. For this polynomial to be zero, the
+  coefficients of each power of $t$ must be zero. This gives us the system of
+  equations
+  \begin{align*}
+    2c_1 + c_2 &= 0 \\
+    c_2 + c_3 &= 0 \\
+    c_3 &= 0
+  .\end{align*}
+  From $c_3 = 0$, substitute into $c_2 + c_3 = 0$ to get $c_2 = 0$. Substitute
+  $c_2 = 0$ into $2c_1 + c_2 = 0$ to get $c_1 = 0$. Thus, the only solution is
+  the trivial solution, $c_1 = c_2 = c_3 = 0$, giving us $\{2, 1 + t, t +
+  t^2\}$. So the set is linearly independent.
+
+  The space $\P(\R^2)$ consists of all polynomials of degree at most $2$. Since
+  $\{2, 1 + t, t + t^2\}$ contains $3$ linearly independent polynomials and
+  $\dim(\P(\R^2)) = 3$, the set $\{2, 1 + t, t + t^2\}$ spans $\P(\R^2))$.
+  Therefore, $\{2, 1 + t, t + t^2\}$ is a basis for $\P(\R^2)$.
+
+  The coordinate vector of $3 + t + 2t^2$ relative to the basis $\{2, 1 + t, t +
+  t^2\}$ is the unique $(a, b, c) \in \R^3$ such that
+  \[%
+    a(2) + b(1 + t) + c(t + t^2) = 3 + t + 2t^{2}
+  .\]%
+  Solving the system of equations gives us $(a, b, c) = (2, -1, 2)$.
+\end{proof}
+
+\begin{problem}[6]
+  Let $V = \R^\infty = \{(a_1, a_2, \cdots) \mid a_1, a_2, \cdots \R\}$. Define
+  $T : V \to V$ by
+  \[%
+    T((a_1, a_2, a_3, \cdots)) = (a_2, a_3, \cdots)
+  .\]%
+  \begin{enumerate}
+    \item Prove that $T$ is a linear transformation on $V$.
+    \item Prove that $T$ is onto, but not one-to-one.
+  \end{enumerate}
+\end{problem}
+
+\begin{proof}[Solution to (i)]
+  Let $\a = (a_1, a_2, \cdots) \in V$ and $\b = (b_1, b_2, \cdots) \in V$. Then,
+  $\a + \b = (a_1 + b_1, a_2 + b_2, \cdots)$. Then,
+  \[%
+    T(\a + \b) = (a_2 + b_2, a_3 + b_3, \cdots) = (a_2, a_3, \cdots) + (b_2, b_3, \cdots) = T(\a) + T(\b)
+  .\]%
+  Let $c \in \F$. Then,
+  \[%
+    T(c\a) = (ca_2, ca_3, \cdots) = c(a_2, a_3, \cdots) = cT(\a)
+  .\]%
+  Therefore, $T$ is a linear transformation on $V$.
+\end{proof}
+
+\begin{proof}[Solution to (ii)]
+  Let $\w = (w_1, w_2, w_3, \cdots)$ be any vector in $V$. Let $v_2 = w_1$, $v_3
+  = w_2$, $\cdots$. Thus, we can choose any $v_1$ to be any real number. Let
+  $v_1 = 0$. Then, the vector $\v = (v_1, v_2, v_3, \cdots) = (0, w_2, w_3,
+  \cdots)$ that satisfies $T(\v) = \w$. Since we can construct a pre-image for
+  any $\w \in V$, it follows that $T$ is onto.
+
+  Consider the two vectors $\v = (1, 0, 0, \cdots)$ and $\w = (0, 0, 0,
+  \cdots)$. Then,
+  \[%
+    T(\v) = T((1, 0, 0, \cdots)) = (0, 0, 0, \cdots) \aand T(\w) = T((0, 0, 0, \cdots)) = (0, 0, 0, \cdots)
+  .\]%
+  Clearly, $T(\v) = T(\w)$, but $\v \ne \w$. Therefore, $T$ is not one-to-one.
+\end{proof}
+
+\begin{problem}[7]
+  Let $V = \R^\infty = \{(a_1, a_2, \cdots) \mid a_1, a_2, \cdots \R\}$. Define
+  $T : V \to V$ by
+  \[%
+    T((a_1, a_2, a_3, \cdots)) = (0, a_1, a_2, \cdots)
+  .\]%
+  \begin{enumerate}
+    \item Prove that $T$ is a linear transformation on $V$.
+    \item Prove that $T$ is one-to-one, but not onto.
+  \end{enumerate}
+\end{problem}
+
+\begin{proof}[Solution to (i)]
+  Let $\a = (a_1, a_2, \cdots) \in V$ and $\b = (b_1, b_2, \cdots) \in V$. Then,
+  $\a + \b = (a_1 + b_1, a_2 + b_2, \cdots)$. Then,
+  \[%
+    T(\a + \b) = (0, a_1 + b_1, a_2 + b_2, \cdots) = (0, a_1, a_2, \cdots) + (0, b_1, b_2, \cdots) = T(\a) + T(\b)
+  .\]%
+  Let $c \in \F$. Then,
+  \[%
+    T(c\a) = (0, ca_1, ca_2, \cdots) = c(0, a_1, a_2, \cdots) = cT(\a)
+  .\]%
+  Therefore, $T$ is a linear transformation on $V$.
+\end{proof}
+
+\begin{proof}[Solution to (ii)]
+  Let $\a = (a_1, a_2, a_3, \cdots)$ and $\b = (b_1, b_2, b_3, \cdots)$ and
+  assume $T(\a) = T(\b)$. Then,
+  \[%
+    T(\a) = T(\b) \implies (0, a_1, a_2, \cdots) = (0, b_1, b_2, \cdots)
+  .\]%
+  From this, we have $a_1 = b_1$, $a_2 = b_2$, and so on. Thus, $\a = \b$.
+  Therefore, $T$ is one-to-one.
+
+  Consider the sequence $\w = (1, 0, 0, 0, \cdots) \in V$. We need to check if
+  there exists $\v = (a_1, a_2, a_3, \cdots) \in V$ such that $T(\v) = \w$.
+  Using the definition of $T$, we have $T(\v) = (0, a_1, a_2, \cdots)$. For this
+  to equal $\w$, we must have $0 = 1$, which is a contradiction. Therefore, $T$
+  is not onto.
+\end{proof}
+
+\begin{problem}[8]
+  Let $V$ and $W$ be vector spaces over $\F$. Let $\mathcal{L}(V, W)$ be the set
+  of all linear transformations from $V$ to $W$. For any $T, U \in
+  \mathcal{L}(V, W)$, define $T + U$ by
+  \[%
+    (\forall \x \in V)[(T + U)(\x) = T(\x) + U(\x)]
+  .\]%
+  For any $T \in \mathcal{L}(V, W)$ and $c \in \F$, define $cT$ by
+  \[%
+    (\forall \x \in V)[(cT)(\x) = cT(\x)]
+  .\]%
+  Prove that $\mathcal{L}(V, W)$ with the above addition and scalar
+  multiplication is a vector space over $\F$.
+\end{problem}
+
+\begin{proof}[Solution]
+  \renewcommand\L{\mathcal{L}(V, W)}
+  Let $T, U \in \L$. For each $\x \in V$, we have
+  \[%
+    (T + U)(\x) = T(\x) + U(\x) \\
+  .\]%
+  Since $T(\x)$ and $U(\x)$ are in $W$, their sum is also in $W$. Therefore, $T
+  + U \in \L$. Therefore, $\L$ is closed under addition.
+
+  Let $T \in \L$ and $c \in \F$. For each $\x \in V$, we have
+  \[%
+    (cT)(\x) = cT(\x)
+  .\]%
+  Since $T(\x)$ is in $W$ and $W$ is a vector space, $cT(\x)$ is also in $W$.
+  Hence, $cT \in \L$. Therefore, $\L$ is closed under scalar multiplication.
+
+  Define $0 \in \L$ by $0(\x) = 0_W$ for all $\x \in V$, where $0_W$ is the zero
+  vector in $W$. For all $\x \in V$, we have
+  \[%
+    (T + 0)(\x) = T(\x) + 0(\x) = T(\x) + 0_W = T(\x)
+  .\]%
+  Therefore, $T + 0 = T$. Similarly, we have $0 + T = T$. Thus, $0$ is the
+  additive identity in $\L$.
+
+  For any $T \in \L$, define $-T \in \L$ by $(-T)(\x) = -T(\x)$ for all $\x
+  \in V$. For all $\x \in V$, we have
+  \[%
+    (T + (-T))(\x) = T(\x) + (-T)(\x) = T(\x) + (-T(\x)) = 0_W
+  .\]%
+  Therefore, $T + (-T) = 0$. Similarly, we have $(-T) + T = 0$. Thus, $-T$ is
+  the additive inverse of $T$.
+
+  Let $T, U, V \in \L$. For all $\x \in V$, we have
+  \[%
+    ((T + U) + V)(\x) = (T + U)(\x) + V(\x) = (T(\x) + U(\x)) + V(\x) = T(\x) + (U(\x) + V(\x)) = T(\x) + (U + V)(\x)
+  .\]%
+  Therefore, $(T + U) + V = T + (U + V)$. Thus, $\L$ is associative with respect
+  to addition.
+
+  Let $T, U \in \L$. For all $\x \in V$, we have
+  \[%
+    (T + U)(\x) = T(\x) + U(\x) = U(\x) + T(\x) = (U + T)(\x)
+  .\]%
+  Therefore, $T + U = U + T$. Thus, $\L$ is commutative with respect to
+  addition.
+
+  Let $T, U \in \L$ and $c, d \in \F$. For all $\x \in V$, we have
+  \[%
+    (c(dT))(\x) = c(dT(\x)) = cdT(\x) = ((cd)T)(\x)
+  .\]%
+  Therefore, $c(dT) = (cd)T$. Thus, $\L$ is closed under scalar multiplication.
+
+  Let $T, U \in \L$ and $c \in \F$. For all $\x \in V$, we have
+  \[%
+    (c(T + U))(\x) = c(T(\x) + U(\x)) = cT(\x) + cU(\x) = (cT + cU)(\x)
+  .\]%
+  Therefore, $c(T + U) = cT + cU$. Thus, $\L$ is distributive with respect to
+  scalar multiplication.
+
+  Let $T \in \L$ and $c, d \in \F$. For all $\x \in V$, we have
+  \[%
+    ((c + d)T)(\x) = (c + d)T(\x) = cT(\x) + dT(\x) = (cT + dT)(\x)
+  .\]%
+  Therefore, $(c + d)T = cT + dT$. Thus, $\L$ is distributive with respect to
+  scalar multiplication.
+
+  Let $T \in \L$. For all $\x \in V$, we have
+  \[%
+    (1T)(\x) = 1T(\x) = T(\x)
+  .\]%
+  Therefore, $1T = T$. Thus, $\L$ contains a multiplicative identity.
+
+  Therefore, $\L$ is a vector space over $\F$.
+\end{proof}
+
+\begin{problem}[9]
+  True or False. (No explanation needed)
+  \begin{enumerate}
+    \item If $S$ is a linear dependent set, then each vector in $S$ is a linear
+      combination of other vectors in $S$.
+
+    \item Any set containing the zero vector is a linearly dependent.
+
+    \item Subset of linearly independent set is linearly independent.
+
+    \item Let $V$ be a vector space. Let $W \subseteq V$ be a subspace with
+      $\dim(W) = \dim(V)$. Then $W = V$.
+  \end{enumerate}
+\end{problem}
+
+\begin{proof}[Solution to (i)]
+  False, a set being linearly dependent means that there exists at least one
+  non-trivial linear combination of the vectors in $S$ that equals the zero
+  vector. However, this does not necessarily mean that every vector in the set
+  is a linear combination of the others.
+\end{proof}
+
+\begin{proof}[Solution to (ii)]
+  True, if a set contains the zero vector, then you can form a non-trivial
+  linear combination where the zero vector is involved, and the result is the
+  zero vector, which makes the set linearly dependent.
+\end{proof}
+
+\begin{proof}[Solution to (iii)]
+  True, a subset of a linearly independent set will be linearly independent.
+\end{proof}
+
+\begin{proof}[Solution to (iv)]
+  True, if a subspace $W$ of a vector space $V$ has the same dimension as $V$,
+  then $W$ must span $V$, meaning $W = V$. This is because a subspace of a
+  vector space cannot have a greater dimension than the vector space itself.
+\end{proof}
