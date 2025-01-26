@@ -1,0 +1,268 @@
+\begin{problem}[4.4.2]\leavevmode
+  \begin{enumerate}
+    \item Is $f(x) = \sfrac{1}{x}$ uniformly continuous on $(0, 1)$?
+    \item Is $g(x) = \sqrt{x^2 + 1}$ uniformly continuous on $(0, 1)$?
+    \item Is $h(x) = x\sin(\sfrac{1}{x})$ uniformly continuous on $(0, 1)$?
+  \end{enumerate}
+\end{problem}
+
+\begin{proof}[Solution to (i)]
+  No, $f$ is not uniformly continuous on $(0, 1)$. Choose $x = \sfrac{1}{n}$ and
+  $y = \sfrac{1}{n + 1}$. Then, we get
+  \[%
+    \lvert x - y \rvert = \left\lvert \frac{1}{n} - \frac{1}{n + 1} \right\rvert = \frac{1}{n(n + 1)}
+  .\]%
+  For large $n$, $\lvert x - y \rvert$ becomes arbitrarily small. However, the
+  difference in $f(x)$ values is
+  \[%
+    \lvert f(x) - f(y) \rvert = \lvert n - (n + 1) \rvert = 1
+  .\]%
+  This shows that $\lvert f(x) - f(y) \rvert = 1$, no matter how close $x$ and
+  $y$ are, which contradicts the definition of uniform continuity.
+\end{proof}
+
+\begin{proof}[Solution to (ii)]
+  Yes, by Theorem 4.4.7, if $g$ is continuous on a compact set, $[0, 1]$, then
+  it is uniformly continuous on it. Additionally, $g$ is uniformly continuous on
+  all subsets of $[0, 1]$, including $(0, 1)$.
+\end{proof}
+
+\begin{proof}[Solution to (iii)]
+  Yes, define $h$ as
+  \[%
+    h(x) = \begin{cases}
+      x\sin(\sfrac{1}{x}) & \textrm{if}~x \ne 0 \\
+      0 & \textrm{if}~x = 0
+    \end{cases}
+  .\]%
+  The function $h$ is continuous on $[0, 1]$, and hence, uniformly continuous on
+  $[0, 1]$. Thus, it is uniformly continuous on $(0, 1)$.
+\end{proof}
+
+\begin{problem}[4.4.3]
+  Show that $f(x) = \sfrac{1}{x^2}$ is uniformly continuous on the set $[1,
+  \infty)$ but not on the set $(0, 1]$.
+\end{problem}
+
+\begin{proof}[Solution]\leavevmode
+  On $[1, \infty)$, let $\epsilon > 0$ and choose $\delta =
+  \sfrac{\epsilon}{2}$. Assume $\lvert x - y \rvert < \delta$. Then,
+  \[%
+    \lvert f(x) - f(y) \rvert = \left\lvert \frac{1}{x^2} - \frac{1}{y^2} \right\rvert = \left\lvert \frac{y^2 - x^2}{x^2y^2} \right\rvert = \frac{x + y}{x^2y^2} \cdot \lvert x - y \rvert < \frac{x + y}{x^2y^2} \cdot \delta < 2\delta = \epsilon
+  .\]%
+  Therefore, $f$ is uniformly continuous on $[1, \infty)$.
+
+  On $(0, 1]$, define $(x_n) = \sqrt{n}$ and $(y_n) = \sqrt{n + 1}$. Then,
+  $\lvert x_n - y_n \rvert \to 0$ and
+  \[%
+    \lvert f(x_n) - f(y_n) \rvert = \lvert n - (n + 1) \rvert = 1
+  .\]%
+  Then, $(\forall \epsilon_0 \in (0, 1])[\lvert f(x_n) - f(y_n) \rvert \ge
+  \epsilon_0]$. Therefore, by Theorem 4.4.5, $f$ is not uniformly continuous on
+  $(0, 1]$.
+\end{proof}
+
+\begin{problem}[4.4.6]
+   an example of each of the following, or state that such a request is
+  impossible. For any that are impossible, supply a short explanation for why
+  this is the case.
+  \begin{enumerate}
+    \item A continuous function $f : (0, 1) \to \R$ and a Cauchy sequence
+      $(x_n)$ such that $f(x_n)$ is not a Cauchy sequence.
+
+    \item A uniformly continuous function $f : (0, 1) \to \R$ and a Cauchy
+      sequence $(x_n)$ such that $f(x_n)$ is not a Cauchy sequence.
+
+    \item A continuous function $f : [0, \infty) \to \R$ and a Cauchy sequence
+      $(x_n)$ such that $f(x_n)$ is not a Cauchy sequence.
+  \end{enumerate}
+\end{problem}
+
+\begin{proof}[Solution to (i)]
+  Let $f(x) = \sin(\sfrac{1}{x})$, which is continuous on $(0, 1)$. Let $(x_n) =
+  \frac{1}{n\pi + \sfrac{\pi}{2}}$, which is a Cauchy sequence. But, $f(x_n) =
+  \sin(n\pi + \sfrac{\pi}{2}) = (-1)^n$, which isn't a Cauchy sequence.
+\end{proof}
+
+\begin{proof}[Solution to (ii)]
+  This is impossible, since $f$ is uniformly continuous on $(0, 1)$, then
+  $(\forall \epsilon > 0)(\exists \delta > 0)(\forall x, y \in (0, 1))[\lvert x
+  - y \rvert < \delta \implies \lvert f(x) - f(y) \rvert < \epsilon]$. And for a
+  sequence to be Cauchy, that means $(\forall \epsilon > 0)(\exists N \in
+  \N)(\forall n, m > N)[\lvert a_n - a_m \rvert < \epsilon]$. But, $f(x_n)$ must
+  also be Cauchy, since $\lvert a_n - a_m \rvert < \epsilon \implies \lvert
+  f(a_n) - f(a_m) \rvert < \epsilon$ since $f$ is uniformly continuous on $(0,
+  1)$.
+\end{proof}
+
+\begin{proof}[Solution to (iii)]
+  This is impossible, since for $(x_n)$ to converge, it must be bounded. Let
+  $\lvert x_n \rvert < M$, for all $n \in \N$. Then, $f$ is uniformly continuous
+  on $[-M, M]$ and, as shown in part (ii), $f(x_n)$ is Cauchy.
+\end{proof}
+
+\begin{problem}[4.4.7]
+  Prove that $f(x) = \sqrt{x}$ is uniformly continuous on $[0, \infty)$.
+\end{problem}
+
+\begin{proof}[Solution]
+  Let $\epsilon > 0$. Since $\sqrt{x}$ is continuous on $[0, 2]$, then it is
+  uniformly continuous on $[0, 2]$. That means $\exists \delta_1 > 0$ such that
+  $x, y \in [0, 2]$, $\lvert x - y \rvert < \delta_1 \implies \lvert f(x) - f(y)
+  \rvert < \epsilon$.
+
+  Choose $\delta_2 = \min(\{1, \epsilon\})$. Let $x, y \in [1, \infty)$. Then,
+  \[%
+    \lvert f(x) - f(y) \rvert = \lvert \sqrt{x} - \sqrt{y} \rvert = \frac{\lvert x - y \rvert}{\sqrt{x}\sqrt{y}} \le \frac{\lvert x - y \rvert}{1} <\delta = \epsilon
+  .\]%
+  Therefore, $\sqrt{x}$ is uniformly continuous on $[1, \infty)$.
+
+  Let $\delta = \min(\{\delta_1, \delta_2\})$. Then, if $\lvert x - y \rvert <
+  \delta$, then $x, y \in [0, 2]$ or $x, y \in [1, \infty)$. Either way, $\lvert
+  f(x) - f(y) \rvert < \epsilon$. Therefore, $f$ is uniformly continuous on $[0,
+  \infty)$.
+\end{proof}
+
+\begin{problem}[4.4.9]
+  A function $f : A \to \R$ is called \textit{Lipschitz} if there exists a bound
+  $M > 0$ such that
+  \[%
+    \left\lvert \frac{f(x) - f(y)}{x - y} \right\rvert \le M
+  ,\]%
+  for all $x \ne y \in A$. Geometrically speaking, a function $f$ is Lipschitz
+  if there is a uniform bound on the magnitude of the slopes of lines drawn
+  through any two points on the graph of $f$.
+  \begin{enumerate}
+    \item Show that if $f : A \to \R$ is Lipschitz, then it is uniformly
+      continuous on $A$.
+
+    \item Is the converse statement true? Are all uniformly continuous functions
+      necessarily Lipschitz?
+  \end{enumerate}
+\end{problem}
+
+\begin{proof}[Solution to (i)]
+  Let $\epsilon > 0$ and $\delta = \sfrac{\epsilon}{M}$. Then,
+  \begin{alignat*}{3}
+    \phantom{\implies}\quad&\left\lvert \frac{f(x) - f(y)}{x - y} \right\rvert &&\le M \\
+    \implies\quad&\lvert f(x) - f(y) \rvert &&< M \lvert x - y \rvert < M \cdot \delta = \epsilon
+  .\end{alignat*}
+  Therefore, $f$ is uniformly continuous on $A$.
+\end{proof}
+
+\begin{proof}[Solution to (ii)]
+  No, the converse is not true. Consider the function $f(x) = \sqrt{x}$ on
+  $[0, \infty)$. It is uniformly continuous on $[0, \infty)$, but it is not
+  Lipschitz, since
+  \[%
+    \left\lvert \frac{f(x) - f(y)}{x - y} \right\rvert = \left\lvert \frac{\sqrt{x} - \sqrt{y}}{x - y} \right\rvert = \frac{1}{\sqrt{x} + \sqrt{y}}
+  ,\]%
+  which is unbounded.
+\end{proof}
+
+\begin{problem}[5.2.2abc]
+  Exactly one of the following requests is impossible. Decide which it is, and provide examples for the other three. In each case, let’s assume the functions are defined on all of $\R$.
+  \begin{enumerate}
+    \item Functions $f$ and $g$ are not differentiable at zero but where $fg$ is
+      differentiable at zero.
+
+    \item A function $f$ is not differentiable at zero and a function $g$ is
+      differentiable at zero where $fg$ is differentiable at zero.
+
+    \item A function $f$ is not differentiable at zero and a function $g$ is
+      differentiable at zero where $f + g$ is differentiable at zero.
+  \end{enumerate}
+\end{problem}
+
+\begin{proof}[Solution to (i)]
+  Let $f(x) = \lvert x \rvert = g(x)$. Both $f$ and $g$ are not differentiable
+  at zero, but $fg = x^2$ is differentiable at zero.
+\end{proof}
+
+\begin{proof}[Solution to (ii)]
+  Let $f(x) = \lvert x \rvert$ and $g(x) = 0$. Then, $f$ is not differentiable
+  at zero, $g$ is differentiable at zero, and $fg = 0$ is differentiable at
+  zero.
+\end{proof}
+
+\begin{proof}[Solution to (iii)]
+  This is impossible. If $g$ and $f + g$ is differentiable at zero, then $f + g
+  - g = f$ must also be differentiable at zero.
+\end{proof}
+
+\begin{problem}[5.2.5]
+  Let $\displaystyle f_a(x) =
+  \begin{cases}
+    x^a & \textrm{if}~x > 0 \\
+    0 & \textrm{if}~x \le 0.
+  \end{cases}$
+  \begin{enumerate}
+    \item For which values of $a$ is $f$ continuous at zero?
+
+    \item For which values of $a$ is $f$ differentiable at zero? In this case,
+      is the derivative function continuous?
+
+    \item For which values of $a$ is $f$ twice-differentiable?
+  \end{enumerate}
+\end{problem}
+
+\begin{proof}[Solution to (i)]
+  If $a \le 0$, then $f_a(0)$ isn't defined, meaning it isn't continuous at
+  zero.
+
+  If $a > 0$, then $f_a(0) = 0$. Let $\epsilon > 0$ and $\delta =
+  \epsilon^{\sfrac{1}{a}}$. Let $x \in \R$. If $x \le 0$, then we get $\lvert
+  f(x) - 0 \rvert = 0 < \epsilon$. If $x > 0$, then
+  \[%
+    \lvert f(x) - 0 \rvert = x^a < \delta^a = \epsilon
+  .\]%
+  Therefore, $f_a$ is continuous at zero if and only if $a > 0$.
+\end{proof}
+
+\begin{proof}[Solution to (ii)]
+  If $h > 0$, then $f_a(h) = h^a$ and $f_a(0) = 0$. Hence,
+  \[%
+    \frac{f_a(h) - f_a(0)}{h} = \frac{h^a}{h} = h^{a-1}
+  .\]%
+  Taking the limit as $h \to 0^+$ gives us
+  \[%
+    \lim_{h \to 0^+} h^{a-1} =
+    \begin{cases}
+      0 & \textrm{if}~a > 1 \\
+      \infty & \textrm{if}~a < 1
+    \end{cases}
+  .\]%
+  Therefore, $f_a'(0)$ exists only when $a \geq 1$. If $a = 1$, the derivative
+  is a constant value of $1$.
+
+  For $x > 0$, $f_a(x) = x^a$, and its derivative is $f_a'(x) = ax^{a-1}$. This
+  derivative is continuous for $x > 0$. At $x = 0$, we have already established
+  that the derivative exists and is finite when $a \geq 1$. Therefore, the
+  derivative function is continuous if and only if $a \geq 1$.
+\end{proof}
+
+\begin{proof}[Solution to (iii)]
+  The second derivative is
+  \[%
+    f_a''(x) = a(a-1)x^{a-2}
+  .\]%
+
+  For $x > 0$, this expression is well-defined. If $a > 2$, then $f_a'(h) =
+  ah^{a-1}$, and $f_a'(0) = 0$. Thus,
+  \[%
+    \frac{f_a'(h) - f_a'(0)}{h} = \frac{ah^{a-1}}{h} = ah^{a-2}
+  .\]%
+  Taking the limit as $h \to 0^+$
+  \[%
+    \lim_{h \to 0^+} ah^{a-2} =
+    \begin{cases}
+      0 & \textrm{if}~a > 2 \\
+      \infty & \textrm{if}~a < 2
+    \end{cases}
+  .\]%
+  Therefore, $f_a''(0)$ exists if and only if $a > 2$. For $x > 0$, $f_a(x)$ is
+  twice-differentiable if $a > 2$, and the second derivative is continuous for
+  $x > 0$. At $x = 0$, the second derivative is finite, ensuring continuity.
+
+  Thus, $f_a(x)$ is twice-differentiable if and only if $a > 2$.
+\end{proof}
