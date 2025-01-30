@@ -1,0 +1,180 @@
+\begin{problem}[5.2.4a]
+  Show that a function $h : A \to \R$ is differentiable at $a \in A$ if and only
+  if there exists a function $l : A \to \R$ which is continuous at $a$ and
+  satisfies
+  \[%
+    h(x) - h(a) = l(x)(x - a)\quad\textrm{for all}~x \in A
+  .\]%
+\end{problem}
+
+\begin{proof}[Solution]
+  Assume $h$ is differentiable at $a$. Define
+  \[%
+    l(x) = \begin{cases}
+      \frac{h(x) - h(a)}{x - a} & \textrm{if}~x \neq a \\
+      h'(a) & \textrm{if}~x = a
+    \end{cases}
+  .\]%
+  Then $l$ is continuous at $a$ and satisfies the equation $h(x) - h(a) = l(x)(x
+  - a)$ for all $x \in A$.
+
+  Conversely, assume there exists a function $l : A \to \R$ which is continuous
+  at $a$ and satisfies the equation $h(x) - h(a) = l(x)(x - a)$ for all $x \in
+  A$. Rewriting the equation, we have
+  \[%
+    \frac{h(x) - h(a)}{x - a} = l(x)
+  ,\]%
+  where $x \ne a$. Taking the limit on both sides as $x \to a$ gives us $h'(a) =
+  l(a)$.
+\end{proof}
+
+\begin{problem}[5.2.6b]
+  Let $g$ be defined on an interval $A$, and let $c \in A$. Assume $A$ is open.
+  If $g$ is differentiable at $c \in A$, show
+  \[%
+    g'(c) = \lim_{h \to 0} \frac{g(c + h) - g(c - h)}{2h}
+  .\]%
+\end{problem}
+
+\begin{proof}[Solution]
+  Rewriting the limit, we have
+  \[%
+    \lim_{h \to 0} \frac{g(c + h) - g(c) + g(c) - g(c - h)}{2h} = \frac{1}{2} \underbrace{\lim_{h \to 0} \frac{g(c + h) - g(c)}{h}}_{g'(c)} + \frac{1}{2} \underbrace{\lim_{h \to 0} \frac{g(c) - g(c - h)}{h}}_{g'(c)~\textrm{with}~h=c-x} = \frac{1}{2} \cdot 2g'(c) = g'(c)
+  .\]%
+  Thus, $g'(c) = \lim_{h \to 0} \frac{g(c + h) - g(c - h)}{2h}$.
+\end{proof}
+
+\begin{problem}[5.2.7]
+  Find a particular (potentially non integer) value for $a$ so that
+  \begin{enumerate}
+    \item $g_a$ is differentiable on $\R$ but such that $g_a'$ is unbounded on
+      $[0, 1]$.
+
+    \item $g_a$ is differentiable on $\R$ with $g_a'$ continuous but not
+      differentiable at zero.
+
+    \item $g_a$ is differentiable on $\R$j and $g_a'$ is differentiable on $\R$,
+      but such that $g_a''$ is not continuous at zero.
+  \end{enumerate}
+\end{problem}
+
+\begin{proof}[Solution to (i)]
+  Pick $a = 1.5$. The first derivative of $g_a$ is $ax^{a-1}\sin(\sfrac{1}{x}) -
+  x^{a-2}\cos(\sfrac{1}{x})$. To make $g_a'$ unbounded on $[0, 1]$, we need the
+  second term to be unbounded. This can be achieved by choosing any $1 < a < 2$.
+\end{proof}
+
+\begin{proof}[Solution to (ii)]
+  Pick $a = 2.5$. The first derivative, $g_a' = 2.5x^{1.5}\sin(\sfrac{1}{x}) -
+  x^{0.5}\cos(\sfrac{1}{x})$, is continuous at zero, but isn't differentiable at
+  zero, as the second term isn't differentiable at zero, and the sum of two
+  differentiable functions is differentiable if and only if both functions are
+  differentiable. This can be achieved by choosing any $2 < a < 3$.
+\end{proof}
+
+\begin{proof}[Solution to (iii)]
+  Pick $a = 3.5$. The first derivative and second derivative are
+  \begin{align*}
+    g_a' &= -x^{1.5}\cos(\sfrac{1}{x}) + 3.5x^{2.5}\sin(\sfrac{1}{x}) \\
+    g_a'' &= -5x^{0.5}\cos(\sfrac{1}{x}) - \frac{\sin(\sfrac{1}{x})}{x^{0.5}} + 8.75x^{1.5}\sin(\sfrac{1}{x})
+  .\end{align*}
+  Clearly, $g_a'$ is differentiable on $\R$, and $g_a''$ is not continuous at
+  zero. This can be achieved by choosing any $3 < a < 4$.
+\end{proof}
+
+\begin{problem}[5.2.9]
+  Decide whether each conjecture is true or false. Provide an argument for those
+  that are true and a counterexample for each one that is false.
+  \begin{enumerate}
+    \item If $f'$ exists on an interval and is not constant, then $f'$ must take
+      on some irrational values.
+
+    \item If $f'$ exists on an open interval and there is some point $c$ where
+      $f'(c) > 0$, then there exists a $\delta$-neighborhood $V_\delta(c)$
+      around $c$ in which $f'(x) > 0$ for all $x \in V_\delta(c)$.
+
+    \item If $f$ is differentiable on an interval containing zero and if
+      $\lim_{x \to 0} f'(x) = L$, then it must be that $L = f'(0)$.
+  \end{enumerate}
+\end{problem}
+
+\begin{proof}[Solution to (i)]
+  It's true. If $f'$ is not constant, then there must exist two points, $x_1$
+  and $x_2$, such that $f'(x_1) < f'(x_2)$, or $f'(x_1) > f'(x_2)$. By the
+  intermediate value theorem, there must exist a point $x_3$ such that $f'(x_1)
+  < f'(x_3) < f'(x_2)$, and $f'(x_3)$ is irrational.
+\end{proof}
+
+\begin{proof}[Solution to (ii)]
+  It's true if $f'$ is continuous at $c$. If $f'$ is continuous at $c$, then
+  there exists a $\delta$-neighborhood $V_\delta(c)$ around $c$ such that $f'(x)
+  > 0$ for all $x \in V_\delta(c)$.
+
+  Otherwise, it's false. Assume $f'$ isn't continuous. Consider the function
+  $f(x) = \sfrac{x}{2} + x^2\sin(\sfrac{1}{x})$. The derivative of $f$ is
+  \[%
+    f' = 2x\sin(\sfrac{1}{x}) - \cos(\sfrac{1}{x}) + \frac{1}{2}
+  .\]%
+  The function $f'$ keeps alternating between positive and negative values as $x
+  \to 0$. Define $x_n = \sfrac{1}{2\pi n}$, where $n \in \N$. Then $f'(x_n) =
+  -\sfrac{1}{2}$, but $f'(0) = \sfrac{1}{2}$.
+\end{proof}
+
+\begin{proof}[Solution to (iii)]
+  It's true. Suppose $\lim_{x \to 0} f'(x) = L$ with $f'(0) \ne L$. Let
+  \[%
+    0 < \epsilon = \frac{|f'(0) - L|}{2}
+  .\]%
+  There exists a $\delta > 0$ such that $f'(x) \in V_L(\epsilon)$, for $x \in
+  V_\delta(0)$. By definition, $f'(0) \in V_L(\epsilon)$. Hence, there's a gap
+  between $f'(x)$ and $f'(0)$, which, by Darboux's theorem, is a contradiction.
+\end{proof}
+
+\begin{problem}[5.3.1a]
+  Recall from Exercise 4.4.9 that a function $f : A \to \R$ is Lipschitz on $A$
+  if there exists an $M > 0$ such that
+  \[%
+    \left\lvert \frac{f(x) - f(y)}{x - y} \right\rvert \le M
+  ,\]%
+  for all $x \ne y$ in $A$.
+
+  Show that if $f$ is differentiable on a closed interval $[a, b]$ and if $f'$
+  is continuous on $[a, b]$, then $f$ is Lipschitz on $[a, b]$.
+\end{problem}
+
+\begin{proof}[Solution]
+  Every closed interval on $\R$ is compact. Let $(x_n)$ be a sequence
+  contained entirely in $[a, b]$. By the Bolzano-Weierstrass theorem, there
+  exists a convergent subsequence $(x_{n_k})$ that converges to some limit
+  $L$. Since $[a, b]$ is closed, $L \in [a, b]$. Therefore, $[a, b]$ is compact.
+
+  Using that fact, $f'$ is continuous on a compact set $[a, b]$. Let $M$ be the
+  maximum of $[f'(a), f'(b)]$ (or $[f'(b), f'(a)]$, as $f'$ is defined to be
+  monotone). Pick $x, y \in [a, b]$ with $x < y$. Then, by the Mean Value
+  Theorem, there exists $c \in (x, y)$ with
+  \[%
+    \left\lvert \frac{f(y) - f(x)}{y - x} \right\rvert = \lvert f'(c) \rvert \le M
+  .\]%
+  Therefore, $f$ is Lipschitz on $[a, b]$.
+\end{proof}
+
+\begin{problem}[5.3.2]
+  Let $f$ be differentiable on an interval $A$. If $f'(x) \ne 0$ on $A$, show
+  that $f$ is one-to-one on $A$. Provide an example to show that the converse
+  statement need not be true.
+\end{problem}
+
+\begin{proof}[Solution]
+  Assume $f'(x) \ne 0$ on $A$. Let $x, y \in A$ with $x \ne y$. Without loss of
+  generality, assume $x < y$. Then, by the Mean Value Theorem, there exists $c
+  \in (x, y)$ such that
+  \[%
+    f(y) - f(x) = f'(c)(y - x) \ne 0
+  .\]%
+  Therefore, $f$ is one-to-one on $A$.
+
+  An example to show that the converse statement need not be true is the
+  function $f_a(x) = x^{2a+1}$, where $a \in \R$. The derivative of $f_a$ is
+  $f_a'(x) = (2a+1)x^{2a}$. The function $f_a$ is one-to-one on $\R$, but
+  $f_a'(0) = 0$.
+\end{proof}
