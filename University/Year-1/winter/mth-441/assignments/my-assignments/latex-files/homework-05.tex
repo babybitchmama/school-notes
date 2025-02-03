@@ -1,0 +1,393 @@
+\begin{problem}[1]
+  Verify that the determinant of $\begin{pmatrix}
+    1 & 1 & 1 \\
+    t_1 & t_2 & t_3 \\
+    t_1^2 & t_2^2 & t_3^2 \\
+  \end{pmatrix}$ is $\displaystyle\prod_{1 \le i < j \le 3} (t_j - t_i)$.
+\end{problem}
+
+\begin{proof}[Solution]
+  Using the Cofactor Expansion on the first row, we have
+  \begin{align*}
+    \det(A) = \sum_{i=1}^3 (-1)^{1+i} \cdot \det(A_{1i}) &= \det(A_{11}) - \det(A_{12}) + \det(A_{13}) \\
+    &= \begin{vmatrix}
+        t_2 & t_3 \\
+        t_2^2 & t_3^2
+      \end{vmatrix} - \begin{vmatrix}
+        t_1 & t_3 \\
+        t_1^2 & t_3^2
+      \end{vmatrix} + \begin{vmatrix}
+        t_1 & t_2 \\
+        t_1^2 & t_2^2
+      \end{vmatrix} \\
+    &= \left(t_2 t_3^2 - t_3 t_2^2\right) - \left(t_1 t_3^2 - t_3 t_1^2\right) + \left(t_1 t_2^2 - t_2 t_1^2\right) \\
+    &= t_2 t_3^2 - t_3 t_2^2 - t_1 t_3^2 + t_3 t_1^2 + t_1 t_2^2 - t_2 t_1^2
+  ,\end{align*}
+  where $C_i = 1$ for $i = 1, 2, 3$.
+
+  For the product, we have the following possible pairs: $(1, 2)$, $(1, 3)$, and
+  $(2, 3)$. We can expand the product as follows
+  \[%
+    \prod_{1 \le i < j \le 3} (t_j - t_i) = (t_2 - t_1)(t_3 - t_1)(t_3 - t_2) = \det(A) = t_2 t_3^2 - t_3 t_2^2 - t_1 t_3^2 + t_3 t_1^2 + t_1 t_2^2 - t_2 t_1^2
+  .\]%
+  Therefore,
+  \[%
+    \det(A) = \prod_{1 \le i < j \le 3} (t_j - t_i)
+  .\qedhere\]%
+\end{proof}
+
+\begin{problem}[2]
+  Use the method introduced in the class to find a polynomial $p(x)$ in
+  $\P^3(\R)$ such that $p(1) = 1$, $p(2) = 3$, $p(3) = -1$, and $p(4) = 2$.
+\end{problem}
+
+\begin{proof}[Solution]
+  Let $p(x) = a_0 + a_1 x + a_2 x^2 + a_3 x^3$ be the polynomial we are
+  looking for. We know that
+  \[%
+    p(x) = \sum_{i=1}^n c_i p_i(x) \qtq{where} p_i(x) = \prod_{\substack{j \ne i \\ j=1}}^{n+1} \frac{x - t_j}{t_i - t_j}
+  ,\]%
+  where $c_i = p(t_i)$ and $t_i$ are the points we are given. In our case, we
+  have $n = 3$, $c_1 = 1$, $c_2 = 3$, $c_3 = -1$, $c_4 = 2$, $t_1 = 1$, $t_2 =
+  2$, $t_3 = 3$, and $t_4 = 4$.
+
+  $p_1(x)$: Possible pairs are $(1, 2)$, $(1, 3)$, and $(1, 4)$.
+  \[%
+    p_1(x) = \prod_{j=2}^4 \frac{x - t_j}{t_1 - t_j} = \frac{(x - t_2)(x- t_3)(x - t_4)}{(t_1 - t_2)(t_1 - t_3)(t_1 - t_4)} = \frac{(x - 2)(x - 3)(x - 4)}{(1 - 2)(1 - 3)(1 - 4)} = -\frac{(x - 2)(x - 3)(x - 4)}{6}
+  .\]%
+
+  $p_2(x)$: Possible pairs are $(2, 1)$, $(2, 3)$, and $(2, 4)$.
+  \[%
+    p_2(x) = \prod_{\substack{j \ne 2 \\ j = 1}}^4 \frac{x - t_j}{t_2 - t_j} = \frac{(x - t_1)(x- t_3)(x - t_4)}{(t_2 - t_1)(t_2 - t_3)(t_2 - t_4)} = \frac{(x - 1)(x - 3)(x - 4)}{(2 - 1)(2 - 3)(2 - 4)} = \frac{(x - 1)(x - 3)(x - 4)}{2}
+  .\]%
+
+  $p_3(x)$: Possible pairs are $(3, 1)$, $(3, 2)$, and $(3, 4)$.
+  \[%
+    p_3(x) = \prod_{\substack{j \ne 3 \\ j = 1}}^4 \frac{x - t_j}{t_3 - t_j} = \frac{(x - t_1)(x- t_2)(x - t_4)}{(t_3 - t_1)(t_3 - t_2)(t_3 - t_4)} = \frac{(x - 1)(x - 2)(x - 4)}{(3 - 1)(3 - 2)(3 - 4)} = -\frac{(x - 1)(x - 2)(x - 4)}{2}
+  .\]%
+
+  $p_4(x)$: Possible pairs are $(4, 1)$, $(4, 2)$, and $(4, 3)$.
+  \[%
+    p_4(x) = \prod_{j = 1}^3 \frac{x - t_j}{t_4 - t_j} = \frac{(x - t_1)(x- t_2)(x - t_3)}{(t_4 - t_1)(t_4 - t_2)(t_4 - t_3)} = \frac{(x - 1)(x - 2)(x - 3)}{(4 - 1)(4 - 2)(4 - 3)} = \frac{(x - 1)(x - 2)(x - 3)}{6}
+  .\]%
+
+  Therefore,
+  \begin{multline*}
+    p(x) = \sum_{i=1}^4 c_i p_i(x) = 1 \cdot p_1(x) + 3 \cdot p_2(x) - 1 \cdot p_3(x) + 2 \cdot p_4(x) \\
+    = -\frac{(x - 2)(x - 3)(x - 4)}{6} + \frac{3(x - 1)(x - 3)(x - 4)}{2} + \frac{(x - 1)(x - 2)(x - 4)}{2} \\
+    + \frac{(x - 1)(x - 2)(x - 3)}{3}
+  .\end{multline*}
+  Verifying that the values are correct,
+  \begin{alignat*}{5}
+    p(1) &= -\frac{(1 - 2)(1 - 3)(1 - 4)}{6} + 0 + 0 + 0 &&= -\frac{(-1)(-2)(-3)}{6} &&= \frac{6}{6} &&= 1 \\
+    p(2) &= 0 + \frac{3(2 - 1)(2 - 3)(2 - 4)}{2} + 0 + 0 &&= \frac{3(1)(-1)(-2)}{2} &&= \frac{6}{2} &&= 3 \\
+    p(3) &= 0 + 0 + \frac{(3 - 1)(3 - 2)(3 - 4)}{2} + 0 &&= \frac{(2)(1)(-1)}{2} &&= \frac{-2}{2} &&= -1 \\
+    p(4) &= 0 + 0 + 0 + \frac{(4 - 1)(4 - 2)(4 - 3)}{3} &&= \frac{(3)(2)(1)}{3} && &&= 2
+  .\end{alignat*}
+  Therefore, the polynomial we are looking for is
+  \[%
+    p(x) = -\frac{(x - 2)(x - 3)(x - 4)}{6} + \frac{3(x - 1)(x - 3)(x - 4)}{2} + \frac{(x - 1)(x - 2)(x - 4)}{2} + \frac{(x - 1)(x - 2)(x - 3)}{3}
+  .\qedhere\]%
+\end{proof}
+
+\begin{problem}[3]
+  Let $f$ be the linear functional on $\R^2$ defined by $f(x_1, x_2) = 2x_1 -
+  3x_2$. Let $T$ be a linear transformation defined by $T(x_1, x_2) = (x_1 -
+  x_2, x_1 + x_2)$. Let $T^t$ be the transpose linear transformation of $T$ on
+  the dual space of $\R^2$. Find the formula for the linear functional $T^t(f) :
+  \R^2 \to \R$.
+\end{problem}
+
+\begin{proof}[Solution]
+  Let $B = \{\e_1, \e_2\}$ be the standard basis of $\R^2$. Then, $[T]_B$ and
+  $[T]_B^T$ are given by
+  \[%
+    [T]_B = \begin{pmatrix}
+      T(\e_1) & T(\e_2) \\
+    \end{pmatrix} =
+    \begin{pmatrix}
+      1 & -1 \\
+      1 & 1 \\
+    \end{pmatrix} \aand
+    [T^t]_B = \begin{pmatrix}
+      1 & 1 \\
+      -1 & 1 \\
+    \end{pmatrix}
+  .\]%
+  The linear functional $f$ is given by
+  \[%
+    [f]_B = \begin{pmatrix}
+      2 & -3 \\
+    \end{pmatrix}
+  .\]%
+  In order to get $T^t(f)$, we need to multiply $[T^t]_B$ by $[f]_B$ to get
+  \[%
+    [T^t(f)]_B = [f]_B[T^t]_B = [f]_B[T]_B^t = \begin{pmatrix}
+      2 & -3 \\
+    \end{pmatrix}
+    \begin{pmatrix}
+      1 & 1 \\
+      -1 & 1 \\
+    \end{pmatrix}
+    = \begin{pmatrix}
+      5 & -1 \\
+    \end{pmatrix}
+  .\]%
+  Therefore, the linear functional $T^t(f)$ is given by
+  \[%
+    T^tf(x_1, x_2) = 5x_1 - x_2
+  .\qedhere\]%
+\end{proof}
+
+\begin{problem}[4]
+  Let $V$ be the vector space of all polynomial functions over the field of real
+  numbers. Let $a$ and $b$ be fixed real numbers and let $f$ be the linear
+  functional on $V$ defined by $\displaystyle f(p) = \int_a^b p(x) \,\dx$. Let
+  $D$ be the differentiation operator on $V$, and $D^t : V^* \to V^*$ be the
+  transpose linear transformation of $D$ on the dual space $V^*$. Find the
+  formula for the linear functional $D^t(f) : V \to \R$.
+\end{problem}
+
+\begin{proof}[Solution]
+  The transpose linear transformation satisfies the property $D^tf(p) = f(Dp)$.
+  Therefore, we get
+  \[%
+    D^t(f) = f(D) = \int_a^b Dp(x) \,\dx = \int_a^b p'(x) \,\dx = p(b) - p(a)
+  .\qedhere\]%
+\end{proof}
+
+\begin{problem}[5]
+  Let $V = \R^{n \times n}$ and let $B \in \R^{n \times n}$ be a fixed matrix.
+  Let $T : V \to V$ be the linear transformation defined by $T(A) = AB - BA$,
+  and $f : V \to \R$ be the trace linear functional defined by $f(C) = \Tr(C)$.
+  Let $T^t : V^\ast \to V^\ast$ be $t$ the transpose linear transformation of
+  $T$ the dual space $V^\ast$. Find the formula for the linear functional
+  $T^t(f) : V \to \R$.
+\end{problem}
+
+\begin{proof}[Solution]
+  As in problem 4, the transpose linear transformation satisfies the property
+  $T^tf(A) = f(TA)$. Therefore, we get
+  \[%
+    T^t(f) = f(T) = \Tr(AB - BA) = \Tr(AB) - \Tr(BA)
+  .\]%
+  Using the property of the trace, we know that $\Tr(AB) = \Tr(BA)$, so we have
+  \[%
+    T^t(f) = \Tr(AB) - \Tr(BA) = 0
+  .\qedhere\]%
+\end{proof}
+
+\begin{problem}[6]
+  Let $\R^\infty$ be a vector space of infinite sequences $(\alpha_1, \alpha_2, \alpha_3, \cdots)$ of real numbers.
+  \begin{enumerate}
+    \item Define a linear transformation $T : \R^\infty \to \R^\infty$ by
+      \[%
+        T(\alpha_1, \alpha_2, \alpha_3, \cdots) = (0, \alpha_1, \alpha_2, \alpha_3, \cdots)
+      .\]%
+      Find the eigenvalue(s) and eigenvectors of $T$ or prove that there are no
+      eigenvalues or eigenvectors for $T$.
+
+    \item Define a linear transformation $U : \R^\infty \to \R^\infty$ by
+      \[%
+        U(\alpha_1, \alpha_2, \alpha_3, \cdots) = (\alpha_2, \alpha_3, \alpha_4,
+        \cdots)
+      .\]%
+      Find the eigenvalue(s) and eigenvectors of $U$ or prove that there are no
+      eigenvalues or eigenvectors for $U$.
+  \end{enumerate}
+\end{problem}
+
+\begin{proof}[Solution to (i)]
+  Suppose $\lambda$ and $\v$ are an eigenvalue and eigenvector of $T$,
+  respectively, such that $T(\v) = \lambda\v$. Then, we have
+  \[%
+    T(\v) = \lambda \v \iff T(\alpha_1, \alpha_2, \alpha_3, \cdots) = \lambda (\alpha_1, \alpha_2, \alpha_3, \cdots) \iff (0, \alpha_1, \alpha_2, \alpha_3, \cdots) = (\lambda \alpha_1, \lambda \alpha_2, \lambda \alpha_3, \cdots)
+  .\]%
+  This implies that $0 = \lambda\alpha_1$, $\alpha_1 = \lambda\alpha_2$,
+  $\alpha_2 = \lambda\alpha_3$, and so on. If $\alpha_1 \ne 0$, then $\lambda =
+  0$ making the entire eigenvector zero. If $\alpha_1 = 0$, then $0 =
+  \lambda\alpha_2$. Applying this recursively, we get $\alpha_1 = \alpha_2 =
+  \alpha_3 = \cdots = 0$. Therefore, there are no eigenvalues or eigenvectors
+  for $T$.
+\end{proof}
+
+\begin{proof}[Solution to (ii)]
+  Suppose $\lambda$ and $\v$ are an eigenvalue and eigenvector of $U$,
+  respectively, such that $U(\v) = \lambda\v$. Then, we have
+  \[%
+    U(\v) = \lambda \v \iff U(\alpha_1, \alpha_2, \alpha_3, \cdots) = \lambda (\alpha_1, \alpha_2, \alpha_3, \cdots) \iff (\alpha_2, \alpha_3, \alpha_4, \cdots) = (\lambda\alpha_1, \lambda\alpha_2, \lambda\alpha_3, \cdots)
+  .\]%
+  This implies that $\alpha_2 = \lambda\alpha_1$, $\alpha_3 = \lambda\alpha_2$,
+  $\alpha_4 = \lambda\alpha_3$, and so on. If $\alpha_1 = 0$, then $\alpha_2 =
+  \alpha_3 = \alpha_4 = \cdots = 0$. If $\alpha_1 \ne 0$, then $\lambda =
+  \sfrac{\alpha_2}{\alpha_1}$. Applying this recursively, we get
+  \[%
+    \lambda = \frac{\alpha_2}{\alpha_1} = \frac{\alpha_3}{\alpha_2} = \frac{\alpha_4}{\alpha_3} = \cdots
+  .\]%
+  Therefore, $0 \ne \alpha_1 = \alpha_2 = \alpha_3 = \alpha_4 = \cdots$. Thus,
+  the eigenvalues of $U$ are all non-zero real numbers and the eigenvectors are
+  \[%
+    \v = (\alpha, \alpha, \alpha, \cdots) = \alpha(1, 1, 1, \cdots), \quad \forall\alpha \in \R - \{0\}
+  .\qedhere\]%
+\end{proof}
+
+\begin{problem}[7]
+  Let $A \in \C^{n \times n}$. Let $\lambda_1, \cdots, \lambda_n$ be all eigenvalues of $A$.
+  \begin{enumerate}
+    \item Prove that the determinant of $A$ equals to the product of all
+      eigenvalues of $A$, i.e.,
+      \[%
+        \det(A) = \prod_{i=1}^n \lambda_i
+      .\]%
+
+    \item Use Part (i) to prove that $A$ is invertible if and only if $\lambda_i
+      \ne 0$ for all $i = 1, \cdots, n$.
+  \end{enumerate}
+\end{problem}
+
+\begin{proof}[Solution to (i)]
+  The characteristic polynomial of $A$ is defined as
+  \[%
+    p_A(\lambda) = \det(A - \lambda I)
+  .\]%
+  Since the eigenvalues $\lambda_1, \cdots, \lambda_n$ are the roots of this
+  polynomial, we know that $p_A(\lambda)$ can be written as
+  \[%
+    p_A(\lambda) = c_n\prod_{i=1}^n (\lambda - \lambda_i)
+  ,\]%
+  where $c_n$ is the leading coefficient of the polynomial (problem 1 was just a
+  special case of this). From the determinant properties, we know that the term
+  with $\lambda^n$ in $\det(A - \lambda I)$ comes from the product of the
+  diagonal entries when expanding along rows/columns. The coefficient of
+  $(-\lambda)^n$ is always $(-1)^n$, meaning that
+  \[%
+    p_A(\lambda) = \det(A - \lambda I) = (-1)^n\prod_{i=1}^n (\lambda - \lambda_i)
+  .\]%
+  Evaluating at $\lambda = 0$ gives
+  \[%
+    p_A(0) = \det(A) = (-1)^n\prod_{i=1}^n (-\lambda_i) = \prod_{i=1}^n \lambda_i
+  .\qedhere\]%
+\end{proof}
+
+\begin{proof}[Solution to (ii)]
+  A matrix $A$ is invertible if and only if $\det(A) \ne 0$. From part (i), we
+  know that
+  \[%
+    \det(A) = \prod_{i=1}^n \lambda_i
+  .\]%
+  For this product to be nonzero, none of the eigenvalues can be zero.
+
+  Conversely, if all $\lambda_i \ne 0$, then the product is nonzero, and thus
+  \[%
+    \det(A) = \prod_{i=1}^n \lambda_i \ne 0
+  ,\]%
+  making $A$ invertible.
+\end{proof}
+
+\begin{problem}[8]
+  Let $\lambda_1$ and $\lambda_2$ be distinct eigenvalues of a linear
+  transformation $T : V \to V$. Let $\v_1$ and $\v_2$ be eigenvectors associated
+  with $\lambda_1$ and $\lambda_2$ respectively. Prove that $\v_1$ and $\v_2$
+  are linearly independent.
+\end{problem}
+
+\begin{proof}[Solution]
+  Our goal is to show that $c_1\v_1 + c_2\v_2 = 0$ implies $c_1 = c_2 = 0$.
+  Since $\v_1$ and $\v_2$ are eigenvectors associated with the eigenvalues
+  $\lambda_1$ and $\lambda_2$, we have
+  \[%
+    T(\v_1) = \lambda_1 \aand T(\v_2) = \lambda_2
+  .\]%
+  Applying the linear transformation to the linear combination, we get
+  \[%
+    T(c_1\v_1 + c_2\v_2) = T(0) = 0
+  .\]%
+  By the linearity of $T$, we have
+  \[%
+    T(c_1\v_1 + c_2\v_2) = c_1 T(\v_1) + c_2 T(\v_2) = c_1 \lambda_1 + c_2 \lambda_2 = 0
+  .\]%
+  This gives us the following system of equations
+  \begin{align*}
+    c_1\v_1 + c_2\v_2 &= 0 \\
+    c_1 \lambda_1 + c_2 \lambda_2 &= 0
+  .\end{align*}
+  Since $\lambda_1 \ne \lambda_2$, we can subtract $\lambda_1$ times the first
+  equation from the second equation, expanding, and simplifying to get
+  \[%
+    c_2(\lambda_2 - \lambda_1)\v_2 = 0
+  .\]%
+  Again, we know that $\lambda_2 - \lambda_1 \ne 0$ and since $\v_2$ is an
+  eigenvector, it also cannot be zero. Therefore, we have $c_2 = 0$. Since
+  Substituting this back into the first equation, we get that $c_1 = 0$.
+  Hence, $\v_1$ and $\v_2$ are linearly independent.
+\end{proof}
+
+\begin{problem}[9]
+  Let $T$ be the linear transformation on $\R^4$ which is represented in
+  standard ordered basis by the matrix
+  \[%
+    \begin{pmatrix}
+      0 & 0 & 0 & 0 \\
+      a & 0 & 0 & 0 \\
+      0 & b & 0 & 0 \\
+      0 & 0 & c & 0 \\
+    \end{pmatrix}
+  .\]%
+  Under what condition on $a$, $b$, and $c$ is $T$ diagonalizable? Explain your
+  answer.
+\end{problem}
+
+\begin{proof}[Solution]
+  Finding the determinant of the matrix gives us $\det(A) = \lambda^4$. From the
+  characteristic polynomial, $\lambda^4 = 0$, the only eigenvalue is $\lambda =
+  0$ with algebraic multiplicity 4.
+
+  To be diagonalizable, $T$ must have a basis of eigenvectors, meaning that the
+  geometric multiplicity of $\lambda = 0$ must be $4$. The geometric
+  multiplicity is the dimension of the null space of $A$, which is given by
+  \[%
+    \dim(\Nul(A)) = \dim(\Nul(A^t)) = 4 - \Rank(A)
+  .\]%
+  Solving for $A\v = \zero$, we set
+  \[%
+    \begin{pmatrix}
+      0 & 0 & 0 & 0 \\
+      a & 0 & 0 & 0 \\
+      0 & b & 0 & 0 \\
+      0 & 0 & c & 0 \\
+    \end{pmatrix}
+    \begin{pmatrix}
+      x_1 \\
+      x_2 \\
+      x_3 \\
+      x_4 \\
+    \end{pmatrix} = \zero
+    \iff
+    \begin{pmatrix}
+      ax_1 = 0 \\
+      bx_2 = 0 \\
+      cx_3 = 0 \\
+    \end{pmatrix}
+  .\]%
+  Thus, the solution exists if and only if $a = b = c = 0$. Therefore, $T$ is
+  diagonalizable if and only if $a = b = c = 0$.
+\end{proof}
+
+\begin{problem}[10]
+  Let $T$ be a linear transformation on an $n$-dimensional vector space $V$, and
+  suppose that $T$ has $n$ distinct eigenvalues. Prove that $T$ is
+  diagonalizable.
+\end{problem}
+
+\begin{proof}[Solution]
+  A linear transformation is diagonalizable if there exists a basis of $V$
+  consisting of eigenvectors of $T$. This means that $V$ has a basis of $n$
+  linearly independent eigenvectors. Since $T$ has $n$ distinct eigenvalues,
+  $\lambda_1, \cdots, \lambda_n$, there exist corresponding eigenvectors
+  $\v_1, \cdots, \v_n$ such that
+  \[%
+    (\forall i = 1, \cdots, n)[T(\v_i) = \lambda_i \v_i]
+  .\]%
+  We will show that these eigenvectors are linearly independent, as shown in my
+  solution to problem 8.
+\end{proof}

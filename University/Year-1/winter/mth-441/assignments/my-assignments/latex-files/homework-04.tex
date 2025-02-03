@@ -94,37 +94,266 @@
 \end{proof}
 
 \begin{problem}[4]
+  Let $V$ be a two-dimensional vector space over $\F$, and let $\BB$ be an ordered basis for $V$. If $T$ is a linear transformation on $V$ and $[T]_\BB = \begin{pmatrix}
+    a & b \\
+    c & d \\
+  \end{pmatrix}$, prove that $T^2 - (a + d)T + (ad - bc)I = 0$.
 \end{problem}
 
 \begin{proof}[Solution]
+  The Cayley-Hamilton theorem states that every square matrix satisfies its own
+  characteristic equation. Given an $A \in \R^{2 \times 2}$ and its
+  characteristic polynomial is $P_A(\lambda) = \det(\lambda I - A)$, then
+  substituting $A$ for $\lambda$ in $P_A(\lambda)$ results in the zero matrix.
+
+  Since $[T]_\BB = \begin{pmatrix}
+    a & b \\
+    c & d \\
+  \end{pmatrix}$, the characteristic polynomial is
+  \[%
+    P_T(\lambda) = \det(\lambda I - [T]_\BB) = \det\begin{pmatrix}
+      \lambda - a & -b \\
+      -c & \lambda - d
+    \end{pmatrix} = (\lambda - a)(\lambda - d) - bc = \lambda^2 - (a + d)\lambda + (ad - bc)
+  .\]%
+  By the Cayley-Hamilton theorem, the matrix $[T]_\BB$ satisfies its
+  characteristic polynomial, giving us
+  \[%
+    [T]_\BB^2 - (a + d)[T]_\BB + (ad - bc)I = 0
+  .\]%
+  Since $[T]_\BB$ is a matrix representation of the linear transformation $T$,
+  the equation above is equivalent to $T^2 - (a + d)T + (ad - bc)I = 0$.
 \end{proof}
 
 \begin{problem}[5]
+  Suppose that $T$ is a linear transformation on a two-dimensional vector space
+  such that $T$ is neither the zero nor the identity linear transformation.
+  Prove that if $T^2 = T$, there is an ordered basis $\BB$ for $V$ such that
+  $[T]_\BB = \begin{pmatrix}
+    1 & 0 \\
+    0 & 0 \\
+  \end{pmatrix}$.
+
+  \noindent\textit{(Hint: Construct a basis $\{\v_1, \v_2\}$ such that $T(\v_1)
+  = \v_1$ and $T(\v_2) = \zero$.)}
 \end{problem}
 
 \begin{proof}[Solution]
+  Since $T^2 = T$, this means $T$ is idempotent. The eigenvalues of an
+  idempotent operator must satisfy the equation
+  \[%
+    \lambda^2 = \lambda
+  .\]%
+  Therefore, the eigenvalues of $T$ are $\lambda = 0$ and $\lambda = 1$. Since
+  $1$ is an eigenvalue for $T$, there exists a non-zero vector $\v_1 \ne \zero$
+  such that $T(\v_1) = \v_1$. Since $T$ has two eigenvalues, there must exist
+  another nonzero vector $\v_2$ such that $T(\v_2) = \zero$. This, $\v_1 \in
+  \Range(T)$ and $\v_2 \in \Ker(T)$.
+
+  Now, we must show that $\v_1$ and $\v_2$ are linearly independent. Suppose
+  that $\v_1$ and $\v_2$ are linearly dependent, then there exist scalars
+  $\alpha$ and $\beta$ such that $\alpha\v_1 + \beta\v_2 = \zero$. Applying $T$
+  to both sides of the equation gives
+  \[%
+    T(\alpha\v_1 + \beta\v_2) = T(\zero) = \zero
+  .\]%
+  By the linearity of $T$, we have
+  \[%
+    \alpha T(\v_1) + \beta T(\v_2) = \alpha\v_1 + \beta\zero = \alpha\v_1 = \zero
+  .\]%
+  Since $\v_1 \neq \zero$, this implies that $\alpha = 0$. But this means that
+  $\v_2 = \zero$, which is a contradiction. Therefore, $\v_1$ and $\v_2$ are
+  linearly independent.
+
+  Since $\v_1$ and $\v_2$ are linearly independent, they form a basis for $V$.
+  Let $\BB = \{\v_1, \v_2\}$ be the basis for $V$. In the basis, we write
+  \[%
+    T(\v_1) = 1\v_1 + 0\v_2 \aand T(\v_2) = 0\v_1 + 0\v_2
+  .\]%
+  Therefore, the matrix representation of $T$ in the basis $\BB$ is
+  \[%
+    [T]_\BB = \begin{pmatrix}
+      1 & 0 \\
+      0 & 0
+    \end{pmatrix}
+  .\qedhere\]%
 \end{proof}
 
 \begin{problem}[6]
+  Let $V$ be an $n$-dimensional vector space over $\R$. Let $T$ be a linear
+  transformation on $V$. If $T^n = 0$, and $T^{n-1} \ne 0$, prove that there
+  exists a basis $\BB$ such that $[T]_\BB = \begin{pmatrix}
+    0 & 0 & \cdots & 0 & 0 \\
+    1 & 0 & \cdots & 0 & 0 \\
+    0 & 1 & \ddots & 0 & 0 \\
+    \vdots & \vdots & \ddots & \ddots & \vdots \\
+    0 & 0 & \cdots & 1 & 0 \\
+  \end{pmatrix}$.
+
+  \noindent\textit{(Hint: Construct a set of the form $\{x, T(\x), T^2(\x),
+  \cdots, T^{n-1}(\x)\}$) and show that this set is a basis of $V$.)}
 \end{problem}
 
 \begin{proof}[Solution]
+  Since $T^{n-1} \ne 0$, there exists some nonzero vector $\x \in V$ such that
+  $T^{n-1}(\x) \ne 0$. Define the set of vectors
+  \[%
+    S = \{\x, T(\x), T^2(\x), \ldots, T^{n-1}(\x)\}
+  .\]%
+  We will show that $S$ is a basis for $V$.
+
+  Suppose there exist scalars $c_0, c_1, \cdots, c_{n-1} \in \R$ such that
+  \[%
+    c_0\x + c_1T(\x) + c_2T^2(\x) + \cdots + c_{n-1}T^{n-1}(\x) = \zero
+  .\]%
+  Applying $T^{n-1}$ to both sides of the equation gives
+  \[%
+    c_0T^{n-1}(\x) + c_1T^n(\x) + c_2T^{n+1}(\x) + \cdots + c_{n-1}T^{2n-2}(\x) = \zero
+  .\]%
+  Since $T^{n-1}(\x) \ne 0$, it follows that $c_0 = 0$. Applying $T^{n-2}$ to
+  the original equation gives
+  \[%
+    c_1T^{n-2}(\x) = 0
+  .\]%
+  Since $T^{n-2}(\x) \ne 0$, it follows that $c_1 = 0$. Continuing this process
+  until we reach $c_{n-1}$, we find that $c_0 = c_1 = \cdots = c_{n-1} = 0$.
+  Therefore, $S$ is linearly independent.
+
+  Since $S$ contains $n$ linearly independent vectors and $V$ is an
+  $n$-dimensional vector space, $S$ is a basis for $V$.
+
+  Let $\BB = \{\x, T(\x), T^2(\x), \ldots, T^{n-1}(\x)\}$ be the basis for $V$.
+  Since $T(\x) = T(\x) \in \BB$, it can be represented as $\e_2 = (0, 1, 0,
+  \cdots, 0)^T$. Similarly, $T^2(\x) = T^2(\x) \in \BB$ can be represented as
+  $\e_3 = (0, 0, 1, 0, \cdots, 0)^T$. Continuing this process, we find that
+  $T^{n-1}(\x) = T^{n-1}(\x) \in \BB$ can be represented as $\e_n = (0, 0, 0,
+  \cdots, 1)^T$. Therefore, the matrix representation of $T$ in the basis $\BB$
+  is
+  \[%
+    [T]_\BB = \begin{pmatrix}
+      0 & 0 & \cdots & 0 & 0 \\
+      1 & 0 & \cdots & 0 & 0 \\
+      0 & 1 & \ddots & 0 & 0 \\
+      \vdots & \vdots & \ddots & \ddots & \vdots \\
+      0 & 0 & \cdots & 1 & 0
+    \end{pmatrix}
+  .\qedhere\]%
 \end{proof}
 
 \begin{problem}[7]
+  Suppose $A \in \R^{n \times n}$ is an invertible matrix. Prove that $AB$ and
+  $BA$ are similar matrices for any $B \in \R^{n \times n}$.
 \end{problem}
 
 \begin{proof}[Solution]
+  Since $A$ is invertible, let $P = A$. We can then compute
+  \[%
+    A^{-1}(AB)A = (A^{-1}A)BA = BA
+  .\]%
+  Thus, we can express $BA$ as
+  \[%
+    BA = A^{-1}(AB)A
+  .\]%
+  Therefore, $AB$ and $BA$ are similar matrices.
 \end{proof}
 
 \begin{problem}[8]
+  Let $A, B \in \R^{n \times n}$. Prove the following statements.
+  \begin{enumerate}
+    \item If $A$ and $B$ are similar, then $\Tr(A) = \Tr(B)$.
+
+    \item $AB - BA = I$ is impossible.
+
+      \noindent\textit{Hint: You may use the results from Homework 2 Problem 1.}
+  \end{enumerate}
 \end{problem}
 
-\begin{proof}[Solution]
+\begin{proof}[Solution to (i)]
+  By definition, two matrices are similar if there exists an invertible matrix
+  $P$ such that $B = P^{-1}AP$. Using the cyclic property of the trace, we have
+  \[%
+    \Tr(B) = \Tr(P^{-1}AP) = \Tr(A)
+  .\]%
+  Therefore, if $A$ and $B$ are similar, then $\Tr(A) = \Tr(B)$.
+\end{proof}
+
+\begin{proof}[Solution to (ii)]
+  Assume, for contradiction, that there exists $A, B \in \R^{n \times n}$ such
+  that
+  \[%
+    AB - BA = I
+  .\]%
+  Using the linearity of the trace
+  \[%
+    \Tr(AB - BA) = \Tr(AB) - \Tr(BA) = I
+  .\]%
+  From Homework 2 Problem 1, we know that $\Tr(AB) = \Tr(BA)$, so
+  \[%
+    \Tr(AB) - \Tr(AB) = 0 \ne n = \Tr(I)
+  .\]%
+  This is a contradiction, so the equation $AB - BA = I$ is impossible.
 \end{proof}
 
 \begin{problem}[9]
+  True or False. (No explanation needed.)
+
+  \noindent In the following statements (i) - (iii): Let $V$ and $W$ be
+  finite-dimensional vector spaces. Let $T, U : V \to W$ be linear
+  transformations. Let $\beta$ and $\gamma$ be ordered basis for $V$ and $W$,
+  respectively.
+  \begin{enumerate}
+    \item Let $[T]_\beta^\gamma = [U]_\beta^\gamma$ implies $T = U$.
+
+    \item If $\dim(V) = n$ and $\dim(W) = m$, then $[T]_\beta^\gamma \in R^{n
+      \times m}$.
+
+    \item $[T(\v)]_\gamma = [T]_\beta^\gamma[\v]_\beta$ for all $\v \in V$.
+
+    \item Let $A \in \R^{n \times n}$. If $A^2 = I$, then $A = I$ or $A = -I$.
+
+    \item Let $A \in \R^{m \times n}$. Suppose $L_A : \R^n \to \R^m$ is defined
+      by $L_A(\v) = A\v$ for any $\v \in \R^n$. Then $[L_A]_\beta = A$, where
+      $\beta$ is the standard basis for $\R^n$.
+  \end{enumerate}
 \end{problem}
 
-\begin{proof}[Solution]
+\begin{proof}[Solution to (i)]
+  It's true. If $[T]_\beta^\gamma = [U]_\beta^\gamma$, then $T$ and $U$ have the
+  same matrix representation with respect to the bases $\beta$ and $\gamma$.
+  Since a linear transformation is uniquely determined by its action on a basis,
+  having the same matrix implies that $T$ and $U$ act identically on all basis
+  vectors, and hence they must be the same transformation, i.e., $T = U$.
+\end{proof}
+
+\begin{proof}[Solution to (ii)]
+  It's false. The matrix representation $[T]_\beta^\gamma$ has dimensions $m
+  \times n$, not $n \times m$, because $T$ maps from an $n$-dimensional space to
+  an $m$-dimensional space. The correct statement would be $[T]_\beta^\gamma \in
+  \mathbb{R}^{m \times n}$.
+\end{proof}
+
+\begin{proof}[Solution to (iii)]
+  It's true. This is a fundamental property of matrix representations of linear
+  transformations. Given a vector $ \mathbf{v} \in V $, its image under $T$ has
+  coordinates $[T(\mathbf{v})]_\gamma$, which are obtained by multiplying the
+  matrix representation $[T]_\beta^\gamma$ by the coordinate vector
+  $[\mathbf{v}]_\beta$.
+\end{proof}
+
+\begin{proof}[Solution to (iv)]
+  It's false. The equation $A^2 = I$ means $A$ is an involutory matrix, but this
+  does not imply that $A$ must be either $I$ or $-I$. For example,
+  \[%
+    A = \begin{bmatrix}
+      0 & 1 \\
+      1 & 0
+    \end{bmatrix}
+  .\]%
+  satisfies $A^2 = I$ but is neither $I$ nor $-I$.
+\end{proof}
+
+\begin{proof}[Solution to (v)]
+  It's true. By definition, the standard matrix representation of the linear map
+  $L_A$ induced by $A$ is exactly $A$, since the standard basis vectors get
+  mapped directly according to the columns of $A$.
 \end{proof}
