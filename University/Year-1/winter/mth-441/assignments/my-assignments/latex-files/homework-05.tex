@@ -204,30 +204,42 @@
     T(\v) = \lambda \v \iff T(\alpha_1, \alpha_2, \alpha_3, \cdots) = \lambda (\alpha_1, \alpha_2, \alpha_3, \cdots) \iff (0, \alpha_1, \alpha_2, \alpha_3, \cdots) = (\lambda \alpha_1, \lambda \alpha_2, \lambda \alpha_3, \cdots)
   .\]%
   This implies that $0 = \lambda\alpha_1$, $\alpha_1 = \lambda\alpha_2$,
-  $\alpha_2 = \lambda\alpha_3$, and so on. If $\alpha_1 \ne 0$, then $\lambda =
-  0$ making the entire eigenvector zero. If $\alpha_1 = 0$, then $0 =
-  \lambda\alpha_2$. Applying this recursively, we get $\alpha_1 = \alpha_2 =
-  \alpha_3 = \cdots = 0$. Therefore, there are no eigenvalues or eigenvectors
-  for $T$.
+  $\alpha_2 = \lambda\alpha_3$, and so on.
+
+  If $\alpha_1 \ne 0$, then $\lambda = 0$ which is not a valid eigenvalue. Thus,
+  we assume $\alpha_1 = 0$, then $0 = \lambda\alpha_2$. Then, $0 =
+  \lambda\alpha_2$, but since $\lambda \ne 0$, we have $\alpha_2 = 0$.
+  Continuing this process, we get $\alpha_3 = \alpha_4 = \cdots = 0$.
+
+  Thus, the only eigenvalue of $T$ is $\lambda = 0$ and the only eigenvector is
+  $\v = (0, 0, 0, \cdots)$.
 \end{proof}
 
 \begin{proof}[Solution to (ii)]
-  Suppose $\lambda$ and $\v$ are an eigenvalue and eigenvector of $U$,
+  Suppose $\lambda$ and $\v$ are an eigenvalue and eigenvector of $T$,
   respectively, such that $U(\v) = \lambda\v$. Then, we have
   \[%
     U(\v) = \lambda \v \iff U(\alpha_1, \alpha_2, \alpha_3, \cdots) = \lambda (\alpha_1, \alpha_2, \alpha_3, \cdots) \iff (\alpha_2, \alpha_3, \alpha_4, \cdots) = (\lambda\alpha_1, \lambda\alpha_2, \lambda\alpha_3, \cdots)
   .\]%
-  This implies that $\alpha_2 = \lambda\alpha_1$, $\alpha_3 = \lambda\alpha_2$,
-  $\alpha_4 = \lambda\alpha_3$, and so on. If $\alpha_1 = 0$, then $\alpha_2 =
-  \alpha_3 = \alpha_4 = \cdots = 0$. If $\alpha_1 \ne 0$, then $\lambda =
-  \sfrac{\alpha_2}{\alpha_1}$. Applying this recursively, we get
+  Comparing corresponding terms, we obtain the recurrence relation $\alpha_{n+1}
+  = \lambda \alpha_n$, $\forall n \geq 1$. Solving recursively, we get $\alpha_n
+  = \lambda^{n-1} \alpha_1$, $\forall n \geq 1$.
+
+  If $\alpha_1 = 0$, then $\alpha_n = 0$ for all $n$, meaning $\mathbf{v}$ is
+  the zero vector, which is not a valid eigenvector. Thus, we assume $\alpha_1
+  \neq 0$, so the eigenvector must be of the form:
   \[%
-    \lambda = \frac{\alpha_2}{\alpha_1} = \frac{\alpha_3}{\alpha_2} = \frac{\alpha_4}{\alpha_3} = \cdots
+    \mathbf{v} = \alpha_1 (1, \lambda, \lambda^2, \lambda^3, \dots), \quad \alpha_1 \neq 0
   .\]%
-  Therefore, $0 \ne \alpha_1 = \alpha_2 = \alpha_3 = \alpha_4 = \cdots$. Thus,
-  the eigenvalues of $U$ are all non-zero real numbers and the eigenvectors are
+  Since $\mathbb{R}^\infty$ consists of all sequences of real numbers, there is
+  no restriction on the growth of the sequence.  Thus, any nonzero real number
+  $\lambda$ is a valid eigenvalue.
+
+  Thus, the eigenvalues of $U$ are all nonzero real numbers $\lambda \neq 0$,
+  and the corresponding eigenvectors are scalar multiples of sequences of the
+  form
   \[%
-    \v = (\alpha, \alpha, \alpha, \cdots) = \alpha(1, 1, 1, \cdots), \quad \forall\alpha \in \R - \{0\}
+    (1, \lambda, \lambda^2, \lambda^3, \dots),\qtq{for}\lambda \neq 0
   .\qedhere\]%
 \end{proof}
 
@@ -371,23 +383,4 @@
   .\]%
   Thus, the solution exists if and only if $a = b = c = 0$. Therefore, $T$ is
   diagonalizable if and only if $a = b = c = 0$.
-\end{proof}
-
-\begin{problem}[10]
-  Let $T$ be a linear transformation on an $n$-dimensional vector space $V$, and
-  suppose that $T$ has $n$ distinct eigenvalues. Prove that $T$ is
-  diagonalizable.
-\end{problem}
-
-\begin{proof}[Solution]
-  A linear transformation is diagonalizable if there exists a basis of $V$
-  consisting of eigenvectors of $T$. This means that $V$ has a basis of $n$
-  linearly independent eigenvectors. Since $T$ has $n$ distinct eigenvalues,
-  $\lambda_1, \cdots, \lambda_n$, there exist corresponding eigenvectors
-  $\v_1, \cdots, \v_n$ such that
-  \[%
-    (\forall i = 1, \cdots, n)[T(\v_i) = \lambda_i \v_i]
-  .\]%
-  We will show that these eigenvectors are linearly independent, as shown in my
-  solution to problem 8.
 \end{proof}
