@@ -292,12 +292,7 @@
     \end{minipage}
   \end{center}
 
-  \begingroup
-  \IfFileExists{./intro.tex}{
-    \setlength{\parindent}{1cm}
-    \input{intro.tex}
-  }{}
-  \endgroup
+  \input{intro.tex}
 
   \newpage
 
@@ -470,6 +465,7 @@
 
 % Fancy letters
 \newcommand\BB{\mathcal{B}}
+\newcommand\DD{\mathcal{D}}
 
 % Create command to box equations
 \newcommand*\colorboxed{}

@@ -1,16 +1,54 @@
 \lecture{14}{Nov 6 2024 Wed (13:02:06)}{Limits points, Open, and Closed Sets}
 
-\section{Limit Points}
-\label{sec:limit_points}
-
-
-
-% section limit_points (end)
-
 \section{Open and Closed Sets}
 \label{sec:open_and_closed_sets}
 
+Recall the definition of the $\epsilon$-neighborhood around a point
+\[%
+  V_\epsilon(x) = \{y \in \R^n \mid \lvert x - y \rvert < \epsilon\}
+.\]%
+\begin{definition}[Open Set]
+  A set $U \subseteq \R^n$ is \textit{open} if the following holds: $(\forall
+  \epsilon > 0)(\forall x \in U)[V_\epsilon(x) \subseteq U]$.
+\end{definition}
 
+\begin{example}\leavevmode
+  \begin{enumerate}
+    \item Perhaps one of the simplest examples is the open interval $(a, b)$.
+      Let $x \in (a, b)$. Then, we can take $\epsilon = \min\{x - a, b - x\}$.
+      Then, $V_\epsilon(x) \subseteq (a, b)$.
+
+    \item The set $\R^n$ is open.
+
+    \item The empty set $\emptyset$ is open.
+
+    \item The set of all open balls is open.
+  \end{enumerate}
+\end{example}
+
+But what happens if we take the union of open sets?
+\begin{theorem}\leavevmode
+  \begin{enumerate}
+    \item The union of any collection of open sets is open.
+    \item The intersection of a finite number of open sets is open.
+  \end{enumerate}
+\end{theorem}
+
+\begin{proof}\leavevmode
+  \begin{enumerate}
+    \item Let $\{O_\lambda \mid \lambda \in \Lambda\}$ be a collection of open
+      sets, indexed by $\Lambda$. Let $O = \bigcup_{\lambda \in \Lambda}
+      O_\lambda$. Let $\alpha$ be an arbitrary element of $O$. Then, there
+      exists $\lambda_0 \in \Lambda$ such that $\alpha \in O_{\lambda_0}$. Since
+      $O_{\lambda_0}$ is open, there exists $\epsilon > 0$ such that
+      $V_\epsilon(\alpha) \subseteq O_{\lambda_0} \subseteq O$. We can then use
+      the fact that $O_{\lambda_0} \subseteq O$, which allows us to conclude
+      that $V_\epsilon(\alpha) \subseteq O$, which is what we wanted to show.
+
+    \item 
+      \qedhere
+  \end{enumerate}
+\end{proof}
 
 % section open_and_closed_sets (end)
 
