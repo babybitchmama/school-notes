@@ -1,0 +1,336 @@
+\begin{problem}[1]
+  Let $T$ be the linear transformation on $\R^4$ which is represented in
+  standard ordered basis by the matrix
+  \[%
+    \begin{pmatrix}
+      0 & 0 & 0 & 0 \\
+      a & 0 & 0 & 0 \\
+      0 & b & 0 & 0 \\
+      0 & 0 & c & 0 \\
+    \end{pmatrix}
+  .\]%
+  Under what condition on $a$, $b$, and $c$ is $T$ diagonalizable? Explain your
+  answer.
+\end{problem}
+
+\begin{proof}[Solution]
+  Computing the determinant using cofactor expansion along the first column
+  gives us
+  \[%
+    \det(A - \lambda I)
+    = -\lambda \begin{vmatrix}
+      -\lambda & 0 & 0 \\
+      b & -\lambda & 0 \\
+      0 & c & -\lambda \\
+    \end{vmatrix}
+    = -\lambda \left[(-\lambda)(\lambda^2) - 0 - 0\right]
+    = \lambda^4
+  .\]%
+  The roots of the characteristic polynomial are all $\lambda = 0$ with
+  multiplicity of $4$.
+
+  To determine diagonalizability, we check the geometric multiplicity of
+  $\lambda = 0$, which is the dimension of the null space. This gives the system
+  of equations
+  \[%
+    ax_1 = 0, \quad bx_2 = 0, \aand cx_3 = 0
+  .\]%
+
+  For $T$ to be diagonalizable, we must have $\dim(\Nul(A)) = 4$, which happens
+  if and only if $a = b = c = 0$. Otherwise, the geometric multiplicity is
+  strictly less than $4$, and the matrix is not diagonalizable.
+\end{proof}
+
+\begin{problem}[2]
+  Let $T$ be a linear transformation on the $n$-dimensional vector space $V$,
+  and suppose that $T$ has $n$ distinct eigenvalues. Prove that $T$ is
+  diagonalizable.
+\end{problem}
+
+\begin{proof}[Solution]
+  Since $T$ has $n$ distinct eigenvalues, say $\lambda_1, \lambda_2, \cdots,
+  \lambda_n$, there exist corresponding eigenvectors $\v_1, \v_2, \cdots, \v_n$
+  such that for each $i$, we get $T(\v_i) = \lambda_i \v_i$.
+
+  For $n = 1$, we get the set $\{\v_1\}$, which is a single nonzero vector.
+  Therefore, it is linearly independent.
+
+  Assume that for any set of $n$ distinct eigenvalues $\lambda_1, \cdots,
+  \lambda_n$ with corresponding eigenvectors $\v_1, \cdots, \v_n$, the set
+  $\{\v_1, \cdots, \v_n\}$ is linearly independent. Now consider a set of $n +
+  1$ distinct eigenvalues $\lambda_1, \cdots, \lambda_n, \lambda_{n+1}$ with
+  corresponding eigenvectors $\v_1, \cdots, \v_n, \v_{n+1}$. Suppose there
+  exists a linear dependence among these eigenvectors
+  \begin{equation}\label{eq:linear_dependence}
+    c_1\v_1 + c_2\v_2 + \cdots + c_n\v_n + c_{n+1}\v_{n+1} = \zero
+  \end{equation}
+  We need to show that all $i$, $c_i = 0$.
+
+  Applying $T$ to both sides and subtracting $\lambda_{k+1}$ times equation
+  \ref{eq:linear_dependence} from the left side gives us
+  \[%
+    (c_1\lambda_1\v_1 + \cdots + c_n\lambda_n\v_n + c_{n+1}\lambda_{n+1}\v_{n+1}) - \lambda_{n+1}(c_1\v_1 + \cdots + c_n\v_n + c_{n+1}\v_{n+1}) = \zero
+  .\]%
+  Simplifying gives us
+  \[%
+    c_1(\lambda_1 - \lambda_{n+1})\v_1 + \cdots + c_n(\lambda_n - \lambda_{n+1})\v_n = \zero
+  .\]%
+  By the inductive hypothesis, $\{\v_1, \cdots, \v_n\}$ is linearly independent,
+  so the coefficients must be zero
+  \[%
+    c_1(\lambda_1 - \lambda_{n+1}) = 0, \quad \cdots, \quad c_n(\lambda_n - \lambda_{n+1}) = \zero
+  .\]%
+  Since the eigenvalues are distinct, $\lambda_i - \lambda_{n+1} \ne 0$ for all
+  $i$, that implies that $c_1 = c_2 = \cdots = c_n = 0$. Returning back to
+  equation \ref{eq:linear_dependence}, we see that
+  \[%
+    c_n\v_n + c_{n+1}\v_{n+1} = \zero
+  .\]%
+  Since $\v_{n+1} \ne \zero$, we must have $c_n = c_{n+1} = 0$. Therefore, set
+  $\{\v_1, \v_2, \cdots, \v_n\}$ is linearly independent.
+
+  Since $V$ is $n$-dimensional and we have found $n$ linearly independent
+  eigenvectors, they form a basis for $V$. With respect to this basis of
+  eigenvectors, the matrix representation of $T$ is diagonal, with the
+  eigenvalues $\lambda_1, \lambda_2, \cdots, \lambda_n$ as the diagonal entries.
+  That is, in this basis, $T$ is represented by the diagonal matrix
+  \[%
+    D = \begin{pmatrix}
+      \lambda_1 & 0 & \cdots & 0 \\
+      0 & \lambda_2 & \cdots & 0 \\
+      \vdots & \vdots & \ddots & \vdots \\
+      0 & 0 & \cdots & \lambda_n \\
+    \end{pmatrix}
+  .\]%
+  Therefore, $T$ is diagonalizable.
+\end{proof}
+
+\begin{problem}[3]
+  Let $T$ be an invertible linear transformation on a vector space $V$. Prove
+  that a scalar $\lambda$ is an eigenvalue of $T$ if and only if $\lambda^{-1}$
+  is an eigenvalue of $T^{-1}$.
+\end{problem}
+
+\begin{proof}[Solution]
+  By definition, $\lambda$ is an eigenvalue of $T$ if there exists a nonzero
+  vector $\v \in V$ such that $T(\v) = \lambda\v$. Since $T$ is invertible, we
+  can apply $T^{-1}$ to both sides to get $\v = \lambda T^{-1}(\v)$. Rearranging
+  gives us $T^{-1}(\v) = \lambda^{-1}\v$. Since $\v \ne \zero$, $\lambda^{-1}$
+  is an eigenvalue of $T^{-1}$ with eigenvector $\v$.
+
+  Assume that $\lambda^{-1}$ is an eigenvalue of $T^{-1}$. Then, by definition,
+  there exists a nonzero vector $\v \in V$ such that $T^{-1}(\v) = \lambda^{-1}
+  \v$. Applying $T$ to both sides, we get $T(T^{-1}(\v)) = T(\lambda^{-1} \v)
+  \implies \v = \lambda^{-1} T(\v)$. Multiplying both sides by $\lambda$, we
+  obtain $\lambda \v = T(\v)$. Since $\v \neq \zero$, this shows that $\lambda$
+  is an eigenvalue of $T$ with eigenvector $\v$.
+
+  Therefore, $\lambda$ is an eigenvalue of $T$ if and only if $\lambda^{-1}$ is
+  an eigenvalue of $T^{-1}$.
+\end{proof}
+
+\begin{problem}[4]
+  Let $A, B \in \R^{n \times n}$. This problem is to conclude that $AB$ and $BA$
+  have exactly the same set of eigenvalues.
+  \begin{enumerate}
+    \item Assume that $\lambda I - AB$ is invertible. Prove that
+      \[%
+        (\lambda I - BA)\left[I + B(\lambda I - AB)^{-1}A\right] = \lambda I
+      .\]%
+
+    \item Use part (i) to prove that $AB$ and $BA$ have the same eigenvalues.
+      (Note: The algebraic multiplicity of the same eigenvalues may not be the
+      same.)
+  \end{enumerate}
+\end{problem}
+
+\begin{proof}[Solution to (i)]
+  Expanding the left-hand side gives us
+  \begin{align*}
+    (\lambda I - BA)I + (\lambda I - BA)B(\lambda I - AB)^{-1}A &= \lambda I - BA + (\lambda I - BA)B(\lambda I - AB)^{-1}A
+  .\end{align*}
+  Expanding the second term
+  \[%
+    (\lambda I - BA)B(\lambda I - AB)^{-1}A = \lambda B(\lambda I - AB)^{-1}A - BAB(\lambda I - AB)^{-1}A
+  .\]%
+  Notice that we can rewrite $BAB(\lambda I - AB)^{-1}A$ as $B(AB)(\lambda I -
+  AB)^{-1}A$ and since we know that $AB(\lambda I - AB)^{-1} = I - \lambda
+  (\lambda I - AB)^{-1}$, we can substitute this back into our original equation
+  to get
+  \[%
+    \lambda I - BA + \lambda B(\lambda I - AB)^{-1}A - B(I - \lambda(\lambda I - AB)^{-1})A
+  .\]%
+  Distributing $B$ in the last term gives us
+  \[%
+    B(I - \lambda(\lambda I - AB)^{-1})A = BA - B\lambda(\lambda I - AB)^{-1}A
+  .\]%
+  Substituting this back, we get
+  \[%
+    \lambda I - BA + \lambda B(\lambda I - AB)^{-1}A - BA + B\lambda(\lambda I - AB)^{-1}A
+  .\]%
+  Now, observe that the terms $\lambda B(\lambda I - AB)^{-1}A$ and
+  $B\lambda(\lambda I - AB)^{-1}A$ are the same, so they cancel out, leaving us
+  with
+  \[%
+    \lambda I - BA + BA - BA = \lambda I
+  .\]%
+  Therefore, we have shown that
+  \[%
+    (\lambda I - BA)\left[I + B(\lambda I - AB)^{-1}A\right] = \lambda I
+  .\qedhere\]%
+\end{proof}
+
+\begin{proof}[Solution to (ii)]
+  Taking determinants on both sides from the equation proved in part (i), we get
+  \[%
+    \det\left((\lambda I - BA) \left[I + B(\lambda I - AB)^{-1}A\right]\right) = \det(\lambda I)
+  .\]%
+  Using the determinant property $\det(AB) = \det(A)\det(B)$, we rewrite this as
+  \[%
+    \det(\lambda I - BA) \cdot \det \left(I + B(\lambda I - AB)^{-1}A\right) = \det(\lambda I)
+  .\]%
+  If $\lambda I - AB$ is invertible, we analyze $I + B(\lambda I - AB)^{-1}A$.
+  Suppose $I + B(\lambda I - AB)^{-1}A$ is invertible, then
+  \[%
+    \det(\lambda I - BA) = \frac{\det(\lambda I)}{\det(I + B(\lambda I - AB)^{-1}A)}
+  .\]%
+  Since the right-hand side is nonzero when $I + B(\lambda I - AB)^{-1}A$ is
+  invertible, this means that $\lambda I - BA$ is invertible whenever $\lambda I
+  - AB$ is invertible.
+
+  Eigenvalues correspond to values of $\lambda$ for which the matrix $\lambda I
+  - AB$ is not invertible, meaning
+  \[%
+    \det(\lambda I - AB) = 0
+  .\]%
+  From our determinant equation, if $\lambda I - AB$ is singular (i.e.,
+  $\det(\lambda I - AB) = 0$), then $\lambda I - BA$ must also be singular
+  (i.e., $\det(\lambda I - BA) = 0$). This shows that if $\lambda$ is an
+  eigenvalue of $AB$, then it is also an eigenvalue of $BA$.
+
+  Conversely, if $\lambda I - BA$ is singular, then $I + B(\lambda I -
+  AB)^{-1}A$ must be non-invertible, implying that $\lambda I - AB$ is also
+  singular. This proves that if $\lambda$ is an eigenvalue of $BA$, then it is
+  also an eigenvalue of $AB$.
+
+  Thus, $AB$ and $BA$ have exactly the same eigenvalues.
+\end{proof}
+
+\begin{problem}[5]
+  Let $A \in \C^{n \times n}$. Let $g$ be a polynomial over $\C$. Prove that $c$
+  is an eigenvalue of $g(A)$ if and only if $c = g(\lambda)$ for some eigenvalue
+  $\lambda$ of $A$.
+\end{problem}
+
+\begin{proof}[Solution]
+  Let $A \in \C^{n \times n}$and let $g$ be a polynomial over $\C$. Suppose
+  $g(A)$ is formed by evaluating $g$ at $A$, meaning that
+  \[%
+    g(A) = \sum_{k=0}^{m} a_k A^k
+  .\]%
+
+  Suppose $c$ is an eigenvalue of $g(A)$. By definition, there exists a nonzero
+  vector $\v \in \C^n$ such that $g(A)\v = c\v$. We need to show that $c =
+  g(\lambda)$ for some eigenvalue $\lambda$ of $A$. To do so, we note that $\v$
+  is an eigenvector of $g(A)$, corresponding to the eigenvalue $\lambda$. To
+  justify this, recall that any polynomial of a matrix acts naturally on its
+  eigenvectors. Since matrix polynomials respect the structure of eigenspaces,
+  applying $g(A)$ to an eigenvector $\v$ results in $g(A)\v = g(\lambda)\v$.
+  Since we already assumed $g(A)\v = c\v$, comparing the two equations gives
+  $c\v = g(\lambda)\v$. Since $\v \ne \zero$, we must have $c = g(\lambda)$.
+
+  Suppose $\lambda$ is an eigenvalue of $A$ and $c = g(\lambda)$. Since
+  $\lambda$ is an eigenvalue of $A$, there exists a nonzero vector $\v \in \C^n$
+  such that $A\v = \lambda\v$. Applying $g(A)$ to $\v$, we compute $g(A)\v =
+  g(\lambda)\v = c\v$. This shows that $\v$ is an eigenvector of $g(A)$ with
+  eigenvalue $c$, meaning that $c$ is an eigenvalue of $g(A)$.
+
+  Therefore, $c$ is an eigenvalue of $g(A)$ if and only if $c = g(\lambda)$ for
+  some eigenvalue $\lambda$ of $A$.
+\end{proof}
+
+\begin{problem}[6]
+  Suppose $V = W_1 \oplus W_2$. Prove that for any $\v \in V$, there exists a
+  unique pair of vectors $\w_1 \in W_1$ and $\w_2 \in W_2$ such that $\v = \w_1
+  + \w_2$.
+\end{problem}
+
+\begin{proof}[Solution]
+  To prove the statement, we must show that for every $\v \in V$, there exists a
+  unique pair $(\w_1, \w_2)$, with $\w_1 \in W_1$ and $\w_2 \in W_2$ such that
+  $\v = \w_1 + \w_2$.
+
+  Since $V = W_1 \oplus W_2$, by definition of the direct sum, every vector $\v
+  \in V$ can be written as a sum of two vectors $\v = \w_1 + \w_2$, where $\w_1
+  \in W_1$ where $\w_1 \in W_1$ and $\w_2 \in W_2$. Thus, such a decomposition
+  always exists.
+
+  Suppose there exist two different representations $\v = \w_1 + \w_2$ and $\v =
+  \w_1' + \w_2'$, where $\w_1, \w_1' \in W_1$ and $\w_2, \w_2' \in W_2$. Then we
+  have $\w_1 + \w_2 = \w_1' + \w_2'$. Rearranging gives us $\w_1 - \w_1' = \w_2
+  - \w_2'$. Since $\w_1 - \w_1' \in W_1$ and $\w_2 - \w_2' \in W_2$ and because
+  $W_1 \cap W_2 = \{\zero\}$, we must have $\w_1 - \w_1' = \zero$ and $\w_2 -
+  \w_2' = \zero$. That is, $\w_1 = \w_1'$ and $\w_2 = \w_2'$. Thus, the pair
+  $(\w_1, \w_2)$ is unique.
+\end{proof}
+
+\begin{problem}[7]
+  True or False. (No explanation needed.)
+  \begin{enumerate}
+    \item Let $A \in \C^{n \times n}$, then $A$ has exactly $n$ eigenvalues
+      (counting the multiplicities).
+
+    \item Let $T : V \to V$ be a linear transformation, where $\dim(V) = n$.
+      Then $T$ is diagonalizable if and only if T has $n$ distinct eigenvalues.
+
+    \item Similar matrices always have the same eigenvalues.
+
+    \item Similar matrices always have the same eigenvectors.
+
+    \item The sum of two eigenvectors of a linear transformation $T$ is always
+      an eigenvector of $T$.
+
+    \item If $\lambda_1$ and $\lambda_2$ are distinct eigenvalues of a linear
+      transformation, then $E_{\lambda_1} \cap E_{\lambda_2} = \{\zero\}$.
+
+    \item A linear transformation $T$ on a finite-dimensional vector space is
+      diagonalizable if and only if the algebraic multiplicity of each
+      eigenvalue $\lambda$ equals to its geometric multiplicity.
+
+    \item Suppose $W_1, W_2, \cdots, W_m \subset V$ are subspaces. Then $W_1 +
+      W_2 + \cdots + W_m$ is a direct sum if $W_i \cap W_j = \{\zero\}$ for any
+      $i \ne j$.
+  \end{enumerate}
+\end{problem}
+
+\begin{proof}[Solution to (i)]
+  True.
+\end{proof}
+
+\begin{proof}[Solution to (ii)]
+  False.
+\end{proof}
+
+\begin{proof}[Solution to (iii)]
+  True.
+\end{proof}
+
+\begin{proof}[Solution to (iv)]
+  False.
+\end{proof}
+
+\begin{proof}[Solution to (v)]
+  False.
+\end{proof}
+
+\begin{proof}[Solution to (vi)]
+  True.
+\end{proof}
+
+\begin{proof}[Solution to (vii)]
+  True.
+\end{proof}
+
+\begin{proof}[Solution to (viii)]
+  False.
+\end{proof}
