@@ -135,7 +135,6 @@
     U(f, P_n) - L(f, P_n) = \sum_{k=0}^{n-1} \left( f\left(a + \frac{(k+1)(b-a)}{n}\right) - f\left(a + \frac{k(b-a)}{n}\right) \right) \cdot \frac{b-a}{n}
   .\]%
   Since $f$ is increasing, the terms inside the summation are nonnegative, and
-  c
   summing over all intervals gives a telescoping sum
   \[%
     U(f, P_n) - L(f, P_n) = \left(f(b) - f(a)\right) \cdot \frac{b-a}{n}
@@ -168,12 +167,63 @@
 \end{problem}
 
 \begin{proof}[Solution to (i)]
+  Let $P = \{x_0, x_1, \cdots, x_n\}$ be any partition of $[0,1]$ with $x_0 = 0$
+  and $x_n = 1$. The lower sum is given by
+  \[%
+    L(h, P) = \sum_{i=1}^{n} m_i \Delta x_i, \quad m_i = \inf \{h(x) \mid x \in [x_{i-1}, x_i]\}
+  .\]%
+  Since $h(x) = 1$ for all $x < 1$, and the infimum over any subinterval
+  $[x_{i-1}, x_i]$ with $x_i \leq 1$ is simply $1$, we conclude that $m_i = 1$
+  for all $i$. Therefore,
+  \[%
+    L(h, P) = \sum_{i=1}^{n} 1 \cdot (x_i - x_{i-1}) = \sum_{i=1}^{n} (x_i - x_{i-1}) = 1
+  .\]%
+  Thus, $L(h, P) = 1$ for every partition $P$.
 \end{proof}
 
 \begin{proof}[Solution to (ii)]
+  The upper sum is given by
+  \[%
+    U(h, P) = \sum_{i=1}^{n} M_i \Delta x_i, \quad M_i = \sup \{h(x) \mid x \in [x_{i-1}, x_i]\}
+  .\]%
+  Since $h(x) = 1$ everywhere except at $x = 1$, the supremum $M_i$ is equal to
+  $1$ for all subintervals except the one containing $x = 1$. If we choose a
+  partition where the last subinterval is small, we can make $U(h, P)$
+  arbitrarily close to $1$.
+
+  Let $P$ be a partition such that $x_{n-1} = 0.99$ and $x_n = 1$. Then,
+  \[%
+    U(h, P) = \sum_{i=1}^{n-1} 1 \cdot (x_i - x_{i-1}) + 2 \cdot (1 - 0.99)
+  .\]%
+  Since the sum of all subintervals must be $1$, we compute:
+  \[%
+    U(h, P) = (1 - 0.01) + 2(0.01) = 1.01 < 1 + \frac{1}{10}
+  .\]%
+  Thus, we have constructed a partition satisfying the given condition.
 \end{proof}
 
 \begin{proof}[Solution to (iii)]
+  Given $\epsilon > 0$, we wish to construct a partition $P_\epsilon$ such that
+  \[%
+    U(h, P_\epsilon) < 1 + \epsilon
+  .\]%
+  From part (ii), we see that making the last subinterval $[x_{n-1}, 1]$
+  sufficiently small will reduce the contribution of the term $2 \cdot (1 -
+  x_{n-1})$. Choose $N \in \mathbb{N}$ such that $\frac{1}{N} < \epsilon$, and
+  define a partition $P_\epsilon$ where $x_{n-1} = 1 - \frac{1}{N}$. Then,
+  \[%
+    U(h, P_\epsilon) = \sum_{i=1}^{n-1} 1 \cdot (x_i - x_{i-1}) + 2 \cdot (1 - x_{n-1})
+  .\]%
+  Since $\sum_{i=1}^{n-1} (x_i - x_{i-1}) = 1 - (1 - \frac{1}{N}) =
+  \frac{1}{N}$, we get
+  \[%
+    U(h, P_\epsilon) = (1 - \frac{1}{N}) + 2 \cdot \frac{1}{N} = 1 + \frac{1}{N}
+  .\]%
+  By construction, $\frac{1}{N} < \epsilon$, so
+  \[%
+    U(h, P_\epsilon) < 1 + \epsilon
+  .\]%
+  Hence, we have successfully constructed the desired partition.
 \end{proof}
 
 \begin{problem}[7.3.7]
@@ -188,33 +238,133 @@
 \end{problem}
 
 \begin{proof}[Solution to (i)]
+  Define $h(x) = g(x) - f(x)$. By assumption, there exist finitely many points
+  $x_1, x_2, \cdots, x_n \in [a, b]$ such that $g(x) \neq f(x)$ at these points,
+  and $g(x) = f(x)$ elsewhere. Thus, we can write $h(x)$ as
+  \[%
+    h(x) = \begin{cases}
+      0, & x \in [a, b] \setminus \{x_1, x_2, \cdots, x_n\} \\
+      g(x) - f(x), & x \in \{x_1, x_2, \cdots, x_n\}. \\
+    \end{cases}
+  .\]%
+  Since $h(x)$ is nonzero at only finitely many points, its set of
+  discontinuities is finite.
+
+  Now, recall that the sum of two integrable functions is integrable. Since $f$
+  is integrable by assumption and $g = f + h$, it suffices to show that $h$ is
+  integrable.
+
+  Consider the upper and lower sums of $h$ with respect to any partition $P$
+  \[%
+    L(h, P) = \sum_{i=1}^{n} m_i \Delta x_i, \quad U(h, P) = \sum_{i=1}^{n} M_i \Delta x_i
+  .\]%
+  Since $h(x) = 0$ everywhere except at finitely many points, we can make the
+  contribution of these points arbitrarily small by refining the partition.
+  Specifically, for any $\epsilon > 0$, we can choose a partition where the
+  subintervals containing the exceptional points are small enough such that
+  \[%
+    U(h, P) - L(h, P) < \epsilon
+  .\]%
+  This implies that the difference between the upper and lower sums of $h$ can
+  be made arbitrarily small, which shows that $h$ is integrable.
+
+  Finally, since $g = f + h$ is the sum of two integrable functions, it follows
+  that $g$ is also integrable.
 \end{proof}
 
 \begin{proof}[Solution to (ii)]
+  Define $f$ and $g$ as
+  \begin{align*}
+    f(x) = 0 \aand g(x) = \begin{cases}
+      1 & x \in \Q \cap [a, b] \\
+      0 & \textrm{otherwise} \\
+    \end{cases}
+  .\end{align*}
+  Since the rationals are dense in the reals, $f$ and $g$ differ at a countable
+  number of points. However, $g$ is not integrable on $[a, b]$ since it is
+  discontinuous at every irrational point in $[a, b]$. Hence, $f$ is integrable
+  but $g$ is not.
 \end{proof}
 
 \begin{problem}[7.4.1]
   Let $f$ be a bounded function on a set $A$, and set
-  \begin{align*}
+  \begin{gather*}
     M = \sup\{f(x) \mid x \in A\}, \quad m = \inf\{f(x) \mid x \in A\} \\
     M' = \sup\{\lvert f(x) \rvert \mid x \in A\}, \aand m' = \inf\{\lvert f(x) \rvert \mid x \in A\}
-  .\end{align*}
+  .\end{gather*}
   \begin{enumerate}
     \item Show that $M - m \ge M' - m'$.
 
-    \item Show that if $f$ is integrable on the interval $[a, b]$, then $\lvert
-      f \rvert$ is also integrable on this interval.
+    \item Show that if $f$ is integrable on the interval $[a, b]$, then $\lvert f \rvert$ is also integrable on this interval.
 
-    \item Provide the details for the argument that in this case we have $\lvert
-      \int_a^b f \rvert \le \int_a^b \lvert f \rvert$.
+    \item Provide the details for the argument that in this case we have $\lvert \int_a^b f \rvert \le \int_a^b \lvert f \rvert$.
   \end{enumerate}
 \end{problem}
 
 \begin{proof}[Solution to (i)]
+  Since $M$ and $m$ are the largest and smallest values that $f$ attains on $A$,
+  we immediately have
+  \[%
+    -M \leq f(x) \leq M \qtq{for all} x \in A
+  .\]%
+  Similarly,
+  \[%
+    m \leq f(x) \leq M \qtq{for all} x \in A
+  .\]%
+  Taking absolute values, we obtain
+  \begin{align*}
+    &m' = \inf \{ \lvert f(x) \rvert \mid x \in A \} \geq \inf \{ m, -m \} = \lvert m \rvert \\
+    \aand &M' = \sup\{\lvert f(x) \rvert \mid x \in A\} \leq \sup\{ M, -m\} = \max\{M, -m\}
+  .\end{align*}
+  Comparing $M - m$ and $M' - m'$ gives us
+  \[%
+    M - m = \sup f(x) - \inf f(x)
+  .\]%
+  Meanwhile, using the inequalities for $M'$ and $m'$ above,
+  \[%
+    M' - m' \leq \max\{M, -m\} - \lvert m \rvert
+  .\]%
+  Since $\max\{ M, -m \} \leq M$ and $m \leq \lvert m \rvert$, it follows that
+  \[%
+    M' - m' \leq M - m
+  .\qedhere\]%
 \end{proof}
 
 \begin{proof}[Solution to (ii)]
+  We need to show that if $f$ is integrable on $[a, b]$, then $\lvert f \rvert$
+  is also integrable on $[a, b]$.
+
+  A function is Riemann integrable if and only if it is bounded and the set of
+  its discontinuities has measure zero. Since $f$ is integrable, it is bounded,
+  so there exists some constant $K > 0$ such that $\lvert f(x) \rvert \leq K$
+  for all $x \in [a, b]$.
+
+  Now, consider the discontinuities of $\lvert f \rvert$. A discontinuity of
+  $\lvert f \rvert$ occurs only if $f$ is discontinuous at some point $x$ or if
+  $f(x) = 0$ and $f$ changes sign at $x$. The former case contributes at most a
+  measure zero set (since $f$ is integrable). The latter case also forms a
+  measure zero set because it consists of isolated points where sign changes
+  occur.
+
+  Since the set of discontinuities of $\lvert f \rvert$ is contained within the
+  measure zero set of discontinuities of $f$, it follows that $\lvert f \rvert$
+  has measure zero discontinuities. Thus, $\lvert f \rvert$ is Riemann
+  integrable.
 \end{proof}
 
 \begin{proof}[Solution to (iii)]
+  The integral is a limit of Riemann sums, so for any partition $P = \{x_0, x_1,
+  \cdots, x_n\}$ of $[a, b]$ with sample points $c_i \in [x_{i-1}, x_i]$, we
+  approximate the integral as
+  \[%
+    \int_a^b f(x) \, dx \approx \sum_{i=1}^{n} f(c_i) \Delta x_i
+  .\]%
+  Taking absolute values and applying the triangle inequality
+  \[%
+    \left\lvert \sum_{i=1}^{n} f(c_i) \Delta x_i \right\rvert \leq \sum_{i=1}^{n} \lvert f(c_i) \rvert \Delta x_i
+  .\]%
+  Passing to the limit as the partition is refined, we obtain
+  \[%
+    \left\lvert \int_a^b f(x) \, dx \right\rvert \leq \int_a^b \lvert f(x) \rvert \, dx
+  .\qedhere\]%
 \end{proof}
