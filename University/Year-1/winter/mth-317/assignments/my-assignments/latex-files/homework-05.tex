@@ -1,0 +1,219 @@
+\begin{problem}[7.2.3]\leavevmode
+  \begin{enumerate}
+    \item Prove that a bounded function $f$ is integrable on $[a, b]$ if and
+      only if there exists a sequence of partitions $(P_n)_{n=1}^\infty$
+      satisfying
+      \[%
+        \lim_{n \to \infty} [U(f, P_n) - L(f, P_n)] = 0.
+      ,\]%
+      and in this case $\int_a^b f = \lim_{n \to \infty} U(f, P_n) = \lim_{n \to
+      \infty} L(f, P_n)$
+
+    \item For each $n$, let $P_n$ be the partition $[0, 1]$ into $n$ equal
+      subintervals. Find formulas for $U(f, P_n)$ and $L(f, P_n)$ if $f(x) = x$.
+      The formula $1 + 2 + 3 + \cdots + n = \sfrac{n(n + 1)}{2}$ will be useful.
+
+    \item Use the sequential criterion for integrability from (i) to show
+      directly that $f(x) = x$ is integrable on $[0, 1]$ and compute $\int_0^1
+      f$.
+  \end{enumerate}
+\end{problem}
+
+\begin{proof}[Solution to (i)]
+  Assume $f$ is integrable on $[a, b]$. Let $(P_n)_{n=1}^\infty$ be a sequence
+  of partitions such that $0 \le U(f, P_n) - L(f, P_n) < \epsilon_n =
+  \sfrac{1}{n}$, as this is possible since $f$ is integrable on $[a, b]$.
+  By Squeeze Theorem, we have
+  \[%
+    \lim_{n \to \infty} [U(f, P_n) - L(f, P_n)] = 0
+  .\]%
+
+  Assume that there exists a partition $P_n$ such that
+  \[%
+    \lim_{n \to \infty} [U(f, P_n) - L(f, P_n)] = 0
+  .\]%
+  Let $\epsilon > 0$. Then there exists $N_\epsilon \in \N$ such that for all $n
+  \ge N_\epsilon$, $0 \le U(f, P_n) - L(f, P_n) < \epsilon$. Let $P_\epsilon =
+  P_n$ such that $f$ is integrable on $[a, b]$. Hence,
+  \[%
+    \int_a^b f = \lim_{n \to \infty} U(f, P_n) = \lim_{n \to \infty} L(f, P_n)
+  .\]%
+
+  Therefore, $f$ is integrable on $[a, b]$ if and only if there exists a
+  sequence of partitions $(P_n)_{n=1}^\infty$ satisfying
+  \[%
+    \lim_{n \to \infty} [U(f, P_n) - L(f, P_n)] = 0
+  .\qedhere\]%
+\end{proof}
+
+\begin{proof}[Solution to (ii)]
+  Break $[0, 1]$ into $n$ equal subintervals. Then $P_n = \{0, \sfrac{1}{n},
+  \sfrac{2}{n}, \cdots, \sfrac{n-1}{n}, 1\}$. Let $f(x) = x$. For each
+  subinterval $[\sfrac{i}{n}, \sfrac{i+1}{n}]$ of $P_n$ with $0 \le i \le n-1$,
+  let
+  \begin{align*}
+    m_i &= \inf\{f(x) \mid x \in [\sfrac{i}{n}, \sfrac{i+1}{n}]\} = \sfrac{i}{n} \\
+    M_i &= \sup\{f(x) \mid x \in [\sfrac{i}{n}, \sfrac{i+1}{n}]\} = \sfrac{i+1}{n}
+  .\end{align*}
+  Hence, the upper sum is
+  \begin{align*}
+    U(f, P_n) &= \sum_{i=0}^{n-1} M_i \Delta x_i = \sum_{i=0}^{n-1} \frac{i+1}{n} \cdot \frac{1}{n} = \frac{1}{n^2} \sum_{i=0}^{n-1} (i+1) \\
+              &= \frac{1}{n^2} \sum_{i=1}^{n} i = \frac{1}{n^2} \cdot \frac{n(n+1)}{2} = \frac{n+1}{2n} \\
+    L(f, P_n) &= \sum_{i=0}^{n-1} m_i \Delta x_i = \sum_{i=0}^{n-1} \frac{i}{n} \cdot \frac{1}{n} = \frac{1}{n^2} \sum_{i=0}^{n-1} i \\
+              &= \frac{1}{n^2} \cdot \frac{(n-1)n}{2} = \frac{n-1}{2n}
+  .\qedhere\end{align*}
+\end{proof}
+
+\begin{proof}[Solution to (iii)]
+  As $n \to \infty$, $U(f, P_n)$ and $L(f, P_n)$ both approach $\sfrac{1}{2}$.
+  Therefore,
+  \[%
+    \int_0^1 f = \lim_{n \to \infty} U(f, P_n) = \frac{1}{2} = \lim_{n \to \infty} L(f, P_n)
+  .\qedhere\]%
+\end{proof}
+
+\begin{problem}[7.2.4]
+  Let $g$ be bounded on $[a, b]$ and assume that there exists a partition $P$
+  with $L(g, P) = U(g, P)$. Describe $g$. Is it integrable? If so, what is the
+  value of $\int_a^b g$?
+\end{problem}
+
+\begin{proof}[Solution]
+  Suppose $g$ is a bounded function on $[a, b]$, and there exists a partition $P
+  = \{x_0, x_1, \cdots, x_n\}$ such that the lower and upper sums satisfy
+  \[%
+    L(g, P) = U(g, P)
+  .\]%
+  By definition, the lower and upper sums are given by
+  \[%
+    L(g, P) = \sum_{i=1}^{n} m_i \Delta x_i, \quad U(g, P) = \sum_{i=1}^{n} M_i \Delta x_i
+  ,\]%
+  where
+  \begin{align*}
+    m_i &= \inf\{g(x) \mid x \in [x_{i-1}, x_i]\} \\
+    M_i &= \sup\{g(x) \mid x \in [x_{i-1}, x_i]\}
+  .\end{align*}
+  Since $L(g, P) = U(g, P)$, it follows that $m_i = M_i$ for each subinterval
+  $[x_{i-1}, x_i]$. This implies that $g(x)$ is constant on each subinterval,
+  meaning that $g$ is a piecewise constant function with respect to $P$.
+
+  Since $g$ is piecewise constant on a finite partition, it follows that $g$ is
+  Riemann integrable. The Riemann integral of $g$ over $[a, b]$ is given by
+  \[%
+    \int_a^b g(x) \,dx = L(g, P) = U(g, P)
+  ,\]%
+  which simplifies to
+  \[%
+    \int_a^b g(x) \,dx = \sum_{i=1}^{n} m_i \Delta x_i = \sum_{i=1}^{n} M_i \Delta x_i = c(b - a)
+  ,\]%
+  where $c$ is the constant value of $g$ on each subinterval $[x_{i-1}, x_i]$.
+\end{proof}
+
+\begin{problem}[7.2.7]
+  Let $f : [a, b] \to \R$ be increasing on the set $[a, b]$ (i.e., $f(x) \le
+  f(y)$ whenever $x < y$). Show that $f$ is integrable on $[a, b]$.
+\end{problem}
+
+\begin{proof}[Solution]
+  Let $P_n$ be a partition of $[a, b]$ into $n$ equal subintervals. Then
+  \[%
+    P_n = \left\{a, a + \frac{b-a}{n}, \cdots, a + \frac{k(b-a)}{n}, \cdots, a + \frac{(n-1)(b-a)}{n}, b\right\}
+  .\]%
+  For each subinterval $\left[a + \frac{k(b-a)}{n}, a +
+  \frac{(k+1)(b-a)}{n}\right]$, define
+  \begin{alignat*}{3}
+    m_k &= \inf\left\{f(x)~\bigg\vert~x \in \left[a + \frac{k(b-a)}{n}, a + \frac{(k+1)(b-a)}{n}\right]\right\} &&= f\left(a + \frac{k(b-a)}{n}\right) \\
+    M_k &= \sup\left\{f(x)~\bigg\vert~x \in \left[a + \frac{k(b-a)}{n}, a + \frac{(k+1)(b-a)}{n}\right]\right\} &&= f\left(a + \frac{(k+1)(b-a)}{n}\right)
+  .\end{alignat*}
+  Since $f$ is increasing, we have $m_k \leq M_k$ for all $k$, ensuring that
+  \begin{alignat*}{3}
+    U(f, P_n) &= \sum_{k=0}^{n-1} M_k \Delta x_k &&= \sum_{k=0}^{n-1} f\left(a + \frac{(k+1)(b-a)}{n}\right) \cdot \frac{b-a}{n} \\
+    L(f, P_n) &= \sum_{k=0}^{n-1} m_k \Delta x_k &&= \sum_{k=0}^{n-1} f\left(a + \frac{k(b-a)}{n}\right) \cdot \frac{b-a}{n}
+  .\end{alignat*}
+  The difference between the upper and lower sums is
+  \[%
+    U(f, P_n) - L(f, P_n) = \sum_{k=0}^{n-1} \left( f\left(a + \frac{(k+1)(b-a)}{n}\right) - f\left(a + \frac{k(b-a)}{n}\right) \right) \cdot \frac{b-a}{n}
+  .\]%
+  Since $f$ is increasing, the terms inside the summation are nonnegative, and
+  summing over all intervals gives a telescoping sum
+  \[%
+    U(f, P_n) - L(f, P_n) = \left(f(b) - f(a)\right) \cdot \frac{b-a}{n}
+  .\]%
+  Taking the limit as $n \to \infty$, we observe that
+  \[%
+    \lim_{n \to \infty} (U(f, P_n) - L(f, P_n)) = \lim_{n \to \infty} \left(f(b) - f(a)\right) \cdot \frac{b-a}{n} = 0
+  .\]%
+  Since the difference between the upper and lower sums can be made arbitrarily
+  small, it follows that $f$ is Riemann integrable on $[a, b]$.
+\end{proof}
+
+\begin{problem}[7.3.1]
+  Consider the function
+  \[%
+    h(x) = \begin{cases}
+      1 & \textrm{for}~0 \le x < 1 \\
+      2 & \textrm{for}~x = 1
+    \end{cases}
+  ,\]%
+  over the interval $[0, 1]$.
+  \begin{enumerate}
+    \item Show that $L(f, P) = 1$ for every partition $P$ of $[0, 1]$.
+
+    \item Construct a partition $P$ for which $U(f, P) < 1 + \sfrac{1}{10}$.
+
+    \item Given $\epsilon > 0$, construct a partition $P_\epsilon$ for which
+      $U(f, P_\epsilon) < 1 + \epsilon$.
+  \end{enumerate}
+\end{problem}
+
+\begin{proof}[Solution to (i)]
+\end{proof}
+
+\begin{proof}[Solution to (ii)]
+\end{proof}
+
+\begin{proof}[Solution to (iii)]
+\end{proof}
+
+\begin{problem}[7.3.7]
+  Assume $f : [a, b] \to \R$ is integrable.
+  \begin{enumerate}
+    \item Show that if $g$ satisfies $g(x) = f(x)$ for all but a finite number
+      of points in $[a, b]$, then $g$ in integrable as well.
+
+    \item Find an example to show that $g$ may fail to be integrable if it
+      differers from $f$ at a countable number of points.
+  \end{enumerate}
+\end{problem}
+
+\begin{proof}[Solution to (i)]
+\end{proof}
+
+\begin{proof}[Solution to (ii)]
+\end{proof}
+
+\begin{problem}[7.4.1]
+  Let $f$ be a bounded function on a set $A$, and set
+  \begin{align*}
+    M = \sup\{f(x) \mid x \in A\}, \quad m = \inf\{f(x) \mid x \in A\} \\
+    M' = \sup\{\lvert f(x) \rvert \mid x \in A\}, \aand m' = \inf\{\lvert f(x) \rvert \mid x \in A\}
+  .\end{align*}
+  \begin{enumerate}
+    \item Show that $M - m \ge M' - m'$.
+
+    \item Show that if $f$ is integrable on the interval $[a, b]$, then $\lvert
+      f \rvert$ is also integrable on this interval.
+
+    \item Provide the details for the argument that in this case we have $\lvert
+      \int_a^b f \rvert \le \int_a^b \lvert f \rvert$.
+  \end{enumerate}
+\end{problem}
+
+\begin{proof}[Solution to (i)]
+\end{proof}
+
+\begin{proof}[Solution to (ii)]
+\end{proof}
+
+\begin{proof}[Solution to (iii)]
+\end{proof}

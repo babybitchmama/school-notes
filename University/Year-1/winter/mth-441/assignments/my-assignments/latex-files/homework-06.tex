@@ -222,28 +222,26 @@
   $\lambda$ of $A$.
 \end{problem}
 
-\begin{proof}[Solution]
-  Let $A \in \C^{n \times n}$and let $g$ be a polynomial over $\C$. Suppose
-  $g(A)$ is formed by evaluating $g$ at $A$, meaning that
+\begin{proof}
+  Suppose $c$ is an eigenvalue of $g(A)$. By definition, there is a nonzero
+  vector $\v \in \C^n$ such that $g(A) \v = c \v$. Write the polynomial as
   \[%
-    g(A) = \sum_{k=0}^{m} a_k A^k
+    g(x) = \sum_{k=0}^m a_k x^k \implies g(A) = \sum_{k=0}^m a_k A^k
   .\]%
 
-  Suppose $c$ is an eigenvalue of $g(A)$. By definition, there exists a nonzero
-  vector $\v \in \C^n$ such that $g(A)\v = c\v$. We need to show that $c =
-  g(\lambda)$ for some eigenvalue $\lambda$ of $A$. To do so, we note that $\v$
-  is an eigenvector of $g(A)$, corresponding to the eigenvalue $\lambda$. To
-  justify this, recall that any polynomial of a matrix acts naturally on its
-  eigenvectors. Since matrix polynomials respect the structure of eigenspaces,
-  applying $g(A)$ to an eigenvector $\v$ results in $g(A)\v = g(\lambda)\v$.
-  Since we already assumed $g(A)\v = c\v$, comparing the two equations gives
-  $c\v = g(\lambda)\v$. Since $\v \ne \zero$, we must have $c = g(\lambda)$.
+  We need to show that $c = g(\lambda)$ for some eigenvalue $\lambda$ of $A$.
+  Since $\v \neq 0$ and $g(A)\v = c\v$, $\v$ lies in some subspace on which $A$
+  acts as multiplication by a scalar $\lambda$. Specifically, if $\v$ is an
+  eigenvector of $A$ with eigenvalue $\lambda$, then $A \v = \lambda \v$.
 
-  Suppose $\lambda$ is an eigenvalue of $A$ and $c = g(\lambda)$. Since
-  $\lambda$ is an eigenvalue of $A$, there exists a nonzero vector $\v \in \C^n$
-  such that $A\v = \lambda\v$. Applying $g(A)$ to $\v$, we compute $g(A)\v =
-  g(\lambda)\v = c\v$. This shows that $\v$ is an eigenvector of $g(A)$ with
-  eigenvalue $c$, meaning that $c$ is an eigenvalue of $g(A)$.
+  Since polynomials in $A$ respect this structure, we get $g(A)\v = g(\lambda)
+  \v$. Comparing this with $g(A)\v = c\v$, we get $c = g(\lambda)$. Therefore,
+  $\lambda$ is an eigenvalue of $A$.
+
+  Conversely, suppose $\lambda$ is an eigenvalue of $A$, and $c = g(\lambda)$.
+  There is a nonzero vector $\v \in \C^n$ such that $A \v = \lambda \v$.
+  Applying $g(A)$ to $\v$, we get $g(A) \v = g(\lambda) \v = c \v$. This shows
+  that $\v$ is an eigenvector of $g(A)$ with eigenvalue $c$.
 
   Therefore, $c$ is an eigenvalue of $g(A)$ if and only if $c = g(\lambda)$ for
   some eigenvalue $\lambda$ of $A$.
