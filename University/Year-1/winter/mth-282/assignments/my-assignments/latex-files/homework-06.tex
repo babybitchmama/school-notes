@@ -146,15 +146,179 @@
 \end{problem}
 
 \begin{proof}[Solution to (i)]
+  A vector field $\FF = \langle P, Q \rangle$ is conservative if there exists a potential function $f(x, y)$ such that
+  \[%
+    \pdv{P}{y} = \pdv{Q}{x}
+  .\]%
+  Evaluating each partial derivative, we have
+  \begin{align*}
+    \pdv{P}{y} &= \pdv{}{y} \left[2xe^{xy} + x^2ye^{xy} + 3x^2\right] \\
+               &= 2x \cdot \pdv{}{y} \left[e^{xy}\right] + x^2e^{xy} \cdot \pdv{}{y} \left[y\right] + x^2y \cdot \pdv{}{y} \left[e^{xy}\right] + \pdv{}{y} \left[3x^2\right] \\
+               &= 2x^2e^{xy} + x^2e^{xy} + x^3ye^{xy} + 0 \\
+               &= 3x^2e^{xy} + x^3ye^{xy} \\
+    \pdv{Q}{x} &= \pdv{}{x} \left[x^3e^{xy} + 2\sin(y)\right] \\
+               &= e^{xy} \cdot \pdv{}{x} \left[x^3\right] + x^3 \cdot \pdv{}{x} \left[e^{xy}\right] + \pdv{}{x} \left[2\sin(y)\right] \\
+               &= 3x^2e^{xy} + x^3ye^{xy} + 0 \\
+               &= 3x^2e^{xy} + x^3ye^{xy}
+  .\end{align*}
+  Clearly, they are the same. Also, note that $\FF$ is simply connected, as
+  there are no singularities. Therefore, $\FF$ is conservative.
+
+  Therefore, we have the following system of equations
+  \begin{align}
+    f_x &= 2xe^{xy} + x^2ye^{xy} + 3x^2\label{eq:3_i_1} \\
+    f_y &= x^3e^{xy} + 2\sin(y)\label{eq:3_i_2}
+  \end{align}
+  Integrating equation \ref{eq:3_i_1} with respect to $x$, we have
+  \begin{align*}
+    f = \int f_x \,\dx &= \int 2xe^{xy} + x^2ye^{xy} + 3x^2 \,\dx \\
+                       &= \textrm{TODO} \\
+                       &= x^2e^{xy} + x^3 + g(y)
+  .\end{align*}
+  Plugging this into equation \ref{eq:3_i_2}, we have
+  \[%
+    f_y = x^3e^{xy} + h'(y) = Q \implies h'(y) = 2\sin(y) \implies h(y) = -2\cos(y)
+  .\]%
+  Therefore, the potential function is
+  \[%
+    f(x, y) = x^2e^{xy} + x^3 - 2\cos(y)
+  .\]%
+  Therefore, the line integral over the vector field $\FF$ along the line segment $C$ is
+  \begin{align*}
+    \int_C \FF \cdot \dd{\r} = \int_C \nabla f \cdot \dd{\r} &= f(0, 3) - f(-1, 0) \\
+                                                             &= \left[-2\cos(3)\right] - \left[1 - 1 - 2\right] \\
+                                                             &= -2\cos(3) + 2
+  .\qedhere\end{align*}
 \end{proof}
 
 \begin{proof}[Solution to (ii)]
+  A vector field $\FF = \langle P, Q \rangle$ is conservative if there exists a potential function $f(x, y)$ such that
+  \[%
+    \pdv{P}{y} = \pdv{Q}{x}
+  .\]%
+  Evaluating each partial derivative, we have
+  \begin{align*}
+    \pdv{P}{y} &= \pdv{}{y} \left[y^3 - 2x\right] \\
+               &= 3y^2 - 0 \\
+               &= 3y^2 \\
+    \pdv{Q}{x} &= \pdv{}{x} \left[3xy^2 + \sin(\pi y)\right] \\
+               &= 3y^2 + 0 \\
+               &= 3y^2
+  .\end{align*}
+  Clearly, they are the same. Also, note that $\FF$ is simply connected, as
+  there are no singularities. Therefore, $\FF$ is conservative.
+
+  Therefore, we have the following system of equations
+  \begin{align}
+    f_x &= y^3 - 2x\label{eq:3_ii_1} \\
+    f_y &= 3xy^2 + \sin(\pi y)\label{eq:3_ii_2}
+  \end{align}
+  Integrating equation \ref{eq:3_ii_1} with respect to $x$, we have
+  \begin{align*}
+    f = \int f_x \,\dx &= \int y^3 - 2x \,\dx \\
+                       &= y^3x - x^2 + g(y)
+  .\end{align*}
+  Plugging this into equation \ref{eq:3_ii_2}, we have
+  \[%
+    f_y = 3xy^2 + h'(y) = Q \implies h'(y) = \sin(\pi y) \implies h(y) = -\frac{1}{\pi}\cos(\pi y)
+  .\]%
+  Therefore, the potential function is
+  \[%
+    f(x, y) = y^3x - x^2 - \frac{1}{\pi}\cos(\pi y)
+  .\]%
+  Therefore, the line integral over the vector field $\FF$ along the path $C$ is
+  \begin{align*}
+    \int_C \FF \cdot \dd{\r} = \int_C \nabla f \cdot \dd{\r} &= f(4, 2) - f(1, 1) \\
+                                                             &= \left[32 - 16 - \frac{1}{\pi}\cos(2\pi)\right] - \left[1 - 1 - \frac{1}{\pi}\cos(\pi)\right] \\
+                                                             &= 16 - \frac{2}{\pi}
+  .\qedhere\end{align*}
 \end{proof}
 
 \begin{proof}[Solution to (iii)]
+  A vector field $\FF = \langle P, Q, R \rangle$ is conservative if there exists
+  a potential function $f(x, y, z)$ such that
+  \[%
+    \pdv{P}{y} = \pdv{Q}{x}, \quad \pdv{P}{z} = \pdv{R}{x}, \aand \pdv{Q}{z} = \pdv{R}{y}
+  .\]%
+  Evaluating each partial derivative, we have
+  \[%
+    \pdv{P}{y} = 6x = \pdv{Q}{x}, \quad \pdv{Q}{z} = 0 = \pdv{R}{y}, \aand \pdv{R}{z} = -2z = \pdv{P}{x}
+  .\]%
+  Clearly, they are the same. Also, note that $\FF$ is simply connected, as
+  there are no singularities. Therefore, $\FF$ is conservative.
+
+  Therefore, we have the following system of equations
+  \begin{align}
+    f_x &= 6xy - z^2\label{eq:3_iii_1} \\
+    f_y &= 3x^2 + 6y^2\label{eq:3_iii_2} \\
+    f_z &= 1 - 2xz\label{eq:3_iii_3}
+  .\end{align}
+  Integrating equation \ref{eq:3_iii_1} with respect to $x$, we have
+  \[%
+    f = \int 6xy - z^2 \,\dx = 3x^2y - xz^2 + g(y, z)
+  .\]%
+  Plugging this into equation \ref{eq:3_iii_2}, we have
+  \[%
+    f_y = 3x^2 + g_y(y, z) = Q \implies g_y(y, z) = 6y^2 \implies g(y, z) = 2y^3 + h(z)
+  .\]%
+  Plugging this into equation \ref{eq:3_iii_3}, we have
+  \[%
+    f_z = 1 - 2xz + h'(z) = R \implies h'(z) = 1 \implies h(z) = z
+  .\]%
+  Therefore, the potential function is
+  \[%
+    f(x, y, z) = 3x^2y - xz^2 + 2y^3 + z
+  .\]%
+  The starting and ending points are
+  \[%
+    A = \r(0) = \langle 0, 2, 0 \rangle \aand B = \langle \pi, -2, 0 \rangle
+  .\]%
+  Therefore, the line integral over the vector field $\FF$ along the circular
+  helix $C$ is
+  \begin{align*}
+    \int_C \FF \cdot \dd{\r} = \int_C \nabla f \cdot \dd{\r} &= f(\pi, -2, 0) - f(0, 2, 0) \\
+                                                             &= \left[3\pi^2(-2) - \pi(0)^2 + 2(-2)^3 + 0\right] - \left[3(0)^2(2) - 0(0)^2 + 2(2)^3 + 0\right] \\
+                                                             &= -6\pi^2 - 32
+  .\qedhere\end{align*}
 \end{proof}
 
 \begin{proof}[Solution to (iv)]
+  A vector field $\FF = \langle P, Q, R \rangle$ is conservative if there exists
+  a potential function $f(x, y, z)$ such that
+  \[%
+    \pdv{P}{y} = \pdv{Q}{x}, \quad \pdv{P}{z} = \pdv{R}{x}, \aand \pdv{Q}{z} = \pdv{R}{y}
+  .\]%
+  Evaluating each partial derivative, we have
+  \[%
+    \pdv{P}{y} = 1 = \pdv{Q}{x}, \quad \pdv{Q}{z} = -2 \ne 2 = \pdv{R}{y}, \aand \pdv{R}{x} = 1 = \pdv{P}{z}
+  .\]%
+  Clearly, they are not the same. Therefore, $\FF$ is not conservative.
+
+  Since $C$ is the intersection of the sphere $x^2 + y^2 + z^2 = 4$ and the
+  plane $x = 1$ in the first octant, we get $x = 1$, $y^2 + z^2 = 3$, and $y,
+  z \ge 0$. Therefore, we have
+  \[%
+    \r(t) = \langle 1, \sqrt{3}\cos(t), \sqrt{3}\sin(t) \rangle \implies \r'(t) = \langle 0, -\sqrt{3}\sin(t), \sqrt{3}\cos(t) \rangle
+  .\]%
+  The bounds for $t$ are $0 \le t \le \frac{\pi}{2}$. Converting $\FF$ from a
+  vector function of $x$ and $y$ to a vector function of $t$, we have
+  \[%
+    \FF(x, y) = \langle y + z, x - 2z, x + 2y \rangle = \langle \sqrt{3}\cos(t) + \sqrt{3}\sin(t), 1 - 2\sqrt{3}\sin(t), 1 + 2\sqrt{3}\cos(t) \rangle = \FF(t)
+  .\]%
+  Evaluating the dot product of $\FF$ and $\r'$, we have
+  \begin{align*}
+    \FF(t) \cdot \r'(t) &= \left\langle \sqrt{3}\cos(t) + \sqrt{3}\sin(t), 1 - 2\sqrt{3}\sin(t), 1 + 2\sqrt{3}\cos(t) \right\rangle \cdot \left\langle 0, -\sqrt{3}\sin(t), \sqrt{3}\cos(t) \right\rangle \\
+                        &= (\sqrt{3}\cos(t) + \sqrt{3}\sin(t))(0) + (1 - 2\sqrt{3}\sin(t))(-\sqrt{3}\sin(t)) + (1 + 2\sqrt{3}\cos(t))(\sqrt{3}\cos(t)) \\
+                        &= -\sqrt{3}\sin(t) + 6\sin^2(t) + \sqrt{3}\cos(t) + 6\cos^2(t) \\
+                        &= \sqrt{3}\cos(t) -\sqrt{3}\sin(t) + 6
+  .\end{align*}
+  Therefore, the line integral over the vector field $\FF$ along the curve $C$ is
+  \begin{align*}
+    \int_C \FF \cdot \dd{\r} &= \int_0^{\frac{\pi}{2}} \FF(t) \cdot \r'(t) \,\dt \\
+                             &= \int_0^{\frac{\pi}{2}} \sqrt{3}\cos(t) -\sqrt{3}\sin(t) + 6 \,\dt \\
+                             &= \left[\sqrt{3}\sin(t) + \sqrt{3}\cos(t) + 6t\right] \bigg\vert_0^{\frac{\pi}{2}} \\
+                             &= \left[\sqrt{3} + 3\pi\right] - \left[\sqrt{3}\right] = 3\pi
+  .\qedhere\end{align*}
 \end{proof}
 
 \begin{problem}[4]
