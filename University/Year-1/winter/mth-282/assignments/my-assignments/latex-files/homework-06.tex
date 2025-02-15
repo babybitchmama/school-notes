@@ -169,21 +169,21 @@
     f_x &= 2xe^{xy} + x^2ye^{xy} + 3x^2\label{eq:3_i_1} \\
     f_y &= x^3e^{xy} + 2\sin(y)\label{eq:3_i_2}
   \end{align}
-  Integrating equation \ref{eq:3_i_1} with respect to $x$, we have
+  Integrating equation \ref{eq:3_i_2} with respect to $y$, we have
   \begin{align*}
-    f = \int f_x \,\dx &= \int 2xe^{xy} + x^2ye^{xy} + 3x^2 \,\dx \\
-                       &= \textrm{TODO} \\
-                       &= x^2e^{xy} + x^3 + g(y)
+    f = \int f_y \,\dy &= \int x^3e^{xy} + 2\sin(y) \,\dx \\
+                       &= x^2e^{xy} + 2\cos(y) + g(x)
   .\end{align*}
-  Plugging this into equation \ref{eq:3_i_2}, we have
+  Plugging this into equation \ref{eq:3_i_1}, we have
   \[%
-    f_y = x^3e^{xy} + h'(y) = Q \implies h'(y) = 2\sin(y) \implies h(y) = -2\cos(y)
+    f_x = 2xe^{xy} + x^2ye^{xy} + 3x^2 = P \implies g'(x) = 3x^2 \implies g(x) = x^3
   .\]%
   Therefore, the potential function is
   \[%
-    f(x, y) = x^2e^{xy} + x^3 - 2\cos(y)
+    f(x, y) = x^2e^{xy} + 2\cos(y) + x^3
   .\]%
-  Therefore, the line integral over the vector field $\FF$ along the line segment $C$ is
+  Therefore, the line integral over the vector field $\FF$ along the line
+  segment $C$ is
   \begin{align*}
     \int_C \FF \cdot \dd{\r} = \int_C \nabla f \cdot \dd{\r} &= f(0, 3) - f(-1, 0) \\
                                                              &= \left[-2\cos(3)\right] - \left[1 - 1 - 2\right] \\
