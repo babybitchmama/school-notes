@@ -1,0 +1,135 @@
+\begin{problem}[7.4.2]
+  \begin{enumerate}
+    \item Let $g(x) = x^3$, and classify each of the following as positive,
+      negative, or zero
+      \[%
+        \textrm{(i)} \int_0^{-1} g + \int_0^{1} g \qquad\qquad \textrm{(ii)} \int_1^0 g + \int_0^1 g \qquad\qquad \textrm{(iii)} \int_1^{-2} g + \int_0^1 g
+      .\]%
+
+    \item Show that if $b \le a \le c$ and $f$ is integrable on $[b, c]$, then
+      it is still the case that $\int_a^b f = \int_a^c f + \int_c^b f$.
+  \end{enumerate}
+\end{problem}
+
+\begin{proof}[Solution to (i)]
+\end{proof}
+
+\begin{proof}[Solution to (ii)]
+\end{proof}
+
+\begin{problem}[7.4.3]
+  \begin{enumerate}
+    \item If $\lvert f \rvert$ is integrable on $[a, b]$, the $f$ is also
+      integrable on this set.
+
+    \item Assume $g$ is integrable and $g(x) \ge 0$ on $[a, b]$. If $g(x) > 0$
+      for an infinite number of points $x \in [a, b]$, then $\int_a^b g > 0$.
+
+    \item If $g$ is continuous on $[a, b]$ and $g(x) \ge 0$ with $g(y_0) > 0$
+      for at least one point $y_0 \in [a, b]$, then $\int_a^b g > 0$.
+  \end{enumerate}
+\end{problem}
+
+\begin{proof}[Solution to (i)]
+  Assume $\lvert f \rvert$ is integrable on $[a, b]$. By the integrability
+  criterion, for any $\epsilon > 0$, there is a partition $P_\epsilon$ such that
+  \[%
+    U(\lvert f \rvert, P_\epsilon) - L(\lvert f \rvert, P_\epsilon) < \epsilon
+  .\]%
+  Since $-\lvert f \rvert \leq f \leq \lvert f \rvert$, we have
+  \[%
+    L(\lvert f \rvert, P_\epsilon) \leq L(f, P_\epsilon), \quad U(f, P_\epsilon) \leq U(\lvert f \rvert, P_\epsilon)
+  .\]%
+  This implies that
+  \[%
+    U(f, P_\epsilon) - L(f, P_\epsilon) \leq U(\lvert f \rvert, P_\epsilon) - L(\lvert f \rvert, P_\epsilon) < \epsilon
+  .\]%
+  By the integrability criterion, $f$ is integrable on $[a, b]$.
+\end{proof}
+
+\begin{proof}[Solution to (ii)]
+\end{proof}
+
+\begin{proof}[Solution to (iii)]
+\end{proof}
+
+\begin{problem}[7.4.6]
+  Although not part of Theorem 7.4.2, it is true that the product of integrable
+  functions is integrable. Provide the details for each step in the following
+  proof of this fact:
+  \begin{enumerate}
+    \item If $f$ satisfies $\lvert f(x) \rvert \le M$ on $[a, b]$, show
+      \[%
+        \lvert (f(x))^2 - (f(y))^2 \rvert \le 2M \lvert f(x) - f(y) \rvert
+      .\]%
+
+    \item Prove that if $f$ is integrable on $[a, b]$, then so is $f^2$.
+
+    \item Now show that if $f$ and $g$ are integrable, then $fg$ is integrable.
+      (Consider $(f + g)^2$.)
+  \end{enumerate}
+\end{problem}
+
+\begin{proof}[Solution to (i)]
+\end{proof}
+
+\begin{proof}[Solution to (ii)]
+\end{proof}
+
+\begin{proof}[Solution to (iii)]
+\end{proof}
+
+\begin{problem}[7.5.1]
+  \begin{enumerate}
+    \item Let $f(x) = \lvert x \rvert$ and define $F(x) = \int_{-1}^x f$. Find a
+      piecewise algebraic formula for $F(x)$ for all $x$. Where is $F$
+      continuous? Where is $F$ differentiable? Where does $F'(x) = f(x)$?
+
+    \item Repeat part (i) for the function
+      \[%
+        f(x) = \begin{cases}
+          1 & \textrm{if}~x < 0 \\
+          2 & \textrm{if}~x \ge 0.
+        \end{cases}
+      \]%
+  \end{enumerate}
+\end{problem}
+
+\begin{proof}[Solution to (i)]
+\end{proof}
+
+\begin{proof}[Solution to (ii)]
+\end{proof}
+
+\begin{problem}[7.5.2]
+  Decide whether each statement is true or false, providing a short
+  justification for each conclusion.
+  \begin{enumerate}
+    \item If $g = h'$ for some $h$ on $[a, b]$, then $g$ is continuous on $[a,
+      b]$.
+
+    \item If $g$ is continuous on $[a, b]$, then $g = h'$ for some $h$ on $[a,
+      b]$.
+
+    \item If $H(x) = \int_a^x h$ is differentiable at $c \in [a, b]$, then $h$
+      is continuous at $c$.
+  \end{enumerate}
+\end{problem}
+
+\begin{proof}[Solution to (i)]
+\end{proof}
+
+\begin{proof}[Solution to (ii)]
+\end{proof}
+
+\begin{proof}[Solution to (iii)]
+\end{proof}
+
+\begin{problem}[7.5.4]
+  Show that if $f : [a, b] \to \R$ is continuous and $\int_a^x f = 0$ for all $x
+  \in [a, b]$, then $f(x) = 0$ everywhere on $[a, b]$. Provide an example to
+  show that this conclusion does not follow if $f$ is not continuous.
+\end{problem}
+
+\begin{proof}[Solution]
+\end{proof}
