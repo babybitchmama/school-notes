@@ -1,5 +1,6 @@
 \begin{problem}[1]
-  Evaluate $\displaystyle \int_C \FF \cdot \dd{\r}$ for the vector field $\FF = (x + z)\ui + 2y\uj + (y + 2x)\uk$ where $C$ is
+  Evaluate $\displaystyle\int_C \FF \cdot \dd{\r}$ for the vector field $\FF =
+  (x + z)\ui + 2y\uj + (y + 2x)\uk$ where $C$ is
   \begin{enumerate}
     \item the line segment from $(-1, 0, 1)$ and $(0, -1, 2)$.
 
@@ -71,34 +72,29 @@
   Let $C$ be the curve of intersection of the surfaces $x^2 + y^2 + z^2 = 9$ and
   $y - x + z = 1$. Converting to cylindrical coordinates, we have
   \begin{align*}
-    \begin{cases}
-      x^2 + y^2 + z^2 = 9 \\
+    \begin{rcases}
+      x^2 + y^2 = 9 \\
       y - x + z = 1
-    \end{cases}
+    \end{rcases}
     &\implies
-    \begin{cases}
-      r^2 + z^2 = 9 \\
-      r\sin\theta - r\cos\theta + z = 1
-    \end{cases}
+    \begin{rcases}
+      r^2 = 9 \\
+      z = 1 - r(\sin(\theta) - \cos(\theta))
+    \end{rcases}
     \implies
-    \begin{cases}
-      r^2 + z^2 = 9 \\
-      r(\sin\theta - \cos\theta) + z = 1
-    \end{cases} \\
-    &\implies z = 1 - r(\sin(\theta) - \cos(\theta))
+    \begin{rcases}
+      r = 3 \\
+      z = 1 - 3(\sin(\theta) - \cos(\theta))
+    \end{rcases} \\
+    &\implies z = 1 - 3(\sin(\theta) - \cos(\theta))
   .\end{align*}
-  To parameterize $C$, notice that $x^2 + y^2 + z^2 = 9$ is just a sphere.
-  Therefore, we have $r = 3$, $x = 3\cos(\theta)$, and $y = 3\sin(\theta)$.
-  Using $r = 3$, we have the following parameterization for $C$
-  \[%
-    \r(t) = \left\langle 3\cos(\theta), 3\sin(\theta), 1 - 3(\sin(\theta) - \cos(\theta)) \right\rangle
-  .\]%
-  Evaluating $\r'(t)$ gives us
-  \[%
-    \r'(t) = \langle -3\sin(\theta), 3\cos(\theta), 3(\cos(\theta) + \sin(\theta)) \rangle
-  .\]%
-  The bounds for $\theta$ is $0 \le \theta \le 2\pi$. Converting $\FF$ from a
-  vector function of $x$ and $y$ to a vector function of $t$, we have
+  Parametrizing the curve $C$ as
+  \begin{align*}
+    \phantom{\implies}&~\r(t) = \left\langle 3\cos(\theta), 3\sin(\theta), 1 - 3(\sin(\theta) - \cos(\theta)) \right\rangle \\
+    \implies&~\r'(t) = \langle -3\sin(\theta), 3\cos(\theta), 3(\cos(\theta) + \sin(\theta)) \rangle
+  ,\end{align*}
+  where $0 \le t \le 2\pi$, we have Converting $\FF$ from a vector function of
+  $x$ and $y$ to a vector function of $t$, we have
   \begin{align*}
     \FF(t) = \langle -y(t), x(t), x(t) - z(t) \rangle &= \langle -3\sin(\theta), 3\cos(\theta), 3\cos(\theta) - \left(1 - 3\left(\sin(\theta) - \cos(\theta)\right)\right) \\
                                                       &= \langle -3\sin(\theta), 3\cos(\theta), 3\sin(\theta) - 1 \rangle
@@ -126,11 +122,9 @@
 \end{proof}
 
 \begin{problem}[3]
-  Evaluate $\displaystyle\int_C \FF \cdot \dd{\r}$. Use the fundamental theorem
-  for line integrals whenever it applies.
+  Evaluate $\displaystyle\int_C \FF \cdot \dd{\r}$. Use the fundamental theorem for line integrals whenever it applies.
   \begin{enumerate}
-    \item $\FF = \langle 2xe^{xy} + x^2ye^{xy} + 3x^2, x^3e^{xy} + 2\sin(y)
-      \rangle$, $C$ is the line segment from $(-1, 0)$ to $(0, 3)$.
+    \item $\FF = \langle 2xe^{xy} + x^2ye^{xy} + 3x^2, x^3e^{xy} + 2\sin(y) \rangle$, $C$ is the line segment from $(-1, 0)$ to $(0, 3)$.
 
     \item $\FF = \langle y^3 - 2x, 3xy^2 + \sin(\pi y) \rangle$, $C$ is the path
       $y = \sqrt{x}$ from $(1,1 )$ to $(4, 2)$.
@@ -139,14 +133,13 @@
       circular helix $\r(t) = \langle t, 2\cos(t), 2\sin(t) \rangle$, $0 \le t
       \le \pi$.
 
-    \item $\FF = \langle y + z, x - 2z, x + 2y \rangle$, $C$ is the intersection
-      of sphere $x^2 + y^2 + z^2 = 4$ and the plane $x = 1$ in the first octant
-      oriented upward.
+    \item $\FF = \langle y + z, x - 2z, x + 2y \rangle$, $C$ is the intersection of sphere $x^2 + y^2 + z^2 = 5$ and the plane $x = 1$ in the first octant oriented upward.
   \end{enumerate}
 \end{problem}
 
 \begin{proof}[Solution to (i)]
-  A vector field $\FF = \langle P, Q \rangle$ is conservative if there exists a potential function $f(x, y)$ such that
+  A vector field $\FF = \langle P, Q \rangle$ is conservative if there exists a
+  potential function $f(x, y)$ such that
   \[%
     \pdv{P}{y} = \pdv{Q}{x}
   .\]%
@@ -159,7 +152,7 @@
     \pdv{Q}{x} &= \pdv{}{x} \left[x^3e^{xy} + 2\sin(y)\right] \\
                &= e^{xy} \cdot \pdv{}{x} \left[x^3\right] + x^3 \cdot \pdv{}{x} \left[e^{xy}\right] + \pdv{}{x} \left[2\sin(y)\right] \\
                &= 3x^2e^{xy} + x^3ye^{xy} + 0 \\
-               &= 3x^2e^{xy} + x^3ye^{xy}
+                &= 3x^2e^{xy} + x^3ye^{xy}
   .\end{align*}
   Clearly, they are the same. Also, note that $\FF$ is simply connected, as
   there are no singularities. Therefore, $\FF$ is conservative.
@@ -224,7 +217,7 @@
   .\]%
   Therefore, the potential function is
   \[%
-    f(x, y) = y^3x - x^2 - \frac{1}{\pi}\cos(\pi y)
+    f(x, y) = xy^3 - x^2 - \frac{1}{\pi}\cos(\pi y)
   .\]%
   Therefore, the line integral over the vector field $\FF$ along the path $C$ is
   \begin{align*}
@@ -294,30 +287,29 @@
   .\]%
   Clearly, they are not the same. Therefore, $\FF$ is not conservative.
 
-  Since $C$ is the intersection of the sphere $x^2 + y^2 + z^2 = 4$ and the
-  plane $x = 1$ in the first octant, we get $x = 1$, $y^2 + z^2 = 3$, and $y,
+  Since $C$ is the intersection of the sphere $x^2 + y^2 + z^2 = 5$ and the
+  plane $x = 1$ in the first octant, we get $x = 1$, $y^2 + z^2 = 4$, and $y,
   z \ge 0$. Therefore, we have
   \[%
-    \r(t) = \langle 1, \sqrt{3}\cos(t), \sqrt{3}\sin(t) \rangle \implies \r'(t) = \langle 0, -\sqrt{3}\sin(t), \sqrt{3}\cos(t) \rangle
+    \r(t) = \langle 1, 2\cos(t), 2\sin(t) \rangle \implies \r'(t) = \langle 0, -2\sin(t), 2\cos(t) \rangle
   .\]%
-  The bounds for $t$ are $0 \le t \le \frac{\pi}{2}$. Converting $\FF$ from a
-  vector function of $x$ and $y$ to a vector function of $t$, we have
+  The bounds for $t$ are $0 \le t \le \frac{\pi}{2}$. Converting $\FF$ from a vector function of $x$ and $y$ to a vector function of $t$, we have
   \[%
-    \FF(x, y) = \langle y + z, x - 2z, x + 2y \rangle = \langle \sqrt{3}\cos(t) + \sqrt{3}\sin(t), 1 - 2\sqrt{3}\sin(t), 1 + 2\sqrt{3}\cos(t) \rangle = \FF(t)
+    \FF(x, y) = \langle y + z, x - 2z, x + 2y \rangle = \langle 2\cos(t) + 2\sin(t), 1 - 8\sin(t), 1 + 8\cos(t) \rangle = \FF(t)
   .\]%
   Evaluating the dot product of $\FF$ and $\r'$, we have
   \begin{align*}
-    \FF(t) \cdot \r'(t) &= \left\langle \sqrt{3}\cos(t) + \sqrt{3}\sin(t), 1 - 2\sqrt{3}\sin(t), 1 + 2\sqrt{3}\cos(t) \right\rangle \cdot \left\langle 0, -\sqrt{3}\sin(t), \sqrt{3}\cos(t) \right\rangle \\
-                        &= (\sqrt{3}\cos(t) + \sqrt{3}\sin(t))(0) + (1 - 2\sqrt{3}\sin(t))(-\sqrt{3}\sin(t)) + (1 + 2\sqrt{3}\cos(t))(\sqrt{3}\cos(t)) \\
-                        &= -\sqrt{3}\sin(t) + 6\sin^2(t) + \sqrt{3}\cos(t) + 6\cos^2(t) \\
-                        &= \sqrt{3}\cos(t) -\sqrt{3}\sin(t) + 6
+    \FF(t) \cdot \r'(t) &= \left\langle 2\cos(t) + 2\sin(t), 1 - 8\sin(t), 1 + 8\cos(t) \right\rangle \cdot \left\langle 0, -2\sin(t), 2\cos(t) \right\rangle \\
+                        &= \left(2\cos(t) + 2\sin(t)\right) \cdot (0) + \left(1 - 8\sin(t)\right) \cdot (-2\sin(t)) + \left(1 + 8\cos(t)\right) \cdot (2\cos(t)) \\
+                        &= -2\sin(t) + 16\sin^2(t) + 2\cos(t) + 16\cos^2(t) \\
+                        &= 2\cos(t) + -2\sin(t) + 16
   .\end{align*}
   Therefore, the line integral over the vector field $\FF$ along the curve $C$ is
   \begin{align*}
-    \int_C \FF \cdot \dd{\r} &= \int_0^{\frac{\pi}{2}} \FF(t) \cdot \r'(t) \,\dt \\
-                             &= \int_0^{\frac{\pi}{2}} \sqrt{3}\cos(t) -\sqrt{3}\sin(t) + 6 \,\dt \\
-                             &= \left[\sqrt{3}\sin(t) + \sqrt{3}\cos(t) + 6t\right] \bigg\vert_0^{\frac{\pi}{2}} \\
-                             &= \left[\sqrt{3} + 3\pi\right] - \left[\sqrt{3}\right] = 3\pi
+    \oint_C \FF \cdot \dd{\r} &= \int_0^{\frac{\pi}{2}} \FF(t) \cdot \r'(t) \,\dt \\
+                             &= \int_0^{\frac{\pi}{2}} 2\cos(t) - 2\sin(t) + 16 \,\dt \\
+                             &= \left[2\sin(t) - 2\cos(t) + 16t\right] \bigg\vert_0^{\frac{\pi}{2}} \\
+                             &= \left[2 + 8\pi\right] - \left[-2\right] = 4 + 8\pi
   .\qedhere\end{align*}
 \end{proof}
 
