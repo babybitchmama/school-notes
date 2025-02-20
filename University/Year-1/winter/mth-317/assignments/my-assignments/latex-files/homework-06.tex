@@ -12,12 +12,43 @@
 \end{problem}
 
 \begin{proof}[Solution to (i)]
+  Converting the integrals to their respective values, we have
+  \[%
+    \int_0^{-1} g + \int_0^1 g = -\int_{-1}^0 x^3 \,\dx + \int_0^1 x^3 \,\dx = -\left(-\frac{1}{4}\right) + \frac{1}{4} = \frac{1}{2}
+  .\]%
+  Therefore, the integral $\int_0^{-1} g + \int_0^1 g$ is positive.
+
+  Converting the integrals to their respective values, we have
+  \[%
+    \int_1^0 g + \int_0^1 g = -\int_0^1 x^3 \,\dx + \int_0^1 x^3 \,\dx = 0
+  .\]%
+  Therefore, the integral $\int_1^0 g + \int_0^1 g$ is zero.
+
+  Converting the integrals to their respective values, we have
+  \[%
+    \int_1^{-2} g + \int_0^1 g = -\int_{-2}^1 x^3 \,\dx + \int_0^1 x^3 \,\dx = -\left(-\frac{15}{4}\right) + \frac{1}{4} = 4
+  .\]%
+  Therefore, the integral $\int_1^{-2} g + \int_0^1 g$ is positive.
 \end{proof}
 
 \begin{proof}[Solution to (ii)]
+  Assume $b \le a \le c$ and $f$ is integrable on $[b, c]$. By the additivity
+  of the integral, we have
+  \[%
+    \int_b^c f = \int_b^a f + \int_a^c f
+  .\]%
+  Rearranging the terms, we have
+  \begin{alignat*}{3}
+    \phantom{\implies}&~\int_b^a f &&= \int_b^c f - \int_a^c f \\
+    \implies&~-\int_a^b f &&= \int_b^c f - \int_a^c f \\
+    \implies&~\int_a^b f &&= -\int_b^c f + \int_a^c f \\
+    \implies&~\int_a^b f &&= \int_a^c f + \int_c^b f
+  .\tag*{\qedhere}\end{alignat*}
 \end{proof}
 
 \begin{problem}[7.4.3]
+  Decide which of the following conjectures is true and supply a short proof.
+  For those that are not true, give a counterexample.
   \begin{enumerate}
     \item If $\lvert f \rvert$ is integrable on $[a, b]$, the $f$ is also
       integrable on this set.
@@ -31,8 +62,9 @@
 \end{problem}
 
 \begin{proof}[Solution to (i)]
-  Assume $\lvert f \rvert$ is integrable on $[a, b]$. By the integrability
-  criterion, for any $\epsilon > 0$, there is a partition $P_\epsilon$ such that
+  True. Assume $\lvert f \rvert$ is integrable on $[a, b]$. By the
+  integrability criterion, for any $\epsilon > 0$, there is a partition
+  $P_\epsilon$ such that
   \[%
     U(\lvert f \rvert, P_\epsilon) - L(\lvert f \rvert, P_\epsilon) < \epsilon
   .\]%
@@ -48,9 +80,21 @@
 \end{proof}
 
 \begin{proof}[Solution to (ii)]
+  False. Consider the function
+  \[%
+    g(x) = \begin{cases}
+      1 & \textrm{if}~x = \frac{1}{n}~\textrm{for some}~n \in \N \\
+      0 & \textrm{otherwise}.
+    \end{cases}
+  \]%
+  Then $g$ is non-negative and positive on an infinite set of points. However,
+  it is zero almost everywhere, so the integral $\int_a^b g = 0$.
 \end{proof}
 
 \begin{proof}[Solution to (iii)]
+  True. Since $g$ is continuous and $g(y_0) > 0$, there is an interval around
+  $y_0$ where $g(x) > 0$. Since this is a nonzero interval and $g(x) \ge 0$, the
+  integral over this interval is positive. Hence, $\int_a^b g > 0$.
 \end{proof}
 
 \begin{problem}[7.4.6]
@@ -71,12 +115,53 @@
 \end{problem}
 
 \begin{proof}[Solution to (i)]
+  Using the difference of squares factorization
+  \[%
+    f(x)^2 - f(y)^2 = (f(x) - f(y))(f(x) + f(y))
+  .\]%
+  Taking absolute values,
+  \[%
+    \lvert f(x)^2 - f(y)^2 \rvert = \lvert f(x) - f(y) \rvert \cdot \lvert f(x) + f(y) \rvert
+  .\]%
+  Since $|f(x)| \leq M$ and $|f(y)| \leq M$, we get
+  \[%
+    \lvert f(x) + f(y) \rvert \leq \lvert f(x) \rvert + \lvert f(y) \rvert \leq M + M = 2M
+  .\]%
+  Thus,
+  \[%
+    |f(x)^2 - f(y)^2| \leq 2M |f(x) - f(y)|
+  .\qedhere\]%
 \end{proof}
 
 \begin{proof}[Solution to (ii)]
+  Since $f$ is integrable, it satisfies the definition of integrability: for
+  every $\epsilon > 0$, there exists a partition $P$ such that the difference
+  between the upper sum and lower sum is less than $\epsilon$. That is,
+  \[%
+    U(f, P) - L(f, P) < \epsilon
+  .\]%
+  Now, we analyze $f^2$. From Step 1, we have the inequality:
+  \[%
+    \lvert f(x)^2 - f(y)^2 \rvert \leq 2M \lvert f(x) - f(y) \rvert
+  .\]%
+  This means that the function $f^2$ has variations that are controlled by $f$.
+  Since $f$ is integrable, the variation $\lvert f(x) - f(y) \rvert$ can be made
+  arbitrarily small by refining the partition. Using this bound, we can show
+  that $U(f^2, P) - L(f^2, P)$ also becomes arbitrarily small for sufficiently
+  fine partitions. Therefore, $f^2$ is integrable.
 \end{proof}
 
 \begin{proof}[Solution to (iii)]
+  Rearranging $(f + g)^2 = f^2 + 2fg + g^2$, we get
+  \[%
+    fg = \frac{(f+g)^2 - f^2 - g^2}{2}
+  .\]%
+  Since we have already established that if $f$ is integrable, then $f^2$ is
+  integrable, and since $f$ and $g$ are both given to be integrable, we conclude
+  that $f^2$, $g^2$, and $(f+g)^2$ are all integrable.
+
+  Since the set of integrable functions is closed under addition and scalar
+  multiplication, it follows that $fg$ is also integrable.
 \end{proof}
 
 \begin{problem}[7.5.1]
@@ -96,9 +181,142 @@
 \end{problem}
 
 \begin{proof}[Solution to (i)]
+  Define $f(x)$ as
+  \[%
+    f(x) = \begin{cases}
+      -x & \textrm{if}~x < 0 \\
+      x & \textrm{if}~x \ge 0. \\
+    \end{cases}
+  \]%
+  Evaluating $F(x)$, we get
+  \[%
+    F(x) = \int{-1}^x \lvert t \rvert \,\dt
+  .\]%
+  We then have two cases to consider. If $x < 0$, then from $-1$ to $x$, we are
+  in the negative region
+  \[%
+    F(x) = \int_{-1}^x -t \,\dt = \frac{1}{2} - \frac{x^2}{2}
+  .\]%
+  If $x \ge 0$, then from $-1$ to $x$, we are in the positive region
+  \[%
+    F(x) = \int_{-1}^0 -t \,\dt = \frac{1}{2} + \frac{x^2}{2}
+  .\]%
+  Therefore, the piecewise formula for $F(x)$ is
+  \[%
+    F(x) = \begin{cases}
+      \frac{1}{2} - \frac{x^2}{2} & \textrm{if}~x < 0 \\
+      \frac{1}{2} + \frac{x^2}{2} & \textrm{if}~x \ge 0. \\
+    \end{cases}
+  \]%
+
+  Each piece is a polynomial and polynomials are continuous, so we only need to
+  check continuity at $x = 0$. Evaluate the left and right limits
+  \begin{align*}
+    \lim_{x \to 0^-} F(x) &= \lim_{x \to 0^-} \left(\frac{1}{2} - \frac{x^2}{2}\right) = \frac{1}{2} \\
+    \lim_{x \to 0^+} F(x) &= \lim_{x \to 0^+} \left(\frac{1}{2} + \frac{x^2}{2}\right) = \frac{1}{2} \\
+    F(0) &= \frac{1}{2}
+  .\end{align*}
+  Since the left and right limits are equal to the value of the function at $x =
+  0$, $F(x)$ is continuous at $x = 0$, making $F(x)$ continuous everywhere.
+
+  Again, since each piece is a polynomial, $F(x)$ is differentiable everywhere,
+  except possibly at $x = 0$. Evaluate the left and right derivatives at $x =
+  0$,
+  \[%
+    F'(x) = \begin{cases}
+      -x & \textrm{if}~x < 0 \\
+      x & \textrm{if}~x \ge 0. \\
+    \end{cases}
+  .\]%
+  Evaluating the left and right derivatives at $x = 0$,
+  \begin{align*}
+    \lim_{x \to 0^-} F'(x) &= \lim_{x \to 0^-} -x = 0 \\
+    \lim_{x \to 0^+} F'(x) &= \lim_{x \to 0^+} x = 0
+  .\end{align*}
+  Since the left and right derivatives are equal at $x = 0$, $F(x)$ is
+  differentiable at $x = 0$, making $F(x)$ differentiable everywhere.
+
+  Therefore, we have
+  \[%
+    F'(x) = \begin{cases}
+      -x & \textrm{if}~x < 0 \\
+      x & \textrm{if}~x \ge 0 \\
+    \end{cases} \aand
+    f(x) = \begin{cases}
+      -x & \textrm{if}~x < 0 \\
+      x & \textrm{if}~x \ge 0. \\
+    \end{cases}
+  \]%
+  Clearly, $F'(x) = f(x)$ for all $x$.
 \end{proof}
 
 \begin{proof}[Solution to (ii)]
+  Define $f(x)$ as
+  \[%
+    f(x) = \begin{cases}
+      1 & \textrm{if}~x < 0 \\
+      2 & \textrm{if}~x \ge 0. \\
+    \end{cases}
+  \]%
+  Evaluating $F(x)$, we get
+  \[%
+    F(x) = \int_{-1}^x f \,\dt
+  .\]%
+  We then have two cases to consider. If $x < 0$, then from $-1$ to $x$, we are
+  in the region where $f(x) = 1$
+  \[%
+    F(x) = \int_{-1}^x 1 \,\dt = x + 1
+  .\]%
+  If $x \ge 0$, then from $-1$ to $x$, we are in the region where $f(x) = 2$
+  \[%
+    F(x) = \int_{-1}^0 1 \,\dt + \int_0^x 2 \,\dt = 1 + 2x
+  .\]%
+  Therefore, the piecewise formula for $F(x)$ is
+  \[%
+    F(x) = \begin{cases}
+      x + 1 & \textrm{if}~x < 0 \\
+      1 + 2x & \textrm{if}~x \ge 0. \\
+    \end{cases}
+  \]%
+
+  Each piece is a polynomial and polynomials are continuous everywhere, so we
+  only need to check continuity at $x = 0$. Evaluate the left and right limits
+  \begin{align*}
+    \lim_{x \to 0^-} F(x) &= \lim_{x \to 0^-} (x + 1) = 1 \\
+    \lim_{x \to 0^+} F(x) &= \lim_{x \to 0^+} (1 + 2x) = 1 \\
+    F(0) &= 1
+  .\end{align*}
+  Since the left and right limits are equal to the value of the function at $x =
+  0$, $F(x)$ is continuous at $x = 0$, making $F(x)$ continuous everywhere.
+
+  Differentiating each piece, we get
+  \[%
+    F'(x) = \begin{cases}
+      1 & \textrm{if}~x < 0 \\
+      2 & \textrm{if}~x \ge 0. \\
+    \end{cases}
+  \]%
+  Evaluating the left and right derivatives at $x = 0$,
+  \begin{align*}
+    \lim_{x \to 0^-} F'(x) &= \lim_{x \to 0^-} 1 = 1 \\
+    \lim_{x \to 0^+} F'(x) &= \lim_{x \to 0^+} 2 = 2
+  .\end{align*}
+  Since the left and right derivatives are not equal at $x = 0$, $F(x)$ is not
+  differentiable at $x = 0$, making $F(x)$ differentiable everywhere except at
+  $x = 0$.
+
+  Therefore, we have
+  \[%
+    F'(x) = \begin{cases}
+      1 & \textrm{if}~x < 0 \\
+      2 & \textrm{if}~x > 0 \\
+    \end{cases} \aand
+    f(x) = \begin{cases}
+      1 & \textrm{if}~x < 0 \\
+      2 & \textrm{if}~x \ge 0. \\
+    \end{cases}
+  \]%
+  Clearly, $F'(x) \neq f(x)$ for all $x \ne 0$.
 \end{proof}
 
 \begin{problem}[7.5.2]
@@ -117,12 +335,37 @@
 \end{problem}
 
 \begin{proof}[Solution to (i)]
+  False. Consider the function $h : [-1,1] \to \R$ defined as
+  \[%
+    h(x) = \begin{cases}
+      x^2\sin\left(\frac{1}{x}\right) & \textrm{if}~x \ne 0 \\
+      0 & \textrm{if}~x = 0. \\
+    \end{cases}
+  \]%
+  Then, $g : [-1,1] \to \R$ defined as
+  \[%
+    g(x) = \begin{cases}
+      h'(x) = 2x\sin\left(\frac{1}{x}\right) + \cos\left(\frac{1}{x}\right) & \textrm{if}~x \ne 0 \\
+      0 & \textrm{if}~x = 0, \\
+    \end{cases}
+  \]%
+  is not continuous at $0$, but $g = h'$.
 \end{proof}
 
 \begin{proof}[Solution to (ii)]
+  True. By the Fundamental Theorem of Calculus, if $g$ is continuous on $[a, b]$,
+  then $g$ is the derivative of some function $h$ on $[a, b]$.
 \end{proof}
 
 \begin{proof}[Solution to (iii)]
+  False. Consider the function
+  \[%
+    H(x) = \begin{cases}
+      1 & \textrm{if}~x = 0 \\
+      0 & \textrm{if}~x \ne 0. \\
+    \end{cases}
+  \]%
+  Then, $H(x) = 0$ and differentiable at $0$, but $h$ is not continuous at $0$.
 \end{proof}
 
 \begin{problem}[7.5.4]
@@ -132,4 +375,8 @@
 \end{problem}
 
 \begin{proof}[Solution]
+  Since $f$ is continuous, by Theorem 7.5.1, part (ii), letting $F(x) = \int_a^x
+  f = 0$ for all $x \in [a, b]$, we have $F'(x) = f(x) = 0$ for all $x \in [a,
+  b]$. Therefore, $f(x) = 0$ everywhere on $[a, b]$. If $f$ is not continuous,
+  then this does not hold.
 \end{proof}

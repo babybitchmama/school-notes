@@ -1,0 +1,210 @@
+\documentclass[notitlepage]{report}
+
+\title{Several-Variab Calc II}
+\date{January 6, 2025}
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{breqn}
+\usepackage{xifthen}
+\usepackage{geometry}
+\usepackage{xfrac}
+\geometry{
+  top=1in,
+  bottom=1.5in,
+  right=1in,
+  left=1in,
+}
+
+\renewcommand\a{\mathbf{a}}
+\renewcommand\b{\mathbf{b}}
+\renewcommand\c{\mathbf{c}}
+\renewcommand\d{\mathbf{d}}
+\newcommand\e{\mathbf{e}}
+\newcommand\f{\mathbf{f}}
+\newcommand\FF{\mathbf{F}}
+\newcommand\g{\mathbf{g}}
+\newcommand\n{\mathbf{n}}
+\newcommand\p{\mathbf{p}}
+\renewcommand\r{\mathbf{r}}
+\newcommand\Ta{\mathbf{T}}
+\renewcommand\u{\mathbf{u}}
+\renewcommand\v{\mathbf{v}}
+\newcommand\w{\mathbf{w}}
+\newcommand\x{\mathbf{x}}
+\newcommand\y{\mathbf{y}}
+\newcommand\z{\mathbf{z}}
+\newcommand\zero{\mathbf{0}}
+
+% Hat vectors
+\newcommand\ah{\mathbf{a}}
+\newcommand\bh{\mathbf{b}}
+\newcommand\ch{\mathbf{c}}
+\renewcommand\dh{\mathbf{d}}
+\newcommand\eh{\mathbf{e}}
+\newcommand\ph{\mathbf{p}}
+\newcommand\uh{\mathbf{u}}
+\newcommand\vh{\mathbf{v}}
+\newcommand\wh{\mathbf{w}}
+\newcommand\xh{\mathbf{x}}
+\newcommand\yh{\mathbf{y}}
+\newcommand\zh{\mathbf{z}}
+
+% Unit vectors
+\newcommand\ui{\boldsymbol{\imath}}
+\newcommand\uj{\boldsymbol{\jmath}}
+\newcommand\uk{\mathbf{k}}
+
+% Matrix groups
+\newcommand\GL{\mathrm{GL}}
+\newcommand\Or{\mathrm{O}}
+\newcommand\PGL{\mathrm{PGL}}
+\newcommand\PSL{\mathrm{PSL}}
+\newcommand\PSO{\mathrm{PSO}}
+\newcommand\PSU{\mathrm{PSU}}
+\newcommand\SL{\mathrm{SL}}
+\newcommand\SO{\mathrm{SO}}
+\newcommand\Spin{\mathrm{Spin}}
+\newcommand\Sp{\mathrm{Sp}}
+\newcommand\SU{\mathrm{SU}}
+\newcommand\U{\mathrm{U}}
+\newcommand\Mat{\mathrm{Mat}}
+\renewcommand\P{\mathbb{P}}
+
+% Subspaces
+\newcommand\B{\mathcal{B}}
+\newcommand\C{\mathbb{C}}
+\newcommand\D{\mathbb{D}}
+\newcommand\E{\mathbb{E}}
+\newcommand\F{\mathbb{F}}
+\newcommand\I{\mathbb{I}}
+\newcommand\N{\mathbb{N}}
+\newcommand\Q{\mathbb{Q}}
+\newcommand\R{\mathbb{R}}
+\newcommand\Z{\mathbb{Z}}
+
+% Helpful text in math mode
+\newcommand\aand{\quad\text{and}\quad}
+\newcommand\oor{\quad\text{or}\quad}
+\renewcommand\and{\text{and}}
+\newcommand\qtq[1]{\quad\textrm{#1}\quad}
+\newcommand\Col{\textrm{Col}}
+\newcommand\Nul{\textrm{Null}}
+\newcommand\Range{\textrm{Range}}
+\newcommand\Ker{\textrm{Ker}}
+\newcommand\Tr{\textrm{Tr}}
+\newcommand\Rank{\textrm{Rank}}
+\newcommand\proj{\text{proj}}
+\newcommand\comp{\text{comp}}
+\newcommand\Sspan{\text{Span}}
+\renewcommand\Re{\text{Re}}
+\renewcommand\Im{\text{Im}}
+
+\newenvironment{exercise}[1][-1]{\noindent\textbf{Exercise #1}.}
+
+\begin{document}
+  \begin{exercise}[11]
+    \textit{Connectedness of} $\SO(n)$. Show that $\SO(n)$ is connected,
+    following the outline below.
+
+    For the $n = 1$ case, there is not much to show, since a $1 \times 1$ matrix
+    with determinant one must be 1. Assume, then, that $n \ge 2$ Let $\e_1$
+    denote the vector
+    \[%
+      \begin{pmatrix}
+        1 \\
+        0 \\
+        \vdots \\
+        0
+      \end{pmatrix} \in \R^n
+    .\]%
+    Given any unit vector $\v \in \R^n$, show that there exists a continuous
+    path $R(t)$ in $\SO(n)$ such that $R(0) = I$ and $R(1)\e_1 = \v$. (Thus any
+    unit vector can be ``continuously rotated'' to $\e_1$.)
+
+    Now show that any element $R$ of $\SO(n)$ can be connected to an element of
+    $\SO(n - 1)$, and proceed by induction.
+  \end{exercise}
+
+  \begin{proof}[Solution]
+    Let $\B = \{\v, \e_1\}$ be a basis for a two-dimensional plane. By the Gram-Schmitt process, we can construct an orthonormal basis $\B' = \{\u_1, \u_2\}$ for the same plane. Let $\u_1 = \v$ and $\u_2$ be defined as
+    \[%
+      \u_2 = \frac{\e_1 - \langle \e_1, \v \rangle \v}{\|\e_1 - \langle \e_1, \v \rangle \v\|}
+    .\]%
+    Let $\theta(t) : [0, 1] \to \R$, defined by
+    \[%
+      \theta(0) = 0 \aand \theta(1) = \arccos\left(\frac{\v \cdot \e_1}{\lVert \v \rVert \lVert \e_1 \rVert}\right)
+    \]%
+    Then, we can construct a rotation $R(t) \in \SO(n)$ as a block matrix that acts as a rotation by $\theta(t)$ in the plane spanned by $\{\u_1, \u_2\}$, and as the identity on the orthogonal complement. This defines a continuous path with $R(0) = I$ and $R(1) \v = \e_1$.
+
+    We'll use induction to show that $\SO(n)$ is connected for all $n \ge 1$.
+    The base case is trivial, which is trivially connected.
+
+    Assume $\SO(n)$ is connected for some $n \geq 1$. We need to show that
+    $\SO(n+1)$ is connected. Let $R \in \SO(n+1)$. Consider the first column of
+    $R$, which is a unit vector $\v \in \R^{n+1}$.
+  \end{proof}
+
+  \begin{exercise}[12]
+    \textit{The polar decomposition of $\SL(n, \R)$.} Show that every element $A$ of $\SL(n, \R)$ can be written uniquely in the form $A = RH$, where $R \in \SO(n)$, and $H$ is a symmetric, positive-definite matrix with determinant one (That is, $H^T = H$, and $\langle \x, H\x \rangle \ge 0$ for all $\x \in \R^n$).
+
+    \textit{Hint:} If $A$ could be written in this form, then we would have
+    \[%
+      A^TA = H^TR^TRH = HR^{-1}RH = H^2
+    .\]%
+    Thus $H$ would have to be the unique positive-definite symmetric square root of $A^TA$.
+
+    \textit{Note:} A similar argument gives polar decompositions for $\GL(n, \R)$, $\SL(n, \C)$, and $\GL(n, \C)$. For example, every element $A$ of $\SL(n, \C)$ can be written uniquely as $A = UH$, with $U \in \SU(n)$, and $H$ is a self-adjoint positive definite matrix with determinant one.
+  \end{exercise}
+
+  \begin{proof}[Solution]
+    Consider the matrix $A^T A$, which is symmetric and positive definite
+    because for any nonzero vector $\x \in \R^n$, we have
+    \[%
+      (A^T A)^T = (A)^T(A^T)^T = A^T A \aand \x^TA^TA\x = (A\x)^T(A\x) = \lVert A\x \rVert^2 > 0
+    .\]%
+    Since $A \in \SL(n, \R)$, we have $\det(A) = 1$, implying $\det(A^TA) = 1$
+    since determinant is multiplicative. By the spectral theorem, $A^T A$ has an
+    orthonormal eigenbasis with positive eigenvalues, so it admits a unique
+    positive-definite square root, denoted $H$, such that
+    \[%
+      H = \sqrt{A^T A} \implies H^2 = A^T A
+    .\]%
+    Define $R = AH^{-1}$. We check that $R$ is orthogonal
+    \[%
+      R^T R = (H^{-1} A^T) (A H^{-1}) = H^{-1} A^T A H^{-1} = H^{-1} H^2 H^{-1} = I
+    .\]%
+    % Thus, $R \in \SO(n)$ since $\det(R) = \sfrac{\det(A)}{\det(H)} =
+    % \sfrac{1}{1} = 1$, proving existence.
+
+    % Suppose $A = R_1 H_1 = R_2 H_2$ are two such decompositions. Then,
+    % \[%
+    %   H_1^{-1} R_1^{-1} R_2 H_2 = I
+    % .\]%
+    % Multiplying on the right by $H_2^{-1}$ and on the left by $H_1$, we obtain
+    % \[%
+    %   H_1 H_1^{-1} R_1^{-1} R_2 H_2 H_2^{-1} = H_1 H_2^{-1} = I
+    % ,\]%
+    % so $H_1 = H_2$. This implies $R_1 = R_2$, proving uniqueness.
+
+    % Thus, every element of $\SL(n, \mathbb{R})$ has a unique polar
+    % decomposition.
+  \end{proof}
+
+  \begin{exercise}[13]
+    \textit{The connectedness of $\SL(n, \R)$.} Using the polar decomposition of
+    $\SL(n, \R)$ and the connectedness of $\SO(n)$, show that $\SL(n, \R)$ is
+    connected.
+
+    \textit{Hint:} Recall that if $H$ is a real, symmetric matrix, then there
+    exists a \textit{real} orthogonal matrix $R_1$ such that $H = R_1DR_1^{-1}$,
+    where $D$ is diagonal.
+  \end{exercise}
+
+  \begin{proof}[Solution]
+  \end{proof}
+\end{document}
