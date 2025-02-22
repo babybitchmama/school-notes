@@ -3,6 +3,7 @@
 \title{Several-Variab Calc II}
 \date{January 6, 2025}
 
+\usepackage{xcolor}
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{mathtools}
@@ -60,6 +61,7 @@
 \newcommand\uk{\mathbf{k}}
 
 % Matrix groups
+\newcommand\Ec{\mathrm{E}}
 \newcommand\GL{\mathrm{GL}}
 \newcommand\Or{\mathrm{O}}
 \newcommand\PGL{\mathrm{PGL}}
@@ -107,6 +109,8 @@
 \newenvironment{exercise}[1][-1]{\noindent\textbf{Exercise #1}.}
 
 \begin{document}
+  \chapter{Matrix Lie Groups Solutions}
+
   \begin{exercise}[11]
     \textit{Connectedness of} $\SO(n)$. Show that $\SO(n)$ is connected,
     following the outline below.
@@ -131,7 +135,9 @@
   \end{exercise}
 
   \begin{proof}[Solution]
-    Let $\B = \{\v, \e_1\}$ be a basis for a two-dimensional plane. By the Gram-Schmitt process, we can construct an orthonormal basis $\B' = \{\u_1, \u_2\}$ for the same plane. Let $\u_1 = \v$ and $\u_2$ be defined as
+    Let $\B = \{\v, \e_1\}$ be a basis for a two-dimensional plane. By the
+    Gram-Schmitt process, we can construct an orthonormal basis $\B' = \{\u_1,
+    \u_2\}$ for the same plane. Let $\u_1 = \v$ and $\u_2$ be defined as
     \[%
       \u_2 = \frac{\e_1 - \langle \e_1, \v \rangle \v}{\|\e_1 - \langle \e_1, \v \rangle \v\|}
     .\]%
@@ -139,7 +145,10 @@
     \[%
       \theta(0) = 0 \aand \theta(1) = \arccos\left(\frac{\v \cdot \e_1}{\lVert \v \rVert \lVert \e_1 \rVert}\right)
     \]%
-    Then, we can construct a rotation $R(t) \in \SO(n)$ as a block matrix that acts as a rotation by $\theta(t)$ in the plane spanned by $\{\u_1, \u_2\}$, and as the identity on the orthogonal complement. This defines a continuous path with $R(0) = I$ and $R(1) \v = \e_1$.
+    Then, we can construct a rotation $R(t) \in \SO(n)$ as a block matrix that
+    acts as a rotation by $\theta(t)$ in the plane spanned by $\{\u_1, \u_2\}$,
+    and as the identity on the orthogonal complement. This defines a continuous
+    path with $R(0) = I$ and $R(1) \v = \e_1$.
 
     We'll use induction to show that $\SO(n)$ is connected for all $n \ge 1$.
     The base case is trivial, which is trivially connected.
@@ -147,29 +156,40 @@
     Assume $\SO(n)$ is connected for some $n \geq 1$. We need to show that
     $\SO(n+1)$ is connected. Let $R \in \SO(n+1)$. Consider the first column of
     $R$, which is a unit vector $\v \in \R^{n+1}$.
+
+    {\color{red}I'm not sure how to proceed from here.}
   \end{proof}
 
   \begin{exercise}[12]
-    \textit{The polar decomposition of $\SL(n, \R)$.} Show that every element $A$ of $\SL(n, \R)$ can be written uniquely in the form $A = RH$, where $R \in \SO(n)$, and $H$ is a symmetric, positive-definite matrix with determinant one (That is, $H^T = H$, and $\langle \x, H\x \rangle \ge 0$ for all $\x \in \R^n$).
+    \textit{The polar decomposition of $\SL(n, \R)$.} Show that every element
+    $A$ of $\SL(n, \R)$ can be written uniquely in the form $A = RH$, where $R
+    \in \SO(n)$, and $H$ is a symmetric, positive-definite matrix with
+    determinant one (That is, $H^T = H$, and $\langle \x, H\x \rangle \ge 0$ for
+    all $\x \in \R^n$).
 
     \textit{Hint:} If $A$ could be written in this form, then we would have
     \[%
       A^TA = H^TR^TRH = HR^{-1}RH = H^2
     .\]%
-    Thus $H$ would have to be the unique positive-definite symmetric square root of $A^TA$.
+    Thus $H$ would have to be the unique positive-definite symmetric square root
+    of $A^TA$.
 
-    \textit{Note:} A similar argument gives polar decompositions for $\GL(n, \R)$, $\SL(n, \C)$, and $\GL(n, \C)$. For example, every element $A$ of $\SL(n, \C)$ can be written uniquely as $A = UH$, with $U \in \SU(n)$, and $H$ is a self-adjoint positive definite matrix with determinant one.
+    \textit{Note:} A similar argument gives polar decompositions for $\GL(n,
+    \R)$, $\SL(n, \C)$, and $\GL(n, \C)$. For example, every element $A$ of
+    $\SL(n, \C)$ can be written uniquely as $A = UH$, with $U \in \SU(n)$, and
+    $H$ is a self-adjoint positive definite matrix with determinant one.
   \end{exercise}
 
   \begin{proof}[Solution]
     Consider the matrix $A^T A$, which is symmetric and positive definite
     because for any nonzero vector $\x \in \R^n$, we have
     \[%
-      (A^T A)^T = (A)^T(A^T)^T = A^T A \aand \x^TA^TA\x = (A\x)^T(A\x) = \lVert A\x \rVert^2 > 0
+      (A^T A)^T = (A)^T(A^T)^T = A^T A \aand \x^T A^T A\x = (A\x)^T (A\x) = \lVert A\x \rVert^2 > 0
     .\]%
-    Since $A \in \SL(n, \R)$, we have $\det(A) = 1$, implying $\det(A^TA) = 1$
-    since determinant is multiplicative. By the spectral theorem, $A^T A$ has an
-    orthonormal eigenbasis with positive eigenvalues, so it admits a unique
+    Since $A \in \SL(n, \R)$, we have $\det(A) = 1$, implying $\det(A^T A) =
+    \det(A^T) \cdot \det(A) = 1 \cdot 1 = 1$ since determinant is
+    multiplicative. By the spectral theorem, $A^T A$ has an orthonormal
+    eigenbasis with positive eigenvalues, so it admits a unique
     positive-definite square root, denoted $H$, such that
     \[%
       H = \sqrt{A^T A} \implies H^2 = A^T A
@@ -178,21 +198,21 @@
     \[%
       R^T R = (H^{-1} A^T) (A H^{-1}) = H^{-1} A^T A H^{-1} = H^{-1} H^2 H^{-1} = I
     .\]%
-    % Thus, $R \in \SO(n)$ since $\det(R) = \sfrac{\det(A)}{\det(H)} =
-    % \sfrac{1}{1} = 1$, proving existence.
+    Thus, $R \in \SO(n)$ since $\det(R) = \sfrac{\det(A)}{\det(H)} =
+    \sfrac{1}{1} = 1$, proving existence.
 
-    % Suppose $A = R_1 H_1 = R_2 H_2$ are two such decompositions. Then,
-    % \[%
-    %   H_1^{-1} R_1^{-1} R_2 H_2 = I
-    % .\]%
-    % Multiplying on the right by $H_2^{-1}$ and on the left by $H_1$, we obtain
-    % \[%
-    %   H_1 H_1^{-1} R_1^{-1} R_2 H_2 H_2^{-1} = H_1 H_2^{-1} = I
-    % ,\]%
-    % so $H_1 = H_2$. This implies $R_1 = R_2$, proving uniqueness.
+    Suppose $A = R_1 H_1 = R_2 H_2$ are two such decompositions. Then,
+    \[%
+      H_1^{-1} R_1^{-1} R_2 H_2 = I
+    .\]%
+    Multiplying on the right by $H_2^{-1}$ and on the left by $H_1$, we obtain
+    \[%
+      H_1 H_1^{-1} R_1^{-1} R_2 H_2 H_2^{-1} = H_1 H_2^{-1} = I
+    ,\]%
+    so $H_1 = H_2$. This implies $R_1 = R_2$, proving uniqueness.
 
-    % Thus, every element of $\SL(n, \mathbb{R})$ has a unique polar
-    % decomposition.
+    Thus, every element of $\SL(n, \mathbb{R})$ has a unique polar
+    decomposition.
   \end{proof}
 
   \begin{exercise}[13]
@@ -203,6 +223,49 @@
     \textit{Hint:} Recall that if $H$ is a real, symmetric matrix, then there
     exists a \textit{real} orthogonal matrix $R_1$ such that $H = R_1DR_1^{-1}$,
     where $D$ is diagonal.
+  \end{exercise}
+
+  \begin{proof}[Solution]
+    Since we are dealing with $\SL(n, \R)$, we add the restriction that $H$ is
+    of determinant one. By the polar decomposition, we can write $A = RH$, where
+    $R \in \SO(n)$ and $H$ is a symmetric, positive-definite matrix with
+    determinant one.
+
+    Also, by the hint, we can write $H = R_1 D R_1^{-1}$, where $R_1 \in \Or(n)$
+    and $D$ is a diagonal matrix. The space of symmetric matrices with
+    determinant 1 that are also positive definite forms a connected space. This
+    follows because the space of positive-definite diagonal matrices with
+    determinant 1 is connected, and conjugation by an orthogonal matrix does not
+    change connectivity.
+
+    By exercise 11, we know that $\SO(n)$ is connected. Since each element in
+    $\SL(n, \R)$ can be written as $RH$, where $R \in \SO(n)$ and $H$ belongs to
+    a connected space, and the product of connected spaces is connected, we
+    conclude that $\SL(n, \R)$ is connected.
+  \end{proof}
+
+  \begin{exercise}[14]
+    \textit{The connectedness of $\GL(n, \R)^+$.} Show that $\GL(n, \R)^+$ is
+    connected.
+  \end{exercise}
+
+  \begin{proof}[Solution]
+    Consider any matrix $A \in \GL(n, \R)^+$.
+  \end{proof}
+
+  \begin{exercise}[15]
+    Show that the set of translations is a normal subgroup of the Euclidean
+    group, and also of the Poincar\'e group. Show that
+    $(\Ec(n)/\textrm{translations}) \cong \Or(n)$.
+  \end{exercise}
+
+  \begin{proof}[Solution]
+  \end{proof}
+
+  \begin{exercise}[16]
+    \textit{Harder.} Show that every Lie group homomorphism $\phi : \R \to S^1$
+    is of the form $\phi(x) = e^{iax}$ for some $a \in \R$. In particular, every
+    such homomorphism is smooth.
   \end{exercise}
 
   \begin{proof}[Solution]

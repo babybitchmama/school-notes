@@ -50,7 +50,7 @@ tmux new-session -d -s "$SESSION_NAME"
 #  Year 1  #
 ############
 
-# source ./University/Year-1/fall/.tmux
+source ./University/Year-1/fall/.tmux
 source ./University/Year-1/winter/.tmux
 # source ./University/Year-1/spring/.tmux
 
