@@ -1,253 +1,253 @@
-% \begin{problem}[1]
-%   Evaluate the line integral $\displaystyle\oint_C \FF \cdot \dd{\r}$
-%   \begin{enumerate}
-%     \item $\FF = \langle xy^2 + 4xy, 2y + x^2 \rangle$ and $C$ is the path $y =
-%       x^2$ from $(-2, 4)$ to $(1, 1)$ and the line segment from $(1, 1)$ to
-%       $(-2, 4)$.
+\begin{problem}[1]
+  Evaluate the line integral $\displaystyle\oint_C \FF \cdot \dd{\r}$
+  \begin{enumerate}
+    \item $\FF = \langle xy^2 + 4xy, 2y + x^2 \rangle$ and $C$ is the path $y =
+      x^2$ from $(-2, 4)$ to $(1, 1)$ and the line segment from $(1, 1)$ to
+      $(-2, 4)$.
 
-%     \item $\FF = \langle y\sin(x) - y^4, y^2 - \cos(x) \rangle$ and $C$ is the
-%       union of the half circle $y = \sqrt{4 - x^2}$ from $(2, 0)$ to $(-2, 0)$
-%       and the line segment from $(-2, 0)$ to $(2, 0)$.
-%   \end{enumerate}
-% \end{problem}
+    \item $\FF = \langle y\sin(x) - y^4, y^2 - \cos(x) \rangle$ and $C$ is the
+      union of the half circle $y = \sqrt{4 - x^2}$ from $(2, 0)$ to $(-2, 0)$
+      and the line segment from $(-2, 0)$ to $(2, 0)$.
+  \end{enumerate}
+\end{problem}
 
-% \begin{proof}[Solution to (i)]
-%   The region $D$ is the region enclosed by the path $y = x^2$ from $(-2, 4)$ to
-%   $(1, 1)$ and the line segment from $(1, 1)$ to $(-2, 4)$. The region $D$ is
-%   shown in Figure~\ref{fig:hw_07_1_i}.
-%   \begin{figure}[H]
-%     \centering
-%     \begin{tikzpicture}
-%       \begin{axis}[
-%         axis lines = center,
-%         xlabel = $x$,
-%         ylabel = $y$,
-%         xmin=-2.5, xmax=1.5,
-%         ymin=-0.5, ymax=4.5,
-%         xtick = {-2, 1},
-%         ytick = {1, 4},
-%         xticklabels = {$-2$, $1$},
-%         yticklabels = {$1$, $4$},
-%         legend pos = outer north east,
-%       ]
-%         \addplot[domain=-2:1, samples=1000] {x^2};
-%         \addplot[domain=1:-2, samples=1000] {x^2};
-%         \addplot[mark=*] coordinates {(-2, 4) (1, 1)};
-%         \addplot[mark=*] coordinates {(1, 1) (-2, 4)};
-%       \end{axis}
-%     \end{tikzpicture}
-%     \caption{Region $D$ for Problem~1(i)}
-%     \label{fig:hw_07_1_i}
-%   \end{figure}
-%   Since $D$ is positively oriented, piecewise-smooth, and simply connected, we
-%   can use Green's Theorem to evaluate the line integral, which states that
-%   \[%
-%     \oint_C \FF \cdot \dd{\r} = \iint_D \left(\pdv{Q}{x} - \pdv{P}{y}\right) \,\dA
-%   ,\]%
-%   where $P = xy^2 + 4xy$ and $Q = 2y + x^2$. We have
-%   \[%
-%     \pdv{Q}{x} - \pdv{P}{y} = \left(2x\right) - \left(2xy + 4x\right) = 2xy - 2x
-%   .\]%
+\begin{proof}[Solution to (i)]
+  The region $D$ is the region enclosed by the path $y = x^2$ from $(-2, 4)$ to
+  $(1, 1)$ and the line segment from $(1, 1)$ to $(-2, 4)$. The region $D$ is
+  shown in Figure~\ref{fig:hw_07_1_i}.
+  \begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+      \begin{axis}[
+        axis lines = center,
+        xlabel = $x$,
+        ylabel = $y$,
+        xmin=-2.5, xmax=1.5,
+        ymin=-0.5, ymax=4.5,
+        xtick = {-2, 1},
+        ytick = {1, 4},
+        xticklabels = {$-2$, $1$},
+        yticklabels = {$1$, $4$},
+        legend pos = outer north east,
+      ]
+        \addplot[domain=-2:1, samples=1000] {x^2};
+        \addplot[domain=1:-2, samples=1000] {x^2};
+        \addplot[mark=*] coordinates {(-2, 4) (1, 1)};
+        \addplot[mark=*] coordinates {(1, 1) (-2, 4)};
+      \end{axis}
+    \end{tikzpicture}
+    \caption{Region $D$ for Problem~1(i)}
+    \label{fig:hw_07_1_i}
+  \end{figure}
+  Since $D$ is positively oriented, piecewise-smooth, and simply connected, we
+  can use Green's Theorem to evaluate the line integral, which states that
+  \[%
+    \oint_C \FF \cdot \dd{\r} = \iint_D \left(\pdv{Q}{x} - \pdv{P}{y}\right) \,\dA
+  ,\]%
+  where $P = xy^2 + 4xy$ and $Q = 2y + x^2$. We have
+  \[%
+    \pdv{Q}{x} - \pdv{P}{y} = \left(2x\right) - \left(2xy + 4x\right) = 2xy - 2x
+  .\]%
 
-%   Finding the equation of the line segment from $(1, 1)$ to $(-2, 4)$, we have
-%   $y = -x + 2$. Therefore, we get the bounds for $x$ as $-2 \leq x \leq 1$ and
-%   $x^2 \leq y \leq -x + 2$. Therefore, we have
-%   \begin{align*}
-%     \oint_C \FF \cdot \dd{\r} &= \iint_D \left(\pdv{Q}{x} - \pdv{P}{y}\right) \,\dA \\
-%                               &= \int_{-2}^1 \int_{x^2}^{-x+2} 2xy - 2x \,\dy \,\dx \\
-%                               &= \int_{-2}^1 xy^2 - 2xy\bigg\vert_{x^2}^{-x+2} \,\dx \\
-%                               &= \int_{-2}^1 \left[x(-x + 2)^2 - 2x(-x + 2)\right] - \left[x(x^2)^2 - 2x(x^2)\right] \,\dx \\
-%                               &= \int_{-2}^1 \left[x^3 - 2x^2\right] - \left[x^5 - 2x^3\right] \,\dx \\
-%                               &= \int_{-2}^1 -x^5 + 3x^3 - 2x^2 \,\dx \\
-%                               &= -\frac{x^6}{6} + \frac{3x^4}{4} - \frac{2x^3}{3}\bigg\vert_{-2}^1 \\
-%                               &= \left[-\frac{(1)^6}{6} + \frac{3(1)^4}{4} - \frac{2(1)^3}{3}\right] - \left[-\frac{(-2)^6}{6} + \frac{3(-2)^4}{4} - \frac{2(-2)^3}{3}\right] \\
-%                               &= -\frac{27}{4}
-%   .\qedhere\end{align*}
-% \end{proof}
+  Finding the equation of the line segment from $(1, 1)$ to $(-2, 4)$, we have
+  $y = -x + 2$. Therefore, we get the bounds for $x$ as $-2 \leq x \leq 1$ and
+  $x^2 \leq y \leq -x + 2$. Therefore, we have
+  \begin{align*}
+    \oint_C \FF \cdot \dd{\r} &= \iint_D \left(\pdv{Q}{x} - \pdv{P}{y}\right) \,\dA \\
+                              &= \int_{-2}^1 \int_{x^2}^{-x+2} 2xy - 2x \,\dy \,\dx \\
+                              &= \int_{-2}^1 xy^2 - 2xy\bigg\vert_{x^2}^{-x+2} \,\dx \\
+                              &= \int_{-2}^1 \left[x(-x + 2)^2 - 2x(-x + 2)\right] - \left[x(x^2)^2 - 2x(x^2)\right] \,\dx \\
+                              &= \int_{-2}^1 \left[x^3 - 2x^2\right] - \left[x^5 - 2x^3\right] \,\dx \\
+                              &= \int_{-2}^1 -x^5 + 3x^3 - 2x^2 \,\dx \\
+                              &= -\frac{x^6}{6} + \frac{3x^4}{4} - \frac{2x^3}{3}\bigg\vert_{-2}^1 \\
+                              &= \left[-\frac{(1)^6}{6} + \frac{3(1)^4}{4} - \frac{2(1)^3}{3}\right] - \left[-\frac{(-2)^6}{6} + \frac{3(-2)^4}{4} - \frac{2(-2)^3}{3}\right] \\
+                              &= -\frac{27}{4}
+  .\qedhere\end{align*}
+\end{proof}
 
-% \begin{proof}[Solution to (ii)]
-%   The region $D$ is the region enclosed by the half circle $y = \sqrt{4 - x^2}$
-%   from $(2, 0)$ to $(-2, 0)$ and the line segment from $(-2, 0)$ to $(2, 0)$.
-%   The region $D$ is shown in Figure~\ref{fig:hw_07_1_ii}.
-%   \begin{figure}[H]
-%     \centering
-%     \begin{tikzpicture}
-%       \begin{axis}[
-%         axis lines = center,
-%         xlabel = $x$,
-%         ylabel = $y$,
-%         xmin=-2.5, xmax=2.5,
-%         ymin=-0.5, ymax=2.5,
-%         xtick = {-2, 2},
-%         ytick = {2},
-%         xticklabels = {$-2$, $2$},
-%         yticklabels = {$2$},
-%         legend pos = outer north east,
-%       ]
-%         \addplot[domain=-2:2, samples=1000] {sqrt(4 - x^2)};
-%         \addplot[domain=2:-2, samples=1000] {sqrt(4 - x^2)};
-%         \addplot[mark=*] coordinates {(2, 0) (-2, 0)};
-%       \end{axis}
-%     \end{tikzpicture}
-%     \caption{Region $D$ for Problem~1(ii)}
-%     \label{fig:hw_07_1_ii}
-%   \end{figure}
-%   Since $D$ is positively oriented, piecewise-smooth, and simply connected, we
-%   can use Green's Theorem to evaluate the line integral, which states that
-%   \[%
-%     \oint_C \FF \cdot \dd{\r} = \iint_D \left(\pdv{Q}{x} - \pdv{P}{y}\right) \,\dA
-%   ,\]%
-%   where $P = y\sin(x) - y^4$ and $Q = y^2 - \cos(x)$. We have
-%   \[%
-%     \pdv{Q}{x} - \pdv{P}{y} = \left(\sin(x)\right) - \left(\sin(x) - 4y^3\right) = -4y^3 = -4r^3\sin^3(\theta)
-%   .\]%
+\begin{proof}[Solution to (ii)]
+  The region $D$ is the region enclosed by the half circle $y = \sqrt{4 - x^2}$
+  from $(2, 0)$ to $(-2, 0)$ and the line segment from $(-2, 0)$ to $(2, 0)$.
+  The region $D$ is shown in Figure~\ref{fig:hw_07_1_ii}.
+  \begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+      \begin{axis}[
+        axis lines = center,
+        xlabel = $x$,
+        ylabel = $y$,
+        xmin=-2.5, xmax=2.5,
+        ymin=-0.5, ymax=2.5,
+        xtick = {-2, 2},
+        ytick = {2},
+        xticklabels = {$-2$, $2$},
+        yticklabels = {$2$},
+        legend pos = outer north east,
+      ]
+        \addplot[domain=-2:2, samples=1000] {sqrt(4 - x^2)};
+        \addplot[domain=2:-2, samples=1000] {sqrt(4 - x^2)};
+        \addplot[mark=*] coordinates {(2, 0) (-2, 0)};
+      \end{axis}
+    \end{tikzpicture}
+    \caption{Region $D$ for Problem~1(ii)}
+    \label{fig:hw_07_1_ii}
+  \end{figure}
+  Since $D$ is positively oriented, piecewise-smooth, and simply connected, we
+  can use Green's Theorem to evaluate the line integral, which states that
+  \[%
+    \oint_C \FF \cdot \dd{\r} = \iint_D \left(\pdv{Q}{x} - \pdv{P}{y}\right) \,\dA
+  ,\]%
+  where $P = y\sin(x) - y^4$ and $Q = y^2 - \cos(x)$. We have
+  \[%
+    \pdv{Q}{x} - \pdv{P}{y} = \left(\sin(x)\right) - \left(\sin(x) - 4y^3\right) = -4y^3 = -4r^3\sin^3(\theta)
+  .\]%
 
-%   Converting to polar coordinates, we get the bounds $0 \le r \le 2$ and $0 \le
-%   \theta \le \pi$.
-%   \begin{align*}
-%     \oint_C \FF \cdot \dd{\r} &= \iint_D \left(\pdv{Q}{x} - \pdv{P}{y}\right) \,\dA \\
-%                               &= \int_0^\pi \int_0^2 -4r^3\sin^3(\theta) \cdot r \,\dr \,\dd{\theta} \\
-%                               &= -4\int_0^\pi \sin^3(\theta) \,\dd{\theta} \cdot \int_0^2 r^4 \,\dr \\
-%                               &= \left(-4 \cdot \frac{32}{5}\right) \cdot \int_0^\pi \sin(\theta)(1 - \cos^2(\theta)) \,\dd{\theta}
-%   .\end{align*}
-%   Using the substitution $u = \cos(\theta)$, we get $\du = -\sin(\theta) \,\dt$.
-%   The bounds for $u$ are $u(0) = 1$ and $u(\pi) = -1$. Therefore, we have
-%   \begin{align*}
-%     \oint_C \FF \cdot \dd{\r} &= \left(-4 \cdot \frac{32}{5}\right) \cdot \int_0^\pi \sin(\theta)(1 - \cos^2(\theta)) \,\dd{\theta} \\
-%                               &= -\frac{128}{5} \cdot \int_1^{-1} - 1 + u^2 \,\du \\
-%                               &= -\frac{128}{5} \cdot \int_{-1}^1 1 - u^2 \,\du \\
-%                               &= -\frac{128}{5} \cdot \left(u - \frac{u^3}{3} \bigg\vert_{-1}^1\right) \\
-%                               &= -\frac{128}{5} \cdot \left(\left[1 - \frac{1}{3}\right] - \left[-1 + \frac{1}{3}\right]\right) \\
-%                               &= -\frac{128}{5} \cdot \left(2 - \frac{2}{3}\right) = -\frac{512}{15}
-%   .\qedhere\end{align*}
-% \end{proof}
+  Converting to polar coordinates, we get the bounds $0 \le r \le 2$ and $0 \le
+  \theta \le \pi$.
+  \begin{align*}
+    \oint_C \FF \cdot \dd{\r} &= \iint_D \left(\pdv{Q}{x} - \pdv{P}{y}\right) \,\dA \\
+                              &= \int_0^\pi \int_0^2 -4r^3\sin^3(\theta) \cdot r \,\dr \,\dd{\theta} \\
+                              &= -4\int_0^\pi \sin^3(\theta) \,\dd{\theta} \cdot \int_0^2 r^4 \,\dr \\
+                              &= \left(-4 \cdot \frac{32}{5}\right) \cdot \int_0^\pi \sin(\theta)(1 - \cos^2(\theta)) \,\dd{\theta}
+  .\end{align*}
+  Using the substitution $u = \cos(\theta)$, we get $\du = -\sin(\theta) \,\dt$.
+  The bounds for $u$ are $u(0) = 1$ and $u(\pi) = -1$. Therefore, we have
+  \begin{align*}
+    \oint_C \FF \cdot \dd{\r} &= \left(-4 \cdot \frac{32}{5}\right) \cdot \int_0^\pi \sin(\theta)(1 - \cos^2(\theta)) \,\dd{\theta} \\
+                              &= -\frac{128}{5} \cdot \int_1^{-1} - 1 + u^2 \,\du \\
+                              &= -\frac{128}{5} \cdot \int_{-1}^1 1 - u^2 \,\du \\
+                              &= -\frac{128}{5} \cdot \left(u - \frac{u^3}{3} \bigg\vert_{-1}^1\right) \\
+                              &= -\frac{128}{5} \cdot \left(\left[1 - \frac{1}{3}\right] - \left[-1 + \frac{1}{3}\right]\right) \\
+                              &= -\frac{128}{5} \cdot \left(2 - \frac{2}{3}\right) = -\frac{512}{15}
+  .\qedhere\end{align*}
+\end{proof}
 
-% \begin{problem}[2]
-%   If a closed and bounded region, $D$, has a constant density, $\rho$, then the
-%   center of mass is called the centroid.
-%   \begin{enumerate}
-%     \item Use Green’s Theorem to show that the centroid of $D$ has coordinates
-%       \[%
-%         \bar{x} = \frac{1}{2A}\oint_C x^2 \,\dy \aand \bar{y} = -\frac{1}{2A}\oint_C y^2 \,\dx
-%       ,\]%
-%       where $A$ is the area of $D$ and $C$ is the closed boundary of $D$ with
-%       positive orientation.
+\begin{problem}[2]
+  If a closed and bounded region, $D$, has a constant density, $\rho$, then the
+  center of mass is called the centroid.
+  \begin{enumerate}
+    \item Use Green’s Theorem to show that the centroid of $D$ has coordinates
+      \[%
+        \bar{x} = \frac{1}{2A}\oint_C x^2 \,\dy \aand \bar{y} = -\frac{1}{2A}\oint_C y^2 \,\dx
+      ,\]%
+      where $A$ is the area of $D$ and $C$ is the closed boundary of $D$ with
+      positive orientation.
 
-%     \item Use these line integrals to find the centroid of the quarter circular
-%       region $D = \{(x, y) \mid x^2 + y^2 \le a^2, x \ge 0, y \ge 0\}$.
-%   \end{enumerate}
-% \end{problem}
+    \item Use these line integrals to find the centroid of the quarter circular
+      region $D = \{(x, y) \mid x^2 + y^2 \le a^2, x \ge 0, y \ge 0\}$.
+  \end{enumerate}
+\end{problem}
 
-% \begin{proof}[Solution to (i)]
-%   The centroid $(\bar{x}, \bar{y})$ of a region $D$ with uniform density is
-%   given by by
-%   \[%
-%     \bar{x} = \frac{1}{A} \iint_D x \,\dA \aand \bar{y} = \frac{1}{A} \iint_D y \,\dA
-%   .\]%
-%   Converting the double integral for $\bar{x}$ to a line integral, we set $P =
-%   0$ and $Q = \sfrac{x^2}{2}$. Therefore, we have
-%   \[%
-%     \pdv{Q}{x} - \pdv{P}{y} = x
-%   .\]%
-%   Therefore,
-%   \[%
-%     \bar{x} = \frac{1}{A} \iint_D x \,\dA = \frac{1}{2A} \oint_C x^2 \,\dy
-%   .\]%
+\begin{proof}[Solution to (i)]
+  The centroid $(\bar{x}, \bar{y})$ of a region $D$ with uniform density is
+  given by by
+  \[%
+    \bar{x} = \frac{1}{A} \iint_D x \,\dA \aand \bar{y} = \frac{1}{A} \iint_D y \,\dA
+  .\]%
+  Converting the double integral for $\bar{x}$ to a line integral, we set $P =
+  0$ and $Q = \sfrac{x^2}{2}$. Therefore, we have
+  \[%
+    \pdv{Q}{x} - \pdv{P}{y} = x
+  .\]%
+  Therefore,
+  \[%
+    \bar{x} = \frac{1}{A} \iint_D x \,\dA = \frac{1}{2A} \oint_C x^2 \,\dy
+  .\]%
 
-%   Similarly, converting the double integral for $\bar{y}$ to a line integral, we
-%   set $P = \sfrac{y^2}{2}$ and $Q = 0$. Therefore, we have
-%   \[%
-%     \pdv{Q}{x} - \pdv{P}{y} = -y
-%   .\]%
-%   Therefore, we have
-%   \[%
-%     \bar{y} = \frac{1}{A} \iint_D y \,\dA = -\frac{1}{2A} \oint_C y^2 \,\dx
-%   .\]%
+  Similarly, converting the double integral for $\bar{y}$ to a line integral, we
+  set $P = \sfrac{y^2}{2}$ and $Q = 0$. Therefore, we have
+  \[%
+    \pdv{Q}{x} - \pdv{P}{y} = -y
+  .\]%
+  Therefore, we have
+  \[%
+    \bar{y} = \frac{1}{A} \iint_D y \,\dA = -\frac{1}{2A} \oint_C y^2 \,\dx
+  .\]%
 
-%   Therefore, the centroid of $D$ has coordinates
-%   \[%
-%     \bar{x} = \frac{1}{A} \iint_D x \,\dA = \frac{1}{2A}\oint_C x^2 \,\dy \aand \bar{y} = \frac{1}{A} \iint_D y \,\dA = -\frac{1}{2A}\oint_C y^2 \,\dx
-%   .\qedhere\]%
-% \end{proof}
+  Therefore, the centroid of $D$ has coordinates
+  \[%
+    \bar{x} = \frac{1}{A} \iint_D x \,\dA = \frac{1}{2A}\oint_C x^2 \,\dy \aand \bar{y} = \frac{1}{A} \iint_D y \,\dA = -\frac{1}{2A}\oint_C y^2 \,\dx
+  .\qedhere\]%
+\end{proof}
 
-% \begin{proof}[Solution to (ii)]
-%   The region $D$ is the quarter circular region $D = \{(x, y) \mid x^2 + y^2
-%   \le a^2, x \ge 0, y \ge 0\}$. The region $D$ is shown in
-%   Figure~\ref{fig:hw_07_2_ii}.
-%   \begin{figure}[H]
-%     \centering
-%     \begin{tikzpicture}
-%       \begin{axis}[
-%         axis lines = center,
-%         xlabel = $x$,
-%         ylabel = $y$,
-%         xmin=-0.5, xmax=2.5,
-%         ymin=-0.5, ymax=2.5,
-%         xtick = {2},
-%         ytick = {2},
-%         xticklabels = {$a$},
-%         yticklabels = {$a$},
-%         legend pos = outer north east,
-%       ]
-%         \addplot[domain=0:2, samples=1000] {sqrt(4 - x^2)};
-%       \end{axis}
-%     \end{tikzpicture}
-%     \caption{Region $D$ for Problem~2(ii)}
-%     \label{fig:hw_07_2_ii}
-%   \end{figure}
+\begin{proof}[Solution to (ii)]
+  The region $D$ is the quarter circular region $D = \{(x, y) \mid x^2 + y^2
+  \le a^2, x \ge 0, y \ge 0\}$. The region $D$ is shown in
+  Figure~\ref{fig:hw_07_2_ii}.
+  \begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+      \begin{axis}[
+        axis lines = center,
+        xlabel = $x$,
+        ylabel = $y$,
+        xmin=-0.5, xmax=2.5,
+        ymin=-0.5, ymax=2.5,
+        xtick = {2},
+        ytick = {2},
+        xticklabels = {$a$},
+        yticklabels = {$a$},
+        legend pos = outer north east,
+      ]
+        \addplot[domain=0:2, samples=1000] {sqrt(4 - x^2)};
+      \end{axis}
+    \end{tikzpicture}
+    \caption{Region $D$ for Problem~2(ii)}
+    \label{fig:hw_07_2_ii}
+  \end{figure}
 
-%   The area of $D$ is $A = \sfrac{\pi a^2}{4}$.
+  The area of $D$ is $A = \sfrac{\pi a^2}{4}$.
 
-%   We break the boundary of $D$ into three parts: $C_1$ is the circular arc $r =
-%   a$, $C_2$ is the line segment $y = 0$, and $C_3$ is the line segment $x = 0$.
-%   Note that the paths $C_2$ and $C_3$ don't contribute to the line integrals for
-%   the centroid. We know that $x = a\cos(\theta)$ and $y = a\sin(\theta)$, giving
-%   us the differential $\dy = a\cos(\theta) \,\dd{\theta}$. The bounds are
-%   clearly $0 \le \theta \le \sfrac{\pi}{2}$. Substituting these into the line
-%   integrals for the centroid, we get
-%   \begin{align*}
-%     \oint_{C_1} x^2 \,\dy &= \int_0^{\sfrac{\pi}{2}} (a\cos(\theta))^2 \cdot a\cos(\theta) \,\dd{\theta} \\
-%                           &= a^3 \int_0^{\sfrac{\pi}{2}} \cos^3(\theta) \,\dd{\theta} \\
-%                           &= a^3 \int_0^{\sfrac{\pi}{2}} \cos(\theta)(1 - \sin^2(\theta)) \,\dd{\theta} \\
-%   .\end{align*}
-%   Using the substitution $u = \sin(\theta)$, we get $\du = \cos(\theta) \,\dt$.
-%   The bounds for $u$ are $u(0) = 0$ and $u\left(\sfrac{\pi}{2}\right) = 1$.
-%   Therefore, we have
-%   \begin{align*}
-%     \oint_{C_1} x^2 \,\dy &= a^3 \int_0^{\sfrac{\pi}{2}} \cos(\theta)(1 - \sin^2(\theta)) \,\dd{\theta} \\
-%                           &= a^3 \int_0^1 (1 - u^2) \,\du \\
-%                           &= a^3 \left(u - \frac{u^3}{3} \bigg\vert_0^1\right) \\
-%                           &= a^3 \left(1 - \frac{1}{3}\right) = \frac{2a^3}{3}
-%   .\end{align*}
-%   Therefore, the center for the $x$-coordinate is
-%   \[%
-%     \bar{x} = \frac{1}{2A} \oint_C x^2 \,\dy = \frac{1}{2 \cdot \sfrac{\pi a^2}{4}} \cdot \frac{2a^3}{3} = \frac{4a}{3\pi}
-%   .\]%
-%   Similarly, we have
-%   \begin{align*}
-%     \oint_{C_1} y^2 \,\dx &= \int_0^{\sfrac{\pi}{2}} (a\sin(\theta))^2 \cdot -a\sin(\theta) \,\dd{\theta} \\
-%                           &= -a^3 \int_0^{\sfrac{\pi}{2}} \sin^3(\theta) \,\dd{\theta} \\
-%                           &= -a^3 \int_0^{\sfrac{\pi}{2}} \sin(\theta)(1 - \cos^2(\theta)) \,\dd{\theta}
-%   .\end{align*}
-%   Using the substitution $u = \cos(\theta)$, we get $\du = -\sin(\theta) \,\dt$.
-%   The bounds for $u$ are $u(0) = 1$ and $u\left(\sfrac{\pi}{2}\right) = 0$.
-%   Therefore, we have
-%   \begin{align*}
-%     \oint_{C_1} y^2 \,\dx &= -a^3 \int_0^{\sfrac{\pi}{2}} \sin(\theta)(1 - \cos^2(\theta)) \,\dd{\theta} \\
-%                           &= -a^3 \int_1^0 1 - u^2 \,\du \\
-%                           &= -a^3 \left(u - \frac{u^3}{3} \bigg\vert_1^0\right) \\
-%                           &= -a^3 \left(0 - \frac{0^3}{3} - 1 + \frac{1^3}{3}\right) \\
-%                           &= -a^3 \left(-\frac{1}{3}\right) = \frac{a^3}{3}
-%   .\end{align*}
-%   Therefore, the center for the $y$-coordinate is
-%   \[%
-%     \bar{y} = -\frac{1}{2A} \oint_C y^2 \,\dx = -\frac{1}{2 \cdot \sfrac{\pi a^2}{4}} \cdot \left(-\frac{a^3}{3}\right) = \frac{4a}{3\pi}
-%   .\]%
-%   Therefore, the centroid of the quarter circular region $D$ is
-%   \[%
-%     \left(\frac{4a}{3\pi}, \frac{4a}{3\pi}\right)
-%   .\qedhere\]%
-% \end{proof}
+  We break the boundary of $D$ into three parts: $C_1$ is the circular arc $r =
+  a$, $C_2$ is the line segment $y = 0$, and $C_3$ is the line segment $x = 0$.
+  Note that the paths $C_2$ and $C_3$ don't contribute to the line integrals for
+  the centroid. We know that $x = a\cos(\theta)$ and $y = a\sin(\theta)$, giving
+  us the differential $\dy = a\cos(\theta) \,\dd{\theta}$. The bounds are
+  clearly $0 \le \theta \le \sfrac{\pi}{2}$. Substituting these into the line
+  integrals for the centroid, we get
+  \begin{align*}
+    \oint_{C_1} x^2 \,\dy &= \int_0^{\sfrac{\pi}{2}} (a\cos(\theta))^2 \cdot a\cos(\theta) \,\dd{\theta} \\
+                          &= a^3 \int_0^{\sfrac{\pi}{2}} \cos^3(\theta) \,\dd{\theta} \\
+                          &= a^3 \int_0^{\sfrac{\pi}{2}} \cos(\theta)(1 - \sin^2(\theta)) \,\dd{\theta}
+  .\end{align*}
+  Using the substitution $u = \sin(\theta)$, we get $\du = \cos(\theta) \,\dt$.
+  The bounds for $u$ are $u(0) = 0$ and $u\left(\sfrac{\pi}{2}\right) = 1$.
+  Therefore, we have
+  \begin{align*}
+    \oint_{C_1} x^2 \,\dy &= a^3 \int_0^{\sfrac{\pi}{2}} \cos(\theta)(1 - \sin^2(\theta)) \,\dd{\theta} \\
+                          &= a^3 \int_0^1 (1 - u^2) \,\du \\
+                          &= a^3 \left(u - \frac{u^3}{3} \bigg\vert_0^1\right) \\
+                          &= a^3 \left(1 - \frac{1}{3}\right) = \frac{2a^3}{3}
+  .\end{align*}
+  Therefore, the center for the $x$-coordinate is
+  \[%
+    \bar{x} = \frac{1}{2A} \oint_C x^2 \,\dy = \frac{1}{2 \cdot \sfrac{\pi a^2}{4}} \cdot \frac{2a^3}{3} = \frac{4a}{3\pi}
+  .\]%
+  Similarly, we have
+  \begin{align*}
+    \oint_{C_1} y^2 \,\dx &= \int_0^{\sfrac{\pi}{2}} (a\sin(\theta))^2 \cdot -a\sin(\theta) \,\dd{\theta} \\
+                          &= -a^3 \int_0^{\sfrac{\pi}{2}} \sin^3(\theta) \,\dd{\theta} \\
+                          &= -a^3 \int_0^{\sfrac{\pi}{2}} \sin(\theta)(1 - \cos^2(\theta)) \,\dd{\theta}
+  .\end{align*}
+  Using the substitution $u = \cos(\theta)$, we get $\du = -\sin(\theta) \,\dt$.
+  The bounds for $u$ are $u(0) = 1$ and $u\left(\sfrac{\pi}{2}\right) = 0$.
+  Therefore, we have
+  \begin{align*}
+    \oint_{C_1} y^2 \,\dx &= -a^3 \int_0^{\sfrac{\pi}{2}} \sin(\theta)(1 - \cos^2(\theta)) \,\dd{\theta} \\
+                          &= -a^3 \int_1^0 1 - u^2 \,\du \\
+                          &= -a^3 \left(u - \frac{u^3}{3} \bigg\vert_1^0\right) \\
+                          &= -a^3 \left(0 - \frac{0^3}{3} - 1 + \frac{1^3}{3}\right) \\
+                          &= -a^3 \left(-\frac{1}{3}\right) = \frac{a^3}{3}
+  .\end{align*}
+  Therefore, the center for the $y$-coordinate is
+  \[%
+    \bar{y} = -\frac{1}{2A} \oint_C y^2 \,\dx = -\frac{1}{2 \cdot \sfrac{\pi a^2}{4}} \cdot \left(-\frac{a^3}{3}\right) = \frac{4a}{3\pi}
+  .\]%
+  Therefore, the centroid of the quarter circular region $D$ is
+  \[%
+    \left(\frac{4a}{3\pi}, \frac{4a}{3\pi}\right)
+  .\qedhere\]%
+\end{proof}
 
 \begin{problem}[3]
   Find parametric equations and the parameter domain that define the following
@@ -266,132 +266,149 @@
   \end{enumerate}
 \end{problem}
 
-% \begin{proof}[Solution to (i)]
-%   The equation has a radius of $r = 2$ centered at the origin and the given
-%   constraints are $z = -1$ and $z = \sqrt{3}$, which define a spherical cap.
-%   Using spherical coordinates, we have
-%   \[%
-%     x = 2 \sin(\theta)\cos(\phi), \quad y = 2 \sin(\theta)\sin(\phi), \aand z = 2 \cos(\theta)
-%   .\]%
-%   From $z = 2 \cos(\theta)$, we set bounds for $\theta$ using
-%   \begin{alignat*}{5}
-%     -1 &= 2 \cos(\theta) &&\implies \cos(\theta) &&= -\frac{1}{2} &&\implies \theta &&= \frac{2\pi}{3} \\
-%     \sqrt{3} &= 2 \cos(\theta) &&\implies \cos(\theta) &&= \frac{\sqrt{3}}{2} &&\implies \theta &&= \frac{\pi}{6}
-%   .\end{alignat*}
-%   Thus, we get the bounds $\sfrac{\pi}{6} \le \theta \le \sfrac{2\pi}{3}$ and $0
-%   \le \phi \le 2\pi$.
-
-%   We know that
-%   \begin{align*}
-%     \r_\theta &= \left\langle \pdv{x}{\theta}, \pdv{y}{\theta}, \pdv{z}{\theta} \right\rangle = \langle 2\cos(\theta)\cos(\phi), 2\cos(\theta)\sin(\phi), -2\sin(\theta) \rangle \\
-%     \r_\phi &= \left\langle \pdv{x}{\phi}, \pdv{y}{\phi}, \pdv{z}{\phi} \right\rangle = \langle -2\sin(\theta)\sin(\phi), 2\sin(\theta)\cos(\phi), 0 \rangle
-%   .\end{align*}
-%   The normal vector is
-%   \begin{align*}
-%     \mathbf{N} &= \r_\theta \times \r_\phi = \begin{vmatrix}
-%       \mathbf{i} & \mathbf{j} & \mathbf{k} \\
-%       2\cos(\theta)\cos(\phi) & 2\cos(\theta)\sin(\phi) & -2\sin(\theta) \\
-%       -2\sin(\theta)\sin(\phi) & 2\sin(\theta)\cos(\phi) & 0
-%     \end{vmatrix} \\
-%                &= \langle (2\cos(\theta)\sin(\phi))(0) - (-2\sin(\theta))(2\sin(\theta)\cos(\phi)), \\
-%                &\quad-\left[(2\cos(\theta)\cos(\phi))(0) - (-2\sin(\theta))(-2\sin(\theta)\sin(\phi))\right], \\
-%                &\quad(2\cos(\theta)\cos(\phi))(2\sin(\theta)\cos(\phi)) - (2\cos(\theta)\sin(\phi))(-2\sin(\theta)\sin(\phi)) \rangle \\
-%                &= \langle 4\sin^2(\theta)\cos(\phi), 4\sin^2(\theta)\sin(\phi), 4\cos(\theta)\sin(\theta)\cos^2(\phi) + 4\cos(\theta)\sin(\theta)\sin^2(\phi) \rangle
-%   .\end{align*}
-%   The magnitude of the normal vector is
-%   \begin{align*}
-%     \lvert \r_\theta \times \r_\phi \rvert &= \sqrt{\left(4\sin^2(\theta)\cos(\phi)\right)^2 + \left(4\sin^2(\theta)\sin(\phi)\right)^2 + \left(4\cos(\theta)\sin(\theta)\cos^2(\phi) + 4\cos(\theta)\sin(\theta)\sin^2(\phi)\right)^2} \\
-%                                            &= \sqrt{16\sin^4(\theta)\cos^2(\phi) + 16\sin^4(\theta)\sin^2(\phi) + 16\cos^2(\theta)\sin^2(\theta)} \\
-%                                            &= 4\sqrt{\sin^2(\theta)\left(\sin^2(\theta)\cos^2(\phi) + \sin^2(\theta)\sin^2(\phi) + \cos^2(\theta)\right)} \\
-%                                            &= 4\sin(\theta)\sqrt{\sin^2(\theta)\cos^2(\phi) + \sin^2(\theta)\sin^2(\phi) + \cos^2(\theta)} \\
-%                                            &= 4\sin(\theta)\sqrt{\sin^2(\theta)\left(\cos^2(\phi) + \sin^2(\phi)\right) + \cos^2(\theta)} \\
-%                                            &= 4\sin(\theta)\sqrt{\sin^2(\theta) + \cos^2(\theta)} \\
-%                                            &= 4\sin(\theta)
-%   .\end{align*}
-%   Therefore, the surface area element is
-%   \[%
-%     \dS = \lvert \r_\theta \times \r_\phi \rvert \,\dA = 4\sin(\theta) \,\dd{\theta} \,\dd{\phi}
-%   .\]%
-%   The surface area integral is
-%   \begin{align*}
-%     A &= \int_{\pi/6}^{2\pi/3} \int_0^{2\pi} 4\sin(\theta) \,\dd{\theta} \,\dd{\phi} \\
-%       &= 4 \int_{\pi/6}^{2\pi/3} \sin(\theta) \,\dd{\theta} \int_0^{2\pi} \,\dd{\phi} \\
-%       &= -8\pi \cos(\theta)\bigg\vert_{\pi/6}^{2\pi/3} \\
-%       &= -8\pi \left(\cos\left(\frac{2\pi}{3}\right) - \cos\left(\frac{\pi}{6}\right)\right) \\
-%       &= -8\pi \left(-\frac{1}{2} - \frac{\sqrt{3}}{2}\right) \\
-%       &= 4\pi + 4\sqrt{3}\pi
-%   .\qedhere\end{align*}
-% \end{proof}
-
-% \begin{proof}[Solution to (ii)]
-%   Using cylindrical coordinates, we have
-%   \[%
-%     x = r^2, \quad y = r\cos(\theta), \aand z = r\sin(\theta)
-%   ,\]%
-%   we get the parametric equation for the surface area as
-%   \[%
-%     \r = \langle r^2, r\cos(\theta), r\sin(\theta) \rangle
-%   .\]%
-%   The bounds for $r$ are $0 \le r \le 4$ and $0 \le \theta \le 2\pi$.
-
-%   We know that
-%   \begin{align*}
-%     \r_r &= \left\langle \pdv{x}{r}, \pdv{y}{r}, \pdv{z}{r} \right\rangle = \langle 2r, \cos(\theta), \sin(\theta) \rangle \\
-%     \r_\theta &= \left\langle \pdv{x}{\theta}, \pdv{y}{\theta}, \pdv{z}{\theta} \right\rangle = \langle 0, -r\sin(\theta), r\cos(\theta) \rangle
-%   .\end{align*}
-%   The normal vector is
-%   \begin{align*}
-%     \mathbf{N} &= \r_r \times \r_\theta = \begin{vmatrix}
-%       \mathbf{i} & \mathbf{j} & \mathbf{k} \\
-%       2r & \cos(\theta) & \sin(\theta) \\
-%       0 & -r\sin(\theta) & r\cos(\theta)
-%     \end{vmatrix} \\
-%                &= \langle (\cos(\theta))(r\cos(\theta)) - (\sin(\theta))(-r\sin(\theta)), -\left[(2r)(r\cos(\theta)) - (\sin(\theta))(0)\right], 2r(-r\sin(\theta)) - (\sin(\theta))(0) \rangle \\
-%                &= \langle r\cos^2(\theta) + r\sin^2(\theta), -2r^2\cos(\theta), 2r^2\sin(\theta) \rangle \\
-%                &= \langle r, -2r\cos(\theta), 2r^2\sin(\theta) \rangle
-%   \end{align*}
-%   The magnitude of the normal vector is
-%   \begin{align*}
-%     \lvert \r_r \times \r_\theta \rvert &= \sqrt{r^2 + 4r^2\cos^2(\theta) + 4r^2\sin^2(\theta)} \\
-%                                          &= \sqrt{r^2 + 4r^2} = \sqrt{5r^2} = r\sqrt{5}
-%   .\end{align*}
-%   Therefore, the surface area element is
-%   \[%
-%     \dS = \lvert \r_r \times \r_\theta \rvert \,\dA = r\sqrt{5} \,\dr \,\dd{\theta}
-%   .\]%
-%   The surface area integral is
-%   \begin{align*}
-%     A &= \int_0^{2\pi} \int_0^4 r\sqrt{5} \,\dr \,\dd{\theta} \\
-%       &= \sqrt{5} \int_0^{2\pi} \,\dd{\theta} \cdot \int_0^4 r \,\dr \\
-%       &= 2\pi\sqrt{5} \cdot \frac{4^2}{2} = 16\pi\sqrt{5}
-%   .\qedhere\end{align*}
-% \end{proof}
-
-\begin{proof}[Solution to (iii)]
-  Using cylindrical coordinates, we have
+\begin{proof}[Solution to (i)]
+  The equation has a radius of $r = 2$ centered at the origin and the given
+  constraints are $z = -1$ and $z = \sqrt{3}$, which define a spherical cap.
+  Using spherical coordinates, we have
   \[%
-    x = r\cos(\theta), \quad y = y, \aand z = r\sin(\theta)
-  ,\]%
-  we get the parametric equation for the surface area as
-  \[%
-    \r = \langle 2\cos(\theta), y, 2\sin(\theta) \rangle
+    x = 2 \sin(\theta)\cos(\phi), \quad y = 2 \sin(\theta)\sin(\phi), \aand z = 2 \cos(\theta)
   .\]%
-  The bounds for $y$ is $-2 \le y \le 2$ and $0 \le \theta \le 2\pi$.
+  From $z = 2 \cos(\theta)$, we set bounds for $\theta$ using
+  \begin{alignat*}{5}
+    -1 &= 2 \cos(\theta) &&\implies \cos(\theta) &&= -\frac{1}{2} &&\implies \theta &&= \frac{2\pi}{3} \\
+    \sqrt{3} &= 2 \cos(\theta) &&\implies \cos(\theta) &&= \frac{\sqrt{3}}{2} &&\implies \theta &&= \frac{\pi}{6}
+  .\end{alignat*}
+  Thus, we get the bounds $\sfrac{\pi}{6} \le \theta \le \sfrac{2\pi}{3}$ and $0
+  \le \phi \le 2\pi$.
 
   We know that
   \begin{align*}
-    \r_r &= \left\langle \pdv{x}{r}, \pdv{y}{r}, \pdv{z}{r} \right\rangle = \langle \cos(\theta), 0, \sin(\theta) \rangle \\
-    \r_\theta &= \left\langle \pdv{x}{\theta}, \pdv{y}{\theta}, \pdv{z}{\theta} \right\rangle = \langle -r\sin(\theta), 0, r\cos(\theta) \rangle
+    \r_\theta &= \left\langle \pdv{x}{\theta}, \pdv{y}{\theta}, \pdv{z}{\theta} \right\rangle = \langle 2\cos(\theta)\cos(\phi), 2\cos(\theta)\sin(\phi), -2\sin(\theta) \rangle \\
+    \r_\phi &= \left\langle \pdv{x}{\phi}, \pdv{y}{\phi}, \pdv{z}{\phi} \right\rangle = \langle -2\sin(\theta)\sin(\phi), 2\sin(\theta)\cos(\phi), 0 \rangle
+  .\end{align*}
+  The normal vector is
+  \begin{align*}
+    \mathbf{N} &= \r_\theta \times \r_\phi = \begin{vmatrix}
+      \mathbf{i} & \mathbf{j} & \mathbf{k} \\
+      2\cos(\theta)\cos(\phi) & 2\cos(\theta)\sin(\phi) & -2\sin(\theta) \\
+      -2\sin(\theta)\sin(\phi) & 2\sin(\theta)\cos(\phi) & 0
+    \end{vmatrix} \\
+               &= \langle (2\cos(\theta)\sin(\phi))(0) - (-2\sin(\theta))(2\sin(\theta)\cos(\phi)), \\
+               &\quad-\left[(2\cos(\theta)\cos(\phi))(0) - (-2\sin(\theta))(-2\sin(\theta)\sin(\phi))\right], \\
+               &\quad(2\cos(\theta)\cos(\phi))(2\sin(\theta)\cos(\phi)) - (2\cos(\theta)\sin(\phi))(-2\sin(\theta)\sin(\phi)) \rangle \\
+               &= \langle 4\sin^2(\theta)\cos(\phi), 4\sin^2(\theta)\sin(\phi), 4\cos(\theta)\sin(\theta)\cos^2(\phi) + 4\cos(\theta)\sin(\theta)\sin^2(\phi) \rangle
+  .\end{align*}
+  The magnitude of the normal vector is
+  \begin{align*}
+    \lvert \r_\theta \times \r_\phi \rvert &= \sqrt{\left(4\sin^2(\theta)\cos(\phi)\right)^2 + \left(4\sin^2(\theta)\sin(\phi)\right)^2 + \left(4\cos(\theta)\sin(\theta)\cos^2(\phi) + 4\cos(\theta)\sin(\theta)\sin^2(\phi)\right)^2} \\
+                                           &= \sqrt{16\sin^4(\theta)\cos^2(\phi) + 16\sin^4(\theta)\sin^2(\phi) + 16\cos^2(\theta)\sin^2(\theta)} \\
+                                           &= 4\sqrt{\sin^2(\theta)\left(\sin^2(\theta)\cos^2(\phi) + \sin^2(\theta)\sin^2(\phi) + \cos^2(\theta)\right)} \\
+                                           &= 4\sin(\theta)\sqrt{\sin^2(\theta)\cos^2(\phi) + \sin^2(\theta)\sin^2(\phi) + \cos^2(\theta)} \\
+                                           &= 4\sin(\theta)\sqrt{\sin^2(\theta)\left(\cos^2(\phi) + \sin^2(\phi)\right) + \cos^2(\theta)} \\
+                                           &= 4\sin(\theta)\sqrt{\sin^2(\theta) + \cos^2(\theta)} \\
+                                           &= 4\sin(\theta)
+  .\end{align*}
+  Therefore, the surface area element is
+  \[%
+    \dS = \lvert \r_\theta \times \r_\phi \rvert \,\dA = 4\sin(\theta) \,\dd{\theta} \,\dd{\phi}
+  .\]%
+  The surface area integral is
+  \begin{align*}
+    A &= \int_{\pi/6}^{2\pi/3} \int_0^{2\pi} 4\sin(\theta) \,\dd{\theta} \,\dd{\phi} \\
+      &= 4 \int_{\pi/6}^{2\pi/3} \sin(\theta) \,\dd{\theta} \int_0^{2\pi} \,\dd{\phi} \\
+      &= -8\pi \cos(\theta)\bigg\vert_{\pi/6}^{2\pi/3} \\
+      &= -8\pi \left(\cos\left(\frac{2\pi}{3}\right) - \cos\left(\frac{\pi}{6}\right)\right) \\
+      &= -8\pi \left(-\frac{1}{2} - \frac{\sqrt{3}}{2}\right) \\
+      &= 4\pi + 4\sqrt{3}\pi
+  .\qedhere\end{align*}
+\end{proof}
+
+\begin{proof}[Solution to (ii)]
+  Using cylindrical coordinates, we have
+  \[%
+    x = r^2, \quad y = r\cos(\theta), \aand z = r\sin(\theta)
+  ,\]%
+  we get the parametric equation for the surface area as
+  \[%
+    \r = \langle r^2, r\cos(\theta), r\sin(\theta) \rangle
+  .\]%
+  The bounds for $r$ are $0 \le r \le 4$ and $0 \le \theta \le 2\pi$.
+
+  We know that
+  \begin{align*}
+    \r_r &= \left\langle \pdv{x}{r}, \pdv{y}{r}, \pdv{z}{r} \right\rangle = \langle 2r, \cos(\theta), \sin(\theta) \rangle \\
+    \r_\theta &= \left\langle \pdv{x}{\theta}, \pdv{y}{\theta}, \pdv{z}{\theta} \right\rangle = \langle 0, -r\sin(\theta), r\cos(\theta) \rangle
   .\end{align*}
   The normal vector is
   \begin{align*}
     \mathbf{N} &= \r_r \times \r_\theta = \begin{vmatrix}
       \mathbf{i} & \mathbf{j} & \mathbf{k} \\
-      \cos(\theta) & 0 & \sin(\theta) \\
-      -r\sin(\theta) & 0 & r\cos(\theta)
+      2r & \cos(\theta) & \sin(\theta) \\
+      0 & -r\sin(\theta) & r\cos(\theta)
     \end{vmatrix} \\
-               &= \langle (0)(r\cos(\theta)) - (\sin(\theta))(0), -\left[(\cos(\theta))(r\cos(\theta)) - (\sin(\theta))(0)\right], (r\cos(\theta))(0) - (0)(-r\sin(\theta)) \rangle \\
-               &= \langle 0, -r\cos^2(\theta), 0 \rangle
+               &= \langle (\cos(\theta))(r\cos(\theta)) - (\sin(\theta))(-r\sin(\theta)), -\left[(2r)(r\cos(\theta)) - (\sin(\theta))(0)\right], 2r(-r\sin(\theta)) - (\sin(\theta))(0) \rangle \\
+               &= \langle r\cos^2(\theta) + r\sin^2(\theta), -2r^2\cos(\theta), 2r^2\sin(\theta) \rangle \\
+               &= \langle r, -2r\cos(\theta), 2r^2\sin(\theta) \rangle
   \end{align*}
   The magnitude of the normal vector is
+  \begin{align*}
+    \lvert \r_r \times \r_\theta \rvert &= \sqrt{r^2 + 4r^2\cos^2(\theta) + 4r^2\sin^2(\theta)} \\
+                                         &= \sqrt{r^2 + 4r^2} = \sqrt{5r^2} = r\sqrt{5}
+  .\end{align*}
+  Therefore, the surface area element is
+  \[%
+    \dS = \lvert \r_r \times \r_\theta \rvert \,\dA = r\sqrt{5} \,\dr \,\dd{\theta}
+  .\]%
+  The surface area integral is
+  \begin{align*}
+    A &= \int_0^{2\pi} \int_0^4 r\sqrt{5} \,\dr \,\dd{\theta} \\
+      &= \sqrt{5} \int_0^{2\pi} \,\dd{\theta} \cdot \int_0^4 r \,\dr \\
+      &= 2\pi\sqrt{5} \cdot \frac{4^2}{2} = 16\pi\sqrt{5}
+  .\qedhere\end{align*}
+\end{proof}
+
+\begin{proof}[Solution to (iii)]
+  Using cylindrical coordinates, we have
+  \[%
+    x = 2\cos(\theta), \quad y = y, \aand z = 2\sin(\theta)
+  ,\]%
+  where $r = 2$. Therefore, we get the parametric equation for the surface area
+  as
+  \[%
+    \r = \langle 2\cos(\theta), y, 2\sin(\theta) \rangle
+  .\]%
+  The bounds for $y$ are $0 \le y \le 2$ and $0 \le \theta \le 2\pi$.
+
+  We know that
+  \begin{align*}
+    \r_y &= \left\langle \pdv{x}{y}, \pdv{y}{y}, \pdv{z}{y} \right\rangle = \langle 0, 1, 0 \rangle \\
+    \r_\theta &= \left\langle \pdv{x}{\theta}, \pdv{y}{\theta}, \pdv{z}{\theta} \right\rangle = \langle -2\sin(\theta), 0, 2\cos(\theta) \rangle
+  .\end{align*}
+  The normal vector is
+  \begin{align*}
+    \mathbf{N} &= \r_y \times \r_\theta = \begin{vmatrix}
+      \mathbf{i} & \mathbf{j} & \mathbf{k} \\
+      0 & 1 & 0 \\
+      -2\sin(\theta) & 0 & 2\cos(\theta)
+    \end{vmatrix} \\
+               &= \langle (1)(2\cos(\theta)), -\left[(0)(2\cos(\theta)) - (0)(-2\sin(\theta))\right], (0)(0) - (1)(-2\sin(\theta)) \rangle \\
+               &= \langle 2\cos(\theta), 0, 2\sin(\theta) \rangle
+  .\end{align*}
+  The magnitude of the normal vector is
+  \begin{align*}
+    \lvert \r_y \times \r_\theta \rvert &= \sqrt{(2\cos(\theta))^2 + (2\sin(\theta))^2} \\
+                                         &= \sqrt{4\cos^2(\theta) + 4\sin^2(\theta)} = \sqrt{4} = 2
+  .\end{align*}
+
+  Therefore, the surface area element is
+  \[%
+    \dS = \lvert \r_y \times \r_\theta \rvert \,\dA = 2 \,\dy \,\dd{\theta}
+  .\]%
+
+  The surface area integral is
+  \begin{align*}
+    A &= \int_0^{2\pi} \int_0^2 2 \,\dy \,\dd{\theta} \\
+      &= 2 \int_0^{2\pi} \,\dd{\theta} \cdot \int_0^2 \,\dy \\
+      &= 4\pi \cdot 2 = 8\pi
+  .\qedhere\end{align*}
 \end{proof}
