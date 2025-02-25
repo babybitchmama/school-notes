@@ -109,6 +109,7 @@
 \newenvironment{exercise}[1][-1]{\noindent\textbf{Exercise #1}.}
 
 \begin{document}
+  \setcounter{chapter}{1}
   \chapter{Matrix Lie Groups Solutions}
 
   \begin{exercise}[11]
@@ -250,7 +251,41 @@
   \end{exercise}
 
   \begin{proof}[Solution]
-    Consider any matrix $A \in \GL(n, \R)^+$.
+    For any $A \in \GL(n, \R)$, the polar decomposition expresses $A$ uniquely
+    as $A = U_A P_A$, $U_A \in \Or(n)$ (i.e., $U_A U_A^T = I$), and $P_A$ is a
+    symmetric positive-definite matrix (i.e., $P_A = \sqrt{A^\top A}$, and $P_A$
+    has only positive eigenvalues).
+
+    Since $A, B \in \GL(n, \R)^+$, we know that $\det(A) > 0$ and $\det(B) > 0$,
+    which implies $U_A, U_B$ have determinant $+1$, so $U_A, U_B \in \SO(n)$.
+
+    Given $A, B \in \GL(n, \R)^+$ with their polar decompositions $A = U_A P_A$
+    and $B = U_B P_B$, we can construct a continuous path from $A$ to $B$ as
+    follows. Since $\SO(n)$ is path-connected, there exists a smooth path $U_t$
+    in $\SO(n)$ such that $U_0 = U_A$ and $U_1 = U_B$. One explicit choice is
+    the geodesic interpolation, $U_t = U_A \exp\left(t \log\left(U_A^\top
+    U_B\right)\right)$, which remains in $\SO(n)$ for all $t \in [0,1]$. Since
+    the space of symmetric positive-definite matrices is also path-connected, we
+    use the interpolation $P_t = (1 - t) P_A + t P_B$. This remains positive
+    definite for all $t \in [0,1]$ because the sum of two positive-definite
+    matrices with positive weights remains positive definite. Now, we can define
+    the path $A_t = U_t P_t$, for $t \in [0,1]$ Since $U_t$ remains in $\SO(n)$
+    and $P_t$ remains positive definite, each $A_t$ is invertible with
+    $\det(A_t) > 0$, ensuring $A_t \in \GL(n, \R)^+$ for all $t$.
+
+    Verifying continuity, we get:
+    \begin{enumerate}
+      \item The function $t \mapsto U_t$ is continuous because it is constructed
+        from matrix exponentiation, which is smooth.
+
+      \item The function $t \mapsto P_t$ is trivially continuous as it is a
+        convex combination of continuous matrices.
+
+      \item Since matrix multiplication is continuous, the final path $t \mapsto
+        A_t = U_t P_t$ is continuous.
+    \end{enumerate}
+
+    Thus, $\GL(n, \R)^+$ is connected.
   \end{proof}
 
   \begin{exercise}[15]
