@@ -1,7 +1,7 @@
 \begin{problem}[1]
   Evaluate the line integral $\displaystyle\oint_C \FF \cdot \dd{\r}$
   \begin{enumerate}
-    \item $\FF = \langle xy^2 + 4xy, 2y + x^2 \rangle$ and $C$ is the path $y =
+    \item $\FF = \langle xy^2 + 4xy, 2y + 2x^2 \rangle$ and $C$ is the path $y =
       x^2$ from $(-2, 4)$ to $(1, 1)$ and the line segment from $(1, 1)$ to
       $(-2, 4)$.
 
@@ -46,7 +46,7 @@
   ,\]%
   where $P = xy^2 + 4xy$ and $Q = 2y + x^2$. We have
   \[%
-    \pdv{Q}{x} - \pdv{P}{y} = \left(2x\right) - \left(2xy + 4x\right) = 2xy - 2x
+    \pdv{Q}{x} - \pdv{P}{y} = \left(4x\right) - \left(2xy + 4x\right) = -2xy
   .\]%
 
   Finding the equation of the line segment from $(1, 1)$ to $(-2, 4)$, we have
@@ -54,14 +54,12 @@
   $x^2 \leq y \leq -x + 2$. Therefore, we have
   \begin{align*}
     \oint_C \FF \cdot \dd{\r} &= \iint_D \left(\pdv{Q}{x} - \pdv{P}{y}\right) \,\dA \\
-                              &= \int_{-2}^1 \int_{x^2}^{-x+2} 2xy - 2x \,\dy \,\dx \\
-                              &= \int_{-2}^1 xy^2 - 2xy\bigg\vert_{x^2}^{-x+2} \,\dx \\
-                              &= \int_{-2}^1 \left[x(-x + 2)^2 - 2x(-x + 2)\right] - \left[x(x^2)^2 - 2x(x^2)\right] \,\dx \\
-                              &= \int_{-2}^1 \left[x^3 - 2x^2\right] - \left[x^5 - 2x^3\right] \,\dx \\
-                              &= \int_{-2}^1 -x^5 + 3x^3 - 2x^2 \,\dx \\
-                              &= -\frac{x^6}{6} + \frac{3x^4}{4} - \frac{2x^3}{3}\bigg\vert_{-2}^1 \\
-                              &= \left[-\frac{(1)^6}{6} + \frac{3(1)^4}{4} - \frac{2(1)^3}{3}\right] - \left[-\frac{(-2)^6}{6} + \frac{3(-2)^4}{4} - \frac{2(-2)^3}{3}\right] \\
-                              &= -\frac{27}{4}
+                              &= \int_{-2}^1 \int_{x^2}^{-x+2} -2xy \,\dy \,\dx \\
+                              &= \int_{-2}^1 -xy^2\bigg\vert_{x^2}^{-x+2} \,\dx \\
+                              &= \int_{-2}^1 \left[-x(-x + 2)^2\right] - \left[-x(x^2)^2\right] \,\dx \\
+                              &= \int_{-2}^1 x^5 - x^3 + 4x^2 - 4x \,\dx \\
+                              &= \frac{x^6}{6} - \frac{x^4}{4} + \frac{4x^3}{3} - 2x^2\bigg\vert_{-2}^1 \\
+                              &= \left[\frac{1}{6} - \frac{1}{4} + \frac{4}{3} - 2\right] - \left[\frac{64}{6} - 4 - \frac{32}{3} - 8\right] = \frac{45}{4}
   .\qedhere\end{align*}
 \end{proof}
 
@@ -99,26 +97,27 @@
   ,\]%
   where $P = y\sin(x) - y^4$ and $Q = y^2 - \cos(x)$. We have
   \[%
-    \pdv{Q}{x} - \pdv{P}{y} = \left(\sin(x)\right) - \left(\sin(x) - 4y^3\right) = -4y^3 = -4r^3\sin^3(\theta)
+    \pdv{Q}{x} - \pdv{P}{y} = \left(-\sin(x)\right) - \left(\sin(x) - 4y^3\right) = 4y^3
   .\]%
 
   Converting to polar coordinates, we get the bounds $0 \le r \le 2$ and $0 \le
   \theta \le \pi$.
   \begin{align*}
     \oint_C \FF \cdot \dd{\r} &= \iint_D \left(\pdv{Q}{x} - \pdv{P}{y}\right) \,\dA \\
-                              &= \int_0^\pi \int_0^2 -4r^3\sin^3(\theta) \cdot r \,\dr \,\dd{\theta} \\
-                              &= -4\int_0^\pi \sin^3(\theta) \,\dd{\theta} \cdot \int_0^2 r^4 \,\dr \\
-                              &= \left(-4 \cdot \frac{32}{5}\right) \cdot \int_0^\pi \sin(\theta)(1 - \cos^2(\theta)) \,\dd{\theta}
+                              &= \iint_D 4y^3 \,\dA \\
+                              &= \int_0^\pi \int_0^2 4(r\sin(\theta))^3 \cdot r \,\dr \,\dd{\theta} \\
+                              &= 4\int_0^\pi \sin^3(\theta) \,\dd{\theta} \cdot \int_0^2 r^4 \,\dr \\
+                              &= \left(4 \cdot \frac{32}{5}\right) \cdot \int_0^\pi \sin(\theta)(1 - \cos^2(\theta)) \,\dd{\theta}
   .\end{align*}
   Using the substitution $u = \cos(\theta)$, we get $\du = -\sin(\theta) \,\dt$.
   The bounds for $u$ are $u(0) = 1$ and $u(\pi) = -1$. Therefore, we have
   \begin{align*}
-    \oint_C \FF \cdot \dd{\r} &= \left(-4 \cdot \frac{32}{5}\right) \cdot \int_0^\pi \sin(\theta)(1 - \cos^2(\theta)) \,\dd{\theta} \\
-                              &= -\frac{128}{5} \cdot \int_1^{-1} - 1 + u^2 \,\du \\
-                              &= -\frac{128}{5} \cdot \int_{-1}^1 1 - u^2 \,\du \\
-                              &= -\frac{128}{5} \cdot \left(u - \frac{u^3}{3} \bigg\vert_{-1}^1\right) \\
-                              &= -\frac{128}{5} \cdot \left(\left[1 - \frac{1}{3}\right] - \left[-1 + \frac{1}{3}\right]\right) \\
-                              &= -\frac{128}{5} \cdot \left(2 - \frac{2}{3}\right) = -\frac{512}{15}
+    \oint_C \FF \cdot \dd{\r} &= \left(4 \cdot \frac{32}{5}\right) \cdot \int_0^\pi \sin(\theta)(1 - \cos^2(\theta)) \,\dd{\theta} \\
+                              &= \frac{128}{5} \cdot \int_1^{-1} - 1 + u^2 \,\du \\
+                              &= \frac{128}{5} \cdot \int_{-1}^1 1 - u^2 \,\du \\
+                              &= \frac{128}{5} \cdot \left(u - \frac{u^3}{3} \bigg\vert_{-1}^1\right) \\
+                              &= \frac{128}{5} \cdot \left(\left[1 - \frac{1}{3}\right] - \left[-1 + \frac{1}{3}\right]\right) \\
+                              &= \frac{128}{5} \cdot \left(2 - \frac{2}{3}\right) = \frac{512}{15}
   .\qedhere\end{align*}
 \end{proof}
 
@@ -348,22 +347,28 @@
     \end{vmatrix} \\
                &= \langle (\cos(\theta))(r\cos(\theta)) - (\sin(\theta))(-r\sin(\theta)), -\left[(2r)(r\cos(\theta)) - (\sin(\theta))(0)\right], 2r(-r\sin(\theta)) - (\sin(\theta))(0) \rangle \\
                &= \langle r\cos^2(\theta) + r\sin^2(\theta), -2r^2\cos(\theta), 2r^2\sin(\theta) \rangle \\
-               &= \langle r, -2r\cos(\theta), 2r^2\sin(\theta) \rangle
+               &= \langle r, -2r^2\cos(\theta), 2r^2\sin(\theta) \rangle
   \end{align*}
   The magnitude of the normal vector is
   \begin{align*}
-    \lvert \r_r \times \r_\theta \rvert &= \sqrt{r^2 + 4r^2\cos^2(\theta) + 4r^2\sin^2(\theta)} \\
-                                         &= \sqrt{r^2 + 4r^2} = \sqrt{5r^2} = r\sqrt{5}
+    \lvert \r_r \times \r_\theta \rvert &= \sqrt{r^2 + 4r^4\cos^2(\theta) + 4r^4\sin^2(\theta)} \\
+                                         &= \sqrt{r^2 + 4r^4} = r\sqrt{1 + 4r^2}
   .\end{align*}
   Therefore, the surface area element is
   \[%
-    \dS = \lvert \r_r \times \r_\theta \rvert \,\dA = r\sqrt{5} \,\dr \,\dd{\theta}
+    \dS = \lvert \r_r \times \r_\theta \rvert \,\dA = r\sqrt{1 + 4r^2} \,\dr \,\dd{\theta}
   .\]%
+
   The surface area integral is
+  \[%
+    A = \int_0^{2\pi} \int_0^4 r\sqrt{1 + 4r^2} \,\dr \,\dd{\theta}
+  .\]%
+  Let $u = 1 + 4r^2$, then $\du = 8r \,\dr$. The bounds for $u$ are $u(0) = 1$
+  and $u(4) = 65$. Therefore, we have
   \begin{align*}
-    A &= \int_0^{2\pi} \int_0^4 r\sqrt{5} \,\dr \,\dd{\theta} \\
-      &= \sqrt{5} \int_0^{2\pi} \,\dd{\theta} \cdot \int_0^4 r \,\dr \\
-      &= 2\pi\sqrt{5} \cdot \frac{4^2}{2} = 16\pi\sqrt{5}
+    A &= \int_0^{2\pi} \int_1^{65} \frac{1}{8} \sqrt{u} \,\du \,\dd{\theta} \\
+      &= \frac{1}{8} \left(\frac{2}{3}u\sqrt{u}\bigg\vert_1^{65}\right) \cdot 2\pi \\
+      &= \frac{1}{6}\left(65\sqrt{65} - 1\right)\pi
   .\qedhere\end{align*}
 \end{proof}
 
@@ -373,42 +378,42 @@
     x = 2\cos(\theta), \quad y = y, \aand z = 2\sin(\theta)
   ,\]%
   where $r = 2$. Therefore, we get the parametric equation for the surface area
-  as
+  as $\r = \langle 2\cos(\theta), y, 2\sin(\theta) \rangle$. The bounds for
+  $\theta$ are $0 \le \theta \le \pi$ and $0 \le y \le 2$. Since $x =
+  2\cos(\theta)$ and $4\cos^2(\theta) + y^2 \le 4$, we have
   \[%
-    \r = \langle 2\cos(\theta), y, 2\sin(\theta) \rangle
+    y^2 \le 4 - 4\cos^2(\theta) = 4\sin^2(\theta)
   .\]%
-  The bounds for $y$ are $0 \le y \le 2$ and $0 \le \theta \le 2\pi$.
+  Therefore, the bounds for $y$ are $-2\lvert \sin(\theta) \rvert \le y \le
+  2\lvert \sin(\theta) \rvert$.
 
   We know that
   \begin{align*}
-    \r_y &= \left\langle \pdv{x}{y}, \pdv{y}{y}, \pdv{z}{y} \right\rangle = \langle 0, 1, 0 \rangle \\
-    \r_\theta &= \left\langle \pdv{x}{\theta}, \pdv{y}{\theta}, \pdv{z}{\theta} \right\rangle = \langle -2\sin(\theta), 0, 2\cos(\theta) \rangle
+    \r_\theta &= \left\langle \pdv{x}{\theta}, \pdv{y}{\theta}, \pdv{z}{\theta} \right\rangle = \langle -2\sin(\theta), 0, 2\cos(\theta) \rangle \\
+    \r_y &= \left\langle \pdv{x}{y}, \pdv{y}{y}, \pdv{z}{y} \right\rangle = \langle 0, 1, 0 \rangle
   .\end{align*}
   The normal vector is
   \begin{align*}
-    \mathbf{N} &= \r_y \times \r_\theta = \begin{vmatrix}
+    \mathbf{N} &= \r_\theta \times \r_y = \begin{vmatrix}
       \mathbf{i} & \mathbf{j} & \mathbf{k} \\
-      0 & 1 & 0 \\
-      -2\sin(\theta) & 0 & 2\cos(\theta)
+      -2\sin(\theta) & 0 & 2\cos(\theta) \\
+      0 & 1 & 0
     \end{vmatrix} \\
-               &= \langle (1)(2\cos(\theta)), -\left[(0)(2\cos(\theta)) - (0)(-2\sin(\theta))\right], (0)(0) - (1)(-2\sin(\theta)) \rangle \\
-               &= \langle 2\cos(\theta), 0, 2\sin(\theta) \rangle
+               &= \langle -2\cos(\theta), 0, -2\sin(\theta) \rangle
   .\end{align*}
   The magnitude of the normal vector is
-  \begin{align*}
-    \lvert \r_y \times \r_\theta \rvert &= \sqrt{(2\cos(\theta))^2 + (2\sin(\theta))^2} \\
-                                         &= \sqrt{4\cos^2(\theta) + 4\sin^2(\theta)} = \sqrt{4} = 2
-  .\end{align*}
-
+  \[%
+    \lvert \r_\theta \times \r_y \rvert = \sqrt{4\cos^2(\theta) + 4\sin^2(\theta)} = 2
+  .\]%
   Therefore, the surface area element is
   \[%
-    \dS = \lvert \r_y \times \r_\theta \rvert \,\dA = 2 \,\dy \,\dd{\theta}
+    \dS = \lvert \r_\theta \times \r_y \rvert \,\dA = 2 \,\dy \,\dd{\theta}
   .\]%
 
   The surface area integral is
   \begin{align*}
-    A &= \int_0^{2\pi} \int_0^2 2 \,\dy \,\dd{\theta} \\
-      &= 2 \int_0^{2\pi} \,\dd{\theta} \cdot \int_0^2 \,\dy \\
-      &= 4\pi \cdot 2 = 8\pi
+    A &= \int_0^\pi \int_{-2\lvert \sin(\theta) \rvert}^{2\lvert \sin(\theta) \rvert} 2 \,\dy \,\dd{\theta} \\
+      &= \int_0^\pi 2 \cdot 4\lvert \sin(\theta) \rvert \,\dd{\theta} \\
+      &= -8\cos(\theta)\bigg\vert_0^\pi = 16
   .\qedhere\end{align*}
 \end{proof}
