@@ -33,7 +33,7 @@
 \usepackage{multirow} % Required for multirow in tables
 \usepackage{nicematrix} % Required for better matrices
 \usepackage{cellspace} % Required for better spacing in tables
-\usepackage{xfrac} % Required for extra fraction options
+% \usepackage{xfrac} % Required for extra fraction options
 \usepackage{xifthen} % Required for if-then-else statements
 \usepackage{fancyhdr} % Required for customizing headers and footers
 \usepackage{import} % Required for importing pdf_tex files
@@ -236,6 +236,8 @@
   \setcounter{paragraph}{0}
   \setcounter{subparagraph}{0}
 }
+
+\newcommand\sfrac[2]{#1/#2}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %  Lecture/Chapter Command  %
