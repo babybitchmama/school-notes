@@ -76,7 +76,7 @@
       nx & \textrm{if}~0 \le x < \frac{1}{n}
     \end{cases}
   .\]%
-  Answer the following questions for the sequences $(g_n)$ and $(h)$:
+  Answer the following questions for the sequences $(g_n)$ and $(h_n)$:
   \begin{enumerate}
     \item Find the pointwise limit on $[0, \infty)$.
 
@@ -88,12 +88,37 @@
 \end{problem}
 
 \begin{proof}[Solution to (i)]
+  Finding the pointwise limit,
+  \begin{alignat*}{3}
+    &\lim_{n \to \infty} g_n(x) = \lim_{n \to \infty} \frac{x}{1 + x^n} &&= \begin{cases}
+      x & \textrm{if}~x \in [0, 1) \\
+      \sfrac{1}{2} & \textrm{if}~x = 1 \\
+      0 & \textrm{if}~x > 1 \\
+    \end{cases} \\
+    \aand& \lim_{n \to \infty} h_n(x) &&= \begin{cases}
+      0 & \textrm{if}~x = 0 \\
+      1 & \textrm{if}~x > 0
+    \end{cases}
+  .\tag*{\qedhere}\end{alignat*}
 \end{proof}
 
 \begin{proof}[Solution to (ii)]
+  It would contract Theorem 6.2.6, since both $g_n$ and $h_n$ are continuous,
+  but the limit functions aren't.
 \end{proof}
 
 \begin{proof}[Solution to (iii)]
+  For $h_n$: Let $\epsilon > 0$. Choose $N > \epsilon$. Then, for all $n \ge N$ on
+  the interval $[1, \infty)$, we have
+  \[%
+    \lvert h_n(x) - h(x) \rvert = \lvert 1 - 1 \rvert = 0 < \epsilon
+  .\]%
+
+  For $g_n$: Let $\epsilon > 0$. Choose $N > \log_t(\epsilon)$. Then, for all
+  $n \ge N$ on the interval $[0, 1)$, we have
+  \[%
+    \lvert g_n(x) - g(x) \rvert = \left\lvert \frac{x}{1 + x^n} - x \right\rvert = \left\lvert \frac{x^{n+1}}{1 + x^n} \right\rvert < \left\lvert t^{n+1} \right\rvert < \epsilon
+  .\qedhere\]%
 \end{proof}
 
 \begin{problem}[7.5.8]
@@ -171,18 +196,48 @@
 \end{problem}
 
 \begin{proof}[Solution]
+  Define the function
+  \[%
+    F(x) = \int_a^{h(x)} g(t) \,\dt
+  .\]%
+  Since $g$ is continuous and $h$ is differentiable, from the Fundamental
+  Theorem of Calculus and the Chain Rule, we have
+  \[%
+    F'(x) = g(h(x)) \cdot h'(x)
+  .\]%
+  Hence, $F$ is differentiable, since it's the product of two differentiable
+  functions.
 \end{proof}
 
 \begin{problem}[S.2]
-  Let $g$ be a continuous function on $\R$. Show that each integral below is
-  differentiable and compute the derivative
+  Let $g$ be a continuous function on $\R$. Show that each integral below is differentiable and compute the derivative
   \[%
     \textrm{(i)}\quad\odv{}{x} \int_{x-1}^{x+1} g \qquad\qquad\qquad \textrm{(ii)}\quad\odv{}{x} \int_0^x g(t - x) \,\dt
   .\]%
 \end{problem}
 
 \begin{proof}[Solution to (i)]
+  Define the function
+  \[%
+    F(x) = \int_{x-1}^{x+1} g(t) \,\dt
+  .\]%
+  Since $g$ is continuous, from the Fundamental Theorem of Calculus, we have
+  \[%
+    F'(x) = g(x + 1) \cdot \odv{}{x}(x + 1) - g(x - 1) \cdot \odv{}{x}(x - 1) = g(x + 1) - g(x - 1)
+  .\]%
+  Again, like the previous problem, $F$ is differentiable, since it's the
+  difference of two differentiable composite functions.
 \end{proof}
 
 \begin{proof}[Solution to (ii)]
+  Define the function
+  \[%
+    F(x) = \int_0^x g(t - x) \,\dt
+  .\]%
+  Since $g$ is continuous, from the Fundamental Theorem of Calculus and the
+  Chain Rule, we have
+  \[%
+    F'(x) = g(x - x) \cdot \odv{}{x}(x - x) - g(0 - x) \cdot \odv{}{x} (0 - x) = g(-x)
+  .\]%
+  Hence, $F$ is differentiable.
 \end{proof}
