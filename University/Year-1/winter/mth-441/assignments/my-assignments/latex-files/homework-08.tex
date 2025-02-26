@@ -1,0 +1,538 @@
+\begin{problem}[1]
+  \textit{This problem will provide another of Cauchy-Schwarz inequality.}
+
+  Let $V$ be an inner produce space over $\C$. For any $\x, \y \in V$, define
+  $G = \begin{pmatrix}
+    \langle \x, \x \rangle & \langle \x, \y \rangle \\
+    \langle \y, \x \rangle & \langle \y, \y \rangle \\
+  \end{pmatrix} \in \C^{2 \times 2}$.
+
+  \begin{enumerate}
+    \item Prove that $g$ is a (Hermitian) positive semi-definite matrix.
+
+    \item Prove that eigenvalues of a Hermitian positive semi-definite matrix
+      are all non-negative.
+
+    \item Prove the Cauchy-Schwarz inequality, i.e $\lvert \langle \x, \y
+      \rangle \rvert \le \lVert \x \rVert \cdot \lVert \y \rVert$. (Hint: What
+      is the determinant of $G$? How do we relate determinant of a matrix with
+      its eigenvalues?)
+  \end{enumerate}
+\end{problem}
+
+\begin{proof}[Solution to (i)]
+  The conjugate transpose of our matrix is
+  \[%
+    G^* = \begin{pmatrix}
+      \overline{\langle \x, \x \rangle} & \overline{\langle \y, \x \rangle} \\
+      \overline{\langle \x, \y \rangle} & \overline{\langle \y, \y \rangle} \\
+    \end{pmatrix}
+  .\]%
+  We know that $\overline{\langle \x, \x \rangle}$ is real, so it equals its own
+  conjugate. We also know that $\langle \y, \x \rangle = \overline{\langle \x,
+  \y \rangle}$. So, we get
+  \[%
+    G^* =
+    \begin{pmatrix}
+      \overline{\langle \x, \x \rangle} & \overline{\langle \y, \x \rangle} \\
+      \overline{\langle \x, \y \rangle} & \overline{\langle \y, \y \rangle} \\
+    \end{pmatrix} =
+    \begin{pmatrix}
+      \langle \x, \x \rangle & \langle \x, \y \rangle \\
+      \langle \y, \x \rangle & \langle \y, \y \rangle \\
+    \end{pmatrix} = G
+  .\]%
+  So, $G$ is Hermitian.
+
+  Now, we need to show that $G$ is positive semi-definite. We do this by
+  showing that for any $\v \in \C^2$, we have $\v^* G \v \ge 0$. We have
+  \begin{align*}
+    \v^* G\v &= \begin{pmatrix}
+      \bar{a} & \bar{b} \\
+    \end{pmatrix}
+    \begin{pmatrix}
+      \langle \x, \x \rangle & \langle \x, \y \rangle \\
+      \langle \y, \x \rangle & \langle \y, \y \rangle \\
+    \end{pmatrix}
+    \begin{pmatrix}
+      a \\
+      b \\
+    \end{pmatrix} \\
+             &= \bar{a}a \langle \x, \x \rangle + \bar{a}b \langle \x, \y \rangle + \bar{b}a \langle \y, \x \rangle + \bar{b}b \langle \y, \y \rangle \\
+             &= \langle a\x + b\y, a\x + b\y \rangle \ge 0
+  .\end{align*}
+  Since this is true for any $\v \in \C^2$, we conclude that $G$ is positive
+  semi-definite.
+\end{proof}
+
+\begin{proof}[Solution to (ii)]
+  Let $\v$ be an eigenvector of $G$ with eigenvalue $\lambda$, i.e., $G\v =
+  \lambda\v$. Since $G$ is positive semi-definite, we have $\v^* G\v \ge 0$.
+  Expanding using $G\v = \lambda\v$, we get $\v^*(\lambda\v) = \lambda(\v^*\v)$.
+  Since $\v^*\v$ is the inner product of $\v$ with itself, we get $\v^* \v =
+  \lVert \v \rVert^2$. So, we have $\lambda\lVert \v \rVert^2 \ge 0$. Since
+  $\lVert \v \rVert^2$ is non-negative, we can conclude that $\lambda \ge 0$.
+
+  Therefore, all eigenvalues of $G$ are non-negative.
+\end{proof}
+
+\begin{proof}[Solution to (iii)]
+  The determinant of $G$ is
+  \[%
+    \det(G) = \langle \x, \x \rangle \langle \y, \y \rangle - \lvert \langle \x, \y \rangle \rvert^2
+  .\]%
+  Since $G$ is positive semi-definite, its determinant must be non-negative
+  \begin{align*}
+    \phantom{\implies}&~0 \le \langle \x, \x \rangle \langle \y, \y \rangle - \lvert \langle \x, \y \rangle \rvert^2 \\
+    \implies&~\lvert \langle \x, \y \rangle \rvert^2 \le \langle \x, \x \rangle \langle \y, \y \rangle \\
+    \implies&~\lvert \langle \x, \y \rangle \rvert \le \sqrt{\langle \x, \x \rangle} \cdot \sqrt{\langle \y, \y \rangle} \\
+    \implies&~\lvert \langle \x, \y \rangle \rvert \le \lVert \x \rVert \cdot \lVert \y \rVert
+  .\end{align*}
+  This is the Cauchy-Schwarz inequality.
+\end{proof}
+
+\begin{problem}[2]
+  \textit{Note this problem gives the formula for the orthogonal projection when
+  a general (not necessarily orthogonal) basis of the subspace is given.}
+
+  Consider the standard inner product on $\C^n$. Let $W \subseteq \C^n$ be a
+  subspace. Suppose $\{\w_1, \w_2, \cdots, \w_m\}$ is a basis for $W$. Denote $B
+  = [\w_1~\w_2~\cdots~\w_m] \in \C^{n \times m}$.
+
+  \begin{enumerate}
+    \item Prove that $B^* B$ is (Hermitian) positive definite. (Note $B^* B$ is
+      often referred as the Gramian matrix related to $\{\w_1, \w_2, \cdots,
+      \w_m\}$.)
+
+    \item Prove that eigenvalues of a Hermitian positive definite matrix are all
+      positive.
+
+    \item Prove that $B^* B$ is invertible.
+
+    \item Let $\x \in \C^n$ and let $\x_W$ be the orthogonal projection of $\x$
+      onto $W$. Prove that $\x_W = B(B^* B)^{-1} B^* \x$.
+
+    \item Let $\x_1 = \begin{pmatrix}
+      1 \\
+      0 \\
+      1 \\
+    \end{pmatrix},\quad \x_2 = \begin{pmatrix}
+      1 \\
+      1 \\
+      0 \\
+    \end{pmatrix},\quad \x_3 = \begin{pmatrix}
+      1 \\
+      2 \\
+      3 \\
+    \end{pmatrix}$.
+    By using the formula in Part (iv), find the orthogonal projection of $\x_3$
+    onto the subspace spanned by $\x_1$ and $\x_2$.
+  \end{enumerate}
+\end{problem}
+
+\begin{proof}[Solution to (i)]
+  Since transposition and conjugation distribute over matrix multiplication, we
+  have $(B^* B)^* = B^* B$. So, $B^* B$ is Hermitian.
+
+  Expanding $\v^* (B^* B)\v \ge 0$, we get
+  \[%
+    \v^* (B^* B)\v = (B\v)^* (B\v) = \lVert B\v \rVert^2 \ge 0
+  .\]%
+  Since $B$ is an $n \times n$ matrix whose columns form a basis of $W$, the map
+  $B : \C^m \to W$ is injective. Thus, if $\v \ne \zero$, then $B\v \ne \zero$,
+  which implies that $\lVert B\v \rVert^2 > 0$.
+
+  Therefore, $B^* B$ is a (Hermitian) positive definite matrix.
+\end{proof}
+
+\begin{proof}[Solution to (ii)]
+  Let $A$ be a Hermitian positive definite matrix. Consider an eigenpair
+  $(\lambda, \v)$, meaning $A\v = \lambda\v$. Taking the inner product with
+  $\v$, $\langle A\v, \v \rangle = \lambda\langle \v, \v \rangle$. Since $A$ is
+  a positive definite, we have $\langle A\v, \v \rangle > 0$. The right hand
+  side becomes $\lambda\langle \v, \v \rangle = \lambda\lVert \v \rVert^2 > 0$.
+  Therefore, we get $\lambda > 0$, since $\lVert \v \rVert^2 > 0$.
+
+  Therefore, all eigenvalues of a Hermitian positive definite matrix are
+  positive.
+\end{proof}
+
+\begin{proof}[Solution to (iii)]
+  Since $B^* B$ is positive definite, all of its eigenvalues are strictly
+  positive, which implies that $B^* B$ is invertible. Specifically, since $B^*
+  B$ is full rank, its determinant is nonzero
+  \[%
+    \det(B^* B) = \prod_{i=1}^m \lambda_i > 0
+  .\]%
+
+  Therefore, $B^* B$ is invertible.
+\end{proof}
+
+\begin{proof}[Solution to (vi)]
+  The orthogonal projection $\x_W$ of $\x$ onto $W$ is defined as the unique
+  vector in $W$ minimizing the distance $\lVert \x - \x_W \rVert$. Since $\x_W
+  \in W$, we can write it as $\x_W = B\c$, for some coefficient vector $\c \in
+  \C^m$.
+
+  The vector $\x - B\c$ is orthogonal to $W$, which means that it is orthogonal
+  to each column of $B$, $B^*(\x - B\c) = \zero$. Expanding this, we get
+  $B^* \x - B^* B\c = \zero$. Since $B^* B$ is invertible, we can solve for
+  $\c$ to get $\c = (B^* B)^{-1} B^* \x$. Thus, we have
+  \[%
+    \x_W = B(B^* B)^{-1} B^* \x
+  .\qedhere\]%
+\end{proof}
+
+\begin{proof}[Solution to (v)]
+  The columns of $B$ are $\x_1$ and $\x_2$:
+  \[%
+    B = \begin{pmatrix}
+      1 & 1 \\
+      0 & 1 \\
+      1 & 0 \\
+    \end{pmatrix}
+  .\]%
+  The conjugate transpose of $B$ is
+  \[%
+    B^* = \begin{pmatrix}
+      1 & 0 & 1 \\
+      1 & 1 & 0 \\
+    \end{pmatrix}
+  .\]%
+  We now compute $B^* B$
+  \[%
+    B^* B = \begin{pmatrix}
+      1 & 0 & 1 \\
+      1 & 1 & 0 \\
+    \end{pmatrix}
+    \begin{pmatrix}
+      1 & 1 \\
+      0 & 1 \\
+      1 & 0 \\
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+      1 \cdot 1 + 0 \cdot 0 + 1 \cdot 1 & 1 \cdot 1 + 0 \cdot 1 + 1 \cdot 0 \\
+      1 \cdot 1 + 1 \cdot 0 + 0 \cdot 1 & 1 \cdot 1 + 1 \cdot 1 + 0 \cdot 0
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+      2 & 1 \\
+      1 & 2
+    \end{pmatrix}
+  .\]%
+  Using the formula for the inverse of a $2 \times 2$ matrix
+  \[%
+    (B^* B)^{-1} = \frac{1}{(2 \cdot 2 - 1 \cdot 1)}
+    \begin{pmatrix}
+      2 & -1 \\
+      -1 & 2 \\
+    \end{pmatrix}
+    =
+    \frac{1}{3} \begin{pmatrix}
+      2 & -1 \\
+      -1 & 2
+    \end{pmatrix}
+  .\]%
+  Next, we compute $B^* \x_3$
+  \[%
+    B^* \x_3 =
+    \begin{pmatrix}
+      1 & 0 & 1 \\
+      1 & 1 & 0 \\
+    \end{pmatrix}
+    \begin{pmatrix}
+      1 \\
+      2 \\
+      3 \\
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+      1 \cdot 1 + 0 \cdot 2 + 1 \cdot 3 \\
+      1 \cdot 1 + 1 \cdot 2 + 0 \cdot 3 \\
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+      4 \\
+      3 \\
+    \end{pmatrix}
+  .\]%
+  We then compute $(B^* B)^{-1} B^* \x_3$
+  \[%
+    (B^* B)^{-1} B^* \mathbf{x}_3 =
+    \frac{1}{3}
+    \begin{pmatrix}
+      2 & -1 \\
+      -1 & 2 \\
+    \end{pmatrix}
+    \begin{pmatrix}
+      4 \\
+      3 \\
+    \end{pmatrix}
+    =
+    \frac{1}{3}
+    \begin{pmatrix}
+      8 - 3 \\
+      -4 + 6
+    \end{pmatrix}
+    =
+    \frac{1}{3}
+    \begin{pmatrix}
+      5 \\
+      2 \\
+    \end{pmatrix}
+  .\]%
+
+  Now we compute the orthogonal projection $\mathbf{x}_W$:
+  \[%
+    \x_W = B \begin{pmatrix}
+      \sfrac{5}{3} \\
+      \sfrac{2}{3} \\
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+      1 & 1 \\
+      0 & 1 \\
+      1 & 0 \\
+    \end{pmatrix}
+    \begin{pmatrix}
+      \sfrac{5}{3} \\
+      \frac{2}{3} \\
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+      \sfrac{7}{3} \\
+      \sfrac{2}{3} \\
+      \frac{5}{3} \\
+    \end{pmatrix}
+  .\]%
+
+  Thus, the orthogonal projection of $\mathbf{x}_3$ onto the subspace spanned by $\mathbf{x}_1$ and $\mathbf{x}_2$ is:
+  \[%
+    \x_W = \begin{pmatrix}
+      \sfrac{7}{3} \\
+      \sfrac{2}{3} \\
+      \sfrac{5}{3} \\
+    \end{pmatrix}
+  .\qedhere\]%
+\end{proof}
+
+\begin{problem}[3]
+  Find the QR-decomposition for the matrix $A =
+  \begin{pmatrix}
+    0 & 0 & 1 \\
+    -1 & 0 & 0 \\
+    1 & 2 & 2 \\
+  \end{pmatrix}$.
+\end{problem}
+
+\begin{proof}[Solution]
+\end{proof}
+
+\begin{problem}[4]
+  Let $V = \C^{n \times n}$ with the inner product $\langle A, B \rangle =
+  \Tr(B^* A)$. Find the orthogonal complement of the subspace of diagonal
+  matrices.
+\end{problem}
+
+\begin{proof}[Solution]
+  Let $D$ be the subspace of $V$ consisting of diagonal matrices, i.e., $D = \{A
+  \in \C^{n \times n} \mid A_{ij} = \delta_{ij}\}$. Its dimension is $n$ since a
+  diagonal matrix is determined by its $n$ diagonal entries.
+
+  The orthogonal complement $D^\perp$ consists of all matrices $X \in \C^{n
+  \times n}$ that satisfy $\langle A, X \rangle = \zero$. Expanding the inner
+  product, we get $\langle A, X \rangle = \Tr(X^* A)$.
+
+  For this to be zero for all diagonal matrices $A$, we consider a diagonal
+  matrix $A = \textrm{diag}(a_1, \cdots, a_n)$, so that $A_{ij} =
+  a_{ij}\delta_{ij}$. Then,
+  \[%
+    \langle A, X \rangle = \Tr(X^* A) = \sum_{i=1}^n a_i\left(X^*\right)_{ii}
+  .\]%
+  Since this must be zero for all choices of $a_i$, we conclude that
+  $\left(X^*\right)_{ii} = 0$, i.e., $X_{ii} = 0$ for all $i$. Therefore,
+  $D^\perp$ consists of all matrices with zero diagonal entries.
+\end{proof}
+
+\begin{problem}[5]
+  Let $A \in \C^{m \times n}$. Let $\C^n$ and $\C^m$ be equipped with the
+  standard inner product. Prove the following statements.
+  \begin{enumerate}
+    \item $\Nul(A) = (\Range(A^*))^{\perp}$.
+
+    \item $\Nul(A^* A) = \Nul(A)$.
+
+    \item $\Rank(A^* A) = \Rank(A) = \Rank(A^*)$.
+
+    \item $\Range(A^* A) = \Range(A^*)$.
+  \end{enumerate}
+\end{problem}
+
+\begin{proof}[Solution to (i)]
+  The orthogonal complement of $\Range(A^*)$ consists of all vectors $\x \in
+  \C^n$ such that $\langle A^* \y, \x \rangle = \zero$, for all $\y \in \C^m$.
+  Expanding the inner product, we get $\langle A^* \y, \x \rangle = (A^* \y)^*
+  \x = \y^* (A\x)$. Since this must hold for all $\y$, it follows that $A\x =
+  \zero$, meaning $\x \in \Nul(A)$. Thus, $\Nul(A) \subseteq
+  (\Range(A^*))^\perp$
+
+  Conversely, if $\x \in (\Range(A^*))^\perp$, then $\x$ satisfies $\langle A^*
+  \x, \y \rangle = \zero$, for all $\y \in \C^m$, which, again implies that $A\x
+  = \zero$, so $\x \in \Nul(A)$. Thus, $(\Range(A^*))^\perp \subseteq \Nul(A)$.
+
+  Therefore, we conclude that $\Nul(A) = (\Range(A^*))^\perp$.
+\end{proof}
+
+\begin{proof}[Solution to (ii)]
+  Suppose $\x \in \Nul(A)$. Then, $A\x = \zero$. We have $A^* A\x = A^*(A\x) =
+  A^*\zero = \zero$. So, $\x \in \Nul(A^* A)$, which implies that $\Nul(A)
+  \subseteq \Nul(A^* A)$.
+
+  Conversely, suppose $\x \in \Nul(A^* A)$. Then, $A^* A\x = \zero$. Taking the
+  inner product with $\x$, we get $\langle A^* A\x, \x \rangle = \zero$. Using
+  the definition of the inner product, $(A\x)^*(A\x) = \lVert A\x \rVert^2 =
+  \zero$. Thus, $A\x = \zero$, so $\x \in \Nul(A)$. Therefore, $\Nul(A^* A)
+  \subseteq \Nul(A)$.
+
+  Therefore, we conclude that $\Nul(A^* A) = \Nul(A)$.
+\end{proof}
+
+\begin{proof}[Solution to (iii)]
+  By the rank-nullity theorem, we have $\dim(\Nul(A)) + \dim(\Range(A)) = n$.
+  Since we just proved $\Nul(A^* A) = \Nul(A)$, we get $\dim(\Nul(A^* A)) =
+  \dim(\Nul(A))$. Applying rank-nullity to $A^* A$, we get $\dim(\Nul(A^* A)) +
+  \dim(\Range(A^* A)) = n$. Since $\dim(\Nul(A^* A)) = \dim(\Nul(A))$, it
+  follows that $\dim(\Range(A^* A)) = \dim(\Range(A))$. Therefore, we have
+  $\Rank(A^* A) = \Rank(A)$.
+
+  Similarly, since $A^* A$ and $AA^*$ have the same rank (because their null
+  spaces have the same dimension), we also obtain $\Rank(A^*) = \Rank(A)$.
+
+  Therefore, we conclude that $\Rank(A^* A) = \Rank(A) = \Rank(A^*)$.
+\end{proof}
+
+\begin{proof}[Solution to (iv)]
+  Since $A^* A$ maps $\C^n$ to $\C^n$, its range is contained in $\Range(A^*)$.
+  That is, $\Range(A^* A) \subseteq \Range(A^*)$.
+
+  For the reverse inclusion, let $\y \in \Range(A^*)$, so there exists $\x \in
+  \C^n$ such that $\y = A^*\x$. Then, we have $\y = A^* A(A^t\x)$, where $A^t$
+  is the least-squares solution of $A\x = \y$. This shows that every element in
+  $\Range(A^*)$ can be written as $A^* A\x$, so $\Range(A^*) \subseteq
+  \Range(A^* A)$.
+
+  Therefore, we conclude that $\Range(A^* A) = \Range(A^*)$.
+\end{proof}
+
+\begin{problem}[6]
+  Let $A \in \C^{n \times n}$ be a normal matrix. Let $(\lambda, \v)$ be an
+  eigenvalue/eigenvector pair of A. Prove that $(\bar{\lambda}, \v)$ is an
+  eigenvalue/eigenvector pair of $A^*$.
+\end{problem}
+
+\begin{proof}[Solution]
+  Since $(\lambda, \v)$ is an eigenpair of $A$, we have $A\v = \lambda\v$.
+  Taking the inner product of both sides with $\v$, we get $\langle A\v, \v
+  \rangle = \langle \lambda\v, \v \rangle = \lambda \langle \v, \v \rangle$.
+  Since $A$ is normal, we also consider $\langle \v, A^*\v \rangle = \langle
+  A\v, \v \rangle$. Substituting $A\v = \lambda\v$, we get $\langle \v, A^*\v
+  \rangle = \lambda \langle \v, \v \rangle$. But the left-hand side can be
+  rewritten as $\langle \v, A^*\v \rangle = \langle A^*\v, \v \rangle$. Since
+  the inner product satisfies $\langle A^*\v, \v \rangle = \overline{\langle \v,
+  A^*\v \rangle}$, we take the conjugate to get $\langle A^*\v, \ \rangle =
+  \bar{\lambda} \langle \v, \v \rangle$.
+
+  Since $\langle \v, \v \rangle = \lVert \v \rVert^2 \ne \zero$, we conclude
+  that $A^*\v = \bar{\lambda}\v$. Therefore, $(\bar{\lambda}, \v)$ is an
+  eigenpair of $A^*$.
+\end{proof}
+
+\begin{problem}[7]
+  Let $A \in \C^{n \times n}$ be a normal matrix. Prove that eigenvectors of A
+  associated with distinct eigenvalues are orthogonal.
+\end{problem}
+
+\begin{proof}[Solution]
+  Let $(\lambda_1, \v_1)$ and $(\lambda_2, \v_2)$ be two distinct eigenpairs of
+  $A$. First, we compute $\langle A\v_1, \v_2 \rangle = \langle \lambda_1\v_1,
+  \v_2 \rangle = \lambda_1 \langle \v_1, \v_2 \rangle$. Now, we compute $\langle
+  \v_1, A^*\v_2 \rangle$. Since $A$ is normal, its eigenvectors satisfy $A^*\v_2
+  = \bar{\lambda_2}\v_2$. Thus, $\langle \v_1, A^*\v_2 \rangle = \langle \v_1,
+  \bar{\lambda_2}\v_2 \rangle = \lambda_2 \langle \v_1, \v_2 \rangle$.
+
+  Since $A$ is normal, we know $\langle A\v_1, \v_2 \rangle = \langle \v_1,
+  A^*\v_2 \rangle$. Therefore, we have $\lambda_1 \langle \v_1, \v_2 \rangle =
+  \bar{\lambda_2} \langle \v_1, \v_2 \rangle$. Rearranging, we get $(\lambda_1 -
+  \bar{\lambda_2}) \langle \v_1, \v_2 \rangle = \zero$. Since $\lambda_1$ and
+  $\lambda_2$ are distinct, we have $\lambda_1 - \bar{\lambda_2} \ne \zero$.
+
+  Therefore, eigenvectors corresponding to distinct eigenvalues are orthogonal.
+\end{proof}
+
+\begin{problem}[8]
+  True or False. (No explanation is needed)
+  \begin{enumerate}
+    \item Suppose $A \in \C^{n \times n}$. Then $\Range(A^* A) = \Range(A^*) =
+      \Range(A)$.
+
+    \item A set of orthonormal vectors must be linearly independent.
+
+    \item A set of orthogonal vectors must be linearly independent.
+
+    \item Every linear transformation on $V$ has a unique adjoint.
+
+    \item For every linear transformation $T : V \to V$ and any given ordered
+      basis $B$ for $V$, we have $\left[T^*\right]_B = ([T]_B)^*$.
+
+    \item For any linear transformation $T$ and $U$ on $V$ and scalars $a$ and
+      $b$, we have
+      \[%
+        (aT + bU)^* = aT^* + bU^*
+      .\]%
+
+      \item Every self-adjoint linear transformation on $V$ is normal.
+
+      \item Linear transformations and their adjoints on $V$ have the same
+        eigenvalues.
+
+      \item Linear transformations and their adjoints on $V$ have the same
+        eigenvectors.
+  \end{enumerate}
+\end{problem}
+
+\begin{proof}[Solution to (i)]
+  False.
+\end{proof}
+
+\begin{proof}[Solution to (ii)]
+  True.
+\end{proof}
+
+\begin{proof}[Solution to (iii)]
+  False.
+\end{proof}
+
+\begin{proof}[Solution to (iv)]
+  True.
+\end{proof}
+
+\begin{proof}[Solution to (v)]
+  True.
+\end{proof}
+
+\begin{proof}[Solution to (vi)]
+  True.
+\end{proof}
+
+\begin{proof}[Solution to (vii)]
+  True.
+\end{proof}
+
+\begin{proof}[Solution to (viii)]
+  False.
+\end{proof}
+
+\begin{proof}[Solution to (ix)]
+  False.
+\end{proof}
