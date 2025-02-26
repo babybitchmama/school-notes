@@ -48,7 +48,7 @@
   showing that for any $\v \in \C^2$, we have $\v^* G \v \ge 0$. We have
   \begin{align*}
     \v^* G\v &= \begin{pmatrix}
-      \bar{a} & \bar{b} \\
+      \overline{a} & \overline{b} \\
     \end{pmatrix}
     \begin{pmatrix}
       \langle \x, \x \rangle & \langle \x, \y \rangle \\
@@ -58,7 +58,7 @@
       a \\
       b \\
     \end{pmatrix} \\
-             &= \bar{a}a \langle \x, \x \rangle + \bar{a}b \langle \x, \y \rangle + \bar{b}a \langle \y, \x \rangle + \bar{b}b \langle \y, \y \rangle \\
+             &= \overline{a}a \langle \x, \x \rangle + \overline{a}b \langle \x, \y \rangle + \overline{b}a \langle \y, \x \rangle + \overline{b}b \langle \y, \y \rangle \\
              &= \langle a\x + b\y, a\x + b\y \rangle \ge 0
   .\end{align*}
   Since this is true for any $\v \in \C^2$, we conclude that $G$ is positive
@@ -327,6 +327,201 @@
 \end{problem}
 
 \begin{proof}[Solution]
+  Using the Gram-Schmidt process, we can find the orthonormal basis for the
+  column space of $A$. We start with the first column, given $\v_1$, $\v_2$, and
+  $\v_3$ as
+  \[%
+    \v_1 = \begin{pmatrix}
+      0 \\
+      -1 \\
+      1 \\
+    \end{pmatrix},\quad
+    \v_2 = \begin{pmatrix}
+      0 \\
+      0 \\
+      2 \\
+    \end{pmatrix},\aand
+    \v_3 = \begin{pmatrix}
+      1 \\
+      0 \\
+      2 \\
+    \end{pmatrix}
+  .\]%
+
+  Let $\u_1 = \v_1$. We then have to normalize $\u_1$ to get
+  \[%
+    \hat{\u}_1 = \frac{\v_1}{\lVert \v_1 \rVert} = \frac{1}{\sqrt{2}}
+    \begin{pmatrix}
+      0 \\
+      -1 \\
+      1 \\
+    \end{pmatrix} =
+    \begin{pmatrix}
+      0 \\
+      -\sfrac{\sqrt{2}}{2} \\
+      \sfrac{\sqrt{2}}{2} \\
+    \end{pmatrix}
+  .\]%
+
+  Next, we compute $\u_2$ as
+  \[%
+    \u_2 = \v_2 - \langle \hat{\u}_1, \v_2 \rangle \hat{\u}_1 =
+    \begin{pmatrix}
+      0 \\
+      0 \\
+      2 \\
+    \end{pmatrix} -
+    \sqrt{2} \cdot
+    \begin{pmatrix}
+      0 \\
+      -\sfrac{\sqrt{2}}{2} \\
+      \sfrac{\sqrt{2}}{2} \\
+    \end{pmatrix} =
+    \begin{pmatrix}
+      0 \\
+      0 \\
+      2 \\
+    \end{pmatrix} -
+    \begin{pmatrix}
+      0 \\
+      -1 \\
+      1 \\
+    \end{pmatrix} =
+    \begin{pmatrix}
+      0 \\
+      1 \\
+      1 \\
+    \end{pmatrix}
+  .\]%
+  We then normalize $\u_2$ to get
+  \[%
+    \hat{\u}_2 = \frac{\u_2}{\lVert \u_2 \rVert} =
+    \frac{1}{\sqrt{2}}
+    \begin{pmatrix}
+      0 \\
+      1 \\
+      1 \\
+    \end{pmatrix} =
+    \begin{pmatrix}
+      0 \\
+      \sfrac{\sqrt{2}}{2} \\
+      \sfrac{\sqrt{2}}{2} \\
+    \end{pmatrix}
+  .\]%
+
+  Finally, we compute $\u_3$ as
+  \begin{align*}
+    \u_3 = \v_3 - \langle \hat{\u}_1, \v_3 \rangle \hat{\u}_1 - \langle \hat{\u}_2, \v_3 \rangle \hat{\u}_2 &=
+    \begin{pmatrix}
+      1 \\
+      0 \\
+      2 \\
+    \end{pmatrix} -
+    \sqrt{2} \cdot
+    \begin{pmatrix}
+      0 \\
+      -\sfrac{\sqrt{2}}{2} \\
+      \sfrac{\sqrt{2}}{2} \\
+    \end{pmatrix} -
+    \sqrt{2} \cdot
+    \begin{pmatrix}
+      0 \\
+      \sfrac{\sqrt{2}}{2} \\
+      \sfrac{\sqrt{2}}{2} \\
+    \end{pmatrix} \\
+    &=
+    \begin{pmatrix}
+      1 \\
+      0 \\
+      2 \\
+    \end{pmatrix} -
+    \begin{pmatrix}
+      0 \\
+      -1 \\
+      1 \\
+    \end{pmatrix} -
+    \begin{pmatrix}
+      0 \\
+      1 \\
+      1 \\
+    \end{pmatrix} =
+    \begin{pmatrix}
+      1 \\
+      0 \\
+      0 \\
+    \end{pmatrix}
+  .\end{align*}
+  We then normalize $\u_3$ to get
+  \[%
+    \hat{\u}_3 = \frac{\u_3}{\lVert \u_3 \rVert} =
+    \begin{pmatrix}
+      1 \\
+      0 \\
+      0 \\
+    \end{pmatrix}
+  .\]%
+
+  We now have the orthonormal basis $\{\hat{\u}_1, \hat{\u}_2, \hat{\u}_3\}$.
+  Therefore, the matrix $Q$ and $Q^T$ is
+  \[%
+    Q = \begin{pmatrix}
+      0 & 0 & 1 \\
+      -\sfrac{\sqrt{2}}{2} & \sfrac{\sqrt{2}}{2} & 0 \\
+      \sfrac{\sqrt{2}}{2} & \sfrac{\sqrt{2}}{2} & 0 \\
+    \end{pmatrix} \aand
+    Q^T = \begin{pmatrix}
+      0 & -\sfrac{\sqrt{2}}{2} & \sfrac{\sqrt{2}}{2} \\
+      0 & \sfrac{\sqrt{2}}{2} & \sfrac{\sqrt{2}}{2} \\
+      1 & 0 & 0 \\
+    \end{pmatrix}
+  .\]%
+
+  The matrix $R$ is given by
+  \begin{align*}
+    R = Q^T A &=
+    \begin{pmatrix}
+      0 & -\sfrac{\sqrt{2}}{2} & \sfrac{\sqrt{2}}{2} \\
+      0 & \sfrac{\sqrt{2}}{2} & \sfrac{\sqrt{2}}{2} \\
+      1 & 0 & 0 \\
+    \end{pmatrix}
+    \begin{pmatrix}
+      0 & 0 & 1 \\
+      -1 & 0 & 0 \\
+      1 & 2 & 2 \\
+    \end{pmatrix} \\
+    &= \begin{pmatrix}
+      \left(-\sfrac{\sqrt{2}}{2}\right) \cdot (-1) + \left(\sfrac{\sqrt{2}}{2}\right) \cdot (1) & \left(\sfrac{\sqrt{2}}{2}\right) \cdot (2) & \left(\sfrac{\sqrt{2}}{2}\right) \cdot (2) \\
+      \left(\sfrac{\sqrt{2}}{2}\right) \cdot (-1) + \left(\sfrac{\sqrt{2}}{2}\right) \cdot (1) & \left(\sfrac{\sqrt{2}}{2}\right) \cdot (2) & \left(\sfrac{\sqrt{2}}{2}\right) \cdot (2) \\
+      0 & 0 & 1 \\
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+      \sqrt{2} & \sqrt{2} & \sqrt{2} \\
+      0 & \sqrt{2} & \sqrt{2} \\
+      0 & 0 & 1 \\
+    \end{pmatrix}
+  .\end{align*}
+
+  Therefore, the QR-decomposition of $A$ is
+  \[%
+    A = QR =
+    \begin{pmatrix}
+      0 & 0 & 1 \\
+      -\sfrac{\sqrt{2}}{2} & \sfrac{\sqrt{2}}{2} & 0 \\
+      \sfrac{\sqrt{2}}{2} & \sfrac{\sqrt{2}}{2} & 0 \\
+    \end{pmatrix}
+    \begin{pmatrix}
+      \sqrt{2} & \sqrt{2} & \sqrt{2} \\
+      0 & \sqrt{2} & \sqrt{2} \\
+      0 & 0 & 1 \\
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+      0 & 0 & 1 \\
+      -1 & 0 & 0 \\
+      1 & 2 & 2 \\
+    \end{pmatrix}
+  .\qedhere\]%
 \end{proof}
 
 \begin{problem}[4]
@@ -427,7 +622,7 @@
 
 \begin{problem}[6]
   Let $A \in \C^{n \times n}$ be a normal matrix. Let $(\lambda, \v)$ be an
-  eigenvalue/eigenvector pair of A. Prove that $(\bar{\lambda}, \v)$ is an
+  eigenvalue/eigenvector pair of A. Prove that $(\overline{\lambda}, \v)$ is an
   eigenvalue/eigenvector pair of $A^*$.
 \end{problem}
 
@@ -441,11 +636,11 @@
   rewritten as $\langle \v, A^*\v \rangle = \langle A^*\v, \v \rangle$. Since
   the inner product satisfies $\langle A^*\v, \v \rangle = \overline{\langle \v,
   A^*\v \rangle}$, we take the conjugate to get $\langle A^*\v, \ \rangle =
-  \bar{\lambda} \langle \v, \v \rangle$.
+  \overline{\lambda} \langle \v, \v \rangle$.
 
   Since $\langle \v, \v \rangle = \lVert \v \rVert^2 \ne \zero$, we conclude
-  that $A^*\v = \bar{\lambda}\v$. Therefore, $(\bar{\lambda}, \v)$ is an
-  eigenpair of $A^*$.
+  that $A^*\v = \overline{\lambda}\v$. Therefore, $(\overline{\lambda}, \v)$ is
+  an eigenpair of $A^*$.
 \end{proof}
 
 \begin{problem}[7]
@@ -458,14 +653,16 @@
   $A$. First, we compute $\langle A\v_1, \v_2 \rangle = \langle \lambda_1\v_1,
   \v_2 \rangle = \lambda_1 \langle \v_1, \v_2 \rangle$. Now, we compute $\langle
   \v_1, A^*\v_2 \rangle$. Since $A$ is normal, its eigenvectors satisfy $A^*\v_2
-  = \bar{\lambda_2}\v_2$. Thus, $\langle \v_1, A^*\v_2 \rangle = \langle \v_1,
-  \bar{\lambda_2}\v_2 \rangle = \lambda_2 \langle \v_1, \v_2 \rangle$.
+  = \overline{\lambda_2}\v_2$. Thus, $\langle \v_1, A^*\v_2 \rangle = \langle
+  \v_1, \overline{\lambda_2}\v_2 \rangle = \lambda_2 \langle \v_1, \v_2
+  \rangle$.
 
   Since $A$ is normal, we know $\langle A\v_1, \v_2 \rangle = \langle \v_1,
   A^*\v_2 \rangle$. Therefore, we have $\lambda_1 \langle \v_1, \v_2 \rangle =
-  \bar{\lambda_2} \langle \v_1, \v_2 \rangle$. Rearranging, we get $(\lambda_1 -
-  \bar{\lambda_2}) \langle \v_1, \v_2 \rangle = \zero$. Since $\lambda_1$ and
-  $\lambda_2$ are distinct, we have $\lambda_1 - \bar{\lambda_2} \ne \zero$.
+  \overline{\lambda_2} \langle \v_1, \v_2 \rangle$. Rearranging, we get
+  $(\lambda_1 - \overline{\lambda_2}) \langle \v_1, \v_2 \rangle = \zero$. Since
+  $\lambda_1$ and $\lambda_2$ are distinct, we have $\lambda_1 -
+  \overline{\lambda_2} \ne \zero$.
 
   Therefore, eigenvectors corresponding to distinct eigenvalues are orthogonal.
 \end{proof}
