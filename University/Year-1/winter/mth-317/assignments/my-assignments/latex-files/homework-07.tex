@@ -131,7 +131,8 @@
   \begin{enumerate}
     \item What is $L(1)$? Explain why $L$ is differentiable and find $L'(x)$.
 
-    \item Show that $L(xy) = L(x) + L(y)$. (Think of $y$ as a constant and differentiate $g(x) = L(xy)$.)
+    \item Show that $L(xy) = L(x) + L(y)$. (Think of $y$ as a constant and
+      differentiate $g(x) = L(xy)$.)
 
     \item Show $L(\sfrac{x}{y}) = L(x) - L(y)$.
   \end{enumerate}
@@ -140,9 +141,11 @@
 \begin{proof}[Solution to (i)]
   Using the Fundamental Theorem of Calculus, part (i), we have
   \[%
-    L(1) = \int_1^1 \frac{1}{t} \,\dt = -\frac{1}{t^2}\bigg|_1^1 = 0
+    L(1) = \int_1^1 \frac{1}{t} \,\dt = \ln(\lvert t \rvert)\bigg\vert_1^1 = \ln(1) - \ln(1) = 0
   .\]%
-  Since the integrand $\sfrac{1}{t}$ is continuous on $(0, \infty)$, $L$ is differentiable on $(0, \infty)$. By the Fundamental Theorem of Calculus, part (ii), we have
+  Since the integrand $\sfrac{1}{t}$ is continuous on $(0, \infty)$, $L$ is
+  differentiable on $(0, \infty)$. By the Fundamental Theorem of Calculus, part
+  (ii), we have
   \[%
     L'(x) = \odv{}{x} \int_1^x \frac{1}{t} \,\dt = \frac{1}{x}
   .\qedhere\]%
@@ -157,7 +160,8 @@
   \[%
     g'(x) = \odv{}{x} \int_1^{xy} \frac{1}{t} \,\dt = \frac{y}{xy} = \frac{1}{x}
   .\]%
-  This means $g'(x) = L'(x) \implies g(x) = L(x) + C$. To find $C$, let $x = 1$ and evaluate, giving us
+  This means $g'(x) = L'(x) \implies g(x) = L(x) + C$. To find $C$, let $x = 1$
+  and evaluate, giving us
   \[%
     g(1) = L(1) + C \implies L(y) = 0 + C \implies C = L(y)
   .\]%
@@ -176,7 +180,8 @@
   \[%
     g'(x) = \odv{}{x} \int_1^{\frac{x}{y}} \frac{1}{t} \,\dt = \frac{\sfrac{1}{y}}{\sfrac{x}{y}} = \frac{1}{x}
   .\]%
-  This means $g'(x) = L'(x) \implies g(x) = L(x) + C$. To find $C$, let $x = y$ and evaluate, giving us
+  This means $g'(x) = L'(x) \implies g(x) = L(x) + C$. To find $C$, let $x = y$
+  and evaluate, giving us
   \[%
     g(y) = L(1) = L(y) + C \implies 0 = L(y) + C \implies C = -L(y)
   .\]%

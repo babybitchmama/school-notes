@@ -1,0 +1,208 @@
+\begin{problem}[1]
+  Evaluate $\displaystyle\iint_S x \,\dS$ where $S$ is the portion of the plane
+  $4x + 2y + z = 8$ in octant one.
+\end{problem}
+
+\begin{proof}[Solution]
+  Solving for $z$, we get $z = 8 - 4x - 2y$. The region lies in the first
+  octant, meaning $x \ge 0$, $y \ge 0$, and $z \ge 0$. Finding the intersection
+  points with each axis, we get
+  \begin{align*}
+    x = 0 = y &\implies z = 8 \\
+    x = 0 = z &\implies y = 4 \\
+    y = 0 = z &\implies x = 2
+  .\end{align*}
+  Thus, the region is a triangle with vertices at $(0, 0, 8)$, $(0, 4, 0)$, and
+  $(2, 0, 0)$. The normal vector to the plane is $\NN = \nabla f = \langle 4, 2,
+  1 \rangle$. Therefore, the surface element is given by
+  \[%
+    \left\lvert \frac{\partial z}{\partial (x, y)} \right\rvert \,\dx \,\dy = \sqrt{1^2 + 2^2 + 4^2} \,\dx \,\dy = \sqrt{21} \,\dx \,\dy
+  .\]%
+  Therefore, we get
+  \[%
+    \dS = \sqrt{21} \,\dx \,\dy
+  .\]%
+  The equation of the line connecting $(2, 0)$ and $(0, 4)$ is $y = -2x + 4$.
+  Therefore, the bounds of integration are $0 \le x \le 2$ and $0 \le y \le -2x
+  + 4$. Thus, we get
+  \begin{align*}
+    \iint_S x \,\dS &= \int_0^2 \int_0^{-2x+4} x \sqrt{21} \,\dy \,\dx \\
+                    &= \sqrt{21} \cdot \int_0^2 xy\bigg\vert_0^{-2x+4} \,\dx \\
+                    &= \sqrt{21} \cdot \int_0^2 -2x^2 + 4x \,\dx \\
+                    &= \sqrt{21} \cdot \left(-\frac{2}{3}x^3 + 2x^2\right)_0^2 \\
+                    &= \sqrt{21}\left(-\frac{16}{3} + 8\right) = \frac{8\sqrt{21}}{3}
+  .\qedhere\end{align*}
+\end{proof}
+
+\begin{problem}[2]
+  Evaluate $\displaystyle\iint_S x^2 + y^2 + z^2 \,\dS$ where $S$ is the
+  boundary surface of the solid above the plane $z = 1$ and inside the sphere
+  $x^2 + y^2 + z^2 = 4$.
+\end{problem}
+
+\begin{proof}[Solution]
+  In spherical coordinates, we have $x = 2\sin(\theta)\cos(\phi)$, $y =
+  2\sin(\theta)\sin(\phi)$, and $z = 2\cos(\theta)$. The cap is bounded by $z
+  \ge 1$, or $2\cos(\theta) \ge 1 \implies \cos(\phi) \ge \sfrac{1}{2}$. This
+  gives us the bounds $0 \le \theta \le \sfrac{\pi}{3}$. The surface element is
+  given by
+  \[%
+    \dS = 4\sin(\theta) \,\dd{\theta} \,\dd{\phi}
+  .\]%
+  On the spherical cap, we have
+  \begin{align*}
+    I_1 = \iint x^2 + y^2 + z^2 \,\dS &= \int_0^{2\pi} \int_0^{\sfrac{\pi}{3}} 4 \cdot 4\sin(\theta) \,\dd{\theta} \,\dd{\phi} \\
+                                      &= 16 \cdot \int_0^{2\pi} \,\dd{\phi} \cdot \int_0^{\sfrac{\pi}{3}} \sin(\theta) \,\dd{\theta} \\
+                                      &= 16 \cdot 2\pi \cdot \cos(\theta)\bigg\vert_{\sfrac{\pi}{3}}^0 \\
+                                      &= 32\pi \cdot \left(\cos(0) - \cos\left(\frac{\pi}{3}\right)\right) \\
+                                      &= 32\pi \cdot \left(-\frac{1}{2} + 1\right) = 16\pi
+  .\end{align*}
+
+  On the disk, $x^2 + y^2 + z^2 = 4$ and $z = 1$, we have $x^2 + y^2 = 3$. Using
+  polar coordinates, $x = \sqrt{3}\cos(\phi)$ and $y = \sqrt{3}\sin(\phi)$, we
+  get the bounds $0 \le \phi \le 2\pi$ and $0 \le r \le \sqrt{3}$. The surface
+  \[%
+    \dS = r \,\dr \,\dd{\phi}
+  .\]%
+  Therefore, we get
+  \begin{align*}
+    I_2 = \iint x^2 + y^2 + z^2 \,\dS &= \int_0^{2\pi} \int_0^{\sqrt{3}} (r^2 + 1) \cdot r \,\dr \,\dd{\phi} \\
+                                      &= \int_0^{2\pi} \,\dd{\phi} \cdot \int_0^{\sqrt{3}} r^3 + r \,\dr \\
+                                      &= 2\pi \cdot \left(\frac{r^4}{4} + \frac{r^2}{2}\right)_0^{\sqrt{3}} \\
+                                      &= 2\pi \cdot \left(\frac{9}{4} + \frac{3}{2}\right) = \frac{15\pi}{2}
+  .\end{align*}
+
+  Therefore, the total integral is
+  \[%
+    I = I_1 + I_2 = 16\pi + \frac{15\pi}{2} = \frac{47\pi}{2}
+  .\qedhere\]%
+\end{proof}
+
+\begin{problem}[3]
+  A funnel has the shape of the cone $z = \sqrt{x^2 + y^2}$ for $1 \le z \le 3$.
+  The mass density of the funnel is $\rho(x, y, z) = 5 - z$. Find the mass of
+  the funnel.
+\end{problem}
+
+\begin{proof}[Solution]
+  Rewriting in cylindrical coordinates, we have $x = r\cos(\theta)$, $y =
+  r\sin(\theta)$, and $z = r$. For $1 \le z \le 3$, we have $1 \le r \le 3$ and
+  $0 \le \theta \le 2\pi$. The normal vector is given by the gradient of the
+  function $F(x, y, z) = z - \sqrt{x^2 + y^2}$,
+  \[%
+    \nabla F = \left\langle -\frac{x}{\sqrt{x^2 + y^2}}, -\frac{y}{\sqrt{x^2 + y^2}}, 1 \right\rangle
+  .\]%
+  It's magnitude is given by
+  \begin{align*}
+    \lvert \nabla F \rvert &= \sqrt{\left(-\frac{x}{\sqrt{x^2 + y^2}}\right)^2 + \left(-\frac{y}{\sqrt{x^2 + y^2}}\right)^2 + 1^2} \\
+                           &= \sqrt{\frac{x^2 + y^2}{x^2 + y^2} + 1} = \sqrt{2}
+  .\end{align*}
+  Therefore, the surface element is given by
+  \[%
+    \dS = \lvert \nabla F \rvert \,\dr \,\dd{\theta} \sqrt{2} \,\dr \,\dd{\theta}
+  .\]%
+
+  The mass is given by
+  \begin{align*}
+    M = \iint_S \rho \,\dS &= \int_0^{2\pi} \int_1^3 (5 - r) \cdot r \sqrt{2} \,\dr \,\dd{\theta} \\
+                           &= \sqrt{2} \cdot 2\pi \cdot \int_1^3 5r - r^2 \,\dr \\
+                            &= 2\sqrt{2}\pi \cdot \left(\frac{5r^2}{2} - \frac{r^3}{3}\right)_1^3 \\
+                            &= 2\sqrt{2}\pi \cdot \left(\frac{27}{2} - \frac{13}{6}\right) \\
+                            &= 2\sqrt{2}\pi \cdot \frac{34\sqrt{2}}{3} = \frac{68\sqrt{2}\pi}{3}
+  .\qedhere\end{align*}
+\end{proof}
+
+\begin{problem}[4]
+  Evaluate $\displaystyle\iint_S \FF \cdot \dd{\S}$ where $\FF = \langle x - 2y,
+  2z + 8x, y + z \rangle$ downward across the portion of the plane $4x + y + z =
+  12$ that lies in the first octant.
+\end{problem}
+
+\begin{proof}[Solution]
+  The normal vector to the plane is $\NN = \nabla f = \langle 4, 1, 1 \rangle$.
+  The region lies in the first octant, meaning $x \ge 0$, $y \ge 0$, and $z \ge
+  0$. Finding the intersection points with each axis, we get
+  \begin{align*}
+    x = 0 = y &\implies z = 12 \\
+    x = 0 = z &\implies y = 12 \\
+    y = 0 = z &\implies x = 3
+  .\end{align*}
+  Rewriting the plane equation, we get $z = 12 - 4x - y$. The normal vector to
+  the plane is $\NN = \nabla f = \langle 4, 1, 1 \rangle$. Since we want a
+  downward orientation, we check the $z$-component of $\nabla F$ Since it is
+  positive ($+1$), the normal vector is already pointing upward. To orient it
+  downward, we take the negative of the normal vector, $\NN = \langle -4, -1, -1
+  \rangle$. Therefore, the surface element is given by
+  \[%
+    \dS = \langle -4, -1, -1 \rangle \,\dA
+  .\]%
+  Computing the dot product, we get
+  \[%
+    \FF \cdot \dS = (x - 2y)(-4) + (2z + 8x)(-1) + (y + z)(-1) = 10y - 36
+  .\]%
+  The equation of the line connecting $(3, 0)$ and $(0, 12)$ is $y = -4x + 12$.
+  Therefore, the bounds of integration are $0 \le x \le 3$ and $0 \le y \le -4x
+  + 12$. Thus, we get
+  \begin{align*}
+    \iint_S \FF \cdot \dd{\S} &= \int_0^3 \int_0^{-4x+12} 10y - 36 \,\dy \,\dx \\
+                              &= \int_0^3 5y^2 - 36y\bigg\vert_0^{-4x+12} \,\dx \\
+                              &= \int_0^3 5(-4x + 12)^2 - 36(-4x + 12) \,\dx \\
+                              &= \int_0^3 5(16x^2 - 96x + 144) - 432 + 144x \,\dx \\
+                              &= \int_0^3 80x^2 - 336x + 288 \,\dx \\
+                              &= \frac{80}{3}x^3 - 168x^2 + 288x\bigg\vert_0^3 = 72
+  .\qedhere\end{align*}
+\end{proof}
+
+\begin{problem}[5]
+  Evaluate $\displaystyle\iint_S \FF \cdot \dd{\S}$ where $\FF = \langle xz, x,
+  y \rangle$ and $S$ is the hemisphere $x^2 + y^2 + z^2 = 9$ with $y \ge 0$
+  oriented in the direction of the positive $y$-axis.
+\end{problem}
+
+\begin{proof}[Solution]
+  In spherical coordinates, we have $x = 3\sin(\theta)\cos(\phi)$, $y =
+  3\sin(\theta)\sin(\phi)$, and $z = 3\cos(\theta)$. Since we're considering the
+  positive half of $y$, we have $0 \le \theta \le \pi$ and $-\sfrac{2}{\pi} \le
+  \phi \le \sfrac{2}{\pi}$ for the upper hemisphere. Parametrizing, we get
+  \[%
+    \r = \langle 3\sin(\theta)\cos(\phi), 3\sin(\theta)\sin(\phi), 3\cos(\theta) \rangle
+  .\]%
+  We know that
+  \begin{align*}
+    \r_\theta &= \langle 3\cos(\theta)\cos(\phi), 3\cos(\theta)\sin(\phi), -3\sin(\theta) \rangle \\
+    \r_\phi &= \langle -3\sin(\theta)\sin(\phi), 3\sin(\theta)\cos(\phi), 0 \rangle
+  .\end{align*}
+  Therefore, the normal vector is given by
+  \begin{align*}
+    \NN = \r_\theta \times \r_\phi &= \begin{vmatrix}
+      \ui & \uj & \uk \\
+      3\cos(\theta)\cos(\phi) & 3\cos(\theta)\sin(\phi) & -3\sin(\theta) \\
+      -3\sin(\theta)\sin(\phi) & 3\sin(\theta)\cos(\phi) & 0
+    \end{vmatrix} \\
+                                   &= \langle 9\sin^2(\theta)\sin(\phi), 9\sin^2(\theta)\sin(\phi), 9\cos(\theta)\cos(\phi)\sin(\theta)\cos(\phi) + 9\cos(\theta)\sin(\phi)\sin(\theta)\sin(\phi) \rangle \\
+                                   &= \langle 9\sin^2(\theta)\sin(\phi), 9\sin^2(\theta)\sin(\phi), 9\cos(\theta)\sin(\theta)\cos^2(\phi) + 9\cos(\theta)\sin(\theta)\sin^2(\phi) \rangle \\
+                                   &= \langle 9\sin^2(\theta)\cos(\phi), 9\sin^2(\theta)\sin(\phi), 9\cos(\theta)\sin(\theta) \rangle
+  .\end{align*}
+  Since the surface is oriented in the positive $y$-axis, we take the negative
+  of the normal vector, $\NN = \langle -9\sin^2(\theta)\cos(\phi),
+  -9\sin^2(\theta)\sin(\phi), -9\cos(\theta)\sin(\theta) \rangle$. Therefore,
+  the surface element is given by
+  \begin{align*}
+    \dS &= \lvert \NN \rvert \,\dd{\theta} \,\dd{\phi} \\
+        &= 9\sqrt{\sin^4(\theta)\cos^2(\phi) + \sin^4(\theta)\sin^2(\phi) + \cos^2(\theta)\sin^2(\theta)} \,\dd{\theta} \,\dd{\phi} \\
+        &= 9\sin(\theta)\sqrt{\sin^2(\theta)\cos^2(\phi) + \sin^2(\theta)\sin^2(\phi) + \cos^2(\theta)} \,\dd{\theta} \,\dd{\phi} \\
+        &= 9\sin(\theta)\sqrt{\sin^2(\theta)(\cos^2(\phi) + \sin^2(\phi)) + \cos^2(\theta)} \,\dd{\theta} \,\dd{\phi} \\
+        &= 9\sin(\theta)\sqrt{\sin^2(\theta) + \cos^2(\theta)} \,\dd{\theta} \,\dd{\phi} \\
+        &= 9\sin(\theta) \,\dd{\theta} \,\dd{\phi}
+  .\end{align*}
+  Computing the dot product, we get
+  \[%
+    \FF \cdot \NN = 81\cos(\theta)\sin^3(\theta)\cos^2(\phi) + 27\sin^3(\theta)\cos(\phi)\sin(\phi) + 27\cos(\theta)\sin^2(\theta)\sin(\phi)
+  .\]%
+  Therefore, we get
+  \begin{align*}
+    \iint_S \FF \cdot \dd{\S} &= \int_0^\pi \int_{-\sfrac{\pi}{2}}^{\sfrac{\pi}{2}} 81\cos(\theta)\sin^3(\theta)\cos^2(\phi) + 27\sin^3(\theta)\cos(\phi)\sin(\phi) + 27\cos(\theta)\sin^2(\theta)\sin(\phi) \,\dd{\phi} \,\dd{\theta} \\
+                              &= \textrm{BEAUTIFUL MATH STUFF} \\
+                              &= 0
+  .\qedhere\end{align*}
+\end{proof}
