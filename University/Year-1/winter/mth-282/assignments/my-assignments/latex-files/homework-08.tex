@@ -99,7 +99,7 @@
   .\end{align*}
   Therefore, the surface element is given by
   \[%
-    \dS = \lvert \nabla F \rvert \,\dr \,\dd{\theta} \sqrt{2} \,\dr \,\dd{\theta}
+    \dS = \lvert \nabla F \rvert \,\dr \,\dd{\theta} = \sqrt{2} \,\dr \,\dd{\theta}
   .\]%
 
   The mass is given by
@@ -129,16 +129,16 @@
   .\end{align*}
   Rewriting the plane equation, we get $z = 12 - 4x - y$. The normal vector to
   the plane is $\NN = \nabla f = \langle 4, 1, 1 \rangle$. Since we want a
-  downward orientation, we check the $z$-component of $\nabla F$ Since it is
-  positive ($+1$), the normal vector is already pointing upward. To orient it
-  downward, we take the negative of the normal vector, $\NN = \langle -4, -1, -1
-  \rangle$. Therefore, the surface element is given by
+  downward orientation, we check the $z$-component of $\nabla F$, Since it is
+  positive, the normal vector is already pointing upward. To orient it downward,
+  we take the negative of the normal vector, $\NN = \langle -4, -1, -1 \rangle$.
+  Therefore, the surface element is given by
   \[%
-    \dS = \langle -4, -1, -1 \rangle \,\dA
+    \dd{\S} = \langle -4, -1, -1 \rangle \,\dA
   .\]%
   Computing the dot product, we get
   \[%
-    \FF \cdot \dS = (x - 2y)(-4) + (2z + 8x)(-1) + (y + z)(-1) = 10y - 36
+    \FF \cdot \dd{\S} = (x - 2y)(-4) + (2z + 8x)(-1) + (y + z)(-1) \,\dA = 10y - 36 \,\dA
   .\]%
   The equation of the line connecting $(3, 0)$ and $(0, 12)$ is $y = -4x + 12$.
   Therefore, the bounds of integration are $0 \le x \le 3$ and $0 \le y \le -4x
@@ -160,49 +160,59 @@
 \end{problem}
 
 \begin{proof}[Solution]
-  In spherical coordinates, we have $x = 3\sin(\theta)\cos(\phi)$, $y =
-  3\sin(\theta)\sin(\phi)$, and $z = 3\cos(\theta)$. Since we're considering the
-  positive half of $y$, we have $0 \le \theta \le \pi$ and $-\sfrac{2}{\pi} \le
-  \phi \le \sfrac{2}{\pi}$ for the upper hemisphere. Parametrizing, we get
+  The hemisphere $x^2 + y^2 + z^2 = 9$ can be described using spherical
+  coordinates
   \[%
-    \r = \langle 3\sin(\theta)\cos(\phi), 3\sin(\theta)\sin(\phi), 3\cos(\theta) \rangle
+    x = 3\sin(\phi)\cos(\theta), \quad y = 3\sin(\phi)\sin(\theta), \aand z = 3\cos(\phi)
+  .\]%
+  where $0 \le \phi \le \pi$ and $0 \le \theta \le 2\pi$. This gives us the
+  parameterization
+  \[%
+    \r(\theta, \phi) = \langle 3\sin(\phi)\cos(\theta), 3\sin(\phi)\sin(\theta), 3\cos(\phi) \rangle
   .\]%
   We know that
   \begin{align*}
-    \r_\theta &= \langle 3\cos(\theta)\cos(\phi), 3\cos(\theta)\sin(\phi), -3\sin(\theta) \rangle \\
-    \r_\phi &= \langle -3\sin(\theta)\sin(\phi), 3\sin(\theta)\cos(\phi), 0 \rangle
+    \r_\phi &= \langle 3\cos(\phi)\cos(\theta), 3\cos(\phi)\sin(\theta), -3\sin(\phi) \rangle \\
+    \r_\theta &= \langle -3\sin(\phi)\sin(\theta), 3\sin(\phi)\cos(\theta), 0 \rangle
   .\end{align*}
-  Therefore, the normal vector is given by
+  The normal vector is given by
   \begin{align*}
-    \NN = \r_\theta \times \r_\phi &= \begin{vmatrix}
+    \n = \r_\phi \times \r_\theta &= \begin{vmatrix}
       \ui & \uj & \uk \\
-      3\cos(\theta)\cos(\phi) & 3\cos(\theta)\sin(\phi) & -3\sin(\theta) \\
-      -3\sin(\theta)\sin(\phi) & 3\sin(\theta)\cos(\phi) & 0
+      3\cos(\phi)\cos(\theta) & 3\cos(\phi)\sin(\theta) & -3\sin(\phi) \\
+      -3\sin(\phi)\sin(\theta) & 3\sin(\phi)\cos(\theta) & 0 \\
     \end{vmatrix} \\
-                                   &= \langle 9\sin^2(\theta)\sin(\phi), 9\sin^2(\theta)\sin(\phi), 9\cos(\theta)\cos(\phi)\sin(\theta)\cos(\phi) + 9\cos(\theta)\sin(\phi)\sin(\theta)\sin(\phi) \rangle \\
-                                   &= \langle 9\sin^2(\theta)\sin(\phi), 9\sin^2(\theta)\sin(\phi), 9\cos(\theta)\sin(\theta)\cos^2(\phi) + 9\cos(\theta)\sin(\theta)\sin^2(\phi) \rangle \\
-                                   &= \langle 9\sin^2(\theta)\cos(\phi), 9\sin^2(\theta)\sin(\phi), 9\cos(\theta)\sin(\theta) \rangle
+                                 &= \langle 9\sin^2(\phi)\cos(\theta), 9\sin^2(\phi)\sin(\theta), 9\cos(\phi)\sin(\phi)\cos^2(\theta) + 9\cos(\phi)\sin(\phi)\sin^2(\theta) \rangle \\
+                                 &= \langle 9\sin^2(\phi)\cos(\theta), 9\sin^2(\phi)\sin(\theta), 9\cos(\phi)\sin(\phi) \rangle
   .\end{align*}
-  Since the surface is oriented in the positive $y$-axis, we take the negative
-  of the normal vector, $\NN = \langle -9\sin^2(\theta)\cos(\phi),
-  -9\sin^2(\theta)\sin(\phi), -9\cos(\theta)\sin(\theta) \rangle$. Therefore,
-  the surface element is given by
+  Since the $y$-component is positive, we have the normal vector pointing in the
+  positive $y$-direction. Taking the dot product with $\FF$, we get
   \begin{align*}
-    \dS &= \lvert \NN \rvert \,\dd{\theta} \,\dd{\phi} \\
-        &= 9\sqrt{\sin^4(\theta)\cos^2(\phi) + \sin^4(\theta)\sin^2(\phi) + \cos^2(\theta)\sin^2(\theta)} \,\dd{\theta} \,\dd{\phi} \\
-        &= 9\sin(\theta)\sqrt{\sin^2(\theta)\cos^2(\phi) + \sin^2(\theta)\sin^2(\phi) + \cos^2(\theta)} \,\dd{\theta} \,\dd{\phi} \\
-        &= 9\sin(\theta)\sqrt{\sin^2(\theta)(\cos^2(\phi) + \sin^2(\phi)) + \cos^2(\theta)} \,\dd{\theta} \,\dd{\phi} \\
-        &= 9\sin(\theta)\sqrt{\sin^2(\theta) + \cos^2(\theta)} \,\dd{\theta} \,\dd{\phi} \\
-        &= 9\sin(\theta) \,\dd{\theta} \,\dd{\phi}
+    \FF \cdot \n &= xz \cdot 9\sin^2(\phi)\cos(\theta) + x \cdot 9\sin^2(\phi)\sin(\theta) + y \cdot 9\cos(\phi)\sin(\phi) \\
+                 &= (3\sin(\phi)\cos(\theta))(3\cos(\phi))(9\sin^2(\phi)\cos(\theta)) \\
+                 &\qquad + (3\sin(\phi)\cos(\theta))(9\sin^2(\phi)\sin(\theta)) \\
+                 &\qquad + (3\sin(\phi)\sin(\theta))(9\cos(\phi)\sin(\phi)) \\
+                 &= 81\cos^2(\theta)\cos(\phi)\sin^3(\phi) + 27\cos(\theta)\sin(\theta)\sin^3(\phi) + 27\sin(\theta)\cos(\phi)\sin^2(\phi)
   .\end{align*}
-  Computing the dot product, we get
+
+  Therefore, the integral is given by
+  \begin{align*}
+    \iint_S \FF \cdot \dd{\S} &= \int_0^\pi \int_0^{2\pi} 81\cos^2(\theta)\cos(\phi)\sin^3(\phi) + 27\cos(\theta)\sin(\theta)\sin^3(\phi) + 27\sin(\theta)\cos(\phi)\sin^2(\phi) \,\dd{\theta} \,\dd{\phi} \\
+                              &= \int_0^\pi \int_0^{2\pi} 81\cos^2(\theta)\cos(\phi)\sin^3(\phi) \,\dd{\theta} \,\dd{\phi} \\
+                              &\qquad+ \int_0^\pi \int_0^{2\pi} 27\cos(\theta)\sin(\theta)\sin^3(\phi) \,\dd{\theta} \,\dd{\phi} \\
+                              &\qquad+ \int_0^\pi \int_0^{2\pi}  27\sin(\theta)\cos(\phi)\sin^2(\phi) \,\dd{\theta} \,\dd{\phi}
+  .\end{align*}
+
+  The first integral is zero since
+  \begin{align*}
+    \int_0^\pi \cos(\phi)\sin^3(\phi) \,\dd{\phi} &= \int_0^\pi \cos(\phi)(1 - \cos^2(\phi))\sin(\phi) \,\dd{\phi} \\
+                                                  &= \int_1^{-1} -u(1 - u^2) \,\dd{u} \\
+                                                  &= \frac{u^2}{2} - \frac{u^4}{4}\bigg\vert_1^{-1} = 0
+  .\end{align*}
+  The second is also zero since it's integrating over a full period of
+  $\sin(\theta)$ and $\cos(\theta)$. Lastly, the third integral is also zero
+  since it's integrating over a full period of $\sin(\theta)$. Therefore, we get
   \[%
-    \FF \cdot \NN = 81\cos(\theta)\sin^3(\theta)\cos^2(\phi) + 27\sin^3(\theta)\cos(\phi)\sin(\phi) + 27\cos(\theta)\sin^2(\theta)\sin(\phi)
-  .\]%
-  Therefore, we get
-  \begin{align*}
-    \iint_S \FF \cdot \dd{\S} &= \int_0^\pi \int_{-\sfrac{\pi}{2}}^{\sfrac{\pi}{2}} 81\cos(\theta)\sin^3(\theta)\cos^2(\phi) + 27\sin^3(\theta)\cos(\phi)\sin(\phi) + 27\cos(\theta)\sin^2(\theta)\sin(\phi) \,\dd{\phi} \,\dd{\theta} \\
-                              &= \textrm{BEAUTIFUL MATH STUFF} \\
-                              &= 0
-  .\qedhere\end{align*}
+    \iint_S \FF \cdot \dd{\S} = 0
+  .\qedhere\]%
 \end{proof}

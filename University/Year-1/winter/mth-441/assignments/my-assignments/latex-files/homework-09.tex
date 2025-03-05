@@ -5,6 +5,71 @@
 \end{problem}
 
 \begin{proof}[Solution]
+  Assume $T$ is self-adjoint. We need to show that $\langle \x, T\x \rangle$ is
+  real for all $\x \in V$. Since $T$ is self-adjoint, we have
+  \[%
+    \langle T\x, \y \rangle = \langle \x, T\y \rangle \quad \textrm{for all}~\x, \y \in V
+  .\]%
+  Setting $\y = \x$, we obtain $\langle T\x, \x \rangle = \langle \x, T\x
+  \rangle$. By the conjugate symmetry of the inner product, we know that
+  \[%
+    \langle \x, T\x \rangle = \overline{\langle T\x, \x \rangle}
+  .\]%
+  Thus, we have
+  \[%
+    \langle \x, T\x \rangle = \overline{\langle \x, T\x \rangle}
+  .\]%
+  This means that $\langle \x, T\x \rangle$ is equal to its own complex
+  conjugate, which implies that it is a real number.
+
+  Assume $\langle \x, T\x \rangle$ is real for all $\x \in V$. We need to show
+  that $T$ satisfies $\langle T\x, \y \rangle = \langle \x, T\y \rangle$ for all
+  $\x, \y \in V$. Define the function $f: V \times V \to \mathbb{C}$ by
+  \[%
+    f(\x, \y) = \langle T\x, \y \rangle
+  .\]%
+  We need to show that $f(\x, \y) = f(\y, \x)$, i.e.,
+  \[
+    \langle T\x, \y \rangle = \langle \x, T\y \rangle
+  \]
+  Define the function $g(\x, \y)$ as
+  \[%
+    g(\x, \y) = \langle T\x, \y \rangle - \overline{\langle T\y, \x \rangle}
+  .\]%
+  Since the inner product satisfies conjugate symmetry, we get
+  \[%
+    \overline{\langle T\y, \x \rangle} = \langle \x, T\y \rangle
+  .\]%
+  Thus, we can rewrite $g$ as
+  \[%
+    g(\x, \y) = \langle T\x, \y \rangle - \langle \x, T\y \rangle
+  .\]%
+  We need to show that $g(\x, \y) = 0$ for all $\x, \y \in V$.
+
+  For any $\x$, define $h(\y) = g(\x, \y)$. Notice that $h$ is linear in $\y$.
+  Taking $\y = \x$, we get
+  \[%
+    g(\x, \x) = \langle T\x, \x \rangle - \langle \x, T\x \rangle = 0
+  ,\]%
+  since we assumed that $\langle \x, T\x \rangle$ is real.
+
+  For any $\x, \y$, consider
+  \[%
+    g(\x + \y, \x + \y) = \langle T(\x + \y), \x + \y \rangle - \langle \x + \y, T(\x + \y) \rangle
+  .\]%
+  Since each term is real, we get
+  \[%
+    \langle T\x, \x \rangle + \langle T\x, \y \rangle + \langle T\y, \x \rangle + \langle T\y, \y \rangle - \left( \langle \x, T\x \rangle + \langle \x, T\y \rangle + \langle \y, T\x \rangle + \langle \y, T\y \rangle \right) = 0
+  .\]%
+  Canceling out terms, we obtain
+  \[%
+    \langle T\x, \y \rangle + \langle T\y, \x \rangle - \langle \x, T\y \rangle - \langle \y, T\x \rangle = 0
+  .\]%
+  Thus, $\langle T\x, \y \rangle = \langle \x, T\y \rangle$. Since $\x$ and $\y$
+  were arbitrary, $T$ is self-adjoint.
+
+  Thus, $T$ is self-adjoint if and only if $\langle \x, T\x \rangle$ is real for
+  all $\x \in V$.
 \end{proof}
 
 \begin{problem}[2]
@@ -14,25 +79,124 @@
 \end{problem}
 
 \begin{proof}[Solution]
+  Assume $A$ is normal. We want to show that $A$ can be written $asA_1 + iA_2$
+  with the given properties. Define
+  \[%
+    A_1 = \frac{A + A^*}{2} \aand A_2 = \frac{A - A^*}{2i}
+  .\]%
+  We first need to verify that $A_1$ and $A_2$ are Hermitian. The conjugate
+  transpose of $A_1$ is
+  \[%
+    A_1^* = \left(\frac{A + A^*}{2} \right)^* = \frac{A^* + (A^*)^*}{2} = \frac{A^* + A}{2} = A_1
+    \aand
+    A_2^* = \left(\frac{A - A^*}{2i} \right)^* = \frac{A^* - A}{2i} = A_2
+  .\]%
+  Therefore, $A_1$ and $A_2$ are Hermitian. Since $A_1$ and $A_2$ are defined in
+  terms of $A$ and $A^*$ respectively, we see that $A = A_1 + iA_2$.
+
+  Now, we need to show that $A_1$ and $A_2$ commute, i.e., $A_1A_2 = A_2A_1$.
+  Since $A$ is normal, we have $A A^* = A^* A$. Substituting $A = A_1 + i A_2$
+  and $A^* = A_1
+  - i A_2$, we compute
+  \[%
+    (A_1 + i A_2)(A_1 - i A_2) = A_1^2 - i A_1 A_2 + i A_2 A_1 + A_2^2 = A_1^2 + A_2^2 + i(A_2 A_1 - A_1 A_2)
+  .\]%
+  Similarly,
+  \[%
+    (A_1 - i A_2)(A_1 + i A_2) = A_1^2 - i A_1 A_2 + i A_2 A_1 + A_2^2 = A_1^2 + A_2^2 + i(A_2 A_1 - A_1 A_2)
+  .\]%
+  Since $A A^* = A^* A$, it follows that $i (A_2 A_1 - A_1 A_2) = 0$. Thus, $A_1
+  A_2 = A_2 A_1$. Hence, if $A$ is normal, then it can be decomposed as $A = A_1
+  + i A_2$, where $A_1, A_2$ are Hermitian and commute.
+
+  Assume $A = A_1 + iA_2$ where $A_1$ and $A_2$ are Hermitian and commute. We
+  need to show that $A A^* = A^* A$. We get $A^* = (A_1 + i A_2)^* = A_1^* + i
+  A_2^* = A_1 - i A_2$. Now, compute $A A^*$ and $A^* A$ to get
+  \begin{align*}
+    \phantom{\aand}&A A^* = A_1^2 - i A_1 A_2 + i A_2 A_1 + A_2^2 = A_1^2 + A_2^2 + i(A_2 A_1 - A_1 A_2) \\
+    \aand& A^* A = (A_1 - i A_2)(A_1 + i A_2) = A_1^2 - i A_1 A_2 + i A_2 A_1 + A_2^2 = A_1^2 + A_2^2 + i(A_2 A_1 - A_1 A_2)
+  .\end{align*}
+  Since, by assumption, that $A_1 A_2 = A_2 A_1$, the term $A_2 A_1 - A_1 A_2$
+  cancel, leaving $A A^* = A_1^2 + A_2^2 = A^* A$. Thus, $A$ is normal.
+
+  Therefore, $A$ is normal if and only if it can be decomposed in this form.
 \end{proof}
 
 \begin{problem}[3]
-  Prove that a normal and nilpotent linear transformation is the zero linear
-  transformation.
+  Prove that a normal and nilpotent linear transformation is the zero linear transformation.
 
   \noindent(Note: A linear transformation $T$ is nilpotent if there exists a
-  positive integer $r$ such that $T^r = 0$.))
+  positive integer $r$ such that $T^r = 0$.)
 \end{problem}
 
 \begin{proof}[Solution]
+  Assume $T$ is a normal and nilpotent linear transformation. We need to show
+  that $T = 0$. Since $T$ is normal, by the Spectral Theorem, we know that $T$
+  is diagonalizable, i.e., $T = UDU^*$, where $D$ is a diagonal matrix of
+  eigenvalues and $U$ is a unitary matrix. Since it is diagonalizable, then
+  there exists an eigenbasis, say $\{\v_1, \cdots, \v_n\}$, with corresponding
+  eigenvalues, say $\lambda_1, \cdots, \lambda_n$, so that $T\v_i =
+  \lambda_i\v_i$, for $i = 1, \cdots, n$. Since $T$ is nilpotent, all it's
+  eigenvalues are zero. To show this, suppose $T^k = 0$, for some $k$. Applying
+  this to an eigenvector, we have
+  \[%
+    T^k\v_i = \lambda_i^k\v_i \implies \zero = \lambda_i^k\v_i = \zero \implies \lambda_i^k = 0 \implies \lambda_i = 0
+  .\]%
+
+  Since $T$ is normal, it is diagonalizable, and all its eigenvalues are zero,
+  giving us
+  \[%
+    D = \begin{pmatrix}
+      0 & 0 & \cdots & 0 \\
+      0 & 0 & \cdots & 0 \\
+      \vdots & \vdots & \ddots & \vdots \\
+      0 & 0 & \cdots & 0
+    \end{pmatrix}
+    \implies T = UDU^* = 0
+  .\]%
+
+  Therefore, a normal and nilpotent linear transformation is the zero linear
+  transformation.
 \end{proof}
 
 \begin{problem}[4]
-  Let $A \in \C^{n \times n}$ be a Hermitian matrix. Prove that $A$ is positive
-  definite if and only if all the eigenvalues of $A$ are positive.
+  Let $A \in \C^{n \times n}$ be a Hermitian matrix. Prove that $A$ is
+  positive definite if and only if all the eigenvalues of $A$ are positive.
 \end{problem}
 
 \begin{proof}[Solution]
+  Assume that $A$ is a positive definite Hermitian matrix. We need to show that
+  all the eigenvalues of $A$ are positive. Since $A$ is Hermitian, the spectral
+  theorem states that $A$ has an orthonormal basis of eigenvectors, and all its
+  eigenvalues are real. Let $\v$ be an eigenvector of $A$ corresponding to
+  eigenvalue $\lambda$, i.e., $A\v = \lambda\v$. Consider the quadratic form for
+  this eigenvector $\v^* A\v = \v^* (\lambda\v) = \lambda(\v^* \v)$. Since $\v^*
+  \v = \lVert \v \rVert^2 > 0$ for any nonzero eigenvector, we have that $\v^*
+  A\v > 0$. It follows that $\lambda > 0$. Thus, if $A$ is positive definite,
+  then all its eigenvalues are positive.
+
+  Assume that all the eigenvalues of $A$ are positive and $A$ is Hermitian. We
+  need to show that $A$ is positive definite. Again, by the spectral theorem, we
+  can diagonalize $A$ as $A = UDU^*$, where $D$ is a diagonal matrix of
+  eigenvalues, $\lambda_1, \cdots, \lambda_n$, and $U$ is a unitary matrix. For
+  any nonzero vector, $\x$, write $\y = U^* \x$, so that $\x^* A\x$ can be
+  re-written as
+  \[%
+    \x^*A\x = \x^*UDU^*\x = (U^*\x)^*D(U^*\x)^* = \y^*D\y
+  .\]%
+  Since $D$ is diagonal, this simplifies to
+  \[%
+    \y^*D\y = \sum_{i=1}^n \lambda_i \lVert \y_i \rVert^2
+  .\]%
+  If all $\lambda_i > 0$, then each term in the sum is strictly positive for any
+  nonzero $\y$, meaning
+  \[%
+    \x^*A\x = \sum_{i=1}^n \lambda_i \lVert \y_i \rVert^2 > 0
+  .\]%
+  Thus, $A$ is positive definite.
+
+  Therefore, $A$ is positive definite if and only if all its eigenvalues are
+  positive.
 \end{proof}
 
 \begin{problem}[5]
@@ -41,6 +205,48 @@
 \end{problem}
 
 \begin{proof}[Solution]
+  Assume $A$ is a unitary square normal matrix. We want to show that every
+  eigenvalue of $A$ has magnitude $1$. Since $A$ is unitary, by definition, we
+  have $A^*A = I = AA^*$. Let $(\lambda, v)$ be an eigenpair of $A$, meaning
+  that $A\v = \lambda\v$.
+  Taking norms on both sides, we get
+  \[%
+    \lVert A v \rVert = \lVert \lambda v \rVert = \lvert \lambda \rvert \lVert v \rVert
+  .\]%
+  Since $A$ is unitary, it preserves norms, so $\lVert A v \rVert = \lVert v
+  \rVert$. Thus, we obtain $\lvert \lambda \rvert \lVert v \rVert = \lVert v
+  \rVert$. Since $v \neq 0$, it follows that $\lvert \lambda \rvert = 1$.
+  Therefore, if $A$ is unitary, then every eigenvalue of $A$ has magnitude $1$.
+
+  Conversely, assume that every eigenvalue of $A$ has magnitude $1$ and that $A$
+  is normal. We need to show that $A$ is unitary. Since $A$ is normal, it is
+  unitarily diagonalizable, meaning that there exists a unitary matrix $U$ such
+  that $U^* A U = D$, where $D$ is a diagonal matrix whose diagonal entries are
+  the eigenvalues $\lambda_1, \dots, \lambda_n$ of $A$. By assumption, each
+  eigenvalue satisfies $\lVert \lambda_i \rVert = 1$. We compute
+  \[
+    D^*D = \diag(\overline{\lambda_1}, \dots, \overline{\lambda_n}) \diag(\lambda_1, \dots, \lambda_n) = \diag(\lvert \lambda_1 \rvert^2, \dots, \lvert \lambda_n \rvert^2) = I.
+  \]
+  Since unitary similarity preserves this property, we compute
+  \begin{align*}
+    A^*A &= (U D U^*)^* (U D U^*) \\
+         &= U D^* U^* U D U^* \\
+         &= U D^* D U^* \\
+         &= U I U^* \\
+         &= I
+  .\end{align*}
+  Similarly, we compute
+  \begin{align*}
+    AA^* &= (U D U^*)(U D U^*)^* \\
+         &= U D U^* U D^* U^* \\
+         &= U D D^* U^* \\
+         &= U I U^* \\
+         &= I
+  .\end{align*}
+  Thus, if every eigenvalue of $A$ has magnitude $1$, then $A$ is unitary.
+
+  Therefore, $A$ is unitary if and only if every eigenvalue of $A$ has magnitude
+  $1$.
 \end{proof}
 
 \begin{problem}[6]
@@ -50,6 +256,10 @@
 \end{problem}
 
 \begin{proof}[Solution]
+  Let $\lambda$ be an eigenvalue of $A$. By problem 4 and 5, $\lambda > 0$ and
+  $\lvert \lambda \rvert = 1$. By the Spectral Theorem, $A$ is diagonalizable
+  with an orthonormal basis of eigenvectors. Because all of its eigenvalues are
+  $1$, the diagonalized form of $A$ is simply the identity matrix $I$.
 \end{proof}
 
 \begin{problem}[7]
@@ -66,9 +276,342 @@
 \end{problem}
 
 \begin{proof}[Solution to (i)]
+  Computing $A^TA$, we get
+  \[%
+    A^TA = \begin{pmatrix}
+      -1 & 1 \\
+      0 & -1 \\
+      1 & 0 \\
+    \end{pmatrix}
+    \begin{pmatrix}
+      -1 & 0 & 1 \\
+      1 & -1 & 0 \\
+    \end{pmatrix}
+    = \begin{pmatrix}
+      (-1)(-1) + (1)(1) & (1)(-1) & (-1)(1) \\
+      (-1)(1) & (-1)(-1) & 0 \\
+      (1)(-1) & 0 & (1)(1) \\
+    \end{pmatrix}
+    = \begin{pmatrix}
+      2 & -1 & -1 \\
+      -1 & 1 & 0 \\
+      -1 & 0 & 1 \\
+    \end{pmatrix}
+  .\]%
+
+  Now, we need to find the eigenvalues and eigenvectors of $A^TA$. The
+  characteristic polynomial of $A^TA$ is given by
+  \[%
+    \det(A^TA - \lambda I) = \begin{vmatrix}
+      2 - \lambda & -1 & -1 \\
+      -1 & 1 - \lambda & 0 \\
+      -1 & 0 & 1 - \lambda \\
+    \end{vmatrix}
+    = -\lambda(\lambda - 3)(\lambda - 1) = 0
+  ,\]%
+  giving us the eigenvalues $\lambda_1 = 3$, $\lambda_2 = 1$, and $\lambda_3 =
+  0$. Next, we need to find the eigenvectors corresponding to each eigenvalue.
+
+  \begin{alignat*}{3}
+    \underline{\lambda = 3}&:
+    A^TA - 3I = \begin{pmatrix}
+      -1 & -1 & -1 \\
+      -1 & -2 & 0 \\
+      -1 & 0 & -2 \\
+    \end{pmatrix}
+    &&= \begin{pmatrix}
+      1 & 0 & 2 \\
+      0 & 1 & -1 \\
+      0 & 0 & 0 \\
+    \end{pmatrix} \\
+    \implies& \begin{pmatrix}
+      1 & 0 & 2 \\
+      0 & 1 & -1 \\
+      0 & 0 & 0 \\
+    \end{pmatrix}
+    \begin{pmatrix}
+      x_1 \\
+      x_2 \\
+      x_3 \\
+    \end{pmatrix}
+    = \begin{pmatrix}
+      0 \\
+      0 \\
+      0 \\
+    \end{pmatrix}
+    &&\implies \v_1 = \begin{pmatrix}
+        -2 \\
+        1 \\
+        1 \\
+      \end{pmatrix} \\
+    \underline{\lambda = 1}&:
+    A^TA - I = \begin{pmatrix}
+      1 & -1 & -1 \\
+      -1 & 0 & 0 \\
+      -1 & 0 & 0 \\
+    \end{pmatrix}
+    &&= \begin{pmatrix}
+      1 & -1 & -1 \\
+      0 & 1 & 1 \\
+      0 & 0 & 0 \\
+    \end{pmatrix} \\
+    \implies&
+    \begin{pmatrix}
+      1 & -1 & -1 \\
+      0 & 1 & 1 \\
+      0 & 0 & 0 \\
+    \end{pmatrix}
+    \begin{pmatrix}
+      x_1 \\
+      x_2 \\
+      x_3 \\
+    \end{pmatrix}
+    = \begin{pmatrix}
+      0 \\
+      0 \\
+      0 \\
+    \end{pmatrix}
+    &&\implies \v_2 = \begin{pmatrix}
+      0 \\
+      -1 \\
+      1 \\
+    \end{pmatrix} \\
+    \underline{\lambda = 0}&:
+    A^TA = \begin{pmatrix}
+      2 & -1 & -1 \\
+      -1 & 1 & 0 \\
+      -1 & 0 & 1 \\
+    \end{pmatrix}
+    &&= \begin{pmatrix}
+      2 & -1 & -1 \\
+      0 & 0 & 1 \\
+      0 & 0 & 0 \\
+    \end{pmatrix} \\
+    \implies& \begin{pmatrix}
+      2 & -1 & -1 \\
+      0 & 0 & 1 \\
+      0 & 0 & 0 \\
+    \end{pmatrix}
+    \begin{pmatrix}
+      x_1 \\
+      x_2 \\
+      x_3 \\
+    \end{pmatrix}
+    = \begin{pmatrix}
+      0 \\
+      0 \\
+      0 \\
+    \end{pmatrix}
+    &&\implies \v_3 = \begin{pmatrix}
+      1 \\
+      1 \\
+      1 \\
+    \end{pmatrix}
+  .\end{alignat*}
+
+  The matrix $\Sigma$ is made up of the square roots of the eigenvalues of
+  $A^TA$ along the diagonal, giving us
+  \[%
+    \Sigma
+    = \begin{pmatrix}
+      \sqrt{\lambda_1} & 0 \\
+      0 & \sqrt{\lambda_2} \\
+    \end{pmatrix}
+    = \begin{pmatrix}
+      \sqrt{3} & 0 & 0 \\
+      0 & 1 & 0 \\
+    \end{pmatrix}
+  .\]%
+
+  The columns of the matrix $V$ are the normalized vectors
+  \[%
+    \v_1 = \begin{pmatrix}
+      -2 \\
+      1 \\
+      1 \\
+    \end{pmatrix}, \quad
+    \v_2 = \begin{pmatrix}
+      0 \\
+      -1 \\
+      1 \\
+    \end{pmatrix}, \aand
+    \v_3 = \begin{pmatrix}
+      1 \\
+      1 \\
+      1 \\
+    \end{pmatrix}
+  .\]%
+  Normalizing each eigenvector gives us
+  \begin{alignat*}{4}
+    \hat{\v}_1 &= \frac{1}{\sqrt{6}} \cdot \begin{pmatrix}
+        -2 \\
+        1 \\
+        1 \\
+      \end{pmatrix}
+      &&= \begin{pmatrix}
+        -\frac{2}{\sqrt{6}} \\
+        \frac{1}{\sqrt{6}} \\
+        \frac{1}{\sqrt{6}} \\
+      \end{pmatrix}
+      &&= \begin{pmatrix}
+        -\frac{\sqrt{6}}{3} \\
+        \frac{\sqrt{6}}{6} \\
+        \frac{\sqrt{6}}{6} \\
+      \end{pmatrix} \\
+      \hat{\v}_2 &= \frac{1}{\sqrt{2}} \cdot \begin{pmatrix}
+        0 \\
+        -1 \\
+        1 \\
+      \end{pmatrix}
+      &&= \begin{pmatrix}
+        0 \\
+        -\frac{1}{\sqrt{2}} \\
+        \frac{1}{\sqrt{2}} \\
+      \end{pmatrix}
+      &&= \begin{pmatrix}
+        0 \\
+        -\frac{\sqrt{2}}{2} \\
+        \frac{\sqrt{2}}{2} \\
+      \end{pmatrix} \\
+      \hat{\v}_3 &= \frac{1}{\sqrt{3}} \cdot \begin{pmatrix}
+        1 \\
+        1 \\
+        1 \\
+      \end{pmatrix}
+      &&= \begin{pmatrix}
+        \frac{1}{\sqrt{3}} \\
+        \frac{1}{\sqrt{3}} \\
+        \frac{1}{\sqrt{3}} \\
+      \end{pmatrix}
+      &&= \begin{pmatrix}
+        \frac{\sqrt{3}}{3} \\
+        \frac{\sqrt{3}}{3} \\
+        \frac{\sqrt{3}}{3} \\
+      \end{pmatrix}
+  .\end{alignat*}
+  This gives us the matrix $V$ as
+  \[%
+    V = \begin{pmatrix}
+      -\frac{\sqrt{6}}{3} & 0 & \frac{\sqrt{3}}{3} \\
+      \frac{\sqrt{6}}{6} & -\frac{\sqrt{2}}{2} & \frac{\sqrt{3}}{3} \\
+      \frac{\sqrt{6}}{6} & \frac{\sqrt{2}}{2} & \frac{\sqrt{3}}{3} \\
+    \end{pmatrix}
+  .\]%
+
+  The columns of the matrix $U$ are the left singular vectors of the original
+  matrix. Finding each $\u_i$ gives us
+  \begin{alignat*}{3}
+    \u_1 &= \frac{1}{\sigma_1} A\hat{\v}_1 = \frac{1}{\sqrt{3}} \cdot \begin{pmatrix}
+      -1 & 0 & 1 \\
+      1 & -1 & 0 \\
+    \end{pmatrix}
+    \cdot \begin{pmatrix}
+      -\frac{\sqrt{6}}{3} \\
+      \frac{\sqrt{6}}{6} \\
+      \frac{\sqrt{6}}{6} \\
+    \end{pmatrix}
+    &&= \begin{pmatrix}
+      \frac{\sqrt{2}}{2}
+    \end{pmatrix} \\
+    \u_2 &= \frac{1}{\sigma_2} A\hat{\v}_2 = \frac{1}{\sqrt{1}} \cdot \begin{pmatrix}
+      -1 & 0 & 1 \\
+      1 & -1 & 0 \\
+    \end{pmatrix}
+    \cdot \begin{pmatrix}
+      0 \\
+      -\frac{\sqrt{2}}{2} \\
+      \frac{\sqrt{2}}{2} \\
+    \end{pmatrix}
+    &&= \begin{pmatrix}
+      \frac{\sqrt{2}}{2} \\
+      \frac{\sqrt{2}}{2} \\
+    \end{pmatrix}
+  .\end{alignat*}
+  This gives us the matrix $U$ as
+  \[%
+    U = \begin{pmatrix}
+      \frac{\sqrt{2}}{2} & \frac{\sqrt{2}}{2} \\
+      \frac{\sqrt{2}}{2} & -\frac{\sqrt{2}}{2} \\
+    \end{pmatrix}
+  .\]%
+
+  Finally, we have the singular value decomposition of $A$ as
+  \[%
+    A = U\Sigma V^* = \begin{pmatrix}
+      \frac{\sqrt{2}}{2} & \frac{\sqrt{2}}{2} \\
+      \frac{\sqrt{2}}{2} & -\frac{\sqrt{2}}{2} \\
+    \end{pmatrix}
+    \cdot \begin{pmatrix}
+      \sqrt{3} & 0 & 0 \\
+      0 & 1 & 0 \\
+    \end{pmatrix}
+    \cdot \begin{pmatrix}
+      -\frac{\sqrt{6}}{3} & \frac{\sqrt{6}}{6} & \frac{\sqrt{6}}{6} \\
+      0 & -\frac{\sqrt{2}}{2} & \frac{\sqrt{2}}{2} \\
+      \frac{\sqrt{3}}{3} & \frac{\sqrt{3}}{3} & \frac{\sqrt{3}}{3} \\
+    \end{pmatrix}
+  .\qedhere\]%
 \end{proof}
 
 \begin{proof}[Solution to (ii)]
+  Using the general formula for the general inverse, we have $A^+ = A^T \cdot \left(AA^T\right)^{-1}$.
+  Computing $AA^T$, we get
+  \[%
+    A \cdot A^T = \begin{pmatrix}
+      -1 & 0 & 1 \\
+      1 & -1 & 0 \\
+    \end{pmatrix}
+    \cdot \begin{pmatrix}
+      -1 & 1 \\
+      0 & -1 \\
+      1 & 0 \\
+    \end{pmatrix}
+    = \begin{pmatrix}
+      2 & -1 \\
+      -1 & 2 \\
+    \end{pmatrix}
+  .\]%
+  The inverse of this matrix is
+  \[%
+    (AA^T)^{-1} = \frac{1}{\det(AA^T)} \begin{pmatrix}
+      2 & 1 \\
+      1 & 2 \\
+    \end{pmatrix}
+    = \frac{1}{3} \begin{pmatrix}
+      2 & 1 \\
+      1 & 2 \\
+    \end{pmatrix}
+    = \begin{pmatrix}
+      \frac{2}{3} & \frac{1}{3} \\
+      \frac{1}{3} & \frac{2}{3} \\
+    \end{pmatrix}
+  .\]%
+  Lastly, we multiply this by $A^T$ to get
+  \[%
+    A^T \cdot (AA^T)^{-1}
+    = \begin{pmatrix}
+      -1 & 1 \\
+      0 & -1 \\
+      1 & 0 \\
+    \end{pmatrix}
+    \cdot \begin{pmatrix}
+      \frac{2}{3} & \frac{1}{3} \\
+      \frac{1}{3} & \frac{2}{3} \\
+    \end{pmatrix}
+    = \begin{pmatrix}
+      -\frac{1}{3} & \frac{1}{3} \\
+      -\frac{1}{3} & -\frac{2}{3} \\
+      \frac{2}{3} & \frac{1}{3} \\
+    \end{pmatrix}
+  .\]%
+  Therefore, the generalized inverse of $A$ is
+  \[%
+    A^+ = \begin{pmatrix}
+      -\frac{1}{3} & \frac{1}{3} \\
+      -\frac{1}{3} & -\frac{2}{3} \\
+      \frac{2}{3} & \frac{1}{3} \\
+    \end{pmatrix}
+  .\qedhere\]%
 \end{proof}
 
 \begin{problem}[8]
@@ -80,6 +623,44 @@
 \end{problem}
 
 \begin{proof}[Solution]
+  The singular values of $A$ are the absolute values of its eigenvalues, since
+  $A$ is Hermitian and diagonalizable. That is, if $D = \diag(\lambda_1, \cdots,
+  \lambda_n)$, then the singular values of $A$ are
+  \[%
+    \sigma_i = \lvert \lambda_i \rvert, \quad i = 1, \dots, n
+  .\]%
+
+  Thus, the singular value matrix $\Sigma$ is given by
+  \[%
+    \Sigma = \diag(\lvert \lambda_1 \rvert, \cdots, \lvert \lambda_n \rvert)
+  .\]%
+
+  Since $A = PDP^*$, we consider how to transform this into an SVD. Firstly,
+  choose $U$ to align with the eigenvectors of $A$. Since the right singular
+  vectors (columns of $U$) correspond to the eigenvectors of $A^*A = A^2$, we
+  observe that $A^*A = A^2 = PD^2P^*$.
+
+  Since $P$ is unitary, it diagonalizes $A^*A$ with eigenvalues $\lambda_i^2$,
+  meaning the right singular vectors are also given by $P$. Thus, we set $U =
+  P$.
+
+  The left singular vectors (columns of $V$) are eigenvectors of $AA^* = A^2$,
+  which is the same computation as $A^*A$, meaning we can also use $P$ up to
+  sign adjustments. Define a signature matrix $S$ as $S =
+  \diag(\operatorname{sgn}(\lambda_1), \operatorname{sgn}(\lambda_2), \cdots,
+  \operatorname{sgn}(\lambda_n))$ where
+  \[%
+    \operatorname{sgn}(\lambda_i) = \begin{cases}
+      +1, & \lambda_i > 0 \\
+      -1, & \lambda_i < 0
+    \end{cases}
+  .\]%
+
+  Then, setting $V = PS$ ensures that $A = V \Sigma U^*$.
+
+  Therefore, the singular value decomposition of $A$ is $A = V\Sigma U^*$ where
+  $U = P$, $V = PS$, where $S$ is the signature matrix, and $\Sigma$ is the
+  diagonal matrix of singular values.
 \end{proof}
 
 \begin{problem}[9]
@@ -89,4 +670,16 @@
 \end{problem}
 
 \begin{proof}[Solution]
+  Consider the transformed matrix $B = PAQ$. Its Gram matrix is given by $B^* B
+  = (PAQ)^* (PAQ)$. Using the properties of the conjugate transpose, $B^* =
+  (PAQ)^* = Q^* A^* P^*$. Thus, $B^* B = Q^* A^* P^* P A Q$. Since $P$ is
+  unitary, we have $P^* P = I_m$, so this simplifies to $B^* B = Q^* A^* A Q$.
+  Since $Q$ is unitary, it preserves eigenvalues. That is, $A^*A$ and $Q^*A^*AQ$
+  have the same eigenvalues. Therefore, the eigenvalues of $B^*B$ are the same
+  as those of $A^*A$. Since the singular values are the square roots of the
+  eigenvalues of $A^*A$ (or equivalently $B^*B$), we conclude that $A$ and $PAQ$
+  have the same singular values,
+  \[%
+    \sigma_i(A) = \sigma_i(PAQ) = \sigma_i(B), \quad \textrm{for all}~i
+  .\qedhere\]%
 \end{proof}
