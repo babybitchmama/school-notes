@@ -14,18 +14,71 @@
 \end{problem}
 
 \begin{proof}[Solution to (i)]
-  Suppose $(f_n)$ and $(g_n)$ converge uniformly to a limit $f$ and $g$ on $A$
-  respectively. This means that $\lvert f_n(x) - f(x) \rvert <
-  \sfrac{\epsilon}{2}$ and $\lvert g_n(x) - g(x) \rvert < \sfrac{\epsilon}{2}$,
-  for all $n \ge N_1$ and $N_2$ respectively. Then $\lvert f_n(x) - f(x) \rvert
-  + \lvert g_n(x) - g(x) \rvert < \sfrac{\epsilon}{2} + \sfrac{\epsilon}{2} =
-  \epsilon$.
+  Let $\epsilon > 0$. Since $f_n$ and $g_n$ are uniformly convergent, there
+  exists an $N \in \N$ such that for all $n, m \ge N$, we have $\lvert f_n - f_m
+  \rvert < \sfrac{\epsilon}{2}$ and $\lvert g_n - g_m \rvert < \sfrac{\epsilon}{2}$.
+  Then, for all $n, m \ge N$ and using the triangle inequality, we have
+  \begin{align*}
+    \lvert (f_n + g_n) - (f_m + g_m) \rvert &= \lvert f_n - f_m + g_n - g_m \rvert \\
+                                            &\le \lvert f_n - f_m \rvert + \lvert g_n - g_m \rvert \\
+                                            &< \sfrac{\epsilon}{2} + \sfrac{\epsilon}{2} = \epsilon
+  .\end{align*}
+  Therefore, $(f_n + g_n)$ converges uniformly.
 \end{proof}
 
 \begin{proof}[Solution to (ii)]
+  Let $(f_n)$ and $(g_n)$ be sequences of functions on $[0,1]$ defined by
+  $f_n(x) = x_n = g_n(x)$. First, we show that $(f_n)$ and $(g_n)$ converge
+  uniformly to $0$ on $[0,1]$.
+
+  For all $x \in [0,1]$, we have $x^n \to 0$ as $n \to \infty$. Thus, the
+  pointwise limit is
+  \[%
+    f(x) = \lim_{n \to \infty} f_n(x) = 0 \quad \textrm{for all}~x \in [0,1]
+  .\]%
+  To check uniform convergence, we compute
+  \[%
+    \sup_{x \in [0,1]} \lvert f_n(x) - 0 \rvert = \sup_{x \in [0,1]} x^n
+  .\]%
+  Since the maximum value of $x^n$ on $[0,1]$ occurs at $x = 1$, we obtain
+  \[%
+    \sup_{x \in [0,1]} x^n = 1^n = 1 \to 0
+  ,\]%
+  which confirms that $(f_n)$ converges uniformly to $0$. Similarly, $(g_n)$
+  also converges uniformly to $0$.
+
+  Now consider the product sequence $(h_n)$ given by $h_n(x) = f_n(x) g_n(x) =
+  x^{2n}$. The pointwise limit is
+  \[%
+    \lim_{n \to \infty} h_n(x) = \begin{cases}
+      0 & 0 \leq x < 1 \\
+      1 & x = 1
+    \end{cases}
+  .\]%
+  To determine uniform convergence, we compute
+  \[%
+    \sup_{x \in [0,1]} \lvert h_n(x) - 0 \rvert = \sup_{x \in [0,1]} x^{2n}
+  .\]%
+  Since $x^{2n}$ attains its maximum at $x = 1$, we obtain
+  \[%
+    \sup_{x \in [0,1]} x^{2n} = 1
+  ,\]%
+  which does not tend to $0$. Thus, $(h_n)$ does not converge uniformly to $0$.
 \end{proof}
 
 \begin{proof}[Solution to (iii)]
+  Let $\epsilon > 0$. Since $f_n$ and $g_n$ are uniformly convergent, there
+  exists an $N \in \N$ such that for all $n, m \ge N$, we get $\lvert f_n - f_m
+  \rvert < \sfrac{\epsilon}{2}$ and $\lvert g_n - g_m \rvert <
+  \sfrac{\epsilon}{2}$. Since $f_n$ and $g_n$ are bounded by $M > 0$, then for
+  all $n, m \ge N$ and using the triangle inequality, we have
+  \begin{align*}
+    \lvert f_ng_n - f_mg_m \rvert &\le \lvert f_ng_n - f_ng_m \rvert +  \lvert f_ng_m - f_mg_m \rvert \\
+                                  &= \lvert f_n \rvert \cdot \lvert g_n - g_m \rvert + \lvert g_m \rvert \cdot \lvert f_n - f_m \rvert \\
+                                  &< M \cdot \lvert g_n - g_m \rvert + M \cdot \lvert f_n - f_m \rvert \\
+                                  &< \sfrac{\epsilon}{2} + \sfrac{\epsilon}{2} = \epsilon
+  .\end{align*}
+  Therefore, $(f_ng_n)$ converges uniformly.
 \end{proof}
 
 \begin{problem}[6.3.4]
@@ -34,10 +87,50 @@
     h_n(x) = \frac{\sin(nx)}{\sqrt{n}}
   .\]%
   Show that $h_n \to 0$ uniformly on $\R$ but that the sequence of derivatives
-  $(h_n')j$ diverges for every $x \in \R$.
+  $(h_n')$ diverges for every $x \in \R$.
 \end{problem}
 
 \begin{proof}[Solution]
+  First, we show that $h_n \to 0$ uniformly on $\R$.
+
+  For all $x \in \R$, we have
+  \[%
+     \lvert h_n(x) \rvert = \left\lvert \frac{\sin(nx)}{\sqrt{n}} \right\rvert \leq \frac{1}{\sqrt{n}}
+  .\]%
+  Since the right-hand side does not depend on $x$ and satisfies
+  \[%
+    \sup_{x \in \R} \lvert h_n(x) \rvert = \frac{1}{\sqrt{n}} \to 0~\textrm{as}~n \to \infty
+  ,\]%
+  it follows that $h_n \to 0$ uniformly on $\R$.
+
+  Now, we analyze the derivatives. Differentiating $h_n(x)$ gives
+  \[%
+    h_n'(x) = \sqrt{n} \cos(nx)
+  .\]%
+  To show that $(h_n')$ diverges for every $x \in \mathbb{R}$, we consider two
+  cases: pointwise divergence and unboundedness in the supremum norm.
+
+  For case 1, fix any $x \in \R$. Since $\cos(nx)$ oscillates between $-1$ and
+  $1$, for any fixed $x$, there exists an increasing sequence $\{n_k\}$ such
+  that $\cos(n_k x)$ accumulates at both $1$ and $-1$ infinitely often.
+  Consequently, the sequence $h_{n_k}'(x) = \sqrt{n_k} \cos(n_k x)$ takes
+  arbitrarily large positive and negative values as $n_k \to \infty$.  This
+  implies that $h_n'(x)$ does not converge for any fixed $x$.
+
+  For case 2, since $\lvert \cos(nx) \rvert \leq 1$, we obtain
+  \[%
+    \sup_{x \in \R} \lvert h_n'(x) \rvert = \sup_{x \in \R} \sqrt{n} \lvert \cos(nx) \rvert \leq \sqrt{n}
+  .\]%
+  To achieve equality, we choose $x = 0$ (or any multiple of $2\pi$), for which
+  $\cos(nx) = 1$. Thus, we have
+  \[%
+    \sup_{x \in \R} \lvert h_n'(x) \rvert = \sqrt{n} \to \infty~\textrm{as}~n \to \infty
+  .\]%
+  This shows that $(h_n')$ is unbounded in the supremum norm, confirming its
+  divergence.
+
+  Therefore, while $h_n \to 0$ uniformly, its derivatives $h_n'$ diverge for
+  every $x \in \R$.
 \end{proof}
 
 \begin{problem}[7.4.7(i)]
@@ -49,6 +142,20 @@
 \end{problem}
 
 \begin{proof}[Solution to (i)]
+  Define $f_n$ as
+  \[%
+    f_n(x) = \begin{cases}
+      n^2 & \textrm{if}~\sfrac{1}{n} \le x < \sfrac{2}{n},~n \in \N \\
+      0 & \textrm{otherwise}
+    \end{cases}
+  .\]%
+  Then, $\lim_{n \to \infty} f_n(x) = 0$ for all $x \in [0,1]$. Since $f(0) = 0$
+  by definition, and for each $x > 0$, there exists an $N \in \N$ such that $x >
+  \sfrac{2}{N}$ and $f_n(x) = 0$ for all $n \ge N$, we have
+  \[%
+    \int_0^1 f_n(x) \,\dx = n^2\left(\frac{2}{n} - \frac{1}{n}\right) = n
+  ,\]%
+  meaning that $\lim_{n \to \infty} \int_0^1 f_n$ does not exist.
 \end{proof}
 
 \begin{problem}[7.4.8]
@@ -59,11 +166,33 @@
       0 & \textrm{if}~0 \le x \le \sfrac{1}{2^n}
     \end{cases}
   ,\]%
-  and set $H(x) = \sum_{n=1}^\infty h_n(x)$. Show that $H$ is integrable and
-  compute $\int_0^1 H$.
+  and set $H(x) = \sum_{n=1}^\infty h_n(x)$. Show that $H$ is integrable and compute $\int_0^1 H$.
 \end{problem}
 
-\begin{proof}[Solution]
+\begin{proof}
+   We first show that the infinite series defining $H(x)$ converges and is
+   integrable. Observe that for each $n$,
+   \[%
+     0 \leq h_n(x) \leq \frac{1}{2^n}~\textrm{for all}~x \in [0,1]
+   .\]%
+   Since $\sum \frac{1}{2^n}$ is a convergent geometric series,
+   the  Weierstras $M$-test shows that $\sum_n h_n(x)$ converges uniformly on
+   $H$. By Theorem 7.4.4, $H(x)$ is integrable.
+
+   Next, we compute $\int_0^1 H(x) \,\dx$.
+   \[%
+     \int_0^1 H(x) \,\dx = \sum_{n=1}^\infty \int_0^1 h_n(x) \,\dx = \sum_{n=0}^\infty \int_{\frac{1}{2^n}}^1 \frac{1}{2^n} \,\dx = \sum_{n=0}^\infty \frac{1}{2^n} \left(1 - \frac{1}{2^n} \right)
+   .\]%
+   Expanding the summand and simplifying, we obtain
+   \begin{align*}
+     \sum_{n=0}^\infty \frac{1}{2^n} \left(1 - \frac{1}{2^n} \right) &= \sum_{n=0}^\infty \frac{1}{2^n} - \sum_{n=0}^\infty \frac{1}{4^n} \\
+                                                                     &= \left(\frac{1}{1 - \frac{1}{2}}\right) - \left(\frac{1}{1 - \frac{1}{4}}\right) \\
+                                                                     &= 2 - \frac{4}{3} = \frac{2}{3}
+   .\end{align*}
+   Therefore, $H(x)$ is integrable, and
+   \[%
+     \int_0^1 H(x) \,\dx = \frac{2}{3}
+   .\qedhere\]%
 \end{proof}
 
 \begin{problem}[6.4.2]
@@ -83,12 +212,51 @@
 \end{problem}
 
 \begin{proof}[Solution to (i)]
+  True. Let $\epsilon > 0$. Applying the Cauchy Criterion with $n = m + 1$, we
+  have that $\lvert g_n(x) \rvert < \epsilon$ for all $x \in A$. Therefore,
+  $(g_n)$ converges uniformly to zero.
 \end{proof}
 
 \begin{proof}[Solution to (ii)]
+  True. Let $\epsilon > 0$. Notice that
+  \[%
+    \left\lvert \sum_{k=m+1}^n f_k(x) \right\rvert = \sum_{k=m+1}^n f_k(x) \le \sum_{k=m+1}^n g_k(x) = \left\lvert \sum_{k=m+1}^n g_k(x) \right\rvert < \epsilon
+  .\]%
+  Therefore, $\sum_{n=1}^\infty f_n$ converges uniformly.
 \end{proof}
 
 \begin{proof}[Solution to (iii)]
+  False. Consider the following sequence of functions, defined on $[0, 1)$.
+  \[%
+    g_{ij}(x) = \begin{cases}
+      2^{-i} & 2^{-i}(j - 1) \le x < 2^{-i}j \\
+      0 & \textrm{otherwise}
+    \end{cases}
+  ,\]%
+  with $i \ge 1$ and $j = 1, \cdots, 2^i$. Define the function sequence $f_n(x)
+  = g_{ij}(x)$, where we enumerate $f_n(x)$ by listing all $g_{ij}$ in
+  increasing order of $i$, then increasing order of $j$. That is, first take
+  $g_{11}$, then $g_{21}, g_{22}$, then $g_{31}, g_{32}, g_{33}$, and so on.
+  This ordering ensures that every function in the collection $\{g_{ij}\}$
+  appears exactly once in the sequence $\{f_n\}$.
+
+  The sum
+  \[%
+    S_i(x) = \sum_{j=1}^{2^i} g_{ij}(x) = \sum_{j=1}^{2^i} 2^{-i} = 1
+  .\]%
+  Since the partial sums stabilize at $1$, the sequence of partial sums of
+  $f_n(x)$ converges uniformly to the function $H(x) = 1$.
+
+  Each function $g_{ij}(x)$ satisfies
+  \[%
+    \max g_{ij}(x) = 2^{-i}
+  .\]%
+  Since there are $2^i$ such functions at level $i$, the sum of these maxima is
+  \[%
+    \sum_{i=1}^\infty \sum_{j=1}^{2^i} 2^{-i} = \sum_{i=1}^\infty 2^i \cdot 2^{-i} = \sum_{i=1}^\infty 1 = \infty
+  .\]%
+  This sum diverges, proving that the series $\sum_{n=1}^\infty f_n$ does not
+  converge uniformly.
 \end{proof}
 
 \begin{problem}[6.4.4]
@@ -101,4 +269,18 @@
 \end{problem}
 
 \begin{proof}[Solution]
+  Define $h_n(x)$ as
+  \[%
+    h_n(x) = \frac{x^{2n}}{1 + x^{2n}}
+  .\]%
+  For $\lvert x \rvert \ge 1$, $h_n(x)$ does not approach $0$ as $n \to \infty$,
+  so the series diverges. For $\lvert x \rvert < 1$, $\lvert h_n(x) \rvert \le
+  x^{2n}$, which is a geometric series in $x^2$, which converges. So, $g(x)$
+  converges by the Order Limit Theorem.
+
+  For any $0 \le a < 1$, $\lvert h(x) \rvert = a^{2n} = M_n$ over the interval
+  $[-a, a]$ for all $n \in \N$. Thus, by the Weiestrass M-test, $g(x)$ uniformly
+  converges over $[-a, a]$ for all $0 \le a < 1$. Since $g(x)$ converges
+  uniformly on $[-a, a]$ for all $0 \le a < 1$, it follows that $g(x)$ is
+  continuous on $(-1, 1)$.
 \end{proof}
