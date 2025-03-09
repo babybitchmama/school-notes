@@ -1,6 +1,6 @@
 \begin{problem}[1]
-  Evaluate $\displaystyle\int_C \FF \cdot \dd{\r}$ for the vector field $\FF =
-  (x + z)\ui + 2y\uj + (y + 2x)\uk$ where $C$ is
+  Evaluate $\displaystyle\int_C \FF \cdot \drr$ for the vector field $\FF = (x +
+  z)\ui + 2y\uj + (y + 2x)\uk$ where $C$ is
   \begin{enumerate}
     \item the line segment from $(-1, 0, 1)$ and $(0, -1, 2)$.
 
@@ -23,7 +23,7 @@
   Therefore, the line integral over the vector field $\FF$ along the line
   segment $C$ is
   \begin{align*}
-    \int_C \FF \cdot \dd{\r} &= \int_0^1 \FF(t) \cdot \r'(t) \,\dt \\
+    \int_C \FF \cdot \drr &= \int_0^1 \FF(t) \cdot \r'(t) \,\dt \\
                              &= \int_0^1 (1) \cdot (2t) + (-1) \cdot (-2t) + (1) \cdot (-2 + t) \,\dt \\
                              &= \int_0^1 2t + 2t -2 + t \,\dt \\
                              &= \int_0^1 5t - 2 \,\dt = \left(\frac{5}{2} - 2\right) = \frac{1}{2}
@@ -52,7 +52,7 @@
   Therefore, the line integral over the vector field $\FF$ along the curve $C$
   is
   \begin{align*}
-    \int_C \FF \cdot \dd{\r} &= \int_0^1 \FF(t) \cdot \r'(t) \,\dt \\
+    \int_C \FF \cdot \drr &= \int_0^1 \FF(t) \cdot \r'(t) \,\dt \\
                              &= \int_0^1 3t^4 + 5t^3 - 18t^2 + 9t \,\dt \\
                              &= \frac{3}{5} + \frac{5}{4} - \frac{18}{3} + \frac{9}{2} = \frac{7}{20}
   .\qedhere\end{align*}
@@ -109,7 +109,7 @@
   Computing the work integral over the vector field $\FF$ along the curve $C$,
   we have
   \begin{align*}
-    W = \int_C \FF \cdot \dd{\r} &= \int_0^{2\pi} \FF(t) \cdot \r'(t) \,\dt \\
+    W = \int_C \FF \cdot \drr &= \int_0^{2\pi} \FF(t) \cdot \r'(t) \,\dt \\
                                  &= \int_0^{2\pi} 9 - 9\sin^2(\theta) - 9\sin(\theta)\cos(\theta) + 3\cos(\theta) + 3\sin(\theta) \,\dt \\
                                  &= \int 9 \,\dd{\theta} - 9\int \sin^2(\theta) \,\dd{\theta} - 9\int \sin(\theta)\cos(\theta) \,\dd{\theta} + 3\int \cos(\theta) \,\dd{\theta} + 3\int \sin(\theta) \,\dd{\theta} \bigg\vert_0^{2\pi} \\
                                  &= 9\theta - \frac{9}{2}(\theta - \sin(\theta)\cos(\theta)) - \frac{9}{2}\cos^2(\theta) + 3\sin(\theta) - 3\cos(\theta) \bigg\vert_0^{2\pi} \\
@@ -122,7 +122,7 @@
 \end{proof}
 
 \begin{problem}[3]
-  Evaluate $\displaystyle\int_C \FF \cdot \dd{\r}$. Use the fundamental theorem for line integrals whenever it applies.
+  Evaluate $\displaystyle\int_C \FF \cdot \drr$. Use the fundamental theorem for line integrals whenever it applies.
   \begin{enumerate}
     \item $\FF = \langle 2xe^{xy} + x^2ye^{xy} + 3x^2, x^3e^{xy} + 2\sin(y) \rangle$, $C$ is the line segment from $(-1, 0)$ to $(0, 3)$.
 
@@ -178,7 +178,7 @@
   Therefore, the line integral over the vector field $\FF$ along the line
   segment $C$ is
   \begin{align*}
-    \int_C \FF \cdot \dd{\r} = \int_C \nabla f \cdot \dd{\r} &= f(0, 3) - f(-1, 0) \\
+    \int_C \FF \cdot \drr = \int_C \nabla f \cdot \drr &= f(0, 3) - f(-1, 0) \\
                                                              &= \left[-2\cos(3)\right] - \left[1 - 1 - 2\right] \\
                                                              &= -2\cos(3) + 2
   .\qedhere\end{align*}
@@ -221,7 +221,7 @@
   .\]%
   Therefore, the line integral over the vector field $\FF$ along the path $C$ is
   \begin{align*}
-    \int_C \FF \cdot \dd{\r} = \int_C \nabla f \cdot \dd{\r} &= f(4, 2) - f(1, 1) \\
+    \int_C \FF \cdot \drr = \int_C \nabla f \cdot \drr &= f(4, 2) - f(1, 1) \\
                                                              &= \left[32 - 16 - \frac{1}{\pi}\cos(2\pi)\right] - \left[1 - 1 - \frac{1}{\pi}\cos(\pi)\right] \\
                                                              &= 16 - \frac{2}{\pi}
   .\qedhere\end{align*}
@@ -269,7 +269,7 @@
   Therefore, the line integral over the vector field $\FF$ along the circular
   helix $C$ is
   \begin{align*}
-    \int_C \FF \cdot \dd{\r} = \int_C \nabla f \cdot \dd{\r} &= f(\pi, -2, 0) - f(0, 2, 0) \\
+    \int_C \FF \cdot \drr = \int_C \nabla f \cdot \drr &= f(\pi, -2, 0) - f(0, 2, 0) \\
                                                              &= \left[3\pi^2(-2) - \pi(0)^2 + 2(-2)^3 + 0\right] - \left[3(0)^2(2) - 0(0)^2 + 2(2)^3 + 0\right] \\
                                                              &= -6\pi^2 - 32
   .\qedhere\end{align*}
@@ -306,7 +306,7 @@
   .\end{align*}
   Therefore, the line integral over the vector field $\FF$ along the curve $C$ is
   \begin{align*}
-    \oint_C \FF \cdot \dd{\r} &= \int_0^{\frac{\pi}{2}} \FF(t) \cdot \r'(t) \,\dt \\
+    \oint_C \FF \cdot \drr &= \int_0^{\frac{\pi}{2}} \FF(t) \cdot \r'(t) \,\dt \\
                              &= \int_0^{\frac{\pi}{2}} 2\cos(t) - 2\sin(t) + 16 \,\dt \\
                              &= \left[2\sin(t) - 2\cos(t) + 16t\right] \bigg\vert_0^{\frac{\pi}{2}} \\
                              &= \left[2 + 8\pi\right] - \left[-2\right] = 4 + 8\pi
@@ -320,7 +320,7 @@
     \item Show $\displaystyle\pdv{P}{y} = \pdv{Q}{x}$ on the domain of $\FF$.
 
     \item Use the definition of the line integral to show that
-      $\displaystyle\int_C \FF \cdot \dd{\r} = 2\pi$ where $C$ is the circle
+      $\displaystyle\int_C \FF \cdot \drr = 2\pi$ where $C$ is the circle
       $x^2 + y^2 = a^2$, counterclockwise orientation, for any constant $a > 0$.
       Is $\FF$ conservative?
   \end{enumerate}
@@ -355,7 +355,7 @@
   .\]%
   Thus, the line integral evaluates to
   \[%
-    \int_C \FF \cdot \dd{\r} = \int_0^{2\pi} 1 \,\dt = 2\pi
+    \int_C \FF \cdot \drr = \int_0^{2\pi} 1 \,\dt = 2\pi
   .\]%
 
   A vector field $\FF = \langle P, Q \rangle$ is conservative if and only if
@@ -371,7 +371,7 @@
 
   Since we computed
   \[%
-    \oint_C \FF \cdot \dd{\r} = 2\pi \neq 0
+    \oint_C \FF \cdot \drr = 2\pi \neq 0
   ,\]%
   we conclude that $\FF$ is not conservative.
 \end{proof}

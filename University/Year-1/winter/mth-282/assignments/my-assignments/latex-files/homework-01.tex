@@ -7,7 +7,8 @@
     \item $\displaystyle \iint_D y\sqrt{x^2 - y^2} \,\dA$ where $D$ is the
       triangle with vertices $(0, 0)$, $(2, 0)$, and $(2, 2)$.
 
-    \item $\displaystyle \iint_D 2xy^3 \,\dA$ where $D$ is the region bounded by $y = x$, $y = \frac{1}{x}$, and $y = 2$.
+    \item $\displaystyle \iint_D 2xy^3 \,\dA$ where $D$ is the region bounded by
+      $y = x$, $y = \frac{1}{x}$, and $y = 2$.
   \end{enumerate}
 \end{problem}
 
@@ -141,8 +142,9 @@
     \end{tikzpicture}
   \end{center}
   Solving the equation $y = x^2$ gives us $x = \pm\sqrt{y}$. But we only want
-  the positive root. Therefore, we get the bounds $0
-  \le y \le 4$ and $0 \le x \le \sqrt{y}$. Expanding the double integral into an iterated integral gives us
+  the positive root. Therefore, we get the bounds $0 \le y \le 4$ and $0 \le x
+  \le \sqrt{y}$. Expanding the double integral into an iterated integral gives
+  us
   \begin{align*}
     \iint_R \sqrt{y} \sin(y) \,\dA &= \int_0^4 \int_0^{\sqrt{y}} \sqrt{y} \sin(y) \,\dx \,\dy \\
                                    &= \int_0^4 \sqrt{y} \sin(y) \cdot x \rvert_0^{\sqrt{y}} \,\dy \\
@@ -168,8 +170,8 @@
       Note: This solid is a tetrahedron. It can be easily drawn by using the
       lines of intersection between the slant plane and the coordinate planes.
 
-   \item The solid enclosed by the parabolic cylinder $y = 2 - x^2$ and the
-     planes $z = 2 - y$, $y = x$, and $z = 0$
+    \item The solid enclosed by the parabolic cylinder $y = 2 - x^2$ and the
+      planes $z = 2 - y$, $y = x$, and $z = 0$
 
       Note : Surfaces that do not depend on $z$ are vertical surfaces.
   \end{enumerate}
@@ -212,7 +214,7 @@
   The equation of the plane can be written as $f(x, y) = 6 - 2x - 3y$.
   Therefore, we get the bounds for $x$ to be $0 \le x \le 3$ and the bounds for
   $y$ to be $0 \le y \le -\frac{2}{3}x + 2$. The volume is then and evaluating
-  using Wolfram Alpha to get
+  to get
   \begin{align*}
     V = \int_0^3 \int_0^{-\frac{2}{3}x + 2} 6 - 2x - 3y \,\dy \,\dx &= \int_0^3 6\left[-\frac{2}{3}x + 2\right] - 2\left[-\frac{2}{3}x + 2\right] - \frac{3}{2} \left[-\frac{2}{3} + 2\right]^2 \,\dy \,\dx \\
                                                                     &= \int_0^3 12 - 4x - 4x + \frac{4x^2}{3} - \frac{3}{2}\left[4 - \frac{4}{3}x - \frac{4}{3}x + \frac{4}{9}x^2\right] \,\dx \\

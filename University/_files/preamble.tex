@@ -13,6 +13,8 @@
 
 % Required math packages
 \usepackage{amsmath}
+\let\iint\relax
+\usepackage{esint}
 \usepackage{amsfonts}
 \usepackage{mathtools}
 \usepackage{amsthm}
@@ -33,7 +35,6 @@
 \usepackage{multirow} % Required for multirow in tables
 \usepackage{nicematrix} % Required for better matrices
 \usepackage{cellspace} % Required for better spacing in tables
-% \usepackage{xfrac} % Required for extra fraction options
 \usepackage{xifthen} % Required for if-then-else statements
 \usepackage{fancyhdr} % Required for customizing headers and footers
 \usepackage{import} % Required for importing pdf_tex files
@@ -41,6 +42,7 @@
 \usepackage{subcaption} % Required for creating subfigures
 \usepackage{siunitx} % Required for SI units
 \usepackage{titletoc} % Required for customizing table of contents
+\usepackage{xstring} % Required for customizing table of contents
 \usepackage[most,many,breakable]{tcolorbox} % Required for creating boxes
 
 % Required for drawing figures
@@ -361,22 +363,32 @@
 \newcommand\bra{\langle}
 \newcommand\ket{\rangle}
 
-% For differentials
-\newcommand\dd[1]{\textrm{d}#1}
-\newcommand\dA{\textrm{d}A}
-\newcommand\dV{\textrm{d}V}
-\newcommand\dm{\textrm{d}m}
-\newcommand\ds{\textrm{d}s}
-\newcommand\dS{\textrm{d}S}
-\newcommand\dw{\textrm{d}w}
-\newcommand\dt{\textrm{d}t}
-\newcommand\dr{\textrm{d}r}
-\newcommand\dT{\textrm{d}T}
-\newcommand\du{\textrm{d}u}
-\newcommand\dv{\textrm{d}v}
-\newcommand\dx{\textrm{d}x}
-\newcommand\dy{\textrm{d}y}
-\newcommand\dz{\textrm{d}z}
+% Differentials
+\newcommand\dd[1]{\odif{#1}}
+\newcommand\pd[1]{\pdif{#1}}
+
+% Main macro
+\ExplSyntaxOn
+\NewDocumentCommand\getDiff{O{} m}{
+  % \IfSubStr{#2}{p}{\pd}{\dd}
+  \IfSubStr{#2}{v}{\dd{\mathbf{#1}}}{\dd{\mathbf{#1}}}
+}
+\ExplSyntaxOff
+
+\newcommand\dA[1][]{\getDiff{#1}{A}}
+\newcommand\dV[1][]{\getDiff{#1}{V}}
+\newcommand\dm[1][]{\getDiff{#1}{m}}
+\newcommand\ds[1][]{\getDiff{#1}{s}}
+\newcommand\dS[1][]{\getDiff{#1}{S}}
+\newcommand\dw[1][]{\getDiff{#1}{w}}
+\newcommand\dt[1][]{\getDiff{#1}{t}}
+\newcommand\dr[1][]{\getDiff{#1}{r}}
+\newcommand\dT[1][]{\getDiff{#1}{T}}
+\newcommand\du[1][]{\getDiff{#1}{u}}
+\newcommand\dv[1][]{\getDiff{#1}{v}}
+\newcommand\dx[1][]{\getDiff{#1}{x}}
+\newcommand\dy[1][]{\getDiff{#1}{y}}
+\newcommand\dz[1][]{\getDiff{#1}{z}}
 
 % Helpful text in math
 \newcommand\aand{\quad\textrm{and}\quad}
@@ -384,8 +396,10 @@
 \newcommand\oor{\quad\textrm{or}\quad}
 \renewcommand\and{\textrm{and}}
 \newcommand\qtq[1]{\quad\textrm{#1}\quad}
+\newcommand\curl{\textrm{curl}}
+\renewcommand\div{\textrm{div}}
 \newcommand\Col{\textrm{Col}}
-\newcommand\Nul{\textrm{Null}}
+\newcommand\Null{\textrm{Null}}
 \newcommand\Range{\textrm{Range}}
 \newcommand\Ker{\textrm{Ker}}
 \newcommand\Tr{\textrm{Tr}}
@@ -454,14 +468,6 @@
 \newcommand\U{\mathrm{U}}
 \newcommand\Mat{\mathrm{Mat}}
 \renewcommand\P{\mathbb{P}}
-
-% Matrix algebras
-\newcommand\gl{\mathfrak{gl}}
-\newcommand\ort{\mathfrak{o}}
-\newcommand\so{\mathfrak{so}}
-\newcommand\su{\mathfrak{su}}
-\newcommand\uu{\mathfrak{u}}
-\renewcommand\sl{\mathfrak{sl}}
 
 % Subspaces
 \newcommand\B{\mathbb{B}}
