@@ -1,15 +1,15 @@
 \begin{problem}[1]
-  Evaluate $\displaystyle\oint_C \FF \cdot \dd{\r}$ where $\FF = \left\langle
-  2xy, z^3 + 3x^2, 3yz^2 - x \right\rangle$, $C$ is the boundary of the triangle
-  with vertices $P = (2, 0, 0)$, $Q = (0, 3, 0)$, and $R = (0, 0, 5)$ oriented
-  from $P$ to $Q$ to $R$ and back to $P$.
+  Evaluate $\displaystyle\oint_C \FF \cdot \drr$ where $\FF = \left\langle 2xy,
+  z^3 + 3x^2, 3yz^2 - x \right\rangle$, $C$ is the boundary of the triangle with
+  vertices $P = (2, 0, 0)$, $Q = (0, 3, 0)$, and $R = (0, 0, 5)$ oriented from
+  $P$ to $Q$ to $R$ and back to $P$.
 \end{problem}
 
 \begin{proof}[Solution]
   Since we're evaluating a closed integral over a positive orientated curve, we
   can use Stokes' Theorem to convert the line integral into a surface integral
   \[%
-    \oint_C \FF \cdot \dd{\r} = \iint_S \curl(\FF) \cdot \dd{\S}
+    \oint_C \FF \cdot \drr = \iint_S \curl(\FF) \cdot \dSS
   ,\]%
   where $S$ is the surface bounded by $C$ and $\curl(\FF) = \nabla \times \FF$.
   We first compute the curl of $\FF$
@@ -45,10 +45,10 @@
   is $y = -\sfrac{3}{2} x + 3$. Therefore, the bounds are $0 \le x \le 2$ and $0
   \le y \le -\sfrac{3}{2} x + 3$. The surface integral becomes
   \begin{align*}
-    \oint_C \FF \cdot \dd{\r} &= \iint_S \curl(\FF) \cdot \dd{\S} \\
-                             &= \iint_S \left\langle 0, 1, 4x \right\rangle \cdot \left\langle \frac{15}{19}, \frac{10}{19}, \frac{6}{19} \right\rangle \,\dd{S} \\
+    \oint_C \FF \cdot \dd{\r} &= \iint_S \curl(\FF) \cdot \dSS \\
+                             &= \iint_S \left\langle 0, 1, 4x \right\rangle \cdot \left\langle \frac{15}{19}, \frac{10}{19}, \frac{6}{19} \right\rangle \,\dSS \\
                              &= \iint_D 0 + 1\cdot\frac{10}{19} + 4x\cdot\frac{6}{19} \,\dA \\
-                             &= \int_0^2 \int_0^{-\sfrac{3}{2} x + 3} \left(\frac{10}{19} + \frac{24x}{19}\right) \,\dy \,\dx \\
+                             &= \int_0^2 \int_0^{-\sfrac{3}{2} x + 3} \left(\frac{10}{19} + \frac{24x}{19}\right) \,\dyx \\
                              &= \int_0^2 \left(\frac{10}{19} + \frac{24x}{19}\right)\left(-\frac{3}{2}x + 3\right) \,\dx \\
                              &= -\frac{3}{19} \cdot \int_0^2 12x^2 - 19x - 10 \,\dx \\
                              &= -\frac{3}{19} \cdot \left[4x^3 - \frac{19x^2}{2} - 10x\right]_0^2 \\
@@ -59,8 +59,8 @@
 \begin{problem}[2]
   Let $S$ be the portion of the ellipsoid $4x^2 + y^2 + 16z^2 = 64$ above the
   $xy$-plane oriented upward. Use Stokes' Theorem to evaluate
-  $\displaystyle\iint_S \curl(\FF) \cdot \dd{\S}$ where $\FF = \left\langle xz,
-  x^3 + 2y, e^{x^2-y^2} \right\rangle$.
+  $\displaystyle\iint_S \curl(\FF) \cdot \dSS$ where $\FF = \left\langle xz, x^3
+  + 2y, e^{x^2-y^2} \right\rangle$.
 \end{problem}
 
 \begin{proof}[Solution]
@@ -72,8 +72,8 @@
   the positive $y$-axis.
 
   \noindent(That means, evaluate both $\displaystyle\oint_C \FF \cdot \dd{\r}$
-  and $\displaystyle\iint_S \curl(\FF) \cdot \dd{\S}$ showing that they are
-  equal for the given field and surface.)
+  and $\displaystyle\iint_S \curl(\FF) \cdot \dSS$ showing that they are equal
+  for the given field and surface.)
 \end{problem}
 
 \begin{proof}[Solution]

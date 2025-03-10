@@ -368,27 +368,36 @@
 \newcommand\pd[1]{\pdif{#1}}
 
 % Main macro
-\ExplSyntaxOn
-\NewDocumentCommand\getDiff{O{} m}{
-  % \IfSubStr{#2}{p}{\pd}{\dd}
-  \IfSubStr{#2}{v}{\dd{\mathbf{#1}}}{\dd{\mathbf{#1}}}
-}
-\ExplSyntaxOff
+\newcommand\dA{\d{A}}
+\newcommand\dV{\dd{V}}
+\newcommand\dm{\dd{m}}
+\newcommand\ds{\dd{s}}
+\newcommand\dS{\dd{S}}
+\newcommand\dSS{\dd{\S}}
+\newcommand\dw{\dd{w}}
+\newcommand\dt{\dd{t}}
+\newcommand\dr{\dd{r}}
+\newcommand\drr{\dd{\r}}
+\newcommand\dT{\dd{T}}
+\newcommand\du{\dd{u}}
+\newcommand\dv{\dd{v}}
+\newcommand\dx{\dd{x}}
+\newcommand\dy{\dd{y}}
+\newcommand\dz{\dd{z}}
 
-\newcommand\dA[1][]{\getDiff{#1}{A}}
-\newcommand\dV[1][]{\getDiff{#1}{V}}
-\newcommand\dm[1][]{\getDiff{#1}{m}}
-\newcommand\ds[1][]{\getDiff{#1}{s}}
-\newcommand\dS[1][]{\getDiff{#1}{S}}
-\newcommand\dw[1][]{\getDiff{#1}{w}}
-\newcommand\dt[1][]{\getDiff{#1}{t}}
-\newcommand\dr[1][]{\getDiff{#1}{r}}
-\newcommand\dT[1][]{\getDiff{#1}{T}}
-\newcommand\du[1][]{\getDiff{#1}{u}}
-\newcommand\dv[1][]{\getDiff{#1}{v}}
-\newcommand\dx[1][]{\getDiff{#1}{x}}
-\newcommand\dy[1][]{\getDiff{#1}{y}}
-\newcommand\dz[1][]{\getDiff{#1}{z}}
+\newcommand\dxy{\dd{x,y}}
+\newcommand\dyx{\dd{y,x}}
+\newcommand\dzy{\dd{z,y}}
+\newcommand\dyz{\dd{y,z}}
+\newcommand\dzx{\dd{z,x}}
+\newcommand\dxz{\dd{x,z}}
+
+\newcommand\dxyz{\dd{x,y,z}}
+\newcommand\dxzy{\dd{x,z,y}}
+\newcommand\dyxz{\dd{y,x,z}}
+\newcommand\dyzx{\dd{y,z,x}}
+\newcommand\dzxy{\dd{z,x,y}}
+\newcommand\dzyx{\dd{z,y,x}}
 
 % Helpful text in math
 \newcommand\aand{\quad\textrm{and}\quad}
