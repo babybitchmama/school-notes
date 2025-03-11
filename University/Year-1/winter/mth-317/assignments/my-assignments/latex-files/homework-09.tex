@@ -1,0 +1,271 @@
+\begin{problem}[6.4.8]
+  Consider the function
+  \[%
+    f(x) = \sum_{k=1}^\infty \frac{\sin(\sfrac{x}{k})}{k}
+  .\]%
+  Where is $f$ defined? Continuous? Differentiable? Twice-differentiable?
+\end{problem}
+
+\begin{proof}[Solution]
+  We use the Weierstrass M-test to show that $f$ is defined on all of $\R$. Notice that
+  \[%
+    \left\lvert \frac{\sin(\sfrac{x}{k})}{k} \right\rvert \le \frac{\lvert x \rvert}{k^2}
+  .\]%
+  Therefore, we get
+  \[%
+    \sum_{k=1}^\infty \frac{\lvert x \rvert}{k^2} = \lvert x \rvert \sum_{k=1}^\infty \frac{1}{k^2}
+  ,\]%
+  converges by the $p$-series test. Therefore,
+  \[%
+    \sum_{k=1}^\infty \frac{\sin(\sfrac{x}{k})}{k}
+  .\]%
+  converges uniformly on all of $\R$.
+
+  To determine continuity, we check uniform convergence. The Weierstrass M-test
+  applies here. Since
+  \[%
+    \left\lvert \frac{\sin(\sfrac{x}{k})}{k} \right\rvert \le \frac{\lvert x \rvert}{k^2}
+  ,\]%
+  and $\sum_k \sfrac{1}{k^2}$ converges, the original series converges uniformly
+  by the Weierstrass M-test. Uniform convergence of a series of continuous
+  functions ensures continuity of $f(x)$. Thus, $f(x)$ is continuous on all of
+  $\R$.
+
+  To determine differentiability, we differentiate each term of the series to
+  get
+  \[%
+    f'(x) = \sum_{k=1}^\infty \frac{\cos(\sfrac{x}{k})}{k^2}
+  .\]%
+  To check whether this series converges uniformly, we use the bound
+  \[%
+    \left\lvert \frac{\cos(\sfrac{x}{k})}{k^2} \right\rvert \le \frac{1}{k^2}
+  .\]%
+  Again, the Weierstrass M-test applies, and since $\sum_k \sfrac{1}{k^2}$
+  converges, the series converges uniformly. Thus, $f'(x)$ is continuous on all
+  of $\R$.
+
+  To determine twice-differentiability, we differentiate again to get
+  \[%
+    f''(x) = \sum_{k=1}^\infty -\frac{\sin(\sfrac{x}{k})}{k^3}
+  .\]%
+  To check uniform convergence, we use the bound
+  \[%
+    \left\lvert -\frac{\sin(\sfrac{x}{k})}{k^3} \right\rvert \le \frac{\lvert x \rvert}{k^3}
+  .\]%
+  The Weierstrass M-test applies again, and since $\sum_k \sfrac{1}{k^3}$
+  converges, the series converges uniformly. Thus, $f''(x)$ is continuous on all
+  of $\R$.
+\end{proof}
+
+\begin{problem}[6.4.9]
+  Let
+  \[%
+    h(x) = \sum_{n=1}^\infty \frac{1}{x^2 + n^2}
+  .\]%
+  \begin{enumerate}
+    \item Show that $h$ is a continuous function defined on all of $\R$.
+
+    \item Is $h$ differentiable? If so, is the derivative function $f'$
+      continuous?
+  \end{enumerate}
+\end{problem}
+
+\begin{proof}[Solution to (i)]
+  For any fixed $x \in \R$, we note that $x^2 + n^2 \ge n^2$ for all $n \ge 1$,
+  so
+  \[%
+    \frac{1}{x^2 + n^2} \le \frac{1}{n^2}
+  .\]%
+  Since $\sum_n \sfrac{1}{n^2}$ is a convergent $p$-series, the given series
+  converges absolutely for all $x$. By the Weierstrass M-test, the series
+  converges uniformly on all of $\R$. Since the series converges uniformly, it
+  is continuous on all of $\R$.
+
+  To prove continuity, we check uniform convergence. The Weierstrass M-test
+  applies
+  \[%
+    \left\lvert \frac{1}{x^2 + n^2} \right\rvert \le \frac{1}{n^2}
+  .\]%
+  Since $\sum_n \sfrac{1}{n^2}$ converges, the series converges uniformly on any
+  bounded subset of $\R$, implying that $h(x)$ is continuous everywhere. Thus,
+  $h(x)$ is continuous on all of $\R$.
+\end{proof}
+
+\begin{proof}[Solution to (ii)]
+  To check differentiability, we differentiate each term of the series to get
+  \[%
+    h'(x) = \sum_{n=1}^\infty -\frac{2x}{(x^2 + n^2)^2}
+  .\]%
+  To check whether this series converges uniformly, we use the bound
+  \[%
+    \left\lvert -\frac{2x}{(x^2 + n^2)^2} \right\rvert \le \frac{2\lvert x \rvert}{n^4}
+  .\]%
+  The Weierstrass M-test applies again, and since $\sum_n \sfrac{1}{n^4}$
+  converges, the series converges uniformly. Thus, $h(x)$ is differentiable on
+  all of $\R$ and $h'(x)$ is continuous on all of $\R$.
+\end{proof}
+
+\begin{problem}[6.5.1]
+  Consider the function $g$ defined by the power series
+  \[%
+    g(x) = x - \frac{x^2}{2} + \frac{x^3}{3} - \frac{x^4}{4} + \frac{x^5}{5} - \cdots
+  .\]%
+  \begin{enumerate}
+    \item Is $g$ defined on $(-1, 1)$? Is it continuous on this set? Is $g$
+      defined on $(-1, 1]$? Is it continuous on this set? What happens on $[-1,
+      1]$? Can the power series for $g(x)$ possibly converge for any other
+      points $\lvert x \rvert > 1$? Explain.
+
+    \item For what values of $x$ is $g'(x)$ defined? Find a formula for $g'$.
+  \end{enumerate}
+\end{problem}
+
+\begin{proof}[Solution to (i)]
+  We're given the following Taylor Series
+  \[%
+    g(x) = \sum_{n=1}^\infty (-1)^{n+1}\frac{x^n}{n} = \ln(1 + x),~\textrm{for}~\lvert x \rvert < 1
+  .\]%
+
+  Convergence on $(-1, 1)$: A power series $\sum a_nx^n$ converges absolutely
+  inside its radius of convergence $R$, which is given by
+  \[%
+    R = \limsup_{n \to \infty} \left\lvert \frac{a_n}{a_{n+1}} \right\rvert
+  .\]%
+  For this series, the ratio test gives
+  \[%
+    \left\lvert \frac{(-1)^{n+1}\frac{x^n}{n}}{(-1)^{n+2}\frac{x^{n+1}}{n+1}} \right\rvert = \lvert \frac{n + 1}{xn} \rvert
+  .\]%
+  As $n \to \infty$, this approaches $\frac{1}{\lvert x \rvert}$. Therefore, the
+  series converges absolutely for $\lvert x \rvert < 1$. Thus, $g(x)$ is defined
+  on $(-1, 1)$.
+
+  At $x = 1$: The series becomes the alternating harmonic series
+  \[%
+    g(1) = \sum_{n=1}^\infty (-1)^{n+1}\frac{1}{n} = \ln(2)
+  ,\]%
+  which is conditionally convergent. Thus, $g(x)$ is defined at $x = 1$.
+
+  At $x = -1$: The series becomes
+  \[%
+    g(-1) = \sum_{n=1}^\infty (-1)^{n+1}\frac{(-1)^n}{n} = -\sum_{n=1}^\infty \frac{1}{n}
+  .\]%
+  This series diverges, so $g(x)$ is not defined at $x = -1$.
+
+  Convergence for $\lvert x \rvert > 1$: For $\lvert x \rvert > 1$, the terms
+  $\sfrac{x^n}{n}$ grow too large, and the series diverges by the $n$th-term
+  test. Thus, $g(x)$ is not defined for $\lvert x \rvert > 1$.
+
+  Therefore, $g(x)$ is defined on $(-1, 1]$ and continuous on $(-1, 1)$. It is
+  not defined at $x = -1$ and diverges at $x = -1$. The power series for $g(x)$
+  converges for $\lvert x \rvert < 1$ and diverges for $\lvert x \rvert > 1$.
+\end{proof}
+
+\begin{proof}[Solution to (ii)]
+  To find $g'(x)$, we differentiate the power series term by term:
+  \[%
+    g'(x) = \sum_{n=1}^\infty (-1)^{n+1}\frac{nx^{n-1}}{n} = \sum_{n=1}^\infty (-1)^{n+1}x^{n-1} = \sum_{n=0}^\infty (-1)^nx^n
+  .\]%
+  This is a geometric series. For $\lvert x \rvert < 1$, we recognize this as
+  the Taylor series for
+  \[%
+    g'(x) = \frac{1}{1 + x}
+  .\]%
+  Thus, $g'(x)$ is defined on $(-1, 1)$.
+
+  At $x = 1$: The series becomes the alternating series
+  \[%
+    g'(1) = \sum_{n=0}^\infty (-1)^n
+  ,\]%
+  which does not converge. Thus, $g'(1)$ is not defined.
+
+  At $x = -1$: As $x \to -1^+$, the series $\sum (-1)^nx^n$ diverges. Thus,
+  $g'(-1)$ is not defined.
+
+  Therefore, $g'(x)$ is defined on $(-1, 1)$, not defined at $x = \pm 1$, and
+  the formula for $g'(x)$ is given by
+  \[%
+    g'(x) = \frac{1}{1 + x},~\textrm{for}~\lvert x \rvert < 1
+  .\qedhere\]%
+\end{proof}
+
+\begin{problem}[6.5.2]
+  Find suitable coefficients $(a_n)$ so that the resulting power series $\sum_n
+  a_nx^n$ has the given properties, or explain why such a request is impossible.
+  \begin{enumerate}
+    \item Converges for every value of $x \in \R$.
+
+    \item Diverges for every value of $x \in \R$.
+
+    \item Converges absolutely for all $x \in [-1, 1]$ and diverges off of this
+      set.
+  \end{enumerate}
+\end{problem}
+
+\begin{proof}[Solution to (i)]
+  Let
+  \[%
+    a_n = \frac{1}{n!}
+  .\]%
+  This results in the power series
+  \[%
+    \sum_{n=0}^\infty \frac{x^n}{n!} = e^x
+  ,\]%
+  which converges for all $x \in \R$.
+\end{proof}
+
+\begin{proof}[Solution to (ii)]
+  Impossible, as $x = 0$ will always converge.
+\end{proof}
+
+\begin{proof}[Solution to (iii)]
+  Let
+  \[%
+    a_n = \frac{1}{n^2}
+  ,\]%
+  with the convention that $a_0 = 1$. This gives the power series
+  \[%
+    \sum_{n=0}^\infty \frac{x^n}{n^2}
+  .\]%
+  We first analyze the radius of convergence $R$. By the root test, we compute
+  \[%
+    \limsup_{n \to \infty} \left| \frac{1}{n^2} \right|^{1/n} = \limsup_{n \to \infty} \left( \frac{1}{n^2} \right)^{1/n} = 1
+  ,\]%
+  since $\left( \frac{1}{n^2} \right)^{1/n} \to 1$ as $n \to \infty$. Thus, the
+  radius of convergence is $R = 1$.
+
+  Therefore, the series converges absolutely for $|x| < 1$ and diverges for $|x|
+  > 1$.
+
+  Next, we analyze what happens when $|x| = 1$. In this case, the series becomes
+  \[%
+    \sum_{n=0}^\infty \frac{1}{n^2}
+  ,\]%
+  which is a convergent $p$-series with $p = 2 > 1$. Hence, the series converges
+  absolutely when $|x| = 1$.
+
+  Therefore, the series converges absolutely for all $x \in [-1, 1]$ and
+  diverges off of this set.
+\end{proof}
+
+\begin{problem}[6.5.8(i)]
+  \begin{enumerate}
+    \item Show that power series representations are unique. If we have
+      \[%
+        \sum_{n=0}^\infty a_nx^n = \sum_{n=0}^\infty b_nx^n
+      ,\]%
+      for all $x$ in an interval $(-R, R)$, prove that $a_n = b_n$ for all $n =
+      0, 1, 2, \dots$.
+  \end{enumerate}
+\end{problem}
+
+\begin{proof}[Solution to (i)]
+\end{proof}
+
+\begin{problem}[6.5.10]
+  Let $g(x) = \sum_{n=0}^\infty b_nx^n$ converge on $(-R, R)$, and assume $(x_n)
+  \to 0$ with $x_n \ne 0$. If $g(x_n) = 0$ for all $n \in \N$, show that $g(x)$
+  must be identically zero on all of $(-R, R)$.
+\end{problem}
+
+\begin{proof}[Solution]
+\end{proof}

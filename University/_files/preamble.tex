@@ -368,7 +368,7 @@
 \newcommand\pd[1]{\pdif{#1}}
 
 % Main macro
-\newcommand\dA{\d{A}}
+\newcommand\dA{\dd{A}}
 \newcommand\dV{\dd{V}}
 \newcommand\dm{\dd{m}}
 \newcommand\ds{\dd{s}}
@@ -405,19 +405,6 @@
 \newcommand\oor{\quad\textrm{or}\quad}
 \renewcommand\and{\textrm{and}}
 \newcommand\qtq[1]{\quad\textrm{#1}\quad}
-\newcommand\curl{\textrm{curl}}
-\renewcommand\div{\textrm{div}}
-\newcommand\Col{\textrm{Col}}
-\newcommand\Null{\textrm{Null}}
-\newcommand\Range{\textrm{Range}}
-\newcommand\Ker{\textrm{Ker}}
-\newcommand\Tr{\textrm{Tr}}
-\newcommand\Rank{\textrm{Rank}}
-\newcommand\proj{\textrm{proj}}
-\newcommand\comp{\textrm{comp}}
-\newcommand\Sspan{\textrm{Span}}
-\renewcommand\Re{\textrm{Re}}
-\renewcommand\Im{\textrm{Im}}
 
 % Vectors
 \renewcommand\a{\mathbf{a}}
@@ -489,6 +476,25 @@
 \newcommand\Q{\mathbb{Q}}
 \newcommand\R{\mathbb{R}}
 \newcommand\Z{\mathbb{Z}}
+
+% Math operators
+\let\div\relax
+\let\Re\relax
+\let\Im\relax
+
+\DeclareMathOperator\curl{curl}
+\DeclareMathOperator\div{div}
+\DeclareMathOperator\Col{Col}
+\DeclareMathOperator\Null{Null}
+\DeclareMathOperator\Range{Range}
+\DeclareMathOperator\Ker{Ker}
+\DeclareMathOperator\Tr{Tr}
+\DeclareMathOperator\Rank{Rank}
+\DeclareMathOperator\proj{proj}
+\DeclareMathOperator\comp{comp}
+\DeclareMathOperator\Sspan{Span}
+\DeclareMathOperator\Re{Re}
+\DeclareMathOperator\Im{Im}
 
 % Fancy letters
 \newcommand\BB{\mathcal{B}}
