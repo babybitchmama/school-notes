@@ -259,6 +259,35 @@
 \end{problem}
 
 \begin{proof}[Solution to (i)]
+  Define the sequence $c_n = a_n - b_n$, and consider the power series formed by
+  their difference
+  \[%
+    \sum_{n=0}^\infty (a_n - b_n) x^n = \sum_{n=0}^\infty c_n x^n
+  .\]%
+  Since the original series are equal for all $x \in (-R, R)$, we have
+  \[%
+    \sum_{n=0}^\infty c_n x^n = 0
+  ,\]%
+  for all $x \in (-R, R)$.
+
+  Thus, the function defined by this power series is identically zero on $(-R,
+  R)$.
+
+  Recall that a power series defines an analytic function on its interval of
+  convergence. Analytic functions are uniquely determined by their power series
+  expansion. Moreover, if a power series converges to zero on an interval $(-R,
+  R)$, all its coefficients must vanish.
+
+  Thus, since
+  \[%
+    \sum_{n=0}^\infty c_n x^n = 0
+  ,\]%
+  for all $x \in (-R, R)$, it follows that
+  \[%
+    c_n = 0 \quad \text{for all}~n \geq 0
+  .\]%
+
+  Since $c_n = a_n - b_n = 0$, we conclude that $a_n = b_n$ for all $n \geq 0$.
 \end{proof}
 
 \begin{problem}[6.5.10]
@@ -268,4 +297,28 @@
 \end{problem}
 
 \begin{proof}[Solution]
+  Recall that a power series defines an analytic function. Since $g(x)$ is given
+  by a power series converging on $(-R, R)$, it defines an analytic function on
+  that interval. Analytic functions are infinitely differentiable and determined
+  completely by their Taylor series at any point in their domain.
+
+  A key fact about analytic functions (also called the identity theorem) says:
+  If an analytic function is zero on a set that has a limit point inside its
+  domain, then the function is identically zero on its domain. In this case, we
+  know the following
+  \begin{enumerate}
+    \item $g(x)$ is analytic on $(-R, R)$,
+
+    \item $\{ x_n \mid n \in \n \}$ is a set of points in $(-R, R)$,
+
+    \item $x_n \neq 0$, $x_n \to 0$, so $0$ is a limit point of this set,
+
+    \item $g(x_n) = 0$ for all $n$.
+  \end{enumerate}
+
+  Thus, by the identity theorem, $g(x) \equiv 0$ on $(-R, R)$.
+
+  Hence, $g(x) = 0$ for all $x \in (-R, R)$. Since $g(x) = \sum_{n=0}^\infty b_n
+  x^n$, it follows that all coefficients must vanish, giving us $b_n = 0$, for
+  all $n \ge 0$.
 \end{proof}
