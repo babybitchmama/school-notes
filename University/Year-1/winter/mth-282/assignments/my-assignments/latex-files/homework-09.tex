@@ -1,206 +1,232 @@
-% \begin{problem}[1]
-%   Evaluate $\displaystyle\oint_C \FF \cdot \drr$ where $\FF = \left\langle 2xy,
-%   z^3 + 3x^2, 3yz^2 - x \right\rangle$, $C$ is the boundary of the triangle with
-%   vertices $P = (2, 0, 0)$, $Q = (0, 3, 0)$, and $R = (0, 0, 5)$ oriented from
-%   $P$ to $Q$ to $R$ and back to $P$.
-% \end{problem}
+\begin{problem}[1]
+  Evaluate $\displaystyle\oint_{\pd{S}} \FF \cdot \drr$ where $\FF =
+  \left\langle 2xy, z^3 + 3x^2, 3yz^2 - x \right\rangle$, $\pd{S}$ is the
+  boundary of the triangle with vertices $P = (2, 0, 0)$, $Q = (0, 3, 0)$, and
+  $R = (0, 0, 5)$ oriented from $P$ to $Q$ to $R$ and back to $P$.
+\end{problem}
 
-% \begin{proof}[Solution]
-%   Since we're evaluating a closed integral over a positive orientated curve, we
-%   can use Stokes' Theorem to convert the line integral into a surface integral
-%   \[%
-%     \oint_C \FF \cdot \drr = \iint_S \curl(\FF) \cdot \dSS
-%   ,\]%
-%   where $S$ is the surface bounded by $C$ and $\curl(\FF) = \nabla \times \FF$.
-%   We first compute the curl of $\FF$
-%   \begin{align*}
-%     \curl(\FF) = \nabla \times \FF &= \begin{vmatrix}
-%       \ui & \uj & \uk \\
-%       \pdv{}/{x} & \pdv[style-var-/=multiple]{}/{y} & \pdv[style-var-/=multiple]{}/{z} \\
-%       2xy & z^3 + 3x^2 & 3yz^2 - x \\
-%     \end{vmatrix} \\
-%     &= \left\langle 3z^2 - 3z^2, 1, 6x - 2x \right\rangle \\
-%     &= \left\langle 0, 1, 4x \right\rangle
-%   .\end{align*}
-%   To find the normal to the surface $S$, we can use the cross product of two
-%   vectors,
-%   \begin{alignat*}{10}
-%     &\overrightarrow{PQ} &&= Q - P &&= \langle 0, 3, 0 \rangle - \langle 2, 0, 0 \rangle &&= \langle -2, 3, 0 \rangle \\
-%     \aand&\overrightarrow{PR} &&= R - P &&= \langle 0, 0, 5 \rangle - \langle 2, 0, 0 \rangle &&= \langle -2, 0, 5 \rangle
-%   ,\end{alignat*}
-%   to find
-%   \[%
-%     \n = \overrightarrow{PQ} \times \overrightarrow{PR} = \begin{vmatrix}
-%       \ui & \uj & \uk \\
-%       -2 & 3 & 0 \\
-%       -2 & 0 & 5 \\
-%     \end{vmatrix} = \langle 15, 10, 6 \rangle
-%   .\]%
-%   But, for the surface integral, we need the unit normal vector
-%   \[%
-%     \hat{\n} = \frac{\overrightarrow{PQ} \times \overrightarrow{PR}}{\left\lVert \overrightarrow{PQ} \times \overrightarrow{PR} \right\rVert} = \frac{\langle 15, 10, 6 \rangle}{\sqrt{15^2 + 10^2 + 6^2}} = \frac{\langle 15, 10, 6 \rangle}{19} = \left\langle \frac{15}{19}, \frac{10}{19}, \frac{6}{19} \right\rangle
-%   .\]%
-%   The projection of $S$ onto the $xy$-plane is a triangle with vertices $P = (2,
-%   0)$, $Q = (0, 3)$, and $R = (0, 0)$. The equation of the line from $P$ to $Q$
-%   is $y = -\sfrac{3}{2} x + 3$. Therefore, the bounds are $0 \le x \le 2$ and $0
-%   \le y \le -\sfrac{3}{2} x + 3$. The surface integral becomes
-%   \begin{align*}
-%     \oint_C \FF \cdot \dd{\r} &= \iint_S \curl(\FF) \cdot \dSS \\
-%                              &= \iint_S \left\langle 0, 1, 4x \right\rangle \cdot \left\langle \frac{15}{19}, \frac{10}{19}, \frac{6}{19} \right\rangle \dSS \\
-%                              &= \iint_D 0 + 1\cdot\frac{10}{19} + 4x\cdot\frac{6}{19} \dA \\
-%                              &= \int_0^2 \int_0^{-\sfrac{3}{2} x + 3} \left(\frac{10}{19} + \frac{24x}{19}\right) \dyx \\
-%                              &= \int_0^2 \left(\frac{10}{19} + \frac{24x}{19}\right)\left(-\frac{3}{2}x + 3\right) \dx \\
-%                              &= -\frac{3}{19} \cdot \int_0^2 12x^2 - 19x - 10 \dx \\
-%                              &= -\frac{3}{19} \cdot \left[4x^3 - \frac{19x^2}{2} - 10x\right]_0^2 \\
-%                              &= -\frac{3}{19} \cdot \left[4(2)^3 - \frac{19(2)^2}{2} - 10(2)\right] = \frac{78}{19}
-%   .\qedhere\end{align*}
-% \end{proof}
+\begin{proof}[Solution]
+  By the orientation induced on the surface, using the right hand rule, the
+  orientation of the normal vector is pointing outwards. We can use Stokes'
+  Theorem to convert the line integral into a surface integral,
+  \[%
+    \oint_{\pd{S}} \FF \cdot \drr = \iint_S \curl(\FF) \cdot \dSS
+  ,\]%
+  where $S$ is the surface bounded by $\pd{S} = C$ and $\curl(\FF) = \nabla
+  \times \FF$. We first compute the curl of $\FF$
+  \begin{align*}
+    \curl(\FF) = \nabla \times \FF &= \begin{vmatrix}
+      \ui & \uj & \uk \\
+      \pdv{}/{x} & \pdv[style-var-/=multiple]{}/{y} & \pdv[style-var-/=multiple]{}/{z} \\
+      2xy & z^3 + 3x^2 & 3yz^2 - x \\
+    \end{vmatrix} \\
+    &= \left\langle 3z^2 - 3z^2, 1, 6x - 2x \right\rangle \\
+    &= \left\langle 0, 1, 4x \right\rangle
+  .\end{align*}
+  Finding the equation of the plane containing the triangle, we have
+  \[%
+    15x + 10y + 6z = 30 \implies z = 5 - \frac{5}{2}x - \frac{5}{3}y
+  .\]%
+  The normal vector to this plane is
+  \[%
+    \n = \left\langle \frac{5}{2}, \frac{5}{3}, 1 \right\rangle
+  .\]%
+  Computing the dot product, we have
+  \[%
+    \curl(\FF) \cdot \n = \left\langle 0, 1, 4x \right\rangle \cdot \left\langle \frac{5}{2}, \frac{5}{3}, 1 \right\rangle = \frac{5}{3} + 4x
+  .\]%
+  The projection onto the $xy$-plane is the triangle with vertices $P' = (2,
+  0)$, $Q' = (0, 3)$, and $R' = (0, 0)$. Thus, the boundaries are $0 \le x \le
+  2$ and $0 \le y \le -\frac{3}{2}x + 3$. Therefore, we have
+  \begin{align*}
+    \oint_{\pd{S}} \FF \cdot \drr &= \iint_S \curl(\FF) \cdot \dSS \\
+                           &= \iint_D \left(\frac{5}{3} + 4x\right) \dA \\
+                           &= \int_0^2 \int_0^{-\sfrac{3}{2}x+3} \left(\frac{5}{3} + 4x\right) \dyx \\
+                           &= \int_0^2 \frac{5}{3}y + 4xy\bigg\vert_0^{-\sfrac{3}{2}x+3} \dx \\
+                           &= \int_0^2 \frac{5}{3}\left(-\frac{3}{2}x + 3\right) + 4x\left(-\frac{3}{2}x + 3\right) \dx \\
+                           &= \int_0^2 -6x^2 + \frac{19x}{2} + 5 \dx \\
+                           &= \left[-2x^3 + \frac{19x^2}{4} + 5x\right]_0^2 \\
+                           &= -16 + 19 + 10 = 13
+  .\qedhere\end{align*}
+\end{proof}
 
-% \begin{problem}[2]
-%   Let $S$ be the portion of the ellipsoid $4x^2 + y^2 + 16z^2 = 64$ above the
-%   $xy$-plane oriented upward. Use Stokes' Theorem to evaluate
-%   $\displaystyle\iint_S \curl(\FF) \cdot \dSS$ where $\FF = \left\langle xz, x^3
-%   + 2y, e^{x^2-y^2} \right\rangle$.
-% \end{problem}
+\begin{problem}[2]
+  Let $S$ be the portion of the ellipsoid $4x^2 + y^2 + 16z^2 = 64$ above the
+  $xy$-plane oriented upward. Use Stokes' Theorem to evaluate
+  $\displaystyle\iint_S \curl(\FF) \cdot \dSS$ where $\FF = \left\langle xz, x^3
+  + 2y, e^{x^2-y^2} \right\rangle$.
+\end{problem}
 
-% \begin{proof}[Solution]
-%   The boundary $C$ occurs when $z = 0$, which gives the ellipse $4x^2 + y^2 =
-%   64$. This also gives us a simpler form of $\FF$,
-%   \[%
-%     \FF = \left\langle 0, x^3 + 2y, e^{x^2-y^2} \right\rangle
-%   .\]%
-%   Since
-%   \[%
-%     \frac{x^2}{16} + \frac{y^2}{64} = 1
-%   ,\]%
-%   we can use the parametrization
-%   \[%
-%     \r(t) = \langle 4\cos(t), 8\sin(t), 0 \rangle
-%   ,\]%
-%   where $0 \le t \le 2\pi$. Therefore, we have
-%   \[%
-%     \drr = \langle \dx, \dy, \dz \rangle = \langle -4\sin(t), 8\cos(t), 0 \rangle \dt
-%   .\]%
-%   Computing the dot product, we have
-%   \begin{align*}
-%     \FF \cdot \drr &= \left\langle 0, x^3 + 2y, e^{x^2-y^2} \right\rangle \cdot \langle \dx, \dy, 0 \rangle \\
-%                    &= (x^3 + 2y) \dy \\
-%                    &= \left((4\cos(t))^3 + 2(8\sin(t))\right) \cdot 8\cos(t) \dt \\
-%                    &= \left(64\cos^3(t) + 16\sin(t)\right) \cdot 8\cos(t) \dt \\
-%                    &= 512\cos^4(t) + 128\sin(t)\cos(t) \dt
-%   .\end{align*}
-%   By Stokes' Theorem, we have
-%   \begin{align*}
-%     \iint_S \curl(\FF) \cdot \dSS &= \oint_C \FF \cdot \drr \\
-%                                  &= \int_0^{2\pi} 512\cos^4(t) + 128\sin(t)\cos(t) \dt \\
-%                                  &= 512\int_0^{2\pi} \cos^4(t) \dt + 128\int_0^{2\pi} \sin(t)\cos(t) \dt \\
-%                                  &= 512\cdot\frac{3\pi}{4} + 128\cdot 0 = 384\pi
-%   .\qedhere\end{align*}
-% \end{proof}
+\begin{proof}[Solution]
+  By the orientation induced on the surface, using the right hand rule, the
+  orientation of the line integral is counterclockwise. We can use Stokes'
+  Theorem to convert the surface integral into a line integral.
 
-% \begin{problem}[3]
-%   Verify Stokes' Theorem for the vector field $\FF = \langle y, z, x \rangle$
-%   and the hemisphere $y = \sqrt{1 - x^2 - z^2}$ orientated in the direction of
-%   the positive $y$-axis.
+  The boundary $\pd{S}$ occurs when $z = 0$, which gives the ellipse $4x^2 +
+  y^2 = 64$. This also gives us a simpler form of $\FF$,
+  \[%
+    \FF = \left\langle 0, x^3 + 2y, e^{x^2-y^2} \right\rangle
+  .\]%
+  Since
+  \[%
+    \frac{x^2}{16} + \frac{y^2}{64} = 1
+  ,\]%
+  we can use the parametrization
+  \[%
+    \r(t) = \langle 4\cos(t), 8\sin(t), 0 \rangle
+  ,\]%
+  where $0 \le t \le 2\pi$. Therefore, we have
+  \[%
+    \drr = \langle \dx, \dy, \dz \rangle = \langle -4\sin(t), 8\cos(t), 0 \rangle \dt
+  .\]%
+  Computing the dot product, we have
+  \begin{align*}
+    \FF \cdot \drr &= \left\langle 0, x^3 + 2y, e^{x^2-y^2} \right\rangle \cdot \langle \dx, \dy, 0 \rangle \\
+                   &= (x^3 + 2y) \dy \\
+                   &= \left((4\cos(t))^3 + 2(8\sin(t))\right) \cdot 8\cos(t) \dt \\
+                   &= \left(64\cos^3(t) + 16\sin(t)\right) \cdot 8\cos(t) \dt \\
+                   &= 512\cos^4(t) + 128\sin(t)\cos(t) \dt
+  .\end{align*}
+  By Stokes' Theorem, we have
+  \begin{align*}
+    \iint_S \curl(\FF) \cdot \dSS &= \oint_{\pd{S}} \FF \cdot \drr \\
+                                 &= \int_0^{2\pi} 512\cos^4(t) + 128\sin(t)\cos(t) \dt \\
+                                 &= 512\int_0^{2\pi} \cos^4(t) \dt + 128\int_0^{2\pi} \sin(t)\cos(t) \dt \\
+                                 &= 512\cdot\frac{3\pi}{4} + 128\cdot 0 = 384\pi
+  .\qedhere\end{align*}
+\end{proof}
 
-%   \noindent(That means, evaluate both $\displaystyle\oint_C \FF \cdot \dd{\r}$
-%   and $\displaystyle\iint_S \curl(\FF) \cdot \dSS$ showing that they are equal
-%   for the given field and surface.)
-% \end{problem}
+\begin{problem}[3]
+  Verify Stokes' Theorem for the vector field $\FF = \langle y, z, x \rangle$
+  and the hemisphere $y = \sqrt{1 - x^2 - z^2}$ orientated in the direction of
+  the positive $y$-axis.
 
-% \begin{proof}[Solution]
-%   We're first going to compute the line integral over $C$. We're given that the
-%   surface is defined as $y = \sqrt{1 - x^2 - y^2}$. This means that $x^2 + y^2
-%   \le 1$. The boundary $C$ occurs when $y = 0$, which gives us the circle $x^2 +
-%   z^2 = 1$. Therefore, using polar, we get the parameterization
-%   \[%
-%     \r(t) = \langle \cos(t), 0, \sin(t) \rangle
-%   ,\]%
-%   where $r = 1$ and $0 \le t \le 2\pi$. The differential is
-%   \[%
-%     \drr = \langle \dx, \dy, \dz \rangle = \langle -\sin(t), 0, \cos(t) \rangle \dt
-%   .\]%
-%   Computing the dot product, we have
-%   \[%
-%     \FF \cdot \drr = \langle 0, z, x \rangle \cdot \langle \dx, 0, \dz \rangle = x \cdot \dz = \cos^2(t) \dt
-%   .\]%
-%   Therefore, we have
-%   \begin{align*}
-%     \oint_C \FF \cdot \drr &= \int_0^{2\pi} \cos^2(t) \dt \\
-%                           &= \int_0^{2\pi} \frac{1 + \cos(2t)}{2} \dt \\
-%                           &= \frac{1}{2} \cdot \int_0^{2\pi} 1 + \cos(2t) \dt \\
-%                           &= \frac{t}{2} + \frac{\sin(2t)}{4} \bigg|_0^{2\pi} \\
-%                           &= \frac{2\pi}{2} + 0 - 0 = \pi
-%   .\end{align*}
+  \noindent(That means, evaluate both $\displaystyle\oint_{\pd{S}} \FF \cdot
+  \dd{\r}$ and $\displaystyle\iint_S \curl(\FF) \cdot \dSS$ showing that they
+  are equal for the given field and surface.)
+\end{problem}
 
-%   Now, we compute the double integral over $S$. We first compute the curl of
-%   $\FF$
-%   \begin{align*}
-%     \curl(\FF) = \nabla \times \FF &= \begin{vmatrix}
-%       \ui & \uj & \uk \\
-%       \pdv{}/{x} & \pdv[style-var-/=multiple]{}/{y} & \pdv[style-var-/=multiple]{}/{z} \\
-%       y & z & x \\
-%     \end{vmatrix} \\
-%     &= \left\langle 0 - 1, -(1 - 0), 0 - 1 \right\rangle \\
-%     &= \langle -1, -1, -1 \rangle
-%   .\end{align*}
-%   Using polar coordinates, we have
-%   \[%
-%     \r(\theta, r) = \langle r\cos(\theta), \sqrt{1 - r^2}, r\sin(\theta) \rangle
-%   .\]%
-%   The Jacobian determinant for this transformation is $r$. The limits of
-%   integration are $0 \le r \le 1$ and $0 \le \theta \le 2\pi$. We know that
-%   \[%
-%     \r_\theta = \langle -r\sin(\theta), 0, r\cos(\theta) \rangle \aand \r_r = \left\langle \cos(\theta), -\frac{2r}{\sqrt{1 - r^2}}, \sin(\theta) \right\rangle
-%   .\]%
-%   Therefore, the normal vector is
-%   \begin{align*}
-%     \n &= \r_\theta \times \r_r = \begin{vmatrix}
-%       \ui & \uj & \uk \\
-%       -r\sin(\theta) & 0 & r\cos(\theta) \\
-%       \cos(\theta) & -\frac{2r}{\sqrt{1 - r^2}} & \sin(\theta) \\
-%     \end{vmatrix} \\
-%     &= \left\langle \frac{2r^2\cos(\theta)}{\sqrt{1 - r^2}}, r\sin^2(\theta) + r\cos^2(\theta), \frac{2r^2\sin(\theta)}{\sqrt{1 - r^2}} \right\rangle \\
-%     &= \left\langle \frac{2r^2\cos(\theta)}{\sqrt{1 - r^2}}, r, \frac{2r^2\sin(\theta)}{\sqrt{1 - r^2}} \right\rangle
-%   .\end{align*}
-% \end{proof}
+\begin{proof}[Solution]
+  We're first going to compute the line integral over $\pd{S}$. Given the
+  orientation of the surface, using the right hand rule, the orientation of the
+  line integral is clockwise in the $xz$-plane.
 
-% \begin{problem}[4]
-%   Evaluate $\displaystyle\oiint_S \FF \cdot \dd{\S}$ where $\FF = \langle x^3 +
-%   zy^2, 4x^2z + 2yz, 4 - z^2 \rangle$ and $S$ is the sphere $x^2 + y^2 + z^2 =
-%   9$ orientated outward.
-% \end{problem}
+  We're given that the surface is defined as $y = \sqrt{1 - x^2 - y^2}$. This
+  means that $x^2 + y^2 \le 1$. The boundary $\pd{S}$ occurs when $y = 0$, which
+  gives us the circle $x^2 + z^2 = 1$. Therefore, using polar, we get the
+  parameterization
+  \[%
+    \r(t) = \langle \sin(t), 0, \cos(t) \rangle
+  ,\]%
+  where $r = 1$ and $0 \le t \le 2\pi$. We need to flip the parameter as we need
+  to go clockwise, as polar goes counterclockwise. The differential is
+  \[%
+    \drr = \r'(t) \dt = \langle \dx, \dy, \dz \rangle \dt = \langle \cos(t), 0, -\sin(t) \rangle \dt
+  .\]%
+  Evaluating $\FF(\r(t))$, we get
+  \[%
+    \FF(\r(t)) = \langle 0, \cos(t), \sin(t) \rangle
+  .\]%
+  Computing the dot product, we have
+  \[%
+    \FF \cdot \drr = \langle 0, \cos(t), \sin(t) \rangle \cdot \langle \cos(t), 0, -\sin(t) \rangle = -\sin^2(t)
+  .\]%
+  Therefore, we have
+  \begin{align*}
+    \oint_{\pd{S}} \FF \cdot \drr &= \int_0^{2\pi} -\sin^2(t) \dt \\
+                          &= -\frac{1}{2} \cdot \int_0^{2\pi} 1 - \sin(2t) \dt \\
+                          &= -\frac{1}{2} \cdot \left[t + \frac{1}{2}\cos(2t)\right]_0^{2\pi} \\
+                          &= -\frac{1}{2} \cdot \left[\left(2\pi + \frac{1}{2}\right) - \left(0 - \frac{1}{2}\right)\right] \\
+                          &= -\frac{2\pi}{2} = -\pi
+  .\end{align*}
 
-% \begin{proof}[Solution]
-%   By the Divergence Theorem, we have
-%   \[%
-%     \oiint_S \FF \cdot \dd{\S} = \iiint_V \div(\FF) \dd{V}
-%   ,\]%
-%   where $\div(\FF) = \nabla \cdot \FF$ and $V$ is the volume of the sphere $x^2
-%   + y^2 + z^2 = 9$. We first compute the divergence of $\FF$
-%   \[%
-%     \div(\FF) = \nabla \cdot \FF = \pdv{}{x}\left(x^3 + zy^2\right) + \pdv{}{y}\left(4x^2z + 2yz\right) + \pdv{}{z}\left(4 - z^2\right) = 3x^2 + 2z - 2z = 3x^2
-%   .\]%
-%   Using spherical coordinates, we have
-%   \[%
-%     x = \rho\sin(\phi)\cos(\theta), \quad y = \rho\sin(\phi)\sin(\theta), \aand z = \rho\cos(\phi)
-%   .\]%
-%   Therefore, the divergence becomes
-%   \[%
-%     \div(\FF) = 3x^2 = 3\rho^2\sin^2(\phi)\cos^2(\theta)
-%   .\]%
-%   The Jacobian determinant for this transformation is $\rho^2\sin(\phi)$. The
-%   limits of integration are $0 \le \rho \le 3$, $0 \le \phi \le \pi$, and $0 \le
-%   \theta \le 2\pi$. Thus, we have
-%   \begin{align*}
-%     \oiint_S \FF \cdot \dd{\S} &= \iiint_V \nabla \cdot \FF \dd{V} \\
-%                                &= \int_0^{2\pi} \int_0^{\pi} \int_0^3 3\rho^2\sin^2(\phi)\cos^2(\theta) \cdot \rho^2\sin(\phi) \dd{\rho,\phi,\theta} \\
-%                                &= 3 \cdot \int_0^{2\pi} \cos^2(\theta) \dd{\theta} \cdot \int_0^{\pi} \sin^3(\phi) \dd{\phi} \cdot \int_0^3 \rho^4 \dd{\rho} \\
-%                                &= 3 \cdot \left[\frac{1}{2}(\theta - \sin(\theta)\cos(\theta))\right]_0^{2\pi} \cdot \int_0^\pi (1 - \cos^2(\phi))\sin(\phi) \dd{\phi} \cdot \left[\frac{\rho^5}{5}\right]_0^3 \\
-%                                &= 3 \cdot \frac{2\pi}{2} \cdot \left[\frac{1}{12}\left(\cos(3\phi) - 9\cos(\phi)\right)\right]_0^\pi \cdot \frac{243}{5} \\
-%                                &= 3\pi \cdot \frac{4}{3} \cdot \frac{243}{5} = \frac{972\pi}{5}
-%   .\qedhere\end{align*}
-% \end{proof}
+  Now, we compute the double integral over $S$. Computing the curl of $\FF$, we
+  have
+  \begin{align*}
+    \curl(\FF) = \nabla \times \FF &= \begin{vmatrix}
+      \ui & \uj & \uk \\
+      \pdv{}/{x} & \pdv[style-var-/=multiple]{}/{y} & \pdv[style-var-/=multiple]{}/{z} \\
+      y & z & x \\
+    \end{vmatrix} \\
+    &= \left\langle 0 - 1, -(1 - 0), 0 - 1 \right\rangle \\
+    &= \langle -1, -1, -1 \rangle
+  .\end{align*}
+  Using spherical coordinates, we have
+  \[%
+    \r(\theta, \phi) = \langle \sin(\phi)\cos(\theta), \cos(\phi), \sin(\phi)\sin(\theta) \rangle
+  ,\]%
+  where $\rho = 1$. We know that
+  \begin{align*}
+    \r_\theta &= \langle -\sin(\phi)\sin(\theta), 0, \sin(\phi)\cos(\theta) \rangle \\
+    \r_\phi &= \langle \cos(\phi)\cos(\theta), -\sin(\phi), \cos(\phi)\sin(\theta) \rangle
+  .\end{align*}
+  Since the orientation induced on the surface is in the direction of the
+  positive $y$-axis, we have need to have the $\uj$-component of the normal
+  positive. Therefore, the normal vector is
+  \begin{align*}
+    \n &= \r_\theta \times \r_\phi = \begin{vmatrix}
+      \ui & \uj & \uk \\
+      -\sin(\phi)\sin(\theta) & 0 & \sin(\phi)\cos(\theta) \\
+      \cos(\phi)\cos(\theta) & -\sin(\phi) & \cos(\phi)\sin(\theta) \\
+    \end{vmatrix} \\
+    &= \langle \sin^2(\phi)\cos(\theta), \sin(\phi)\cos(\phi)\cos^2(\theta), \sin^2(\phi)\sin(\theta) \rangle
+  .\end{align*}
+  The dot product is
+  \begin{align*}
+    \curl(\FF) \cdot \n &= \langle -1, -1, -1 \rangle \cdot \langle \sin^2(\phi)\cos(\theta), \sin(\phi)\cos(\phi)\cos^2(\theta), \sin^2(\phi)\sin(\theta) \rangle \\
+                        &= -\left(\sin^2(\phi)\cos(\theta) + \sin(\phi)\cos(\phi)\cos^2(\theta) + \sin^2(\phi)\sin(\theta)\right)
+  .\end{align*}
+  Therefore, the surface integral becomes
+  \begin{align*}
+    \iint_S \curl(\FF) \cdot \dSS &= \iint_D -\left(\sin^2(\phi)\cos(\theta) + \sin(\phi)\cos(\phi)\cos^2(\theta) + \sin^2(\phi)\sin(\theta)\right) \dA \\
+                                  &= -\left[\int_0^\pi \int_0^\pi \sin^2(\phi)\cos(\theta) + \sin(\phi)\cos(\phi)\cos^2(\theta) + \sin^2(\phi)\sin(\theta) \dd{\phi,\theta}\right] \\
+                                  &= -\int_0^\pi \cos(\theta) \dd{\theta} \cdot \int_0^\pi \sin^2(\phi) \dd{\phi} - \int_0^\pi \cos^2(\theta) \dd{\theta} \cdot \int_0^\pi \sin(\phi)\cos(\phi) \dd{\phi} \\
+                                  &\qquad- \int_0^\pi \sin(\theta) \dd{\theta} \cdot \int_0^\pi \sin^2(\phi) \dd{\phi} \\
+                                  &= 0 - \frac{\pi}{2} \cdot 0 - 2 \cdot \frac{\pi}{2} = -\pi
+  .\end{align*}
+
+  Therefore, we have
+  \[%
+    \oint_{\pd{S}} \FF \cdot \drr = \iint_S \curl(\FF) \cdot \dSS = -\pi
+  .\qedhere\]%
+\end{proof}
+
+\begin{problem}[4]
+  Evaluate $\displaystyle\oiint_S \FF \cdot \dd{\S}$ where $\FF = \langle x^3 +
+  zy^2, 4x^2z + 2yz, 4 - z^2 \rangle$ and $S$ is the sphere $x^2 + y^2 + z^2 =
+  9$ orientated outward.
+\end{problem}
+
+\begin{proof}[Solution]
+  By the Divergence Theorem, we have
+  \[%
+    \oiint_S \FF \cdot \dd{\S} = \iiint_V \div(\FF) \dd{V}
+  ,\]%
+  where $\div(\FF) = \nabla \cdot \FF$ and $V$ is the volume of the sphere $x^2
+  + y^2 + z^2 = 9$. We first compute the divergence of $\FF$
+  \[%
+    \div(\FF) = \nabla \cdot \FF = \pdv{}{x}\left(x^3 + zy^2\right) + \pdv{}{y}\left(4x^2z + 2yz\right) + \pdv{}{z}\left(4 - z^2\right) = 3x^2 + 2z - 2z = 3x^2
+  .\]%
+  Using spherical coordinates, we have
+  \[%
+    x = \rho\sin(\phi)\cos(\theta), \quad y = \rho\sin(\phi)\sin(\theta), \aand z = \rho\cos(\phi)
+  .\]%
+  Therefore, the divergence becomes
+  \[%
+    \div(\FF) = 3x^2 = 3\rho^2\sin^2(\phi)\cos^2(\theta)
+  .\]%
+  The Jacobian determinant for this transformation is $\rho^2\sin(\phi)$. The
+  limits of integration are $0 \le \rho \le 3$, $0 \le \phi \le \pi$, and $0 \le
+  \theta \le 2\pi$. Thus, we have
+  \begin{align*}
+    \oiint_S \FF \cdot \dd{\S} &= \iiint_V \nabla \cdot \FF \dd{V} \\
+                               &= \int_0^{2\pi} \int_0^{\pi} \int_0^3 3\rho^2\sin^2(\phi)\cos^2(\theta) \cdot \rho^2\sin(\phi) \dd{\rho,\phi,\theta} \\
+                               &= 3 \cdot \int_0^{2\pi} \cos^2(\theta) \dd{\theta} \cdot \int_0^{\pi} \sin^3(\phi) \dd{\phi} \cdot \int_0^3 \rho^4 \dd{\rho} \\
+                               &= 3 \cdot \left[\frac{1}{2}(\theta - \sin(\theta)\cos(\theta))\right]_0^{2\pi} \cdot \int_0^\pi (1 - \cos^2(\phi))\sin(\phi) \dd{\phi} \cdot \left[\frac{\rho^5}{5}\right]_0^3 \\
+                               &= 3 \cdot \frac{2\pi}{2} \cdot \left[\frac{1}{12}\left(\cos(3\phi) - 9\cos(\phi)\right)\right]_0^\pi \cdot \frac{243}{5} \\
+                               &= 3\pi \cdot \frac{4}{3} \cdot \frac{243}{5} = \frac{972\pi}{5}
+  .\qedhere\end{align*}
+\end{proof}
 
 \begin{problem}[5]
   Verify the Divergence Theorem for the vector field $\FF = \langle -x, y, z
@@ -214,7 +240,132 @@
 \end{problem}
 
 \begin{proof}[Solution]
-  We first compute the divergence of $\FF$
+  First, we compute the double closed surface integral over $S$.
+  Notice that
+  \[%
+    \oiint_S \FF \cdot \dSS = \iint_{S_1} \FF \cdot \dSS + \iint_{S_2} \FF \cdot \dSS + \iint_{S_3} \FF \cdot \dSS
+  ,\]%
+  where $S_1$ is the parabolic cylinder, $S_2$ is the plane $y + 2z = 4$, and
+  $S_3$ is the plane $z = 2$.
+
+  $S_1$: Parametrizing the surface, we get $\r(x, z) = \langle x, 4 - x^2, z
+  \rangle$. We know that
+  \begin{align*}
+    \r_z &= \langle 0, 0, 1 \rangle \\
+    \r_x &= \langle 1, -2x, 0 \rangle
+  .\end{align*}
+  Therefore, the normal vector is
+  \[%
+    \n = \r_z \times \r_x = \begin{vmatrix}
+      \ui & \uj & \uk \\
+      0 & 0 & 1 \\
+      1 & -2x & 0 \\
+    \end{vmatrix} = \langle 2x, 1, 0 \rangle
+  .\]%
+  Evaluating $\FF(\r(x, z))$, we get
+  \[%
+    \FF(\r(x, z)) = \langle -x, 4 - x^2, z \rangle
+  .\]%
+  Computing the dot product, we have
+  \[%
+    \FF \cdot \n = \langle -x, 4 - x^2, z \rangle \cdot \langle 2x, 1, 0 \rangle = -2x^2 + 4 - x^2 = 4 - 3x^2
+  .\]%
+  The intersection of the parabolic cylinder and the plane $y + 2z = 4$ is
+  \[%
+    4 - 2z = 4 - x^2 \implies z = \frac{x^2}{2}
+  .\]%
+  Projecting the surface onto the $xz$-plane, we get the bounds $-2 \le x \le 2$
+  and $\sfrac{x^2}{2} \le z \le 2$. Thus, we have
+  \begin{align*}
+    \iint_{S_1} \FF \cdot \dSS &= \iint_{D_1} 4 - 3x^2 \dA \\
+                               &= \int_{-2}^2 \int_{\sfrac{x^2}{2}}^2 4 - 3x^2 \dzx \\
+                               &= \int_{-2}^2 4z - x^2z\bigg\vert_{\sfrac{x^2}{2}}^2 \dx \\
+                               &= \int_{-2}^2 \frac{3x^4}{2} - 8x^2 + 8 \dx \\
+                               &= \frac{3x^5}{10} - \frac{8x^3}{3} + 8x\bigg\vert_{-2}^2 \\
+                               &= \frac{128}{15}
+  .\end{align*}
+
+  $S_2$: Parametrizing the surface, we get $\r(x, y) = \left\langle x, y, 2 -
+  \frac{4 - y}{2} \right\rangle$. We know that
+  \begin{align*}
+    \r_y &= \left\langle 0, 1, -\frac{1}{2} \right\rangle \\
+    \r_x &= \langle 1, 0, 0 \rangle
+  .\end{align*}
+  Therefore, the normal vector is
+  \[%
+    \n = \r_y \times \r_x = \begin{vmatrix}
+      \ui & \uj & \uk \\
+      0 & 1 & -\frac{1}{2} \\
+      1 & 0 & 0 \\
+    \end{vmatrix} = \left\langle 0, -\frac{1}{2}, -1 \right\rangle
+  .\]%
+  But we need the normal vector to be pointing outwards. Therefore, we have
+  \[%
+    \n = \left\langle 0, \frac{1}{2}, 1 \right\rangle
+  .\]%
+  Evaluating $\FF(\r(x, y))$, we get
+  \[%
+    \FF(\r(x, y)) = \left\langle -x, y, \frac{4 - y}{2} \right\rangle
+  .\]%
+  Computing the dot product, we have
+  \[%
+    \FF \cdot \n = \left\langle -x, y, \frac{4 - y}{2} \right\rangle \cdot \left\langle 0, \frac{1}{2}, 1 \right\rangle = 2
+  .\]%
+  The bounds for this surface are $-2 \le x \le 2$ and $0 \le y \le 4 - x^2$.
+  Thus, we have
+  \begin{align*}
+    \iint_{S_2} \FF \cdot \dSS &= \iint_{D_2} 2 \dA \\
+                              &= 2 \cdot \int_{-2}^2 \int_0^{4-x^2} \dyx \\
+                              &= 2 \cdot \int_{-2}^2 4 - x^2 \dx \\
+                              &= 2 \cdot \left[4x - \frac{x^3}{3}\right]_{-2}^2 \\
+                              &= 2 \cdot \left[\left(8 - \frac{8}{3}\right) - \left(-8 + \frac{8}{3}\right)\right] \\
+                              &= \frac{64}{3}
+  .\end{align*}
+
+  $S_3$: Parametrizing the surface, we get $\r(x, z) = \langle x, y, 2 \rangle$.
+  We know that
+  \begin{align*}
+    \r_x &= \langle 1, 0, 0 \rangle \\
+    \r_y &= \langle 0, 1, 0 \rangle
+  .\end{align*}
+  Therefore, the normal vector is
+  \[%
+    \n = \r_x \times \r_y = \begin{vmatrix}
+      \ui & \uj & \uk \\
+      1 & 0 & 0 \\
+      0 & 1 & 0 \\
+    \end{vmatrix} = \langle 0, 0, 1 \rangle
+  .\]%
+  But we need the normal vector to be pointing outwards. Therefore, we have
+  \[%
+    \n = \langle 0, 0, -1 \rangle
+  .\]%
+  Evaluating $\FF(\r(x, y))$, we get
+  \[%
+    \FF(\r(x, y)) = \langle -x, y, 2 \rangle
+  .\]%
+  Computing the dot product, we have
+  \[%
+    \FF \cdot \n = \langle -x, y, 2 \rangle \cdot \langle 0, 0, 1 \rangle = -2
+  .\]%
+  The bounds for this surface are $-2 \le x \le 2$ and $0 \le y \le 4 - x^2$.
+  Thus, we have
+  \begin{align*}
+    \iint_{S_3} \FF \cdot \dSS &= \iint_{D_3} -2 \dA \\
+                              &= \int_{-2}^2 \int_0^{4-x^2} -2 \dyx \\
+                              &= -2 \cdot \int_{-2}^2 4 - x^2 \dx \\
+                              &= -2 \cdot \left[4x - \frac{x^3}{3}\right]_{-2}^2 \\
+                              &= -2 \cdot \left[\left(8 - \frac{8}{3}\right) - \left(-8 + \frac{8}{3}\right)\right] \\
+                              &= -\frac{64}{3}
+  .\end{align*}
+
+  Therefore, we have
+  \[%
+    \oiint_S \FF \cdot \dSS = \frac{128}{15} + \frac{64}{3} - \frac{64}{3} = \frac{128}{15}
+  .\]%
+
+  Now, we compute the triple integral over the volume. We first compute the
+  divergence of $\FF$
   \[%
     \div(\FF) = \nabla \cdot \FF = \pdv{}{x}(-x) + \pdv{}{y}(y) + \pdv{}{z}(z) = -1 + 1 + 1 = 1
   .\]%
@@ -223,12 +374,20 @@
     \iiint_V \div(\FF) \dV = \iiint_V 1 \dV = \iiint_V \dV
   .\]%
   The volume limits are $-2 \le x \le 2$, since $y = 4 - x^2$ defines a parabola
-  opening down from $y = 4$, $0 \le y \le 4 - x^2$, and $0 \le z \le \frac{4 -
-  y}{2}$. Thus, the integral becomes
+  opening down from $y = 4$, $0 \le y \le 4 - x^2$, and $2 - \sfrac{y}{2} \le z
+  \le 2$. Thus, the integral becomes
   \begin{align*}
-    \iiint_V \dV &= \int_{-2}^2 \int_0^{4 - x^2} \int_0^{\frac{4 - y}{2}} \dzyx \\
-                 &= \int_{-2}^2 \int_0^{4 - x^2} \frac{4 - y}{2} \dyx \\
-                 &= \int_{-2}^2 \left[2y - \frac{y^2}{4}\right]_0^{4 - x^2} \dx \\
-                 &= \int_{-2}^2 2(4 - x^2) - \frac{(4 - x^2)^2}{4} \dx \\
+    \iiint_V \dV &= \int_{-2}^2 \int_0^{4-x^2} \int_{2-\sfrac{y}{2}}^2 \dz \dyx \\
+                 &= \int_{-2}^2 \int_0^{4-x^2} \frac{y}{2} \dyx \\
+                 &= \int_{-2}^2 \frac{y^2}{4}\bigg\vert_0^{4-x^2} \dx \\
+                 &= \int_{-2}^2 \frac{(4 - x^2)^2}{4} \dx \\
+                 &= \int_{-2}^2 \frac{x^4}{4} - 2x^2 + 4 \dx \\
+                 &= \frac{x^5}{20} - \frac{2x^3}{3} + 4x\bigg\vert_{-2}^2 \\
+                 &= \frac{128}{15}
   .\end{align*}
+
+  Therefore, we get
+  \[%
+    \oiint_S \FF \cdot \dSS = \iiint_V \div(\FF) \dV
+  .\qedhere\]%
 \end{proof}
