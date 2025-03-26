@@ -1,0 +1,457 @@
+\setcounter{chapter}{1}
+\chapter{Matrix Lie Groups Solutions}
+
+\begin{exercise}[1]
+  Let $a$ be an irrational real number. Show that the set of numbers of the form
+  $e^{2\pi ina}$, $n \in \Z$, is dense in $S^1$. Now, let $G$ be the following
+  subgroup of $\GL(2, \C)$
+  \[%
+    G = \left\{\left.
+      \begin{pmatrix}
+        e^{it} & 0 \\
+        0 & e^{iat} \\
+      \end{pmatrix}
+      \right\vert
+      t \in \R
+    \right\}
+  .\]%
+  Show that
+  \[%
+    \overline{G} = \left\{\left.
+      \begin{pmatrix}
+        e^{it} & 0 \\
+        0 & e^{is} \\
+      \end{pmatrix}
+      \right\vert
+      t, s \in \R
+    \right\}
+  ,\]%
+  where $\overline{G}$ denotes the closure of the set $G$ inside the space of $2
+  \times 2$ matrices.
+
+  \textit{Note}: The group $\overline{G}$ can be thought of as the torus $S^1
+  \times S^1$, which in turn can be thought of as $[0, 2\pi] \times [0, 2\pi]$,
+  with the ends of the intervals identified. The set $G \subset [0, 2\pi] \times
+  [0, 2\pi]$ is called an \textbf{irrational line}. Draw a picture of this set
+  and you should see why $G$ is dense in $[0, 2\pi] \times [0, 2\pi]$.
+\end{exercise}
+
+\begin{proof}[Solution]
+\end{proof}
+
+\begin{exercise}[2]
+  \textit{Orthogonal Group.} Let $\langle  \rangle$ denote the standard inner
+  product on $\R^n$, $\langle x, y \rangle = \sum_i x_iy_i$. Show that a matrix
+  $A$ preserves inner products if and only if the column vectors of $A$ are
+  orthonormal.
+
+  Show that for any $n \times n$ real matrix $B$,
+  \[%
+    \langle Bx, y \rangle = \langle x, B^Ty \rangle
+  ,\]%
+  where $(B^T)_{ij} = B_{ji}$. Using this fact, show that a matrix $A$ preserves
+  inner products if and only if $A^TA = I$.
+
+  \textit{Note:} a similar analysis applies to the complex orthogonal groups
+  $\Or(n, \C)$ and $\SO(n, \C)$.
+\end{exercise}
+
+\begin{proof}[Solution]
+\end{proof}
+
+\begin{exercise}[3]
+  \textit{Unitary groups.} Let $\langle  \rangle$ denote the standard inner
+  product on $\C^n$, $\langle x, y \rangle = \sum_i \overline{x_i}y_i$.
+  Following Exercise 2, show that $A^*A = I$ if and only if $\langle Ax, Ay
+  \rangle = \langle x, y \rangle$ for all $x, y \in \C^n$. ($(A^*)_{ij} =
+  \overline{A_{ji}}$).
+\end{exercise}
+
+\begin{proof}[Solution]
+\end{proof}
+
+\begin{exercise}[4]
+  \textit{Generalized orthogonal groups.} Let $[x, y]_{n,k}$ be the symmetric
+  bilinear form on $\R^{n+k}$ defined in 2.1. Let $gj$ be the $(n + k) \times (n
+  + k)$ diagonal matrix with first $n$ diagonal entries equal to one, and last
+  $k$ diagonal entries equal to minus one
+  \[%
+    g = \begin{pmatrix}
+      I_n & 0 \\
+      0 & -I_k \\
+    \end{pmatrix}
+  .\]%
+  Show that for all $x, y \in \R^{n+k}$,
+  \[%
+    [x, y]_{n,k} = \langle x, gy \rangle
+  .\]%
+  Show that a $(n + k) \times (n + k)$ real matrix $A$ is in $\Or(n, k)$ if and
+  only if $A^TgA = g$. Show that $\Or(n, k)$ and $\SO(n, k)$ are subgroups of
+  $\GL(n + k, \R)$, and are matrix Lie groups.
+\end{exercise}
+
+\begin{proof}[Solution]
+\end{proof}
+
+\begin{exercise}[5]
+  \textit{Symplectic groups.} Let $B[x, y]$ be the skew-symmetric bilinear form
+  on $\R^{2^n}$ given by $B[x, y] = \sum_{i=1}^n x_iy_{n+1} - x_{n+i}y_i$. Let
+  $J$ be the $2n \times 2n$ matrix
+  \[%
+    J = \begin{pmatrix}
+      0 & I_n \\
+      -I_n & 0 \\
+    \end{pmatrix}
+  .\]%
+  Show that for all $x, y \in \R^{2n}$,
+  \[%
+    B[x, y] = \langle x, Jy \rangle
+  .\]%
+  Show that a $2n \times 2n$ matrix $A$ is in $\Sp(n, \R)$ if and only if $A^TJA
+  = J$. Show that $\Sp(n, \R)$ is a subgroup of $\GL(2n, \R)$, and a matrix Lie
+  group.
+
+  \textit{Note:} a similar analysis applies to $\Sp(n, \C)$.
+\end{exercise}
+
+\begin{proof}[Solution]
+\end{proof}
+
+\begin{exercise}[6]
+  \textit{The groups $\Or(2)$ and $\SO(2)$.} Show that the matrix
+  \[%
+    A = \begin{pmatrix}
+      \cos(\theta) & -\sin(\theta) \\
+      \sin(\theta) & \cos(\theta) \\
+    \end{pmatrix}
+  ,\]%
+  is in $\SO(2)$, and that
+  \[%
+    \begin{pmatrix}
+      \cos(\theta) & -\sin(\theta) \\
+      \sin(\theta) & \cos(\theta) \\
+    \end{pmatrix}
+    \begin{pmatrix}
+      \cos(\phi) & -\sin(\phi) \\
+      \sin(\phi) & \cos(\phi) \\
+    \end{pmatrix}
+    = \begin{pmatrix}
+      \cos(\theta + \phi) & -\sin(\theta + \phi) \\
+      \sin(\theta + \phi) & \cos(\theta + \phi) \\
+    \end{pmatrix}
+  .\]%
+  Show that every element $A$ of $\Or(2)$ is of one of the two forms
+  \begin{align*}
+    A &= \begin{pmatrix}
+      \cos(\theta) & -\sin(\theta) \\
+      \sin(\theta) & \cos(\theta) \\
+    \end{pmatrix} \\
+    A &= \begin{pmatrix}
+      \cos(\theta) & \sin(\theta) \\
+      \sin(\theta) & -\cos(\theta) \\
+    \end{pmatrix}
+  .\end{align*}
+  (If $A$ is of the first form, then $\det(A) = 1$; if $A$ is of the second
+  form, then $\det(A) = -1$.)
+
+  \textit{Hint:} Recall that for $A = \begin{pmatrix}
+    a & b \\
+    c & d \\
+  \end{pmatrix}$ to be in $\Or(2)$, the column vectors $\begin{pmatrix}
+    a \\
+    c \\
+  \end{pmatrix}$ and $\begin{pmatrix}
+    b \\
+    d \\
+  \end{pmatrix}$ must be unit vectors, and must be orthogonal.
+\end{exercise}
+
+\begin{proof}[Solution]
+\end{proof}
+
+\begin{exercise}[7]
+  \textit{The groups $\Or(1, 1)$ and $\SO(1, 1)$.} Show that
+  \[%
+    A = \begin{pmatrix}
+      \cosh(t) & \sinh(t ) \\
+      \sinh(t) & \cosh(t ) \\
+    \end{pmatrix}
+  ,\]%
+  is in $\SO(1, 1)$, and that
+  \[%
+    \begin{pmatrix}
+      \cosh(t) & \sinh(t) \\
+      \sinh(t) & \cosh(t) \\
+    \end{pmatrix}
+    \begin{pmatrix}
+      \cosh(s) & \sinh(s) \\
+      \sinh(s) & \cosh(s) \\
+    \end{pmatrix}
+    = \begin{pmatrix}
+      \cosh(t + s) & \sinh(t + s) \\
+      \sinh(t + s) & \cosh(t + s) \\
+    \end{pmatrix}
+  .\]%
+  Show that every element of $\Or(1, 1)$ can be written in one of the four forms
+  \begin{align*}
+    A &= \begin{pmatrix}
+      \cosh(t) & \sinh(t) \\
+      \sinh(t) & \cosh(t) \\
+    \end{pmatrix} \\
+    A &= \begin{pmatrix}
+      -\cosh(t) & \sinh(t) \\
+      \sinh(t) & -\cosh(t) \\
+    \end{pmatrix} \\
+    A &= \begin{pmatrix}
+      \cosh(t) & -\sinh(t) \\
+      \sinh(t) & -\cosh(t) \\
+    \end{pmatrix} \\
+    A &= \begin{pmatrix}
+      -\cosh(t) & -\sinh(t) \\
+      \sinh(t) & \cosh(t) \\
+    \end{pmatrix}
+  .\end{align*}
+  (Since $\cosh(t)$ is always positive, there is no overlap among the four
+  cases. Matrices of the first two forms have determinant one, matrices of the
+  last two forms have determinant minus one.)
+
+  \textit{Hint:} For $
+  \begin{pmatrix}
+    a & b \\
+    c & d \\
+  \end{pmatrix}$ to be in $\Or(1, 1)$, we must have $a^2 - c^2 = 1$, $b^2 - d^2
+  = -1$, and $ad - cd = 0$. The set of points $(a, c)$ in the plane with $a^2 -
+  c^2 = 1$ (i.e., $a = \pm\sqrt{1 + c^2}$) is a hyperbola.
+\end{exercise}
+
+\begin{proof}[Solution]
+\end{proof}
+
+\begin{exercise}[8]
+  \textit{The group $\SU(2)$.} Show that if $\alpha$, $\beta$ are arbitrary
+  complex numbers satisfying $\lvert \alpha \rvert^2 + \lvert \beta \rvert^2 =
+  1$, then the matrix
+  \begin{equation}\label{eq:group_su_form}
+    A = \begin{pmatrix}
+      \alpha & -\overline{\beta} \\
+      \beta & \overline{\alpha} \\
+    \end{pmatrix}
+  \end{equation}
+  is in $\SU(2)$. Show that every $A \in \SU(2)$ can be expressed in the form
+  \ref{eq:group_su_form} for a unique pair $(\alpha, \beta)$ satisfying $\lvert
+  \alpha \rvert^2 + \lvert \beta \rvert^2 = 1$. (Thus $\SU(2)$ can be thought of
+  as the three-dimensional sphere $S^3$ sitting inside $\C^2 = \R^4$. In
+  particular, this shows that $\SU(2)$ is connected and simply connected.)
+\end{exercise}
+
+\begin{proof}[Solution]
+\end{proof}
+
+\begin{exercise}[9]
+  \textit{The groups $\Sp(1, \R)$, $\Sp(1, \C)$, and $\Sp(1)$.} Show that
+  $\Sp(1, \R) = \SL(2, \R)$, $\Sp(1, \C) = \SL(2, \C)$, and $\Sp(1) = \SU(2)$.
+\end{exercise}
+
+\begin{proof}[Solution]
+\end{proof}
+
+\begin{exercise}[10]
+  \textit{The Heisenberg group.} Determine the center $Z(h)$ of the Heisenberg
+  group $H$. Show that the quotient group $H \slash Z(H)$ is abelian.
+\end{exercise}
+
+\begin{proof}[Solution]
+\end{proof}
+
+\begin{exercise}[11]
+  \textit{Connectedness of} $\SO(n)$. Show that $\SO(n)$ is connected, following
+  the outline below.
+
+  For the $n = 1$ case, there is not much to show, since a $1 \times 1$ matrix
+  with determinant one must be 1. Assume, then, that $n \ge 2$ Let $\e_1$ denote
+  the vector
+  \[%
+    \begin{pmatrix}
+      1 \\
+      0 \\
+      \vdots \\
+      0
+    \end{pmatrix} \in \R^n
+  .\]%
+  Given any unit vector $\v \in \R^n$, show that there exists a continuous path
+  $R(t)$ in $\SO(n)$ such that $R(0) = I$ and $R(1)\e_1 = \v$. (Thus any unit
+  vector can be ``continuously rotated'' to $\e_1$.)
+
+  Now show that any element $R$ of $\SO(n)$ can be connected to an element of
+  $\SO(n - 1)$, and proceed by induction.
+\end{exercise}
+
+\begin{proof}[Solution]
+  Let $\B = \{\v, \e_1\}$ be a basis for a two-dimensional plane. By the
+  Gram-Schmitt process, we can construct an orthonormal basis $\B' = \{\u_1,
+  \u_2\}$ for the same plane. Let $\u_1 = \v$ and $\u_2$ be defined as
+  \[%
+    \u_2 = \frac{\e_1 - \langle \e_1, \v \rangle \v}{\|\e_1 - \langle \e_1, \v \rangle \v\|}
+  .\]%
+  Let $\theta(t) : [0, 1] \to \R$, defined by
+  \[%
+    \theta(0) = 0 \aand \theta(1) = \arccos\left(\frac{\v \cdot \e_1}{\lVert \v \rVert \lVert \e_1 \rVert}\right)
+  .\]%
+  Then, we can construct a rotation $R(t) \in \SO(n)$ as a block matrix that
+  acts as a rotation by $\theta(t)$ in the plane spanned by $\{\u_1, \u_2\}$,
+  and as the identity on the orthogonal complement. This defines a continuous
+  path with $R(0) = I$ and $R(1) \v = \e_1$.
+
+  We'll use induction to show that $\SO(n)$ is connected for all $n \ge 1$. The
+  base case is trivial, which is trivially connected.
+
+  Assume $\SO(n)$ is connected for some $n \geq 1$. We need to show that
+  $\SO(n+1)$ is connected. Let $R \in \SO(n+1)$. Consider the first column of
+  $R$, which is a unit vector $\v \in \R^{n+1}$.
+
+  {\color{red}I'm not sure how to proceed from here.}
+\end{proof}
+
+\begin{exercise}[12]
+  \textit{The polar decomposition of $\SL(n, \R)$.} Show that every element $A$
+  of $\SL(n, \R)$ can be written uniquely in the form $A = RH$, where $R \in
+  \SO(n)$, and $H$ is a symmetric, positive-definite matrix with determinant one
+  (That is, $H^T = H$, and $\langle \x, H\x \rangle \ge 0$ for all $\x \in
+  \R^n$).
+
+  \textit{Hint:} If $A$ could be written in this form, then we would have
+  \[%
+    A^TA = H^TR^TRH = HR^{-1}RH = H^2
+  .\]%
+  Thus $H$ would have to be the unique positive-definite symmetric square root
+  of $A^TA$.
+
+  \textit{Note:} A similar argument gives polar decompositions for $\GL(n, \R)$,
+  $\SL(n, \C)$, and $\GL(n, \C)$. For example, every element $A$ of $\SL(n, \C)$
+  can be written uniquely as $A = UH$, with $U \in \SU(n)$, and $H$ is a
+  self-adjoint positive definite matrix with determinant one.
+\end{exercise}
+
+\begin{proof}[Solution]
+  Consider the matrix $A^T A$, which is symmetric and positive definite because
+  for any nonzero vector $\x \in \R^n$, we have
+  \[%
+    (A^T A)^T = (A)^T(A^T)^T = A^T A \aand \x^T A^T A\x = (A\x)^T (A\x) = \lVert A\x \rVert^2 > 0
+  .\]%
+  Since $A \in \SL(n, \R)$, we have $\det(A) = 1$, implying $\det(A^T A) =
+  \det(A^T) \cdot \det(A) = 1 \cdot 1 = 1$ since determinant is multiplicative.
+  By the spectral theorem, $A^T A$ has an orthonormal eigenbasis with positive
+  eigenvalues, so it admits a unique positive-definite square root, denoted $H$,
+  such that
+  \[%
+    H = \sqrt{A^T A} \implies H^2 = A^T A
+  .\]%
+  Define $R = AH^{-1}$. We check that $R$ is orthogonal
+  \[%
+    R^T R = (H^{-1} A^T) (A H^{-1}) = H^{-1} A^T A H^{-1} = H^{-1} H^2 H^{-1} = I
+  .\]%
+  Thus, $R \in \SO(n)$ since $\det(R) = \sfrac{\det(A)}{\det(H)} = \sfrac{1}{1}
+  = 1$, proving existence.
+
+  Suppose $A = R_1 H_1 = R_2 H_2$ are two such decompositions. Then,
+  \[%
+    H_1^{-1} R_1^{-1} R_2 H_2 = I
+  .\]%
+  Multiplying on the right by $H_2^{-1}$ and on the left by $H_1$, we obtain
+  \[%
+    H_1 H_1^{-1} R_1^{-1} R_2 H_2 H_2^{-1} = H_1 H_2^{-1} = I
+  ,\]%
+  so $H_1 = H_2$. This implies $R_1 = R_2$, proving uniqueness.
+
+  Thus, every element of $\SL(n, \mathbb{R})$ has a unique polar decomposition.
+\end{proof}
+
+\begin{exercise}[13]
+  \textit{The connectedness of $\SL(n, \R)$.} Using the polar decomposition of
+  $\SL(n, \R)$ and the connectedness of $\SO(n)$, show that $\SL(n, \R)$ is
+  connected.
+
+  \textit{Hint:} Recall that if $H$ is a real, symmetric matrix, then there
+  exists a \textit{real} orthogonal matrix $R_1$ such that $H = R_1DR_1^{-1}$,
+  where $D$ is diagonal.
+\end{exercise}
+
+\begin{proof}[Solution]
+  Since we are dealing with $\SL(n, \R)$, we add the restriction that $H$ is of
+  determinant one. By the polar decomposition, we can write $A = RH$, where $R
+  \in \SO(n)$ and $H$ is a symmetric, positive-definite matrix with determinant
+  one.
+
+  Also, by the hint, we can write $H = R_1 D R_1^{-1}$, where $R_1 \in \Or(n)$
+  and $D$ is a diagonal matrix. The space of symmetric matrices with determinant
+  1 that are also positive definite forms a connected space. This follows
+  because the space of positive-definite diagonal matrices with determinant 1 is
+  connected, and conjugation by an orthogonal matrix does not change
+  connectivity.
+
+  By exercise 11, we know that $\SO(n)$ is connected. Since each element in
+  $\SL(n, \R)$ can be written as $RH$, where $R \in \SO(n)$ and $H$ belongs to a
+  connected space, and the product of connected spaces is connected, we conclude
+  that $\SL(n, \R)$ is connected.
+\end{proof}
+
+\begin{exercise}[14]
+  \textit{The connectedness of $\GL(n, \R)^+$.} Show that $\GL(n, \R)^+$ is
+  connected.
+\end{exercise}
+
+\begin{proof}[Solution]
+  For any $A \in \GL(n, \R)$, the polar decomposition expresses $A$ uniquely as
+  $A = U_A P_A$, $U_A \in \Or(n)$ (i.e., $U_A U_A^T = I$), and $P_A$ is a
+  symmetric positive-definite matrix (i.e., $P_A = \sqrt{A^\top A}$, and $P_A$
+  has only positive eigenvalues).
+
+  Since $A, B \in \GL(n, \R)^+$, we know that $\det(A) > 0$ and $\det(B) > 0$,
+  which implies $U_A, U_B$ have determinant $+1$, so $U_A, U_B \in \SO(n)$.
+
+  Given $A, B \in \GL(n, \R)^+$ with their polar decompositions $A = U_A P_A$
+  and $B = U_B P_B$, we can construct a continuous path from $A$ to $B$ as
+  follows. Since $\SO(n)$ is path-connected, there exists a smooth path $U_t$ in
+  $\SO(n)$ such that $U_0 = U_A$ and $U_1 = U_B$. One explicit choice is the
+  geodesic interpolation, $U_t = U_A \exp\left(t \log\left(U_A^\top
+  U_B\right)\right)$, which remains in $\SO(n)$ for all $t \in [0,1]$. Since the
+  space of symmetric positive-definite matrices is also path-connected, we use
+  the interpolation $P_t = (1 - t) P_A + t P_B$. This remains positive definite
+  for all $t \in [0,1]$ because the sum of two positive-definite matrices with
+  positive weights remains positive definite. Now, we can define the path $A_t =
+  U_t P_t$, for $t \in [0,1]$ Since $U_t$ remains in $\SO(n)$ and $P_t$ remains
+  positive definite, each $A_t$ is invertible with $\det(A_t) > 0$, ensuring
+  $A_t \in \GL(n, \R)^+$ for all $t$.
+
+  Verifying continuity, we get:
+  \begin{enumerate}
+    \item The function $t \mapsto U_t$ is continuous because it is constructed
+      from matrix exponentiation, which is smooth.
+
+    \item The function $t \mapsto P_t$ is trivially continuous as it is a convex
+      combination of continuous matrices.
+
+    \item Since matrix multiplication is continuous, the final path $t \mapsto
+      A_t = U_t P_t$ is continuous.
+  \end{enumerate}
+
+  Thus, $\GL(n, \R)^+$ is connected.
+\end{proof}
+
+\begin{exercise}[15]
+  Show that the set of translations is a normal subgroup of the Euclidean group,
+  and also of the Poincar\'e group. Show that $(\Ec(n)/\textrm{translations})
+  \cong \Or(n)$.
+\end{exercise}
+
+\begin{proof}[Solution]
+\end{proof}
+
+\begin{exercise}[16]
+  \textit{Harder.} Show that every Lie group homomorphism $\phi : \R \to S^1$ is
+  of the form $\phi(x) = e^{iax}$ for some $a \in \R$. In particular, every such
+  homomorphism is smooth.
+\end{exercise}
+
+\begin{proof}[Solution]
+\end{proof}
