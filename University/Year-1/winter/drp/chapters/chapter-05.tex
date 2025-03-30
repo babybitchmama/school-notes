@@ -2,126 +2,429 @@
 \chapter{Basic Representation Theory}
 
 \begin{exercise}[1]
+  Let $G$ be a matrix Lie group, and $\ggl$ its Lie algebra. Let $\Pi_1$ and
+  $\Pi_2$ be representations of $G$, and let $\pi_1$ and $\pi_2$ be the
+  associated representations of $\ggl$ (Proposition 5.4). Show that if $\Pi_1$
+  and $\Pi_2$ are equivalent representations of $G$, then $\pi_1$ and $\pi_2$
+  are equivalent representations of $\ggl$. Show that if $G$ is connected, and
+  if $\pi_1$ and $\pi_2$ are equivalent representations of $\ggl$, then $\Pi_1$
+  and $\Pi_2$ are equivalent representations of $G$.
+
+  \textit{Hint:} Use Corollary 3.26 of Chapter 3.
 \end{exercise}
 
 \begin{proof}[Solution]
 \end{proof}
 
 \begin{exercise}[2]
+  Let $G$ be a connected matrix Lie group with Lie algebra $\ggl$. Let $\Pi$ be
+  a representation of $G$ acting on a space $V$, and let $\pi$ be the associated
+  Lie algebra representation. Show that a subspace $W \subset V$ is invariant
+  for $\Pi$ if and only if it is invariant for $\pi$. Show that $\Pi$ is
+  irreducible if and only if $\pi$ is irreducible.
 \end{exercise}
 
 \begin{proof}[Solution]
 \end{proof}
 
 \begin{exercise}[3]
+  Suppose that $\Pi$ is a finite-dimensional unitary representation of a matrix
+  Lie group $G$. (That is, $V$ is a finite-dimensional Hilbert space, and $\Pi$
+  is a continuous homomorphism of $G$ into $U(V)$.) Let $\pi$ be the associated
+  representation of the Lie algebra $\ggl$. Show that for each $X \in \ggl$,
+  $\pi(X)^* = -\pi(X)$.
 \end{exercise}
 
 \begin{proof}[Solution]
 \end{proof}
 
 \begin{exercise}[4]
+  Show explicitly that the adjoint representation and the standard
+  representation are equivalent representations of the Lie algebra $\so(3)$.
+  Show that the adjoint and standard representations of the group $\SO(3)$ are
+  equivalent.
 \end{exercise}
 
 \begin{proof}[Solution]
 \end{proof}
 
 \begin{exercise}[5]
+  Consider the elements $E_1$, $E_2$, and $E_3$ in $\su(2)$ defined in Exercise
+  9 of Chapter 3. These elements form a basis for the real vector space
+  $\su(2)$. Show directly that $E_1$, $E_2$, and $E_3$ form a basis for the
+  complex vector space $\sl(2, \C)$.
 \end{exercise}
 
 \begin{proof}[Solution]
 \end{proof}
 
 \begin{exercise}[6]
+  Define a vector space with basis $u_0$, $u_1$, $\cdots$, $u_m$. Now define
+  operators $\pi(H)$, $\pi(X)$, and $\pi(Y)$ for formula 5.10. Verify by direct
+  computation that the operators defined by 5.10 satisfy the commutation
+  relations $[\pi(H), \pi(X)] = 2\pi(X)$, $[\pi(H), \pi(Y)] = -2\pi(Y)$, and
+  $[\pi(X), \pi(Y)] = \pi(H)$. (Thus, $\pi(H)$, $\pi(X)$, and $\pi(Y)$ define a
+  representation of $\sl(2, \C)$.) Show that this representation is irreducible.
+
+  \textit{Hint:} It suffices to show, for example, that $[\pi(H), \pi(X)] =
+  2\pi(X)$ on each basis element. When dealing with $\pi(Y)$, don't forget to
+  treat separately the case of $u_k$, $k < m$, and the case of $u_m$.
 \end{exercise}
 
 \begin{proof}[Solution]
 \end{proof}
 
 \begin{exercise}[7]
+  We can define a two-dimensional representation of $\so(3)$ as follows
+  \begin{align*}
+    \pi\begin{pmatrix}
+      0 & 0 & 0 \\
+      0 & 0 & 1 \\
+      0 & -1 & 0 \\
+    \end{pmatrix}
+    &= \frac{1}{2}\begin{pmatrix}
+      i & 0 \\
+      0 & -i \\
+    \end{pmatrix} \\
+    \pi\begin{pmatrix}
+      0 & 0 & 1 \\
+      0 & 0 & 0 \\
+      -1 & 0 & 0 \\
+    \end{pmatrix}
+    &= \frac{1}{2}\begin{pmatrix}
+      0 & 1 \\
+      -1 & 0 \\
+    \end{pmatrix} \\
+    \pi\begin{pmatrix}
+      0 & -1 & 0 \\
+      1 & 0 & 0 \\
+      0 & 0 & 0 \\
+    \end{pmatrix}
+    &= \frac{1}{2}\begin{pmatrix}
+      0 & i \\
+      i & 0 \\
+    \end{pmatrix}
+  .\end{align*}
+  (You may assume that this actually gives a representation.) Show that there is
+  no group representation $\Pi$ of $\SO(3)$ such that $\Pi$ and $\pi$ are
+  related as in Proposition 5.4.
+
+  \textit{Hint:} If $X \in \so(3)$ is such that $e^X = I$, and $\Pi$ is any
+  representation of $\SO(3)$, then $\Pi(e^X) = \Pi(I) = I$.
+
+  \textit{Remark:} in the physics literature, this non-representation of
+  $\SO(3)$ is called ``spin $\frac{1}{2}$''.
 \end{exercise}
 
 \begin{proof}[Solution]
 \end{proof}
 
 \begin{exercise}[8]
+  Consider the standard representation of the Heisenberg group, acting on
+  $\C^3$. Determine all subspaces of $\C^3$ which are invariant under the action
+  of the Heisenberg group. Is this representation completely reducible?
 \end{exercise}
 
 \begin{proof}[Solution]
 \end{proof}
 
 \begin{exercise}[9]
+  Give an example of a representation of the commutative group $\R$ which is not
+  completely reducible.
 \end{exercise}
 
 \begin{proof}[Solution]
 \end{proof}
 
 \begin{exercise}[10]
+  Consider the unitary representations $\Pi_\hb$ of the real Heisenberg group.
+  Assume that there is some sort of associated representation $\pi_\hb$ of the
+  Lie algebra, which should be given by
+  \[%
+    \pi_\hb(X)f = \left.\odv{}{t}\right\rvert_{t=0} \Pi_\hb(e^{tX})f
+  .\]%
+  (We have not proved any theorem of this sort for infinite-dimensional unitary
+  representations.)
+
+  Computing in a purely formal manner (that is, ignoring all technical issues)
+  compute
+  \[%
+    \pi_\hb\begin{pmatrix}
+      0 & 1 & 0 \\
+      0 & 0 & 0 \\
+      0 & 0 & 0 \\
+    \end{pmatrix},\quad
+    \pi_\hb\begin{pmatrix}
+      0 & 0 & 0 \\
+      0 & 0 & 1 \\
+      0 & 0 & 0 \\
+    \end{pmatrix},\quad
+    \pi_\hb\begin{pmatrix}
+      0 & 0 & 1 \\
+      0 & 0 & 0 \\
+      0 & 0 & 0 \\
+    \end{pmatrix}
+  .\]%
+  Verify (still formally) that these operators have the right commutation
+  relations to generate a representation of the Lie algebra of the real
+  Heisenberg group. (That is, verify that on this basis, $\pi_\hb[X, Y] =
+  [\pi_\hb(X), \pi_\hb(Y)]$.)
+
+  Why is this computation not rigorous?
 \end{exercise}
 
 \begin{proof}[Solution]
 \end{proof}
 
 \begin{exercise}[11]
+  Consider the Heisenberg group over the field $\Z_p$ of integers mod $p$, with
+  $p$ prime, namely
+  \[%
+    H_p = \left\{
+      \left.\begin{pmatrix}
+        1 & a & c \\
+        0 & 1 & b \\
+        0 & 0 & 1 \\
+      \end{pmatrix}
+      \right\rvert a, b, c \in \Z_p
+    \right\}
+  .\]%
+  This is a subgroup of the group $\GL(3, \Z_p)$, and has $p^3$ elements.
+
+  Let $V_p$ denote the space of complex-valued functions on $\Z_p$, which is a
+  $p$-dimensional complex vector space. For each non-zero $n \in \Z_p$, define a
+  representation of $H_p$ by the formula
+  \[%
+    (\Pi_nf)(x) = e^{\sfrac{-i_2\pi nb}{p}}e^{\sfrac{i_2\pi ncx}{p}}f(x - a), \quad x \in \Z_p
+  .\]%
+  (These representations are analogous to the unitary representations of the
+  real Heisenberg group, with the quantity $\sfrac{2\pi n}{p}$ playing the role
+  of $\hb$)
+  \begin{enumerate}
+    \item Show that for each $n$, $\Pi_n$ is actually a representation of $H_p$,
+      and that it is irreducible.
+
+    \item Determine (up to equivalence) all the one-dimensional representations
+      of $H_p$.
+
+    \item Show that every irreducible representation of $H_p$ is either
+      one-dimensional or equivalent to one of the $\Pi_n$'s.
+  \end{enumerate}
 \end{exercise}
 
-\begin{proof}[Solution]
+\begin{proof}[Solution to (i)]
+\end{proof}
+
+\begin{proof}[Solution to (ii)]
+\end{proof}
+
+\begin{proof}[Solution to (iii)]
 \end{proof}
 
 \begin{exercise}[12]
+  Prove Theorem 5.19.
+
+  \textit{Hints:} For existence, choose bases $\{e_i\}$ and $\{f_i\}$ for $U$
+  and $V$. Then define a space $W$ which has a basis $\{w_{ij} \mid 0 \le i \le
+  n, 0 \le j \le m\}$. Define $\phi(e_i, f_i) = w_{ij}$ and extend by
+  bilinearity. For uniqueness, use the universal property.
 \end{exercise}
 
 \begin{proof}[Solution]
 \end{proof}
 
 \begin{exercise}[13]
+  Let $\ggl$ and $\hl$ be Lie algebras, and consider the vector space $\ggl
+  \oplus \hl$. Show that the following operation makes $\ggl \oplus \hl$ into a
+  Lie algebra
+  \[%
+    [(X_1, Y_1), (X_2, Y_2)] = ([X_1, X_2], [Y_1, Y_2])
+  .\]%
+
+  Now let $G$ and $H$ be matrix Lie groups, with Lie algebras $\ggl$ and $\hl$.
+  Show that $G \times H$ can be regarded as a matrix Lie group in an obvious
+  way, and that the Lie algebra of $G \times H$ is isomorphic to $\ggl \oplus
+  \hl$.
 \end{exercise}
 
 \begin{proof}[Solution]
 \end{proof}
 
 \begin{exercise}[14]
+  Suppose that $\pi$ is a representation of a Lie algebra $\ggl$ acting on a
+  finite-dimensional vector space $V$. Let $V^*$ denote as usual the dual space
+  of $V$, that is, the space of linear functionals on $V$. If $A$ is a linear
+  operator on $V$, let $A^T$ denote the dual or transpose operator on $V^*$,
+  \[%
+    (A^T\phi)(v) = \phi(Av)
+  ,\]%
+  for $\phi \in V^*$, $v \in V$. Define a representation $\pi^*$ of $\ggl$ on
+  $V^*$ by the formula
+  \[%
+    \phi^*(X) = -\pi(X^T)
+  .\]%
+  \begin{enumerate}
+    \item Show that $\pi^*$ is really a representation of $\ggl$.
+
+    \item Show that $(\pi^*)^*$ is isomorphic to $\pi$.
+
+    \item Show that $\pi^*$ is irreducible if and only if $\pi$ is.
+
+    \item What is the analogous construction of the dual representation for
+      representations of groups?
+  \end{enumerate}
 \end{exercise}
 
-\begin{proof}[Solution]
+\begin{proof}[Solution to (i)]
+\end{proof}
+
+\begin{proof}[Solution to (ii)]
+\end{proof}
+
+\begin{proof}[Solution to (iii)]
+\end{proof}
+
+\begin{proof}[Solution to (iv)]
 \end{proof}
 
 \begin{exercise}[15]
+  Recall the spaces $V_m$ introduced in Section 3 viewed as representations of
+  the Lie algebras $\sl(2, \C)$. In particular, consider the space $V_1$ (which
+  has dimension $2$).
+  \begin{enumerate}
+    \item Regard $V_1 \otimes V_1$ as a representation of $\sl(2, \C)$, as in
+      Definition 5.27. Show that this representation is not irreducible.
+
+    \item Now view $V_1 \otimes V_1$ as a representation of $\sl(2, \C) \oplus
+      \sl(2, \C)$, as in Definition 5.24. Show that this representation is
+      irreducible.
+
+    \item More generally, show that $V_m \otimes V_n$ is irreducible as a
+      representation of $\sl(2, \C) \oplus \sl(2, \C)$, but reducible (except if
+      one of $n$ or $m$ is zero) as a representation of $\sl(2, \C)$.
+  \end{enumerate}
 \end{exercise}
 
-\begin{proof}[Solution]
+\begin{proof}[Solution to (i)]
+\end{proof}
+
+\begin{proof}[Solution to (ii)]
+\end{proof}
+
+\begin{proof}[Solution to (iii)]
 \end{proof}
 
 \begin{exercise}[16]
+  Show explicitly that $\exp : \so(3) \to \SO(3)$ is onto.
+
+  \textit{Hint:} Using the fact that $\SO(3) \subset \SU(3)$, show that the
+  eigenvalues of $R \in \SO(3)$ must be one of the three following forms: $(1,
+  1, 1)$, $(1, -1, -1)$, or $(1, e^{i\theta}, e^{-i\theta})$. In particular, $R$
+  must have an eigenvalue equal to one. Now show that in a suitable orthonormal
+  basis, $R$ is of the form
+  \[%
+    R = \begin{pmatrix}
+      1 & 0 & 0 \\
+      0 & \cos(\theta) & \sin(\theta) \\
+      0 & -\sin(\theta) & \cos(\theta) \\
+    \end{pmatrix}
+  .\]%
 \end{exercise}
 
 \begin{proof}[Solution]
 \end{proof}
 
 \begin{exercise}[17]
+  Proof of Lemma $5.32$.
+
+  Let $\{E_1, E_2, E_3\}$ be the usual basis for $\su(2)$, and $\{F_1, F_2,
+  F_3\}$ be the basis for $\so(3)$ introduce in Section 8. Identify $\su(2)$
+  with $\R^3$ by identifying the basis $\{E_1, E_2, E_3\}$ with the standard
+  basis for $\R^3$. Consider $\ad E_1, \ad E_2$, and $\ad E_3$ as operators on
+  $\su(2),$ hence on $\R^3$. Show that $\ad E_i = F_i$, for $i=1, 2, 3$. In
+  particular, $\ad$ is a Lie algebra isomorphism of $\su(2)$ onto $\so(3)$.
+
+  Now consider $\Ad : \SU(2) \to \GL(\SU(2)) = \GL(3, \R)$. Show that the image
+  of $\Ad$ is precisely $\SO(3)$. Show that the kernel of $\Ad$ is $\{I, -I\}$.
+
+  Show that $\Ad : \SU(2) \to \SO(3)$ is the homomorphism $\Phi$ required by
+  Lemma $5.32$.
 \end{exercise}
 
 \begin{proof}[Solution]
 \end{proof}
 
 \begin{exercise}[18]
+  Proof of Proposition $5.38$.
+
+  Suppose that $G$ and $\widetilde{G}$ are matrix Lie groups. Suppose that $\phi :
+  \widetilde{G} \to G$ is a Lie group homomorphism such that $\phi$ maps some
+  neighborhood $U$ of $I$ in $\widetilde{G}$ homeomorphically onto a neighborhood
+  $V$ of $I$ in $G$. Prove that the associated Lie algebra map $\widetilde{\phi} :
+  \widetilde{\ggl} \to \ggl$ is an isomorphism.
+
+  \textit{Hints:} Suppose that $\widetilde{\phi}$ were not one-to-one. Show, then,
+  that there exists a sequence of points $A_n$ in $\widetilde{G}$ with $A_n \neq I,
+  A_n \rightarrow I$ and $\phi\left(A_n\right) = I$, giving a contradiction.
+
+  To show that $\widetilde{\phi}$ is onto, use Step 1 of the proof of Theorem
+  $\overline{5} \overline{3} \overline{3}$ to show that on a sufficiently small
+  neighborhood of zero in $\overline{\ggl}$,
+  \[%
+    \widetilde{\phi} = \log \circ \phi \circ \exp
+  .\]%
+  Use this to show that the image of $\widetilde{\phi}$ contains a neighborhood of
+  zero in $\ggl$. Now use linearity to show that the image of $\widetilde{\phi}$ is
+  all of $\ggl$.
 \end{exercise}
 
 \begin{proof}[Solution]
 \end{proof}
 
 \begin{exercise}[19]
+  Proof of Theorem $5.41$.
+
+  First suppose that $\Ker(\widetilde{\Pi}) \supset \Ker(\phi)$. Then construct
+  $\Pi$ as in the proof of Proposition 5.3
+
+  Now suppose that there is a representation $\Pi$ of $G$ for which the
+  associated Lie algebra representation is $\pi$. We want to show, then, that
+  $\Ker(\widetilde{\Pi}) \supset \Ker(\phi)$. Well, define a new representation
+  $\Sigma$ of $\widetilde{G}$ by
+  \[%
+    \Sigma = \Pi \circ \phi
+  .\]%
+  Show that the associated Lie algebra homomorphism $\sigma$ is equal to $\pi$,
+  so that, by Point (1) of Theorem $5.33$, $\widetilde{\Pi} = \Sigma$. What can
+  you say about the kernel of $\Sigma$?
 \end{exercise}
 
 \begin{proof}[Solution]
 \end{proof}
 
 \begin{exercise}[20]
+  Fix an integer $n \geq 2$.
+  \begin{enumerate}
+    \item Show that every (finite-dimensional complex) representation of the Lie
+      algebra $\sl(n, \R)$ gives rise to a representation of the group
+      $\mathrm{SL}(n ; \R)$, even though $\SL(n ; \R)$ is not simply connected.
+      (You may use the fact that $\SL(n, \C)$ is simply connected.)
+
+    \item Show that the universal cover of $\SL(n, \R)$ is not isomorphic to any
+      matrix Lie group. (You may use the fact that $\SL(n, \R)$ is not simply
+      connected.)
+  \end{enumerate}
 \end{exercise}
 
 \begin{proof}[Solution]
 \end{proof}
 
 \begin{exercise}[21]
+  Let $G$ be a matrix Lie group with Lie algebra $\ggl$, let $\hl$ be a
+  subalgebra of $\ggl$, and let $H$ be the unique connected Lie subgroup of $G$
+  with Lie algebra $\hl$. Suppose that there exists a compact simply connected
+  matrix Lie group $K$ such that the Lie algebra of $K$ is isomorphic to $\hl$.
+  Show that $H$ is closed. Is $H$ necessarily isomorphic to $K$ ?
 \end{exercise}
 
 \begin{proof}[Solution]
