@@ -1,0 +1,34 @@
+\documentclass{report}
+
+\newcommand\hmwkTitle{Homework 1}
+\newcommand\hmwkDueDate{April 9, 2025}
+
+\newcommand\hmwkDueTime{23:59}
+\newcommand\hmwkClass{Differential Geometry}
+\newcommand\hmwkClassTime{}
+\newcommand\hmwkClassInstructor{Micah Warren}
+\newcommand\hmwkClassInstructorShortName{Warren}
+\newcommand\hmwkAuthorName{\textbf{Hashem A. Damrah}}
+
+\input{preamble.tex}
+
+%%%%%%%%%%%%%%%
+%  Citations  %
+%%%%%%%%%%%%%%%
+
+\usepackage[backend=bibtex,style=mla]{biblatex}
+\bibliography{bibtex-files/homework-01.bib}
+
+\begin{document}
+  \maketitle
+  \pagestyle{plain}
+  \mbox{}
+  \thispagestyle{empty}
+  \newpage
+  \pagestyle{fancy}
+  \setcounter{page}{1}
+  \input{latex-files/homework-01.tex}
+
+  \nocite{*}
+  \printbibliography
+\end{document}
