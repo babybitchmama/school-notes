@@ -1,5 +1,4 @@
 \documentclass{report}
-\def\class{report}
 
 % \newcommand\hmwkTitle{Homework 1}
 % \newcommand\hmwkDueDate{October 8, 2024}
@@ -37,26 +36,14 @@
 
 \input{preamble.tex}
 
-%%%%%%%%%%%%%%%
-%  Citations  %
-%%%%%%%%%%%%%%%
-
-\usepackage[backend=bibtex,style=mla]{biblatex}
-% \bibliography{bibtex-files/homework-01.bib}
-% \bibliography{bibtex-files/homework-02.bib}
-% \bibliography{bibtex-files/homework-03.bib}
-% \bibliography{bibtex-files/homework-04.bib}
-% \bibliography{bibtex-files/homework-05.bib}
-% \bibliography{bibtex-files/homework-06.bib}
-% \bibliography{bibtex-files/homework-07.bib}
-% \bibliography{bibtex-files/homework-08.bib}
-\bibliography{bibtex-files/homework-09.bib}
-
 \begin{document}
   \maketitle
   \pagestyle{plain}
-  \mbox{}\newpage
+  \mbox{}
+  \thispagestyle{empty}
+  \newpage
   \pagestyle{fancy}
+  \setcounter{page}{1}
   % \input{latex-files/homework-01.tex}
   % \input{latex-files/homework-02.tex}
   % \input{latex-files/homework-03.tex}
@@ -66,7 +53,4 @@
   % \input{latex-files/homework-07.tex}
   % \input{latex-files/homework-08.tex}
   \input{latex-files/homework-09.tex}
-
-  \nocite{*}
-  \printbibliography
 \end{document}

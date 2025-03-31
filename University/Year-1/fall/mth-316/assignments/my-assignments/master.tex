@@ -1,5 +1,4 @@
 \documentclass{report}
-\def\class{report}
 
 \newcommand\hmwkTitle{Homework 1}
 \newcommand\hmwkDueDate{October 9, 2024}
@@ -25,8 +24,8 @@
 % \newcommand\hmwkTitle{Homework 8}
 % \newcommand\hmwkDueDate{November 27, 2024}
 
-% \newcommand\hmwkTitle{Homework 9}
-% \newcommand\hmwkDueDate{December 4, 2024}
+\newcommand\hmwkTitle{Homework 9}
+\newcommand\hmwkDueDate{December 4, 2024}
 
 \newcommand\hmwkDueTime{13:00}
 \newcommand\hmwkClass{Fundamentals of Analysis I}
@@ -36,31 +35,17 @@
 \newcommand\hmwkAuthorName{\textbf{Hashem A. Damrah}}
 
 \input{preamble.tex}
-
-%%%%%%%%%%%%%%%
-%  Citations  %
-%%%%%%%%%%%%%%%
-
-\usepackage[backend=bibtex,style=mla]{biblatex}
-% \bibliography{bibtex-files/homework-01.bib}
-% \bibliography{bibtex-files/homework-02.bib}
-% \bibliography{bibtex-files/homework-03.bib}
-% \bibliography{bibtex-files/homework-04.bib}
-% \bibliography{bibtex-files/homework-05.bib}
-% \bibliography{bibtex-files/homework-06.bib}
-% \bibliography{bibtex-files/homework-07.bib}
-% \bibliography{bibtex-files/homework-08.bib}
-\bibliography{bibtex-files/homework-09.bib}
+\def\type{exercise}
 
 \begin{document}
   \maketitle
   \pagestyle{plain}
-  \mbox{}\newpage
+  \mbox{}
+  \thispagestyle{empty}
+  \newpage
   \pagestyle{fancy}
-
-  \renewcommand\type{exercise}
-
-  \input{latex-files/homework-01.tex}
+  \setcounter{page}{1}
+  % \input{latex-files/homework-01.tex}
   % \input{latex-files/homework-02.tex}
   % \input{latex-files/homework-03.tex}
   % \input{latex-files/homework-04.tex}
@@ -68,8 +53,5 @@
   % \input{latex-files/homework-06.tex}
   % \input{latex-files/homework-07.tex}
   % \input{latex-files/homework-08.tex}
-  % \input{latex-files/homework-09.tex}
-
-  \nocite{*}
-  \printbibliography
+  \input{latex-files/homework-09.tex}
 \end{document}
