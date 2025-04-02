@@ -86,7 +86,7 @@
   .\]%
   Now, we can expand $(1 - i)^4$ as follows
   \[%
-    (1 - i)^4 = (1 - i)^2(1 - i)(1 - i) = -2i(1 - i)(1 - i) = (-2 - 2i)(1 - i) = (-2 + 2i - 2i - 2) = -4
+    (1 - i)^4 = (1 - i)^2(1 - i)^2 = (-2i)(-2i) = 4i^2 = -4
   .\qedhere\]%
 \end{proof}
 
@@ -99,15 +99,188 @@
 \end{problem}
 
 \begin{proof}[Solution to (i)]
+  Graphing the complex numbers $z_1 = 2i$ and $z_2 = \frac{2}{3} - i$ on the
+  complex plane, we have
+
+  \begin{multicols}{2}
+    \begin{center}
+      \begin{tikzpicture}[scale=1.5]
+        % Draw axes
+        \draw[->, thick] (-1.5, 0) -- (2, 0) node[right] {$\Re(z)$};
+        \draw[->, thick] (0, -1.5) -- (0, 3.5) node[above] {$\Im(z)$};
+
+        % Dashed lines for visualization
+        \draw[dashed,-] (2/3,-1) -- (2/3,1);
+        \draw[dashed,-] (0,2) -- (2/3,1);
+        \draw[dashed,-] (-2/3,3) -- (0,2);
+        \draw[dashed,-] (-2/3,3) -- (-2/3,1);
+
+        % Plot z1 = 2i
+        \draw[red,->,thick] (0,0) -- (0,2) node[midway,right] {$z_1$};
+
+        % Plot z2 = 2/3 - i
+        \draw[blue,->,thick] (0,0) -- (2/3,-1) node[midway,below left] {$z_2$};
+
+        % Plot -z2 = -2/3 + i
+        \draw[blue,->,thick] (0,0) -- (-2/3,1) node[midway,left] {$-z_2$};
+
+        % Plot z1 + z2 = 2/3 + i
+        \draw[green,->,thick] (0,0) -- (2/3,1) node[midway,below,sloped] {$z_1 + z_2$};
+
+        % Plot z1 - z2 = -2/3 + 3i
+        \draw[orange,->,thick] (0,0) -- (-2/3,3) node[midway,below,sloped] {$z_1 - z_2$};
+      \end{tikzpicture}
+    \end{center}
+    \columnbreak
+    \noindent In this case, we can compute
+    \[%
+      z_1 + z_2 = \left(0 + 2i\right) + \left(\frac{2}{3} - i\right) = \frac{2}{3} + i
+    .\]%
+    This gives us the point $(\sfrac{2}{3}, 1)$. Similarly, we can compute
+    \[%
+      z_1 - z_2 = z_1 + (-z_2) = \left(0 + 2i\right) + \left(-\frac{2}{3} + i\right) = -\frac{2}{3} + 3i
+    .\]%
+    This gives us the point $(-\sfrac{2}{3}, 3)$. \qedhere
+  \end{multicols}
 \end{proof}
 
 \begin{proof}[Solution to (ii)]
+  Graphing the complex numbers $z_1 = (-\sqrt{3}, 1)$ and $z_2 = (\sqrt{3}, 0)$
+  on the complex plane, we have
+  \begin{center}
+    \begin{tikzpicture}[scale=1.5]
+      % Draw axes
+      \draw[->, thick] (-4, 0) -- (2, 0) node[right] {$\Re(z)$};
+      \draw[->, thick] (0, -0.5) -- (0, 1.5) node[above] {$\Im(z)$};
+
+      % Dashed lines for visualization
+      \draw[dashed,-] (-1.732,1) -- (0,1);
+      \draw[dashed,-] (1.732,0) -- (0,1);
+      \draw[dashed,-] (-2*1.732,1) -- (-1.732,1);
+      \draw[dashed,-] (-2*1.732,1) -- (-1.732,0);
+
+      % Plot z1 = (-sqrt(3),1)
+      \draw[red,->,thick] (0,0) -- (-1.732,1) node[midway,above right] {$z_1$};
+
+      % Plot z2 = (sqrt(3),0)
+      \draw[blue,->,thick] (0,0) -- (1.732,0) node[midway,below] {$z_2$};
+
+      % Plot -z2 = (-sqrt(3),0)
+      \draw[blue,->,thick] (0,0) -- (-1.732,0) node[midway,below] {$-z_2$};
+
+      % Plot z1 + z2 = (0,1)
+      \draw[green,->,thick] (0,0) -- (0,1) node[midway,below,sloped] {$z_1 + z_2$};
+
+      % Plot z1 - z2 = (-2sqrt(3),1)
+      \draw[orange,->,thick] (0,0) -- (-2*1.732,1) node[midway,below,sloped] {$z_1 - z_2$};
+    \end{tikzpicture}
+  \end{center}
+  In this case, we can compute
+  \[%
+    z_1 + z_2 = \left(-\sqrt{3}, 1\right) + \left(\sqrt{3}, 0\right) = (0, 1)
+  .\]%
+  This gives us the point $(0, 1)$. Similarly, we can compute
+  \[%
+    z_1 - z_2 = z_1 + (-z_2) = \left(-\sqrt{3}, 1\right) + \left(-\sqrt{3}, 0\right) = (-2\sqrt{3}, 1)
+  .\]%
+  This gives us the point $(-2\sqrt{3}, 1)$. \qedhere
 \end{proof}
 
 \begin{proof}[Solution to (iii)]
+  Graphing the complex numbers $z_1 = (-3, 1)$ and $z_2 = (1, 4)$ on the complex
+  plane, we have
+
+  \begin{multicols}{2}
+    \begin{center}
+      \begin{tikzpicture}[scale=1.5]
+        % Draw axes
+        \draw[->, thick] (-3, 0) -- (1.5, 0) node[right] {$\Re(z)$};
+        \draw[->, thick] (0, -2.5) -- (0, 3.5) node[above] {$\Im(z)$};
+
+        % Dashed lines for visualization
+        \draw[dashed,-] (-3/2,1/2) -- (-3/2+1,1/2+2);
+        \draw[dashed,-] (1,2) -- (-3/2+1,1/2+2);
+        \draw[dashed,-] (-3/2,1/2) -- (-3/2-1,1/2-2);
+        \draw[dashed,-] (-1,-2) -- (-3/2-1,1/2-2);
+
+        % Plot z1 = (-3,1)
+        \draw[red,->,thick] (0,0) -- (-3/2,1/2) node[midway,above right] {$z_1$};
+
+        % Plot z2 = (1,4)
+        \draw[blue,->,thick] (0,0) -- (1,2) node[midway,right] {$z_2$};
+
+        % Plot -z2 = (-1,4)
+        \draw[blue,->,thick] (0,0) -- (-1,-2) node[midway,right] {$-z_2$};
+
+        % Plot z1 + z2 = (0,1)
+        \draw[green,->,thick] (0,0) -- (-3/2+1,1/2+2) node[midway,below,sloped] {$z_1 + z_2$};
+
+        % Plot z1 - z2 = (-2sqrt(3),1)
+        \draw[orange,->,thick] (0,0) -- (-3/2-1,1/2-2) node[midway,below,sloped] {$z_1 - z_2$};
+      \end{tikzpicture}
+    \end{center}
+    \columnbreak
+    \noindent In this case, we can compute
+    \[%
+      z_1 + z_2 = \left(-3, 1\right) + \left(1, 4\right) = (-2, 5)
+    .\]%
+    This gives us the point $(-2, 5)$. Similarly, we can compute
+    \[%
+      z_1 - z_2 = z_1 + (-z_2) = \left(-3, 1\right) + \left(-1, -4\right) = (-4, -3)
+    .\]%
+    This gives us the point $(-4, -3)$. \qedhere
+  \end{multicols}
 \end{proof}
 
 \begin{proof}[Solution to (iv)]
+  Graphing the complex numbers $z_1 = x_1 + y_1i$ and $z_2 = x_1 - y_1i$ on the
+  complex plane, we have
+
+  \newpage
+
+  \begin{multicols}{2}
+    \begin{center}
+      \begin{tikzpicture}[scale=1.5]
+        % Draw axes
+        \draw[->, thick] (-1.5, 0) -- (2.5, 0) node[right] {$\Re(z)$};
+        \draw[->, thick] (0, -2.5) -- (0, 4.5) node[above] {$\Im(z)$};
+
+        % let x1 = 1 for instance
+        % let y1 = 2 for instance
+
+        % Dashed lines for visualization
+        \draw[dashed,-] (1,2) -- (2,0);
+        \draw[dashed,-] (1,-2) -- (2,0);
+        \draw[dashed,-] (1,2) -- (0,4);
+        \draw[dashed,-] (-1,2) -- (0,4);
+
+        % Plot z1 = (1, 2)
+        \draw[red,->,thick] (0,0) -- (1,2) node[midway,above right] {$z_1$};
+
+        % Plot z2 = (1, -2)
+        \draw[blue,->,thick] (0,0) -- (1,-2) node[midway,right] {$z_2$};
+
+        % Plot -z2 = (-1,2)
+        \draw[blue,->,thick] (0,0) -- (-1,2) node[midway,right] {$-z_2$};
+
+        % Plot z1 + z2 = (2,0)
+        \draw[green,->,thick] (0,0) -- (2,0) node[midway,below,sloped] {$z_1 + z_2$};
+
+        % Plot z1 - z2 = (0,4)
+        \draw[orange,->,thick] (0,0) -- (0,4) node[midway,below,sloped] {$z_1 - z_2$};
+      \end{tikzpicture}
+    \end{center}
+    \columnbreak
+    In this case, we can compute
+    \[%
+      z_1 + z_2 = \left(x_1 + y_1i\right) + \left(x_1 - y_1i\right) = (2x_1 + 0i)
+    .\]%
+    This gives us the point $(2x_1, 0)$. Similarly, we can compute
+    \[%
+      z_1 - z_2 = z_1 + (-z_2) = \left(x_1 + y_1i\right) + \left(x_1 - y_1i\right) = (0, 2y_1)
+    .\]%
+    This gives us the point $(0, 2y_1)$. \qedhere
+  \end{multicols}
 \end{proof}
 
 \begin{problem}[1.4.4]
@@ -119,7 +292,7 @@
 \end{problem}
 
 \begin{proof}[Solution]
-  We know that $\lvert \Re(z) \rvert = x$ and $\lvert \Im(z) \rvert = y$. We
+  We know that $\Re(z) = \lvert x \rvert$ and $\Im(z) = \lvert y \rvert$. We
   also know that $\lvert z \rvert = \sqrt{x^2 + y^2}$. Therefore, we can rewrite
   the inequality as
   \begin{align*}
@@ -155,9 +328,37 @@
 \end{problem}
 
 \begin{proof}[Solution to (i)]
+  The modulus $\lvert z - 4i \rvert$ represents the Euclidean distance between
+  the complex number $z$ and the point $4i$. Similarly, $\lvert z + 4i \rvert$
+  represents the distance from $z$ to $-4i$.
+
+  Since the sum of the distances from any point $z$ on the curve to the fixed
+  points $(0, 4)$ and $(0, -4)$ is a constant, this satisfies the definition of
+  an ellipse, where the sum of distances to the foci is constant.
+
+  The foci are at $(0, \pm 4)$. The given sum of distances is $10$, which
+  corresponds to $2a$ in the standard form of an ellipse equation. The foci are
+  at a distance $c = 4$ from the center $(0, 0)$, and using the standard ellipse
+  relation $a^2 = b^2 + c^2$, we get $a = 5$, $b = 3$, and $c = 4$. Thus, the
+  ellipse has semi-major axis $a = 5$ and semi-minor axis $b = 3$.
 \end{proof}
 
 \begin{proof}[Solution to (ii)]
+  The expression $\lvert z - 1 \rvert$ represents the distance from $z$ to $1$.
+  The expression $\lvert z + i \rvert$ represents the distance from $z$ to $-i$.
+
+  The equation states that any point $z = x + yi$ is equidistant from these two
+  fixed points. The midpoint of $(1, 0)$ and $(0, -1)$ is
+  \[%
+    \left(\frac{1 + 0}{2}, \frac{0 + (-1)}{2}\right) = \left(\frac{1}{2}, -\frac{1}{2}\right)
+  .\]%
+  The slope of the segment joining $(1,0)$ and $(0,-1)$ is $m = 1$. The
+  perpendicular bisector has a slope of $-1$, so its equation is
+  \[%
+    y + \frac{1}{2} = -1(x - \frac{1}{2}) \implies y = -x + 1
+  .\]%
+  Thus, the given equation represents the line through the origin with slope
+  $-1$.
 \end{proof}
 
 \begin{problem}[1.5.1(iv)]
@@ -175,7 +376,7 @@
   .\]%
   Taking the norm of the complex number $\sqrt{2} - i$, we have
   \[%
-    \lvert \sqrt{2} - i \rvert = \sqrt{(\sqrt{2})^2 + (-1)^2} = \sqrt{2 + 1} = \sqrt{3}
+    \lvert \sqrt{2} - i \rvert = \sqrt{(\sqrt{2})^2 + (-i)^2} = \sqrt{2 + 1} = \sqrt{3}
   .\]%
   Therefore, we have
   \[%
@@ -257,7 +458,7 @@
     \phantom{\implies}&\quad z^2 + 2z\zb + \zb^2 + z^2 -2z\zb + \zb^2 &&= 4 \\
     \implies&\quad 2z^2 + 2\zb^2 &&= 4 \\
     \implies&\quad z^2 + \zb^2 &&= 2
-  .\qedhere\end{alignat*}
+  .\tag*{\qedhere}\end{alignat*}
 \end{proof}
 
 \begin{problem}[(Extra)]
@@ -266,4 +467,24 @@
 \end{problem}
 
 \begin{proof}[Solution]
+  Expanding the left-hand side, we have $(c + di)^2 = c^2 - d^2 + 2cdi$.
+  Equating the real and imaginary parts, we get the following system of
+  equations
+  \begin{align*}
+    c^2 - d^2 &= a \\
+    2cd &= b
+  .\end{align*}
+  From the second equation, we can express $d$ in terms of $c$ and $b$ as
+  follows
+  \[%
+    d = \frac{b}{2c}
+  .\]%
+  Plugging this expression for $d$ into the first equation, we have
+  \begin{alignat*}{3}
+    \phantom{\implies}\quad&c^2 - \left(\frac{b}{2c}\right)^2 &&= a \\
+    \implies\quad&c^2 - \frac{b^2}{4c^2} &&= a \\
+    \implies\quad&4c^4 - b^2 &&= 4ac^2 \\
+    \implies\quad&4c^4 - 4ac^2 - b^2 &&= 0 \\
+    \implies\quad&c^4 - ac^2 - \frac{b^2}{4} &&= 0
+  .\end{alignat*}
 \end{proof}

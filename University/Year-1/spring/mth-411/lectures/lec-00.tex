@@ -1,0 +1,51 @@
+Complex analysis is a fundamental branch of mathematics that extends the
+familiar concepts of calculus to functions of a complex variable. You might
+think of complex analysis as a natural extension of real analysis. But, that is
+not quite right. In fact, complex analysis is much easier than real analysis.
+For example, integrations are easier in the complex plane.
+
+We first start with the basics of complex numbers that many are familiar with
+from basic high school, such as the algebra of complex numbers, the polar form,
+and the exponential form. We then develop the concept of complex functions and
+their differentiability, which leads to the Cauchy-Riemann equations
+\[%
+  \pdv{u}{x} = \pdv{v}{y} \aand \pdv{u}{y} = -\pdv{v}{x}
+,\]%
+which provide necessary conditions for a function $f(z) = u(x, y) + iv(x, y)$ to
+be holomorphic.
+
+A key focus of the course is the study of elementary functions such as the
+complex exponential, trigonometric, and logarithmic functions. The complex
+logarithm introduces the notion of branch cuts.
+
+Integration in the complex plane differs significantly from its real counterpart
+due to the profound results of Cauchy's theorem and Cauchy's integral formula.
+Cauchy's theorem states that if $f$ is holomorphic in a simply connected domain
+$D$, then for any closed contour $\gamma$ in $D$,
+\[%
+  \oint_\gamma f(z) \dz = 0
+.\]%
+Cauchy's integral formula further asserts that if $f$ is holomorphic inside and
+on a simple closed contour $\gamma$, then for any point $z_0$ inside $\gamma$,
+\[%
+  f(z_0) = \frac{1}{2\pi i} \oint_\gamma \frac{f(z)}{z - z_0} \dz
+.\]%
+
+From these results, we develop power series representations of complex
+functions, which lead to the classification of singularities and the study of
+residues. Residue theory is one of the most powerful tools in complex analysis,
+allowing the evaluation of intricate real integrals using contour integration.
+The residue theorem states that if $f(z)$ meromorphic in a region containing a
+simple closed contour $\gamma$, then
+\[%
+  \oint_\gamma f(z) \dz = 2\pi i \sum \text{Res}(f, z_k)
+.\]%
+
+Finally, we explore Laurent series, which generalize power series to include
+terms with negative exponents. A function $f(z)$ analytic in an annulus $R_1 <
+\lvert z - z_0 \rvert < R_2$ has a Laurent series expansion of the form
+\[%
+  f(z) = \sum_{n = -\infty}^{\infty} a_n (z - z_0)^n
+.\]%
+These expansions provide a systematic way to analyze singularities and
+understand the local behavior of functions near points of interest.

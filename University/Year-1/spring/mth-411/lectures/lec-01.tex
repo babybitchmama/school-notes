@@ -1,0 +1,234 @@
+\lecture{1}{Mar 31 2025 Mon (12:00:54)}{Intro to complex numbers}
+
+\section{Basic Concepts}
+\label{sec:basic_concepts}
+
+The imaginary unit $i$, arose from the need to solve the quadratic $x^2 + 1 =
+0$. So, we define $i$ to be the solution to this equation. This means that $i^2
+= -1$. This is a bit of a cheat, but it works out nicely. Naturally, we get the
+following
+
+\begin{definition}[Complex Numbers]
+  A \textit{complex number} is a number of the form
+  \[%
+    z = x + iy
+  ,\]%
+  where $x$ and $y$ are real numbers and $i$ is the imaginary unit, defined by
+  $i = \sqrt{-1}$
+\end{definition}
+
+\begin{notation}
+  There are several notations that people use for complex numbers. One way to
+  denote a complex number is to use a point, $z = (x, y)$, where $x$ is the real
+  part and $y$ is the imaginary part. We'll see where this comes from.
+\end{notation}
+
+Just like how we have the real plane, $\R^2$, we can think of the $x$-axis on
+the complex plane, $\C^2$, as the real part $\Re(z)$ and the $y$-axis as the
+imaginary part $\Im(z)$. The $y$-axis is then referred to as the imaginary axis.
+
+% section basic_concepts (end)
+
+\section{Operations on Complex Numbers}
+\label{sec:operations_on_complex_numbers}
+
+Basic properties of complex addition and multiplication are the same as for real
+numbers. I'll list them here and won't bother to verify them as it's just
+computation.
+
+Addition: $z_1 + z_2 = (a_1 + b_1i) + (a_2 + b_2i) = (a_1 + a_2) + (b_1 +
+b_2)i$.
+\begin{enumerate}
+  \item Identity: $0 + z = z = z + 0$.
+
+  \item Commutative: $z_1 + z_2 = z_2 + z_1$.
+
+  \item Associative: $(z_1 + z_2) + z_3 = z_1 + (z_2 + z_3)$.
+
+  \item Inverse: $z_1 + (-z_1) = 0 = (-z_1) + z_1$.
+\end{enumerate}
+
+Multiplication: $z_1 \cdot z_2 = (a_1 + b_1i) \cdot (a_2 + b_2i) = (a_1a_2 -
+b_1b_2) + (a_2b_1 + a_1b_2)i$.
+\begin{enumerate}
+  \item Identity: $1$: $1 \cdot z = z = z \cdot 1$.
+
+  \item Commutative: $z_1 \cdot z_2 = z_2 \cdot z_1$.
+
+  \item Associative: $z_1(z_2 \cdot z_3) = (z_1 \cdot z_2)z_3$.
+
+  \item Inverse: Finding the multiplicative inverse takes a bit more work. We
+    want to find $(u, v)$ such that $(a + bi)(u + vi) = 1$. Expanding, we get
+    \begin{alignat*}{4}
+      \begin{aligned}
+        \phantom{\implies}\quad&(a + bi)(u + vi) &&= (au - bv) + (av + bu)i &&= 1 \\
+        \implies\quad&\begin{rcases}
+          au - bv = 1 \\
+          av + bu = 0
+        \end{rcases} &&\implies
+        \begin{pmatrix}
+          a & -b \\
+          b & a \\
+        \end{pmatrix}
+        \begin{pmatrix}
+          u \\
+          v \\
+        \end{pmatrix}
+        &&=
+        \begin{pmatrix}
+          1 \\
+          0 \\
+        \end{pmatrix}
+      \end{aligned} \\
+      \implies\quad u = \frac{a}{a^2 + b^2} \aand v = -\frac{b}{a^2 + b^2}\qquad\qquad\qquad\qquad
+    .\end{alignat*}
+    Therefore, the multiplicative inverse of $z = a + bi$ is
+    \[%
+      z^{-1} = \left(\frac{a}{a^2 + b^2}, -\frac{b}{a^2 + b^2}\right),\quad z \ne 0
+    .\]%
+\end{enumerate}
+
+Subtraction and division are defined in terms of addition and multiplication.
+For subtraction, we have
+\[%
+  z_1 - z_2 = z_1 + (-z_2) = (x_1, y_1) + (-x_2, -y_2) = (x_1 - x_2, y_1 - y_2)
+.\]%
+For division, we have
+\[%
+  \frac{z_1}{z_2} = (x_1, y_1) \cdot (x_2, y_2)^{-1} = (x_1, y_1) \cdot \left(\frac{x_2}{x_2^2 + y_2^2}, -\frac{y_2}{x_2^2 + y_2^2}\right) = \left(\frac{x_1x_2 + y_1y_2}{x_2^2 + y_2^2}, \frac{y_1x_2 - x_1y_2}{x_2^2 + y_2^2}\right)
+.\]%
+
+There are a few useful properties that I'll derive here. The first is
+\[%
+  \frac{z_1 + z_2}{z_3} = (z_1 + z_2)z_3^{-1} = z_1z_3^{-1} + z_2z_3^{-1} = \frac{z_1}{z_3} + \frac{z_2}{z_3}
+.\]%
+Also, trivially, we have
+\[%
+  (z_1z_2)(z_1^{-1}z_2^{-1}) = z_1z_2z_1^{-1}z_2^{-1} = z_1z_1^{-1}z_2z_2^{-1} = 1 \cdot 1 = 1
+.\]%
+This means that $z_1^{-1}z_2^{-1} = (z_1z_2)^{-1}$. This is useful to show that
+\[%
+  \left(\frac{z_1}{z_3}\right)\left(\frac{z_2}{z_4}\right) = (z_1z_3^{-1})(z_2z_4^{-1}) = z_1z_3^{-1}z_2z_4^{-1} = z_1z_2z_3^{-1}z_4^{-1} = (z_1z_2)(z_3z_4)^{-1} = \frac{z_1z_2}{z_3z_4}
+.\]%
+
+% section operations_on_complex_numbers (end)
+
+\section{Complex Conjugate and Real and Imaginary Parts}
+\label{sec:complex_conjugate_and_real_and_imaginary_parts}
+
+\begin{definition}[Conjugate of a complex number]
+  The \textit{conjugate} of a complex number $z = x + yi$ is defined as
+  \[%
+    \zb = x - yi
+  .\]%
+  The conjugate of a complex number is the reflection of the point $(x, y)$
+  across the real axis.
+\end{definition}
+
+The conjugate has a few useful properties.
+\begin{enumerate}
+  \item $\zb + \wb = \overline{z + w}$. This is easy to see, as it's just
+    computation
+    \begin{alignat*}{5}
+      \zb + \wb &= \overline{(a + bi)} + \overline{(c + di)} &&= (a - bi) + (c - di) &&= (a + c) + (-b - d)i &&= (a + c) - (b + d)i \\
+      \overline{z + w} &= \overline{(a + bi) + (c + di)} &&= \overline{(a + c) + (b + d)i} &&&&= (a + c) - (b + d)i
+    .\end{alignat*}
+    Therefore, $\zb + \wb = \overline{z + w}$.
+
+  \item $\zb - \wb = \overline{z - w}$. It's easy to show this as well, so I
+    won't.
+
+  \item $\zb \cdot \wb = \overline{z \cdot w}$. Again, computing, we have
+    \begin{alignat*}{5}
+      \zb \cdot \wb &= \overline{(a + bi)} \cdot \overline{(c + di)} &&= (a - bi)(c - di) &&= (ac - bd) - (bc + ad)i \\
+      \overline{z \cdot w} &= \overline{(a + bi)(c + di)} &&= \overline{(ac - bd) + (bc + ad)i} &&= (ac - bd) - (bc + ad)i
+    .\end{alignat*}
+    Therefore, $\zb \cdot \wb = \overline{z \cdot w}$.
+
+  \item $\displaystyle\overline{\left(\frac{z}{w}\right)} = \frac{\zb}{\wb}$.
+    This will be a bit more difficult to show, but we can use the previous
+    property to show it. Computing the left-hand side, we have
+    \[%
+      \frac{z}{w} = \frac{(a + bi)(c - di)}{(c + di)(c - di)} = \frac{(a + bi)(c - di)}{c^2 + d^2}
+    .\]%
+    Expanding the numerator, we have $(a + bi)(c - di) = (ac - bd) + (bc -
+    ad)i$. Therefore, we have
+    \[%
+      \frac{z}{w} = \frac{(ac - bd) + (bc - ad)i}{c^2 + d^2}
+    .\]%
+    Taking the conjugate, we have
+    \[%
+      \overline{\left(\frac{z}{w}\right)} = \frac{(ac - bd) - (bc - ad)i}{c^2 + d^2}
+    .\]%
+
+    Now, we can compute the right-hand side. We have
+    \[%
+      \frac{\zb}{\wb} = \frac{(a - bi)(c + di)}{(c - di)(c + di)} = \frac{(a - bi)(c + di)}{c^2 + d^2} = \frac{(ac + bd) + (ad - bc)i}{c^2 + d^2} = \frac{(ac + bd) - (bc - ad)i}{c^2 + d^2}
+    .\]%
+
+    Therefore, we have
+    \[%
+      \overline{\left(\frac{z}{w}\right)} = \frac{(ac - bd) - (bc - ad)i}{c^2 + d^2} = \frac{\zb}{\wb}
+    .\]%
+\end{enumerate}
+
+Notice that $z + \zb = 2x$ and $z - \zb = 2yi$. This gives us the following
+\begin{definition}[Real and Imaginary]
+  The \textit{real and imaginary parts} of a complex number $z = x + yi$ are
+  defined as
+  \[%
+    \Re(z) = \frac{z + \zb}{2} \aand \Im(z) = \frac{z - \zb}{2i}
+  .\]%
+\end{definition}
+
+% section complex_conjugate_and_real_and_imaginary_parts (end)
+
+\section{Norm of a Complex Number}
+\label{sec:norm_of_a_complex_number}
+
+\begin{definition}[Norm of a complex number]
+  The \textit{norm} of a complex number $z = x + iy$ is defined as
+  \[%
+    \lvert z \rvert = \sqrt{\Re^2(z) + \Im^2(z)} = \sqrt{x^2 + y^2}
+  .\]%
+  The \textit{norm} of a complex number is the distance from the origin to the
+  point $(x, y)$ in the complex plane.
+\end{definition}
+
+We also have a few useful properties of the norm.
+\begin{enumerate}
+  \item $\lvert z \rvert^2 \cdot \lvert w \rvert^2 = \lvert z \cdot w \rvert^2$.
+    Computing the left-hand side, we have
+    \[%
+      \lvert z \rvert^2 \cdot \lvert w \rvert^2 = (a^2 + b^2)(c^2 + d^2) = (ac - bd)^2 + (bc + ad)^2 = \lvert z \cdot w \rvert^2
+    .\]%
+
+  \item $\lvert z \rvert \cdot \lvert w \rvert = \lvert z \cdot w \rvert$. This
+    comes from the previous property.
+
+  \item Triangle inequality: $\lvert z + w \rvert \leq \lvert z \rvert + \lvert
+    w \rvert$. This is a bit more difficult to show. Consider the squares of the
+    modules of $z + w$
+    \[%
+      \lvert z + w \rvert^2 = (z + w)(\overline{z + w}) = (z + w)(\zb + \wb) = z\zb + z\wb + w\zb + w\wb
+    .\]%
+    Since $z\zb = z^2$ and $w\wb = w^2$, we have
+    \[%
+      \lvert z + w \rvert^2 = \lvert z \rvert^2 + \lvert w \rvert^2 + z\wb + w\zb
+    .\]%
+    The term $z\wb + w\zb$ is a real number because it is equal to $2\Re(z\wb)$.
+    Using the inequality the Cauchy-Schwartz inequality, we have
+    \[%
+      \lvert z + w \rvert^2 \le \lvert z \rvert^2 + \lvert w \rvert^2 + 2\lvert z \rvert \lvert w \rvert
+    ,\]%
+    which is equivalent to
+    \[%
+      \lvert z + w \rvert^2 \le (\lvert z \rvert + \lvert w \rvert)^2
+    .\]%
+    Taking the square root of both sides gives us the triangle inequality.
+
+  \item $\displaystyle\left\lvert \frac{z}{w} \right\rvert = \frac{\lvert z
+    \rvert}{\lvert w \rvert}$. This is easy to show, so I won't.
+\end{enumerate}
+
+% section norm_of_a_complex_number (end)
