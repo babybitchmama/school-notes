@@ -1,0 +1,33 @@
+Differential geometry is the study of curves and surfaces using the tools of
+calculus and linear algebra. It provides a deep understanding of geometric
+structures by analyzing their intrinsic and extrinsic properties. This course
+focuses on the geometry of curves and surfaces in three-dimensional space,
+laying the groundwork for more advanced topics in global differential geometry
+and Riemannian geometry.
+
+We begin with the study of curves in $\R^3$, investigating their
+parametrizations, arc length, and curvature. The Frenet-Serret formulas describe
+the local behavior of a space curve in terms of the tangent, normal, and
+binormal vectors, forming the moving frame
+\[%
+  T = \frac{\gamma'}{\lvert \gamma' \rvert}, \quad N = \frac{T'}{\lvert T' \rvert}, \aand B = T \times N
+.\]%
+These formulas express how the frame rotates along the curve
+\[%
+  T' = \kappa N, \quad N' = -\kappa T + \tau B, \aand B' = -\tau N
+,\]%
+where $\kappa$ is the curvature and $\tau$ is the torsion.
+
+A key concept in surface theory is Gaussian curvature, given by
+\[%
+  K = \frac{EG - F^2}{EG - F^2}
+.\]%
+By the Theorema Egregium, Gaussian curvature is an intrinsic quantity, meaning
+it depends only on distances measured along the surface and remains unchanged
+under isometries.
+
+We also examine geodesics, the generalization of straight lines to curved
+surfaces. A curve $\gamma(t)$ on a surface is geodesic if its acceleration is
+normal to the surface, meaning it locally minimizes distance. The geodesic
+equations are derived from the Christoffel symbols $\Gamma^k_{ij}$, obtained
+from the first fundamental form.
