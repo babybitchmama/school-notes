@@ -1,8 +1,9 @@
 #######################################################################
 #                                                                     #
-#                               Year 1                                #
+#                           College: Year 1                           #
 #                                                                     #
 #######################################################################
+
 
 ###############
 #  Fall Term  #
@@ -68,7 +69,7 @@ College/Year-1/spring/psy-202a/books/psychology-in-modules.pdf filter=lfs diff=l
 
 #######################################################################
 #                                                                     #
-#                               Year 2                                #
+#                           College: Year 2                           #
 #                                                                     #
 #######################################################################
 
@@ -116,7 +117,7 @@ College/Year-2/spring/mth-256/books/the-ordinary-differential-equations-project 
 
 #######################################################################
 #                                                                     #
-#                             University                              #
+#                         University: Year 1                          #
 #                                                                     #
 #######################################################################
 
@@ -139,3 +140,10 @@ University/Year-1/winter/mth-282/books/multivariable-calculus/solutions.pdf filt
 University/Year-1/winter/mth-317/books/understanding-analysis/master.pdf filter=lfs diff=lfs merge=lfs -text
 University/Year-1/winter/mth-317/books/understanding-analysis/solutions.pdf filter=lfs diff=lfs merge=lfs -text
 University/Year-1/winter/mth-441/books/abstract-linear-algebra.pdf filter=lfs diff=lfs merge=lfs -text
+
+#################
+#  Spring Term  #
+#################
+
+University/Year-1/spring/mth-411/books/complex-variables-and-its-applications.pdf filter=lfs diff=lfs merge=lfs -text
+University/Year-1/spring/mth-433/books/differential-geometry-of-curves-and-surfaces.pdf filter=lfs diff=lfs merge=lfs -text

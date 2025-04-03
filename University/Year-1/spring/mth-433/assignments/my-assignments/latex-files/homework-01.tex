@@ -1,0 +1,397 @@
+% \begin{problem}[1.2.2]
+%   Let $\alpha(t)$ be a parametrized curve which does not pass through the
+%   origin. If $\alpha(t_0)$ is a point of the trace of $\alpha$ closest to the
+%   origin and $\alpha'(t_0) \ne 0$, show that the position vector $\alpha(t_0)$
+%   is orthogonal to $\alpha'(t_0)$.
+% \end{problem}
+
+% \begin{proof}[Solution]
+%   Let $\alpha : I \to \R$ be a parametrized curve, for some interval $I$. Let
+%   $f(t) = \lvert \alpha(t) \rvert = \alpha(t) \cdot \alpha(t)$. The derivative
+%   is given by
+%   \[%
+%     f'(t) = \odv{}{t} [\alpha(t) \cdot \alpha(t)] = 2 \alpha(t) \cdot \alpha'(t)
+%   .\]%
+%   Since $t_0 \in I$ is a global minimum, we have
+%   \[%
+%     f'(t_0) = 0 \implies \alpha(t_0) \cdot \alpha'(t_0) = 0
+%   .\]%
+%   Since $\alpha(t_0) \ne 0 \ne \alpha'(t_0)$, we have that $\alpha(t_0)$ is
+%   orthogonal to $\alpha'(t_0)$.
+% \end{proof}
+
+% \begin{problem}[1.2.4]
+%   Let $\alpha : I \to \R^3$ be a parametrized curve and let $v \in \R^3$ be a
+%   fixed vector. Assume that $\alpha'(t)$ is orthogonal to $v$ for all $t \in I$
+%   and that $\alpha(0)$ is also orthogonal to $v$. Prove that $\alpha(t)$ is
+%   orthogonal to $v$ for all $t \in I$.
+% \end{problem}
+
+% \begin{proof}[Solution]
+%   Let $f(t) = \alpha(t) \cdot v$. Then
+%   \[%
+%     f'(t) = \odv{}{t} [\alpha(t) \cdot v] = \alpha'(t) \cdot v
+%   .\]%
+%   Since $\alpha'(t)$ is orthogonal to $v$, we have that $f'(t) = 0$ for all
+%   $t \in I$. Thus, $f(t)$ is constant. Since $f(0) = \alpha(0) \cdot v = 0$, we
+%   have that $f(t) = 0$ for all $t \in I$. Thus, $\alpha(t) \cdot v = 0$ for all
+%   $t \in I$.
+% \end{proof}
+
+% \begin{problem}[1.3.1]
+%   Show that the tangent lines to the regular parametrized curve $\alpha(t) =
+%   \left\langle 3t, 3t^2, 2t^3 \right\rangle$ make a constant angle with the line
+%   $y = 0$, $z = x$.
+% \end{problem}
+
+% \begin{proof}[Solution]
+% \end{proof}
+
+% \begin{problem}[1.3.4]
+%   Let $\alpha : (0, \pi) \to \R^2$ be given by
+%   \[%
+%     \alpha(t) = \left\langle \sin(t), \cos(t) + \log\left(\tan\left(\frac{t}{2}\right)\right) \right\rangle
+%   ,\]%
+%   where $t$ is the angle that the $y$-axis makes with the vector $\alpha'(t)$.
+%   The trace of $\alpha$ is called the tractrix. Show that
+%   \begin{enumerate}
+%     \item $\alpha$ is a differentiable parametrized curve, regular except at $t
+%       = \sfrac{\pi}{2}$.
+
+%     \item The length of the segment of the tangent of the tractrix between the
+%       point of tangency and the $y$-axis is constantly equal to $1$.
+%   \end{enumerate}
+% \end{problem}
+
+% \begin{proof}[Solution to (i)]
+%   At $t = \sfrac{\pi}{2}$, we get $\alpha(\sfrac{\pi}{2}) = \langle 1, 1
+%   \rangle$, which gives us the tangent vector $\alpha'(\sfrac{\pi}{2}) =
+%   \langle 0, 0 \rangle$. Thus, $\alpha$ is not regular at $t = \sfrac{\pi}{2}$.
+
+%   Let $I = (0, \pi) - \{\sfrac{\pi}{2}\}$. For $t \in I$, we have that
+%   \[%
+%     \alpha'(t) = \left\langle \cos(t), -\sin(t) + \frac{1}{2}\csc\left(\frac{t}{2}\right)\sec^2\left(\frac{t}{2}\right) \right\rangle
+%   .\]%
+%   Notice that $\lvert \cos(t) \rvert > 0$, for all $t \in I$. Therefore,
+%   $\alpha'(t) \ne 0$, for all $t \in I$. Thus, $\alpha$ is regular on $I$.
+% \end{proof}
+
+% \begin{proof}[Solution to (ii)]
+%   From part (i), we can get
+%   \[%
+%     m = \frac{y'(t)}{x'(t)} = \frac{1}{2}\csc\left(\frac{t}{2}\right)\sec^2\left(\frac{t}{2}\right)\sec(t) - \tan(t)
+%   .\]%
+%   Therefore, we get the tangent line to be
+%   \[%
+%     y = m(x - x(t)) + y(t)
+%   .\]%
+%   To find the $y$-intersection, we set $x = 0$ and get
+%   \[%
+%     y = -mx(t) + y(t)
+%   .\]%
+%   Computing the length of the segment of the tangent line between the point of
+%   tangency, $(x(t), y(t))$, and the $y$-axis, $(0, -mx(t) + y(t))$, we get
+%   \[%
+%     d = \sqrt{(x(t) - 0)^2 + (y(t) - (-mx(t) + y(t)))^2} = \sqrt{x^2(t) + m^2x^2(t)} = x(t)\sqrt{1 + m^2}
+%   .\]%
+%   Plugging in the value of $m$ and $x(t)$, we get
+%   \[%
+%     d = \sin(t)\sqrt{1 + \left(\frac{1}{2}\csc\left(\frac{t}{2}\right)\sec^2\left(\frac{t}{2}\right)\sec(t) - \tan(t)\right)^2}
+%   .\]%
+% \end{proof}
+
+% \begin{problem}[1.3.6]
+%   Let $\alpha(t) = \left\langle ae^{bt}\cos(t), ae^{bt}\sin(t) \right\rangle$,
+%   $t \in \R$, $a$ and $b$ are constants, $a > 0$, $b < 0$, be parametrized
+%   curve.
+%   \begin{enumerate}
+%     \item Show that as $t \to +\infty$, $\alpha(t)$ approaches the origin $0$,
+%       spiraling around it (because of this, the trace of $\alpha$ is called the
+%       \textit{logarithmic spiral}).
+
+%     \item Show that $\alpha'(t) \to (0, 0)$ as $t \to +\infty$ and that
+%       \[%
+%         \lim_{t \to +\infty} \int_{t_0}^t \lvert \alpha'(x) \rvert \dx
+%       ,\]%
+%       is finite; that is, $\alpha$ has finite arc length in $[t_0, \infty)$.
+%   \end{enumerate}
+% \end{problem}
+
+% \begin{proof}[Solution to (i)]
+%   Since $b < 0$, we have
+%   \[%
+%     e^{bt} = \frac{1}{e^{-bt}}
+%   .\]%
+%   Then, as $t \to +\infty$, we have that $e^{bt} \to 0$. Therefore, we have
+%   \[%
+%     \alpha(t) = \left\langle \frac{a\cos(t)}{e^{-bt}}, \frac{a\sin(t)}{e^{-bt}} \right\rangle \to 0 \qtq{as} t \to +\infty
+%   .\]%
+%   It spirals around the origin because of the $\cos(t)$ and $\sin(t)$ terms.
+% \end{proof}
+
+% \begin{proof}[Solution to (ii)]
+%   We have
+%   \[%
+%     \alpha'(t) = \left\langle abe^{bt}\cos(t) - ae^{bt}\sin(t), abe^{bt}\sin(t) + ae^{bt}\cos(t) \right\rangle = \left\langle \frac{ab\cos(t) - a\sin(t)}{e^{-bt}}, \frac{ab\sin(t) + a\cos(t)}{e^{-bt}} \right\rangle
+%   .\]%
+%   Again, since $b < 0$, we have that $e^{bt} \to 0$ as $t \to +\infty$. Thus,
+%   \[%
+%     \alpha'(t) \to (0, 0) \qtq{as} t \to +\infty
+%   .\]%
+
+%   Now, we can compute the arc length
+%   \begin{align*}
+%     \int_{t_0}^t \lvert \alpha'(x) \rvert \dx &= \int_{t_0}^t \sqrt{(abe^{bx}\cos(x) - ae^{bx}\sin(x))^2 + (abe^{bx}\sin(x) + ae^{bx}\cos(x))^2} \dx \\
+%                                               &= \int_{t_0}^t ae^{bx}\sqrt{b^2 + 1} \dx = a\sqrt{b^2 + 1} \int_{t_0}^t e^{bx} \dx \\
+%                                               &= a\sqrt{b^2 + 1} \frac{e^{bx}}{b} \bigg|_{t_0}^t = a\sqrt{b^2 + 1} \left(\frac{e^{bt}}{t} - \frac{e^{bt_0}}{b}\right)
+%   .\end{align*}
+%   Again, since $b < 0$, we have
+%   \[%
+%     a\sqrt{b^2 + 1} \left(\frac{e^{bt}}{t} - \frac{e^{bt_0}}{b}\right) = a\sqrt{b^2 + 1} \left(\frac{1}{te^{-bt}} - \frac{e^{bt_0}}{b}\right)
+%   .\]%
+%   Now, taking the limit as $t \to +\infty$, we have
+%   \[%
+%     \lim_{t \to +\infty} \int_{t_0}^t \lvert \alpha'(x) \rvert \dx = \lim_{t \to +\infty} a\sqrt{b^2 + 1} \left(\frac{1}{te^{-bt}} - \frac{e^{bt_0}}{b}\right) = 0 - \frac{ae^{bt_0}}{b} = -\frac{ae^{bt_0}}{b} < \infty
+%   .\]%
+%   Thus, $\alpha$ has finite arc length in $[t_0, \infty)$.
+% \end{proof}
+
+% \begin{problem}[1.3.10]
+%   Let $\alpha : I \to \R^3$ be a parametrized curve. Let $[a, b] \subset I$ and
+%   set $\alpha(a) = p$, $\alpha(b) = q$.
+%   \begin{enumerate}
+%     \item Show that, for any constant vector $v$, $\lvert v \rvert = 1$,
+%       \[%
+%         (q - p) \cdot v = \int_a^b \alpha'(t) \cdot v \dt \le \int_a^b \lvert \alpha'(t) \rvert \dt
+%       .\]%
+
+%     \item Set
+%       \[%
+%         v = \frac{q - p}{\lvert q - p \rvert}
+%       ,\]%
+%       and show that
+%       \[%
+%         \lvert \alpha(b) - \alpha(a) \rvert \le \int_a^b \lvert \alpha'(t) \rvert \dt
+%       ;\]%
+%       that is, the curve of shortest length from $\alpha(a)$ to $\alpha(b)$ is
+%       the straight line joining these points.
+%   \end{enumerate}
+% \end{problem}
+
+% \begin{proof}[Solution to (i)]
+%   We first show the equality on the left-hand side. Since $v$ is a constant
+%   vector, we can factor it out of the integral. Thus, we have
+%   \[%
+%     \int_a^b \alpha'(t) \cdot v \dt = \int_a^b \alpha'(t) \dt \cdot v = (\alpha(b) - \alpha(a)) \cdot v = (q - p) \cdot v
+%   .\]%
+%   Thus, we have shown the equality.
+
+%   Now, we can show the inequality.Using the Cauchy-Schwartz inequality, we know
+%   that for any vectors $a$ and $b$, $a \cdot b \le \lvert a \rvert \lvert b
+%   \rvert$. Applying this to $\alpha'(t)$ and $v$, we have $\alpha'(t) \cdot v
+%   \le \lvert \alpha'(t) \rvert$. Therefore, we have
+%   \[%
+%     \int_a^b \alpha'(t) \cdot v \dt \le \int_a^b \lvert \alpha'(t) \rvert \dt
+%   .\]%
+%   Thus, we have shown the inequality.
+% \end{proof}
+
+% \begin{proof}[Solution to (ii)]
+%   Computing the original integral with the new value of $v$, we have
+%   \[%
+%     \int_a^b \alpha'(t) \cdot v \dt = \int_a^b \alpha'(t) \dt \cdot \left(\frac{q - p}{\lvert q - p \rvert}\right) = (q - p) \cdot \frac{q - p}{\lvert q - p \rvert}
+%   .\]%
+%   Since $(q - p)(q - p) = \lvert q - p \rvert^2$, we get
+%   \[%
+%     \int_a^b \alpha'(t) \dt \cdot v = \lvert q - p \rvert
+%   .\]%
+%   Since we've already established the inequality in part (i), we have
+%   \[%
+%     \int_a^b \alpha'(t) \cdot \frac{q - p}{\lvert q - p \rvert} \dt = \lvert q - p \rvert = \lvert \alpha(b) - \alpha(a) \rvert \le \int_a^b \lvert \alpha'(t) \rvert \dt
+%   .\]%
+%   Thus, we have shown the inequality.
+% \end{proof}
+
+\begin{problem}[1.4.2]
+  A plane $P$ contained in $\R^3$ is given by the equation $ax + by + cz + d =
+  0$. Show that the vector $v = \langle a, b, c \rangle$ is perpendicular to the
+  plane and that $\sfrac{\lvert d \rvert}{\sqrt{a^2 + b^2 + c^2}}$ measures the
+  distance from the plane to the origin $(0, 0, 0)$.
+\end{problem}
+
+\begin{proof}[Solution]
+  Essentially, this question is asking to show that the normal vector to the
+  plane is the vector $v = \langle a, b, c \rangle$.
+\end{proof}
+
+% \begin{problem}[1.4.10]
+%   The natural orientation of $\R^2$ makes it possible to associate a sign to the
+%   area $A$ of a parallelogram generated by two linearly independent vectors $u,
+%   v \in \R^2$. To do this, let $\{\e_i\}$, $i = 1, 2$, be the natural ordered
+%   basis of $\R^2$, and write $u = u_1\e_1 + u_2\e_2$, $v = v_1\e_1 + v_2\e_2$.
+%   Observe the matrix relation
+%   \[%
+%     \begin{pmatrix}
+%       u \cdot u & u \cdot v \\
+%       v \cdot u & v \cdot v
+%     \end{pmatrix}
+%     = \begin{pmatrix}
+%       u_1 & u_2 \\
+%       v_1 & v_2
+%     \end{pmatrix}
+%     \begin{pmatrix}
+%       u_1 & v_1 \\
+%       u_2 & v_2
+%     \end{pmatrix}
+%   ,\]%
+%   and conclude that
+%   \[%
+%     A^2 = \begin{vmatrix}
+%       u_1 & u_2 \\
+%       v_1 & v_2
+%     \end{vmatrix}^2
+%   .\]%
+%   Since the last determinant has the same sign as the basis $\{u, v\}$, we can
+%   say that $A$ is positive or negative according to whether the orientation of
+%   $\{u, v\}$ is positive or negative. This is called the \textit{orientated
+%   area} in $\R^2$.
+% \end{problem}
+
+% \begin{proof}[Solution]
+% \end{proof}
+
+% \begin{problem}[1.4.11]
+%   \begin{enumerate}
+%     \item Show that the volume $V$ of a parallelepiped generated by three
+%       linearly independent vectors $u, v, w \in \R^3$ is given by $V = \lvert (u
+%       \times v) \cdot w \rvert$, and introduce an \textit{orientated volume} in
+%       $\R^3$.
+
+%     \item Prove that
+%       \[%
+%         V^2 = \begin{vmatrix}
+%           u \cdot u & u \cdot v & u \cdot w \\
+%           v \cdot u & v \cdot v & v \cdot w \\
+%           w \cdot u & w \cdot v & w \cdot w \\
+%         \end{vmatrix}
+%       .\]%
+%   \end{enumerate}
+% \end{problem}
+
+% \begin{proof}[Solution to (i)]
+% \end{proof}
+
+% \begin{proof}[Solution to (ii)]
+% \end{proof}
+
+% \begin{problem}[1.5.1]
+%   Given the parametrized curve (helix)
+%   \[%
+%     \alpha(s) = \left\langle a\cos\left(\frac{s}{c}\right), a\sin\left(\frac{s}{c}\right), b\frac{s}{c} \right\rangle, \quad s \in \R
+%   ,\]%
+%   where $c^2 = a^2 + b^2$.
+%   \begin{enumerate}
+%     \item Show that the parameter $s$ is the arc length.
+
+%     \item Determine the curvature and the torsion of $\alpha$.
+
+%     \item Determine the osculating plane of $\alpha$.
+
+%     \item Show that the lines containing $n(s)$ and passing through $\alpha(s)$
+%       meet the $z$-axis under a constant angle equal to $\sfrac{\pi}{2}$.
+
+%     \item Show that the tangent lines to $\alpha$ make a constant angle with the
+%       $z$-axis.
+%   \end{enumerate}
+% \end{problem}
+
+% \begin{proof}[Solution to (i)]
+% \end{proof}
+
+% \begin{proof}[Solution to (ii)]
+% \end{proof}
+
+% \begin{proof}[Solution to (iii)]
+% \end{proof}
+
+% \begin{proof}[Solution to (iv)]
+% \end{proof}
+
+% \begin{proof}[Solution to (v)]
+% \end{proof}
+
+% \begin{problem}[1.5.11]
+%   One often gives a plane curve in polar coordinates by $\rho =\rho(\theta)$,
+%   $a \le \theta \le b$.
+%   \begin{enumerate}
+%     \item Show that the arc length is
+%       \[%
+%         \int_a^b \sqrt{\rho^2 + (\rho')^2} \dd{\theta}
+%       ,\]%
+%       where the prime denotes the derivative relative to $\theta$.
+
+%     \item Show that the curvature is
+%       \[%
+%         \kappa(\theta) = \frac{2(\rho')^2 - \rho\rho'' + \rho^2}{[(\rho')^2 + \rho^2]^{\sfrac{3}{2}}}
+%       .\]%
+%   \end{enumerate}
+% \end{problem}
+
+% \begin{proof}[Solution to (i)]
+% \end{proof}
+
+% \begin{proof}[Solution to (ii)]
+% \end{proof}
+
+% \begin{problem}[1.5.12]
+%   Let $\alpha : I \to \R^3$ be a regular parametrized curve (not necessarily by
+%   arc length), and let $\beta : J \to \R^3$ be a reparameterization of
+%   $\alpha(I)$ by the arc length $s = s(t)$, measured from $t_0 \in I$ (see
+%   Remark 2). Let $t = t(s)$ be the inverse function of $s$ and set
+%   $\odv{\alpha}/{t} = \alpha'$, $\odv[order={2}]{\alpha}/{t} = \alpha''$, etc.
+%   Prove that
+%   \begin{enumerate}
+%     \item $\odv{t}/{s} = \sfrac{1}{\lvert \alpha' \rvert}$,
+%       $\odv[order={2}]{t}/{s} = -(\sfrac{\alpha' \cdot \alpha''}{\lvert \alpha'
+%       \rvert^4})$.
+
+%     \item The curvature of $\alpha$ at $t \in I$ is
+%       \[%
+%         \kappa(t) = \frac{\lvert \alpha' \cdot \alpha'' \rvert}{\lvert \alpha' \rvert^3}
+%       .\]%
+
+%     \item The torsion of $\alpha$ at $t \in I$ is
+%       \[%
+%         \tau(t) = -\frac{(\alpha' \cdot \alpha'') \cdot \alpha'''}{\lvert \alpha' \cdot \alpha'' \rvert^2}
+%       .\]%
+
+%     \item If $\alpha : I \to \R^2$ is a plane curve $\alpha(t) = \langle x(t),
+%       y(t) \rangle$, the signed curvature (see Remark 1) of $\alpha$ at $t$ is
+%       \[%
+%         \kappa(t) = \frac{x' y'' - x'' y'}{[(x')^2 + (y')^2]^{\sfrac{3}{2}}}
+%       .\]%
+%   \end{enumerate}
+% \end{problem}
+
+% \begin{proof}[Solution to (i)]
+% \end{proof}
+
+% \begin{proof}[Solution to (ii)]
+% \end{proof}
+
+% \begin{proof}[Solution to (iii)]
+% \end{proof}
+
+% \begin{proof}[Solution to (iv)]
+% \end{proof}
+
+% \begin{problem}[1.5.14]
+%   Let $\alpha : (a, b) \to \R^2$ be a regular parametrized plane curve. Assume
+%   that there exists $t_0$, $a < t_0 < b$, such that the distance $\lvert
+%   \alpha(t) \rvert$ from the origin to the trace of $\alpha$ will be a maximum
+%   at $t_0$. Prove that the curvature $\kappa$ of $\alpha$ at $t_0$ satisfies
+%   $\lvert \kappa(t_0) \rvert \ge \sfrac{1}{\lvert \alpha(t_0) \rvert}$.
+% \end{problem}
+
+% \begin{proof}[Solution]
+% \end{proof}
