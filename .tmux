@@ -51,8 +51,18 @@ tmux new-session -d -s "$SESSION_NAME"
 ############
 
 source ./University/Year-1/fall/.tmux
+tmux new-window -t "$SESSION_NAME"
+
 source ./University/Year-1/winter/.tmux
-# source ./University/Year-1/spring/.tmux
+tmux new-window -t "$SESSION_NAME"
+
+source ./University/Year-1/spring/.tmux
+tmux new-window -t "$SESSION_NAME"
+
+tmux rename-window -t "$SESSION_NAME" "DRP"
+tmux send-keys -t "$SESSION_NAME" "cd ./University/Year-1/winter/drp/; clear" Enter
+
+tmux new-window -t "$SESSION_NAME"
 
 ############
 #  Year 2  #
@@ -61,13 +71,6 @@ source ./University/Year-1/winter/.tmux
 # source ./University/Year-2/fall/.tmux
 # source ./University/Year-2/winter/.tmux
 # source ./University/Year-2/spring/.tmux
-
-tmux new-window -t "$SESSION_NAME"
-
-tmux rename-window -t "$SESSION_NAME" "Degrees"
-tmux send-keys -t "$SESSION_NAME" "cd ./Degrees/Bachelors/; clear" Enter
-
-tmux new-window -t "$SESSION_NAME"
 
 tmux rename-window -t "$SESSION_NAME" "Git"
 tmux send-keys -t "$SESSION_NAME" "clear; wgs" Enter
