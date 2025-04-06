@@ -21,6 +21,7 @@
 \usepackage{amssymb}
 \usepackage{mathrsfs}
 \usepackage{breqn}
+\usepackage{upgreek}
 
 \usepackage[usenames,dvipsnames,pdftex]{color} % Required for nicer colors
 \usepackage{hyperref} % Required for hyperlinks
@@ -88,6 +89,7 @@
 \let\iff\Leftrightarrow
 \let\epsilon\varepsilon
 \let\phi\varphi
+\let\tau\uptau
 
 % Geometry
 \geometry{
@@ -425,11 +427,9 @@
 \newcommand\FF{\mathbf{F}}
 \newcommand\g{\mathbf{g}}
 \newcommand\n{\mathbf{n}}
-\newcommand\NN{\mathbf{N}}
 \newcommand\p{\mathbf{p}}
 \renewcommand\r{\mathbf{r}}
 \renewcommand\S{\mathbf{S}}
-\newcommand\Ta{\mathbf{T}}
 \renewcommand\u{\mathbf{u}}
 \renewcommand\v{\mathbf{v}}
 \newcommand\q{\mathbf{q}}
@@ -439,19 +439,27 @@
 \newcommand\z{\mathbf{z}}
 \newcommand\zero{\mathbf{0}}
 
+% Unit Tangent, Normal, and Binormal Vectors
+\newcommand\Ta{\mathbf{T}}
+\newcommand\Na{\mathbf{N}}
+\newcommand\Ba{\mathbf{B}}
+
 % Hat vectors
-\newcommand\ah{\mathbf{a}}
-\newcommand\bh{\mathbf{b}}
-\newcommand\ch{\mathbf{c}}
-\renewcommand\dh{\mathbf{d}}
-\newcommand\eh{\mathbf{e}}
-\newcommand\ph{\mathbf{p}}
-\newcommand\uh{\mathbf{u}}
-\newcommand\vh{\mathbf{v}}
-\newcommand\wh{\mathbf{w}}
-\newcommand\xh{\mathbf{x}}
-\newcommand\yh{\mathbf{y}}
-\newcommand\zh{\mathbf{z}}
+\newcommand\zhat[1]{\mathbf{\hat{#1}}}
+\newcommand\ah{\zhat{a}}
+\newcommand\bh{\zhat{b}}
+\newcommand\ch{\zhat{c}}
+\renewcommand\dh{\zhat{d}}
+\newcommand\eh{\zhat{e}}
+\newcommand\nh{\zhat{n}}
+\newcommand\ph{\zhat{p}}
+\newcommand\Th{\zhat{T}}
+\newcommand\uh{\zhat{u}}
+\newcommand\vh{\zhat{v}}
+\newcommand\wh{\zhat{w}}
+\newcommand\xh{\zhat{x}}
+\newcommand\yh{\zhat{y}}
+\newcommand\zh{\zhat{z}}
 
 % Unit vectors
 \newcommand\ui{\hat{\boldsymbol{\imath}}}
