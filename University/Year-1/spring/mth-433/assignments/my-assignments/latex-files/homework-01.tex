@@ -610,12 +610,12 @@
 
     \item The curvature of $\alpha$ at $t \in I$ is
       \[%
-        \kappa(t) = \frac{\lVert \alpha' \cdot \alpha'' \rVert}{\lVert \alpha' \rVert^3}
+        \kappa(t) = \frac{\lVert \alpha' \wedge \alpha'' \rVert}{\lVert \alpha' \rVert^3}
       .\]%
 
     \item The torsion of $\alpha$ at $t \in I$ is
       \[%
-        \tau(t) = -\frac{(\alpha' \cdot \alpha'') \cdot \alpha'''}{\lVert \alpha' \cdot \alpha'' \rVert^2}
+        \tau(t) = -\frac{(\alpha' \wedge \alpha'') \cdot \alpha'''}{\lVert \alpha' \wedge \alpha'' \rVert^2}
       .\]%
 
     \item If $\alpha : I \to \R^2$ is a plane curve $\alpha(t) = \langle x(t),
@@ -626,28 +626,102 @@
   \end{enumerate}
 \end{problem}
 
-\begin{proof}[Solution to (i)]
-  Since $\beta(s) = \alpha(t(s))$, that means that $\beta$ is a
-  reparameterization of $\alpha$ by arc length. Thus, we have $\lVert \beta'(s)
-  \rVert = 1$. Since $s = s(t)$ is arc length from $t_0 \in I$ to $t$, we have
-  \[%
-    s = \int_{t_0}^t \lVert \alpha'(x) \rVert \dx
-  .\]%
-  Differentiating both sides with respect to $t$, we have
-  \[%
-    \odv{s}{t} = \lVert \alpha'(t) \rVert
-  .\]%
-  Since $s = s(t)$ and $t = t(s)$ is its inverse, using the Inverse Function
-  Theorem, we have
-  \[%
-    \odv{t}{s} = \frac{1}{\odv{s}/{t}} = \frac{1}{\lVert \alpha'(t) \rVert}
-  .\]%
-\end{proof}
+% \begin{proof}[Solution to (i)]
+%   Since $\beta(s) = \alpha(t(s))$, that means that $\beta$ is a
+%   reparameterization of $\alpha$ by arc length. Thus, we have $\lVert \beta'(s)
+%   \rVert = 1$. Since $s = s(t)$ is arc length from $t_0 \in I$ to $t$, we have
+%   \[%
+%     s = \int_{t_0}^t \lVert \alpha'(x) \rVert \dx
+%   .\]%
+%   Differentiating both sides with respect to $t$, we have
+%   \[%
+%     \odv{s}{t} = \lVert \alpha'(t) \rVert
+%   .\]%
+%   Since $s = s(t)$ and $t = t(s)$ is its inverse, using the Inverse Function
+%   Theorem, we have
+%   \[%
+%     \odv{t}{s} = \frac{1}{\odv{s}/{t}} = \frac{1}{\lVert \alpha'(t) \rVert}
+%   .\]%
 
-\begin{proof}[Solution to (ii)]
-\end{proof}
+%   Computing the second derivative, we have
+%   \begin{align*}
+%     \odv[order={2}]{t}{s} &= \odv{}{s} \frac{1}{\lVert \alpha'(t(s)) \rVert} \\
+%                           &= -\frac{1}{2\lVert \alpha'(t(s)) \rVert^2} \cdot \odv{}{s} \lVert \alpha'(t(s)) \rVert \\
+%                           &= -\frac{1}{2\lVert \alpha'(t(s)) \rVert^2} \cdot \odv{}{s} \left[\alpha'(t(s)) \cdot \alpha'(t(s))\right] \\
+%                           &= -\frac{1}{2\lVert \alpha'(t(s)) \rVert^2} \cdot \frac{2 \alpha'(t(s)) \cdot \alpha''(t(s))}{\lVert \alpha'(t(s)) \rVert} \cdot \odv{t}{s} \\
+%                           &= -\frac{\alpha'(t(s)) \cdot \alpha''(t(s))}{\lVert \alpha'(t(s)) \rVert^4}
+%   .\end{align*}
+%   This completes the proof.
+% \end{proof}
+
+% \begin{proof}[Solution to (ii)]
+%   Recall that $\beta(s) = \alpha(t(s))$ is the arc length reparameterization of
+%   $\alpha$. Then
+%   \[%
+%     \odv{\beta}{s} = \odv{t}{s} \cdot \odv{\alpha}{t} = \frac{1}{\lVert \alpha'(t) \rVert} \cdot \alpha'(t) = \frac{\alpha'(t)}{\lVert \alpha'(t) \rVert}
+%   .\]%
+%   Taking the derivative again with respect to $s$, we apply the chain rule
+%   \[%
+%     \odv[order=2]{\beta}{s} = \odv{}{s} \left( \frac{\alpha'(t)}{\lVert \alpha'(t) \rVert} \right) = \odv{}{t} \left(\frac{\alpha'(t)}{\lVert \alpha'(t) \rVert}\right) \cdot \frac{1}{\lVert \alpha'(t) \rVert}
+%   .\]%
+%   Let us now compute the derivative inside
+%   \[%
+%     \odv{}{t} \left(\frac{\alpha'(t)}{\lVert \alpha'(t) \rVert}\right) = \frac{\lVert \alpha'(t) \rVert \odv{}{t} \alpha'(t) - \alpha'(t) \odv{}{t} \lVert \alpha'(t) \rVert}{\lVert \alpha'(t) \rVert^2}
+%   .\]%
+%   Computing each term, we have
+%   \[%
+%     \odv{}{t} \alpha'(t) = \alpha''(t) \aand \odv{}{t} \lVert \alpha'(t) \rVert = \frac{\alpha'(t) \cdot \alpha''(t)}{\lVert \alpha'(t) \rVert}
+%   .\]%
+%   Therefore, we have
+%   \[%
+%     \odv[order=2]{\beta}{s} = \frac{\lVert \alpha'(t) \rVert \alpha''(t) - \alpha'(t) \frac{\alpha'(t) \cdot \alpha''(t)}{\lVert \alpha'(t) \rVert}}{\lVert \alpha'(t) \rVert^3}
+%   .\]%
+
+%   We decompose $\alpha''(t)$ into two components: one parallel and one
+%   perpendicular to $\alpha'(t)$. The parallel component is given by the
+%   projection
+%   \[%%
+%     \alpha_{\parallel}(t) = \frac{\alpha'(t) \cdot \alpha''(t)}{\lVert \alpha'(t) \rVert^2} \alpha'(t)
+%   ,\]%
+%   and the perpendicular component is
+%   \[%
+%     \alpha_{\perp}(t) = \alpha''(t) - \alpha_{\parallel}(t)
+%   .\]%
+%   Since $\alpha_{\perp}(t)$ is perpendicular to $\alpha'(t)$, we have
+%   $\alpha'(t) \cdot \alpha_{\perp}(t) = 0$.
+
+%   Substituting the decomposition of $\alpha''(t)$ into the second derivative, we
+%   get
+%   \[%
+%     \odv[order=2]{\beta}{s} = \frac{\lVert \alpha'(t) \rVert (\alpha_{\parallel}(t) + \alpha_{\perp}(t)) - \alpha'(t) \frac{\alpha'(t) \cdot \alpha''(t)}{\lVert \alpha'(t) \rVert}}{\lVert \alpha'(t) \rVert^3}
+%   .\]%
+%   The parallel components cancel out
+%   \[%
+%     \lVert \alpha'(t) \rVert \alpha_{\parallel}(t) = \alpha'(t) \frac{\alpha'(t) \cdot \alpha''(t)}{\lVert \alpha'(t) \rVert}
+%   ,\]%
+%   so we are left with
+%   \[%
+%     \odv[order=2]{\beta}{s} = \frac{\lVert \alpha'(t) \rVert \alpha_{\perp}(t)}{\lVert \alpha'(t) \rVert^3} = \frac{\alpha_{\perp}(t)}{\lVert \alpha'(t) \rVert^2}
+%   .\]%
+
+%   Since $\alpha_{\perp}(t)$ is perpendicular to $\alpha'(t)$, we can express the
+%   magnitude of $\alpha_{\perp}(t)$ in terms of the cross product. Specifically,
+%   \[%
+%     \lVert \alpha_{\perp}(t) \rVert = \frac{\lVert \alpha'(t) \wedge \alpha''(t) \rVert}{\lVert \alpha'(t) \rVert}
+%   .\]%
+%   Thus, the second derivative simplifies to
+%   \[%
+%     \kappa(t) = \odv[order=2]{\beta}{s} = \frac{\lVert \alpha'(t) \wedge \alpha''(t) \rVert}{\lVert \alpha'(t) \rVert^3}
+%   .\]%
+%   This completes the proof.
+% \end{proof}
 
 \begin{proof}[Solution to (iii)]
+  We know that $\Ba'(s) = \tau(s)\Na(s)$. We also know that $\beta(s) =
+  \alpha(t(s))$ and
+  \[%
+    \Ta(s) = \odv{\beta}{s} = \odv{t}{s} \cdot \odv{\alpha}{t} = \frac{\alpha'(t)}{\lVert \alpha'(t) \rVert}
+  .\]%
 \end{proof}
 
 \begin{proof}[Solution to (iv)]
