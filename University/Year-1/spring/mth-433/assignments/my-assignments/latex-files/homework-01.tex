@@ -1,600 +1,600 @@
-% \begin{problem}[1.2.2]
-%   Let $\alpha(t)$ be a parametrized curve which does not pass through the
-%   origin. If $\alpha(t_0)$ is a point of the trace of $\alpha$ closest to the
-%   origin and $\alpha'(t_0) \ne 0$, show that the position vector $\alpha(t_0)$
-%   is orthogonal to $\alpha'(t_0)$.
-% \end{problem}
+\begin{problem}[1.2.2]
+  Let $\alpha(t)$ be a parametrized curve which does not pass through the
+  origin. If $\alpha(t_0)$ is a point of the trace of $\alpha$ closest to the
+  origin and $\alpha'(t_0) \ne 0$, show that the position vector $\alpha(t_0)$
+  is orthogonal to $\alpha'(t_0)$.
+\end{problem}
 
-% \begin{solution}
-%   Let $\alpha : I \to \R$ be a parametrized curve, for some interval $I$. Let
-%   $f(t) = \lVert \alpha(t) \rVert = \alpha(t) \cdot \alpha(t)$. The derivative
-%   is given by
-%   \[%
-%     f'(t) = \odv{}{t} [\alpha(t) \cdot \alpha(t)] = 2 \alpha(t) \cdot \alpha'(t)
-%   .\]%
-%   Since $t_0 \in I$ is a global minimum, we have
-%   \[%
-%     f'(t_0) = 0 \implies \alpha(t_0) \cdot \alpha'(t_0) = 0
-%   .\]%
-%   Since $\alpha(t_0) \ne 0 \ne \alpha'(t_0)$, we have that $\alpha(t_0)$ is
-%   orthogonal to $\alpha'(t_0)$.
-% \end{solution}
+\begin{solution}
+  Let $\alpha : I \to \R$ be a parametrized curve, for some interval $I$. Let
+  $f(t) = \lVert \alpha(t) \rVert = \alpha(t) \cdot \alpha(t)$. The derivative
+  is given by
+  \[%
+    f'(t) = \odv{}{t} [\alpha(t) \cdot \alpha(t)] = 2 \alpha(t) \cdot \alpha'(t)
+  .\]%
+  Since $t_0 \in I$ is a global minimum, we have
+  \[%
+    f'(t_0) = 0 \implies \alpha(t_0) \cdot \alpha'(t_0) = 0
+  .\]%
+  Since $\alpha(t_0) \ne 0 \ne \alpha'(t_0)$, we have that $\alpha(t_0)$ is
+  orthogonal to $\alpha'(t_0)$.
+\end{solution}
 
-% \begin{problem}[1.2.4]
-%   Let $\alpha : I \to \R^3$ be a parametrized curve and let $\v \in \R^3$ be a
-%   fixed vector. Assume that $\alpha'(t)$ is orthogonal to $\v$ for all $t \in I$
-%   and that $\alpha(0)$ is also orthogonal to $\v$. Prove that $\alpha(t)$ is
-%   orthogonal to $\v$ for all $t \in I$.
-% \end{problem}
+\begin{problem}[1.2.4]
+  Let $\alpha : I \to \R^3$ be a parametrized curve and let $\v \in \R^3$ be a
+  fixed vector. Assume that $\alpha'(t)$ is orthogonal to $\v$ for all $t \in I$
+  and that $\alpha(0)$ is also orthogonal to $\v$. Prove that $\alpha(t)$ is
+  orthogonal to $\v$ for all $t \in I$.
+\end{problem}
 
-% \begin{solution}
-%   Let $f(t) = \alpha(t) \cdot \v$. Then
-%   \[%
-%     f'(t) = \odv{}{t} [\alpha(t) \cdot \v] = \alpha'(t) \cdot \v
-%   .\]%
-%   Since $\alpha'(t)$ is orthogonal to $\v$, we have that $f'(t) = 0$ for all $t
-%   \in I$. Thus, $f(t)$ is constant. Since $f(0) = \alpha(0) \cdot v = 0$, we
-%   have that $f(t) = 0$ for all $t \in I$. Thus, $\alpha(t) \cdot \v = 0$ for all
-%   $t \in I$.
-% \end{solution}
+\begin{solution}
+  Let $f(t) = \alpha(t) \cdot \v$. Then
+  \[%
+    f'(t) = \odv{}{t} [\alpha(t) \cdot \v] = \alpha'(t) \cdot \v
+  .\]%
+  Since $\alpha'(t)$ is orthogonal to $\v$, we have that $f'(t) = 0$ for all $t
+  \in I$. Thus, $f(t)$ is constant. Since $f(0) = \alpha(0) \cdot v = 0$, we
+  have that $f(t) = 0$ for all $t \in I$. Thus, $\alpha(t) \cdot \v = 0$ for all
+  $t \in I$.
+\end{solution}
 
-% \begin{problem}[1.3.1]
-%   Show that the tangent lines to the regular parametrized curve $\alpha(t) =
-%   \left\langle 3t, 3t^2, 2t^3 \right\rangle$ make a constant angle with the line
-%   $y = 0$, $z = x$.
-% \end{problem}
+\begin{problem}[1.3.1]
+  Show that the tangent lines to the regular parametrized curve $\alpha(t) =
+  \left\langle 3t, 3t^2, 2t^3 \right\rangle$ make a constant angle with the line
+  $y = 0$, $z = x$.
+\end{problem}
 
-% \begin{solution}
-%   The tangent line to the curve $\alpha(t)$ is given by
-%   \[%
-%     \alpha'(t) = \left\langle 3, 6t, 6t^2 \right\rangle
-%   .\]%
-%   The line $y = 0$, $z = x$ is given by $\beta(s) = \langle s, 0, s \rangle$.
-%   The direction vector of $\beta(s)$ is given by $\langle 1, 0, 1 \rangle$. The
-%   angle between the two lines is given by
-%   \[%
-%     \cos(\theta) = \frac{\u \cdot \v}{\lVert \u \rVert \lVert \v \rVert} = \frac{\alpha'(t) \cdot \langle 1, 0, 1 \rangle}{\lVert \alpha'(t) \rVert \lVert \langle 1, 0, 1 \rangle \rVert} = \frac{3 + 6t^2}{\sqrt{9 + 36t^2 + 36t^4} \cdot \sqrt{2}} = \frac{1}{\sqrt{2}} = \frac{\sqrt{2}}{2}
-%   .\]%
-%   Thus, the angle between the two lines is constant.
-% \end{solution}
+\begin{solution}
+  The tangent line to the curve $\alpha(t)$ is given by
+  \[%
+    \alpha'(t) = \left\langle 3, 6t, 6t^2 \right\rangle
+  .\]%
+  The line $y = 0$, $z = x$ is given by $\beta(s) = \langle s, 0, s \rangle$.
+  The direction vector of $\beta(s)$ is given by $\langle 1, 0, 1 \rangle$. The
+  angle between the two lines is given by
+  \[%
+    \cos(\theta) = \frac{\u \cdot \v}{\lVert \u \rVert \lVert \v \rVert} = \frac{\alpha'(t) \cdot \langle 1, 0, 1 \rangle}{\lVert \alpha'(t) \rVert \lVert \langle 1, 0, 1 \rangle \rVert} = \frac{3 + 6t^2}{\sqrt{9 + 36t^2 + 36t^4} \cdot \sqrt{2}} = \frac{1}{\sqrt{2}} = \frac{\sqrt{2}}{2}
+  .\]%
+  Thus, the angle between the two lines is constant.
+\end{solution}
 
-% \begin{problem}[1.3.4]
-%   Let $\alpha : (0, \pi) \to \R^2$ be given by
-%   \[%
-%     \alpha(t) = \left\langle \sin(t), \cos(t) + \log\left(\tan\left(\frac{t}{2}\right)\right) \right\rangle
-%   ,\]%
-%   where $t$ is the angle that the $y$-axis makes with the vector $\alpha'(t)$. The trace of $\alpha$ is called the tractrix. Show that
-%   \begin{enumerate}
-%     \item $\alpha$ is a differentiable parametrized curve, regular except at $t = \sfrac{\pi}{2}$.
+\begin{problem}[1.3.4]
+  Let $\alpha : (0, \pi) \to \R^2$ be given by
+  \[%
+    \alpha(t) = \left\langle \sin(t), \cos(t) + \log\left(\tan\left(\frac{t}{2}\right)\right) \right\rangle
+  ,\]%
+  where $t$ is the angle that the $y$-axis makes with the vector $\alpha'(t)$. The trace of $\alpha$ is called the tractrix. Show that
+  \begin{enumerate}
+    \item $\alpha$ is a differentiable parametrized curve, regular except at $t = \sfrac{\pi}{2}$.
 
-%     \item The length of the segment of the tangent of the tractrix between the point of tangency and the $y$-axis is constantly equal to $1$.
-%   \end{enumerate}
-% \end{problem}
+    \item The length of the segment of the tangent of the tractrix between the point of tangency and the $y$-axis is constantly equal to $1$.
+  \end{enumerate}
+\end{problem}
 
-% \begin{solution}[(i)]
-%   At $t = \sfrac{\pi}{2}$, we get
-%   \[%
-%     \alpha(\sfrac{\pi}{2}) = \langle 1, 1 \rangle
-%   .\]%
-%   Differentiating $\alpha(t)$, we obtain
-%   \[%
-%     \alpha'(t) = \left\langle \cos(t), -\sin(t) + \frac{1}{2}\csc\left(\frac{t}{2}\right)\sec^2\left(\frac{t}{2}\right) \right\rangle
-%   .\]%
-%   Evaluating at $t = \sfrac{\pi}{2}$, we find
-%   \[%
-%     \alpha'(\sfrac{\pi}{2}) = \langle 0, 0 \rangle
-%   .\]%
-%   Thus, $\alpha$ is not regular at $t = \sfrac{\pi}{2}$.
+\begin{solution}[(i)]
+  At $t = \sfrac{\pi}{2}$, we get
+  \[%
+    \alpha(\sfrac{\pi}{2}) = \langle 1, 1 \rangle
+  .\]%
+  Differentiating $\alpha(t)$, we obtain
+  \[%
+    \alpha'(t) = \left\langle \cos(t), -\sin(t) + \frac{1}{2}\csc\left(\frac{t}{2}\right)\sec^2\left(\frac{t}{2}\right) \right\rangle
+  .\]%
+  Evaluating at $t = \sfrac{\pi}{2}$, we find
+  \[%
+    \alpha'(\sfrac{\pi}{2}) = \langle 0, 0 \rangle
+  .\]%
+  Thus, $\alpha$ is not regular at $t = \sfrac{\pi}{2}$.
 
-%   Let $I = (0, \pi) \setminus \{\sfrac{\pi}{2}\}$. For $t \in I$, we note that
-%   \[%
-%     \lvert \cos(t) \rvert > 0
-%   ,\]%
-%   since $t \neq \sfrac{\pi}{2}$. Therefore, $\alpha'(t) \neq 0$ for all $t \in
-%   I$, meaning that $\alpha$ is regular on $I$.
-% \end{solution}
+  Let $I = (0, \pi) \setminus \{\sfrac{\pi}{2}\}$. For $t \in I$, we note that
+  \[%
+    \lvert \cos(t) \rvert > 0
+  ,\]%
+  since $t \neq \sfrac{\pi}{2}$. Therefore, $\alpha'(t) \neq 0$ for all $t \in
+  I$, meaning that $\alpha$ is regular on $I$.
+\end{solution}
 
-% \begin{solution}[(ii)]
-%   We are told that for each $t \in (0, \pi)$, the angle between the tangent
-%   vector $\alpha'(t)$ and the $y$-axis is exactly $t$. Let us interpret this
-%   geometrically. Since $\alpha$ is a regular, differentiable parametrized curve,
-%   its derivative $\alpha'(t)$ points in the direction of the tangent line to the
-%   curve at the point $\alpha(t)$. The information that $\alpha'(t)$ makes an
-%   angle $t$ with the $y$-axis tells us that the tangent line at $\alpha(t)$
-%   intersects the $y$-axis at an angle of $t$.
+\begin{solution}[(ii)]
+  We are told that for each $t \in (0, \pi)$, the angle between the tangent
+  vector $\alpha'(t)$ and the $y$-axis is exactly $t$. Let us interpret this
+  geometrically. Since $\alpha$ is a regular, differentiable parametrized curve,
+  its derivative $\alpha'(t)$ points in the direction of the tangent line to the
+  curve at the point $\alpha(t)$. The information that $\alpha'(t)$ makes an
+  angle $t$ with the $y$-axis tells us that the tangent line at $\alpha(t)$
+  intersects the $y$-axis at an angle of $t$.
 
-%   Now consider the segment of the tangent line that connects the point of
-%   tangency $\alpha(t)$ to its intersection with the $y$-axis. This segment lies
-%   along the direction of the tangent vector and intersects the $y$-axis, forming
-%   a right triangle with the horizontal leg extending from the $y$-axis to the
-%   point $\alpha(t) = \langle x(t), y(t) \rangle$.
+  Now consider the segment of the tangent line that connects the point of
+  tangency $\alpha(t)$ to its intersection with the $y$-axis. This segment lies
+  along the direction of the tangent vector and intersects the $y$-axis, forming
+  a right triangle with the horizontal leg extending from the $y$-axis to the
+  point $\alpha(t) = \langle x(t), y(t) \rangle$.
 
-%   In this right triangle, the hypotenuse is the segment of the tangent line from
-%   $\alpha(t)$ to the $y$-axis, and the horizontal leg has length $x(t) =
-%   \sin(t)$. Since the angle between the tangent line and the $y$-axis is $t$,
-%   the angle between the hypotenuse and the vertical leg (i.e., the $y$-axis) is
-%   also $t$. By basic trigonometry, we then have
-%   \[%
-%     \sin(t) = (\text{hypotenuse}) \cdot \sin(t)
-%   ,\]%
-%   which implies that the length of the hypotenuse — that is, the distance from
-%   the point of tangency to the $y$-axis along the tangent line — is exactly $1$
-%   \[%
-%     \text{Length} = \frac{\sin(t)}{\sin(t)} = 1
-%   .\]%
-%   Therefore, the length of the segment of the tangent line between the point of
-%   tangency and the $y$-axis is always equal to $1$, regardless of the value of
-%   $t$.
-% \end{solution}
+  In this right triangle, the hypotenuse is the segment of the tangent line from
+  $\alpha(t)$ to the $y$-axis, and the horizontal leg has length $x(t) =
+  \sin(t)$. Since the angle between the tangent line and the $y$-axis is $t$,
+  the angle between the hypotenuse and the vertical leg (i.e., the $y$-axis) is
+  also $t$. By basic trigonometry, we then have
+  \[%
+    \sin(t) = (\text{hypotenuse}) \cdot \sin(t)
+  ,\]%
+  which implies that the length of the hypotenuse — that is, the distance from
+  the point of tangency to the $y$-axis along the tangent line — is exactly $1$
+  \[%
+    \text{Length} = \frac{\sin(t)}{\sin(t)} = 1
+  .\]%
+  Therefore, the length of the segment of the tangent line between the point of
+  tangency and the $y$-axis is always equal to $1$, regardless of the value of
+  $t$.
+\end{solution}
 
-% \begin{problem}[1.3.6]
-%   Let $\alpha(t) = \left\langle ae^{bt}\cos(t), ae^{bt}\sin(t) \right\rangle$,
-%   $t \in \R$, $a$ and $b$ are constants, $a > 0$, $b < 0$, be parametrized
-%   curve.
-%   \begin{enumerate}
-%     \item Show that as $t \to +\infty$, $\alpha(t)$ approaches the origin $0$,
-%       spiraling around it (because of this, the trace of $\alpha$ is called the
-%       \textit{logarithmic spiral}).
+\begin{problem}[1.3.6]
+  Let $\alpha(t) = \left\langle ae^{bt}\cos(t), ae^{bt}\sin(t) \right\rangle$,
+  $t \in \R$, $a$ and $b$ are constants, $a > 0$, $b < 0$, be parametrized
+  curve.
+  \begin{enumerate}
+    \item Show that as $t \to +\infty$, $\alpha(t)$ approaches the origin $0$,
+      spiraling around it (because of this, the trace of $\alpha$ is called the
+      \textit{logarithmic spiral}).
 
-%     \item Show that $\alpha'(t) \to (0, 0)$ as $t \to +\infty$ and that
-%       \[%
-%         \lim_{t \to +\infty} \int_{t_0}^t \lVert \alpha'(x) \rVert \dx
-%       ,\]%
-%       is finite; that is, $\alpha$ has finite arc length in $[t_0, \infty)$.
-%   \end{enumerate}
-% \end{problem}
+    \item Show that $\alpha'(t) \to (0, 0)$ as $t \to +\infty$ and that
+      \[%
+        \lim_{t \to +\infty} \int_{t_0}^t \lVert \alpha'(x) \rVert \dx
+      ,\]%
+      is finite; that is, $\alpha$ has finite arc length in $[t_0, \infty)$.
+  \end{enumerate}
+\end{problem}
 
-% \begin{solution}[(i)]
-%   Since $b < 0$, we have $e^{bt} \to 0$ as $t \to +\infty$. Thus, we obtain
-%   \[%
-%     \alpha(t) = \left\langle ae^{bt}\cos(t), ae^{bt}\sin(t) \right\rangle \to (0,0) \qtq{as} t \to +\infty
-%   .\]%
-%   The presence of the $\cos(t)$ and $\sin(t)$ terms indicates that the
-%   trajectory of $\alpha(t)$ traces a spiral as it approaches the origin.
-% \end{solution}
+\begin{solution}[(i)]
+  Since $b < 0$, we have $e^{bt} \to 0$ as $t \to +\infty$. Thus, we obtain
+  \[%
+    \alpha(t) = \left\langle ae^{bt}\cos(t), ae^{bt}\sin(t) \right\rangle \to (0,0) \qtq{as} t \to +\infty
+  .\]%
+  The presence of the $\cos(t)$ and $\sin(t)$ terms indicates that the
+  trajectory of $\alpha(t)$ traces a spiral as it approaches the origin.
+\end{solution}
 
-% \begin{solution}[(ii)]
-%   We compute
-%   \begin{align*}
-%     \alpha'(t) &= \left\langle \frac{d}{dt} \big( ae^{bt} \cos t \big), \frac{d}{dt} \big( ae^{bt} \sin t \big) \right\rangle \\
-%                &= \left\langle a\big( be^{bt} \cos t - e^{bt} \sin t \big), a\big( be^{bt} \sin t + e^{bt} \cos t \big) \right\rangle
-%   .\end{align*}
-%   Again, since $b < 0$, we see that $e^{bt} \to 0$ as $t \to +\infty$, and so
-%   \[%
-%     \alpha'(t) \to (0, 0) \qtq{as} t \to +\infty
-%   .\]%
+\begin{solution}[(ii)]
+  We compute
+  \begin{align*}
+    \alpha'(t) &= \left\langle \frac{d}{dt} \big( ae^{bt} \cos t \big), \frac{d}{dt} \big( ae^{bt} \sin t \big) \right\rangle \\
+               &= \left\langle a\big( be^{bt} \cos t - e^{bt} \sin t \big), a\big( be^{bt} \sin t + e^{bt} \cos t \big) \right\rangle
+  .\end{align*}
+  Again, since $b < 0$, we see that $e^{bt} \to 0$ as $t \to +\infty$, and so
+  \[%
+    \alpha'(t) \to (0, 0) \qtq{as} t \to +\infty
+  .\]%
 
-%   Now, we compute the arc length
-%   \begin{align*}
-%     \int_{t_0}^t \lVert \alpha'(x) \rVert \dx &= \int_{t_0}^t \sqrt{(abe^{bx} \cos x - ae^{bx} \sin x)^2 + (abe^{bx} \sin x + ae^{bx} \cos x)^2} \dx \\
-%                                               &= \int_{t_0}^t ae^{bx} \sqrt{b^2 + 1} \dx \\
-%                                               &= a\sqrt{b^2 + 1} \int_{t_0}^t e^{bx} \dx
-%   .\end{align*}
-%   Evaluating the integral, we obtain
-%   \[%
-%     a\sqrt{b^2 + 1} \frac{e^{bx}}{b} \bigg|_{t_0}^t = a\sqrt{b^2 + 1} \left(\frac{e^{bt}}{b} - \frac{e^{bt_0}}{b}\right).
-%   \]%
-%   Taking the limit as $t \to +\infty$, we find
-%   \[%
-%     \lim_{t \to +\infty} \int_{t_0}^t \lVert \alpha'(x) \rVert \dx = a\sqrt{b^2 + 1} \left( 0 - \frac{e^{bt_0}}{b} \right) = -\frac{a\sqrt{b^2 + 1}}{b}e^{bt_0} < \infty
-%   .\]%
-%   Thus, $\alpha$ has finite arc length in $[t_0, \infty)$.
-% \end{solution}
+  Now, we compute the arc length
+  \begin{align*}
+    \int_{t_0}^t \lVert \alpha'(x) \rVert \dx &= \int_{t_0}^t \sqrt{(abe^{bx} \cos x - ae^{bx} \sin x)^2 + (abe^{bx} \sin x + ae^{bx} \cos x)^2} \dx \\
+                                              &= \int_{t_0}^t ae^{bx} \sqrt{b^2 + 1} \dx \\
+                                              &= a\sqrt{b^2 + 1} \int_{t_0}^t e^{bx} \dx
+  .\end{align*}
+  Evaluating the integral, we obtain
+  \[%
+    a\sqrt{b^2 + 1} \frac{e^{bx}}{b} \bigg|_{t_0}^t = a\sqrt{b^2 + 1} \left(\frac{e^{bt}}{b} - \frac{e^{bt_0}}{b}\right).
+  \]%
+  Taking the limit as $t \to +\infty$, we find
+  \[%
+    \lim_{t \to +\infty} \int_{t_0}^t \lVert \alpha'(x) \rVert \dx = a\sqrt{b^2 + 1} \left( 0 - \frac{e^{bt_0}}{b} \right) = -\frac{a\sqrt{b^2 + 1}}{b}e^{bt_0} < \infty
+  .\]%
+  Thus, $\alpha$ has finite arc length in $[t_0, \infty)$.
+\end{solution}
 
-% \begin{problem}[1.3.10]
-%   Let $\alpha : I \to \R^3$ be a parametrized curve. Let $[a, b] \subset I$ and
-%   set $\alpha(a) = \p$, $\alpha(b) = \q$.
-%   \begin{enumerate}
-%     \item Show that, for any constant vector $\v$, $\lVert \v \rVert = 1$,
-%       \[%
-%         (\q - \p) \cdot \v = \int_a^b \alpha'(t) \cdot \v \dt \le \int_a^b \lVert \alpha'(t) \rVert \dt
-%       .\]%
+\begin{problem}[1.3.10]
+  Let $\alpha : I \to \R^3$ be a parametrized curve. Let $[a, b] \subset I$ and
+  set $\alpha(a) = \p$, $\alpha(b) = \q$.
+  \begin{enumerate}
+    \item Show that, for any constant vector $\v$, $\lVert \v \rVert = 1$,
+      \[%
+        (\q - \p) \cdot \v = \int_a^b \alpha'(t) \cdot \v \dt \le \int_a^b \lVert \alpha'(t) \rVert \dt
+      .\]%
 
-%     \item Set
-%       \[%
-%         \v = \frac{\q - \p}{\lVert \q - \p \rVert}
-%       ,\]%
-%       and show that
-%       \[%
-%         \lVert \alpha(b) - \alpha(a) \rVert \le \int_a^b \lVert \alpha'(t) \rVert \dt
-%       ;\]%
-%       that is, the curve of shortest length from $\alpha(a)$ to $\alpha(b)$ is
-%       the straight line joining these points.
-%   \end{enumerate}
-% \end{problem}
+    \item Set
+      \[%
+        \v = \frac{\q - \p}{\lVert \q - \p \rVert}
+      ,\]%
+      and show that
+      \[%
+        \lVert \alpha(b) - \alpha(a) \rVert \le \int_a^b \lVert \alpha'(t) \rVert \dt
+      ;\]%
+      that is, the curve of shortest length from $\alpha(a)$ to $\alpha(b)$ is
+      the straight line joining these points.
+  \end{enumerate}
+\end{problem}
 
-% \begin{solution}[(i)]
-%   We first show the equality on the left-hand side. Since $\v$ is a constant
-%   vector, we can factor it out of the integral. Thus, we have
-%   \[%
-%     \int_a^b \alpha'(t) \cdot \v \dt = \int_a^b \alpha'(t) \dt \cdot \v = (\alpha(b) - \alpha(a)) \cdot \v = (\q - \p) \cdot \v
-%   .\]%
-%   Thus, we have shown the equality.
+\begin{solution}[(i)]
+  We first show the equality on the left-hand side. Since $\v$ is a constant
+  vector, we can factor it out of the integral. Thus, we have
+  \[%
+    \int_a^b \alpha'(t) \cdot \v \dt = \int_a^b \alpha'(t) \dt \cdot \v = (\alpha(b) - \alpha(a)) \cdot \v = (\q - \p) \cdot \v
+  .\]%
+  Thus, we have shown the equality.
 
-%   Now, we can show the inequality.Using the Cauchy-Schwartz inequality, we know
-%   that for any vectors $a$ and $b$, $a \cdot b \le \lvert a \rvert \lvert b
-%   \rvert$. Applying this to $\alpha'(t)$ and $v$, we have $\alpha'(t) \cdot v
-%   \le \lVert \alpha'(t) \rVert$. Therefore, we have
-%   \[%
-%     \int_a^b \alpha'(t) \cdot \v \dt \le \int_a^b \lVert \alpha'(t) \rVert \dt
-%   .\]%
-%   Thus, we have shown the inequality.
-% \end{solution}
+  Now, we can show the inequality.Using the Cauchy-Schwartz inequality, we know
+  that for any vectors $a$ and $b$, $a \cdot b \le \lvert a \rvert \lvert b
+  \rvert$. Applying this to $\alpha'(t)$ and $v$, we have $\alpha'(t) \cdot v
+  \le \lVert \alpha'(t) \rVert$. Therefore, we have
+  \[%
+    \int_a^b \alpha'(t) \cdot \v \dt \le \int_a^b \lVert \alpha'(t) \rVert \dt
+  .\]%
+  Thus, we have shown the inequality.
+\end{solution}
 
-% \begin{solution}[(ii)]
-%   Computing the original integral with the new value of $\v$, we have
-%   \[%
-%     \int_a^b \alpha'(t) \cdot \v \dt = \int_a^b \alpha'(t) \dt \cdot \left(\frac{\q - \p}{\lVert \q - \p \rVert}\right) = (\q - \p) \cdot \frac{\q - \p}{\lVert \q - p \rVert}
-%   .\]%
-%   Since $(\q - \p)(\q - \p) = \lVert \q - \p \rVert^2$, we get
-%   \[%
-%     \int_a^b \alpha'(t) \dt \cdot \v = \lVert \q - \p \rVert
-%   .\]%
-%   Since we've already established the inequality in part (i), we have
-%   \[%
-%     \int_a^b \alpha'(t) \cdot \frac{\q - \p}{\lVert \q - \p \rVert} \dt = \lVert \q - \p \rVert = \lVert \alpha(b) - \alpha(a) \rVert \le \int_a^b \lVert \alpha'(t) \rVert \dt
-%   .\]%
-%   Thus, we have shown the inequality.
-% \end{solution}
+\begin{solution}[(ii)]
+  Computing the original integral with the new value of $\v$, we have
+  \[%
+    \int_a^b \alpha'(t) \cdot \v \dt = \int_a^b \alpha'(t) \dt \cdot \left(\frac{\q - \p}{\lVert \q - \p \rVert}\right) = (\q - \p) \cdot \frac{\q - \p}{\lVert \q - p \rVert}
+  .\]%
+  Since $(\q - \p)(\q - \p) = \lVert \q - \p \rVert^2$, we get
+  \[%
+    \int_a^b \alpha'(t) \dt \cdot \v = \lVert \q - \p \rVert
+  .\]%
+  Since we've already established the inequality in part (i), we have
+  \[%
+    \int_a^b \alpha'(t) \cdot \frac{\q - \p}{\lVert \q - \p \rVert} \dt = \lVert \q - \p \rVert = \lVert \alpha(b) - \alpha(a) \rVert \le \int_a^b \lVert \alpha'(t) \rVert \dt
+  .\]%
+  Thus, we have shown the inequality.
+\end{solution}
 
-% \begin{problem}[1.4.2]
-%   A plane $P$ contained in $\R^3$ is given by the equation $ax + by + cz + d =
-%   0$. Show that the vector $v = \langle a, b, c \rangle$ is perpendicular to the
-%   plane and that $\sfrac{\lvert d \rvert}{\sqrt{a^2 + b^2 + c^2}}$ measures the
-%   distance from the plane to the origin $(0, 0, 0)$.
-% \end{problem}
+\begin{problem}[1.4.2]
+  A plane $P$ contained in $\R^3$ is given by the equation $ax + by + cz + d =
+  0$. Show that the vector $v = \langle a, b, c \rangle$ is perpendicular to the
+  plane and that $\sfrac{\lvert d \rvert}{\sqrt{a^2 + b^2 + c^2}}$ measures the
+  distance from the plane to the origin $(0, 0, 0)$.
+\end{problem}
 
-% \begin{proof}[Solution]
-%   Essentially, this question is asking to show that the normal vector to the
-%   plane is the vector $\v = \langle a, b, c \rangle$.
+\begin{proof}[Solution]
+  Essentially, this question is asking to show that the normal vector to the
+  plane is the vector $\v = \langle a, b, c \rangle$.
 
-%   Let $P_1$ and $P_2$ be points on the plane $P$. Then, we have $\p =
-%   \overline{P_1P_2} = \langle x_2 - x_1, y_2 - y_1, z_2 - z_1 \rangle$. Since
-%   they are both on the plane, we have
-%   \begin{align*}
-%     ax_1 + by_1 + cz_1 + d &= 0 \\
-%     ax_2 + by_2 + cz_2 + d &= 0
-%   .\end{align*}
-%   Subtracting the two equations, we have
-%   \[%
-%     a(x_2 - x_1) + b(y_2 - y_1) + c(z_2 - z_1) = 0
-%   .\]%
-%   Thus, we have
-%   \[%
-%     a(x_2 - x_1) + b(y_2 - y_1) + c(z_2 - z_1) = 0 \implies \v \cdot \p = 0
-%   .\]%
-%   Thus, we have shown that $\v$ is perpendicular to the plane.
+  Let $P_1$ and $P_2$ be points on the plane $P$. Then, we have $\p =
+  \overline{P_1P_2} = \langle x_2 - x_1, y_2 - y_1, z_2 - z_1 \rangle$. Since
+  they are both on the plane, we have
+  \begin{align*}
+    ax_1 + by_1 + cz_1 + d &= 0 \\
+    ax_2 + by_2 + cz_2 + d &= 0
+  .\end{align*}
+  Subtracting the two equations, we have
+  \[%
+    a(x_2 - x_1) + b(y_2 - y_1) + c(z_2 - z_1) = 0
+  .\]%
+  Thus, we have
+  \[%
+    a(x_2 - x_1) + b(y_2 - y_1) + c(z_2 - z_1) = 0 \implies \v \cdot \p = 0
+  .\]%
+  Thus, we have shown that $\v$ is perpendicular to the plane.
 
-%   Now we compute the distance from the origin $(0, 0, 0)$ to the plane. The
-%   distance from a point $\vec{r}_0 = (x_0, y_0, z_0)$ to the plane defined by
-%   $ax + by + cz + d = 0$ is given by the formula
-%   \[%
-%     D = \frac{\lvert a x_0 + b y_0 + c z_0 + d \rvert}{\sqrt{a^2 + b^2 + c^2}}
-%   .\]%
-%   Plugging in the origin $(0, 0, 0)$, we get
-%   \[%
-%     D = \frac{\lvert a \cdot 0 + b \cdot 0 + c \cdot 0 + d \rvert}{\sqrt{a^2 + b^2 + c^2}} = \frac{\lvert d \rvert}{\sqrt{a^2 + b^2 + c^2}}
-%   .\]%
-%   This completes the proof.
-% \end{proof}
+  Now we compute the distance from the origin $(0, 0, 0)$ to the plane. The
+  distance from a point $\vec{r}_0 = (x_0, y_0, z_0)$ to the plane defined by
+  $ax + by + cz + d = 0$ is given by the formula
+  \[%
+    D = \frac{\lvert a x_0 + b y_0 + c z_0 + d \rvert}{\sqrt{a^2 + b^2 + c^2}}
+  .\]%
+  Plugging in the origin $(0, 0, 0)$, we get
+  \[%
+    D = \frac{\lvert a \cdot 0 + b \cdot 0 + c \cdot 0 + d \rvert}{\sqrt{a^2 + b^2 + c^2}} = \frac{\lvert d \rvert}{\sqrt{a^2 + b^2 + c^2}}
+  .\]%
+  This completes the proof.
+\end{proof}
 
-% \begin{problem}[1.4.10]
-%   The natural orientation of $\R^2$ makes it possible to associate a sign to the
-%   area $A$ of a parallelogram generated by two linearly independent vectors $u,
-%   v \in \R^2$. To do this, let $\{\e_i\}$, $i = 1, 2$, be the natural ordered
-%   basis of $\R^2$, and write $u = u_1\e_1 + u_2\e_2$, $v = v_1\e_1 + v_2\e_2$.
-%   Observe the matrix relation
-%   \[%
-%     \begin{pmatrix}
-%       u \cdot u & u \cdot v \\
-%       v \cdot u & v \cdot v
-%     \end{pmatrix}
-%     = \begin{pmatrix}
-%       u_1 & u_2 \\
-%       v_1 & v_2
-%     \end{pmatrix}
-%     \begin{pmatrix}
-%       u_1 & v_1 \\
-%       u_2 & v_2
-%     \end{pmatrix}
-%   ,\]%
-%   and conclude that
-%   \[%
-%     A^2 = \begin{vmatrix}
-%       u_1 & u_2 \\
-%       v_1 & v_2
-%     \end{vmatrix}^2
-%   .\]%
-%   Since the last determinant has the same sign as the basis $\{u, v\}$, we can
-%   say that $A$ is positive or negative according to whether the orientation of
-%   $\{u, v\}$ is positive or negative. This is called the \textit{orientated
-%   area} in $\R^2$.
-% \end{problem}
+\begin{problem}[1.4.10]
+  The natural orientation of $\R^2$ makes it possible to associate a sign to the
+  area $A$ of a parallelogram generated by two linearly independent vectors $u,
+  v \in \R^2$. To do this, let $\{\e_i\}$, $i = 1, 2$, be the natural ordered
+  basis of $\R^2$, and write $u = u_1\e_1 + u_2\e_2$, $v = v_1\e_1 + v_2\e_2$.
+  Observe the matrix relation
+  \[%
+    \begin{pmatrix}
+      u \cdot u & u \cdot v \\
+      v \cdot u & v \cdot v
+    \end{pmatrix}
+    = \begin{pmatrix}
+      u_1 & u_2 \\
+      v_1 & v_2
+    \end{pmatrix}
+    \begin{pmatrix}
+      u_1 & v_1 \\
+      u_2 & v_2
+    \end{pmatrix}
+  ,\]%
+  and conclude that
+  \[%
+    A^2 = \begin{vmatrix}
+      u_1 & u_2 \\
+      v_1 & v_2
+    \end{vmatrix}^2
+  .\]%
+  Since the last determinant has the same sign as the basis $\{u, v\}$, we can
+  say that $A$ is positive or negative according to whether the orientation of
+  $\{u, v\}$ is positive or negative. This is called the \textit{orientated
+  area} in $\R^2$.
+\end{problem}
 
-% \begin{solution}
-% \end{solution}
+\begin{solution}
+\end{solution}
 
-% \begin{problem}[1.4.11]
-%   \begin{enumerate}
-%     \item Show that the volume $V$ of a parallelepiped generated by three
-%       linearly independent vectors $\u, \v, \w \in \R^3$ is given by $V = \lvert
-%       (\u \wedge \v) \cdot \w \rvert$, and introduce an \textit{orientated
-%       volume} in $\R^3$.
+\begin{problem}[1.4.11]
+  \begin{enumerate}
+    \item Show that the volume $V$ of a parallelepiped generated by three
+      linearly independent vectors $\u, \v, \w \in \R^3$ is given by $V = \lvert
+      (\u \wedge \v) \cdot \w \rvert$, and introduce an \textit{orientated
+      volume} in $\R^3$.
 
-%     \item Prove that
-%       \[%
-%         V^2 = \begin{vmatrix}
-%           \u \cdot \u & \u \cdot \v & \u \cdot \w \\
-%           \v \cdot \u & \v \cdot \v & \v \cdot \w \\
-%           \w \cdot \u & \w \cdot \v & \w \cdot \w \\
-%         \end{vmatrix}
-%       .\]%
-%   \end{enumerate}
-% \end{problem}
+    \item Prove that
+      \[%
+        V^2 = \begin{vmatrix}
+          \u \cdot \u & \u \cdot \v & \u \cdot \w \\
+          \v \cdot \u & \v \cdot \v & \v \cdot \w \\
+          \w \cdot \u & \w \cdot \v & \w \cdot \w \\
+        \end{vmatrix}
+      .\]%
+  \end{enumerate}
+\end{problem}
 
-% \begin{solution}[(i)]
-%   The volume of a parallelepiped is given by $V = \textrm{Base} \times
-%   \textrm{Height}$. The base is given by the area of the parallelogram formed by
-%   the vectors $\u$ and $\v$, which is given by $\lvert \u \wedge \v \rvert$. The
-%   height is given by the component of $\w$ in the direction of the normal vector
-%   $\u \wedge \v$, which is given by
-%   \[%
-%     h = \frac{\lvert (\u \wedge \v) \cdot \w \rvert}{\lVert \u \wedge \v \rVert}
-%   .\]%
-%   Therefore, we have
-%   \[%
-%     V = \textrm{Base} \times \textrm{Height} = \lVert \u \wedge \v \rVert \cdot \frac{\lvert (\u \wedge \v) \cdot \w \rvert}{\lVert \u \wedge \v \rVert} = \lvert (\u \wedge \v) \cdot \w \rvert
-%   .\]%
+\begin{solution}[(i)]
+  The volume of a parallelepiped is given by $V = \textrm{Base} \times
+  \textrm{Height}$. The base is given by the area of the parallelogram formed by
+  the vectors $\u$ and $\v$, which is given by $\lvert \u \wedge \v \rvert$. The
+  height is given by the component of $\w$ in the direction of the normal vector
+  $\u \wedge \v$, which is given by
+  \[%
+    h = \frac{\lvert (\u \wedge \v) \cdot \w \rvert}{\lVert \u \wedge \v \rVert}
+  .\]%
+  Therefore, we have
+  \[%
+    V = \textrm{Base} \times \textrm{Height} = \lVert \u \wedge \v \rVert \cdot \frac{\lvert (\u \wedge \v) \cdot \w \rvert}{\lVert \u \wedge \v \rVert} = \lvert (\u \wedge \v) \cdot \w \rvert
+  .\]%
 
-%   The oriented volume $V_{\text{oriented}}$ carries a sign that depends on
-%   whether $(\u, \v, \w)$ form a right-handed or left-handed basis. If $(\u, \v,
-%   \w)$ follows the right-hand rule, then $V_{\text{oriented}}$ is positive.
-%   Otherwise, it is negative.
-% \end{solution}
+  The oriented volume $V_{\text{oriented}}$ carries a sign that depends on
+  whether $(\u, \v, \w)$ form a right-handed or left-handed basis. If $(\u, \v,
+  \w)$ follows the right-hand rule, then $V_{\text{oriented}}$ is positive.
+  Otherwise, it is negative.
+\end{solution}
 
-% \begin{solution}[(ii)]
-%   Let $A = [\u~\v~\w]$. Then, we have
-%   \[%
-%     \det(A)\det(A) = \det(A^2) = \det(A^TA) = \det(A^T) \cdot \det(A)
-%     = \det\begin{pmatrix}
-%       \u \\
-%       \v \\
-%       \w \\
-%     \end{pmatrix}
-%     \cdot \det\begin{pmatrix}
-%       \u & \v & \w \\
-%     \end{pmatrix}
-%   .\]%
-%   This gives us
-%   \[%
-%     \det(A^TA) = \begin{vmatrix}
-%       \u \cdot \u & \u \cdot \v & \u \cdot \w \\
-%       \v \cdot \u & \v \cdot \v & \v \cdot \w \\
-%       \w \cdot \u & \w \cdot \v & \w \cdot \w \\
-%     \end{vmatrix}
-%   .\]%
-%   Notice that $\det(A^TA) = \lvert (\u \wedge \v) \cdot \w \rvert^2 = V^2$.
-%   Thus, we've shown the desired result.
-% \end{solution}
+\begin{solution}[(ii)]
+  Let $A = [\u~\v~\w]$. Then, we have
+  \[%
+    \det(A)\det(A) = \det(A^2) = \det(A^TA) = \det(A^T) \cdot \det(A)
+    = \det\begin{pmatrix}
+      \u \\
+      \v \\
+      \w \\
+    \end{pmatrix}
+    \cdot \det\begin{pmatrix}
+      \u & \v & \w \\
+    \end{pmatrix}
+  .\]%
+  This gives us
+  \[%
+    \det(A^TA) = \begin{vmatrix}
+      \u \cdot \u & \u \cdot \v & \u \cdot \w \\
+      \v \cdot \u & \v \cdot \v & \v \cdot \w \\
+      \w \cdot \u & \w \cdot \v & \w \cdot \w \\
+    \end{vmatrix}
+  .\]%
+  Notice that $\det(A^TA) = \lvert (\u \wedge \v) \cdot \w \rvert^2 = V^2$.
+  Thus, we've shown the desired result.
+\end{solution}
 
-% \begin{problem}[1.5.1]
-%   Given the parametrized curve (helix)
-%   \[%
-%     \alpha(s) = \left\langle a\cos\left(\frac{s}{c}\right), a\sin\left(\frac{s}{c}\right), b\frac{s}{c} \right\rangle, \quad s \in \R
-%   ,\]%
-%   where $c^2 = a^2 + b^2$.
-%   \begin{enumerate}
-%     \item Show that the parameter $s$ is the arc length.
+\begin{problem}[1.5.1]
+  Given the parametrized curve (helix)
+  \[%
+    \alpha(s) = \left\langle a\cos\left(\frac{s}{c}\right), a\sin\left(\frac{s}{c}\right), b\frac{s}{c} \right\rangle, \quad s \in \R
+  ,\]%
+  where $c^2 = a^2 + b^2$.
+  \begin{enumerate}
+    \item Show that the parameter $s$ is the arc length.
 
-%     \item Determine the curvature and the torsion of $\alpha$.
+    \item Determine the curvature and the torsion of $\alpha$.
 
-%     \item Determine the osculating plane of $\alpha$.
+    \item Determine the osculating plane of $\alpha$.
 
-%     \item Show that the lines containing $\Na(s)$ and passing through
-%       $\alpha(s)$ meet the $z$-axis under a constant angle equal to
-%       $\sfrac{\pi}{2}$.
+    \item Show that the lines containing $\Na(s)$ and passing through
+      $\alpha(s)$ meet the $z$-axis under a constant angle equal to
+      $\sfrac{\pi}{2}$.
 
-%     \item Show that the tangent lines to $\alpha$ make a constant angle with the
-%       $z$-axis.
-%   \end{enumerate}
-% \end{problem}
+    \item Show that the tangent lines to $\alpha$ make a constant angle with the
+      $z$-axis.
+  \end{enumerate}
+\end{problem}
 
-% \begin{solution}[(i)]
-%   If $\alpha(s)$ is parametrized by arc length, then the magnitude of the
-%   derivative of $\alpha(s)$ must be equal to $1$. We compute
-%   \[%
-%     \alpha'(s) = \left\langle -\frac{a}{c}\sin\left(\frac{s}{c}\right), \frac{a}{c}\cos\left(\frac{s}{c}\right), \frac{b}{c} \right\rangle
-%   .\]%
-%   The magnitude of the derivative is given by
-%   \begin{align*}
-%     \lVert \alpha'(s) \rVert &= \sqrt{\frac{a^2}{c^2}\sin^2\left(\frac{s}{c}\right) + \frac{a^2}{c^2}\cos^2\left(\frac{s}{c}\right) + \frac{b^2}{c^2}} \\
-%                              &= \sqrt{\frac{a^2}{c^2} + \frac{b^2}{c^2}} = \sqrt{1} = 1
-%   .\end{align*}
-%   Therefore, we have shown that $s$ is the arc length.
-% \end{solution}
+\begin{solution}[(i)]
+  If $\alpha(s)$ is parametrized by arc length, then the magnitude of the
+  derivative of $\alpha(s)$ must be equal to $1$. We compute
+  \[%
+    \alpha'(s) = \left\langle -\frac{a}{c}\sin\left(\frac{s}{c}\right), \frac{a}{c}\cos\left(\frac{s}{c}\right), \frac{b}{c} \right\rangle
+  .\]%
+  The magnitude of the derivative is given by
+  \begin{align*}
+    \lVert \alpha'(s) \rVert &= \sqrt{\frac{a^2}{c^2}\sin^2\left(\frac{s}{c}\right) + \frac{a^2}{c^2}\cos^2\left(\frac{s}{c}\right) + \frac{b^2}{c^2}} \\
+                             &= \sqrt{\frac{a^2}{c^2} + \frac{b^2}{c^2}} = \sqrt{1} = 1
+  .\end{align*}
+  Therefore, we have shown that $s$ is the arc length.
+\end{solution}
 
-% \begin{solution}[(ii)]
-%   The curvature is given by $\kappa(s) = \lVert \alpha''(s) \rVert$. Computing
-%   the second derivative from part (i), we have
-%   \[%
-%     \alpha''(s) = \left\langle -\frac{a}{c^2}\cos\left(\frac{s}{c}\right), -\frac{a}{c^2}\sin\left(\frac{s}{c}\right), 0 \right\rangle
-%   .\]%
-%   The magnitude of the second derivative is given by
-%   \[%
-%     \kappa(s) = \lVert \Ta'(s) \rVert = \sqrt{\frac{a^2}{c^4}\cos^2\left(\frac{s}{c}\right) + \frac{a^2}{c^4}\sin^2\left(\frac{s}{c}\right)} = \frac{a}{c^2}
-%   .\]%
-%   Thus, the curvature is given by $\kappa(s) = \sfrac{a}{c^2}$.
+\begin{solution}[(ii)]
+  The curvature is given by $\kappa(s) = \lVert \alpha''(s) \rVert$. Computing
+  the second derivative from part (i), we have
+  \[%
+    \alpha''(s) = \left\langle -\frac{a}{c^2}\cos\left(\frac{s}{c}\right), -\frac{a}{c^2}\sin\left(\frac{s}{c}\right), 0 \right\rangle
+  .\]%
+  The magnitude of the second derivative is given by
+  \[%
+    \kappa(s) = \lVert \Ta'(s) \rVert = \sqrt{\frac{a^2}{c^4}\cos^2\left(\frac{s}{c}\right) + \frac{a^2}{c^4}\sin^2\left(\frac{s}{c}\right)} = \frac{a}{c^2}
+  .\]%
+  Thus, the curvature is given by $\kappa(s) = \sfrac{a}{c^2}$.
 
-%   The torsion, $\tau(s)$, is given by $\Ba'(s) = \tau(s)\Na(s)$. Using the unit
-%   normal and the binormal vector from part (iii). Now, we compute the derivative
-%   of $\Ba(s)$,
-%   \[%
-%     \Ba'(s) = \left\langle \frac{b}{c^2}\cos\left(\frac{s}{c}\right), \frac{b}{c^2}\sin\left(\frac{s}{c}\right), 0 \right\rangle
-%   .\]%
-%   Therefore, we get
-%   \[%
-%     \left\langle \frac{b}{c^2}\cos\left(\frac{s}{c}\right), \frac{b}{c^2}\sin\left(\frac{s}{c}\right), 0 \right\rangle = \tau(s) \left\langle -\cos\left(\frac{s}{c}\right), -\sin\left(\frac{s}{c}\right), 0 \right\rangle
-%   .\]%
-%   Thus, the torsion is given by $\tau(s) = -\sfrac{b}{c^2}$.
-% \end{solution}
+  The torsion, $\tau(s)$, is given by $\Ba'(s) = \tau(s)\Na(s)$. Using the unit
+  normal and the binormal vector from part (iii). Now, we compute the derivative
+  of $\Ba(s)$,
+  \[%
+    \Ba'(s) = \left\langle \frac{b}{c^2}\cos\left(\frac{s}{c}\right), \frac{b}{c^2}\sin\left(\frac{s}{c}\right), 0 \right\rangle
+  .\]%
+  Therefore, we get
+  \[%
+    \left\langle \frac{b}{c^2}\cos\left(\frac{s}{c}\right), \frac{b}{c^2}\sin\left(\frac{s}{c}\right), 0 \right\rangle = \tau(s) \left\langle -\cos\left(\frac{s}{c}\right), -\sin\left(\frac{s}{c}\right), 0 \right\rangle
+  .\]%
+  Thus, the torsion is given by $\tau(s) = -\sfrac{b}{c^2}$.
+\end{solution}
 
-% \begin{solution}[(iii)]
-%   Since $\alpha(s)$ is parametrized by arc length, then $\Ta(s) = \alpha'(s)$.
-%   Now, we need to find the unit normal vector, $\Na(s)$, which is given by
-%   \[%
-%     \Na(s) = \frac{\Ta(s)}{\lVert \Ta(s) \rVert} = \left\langle -\cos\left(\frac{s}{c}\right), -\sin\left(\frac{s}{c}\right), 0 \right\rangle
-%   .\]%
-%   The osculating plane at $s$ is the plane through $\alpha(s)$ orthogonal to
-%   $\Ba(s)$, i.e., $\Ba(s) = \Ta(s) \wedge \Na(s)$. Now, we need to find the
-%   binormal vector, $\Ba(s)$,
-%   \begin{align*}
-%     \Ba(s) = \Ta(s) \wedge \Na(s) &= \left\langle -\frac{a}{c}\sin\left(\frac{s}{c}\right), \frac{a}{c}\cos\left(\frac{s}{c}\right), \frac{b}{c} \right\rangle \wedge \left\langle -\cos\left(\frac{s}{c}\right), -\sin\left(\frac{s}{c}\right), 0 \right\rangle \\
-%            &= \begin{vmatrix}
-%              \ui & \uj & \uk \\
-%              -\frac{a}{c}\sin\left(\frac{s}{c}\right) & \frac{a}{c}\cos\left(\frac{s}{c}\right) & \frac{b}{c} \\
-%              -\cos\left(\frac{s}{c}\right) & -\sin\left(\frac{s}{c}\right) & 0 \\
-%            \end{vmatrix} \\
-%            &= \left\langle \frac{b}{c}\sin\left(\frac{s}{c}\right), -\frac{b}{c}\cos\left(\frac{s}{c}\right), \frac{a}{c}\sin^2\left(\frac{s}{c}\right) + \frac{a}{c}\cos^2\left(\frac{s}{c}\right) \right\rangle \\
-%            &= \left\langle \frac{b}{c}\sin\left(\frac{s}{c}\right), -\frac{b}{c}\cos\left(\frac{s}{c}\right), \frac{a}{c} \right\rangle
-%   .\end{align*}
-%   Now, we can find the osculating plane. The osculating plane is given by the
-%   equation
-%   \[%
-%     0 = \Ba(s) \cdot \left(x - x_0, y - y_0, z - z_0\right)
-%   ,\]%
-%   where $\alpha(s) = \langle x_0, y_0, z_0 \rangle$. Thus, the osculating plane
-%   is given by
-%   \[%
-%     \left\langle x - a\cos\left(\frac{s}{c}\right), y - a\sin\left(\frac{s}{c}\right), z - b \frac{s}{c} \right\rangle \cdot \left\langle \frac{b}{c}\sin\left(\frac{s}{c}\right), -\frac{b}{c}\cos\left(\frac{s}{c}\right), \frac{a}{c} \right\rangle = 0
-%   .\qedhere\]%
-% \end{solution}
+\begin{solution}[(iii)]
+  Since $\alpha(s)$ is parametrized by arc length, then $\Ta(s) = \alpha'(s)$.
+  Now, we need to find the unit normal vector, $\Na(s)$, which is given by
+  \[%
+    \Na(s) = \frac{\Ta(s)}{\lVert \Ta(s) \rVert} = \left\langle -\cos\left(\frac{s}{c}\right), -\sin\left(\frac{s}{c}\right), 0 \right\rangle
+  .\]%
+  The osculating plane at $s$ is the plane through $\alpha(s)$ orthogonal to
+  $\Ba(s)$, i.e., $\Ba(s) = \Ta(s) \wedge \Na(s)$. Now, we need to find the
+  binormal vector, $\Ba(s)$,
+  \begin{align*}
+    \Ba(s) = \Ta(s) \wedge \Na(s) &= \left\langle -\frac{a}{c}\sin\left(\frac{s}{c}\right), \frac{a}{c}\cos\left(\frac{s}{c}\right), \frac{b}{c} \right\rangle \wedge \left\langle -\cos\left(\frac{s}{c}\right), -\sin\left(\frac{s}{c}\right), 0 \right\rangle \\
+           &= \begin{vmatrix}
+             \ui & \uj & \uk \\
+             -\frac{a}{c}\sin\left(\frac{s}{c}\right) & \frac{a}{c}\cos\left(\frac{s}{c}\right) & \frac{b}{c} \\
+             -\cos\left(\frac{s}{c}\right) & -\sin\left(\frac{s}{c}\right) & 0 \\
+           \end{vmatrix} \\
+           &= \left\langle \frac{b}{c}\sin\left(\frac{s}{c}\right), -\frac{b}{c}\cos\left(\frac{s}{c}\right), \frac{a}{c}\sin^2\left(\frac{s}{c}\right) + \frac{a}{c}\cos^2\left(\frac{s}{c}\right) \right\rangle \\
+           &= \left\langle \frac{b}{c}\sin\left(\frac{s}{c}\right), -\frac{b}{c}\cos\left(\frac{s}{c}\right), \frac{a}{c} \right\rangle
+  .\end{align*}
+  Now, we can find the osculating plane. The osculating plane is given by the
+  equation
+  \[%
+    0 = \Ba(s) \cdot \left(x - x_0, y - y_0, z - z_0\right)
+  ,\]%
+  where $\alpha(s) = \langle x_0, y_0, z_0 \rangle$. Thus, the osculating plane
+  is given by
+  \[%
+    \left\langle x - a\cos\left(\frac{s}{c}\right), y - a\sin\left(\frac{s}{c}\right), z - b \frac{s}{c} \right\rangle \cdot \left\langle \frac{b}{c}\sin\left(\frac{s}{c}\right), -\frac{b}{c}\cos\left(\frac{s}{c}\right), \frac{a}{c} \right\rangle = 0
+  .\qedhere\]%
+\end{solution}
 
-% \begin{solution}[(iv)]
-%   A line through $\alpha(s)$ in the direction of $\Na(s)$ is given by
-%   \[%
-%     \ell_s(t) = \alpha(s) + t \Na(s)
-%   ,\]%
-%   and the $z$-axis consists of all points of the form $(0,0,z)$. To find where
-%   the line intersects the $z$-axis, set the $x$ and $y$ components of
-%   $\ell_s(t)$ to zero:
-%   \begin{align*}
-%     x(t) &= a\cos\left(\frac{s}{c}\right) - t\cos\left(\frac{s}{c}\right) = 0 \\
-%     y(t) &= a\sin\left(\frac{s}{c}\right) - t\sin\left(\frac{s}{c}\right) = 0
-%   .\end{align*}
-%   Solving either equation (assuming $\cos(\frac{s}{c}) \neq 0$ or
-%   $\sin(\frac{s}{c}) \neq 0$), we get $t = a$. Plugging into the $z$-component
-%   \[%
-%     z = b\frac{s}{c} + 0 = b\frac{s}{c}
-%   .\]%
-%   Thus, the intersection point with the $z$-axis is
-%   \[%
-%     \left(0,0, b\frac{s}{c}\right)
-%   .\]%
-%   Now, consider the vector from $\alpha(s)$ to this point
-%   \begin{align*}
-%     v &= (0,0, b\frac{s}{c}) - \alpha(s)
-%       = \left\langle -a\cos\left(\frac{s}{c}\right), -a\sin\left(\frac{s}{c}\right), 0 \right\rangle
-%   .\end{align*}
-%   Since this vector is proportional to $\Na(s)$, and lies entirely in the
-%   $xy$-plane, it is orthogonal to the $z$-axis. Therefore, the angle between
-%   this line and the $z$-axis is $\sfrac{\pi}{2}$.
+\begin{solution}[(iv)]
+  A line through $\alpha(s)$ in the direction of $\Na(s)$ is given by
+  \[%
+    \ell_s(t) = \alpha(s) + t \Na(s)
+  ,\]%
+  and the $z$-axis consists of all points of the form $(0,0,z)$. To find where
+  the line intersects the $z$-axis, set the $x$ and $y$ components of
+  $\ell_s(t)$ to zero:
+  \begin{align*}
+    x(t) &= a\cos\left(\frac{s}{c}\right) - t\cos\left(\frac{s}{c}\right) = 0 \\
+    y(t) &= a\sin\left(\frac{s}{c}\right) - t\sin\left(\frac{s}{c}\right) = 0
+  .\end{align*}
+  Solving either equation (assuming $\cos(\frac{s}{c}) \neq 0$ or
+  $\sin(\frac{s}{c}) \neq 0$), we get $t = a$. Plugging into the $z$-component
+  \[%
+    z = b\frac{s}{c} + 0 = b\frac{s}{c}
+  .\]%
+  Thus, the intersection point with the $z$-axis is
+  \[%
+    \left(0,0, b\frac{s}{c}\right)
+  .\]%
+  Now, consider the vector from $\alpha(s)$ to this point
+  \begin{align*}
+    v &= (0,0, b\frac{s}{c}) - \alpha(s)
+      = \left\langle -a\cos\left(\frac{s}{c}\right), -a\sin\left(\frac{s}{c}\right), 0 \right\rangle
+  .\end{align*}
+  Since this vector is proportional to $\Na(s)$, and lies entirely in the
+  $xy$-plane, it is orthogonal to the $z$-axis. Therefore, the angle between
+  this line and the $z$-axis is $\sfrac{\pi}{2}$.
 
-%   Hence, we have shown that these lines intersect the $z$-axis at a constant
-%   angle of $\sfrac{\pi}{2}$.
-% \end{solution}
+  Hence, we have shown that these lines intersect the $z$-axis at a constant
+  angle of $\sfrac{\pi}{2}$.
+\end{solution}
 
-% \begin{solution}[(v)]
-%   Since $\alpha(s)$ is parametrized by arc length, the unit tangent vector is
-%   \[%
-%     \Ta(s) = \alpha'(s) = \left\langle -\frac{a}{c}\sin\left(\frac{s}{c}\right), \frac{a}{c}\cos\left(\frac{s}{c}\right), \frac{b}{c} \right\rangle
-%   .\]%
-%   The direction vector of the $z$-axis is $\uk = \langle 0,0,1 \rangle$. Then
-%   the angle $\theta$ between $\Ta(s)$ and the $z$-axis satisfies
-%   \[%
-%     \cos(\theta) = \Ta(s) \cdot \uk = \frac{b}{c}
-%   .\]%
-%   Since this value is constant (independent of $s$), the angle between the
-%   tangent vector and the $z$-axis is constant, and is given by
-%   \[%
-%     \theta = \cos^{-1}\left(\frac{b}{c}\right)
-%   .\qedhere\]%
-% \end{solution}
+\begin{solution}[(v)]
+  Since $\alpha(s)$ is parametrized by arc length, the unit tangent vector is
+  \[%
+    \Ta(s) = \alpha'(s) = \left\langle -\frac{a}{c}\sin\left(\frac{s}{c}\right), \frac{a}{c}\cos\left(\frac{s}{c}\right), \frac{b}{c} \right\rangle
+  .\]%
+  The direction vector of the $z$-axis is $\uk = \langle 0,0,1 \rangle$. Then
+  the angle $\theta$ between $\Ta(s)$ and the $z$-axis satisfies
+  \[%
+    \cos(\theta) = \Ta(s) \cdot \uk = \frac{b}{c}
+  .\]%
+  Since this value is constant (independent of $s$), the angle between the
+  tangent vector and the $z$-axis is constant, and is given by
+  \[%
+    \theta = \cos^{-1}\left(\frac{b}{c}\right)
+  .\qedhere\]%
+\end{solution}
 
-% \begin{problem}[1.5.11]
-%   One often gives a plane curve in polar coordinates by $\rho = \rho(\theta)$,
-%   $a \le \theta \le b$.
-%   \begin{enumerate}
-%     \item Show that the arc length is
-%       \[%
-%         \int_a^b \sqrt{\rho^2 + (\rho')^2} \dd{\theta}
-%       ,\]%
-%       where the prime denotes the derivative relative to $\theta$.
+\begin{problem}[1.5.11]
+  One often gives a plane curve in polar coordinates by $\rho = \rho(\theta)$,
+  $a \le \theta \le b$.
+  \begin{enumerate}
+    \item Show that the arc length is
+      \[%
+        \int_a^b \sqrt{\rho^2 + (\rho')^2} \dd{\theta}
+      ,\]%
+      where the prime denotes the derivative relative to $\theta$.
 
-%     \item Show that the curvature is
-%       \[%
-%         \kappa(\theta) = \frac{2(\rho')^2 - \rho\rho'' + \rho^2}{[(\rho')^2 + \rho^2]^{\sfrac{3}{2}}}
-%       .\]%
-%   \end{enumerate}
-% \end{problem}
+    \item Show that the curvature is
+      \[%
+        \kappa(\theta) = \frac{2(\rho')^2 - \rho\rho'' + \rho^2}{[(\rho')^2 + \rho^2]^{\sfrac{3}{2}}}
+      .\]%
+  \end{enumerate}
+\end{problem}
 
-% \begin{solution}[(i)]
-%   The curve in polar coordinates is given by $\alpha(\theta) = \langle
-%   \rho\cos(\theta), \rho\sin(\theta) \rangle$. The general formula for the arc
-%   length is given by
-%   \[%
-%     s = \int_a^b \lVert \alpha'(\theta) \rVert \dd{\theta} = \int_a^b \sqrt{\left(\odv{x}{\theta}\right)^2 + \left(\odv{y}{\theta}\right)^2} \dd{\theta}
-%   .\]%
-%   We compute the derivatives
-%   \[%
-%     \odv{x}{\theta} = \rho'\cos(\theta) - \rho\sin(\theta)
-%     \aand
-%     \odv{y}{\theta} = \rho'\sin(\theta) + \rho\cos(\theta)
-%   .\]%
-%   Thus, we have
-%   \begin{align*}
-%     \left(\odv{x}{\theta}\right)^2 + \left(\odv{y}{\theta}\right)^2 &= \left(\rho'\cos(\theta) - \rho\sin(\theta)\right)^2 + \left(\rho'\sin(\theta) + \rho\cos(\theta)\right)^2 \\
-%                                                                     &= \cos^2(\theta)(\rho')^2 - 2\sin(\theta)\cos(\theta)\rho\rho' + \sin^2(\theta)\rho^2 \\
-%                                                                     &\qquad + \sin^2(\theta)(\rho')^2 + 2\sin(\theta)\cos(\theta)\rho\rho' + \cos^2(\theta)\rho^2 \\
-%                                                                     &= (\rho')^2 + \rho^2(\theta)
-%   .\end{align*}
-%   Therefore, we have
-%   \[%
-%     s = \int_a^b \sqrt{\left(\odv{x}{\theta}\right)^2 + \left(\odv{y}{\theta}\right)^2} \dd{\theta} = \int_a^b \sqrt{{\rho'}^2 + \rho^2} \dd{\theta}
-%   .\]%
-%   Thus, we have shown it's the arc length.
-% \end{solution}
+\begin{solution}[(i)]
+  The curve in polar coordinates is given by $\alpha(\theta) = \langle
+  \rho\cos(\theta), \rho\sin(\theta) \rangle$. The general formula for the arc
+  length is given by
+  \[%
+    s = \int_a^b \lVert \alpha'(\theta) \rVert \dd{\theta} = \int_a^b \sqrt{\left(\odv{x}{\theta}\right)^2 + \left(\odv{y}{\theta}\right)^2} \dd{\theta}
+  .\]%
+  We compute the derivatives
+  \[%
+    \odv{x}{\theta} = \rho'\cos(\theta) - \rho\sin(\theta)
+    \aand
+    \odv{y}{\theta} = \rho'\sin(\theta) + \rho\cos(\theta)
+  .\]%
+  Thus, we have
+  \begin{align*}
+    \left(\odv{x}{\theta}\right)^2 + \left(\odv{y}{\theta}\right)^2 &= \left(\rho'\cos(\theta) - \rho\sin(\theta)\right)^2 + \left(\rho'\sin(\theta) + \rho\cos(\theta)\right)^2 \\
+                                                                    &= \cos^2(\theta)(\rho')^2 - 2\sin(\theta)\cos(\theta)\rho\rho' + \sin^2(\theta)\rho^2 \\
+                                                                    &\qquad + \sin^2(\theta)(\rho')^2 + 2\sin(\theta)\cos(\theta)\rho\rho' + \cos^2(\theta)\rho^2 \\
+                                                                    &= (\rho')^2 + \rho^2(\theta)
+  .\end{align*}
+  Therefore, we have
+  \[%
+    s = \int_a^b \sqrt{\left(\odv{x}{\theta}\right)^2 + \left(\odv{y}{\theta}\right)^2} \dd{\theta} = \int_a^b \sqrt{{\rho'}^2 + \rho^2} \dd{\theta}
+  .\]%
+  Thus, we have shown it's the arc length.
+\end{solution}
 
-% \begin{solution}[(ii)]
-%   The curvature is given by
-%   \[%
-%     \kappa(\theta) = \frac{\lVert \alpha'(\theta) \wedge \alpha''(\theta) \rVert}{\lVert \alpha'(\theta) \rVert^3}
-%   .\]%
-%   We compute the first and second derivatives
-%   \begin{align*}
-%     \alpha'(\theta) &= \rho' \langle \cos(\theta), \sin(\theta) \rangle + \rho \langle -\sin(\theta), \cos(\theta) \rangle \\
-%       &= \langle \rho' \cos(\theta) - \rho \sin(\theta), \rho' \sin(\theta) + \rho \cos(\theta) \rangle \\
-%     \alpha''(\theta) &= \rho'' \langle \cos(\theta), \sin(\theta) \rangle + 2\rho' \langle -\sin(\theta), \cos(\theta) \rangle + \rho \langle -\cos(\theta), -\sin(\theta) \rangle \\
-%                      &= \langle \rho'' \cos(\theta) - 2\rho' \sin(\theta) - \rho \cos(\theta), \rho'' \sin(\theta) + 2\rho' \cos(\theta) - \rho \sin(\theta) \rangle
-%   .\end{align*}
+\begin{solution}[(ii)]
+  The curvature is given by
+  \[%
+    \kappa(\theta) = \frac{\lVert \alpha'(\theta) \wedge \alpha''(\theta) \rVert}{\lVert \alpha'(\theta) \rVert^3}
+  .\]%
+  We compute the first and second derivatives
+  \begin{align*}
+    \alpha'(\theta) &= \rho' \langle \cos(\theta), \sin(\theta) \rangle + \rho \langle -\sin(\theta), \cos(\theta) \rangle \\
+      &= \langle \rho' \cos(\theta) - \rho \sin(\theta), \rho' \sin(\theta) + \rho \cos(\theta) \rangle \\
+    \alpha''(\theta) &= \rho'' \langle \cos(\theta), \sin(\theta) \rangle + 2\rho' \langle -\sin(\theta), \cos(\theta) \rangle + \rho \langle -\cos(\theta), -\sin(\theta) \rangle \\
+                     &= \langle \rho'' \cos(\theta) - 2\rho' \sin(\theta) - \rho \cos(\theta), \rho'' \sin(\theta) + 2\rho' \cos(\theta) - \rho \sin(\theta) \rangle
+  .\end{align*}
 
-%   Now, we compute the cross product
-%   \begin{align*}
-%     \alpha'(\theta) \wedge \alpha''(\theta)
-%       &= (\rho' \cos\theta - \rho \sin\theta)(\rho'' \sin\theta + 2\rho' \cos\theta - \rho \sin\theta) \\
-%       &\quad - (\rho' \sin\theta + \rho \cos\theta)(\rho'' \cos\theta - 2\rho' \sin\theta - \rho \cos\theta) \\
-%       &= \rho^2 + 2(\rho')^2 - \rho \rho''.
-%   \end{align*}
+  Now, we compute the cross product
+  \begin{align*}
+    \alpha'(\theta) \wedge \alpha''(\theta)
+      &= (\rho' \cos\theta - \rho \sin\theta)(\rho'' \sin\theta + 2\rho' \cos\theta - \rho \sin\theta) \\
+      &\quad - (\rho' \sin\theta + \rho \cos\theta)(\rho'' \cos\theta - 2\rho' \sin\theta - \rho \cos\theta) \\
+      &= \rho^2 + 2(\rho')^2 - \rho \rho''.
+  \end{align*}
 
-%   Next, compute the norm of the first derivative
-%   \[%
-%     \lVert \alpha'(\theta) \rVert^2 = (\rho' \cos\theta - \rho \sin\theta)^2 + (\rho' \sin\theta + \rho \cos\theta)^2 = (\rho')^2 + \rho^2
-%   .\]%
-%   So the curvature is
-%   \[%
-%     \kappa(\theta) = \frac{\rho^2 + 2(\rho')^2 - \rho\rho''}{\left[(\rho')^2 + \rho^2\right]^{\sfrac{3}{2}}} = \frac{2(\rho')^2 - \rho\rho'' + \rho^2}{\left[(\rho')^2 + \rho^2\right]^{\sfrac{3}{2}}}
-%   .\]%
-%   Thus, we have shown the curvature.
-% \end{solution}
+  Next, compute the norm of the first derivative
+  \[%
+    \lVert \alpha'(\theta) \rVert^2 = (\rho' \cos\theta - \rho \sin\theta)^2 + (\rho' \sin\theta + \rho \cos\theta)^2 = (\rho')^2 + \rho^2
+  .\]%
+  So the curvature is
+  \[%
+    \kappa(\theta) = \frac{\rho^2 + 2(\rho')^2 - \rho\rho''}{\left[(\rho')^2 + \rho^2\right]^{\sfrac{3}{2}}} = \frac{2(\rho')^2 - \rho\rho'' + \rho^2}{\left[(\rho')^2 + \rho^2\right]^{\sfrac{3}{2}}}
+  .\]%
+  Thus, we have shown the curvature.
+\end{solution}
 
 \begin{problem}[1.5.12]
   Let $\alpha : I \to \R^3$ be a regular parametrized curve (not necessarily by
@@ -680,7 +680,7 @@
   We decompose $\alpha''(t)$ into two components: one parallel and one
   perpendicular to $\alpha'(t)$. The parallel component is given by the
   projection
-  \[%%
+  \[%
     \alpha_{\parallel}(t) = \frac{\alpha'(t) \cdot \alpha''(t)}{\lVert \alpha'(t) \rVert^2} \alpha'(t)
   ,\]%
   and the perpendicular component is
@@ -765,62 +765,62 @@
   This completes the proof.
 \end{solution}
 
-% \begin{problem}[1.5.14]
-%   Let $\alpha : (a, b) \to \R^2$ be a regular parametrized plane curve. Assume
-%   that there exists $t_0$, $a < t_0 < b$, such that the distance $\lVert
-%   \alpha(t) \rVert$ from the origin to the trace of $\alpha$ will be a maximum
-%   at $t_0$. Prove that the curvature $\kappa$ of $\alpha$ at $t_0$ satisfies
-%   $\lvert \kappa(t_0) \rvert \ge \sfrac{1}{\lVert \alpha(t_0) \rVert}$.
-% \end{problem}
+\begin{problem}[1.5.14]
+  Let $\alpha : (a, b) \to \R^2$ be a regular parametrized plane curve. Assume
+  that there exists $t_0$, $a < t_0 < b$, such that the distance $\lVert
+  \alpha(t) \rVert$ from the origin to the trace of $\alpha$ will be a maximum
+  at $t_0$. Prove that the curvature $\kappa$ of $\alpha$ at $t_0$ satisfies
+  $\lvert \kappa(t_0) \rvert \ge \sfrac{1}{\lVert \alpha(t_0) \rVert}$.
+\end{problem}
 
-% \begin{solution}
-%   Let $f(t) = \|\alpha(t)\|^2$, the square of the distance from the origin to
-%   the curve. Since $f$ is maximized at $t_0$, we have
-%   \[%
-%     f'(t_0) = 0 \aand f''(t_0) \le 0
-%   .\]%
-%   Compute the first derivative
-%   \[%
-%     f'(t) = 2 \alpha(t) \cdot \alpha'(t)
-%   ,\]%
-%   so at $t_0$,
-%   \[%
-%     \alpha(t_0) \cdot \alpha'(t_0) = 0
-%   .\]%
-%   Thus, the position vector $\alpha(t_0)$ is perpendicular to the velocity
-%   vector $\alpha'(t_0)$, and lies in the direction of the unit normal vector
-%   $\Na(t_0)$. Hence we can write
-%   \[%
-%     \alpha(t_0) = \lVert \alpha(t_0) \rVert \Na(t_0)
-%   .\]%
-%   Now compute the second derivative
-%   \[%
-%     f''(t) = 2\left(\lVert \alpha'(t) \rVert^2 + \alpha(t) \cdot \alpha''(t)\right)
-%   .\]%
-%   At $t_0$, the condition $f''(t_0) \le 0$ implies
-%   \[%
-%     \lVert \alpha'(t_0) \rVert^2 + \alpha(t_0) \cdot \alpha''(t_0) \le 0
-%   .\]%
-%   Using $\alpha(t_0) = \lVert \alpha(t_0) \rVert \mathbf{N}(t_0)$, we compute
-%   \begin{align*}
-%     \alpha(t_0) \cdot \alpha''(t_0) &= \lVert \alpha(t_0) \rVert \Na(t_0) \cdot \alpha''(t_0) \\
-%                                     &= \lVert \alpha(t_0) \rVert \cdot \kappa(t_0) \lVert \alpha'(t_0) \rVert^2
-%   ,\end{align*}
-%   by the Frenet-Serret formula in the plane.
+\begin{solution}
+  Let $f(t) = \|\alpha(t)\|^2$, the square of the distance from the origin to
+  the curve. Since $f$ is maximized at $t_0$, we have
+  \[%
+    f'(t_0) = 0 \aand f''(t_0) \le 0
+  .\]%
+  Compute the first derivative
+  \[%
+    f'(t) = 2 \alpha(t) \cdot \alpha'(t)
+  ,\]%
+  so at $t_0$,
+  \[%
+    \alpha(t_0) \cdot \alpha'(t_0) = 0
+  .\]%
+  Thus, the position vector $\alpha(t_0)$ is perpendicular to the velocity
+  vector $\alpha'(t_0)$, and lies in the direction of the unit normal vector
+  $\Na(t_0)$. Hence we can write
+  \[%
+    \alpha(t_0) = \lVert \alpha(t_0) \rVert \Na(t_0)
+  .\]%
+  Now compute the second derivative
+  \[%
+    f''(t) = 2\left(\lVert \alpha'(t) \rVert^2 + \alpha(t) \cdot \alpha''(t)\right)
+  .\]%
+  At $t_0$, the condition $f''(t_0) \le 0$ implies
+  \[%
+    \lVert \alpha'(t_0) \rVert^2 + \alpha(t_0) \cdot \alpha''(t_0) \le 0
+  .\]%
+  Using $\alpha(t_0) = \lVert \alpha(t_0) \rVert \mathbf{N}(t_0)$, we compute
+  \begin{align*}
+    \alpha(t_0) \cdot \alpha''(t_0) &= \lVert \alpha(t_0) \rVert \Na(t_0) \cdot \alpha''(t_0) \\
+                                    &= \lVert \alpha(t_0) \rVert \cdot \kappa(t_0) \lVert \alpha'(t_0) \rVert^2
+  ,\end{align*}
+  by the Frenet-Serret formula in the plane.
 
-%   Substituting into the inequality, we obtain
-%   \[%
-%     \lVert \alpha'(t_0) \rVert^2 + \lVert \alpha(t_0) \rVert \cdot \kappa(t_0) \lVert \alpha'(t_0) \rVert^2 \le 0
-%   .\]%
-%   Factoring out $\lVert \alpha'(t_0) \rVert^2 > 0$, we get
-%   \[%
-%     1 + \lVert \alpha(t_0) \rVert \cdot \kappa(t_0) \le 0 \implies \kappa(t_0) \le -\frac{1}{\lVert \alpha(t_0) \rVert}
-%   .\]%
-%   Alternatively, if $\kappa(t_0) \ge 0$, then this same argument applies with
-%   the curve reflected through the origin (i.e., apply the same proof to
-%   $-\alpha(t)$). In either case, we conclude
-%   \[%
-%     \lvert \kappa(t_0) \rvert \ge \frac{1}{\lVert \alpha(t_0) \rVert}
-%   .\]%
-%   This completes the proof.
-% \end{solution}
+  Substituting into the inequality, we obtain
+  \[%
+    \lVert \alpha'(t_0) \rVert^2 + \lVert \alpha(t_0) \rVert \cdot \kappa(t_0) \lVert \alpha'(t_0) \rVert^2 \le 0
+  .\]%
+  Factoring out $\lVert \alpha'(t_0) \rVert^2 > 0$, we get
+  \[%
+    1 + \lVert \alpha(t_0) \rVert \cdot \kappa(t_0) \le 0 \implies \kappa(t_0) \le -\frac{1}{\lVert \alpha(t_0) \rVert}
+  .\]%
+  Alternatively, if $\kappa(t_0) \ge 0$, then this same argument applies with
+  the curve reflected through the origin (i.e., apply the same proof to
+  $-\alpha(t)$). In either case, we conclude
+  \[%
+    \lvert \kappa(t_0) \rvert \ge \frac{1}{\lVert \alpha(t_0) \rVert}
+  .\]%
+  This completes the proof.
+\end{solution}
