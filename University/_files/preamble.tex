@@ -608,4 +608,11 @@
   \end{tcolorbox}%
 }
 
+% create solution env using proof env
+\newenvironment{solution}[1][]{%
+  \begin{proof}[\textnormal{\textbf{Solution\ifthenelse{\equal{#1}{}}{}{~to~#1}}}]
+}{%
+  \end{proof}
+}
+
 \makeatother

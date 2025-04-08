@@ -5,7 +5,7 @@
 %   is orthogonal to $\alpha'(t_0)$.
 % \end{problem}
 
-% \begin{proof}[Solution]
+% \begin{solution}
 %   Let $\alpha : I \to \R$ be a parametrized curve, for some interval $I$. Let
 %   $f(t) = \lVert \alpha(t) \rVert = \alpha(t) \cdot \alpha(t)$. The derivative
 %   is given by
@@ -18,7 +18,7 @@
 %   .\]%
 %   Since $\alpha(t_0) \ne 0 \ne \alpha'(t_0)$, we have that $\alpha(t_0)$ is
 %   orthogonal to $\alpha'(t_0)$.
-% \end{proof}
+% \end{solution}
 
 % \begin{problem}[1.2.4]
 %   Let $\alpha : I \to \R^3$ be a parametrized curve and let $\v \in \R^3$ be a
@@ -27,7 +27,7 @@
 %   orthogonal to $\v$ for all $t \in I$.
 % \end{problem}
 
-% \begin{proof}[Solution]
+% \begin{solution}
 %   Let $f(t) = \alpha(t) \cdot \v$. Then
 %   \[%
 %     f'(t) = \odv{}{t} [\alpha(t) \cdot \v] = \alpha'(t) \cdot \v
@@ -36,7 +36,7 @@
 %   \in I$. Thus, $f(t)$ is constant. Since $f(0) = \alpha(0) \cdot v = 0$, we
 %   have that $f(t) = 0$ for all $t \in I$. Thus, $\alpha(t) \cdot \v = 0$ for all
 %   $t \in I$.
-% \end{proof}
+% \end{solution}
 
 % \begin{problem}[1.3.1]
 %   Show that the tangent lines to the regular parametrized curve $\alpha(t) =
@@ -44,7 +44,7 @@
 %   $y = 0$, $z = x$.
 % \end{problem}
 
-% \begin{proof}[Solution]
+% \begin{solution}
 %   The tangent line to the curve $\alpha(t)$ is given by
 %   \[%
 %     \alpha'(t) = \left\langle 3, 6t, 6t^2 \right\rangle
@@ -56,7 +56,7 @@
 %     \cos(\theta) = \frac{\u \cdot \v}{\lVert \u \rVert \lVert \v \rVert} = \frac{\alpha'(t) \cdot \langle 1, 0, 1 \rangle}{\lVert \alpha'(t) \rVert \lVert \langle 1, 0, 1 \rangle \rVert} = \frac{3 + 6t^2}{\sqrt{9 + 36t^2 + 36t^4} \cdot \sqrt{2}} = \frac{1}{\sqrt{2}} = \frac{\sqrt{2}}{2}
 %   .\]%
 %   Thus, the angle between the two lines is constant.
-% \end{proof}
+% \end{solution}
 
 % \begin{problem}[1.3.4]
 %   Let $\alpha : (0, \pi) \to \R^2$ be given by
@@ -71,7 +71,7 @@
 %   \end{enumerate}
 % \end{problem}
 
-% \begin{proof}[Solution to (i)]
+% \begin{solution}[(i)]
 %   At $t = \sfrac{\pi}{2}$, we get
 %   \[%
 %     \alpha(\sfrac{\pi}{2}) = \langle 1, 1 \rangle
@@ -92,9 +92,9 @@
 %   ,\]%
 %   since $t \neq \sfrac{\pi}{2}$. Therefore, $\alpha'(t) \neq 0$ for all $t \in
 %   I$, meaning that $\alpha$ is regular on $I$.
-% \end{proof}
+% \end{solution}
 
-% \begin{proof}[Solution to (ii)]
+% \begin{solution}[(ii)]
 %   We are told that for each $t \in (0, \pi)$, the angle between the tangent
 %   vector $\alpha'(t)$ and the $y$-axis is exactly $t$. Let us interpret this
 %   geometrically. Since $\alpha$ is a regular, differentiable parametrized curve,
@@ -125,7 +125,7 @@
 %   Therefore, the length of the segment of the tangent line between the point of
 %   tangency and the $y$-axis is always equal to $1$, regardless of the value of
 %   $t$.
-% \end{proof}
+% \end{solution}
 
 % \begin{problem}[1.3.6]
 %   Let $\alpha(t) = \left\langle ae^{bt}\cos(t), ae^{bt}\sin(t) \right\rangle$,
@@ -144,16 +144,16 @@
 %   \end{enumerate}
 % \end{problem}
 
-% \begin{proof}[Solution to (i)]
+% \begin{solution}[(i)]
 %   Since $b < 0$, we have $e^{bt} \to 0$ as $t \to +\infty$. Thus, we obtain
 %   \[%
 %     \alpha(t) = \left\langle ae^{bt}\cos(t), ae^{bt}\sin(t) \right\rangle \to (0,0) \qtq{as} t \to +\infty
 %   .\]%
 %   The presence of the $\cos(t)$ and $\sin(t)$ terms indicates that the
 %   trajectory of $\alpha(t)$ traces a spiral as it approaches the origin.
-% \end{proof}
+% \end{solution}
 
-% \begin{proof}[Solution to (ii)]
+% \begin{solution}[(ii)]
 %   We compute
 %   \begin{align*}
 %     \alpha'(t) &= \left\langle \frac{d}{dt} \big( ae^{bt} \cos t \big), \frac{d}{dt} \big( ae^{bt} \sin t \big) \right\rangle \\
@@ -179,7 +179,7 @@
 %     \lim_{t \to +\infty} \int_{t_0}^t \lVert \alpha'(x) \rVert \dx = a\sqrt{b^2 + 1} \left( 0 - \frac{e^{bt_0}}{b} \right) = -\frac{a\sqrt{b^2 + 1}}{b}e^{bt_0} < \infty
 %   .\]%
 %   Thus, $\alpha$ has finite arc length in $[t_0, \infty)$.
-% \end{proof}
+% \end{solution}
 
 % \begin{problem}[1.3.10]
 %   Let $\alpha : I \to \R^3$ be a parametrized curve. Let $[a, b] \subset I$ and
@@ -203,7 +203,7 @@
 %   \end{enumerate}
 % \end{problem}
 
-% \begin{proof}[Solution to (i)]
+% \begin{solution}[(i)]
 %   We first show the equality on the left-hand side. Since $\v$ is a constant
 %   vector, we can factor it out of the integral. Thus, we have
 %   \[%
@@ -219,9 +219,9 @@
 %     \int_a^b \alpha'(t) \cdot \v \dt \le \int_a^b \lVert \alpha'(t) \rVert \dt
 %   .\]%
 %   Thus, we have shown the inequality.
-% \end{proof}
+% \end{solution}
 
-% \begin{proof}[Solution to (ii)]
+% \begin{solution}[(ii)]
 %   Computing the original integral with the new value of $\v$, we have
 %   \[%
 %     \int_a^b \alpha'(t) \cdot \v \dt = \int_a^b \alpha'(t) \dt \cdot \left(\frac{\q - \p}{\lVert \q - \p \rVert}\right) = (\q - \p) \cdot \frac{\q - \p}{\lVert \q - p \rVert}
@@ -235,7 +235,7 @@
 %     \int_a^b \alpha'(t) \cdot \frac{\q - \p}{\lVert \q - \p \rVert} \dt = \lVert \q - \p \rVert = \lVert \alpha(b) - \alpha(a) \rVert \le \int_a^b \lVert \alpha'(t) \rVert \dt
 %   .\]%
 %   Thus, we have shown the inequality.
-% \end{proof}
+% \end{solution}
 
 % \begin{problem}[1.4.2]
 %   A plane $P$ contained in $\R^3$ is given by the equation $ax + by + cz + d =
@@ -311,8 +311,8 @@
 %   area} in $\R^2$.
 % \end{problem}
 
-% \begin{proof}[Solution]
-% \end{proof}
+% \begin{solution}
+% \end{solution}
 
 % \begin{problem}[1.4.11]
 %   \begin{enumerate}
@@ -332,7 +332,7 @@
 %   \end{enumerate}
 % \end{problem}
 
-% \begin{proof}[Solution to (i)]
+% \begin{solution}[(i)]
 %   The volume of a parallelepiped is given by $V = \textrm{Base} \times
 %   \textrm{Height}$. The base is given by the area of the parallelogram formed by
 %   the vectors $\u$ and $\v$, which is given by $\lvert \u \wedge \v \rvert$. The
@@ -350,9 +350,9 @@
 %   whether $(\u, \v, \w)$ form a right-handed or left-handed basis. If $(\u, \v,
 %   \w)$ follows the right-hand rule, then $V_{\text{oriented}}$ is positive.
 %   Otherwise, it is negative.
-% \end{proof}
+% \end{solution}
 
-% \begin{proof}[Solution to (ii)]
+% \begin{solution}[(ii)]
 %   Let $A = [\u~\v~\w]$. Then, we have
 %   \[%
 %     \det(A)\det(A) = \det(A^2) = \det(A^TA) = \det(A^T) \cdot \det(A)
@@ -375,7 +375,7 @@
 %   .\]%
 %   Notice that $\det(A^TA) = \lvert (\u \wedge \v) \cdot \w \rvert^2 = V^2$.
 %   Thus, we've shown the desired result.
-% \end{proof}
+% \end{solution}
 
 % \begin{problem}[1.5.1]
 %   Given the parametrized curve (helix)
@@ -399,7 +399,7 @@
 %   \end{enumerate}
 % \end{problem}
 
-% \begin{proof}[Solution to (i)]
+% \begin{solution}[(i)]
 %   If $\alpha(s)$ is parametrized by arc length, then the magnitude of the
 %   derivative of $\alpha(s)$ must be equal to $1$. We compute
 %   \[%
@@ -411,9 +411,9 @@
 %                              &= \sqrt{\frac{a^2}{c^2} + \frac{b^2}{c^2}} = \sqrt{1} = 1
 %   .\end{align*}
 %   Therefore, we have shown that $s$ is the arc length.
-% \end{proof}
+% \end{solution}
 
-% \begin{proof}[Solution to (ii)]
+% \begin{solution}[(ii)]
 %   The curvature is given by $\kappa(s) = \lVert \alpha''(s) \rVert$. Computing
 %   the second derivative from part (i), we have
 %   \[%
@@ -436,9 +436,9 @@
 %     \left\langle \frac{b}{c^2}\cos\left(\frac{s}{c}\right), \frac{b}{c^2}\sin\left(\frac{s}{c}\right), 0 \right\rangle = \tau(s) \left\langle -\cos\left(\frac{s}{c}\right), -\sin\left(\frac{s}{c}\right), 0 \right\rangle
 %   .\]%
 %   Thus, the torsion is given by $\tau(s) = -\sfrac{b}{c^2}$.
-% \end{proof}
+% \end{solution}
 
-% \begin{proof}[Solution to (iii)]
+% \begin{solution}[(iii)]
 %   Since $\alpha(s)$ is parametrized by arc length, then $\Ta(s) = \alpha'(s)$.
 %   Now, we need to find the unit normal vector, $\Na(s)$, which is given by
 %   \[%
@@ -467,9 +467,9 @@
 %   \[%
 %     \left\langle x - a\cos\left(\frac{s}{c}\right), y - a\sin\left(\frac{s}{c}\right), z - b \frac{s}{c} \right\rangle \cdot \left\langle \frac{b}{c}\sin\left(\frac{s}{c}\right), -\frac{b}{c}\cos\left(\frac{s}{c}\right), \frac{a}{c} \right\rangle = 0
 %   .\qedhere\]%
-% \end{proof}
+% \end{solution}
 
-% \begin{proof}[Solution to (iv)]
+% \begin{solution}[(iv)]
 %   A line through $\alpha(s)$ in the direction of $\Na(s)$ is given by
 %   \[%
 %     \ell_s(t) = \alpha(s) + t \Na(s)
@@ -501,9 +501,9 @@
 
 %   Hence, we have shown that these lines intersect the $z$-axis at a constant
 %   angle of $\sfrac{\pi}{2}$.
-% \end{proof}
+% \end{solution}
 
-% \begin{proof}[Solution to (v)]
+% \begin{solution}[(v)]
 %   Since $\alpha(s)$ is parametrized by arc length, the unit tangent vector is
 %   \[%
 %     \Ta(s) = \alpha'(s) = \left\langle -\frac{a}{c}\sin\left(\frac{s}{c}\right), \frac{a}{c}\cos\left(\frac{s}{c}\right), \frac{b}{c} \right\rangle
@@ -518,7 +518,7 @@
 %   \[%
 %     \theta = \cos^{-1}\left(\frac{b}{c}\right)
 %   .\qedhere\]%
-% \end{proof}
+% \end{solution}
 
 % \begin{problem}[1.5.11]
 %   One often gives a plane curve in polar coordinates by $\rho = \rho(\theta)$,
@@ -537,7 +537,7 @@
 %   \end{enumerate}
 % \end{problem}
 
-% \begin{proof}[Solution to (i)]
+% \begin{solution}[(i)]
 %   The curve in polar coordinates is given by $\alpha(\theta) = \langle
 %   \rho\cos(\theta), \rho\sin(\theta) \rangle$. The general formula for the arc
 %   length is given by
@@ -562,9 +562,9 @@
 %     s = \int_a^b \sqrt{\left(\odv{x}{\theta}\right)^2 + \left(\odv{y}{\theta}\right)^2} \dd{\theta} = \int_a^b \sqrt{{\rho'}^2 + \rho^2} \dd{\theta}
 %   .\]%
 %   Thus, we have shown it's the arc length.
-% \end{proof}
+% \end{solution}
 
-% \begin{proof}[Solution to (ii)]
+% \begin{solution}[(ii)]
 %   The curvature is given by
 %   \[%
 %     \kappa(\theta) = \frac{\lVert \alpha'(\theta) \wedge \alpha''(\theta) \rVert}{\lVert \alpha'(\theta) \rVert^3}
@@ -594,7 +594,7 @@
 %     \kappa(\theta) = \frac{\rho^2 + 2(\rho')^2 - \rho\rho''}{\left[(\rho')^2 + \rho^2\right]^{\sfrac{3}{2}}} = \frac{2(\rho')^2 - \rho\rho'' + \rho^2}{\left[(\rho')^2 + \rho^2\right]^{\sfrac{3}{2}}}
 %   .\]%
 %   Thus, we have shown the curvature.
-% \end{proof}
+% \end{solution}
 
 \begin{problem}[1.5.12]
   Let $\alpha : I \to \R^3$ be a regular parametrized curve (not necessarily by
@@ -626,106 +626,144 @@
   \end{enumerate}
 \end{problem}
 
-% \begin{proof}[Solution to (i)]
-%   Since $\beta(s) = \alpha(t(s))$, that means that $\beta$ is a
-%   reparameterization of $\alpha$ by arc length. Thus, we have $\lVert \beta'(s)
-%   \rVert = 1$. Since $s = s(t)$ is arc length from $t_0 \in I$ to $t$, we have
-%   \[%
-%     s = \int_{t_0}^t \lVert \alpha'(x) \rVert \dx
-%   .\]%
-%   Differentiating both sides with respect to $t$, we have
-%   \[%
-%     \odv{s}{t} = \lVert \alpha'(t) \rVert
-%   .\]%
-%   Since $s = s(t)$ and $t = t(s)$ is its inverse, using the Inverse Function
-%   Theorem, we have
-%   \[%
-%     \odv{t}{s} = \frac{1}{\odv{s}/{t}} = \frac{1}{\lVert \alpha'(t) \rVert}
-%   .\]%
-
-%   Computing the second derivative, we have
-%   \begin{align*}
-%     \odv[order={2}]{t}{s} &= \odv{}{s} \frac{1}{\lVert \alpha'(t(s)) \rVert} \\
-%                           &= -\frac{1}{2\lVert \alpha'(t(s)) \rVert^2} \cdot \odv{}{s} \lVert \alpha'(t(s)) \rVert \\
-%                           &= -\frac{1}{2\lVert \alpha'(t(s)) \rVert^2} \cdot \odv{}{s} \left[\alpha'(t(s)) \cdot \alpha'(t(s))\right] \\
-%                           &= -\frac{1}{2\lVert \alpha'(t(s)) \rVert^2} \cdot \frac{2 \alpha'(t(s)) \cdot \alpha''(t(s))}{\lVert \alpha'(t(s)) \rVert} \cdot \odv{t}{s} \\
-%                           &= -\frac{\alpha'(t(s)) \cdot \alpha''(t(s))}{\lVert \alpha'(t(s)) \rVert^4}
-%   .\end{align*}
-%   This completes the proof.
-% \end{proof}
-
-% \begin{proof}[Solution to (ii)]
-%   Recall that $\beta(s) = \alpha(t(s))$ is the arc length reparameterization of
-%   $\alpha$. Then
-%   \[%
-%     \odv{\beta}{s} = \odv{t}{s} \cdot \odv{\alpha}{t} = \frac{1}{\lVert \alpha'(t) \rVert} \cdot \alpha'(t) = \frac{\alpha'(t)}{\lVert \alpha'(t) \rVert}
-%   .\]%
-%   Taking the derivative again with respect to $s$, we apply the chain rule
-%   \[%
-%     \odv[order=2]{\beta}{s} = \odv{}{s} \left( \frac{\alpha'(t)}{\lVert \alpha'(t) \rVert} \right) = \odv{}{t} \left(\frac{\alpha'(t)}{\lVert \alpha'(t) \rVert}\right) \cdot \frac{1}{\lVert \alpha'(t) \rVert}
-%   .\]%
-%   Let us now compute the derivative inside
-%   \[%
-%     \odv{}{t} \left(\frac{\alpha'(t)}{\lVert \alpha'(t) \rVert}\right) = \frac{\lVert \alpha'(t) \rVert \odv{}{t} \alpha'(t) - \alpha'(t) \odv{}{t} \lVert \alpha'(t) \rVert}{\lVert \alpha'(t) \rVert^2}
-%   .\]%
-%   Computing each term, we have
-%   \[%
-%     \odv{}{t} \alpha'(t) = \alpha''(t) \aand \odv{}{t} \lVert \alpha'(t) \rVert = \frac{\alpha'(t) \cdot \alpha''(t)}{\lVert \alpha'(t) \rVert}
-%   .\]%
-%   Therefore, we have
-%   \[%
-%     \odv[order=2]{\beta}{s} = \frac{\lVert \alpha'(t) \rVert \alpha''(t) - \alpha'(t) \frac{\alpha'(t) \cdot \alpha''(t)}{\lVert \alpha'(t) \rVert}}{\lVert \alpha'(t) \rVert^3}
-%   .\]%
-
-%   We decompose $\alpha''(t)$ into two components: one parallel and one
-%   perpendicular to $\alpha'(t)$. The parallel component is given by the
-%   projection
-%   \[%%
-%     \alpha_{\parallel}(t) = \frac{\alpha'(t) \cdot \alpha''(t)}{\lVert \alpha'(t) \rVert^2} \alpha'(t)
-%   ,\]%
-%   and the perpendicular component is
-%   \[%
-%     \alpha_{\perp}(t) = \alpha''(t) - \alpha_{\parallel}(t)
-%   .\]%
-%   Since $\alpha_{\perp}(t)$ is perpendicular to $\alpha'(t)$, we have
-%   $\alpha'(t) \cdot \alpha_{\perp}(t) = 0$.
-
-%   Substituting the decomposition of $\alpha''(t)$ into the second derivative, we
-%   get
-%   \[%
-%     \odv[order=2]{\beta}{s} = \frac{\lVert \alpha'(t) \rVert (\alpha_{\parallel}(t) + \alpha_{\perp}(t)) - \alpha'(t) \frac{\alpha'(t) \cdot \alpha''(t)}{\lVert \alpha'(t) \rVert}}{\lVert \alpha'(t) \rVert^3}
-%   .\]%
-%   The parallel components cancel out
-%   \[%
-%     \lVert \alpha'(t) \rVert \alpha_{\parallel}(t) = \alpha'(t) \frac{\alpha'(t) \cdot \alpha''(t)}{\lVert \alpha'(t) \rVert}
-%   ,\]%
-%   so we are left with
-%   \[%
-%     \odv[order=2]{\beta}{s} = \frac{\lVert \alpha'(t) \rVert \alpha_{\perp}(t)}{\lVert \alpha'(t) \rVert^3} = \frac{\alpha_{\perp}(t)}{\lVert \alpha'(t) \rVert^2}
-%   .\]%
-
-%   Since $\alpha_{\perp}(t)$ is perpendicular to $\alpha'(t)$, we can express the
-%   magnitude of $\alpha_{\perp}(t)$ in terms of the cross product. Specifically,
-%   \[%
-%     \lVert \alpha_{\perp}(t) \rVert = \frac{\lVert \alpha'(t) \wedge \alpha''(t) \rVert}{\lVert \alpha'(t) \rVert}
-%   .\]%
-%   Thus, the second derivative simplifies to
-%   \[%
-%     \kappa(t) = \odv[order=2]{\beta}{s} = \frac{\lVert \alpha'(t) \wedge \alpha''(t) \rVert}{\lVert \alpha'(t) \rVert^3}
-%   .\]%
-%   This completes the proof.
-% \end{proof}
-
-\begin{proof}[Solution to (iii)]
-  We know that $\Ba'(s) = \tau(s)\Na(s)$. We also know that $\beta(s) =
-  \alpha(t(s))$ and
+\begin{solution}[(i)]
+  Since $\beta(s) = \alpha(t(s))$, that means that $\beta$ is a
+  reparameterization of $\alpha$ by arc length. Thus, we have $\lVert \beta'(s)
+  \rVert = 1$. Since $s = s(t)$ is arc length from $t_0 \in I$ to $t$, we have
   \[%
-    \Ta(s) = \odv{\beta}{s} = \odv{t}{s} \cdot \odv{\alpha}{t} = \frac{\alpha'(t)}{\lVert \alpha'(t) \rVert}
+    s = \int_{t_0}^t \lVert \alpha'(x) \rVert \dx
   .\]%
-\end{proof}
+  Differentiating both sides with respect to $t$, we have
+  \[%
+    \odv{s}{t} = \lVert \alpha'(t) \rVert
+  .\]%
+  Since $s = s(t)$ and $t = t(s)$ is its inverse, using the Inverse Function
+  Theorem, we have
+  \[%
+    \odv{t}{s} = \frac{1}{\odv{s}/{t}} = \frac{1}{\lVert \alpha'(t) \rVert}
+  .\]%
 
-\begin{proof}[Solution to (iv)]
-\end{proof}
+  Computing the second derivative, we have
+  \begin{align*}
+    \odv[order={2}]{t}{s} &= \odv{}{s} \frac{1}{\lVert \alpha'(t(s)) \rVert} \\
+                          &= -\frac{1}{2\lVert \alpha'(t(s)) \rVert^2} \cdot \odv{}{s} \lVert \alpha'(t(s)) \rVert \\
+                          &= -\frac{1}{2\lVert \alpha'(t(s)) \rVert^2} \cdot \odv{}{s} \left[\alpha'(t(s)) \cdot \alpha'(t(s))\right] \\
+                          &= -\frac{1}{2\lVert \alpha'(t(s)) \rVert^2} \cdot \frac{2 \alpha'(t(s)) \cdot \alpha''(t(s))}{\lVert \alpha'(t(s)) \rVert} \cdot \odv{t}{s} \\
+                          &= -\frac{\alpha'(t(s)) \cdot \alpha''(t(s))}{\lVert \alpha'(t(s)) \rVert^4}
+  .\end{align*}
+  This completes the proof.
+\end{solution}
+
+\begin{solution}[(ii)]
+  Recall that $\beta(s) = \alpha(t(s))$ is the arc length reparameterization of
+  $\alpha$. Then
+  \[%
+    \odv{\beta}{s} = \odv{t}{s} \cdot \odv{\alpha}{t} = \frac{1}{\lVert \alpha'(t) \rVert} \cdot \alpha'(t) = \frac{\alpha'(t)}{\lVert \alpha'(t) \rVert}
+  .\]%
+  Taking the derivative again with respect to $s$, we apply the chain rule
+  \[%
+    \odv[order=2]{\beta}{s} = \odv{}{s} \left( \frac{\alpha'(t)}{\lVert \alpha'(t) \rVert} \right) = \odv{}{t} \left(\frac{\alpha'(t)}{\lVert \alpha'(t) \rVert}\right) \cdot \frac{1}{\lVert \alpha'(t) \rVert}
+  .\]%
+  Let us now compute the derivative inside
+  \[%
+    \odv{}{t} \left(\frac{\alpha'(t)}{\lVert \alpha'(t) \rVert}\right) = \frac{\lVert \alpha'(t) \rVert \odv{}{t} \alpha'(t) - \alpha'(t) \odv{}{t} \lVert \alpha'(t) \rVert}{\lVert \alpha'(t) \rVert^2}
+  .\]%
+  Computing each term, we have
+  \[%
+    \odv{}{t} \alpha'(t) = \alpha''(t) \aand \odv{}{t} \lVert \alpha'(t) \rVert = \frac{\alpha'(t) \cdot \alpha''(t)}{\lVert \alpha'(t) \rVert}
+  .\]%
+  Therefore, we have
+  \[%
+    \odv[order=2]{\beta}{s} = \frac{\lVert \alpha'(t) \rVert \alpha''(t) - \alpha'(t) \frac{\alpha'(t) \cdot \alpha''(t)}{\lVert \alpha'(t) \rVert}}{\lVert \alpha'(t) \rVert^3}
+  .\]%
+
+  We decompose $\alpha''(t)$ into two components: one parallel and one
+  perpendicular to $\alpha'(t)$. The parallel component is given by the
+  projection
+  \[%%
+    \alpha_{\parallel}(t) = \frac{\alpha'(t) \cdot \alpha''(t)}{\lVert \alpha'(t) \rVert^2} \alpha'(t)
+  ,\]%
+  and the perpendicular component is
+  \[%
+    \alpha_{\perp}(t) = \alpha''(t) - \alpha_{\parallel}(t)
+  .\]%
+  Since $\alpha_{\perp}(t)$ is perpendicular to $\alpha'(t)$, we have
+  $\alpha'(t) \cdot \alpha_{\perp}(t) = 0$.
+
+  Substituting the decomposition of $\alpha''(t)$ into the second derivative, we
+  get
+  \[%
+    \odv[order=2]{\beta}{s} = \frac{\lVert \alpha'(t) \rVert (\alpha_{\parallel}(t) + \alpha_{\perp}(t)) - \alpha'(t) \frac{\alpha'(t) \cdot \alpha''(t)}{\lVert \alpha'(t) \rVert}}{\lVert \alpha'(t) \rVert^3}
+  .\]%
+  The parallel components cancel out
+  \[%
+    \lVert \alpha'(t) \rVert \alpha_{\parallel}(t) = \alpha'(t) \frac{\alpha'(t) \cdot \alpha''(t)}{\lVert \alpha'(t) \rVert}
+  ,\]%
+  so we are left with
+  \[%
+    \odv[order=2]{\beta}{s} = \frac{\lVert \alpha'(t) \rVert \alpha_{\perp}(t)}{\lVert \alpha'(t) \rVert^3} = \frac{\alpha_{\perp}(t)}{\lVert \alpha'(t) \rVert^2}
+  .\]%
+
+  Since $\alpha_{\perp}(t)$ is perpendicular to $\alpha'(t)$, we can express the
+  magnitude of $\alpha_{\perp}(t)$ in terms of the cross product. Specifically,
+  \[%
+    \lVert \alpha_{\perp}(t) \rVert = \frac{\lVert \alpha'(t) \wedge \alpha''(t) \rVert}{\lVert \alpha'(t) \rVert}
+  .\]%
+  Thus, the second derivative simplifies to
+  \[%
+    \kappa(t) = \odv[order=2]{\beta}{s} = \frac{\lVert \alpha'(t) \wedge \alpha''(t) \rVert}{\lVert \alpha'(t) \rVert^3}
+  .\]%
+  This completes the proof.
+\end{solution}
+
+\begin{solution}[(iii)]
+  We know that $\Ba'(s) = \tau(s) \Na(s)$ and $\Ba(s(t)) = \Ta(s(t)) \wedge
+  \Na(s(t))$. Differentiating with respect to $s$, we have
+  \begin{align*}
+    \odv{\Ba}{s} = \odv{}{s} (\Ta(s) \wedge \Na(s)) &= \odv{\Ta}{s} \wedge \Na(s) + \Ta(s) \wedge \odv{\Na}{s} \\
+                                                    &= \kappa(s) \Na(s) \wedge \Na(s) + \Ta(s) \wedge (-\kappa(s)\Ta(s) + \tau(s)\Ba(s)) \\
+                                                    &= \tau(s)(\Ta(s) \wedge \Ba(s)) \\
+                                                    &= -\tau(s)\Na(s)
+  .\end{align*}
+  But, we want $\odv{\Ba}/{t}$, so, applying the chain rule, we have
+  \[%
+    \odv{\Ba}{t} = \odv{\Ba}{s} \cdot \odv{s}{t} = -\tau(s) \Na(s) \cdot \lVert \alpha'(t) \rVert
+  .\]%
+  Since torsion is a function of arc-length, we have $\tau(s) = \tau(t(s))$.
+  Therefore, we can express the torsion as
+  \[%
+    \tau(t(s)) = -\odv{\Ba}{t} \cdot \Na(s) \frac{1}{\lVert \alpha'(t) \rVert}
+  .\]%
+  But, since $\Na(s)$ and $\Na(t)$ are the same vector, the expression can be
+  rewritten as
+  \[%
+    \tau(t(s)) = -\odv{\Ba}{t} \cdot \frac{\Na(t)}{\lVert \alpha'(t) \rVert}
+  .\]%
+\end{solution}
+
+\begin{solution}[(iv)]
+  Computing $\alpha' \wedge \alpha''$, we have
+  \[%
+    \alpha' \wedge \alpha'' = \begin{vmatrix}
+      \ui & \uj & \uk \\
+      x' & y' & 0 \\
+      x'' & y'' & 0 \\
+    \end{vmatrix} = \left\langle 0, 0, x' y'' - x'' y' \right\rangle
+  .\]%
+  The magnitude of the cross product is given by
+  \[%
+    \lVert \alpha' \wedge \alpha'' \rVert = \sqrt{(x' y'' - x'' y')^2} = \lvert x' y'' - x'' y' \rvert
+  .\]%
+  The magnitude of the first derivative cubed is given by
+  \[%
+    \lVert \alpha' \rVert^2 = \left((x')^2 + (y')^2\right)^{\sfrac{3}{2}}
+  .\]%
+  Therefore, the curvature is given by
+  \[%
+    \kappa(t) = \frac{\lVert \alpha' \wedge \alpha'' \rVert}{\lVert \alpha' \rVert^3} = \frac{\lvert x' y'' - x'' y' \rvert}{\left[(x')^2 + (y')^2\right]^{\sfrac{3}{2}}}
+  .\]%
+  This completes the proof.
+\end{solution}
 
 % \begin{problem}[1.5.14]
 %   Let $\alpha : (a, b) \to \R^2$ be a regular parametrized plane curve. Assume
@@ -735,7 +773,7 @@
 %   $\lvert \kappa(t_0) \rvert \ge \sfrac{1}{\lVert \alpha(t_0) \rVert}$.
 % \end{problem}
 
-% \begin{proof}
+% \begin{solution}
 %   Let $f(t) = \|\alpha(t)\|^2$, the square of the distance from the origin to
 %   the curve. Since $f$ is maximized at $t_0$, we have
 %   \[%
@@ -785,4 +823,4 @@
 %     \lvert \kappa(t_0) \rvert \ge \frac{1}{\lVert \alpha(t_0) \rVert}
 %   .\]%
 %   This completes the proof.
-% \end{proof}
+% \end{solution}
