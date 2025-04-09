@@ -11,7 +11,7 @@
   Ans. $\displaystyle z = \left(-\frac{1}{2}, \pm \frac{\sqrt{3}}{2}\right)$.
 \end{problem}
 
-\begin{proof}[Solution]
+\begin{solution}
   Expanding the left-hand side and simplifying, we get
   \begin{alignat*}{3}
     z^2 + z + 1 = 0 &\implies (x^2 - y^2, 2xy) + (x, y) + (1, 0) &&= (0, 0) \\
@@ -46,7 +46,7 @@
   \[%
     z = \left(-\frac{1}{2}, \pm \frac{\sqrt{3}}{2}\right) = -\frac{1}{2} \pm\frac{\sqrt{3}}{2}i
   .\qedhere\]%
-\end{proof}
+\end{solution}
 
 \begin{problem}[1.3.1]
   Reduce each of these quantities to a real number
@@ -56,7 +56,7 @@
   Ans. (i) $-\sfrac{2}{5}$, (ii) $-\sfrac{1}{2}$, (iii) $-4$.
 \end{problem}
 
-\begin{proof}[Solution to (i)]
+\begin{solution}[(i)]
   Multiplying the numerator and denominator of the first term by the conjugate
   of the denominator, we have
   \[%
@@ -70,16 +70,16 @@
   \[%
     \frac{1 + 2i}{3 - 4i} + \frac{2 - i}{5i} = \left(-\frac{1}{5} + \frac{2}{5} i\right) + \left(-\frac{1}{5} - \frac{2}{5} i\right) = -\frac{2}{5}
   .\qedhere\]%
-\end{proof}
+\end{solution}
 
-\begin{proof}[Solution to (ii)]
+\begin{solution}[(ii)]
   Expanding the denominator, we have
   \[%
     \frac{5i}{(1 - i)(2 - i)(3 - i)} = \frac{5i}{(1 - 3i)(3 - i)} = -\frac{5i}{10i} = -\frac{1}{2}
   .\qedhere\]%
-\end{proof}
+\end{solution}
 
-\begin{proof}[Solution to (iii)]
+\begin{solution}[(iii)]
   Expanding the polynomial $(1 - i)^2$, we have
   \[%
     (1 - i)^2 = (1 - i)(1 - i) = 1 - 2i + i^2 = 1 - 2i - 1 = -2i
@@ -88,7 +88,7 @@
   \[%
     (1 - i)^4 = (1 - i)^2(1 - i)^2 = (-2i)(-2i) = 4i^2 = -4
   .\qedhere\]%
-\end{proof}
+\end{solution}
 
 \begin{problem}[1.4.1]
   Locate the numbers $z_1 + z_2$ and $z_1 - z_2$ vertically when
@@ -98,84 +98,148 @@
   .\end{alignat*}
 \end{problem}
 
-\begin{proof}[Solution to (i)]
+\begin{solution}[(i)]
   Graphing the complex numbers $z_1 = 2i$ and $z_2 = \frac{2}{3} - i$ on the
   complex plane, we have
 
-  \begin{multicols}{2}
-    \begin{center}
-      \begin{tikzpicture}[scale=1.5]
-        % Draw axes
-        \draw[->, thick] (-1.5, 0) -- (2, 0) node[right] {$\Re(z)$};
-        \draw[->, thick] (0, -1.5) -- (0, 3.5) node[above] {$\Im(z)$};
+  \begin{figure}[H]
+    \centering
 
-        % Dashed lines for visualization
-        \draw[dashed,-] (2/3,-1) -- (2/3,1);
-        \draw[dashed,-] (0,2) -- (2/3,1);
-        \draw[dashed,-] (-2/3,3) -- (0,2);
-        \draw[dashed,-] (-2/3,3) -- (-2/3,1);
+    \begin{subfigure}[b]{0.45\textwidth}
+      \centering
 
-        % Plot z1 = 2i
-        \draw[red,->,thick] (0,0) -- (0,2) node[midway,right] {$z_1$};
+      \begin{tikzpicture}[scale=1.25]
+          % Axes
+          \draw[thick, ->] (-2.5,0) -- (2.5,0) node[at end, right]{$x$};
+          \draw[thick, ->] (0,-2.5) -- (0,2.5) node[at end, above]{$y$}; 
+          \foreach \x/\xtext in {-2,-1,1,2}
+          \draw[shift={(\x,0)}] (0pt,2pt) -- (0pt,-2pt) node[below,fill=white] {$\xtext$};
+          \foreach \y/\ytext in {-2,-1,1,2}
+          \draw[shift={(0,\y)}] (2pt,0pt) -- (-2pt,0pt) node[left,fill=white] {$\ytext$};
 
-        % Plot z2 = 2/3 - i
-        \draw[blue,->,thick] (0,0) -- (2/3,-1) node[midway,below left] {$z_2$};
+          % Points
+          \node[label={0:{$(0,2)$}}] at (0,2) {};
+          \node[label={0:{$(\frac{2}{3},-1)$}}] at (2/3,-1) {};
+          \node[label={0:{$(\frac{2}{3},1)$}}] at (2/3,1) {};
 
-        % Plot -z2 = -2/3 + i
-        \draw[blue,->,thick] (0,0) -- (-2/3,1) node[midway,left] {$-z_2$};
-
-        % Plot z1 + z2 = 2/3 + i
-        \draw[green,->,thick] (0,0) -- (2/3,1) node[midway,below,sloped] {$z_1 + z_2$};
-
-        % Plot z1 - z2 = -2/3 + 3i
-        \draw[orange,->,thick] (0,0) -- (-2/3,3) node[midway,below,sloped] {$z_1 - z_2$};
+          % vectors
+          \draw[-{Stealth[length=2.5mm]}, blue, thick] (0,0) -- (0,2) node[at end, label={[label distance=5pt]265:{$z_1$}}] {};
+          \draw[-{Stealth[length=2.5mm]}, red, thick] (0,0) -- (2/3,-1) node[midway, above right, label={[label distance=0pt]260:{$z_2$}}] {};
+          \draw[-{Stealth[length=2.5mm]},purple, thick] (0,0) -- (2/3,1); 
+          \node[purple] at (0.25,0.6) {{\footnotesize \rotatebox{57}{$z_1+z_2$}}};
+          \draw[-{Stealth[length=2.5mm]},blue, dashed, thick] (2/3,-1) -- (2/3,1);
+          \draw[-{Stealth[length=2.5mm]}, red, dashed, thick] (0,2) -- (2/3,1);
       \end{tikzpicture}
-    \end{center}
-    \columnbreak
-    \noindent In this case, we can compute
-    \[%
-      z_1 + z_2 = \left(0 + 2i\right) + \left(\frac{2}{3} - i\right) = \frac{2}{3} + i
-    .\]%
-    This gives us the point $(\sfrac{2}{3}, 1)$. Similarly, we can compute
-    \[%
-      z_1 - z_2 = z_1 + (-z_2) = \left(0 + 2i\right) + \left(-\frac{2}{3} + i\right) = -\frac{2}{3} + 3i
-    .\]%
-    This gives us the point $(-\sfrac{2}{3}, 3)$. \qedhere
-  \end{multicols}
-\end{proof}
 
-\begin{proof}[Solution to (ii)]
+      \caption{$z_1 + z_2$}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.45\textwidth}
+      \centering
+
+      \begin{tikzpicture}[scale=1.25]
+          % Axes
+          \draw[thick, ->] (-2.5,0) -- (2.5,0) node[at end, right]{$x$};
+          \draw[thick, ->] (0,-2.5) -- (0,2.5) node[at end, above]{$y$}; 
+          \foreach \x/\xtext in {-2,-1,1,2}
+          \draw[shift={(\x,0)}] (0pt,2pt) -- (0pt,-2pt) node[below,fill=white] {$\xtext$};
+          \foreach \y/\ytext in {-2,-1,1,2}
+          \draw[shift={(0,\y)}] (2pt,0pt) -- (-2pt,0pt) node[left,fill=white] {$\ytext$};
+
+          % Points
+          \node[label={0:{$(0,2)$}}] at (0,2) {};
+          \node[label={0:{$(\frac{2}{3},-1)$}}] at (2/3,-1) {};
+          \node[label={180:{$(-\frac{2}{3},3)$}}] at (-2/3,3) {};
+
+          % vectors
+          \draw[-{Stealth[length=2.5mm]}, blue, thick] (0,0) -- (0,2) node[at end, label={[label distance=5pt]-50:{$z_1$}}] {};
+          \draw[-{Stealth[length=2.5mm]}, red, thick] (0,0) -- (2/3,-1) node[midway, above right, label={[label distance=0pt]260:{$z_2$}}] {};
+          \draw[-{Stealth[length=2.5mm]},purple, thick] (0,0) -- (-2/3,3); 
+          \node[purple] at (-0.5,1.5) {{\small \rotatebox{-80}{$z_1-z_2$}}};
+          \draw[-{Stealth[length=2.5mm]},blue, dashed, thick] (-2/3,1) -- (-2/3,3);
+          \draw[-{Stealth[length=2.5mm]}, red, dashed, thick] (0,0) -- (-2/3,1);
+          \draw[-{Stealth[length=2.5mm]}, red, dashed, thick] (0,2) -- (-2/3,3);
+      \end{tikzpicture}
+
+      \caption{$z_1 - z_2$}
+    \end{subfigure}
+  \end{figure}
+
+  \noindent In this case, we can compute
+  \[%
+    z_1 + z_2 = \left(0 + 2i\right) + \left(\frac{2}{3} - i\right) = \frac{2}{3} + i
+  .\]%
+  This gives us the point $(\sfrac{2}{3}, 1)$. Similarly, we can compute
+  \[%
+    z_1 - z_2 = z_1 + (-z_2) = \left(0 + 2i\right) + \left(-\frac{2}{3} + i\right) = -\frac{2}{3} + 3i
+  .\]%
+  This gives us the point $(-\sfrac{2}{3}, 3)$.
+\end{solution}
+
+\begin{solution}[(ii)]
   Graphing the complex numbers $z_1 = (-\sqrt{3}, 1)$ and $z_2 = (\sqrt{3}, 0)$
   on the complex plane, we have
-  \begin{center}
-    \begin{tikzpicture}[scale=1.5]
-      % Draw axes
-      \draw[->, thick] (-4, 0) -- (2, 0) node[right] {$\Re(z)$};
-      \draw[->, thick] (0, -0.5) -- (0, 1.5) node[above] {$\Im(z)$};
 
-      % Dashed lines for visualization
-      \draw[dashed,-] (-1.732,1) -- (0,1);
-      \draw[dashed,-] (1.732,0) -- (0,1);
-      \draw[dashed,-] (-2*1.732,1) -- (-1.732,1);
-      \draw[dashed,-] (-2*1.732,1) -- (-1.732,0);
+  \begin{figure}[H]
+    \centering
 
-      % Plot z1 = (-sqrt(3),1)
-      \draw[red,->,thick] (0,0) -- (-1.732,1) node[midway,above right] {$z_1$};
+    \begin{subfigure}[b]{0.45\textwidth}
+      \begin{tikzpicture}[scale=1.25]
+          % Axes
+          \draw[thick, ->] (-2.5,0) -- (2.5,0) node[at end, right]{$x$};
+          \draw[thick, ->] (0,-0.5) -- (0,2.5) node[at end, above]{$y$}; 
+          \foreach \x/\xtext in {-2,-1,1,2}
+          \draw[shift={(\x,0)}] (0pt,2pt) -- (0pt,-2pt) node[below,fill=white] {$\xtext$};
+          \foreach \y/\ytext in {1,2}
+          \draw[shift={(0,\y)}] (2pt,0pt) -- (-2pt,0pt) node[left,fill=white] {$\ytext$};
 
-      % Plot z2 = (sqrt(3),0)
-      \draw[blue,->,thick] (0,0) -- (1.732,0) node[midway,below] {$z_2$};
+          % Points
+          \node[label={180:{$(-\sqrt{3},1)$}}] at (-1.7320508076,1) {};
+          \node[label={30:{$(\sqrt{3},0)$}}] at (1.7320508076,0) {};
+          \node[label={45:{$(0,1)$}}] at (0,1) {};
 
-      % Plot -z2 = (-sqrt(3),0)
-      \draw[blue,->,thick] (0,0) -- (-1.732,0) node[midway,below] {$-z_2$};
+          % vectors
+          \draw[-{Stealth[length=2.5mm]}, blue, thick] (0,0) -- (-1.7320508076,1) node[at end, label={[label distance=5pt]-50:{$z_1$}}] {};
+          \draw[-{Stealth[length=2.5mm]}, red, thick] (0,0) -- (1.7320508076,0) node[midway, above right, label={[label distance=0pt]260:{$z_2$}}] {};
+          \draw[-{Stealth[length=2.5mm]},purple, thick] (0,0) -- (0,1); 
+          \node[purple] at (0.5,0.35) {{\small {$z_1+z_2$}}};
+          \draw[-{Stealth[length=2.5mm]},blue, dashed, thick] (1.7320508076,0) -- (0,1);
+          \draw[-{Stealth[length=2.5mm]}, red, dashed, thick] (-1.7320508076,1) -- (0,1);
+      \end{tikzpicture}
 
-      % Plot z1 + z2 = (0,1)
-      \draw[green,->,thick] (0,0) -- (0,1) node[midway,below,sloped] {$z_1 + z_2$};
+      \caption{$z_1 + z_2$}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.45\textwidth}
+      \centering
 
-      % Plot z1 - z2 = (-2sqrt(3),1)
-      \draw[orange,->,thick] (0,0) -- (-2*1.732,1) node[midway,below,sloped] {$z_1 - z_2$};
-    \end{tikzpicture}
-  \end{center}
-  In this case, we can compute
+      \begin{tikzpicture}[scale=1.25]
+          % Axes
+          \draw[thick, ->] (-3.5,0) -- (2.5,0) node[at end, right]{$x$};
+          \draw[thick, ->] (0,-0.5) -- (0,2.5) node[at end, above]{$y$}; 
+          \foreach \x/\xtext in {-3,-2,-1,1,2}
+          \draw[shift={(\x,0)}] (0pt,2pt) -- (0pt,-2pt) node[below,fill=white] {$\xtext$};
+          \foreach \y/\ytext in {1,2}
+          \draw[shift={(0,\y)}] (2pt,0pt) -- (-2pt,0pt) node[left,fill=white] {$\ytext$};
+
+          % Points
+          \node[label={90:{$(-\sqrt{3},1)$}}] at (-1.7320508076,1) {};
+          \node[label={30:{$(\sqrt{3},0)$}}] at (1.7320508076,0) {};
+          \node[label={90:{$(-2\sqrt{3},1)$}}] at (-2*1.7320508076,1) {};
+
+          % vectors
+          \draw[-{Stealth[length=2.5mm]}, blue, thick] (0,0) -- (-1.7320508076,1) node[at end, label={[label distance=5pt]-50:{$z_1$}}] {};
+          \draw[-{Stealth[length=2.5mm]}, red, thick] (0,0) -- (1.7320508076,0) node[midway, above right, label={[label distance=0pt]260:{$z_2$}}] {};
+          \draw[-{Stealth[length=2.5mm]},purple, thick] (0,0) -- (-2*1.7320508076,1); 
+          \node[purple] at (-2.3,0.5) {{\small\rotatebox{-15}{$z_1-z_2$}}};
+
+          % Dashed vectors
+          \draw[-{Stealth[length=2.5mm]}, red, dashed, thick] (-1.7320508076,1) -- (-2*1.7320508076,1);
+      \end{tikzpicture}
+
+      \caption{$z_1 - z_2$}
+    \end{subfigure}
+  \end{figure}
+
+  \noindent In this case, we can compute
   \[%
     z_1 + z_2 = \left(-\sqrt{3}, 1\right) + \left(\sqrt{3}, 0\right) = (0, 1)
   .\]%
@@ -184,104 +248,163 @@
     z_1 - z_2 = z_1 + (-z_2) = \left(-\sqrt{3}, 1\right) + \left(-\sqrt{3}, 0\right) = (-2\sqrt{3}, 1)
   .\]%
   This gives us the point $(-2\sqrt{3}, 1)$. \qedhere
-\end{proof}
+\end{solution}
 
-\begin{proof}[Solution to (iii)]
+\begin{solution}[(iii)]
   Graphing the complex numbers $z_1 = (-3, 1)$ and $z_2 = (1, 4)$ on the complex
   plane, we have
 
-  \begin{multicols}{2}
-    \begin{center}
-      \begin{tikzpicture}[scale=1.5]
-        % Draw axes
-        \draw[->, thick] (-3, 0) -- (1.5, 0) node[right] {$\Re(z)$};
-        \draw[->, thick] (0, -2.5) -- (0, 3.5) node[above] {$\Im(z)$};
+  \begin{figure}[H]
+    \centering
 
-        % Dashed lines for visualization
-        \draw[dashed,-] (-3/2,1/2) -- (-3/2+1,1/2+2);
-        \draw[dashed,-] (1,2) -- (-3/2+1,1/2+2);
-        \draw[dashed,-] (-3/2,1/2) -- (-3/2-1,1/2-2);
-        \draw[dashed,-] (-1,-2) -- (-3/2-1,1/2-2);
+    \begin{subfigure}[b]{0.45\textwidth}
+      \centering
 
-        % Plot z1 = (-3,1)
-        \draw[red,->,thick] (0,0) -- (-3/2,1/2) node[midway,above right] {$z_1$};
+      \begin{tikzpicture}
+          % Axes
+          \draw[thick, ->] (-3.5,0) -- (2.5,0) node[at end, right]{$x$};
+          \draw[thick, ->] (0,-1.5) -- (0,5.5) node[at end, above]{$y$}; 
+          \foreach \x/\xtext in {-3,-2,-1,1,2}
+          \draw[shift={(\x,0)}] (0pt,2pt) -- (0pt,-2pt) node[below,fill=white] {$\xtext$};
+          \foreach \y/\ytext in {-1,1,2,3,4,5}
+          \draw[shift={(0,\y)}] (2pt,0pt) -- (-2pt,0pt) node[left,fill=white] {$\ytext$};
 
-        % Plot z2 = (1,4)
-        \draw[blue,->,thick] (0,0) -- (1,2) node[midway,right] {$z_2$};
+          % Points
+          \node[label={180:{$(-3,1)$}}] at (-3,1) {};
+          \node[label={30:{$(1,4)$}}] at (1,4) {};
+          \node[label={110:{$(-2,5)$}}] at (-2,5) {};
 
-        % Plot -z2 = (-1,4)
-        \draw[blue,->,thick] (0,0) -- (-1,-2) node[midway,right] {$-z_2$};
+          % vectors
+          \draw[-{Stealth[length=2.5mm]}, blue, thick] (0,0) -- (-3,1) node[at end, label={[label distance=5pt]-50:{$z_1$}}] {};
+          \draw[-{Stealth[length=2.5mm]}, red, thick] (0,0) -- (1,4) node[midway, label={[label distance=0pt]-60:{$z_2$}}] {};
+          \draw[-{Stealth[length=2.5mm]},purple, thick] (0,0) -- (-2,5); 
+          \node[purple] at (-1.4,2.6) {{\small\rotatebox{-65}{$z_1+z_2$}}};
 
-        % Plot z1 + z2 = (0,1)
-        \draw[green,->,thick] (0,0) -- (-3/2+1,1/2+2) node[midway,below,sloped] {$z_1 + z_2$};
-
-        % Plot z1 - z2 = (-2sqrt(3),1)
-        \draw[orange,->,thick] (0,0) -- (-3/2-1,1/2-2) node[midway,below,sloped] {$z_1 - z_2$};
+          % Dashed vectors
+          \draw[-{Stealth[length=2.5mm]}, red, dashed, thick] (-3,1) -- (-2,5);
+          \draw[-{Stealth[length=2.5mm]}, blue, dashed, thick] (1,4) -- (-2,5);
       \end{tikzpicture}
-    \end{center}
-    \columnbreak
-    \noindent In this case, we can compute
-    \[%
-      z_1 + z_2 = \left(-3, 1\right) + \left(1, 4\right) = (-2, 5)
-    .\]%
-    This gives us the point $(-2, 5)$. Similarly, we can compute
-    \[%
-      z_1 - z_2 = z_1 + (-z_2) = \left(-3, 1\right) + \left(-1, -4\right) = (-4, -3)
-    .\]%
-    This gives us the point $(-4, -3)$. \qedhere
-  \end{multicols}
-\end{proof}
 
-\begin{proof}[Solution to (iv)]
+      \caption{$z_1 + z_2$}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.45\textwidth}
+      \centering
+
+      \begin{tikzpicture}
+          % Axes
+          \draw[thick, ->] (-4.5,0) -- (2.5,0) node[at end, right]{$x$};
+          \draw[thick, ->] (0,-3.5) -- (0,4.5) node[at end, above]{$y$}; 
+          \foreach \x/\xtext in {-4,-3,-2,-1,1,2}
+          \draw[shift={(\x,0)}] (0pt,2pt) -- (0pt,-2pt) node[below,fill=white] {$\xtext$};
+          \foreach \y/\ytext in {-3,-2,-1,1,2,3,4}
+          \draw[shift={(0,\y)}] (2pt,0pt) -- (-2pt,0pt) node[left,fill=white] {$\ytext$};
+
+          % Points
+          \node[inner sep = 0.4mm, label={180:{$(-3,1)$}}] at (-3,1) {};
+          \node[inner sep = 0.4mm, label={30:{$(1,4)$}}] at (1,4) {};
+          \node[inner sep=0.4mm, label={[yshift=-2em]90:{$(-4,-3)$}}] at (-4,-3) {};
+
+          % vectors
+          \draw[-{Stealth[length=2.5mm]}, blue, thick] (0,0) -- (-3,1) node[at end, label={[label distance=5pt]-50:{$z_1$}}] {};
+          \draw[-{Stealth[length=2.5mm]}, red, thick] (0,0) -- (1,4) node[midway, label={[label distance=0pt]-60:{$z_2$}}] {};
+          \draw[-{Stealth[length=2.5mm]},purple, thick] (0,0) -- (-4,-3);
+          \node[purple] at (-2.15,-2) {{\small\rotatebox{40}{$z_1-z_2$}}};
+
+          % Dashed vectors
+          \draw[-{Stealth[length=2.5mm]}, red, dashed, thick] (-3,1) -- (-4,-3);
+      \end{tikzpicture}
+
+      \caption{$z_1 - z_2$}
+    \end{subfigure}
+  \end{figure}
+
+  \noindent In this case, we can compute
+  \[%
+    z_1 + z_2 = \left(-3, 1\right) + \left(1, 4\right) = (-2, 5)
+  .\]%
+  This gives us the point $(-2, 5)$. Similarly, we can compute
+  \[%
+    z_1 - z_2 = z_1 + (-z_2) = \left(-3, 1\right) + \left(-1, -4\right) = (-4, -3)
+  .\]%
+  This gives us the point $(-4, -3)$. \qedhere
+\end{solution}
+
+\begin{solution}[(iv)]
   Graphing the complex numbers $z_1 = x_1 + y_1i$ and $z_2 = x_1 - y_1i$ on the
   complex plane, we have
 
-  \newpage
+  \begin{figure}[H]
+    \centering
 
-  \begin{multicols}{2}
-    \begin{center}
-      \begin{tikzpicture}[scale=1.5]
-        % Draw axes
-        \draw[->, thick] (-1.5, 0) -- (2.5, 0) node[right] {$\Re(z)$};
-        \draw[->, thick] (0, -2.5) -- (0, 4.5) node[above] {$\Im(z)$};
+    \begin{subfigure}[b]{0.45\textwidth}
+      \centering
 
-        % let x1 = 1 for instance
-        % let y1 = 2 for instance
+      \begin{tikzpicture}[scale=1.25]
+            % Axes 
+            \draw[thick, ->] (-1,0) -- (3.5,0) node[at end, right]{$x$};
+            \draw[thick, ->] (0,-2) -- (0,2) node[at end, above]{$y$}; 
 
-        % Dashed lines for visualization
-        \draw[dashed,-] (1,2) -- (2,0);
-        \draw[dashed,-] (1,-2) -- (2,0);
-        \draw[dashed,-] (1,2) -- (0,4);
-        \draw[dashed,-] (-1,2) -- (0,4);
 
-        % Plot z1 = (1, 2)
-        \draw[red,->,thick] (0,0) -- (1,2) node[midway,above right] {$z_1$};
+            % Points
+            \node[label={90:{$(x_1,y_1)$}}] at (1.5,1) {};
+            \node[label={-90:{$(x_1,-y_1)$}}] at (1.5,-1) {};
+            \node[label={30:{$(2x_1,0)$}}] at (3,0) {};
+            
 
-        % Plot z2 = (1, -2)
-        \draw[blue,->,thick] (0,0) -- (1,-2) node[midway,right] {$z_2$};
+            % vectors
+            \draw[-{Stealth[length=2.5mm]}, blue, thick] (0,0) -- (1.5,1) node[at end, label={[label distance=0pt]-90:{$z_1$}}] {};
+            \draw[-{Stealth[length=2.5mm]}, red, thick] (0,0) -- (1.5,-1) node[midway, label={[label distance=0pt]-85:{$z_2$}}] {};
+            \draw[-{Stealth[length=2.5mm]},purple, thick] (0,0) -- (3,0); 
+            \node[purple] at (1.5,0.15) {{\small{$z_1-z_2$}}};
 
-        % Plot -z2 = (-1,2)
-        \draw[blue,->,thick] (0,0) -- (-1,2) node[midway,right] {$-z_2$};
+            %Dashed vectors
+            \draw[-{Stealth[length=2.5mm]}, red, dashed, thick] (1.5,1) -- (3,0);
+            \draw[-{Stealth[length=2.5mm]}, blue, dashed, thick] (1.5,-1) -- (3,0);
 
-        % Plot z1 + z2 = (2,0)
-        \draw[green,->,thick] (0,0) -- (2,0) node[midway,below,sloped] {$z_1 + z_2$};
-
-        % Plot z1 - z2 = (0,4)
-        \draw[orange,->,thick] (0,0) -- (0,4) node[midway,below,sloped] {$z_1 - z_2$};
       \end{tikzpicture}
-    \end{center}
-    \columnbreak
-    In this case, we can compute
-    \[%
-      z_1 + z_2 = \left(x_1 + y_1i\right) + \left(x_1 - y_1i\right) = (2x_1 + 0i)
-    .\]%
-    This gives us the point $(2x_1, 0)$. Similarly, we can compute
-    \[%
-      z_1 - z_2 = z_1 + (-z_2) = \left(x_1 + y_1i\right) + \left(x_1 - y_1i\right) = (0, 2y_1)
-    .\]%
-    This gives us the point $(0, 2y_1)$. \qedhere
-  \end{multicols}
-\end{proof}
+
+      \caption{$z_1 + z_2$}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.45\textwidth}
+      \centering
+
+      \begin{tikzpicture}[scale=1.25]
+            % Axes 
+            \draw[thick, ->] (-1,0) -- (3.5,0) node[at end, right]{$x$};
+            \draw[thick, ->] (0,-2) -- (0,2.5) node[at end, above]{$y$}; 
+
+
+            % Points
+            \node[label={90:{$(x_1,y_1)$}}] at (1.5,1) {};
+            \node[label={-90:{$(x_1,-y_1)$}}] at (1.5,-1) {};
+            \node[label={30:{$(0,2y_1)$}}] at (0,2) {};
+            
+
+            % vectors
+            \draw[-{Stealth[length=2.5mm]}, blue, thick] (0,0) -- (1.5,1) node[at end, label={[label distance=0pt]-90:{$z_1$}}] {};
+            \draw[-{Stealth[length=2.5mm]}, red, thick] (0,0) -- (1.5,-1) node[midway, label={[label distance=0pt]-85:{$z_2$}}] {};
+            \draw[-{Stealth[length=2.5mm]},purple, thick] (0,0) -- (0,2); 
+            \node[purple] at (-0.5,1) {{\small{$z_1-z_2$}}};
+
+            %Dashed vectors
+            \draw[-{Stealth[length=2.5mm]}, red, dashed, thick] (1.5,1) -- (0,2);
+
+      \end{tikzpicture}
+
+      \caption{$z_1 - z_2$}
+    \end{subfigure}
+  \end{figure}
+
+  \noindent In this case, we can compute
+  \[%
+    z_1 + z_2 = \left(x_1 + y_1i\right) + \left(x_1 - y_1i\right) = (2x_1 + 0i)
+  .\]%
+  This gives us the point $(2x_1, 0)$. Similarly, we can compute
+  \[%
+    z_1 - z_2 = z_1 + (-z_2) = \left(x_1 + y_1i\right) + \left(x_1 - y_1i\right) = (0, 2y_1)
+  .\]%
+  This gives us the point $(0, 2y_1)$. \qedhere
+\end{solution}
 
 \begin{problem}[1.4.4]
   Verify that $\sqrt{2}\lvert z \rvert \ge \lvert \Re(z) \rvert + \lvert \Im(z)
@@ -291,7 +414,7 @@
   \rvert)^2 \ge 0$.
 \end{problem}
 
-\begin{proof}[Solution]
+\begin{solution}
   We know that $\Re(z) = \lvert x \rvert$ and $\Im(z) = \lvert y \rvert$. We
   also know that $\lvert z \rvert = \sqrt{x^2 + y^2}$. Therefore, we can rewrite
   the inequality as
@@ -313,7 +436,7 @@
   Therefore, we have $(\lvert x \rvert - \lvert y \rvert)^2 \ge 0$, which is
   always true. This means that $\sqrt{2}\lvert z \rvert \ge \lvert \Re(z) \rvert
   + \lvert \Im(z) \rvert$ is true for all complex numbers $z$.
-\end{proof}
+\end{solution}
 
 \begin{problem}[1.4.6]
   Using the fact that $\lvert z_1 - z_2 \rvert$ is the distance between two
@@ -327,7 +450,7 @@
   \end{enumerate}
 \end{problem}
 
-\begin{proof}[Solution to (i)]
+\begin{solution}[(i)]
   The modulus $\lvert z - 4i \rvert$ represents the Euclidean distance between
   the complex number $z$ and the point $4i$. Similarly, $\lvert z + 4i \rvert$
   represents the distance from $z$ to $-4i$.
@@ -341,9 +464,9 @@
   at a distance $c = 4$ from the center $(0, 0)$, and using the standard ellipse
   relation $a^2 = b^2 + c^2$, we get $a = 5$, $b = 3$, and $c = 4$. Thus, the
   ellipse has semi-major axis $a = 5$ and semi-minor axis $b = 3$.
-\end{proof}
+\end{solution}
 
-\begin{proof}[Solution to (ii)]
+\begin{solution}[(ii)]
   The expression $\lvert z - 1 \rvert$ represents the distance from $z$ to $1$.
   The expression $\lvert z + i \rvert$ represents the distance from $z$ to $-i$.
 
@@ -359,7 +482,7 @@
   .\]%
   Thus, the given equation represents the line through the origin with slope
   $-1$.
-\end{proof}
+\end{solution}
 
 \begin{problem}[1.5.1(iv)]
   Use properties of conjugates and moduli established in Sec. $5$ to show that
@@ -369,7 +492,7 @@
   \end{enumerate}
 \end{problem}
 
-\begin{proof}[Solution to (iv)]
+\begin{solution}[(iv)]
   Expanding the left-hand side, we have
   \[%
     \lvert (2\zb + 5)(\sqrt{2} - i) \rvert = \lvert 2\zb + 5 \rvert \cdot \lvert \sqrt{2} - i \rvert
@@ -387,7 +510,7 @@
   \[%
     \lvert (2\zb + 5)(\sqrt{2} - i) \rvert = \sqrt{3} \lvert 2z + 5 \rvert
   .\qedhere\]%
-\end{proof}
+\end{solution}
 
 \begin{problem}[1.5.10]
   Prove that
@@ -398,7 +521,7 @@
   \end{enumerate}
 \end{problem}
 
-\begin{proof}[Solution to (i)]
+\begin{solution}[(i)]
   Assume $z$ is real. This means that $z = x + 0i$ for some real number $x$. The
   complex conjugate of $z$ is $\zb = x - 0i = x$. Therefore, we have $\zb = z$.
 
@@ -409,9 +532,9 @@
   is real.
 
   Thus, $z$ is real if and only if $\zb = z$.
-\end{proof}
+\end{solution}
 
-\begin{proof}[Solution to (ii)]
+\begin{solution}[(ii)]
   Assume $z$ is either real or pure imaginary. This gives us two cases, when $z$
   is real, $z = x + 0i$ for some real number $x$, and when $z$ is pure
   imaginary, $z = 0 + yi$ for some real number $y$. Notice that the first case
@@ -432,7 +555,7 @@
   pure imaginary.
 
   Thus, $z$ is either real or pure imaginary if and only if $\zb^2 = z^2$.
-\end{proof}
+\end{solution}
 
 \begin{problem}[1.5.14]
   Using expressions ($6$), Sec. $5$, for $\Re(z)$ and $\Im(z)$, show that the
@@ -442,7 +565,7 @@
   .\]%
 \end{problem}
 
-\begin{proof}[Solution]
+\begin{solution}
   Substituting $\Re(z)$ and $\Im(z)$ for $x$ and $y$ into the equation for the
   hyperbola, we have
   \[%
@@ -459,32 +582,70 @@
     \implies&\quad 2z^2 + 2\zb^2 &&= 4 \\
     \implies&\quad z^2 + \zb^2 &&= 2
   .\tag*{\qedhere}\end{alignat*}
-\end{proof}
+\end{solution}
 
 \begin{problem}[(Extra)]
   Given $a + bi$, $a$, $b$ are real numbers, find $c$ and $d$ such that $(c +
   di)^2 = a + bi$.
 \end{problem}
 
-\begin{proof}[Solution]
-  Expanding the left-hand side, we have $(c + di)^2 = c^2 - d^2 + 2cdi$.
-  Equating the real and imaginary parts, we get the following system of
-  equations
-  \begin{align*}
-    c^2 - d^2 &= a \\
-    2cd &= b
-  .\end{align*}
-  From the second equation, we can express $d$ in terms of $c$ and $b$ as
-  follows
-  \[%
-    d = \frac{b}{2c}
-  .\]%
-  Plugging this expression for $d$ into the first equation, we have
-  \begin{alignat*}{3}
-    \phantom{\implies}\quad&c^2 - \left(\frac{b}{2c}\right)^2 &&= a \\
-    \implies\quad&c^2 - \frac{b^2}{4c^2} &&= a \\
-    \implies\quad&4c^4 - b^2 &&= 4ac^2 \\
-    \implies\quad&4c^4 - 4ac^2 - b^2 &&= 0 \\
-    \implies\quad&c^4 - ac^2 - \frac{b^2}{4} &&= 0
-  .\end{alignat*}
-\end{proof}
+% \begin{solution}
+%   Expanding the left-hand side, we have $(c + di)^2 = c^2 - d^2 + 2cdi$.
+%   Equating the real and imaginary parts, we get the following system of
+%   equations
+%   \begin{align*}
+%     c^2 - d^2 &= a \\
+%     2cd &= b
+%   .\end{align*}
+%   From the second equation, we can express $d$ in terms of $c$ and $b$ as
+%   follows
+%   \[%
+%     d = \frac{b}{2c}
+%   .\]%
+%   Plugging this expression for $d$ into the first equation, we have
+%   \begin{alignat*}{3}
+%     \phantom{\implies}\quad&c^2 - \left(\frac{b}{2c}\right)^2 &&= a \\
+%     \implies\quad&c^2 - \frac{b^2}{4c^2} &&= a \\
+%     \implies\quad&4c^4 - b^2 &&= 4ac^2 \\
+%     \implies\quad&4c^4 - 4ac^2 - b^2 &&= 0 \\
+%     \implies\quad&c^4 - ac^2 - \frac{b^2}{4} &&= 0
+%   .\end{alignat*}
+% \end{solution}
+
+\begin{solution}
+    \begin{align*}
+        (c + di)^2 &= a + bi \\
+        (c^2 - d^2) + i(2cd) &= a + bi
+    \end{align*}
+    So we end up with the system of equations
+    \begin{align*}
+        c^2-d^2 &= a \\
+        2cd &= b
+    .\end{align*}
+    Solving the second one for $c$, and substituting this into the first one,
+    \begin{align*}
+        c &= \frac{b}{2d} \\
+        \left(\frac{b}{2d}\right)^2 - d^2 &= a \\
+        \frac{b^2}{4d^2} - d^2 &= a \\
+        \frac{b^2}{4} &= ad^2 + d^4 \\
+        d^4 + ad^2 - \frac{b^2}{4} &= 0
+    .\end{align*}
+    This is a function with quadratic form, so to solve we complete the square
+    and factor
+    \begin{align*}
+      0 &= \left(d^4 + ad^2 + \frac{a^2}{4}\right) - \frac{b^2}{4} - \frac{a^2}{4} \\
+      0 &= \left(d^2 + \frac{a}{2}\right)^2 - \frac{(a^2+b^2)}{4} \\
+      \frac{\sqrt{a^2+b^2}}{2} &= d^2 + \frac{a}{2} \\
+      \frac{\sqrt{a^2+b^2}-a}{2} &= d^2 \\
+      \pm \sqrt{\frac{\sqrt{a^2+b^2}-a}{2}} &= d \\
+                                            &= \pm \frac{\sqrt{\sqrt{a^2+b^2}-a}}{\sqrt{2}} \\
+                                            &= \pm \frac{\sqrt{|z| - a}}{\sqrt{2}}
+    .\end{align*}
+    Plugging this back into the second equation to solve for $c$
+    \begin{align*}
+        c &= \frac{b}{2\left(\pm \frac{\sqrt{|z| - a}}{\sqrt{2}}\right)} \\
+        &= \pm \frac{b\sqrt{2}}{2\sqrt{|z|-a}} = \pm \frac{b\sqrt{2}}{2\sqrt{\sqrt{a^2+b^2}-a}}
+    .\end{align*}
+    The sign of these picked will depend on the sign of $b$, as the sign of $a$
+    only depends on the magnitudes of $c$ and $d$.
+\end{solution}
