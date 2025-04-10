@@ -63,11 +63,14 @@
   \[%
     \alpha(t) = \left\langle \sin(t), \cos(t) + \log\left(\tan\left(\frac{t}{2}\right)\right) \right\rangle
   ,\]%
-  where $t$ is the angle that the $y$-axis makes with the vector $\alpha'(t)$. The trace of $\alpha$ is called the tractrix. Show that
+  where $t$ is the angle that the $y$-axis makes with the vector $\alpha'(t)$.
+  The trace of $\alpha$ is called the tractrix. Show that
   \begin{enumerate}
-    \item $\alpha$ is a differentiable parametrized curve, regular except at $t = \sfrac{\pi}{2}$.
+    \item $\alpha$ is a differentiable parametrized curve, regular except at $t
+      = \sfrac{\pi}{2}$.
 
-    \item The length of the segment of the tangent of the tractrix between the point of tangency and the $y$-axis is constantly equal to $1$.
+    \item The length of the segment of the tangent of the tractrix between the
+      point of tangency and the $y$-axis is constantly equal to $1$.
   \end{enumerate}
 \end{problem}
 
@@ -95,42 +98,49 @@
 \end{solution}
 
 \begin{solution}[(ii)]
-  We are told that for each $t \in (0, \pi)$, the angle between the tangent
-  vector $\alpha'(t)$ and the $y$-axis is exactly $t$. Let us interpret this
-  geometrically. Since $\alpha$ is a regular, differentiable parametrized curve,
-  its derivative $\alpha'(t)$ points in the direction of the tangent line to the
-  curve at the point $\alpha(t)$. The information that $\alpha'(t)$ makes an
-  angle $t$ with the $y$-axis tells us that the tangent line at $\alpha(t)$
-  intersects the $y$-axis at an angle of $t$.
-
-  Now consider the segment of the tangent line that connects the point of
-  tangency $\alpha(t)$ to its intersection with the $y$-axis. This segment lies
-  along the direction of the tangent vector and intersects the $y$-axis, forming
-  a right triangle with the horizontal leg extending from the $y$-axis to the
-  point $\alpha(t) = \langle x(t), y(t) \rangle$.
-
-  In this right triangle, the hypotenuse is the segment of the tangent line from
-  $\alpha(t)$ to the $y$-axis, and the horizontal leg has length $x(t) =
-  \sin(t)$. Since the angle between the tangent line and the $y$-axis is $t$,
-  the angle between the hypotenuse and the vertical leg (i.e., the $y$-axis) is
-  also $t$. By basic trigonometry, we then have
+  Let $P = \alpha(t)$ be a point on the tractrix, and let $\v = \alpha'(t)$
+  denote the tangent vector at $P$. Since $t$ is the angle that the $y$-axis
+  makes with $\v$, we have
   \[%
-    \sin(t) = (\text{hypotenuse}) \cdot \sin(t)
-  ,\]%
-  which implies that the length of the hypotenuse — that is, the distance from
-  the point of tangency to the $y$-axis along the tangent line — is exactly $1$
-  \[%
-    \text{Length} = \frac{\sin(t)}{\sin(t)} = 1
+    \v = \lVert \v \rVert \left\langle \sin(t), \cos(t) \right\rangle
   .\]%
-  Therefore, the length of the segment of the tangent line between the point of
-  tangency and the $y$-axis is always equal to $1$, regardless of the value of
-  $t$.
+  This means the direction of the tangent vector is $\left\langle \sin(t),
+  \cos(t) \right\rangle$. Let $\ell$ denote the tangent line at $P$. The line
+  $\ell$ passes through $P = \alpha(t)$ and is in the direction of $\v$, so its
+  parametric form is
+  \[%
+    \ell(s) = \alpha(t) + s\left\langle \sin(t), \cos(t) \right\rangle
+  .\]%
+
+  To find where $\ell$ intersects the $y$-axis, we set the $x$-component of
+  $\ell(s)$ to $0$
+  \[%
+    \sin(t) + s\sin(t) = 0 \implies s = -1
+  .\]%
+  Plugging back into $\ell(s)$, we find the $y$-coordinate of the point of
+  intersection
+  \begin{align*}
+    y &= \cos(t) + \log\left(\tan\left(\frac{t}{2}\right)\right) - \cos(t) \\
+      &= \log\left(\tan\left(\frac{t}{2}\right)\right)
+  .\end{align*}
+  So the point of intersection is
+  \[%
+    Q = \left\langle 0, \log\left(\tan\left(\frac{t}{2}\right)\right) \right\rangle
+  .\]%
+
+  Therefore, the segment of the tangent line between $P = \alpha(t)$ and the
+  $y$-axis has length
+  \begin{align*}
+    \lVert \alpha(t) - Q \rVert &= \left\lVert \left\langle \sin(t), \cos(t) + \log\left(\tan\left(\frac{t}{2}\right)\right) - \log\left(\tan\left(\frac{t}{2}\right)\right) \right\rangle \right\rVert \\
+                                &= \left\lVert \left\langle \sin(t), \cos(t) \right\rangle \right\rVert = \sqrt{\sin^2(t) + \cos^2(t)} = 1
+  .\end{align*}
+  Hence, the length of the segment of the tangent of the tractrix between the
+  point of tangency and the $y$-axis is constantly equal to $1$.
 \end{solution}
 
 \begin{problem}[1.3.6]
   Let $\alpha(t) = \left\langle ae^{bt}\cos(t), ae^{bt}\sin(t) \right\rangle$,
-  $t \in \R$, $a$ and $b$ are constants, $a > 0$, $b < 0$, be parametrized
-  curve.
+  $t \in \R$, where $a > 0$ and $b < 0$, be a parametrized curve.
   \begin{enumerate}
     \item Show that as $t \to +\infty$, $\alpha(t)$ approaches the origin $0$,
       spiraling around it (because of this, the trace of $\alpha$ is called the
@@ -139,46 +149,56 @@
     \item Show that $\alpha'(t) \to (0, 0)$ as $t \to +\infty$ and that
       \[%
         \lim_{t \to +\infty} \int_{t_0}^t \lVert \alpha'(x) \rVert \dx
-      ,\]%
+      .\]%
       is finite; that is, $\alpha$ has finite arc length in $[t_0, \infty)$.
   \end{enumerate}
 \end{problem}
 
 \begin{solution}[(i)]
-  Since $b < 0$, we have $e^{bt} \to 0$ as $t \to +\infty$. Thus, we obtain
+  Since $b < 0$, we have $e^{bt} \to 0$ as $t \to +\infty$. Therefore,
   \[%
     \alpha(t) = \left\langle ae^{bt}\cos(t), ae^{bt}\sin(t) \right\rangle \to (0,0) \qtq{as} t \to +\infty
   .\]%
-  The presence of the $\cos(t)$ and $\sin(t)$ terms indicates that the
-  trajectory of $\alpha(t)$ traces a spiral as it approaches the origin.
+  The presence of the $\cos(t)$ and $\sin(t)$ terms implies that $\alpha(t)$
+  winds around the origin as it decays in magnitude. Thus, $\alpha$ spirals into
+  the origin as $t \to +\infty$.
 \end{solution}
 
 \begin{solution}[(ii)]
   We compute
   \begin{align*}
     \alpha'(t) &= \left\langle \frac{d}{dt} \big( ae^{bt} \cos t \big), \frac{d}{dt} \big( ae^{bt} \sin t \big) \right\rangle \\
-               &= \left\langle a\big( be^{bt} \cos t - e^{bt} \sin t \big), a\big( be^{bt} \sin t + e^{bt} \cos t \big) \right\rangle
+              &= \left\langle a\big( be^{bt} \cos t - e^{bt} \sin t \big), a\big( be^{bt} \sin t + e^{bt} \cos t \big) \right\rangle
   .\end{align*}
-  Again, since $b < 0$, we see that $e^{bt} \to 0$ as $t \to +\infty$, and so
+  Since $e^{bt} \to 0$ as $t \to +\infty$, it follows that
   \[%
     \alpha'(t) \to (0, 0) \qtq{as} t \to +\infty
   .\]%
 
-  Now, we compute the arc length
+  Now we compute the arc length
   \begin{align*}
     \int_{t_0}^t \lVert \alpha'(x) \rVert \dx &= \int_{t_0}^t \sqrt{(abe^{bx} \cos x - ae^{bx} \sin x)^2 + (abe^{bx} \sin x + ae^{bx} \cos x)^2} \dx \\
-                                              &= \int_{t_0}^t ae^{bx} \sqrt{b^2 + 1} \dx \\
-                                              &= a\sqrt{b^2 + 1} \int_{t_0}^t e^{bx} \dx
+                                              &= \int_{t_0}^t ae^{bx} \sqrt{(b \cos x - \sin x)^2 + (b \sin x + \cos x)^2} \dx
   .\end{align*}
-  Evaluating the integral, we obtain
+  Now simplify the expression under the square root
+  \begin{align*}
+    (b \cos x - \sin x)^2 + (b \sin x + \cos x)^2 &= b^2 \cos^2 x - 2b \cos x \sin x + \sin^2 x + b^2 \sin^2 x + 2b \sin x \cos x + \cos^2 x \\
+                                                  &= b^2(\cos^2 x + \sin^2 x) + (\sin^2 x + \cos^2 x) \\
+                                                  &= b^2 + 1
+  .\end{align*}
+  So we have
   \[%
-    a\sqrt{b^2 + 1} \frac{e^{bx}}{b} \bigg|_{t_0}^t = a\sqrt{b^2 + 1} \left(\frac{e^{bt}}{b} - \frac{e^{bt_0}}{b}\right).
-  \]%
-  Taking the limit as $t \to +\infty$, we find
-  \[%
-    \lim_{t \to +\infty} \int_{t_0}^t \lVert \alpha'(x) \rVert \dx = a\sqrt{b^2 + 1} \left( 0 - \frac{e^{bt_0}}{b} \right) = -\frac{a\sqrt{b^2 + 1}}{b}e^{bt_0} < \infty
+    \int_{t_0}^t \lVert \alpha'(x) \rVert \dx = \int_{t_0}^t ae^{bx} \sqrt{b^2 + 1} \dx = a\sqrt{b^2 + 1} \int_{t_0}^t e^{bx} \dx
   .\]%
-  Thus, $\alpha$ has finite arc length in $[t_0, \infty)$.
+  Evaluate the integral
+  \[%
+    a\sqrt{b^2 + 1} \int_{t_0}^t e^{bx} \dx = a\sqrt{b^2 + 1} \cdot \frac{1}{b} \left( e^{bt} - e^{bt_0} \right)
+  .\]%
+  Taking the limit as $t \to +\infty$
+  \[%
+    \lim_{t \to +\infty} \int_{t_0}^t \lVert \alpha'(x) \rVert \dx = a\sqrt{b^2 + 1} \cdot \frac{1}{b} \left( 0 - e^{bt_0} \right) = -\frac{a\sqrt{b^2 + 1}}{b} e^{bt_0} < \infty
+  .\]%
+  Therefore, the arc length of $\alpha$ over $[t_0, \infty)$ is finite.
 \end{solution}
 
 \begin{problem}[1.3.10]
@@ -265,17 +285,19 @@
   .\]%
   Thus, we have shown that $\v$ is perpendicular to the plane.
 
-  Now we compute the distance from the origin $(0, 0, 0)$ to the plane. The
-  distance from a point $\r_0 = (x_0, y_0, z_0)$ to the plane defined by $ax +
-  by + cz + d = 0$ is given by the formula
+  We now compute the distance from the origin $(0, 0, 0)$ to the plane. Let $\v
+  = \langle a, b, c \rangle$ be the normal vector to the plane and let $\p$ be
+  any point on the plane $P$, so that $a x + b y + c z + d = 0$. Then the vector
+  $\p$ points from the origin to a point on the plane, and the distance from the
+  origin to the plane is given by projecting $\p$ onto the normal vector
   \[%
-    D = \frac{\lvert a x_0 + b y_0 + c z_0 + d \rvert}{\sqrt{a^2 + b^2 + c^2}}
+    D = \lvert \proj_\v(\p) \rvert = \frac{\lvert \p \cdot \v \rvert}{\lVert \v \rVert}
   .\]%
-  Plugging in the origin $(0, 0, 0)$, we get
+  Since $\p \cdot \v = -d$, we have
   \[%
-    D = \frac{\lvert a \cdot 0 + b \cdot 0 + c \cdot 0 + d \rvert}{\sqrt{a^2 + b^2 + c^2}} = \frac{\lvert d \rvert}{\sqrt{a^2 + b^2 + c^2}}
-  .\]%
-  This completes the proof.
+    D = \frac{\lvert -d \rvert}{\lVert \v \rVert} = \frac{\lvert d \rvert}{\sqrt{a^2 + b^2 + c^2}}
+  ,\]%
+  as desired. This completes the proof.
 \end{proof}
 
 \begin{problem}[1.4.10]
@@ -476,7 +498,7 @@
   The magnitude of the derivative is given by
   \begin{align*}
     \lVert \alpha'(s) \rVert &= \sqrt{\frac{a^2}{c^2}\sin^2\left(\frac{s}{c}\right) + \frac{a^2}{c^2}\cos^2\left(\frac{s}{c}\right) + \frac{b^2}{c^2}} \\
-                             &= \sqrt{\frac{a^2}{c^2} + \frac{b^2}{c^2}} = \sqrt{1} = 1
+                            &= \sqrt{\frac{a^2}{c^2} + \frac{b^2}{c^2}} = \sqrt{1} = 1
   .\end{align*}
   Therefore, we have shown that $s$ is the arc length.
 \end{solution}
@@ -517,13 +539,13 @@
   binormal vector, $\Ba(s)$,
   \begin{align*}
     \Ba(s) = \Ta(s) \wedge \Na(s) &= \left\langle -\frac{a}{c}\sin\left(\frac{s}{c}\right), \frac{a}{c}\cos\left(\frac{s}{c}\right), \frac{b}{c} \right\rangle \wedge \left\langle -\cos\left(\frac{s}{c}\right), -\sin\left(\frac{s}{c}\right), 0 \right\rangle \\
-           &= \begin{vmatrix}
-             \ui & \uj & \uk \\
-             -\frac{a}{c}\sin\left(\frac{s}{c}\right) & \frac{a}{c}\cos\left(\frac{s}{c}\right) & \frac{b}{c} \\
-             -\cos\left(\frac{s}{c}\right) & -\sin\left(\frac{s}{c}\right) & 0 \\
-           \end{vmatrix} \\
-           &= \left\langle \frac{b}{c}\sin\left(\frac{s}{c}\right), -\frac{b}{c}\cos\left(\frac{s}{c}\right), \frac{a}{c}\sin^2\left(\frac{s}{c}\right) + \frac{a}{c}\cos^2\left(\frac{s}{c}\right) \right\rangle \\
-           &= \left\langle \frac{b}{c}\sin\left(\frac{s}{c}\right), -\frac{b}{c}\cos\left(\frac{s}{c}\right), \frac{a}{c} \right\rangle
+          &= \begin{vmatrix}
+            \ui & \uj & \uk \\
+            -\frac{a}{c}\sin\left(\frac{s}{c}\right) & \frac{a}{c}\cos\left(\frac{s}{c}\right) & \frac{b}{c} \\
+            -\cos\left(\frac{s}{c}\right) & -\sin\left(\frac{s}{c}\right) & 0 \\
+          \end{vmatrix} \\
+          &= \left\langle \frac{b}{c}\sin\left(\frac{s}{c}\right), -\frac{b}{c}\cos\left(\frac{s}{c}\right), \frac{a}{c}\sin^2\left(\frac{s}{c}\right) + \frac{a}{c}\cos^2\left(\frac{s}{c}\right) \right\rangle \\
+          &= \left\langle \frac{b}{c}\sin\left(\frac{s}{c}\right), -\frac{b}{c}\cos\left(\frac{s}{c}\right), \frac{a}{c} \right\rangle
   .\end{align*}
   Now, we can find the osculating plane. The osculating plane is given by the
   equation
@@ -640,9 +662,9 @@
   We compute the first and second derivatives
   \begin{align*}
     \alpha'(\theta) &= \rho' \langle \cos(\theta), \sin(\theta) \rangle + \rho \langle -\sin(\theta), \cos(\theta) \rangle \\
-      &= \langle \rho' \cos(\theta) - \rho \sin(\theta), \rho' \sin(\theta) + \rho \cos(\theta) \rangle \\
+                    &= \langle \rho' \cos(\theta) - \rho \sin(\theta), \rho' \sin(\theta) + \rho \cos(\theta) \rangle \\
     \alpha''(\theta) &= \rho'' \langle \cos(\theta), \sin(\theta) \rangle + 2\rho' \langle -\sin(\theta), \cos(\theta) \rangle + \rho \langle -\cos(\theta), -\sin(\theta) \rangle \\
-                     &= \langle \rho'' \cos(\theta) - 2\rho' \sin(\theta) - \rho \cos(\theta), \rho'' \sin(\theta) + 2\rho' \cos(\theta) - \rho \sin(\theta) \rangle
+                      &= \langle \rho'' \cos(\theta) - 2\rho' \sin(\theta) - \rho \cos(\theta), \rho'' \sin(\theta) + 2\rho' \cos(\theta) - \rho \sin(\theta) \rangle
   .\end{align*}
 
   Now, we compute the cross product
@@ -650,8 +672,8 @@
     \alpha'(\theta) \wedge \alpha''(\theta)
       &= (\rho' \cos\theta - \rho \sin\theta)(\rho'' \sin\theta + 2\rho' \cos\theta - \rho \sin\theta) \\
       &\quad - (\rho' \sin\theta + \rho \cos\theta)(\rho'' \cos\theta - 2\rho' \sin\theta - \rho \cos\theta) \\
-      &= \rho^2 + 2(\rho')^2 - \rho \rho''.
-  \end{align*}
+      &= \rho^2 + 2(\rho')^2 - \rho \rho''
+  .\end{align*}
 
   Next, compute the norm of the first derivative
   \[%
@@ -784,31 +806,6 @@
   This completes the proof.
 \end{solution}
 
-% \begin{solution}[(iii)]
-%   We know that $\Ba'(s) = \tau(s) \Na(s)$ and $\Ba(s(t)) = \Ta(s(t)) \wedge
-%   \Na(s(t))$. Differentiating with respect to $s$, we have
-%   \begin{align*}
-%     \odv{\Ba}{s} = \odv{}{s} (\Ta(s) \wedge \Na(s)) &= \odv{\Ta}{s} \wedge \Na(s) + \Ta(s) \wedge \odv{\Na}{s} \\
-%                                                     &= \kappa(s) \Na(s) \wedge \Na(s) + \Ta(s) \wedge (-\kappa(s)\Ta(s) + \tau(s)\Ba(s)) \\
-%                                                     &= \tau(s)(\Ta(s) \wedge \Ba(s)) \\
-%                                                     &= -\tau(s)\Na(s)
-%   .\end{align*}
-%   But, we want $\odv{\Ba}/{t}$, so, applying the chain rule, we have
-%   \[%
-%     \odv{\Ba}{t} = \odv{\Ba}{s} \cdot \odv{s}{t} = -\tau(s) \Na(s) \cdot \lVert \alpha'(t) \rVert
-%   .\]%
-%   Since torsion is a function of arc-length, we have $\tau(s) = \tau(t(s))$.
-%   Therefore, we can express the torsion as
-%   \[%
-%     \tau(t(s)) = -\odv{\Ba}{t} \cdot \Na(s) \frac{1}{\lVert \alpha'(t) \rVert}
-%   .\]%
-%   But, since $\Na(s)$ and $\Na(t)$ are the same vector, the expression can be
-%   rewritten as
-%   \[%
-%     \tau(t(s)) = -\odv{\Ba}{t} \cdot \frac{\Na(t)}{\lVert \alpha'(t) \rVert}
-%   .\]%
-% \end{solution}
-
 \begin{solution}[(iii)]
   We know that $\Ba(s) = \Ta(s) \wedge \Na(s)$ and that $\odv{\Ba}/{s} =
   -\tau(s) \Na(s)$, from the Frenet–Serret formulas. Our goal is to express the
@@ -824,8 +821,8 @@
   that $\Ba = \Ta \wedge \Na$, and use the product rule for derivatives
   \begin{align*}
     \odv{\Ba}{s} &= \odv{}{s}(\Ta \wedge \Na) \\
-                 &= \odv{\Ta}{s} \wedge \Na + \Ta \wedge \odv{\Na}{s}
-  \end{align*}
+                &= \odv{\Ta}{s} \wedge \Na + \Ta \wedge \odv{\Na}{s}
+  .\end{align*}
 
   Using the Frenet–Serret formulas again,
   \[%
@@ -834,8 +831,8 @@
   so
   \begin{align*}
     \odv{\Ba}{s} &= \kappa \Na \wedge \Na + \Ta \wedge (-\kappa \Ta + \tau \Ba) \\
-                 &= 0 + \tau \Ta \wedge \Ba
-  \end{align*}
+                &= 0 + \tau \Ta \wedge \Ba
+  .\end{align*}
 
   Since $\Ba = \Ta \wedge \Na$, and the Frenet frame $\{\Ta, \Na, \Ba\}$ is a
   positively oriented orthonormal basis, we know that $\Ta \wedge \Ba = -\Na$.
@@ -851,8 +848,8 @@
   and
   \begin{align*}
     \odv{\Ba}{s} &= \odv{}{s} \left( \frac{\alpha' \wedge \alpha''}{\lVert \alpha' \wedge \alpha'' \rVert} \right) \\
-                 &= \odv{t}{s} \cdot \odv{}{t} \left( \frac{\alpha' \wedge \alpha''}{\lVert \alpha' \wedge \alpha'' \rVert} \right)
-  \end{align*}
+                &= \odv{t}{s} \cdot \odv{}{t} \left( \frac{\alpha' \wedge \alpha''}{\lVert \alpha' \wedge \alpha'' \rVert} \right)
+  .\end{align*}
 
   Differentiating the numerator
   \[%
@@ -862,22 +859,22 @@
   since $\alpha'' \wedge \alpha'' = 0$. Then
   \begin{align*}
     \odv{\Ba}{s} &= \frac{1}{\lVert \alpha' \rVert} \cdot \odv{}{t} \left( \frac{\alpha' \wedge \alpha''}{\lVert \alpha' \wedge \alpha'' \rVert} \right) \\
-    &= \frac{1}{\lVert \alpha' \rVert} \cdot \left( \frac{\alpha' \wedge \alpha'''}{\lVert \alpha' \wedge \alpha'' \rVert}
-       - \frac{(\alpha' \wedge \alpha'') \cdot (\alpha' \wedge \alpha''')}{\lVert \alpha' \wedge \alpha'' \rVert^3}
-         (\alpha' \wedge \alpha'') \right)
-  \end{align*}
+                 &= \frac{1}{\lVert \alpha' \rVert} \cdot \left( \frac{\alpha' \wedge \alpha'''}{\lVert \alpha' \wedge \alpha'' \rVert}
+                   - \frac{(\alpha' \wedge \alpha'') \cdot (\alpha' \wedge \alpha''')}{\lVert \alpha' \wedge \alpha'' \rVert^3}
+                 (\alpha' \wedge \alpha'') \right)
+  .\end{align*}
 
   Taking the dot product with $\Na = \Ba \wedge \Ta$, we isolate the component
   in the $\Na$ direction. Since
   \[%
     \odv{\Ba}{s} = -\tau \Na
-  \]%
+  ,\]%
   and $\Na$ is perpendicular to $\Ba$ and $\Ta$, we can dot both sides with
   $\Na$ to get
   \begin{align*}
     \tau &= -\odv{\Ba}{s} \cdot \Na \\
-         &= -\frac{1}{\lVert \alpha' \rVert} \cdot \left( \frac{\alpha' \wedge \alpha'''}{\lVert \alpha' \wedge \alpha'' \rVert} \cdot \Na \right)
-  \end{align*}
+        &= -\frac{1}{\lVert \alpha' \rVert} \cdot \left( \frac{\alpha' \wedge \alpha'''}{\lVert \alpha' \wedge \alpha'' \rVert} \cdot \Na \right)
+  .\end{align*}
 
   Since $\Ba = \frac{\alpha' \wedge \alpha''}{\lVert \alpha' \wedge \alpha''
   \rVert}$ and $\Na = \Ba \wedge \Ta$, this leads us to
