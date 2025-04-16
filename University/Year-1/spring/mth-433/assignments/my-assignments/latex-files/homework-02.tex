@@ -13,253 +13,267 @@
   all of $S$. Therefore, by proposition 1, $S$ is a regular surface.
 
   Now, we construct parametrizations for $S$ whose coordinate neighborhoods
-  cover it. Consider the open set $U_1 = \{(x, y, z) \in \R^3 | 0 < y < \pi\}$
-  and $U_2 = \{(x, y, z) \in \R^3 \mid 0 < x^2 + y^2 < 1\}$. Define $\Phi_1 :
-  U_1 \to \R^2$ and $\Phi_2 : U_2 \to \R^2$ by
-  \[%
-    \Phi_1(x, y, z) = (x, z) \aand \Phi_2(x, y, z) = (\theta, z)
-  .\]%
+  cover it. We split $S$ into two coordinate neighborhoods
+  \begin{align*}
+    U_+ &= \{(x, y, z) \in \R^3 \mid x^2 + y^2 = 1~\text{and}~z > 0\} \\
+    U_- &= \{(x, y, z) \in \R^3 \mid x^2 + y^2 = 1~\text{and}~z < 0\} \\
+    U_0 &= \{(x, y, z) \in \R^3 \mid x^2 + y^2 = 1~\text{and}~z = 0\}
+  .\end{align*}
+  Define the parametrizations
+  \begin{align*}
+    \Phi_1(\theta, z) &: (-\pi, \pi) \times (0, \infty) \to U_+ \subset \R^3 \\
+    \Phi_2(\theta, z) &: (-\pi, \pi) \times (-\infty, 0) \to U_- \subset \R^3 \\
+    \Phi_3(\theta, z) &: (-\pi, \pi) \times \{0\} \to U_0 \subset \R^3
+  .\end{align*}
+  Each $\Phi_i$ is smooth, has injective differential (since the vectors
+  $\pd{\theta} \Phi_i = \langle -\sin \theta, \cos \theta, 0 \rangle$ and
+  $\pd{z} \Phi_i = \langle 0, 0, 1 \rangle$ are linearly independent), and maps
+  into $S$.
+
+  The union of the images of $\Phi_1$, $\Phi_2$, and $\Phi_3$ covers the entire
+  cylinder $S$. Therefore, we have constructed parametrizations for $S$ whose
+  coordinate neighborhoods cover it.
 \end{solution}
 
-% \begin{problem}[2.2.3]
-%   Show that the two-sheeted cone, with its vertex at the origin, that is, the
-%   set $\{(x, y, z) \in \R^3 \mid x^2 + y^2 - z^2 = 0\}$, is not a regular
-%   surface.
-% \end{problem}
+\begin{problem}[2.2.3]
+  Show that the two-sheeted cone, with its vertex at the origin, that is, the
+  set $\{(x, y, z) \in \R^3 \mid x^2 + y^2 - z^2 = 0\}$, is not a regular
+  surface.
+\end{problem}
 
-% \begin{solution}
-%   The two-sheeted cone is not a regular surface because it does not satisfy the
-%   regularity condition. The set $S = \{(x, y, z) \in \R^3 \mid x^2 + y^2 - z^2 =
-%   0\}$ is not a regular surface because the gradient of the function $f(x, y, z)
-%   = x^2 + y^2 - z^2$ is zero at the origin $(0, 0, 0)$, which is a point in $S$.
-%   Thus, the cone does not have a well-defined tangent plane at the vertex.
-% \end{solution}
+\begin{solution}
+  The two-sheeted cone is not a regular surface because it does not satisfy the
+  regularity condition. The set $S = \{(x, y, z) \in \R^3 \mid x^2 + y^2 - z^2 =
+  0\}$ is not a regular surface because the gradient of the function $f(x, y, z)
+  = x^2 + y^2 - z^2$ is zero at the origin $(0, 0, 0)$, which is a point in $S$.
+  Thus, the cone does not have a well-defined tangent plane at the vertex.
+\end{solution}
 
-% \begin{problem}[2.2.8]
-%   Let $\x(u, v)$ be as in Def. 1. Verify that $\dd{\x_q} : \R^2 \to \R^3$ is
-%   one-to-one if and only if
-%   \[%
-%     \pdv{\x}{u} \wedge \pdv{\x}{v} \ne 0
-%   .\]%
-% \end{problem}
+\begin{problem}[2.2.8]
+  Let $\x(u, v)$ be as in Def. 1. Verify that $\dd{\x_q} : \R^2 \to \R^3$ is
+  one-to-one if and only if
+  \[%
+    \pdv{\x}{u} \wedge \pdv{\x}{v} \ne 0
+  .\]%
+\end{problem}
 
-% \begin{solution}
-%   Assume that $\dd{\x_q} : \R^2 \to \R^3$ is one-to-one, where $\dd{\x_q}$ is given by
-%   \[%
-%     \dd{\x_q} = \begin{pmatrix}
-%       \pdv{x}/{u} & \pdv{x}/{v} \\
-%       \pdv{y}/{u} & \pdv{y}/{v} \\
-%       \pdv{z}/{u} & \pdv{z}/{v} \\
-%     \end{pmatrix}
-%   .\]%
-%   This map is one-to-one if and only if the two column vectors $\pdv{\x}/{u}$
-%   and $\pdv{\x}/{v}$ are linearly independent in $\R^3$. This is equivalent to
-%   their cross product (or wedge product) being non-zero
-%   \[%
-%     \pdv{\x}{u} \wedge \pdv{\x}{v} \ne 0
-%   .\]%
-%   Therefore, $\dd{\x_q}$ is one-to-one if and only if $\pdv{\x}/{u} \wedge
-%   \pdv{\x}/{v} \ne 0$.
-% \end{solution}
+\begin{solution}
+  Assume that $\dd{\x_q} : \R^2 \to \R^3$ is one-to-one, where $\dd{\x_q}$ is given by
+  \[%
+    \dd{\x_q} = \begin{pmatrix}
+      \pdv{x}/{u} & \pdv{x}/{v} \\
+      \pdv{y}/{u} & \pdv{y}/{v} \\
+      \pdv{z}/{u} & \pdv{z}/{v} \\
+    \end{pmatrix}
+  .\]%
+  This map is one-to-one if and only if the two column vectors $\pdv{\x}/{u}$
+  and $\pdv{\x}/{v}$ are linearly independent in $\R^3$. This is equivalent to
+  their cross product (or wedge product) being non-zero
+  \[%
+    \pdv{\x}{u} \wedge \pdv{\x}{v} \ne 0
+  .\]%
+  Therefore, $\dd{\x_q}$ is one-to-one if and only if $\pdv{\x}/{u} \wedge
+  \pdv{\x}/{v} \ne 0$.
+\end{solution}
 
-% \begin{problem}[2.2.11]
-%   Show that the set $S = \{(x, y, z) \in \R^3 \mid z = x^2 - y^2\}$ is a regular
-%   surface and check that parts (i) and (ii) are parametrizations for $S$:
-%   \begin{enumerate}
-%     \item $\x(u, v) = \langle u + v, u - v, 4uv \rangle$, $(u, v) \in \R^2$.
+\begin{problem}[2.2.11]
+  Show that the set $S = \{(x, y, z) \in \R^3 \mid z = x^2 - y^2\}$ is a regular
+  surface and check that parts (i) and (ii) are parametrizations for $S$:
+  \begin{enumerate}
+    \item $\x(u, v) = \langle u + v, u - v, 4uv \rangle$, $(u, v) \in \R^2$.
 
-%     \item $\x(u, v) = \langle u\cosh(v), u\sinh(v), u^2 \rangle$, $(u, v) \in
-%       \R^2$, $u \ne 0$.
-%   \end{enumerate}
-% \end{problem}
+    \item $\x(u, v) = \langle u\cosh(v), u\sinh(v), u^2 \rangle$, $(u, v) \in
+      \R^2$, $u \ne 0$.
+  \end{enumerate}
+\end{problem}
 
-% \begin{solution}[(i)]
-%   We first show that the set $S = \{(x, y, z) \in \R^3 \mid z = x^2 - y^2\}$ is
-%   a regular surface. The function $f(x, y, z) = z - x^2 + y^2$ is a
-%   differentiable function and $0$ is a regular value of $f$. The gradient of $f$
-%   is given by
-%   \[%
-%     \nabla f(x, y, z) = \langle -2x, 2y, 1 \rangle
-%   ,\]%
-%   which is non-zero for all points in $S$ except for the points $(0, 0, z)$,
-%   where $z \in \R$. Thus, the set $S$ is a regular surface.
+\begin{solution}[(i)]
+  We first show that the set $S = \{(x, y, z) \in \R^3 \mid z = x^2 - y^2\}$ is
+  a regular surface. The function $f(x, y, z) = z - x^2 + y^2$ is a
+  differentiable function and $0$ is a regular value of $f$. The gradient of $f$
+  is given by
+  \[%
+    \nabla f(x, y, z) = \langle -2x, 2y, 1 \rangle
+  ,\]%
+  which is non-zero for all points in $S$ except for the points $(0, 0, z)$,
+  where $z \in \R$. Thus, the set $S$ is a regular surface.
 
-%   Now, we check that the parametrization $\x(u, v) = \langle u + v, u - v, 4uv
-%   \rangle$ is a parametrization for $S$. Clearly, $\x(u, v)$ is a smooth
-%   function from $\R^2 \to \R^3$. Now, we check that the image of $\x$ lies in
-%   $S$. Let $x = u + v$, $y = u - v$, and $z = 4uv$. Then, we have
-%   \[%
-%     x^2 - y^2 = (u + v)^2 - (u - v)^2 = 4uv = z \in S
-%   .\]%
-%   Therefore, the image of $\x$ lies in $S$. Next, we compute the partial
-%   derivatives
-%   \[%
-%     \pdv{\x}{u} = \langle 1, 1, 4v \rangle \aand \pdv{\x}{v} = \langle 1, -1, 4u \rangle
-%   .\]%
-%   To verify regularity, we check that the partial derivatives $\pdv{\x}/{u}$ and
-%   $\pdv{\x}/{v}$ are linearly independent. Since their cross product is given by
-%   \[%
-%     \pdv{\x}{u} \wedge \pdv{\x}{v} = \langle -8v, 8u, -2 \rangle
-%   ,\]%
-%   which is non-zero for all $(u, v) \in \R^2$ (except for $u = 0$ and $v = 0$,
-%   and since $u = 0$ and $v = 0$ are not in the domain of $\x$), we conclude that
-%   $\pdv{\x}/{u}$ and $\pdv{\x}/{v}$ are linearly independent. Thus, $\x$ is a
-%   regular parametrization whose image lies in $S$, so it parametrizes (part of)
-%   the surface $S$.
-% \end{solution}
+  Now, we check that the parametrization $\x(u, v) = \langle u + v, u - v, 4uv
+  \rangle$ is a parametrization for $S$. Clearly, $\x(u, v)$ is a smooth
+  function from $\R^2 \to \R^3$. Now, we check that the image of $\x$ lies in
+  $S$. Let $x = u + v$, $y = u - v$, and $z = 4uv$. Then, we have
+  \[%
+    x^2 - y^2 = (u + v)^2 - (u - v)^2 = 4uv = z \in S
+  .\]%
+  Therefore, the image of $\x$ lies in $S$. Next, we compute the partial
+  derivatives
+  \[%
+    \pdv{\x}{u} = \langle 1, 1, 4v \rangle \aand \pdv{\x}{v} = \langle 1, -1, 4u \rangle
+  .\]%
+  To verify regularity, we check that the partial derivatives $\pdv{\x}/{u}$ and
+  $\pdv{\x}/{v}$ are linearly independent. Since their cross product is given by
+  \[%
+    \pdv{\x}{u} \wedge \pdv{\x}{v} = \langle -8v, 8u, -2 \rangle
+  ,\]%
+  which is non-zero for all $(u, v) \in \R^2$ (except for $u = 0$ and $v = 0$,
+  and since $u = 0$ and $v = 0$ are not in the domain of $\x$), we conclude that
+  $\pdv{\x}/{u}$ and $\pdv{\x}/{v}$ are linearly independent. Thus, $\x$ is a
+  regular parametrization whose image lies in $S$, so it parametrizes (part of)
+  the surface $S$.
+\end{solution}
 
-% \begin{solution}[(ii)]
-%   Again, clearly, $\x(u, v) = \langle u\cosh(v), u\sinh(v), u^2 \rangle$ is a
-%   smooth function from $\R^2 \to \R^3$. Now, we check that the image of $\x$
-%   lies in $S$. Let $x = u\cosh(v)$, $y = u\sinh(v)$, and $z = u^2$. Then, we
-%   have
-%   \[%
-%     x^2 - y^2 = u^2\cosh^2(v) - u^2\sinh^2(v) = u^2(\cosh^2(v) - \sinh^2(v)) = u^2 = z \in S
-%   .\]%
-%   Therefore, the image of $\x$ lies in $S$. Next, we compute the partial
-%   derivatives
-%   \[%
-%     \pdv{\x}{u} = \langle \cosh(v), \sinh(v), 2u \rangle \aand \pdv{\x}{v} = \langle u\sinh(v), u\cosh(v), 0 \rangle
-%   .\]%
-%   Again, we take the cross product
-%   \[%
-%     \pdv{\x}{u} \wedge \pdv{\x}{v} = \langle 2u\cosh(v), 2u\sinh(v), u^2 \rangle
-%   .\]%
-%   Since $u \ne 0$, the cross product is non-zero for all $(u, v) \in \R^2$,
-%   meaning that $\pdv{\x}/{u}$ and $\pdv{\x}/{v}$ are linearly independent. Thus,
-%   $\x$ is a regular parametrization whose image lies in $S$, so it parametrizes
-%   (part of) the surface $S$.
-% \end{solution}
+\begin{solution}[(ii)]
+  Again, clearly, $\x(u, v) = \langle u\cosh(v), u\sinh(v), u^2 \rangle$ is a
+  smooth function from $\R^2 \to \R^3$. Now, we check that the image of $\x$
+  lies in $S$. Let $x = u\cosh(v)$, $y = u\sinh(v)$, and $z = u^2$. Then, we
+  have
+  \[%
+    x^2 - y^2 = u^2\cosh^2(v) - u^2\sinh^2(v) = u^2(\cosh^2(v) - \sinh^2(v)) = u^2 = z \in S
+  .\]%
+  Therefore, the image of $\x$ lies in $S$. Next, we compute the partial
+  derivatives
+  \[%
+    \pdv{\x}{u} = \langle \cosh(v), \sinh(v), 2u \rangle \aand \pdv{\x}{v} = \langle u\sinh(v), u\cosh(v), 0 \rangle
+  .\]%
+  Again, we take the cross product
+  \[%
+    \pdv{\x}{u} \wedge \pdv{\x}{v} = \langle 2u\cosh(v), 2u\sinh(v), u^2 \rangle
+  .\]%
+  Since $u \ne 0$, the cross product is non-zero for all $(u, v) \in \R^2$,
+  meaning that $\pdv{\x}/{u}$ and $\pdv{\x}/{v}$ are linearly independent. Thus,
+  $\x$ is a regular parametrization whose image lies in $S$, so it parametrizes
+  (part of) the surface $S$.
+\end{solution}
 
-% \begin{problem}[2.2.12]
-%   Show that $\x : U \subset \R^2 \to \R^2$ given by
-%   \[%
-%     \x(u, v) = \langle a\sin(u)\cos(v), b\sin(u)\sin(v), c\cos(u) \rangle, \quad a, b, c \ne 0
-%   ,\]%
-%   where $0 < u < \pi$, $0 < v < 2\pi$, is a parametrization for the ellipsoid
-%   \[%
-%     \frac{x^2}{a^2} + \frac{y^2}{b^2} + \frac{z^2}{c^2} = 1
-%   .\]%
-%   Describe geometrically the curves $u = \text{const}$ on the ellipsoid.
-% \end{problem}
+\begin{problem}[2.2.12]
+  Show that $\x : U \subset \R^2 \to \R^2$ given by
+  \[%
+    \x(u, v) = \langle a\sin(u)\cos(v), b\sin(u)\sin(v), c\cos(u) \rangle, \quad a, b, c \ne 0
+  ,\]%
+  where $0 < u < \pi$, $0 < v < 2\pi$, is a parametrization for the ellipsoid
+  \[%
+    \frac{x^2}{a^2} + \frac{y^2}{b^2} + \frac{z^2}{c^2} = 1
+  .\]%
+  Describe geometrically the curves $u = \text{const}$ on the ellipsoid.
+\end{problem}
 
-% \begin{solution}
-%   Clearly, $\x(u, v) = \langle a\sin(u)\cos(v), b\sin(u)\sin(v), c\cos(u)
-%   \rangle$ is a smooth function from $U \subset \R^2$ to $\R^3$. Now, we check
-%   that the image of $\x$ lies in the ellipsoid. Let $x = a\sin(u)\cos(v)$, $y =
-%   b\sin(u)\sin(v)$, and $z = c\cos(u)$. Then, we have
-%   \begin{align*}
-%     \frac{x^2}{a^2} + \frac{y^2}{b^2} + \frac{z^2}{c^2} &= \frac{a^2\sin^2(u)\cos^2(v)}{a^2} + \frac{b^2\sin^2(u)\sin^2(v)}{b^2} + \frac{c^2\cos^2(u)}{c^2} \\
-%                                                         &= \sin^2(u)\cos^2(v) + \sin^2(u)\sin^2(v) + \cos^2(u) \\
-%                                                         &= \sin^2(u)(\cos^2(v) + \sin^2(v)) + \cos^2(u) \\
-%                                                         &= \sin^2(u) + \cos^2(u) \\
-%                                                         &= 1
-%   .\end{align*}
-%   Therefore, the image of $\x$ lies on the ellipsoid.
+\begin{solution}
+  Clearly, $\x(u, v) = \langle a\sin(u)\cos(v), b\sin(u)\sin(v), c\cos(u)
+  \rangle$ is a smooth function from $U \subset \R^2$ to $\R^3$. Now, we check
+  that the image of $\x$ lies in the ellipsoid. Let $x = a\sin(u)\cos(v)$, $y =
+  b\sin(u)\sin(v)$, and $z = c\cos(u)$. Then, we have
+  \begin{align*}
+    \frac{x^2}{a^2} + \frac{y^2}{b^2} + \frac{z^2}{c^2} &= \frac{a^2\sin^2(u)\cos^2(v)}{a^2} + \frac{b^2\sin^2(u)\sin^2(v)}{b^2} + \frac{c^2\cos^2(u)}{c^2} \\
+                                                        &= \sin^2(u)\cos^2(v) + \sin^2(u)\sin^2(v) + \cos^2(u) \\
+                                                        &= \sin^2(u)(\cos^2(v) + \sin^2(v)) + \cos^2(u) \\
+                                                        &= \sin^2(u) + \cos^2(u) \\
+                                                        &= 1
+  .\end{align*}
+  Therefore, the image of $\x$ lies on the ellipsoid.
 
-%   Lastly, we check regularity. The partial derivatives are given by
-%   \[%
-%     \pdv{\x}{u} = \langle a\cos(u)\cos(v), b\cos(u)\sin(v), -c\sin(u) \rangle \aand \pdv{\x}{v} = \langle -a\sin(u)\sin(v), b\sin(u)\cos(v), 0 \rangle
-%   .\]%
-%   The cross product is given by
-%   \[%
-%     \pdv{\x}{u} \wedge \pdv{\x}{v} = \langle -bc\sin(u)\cos(v), ac\sin(u)\sin(v), ab\sin^2(u) \rangle
-%   ,\]%
-%   which is non-zero for all $(u, v) \in U$ (except for $u = 0$ and $u = \pi$,
-%   and since $0 < u < \pi$, we have $u \ne 0$ and $u \ne \pi$). Thus,
-%   $\pdv{\x}/{u}$ and $\pdv{\x}/{v}$ are linearly independent, so $\x$ is a
-%   regular parametrization whose image lies on the ellipsoid, so it parametrizes
-%   (part of) the surface of the ellipsoid.
+  Lastly, we check regularity. The partial derivatives are given by
+  \[%
+    \pdv{\x}{u} = \langle a\cos(u)\cos(v), b\cos(u)\sin(v), -c\sin(u) \rangle \aand \pdv{\x}{v} = \langle -a\sin(u)\sin(v), b\sin(u)\cos(v), 0 \rangle
+  .\]%
+  The cross product is given by
+  \[%
+    \pdv{\x}{u} \wedge \pdv{\x}{v} = \langle -bc\sin(u)\cos(v), ac\sin(u)\sin(v), ab\sin^2(u) \rangle
+  ,\]%
+  which is non-zero for all $(u, v) \in U$ (except for $u = 0$ and $u = \pi$,
+  and since $0 < u < \pi$, we have $u \ne 0$ and $u \ne \pi$). Thus,
+  $\pdv{\x}/{u}$ and $\pdv{\x}/{v}$ are linearly independent, so $\x$ is a
+  regular parametrization whose image lies on the ellipsoid, so it parametrizes
+  (part of) the surface of the ellipsoid.
 
-%   Geometrically, the curves $u = \text{const}$ on the ellipsoid are circles of
-%   latitude, which are the circles obtained by fixing the angle $u$ and varying
-%   the angle $v$. These circles lie in planes parallel to the $xy$-plane and are
-%   centered at the $z$-axis. The radius of these circles depends on the value of
-%   $u$, with the largest circle corresponding to $u = \sfrac{\pi}{2}$ (the
-%   equator) and the smallest circle corresponding to $u = 0$ or $u = \pi$ (the
-%   poles).
-% \end{solution}
+  Geometrically, the curves $u = \text{const}$ on the ellipsoid are circles of
+  latitude, which are the circles obtained by fixing the angle $u$ and varying
+  the angle $v$. These circles lie in planes parallel to the $xy$-plane and are
+  centered at the $z$-axis. The radius of these circles depends on the value of
+  $u$, with the largest circle corresponding to $u = \sfrac{\pi}{2}$ (the
+  equator) and the smallest circle corresponding to $u = 0$ or $u = \pi$ (the
+  poles).
+\end{solution}
 
-% \begin{problem}[2.2.16]
-%   One way to define a system of coordinates for the sphere $S^2$, given by $x^2
-%   + y^2 + (z - 1)^2 = 1$, is to consider the so-called \textit{stenographic
-%   projection} $\pi : S^2 \setminus \{N\} \to \R^2$ which carries a point $p =
-%   (x, y, z)$ of the sphere $S^2$ minus the north pole $N = (0, 0, 2)$ onto the
-%   intersection of the $xy$-plane with the straight line which connects $N$ to
-%   $p$. Let $(u, v) = \pi(x, y, z)$, where $(x, y, z) \in S^2 \setminus \{N\}$
-%   and $(u, v) \in xy$-plane.
-%   \begin{enumerate}
-%     \item Show that $\pi^{-1} : \R^2 \to S^2$ is given by
-%       \[%
-%         \pi^{-1} = \begin{cases}
-%           x = \dfrac{4u}{u^2 + v^2 + 4}\vspace{0.9em} \\
-%           y = \dfrac{4v}{u^2 + v^2 + 4}\vspace{0.9em} \\
-%           z = \dfrac{2(u^2 + v^2)}{u^2 + v^2 + 4}.
-%         \end{cases}
-%       \]%
+\begin{problem}[2.2.16]
+  One way to define a system of coordinates for the sphere $S^2$, given by $x^2
+  + y^2 + (z - 1)^2 = 1$, is to consider the so-called \textit{stenographic
+  projection} $\pi : S^2 \setminus \{N\} \to \R^2$ which carries a point $p =
+  (x, y, z)$ of the sphere $S^2$ minus the north pole $N = (0, 0, 2)$ onto the
+  intersection of the $xy$-plane with the straight line which connects $N$ to
+  $p$. Let $(u, v) = \pi(x, y, z)$, where $(x, y, z) \in S^2 \setminus \{N\}$
+  and $(u, v) \in xy$-plane.
+  \begin{enumerate}
+    \item Show that $\pi^{-1} : \R^2 \to S^2$ is given by
+      \[%
+        \pi^{-1} = \begin{cases}
+          x = \dfrac{4u}{u^2 + v^2 + 4}\vspace{0.9em} \\
+          y = \dfrac{4v}{u^2 + v^2 + 4}\vspace{0.9em} \\
+          z = \dfrac{2(u^2 + v^2)}{u^2 + v^2 + 4}.
+        \end{cases}
+      \]%
 
-%     \item Show that it is possible, using stereographic projection, to cover the
-%       sphere with two coordinate neighborhoods.
-%   \end{enumerate}
-% \end{problem}
+    \item Show that it is possible, using stereographic projection, to cover the
+      sphere with two coordinate neighborhoods.
+  \end{enumerate}
+\end{problem}
 
-% \begin{solution}[(i)]
-%   To derive the formula for $\pi^{-1} : \mathbb{R}^2 \to S^2$, consider the line
-%   from the north pole $N = (0, 0, 2)$ to a point $(u, v, 0)$ on the $xy$-plane.
-%   A point $(x, y, z)$ on this line can be written as
-%   \[%
-%     (x, y, z) = (tu, tv, 2 - 2t)
-%   ,\]%
-%   for some parameter $t \in (0, 1)$. We now find $t$ such that this point lies
-%   on the sphere $S^2$, defined by
-%   \[%
-%     x^2 + y^2 + (z - 1)^2 = 1
-%   .\]%
-%   Substituting the parameterized coordinates
-%   \begin{align*}
-%     (tu)^2 + (tv)^2 + (2 - 2t - 1)^2 &= 1 \\
-%     t^2(u^2 + v^2) + (1 - 2t)^2 &= 1 \\
-%     t^2(u^2 + v^2 + 4) - 4t + 1 &= 1 \\
-%     t^2(u^2 + v^2 + 4) - 4t &= 0 \\
-%     t(t(u^2 + v^2 + 4) - 4) &= 0
-%   .\end{align*}
-%   Discarding the solution $t = 0$ (which gives the north pole), we get
-%   \[%
-%     t = \frac{4}{u^2 + v^2 + 4}
-%   .\]%
-%   Now substitute back into the parameterized line
-%   \[%
-%     x = tu = \frac{4u}{u^2 + v^2 + 4}, \quad y = tv = \frac{4v}{u^2 + v^2 + 4}, \aand z = 2 - 2t = \frac{2(u^2 + v^2)}{u^2 + v^2 + 4}
-%   .\]%
-%   Therefore, the inverse stereographic projection is
-%   \[%
-%     \pi^{-1}(u, v) = \left( \frac{4u}{u^2 + v^2 + 4}, \frac{4v}{u^2 + v^2 + 4}, \frac{2(u^2 + v^2)}{u^2 + v^2 + 4} \right)
-%   .\qedhere\]%
-% \end{solution}
+\begin{solution}[(i)]
+  To derive the formula for $\pi^{-1} : \mathbb{R}^2 \to S^2$, consider the line
+  from the north pole $N = (0, 0, 2)$ to a point $(u, v, 0)$ on the $xy$-plane.
+  A point $(x, y, z)$ on this line can be written as
+  \[%
+    (x, y, z) = (tu, tv, 2 - 2t)
+  ,\]%
+  for some parameter $t \in (0, 1)$. We now find $t$ such that this point lies
+  on the sphere $S^2$, defined by
+  \[%
+    x^2 + y^2 + (z - 1)^2 = 1
+  .\]%
+  Substituting the parameterized coordinates
+  \begin{align*}
+    (tu)^2 + (tv)^2 + (2 - 2t - 1)^2 &= 1 \\
+    t^2(u^2 + v^2) + (1 - 2t)^2 &= 1 \\
+    t^2(u^2 + v^2 + 4) - 4t + 1 &= 1 \\
+    t^2(u^2 + v^2 + 4) - 4t &= 0 \\
+    t(t(u^2 + v^2 + 4) - 4) &= 0
+  .\end{align*}
+  Discarding the solution $t = 0$ (which gives the north pole), we get
+  \[%
+    t = \frac{4}{u^2 + v^2 + 4}
+  .\]%
+  Now substitute back into the parameterized line
+  \[%
+    x = tu = \frac{4u}{u^2 + v^2 + 4}, \quad y = tv = \frac{4v}{u^2 + v^2 + 4}, \aand z = 2 - 2t = \frac{2(u^2 + v^2)}{u^2 + v^2 + 4}
+  .\]%
+  Therefore, the inverse stereographic projection is
+  \[%
+    \pi^{-1}(u, v) = \left( \frac{4u}{u^2 + v^2 + 4}, \frac{4v}{u^2 + v^2 + 4}, \frac{2(u^2 + v^2)}{u^2 + v^2 + 4} \right)
+  .\qedhere\]%
+\end{solution}
 
-% \begin{solution}[(ii)]
-%   The stereographic projection from the \textit{north pole} $N = (0, 0, 2)$
-%   defines a smooth bijection
-%   \[%
-%     \pi_N : S^2 \setminus \{N\} \to \R^2
-%   ,\]%
-%   by projecting each point on the sphere (except $N$) onto the $xy$-plane along
-%   the line connecting that point to $N$. This provides a coordinate chart
-%   covering all of $S^2$ except the north pole.
+\begin{solution}[(ii)]
+  The stereographic projection from the \textit{north pole} $N = (0, 0, 2)$
+  defines a smooth bijection
+  \[%
+    \pi_N : S^2 \setminus \{N\} \to \R^2
+  ,\]%
+  by projecting each point on the sphere (except $N$) onto the $xy$-plane along
+  the line connecting that point to $N$. This provides a coordinate chart
+  covering all of $S^2$ except the north pole.
 
-%   Similarly, we can define a second stereographic projection from the
-%   \textit{south pole} $S = (0, 0, 0)$
-%   \[%
-%     \pi_S : S^2 \setminus \{S\} \to \R^2
-%   ,\]%
-%   which maps all of the sphere except the south pole onto the $xy$-plane. The
-%   union of the domains of these two maps is
-%   \[%
-%     (S^2 \setminus \{N\}) \cup (S^2 \setminus \{S\}) = S^2
-%   ,\]%
-%   so together, $\pi_N$ and $\pi_S$ form two coordinate neighborhoods whose union
-%   covers the entire sphere.
+  Similarly, we can define a second stereographic projection from the
+  \textit{south pole} $S = (0, 0, 0)$
+  \[%
+    \pi_S : S^2 \setminus \{S\} \to \R^2
+  ,\]%
+  which maps all of the sphere except the south pole onto the $xy$-plane. The
+  union of the domains of these two maps is
+  \[%
+    (S^2 \setminus \{N\}) \cup (S^2 \setminus \{S\}) = S^2
+  ,\]%
+  so together, $\pi_N$ and $\pi_S$ form two coordinate neighborhoods whose union
+  covers the entire sphere.
 
-%   Therefore, it is possible to cover $S^2$ with two coordinate neighborhoods
-%   using stereographic projection.
-% \end{solution}
+  Therefore, it is possible to cover $S^2$ with two coordinate neighborhoods
+  using stereographic projection.
+\end{solution}
