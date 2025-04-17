@@ -14,9 +14,6 @@ doall:
 compile:
 	pdflatex -synctex=1 -shell-escape $(DOCNAME).tex
 	pdflatex -synctex=1 -shell-escape $(DOCNAME).tex
-	bibtex master
-	bibtex master
-	pdflatex -synctex=1 -shell-escape $(DOCNAME).tex
 	pdflatex -synctex=1 -shell-escape $(DOCNAME).tex
 
 clean:

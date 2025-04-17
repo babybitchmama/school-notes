@@ -145,7 +145,8 @@
 \end{solution}
 
 \begin{problem}[1.10.3]
-  In each case, find all the roots in rectangular coordinates, exhibit them as vertices of certain regular polygons, and identify the principle root
+  In each case, find all the roots in rectangular coordinates, exhibit them as
+  vertices of certain regular polygons, and identify the principle root
   \[%
     \text{(i)}~(-1)^{\sfrac{1}{3}}; \qquad \text{(ii)}~z^5 = 8^{\sfrac{1}{6}}
   .\]%
@@ -199,44 +200,162 @@
   Sketch the following sets and determine which are domains:
   \begin{multicols}{2}
     \begin{enumerate}
-      \item[(i)] $\lvert z - 2 + i \rvert \le 1$.
+      \item[(i)] $A = \lvert z - 2 + i \rvert \le 1$.
 
-      \item[(iii)] $\Im(z) > 1$.
+      \item[(iii)] $A = \Im(z) > 1$.
 
-      \item[(v)] $0 \le \arg(z) \le \sfrac{\pi}{4}$ ($z \ne 0$).
+      \item[(v)] $A = 0 \le \arg(z) \le \sfrac{\pi}{4}$ ($z \ne 0$).
 
-      \item[(ii)] $\lvert 2z + 3 \rvert > 4$.
+      \item[(ii)] $A = \lvert 2z + 3 \rvert > 4$.
 
-      \item[(iv)] $\Im(z) = 1$.
+      \item[(iv)] $A = \Im(z) = 1$.
 
-      \item[(vi)] $\lvert z - 4 \rvert \ge \lvert z \rvert$.
+      \item[(vi)] $A = \lvert z - 4 \rvert \ge \lvert z \rvert$.
     \end{enumerate}
   \end{multicols}
 \end{problem}
 
+\begin{figure}[H]
+  \colorlet{grey}{gray!30}
+  \centering
+
+  \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+
+    \begin{tikzpicture}
+      \draw[thick, fill=grey] (2, -1) circle (1cm);
+      \draw[dashed] (2, -1) -- (3, -1) node[midway,above] {\footnotesize $r = 1$};
+      \draw[soldot] (2, -1) circle (2pt) node[below] {\footnotesize $(2, -1)$};
+    \end{tikzpicture}
+
+    \caption{$\lvert z - 2 + i \rvert \le 1$}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+
+    \begin{tikzpicture}
+      \fill[grey] (-4.5, -2.5) rectangle (1.5, 2.5);
+      \draw[thick, dashed, fill=white] (-1.5, 0) circle (2cm);
+      \draw[dashed] (-1.5, 0) -- (0.5, 0) node[midway,above] {\footnotesize $r = 2$};
+      \draw[soldot] (-1.5, 0) circle (2pt) node[below] {\footnotesize $(-1.5, 0)$};
+    \end{tikzpicture}
+
+    \caption{$\lvert 2z + 3 \rvert > 4$}
+  \end{subfigure}
+
+  \begin{subfigure}[b]{\textwidth}
+  \end{subfigure}
+
+  \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+
+    \begin{tikzpicture}
+      \draw[thick, dashed] (-3, 1) -- (3, 1) node[midway,below] {\footnotesize $y = 1$};
+      \fill[grey] (-3, 1) rectangle (3, 3);
+    \end{tikzpicture}
+
+    \caption{$\Im(z) > 1$}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+
+    \begin{tikzpicture}
+      \draw[thick] (-3, 1) -- (3, 1) node[midway,below] {\footnotesize $y = 1$};
+    \end{tikzpicture}
+
+    \caption{$\Im(z) = 1$}
+  \end{subfigure}
+
+  \begin{subfigure}[b]{\textwidth}
+  \end{subfigure}
+
+  \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+
+    \begin{tikzpicture}
+      \fill[grey] (0, 0) -- (3, 0) arc[start angle=0, end angle=45, radius=3cm] -- cycle;
+      \draw[thick] (0, 0) -- (3, 0) node[midway, above] {\footnotesize $\arg(z) = 0$};
+      \draw[thick] (0, 0) -- ({3*cos(45)}, {3*sin(45)}) node[midway, above, sloped] {\footnotesize $\arg(z) = \sfrac{\pi}{4}$};
+      \draw[fill=white] (0, 0) circle (1pt);
+    \end{tikzpicture}
+
+    \caption{$0 \le \arg(z) \le \sfrac{\pi}{4}$, ($z \ne 0$)}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+
+    \begin{tikzpicture}
+      \fill[grey] (-3,-2) rectangle (2,2);
+      \draw[thick] (2, -2) -- (2, 2) node[midway, below, sloped] {\footnotesize $x = 2$};
+      \node at (-2, 1.5) {\footnotesize $x \le 2$};
+    \end{tikzpicture}
+
+    \caption{$\lvert z - 4 \rvert \ge \lvert z \rvert$}
+  \end{subfigure}
+\end{figure}
+
 \begin{solution}[(i)]
+  Let $z_0 \in \C$ such that $\lvert z_0 - (2 - i) \rvert = 1$. Then, take
+  $\epsilon = 0.1$. Then, $V_\epsilon(z_0)$ contains points with $\lvert z - (2
+  - i) \rvert > 1$, i.e., outside the set. Since the graph is a closed disk,
+  it's path connected, which implies connectedness. But, since the graph is
+  closed, it isn't a domain.
 \end{solution}
 
 \begin{solution}[(ii)]
+  Let $z_0 \in A$. Then, $r \coloneqq \lvert z_0 + \sfrac{3}{2} \rvert > 2$. Let
+  $\epsilon \coloneqq r - 2 > 0$. Then, for all $z \in V_\epsilon(z_0)$, by the
+  reverse triangle inequality, we have
+  \[%
+    \left\lvert z + \frac{3}{2} \right\rvert \ge \left\lvert z_0 + \frac{3}{2} \right\rvert - \left\lvert z - z_0 \right\rvert > r - \epsilon = 2
+  .\]%
+  So, $z \in A$. Therefore, $V_\epsilon(z_0) \subset B$, meaning that $A$ is
+  open. Again, the graph is the exterior of an open disk, which is path
+  connected. Therefore, $A$ is a domain.
 \end{solution}
 
 \begin{solution}[(iii)]
+  Let $z_0 \in x + iy \in A \implies y > 1$. Let $\epsilon = y - 1 > 0$. Then,
+  for any $z \in V_\epsilon(z_0)$, we have
+  \[%
+    \lvert \Re(z) - y \rvert < \epsilon \implies \Re(z) > y - \epsilon = 1
+  .\]%
+  So, $\Re(z) > 1$, meaning that $z \in A$. Therefore, $V_\epsilon(z_0) \subset
+  A$, meaning that $A$ is open. Again, the graph is the upper half-plane, which
+  is path connected. Therefore, $A$ is a domain.
 \end{solution}
 
 \begin{solution}[(iv)]
+  Take any $z_0 = x + i \in A$. Any $\epsilon$-neighborhood contains points
+  where $\Re(z) \ne 1$, so it's not fully contained in $A$. Therefore, $A$ is
+  not open. The graph is a horizontal line, which is path connected. But, since
+  the graph is closed, it isn't a domain.
 \end{solution}
 
 \begin{solution}[(v)]
+  Take any point $z$ on the boundary rays or very close to the origin. Any
+  $\epsilon$-neighborhood will contain points with argument less than $0$ or
+  more than $\sfrac{\pi}{4}$, or even $z = 0$. So no uniform $\epsilon$-disk
+  lies entirely in the set, meaning that $A$ is not open. The graph is the union
+  of two rays, which is path connected. But, since the graph is closed, it isn't
+  a domain.
 \end{solution}
 
 \begin{solution}[(vi)]
+  Let $z_0 = x + iy \in A$, with $x = 2$. Any neighborhood contains points with
+  $\Re(z) > 2$, so the disk isn't contained in $A$. Therefore, $A$ is not open.
+  The graph is half the $xy$-plane, which is path connected. But, since the
+  graph is closed, it isn't a domain.
 \end{solution}
 
 \begin{problem}[1.11.3]
-  Which sets in Exercise 1 are bounded?
+  Which sets in Exercise 1.11.1 are bounded?
 \end{problem}
 
 \begin{solution}
+  The only bounded set is the closed enclosed disk in part (i), as the maximum
+  $x$-value is $3$, the minimum $x$-value is $1$, the maximum $y$-value is $1$,
+  and the minimum $y$-value is $-2$. All other sets are unbounded.
 \end{solution}
 
 \begin{problem}[2.20.1]
@@ -361,9 +480,10 @@
     f(z) = u(x, y) + iv(x, y) = x - iy \implies u(x, y) = x \aand v(x, y) = -y
   .\]%
   We compute the partial derivatives
-  \[%
-    u_x = 1, \quad u_y = 0, \quad v_x = 0, \aand v_y = -1
-  .\]%
+  \begin{alignat*}{3}
+    u_x &= 1, &&\quad u_y = 0 \\
+    v_x &= 0, &&\quad v_y = -1
+  .\end{alignat*}
   Now, we check the Cauchy-Riemann equations
   \[%
     u_x \ne v_y \aand u_y \ne -v_x
@@ -378,9 +498,10 @@
     f(z) = (x + iy) - (x - iy) = 2iy \implies u(x, y) = 0 \aand v(x, y) = 2y
   .\]%
   We compute the partial derivatives
-  \[%
-    u_x = 0, \quad u_y = 0, \quad v_x = 0, \aand v_y = 2
-  .\]%
+  \begin{alignat*}{3}
+    u_x &= 0, &&\quad u_y = 0 \\
+    v_x &= 0, &&\quad v_y = 2
+  .\end{alignat*}
   Now, we check the Cauchy-Riemann equations
   \[%
     u_x \ne v_y \aand u_x = v_y
@@ -395,9 +516,10 @@
     f(z) = u(x, y) + iv(x, y) = 2x + ixy^2 \implies u(x, y) = 2x \aand v(x, y) = xy^2
   .\]%
   We compute the partial derivatives
-  \[%
-    u_x = 2, \quad u_y = 0, \quad v_x = y^2, \aand v_y = 2xy
-  .\]%
+  \begin{alignat*}{3}
+    u_x &= 2, &&\quad u_y = 0 \\
+    v_x &= y^2, &&\quad v_y = 2xy
+  .\end{alignat*}
   The Cauchy-Riemann equations are only satisfied when $y = 0$ and $x =
   \sfrac{1}{y}$. But, since they don't satisfy the Cauchy-Riemann equations at
   all points, we have that $f'(z)$ does not exist at any point.
@@ -409,9 +531,10 @@
     f(z) = u(x, y) + iv(x, y) = e^x\cos(y) + ie^x\sin(y) \implies u(x, y) = e^x\cos(y) \aand v(x, y) = -e^x\sin(y)
   .\]%
   We compute the partial derivatives
-  \[%
-    u_x = e^x\cos(y), \quad u_y = -e^x\sin(y), \quad v_x = -e^x\sin(y), \aand v_y = -e^x\cos(y)
-  .\]%
+  \begin{alignat*}{3}
+    u_x &= e^x\cos(y), &&\quad u_y = -e^x\sin(y) \\
+    v_x &= -e^x\sin(y), &&\quad v_y = -e^x\cos(y)
+  .\end{alignat*}
   The equation $u_x = v_y$ is satisfied when $\cos(y) = 0$ but the second
   equation, $u_y = v_x$ is satisfied. But, since they don't satisfy the
   Cauchy-Riemann equations at all points, we have that $f'(z)$ does not exist at
@@ -457,5 +580,24 @@
 \end{solution}
 
 \begin{solution}[(iii)]
-
+  We can write
+  \begin{align*}
+    f(z) = z\Im(z) = z\frac{z - \zb}{2i} &= \frac{z^2 - z\zb}{2i} \\
+                   &= \frac{z^2 - (x^2 + y^2)}{2i} \\
+                   &= \frac{x^2 + 2ixy - y^2 - x^2 - y^2}{2i} \\
+                   &= \frac{2ixy - 2y^2}{2i} \\
+                   &= xy - \frac{y^2}{i} = xy + y^2i \\
+                   &= u(x, y) + iv(x, y)
+  .\end{align*}
+  Now, we can compute the partial derivatives
+  \begin{alignat*}{3}
+    u_x &= y,\quad &&u_y &= x, \\
+    v_x &= 0,\quad &&v_y &= 2y
+  .\end{alignat*}
+  Clearly, $u_x = v_y$ and $u_y = -v_x$ only when $x = 0 = y$. So, $f$ is
+  differentiable only at the origin. To compute the derivative at the origin, we use
+  the limit definition:
+  \[%
+    f'(0) = \lim_{z \to 0} \frac{f(z) - f(0)}{z} = \lim_{z \to 0} \frac{z\Im(z)}{z} = \lim_{z \to 0} \Im(z) = 0
+  .\qedhere\]%
 \end{solution}
