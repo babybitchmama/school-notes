@@ -1,0 +1,359 @@
+\documentclass[aspectratio=169,xcolor=dvipsnames]{beamer}
+\usetheme{SimpleDarkBlue}
+
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{booktabs}
+
+\usepackage{derivative}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{breqn}
+\usepackage{xifthen}
+\usepackage{xfrac}
+
+\usefonttheme[onlymath]{serif}
+
+\let\to\rightarrow
+\let\implies\Rightarrow
+\let\impliedby\Leftarrow
+\let\iff\Leftrightarrow
+\let\epsilon\varepsilon
+\let\phi\varphi
+\let\tau\uptau
+
+\newcommand\adX{\text{ad}X}
+
+\renewcommand\a{\mathbf{a}}
+\renewcommand\b{\mathbf{b}}
+\renewcommand\c{\mathbf{c}}
+\renewcommand\d{\mathbf{d}}
+\newcommand\e{\mathbf{e}}
+\newcommand\f{\mathbf{f}}
+\newcommand\FF{\mathbf{F}}
+\newcommand\g{\mathbf{g}}
+\newcommand\n{\mathbf{n}}
+\newcommand\p{\mathbf{p}}
+\renewcommand\r{\mathbf{r}}
+\newcommand\Ta{\mathbf{T}}
+\renewcommand\u{\mathbf{u}}
+\renewcommand\v{\mathbf{v}}
+\newcommand\w{\mathbf{w}}
+\newcommand\x{\mathbf{x}}
+\newcommand\y{\mathbf{y}}
+\newcommand\z{\mathbf{z}}
+\newcommand\zero{\mathbf{0}}
+\newcommand\ad{\operatorname{ad}}
+\newcommand\Ad{\operatorname{Ad}}
+\newcommand\hb{\hbar}
+
+% Hat vectors
+\newcommand\ah{\mathbf{a}}
+\newcommand\bh{\mathbf{b}}
+\newcommand\ch{\mathbf{c}}
+\renewcommand\dh{\mathbf{d}}
+\newcommand\eh{\mathbf{e}}
+\newcommand\ph{\mathbf{p}}
+\newcommand\uh{\mathbf{u}}
+\newcommand\vh{\mathbf{v}}
+\newcommand\wh{\mathbf{w}}
+\newcommand\xh{\mathbf{x}}
+\newcommand\yh{\mathbf{y}}
+\newcommand\zh{\mathbf{z}}
+
+% Unit vectors
+\newcommand\ui{\boldsymbol{\imath}}
+\newcommand\uj{\boldsymbol{\jmath}}
+\newcommand\uk{\mathbf{k}}
+
+% Matrix groups
+\newcommand\M{\mathrm{M}}
+\newcommand\Ec{\mathrm{E}}
+\newcommand\GL{\mathrm{GL}}
+\newcommand\Or{\mathrm{O}}
+\newcommand\PGL{\mathrm{PGL}}
+\newcommand\PSL{\mathrm{PSL}}
+\newcommand\PSO{\mathrm{PSO}}
+\newcommand\PSU{\mathrm{PSU}}
+\newcommand\SL{\mathrm{SL}}
+\newcommand\SO{\mathrm{SO}}
+\newcommand\Spin{\mathrm{Spin}}
+\newcommand\Sp{\mathrm{Sp}}
+\newcommand\SU{\mathrm{SU}}
+\newcommand\U{\mathrm{U}}
+\newcommand\Mat{\mathrm{Mat}}
+\renewcommand\P{\mathbb{P}}
+
+% Lie algebras
+\newcommand\ec{\mathrm{e}}
+\newcommand\gl{\mathrm{gl}}
+\renewcommand\sl{\mathrm{sl}}
+\newcommand\so{\mathrm{so}}
+\newcommand\su{\mathrm{su}}
+\newcommand\ggl{\mathfrak{g}}
+\newcommand\hl{\mathfrak{h}}
+
+% Subspaces
+\newcommand\B{\mathcal{B}}
+\newcommand\C{\mathbb{C}}
+\newcommand\D{\mathbb{D}}
+\newcommand\E{\mathbb{E}}
+\newcommand\F{\mathbb{F}}
+\newcommand\I{\mathbb{I}}
+\newcommand\N{\mathbb{N}}
+\newcommand\Q{\mathbb{Q}}
+\newcommand\R{\mathbb{R}}
+\newcommand\Z{\mathbb{Z}}
+
+% Helpful text in math mode
+\newcommand\aand{\quad\text{and}\quad}
+\newcommand\oor{\quad\text{or}\quad}
+\renewcommand\and{\text{and}}
+\newcommand\qtq[1]{\quad\text{#1}\quad}
+\newcommand\Col{\text{Col}}
+\newcommand\Nul{\text{Null}}
+\newcommand\Range{\text{Range}}
+\newcommand\Ker{\text{Ker}}
+\newcommand\Tr{\text{Tr}}
+\newcommand\Rank{\text{Rank}}
+\newcommand\proj{\text{proj}}
+\newcommand\comp{\text{comp}}
+\newcommand\Sspan{\text{Span}}
+\renewcommand\Re{\text{Re}}
+\renewcommand\Im{\text{Im}}
+
+\title{Classifications of all Irreducible Representations of $\sl_2(\C)$}
+\subtitle{up to Isomorphism}
+
+\author{Hashem A. Damrah}
+
+\institute{
+  Department of Mathematics \\
+  University of Oregon
+}
+\date{April 25, 2025}
+
+\begin{document}
+  \begin{frame}
+    \titlepage
+  \end{frame}
+
+  \begin{frame}{Lie groups}
+    \textbf{Definition:} A \textit{Lie group} is a differentiable manifold $G$,
+    which is also a group, and such that the group product
+    \[%
+      G \times G \to G
+    ,\]%
+    and the inverse map $g \to g^{-1}$ are differentiable.
+  \end{frame}
+
+  \begin{frame}{Matrix Lie groups}
+    \textbf{Definition:} A \textit{Matrix Lie group} is a subgroup $G \subseteq
+    \GL_n(\C)$ that's topologically closed, i.e., any matrix sequence that
+    converges, converges to a matrix in $G$.
+
+    \vspace{1em}
+
+    \textbf{Example:} The \textit{Special Linear Group} $\SL_n(\C)$ is the set
+    \[%
+      \SL_n(\C) = \left\{X \in \GL_n(\C) \rvert \det(X) = 1\right\}
+    .\]%
+    Clearly, this is a subgroup of $\GL_n(\C)$ since
+    \begin{enumerate}
+      \item $\SL_n(\C)$ is closed under matrix multiplication, since $\det(XY) =
+        \det(X)\det(Y) = 1$.
+
+      \item $\SL_n(\C)$ has an identity element, since $\det(I_n) = 1$.
+
+      \item $\SL_n(\C)$ is closed under inverses, since the inverse is the
+        matrix itself.
+
+      \item $\SL_n(\C)$ is associative, since matrix multiplication is
+        associative.
+    \end{enumerate}
+    And it's also topologically closed, since the determinant is a continuous
+    function, and the set $\det^{-1}(1)$ is closed in $\C$.
+  \end{frame}
+
+  \begin{frame}{Lie algebra}
+    \textbf{Definition:} A \textit{finite-dimensional real or complex Lie
+    algebra} is a finite-dimensional real or complex vector space $\ggl$,
+    together with a map $[\cdot, \cdot] : \ggl \times \ggl \to \ggl$ with the
+    following properties:
+    \begin{enumerate}
+      \item $[\cdot, \cdot]$ is bilinear, i.e.,
+        \[%
+          [W + X, Y + Z] = [W, Y + Z] + [X, Y + Z] = [W, Y] + [W, Z] + [X, Y] + [X, Z]
+        .\]%
+
+      \item $[X, Y] = -[Y, X]$.
+
+      \item Satisfies the Jacobi Identity: $[X, [Y, Z]] + [Y, [Z, X]] + [Z, [X,
+        Y]] = 0$.
+    \end{enumerate}
+  \end{frame}
+
+  \begin{frame}{Lie algebra of a Matrix Lie group}
+    \textbf{Definition:} Let $G$ be a matrix Lie group. Then the \textit{Lie
+    algebra} of $G$, denoted by $\ggl$, is the set of all matrices $X \in
+    \M_n(\C)$ such that $e^{Xt} \in G$, for all $t \in \R$.
+
+    \vspace{1em}
+
+    \textbf{Example:} The Lie algebra of $\SL_2(\C)$, denoted $\sl_2(\C)$, is
+    the set of all $X \in \M_2(\C)$ such that
+    \[%
+      \sl_2(\C) = \left\{
+        \left.X = \begin{pmatrix}
+          a & b \\
+          c & d \\
+        \end{pmatrix}\right\rvert
+        \Tr(X) = a + d = 0
+      \right\}
+    ,\]%
+    since $\det\left(e^{Xt}\right) = e^{\Tr(X)t}$. Therefore, $\dim(\sl_2(\C)) =
+    3$, since we can construct the basis
+    \[%
+      \left\{
+        h = \begin{pmatrix}
+          1 & 0 \\
+          0 & -1 \\
+        \end{pmatrix},
+        e = \begin{pmatrix}
+          0 & 1 \\
+          0 & 0 \\
+        \end{pmatrix},
+        f = \begin{pmatrix}
+          0 & 0 \\
+          1 & 0 \\
+        \end{pmatrix}
+      \right\}
+    .\]%
+    Since $\sl_2(\C) \subset \gl_2(\C)$, the Lie Bracket induced on $\sl_2(\C)$,
+    comes from $\gl_2(\C)$, defined as $[X, Y] = XY - YX$. It's easy to see that
+    the operation is bilinear, skew-symmetric, closed, and satisfies the Jacobi
+    identity. Computing the Lie bracket of the basis elements, we get
+    \[%
+      [h, e] = 2e, \quad [h, f] = -2f, \aand [e, f] = h
+    .\]%
+  \end{frame}
+
+  \begin{frame}{Complexification of a Lie algebra}
+    \textbf{Definition:} Let $\ggl$ be a real Lie algebra. Then, the
+    \textit{complexification} of $\ggl$, denoted by $\ggl_\C$, is the complex
+    vector space $\ggl \otimes_\R \C$ with the Lie bracket defined by
+    \[%
+      [X \otimes z, Y \otimes w] = [X, Y] \otimes zw
+    ,\]%
+    extended by $\C$-bilinearity, where $X, Y \in \ggl$ and $z, w \in \C$.
+
+    \vspace{1em}
+
+    \textbf{Example:} Let $\ggl$ be a real Lie algebra of the matrix Lie group
+    $G$. Then, the complexification of $\ggl$, denoted by $\ggl_\C$, is the set
+    \[%
+      \ggl_\C = \left\{
+        X + iY \mid X, Y \in \ggl
+      \right\}
+    .\]%
+    The Lie bracket, $[\cdot, \cdot] : \ggl_\C \times \ggl_\C \to \ggl_\C$, then
+    becomes
+    \begin{align*}
+      [X + iY, W + iZ] &= [X, W + iZ] + [iY, W + iZ] \\
+                       &= [X, W] + [X, iZ] + [iY, W] + [iY, iZ] \\
+                       &= ([X, W] - [Y, Z]) + i([X, Z] + [Y, W])
+    .\end{align*}
+
+    \vspace{1em}
+
+    \textbf{Note:} The complexification of a real Lie algebra is a complex Lie
+    algebra.
+  \end{frame}
+
+  \begin{frame}{Homomorphisms of Lie groups and Lie algebras}
+    \textbf{Definition:} Let $(G_1, \cdot)$ and $(G_2, \times)$ be two Lie
+    groups. Then, a \textit{homomorphism} of Lie groups is a map $\Phi : G_1 \to
+    G_2$ such that
+    \[%
+      \Phi(g_1 \cdot g_2) = \Phi(g_1) \times \Phi(g_2)
+    ,\]%
+    where $g_1, g_2 \in G_1$ and $\Phi(g_1), \Phi(g_2) \in G_2$.
+
+    \vspace{1em}
+
+    \textbf{Definition:} A \textit{homomorphism} of Lie algebras is a linear map
+    $\Phi : \ggl_1 \to \ggl_2$, where $\ggl_1$ and $\ggl_2$ are Lie algebras, such
+    that
+    \[%
+      \Phi([X, Y]) = [\Phi(X), \Phi(Y)]
+    ,\]%
+    where $X, Y \in \ggl_1$ and $\Phi(X), \Phi(Y) \in \ggl_2$.
+  \end{frame}
+
+  \begin{frame}{Representations}
+    Let $G$ be a matrix Lie group, $\ggl$ a Lie algebra, and $V$ a
+    finite-dimensional vector space.
+
+    \vspace{1em}
+
+    \textbf{Definition:} A \textit{representation} of $G$ is a Lie group
+    homomorphism
+    \[%
+      \Pi : G \to \GL(V)
+    ,\]%
+    where $\GL(V)$ is the set of all automorphisms of $V$.
+
+    \vspace{1em}
+
+    \textbf{Definition:} A representation of $\ggl$ is a Lie algebra
+    homomorphism
+    \[%
+      \pi :\ggl \to \gl(V)
+    ,\]%
+    where $\gl(V)$ is the set of all one-to-one mappings of $V$ onto itself.
+
+    \vspace{1em}
+
+    \textbf{Note:} To denote a representation, $\Pi$, of a Lie group $G$ on a
+    vector space $V$, I'll write $(\Pi, G, V)$. Same thing for a representation
+    $\pi$ of a Lie algebra $\ggl$ on a vector space $V$, I'll write $(\pi, G,
+    V)$.
+  \end{frame}
+
+  \begin{frame}{Irreducible and Isomorphic representations}
+    \textbf{Definition:} Define $(\Pi, V)$ and $(\Sigma, W)$ on a Lie group $G$.
+    A linear map $\Phi : V \to W$ is called a \textit{morphism} of
+    representations if
+    \[%
+      \Phi(\Pi(A)v) = \Sigma(A)\Phi(v)
+    ,\]%
+    for all $A \in G$ and $v \in V$. If $\Phi$ is invertible, then it's called
+    an \textit{isomorphism} of representations.
+
+    \vspace{1em}
+
+    \textbf{Definition:} Define $(\Pi, V)$ on a Lie group $G$.
+    A subspace $W$ of $V$ is called \textit{invariant} under the representation
+    $(\Pi, V)$ if
+    \[%
+      \Pi(A)w \in W
+    ,\]%
+    for all $A \in G$ and $w \in W$. An invariant subspace, $W$, is called
+    \textit{non-trivial} if $W \ne \{0\}$ and $W \ne V$. A representation with
+    no non-trivial invariant subspaces is called \textit{irreducible}. A
+    representation $(\pi, V)$ of a Lie algebra $\ggl$ is irreducible if it has
+    no nontrivial invariant subspaces under the action of $\pi(X)$ for all $X
+    \in \ggl$.
+  \end{frame}
+
+  \begin{frame}{References}
+    \footnotesize
+    \nocite*{}
+    \bibliography{reference.bib}
+    \bibliographystyle{apalike}
+  \end{frame}
+\end{document}
