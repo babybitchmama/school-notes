@@ -7,6 +7,34 @@
 \end{problem}
 
 \begin{solution}
+  Let $S_1$ be the ellipsoid and $S_2$ be the sphere. We can define the
+  following parameterizations $\x_1 : (0, \pi) \times (0, 2\pi) \to \R^3$ and
+  $\x_2 : (0, \pi) \times (0, 2\pi) \to \R^3$, defined by
+  \[%
+    \x_1 = \left\langle a\sin(\phi)\cos(\theta), b\sin(\phi)\sin(\theta), c\cos(\phi) \right\rangle
+    \aand
+    \x_2 = \left\langle \sin(\phi)\cos(\theta), \sin(\phi)\sin(\theta), \cos(\phi) \right\rangle
+  ,\]%
+  where $\x_1$ is the parameterization of the ellipsoid and $\x_2$ is the
+  parameterization of the sphere. The diffeomorphism $\Phi : S_1 \to S_2$ can be
+  defined as $\Phi(x, y, z) = \left(\x_2 \circ \x_1^{-1}\right)(x, y, z)$. We're
+  trying to go from the ellipsoid to the sphere, and both are given in terms of
+  the same angles, just scaled differently. All we are doing is just dividing by
+  the semi-axes, giving us
+  \[%
+    \Phi(x, y, z) = \left\langle \frac{x}{a}, \frac{y}{b}, \frac{z}{c} \right\rangle
+  .\]%
+
+  Now, we show that $\Phi(x, y, z)$ is a diffeomorphism between $S_1$ and $S_2$.
+  It is clear that $\Phi$ is a smooth map since it is composed of smooth
+  functions. The inverse $\Phi^{-1} : S_2 \to S_1$ is given by
+  \[%
+    \Phi(x, y, z) = \left\langle ax, by, cz \right\rangle
+  .\]%
+  Again, $\Phi^{-1}$ is smooth since it is composed of smooth functions.
+
+  Therefore, $\Phi$ is a diffeomorphism between the ellipsoid $S_1$ and the
+  sphere $S_2$.
 \end{solution}
 
 \begin{problem}[2.3.7]
@@ -15,6 +43,32 @@
 \end{problem}
 
 \begin{solution}
+  For the relation ``$S_1$ is diffeomorphic to $S_2$'' to be an equivalence
+  relation, it must satisfy three properties: reflexivity, symmetry, and
+  transitivity.
+
+  We first prove reflexivity. For any regular surface $S$, we can define the
+  identity map $I_S : S \to S$ given by $I_S(x) = x$ for all $x \in S$. The
+  identity map is clearly a diffeomorphism since it is smooth and has a smooth
+  inverse (itself). Thus, $S$ is diffeomorphic to itself, satisfying the
+  reflexivity property.
+
+  Next, we prove symmetry. If $\Phi$ is a diffeomorphic mapping from $S_1$ to
+  $S_2$, then, there exists a smooth inverse $\Phi^{-1}$ from $S_2$ to $S_1$. By
+  definition, $\Phi^{-1}$ is also a diffeomorphism. Therefore, if $S_1$ is
+  diffeomorphic to $S_2$ via $\Phi$, then $S_2$ is diffeomorphic to $S_1$ via
+  $\Phi^{-1}$, satisfying the symmetry property.
+
+  Finally, we prove transitivity. If $S_1$ is diffeomorphic to $S_2$ via
+  $\Phi_{12}$ and $S_2$ is diffeomorphic to $S_3$ via $\Phi_{23}$, then we can
+  define a new map $\Phi_{13} = \Phi_{12} \circ \Phi_{23}$. The composition of
+  two diffeomorphisms is also a diffeomorphism, as it is smooth and has a smooth
+  inverse given by $(\Phi_{23})^{-1} \circ (\Phi_{12})^{-1}$. Thus, $S_1$ is
+  diffeomorphic to $S_3$ via $\Phi_{13}$, satisfying the transitivity property.
+
+  Since the relation satisfies reflexivity, symmetry, and transitivity, we can
+  conclude that the relation ``$S_1$ is diffeomorphic to $S_2$'' is indeed an
+  equivalence relation in the set of regular surfaces.
 \end{solution}
 
 \begin{problem}[2.3.14]
@@ -24,6 +78,23 @@
 \end{problem}
 
 \begin{solution}
+  Assume $A$ is a regular subsurface of $S$, with $\pd{A}$ being the boundary of
+  $A$. Suppose $A$ is closed. Let $p \in \pd{A} \subset A$. Since $A$ is a
+  regular surface, that means there exists a neighborhood $V_\delta(p)$, where
+  $\delta > 0$, such that there is a differentiable, homeomorphic mapping from
+  an open set $U \subset \R^2$ to $V_\delta(p) \cap A$. Since $p \in \pd{A}$,
+  there doesn't exist such a neighborhood around $p$ that's contained in $A$,
+  giving us a contradiction. Therefore, $A$ must be open in $S$.
+
+  Conversely, assume $A$ is open in $S$. This means that for every point $p \in
+  A$, there exists a neighborhood $V_\delta(p)$ such that $V_\delta(p) \cap S
+  \subset A$. Since $S$ is a regular surface, we can find a differentiable,
+  homeomorphic mapping from an open set $U \subset \R^2$ to $V_\delta(p) \cap
+  S$. The restriction mapping $\x |_S : U \to V_\delta(p) \cap S$ is also a
+  differentiable, homeomorphic mapping, which means that $A$ is a regular
+  surface.
+
+  Thus, $A$ is a regular surface if and only if it is open in $S$.
 \end{solution}
 
 \begin{problem}[2.4.2]
@@ -54,7 +125,7 @@
   is regular. Compute its normal vector $\Na(u, v)$ and show that along the
   coordinate line $u = u_0$, the tangent plane of $\x$ rotates about this line
   in such a way that the tangent of its angle with the $z$-axis is proportional
-  to the inverse of the distance $v = (\sqrt{x^2 + y^2}$ of the point $\x(u_0,
+  to the inverse of the distance $v = \sqrt{x^2 + y^2}$ of the point $\x(u_0,
   v)$ to the $z$-axis.
 \end{problem}
 
@@ -114,7 +185,8 @@
   Show that the area $A$ of a bounded region $R$ of the surface $z = f(x, y)$ is
   \[%
     A = \iint_Q \sqrt{1 + f_x^2 + f_y^2} \dxy
-  .\]%
+  ,\]%
+  where $Q$ is the normal projection of $R$ onto the $xy$-plane.
 \end{problem}
 
 \begin{solution}
