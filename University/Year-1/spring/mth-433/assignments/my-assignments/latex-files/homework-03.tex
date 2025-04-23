@@ -141,19 +141,26 @@
 \end{solution}
 
 \begin{problem}[2.4.24]
-  Show that if $\phi : S_1 \to S_2$ and $\psi : S_2 \to S_3$ are differential
+  Show that if $\Phi : S_1 \to S_2$ and $\Psi : S_2 \to S_3$ are differential
   maps and $p \in S_1$, then
   \[%
-    \dd(\sigma \circ \phi)_p = \dd{\psi_{\phi(p)}} \circ \dd{\phi_p}
+    \dd(\Psi \circ \Phi)_p = \dd{\Psi_{\Phi(p)}} \circ \dd{\Phi_p}
   .\]%
 \end{problem}
 
 \begin{solution}
+  Define $\beta : (-\epsilon, \epsilon) \to S_1$ be a smooth curve such that
+  $\beta(0) = p = \Phi^{-1}(q)$ and $\beta'(0) = \w$. Define $\x = \Phi \circ
+  \beta : (-\epsilon, \epsilon) \to S_1 \to S_2$.
+  % Then, this gives us that $\dd{\Phi_p} : T_p(S_1) \to T_{\Phi(p)}(S_2)$, where it's defined as
+  % \[%
+  %   \dd{\Phi_p}(\w) = \odv{}{t} \bigg|_{t=0} (\Phi \circ \beta)(t)
+  % .\]%
 \end{solution}
 
 \begin{problem}[2.5.1]
   Compute the first fundamental forms of the following parametrized surfaces
-  here they are regular:
+  where they are regular:
   \begin{enumerate}
     \item $\x(u, v) = \langle a\sin(u)\cos(v), b\sin(u)\sin(v), c\cos(u)
       \rangle$; ellipsoid.
@@ -170,15 +177,68 @@
 \end{problem}
 
 \begin{solution}[(i)]
+  Computing the partial derivatives, we have
+  \[%
+    \x_u = \langle a\cos(u)\cos(v), b\cos(u)\sin(v), -c\sin(u) \rangle \aand \x_v = \langle -a\sin(u)\sin(v), b\sin(u)\cos(v), 0 \rangle
+  .\]%
+  Computing $E$, $F$, and $G$, we have
+  \begin{align*}
+    E &= \langle \x_u, \x_u \rangle \\
+      &= a^2\cos^2(u)\cos^2(v) + b^2\cos^2(u)\sin^2(v) + c^2\sin^2(u) \\
+      &= \cos^2(u)(a^2\cos^2(v) + b^2\sin^2(v)) + c^2\sin^2(u) \\
+    F &= \langle \x_u, \x_v \rangle \\
+      &= -a^2\cos(u)\cos(v)\sin(u)\sin(v) + b^2\cos(u)\sin(v)\sin(u)\cos(v) \\
+      &= \cos(u)\sin(u)(-a^2 + b^2)\cos(v)\sin(v) \\
+    G &= \langle \x_v, \x_v \rangle \\
+      &= a^2\sin^2(u)\sin^2(v) + b^2\sin^2(u)\cos^2(v) \\
+      &= \sin^2(u)(a^2\sin^2(v) + b^2\cos^2(v))
+  .\qedhere\end{align*}
 \end{solution}
 
 \begin{solution}[(ii)]
+  Computing the partial derivatives, we have
+  \[%
+    \x_u = \langle a\cos(v), b\sin(v), 2u \rangle \aand \x_v = \langle -au\sin(v), bu\cos(v), 0 \rangle
+  .\]%
+  Computing $E$, $F$, and $G$, we have
+  \begin{align*}
+    E &= a^2\cos^2(v) + b^2\sin^2(v) + 4u^2 \\
+    F &= -a^2u\cos(v)\sin(v) + b^2u\sin(v)\cos(v) \\
+      &= u(b^2 - a^2)\sin(v)\cos(v) \\
+    G &= a^2u^2\sin^2(v) + b^2u^2\cos^2(v) \\
+      &= u^2(a^2\sin^2(v) + b^2\cos^2(v))
+  .\qedhere\end{align*}
 \end{solution}
 
 \begin{solution}[(iii)]
+  Computing the partial derivatives, we have
+  \[%
+    \x_u = \langle a\cosh(v), b\sinh(v), 2u \rangle \aand \x_v = \langle au\sinh(v), bu\cosh(v), 0 \rangle
+  .\]%
+  Computing $E$, $F$, and $G$, we have
+  \begin{align*}
+    E &= a^2\cosh^2(v) + b^2\sinh^2(v) + 4u^2 \\
+    F &= a^2u\cosh(v)\sinh(v) + b^2u\sinh(v)\cosh(v) \\
+      &= u(a^2 + b^2)\sinh(v)\cosh(v) \\
+    G &= a^2u^2\sinh^2(v) + b^2u^2\cosh^2(v) \\
+      &= u^2(a^2\sinh^2(v) + b^2\cosh^2(v))
+  .\qedhere\end{align*}
 \end{solution}
 
 \begin{solution}[(iv)]
+  Computing the partial derivatives, we have
+  \[%
+    \x_u = \langle a\cosh(u)\cos(v), b\cosh(u)\sin(v), c\sinh(u) \rangle \aand \x_v = \langle -a\sinh(u)\sin(v), b\sinh(u)\cos(v), 0 \rangle
+  .\]%
+  Computing $E$, $F$, and $G$, we have
+  \begin{align*}
+    E &= a^2\cosh^2(u)\cos^2(v) + b^2\cosh^2(u)\sin^2(v) + c^2\sinh^2(u) \\
+      &= \cosh^2(u)(a^2\cos^2(v) + b^2\sin^2(v)) + c^2\sinh^2(u) \\
+    F &= -a^2\cosh(u)\sinh(u)\cos(v)\sin(v) + b^2\cosh(u)\sinh(u)\sin(v)\cos(v) \\
+      &= \cosh(u)\sinh(u)(-a^2 + b^2)\cos(v)\sin(v) \\
+    G &= a^2\sinh^2(u)\sin^2(v) + b^2\sinh^2(u)\cos^2(v) \\
+      &= \sinh^2(u)(a^2\sin^2(v) + b^2\cos^2(v))
+  .\qedhere\end{align*}
 \end{solution}
 
 \begin{problem}[2.5.5]
@@ -190,6 +250,15 @@
 \end{problem}
 
 \begin{solution}
+  Let $\r(x, y) = \langle x, y, f(x, y) \rangle$ be a regular surface. Computing
+  the cross product, we have
+  \[%
+    \r_x \times \r_y = \left\langle 1, 0, f_x \right\rangle \times \left\langle 0, 1, f_y \right\rangle = \langle -f_x, -f_y, 1 \rangle
+  .\]%
+  Therefore, we have
+  \[%
+    A = \iint_Q \lVert \r_x \wedge \r_y \rVert \dxy = \iint_Q \sqrt{1 + f_x^2 + f_y^2} \dxy
+  .\qedhere\]%
 \end{solution}
 
 \begin{problem}[2.5.11]
@@ -199,7 +268,7 @@
   \begin{enumerate}
     \item \textit{(Pappus' Theorem.)} Show that the area of $S$ is
       \[%
-        2\pi\int_0^1 \rho(s) \ds
+        2\pi\int_0^l \rho(s) \ds
       ,\]%
       where $l$ is the length of $C$.
 
@@ -208,7 +277,50 @@
 \end{problem}
 
 \begin{solution}[(i)]
+  Every point $p \in C$ traces out a circle of radius $\rho(s)$ as it revolves
+  around the axis of rotation. Let $C$ be the curve parametrized by $C = \langle
+  x(s), y(s), z(s) \rangle$. Without loss of generality, we can assume that the
+  axis of rotation will be the $z$-axis. Therefore, we get the surface $\r : [0,
+  l] \times [0, 2\pi] \to S$, defined by $\r(s, \theta) = \langle
+  \rho(s)\cos(\theta), \rho(s)\sin(\theta), z(s) \rangle$. The surface area of a
+  given surface is given by
+  \[%
+    A = \iint_S \lVert \r_s \wedge \r_\theta \rVert \dd{s,\theta}
+  .\]%
+  Computing the partial derivatives, we have
+  \[%
+    \r_s = \langle \rho'(s)\cos(\theta), \rho'(s)\sin(\theta), z'(s) \rangle
+    \aand
+    \r_\theta = \langle -\rho(s)\sin(\theta), \rho(s)\cos(\theta), 0 \rangle
+  .\]%
+  Computing the cross product, we have
+  \[%
+    \lVert \r_s \times \r_\theta \rVert = \rho(s) \sqrt{(z'(s))^2 + (\rho'(s))^2} = \rho(s),
+  ,\]%
+  since $(z')^2 + (\rho')^2 = 1$, due to arc length parametrization. Therefore,
+  we have
+  \[%
+    A = \iint_S \lVert \r_s \wedge \r_\theta \rVert \dd{s,\theta} = \int_0^{2\pi} \int_0^l \rho(s) \dd{s,\theta} = 2\pi \int_0^l \rho(s) \dd{s}
+  .\qedhere\]%
 \end{solution}
 
 \begin{solution}[(ii)]
+  The generating curve of a torus is a circle of radius $r$ centered at the
+  origin, which is given by the parametrization, $C : [0, 2\pi] \to \R^2$,
+  defined by
+  \[%
+    C(\theta) = \langle R + r\cos(\theta), R + r\sin(\theta) \rangle
+  .\]%
+  This curve is parametrized by angle, not arc length. Since it's a circle, we
+  know its total length is $l = 2\pi r$. Without loss of generality, we can
+  assume that the axis of rotation is the $z$-axis. Then, we get $\rho(\theta) =
+  R + r\cos(\theta)$.
+
+  But we want the arc length parametrization, so we must write everything in
+  terms of $s$. Fortunately, for a circle of radius $r$, the natural arc length
+  parametrization is $\theta = \sfrac{s}{r}$, where $s \in [0, 2\pi r]$. Now,
+  applying Pappus' theorem, we have
+  \[%
+    A = 2\pi\int_0^{2\pi r} \rho(s) \dd{s} = 2\pi\int_0^{2\pi r} R + r\cos\left(\frac{s}{r}\right) \dd{s} = 4\pi^2 Rr
+  .\qedhere\]%
 \end{solution}
