@@ -90,7 +90,7 @@
   A$, there exists a neighborhood $V_\delta(p)$ such that $V_\delta(p) \cap S
   \subset A$. Since $S$ is a regular surface, we can find a differentiable,
   homeomorphic mapping from an open set $U \subset \R^2$ to $V_\delta(p) \cap
-  S$. The restriction mapping $\x |_S : U \to V_\delta(p) \cap S$ is also a
+  S$. The restriction mapping $\x \mid_S : U \to V_\delta(p) \cap S$ is also a
   differentiable, homeomorphic mapping, which means that $A$ is a regular
   surface.
 
@@ -106,15 +106,31 @@
 \end{solution}
 
 \begin{problem}[2.4.8]
-  Prove that if $L : \R^3 \to \R^3$ is a linear map and $S \subset \R^3$ is a
-  regular surface invariant under $L$, i.e., $L(S) \subset S$, then the
-  restriction $L \mid S$ is a differential map and
+  Prove that if $L : \R^3 \to \R^3$ is a linear map and $S \subset \R^3$ is a regular surface invariant under $L$, i.e., $L(S) \subset S$, then the restriction $L\mid_S$ is a differential map and
   \[%
-    \dd{L_p}(w) = L(w), \quad p \in S, w \in T_p(S)
+    \dd{L_p}(\w) = L(\w), \quad p \in S,~\w \in T_p(S)
   .\]%
 \end{problem}
 
 \begin{solution}
+  Assume $L : \R^3 \to \R^3$ is a linear map and $S \subset \R^3$ is a regular
+  surface invariant under $L$, meaning $L(S) \subset S$. Define the restriction
+  map $L\mid_S : S \to S$. We want to show that $L\mid_S$ is a differentiable
+  map and that its differential satisfies $\dd{L}_p(\w) = L(\w)$ for all $p \in
+  S$ and $\w \in T_p(S)$.
+
+  Let $\x : U \subset \R^2 \to S$ be a local parametrization of $S$. Then the
+  composition $L \circ \x : U \to \R^3$ is differentiable, since $L$ is linear
+  (hence smooth) and $\x$ is smooth by definition. Therefore, $L\mid_S$ is
+  differentiable.
+
+  Since $L$ is linear and differentiable on all of $\R^3$, its differential at
+  any point $p \in \R^3$ is $\dd{L}_p = L$. The differential of the restriction
+  $L\mid_S$ at a point $p \in S$ is the restriction of $\dd{L}_p$ to the tangent
+  space $T_p(S) \subset \R^3$. Hence, for all $\w \in T_p(S)$, we have
+  \[%
+    \dd{L}_p(\w) = L(\w)
+  .\qedhere\]%
 \end{solution}
 
 \begin{problem}[2.4.9]
@@ -154,7 +170,7 @@
   \beta : (-\epsilon, \epsilon) \to S_1 \to S_2$.
   % Then, this gives us that $\dd{\Phi_p} : T_p(S_1) \to T_{\Phi(p)}(S_2)$, where it's defined as
   % \[%
-  %   \dd{\Phi_p}(\w) = \odv{}{t} \bigg|_{t=0} (\Phi \circ \beta)(t)
+  %   \dd{\Phi_p}(\w) = \odv{}{t} \bigg\mid_{t=0} (\Phi \circ \beta)(t)
   % .\]%
 \end{solution}
 

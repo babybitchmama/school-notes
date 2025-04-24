@@ -16,6 +16,54 @@
 \end{problem}
 
 \begin{solution}
+  If this limit depends on the path, then the derivative does not exist. Now, we
+  examine
+  \[%
+    f(z) = \frac{\zb^2}{z}
+  .\]%
+  We want to compute
+  \[%
+    \frac{f(z)}{z} = \frac{\zb^2}{z^2}
+  .\]%
+  Now, we evaluate along different paths to see if the limit exists. Let $z = x
+  + iy$, so $\zb = x - iy$. Then
+  \[%
+    \frac{f(z)}{z} = \frac{(x - iy)^2}{(x + iy)^2} = \left(\frac{\zb}{z}\right)^2
+  .\]%
+  So we can simplify our analysis to evaluating $\left(\frac{\zb}{z}\right)^2$
+  as $z \to 0$ along various paths.
+
+  The first path will be along the real axis $z = x$ where $y = 0$. This gives
+  us $\zb = x$, $z = x$, so
+  \[%
+    \left(\frac{\zb}{z}\right)^2 = \left(\frac{x}{x}\right)^2 = 1
+  .\]%
+  So along the real axis, $\frac{f(z)}{z} \to 1$.
+
+  The second path will be along the imaginary axis $z = iy$ where $x = 0$. This
+  gives us $\zb = -iy$, $z = iy$, so
+  \[%
+    \left( \frac{\zb}{z} \right)^2 = \left( \frac{-iy}{iy} \right)^2 = (-1)^2 = 1
+  .\]%
+  So along the imaginary axis, $\frac{f(z)}{z} \to 1$.
+
+  The final path will be along the line $y = x$. This gives us $z = x + ix = x(1
+  + i)$, so as $x \to 0$, $z \to 0$. Then $\zb = x(1 - i)$, and
+  \[%
+    \frac{\zb}{z} = \frac{1 - i}{1 + i} = \frac{(1 - i)^2}{(1 + i)(1 - i)} = \frac{1 - 2i + i^2}{1 - i^2} = \frac{1 - 2i - 1}{1 + 1} = \frac{-2i}{2} = -i
+  .\]%
+  Then
+  \[%
+    \left( \frac{\zb}{z} \right)^2 = (-i)^2 = -1
+  .\]%
+  So along the line $y = x$, $\frac{f(z)}{z} \to -1$.
+
+  Since we have different values for $\frac{f(z)}{z}$ along different paths to
+  the origin, we conclude that the limit
+  \[%
+    \lim_{z \to 0} \frac{f(z)}{z}
+  .\]%
+  does not exist. Therefore, the derivative $f'(0)$ does not exist.
 \end{solution}
 
 \begin{problem}[2.23.4]
@@ -32,17 +80,53 @@
 \end{problem}
 
 \begin{solution}[(i)]
+  We write $f(z) = \frac{1}{z^4}$. Since $z \neq 0$, we can use the power rule
+  for complex functions, which gives
+  \[%
+    f'(z) = \frac{d}{dz}(z^{-4}) = -4z^{-5} = -\frac{4}{z^5}
+  .\]%
+  This function is differentiable everywhere except at $z = 0$, and so it is
+  differentiable in any domain that excludes 0.
 \end{solution}
 
 \begin{solution}[(ii)]
+  We are given $f(z) = \sqrt{r} e^{i\theta/2}$, where $z = re^{i\theta}$, and
+  the domain is $r > 0$, $\alpha < \theta < \alpha + 2\pi$ (so the function is
+  single-valued and continuous).
+
+  Let
+  \[%
+    u(r, \theta) = \sqrt{r} \cos\left(\frac{\theta}{2}\right) \aand v(r, \theta) = \sqrt{r} \sin\left(\frac{\theta}{2}\right)
+  .\]%
+  Computing the partial derivatives, we have
+  \begin{alignat*}{3}
+    u_r &= \frac{1}{2\sqrt{r}} \cos\left(\frac{\theta}{2}\right),\quad&& u_\theta = -\frac{\sqrt{r}}{2} \sin\left(\frac{\theta}{2}\right) \\
+    v_r &= \frac{1}{2\sqrt{r}} \sin\left(\frac{\theta}{2}\right),\quad&& v_\theta = \frac{\sqrt{r}}{2} \cos\left(\frac{\theta}{2}\right)
+  .\end{alignat*}
+  Since $ru_r = v_\theta$ and $u_\theta = -rv_r$, the derivative exists. Then
+  \[%
+    f'(z) = e^{-i\theta}(u_r + i v_r) = e^{-i\theta} \left( \frac{1}{2\sqrt{r}} \cos\left(\frac{\theta}{2}\right) + i \frac{1}{2\sqrt{r}} \sin\left(\frac{\theta}{2}\right) \right) = \frac{1}{2} \cdot \frac{e^{i\theta/2}}{\sqrt{r}} = \frac{1}{2} f(z)
+  .\qedhere\]%
 \end{solution}
 
 \begin{solution}[(iii)]
+  Let $f(z) = e^{-\theta} \cos(\ln(r)) + i e^{-\theta} \sin(\ln(r))$. Define
+  \[%
+    u(r, \theta) = e^{-\theta} \cos(\ln(r)) \aand v(r, \theta) = e^{-\theta} \sin(\ln(r))
+  .\]%
+  Computing the partial derivatives, we have
+  \begin{alignat*}{3}
+    u_r &= e^{-\theta} \cdot \frac{-\sin(\ln(r))}{r},\quad&& u_\theta = -e^{-\theta} \cos(\ln(r)) \\
+    v_r &= e^{-\theta} \cdot \frac{\cos(\ln(r))}{r},\quad&& v_\theta = -e^{-\theta} \sin(\ln(r))
+  .\end{alignat*}
+  Since $ru_r = v_\theta$ and $u_\theta = -rv_r$, the derivative exists. Then
+  \[%
+    f'(z) = e^{-i\theta}(u_r + i v_r) = e^{-i\theta} \left( \frac{1}{2\sqrt{r}} \cos\left(\frac{\theta}{2}\right) + i \frac{1}{2\sqrt{r}} \sin\left(\frac{\theta}{2}\right) \right) = \frac{1}{2} \cdot \frac{e^{i\theta/2}}{\sqrt{r}} = \frac{1}{2} f(z)
+  .\qedhere\]%
 \end{solution}
 
 \begin{problem}[2.26.1]
-  Show that $u(x, y)$ is harmonic in some domain and find a harmonic conjugate
-  $v(x, y)$ when
+  Show that $u(x, y)$ is harmonic in some domain and find a harmonic conjugate $v(x, y)$ when
   \begin{multicols}{2}
     \begin{enumerate}
       \item[(i)] $u(x, y) = 2x(1 - y)$.
@@ -57,15 +141,95 @@
 \end{problem}
 
 \begin{solution}[(i)]
+  Computing the second partial derivatives, we have
+  \[%
+    u_{xx} = 0 \aand u_{yy} = 0
+  .\]%
+  Thus, $\Delta u = u_{xx} + u_{yy} = 0$, so $u$ is harmonic.
+
+  To find a harmonic conjugate $v$, we use the Cauchy–Riemann equations
+  \[%
+    u_x = 2(1 - y), \quad u_y = -2x \implies v_y = u_x = 2(1 - y) \aand v_x = -u_y = 2x
+  .\]%
+  Integrate $v_y$ with respect to $y$ to get
+  \[%
+    v(x, y) = \int 2(1 - y) \dy = 2y - y^2 + h(x)
+  .\]%
+  Differentiate this with respect to $x$ to get $v_x = h'(x)$. But from earlier,
+  $v_x = 2x$, so $h'(x) = 2x$, which implies that $h(x) = x^2$. Therefore, we
+  have
+  \[%
+    v(x, y) = 2y - y^2 + x^2
+  .\qedhere\]%
 \end{solution}
 
 \begin{solution}[(ii)]
+  Computing the second partial derivatives, we have
+  \[%
+    u_{xx} = -6x \aand u_{yy} = 6x
+  .\]%
+  So $\Delta u = u_{xx} + u_{yy} = -6x + 6x = 0$. Hence $u$ is harmonic.
+
+  Again, using the Cauchy-Riemann equations, we have
+  \[%
+    u_x = 2 - 3x^2 + 3y^2, \quad u_y = 6xy \implies v_y = u_x \aand v_x = -u_y = -6xy
+  .\]%
+  Integrate $v_y$ with respect to $y$ to get
+  \[%
+    v(x, y) = \int (2 - 3x^2 + 3y^2)\,dy = 2y - 3x^2y + y^3 + h(x)
+  .\]%
+  Then differentiate with respect to $x$ to get $v_x = -6xy + h'(x)$, and
+  compare to $v_x = -6xy$ to get $h'(x) = 0 \implies h(x) = C$. Therefore, we
+  have
+  \[%
+    v(x, y) = 2y - 3x^2y + y^3
+  .\qedhere\]%
 \end{solution}
 
 \begin{solution}[(iii)]
+  Computing the second partial derivatives, we have
+  \[%
+    u_{xx} = \sinh(x) \sin(y) \aand u_{yy} = -\sinh(x) \sin(y)
+  .\]%
+  So, $\Delta u = u_{xx} + u_{yy} = \sinh(x)\sinh(y) - \sinh(x)\sinh(y) = 0$.
+  Hence, $u$ is harmonic.
+
+  Using the Cauchy-Riemann equations, we have
+  \begin{alignat*}{3}
+    u_x &= \cosh(x)\sin(y),\quad&& u_y = \sinh(x)\cos(y) \\
+    v_y &= u_x = \cosh(x)\sin(y),\quad&& v_x = -u_y = -\sinh(x)\cos(y)
+  .\end{alignat*}
+  Integrate $v_y$ with respect to $y$ to get
+  \[%
+    v(x, y) = -\cosh(x)\cos(y) + h(x)
+  .\]%
+  Then $v_x = -\sinh(x)\cos(y) + h'(x)$, and since $v_x = -\sinh(x)\cos(y)$, we
+  get $h'(x) = 0 \implies h(x) = C$. Therefore, we have
+  \[%
+    v(x, y) = -\cosh(x)\cos(y)
+  .\qedhere\]%
 \end{solution}
 
 \begin{solution}[(iv)]
+  Simplifying $u$, we have $u = \sfrac{y}{r^2}$. Computing the second partial
+  derivatives, we have
+  \begin{alignat*}{3}
+    u_x &= \frac{-2xy}{(x^2 + y^2)^2} \\
+    u_y &= \frac{x^2 - y^2}{(x^2 + y^2)^2}, \\
+    u_{xx} &= \frac{-2y(x^2 + y^2)^2 + 8x^2y(x^2 + y^2)}{(x^2 + y^2)^4}
+           &&= \frac{2y(- (x^2 + y^2)^2 + 4x^2(x^2 + y^2))}{(x^2 + y^2)^4}, \\
+    u_{yy} &= \frac{2y(x^2 + y^2)^2 - 8y^2(x^2 + y^2)}{(x^2 + y^2)^4}
+           &&= \frac{2y((x^2 + y^2)^2 - 4y^2(x^2 + y^2))}{(x^2 + y^2)^4}
+  \end{alignat*}
+  We could simplify $u_{xx} + u_{yy}$, but instead note this is the imaginary
+  part of $f(z) = \sfrac{1}{z}$. Then
+  \[%
+    f(z) = \frac{x - iy}{x^2 + y^2} \implies \Im(f(z)) = -\frac{y}{x^2 + y^2} = -u(x, y)
+  ,\]%
+  so $u$ is harmonic on $\R^2 \setminus \{(0, 0)\}$, and a harmonic conjugate is
+  \[%
+    v(x, y) = \frac{x}{x^2 + y^2}
+  .\qedhere\]%
 \end{solution}
 
 \begin{problem}[3.29.10]
@@ -78,9 +242,31 @@
 \end{problem}
 
 \begin{solution}[(i)]
+  Let $z = x + iy$ where $x, y \in \R$. Then
+  \[%
+    e^z = e^{x + iy} = e^x e^{iy} = e^x(\cos(y) + i\sin(y))
+  .\]%
+  So $\Im(e^z) = e^x \sin(y)$. If $e^z$ is real, then $\Im(e^z) = 0$, so we must
+  have
+  \[%
+    \sin(y) = 0 \implies y = n\pi
+  ,\]%
+  where $n \in \Z$. Since $y = \Im(z)$, we conclude that $\Im(z) = n\pi$, for
+  some $n \in \Z$.
 \end{solution}
 
 \begin{solution}[(ii)]
+  Again, let $z = x + iy$. Then as above, $e^z = e^x(\cos(y) + i\sin(y))$, If
+  $e^z$ is pure imaginary, then its real part must vanish $\Re(e^z) = e^x
+  \cos(y) = 0$. Since $e^x \ne 0$ for all $x \in \R$, it must be that
+  \[%
+    \cos(y) = 0 \implies y = \frac{\pi}{2} + n\pi \quad (n \in \Z)
+  .\]%
+  So $\Im(z) = \frac{\pi}{2} + n\pi$ for some integer $n$. In other words,
+  \[%
+    \Im(z) = \left(n + \frac{1}{2}\right)\pi
+  ,\]%
+  for $n \in \Z$.
 \end{solution}
 
 \begin{problem}[3.33.1]
@@ -95,9 +281,47 @@
 \end{problem}
 
 \begin{solution}[(i)]
+  Let us compute $(1 + i)^i$ using the identity $z^w = \exp[w \log(z)]$, where
+  $\log(z)$ is the complex logarithm
+  \[%
+    (1 + i)^i = \exp\left[i\log(1 + i)\right]
+  .\]%
+  To compute $\log(1 + i)$, we write $1 + i$ in polar form as
+  \[%
+    1 + i = \sqrt{2} \cdot \exp\left[i\frac{\pi}{4} + 2n\pi i\right]
+  ,\]%
+  where $n \in \Z$. Hence,
+  \[%
+    \log(1 + i) = \ln(\lvert 1 + i \rvert) + i\arg(1 + i) = \ln(\sqrt{2}) + i\left(\frac{\pi}{4} + 2n\pi\right)
+  .\]%
+  Therefore,
+  \[%
+    (1 + i)^i = \exp\left(i\left[\ln(\sqrt{2}) + i\left(\frac{\pi}{4} + 2n\pi\right)\right]\right) = \exp\left(i \ln(\sqrt{2}) - \left(\frac{\pi}{4} + 2n\pi\right)\right)
+  .\]%
+  Note that $\ln(\sqrt{2}) = \sfrac{\ln(2)}{2}$, so we obtain
+  \[%
+    (1 + i)^i = \exp\left(-\frac{\pi}{4} - 2n\pi\right)\exp\left(i\frac{\ln(2)}{2}\right)
+  .\]%
+  The expression $\exp(-\sfrac{\pi}{4} - 2n\pi)$ can be written equivalently as
+  $\exp\left(-\sfrac{\pi}{4} + 2n\pi\right)$ by letting $n \mapsto -n$, we get
+  \[%
+    (1 + i)^i = \exp\left(-\frac{\pi}{4} + 2n\pi\right)\exp\left(i\frac{\ln(2)}{2}\right)
+  ,\]%
+  for $n \in \Z$
 \end{solution}
 
 \begin{solution}[(ii)]
+  We compute $(-1)^{\sfrac{1}{\pi}}$ using the identity $z^w = \exp[w \log(z)]$
+  to get
+  \[%
+    (-1)^{\sfrac{1}{\pi}} = \exp\left[\frac{1}{\pi} \log(-1)\right]
+  .\]%
+  Since $\log(-1) = i\pi + 2n\pi i = (2n + 1)\pi i$ for $n \in \Z$
+  (principal value $i\pi$), we have
+  \[%
+    (-1)^{\sfrac{1}{\pi}} = \exp\left[\frac{1}{\pi} \cdot (2n + 1)\pi i\right] = \exp\left[(2n + 1)i\right]
+  .\]%
+  Thus, $(-1)^{\sfrac{1}{\pi}} = e^{(2n+1)i}$, for $n \in \Z$.
 \end{solution}
 
 \begin{problem}[3.33.3]
@@ -106,11 +330,107 @@
 \end{problem}
 
 \begin{solution}
+  We use the principal branch definition of exponentiation for complex numbers
+  \[%
+    z^c = \exp\left[c \log(z)\right] \qtq{where} \log(z) = \ln(\lvert z \rvert) + i \Arg(z)
+  .\]%
+  Let $z = -1 + \sqrt{3}i$. First, compute its modulus,
+  \[%
+    \lvert z \rvert = \sqrt{(-1)^2 + (\sqrt{3})^2} = \sqrt{1 + 3} = \sqrt{4} = 2
+  .\]%
+  Next, we compute its argument. Note that $z$ lies in the second quadrant,
+  since $\Re(z) = -1$ and $\Im(z) = \sqrt{3} > 0$. Hence,
+  \[%
+    \Arg(z) = \pi - \tan^{-1}\left(\frac{\sqrt{3}}{1}\right) = \pi - \frac{\pi}{3} = \frac{2\pi}{3}
+  .\]%
+  Now, we compute the logarithm, to get
+  \[%
+    \log(z) = \ln(2) + i \frac{2\pi}{3}
+  .\]%
+  So,
+  \[%
+    z^{3/2} = \exp\left(\frac{3}{2} \log(z)\right) = \exp\left(\frac{3}{2} \ln(2) + i \cdot \frac{3}{2} \cdot \frac{2\pi}{3} \right) = \exp\left(\ln(2^{3/2}) + i\pi\right)
+  .\]%
+  Then,
+  \[%
+    z^{3/2} = 2^{3/2} \cdot e^{i\pi} = 2\sqrt{2} \cdot (-1) = -2\sqrt{2}
+  .\]%
+  This corresponds to the principal value. But since the logarithm is
+  multivalued, the full set of values is given by:
+  \[%
+    z^{3/2} = \exp\left(\frac{3}{2}(\ln 2 + i\Arg(z) + 2\pi i n)\right) = 2\sqrt{2} \cdot e^{i(\pi + 3n\pi)} = \pm 2\sqrt{2}
+  \]%
+  depending on whether $n$ is even or odd. Therefore,
+  \[%
+    (-1 + \sqrt{3}i)^{3/2} = \pm 2\sqrt{2}
+  .\qedhere\]%
 \end{solution}
 
 \begin{problem}[(Extra)]
-  Derive the Cauchy-Riemann equation in polar coordinates.
+  Derive the Cauchy–Riemann equations in polar coordinates.
 \end{problem}
 
 \begin{solution}
+  Let $f(z) = u(x, y) + iv(x, y)$ be a complex function defined in a region
+  where $z = x + iy$ is represented in polar form as
+  \[%
+    z = re^{i\theta} \quad \text{where } x = r\cos(\theta) \aand y = r\sin(\theta)
+  .\]%
+  Define $u(r, \theta) = u(x(r, \theta), y(r, \theta))$ and similarly for $v(r,
+  \theta)$. The goal is to express the Cauchy–Riemann equations in terms of $r$
+  and $\theta$.
+
+  Recall the standard Cauchy–Riemann equations in Cartesian coordinates:
+  \[
+    u_x = v_y \aand u_y = -v_x
+  .\]%
+  By the chain rule, we compute $u_x$ and $u_y$ in terms of $u_r$ and
+  $u_\theta$, we have
+  \begin{align*}
+    u_x &= \pd{u}{r}\pd{r}{x} + \pd{u}{\theta}\pd{\theta}{x} \\
+    u_y &= \pd{u}{r}\pd{r}{y} + \pd{u}{\theta}\pd{\theta}{y}
+  .\end{align*}
+  Since $r = \sqrt{x^2 + y^2}$, and $\theta = \tan^{-1}(\sfrac{y}{x})$, we compute
+  \begin{alignat*}{3}
+    r_x &= \frac{x}{\sqrt{x^2 + y^2}} = \cos(\theta), \quad&& \pd{r}{y} = \frac{y}{\sqrt{x^2 + y^2}} = \sin(\theta) \\
+    \theta_x &= \frac{-y}{x^2 + y^2} = -\frac{\sin(\theta)}{r}, \quad&& \pd{\theta}{y} = \frac{x}{x^2 + y^2} = \frac{\cos(\theta)}{r}
+  .\end{alignat*}
+  Substituting into the chain rule expressions, we obtain
+  \begin{align*}
+    u_x &= u_r \cos(\theta) - \frac{1}{r} u_\theta \sin(\theta) \\
+    u_y &= u_r \sin(\theta) + \frac{1}{r} u_\theta \cos(\theta)
+  .\end{align*}
+  Similarly,
+  \begin{align*}
+    v_x &= v_r \cos(\theta) - \frac{1}{r} v_\theta \sin(\theta) \\
+    v_y &= v_r \sin(\theta) + \frac{1}{r} v_\theta \cos(\theta)
+  .\end{align*}
+  Now substitute into the Cauchy–Riemann equations
+  \begin{align*}
+    u_x = v_y &\implies u_r \cos(\theta) - \frac{1}{r} u_\theta \sin(\theta) = v_r \sin(\theta) + \frac{1}{r} v_\theta \cos(\theta) \\
+    u_y = -v_x &\implies u_r \sin(\theta) + \frac{1}{r} u_\theta \cos(\theta) = -\left(v_r \cos(\theta) - \frac{1}{r} v_\theta \sin(\theta)\right)
+  .\end{align*}
+  Now multiply both equations by $r$ and reorganize terms
+  \begin{align*}
+    ru_r \cos(\theta) - u_\theta \sin(\theta) &= rv_r \sin(\theta) + v_\theta \cos(\theta), \\
+    ru_r \sin(\theta) + u_\theta \cos(\theta) &= -rv_r \cos(\theta) + v_\theta \sin(\theta)
+  .\end{align*}
+  Now isolate terms involving $ru_r$ and $rv_r$. Multiply the first equation by
+  $\cos(\theta)$ and the second by $\sin(\theta)$, then add
+  \begin{align*}
+    &ru_r(\cos^2\theta + \sin^2\theta) + u_\theta(-\sin(\theta) \cos(\theta) + \cos(\theta) \sin(\theta)) \\
+    &= rv_r(\sin(\theta) \cos(\theta) - \cos(\theta) \sin(\theta)) + v_\theta(\cos^2\theta + \sin^2\theta) \\
+    \implies\quad ru_r &= v_\theta
+  .\end{align*}
+  Similarly, multiply the first equation by $\sin(\theta)$ and the second by
+  $\cos(\theta)$, then subtract
+  \begin{align*}
+    &ru_r(\cos(\theta) \sin(\theta) - \sin(\theta) \cos(\theta)) + u_\theta(-\sin^2\theta - \cos^2\theta) \\
+    &= rv_r(\sin^2\theta + \cos^2\theta) + v_\theta(\cos(\theta) \sin(\theta) - \sin(\theta) \cos(\theta)) \\
+    \implies\quad -u_\theta &= rv_r
+  .\end{align*}
+  Thus, the Cauchy–Riemann equations in polar coordinates are
+  \[%
+    ru_r = v_\theta \aand rv_r = -u_\theta
+  .\qedhere\]%
 \end{solution}
