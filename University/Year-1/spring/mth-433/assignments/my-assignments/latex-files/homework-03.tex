@@ -103,10 +103,44 @@
 \end{problem}
 
 \begin{solution}
+  The surface is given by $f(x, y, z) = x^2 + y^2 - z^2 - 1 = 0$. The gradient of $f$ is given by
+  \[%
+    \nabla f(x, y, z) = \left\langle 2x, 2y, -2z \right\rangle
+  .\]%
+  Evaluating the normal vector at $(x, y, 0)$ gives us
+  \[%
+    \nabla f(x, y, 0) = \left\langle 2x, 2y, 0 \right\rangle
+  .\]%
+  The equation of the tangent plane at a point $(x_0, y_0, 0)$ on the surface is
+  given by
+  \[%
+    \nabla f(x_0, y_0, 0) \cdot \left\langle x - x_0,\, y - y_0,\, z - 0 \right\rangle = 0
+  ,\]%
+  which becomes
+  \[%
+    \left\langle 2x_0, 2y_0, 0 \right\rangle \cdot \left\langle x - x_0,\, y - y_0,\, z \right\rangle = 0
+  .\]%
+  Computing the dot product,
+  \[%
+    2x_0(x - x_0) + 2y_0(y - y_0) = 0
+  ,\]%
+  or equivalently,
+  \[%
+    x_0x + y_0y = x_0^2 + y_0^2
+  .\]%
+  Since $(x_0, y_0, 0)$ lies on the surface, we know that $x_0^2 + y_0^2 = 1$,
+  so the tangent plane becomes
+  \[%
+    x_0x + y_0y = 1
+  .\]%
+  This equation is independent of $z$, so the tangent plane is vertical and thus
+  parallel to the $z$-axis.
 \end{solution}
 
 \begin{problem}[2.4.8]
-  Prove that if $L : \R^3 \to \R^3$ is a linear map and $S \subset \R^3$ is a regular surface invariant under $L$, i.e., $L(S) \subset S$, then the restriction $L\mid_S$ is a differential map and
+  Prove that if $L : \R^3 \to \R^3$ is a linear map and $S \subset \R^3$ is a
+  regular surface invariant under $L$, i.e., $L(S) \subset S$, then the
+  restriction $L\mid_S$ is a differential map and
   \[%
     \dd{L_p}(\w) = L(\w), \quad p \in S,~\w \in T_p(S)
   .\]%
@@ -146,14 +180,113 @@
 \end{problem}
 
 \begin{solution}
+  To show that the parametrized surface
+  \[%
+    \x(u, v) = \langle v\cos(u), v\sin(u), au \rangle, \quad a \ne 0
+  ,\]%
+  is regular, we first compute the partial derivatives
+  \[%
+    \x_u(u, v) = \langle -v\sin(u), v\cos(u), a \rangle \aand \x_v(u, v) = \langle \cos(u), \sin(u), 0 \rangle
+  .\]%
+  The cross product of these two vectors gives the normal vector
+  \begin{align*}
+    \Na(u, v) &= \x_u \times \x_v \\
+    &= \begin{vmatrix}
+      \ui & \uj & \uk \\
+      -v\sin(u) & v\cos(u) & a \\
+      \cos(u) & \sin(u) & 0
+    \end{vmatrix} \\
+    &= \langle -a\sin(u), -a\cos(u), -v \rangle
+  .\end{align*}
+  Since $\x_u$ and $\x_v$ are linearly independent for all $(u, v)$ (note $a \ne
+  0$ and $v$ arbitrary), the surface is regular. Now, fix $u = u_0$. Along the
+  coordinate line $u = u_0$, the tangent plane is spanned by $\x_u(u_0, v)$ and
+  $\x_v(u_0, v)$. Its normal vector is
+  \[%
+    \Na(u_0, v) = \langle -a\sin(u_0), -a\cos(u_0), -v \rangle
+  .\]%
+  The $z$-axis is the vector $\uk = \langle 0, 0, 1 \rangle$. Let $\theta$ be
+  the angle between the normal vector $\Na$ and the $z$-axis. Then,
+  \[%
+    \cos(\theta) = \frac{\Na \cdot \uk}{\lVert \Na \rVert \cdot \lVert \uk \rVert} = -\frac{v}{\sqrt{a^2 + v^2}}
+  .\]%
+  Then
+  \[%
+    \tan(\theta) = \frac{\sqrt{a^2}}{v} = \frac{\lvert a \rvert}{v}
+  .\]%
+  Now, the distance to the $z$-axis is
+  \[%
+    \sqrt{x^2 + y^2} = \sqrt{v^2\cos^2(u) + v^2\sin^2(u)} = v
+  .\]%
+  Therefore,
+  \[%
+    \tan(\theta) = \frac{\lvert a \rvert}{v} \propto \frac{1}{\sqrt{x^2 + y^2}}
+  .\]%
+  Thus, the tangent plane rotates about the coordinate line $u = u_0$ in such a
+  way that the tangent of the angle between the normal vector and the $z$-axis
+  is proportional to the inverse of the distance to the $z$-axis.
 \end{solution}
 
 \begin{problem}[2.4.15]
-  Show that if all normals to a connected surface pass through a fixed point,
-  the surface is contained in a sphere.
+  Show that if all normals to a connected surface pass through a fixed point, the surface is contained in a sphere.
 \end{problem}
 
 \begin{solution}
+  Let $\x(u, v)$ be a smooth, regular parametrized surface, and suppose that all
+  normals to the surface pass through a fixed point $p \in \R^3$. That is, at
+  every point $\x(u, v)$ on the surface, the vector from $\x(u, v)$ to $p$ is
+  parallel to the normal vector $\Na(u, v)$, $p - \x(u, v) = \lambda(u, v)\Na(u,
+  v)$, for some scalar function $\lambda(u, v)$. By assumption, this vector is
+  always normal to the surface, so we can write
+  \[%
+    \FF(u, v) = \lambda(u, v)\Na(u, v)
+  .\]%
+  Since $\Na(u, v)$ is normal to the surface, it is orthogonal to all tangent
+  vectors
+  \[%
+    \Na \cdot \x_u = 0, \qquad \Na \cdot \x_v = 0
+  .\]%
+  Take the derivative of both sides of $\FF = \lambda\Na$ with respect to $u$
+  \[%
+    -\x_u = \lambda_u\Na + \lambda \pdv{\Na}{u}
+  .\]%
+  Now take the dot product with $\x_u$
+  \[%
+    -\x_u \cdot \x_u = \left(\lambda_u \Na + \lambda \pdv{\Na}{u}\right) \cdot \x_u
+  .\]%
+  But $\Na \cdot \x_u = 0$, so
+  \[%
+    -\x_u \cdot \x_u = \lambda \pdv{\Na}{u} \cdot \x_u
+  .\]%
+  Similarly, differentiating with respect to $v$ gives
+  \[%
+    -\x_v \cdot \x_v = \lambda \pdv{\Na}{v} \cdot \x_v
+  .\]%
+  However, we do not need to compute these expressions further. Instead,
+  consider the squared length of the vector $\FF(u, v)$
+  \[%
+    \lVert p - \x(u, v) \rVert^2 = \lVert \lambda(u, v)\Na(u, v) \rVert^2 = \lambda(u, v)^2
+  .\]%
+  So define the scalar function $f(u, v) = \lVert p - \x(u, v) \rVert^2$. We
+  then compute its partial derivatives, to get
+  \[%
+    f_u = 2(p - \x(u, v)) \cdot (-\x_u) = -2\FF \cdot \x_u
+  .\]%
+  Since $\FF = \lambda\Na$ and $\Na \cdot \x_u = 0$, we get
+  \[%
+    f_u = -2\lambda \Na \cdot \x_u = 0
+  .\]%
+  Similarly, $f_v = -2\lambda \Na \cdot \x_v = 0$. Since $\nabla f = 0$, then
+  $f(u, v) =$ const. So
+  \[%
+    \lVert p - \x(u, v) \rVert^2 = r^2
+  ,\]%
+  for some constant $r > 0$, and hence the image of $\x(u, v)$ lies entirely on
+  the sphere of radius $r$ centered at $p$, $\x(u, v) \in S(p, r)$, for all $(u,
+  v)$ in the connected domain of definition of $\x$.
+
+  Therefore, if all normals to a connected surface pass through a fixed point,
+  then the surface lies on a sphere centered at that point.
 \end{solution}
 
 \begin{problem}[2.4.24]
@@ -165,13 +298,25 @@
 \end{problem}
 
 \begin{solution}
-  Define $\beta : (-\epsilon, \epsilon) \to S_1$ be a smooth curve such that
-  $\beta(0) = p = \Phi^{-1}(q)$ and $\beta'(0) = \w$. Define $\x = \Phi \circ
-  \beta : (-\epsilon, \epsilon) \to S_1 \to S_2$.
-  % Then, this gives us that $\dd{\Phi_p} : T_p(S_1) \to T_{\Phi(p)}(S_2)$, where it's defined as
-  % \[%
-  %   \dd{\Phi_p}(\w) = \odv{}{t} \bigg\mid_{t=0} (\Phi \circ \beta)(t)
-  % .\]%
+  Define $\beta : (-\epsilon, \epsilon) \to S_1$ to be a smooth curve such that
+  $\beta(0) = p$ and $\beta'(0) = \w$. Define $\x = \Phi \circ \beta :
+  (-\epsilon, \epsilon) \to S_2$, which is a smooth curve in $S_2$ with $\x(0) =
+  \Phi(p)$ and $\x'(0) = \dd{\Phi_p}(\w)$. Now consider $\Psi \circ \x = \Psi
+  \circ \Phi \circ \beta$, which is a smooth curve in $S_3$ passing through
+  $\Psi(\Phi(p)) = (\Psi \circ \Phi)(p)$ at $t = 0$. Then
+  \[%
+    \odv{}{t} \bigg\mid_{t=0} (\Psi \circ \Phi \circ \beta)(t) = \dd{(\Psi \circ \Phi)_p}(\w)
+  .\]%
+  On the other hand, since $\x = \Phi \circ \beta$, and $\Psi$ is
+  differentiable, we have
+  \[%
+    \odv{}{t} \bigg\mid_{t=0} (\Psi \circ \x)(t) = \dd{\Psi_{\Phi(p)}}(\x'(0)) = \dd{\Psi_{\Phi(p)}}(\dd{\Phi_p}(\w))
+  .\]%
+  Therefore,
+  \[%
+    \dd{(\Psi \circ \Phi)_p}(\w) = \dd{\Psi_{\Phi(p)}}(\dd{\Phi_p}(\w)) = (\dd{\Psi_{\Phi(p)}} \circ \dd{\Phi_p})(\w)
+  ,\]%
+  which proves the chain rule for differentiable maps between surfaces.
 \end{solution}
 
 \begin{problem}[2.5.1]

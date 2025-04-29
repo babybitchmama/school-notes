@@ -1,0 +1,224 @@
+\documentclass{article}
+
+\usepackage{arxiv}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{hyperref}
+\usepackage{url}
+\usepackage{booktabs}
+\usepackage{amsfonts}
+\usepackage{nicefrac}
+\usepackage{microtype}
+\usepackage{cleveref}
+\usepackage{lipsum}
+\usepackage{graphicx}
+\usepackage{natbib}
+\usepackage{doi}
+
+\title{
+  Manifold Hypothesis and Consistent Manifold Reconstruction in Topological Data
+  Analysis
+}
+
+%\date{September 9, 1985}
+
+\author{
+  Hashem A.~Damrah\\
+  Department of Mathematics\\
+  University of Oregon\\
+  Eugene, OR 97403 \\
+  \texttt{hdamrah@uoregon.edu} \\
+  \And
+  Mateo C.~Davis\\
+  Department of Mathematics\\
+  University of Oregon\\
+  Eugene, OR 97403 \\
+  \texttt{EMAIL} \\
+  \And
+  Jakob Rode \\
+  Department of CS and Mathematics\\
+  University of Oregon\\
+  Eugene, OR 97403 \\
+  \texttt{EMAIL} \\
+}
+
+\renewcommand{\headeright}{
+  Manifold Hypothesis and Consistent Manifold Reconstruction
+}
+\renewcommand{\undertitle}{
+  Final Project – CS 410/510: Topological Methods in Data Analysis
+}
+\renewcommand{\shorttitle}{}
+
+\hypersetup{
+  pdftitle={Manifold Hypothesis and Consistent Manifold Reconstruction in Topological Data Analysis},
+  pdfsubject={q-bio.NC, q-bio.QM},
+  pdfauthor={Hashem A.~Damrah, Mateo C.~Davis, Jakob~Rode},
+  pdfkeywords={Manifold, Manifold Hypothesis, Topological Data Analysis, Consistent Manifold Reconstruction, TDA, TDA Consistency},
+}
+
+% Symbols
+\let\oldlimsymbol\lim\renewcommand\lim{\displaystyle\oldlimsymbol}
+% \let\oldsumsymbol\sum\renewcommand\sum{\displaystyle\oldsumsymbol}
+\let\oldlimsupsymbol\limsup\renewcommand\limsup{\displaystyle\oldlimsupsymbol}
+\let\oldliminfsymbol\liminf\renewcommand\liminf{\displaystyle\oldliminfsymbol}
+\let\to\rightarrow
+\let\implies\Rightarrow
+\let\impliedby\Leftarrow
+\let\iff\Leftrightarrow
+\let\epsilon\varepsilon
+\let\phi\varphi
+\let\tau\uptau
+
+\begin{document}
+  \maketitle
+
+  \begin{abstract}
+    The manifold hypothesis posits that high-dimensional real-world data often
+    lies near a low-dimensional manifold embedded in ambient space. While this
+    assumption underpins many techniques in machine learning and data analysis,
+    its practical realization and validation remain challenging. In this
+    project, we explore the Continuous k-Nearest Neighbors (CkNN) graph
+    construction introduced by Berry and Sauer as a mathematically consistent
+    framework for manifold reconstruction in the context of topological data
+    analysis (TDA). We examine how CkNN circumvents the limitations of
+    traditional $\epsilon$-ball and standard $k$NN methods by adapting to
+    non-uniform sampling densities and enabling spectral convergence to the
+    Laplace--Beltrami operator. This convergence allows for the consistent
+    recovery of topological features---such as connected components and higher
+    Betti numbers---in both compact and non-compact settings. Through this lens,
+    we interpret CkNN as a concrete instantiation of the manifold hypothesis,
+    grounding an intuitive idea in rigorous spectral and topological theory.
+  \end{abstract}
+
+  \section{Introduction}
+
+  The manifold hypothesis suggests that real-world data, despite residing in a
+  high-dimensional ambient space, is concentrated near a lower-dimensional
+  manifold. This idea is widespread in machine learning and data science,
+  underpinning techniques such as dimensionality reduction, clustering, and
+  representation learning. The assumption that high-dimensional data has low
+  intrinsic dimension enables efficient algorithms and interpretable models, and
+  it motivates the use of geometric and topological tools in data analysis.
+
+  In topological data analysis (TDA), one often aims to extract structural
+  information about a dataset—such as the number of clusters, loops, or
+  voids—using only pairwise distances between data points. However, traditional
+  methods such as persistent homology, based on Vietoris--Rips (VR) filtrations,
+  are sensitive to scale and do not guarantee convergence to the topology of the
+  underlying manifold.
+
+  In this work, we focus on a concrete realization of the manifold hypothesis
+  via the \emph{Continuous $k$-Nearest Neighbors} (CkNN) method introduced by
+  Berry and Sauer~\cite{1606.02353}. This method enables consistent recovery of
+  a manifold’s geometry and topology from point cloud data, offering a
+  principled mathematical foundation for manifold learning in the context of
+  TDA. Specifically, we explore how CkNN bridges the gap between abstract
+  geometric assumptions and rigorous topological computation, and we interpret
+  its spectral convergence results as a partial resolution of the manifold
+  hypothesis in practice.
+
+  \section{The Manifold Hypothesis}
+
+  The manifold hypothesis posits that high-dimensional data arising in
+  real-world applications often lies (or is concentrated) near a smooth,
+  low-dimensional submanifold $\mathcal{M} \subset \mathbb{R}^D$ of intrinsic
+  dimension $d \ll D$. Formally, we assume that the observed data set $X =
+  \{x_i\}_{i=1}^n \subset \mathbb{R}^D$ is sampled (possibly with noise) from a
+  probability distribution supported on or near $\mathcal{M}$, where
+  $\mathcal{M}$ is a compact, smooth Riemannian manifold embedded in
+  $\mathbb{R}^D$.
+
+  This hypothesis underlies a broad array of techniques in machine learning and
+  data science, including manifold learning (e.g., Isomap, Laplacian Eigenmaps),
+  dimensionality reduction (e.g., t-SNE, UMAP), and topological data analysis.
+  These methods rely on the assumption that the high-dimensional structure of
+  $X$ is governed by a much simpler latent geometry.
+
+  Despite its widespread adoption, the manifold hypothesis is difficult to
+  validate in practice. It raises fundamental questions: given a finite sample
+  $X$, can we detect whether an underlying manifold exists? If so, can we
+  recover its geometric and topological properties? Fefferman, Mitter, and
+  Narayanan~\cite{1310.0425} proposed a formalization of this problem as a
+  statistical hypothesis test. Under regularity assumptions on curvature, reach,
+  and noise, they provide algorithms to determine whether $X$ approximates a
+  $d$-dimensional submanifold, and show lower bounds on the sample complexity
+  required for reliable detection.
+
+  These theoretical limits underscore the challenges of manifold reconstruction
+  and motivate the search for consistent methods—such as CkNN—that remain robust
+  to sampling density, noise, and intrinsic curvature.
+
+  \section{Topological Data Analysis and Persistent Homology}
+
+  Topological data analysis (TDA) offers tools for studying the “shape” of data.
+  Central to TDA is \emph{persistent homology}, which captures multi-scale
+  topological features such as connected components, loops, and voids through
+  simplicial complexes built from point clouds.
+
+  In practice, persistent homology is often computed using a filtration of
+  Vietoris--Rips (VR) complexes, parameterized by a scale parameter $\epsilon$.
+  However, this method is sensitive to scale, and lacks a consistent limit as
+  the data size increases.
+
+  \section{The CkNN Framework}
+
+  The Continuous $k$-Nearest Neighbors (CkNN) method defines an unweighted graph
+  on a dataset by connecting points $x$ and $y$ if
+  \[%
+    \|x - y\| < \delta \sqrt{ \|x - x_k\| \cdot \|y - y_k\| }
+  ,\]%
+  where $x_k$ and $y_k$ denote the $k$th nearest neighbors of $x$ and $y$,
+  respectively, and $\delta$ is a scale parameter. Unlike traditional
+  $\epsilon$-ball or $k$NN graphs, this construction adapts to local density and
+  yields a single graph that captures all scales simultaneously.
+
+  Berry and Sauer~\cite{1606.02353} prove that the unnormalized graph Laplacian
+  of the CkNN graph converges spectrally to the Laplace--Beltrami operator on
+  the underlying manifold. This guarantees \emph{geometric consistency}, and
+  conjecturally, \emph{topological consistency} as well.
+
+  \section{Manifold Reconstruction and the Hypothesis}
+
+  The CkNN method offers a rigorous approach to manifold reconstruction from
+  data. By recovering the Laplace--Beltrami operator, it retrieves the
+  manifold’s Riemannian structure, and thus—via spectral exterior calculus—the
+  topology as well.
+
+  In this sense, CkNN is not merely a tool for analyzing data, but a partial
+  \emph{realization} of the manifold hypothesis. If the hypothesis holds, then
+  CkNN offers a consistent, convergent method to extract topological features
+  from finite samples.
+
+  \section{Broader Context and Related Work}
+
+  Compared to earlier methods like Laplacian
+  Eigenmaps~\cite{belkin_niyogi_2003}, Isomap, or diffusion maps, CkNN is unique
+  in being both unweighted and consistent. This makes it particularly
+  well-suited to TDA, where simplicial complexes require unweighted graphs for
+  fast, interpretable computations.
+
+  Recent tutorials and surveys, such as Coskunuzer and Akçora~\cite{2409.02901},
+  offer practical guidance on topological techniques in machine learning,
+  including persistent homology and graph-based methods. CkNN can be seen as a
+  next-generation tool that bridges theoretical and applied TDA.
+
+  \section{Conclusion}
+
+  In this paper, we have explored how the manifold hypothesis, a foundational
+  assumption in geometric learning, finds a rigorous and topologically
+  meaningful realization in the CkNN framework. CkNN enables consistent manifold
+  reconstruction by linking discrete data graphs to smooth differential
+  operators, providing a spectral path from samples to structure.
+
+  This work highlights the value of integrating manifold-based assumptions into
+  topological pipelines. Future directions include further development of
+  spectral exterior calculus, consistency guarantees for higher-dimensional
+  homology, and practical algorithms for parameter selection in CkNN.
+
+  \bibliographystyle{plainnat}
+  \bibliography{references}
+
+  \nocite*{}
+\end{document}

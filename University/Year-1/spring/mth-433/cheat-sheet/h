@@ -1,0 +1,81 @@
+
+\begin{document}
+  \begin{definition}\leavevmode
+    \begin{enumerate}
+      \item \textbf{Regular Curve:} A parametrized differentiable curve $\alpha
+        : I \to \R^3$ is said to be regular if $\alpha'(t) \ne 0$, for all $t
+        \in I$.
+
+      \item \textbf{Regular Surface:} A subset $S \subset \R^3$ is a regular
+        surface if, for each $p \in S$, there exists a nbd of $V \subset \R^3$
+        and a map $\x : U \subset \R^2 \to V \cap S$ such that, (1) $\x$ is
+        differentiable, (2) $\x$ is a homeomorphism, and for each $q \in U$,
+        $\dd{\x}_q : \R^2 \to \R^3$ is one-to-one.
+
+      \item \textbf{Differentiable function:} Let $f : V \subset S \to \R$ be a
+        function defined in an open subset $V \subset S$. Then, $f$ is
+        differentiable at $p \in V$ if, for some $\x : U \subset \R^2 \to S$,
+        with $p \in \x(U) \subset V$, $f \circ \x : U \subset \R^2 \to \R$ is
+        differentiable at $\x^{-1}(p)$.
+
+      \item \textbf{Differentiable Map Between $S_1$ and $S_2$:} A continuous
+        map $\Phi : V_1 \subset S_1 \to S_2$ is differentiable at $p \in V_1$
+        if, $\x_1 : U_1 \subset \R^2 \to S_1$, $\x_2 : U_2 \subset \R^2 \to
+        S_2$, with $p \in \x_1(U)$ and $\Phi(\x_1(U_1)) \subset \x_2(U_2)$, the
+        map $\x_2^{-1} \circ \Phi \circ \x_1 : U_1 \to U_2$ is differentiable at
+        $q = \x_1^{-1}(p)$.
+
+      \item \textbf{First Fundamental Form:} For a surface parametrized by
+        $\x(u,v)$, the first fundamental form $I_p(\w) = E\du^2 + 2F\duv +
+        G\dv^2$, where $E$, $F$, and $G$ are given by
+        \[%
+          E = \langle \x_u, \x_u \rangle, \quad F = \langle \x_u, \x_v \rangle, \aand G = \langle \x_v, \x_v \rangle
+        .\]%
+
+      \item \textbf{Area of a Surface}: The area of a regular surface $S$ is given by
+        \[%
+          A = \iint_D \sqrt{EG - F^2} \duv = \iint_D \lVert \x_u \times \x_v \rVert \duv
+        ,\]%
+        where $D$ is the domain of the parametrization.
+    \end{enumerate}
+  \end{definition}
+
+  \begin{example}\leavevmode
+    \begin{enumerate}
+      \item \textbf{Regular Curve:} Show that $\alpha(t) = (t, \sin t, \cos t)$ is regular. \\ 
+      Compute $\alpha'(t) = (1, \cos t, -\sin t)$, which is never zero, so the curve is regular.
+
+      \item \textbf{Regular Surface:} Show that the sphere $x(u,v) = (\sin u \cos v, \sin u \sin v, \cos u)$, for $u \in (0,\pi)$, $v \in (0,2\pi)$, is regular. \\ 
+      Compute $x_u$ and $x_v$, then show $x_u \times x_v \ne 0$ on the domain. Also, $x$ is smooth and one-to-one on its image, so it's a regular surface.
+
+      \item \textbf{Orientability:} The graph of a smooth function $z = f(x, y)$ is orientable, since we can define the unit normal vector 
+      $\Na = \frac{(-f_x, -f_y, 1)}{\sqrt{1 + f_x^2 + f_y^2}}$ smoothly across the surface.
+
+      \item \textbf{Orientation Comparison:} Given two parameterizations $\x(u,v)$ and $\xi(s,t)$, compute $\x_u \times \x_v$ and $\xi_s \times \xi_t$. If the dot product is positive, they define the same orientation; if negative, they are oppositely oriented.
+
+      \item \textbf{Parametrization of a Function:} Let $f(x,y) = x^2 + y^2$. Then a parameterization is $\x(x,y) = (x, y, x^2 + y^2)$.
+
+      \item \textbf{Surface of Revolution:} Let $z = \ln r$. Then a parametrization as a surface of revolution is 
+      $\x(r, \theta) = (r \cos \theta, r \sin \theta, \ln r)$, with $r > 0$, $\theta \in [0, 2\pi)$.
+    \end{enumerate}
+  \end{example}
+
+  \begin{frame}[Quick References]
+    Normal Vectors:
+    \begin{enumerate}
+      \item $\displaystyle\Na = \frac{\x_u \times \x_v}{\lVert \x_u \times \x_v
+        \rVert}$ (parametrized surface).
+
+      \item $\displaystyle\Na = \frac{(-f_x, -f_y, 1)}{\sqrt{1 + f_x^2 +
+        f_y^2}}$ (graph $z = f(x,y)$).
+
+      \item $\displaystyle\Na = \frac{T'}{\lVert T' \rVert}$ (curve).
+    \end{enumerate}
+    Curvature and Torsion:
+    \begin{alignat*}{4}
+      \kappa(t) &= \frac{\lVert \alpha' \times \alpha'' \rVert}{\lVert \alpha' \rVert^3} &&\aand \tau(t) &&= \frac{(\alpha' \times \alpha'') \cdot \alpha'''}{|\alpha' \times \alpha''|^2} \\
+      \kappa(s) &= \lVert \alpha''(s) \rVert && \aand \Ba'(s) &&= \tau(s)\Na(s)
+    .\end{alignat*}
+  \end{frame}
+\end{document}
+
