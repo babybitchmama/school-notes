@@ -1,0 +1,99 @@
+\begin{problem}[2.6.1]
+  Let $S$ be a regular surface covered by coordinate neighborhoods $V_1$ and
+  $V_2$. Assume that $V_1 \cap V_2$ has two connected components, $W_1$, $W_2$,
+  and that the Jacobian of the change of coordinates is positive in $W_1$ and
+  negative in $W_2$. Prove that $S$ is non-orientable.
+\end{problem}
+
+\begin{solution}
+  Assume, for contradiction, that $S$ is orientable. Then it is possible to
+  assign a consistent orientation across all coordinate charts covering $S$,
+  such that on any overlap of two charts, the Jacobian determinant of the
+  transition map is positive (i.e., orientation-preserving).
+
+  Let $V_1$ and $V_2$ be two coordinate neighborhoods covering $S$ such that
+  their overlap consists of two connected components, $W_1$ and $W_2$. Since
+  $W_1$ and $W_2$ are connected and the Jacobian determinant of the transition
+  function is continuous, it must be strictly positive throughout $W_1$ and
+  strictly negative throughout $W_2$. This implies that in $W_1$, the transition
+  map preserves orientation, while in $W_2$, it reverses orientation.
+
+  But if $S$ were orientable, the transition map between $V_1$ and $V_2$ would
+  need to preserve orientation across the entire overlap. This contradiction
+  shows that $S$ cannot be orientable.
+\end{solution}
+
+\begin{problem}[2.6.2]
+  Let $S_2$ be an orientable regular surface and $\Phi : S_1 \to S_2$ be a
+  differentiable map which is a local diffeomorphism at every $p \in S_1$. Prove
+  that $S_1$ is orientable.
+\end{problem}
+
+\begin{solution}
+  Since $S_2$ is orientable, it admits an atlas of coordinate charts with
+  consistently defined orientations, i.e., all transition maps between
+  overlapping charts have positive Jacobian determinants.
+
+  Let $\Phi: S_1 \to S_2$ be a differentiable map that is a local diffeomorphism
+  at every point $p \in S_1$. Then for each $p \in S_1$, there exists an open
+  neighborhood $U \subset S_1$ such that $\Phi|_U : U \to \Phi(U) \subset S_2$
+  is a diffeomorphism.
+
+  Use the orientation of $S_2$ to induce an orientation on $S_1$ via $\Phi$.
+  Specifically, at each point $p \in S_1$, choose an oriented basis of the
+  tangent space $T_{\Phi(p)}S_2$, and use the differential $d\Phi_p$ (which is
+  an isomorphism since $\Phi$ is a local diffeomorphism) to pull back this
+  orientation to $T_p S_1$.
+
+  Since the orientation on $S_2$ is consistent and $\Phi$ is locally a
+  diffeomorphism, this construction gives a consistent orientation on $S_1$.
+  Therefore, $S_1$ is orientable.
+\end{solution}
+
+\begin{problem}[2.6.3]
+  Is it possible to give a meaning to the notion of area for a \mobius~strip? If
+  so, set up an integral to compute it.
+\end{problem}
+
+\begin{solution}
+  Yes, it is possible to define the notion of area for a \mobius~strip. The
+  \mobius~strip is a regular surface (except possibly at its boundary), and area
+  can be defined for regular surfaces via integration of the area element
+  induced by a parametrization.
+
+  Consider the standard parametrization of the \mobius~strip:
+  \[%
+    \mathbf{x}(u,v) = \left(\left(1 + \frac{v}{2} \cos\left(\frac{u}{2}\right)\right) \cos(u), \left(1 + \frac{v}{2} \cos\left(\frac{u}{2}\right)\right) \sin(u), \frac{v}{2} \sin\left(\frac{u}{2}\right)\right)
+  ,\]%
+  where $u \in [0, 2\pi]$ and $v \in [-1, 1]$.
+
+  The area of the \mobius~strip is given by
+  \[%
+    A = \int_0^{2\pi} \int_{-1}^1 \lVert \x_u \times \x_v \rVert \dvu
+  .\]%
+  This integral is well-defined and computes the area of the \mobius~strip using
+  the standard area element for parametrized surfaces.
+\end{solution}
+
+\begin{problem}[2.6.7]
+  Show that if a regular surface $S$ contains an open set diffeomorphic to a
+  \mobius~strip, then $S$ is non-orientable.
+\end{problem}
+
+\begin{solution}
+  Suppose $S$ is orientable and contains an open set $U \subset S$ that is
+  diffeomorphic to an open subset of the \mobius~strip $M$. Let $\Phi: U \to
+  \Phi(U) \subset M$ be such a diffeomorphism.
+
+  Since $S$ is orientable, we can assign consistent orientations to coordinate
+  charts covering $S$, and in particular to $U$. Because $\Phi$ is a
+  diffeomorphism, it preserves the differential structure and would transfer
+  this orientation to $\Phi(U) \subset M$.
+
+  But this contradicts the fact that the \mobius~strip is non-orientable: no
+  open set containing a core neighborhood of $M$ can support a consistent
+  orientation. Therefore, $\Phi(U)$ cannot be oriented consistently,
+  contradicting the assumption that $S$ is orientable.
+
+  Hence, $S$ must be non-orientable.
+\end{solution}
