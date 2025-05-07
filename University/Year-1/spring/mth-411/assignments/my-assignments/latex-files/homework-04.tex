@@ -18,7 +18,7 @@
     f(z) = \frac{(x - iy)^2}{x + iy} = \frac{x^2 - 2ixy - y^2}{x + iy}
   .\]%
   Multiply numerator and denominator by the conjugate of the denominator
-  \[
+  \[%
     f(z) = \frac{(x^2 - 2ixy - y^2)(x - iy)}{(x + iy)(x - iy)} = \frac{(x^2 - 2ixy - y^2)(x - iy)}{x^2 + y^2}
   .\]%
   Now expand the numerator
@@ -59,56 +59,85 @@
               &&= 1
   .\end{alignat*}
   Therefore, at the origin
-  \[
+  \[%
     u_x = v_y = 1, \qquad u_y = -v_x = 0
   .\]%
   The Cauchy-Riemann equations are satisfied at $(0, 0)$.
 \end{solution}
 
 \begin{problem}[2.23.8]
-  Let a function $f(z) = u + iv$ be differentiable at a non-zero point $z_0 = r_0\exp(i\theta_0)$. Use the expressions for $u_x$ and $v_x$ found in Exercise 7, together with the polar form
+  Let a function $f(z) = u + iv$ be differentiable at a non-zero point $z_0 =
+  r_0\exp(i\theta_0)$. Use the expressions for $u_x$ and $v_x$ found in Exercise
+  7, together with the polar form
 \end{problem}
 
 \begin{solution}
-  Let $f(z) = u + iv$ be differentiable at a nonzero point $z_0 = r_0 e^{i\theta_0}$. Since $f$ is differentiable at $z_0$, the Cauchy-Riemann equations hold at that point, and the partial derivatives of $u$ and $v$ exist and are continuous near $z_0$.
+  Let $f(z) = u + iv$ be differentiable at a nonzero point $z_0 = r_0
+  e^{i\theta_0}$. Since $f$ is differentiable at $z_0$, the Cauchy-Riemann
+  equations hold at that point, and the partial derivatives of $u$ and $v$ exist
+  and are continuous near $z_0$.
 
   Recall from Exercise 7 the relations between Cartesian and polar partials
   \[%
-    u_x = \cos\theta \cdot u_r - \frac{\sin\theta}{r} \cdot u_\theta
+    u_x = \cos(\theta) \cdot u_r - \frac{\sin(\theta)}{r} \cdot u_\theta
     \aand
-    v_x = \cos\theta \cdot v_r - \frac{\sin\theta}{r} \cdot v_\theta
+    v_x = \cos(\theta) \cdot v_r - \frac{\sin(\theta)}{r} \cdot v_\theta
   .\]%
-  % Similarly, for $u_y$ and $v_y$
-  % \[%
-  %   u_y = \sin\theta \cdot u_r + \frac{\cos\theta}{r} \cdot u_\theta, \qquad
-  %   v_y = \sin\theta \cdot v_r + \frac{\cos\theta}{r} \cdot v_\theta
-  % .\]%
-  % By the Cauchy-Riemann equations,
-  % \[
-  %   u_x = v_y, \qquad u_y = -v_x
-  % .\]%
-  % Substitute the expressions above into these equations:
-  % \begin{align*}
-  %   \cos\theta \cdot u_r - \frac{\sin\theta}{r} \cdot u_\theta &= \sin\theta \cdot v_r + \frac{\cos\theta}{r} \cdot v_\theta \\
-  %   \sin\theta \cdot u_r + \frac{\cos\theta}{r} \cdot u_\theta &= -\left( \cos\theta \cdot v_r - \frac{\sin\theta}{r} \cdot v_\theta \right)
-  % .\end{align*}
-  % Now simplify the second equation:
-  % \[
-  %   \sin\theta \cdot u_r + \frac{\cos\theta}{r} \cdot u_\theta 
-  %   = -\cos\theta \cdot v_r + \frac{\sin\theta}{r} \cdot v_\theta
-  % .\]%
-  % So the Cauchy-Riemann equations in polar coordinates are:
-  % \[
-  %   u_r = \frac{1}{r} v_\theta, \qquad v_r = -\frac{1}{r} u_\theta
-  % .\]%
-  % Therefore, using the expressions from Exercise 7 and the polar form, we have derived the polar version of the Cauchy-Riemann equations at the point $z_0 = r_0 e^{i\theta_0}$.
+  Similarly, for $u_y$ and $v_y$
+  \[%
+    u_y = \sin(\theta) \cdot u_r + \frac{\cos(\theta)}{r} \cdot u_\theta
+    \aand
+    v_y = \sin(\theta) \cdot v_r + \frac{\cos(\theta)}{r} \cdot v_\theta
+  .\]%
+  By the Cauchy-Riemann equations,
+  \[%
+    u_x = v_y \aand u_y = -v_x
+  .\]%
+  Substitute the expressions above into these equations:
+  \begin{align*}
+    \cos(\theta) \cdot u_r - \frac{\sin(\theta)}{r} \cdot u_\theta &= \sin(\theta) \cdot v_r + \frac{\cos(\theta)}{r} \cdot v_\theta \\
+    \sin(\theta) \cdot u_r + \frac{\cos(\theta)}{r} \cdot u_\theta &= -\left( \cos(\theta) \cdot v_r - \frac{\sin(\theta)}{r} \cdot v_\theta \right)
+  .\end{align*}
+  Now simplify the second equation:
+  \[%
+    \sin(\theta) \cdot u_r + \frac{\cos(\theta)}{r} \cdot u_\theta = -\cos(\theta) \cdot v_r + \frac{\sin(\theta)}{r} \cdot v_\theta
+  .\]%
+  So the Cauchy-Riemann equations in polar coordinates are:
+  \[%
+    u_r = \frac{1}{r} v_\theta \aand v_r = -\frac{1}{r} u_\theta
+  .\]%
+  Therefore, using the expressions from Exercise 7 and the polar form, we have
+  derived the polar version of the Cauchy-Riemann equations at the point $z_0 =
+  r_0 e^{i\theta_0}$.
 \end{solution}
 
 \begin{problem}[2.25.7]
-  Let a function $f$ be analytic everywhere in a domain $D$. Prove that if $f(z)$ is real-valued for all $z$ in $D$, then $f(z)$ must be constant throughout $D$.
+  Let a function $f$ be analytic everywhere in a domain $D$. Prove that if
+  $f(z)$ is real-valued for all $z$ in $D$, then $f(z)$ must be constant
+  throughout $D$.
 \end{problem}
 
 \begin{solution}
+  Since $f$ is analytic on $D$, it satisfies the Cauchy-Riemann equations in
+  $D$. Write
+  \[%
+    f(z) = u(x, y) + i v(x, y)
+  ,\]%
+  where $z = x + iy$, and $u$ and $v$ are the real and imaginary parts of $f$,
+  respectively. Given that $f(z) \in \mathbb{R}$ for all $z \in D$, we have
+  $v(x, y) = 0$ for all $(x, y) \in D$.
+
+  Because $f$ is analytic, the Cauchy-Riemann equations must hold:
+  \[%
+    u_x = v_y \aand u_y = -v_x
+  .\]%
+  Since $v(x, y) \equiv 0$, it follows that $v_x = 0 = v_y$ Substituting into
+  the Cauchy-Riemann equations, we get $u_x = 0 = u_y$. Hence, all first partial
+  derivatives of $u$ vanish on $D$, so $u$ is constant throughout $D$.
+  Therefore,
+  \[%
+    f(z) = u(x, y) + i v(x, y) = \text{constant}
+  .\qedhere\]%
 \end{solution}
 
 \begin{problem}[3.31.4]
@@ -119,12 +148,76 @@
 \end{problem}
 
 \begin{solution}[(i)]
+  We use the principal branch of the complex logarithm:
+  \[%
+    \Log(z) = \ln(\lvert z \rvert) + i \Arg(z) \qquad (-\pi < \Arg(z) \le \pi)
+  .\]%
+  Let $z = 1 + i$. Then
+  \[%
+    \lvert z \rvert = \sqrt{1^2 + 1^2} = \sqrt{2} \aand \Arg(z) = \frac{\pi}{4}
+  .\]%
+  So,
+  \[%
+    \Log(1 + i) = \ln(\sqrt{2}) + i\frac{\pi}{4}
+  .\]%
+  Then:
+  \[%
+    2\Log(1 + i) = 2\ln(\sqrt{2}) + i \cdot 2 \cdot\frac{\pi}{4} = \ln(2) + i\frac{\pi}{2}
+  .\]%
+  Now consider $\Log((1 + i)^2) = \Log(2i)$. Now, we can compute
+  \[%
+    \lvert 2i \rvert = 2 \aand \Arg(2i) = \frac{\pi}{2}
+  .\]%
+  So
+  \[%
+    \Log((1 + i)^2) = \ln(2) + i\frac{\pi}{2}
+  .\]%
+  Therefore, we get
+  \[%
+    \Log((1 + i)^2) = 2\Log(1 + i)
+  .\qedhere\]%
 \end{solution}
 
 \begin{solution}[(ii)]
+  Let $z = -1 + i$. Then:
+  \[%
+    \lvert z \rvert = \sqrt{(-1)^2 + 1^2} = \sqrt{2} \aand \Arg(z) = \frac{3\pi}{4}
+  ,\]%
+  since $z$ is in the second quadrant So,
+  \[%
+    \Log(-1 + i) = \ln(\sqrt{2}) + i\frac{3\pi}{4}
+  .\]%
+  Then:
+  \[%
+    2\Log(-1 + i) = \ln(2) + i \cdot \frac{3\pi}{2}
+  .\]%
+  Now consider:
+  \[%
+    (-1 + i)^2 = (-1)^2 + 2(-1)(i) + i^2 = 1 - 2i - 1 = -2i
+  .\]%
+  Then:
+  \[%
+    \lvert -2i \rvert = 2 \aand \Arg(-2i) = -\frac{\pi}{2}
+  .\]%
+  So:
+  \[%
+    \Log((-1 + i)^2) = \Log(-2i) = \ln(2) + i(-\frac{\pi}{2}) = \ln(2) - i\frac{\pi}{2}
+  .\]%
+  Comparing:
+  \[%
+    \Log((-1 + i)^2) = \ln(2) - i\frac{\pi}{2}
+  ,\]%
+  but
+  \[%
+    2\Log(-1 + i) = \ln(2) + i\frac{3\pi}{2}
+  .\]%
+  These are not equal. Therefore,
+  \[%
+    \Log((-1 + i)^2) \ne 2\Log(-1 + i)
+  .\qedhere\]%
 \end{solution}
 
-\begin{problem}[3.38.2(iii)]
+\begin{problem}[4.38.2(iii)]
   Evaluate the following integral
   \[%
     \int_0^{\infty} e^{-zt} \dt \qquad (\Re(z) > 0)
@@ -132,12 +225,21 @@
 \end{problem}
 
 \begin{solution}
+  Computing the anti-derivative of $e^{-zt}$, we have
+  \[%
+    \int e^{-zt} \dt = -\frac{1}{z} e^{-zt} + C
+  .\]%
+  As $t \to \infty$, since $\Re(z) > 0$, we have $e^{-zt} \to 0$ exponentially.
+  Therefore, we get
+  \[%
+    \int_0^{\infty} e^{-zt} \dt = 0 - \left(-\frac{1}{z} \cdot 1\right) = \frac{1}{z}
+  .\qedhere\]%
 \end{solution}
 
-\begin{problem}[3.38.3]
+\begin{problem}[4.38.3]
   Show that if $m$ and $n$ are integers,
   \[%
-    \int_0^{2\pi} e^{im\theta}e^{-\in\theta} \dd{\theta} = \begin{cases}
+    \int_0^{2\pi} e^{im\theta}e^{-in\theta} \dd{\theta} = \begin{cases}
       0 & \text{if}~m \ne n \\
       2\pi & \text{if}~m = n
     \end{cases}
@@ -145,13 +247,33 @@
 \end{problem}
 
 \begin{solution}
+  Simplifying the integrand, we have
+  \[%
+    \int_0^{2\pi} e^{im\theta}e^{-in\theta} \dd{\theta} = \int_0^{2\pi} e^{i(m - n)\theta} \dd{\theta}
+  .\]%
+  Let $k = m - n$. Then, we have
+  \[%
+    \int_0^{2\pi} e^{ik\theta} \dd{\theta} = \begin{cases}
+      2\pi & \text{if}~k = 0 \\
+      \sfrac{1}{ik} \cdot (e^{2\pi i k} - 1) = 0 & \text{if}~k \ne 0
+    \end{cases}
+  .\]%
+  This is because $e^{2\pi ik} = 1$ for any integer $k$, so the numerator
+  becomes $0$ when $k \ne 0$. Therefore,
+  \[%
+    \int_0^{2\pi} e^{im\theta}e^{-in\theta} \dd{\theta} = \begin{cases}
+      0 & \text{if}~m \ne n \\
+      2\pi & \text{if}~m = n
+    \end{cases}
+  .\qedhere\]%
 \end{solution}
 
-\begin{problem}[3.38.5]
-  Let $w(t) = u(t) + iv(t)$ denote a continuous complex-valued function defined on an interval $-a \le t \le a$.
+\begin{problem}[4.38.5]
+  Let $w(t) = u(t) + iv(t)$ denote a continuous complex-valued function defined
+  on an interval $-a \le t \le a$.
   \begin{enumerate}
-    \item Suppose that $w(t)$ is \emph{even}; that is, $w(-t) = w(t)$ for each point
-      $t$ in the given interval. Show that
+    \item Suppose that $w(t)$ is \emph{even}; that is, $w(-t) = w(t)$ for each
+      point $t$ in the given interval. Show that
       \[%
         \int_{-a}^a w(t) \dt = 2\int_0^a w(t) \dt
       .\]%
@@ -163,17 +285,41 @@
       .\]%
   \end{enumerate}
 
-  \emph{Suggestion:} In each part of this exercise, use the corresponding property of integrals of \emph{real-valued} functions of $t$, which is graphically evident.
+  \emph{Suggestion:} In each part of this exercise, use the corresponding
+  property of integrals of \emph{real-valued} functions of $t$, which is
+  graphically evident.
 \end{problem}
 
 \begin{solution}[(i)]
+  Suppose $w(t) = u(t) + iv(t)$ is even, i.e., $w(-t) = w(t)$. Then both $u(t)$
+  and $v(t)$ are even functions. Using the fact that the integral of an even
+  real-valued function over a symmetric interval is twice the integral over $[0,
+  a]$, we have
+  \[%
+    \int_{-a}^a w(t) \dt = \int_{-a}^a u(t) \dt + i \int_{-a}^a v(t) \dt = 2\int_0^a u(t) \dt + i \cdot 2\int_0^a v(t) \dt
+  .\]%
+  Thus,
+  \[%
+    \int_{-a}^a w(t) \dt = 2 \int_0^a w(t) \dt
+  .\qedhere\]%
 \end{solution}
 
 \begin{solution}[(ii)]
+  Now suppose $w(t) = u(t) + iv(t)$ is odd, i.e., $w(-t) = -w(t)$. Then both
+  $u(t)$ and $v(t)$ are odd functions. Since the integral of an odd real-valued
+  function over a symmetric interval is zero, we have
+  \[%
+    \int_{-a}^a w(t) \dt = \int_{-a}^a u(t) \dt + i \int_{-a}^a v(t) \dt = 0 + i \cdot 0 = 0
+  .\]%
+  Therefore,
+  \[%
+    \int_{-a}^a w(t) \dt = 0
+  .\qedhere\]%
 \end{solution}
 
-\begin{problem}[3.39.6]
-  Let $y(x)$ be a real-valued function defined on the interval $0 \le x \le 1$ by means of the equations
+\begin{problem}[4.39.6]
+  Let $y(x)$ be a real-valued function defined on the interval $0 \le x \le 1$
+  by means of the equations
   \[%
     y(x) = \begin{cases}
       x^3\sin(\sfrac{\pi}{x}) & \text{when}~0 < x \le 1 \\
@@ -185,7 +331,8 @@
       \[%
         z = x + iy(x) \qquad (0 \le x \le 1)
       ,\]%
-      represents an arc $C$ that intersects the real axis at the points $z = \sfrac{1}{n}$ ($n = 1, 2, \cdots$) and $z = 0$.
+      represents an arc $C$ that intersects the real axis at the points $z =
+      \sfrac{1}{n}$ ($n = 1, 2, \cdots$) and $z = 0$.
 
     \item Verify that the arc $C$ in part (i) is, in fact, a \emph{smooth} arc.
 
@@ -199,5 +346,42 @@
   \end{enumerate}
 \end{problem}
 
-\begin{solution}
+\begin{solution}[(i)]
+  To find where the arc $C$ intersects the real axis, we observe that this
+  occurs when $\Im(z) = y(x) = 0$. Note that $y(x) =
+  x^3\sin\left(\sfrac{\pi}{x}\right)$ for $x > 0$. Since
+  $\sin\left(\sfrac{\pi}{x}\right) = 0$ when $\sfrac{\pi}{x} = n\pi$ (i.e., $x =
+  \sfrac{1}{n}$ for $n = 1, 2, \dots$), it follows that $y(\sfrac{1}{n}) = 0$,
+  and thus
+  \[%
+    z = \frac{1}{n} + i \cdot 0 = \frac{1}{n}
+  ,\]%
+  lies on the real axis. Also, since $y(0) = 0$, we have $z = 0 + i \cdot 0 = 0$
+  also lies on the real axis. Therefore, the arc intersects the real axis at the
+  points $z = \sfrac{1}{n}$ and $z = 0$.
+\end{solution}
+
+\begin{solution}[(ii)]
+  First, we show that $y(x)$ is continuous on $[0, 1]$. Since $\lvert
+  \sin(\pi/x) \rvert \le 1$, we have
+  \[%
+    |y(x)| = |x^3\sin(\pi/x)| \le x^3 \longrightarrow 0 \quad \text{as}~x \to 0
+  .\]%
+  Hence, $\lim_{x \to 0} y(x) = 0 = y(0)$, so $y(x)$ is continuous on $[0, 1]$.
+  Computing the derivative, we have
+  \[%
+    y'(x) = \dv{x}\left(x^3\sin\left(\frac{\pi}{x}\right)\right) = 3x^2\sin\left(\frac{\pi}{x}\right) - \pi x \cos\left(\frac{\pi}{x}\right)
+  .\]%
+  To analyze continuity at $x = 0$, observe that
+  \[%
+    \left\lvert y'(x) \right\rvert \le 3x^2 + \pi x \to 0
+  ,\]%
+  as $x \to 0$. So $\lim_{x \to 0} y'(x) = 0$. Also, for $x = 0$, we define
+  \[%
+    y'(0) \coloneqq \lim_{x \to 0} \frac{y(x) - y(0)}{x - 0} = \lim_{x \to 0} \frac{x^3\sin\left(\sfrac{\pi}{x}\right)}{x} = \lim_{x \to 0} x^2\sin(\sfrac{\pi}{x}) = 0
+  .\]%
+  Thus, $y'(x)$ is continuous on $[0, 1]$, and $z(x) = x + i y(x)$ is
+  continuously differentiable.
+
+  Therefore, the arc $C$ is smooth.
 \end{solution}

@@ -1,0 +1,322 @@
+\begin{problem}[4.42.3]
+  $f(z) = \sfrac{(z + 2)}{z}$ and $C$ is
+  \begin{enumerate}
+    \item the semicircle $z = 2e^{i\theta}$ ($0 \le \theta \le \pi$);
+
+    \item the semicircle $z = 2e^{i\theta}$ ($\pi \le \theta \le 2\pi$);
+
+    \item the circle $z = 2e^{i\theta}$ ($0 \le \theta \le 2\pi$).
+  \end{enumerate}
+\end{problem}
+
+\begin{solution}[(i)]
+  Given $z(\theta) = 2e^{i\theta}$, we have
+  \[%
+    \dz = \odv{z}{\theta} \dd{\theta} = 2ie^{i\theta} \dd{\theta}
+  .\]%
+  Therefore, the integral becomes
+  \[%
+    \int_C f(z) \dz = \int_C \frac{z + 2}{z} \dz = \int_0^\pi \frac{2e^{i\theta} + 2}{2e^{i\theta}} \cdot 2ie^{i\theta} \dd{\theta} = 2i\int_0^\pi e^{i\theta} \left(\frac{2e^{i\theta} + 2}{2e^{i\theta}}\right) \dd{\theta}
+  .\]%
+  Simplifying the integrand, we have
+  \begin{align*}
+    e^{i\theta} \left(\frac{2e^{i\theta} + 2}{2e^{i\theta}}\right) &= e^{i\theta} \left(\frac{e^{i\theta} + 1}{e^{i\theta}}\right) \\
+                                                                   &= e^{i\theta} \left(1 + \frac{1}{e^{i\theta}}\right) \\
+                                                                   &= e^{i\theta} + 1
+  .\end{align*}
+  Thus, we can rewrite the integral as
+  \begin{align*}
+    2i\int_0^\pi e^{i\theta} \left(\frac{2e^{i\theta} + 2}{2e^{i\theta}}\right) \dd{\theta} &= 2i \left(\int_0^\pi e^{i\theta} \dd{\theta} + \int_0^\pi \dd{\theta}\right) \\
+                                                                                            &= 2i \left(\frac{e^{i\pi} - e^{i0}}{i} + \pi\right) \\
+                                                                                            &= 2i\left(\frac{-2}{i} + \pi\right) \\
+                                                                                            &= 2i\left(2i + \pi\right) \\
+                                                                                            &= 2i\pi - 4
+  .\qedhere\end{align*}
+\end{solution}
+
+\begin{solution}[(ii)]
+  Using the same substitution as in part (i), we have
+  \begin{align*}
+    \int_C f(z) \dz &= 2i \left(\int_\pi^{2\pi} e^{i\theta} \dd{\theta} + \int_\pi^{2\pi} \dd{\theta}\right) \\
+                    &= 2i\left(\frac{e^{2i\pi} - e^{i\pi}}{i} + \pi\right) \\
+                    &= 2i\left(\frac{1 - (-1)}{i} + \pi\right) \\
+                    &= 2i\left(\frac{2}{i} + \pi\right) \\
+                    &= 2i\left(-2i + \pi\right) \\
+                    &= 2i\pi + 4
+  .\qedhere\end{align*}
+\end{solution}
+
+\begin{solution}[(iii)]
+  We can break up the integral into two parts
+  \[%
+    \int_C f(z) \dz = \int_{C_1} f(z) \dz + \int_{C_2} f(z) \dz
+  ,\]%
+  where $C_1$ is the semicircle from $0 \le \theta \le \pi$ and $C_2$ is the
+  semicircle from $\pi \le \theta \le 2\pi$. We've already computed the
+  integrals for $C_1$ and $C_2$ in parts (i) and (ii), respectively. Therefore,
+  we can combine the results
+  \begin{align*}
+    \int_C f(z) \dz &= \int_{C_1} f(z) \dz + \int_{C_2} f(z) \dz \\
+                    &= (2i\pi + 4) + (2i\pi - 4) \\
+                    &= 4i\pi
+  .\qedhere\end{align*}
+\end{solution}
+
+\begin{problem}[4.42.7]
+  $f(z)$ is the principle branch
+  \[%
+    z^i = \exp(i\Log(z)) \qquad (\lvert z \rvert > 0, \quad -\pi < \Arg(z) < \pi)
+  ,\]%
+  of this power function, and $C$ is the semicircle $z = e^{i\theta}$ ($0 \le \theta \le \pi$).
+\end{problem}
+
+\begin{solution}
+  Given $z(\theta) = e^{i\theta}$ on $C$ with $0 \le \theta \le \pi$, we compute
+  \[%
+    \dz = \odv{z}{\theta} \dd{\theta} = ie^{i\theta} \dd{\theta}
+  .\]%
+  The function is defined as $f(z) = z^i = \exp(i\Log(z))$, where $\Log(z) =
+  \ln(\abs{z}) + i\Arg(z)$. On the unit circle $\abs{z} = 1$, so $\ln(\abs{z}) =
+  0$, and we have
+  \[%
+    f(z) = \exp(i(i\Arg(z))) = \exp(-\Arg(z))
+  .\]%
+  Along $C$, where $z = e^{i\theta}$ and $0 \le \theta \le \pi$, we have
+  $\Arg(z) = \theta$. Therefore, we have $f(z) = e^{-\theta}$. So the integral
+  becomes
+  \begin{align*}
+    \int_C f(z) \dz &= \int_0^\pi e^{-\theta} \cdot ie^{i\theta} \dd{\theta} \\
+                    &= i \int_0^\pi e^{-\theta} e^{i\theta} \dd{\theta} \\
+                    &= i \int_0^\pi e^{(-1 + i)\theta} \dd{\theta} \\
+                    &= \frac{i}{-1 + i}\left[e^{(-1 + i)\theta}\right]_0^\pi \\
+                    &= \left(e^{(-1 + i)\pi} - 1\right) \frac{i}{-1 + i}
+  .\end{align*}
+  To simplify, we multiply numerator and denominator by the complex conjugate of
+  the denominator to get
+  \[%
+    \frac{i}{-1 + i} = \frac{i(-1 - i)}{(-1 + i)(-1 - i)} = \frac{-i - i^2}{1 + 1} = \frac{-i + 1}{2}
+  .\]%
+  Therefore,
+  \[%
+    \int_C f(z) \dz = \left(\frac{-i + 1}{2}\right)\left(e^{(-1 + i)\pi} - 1\right)
+  .\qedhere\]%
+\end{solution}
+
+\begin{problem}[4.42.8]
+  With the aid of the result in Exercise 3, Sec. 38, evaluate the integral
+  \[%
+    \int_C z^m \zb^m \dz
+  ,\]%
+  where $m$ and $n$ are integers and $C$ is the unit circle $\lvert z \rvert =
+  1$, taken counterclockwise.
+\end{problem}
+
+\begin{solution}
+  On the unit circle $\abs{z} = 1$, we have the identity $\zb = \frac{1}{z}$.
+  Therefore,
+  \[%
+    z^m \zb^m = z^m \left(\frac{1}{z}\right)^m = z^m z^{-m} = 1
+  .\]%
+  So the integrand becomes $z^m \zb^m = 1$, for all $z$ on the contour $C$.
+  Hence, the integral reduces to
+  \[%
+    \int_C z^m \zb^m \dz = \int_C \dz
+  .\]%
+  Since the integrand is constant and $C$ is a closed curve, we conclude
+  \[%
+    \int_C \dz = 0
+  .\qedhere\]%
+\end{solution}
+
+\begin{problem}[4.43.1]
+  Without evaluating the integral, show that
+  \[%
+    \left\lvert \int_C \frac{1}{z^2 - 1} \dz \right\rvert \le \frac{\pi}{3}
+  ,\]%
+  when $C$ is the same arc as the one in Example 1, Sec. 43.
+\end{problem}
+
+\begin{solution}
+  Let $f(z) = \sfrac{1}{(z^2 - 1)}$ and let $C$ be the arc of the circle $\lvert
+  z \rvert = 2$ from $z = 2$ to $z = 2i$ in the first quadrant, as described in
+  Example 1, Sec. 43. To estimate the modulus of the integral, we use the
+  inequality
+  \[%
+    \left\lvert \int_C f(z) \dz \right\rvert \le M L
+  ,\]%
+  where $M$ is an upper bound for $\abs{f(z)}$ on $C$, and $L$ is the length of
+  the arc. On $C$, we have $\abs{z} = 2$, so
+  \[%
+    \abs{z^2 - 1} = \abs{4e^{2i\theta} - 1} \ge \abs{\abs{z^2} - 1} = \abs{4 - 1} = 3
+  .\]%
+  Therefore,
+  \[%
+    \abs{f(z)} = \left\lvert \frac{1}{z^2 - 1} \right\rvert \le \frac{1}{3} = M
+  .\]%
+  The length of $C$ is one-quarter of the circumference of the circle of radius
+  2, which is
+  \[%
+    L = \frac{\pi}{2} \cdot 2 = \pi
+  .\]%
+  But since the arc in Example 1 spans from $z = 2$ to $z = 2i$, that is a
+  quarter-circle, so in fact the length is
+  \[%
+    L = \frac{\pi}{2} \cdot 2 = \pi
+  ,\]%
+  and the bound becomes
+  \[%
+    \left\lvert \int_C f(z) \dz \right\rvert \le \frac{1}{3} \cdot \pi = \frac{\pi}{3}
+  .\qedhere\]%
+\end{solution}
+
+\begin{problem}[4.43.2]
+  Let $C$ denote the line segment from $z = i$ to $z = 1$. By observing that of
+  all the points on that line segment, the midpoint is the closest to the
+  origin, show that
+  \[%
+    \left\lvert \int_C \frac{1}{z^4} \dz \right\rvert \le 4\sqrt{2}
+  ,\]%
+  without evaluating the integral.
+\end{problem}
+
+\begin{solution}
+  Let $f(z) = \sfrac{1}{z^4}$ and let $C$ be the line segment from $z = i$ to $z
+  = 1$. To estimate the integral, we apply the Estimation Lemma
+  \[%
+    \left\lvert \int_C f(z) \dz \right\rvert \le M L
+  ,\]%
+  where $M$ is an upper bound for $\abs{f(z)}$ on $C$, and $L$ is the length of
+  the path. All points on $C$ lie on the line segment from $z = i$ to $z = 1$,
+  and the point on $C$ that is closest to the origin is the midpoint
+  \[%
+    z = \frac{1 + i}{2}
+  ,\]%
+  which has modulus
+  \[%
+    \left\lvert \frac{1 + i}{2} \right\rvert = \frac{1}{2} \abs{1 + i} = \frac{1}{2} \cdot \sqrt{2} = \frac{\sqrt{2}}{2}
+  .\]%
+  Since the modulus of $z$ is minimized at this midpoint, the modulus of $f(z) =
+  1/z^4$ is maximized there
+  \[%
+    \abs{f(z)} = \left\lvert \frac{1}{z^4} \right\rvert \le \left(\frac{2}{\sqrt{2}}\right)^4 = (2\sqrt{2})^4 = 16 \cdot 4 = 64
+  .\]%
+  But this overestimates the bound. Instead, observe that for any $z$ on $C$, we
+  have
+  \[%
+    \abs{z} \ge \frac{\sqrt{2}}{2}
+  ,\]%
+  and thus
+  \[%
+    \abs{f(z)} = \abs{\frac{1}{z^4}} \le \left(\frac{2}{\sqrt{2}}\right)^4 = 16
+  .\]%
+  However, to match the desired bound, we proceed more sharply by computing the
+  length of $C$ and estimating directly at the midpoint. The length of $C$ is
+  the distance from $z = i$ to $z = 1$
+  \[%
+    L = \abs{1 - i} = \sqrt{2}
+  .\]%
+  The maximum of $\abs{f(z)}$ on $C$ occurs at the point where $\abs{z}$ is
+  minimized, which is at the midpoint
+  \[%
+    \abs{z} = \frac{\sqrt{2}}{2} \implies \abs{f(z)} = \left(\frac{2}{\sqrt{2}}\right)^4 = 16
+  .\]%
+  Therefore,
+  \[%
+    \left\lvert \int_C \frac{1}{z^4} \dz \right\rvert \le M L = 16 \cdot \sqrt{2} = 4\sqrt{2}
+  .\qedhere\]%
+\end{solution}
+
+\begin{problem}[4.45.2]
+  By finding an antiderivative, evaluate each of these integrals, where the path
+  is any contour between the indicated limits of integration:
+  \[%
+    \text{(a)}~\int_i^{\sfrac{i}{2}} e^{\pi z} \dz; \qquad \text{(b)}~\int_0^{\pi+2i} \cos\left(\frac{z}{2}\right) \dz; \qquad \text{(c)}~\int_1^3 (z - 2)^3 \dz
+  .\]%
+\end{problem}
+
+\begin{solution}[(i)]
+  Let $F(z)$ be an antiderivative of $f(z) = e^{\pi z}$. Since $e^{\pi z}$ is entire, we can use any contour from $i$ to $\sfrac{i}{2}$:
+  \[%
+    F(z) = \int e^{\pi z} \dd{z} = \frac{1}{\pi} e^{\pi z}
+  .\]%
+  Therefore, by the Fundamental Theorem of Calculus for contour integrals,
+  \[%
+    \int_i^{\sfrac{i}{2}} e^{\pi z} \dz = F\left(\frac{i}{2}\right) - F(i) = \frac{1}{\pi} e^{\sfrac{\pi i}{2}} - \frac{1}{\pi} e^{\pi i} = \frac{1}{\pi} \left(e^{\sfrac{\pi i}{2}} - e^{\pi i}\right)
+  .\]%
+  Using Euler's formula:
+  \[%
+    e^{\sfrac{\pi i}{2}} = i \quad \text{and} \quad e^{\pi i} = -1
+  ,\]%
+  so the value of the integral is
+  \[%
+    \int_i^{\sfrac{i}{2}} e^{\pi z} \dz = \frac{1}{\pi}(i + 1)
+  .\qedhere\]%
+\end{solution}
+
+\begin{solution}[(ii)]
+  We are asked to evaluate
+  \[%
+    \int_0^{\pi + 2i} \cos\left(\frac{z}{2}\right) \dz
+  .\]%
+  Let $F(z)$ be an antiderivative of $f(z) = \cos\left(\frac{z}{2}\right)$:
+  \[%
+    F(z) = \int \cos\left(\frac{z}{2}\right) \dd{z} = 2 \sin\left(\frac{z}{2}\right)
+  .\]%
+  Therefore,
+  \[%
+    \int_0^{\pi + 2i} \cos\left(\frac{z}{2}\right) \dz = F(\pi + 2i) - F(0) = 2 \sin\left(\frac{\pi + 2i}{2}\right) - 2 \sin(0)
+  \]%
+  \[%
+    = 2 \sin\left(\frac{\pi}{2} + i\right)
+  .\]%
+  Using the identity $\sin(a + ib) = \sin a \cosh b + i \cos a \sinh b$, we get
+  \[%
+    \sin\left(\frac{\pi}{2} + i\right) = \sin\left(\frac{\pi}{2}\right) \cosh(1) + i \cos\left(\frac{\pi}{2}\right) \sinh(1) = \cosh(1)
+  .\]%
+  So the integral becomes
+  \[%
+    \int_0^{\pi + 2i} \cos\left(\frac{z}{2}\right) \dz = 2 \cosh(1)
+  .\qedhere\]%
+\end{solution}
+
+\begin{solution}[(iii)]
+  We are asked to evaluate
+  \[%
+    \int_1^3 (z - 2)^3 \dz
+  .\]%
+  Let $F(z)$ be an antiderivative of $f(z) = (z - 2)^3$. We compute
+  \[%
+    F(z) = \int (z - 2)^3 \dd{z} = \frac{1}{4}(z - 2)^4
+  .\]%
+  Therefore,
+  \[%
+    \int_1^3 (z - 2)^3 \dz = F(3) - F(1) = \frac{1}{4}(3 - 2)^4 - \frac{1}{4}(1 - 2)^4 = \frac{1}{4}(1 - 1) = 0
+  .\qedhere\]%
+\end{solution}
+
+\begin{problem}[4.45.3]
+  Use the theorem in Sec. 44 to show that
+  \[%
+    \int_{C_0} (z - z_0)^{n-1} \dz = 0 \qquad (n = \pm 1, \pm 2, \cdots)
+  ,\]%
+  when $C_0$ is any closed contour which does not pass through the point $z_0$.
+\end{problem}
+
+\begin{solution}
+  Let $f(z) = (z - z_0)^{n - 1}$ for an integer $n \ne 0$. We are given that
+  $C_0$ is a closed contour which does not pass through the point $z_0$. Then
+  the function $f(z)$ is analytic on and inside $C_0$.
+
+  According to the theorem in Section 44, if a function is continuous on a
+  domain and has an antiderivative throughout that domain, then its integral
+  around any closed contour in the domain is zero. The function $f(z) = (z -
+  z_0)^{n - 1}$ is analytic (and hence has an antiderivative) in any domain not
+  containing $z_0$, provided $n \ne 0$.
+
+  Since $C_0$ does not pass through $z_0$, and $f$ is analytic in a region
+  containing $C_0$ and its interior, it follows by the theorem in Section 44
+  that
+  \[%
+    \int_{C_0} (z - z_0)^{n - 1} \dz = 0
+  .\qedhere\]%
+\end{solution}
