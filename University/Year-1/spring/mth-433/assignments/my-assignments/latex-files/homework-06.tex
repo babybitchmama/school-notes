@@ -1,0 +1,110 @@
+\begin{problem}[3.3.1]
+  Show that at the origin $(0, 0, 0)$ of the hyperboloid $z = zxy$ we have $K = -a^2$ and $H = 0$.
+\end{problem}
+
+\begin{solution}
+\end{solution}
+
+\begin{problem}[3.3.3]
+  Determine the asymptotic curves of the catenoid
+  \[%
+    \x(u, v) = (\cosh(v)\cos(u), \cosh(v)\sin(u), v)
+  .\]%
+\end{problem}
+
+\begin{solution}
+\end{solution}
+
+\begin{problem}[3.3.5]
+  Consider the parametrized surface (Enneper's surface)
+  \[%
+    \x(u, v) = \left(u - \frac{u^3}{3} + uv^2, v - \frac{v^3}{3} + vu^2, u^2 - v^2\right)
+  ,\]%
+  and show that
+  \begin{enumerate}
+    \item The coefficients of the first fundamental form are
+      \[%
+        E = G = (1 + u^2 + v^2)^2, \quad F = 0
+      .\]%
+
+    \item The coefficients of the second fundamental form are
+      \[%
+        e = 2, \quad g = -2, \quad f = 0
+      .\]%
+
+    \item The principal curvatures are
+      \[%
+        \kappa_1 = \frac{2}{(1 + u^2 + v^2)^2}, \quad \kappa_2 = -\frac{2}{(1 + u^2 + v^2)^2}
+      .\]%
+
+    \item The lines of the curvature are the coordinate curves.
+
+    \item The asymptotic curves are $u + v = \text{const.}$, $u - v = \text{const.}$
+  \end{enumerate}
+\end{problem}
+
+\begin{solution}
+\end{solution}
+
+\begin{problem}[3.3.7]
+  $(\phi(v)\cos(u), \phi(v)\sin(u), \psi(v))$, $\phi \ne 0$ is given as a surface of revolution with constant Gaussian curvature $K$. To determine the functions $\phi$ and $\psi$, choose the parameter $v$ in such a way that $(\phi')^2 + (\psi')^2 = 1$ (geometrically, this means that $v$ is the arc length of the generating curve $(\phi(v), \psi(v))$). Show that
+  \begin{enumerate}
+    \item $\phi$ satisfies $\phi'' + K\phi = 0$ and $\psi$ is given by $\psi = \int \sqrt{1 - (\phi')^2} \dv$; thus, $0 < u < 2\pi$, and the domain of $v$ is such that the last integral makes sense.
+
+    \item All surfaces of revolution with constant curvature $K = 1$ which intersect perpendicularly the plane $xOy$ are given by
+      \[%
+        \phi(v) = C\cos(v), \quad \psi(v) = \int_0^v \sqrt{1 - C^2\sin^2(v)} \dv
+      ,\]%
+      where $C$ is a constant ($C = \phi(0)$). Determine the domain of $v$ and draw a rough sketch of the profile of the surface in the $xz$-plane for the cases $C = 1$, $C > 1$, $C < 1$. Observe that $C = 1$ gives a sphere.
+
+    \item All surfaces of revolution with constant curvature $K = -1$ may be given by one of the following types:
+      \begin{itemize}
+        \item[1.] $\phi(v) = C\cosh(v)$,
+
+          $\psi(v) = \int_0^v \sqrt{1 - C^2\sinh^2(v)} \dv$.
+
+        \item[2.] $\phi(v) = C\sinh(v)$,
+
+          $\psi(v) = \int_0^v \sqrt{1 - C^2\cosh^2(v)} \dv$.
+
+        \item[3.] $\phi(v) = e^v$,
+
+          $\psi(v) = \int_0^v \sqrt{1 - e^{2v}} \dv$.
+      \end{itemize}
+      Determine the domain of $v$ and draw a rough sketch of the profile of the surface in the $xz$-plane.
+
+    \item The surface of type 3 in part (iii) is the pseudosphere of Exercise 6.
+
+    \item The only surfaces of revolution with $K \equiv 0$ are the right circular cylinder, the right circular cone, and the plane.
+  \end{enumerate}
+\end{problem}
+
+\begin{solution}
+\end{solution}
+
+\begin{problem}[3.3.22]
+  Let $h : S \to \R$ be a differentiable function on a surface $S$, and let $p \in S$ be a critical point of $h$ (i.e., $\dh_p = 0$). Let $w \in T_p(S)$ and let
+  \[%
+    \alpha : (-\epsilon, \epsilon) \to S
+  ,\]%
+  be a parametrized curve with $\alpha(0) = p$, $\alpha'(0) = \w$. Set
+  \[%
+    H_ph(\w) = \odv[order={2}]{(h \circ \alpha)}{t}\bigg\vert_{t = 0}
+  .\]%
+  \begin{enumerate}
+    \item Let $\x : U \to S$ be a parametrization of $S$ at $p$, and show that (the fact that $p$ is a critical point of $h$ is essential here)
+      \[%
+        H_ph(u'\x_u + v'\x_v) = h_{uu}(p)(u')^2 + 2h_{uv}(p)u'v' + h_{vv}(p)(v')^2
+      .\]%
+      Conclude that $H_ph : T_p(S) \to \R$ is a well-defined (i.e., it does not depend on the choice of $\x$) quadratic form on $T_p(S)$. $H_ph$ is called the \emph{Hessian} of $h$ at $p$.
+
+    \item Let $h : S \to \R$ be the height function of $S$ relative to $T_p(S)$; that is, $h(q) = \langle q - p, \Na(p) \rangle$, $q \in S$. Verify that $p$ is a critical point of $h$ and thus that the Hessian $H_ph$ is well defined. Show that if $\w \in T_p(S)$, $\abs{\w} = 1$, then
+      \[%
+        H_ph(\w) = \text{normal curvature at $p$ in the direction of $\w$}
+      .\]%
+      Conclude that the Hessian at $p$ of the height function relative to $T_p(S)$ is the second fundamental form of $S$ at $p$.
+  \end{enumerate}
+\end{problem}
+
+\begin{solution}
+\end{solution}

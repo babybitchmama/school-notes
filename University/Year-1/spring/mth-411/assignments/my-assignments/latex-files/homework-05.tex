@@ -1,4 +1,11 @@
-\begin{problem}[4.42.3]
+\begin{note}
+  I know problem 4.42.1 isn't listed in as one of the problems, but I did it
+  accidentally instead of 4.42.3, so, I'm just going to keep it since I spent so
+  long to complete and typeset it. But, luckily, I caught that I missed 4.42.3
+  like an hour before the deadline, so I was able to do that one too.
+\end{note}
+
+\begin{problem}[4.42.1]
   $f(z) = \sfrac{(z + 2)}{z}$ and $C$ is
   \begin{enumerate}
     \item the semicircle $z = 2e^{i\theta}$ ($0 \le \theta \le \pi$);
@@ -62,12 +69,104 @@
   .\qedhere\end{align*}
 \end{solution}
 
+\begin{problem}[4.42.3]
+  Let $f(z) = \pi\exp(\pi\overline{z})$ and $C$ is the boundary of the square
+  with vertices at the points $0$, $1$, $1 + i$, and $i$, the orientation of $C$
+  being in the counterclockwise direction. Evaluate
+  \[%
+    \int_C f(z) \dz
+  .\]%
+\end{problem}
+
+\begin{solution}
+  The contour $C$ is the boundary of the square with vertices at $0$, $1$, $1 +
+  i$, and $i$, oriented counterclockwise. We split $C$ into four parts, so that
+  \[%
+    C = C_1 + C_2 + C_3 + C_4
+  ,\]%
+  where
+  \begin{alignat*}{3}
+    C_1 &: z = t,&&\quad 0 \leq t \leq 1 \\
+    C_2 &: z = 1 + i t,&&\quad 0 \leq t \leq 1 \\
+    C_3 &: z = 1 - t + i,&&\quad 0 \leq t \leq 1 \\
+    C_4 &: z = i - i t,&&\quad 0 \leq t \leq 1
+  .\end{alignat*}
+
+  Along $C_1$, we have $z = t$, so $\dz = \dt$ and $\zb = t$. Therefore,
+  \[%
+    f(z) = \pi e^{\pi t}
+  .\]%
+  Then
+  \begin{align*}
+    \int_{C_1} f(z) \dz &= \int_0^1 \pi e^{\pi t}  \dt \\
+                         &= \left[ e^{\pi t} \right]_0^1 \\
+                         &= e^{\pi} - 1
+  .\end{align*}
+
+  Along $C_2$, we have $z = 1 + i t$, so $\dz = i \dt$ and $\zb = 1 - i t$.
+  Therefore,
+  \[%
+    f(z) = \pi e^{\pi (1 - i t)} = \pi e^{\pi} e^{-i \pi t}
+  .\]%
+  Then
+  \begin{align*}
+    \int_{C_2} f(z) \dz &= \int_0^1 \pi e^{\pi} e^{-i \pi t} i  \dt \\
+                         &= i \pi e^{\pi} \int_0^1 e^{-i \pi t}  \dt \\
+                         &= i \pi e^{\pi} \left[ \frac{e^{-i \pi t}}{-i \pi} \right]_0^1 \\
+                         &= e^{\pi} \left( 1 - e^{-i \pi} \right) \\
+                         &= e^{\pi} (1 + 1) \\
+                         &= 2 e^{\pi}
+  .\end{align*}
+
+  Along $C_3$, we have $z = 1 - t + i$, so $\dz = -\dt$ and $\zb = 1 - t - i$.
+  Therefore,
+  \[%
+    f(z) = \pi e^{\pi (1 - t - i)} = \pi e^{\pi (1 - t)} e^{-i \pi}
+  .\]%
+  Then
+  \begin{align*}
+    \int_{C_3} f(z) \dz &= \int_0^1 \pi e^{\pi (1 - t)} e^{-i \pi} (-\dt) \\
+                         &= -\pi e^{-i \pi} \int_0^1 e^{\pi (1 - t)}  \dt \\
+                         &= -\pi e^{-i \pi} \left[ \frac{e^{\pi (1 - t)}}{-\pi} \right]_0^1 \\
+                         &= e^{-i \pi} \left( e^{\pi (1 - 0)} - e^{\pi (1 - 1)} \right) \\
+                         &= e^{-i \pi} (e^{\pi} - 1) \\
+                         &= (-1)(e^{\pi} - 1) \\
+                         &= -(e^{\pi} - 1)
+  .\end{align*}
+
+  Along $C_4$, we have $z = i - i t$, so $\dz = -i \dt$ and $\zb = -i + i t$.
+  Therefore,
+  \[%
+    f(z) = \pi e^{\pi (-i + i t)} = \pi e^{-i \pi} e^{i \pi t}
+  .\]%
+  Then
+  \begin{align*}
+    \int_{C_4} f(z) \dz &= \int_0^1 \pi e^{-i \pi} e^{i \pi t} (-i \dt) \\
+                         &= -i \pi e^{-i \pi} \int_0^1 e^{i \pi t}  \dt \\
+                         &= -i \pi e^{-i \pi} \left[ \frac{e^{i \pi t}}{i \pi} \right]_0^1 \\
+                         &= -e^{-i \pi} (e^{i \pi} - 1) \\
+                         &= -(-1)(-1 - 1) \\
+                         &= -(-1)(-2) \\
+                         &= -2
+  .\end{align*}
+
+  Now summing the four parts
+  \begin{align*}
+    \int_C f(z) \dz &= (e^{\pi} - 1) + 2 e^{\pi} + (-(e^{\pi} - 1)) + (-2) \\
+                     &= (e^{\pi} - 1 + 2 e^{\pi} - e^{\pi} + 1 - 2) \\
+                     &= (e^{\pi} - 1 + 2 e^{\pi} - e^{\pi} + 1 - 2) \\
+                     &= (2 e^{\pi}) - 2 \\
+                     &= 2 (e^{\pi} - 1)
+  .\qedhere\end{align*}
+\end{solution}
+
 \begin{problem}[4.42.7]
   $f(z)$ is the principle branch
   \[%
     z^i = \exp(i\Log(z)) \qquad (\lvert z \rvert > 0, \quad -\pi < \Arg(z) < \pi)
   ,\]%
-  of this power function, and $C$ is the semicircle $z = e^{i\theta}$ ($0 \le \theta \le \pi$).
+  of this power function, and $C$ is the semicircle $z = e^{i\theta}$ ($0 \le
+  \theta \le \pi$).
 \end{problem}
 
 \begin{solution}
