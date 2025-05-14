@@ -1,8 +1,30 @@
 \begin{problem}[3.3.1]
-  Show that at the origin $(0, 0, 0)$ of the hyperboloid $z = zxy$ we have $K = -a^2$ and $H = 0$.
+  Show that at the origin $(0, 0, 0)$ of the hyperboloid $z = axy$ we have $K = -a^2$ and $H = 0$.
 \end{problem}
 
 \begin{solution}
+  Let $h(x, y) = z = axy$. We compute the necessary partial derivatives to evaluate the Gaussian curvature $K$ and the mean curvature $H$ at the origin. Computing the first-order partial derivatives, we have
+  \[%
+    h_x = ay \aand h_y = ax
+  .\]%
+  Evaluated at the origin $(0, 0)$, we have
+  \[%
+    h_x(0, 0) = 0 \aand h_y(0, 0) = 0
+  .\]%
+  Next, we compute the second-order partial derivatives
+  \[%
+    h_{xx} = 0, \quad h_{yy} = 0, \aand h_{xy} = a
+  .\]%
+  Now, we can compute the Gaussian curvature $K$ at the origin, to get
+  \[%
+    K = \frac{h_{xx} h_{yy} - h_{xy}^2}{(1 + h_x^2 + h_y^2)^2} = \frac{0 \cdot 0 - a^2}{(1 + 0 + 0)^2} = \frac{-a^2}{1} = -a^2
+  .\]%
+  Lastly, we compute the mean curvature $H$ at the origin, to get
+  \begin{align*}
+    H &= \frac{\left(1 + h_y^2\right) h_{xx} - 2 h_x h_y h_{xy} + \left(1 + h_x^2\right) h_{yy}}{2\left(1 + h_x^2 + h_y^2\right)^{\sfrac{3}{2}}} \\
+      &= \frac{(1 + 0) \cdot 0 - 2 \cdot 0 \cdot 0 \cdot a + (1 + 0) \cdot 0}{2 \cdot (1 + 0 + 0)^{\sfrac{3}{2}}} \\
+      &= \frac{0}{2} = 0
+  .\qedhere\end{align*}
 \end{solution}
 
 \begin{problem}[3.3.3]
@@ -43,7 +65,19 @@
   \end{enumerate}
 \end{problem}
 
-\begin{solution}
+\begin{solution}[(i)]
+\end{solution}
+
+\begin{solution}[(ii)]
+\end{solution}
+
+\begin{solution}[(iii)]
+\end{solution}
+
+\begin{solution}[(iv)]
+\end{solution}
+
+\begin{solution}[(v)]
 \end{solution}
 
 \begin{problem}[3.3.7]
@@ -79,11 +113,23 @@
   \end{enumerate}
 \end{problem}
 
-\begin{solution}
+\begin{solution}[(i)]
+\end{solution}
+
+\begin{solution}[(ii)]
+\end{solution}
+
+\begin{solution}[(iii)]
+\end{solution}
+
+\begin{solution}[(iv)]
+\end{solution}
+
+\begin{solution}[(v)]
 \end{solution}
 
 \begin{problem}[3.3.22]
-  Let $h : S \to \R$ be a differentiable function on a surface $S$, and let $p \in S$ be a critical point of $h$ (i.e., $\dh_p = 0$). Let $w \in T_p(S)$ and let
+  Let $h : S \to \R$ be a differentiable function on a surface $S$, and let $p \in S$ be a critical point of $h$ (i.e., $\dd{h}_p = 0$). Let $w \in T_p(S)$ and let
   \[%
     \alpha : (-\epsilon, \epsilon) \to S
   ,\]%
@@ -106,5 +152,8 @@
   \end{enumerate}
 \end{problem}
 
-\begin{solution}
+\begin{solution}[(i)]
+\end{solution}
+
+\begin{solution}[(ii)]
 \end{solution}
