@@ -1,132 +1,396 @@
-\begin{problem}[3.3.1]
-  Show that at the origin $(0, 0, 0)$ of the hyperboloid $z = axy$ we have $K = -a^2$ and $H = 0$.
-\end{problem}
+% \begin{problem}[3.3.1]
+%   Show that at the origin $(0, 0, 0)$ of the hyperboloid $z = axy$ we have $K = -a^2$ and $H = 0$.
+% \end{problem}
 
-\begin{solution}
-  Let $h(x, y) = z = axy$. We compute the necessary partial derivatives to evaluate the Gaussian curvature $K$ and the mean curvature $H$ at the origin. Computing the first-order partial derivatives, we have
-  \[%
-    h_x = ay \aand h_y = ax
-  .\]%
-  Evaluated at the origin $(0, 0)$, we have
-  \[%
-    h_x(0, 0) = 0 \aand h_y(0, 0) = 0
-  .\]%
-  Next, we compute the second-order partial derivatives
-  \[%
-    h_{xx} = 0, \quad h_{yy} = 0, \aand h_{xy} = a
-  .\]%
-  Now, we can compute the Gaussian curvature $K$ at the origin, to get
-  \[%
-    K = \frac{h_{xx} h_{yy} - h_{xy}^2}{(1 + h_x^2 + h_y^2)^2} = \frac{0 \cdot 0 - a^2}{(1 + 0 + 0)^2} = \frac{-a^2}{1} = -a^2
-  .\]%
-  Lastly, we compute the mean curvature $H$ at the origin, to get
-  \begin{align*}
-    H &= \frac{\left(1 + h_y^2\right) h_{xx} - 2 h_x h_y h_{xy} + \left(1 + h_x^2\right) h_{yy}}{2\left(1 + h_x^2 + h_y^2\right)^{\sfrac{3}{2}}} \\
-      &= \frac{(1 + 0) \cdot 0 - 2 \cdot 0 \cdot 0 \cdot a + (1 + 0) \cdot 0}{2 \cdot (1 + 0 + 0)^{\sfrac{3}{2}}} \\
-      &= \frac{0}{2} = 0
-  .\qedhere\end{align*}
-\end{solution}
+% \begin{solution}
+%   Let $h(x, y) = z = axy$. We compute the necessary partial derivatives to evaluate the Gaussian curvature $K$ and the mean curvature $H$ at the origin. Computing the first-order partial derivatives, we have
+%   \[%
+%     h_x = ay \aand h_y = ax
+%   .\]%
+%   Evaluated at the origin $(0, 0)$, we have
+%   \[%
+%     h_x(0, 0) = 0 \aand h_y(0, 0) = 0
+%   .\]%
+%   Next, we compute the second-order partial derivatives
+%   \[%
+%     h_{xx} = 0, \quad h_{yy} = 0, \aand h_{xy} = a
+%   .\]%
+%   Now, we can compute the Gaussian curvature $K$ at the origin, to get
+%   \[%
+%     K = \frac{h_{xx} h_{yy} - h_{xy}^2}{(1 + h_x^2 + h_y^2)^2} = \frac{0 \cdot 0 - a^2}{(1 + 0 + 0)^2} = \frac{-a^2}{1} = -a^2
+%   .\]%
+%   Lastly, we compute the mean curvature $H$ at the origin, to get
+%   \begin{align*}
+%     H &= \frac{\left(1 + h_y^2\right) h_{xx} - 2 h_x h_y h_{xy} + \left(1 + h_x^2\right) h_{yy}}{2\left(1 + h_x^2 + h_y^2\right)^{\sfrac{3}{2}}} \\
+%       &= \frac{(1 + 0) \cdot 0 - 2 \cdot 0 \cdot 0 \cdot a + (1 + 0) \cdot 0}{2 \cdot (1 + 0 + 0)^{\sfrac{3}{2}}} \\
+%       &= \frac{0}{2} = 0
+%   .\qedhere\end{align*}
+% \end{solution}
 
-\begin{problem}[3.3.3]
-  Determine the asymptotic curves of the catenoid
-  \[%
-    \x(u, v) = (\cosh(v)\cos(u), \cosh(v)\sin(u), v)
-  .\]%
-\end{problem}
+% \begin{problem}[3.3.3]
+%   Determine the asymptotic curves of the catenoid
+%   \[%
+%     \x(u, v) = (\cosh(v)\cos(u), \cosh(v)\sin(u), v)
+%   .\]%
+% \end{problem}
 
-\begin{solution}
-\end{solution}
+% \begin{solution}
+%   To find the asymptotic curves, we must identify the directions in which the second fundamental form vanishes. We begin by computing the first and second derivatives of $\x(u,v)$
+%   \begin{align*}
+%     \x_u &= (-\cosh(v)\sin(u), \cosh(v)\cos(u), 0) \\
+%     \x_v &= (\sinh(v)\cos(u), \sinh(v)\sin(u), 1) \\
+%     \x_{uu} &= (-\cosh(v)\cos(u), -\cosh(v)\sin(u), 0) \\
+%     \x_{uv} &= (-\sinh(v)\sin(u), \sinh(v)\cos(u), 0) \\
+%     \x_{vv} &= (\cosh(v)\cos(u), \cosh(v)\sin(u), 0)
+%   .\end{align*}
+%   Next, we compute the unit normal vector
+%   \begin{align*}
+%     \x_u \times \x_v &=
+%     \begin{vmatrix}
+%       \mathbf{i} & \mathbf{j} & \mathbf{k} \\
+%       -\cosh(v)\sin(u) & \cosh(v)\cos(u) & 0 \\
+%       \sinh(v)\cos(u) & \sinh(v)\sin(u) & 1
+%     \end{vmatrix} \\
+%                      &= \left(\cosh(v)\cos(u), \cosh(v)\sin(u), -\cosh(v)\sinh(v)\right) \\
+%     \aand \lVert \x_u \times \x_v \rVert &= \sqrt{\cosh^2(v) + \cosh^2(v)\sinh^2(v)} = \cosh(v)\sqrt{1 + \sinh^2(v)} = \cosh^2(v)
+%   .\end{align*}
+%   Therefore, the unit normal vector is
+%   \[%
+%     \Na = \left(\frac{\cos(u)}{\cosh(v)}, \frac{\sin(u)}{\cosh(v)}, -\tanh(v)\right)
+%   .\]%
+%   Now compute the coefficients of the second fundamental form
+%   \begin{align*}
+%     e &= \langle \x_{uu}, \Na \rangle = (-\cosh(v)\cos(u), -\cosh(v)\sin(u), 0) \cdot \left(\frac{\cos(u)}{\cosh(v)}, \frac{\sin(u)}{\cosh(v)}, -\tanh(v)\right) \\
+%       &= -\cos(u)^2 - \sin(u)^2 = -1 \\
+%     f &= \langle \x_{uv}, \Na \rangle = (-\sinh(v)\sin(u), \sinh(v)\cos(u), 0) \cdot \left(\frac{\cos(u)}{\cosh(v)}, \frac{\sin(u)}{\cosh(v)}, -\tanh(v)\right) \\
+%       &= \frac{-\sinh(v)\sin(u)\cos(u) + \sinh(v)\cos(u)\sin(u)}{\cosh(v)} = 0 \\
+%     g &= \langle \x_{vv}, \Na \rangle = (\cosh(v)\cos(u), \cosh(v)\sin(u), 0) \cdot \left(\frac{\cos(u)}{\cosh(v)}, \frac{\sin(u)}{\cosh(v)}, -\tanh(v)\right) \\
+%       &= \cos(u)^2 + \sin(u)^2 = 1
+%   .\end{align*}
+%   Therefore, the second fundamental form is $\sff = -\du^2 + \dv^2$. Setting $\sff = 0$, we find $-\du^2 + \dv^2 = 0 \implies \du = \pm \dv$. Integrating, the asymptotic curves are
+%   \[%
+%     u + v = \text{const.}, \quad u - v = \text{const}
+%   .\qedhere\]%
+% \end{solution}
 
-\begin{problem}[3.3.5]
-  Consider the parametrized surface (Enneper's surface)
-  \[%
-    \x(u, v) = \left(u - \frac{u^3}{3} + uv^2, v - \frac{v^3}{3} + vu^2, u^2 - v^2\right)
-  ,\]%
-  and show that
-  \begin{enumerate}
-    \item The coefficients of the first fundamental form are
-      \[%
-        E = G = (1 + u^2 + v^2)^2, \quad F = 0
-      .\]%
+% \begin{problem}[3.3.5]
+%   Consider the parametrized surface (Enneper's surface)
+%   \[%
+%     \x(u, v) = \left(u - \frac{u^3}{3} + uv^2, v - \frac{v^3}{3} + vu^2, u^2 - v^2\right)
+%   ,\]%
+%   and show that
+%   \begin{enumerate}
+%     \item The coefficients of the first fundamental form are
+%       \[%
+%         E = G = (1 + u^2 + v^2)^2, \quad F = 0
+%       .\]%
 
-    \item The coefficients of the second fundamental form are
-      \[%
-        e = 2, \quad g = -2, \quad f = 0
-      .\]%
+%     \item The coefficients of the second fundamental form are
+%       \[%
+%         e = 2, \quad g = -2, \quad f = 0
+%       .\]%
 
-    \item The principal curvatures are
-      \[%
-        \kappa_1 = \frac{2}{(1 + u^2 + v^2)^2}, \quad \kappa_2 = -\frac{2}{(1 + u^2 + v^2)^2}
-      .\]%
+%     \item The principal curvatures are
+%       \[%
+%         \kappa_1 = \frac{2}{(1 + u^2 + v^2)^2}, \quad \kappa_2 = -\frac{2}{(1 + u^2 + v^2)^2}
+%       .\]%
 
-    \item The lines of the curvature are the coordinate curves.
+%     \item The lines of the curvature are the coordinate curves.
 
-    \item The asymptotic curves are $u + v = \text{const.}$, $u - v = \text{const.}$
-  \end{enumerate}
-\end{problem}
+%     \item The asymptotic curves are $u + v = \text{const.}$, $u - v = \text{const.}$
+%   \end{enumerate}
+% \end{problem}
 
-\begin{solution}[(i)]
-\end{solution}
+% \begin{solution}[(i)]
+%   We begin by computing the tangent vectors:
+%   \[%
+%     \x_u = \left(1 - u^2 + v^2, 2uv, 2u\right) \aand \x_v = \left(2uv, 1 - v^2 + u^2, -2v\right)
+%   .\]%
+%   Then, the coefficients of the first fundamental form are given by:
+%   \begin{align*}
+%     E &= \langle\x_u, \x_u \rangle = (1 - u^2 + v^2)^2 + 4u^2v^2 + 4u^2 \\
+%     F &= \langle \x_u, \x_v \rangle = (1 - u^2 + v^2)(2uv) + (2uv)(1 - v^2 + u^2) - 4uv = 0 \\
+%     G &= \langle \x_v, x_v \rangle = (2uv)^2 + (1 - v^2 + u^2)^2 + 4v^2
+%   .\end{align*}
+%   Expanding both E and G, we find:
+%   \begin{align*}
+%     E &= (1 - u^2 + v^2)^2 + 4u^2v^2 + 4u^2 \\
+%       &= 1 - 2u^2 + 2v^2 + u^4 - 2u^2v^2 + v^4 + 4u^2v^2 + 4u^2 \\
+%       &= 1 + u^4 + 2u^2 + v^4 + 2v^2 + 2u^2v^2 \\
+%       &= (1 + u^2 + v^2)^2
+%   .\end{align*}
+%   Similarly,
+%   \begin{align*}
+%     G &= (1 - v^2 + u^2)^2 + 4u^2v^2 + 4v^2 \\
+%       &= 1 - 2v^2 + 2u^2 + u^4 - 2u^2v^2 + v^4 + 4u^2v^2 + 4v^2 \\
+%       &= 1 + u^4 + 2u^2 + v^4 + 2v^2 + 2u^2v^2 \\
+%       &= (1 + u^2 + v^2)^2
+%   .\end{align*}
+%   Hence, we conclude:
+%   \[%
+%     E = (1 + u^2 + v^2)^2 = G \aand F = 0
+%   .\qedhere\]%
+% \end{solution}
 
-\begin{solution}[(ii)]
-\end{solution}
+% \begin{solution}[(ii)]
+%   To compute the coefficients of the second fundamental form, we first compute the unit normal vector. The cross product is given by
+%   \[%
+%     \x_u \times \x_v = \left(-4u, -4v, (1 + u^2 + v^2)^2\right)
+%     \aand
+%     \lVert \x_u \times \x_v \rVert = \sqrt{16u^2 + 16v^2 + (1 + u^2 + v^2)^4}
+%   .\]%
+%   Next, we compute the second derivatives
+%   \begin{align*}
+%     \x_{uu} &= \left(-2u, 2v, 2\right), \\
+%     \x_{uv} &= \left(2v, 2u, 0\right), \\
+%     \x_{vv} &= \left(2u, -2v, -2\right).
+%   \end{align*}
+%   Then, dotting with $\x_u \times \x_v$, we obtain
+%   \begin{alignat*}{3}
+%     e &= \frac{\langle \x_{uu}, \x_u \times \x_v \rangle}{\lVert \x_u \times \x_v \rVert} = \frac{8u^2 + 8v^2 + 2(1 + u^2 + v^2)^2}{\lVert \x_u \times \x_v \rVert} &&= 2 \\
+%     f &= \frac{\langle \x_{uv}, \x_u \times \x_v \rangle}{\lVert \x_u \times \x_v \rVert} = \frac{-8uv + 0}{\lVert \x_u \times \x_v \rVert} &&= 0 \\
+%     g &= \frac{\langle \x_{vv}, \x_u \times \x_v \rangle}{\lVert \x_u \times \x_v \rVert} = \frac{-8u^2 - 8v^2 - 2(1 + u^2 + v^2)^2}{\lVert \x_u \times \x_v \rVert} &&= -2
+%   .\end{alignat*}
+%   So the coefficients are
+%   \[%
+%     e = 2, \quad f = 0, \aand g = -2
+%   .\qedhere\]%
+% \end{solution}
 
-\begin{solution}[(iii)]
-\end{solution}
+% \begin{solution}[(iii)]
+%   Recall that the principal curvatures $\kappa_1, \kappa_2$ are the eigenvalues of the shape operator and are given by
+%   \[%
+%     \kappa_{1,2} = \frac{eG - 2fF + gE \pm \sqrt{(eG - gE)^2 + 4(fE - eF)^2}}{2(EG - F^2)}
+%   .\]%
+%   Since $F = f = 0$, the formula simplifies
+%   \[%
+%     \kappa_{1,2} = \frac{eG + gE \pm \sqrt{(eG - gE)^2}}{2EG}
+%   .\]%
+%   Using $E = G = (1 + u^2 + v^2)^2$, and $e = 2$, $g = -2$, we compute
+%   \begin{alignat*}{3}
+%     \kappa_1 &= \frac{2E + (-2)E + \sqrt{(2E - (-2)E)^2}}{2E^2} = \frac{0 + \sqrt{(4E)^2}}{2E^2} = \frac{4E}{2E^2} &&= \phantom{-}\frac{2}{E} \\
+%     \kappa_2 &= \frac{0 - \sqrt{(4E)^2}}{2E^2} &&= -\frac{2}{E}
+%   \end{alignat*}
+%   Hence,
+%   \[%
+%     \kappa_1 = \frac{2}{(1 + u^2 + v^2)^2} \aand \kappa_2 = -\frac{2}{(1 + u^2 + v^2)^2}
+%   .\qedhere\]%
+% \end{solution}
 
-\begin{solution}[(iv)]
-\end{solution}
+% \begin{solution}[(iv)]
+%   The lines of curvature are the integral curves of the principal directions. Since $F = f = 0$, the shape operator diagonalizes in the coordinate directions, and the coordinate curves are orthogonal and aligned with the principal directions. Therefore, the coordinate curves $u = \text{const.}$, $v = \text{const.}$ are the lines of curvature.
+% \end{solution}
 
-\begin{solution}[(v)]
-\end{solution}
+% \begin{solution}[(v)]
+%   Asymptotic curves are the curves along which the normal curvature vanishes. On a surface where the principal curvatures $\kappa_1$, $\kappa_2$ have opposite signs, the asymptotic directions correspond to directions in which the second fundamental form vanishes. In our case, the second fundamental form is
+%   \[%
+%     \sff = e\du^2 + 2f\duv + g\dv^2 = 2\du^2 - 2\dv^2
+%   .\]%
+%   Set $\sff = 0$, we find
+%   \[%
+%     2\du^2 - 2\dv^2 = 0 \implies \du^2 = \dv^2 \implies \du = \pm \dv
+%   .\]%
+%   Integrating, we obtain
+%   \[%
+%     u + v = \text{const.} \aand u - v = \text{const}
+%   .\]%
+%   Hence, the asymptotic curves are the families $u + v = c$, $u - v = c$.
+% \end{solution}
 
-\begin{problem}[3.3.7]
-  $(\phi(v)\cos(u), \phi(v)\sin(u), \psi(v))$, $\phi \ne 0$ is given as a surface of revolution with constant Gaussian curvature $K$. To determine the functions $\phi$ and $\psi$, choose the parameter $v$ in such a way that $(\phi')^2 + (\psi')^2 = 1$ (geometrically, this means that $v$ is the arc length of the generating curve $(\phi(v), \psi(v))$). Show that
-  \begin{enumerate}
-    \item $\phi$ satisfies $\phi'' + K\phi = 0$ and $\psi$ is given by $\psi = \int \sqrt{1 - (\phi')^2} \dv$; thus, $0 < u < 2\pi$, and the domain of $v$ is such that the last integral makes sense.
+% \begin{problem}[3.3.7]
+%   $(\phi(v)\cos(u), \phi(v)\sin(u), \psi(v))$, $\phi \ne 0$ is given as a surface of revolution with constant Gaussian curvature $K$. To determine the functions $\phi$ and $\psi$, choose the parameter $v$ in such a way that $(\phi')^2 + (\psi')^2 = 1$ (geometrically, this means that $v$ is the arc length of the generating curve $(\phi(v), \psi(v))$). Show that
+%   \begin{enumerate}
+%     \item $\phi$ satisfies $\phi'' + K\phi = 0$ and $\psi$ is given by $\psi = \int \sqrt{1 - (\phi')^2} \dv$; thus, $0 < u < 2\pi$, and the domain of $v$ is such that the last integral makes sense.
 
-    \item All surfaces of revolution with constant curvature $K = 1$ which intersect perpendicularly the plane $xOy$ are given by
-      \[%
-        \phi(v) = C\cos(v), \quad \psi(v) = \int_0^v \sqrt{1 - C^2\sin^2(v)} \dv
-      ,\]%
-      where $C$ is a constant ($C = \phi(0)$). Determine the domain of $v$ and draw a rough sketch of the profile of the surface in the $xz$-plane for the cases $C = 1$, $C > 1$, $C < 1$. Observe that $C = 1$ gives a sphere.
+%     \item All surfaces of revolution with constant curvature $K = 1$ which intersect perpendicularly the plane $xOy$ are given by
+%       \[%
+%         \phi(v) = C\cos(v), \quad \psi(v) = \int_0^v \sqrt{1 - C^2\sin^2(v)} \dv
+%       ,\]%
+%       where $C$ is a constant ($C = \phi(0)$). Determine the domain of $v$ and draw a rough sketch of the profile of the surface in the $xz$-plane for the cases $C = 1$, $C > 1$, $C < 1$. Observe that $C = 1$ gives a sphere.
 
-    \item All surfaces of revolution with constant curvature $K = -1$ may be given by one of the following types:
-      \begin{itemize}
-        \item[1.] $\phi(v) = C\cosh(v)$,
+%     \item All surfaces of revolution with constant curvature $K = -1$ may be given by one of the following types:
+%       \begin{itemize}
+%         \item[1.] $\phi(v) = C\cosh(v)$,
 
-          $\psi(v) = \int_0^v \sqrt{1 - C^2\sinh^2(v)} \dv$.
+%           $\psi(v) = \int_0^v \sqrt{1 - C^2\sinh^2(v)} \dv$.
 
-        \item[2.] $\phi(v) = C\sinh(v)$,
+%         \item[2.] $\phi(v) = C\sinh(v)$,
 
-          $\psi(v) = \int_0^v \sqrt{1 - C^2\cosh^2(v)} \dv$.
+%           $\psi(v) = \int_0^v \sqrt{1 - C^2\cosh^2(v)} \dv$.
 
-        \item[3.] $\phi(v) = e^v$,
+%         \item[3.] $\phi(v) = e^v$,
 
-          $\psi(v) = \int_0^v \sqrt{1 - e^{2v}} \dv$.
-      \end{itemize}
-      Determine the domain of $v$ and draw a rough sketch of the profile of the surface in the $xz$-plane.
+%           $\psi(v) = \int_0^v \sqrt{1 - e^{2v}} \dv$.
+%       \end{itemize}
+%       Determine the domain of $v$ and draw a rough sketch of the profile of the surface in the $xz$-plane.
 
-    \item The surface of type 3 in part (iii) is the pseudosphere of Exercise 6.
+%     \item The surface of type 3 in part (iii) is the pseudosphere of Exercise 6.
 
-    \item The only surfaces of revolution with $K \equiv 0$ are the right circular cylinder, the right circular cone, and the plane.
-  \end{enumerate}
-\end{problem}
+%     \item The only surfaces of revolution with $K \equiv 0$ are the right circular cylinder, the right circular cone, and the plane.
+%   \end{enumerate}
+% \end{problem}
 
-\begin{solution}[(i)]
-\end{solution}
+% \begin{solution}[(i)]
+%   Computing the partial derivatives of $\x(u, v) = (\phi(v)\cos(u), \phi(v)\sin(u), \psi(v))$, we have
+%   \begin{gather*}
+%     \x_u = (-\phi(v)\sin(u), \phi(v)\cos(u), 0),\quad \x_v = (\phi'(v)\cos(u), \phi'(v)\sin(u), \psi'(v)) \\
+%     \x_{uu} = (-\phi(v)\cos(u), -\phi(v)\sin(u), 0),\quad \x_{uu} = (\phi''(v)\cos(u), \phi''(v)\sin(u), \psi''(v)) \\
+%     \x_{uv} = (-\phi'(v)\sin(u), \phi'(v)\cos(u), 0)
+%   \end{gather*}
+%   Computing the normal vector $\Na$ to the surface, we have
+%   \[%
+%     \tilde{\Na} = \x_u \wedge \x_v = \begin{vmatrix}
+%       \ui & \uj & \uk \\
+%       -\phi(v)\sin(u) & \phi(v)\cos(u) & 0 \\
+%       \phi'(v)\cos(u) & \phi'(v)\sin(u) & \psi'(v) \\
+%     \end{vmatrix}
+%     = (\phi(v)\psi'(v)\cos(u), \phi(v)\psi'(v)\sin(u), -\phi(v)\phi'(v))
+%   .\]%
+%   Normalizing it, we have
+%   \begin{align*}
+%     \Na = \frac{\tilde{\Na}}{\lVert \tilde{\Na} \rVert} &= \frac{(\phi(v)\psi'(v)\cos(u), \phi(v)\psi'(v)\sin(u), -\phi(v)\phi'(v))}{\phi(v) \sqrt{(\psi'(v))^2 + (\phi'(v))^2}} \\
+%                                                         &= (\psi'(v)\cos(u), \psi'(v)\sin(u), -\phi'(v))
+%   .\end{align*}
+%   Computing the coefficients for the first and second fundamental form, we have
+%   \begin{align*}
+%     E &= \langle \x_u, \x_u \rangle = \phi^2(v) \\
+%     F &= \langle \x_u, \x_v \rangle = 0 \\
+%     G &= \langle \x_v, \x_v \rangle = (\phi'(v))^2 + (\psi'(v))^2 = 1 \\
+%     e &= \langle \x_{uu}, \Na \rangle = -\phi(v)\psi'(v) \\
+%     f &= \langle \x_{uv}, \Na \rangle = 0 \\
+%     g &= \langle \x_{vv}, \Na \rangle = \phi''(v)\psi'(v) - \phi'(v)\psi''(v)
+%   .\end{align*}
+%   Plugging in the values of the coefficients into the formulas for the Gaussian curvature, we have
+%   \begin{align*}
+%     K = \frac{eg - f^2}{EG - F^2} &= \frac{(-\phi\psi')(\phi''\psi' - \phi'\psi'')}{\phi^2} \\
+%                                   &= \frac{(-\phi\psi')\left(\phi''\psi' + \phi' \cdot \left(\frac{\phi'\phi''}{\psi'}\right)\right)}{\phi^2} \\
+%                                   &= \frac{-\phi\phi''\psi'\left(\psi' + \frac{(\phi')^2}{\psi'}\right)}{\phi^2} \\
+%                                   &= \frac{\phi''}{\phi} \cdot \left((\phi')^2 + (\psi')^2\right) \\
+%     \implies\quad 0 &= \phi'' + K\phi
+%   .\end{align*}
 
-\begin{solution}[(ii)]
-\end{solution}
+%   Solving for $\psi$, we have
+%   \[%
+%     (\phi')^2 + (\psi')^2 =1 \implies \psi' = \sqrt{1 - (\phi')^2} \implies \psi = \int \sqrt{1 - (\phi')^2} \dv
+%   .\]%
 
-\begin{solution}[(iii)]
-\end{solution}
+%   The domain of $v$ is any open interval $I \subset \R$ on which $\phi$ is differentiable and the integrand is real, which happens when $(\phi')^2 \le 1$.
+% \end{solution}
 
-\begin{solution}[(iv)]
-\end{solution}
+% \begin{solution}[(ii)]
+%   Taking the first and second derivatives of $\phi(v) = C\cos(v)$, we have
+%   \[%
+%     \phi'(v) = -C\sin(v) \aand \phi''(v) = -C\cos(v)
+%   .\]%
+%   Plugging these into the equation $\phi'' + K\phi = 0$, we have
+%   \[%
+%     -C\cos(v) + K C\cos(v) = 0 \implies K = 1
+%   .\]%
+%   Plugging $\phi = C\cos(v)$ into the equation for $\psi$, we have
+%   \[%
+%     \psi(v) = \int_0^v \sqrt{1 - C^2\sin^2(v)} \dv
+%   .\]%
 
-\begin{solution}[(v)]
-\end{solution}
+%   For the integrand to be real, we require
+%   \[%
+%     C^2\sin^2(v) \le 1 \iff \abs{\sin(v)} \le \frac{1}{C}
+%   .\]%
+%   So the domain depends on the value of $C$, giving us three cases: $C < 1$, $C = 1$, and $C > 1$.
+
+%   If $C < 1$, then $\sfrac{1}{C} > 1$, and since $\abs{\sin(v)} \le 1$ for all $v \in \R$, making the domain $\R$.
+
+%   If $C = 1$, then $\abs{\sin(v)} \le 1$ still holds for all $v$, so again the domain is $\R$. Notice that this case gives us a sphere of radius $1$ because
+%   \[%
+%     \phi(v) = \cos(v) \aand \psi(v) = \int_0^v \sqrt{1 - \sin^2(v)} \dv = \int_0^v \cos(v) \dv = \sin(v)
+%   .\]%
+
+%   If $C > 1$, then $\sfrac{1}{C} < 1$, so $\abs{\sin(v)} \le \sfrac{1}{C}$ only holds for $v$ in the interval
+%   \[%
+%     v \in \left(-\arcsin\left(\frac{1}{C}\right), \arcsin\left(\frac{1}{C}\right)\right)
+%   .\qedhere\]%
+% \end{solution}
+
+% \begin{solution}[(iii)]
+%   For all three cases, we have
+%   \begin{alignat*}{3}
+%     \phi_1(v) &= C\cosh(v), \quad &&\phi_1'(v) = C\sinh(v), \quad &&\phi_1''(v) = C\cosh(v) \\
+%     \phi_2(v) &= C\sinh(v), \quad &&\phi_2'(v) = C\cosh(v), \quad &&\phi_2''(v) = C\sinh(v) \\
+%     \phi_3(v) &= e^v, \quad &&\phi_3'(v) = e^v, \quad &&\phi_3''(v) = e^v
+%   .\end{alignat*}
+%   Clearly, $\phi_1$, $\phi_2$, and $\phi_3$ are all solutions to the differential equation $\phi'' + K\phi = 0$ when $K = -1$. Plugging these into the equation for $\psi$, we have
+%   \begin{align*}
+%     \psi_1(v) &= \int_0^v \sqrt{1 - C^2\sinh^2(v)} \dv \\
+%     \psi_2(v) &= \int_0^v \sqrt{1 - C^2\cosh^2(v)} \dv \\
+%     \psi_3(v) &= \int_0^v \sqrt{1 - e^{2v}} \dv
+%   .\end{align*}
+
+%   Now, we deal with the domains of $v$ for each case. For the first case, just like before, we have
+%   \[%
+%     1 - C^2\sinh^2(v) \ge 0 \iff C^2\sinh^2(v) \le 1 \iff \abs{\sinh(v)} \le \frac{1}{C}
+%   .\]%
+%   Since $\abs{\sinh(v)}$ is increasing on $[0, \infty)$ and decreasing on $(-\infty, 0]$, the inequality holds when
+%   \[%
+%     v \in \left(-\sinh^{-1}\left(\frac{1}{C}\right), \sinh^{-1}\left(\frac{1}{C}\right)\right)
+%   .\]%
+
+%   For the second case, we have
+%   \[%
+%     1 - C^2\cosh^2(v) \ge 0 \iff C^2\cosh^2(v) \le 1
+%   .\]%
+%   But $\cosh(v) \ge 1$ for all $v$, so $C^2 \le 1$ is required. If $C^2 < 1$, then
+%   \[%
+%     v \in \left(-\cosh^{-1}\left(\frac{1}{C}\right), \cosh^{-1}\left(\frac{1}{C}\right)\right)
+%   .\]%
+%   If $C^2 = 1$, then $\cosh^2(v) \le 1$ only when $v = 0$, so the domain is $\{0\}$. If $C^2 > 1$, then the integrand is imaginary for all $v$, so there is no valid domain.
+
+%   For the third case, we have
+%   \[%
+%     1 - e^{2v} \ge 0 \iff e^{2v} \le 1 \iff v \le 0
+%   .\]%
+%   So the domain is $(-\infty, 0]$.
+% \end{solution}
+
+% \begin{solution}[(iv)]
+%   From Exercise 6, the pseudosphere is the surface of revolution generated by rotating the tractrix about the $z$-axis. A classical parametrization of the tractrix is
+%   \[%
+%     \phi(v) = \sech(v) \aand \psi(v) = v - \tanh(v)
+%   ,\]%
+%   where $\phi$ is the radial function and $\psi$ is the height function. However, we now compare this to the type (3) surface from part (iii), where
+%   \[%
+%     \phi(v) = e^v \aand \psi(v) = \int_0^v \sqrt{1 - e^{2v}} \dv
+%   .\]%
+%   For this integral to be real-valued, we must restrict to the domain where $1 - e^{2v} > 0$, i.e., $v < \log(1) = 0$, so $v \in (-\infty, 0)$. Observe that this parametrization arises from solving the differential equation $\phi''(v) + K\phi(v) = 0$, with $K = -1$, satisfied by $\phi(v) = e^v$. The associated profile curve generates a surface of revolution with constant Gaussian curvature $K = -1$, and the form of $\phi$ and $\psi$ matches the construction of the pseudosphere. In Exercise 6, we also saw that the pseudosphere is a surface of revolution with constant negative Gaussian curvature $K = -1$, and that it can be parametrized as
+%   \[%
+%     \x(u,v) = (\phi(v)\cos(u), \phi(v)\sin(u), \psi(v))
+%   ,\]%
+%   where $\phi$ satisfies $\phi'' + K\phi = 0$. Therefore, the surface of type (3) in part (iii) is indeed a particular parametrization of the pseudosphere.
+% \end{solution}
+
+% \begin{solution}[(v)]
+%   As found in part (i), the Gaussian curvature $K$ is given by the equation
+%   \[%
+%     K = -\frac{\phi''(v)}{\phi(v)}
+%   .\]%
+%   If $K \equiv 0$, then this gives
+%   \[%
+%     -\frac{\phi''(v)}{\phi(v)} = 0 \iff \phi''(v) = 0
+%   .\]%
+%   Solving this second-order linear ODE, we find $\phi(v) = Av + B$, for some constants $A$ and $B$.
+
+%   The form of $\psi(v)$ is then determined by the condition that the parametrization is regular. We recall that the arc length condition for a surface of revolution requires
+%   \[%
+%     \psi'(v) = \sqrt{1 - (\phi'(v))^2} = \sqrt{1 - A^2}
+%   .\]%
+%   So $\psi(v) = \sqrt{1 - A^2} v + C$, where $C \in \R$. This makes sense only when $\abs{A} \le 1$; otherwise the metric would be degenerate or complex. This gives us three cases: $A = 0$, $A \ne 0$, and $A = 0$ and $B = 0$.
+
+%   If $A = 0$, then $\phi(v) = B$, a constant. The profile curve is a horizontal line, and the surface of revolution is a right circular cylinder.
+
+%   If $A \ne 0$, then $\phi(v) = Av + B$ is linear. The profile curve is a straight line not parallel to the axis of revolution. Rotating it generates a right circular cone, as long as $B \ne 0$.
+
+%   If $A = 0$ and $B = 0$, then $\phi(v) \equiv 0$, which is not allowed since it degenerates the surface. However, if we parametrize the surface directly as a horizontal plane (e.g. $\x(u,v) = (u, v, 0)$), then $K = 0$, and it is a surface of revolution in the trivial sense (with arbitrary axis).
+
+%   Thus, the only surfaces of revolution with $K \equiv 0$ are the right circular cylinder, the right circular cone, and the plane.
+% \end{solution}
 
 \begin{problem}[3.3.22]
   Let $h : S \to \R$ be a differentiable function on a surface $S$, and let $p \in S$ be a critical point of $h$ (i.e., $\dd{h}_p = 0$). Let $w \in T_p(S)$ and let
