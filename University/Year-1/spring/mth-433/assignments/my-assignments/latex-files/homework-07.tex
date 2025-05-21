@@ -1,0 +1,192 @@
+\begin{problem}[4.2.1]
+  Let $F : U \subset \R^2 \to \R^3$ be given by
+  \begin{align*}
+    F(u, v) &= (u\sin(\alpha)\cos(v), u\sin(\alpha)\sin(v), u\cos(\alpha)) \\
+    (u, v) \in U &= \{(u, v) \in \R^2 \mid u > 0\}, \quad \alpha = \text{const}
+  .\end{align*}
+
+  \begin{enumerate}
+    \item Prove that $F$ is a local diffeomorphism of $U$ onto a cone $C$ with the vertex at the origin and $2\alpha$ as the angle of the vertex.
+
+    \item Is $F$ a local isometry?
+  \end{enumerate}
+\end{problem}
+
+\begin{solution}[(i)]
+  Let $F : U \to \R^3$ be defined by
+  \[%
+    F(u, v) = \bigl(u\sin(\alpha)\cos(v), u\sin(\alpha)\sin(v), u \cos(\alpha)\bigr), \quad u > 0, v \in \R
+  .\]%
+
+  We claim that $F(U)$ is the cone
+  \[%
+    C = \{(x,y,z) \in \R^3 \mid x^2 + y^2 = z^2 \tan^2(\alpha), \quad z \geq 0\}
+  ,\]%
+  with vertex at the origin and vertex angle $2\alpha$.
+
+  First, note the vertex is at the origin since $F(0,v) = (0,0,0)$ for all $v$.
+
+  Next, for any $(u,v) \in U$,
+  \[%
+    x^2 + y^2 = (u \sin(\alpha) \cos(v))^2 + (u \sin(\alpha) \sin v)^2 = u^2 \sin^2 \alpha (\cos^2 v + \sin^2 v) = u^2 \sin^2 \alpha
+  ,\]%
+  and
+  \[%
+    z^2 = (u \cos(\alpha))^2 = u^2 \cos^2 \alpha
+  .\]%
+  Hence,
+  \[%
+    x^2 + y^2 = z^2 \cdot \frac{\sin^2 \alpha}{\cos^2 \alpha} = z^2 \tan^2 \alpha
+  ,\]%
+  confirming $F(U) \subseteq C$.
+
+  Finally, to show $F$ is a local diffeomorphism, observe the Jacobian matrix of $F$ has rank 2 for all $(u,v) \in U$ (since the partial derivatives with respect to $u$ and $v$ are linearly independent), so $F$ is an immersion and a local homeomorphism onto its image.
+
+  Therefore, $F$ parametrizes the cone $C$ locally diffeomorphically.
+
+  The vertex angle of the cone is $2\alpha$ because the generating lines of the cone form an angle $\alpha$ with the $z$-axis.
+\end{solution}
+
+\begin{solution}[(ii)]
+  Computing the partial derivatives, we have
+  \[%
+    F_u = (\sin(\alpha) \cos(v), \sin(\alpha) \sin v, \cos(\alpha)) \aand F_v = (-u \sin(\alpha) \sin v, u \sin(\alpha) \cos(v), 0)
+  .\]%
+  Then, the coefficients for the first fundamental form are
+  \begin{align*}
+    E &= \langle F_u, F_u \rangle = \sin^2\alpha + \cos^2\alpha = 1 \\
+    F &= \langle F_u, F_v \rangle = 0 \\
+    G &= \langle F_v, F_v \rangle = u^2 \sin^2\alpha
+  .\end{align*}
+  So the first fundamental form is
+  \[%
+    I = \du^2 + u^2 \sin^2(\alpha) \dv^2
+  .\]%
+  This is the same as the first fundamental form of a cone with vertex angle $2\alpha$ parametrized by
+  \[%
+    G(u,v) = u(\sin(\alpha)\cos(v), \sin(\alpha)\sin(v), \cos(\alpha))
+  .\]%
+  Therefore, by proposition 1, $F$ is a local isometry.
+\end{solution}
+
+\begin{problem}[4.2.2]
+  Prove the following ``converse'' of Prop. 1: Let $\phi : S \to \bar{S}$ be an isometry and $\x : U \to S$ a parametrization at $p \in S$; then $\bar{\x} = \phi \circ \x$ is a parametrization at $\phi(p)$ and $E = \bar{E}$, $F = \bar{F}$, $G = \bar{G}$.
+\end{problem}
+
+\begin{solution}
+  Let $\phi : S \to \bar{S}$ be an isometry, and let $\x : U \to S$ be a local parametrization at $p \in S$. Define $\bar{\x} = \phi \circ \x : U \to \bar{S}$. Since $\phi$ is a diffeomorphism and $\x$ is a parametrization, it follows that $\bar{\x}$ is also a parametrization at $\phi(p)$.
+
+  Since $\phi$ is an isometry, it preserves the inner product of tangent vectors. That is, for any $q = \x(u, v)$ and any tangent vectors $w_1, w_2 \in T_q(S)$,
+  \[%
+    \langle w_1, w_2 \rangle_q = \langle d\phi_q(w_1), d\phi_q(w_2) \rangle_{\phi(q)}
+  .\]%
+
+  In particular, we consider the tangent vectors $\x_u$ and $\x_v$, and compute the coefficients of the first fundamental form
+  \begin{align*}
+    E &= \langle \x_u, \x_u \rangle \\
+    F &= \langle \x_u, \x_v \rangle \\
+    G &= \langle \x_v, \x_v \rangle
+  .\end{align*}
+
+  Now, since $\bar{\x} = \phi \circ \x$, the chain rule gives
+  \[%
+    \bar{\x}_u = d\phi(\x_u) \aand \bar{\x}_v = d\phi(\x_v)
+  .\]%
+
+  Using the fact that $\phi$ is an isometry, we have
+  \begin{align*}
+    \bar{E} &= \langle \bar{\x}_u, \bar{\x}_u \rangle = \langle d\phi(\x_u), d\phi(\x_u) \rangle = \langle \x_u, \x_u \rangle = E \\
+    \bar{F} &= \langle \bar{\x}_u, \bar{\x}_v \rangle = \langle d\phi(\x_u), d\phi(\x_v) \rangle = \langle \x_u, \x_v \rangle = F \\
+    \bar{G} &= \langle \bar{\x}_v, \bar{\x}_v \rangle = \langle d\phi(\x_v), d\phi(\x_v) \rangle = \langle \x_v, \x_v \rangle = G
+  .\end{align*}
+
+  Therefore, the first fundamental form of $\bar{\x}$ is equal to that of $\x$, and so $E = \bar{E}$, $F = \bar{F}$, and $G = \bar{G}$.
+\end{solution}
+
+\begin{problem}[4.2.3]
+  Show that a diffeomorphism $\phi : S \to \bar{S}$ is an isometry if and only if the arc length of any parametrized curve in $S$ is equal to the arc length of the image curve by $\phi$.
+\end{problem}
+
+\begin{solution}
+  Assume $\phi$ is an isometry. Let $\alpha : (-\epsilon, \epsilon) \to S$ be a smooth parametrized curve, and let $\bar{\alpha} = \phi \circ \alpha : (-\epsilon, \epsilon) \to \bar{S}$ be the image of $\alpha$ under $\phi$. The arc length of $\alpha$ is
+  \[%
+    s = \int_{-\epsilon}^\epsilon \Abs{\alpha'(t)} \dt
+  .\]%
+  Since $\phi$ is an isometry, it preserves the inner product of tangent vectors. In particular, it preserves their lengths
+  \[%
+    \Abs{\bar{\alpha}'(t)} = \Abs{\dd{\phi}(\alpha'(t))} = \Abs{\alpha'(t)}
+  .\]%
+  Therefore,
+  \[%
+    \bar{s} = \int_{-\epsilon}^\epsilon \Abs{\bar{\alpha}'(t)} \dt = \int_{-\epsilon}^\epsilon \Abs{\alpha'(t)} \dt = s
+  .\]%
+  So the arc length of $\alpha$ is equal to the arc length of $\bar{\alpha}$.
+
+  Assume that for any parametrized smooth curve $\alpha$ in $S$, the arc length of $\alpha$ is equal to the arc length of $\bar{\alpha} = \phi \circ \alpha$ in $\bar{S}$. Let $\x: U \to S$ be a local parametrization around $p \in S$, and define $\bar{\x} = \phi \circ \x : U \to \bar{S}$, a local parametrization around $\bar{p} = \phi(p)$. Let $\v = (v^1, v^2)$ be a tangent vector at a point $u \in U$, and consider a curve $\gamma(t) = \x(u + t\v)$ in $S$. Then its arc length is given by
+  \[%
+    s = \int_{-\epsilon}^{\epsilon} \Abs{\odv{}{t} \x(u + t\v)} \dt = \int_{-\epsilon}^{\epsilon} \sqrt{\v^T \cdot \fff(u) \cdot \v} \dt = 2\epsilon \cdot \sqrt{\v^T \fff(u) v}
+  ,\]%
+  where $\fff(u)$ is the first fundamental form matrix for $\x$ at $u$. The image curve $\bar{\gamma}(t) = \bar{\x}(u + t\v)$ has arc length
+  \[%
+    \bar{s} = \int_{-\epsilon}^{\epsilon} \Abs{\odv{}{t} \bar{\x}(u + t\v)} \dt = 2\epsilon \cdot \sqrt{\v^T \bar{\fff}(u) \v}
+  ,\]%
+  where $\bar{\fff}(u)$ is the first fundamental form matrix for $\bar{\x}$ at $u$. Since arc length is preserved, $s = \bar{s}$ for all $\v$, so
+  \[%
+    \v^T \fff(u) \v = \v^T \bar{\fff}(u) \v \quad \text{for all}~\v \in \R^2
+  .\]%
+  This implies $\fff(u) = \bar{\fff}(u)$, so the first fundamental forms of $\x$ and $\bar{\x}$ agree at $u$. Since the first fundamental form determines the metric, this means that $\dd{\phi}_p$ preserves inner products between tangent vectors, i.e., $\phi$ is an isometry.
+
+  Therefore, $\phi$ is an isometry if and only if the arc length of any parametrized curve in $S$ is equal to the arc length of the image curve by $\phi$.
+\end{solution}
+
+\begin{problem}[4.2.4]
+  Use the stereographic projection (cf. Exercise 16, Sec. 2-2) to show that the sphere is locally conformal to a plane.
+\end{problem}
+
+\begin{solution}
+\end{solution}
+
+\begin{problem}[4.2.8]
+  Let $G : \R^3 \to \R^3$ be a map such that
+  \[%
+    \abs{G(p) - G(q)} = \abs{p - q} \quad \forall p, q \in \R^3
+  .\]%
+  (that is, $G$ is a \emph{distance-preserving} map). Prove that there exists $p_0 \in \R^3$ and a linear isometry (cf. Exercise 7) $F$ of the vector space $\R^3$ such that
+  \[%
+    G(p) = F(p) + p_0 \quad \forall p \in \R^3
+  .\]%
+\end{problem}
+
+\begin{solution}
+\end{solution}
+
+\begin{problem}[4.2.10]
+  Let $S$ be a surface of revolution. Prove that the rotations about its axis are isometries of $S$.
+\end{problem}
+
+\begin{solution}
+\end{solution}
+
+\begin{problem}[4.2.14]
+  We say that a differentiable map $\phi : S_1 \to S_2$ \emph{preserves angles} when for every $p \in S_1$ and every pair $v_1, v_2 \in T_p(S_1)$ we have
+  \[%
+   \cos(v_1, v_2) = \cos(\dd{\phi}_p(v_1), \dd{\phi}_p(v_2))
+  .\]%
+  Prove that $\phi$ is locally conformal if and only if it preserves angles.
+\end{problem}
+
+\begin{solution}
+\end{solution}
+
+\begin{problem}[4.2.15]
+  Let $\phi : \R^2 \to \R^2$ be given by $\phi(x, y) = (u(x, y), v(x, y))$,
+  where $u$ and $v$ are differentiable functions that satisfy the Cauchy-Riemann
+  equations
+  \[%
+    u_x = v_y \aand u_y = -v_x
+  .\]%
+  Show that $\phi$ is a local conformal map from $\R^2 - Q$ into $\R^2$, where $Q = \{(x, y) \in \R^2 \mid u_x^2 + u_y^2 = 0\}$
+\end{problem}
+
+\begin{solution}
+\end{solution}

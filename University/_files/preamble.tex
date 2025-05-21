@@ -484,6 +484,7 @@
 
 % Random functions
 \newcommand\sech{\operatorname{sech}}
+\newcommand\fff{\mathrm{I}}
 \newcommand\sff{\mathrm{II}}
 
 % Lie algebras
@@ -620,7 +621,7 @@
 
 % create solution env using proof env
 \newenvironment{solution}[1][]{%
-  \begin{proof}[\textnormal{\textbf{Solution\ifthenelse{\equal{#1}{}}{}{~to~#1}}}]
+  \begin{proof}[Solution\ifthenelse{\equal{#1}{}}{}{~to~#1}]
 }{%
   \end{proof}
 }
