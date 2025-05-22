@@ -28,15 +28,15 @@
 
   Next, for any $(u,v) \in U$,
   \[%
-    x^2 + y^2 = (u \sin(\alpha) \cos(v))^2 + (u \sin(\alpha) \sin v)^2 = u^2 \sin^2 \alpha (\cos^2 v + \sin^2 v) = u^2 \sin^2 \alpha
+    x^2 + y^2 = (u \sin(\alpha) \cos(v))^2 + (u \sin(\alpha) \sin(v))^2 = u^2 \sin^2(\alpha) (\cos^2(v) + \sin^2(v)) = u^2 \sin^2(\alpha)
   ,\]%
   and
   \[%
-    z^2 = (u \cos(\alpha))^2 = u^2 \cos^2 \alpha
+    z^2 = (u \cos(\alpha))^2 = u^2 \cos^2(\alpha)
   .\]%
   Hence,
   \[%
-    x^2 + y^2 = z^2 \cdot \frac{\sin^2 \alpha}{\cos^2 \alpha} = z^2 \tan^2 \alpha
+    x^2 + y^2 = z^2 \cdot \frac{\sin^2(\alpha)}{\cos^2(\alpha)} = z^2 \tan^2(\alpha)
   ,\]%
   confirming $F(U) \subseteq C$.
 
@@ -50,7 +50,7 @@
 \begin{solution}[(ii)]
   Computing the partial derivatives, we have
   \[%
-    F_u = (\sin(\alpha) \cos(v), \sin(\alpha) \sin v, \cos(\alpha)) \aand F_v = (-u \sin(\alpha) \sin v, u \sin(\alpha) \cos(v), 0)
+    F_u = (\sin(\alpha) \cos(v), \sin(\alpha) \sin(v), \cos(\alpha)) \aand F_v = (-u \sin(\alpha) \sin(v), u \sin(\alpha) \cos(v), 0)
   .\]%
   Then, the coefficients for the first fundamental form are
   \begin{align*}
@@ -122,7 +122,7 @@
   .\]%
   So the arc length of $\alpha$ is equal to the arc length of $\bar{\alpha}$.
 
-  Assume that for any parametrized smooth curve $\alpha$ in $S$, the arc length of $\alpha$ is equal to the arc length of $\bar{\alpha} = \phi \circ \alpha$ in $\bar{S}$. Let $\x: U \to S$ be a local parametrization around $p \in S$, and define $\bar{\x} = \phi \circ \x : U \to \bar{S}$, a local parametrization around $\bar{p} = \phi(p)$. Let $\v = (v^1, v^2)$ be a tangent vector at a point $u \in U$, and consider a curve $\gamma(t) = \x(u + t\v)$ in $S$. Then its arc length is given by
+  Assume that for any parametrized smooth curve $\alpha$ in $S$, the arc length of $\alpha$ is equal to the arc length of $\bar{\alpha} = \phi \circ \alpha$ in $\bar{S}$. Let $\x: U \to S$ be a local parametrization around $p \in S$, and define $\bar{\x} = \phi \circ \x : U \to \bar{S}$, a local parametrization around $\bar{p} = \phi(p)$. Let $\v = (v_1~v_2)$ be a tangent vector at a point $u \in U$, and consider a curve $\gamma(t) = \x(u + t\v)$ in $S$. Then its arc length is given by
   \[%
     s = \int_{-\epsilon}^{\epsilon} \Abs{\odv{}{t} \x(u + t\v)} \dt = \int_{-\epsilon}^{\epsilon} \sqrt{\v^T \cdot \fff(u) \cdot \v} \dt = 2\epsilon \cdot \sqrt{\v^T \fff(u) v}
   ,\]%
@@ -168,14 +168,69 @@
 \end{solution}
 
 \begin{problem}[4.2.14]
-  We say that a differentiable map $\phi : S_1 \to S_2$ \emph{preserves angles} when for every $p \in S_1$ and every pair $v_1, v_2 \in T_p(S_1)$ we have
+  We say that a differentiable map $\phi : S_1 \to S_2$ \emph{preserves angles} when for every $p \in S_1$ and every pair $\v_1, \v_2 \in T_p(S_1)$ we have
   \[%
-   \cos(v_1, v_2) = \cos(\dd{\phi}_p(v_1), \dd{\phi}_p(v_2))
+   \cos(\v_1, \v_2) = \cos(\dd{\phi}_p(\v_1), \dd{\phi}_p(\v_2))
   .\]%
   Prove that $\phi$ is locally conformal if and only if it preserves angles.
 \end{problem}
 
 \begin{solution}
+  Assume $\phi : S_1 \to S_2$ is a locally conformal map, i.e., for all $p \in S_1$ and $\v_1, \v_2 \in T_p(S_1)$, we have
+  \begin{equation}\label{eq:4.2.14}
+    \bra{\dd{\phi}_p(\v_1), \dd{\phi}_p(\v_2)} = \lambda^2(p) \bra{\v_1, \v_2}
+  ,\end{equation}
+  where $\lambda(p)$ is a nowhere-zero differentiable function on $S$. Notice that $\Abs{\dd{\phi}_p(\v_1)} = \sqrt{\bra{\dd{\phi}_p(\v_1), \dd{\phi}_p(\v_1)}} = \sqrt{\lambda^2(p) \bra{\v_1, \v_1}} = \lambda(p) \Abs{\v_1}$, and similarly for $\v_2$. Dividing both sides of equation \ref{eq:4.2.14} by $\Abs{\dd{\phi}_p(\v_1)} \Abs{\dd{\phi}_p(\v_2)}$, we obtain
+  \begin{align*}
+    \cos(\dd{\phi}_p(v_1), \dd{\phi}_p(v_2)) &= \frac{\bra{\dd{\phi}_p(\v_1), \dd{\phi}_p(\v_2)}}{\Abs{\dd{\phi}_p(\v_1)} \Abs{\dd{\phi}_p(\v_2)}} \\
+                                             &= \frac{\lambda^2(p) \bra{\v_1, \v_2}}{\lambda(p) \Abs{\v_1} \lambda(p) \Abs{\v_2}} \\
+                                             &= \frac{\lambda^2(p) \bra{\v_1, \v_2}}{\lambda^2(p) \Abs{\v_1} \Abs{\v_2}} \\
+                                             &= \frac{\bra{\v_1, \v_2}}{\Abs{\v_1} \Abs{\v_2}} \\
+                                             &= \cos(\v_1, \v_2)
+  .\end{align*}
+  Therefore, $\phi$ preserves angles if $\phi$ is locally conformal.
+
+  Assume $\phi$ preserves angles. Then for all $p \in S_1$ and all $\v_1, \v_2 \in T_p(S_1)$, we have
+  \[%
+    \frac{\bra{\dd{\phi}_p(\v_1), \dd{\phi}_p(\v_2)}}{\Abs{\dd{\phi}_p(\v_1)} \Abs{\dd{\phi}_p(\v_2)}} = \frac{\bra{\v_1, \v_2}}{\Abs{\v_1} \Abs{\v_2}}
+  .\]%
+  Let $\v \in T_p(S_1)$ be a nonzero vector, and define
+  \[%
+    \lambda(p) \coloneqq \frac{\Abs{\dd{\phi}_p(\v)}}{\Abs{\v}} > 0
+  .\]%
+  We claim that for all $\w \in T_p(S_1)$, we have
+  \[%
+    \Abs{\dd{\phi}_p(\w)} = \lambda(p) \Abs{\w} \aand \bra{\dd{\phi}_p(\v_1) \dd{\phi}_p(\v_2)} = \lambda^2(p) \bra{\v_1, \v_2}
+  .\]%
+
+  We claim that for all $\w \in T_p(S_1)$, we have
+  \[%
+    \Abs{\dd{\phi}_p(\w)} = \lambda(p) \Abs{\w} \aand \bra{\dd{\phi}_p(\v_1), \dd{\phi}_p(\v_2)} = \lambda^2(p) \bra{\v_1, \v_2}
+  .\]%
+
+  To see this, fix any $\w \in T_p(S_1)$ and apply angle preservation to the pair $\v, \w$. Then
+  \[%
+    \cos(\v, \w) = \cos(\dd{\phi}_p(\v), \dd{\phi}_p(\w)) = \frac{\bra{\dd{\phi}_p(\v), \dd{\phi}_p(\w)}}{\Abs{\dd{\phi}_p(\v)} \Abs{\dd{\phi}_p(\w)}}
+  .\]%
+  Substituting $\lambda(p) = \sfrac{\Abs{\dd{\phi}_p(\v)}}{\Abs{\v}}$ and rearranging gives
+  \[%
+    \frac{\bra{\v, \w}}{\Abs{\v} \Abs{\w}} = \frac{\bra{\dd{\phi}_p(\v), \dd{\phi}_p(\w)}}{\lambda(p) \Abs{\v} \Abs{\dd{\phi}_p(\w)}} \implies \bra{\dd{\phi}_p(\v), \dd{\phi}_p(\w)} = \lambda(p) \bra{\v, \w} \cdot \frac{\Abs{\dd{\phi}_p(\w)}}{\Abs{\w}}
+  .\]%
+  So
+  \[%
+    \frac{\Abs{\dd{\phi}_p(\w)}}{\Abs{\w}} = \lambda(p)
+  ,\]%
+  and hence
+  \[%
+    \Abs{\dd{\phi}_p(\w)} = \lambda(p) \Abs{\w}
+  .\]%
+  Now that both $\v$ and $\w$ scale by $\lambda(p)$, it follows that
+  \[%
+    \bra{\dd{\phi}_p(\v), \dd{\phi}_p(\w)} = \lambda^2(p) \bra{\v, \w}
+  .\]%
+  Since $\v, \w$ were arbitrary, this proves that $\phi$ is locally conformal at $p$.
+
+  Therefore, $\phi$ is locally conformal if and only if it preserves angles.
 \end{solution}
 
 \begin{problem}[4.2.15]

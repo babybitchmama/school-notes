@@ -1,0 +1,344 @@
+\begin{problem}[4.49.1]
+  Apply the Cauchy-Goursat theorem to show that
+  \[%
+    \int_c f(z) \dz = 0
+  ,\]%
+  when the contour $C$ is the unit circle $\abs{z} = 1$, in either direction, and when
+  \begin{multicols}{3}
+    \begin{enumerate}
+      \item[(i)] $\displaystyle f(z) = \frac{z^2}{z - 3}$;
+
+      \item[(iv)] $f(z) = \sech(z)$;
+
+      \item[(ii)] $f(z) = ze^{-z}$;
+
+      \item[(v)] $f(z) = \tan(z)$;
+
+      \item[(iii)] $\displaystyle f(z) = \frac{1}{z^2 + 2z + 2}$;
+
+      \item[(vi)] $f(z) = \Log(z + 2)$.
+    \end{enumerate}
+  \end{multicols}
+\end{problem}
+
+\begin{solution}[(i)]
+  The function is analytic everywhere except at $z = 3$, which lies \emph{outside} the unit circle $\abs{z} = 1$. Therefore, $f(z)$ is analytic on and inside the contour $C$. Thus, by Cauchy-Goursat,
+  \[%
+    \int_C f(z) \dz = 0
+  .\qedhere\]%
+\end{solution}
+
+\begin{solution}[(ii)]
+  Both the exponential function and the identity function are entire (analytic on all of $\C$), so $f(z)$ is entire as well. Since $f$ is analytic everywhere, it is in particular analytic on and inside $C$. Thus, by Cauchy-Goursat,
+  \[%
+    \int_C f(z) \dz = 0
+  .\qedhere\]%
+\end{solution}
+
+\begin{solution}[(iii)]
+  Factor the denominator
+  \[%
+    z^2 + 2z + 2 = (z + 1 + i)(z + 1 - i)
+  .\]%
+  The singularities are at $z = -1 \pm i$, both of which satisfy $\abs{z} = \sqrt{1^2 + 1^2} = \sqrt{2} > 1$, so they lie outside the unit circle. Hence, $f(z)$ is analytic on and inside $C$. Thus, by Cauchy-Goursat,
+  \[%
+    \int_C f(z) \dz = 0
+  .\qedhere\]%
+\end{solution}
+
+\begin{solution}[(iv)]
+  Take $f(z) = \sech(z) = \frac{2}{e^z + e^{-z}}$. This is the reciprocal of an entire function $\cosh(z)$, whose zeros occur at $z = (2n+1)\sfrac{\pi i}{2}$. The closest singularities of $\sech(z)$ are at $z = \pm \sfrac{\pi i}{2}$, and since
+  \[%
+    \abs{\frac{\pi i}{2}} = \frac{\pi}{2} > 1
+  ,\]%
+  these lie outside the unit circle. Hence, $f(z)$ is analytic on and inside $C$. Thus, by Cauchy-Goursat,
+  \[%
+    \int_C f(z) \dz = 0
+  .\qedhere\]%
+\end{solution}
+
+\begin{solution}[(v)]
+  Let $f(z) = \tan(z) = \sfrac{\sin(z)}{\cos(z)}$. The function $\tan(z)$ has singularities where $\cos(z) = 0$, i.e., at $z = \sfrac{\pi}{2} + n\pi$, $n \in \Z$. The smallest modulus of such a point is $\sfrac{\pi}{2} > 1$, so all singularities are outside the unit circle. Hence, $f(z)$ is analytic on and inside $C$. Thus, by Cauchy-Goursat,
+  \[%
+    \int_C f(z) \dz = 0
+  .\qedhere\]%
+\end{solution}
+
+\begin{solution}[(vi)]
+  Let $f(z) = \Log(z + 2)$, where $\Log$ denotes the principal branch of the complex logarithm, which is analytic on $\C \setminus (-\infty, 0]$. The branch point of $\Log(z + 2)$ is at $z = -2$, and the branch cut lies along $(-\infty, -2]$. The unit circle $\abs{z} = 1$ lies entirely to the right of $-2$, so the function is analytic on and inside $C$. Therefore:
+  \[%
+    \int_C f(z) \dz = 0
+  .\qedhere\]%
+\end{solution}
+
+\begin{problem}[4.49.2]
+  Let $C_1$ denote the positively oriented boundary of the square whose sides lie along the lines $x = \pm 1$, $y = \pm 1$ and let $C_2$ be the positively oriented circle $\abs{z} = 4$ (Fig.~\ref{fig:4.49.2}). With the aid of the corollary in Sec. 49, point out why
+  \[%
+    \int_{C_1} f(z) \dz = \int_{C_2} fz \dz
+  ,\]%
+  when
+  \begin{multicols}{3}
+    \begin{enumerate}
+      \item $\displaystyle f(z) = \frac{1}{3z^2 + 1}$;
+
+      \item $\displaystyle f(z) = \frac{z + 2}{\sin(\sfrac{z}{2})}$;
+
+      \item $\displaystyle f(z) = \frac{z}{1 - e^z}$.
+    \end{enumerate}
+  \end{multicols}
+  \begin{figure}[h]
+    \centering
+
+    \begin{tikzpicture}
+      \draw (-3, 0) -- (3, 0) node[right] {$x$};
+      \draw (0, -3) -- (0, 3) node[above] {$y$};
+
+      \draw[thick] (0, 0) circle (2);
+
+      \draw[thick, ->] ({2*cos(45)}, {2*sin(45)}) arc[start angle=45, end angle=50, radius=2] node[above right] {$C_2$};
+
+      \draw[thick, ->, shorten >=5pt] (-0.5, -0.5) -- (0.5, -0.5);
+      \draw[thick] (-0.5, -0.5) -- (0.5, -0.5);
+      \draw[thick, ->, shorten >=5pt] (0.5, -0.5) -- (0.5, 0.5);
+      \draw[thick] (0.5, -0.5) -- (0.5, 0.5);
+      \draw[thick, ->, shorten >=5pt] (0.5, 0.5) -- (-0.5, 0.5);
+      \draw[thick] (0.5, 0.5) -- (-0.5, 0.5);
+      \draw[thick, ->, shorten >=5pt] (-0.5, 0.5) -- (-0.5, -0.5);
+      \draw[thick] (-0.5, 0.5) -- (-0.5, -0.5);
+    \end{tikzpicture}
+
+    \caption{}
+    \label{fig:4.49.2}
+  \end{figure}
+\end{problem}
+
+\begin{solution}[(i)]
+  Factor the denominator to get
+  \[%
+    3z^2 + 1 = 3\left(z - \frac{i}{\sqrt{3}}\right)\left(z + \frac{i}{\sqrt{3}}\right)
+  ,\]%
+  so the function has singularities at $z = \pm \sfrac{i}{\sqrt{3}} \approx \pm 0.577i$, both of which lie \emph{inside} the square $C_1$ and the circle $C_2$. The function is analytic \emph{everywhere} in the region between $C_1$ and $C_2$, since the singularities are enclosed by both contours.
+
+  Therefore, by the corollary to the Cauchy-Goursat Theorem (which states that if $f$ is analytic in the region between two positively oriented simple closed curves, then the integrals over both curves are equal),
+  \[%
+    \int_{C_1} f(z) \dz = \int_{C_2} f(z) \dz
+  .\qedhere\]%
+\end{solution}
+
+\begin{solution}[(ii)]
+  The singularities of this function occur where $\sin(\sfrac{z}{2}) = 0$, i.e., at
+  \[%
+    \frac{z}{2} = n\pi \implies z = 2n\pi, \qquad n \in \Z
+  .\]%
+  The singularities are therefore located at $z = 0, \pm 2\pi, \pm 4\pi, \ldots$. Since $2\pi \approx 6.28$, the only singularity inside the circle $\abs{z} = 4$ is at $z = 0$. This singularity also lies within the square $C_1$.
+
+  Since $f(z)$ is analytic everywhere in the annular region between $C_1$ and $C_2$, the conditions of the corollary are satisfied. Therefore,
+  \[%
+    \int_{C_1} f(z) \dz = \int_{C_2} f(z) \dz
+  .\qedhere\]%
+\end{solution}
+
+\begin{solution}[(iii)]
+  This function has singularities where $e^z = 1$, i.e., $z = 2\pi in$, $n \in \Z$. These are isolated singularities along the imaginary axis at $z = 0, \pm 2\pi i, \pm 4\pi i, \ldots$. Since $2\pi \approx 6.28$, the singularities at $z = \pm 2\pi i$ lie outside the circle $\abs{z} = 4$, and the only singularity inside $C_2$ is at $z = 0$, which also lies within $C_1$.
+
+  The function is analytic in the entire region between the two contours $C_1$ and $C_2$, so by the corollary to the Cauchy-Goursat Theorem
+  \[%
+    \int_{C_1} f(z) \dz = \int_{C_2} f(z) \dz
+  .\qedhere\]%
+\end{solution}
+
+\begin{problem}[4.49.3]
+  If $C_0$ denotes a positively oriented circle $\abs{z - z_0} = R$, then
+  \[%
+    \int_{C_0} (z - z_0)^{n-1} \dz = \begin{cases}
+      0 & \text{when}~n = \pm 1, \pm 2, \ldots \\
+      2\pi i & \text{when}~n = 0 \\
+    \end{cases}
+  ,\]%
+  according to Exercise 10(b), Sec. 42. Use that result and the corollary in Sec. 49 to show that if $C$ is the boundary of the rectangle $0 \le x \le 3$, $0 \le y \le 2$, described in the positive sense, then
+  \[%
+    \int_C (z - 2 - i)^{n-1} \dz = \begin{cases}
+      0 & \text{when}~n = \pm 1, \pm 2, \cdots \\
+      2\pi i & \text{when}~n = 0 \\
+    \end{cases}
+  .\]%
+\end{problem}
+
+\begin{solution}
+  This is a function of the form $f(z) = (z - z_0)^{n-1}$ where $z_0 = 2 + i$. The rectangle defined by $0 \le x \le 3$, $0 \le y \le 2$, and oriented positively (counterclockwise), forms a simple closed contour $C$ that contains the point $z_0 = 2 + i$ in its interior.
+
+  Since the function $f(z)$ is analytic everywhere inside and on both $C$ and any such circle $C_0$, except possibly at $z_0$, and since both contours positively enclose $z_0$, the corollary to the Cauchy-Goursat Theorem guarantees that
+  \[%
+    \int_C f(z) \dz = \int_{C_0} f(z) \dz
+  .\]%
+
+  Therefore, applying the result from Exercise 10(b), Sec. 42, we obtain
+  \[%
+    \int_C (z - 2 - i)^{n-1} \dz = \begin{cases}
+      0 & \text{if } n = \pm 1, \pm 2, \ldots \\
+      2\pi i & \text{if}~n = 0
+    \end{cases}
+  .\qedhere\]%
+\end{solution}
+
+\begin{problem}[4.49.4]
+  Use the following method to derive the integration formula
+  \[%
+    \int_0^\infty e^{-x^2} \cos(2bx) \dx = \frac{\sqrt{\pi}}{2} e^{-b^2} \qquad (b > 0)
+  .\]%
+
+  \begin{figure}[h]
+    \centering
+
+    \begin{tikzpicture}[scale=1.5]
+      \draw (-2, 0) -- (2, 0) node[right] {$x$};
+      \draw (0, -0.5) -- (0, 1.5) node[above] {$y$};
+
+      \draw[thick] (-1.75, 0) -- (1.75, 0);
+      \draw[thick, ->] (0, 0) -- (0.875, 0);
+
+      \draw[thick] (-1.75, 1) -- (1.75, 1);
+      \draw[thick, ->] (0, 1) -- (-0.875, 1);
+
+      \draw[thick] (-1.75, 0) -- (-1.75, 1);
+      \draw[thick, ->] (-1.75, 1) -- (-1.75, 0.5);
+
+      \draw[thick] (1.75, 0) -- (1.75, 1);
+      \draw[thick, ->] (1.75, 0) -- (1.75, 0.5);
+
+      \draw[soldot] (-1.75, 1) circle (1pt) node[above] {$-a + bi$};
+      \draw[soldot] (1.75, 1) circle (1pt) node[above] {$a + bi$};
+
+      \draw[soldot] (-1.75, 0) circle (1pt) node[below] {$-a$};
+      \draw[soldot] (1.75, 0) circle (1pt) node[below] {$a$};
+    \end{tikzpicture}
+
+    \caption{}
+    \label{fig:4.49.4}
+  \end{figure}
+
+  \begin{enumerate}
+    \item Show that the sum of the integrals of $e^{-z^2}$ along the lower and upper horizontal legs of the rectangular path in Fig.~\ref{fig:4.49.4} can be written
+      \[%
+        2\int_0^a e^{-x^2} \dx - 2e^{b^2} \int_0^a e^{-x^2} \cos(2bx) \dx
+      ,\]%
+      and that the sum of the integrals along the vertical legs on the right and left can be written
+      \[%
+        ie^{-a^2} \int_0^b e^{y^2} e^{-i2ay} \dy - ie^{-a^2} \int_0^b e^{y^2} e^{i2ay} \dy
+      .\]%
+      Thus, with the aid of the Cauchy-Goursat theorem, show that
+      \[%
+        \int_0^a e^{-x^2} \cos(2bx) \dx = e^{-b^2} \int_0^a e^{-x^2} \dx + e^{-(a^2+b^2)} \int_0^b e^{y^2} \sin(2ay) \dy
+      .\]%
+
+    \item By accepting the fact that
+      \[%
+        \int_0^\infty e^{-x^2} \dx = \frac{\sqrt{\pi}}{2}
+      ,\]%
+      and observing that
+      \[%
+        \abs{\int_0^b e^{y^2} \sin(2ay) \dy} \le \int_0^b e^{y^2} \dy
+      ,\]%
+      obtain the desired integration formula by letting $a$ tend to infinity in the equation at the end of part (i).
+  \end{enumerate}
+\end{problem}
+
+\begin{proof}[Solution to (i)]
+  Let $f(z) = e^{-z^2}$ and consider the rectangular contour shown in Fig.~\ref{fig:4.49.4} with vertices at $-a$, $a$, $a + bi$, and $-a + bi$, traversed counterclockwise.
+
+  By the Cauchy-Goursat Theorem, since $f(z) = e^{-z^2}$ is entire (analytic everywhere), the integral around the closed contour is zero, we have
+  \[%
+    \oint_R e^{-z^2} \dz = 0
+  ,\]%
+  where $R$ is the rectangular contour.
+
+  We now compute the integral along each leg of the rectangle. For the, lower horizontal leg (from $-a$ to $a$ along the real axis), we have
+  \[%
+    \int_{-a}^a e^{-x^2} \dx = 2\int_0^a e^{-x^2} \dx \quad \text{(by symmetry)}
+  .\]%
+  For the upper horizontal leg, (from $a + bi$ to $-a + bi$), let $z = x + bi$, $\dz = \dx$, and note that $x$ goes from $a$ to $-a$. Therefore, we have
+  \begin{align*}
+    \int_{a+bi}^{-a+bi} e^{-z^2} \dz &= -\int_{-a}^a e^{-(x+bi)^2} \dx = -\int_{-a}^a e^{-x^2 - 2bix - b^2} \dx \\
+                                     &= -e^{-b^2} \int_{-a}^a e^{-x^2} e^{-2ibx} \dx
+  .\end{align*}
+  Then, using Euler's formula $e^{2ibx} = \cos(2bx) - i\sin(2bx)$ and noting that the integrand is even in the real part and odd in the imaginary part. So the imaginary part integrates to zero, the leaving
+  \[%
+    \int_{a+bi}^{-a+bi} e^{-z^2} \dz  = -2e^{-b^2} \int_0^a e^{-x^2} \cos(2bx) \dx
+  .\]%
+  For the right vertical leg (from $a$ to $a + bi$), let $z = a + iy$, $dz = i \dy$, $y \in [0, b]$, giving us
+  \[%
+    \int_a^{a+bi} e^{-z^2} \dz = \int_0^b e^{-(a+iy)^2} i \dy = i \int_0^b e^{-a^2 - 2aiy - y^2} \dy = i e^{-a^2} \int_0^b e^{-y^2} e^{-i2ay} \dy
+  .\]%
+  For the left vertical leg (from $-a + bi$ to $-a$), let $z = -a + iy$, $dz = -i \dy$, $y \in [0, b]$, giving us
+  \[%
+    \int_{-a+bi}^{-a} e^{-z^2} \dz = -i \int_0^b e^{-(-a + iy)^2} \dy = -i \int_0^b e^{-a^2 - 2aiy - y^2} \dy = -i e^{-a^2} \int_0^b e^{-y^2} e^{i2ay} \dy
+  .\]%
+  Now summing all legs, and using the fact that the total integral is zero
+  \[%
+    0 = 2 \int_0^a e^{-x^2} \dx - 2 e^{-b^2} \int_0^a e^{-x^2} \cos(2bx) \dx + i e^{-a^2} \int_0^b e^{-y^2} e^{-i2ay} \dy - i e^{-a^2} \int_0^b e^{-y^2} e^{i2ay} \dy
+  .\]%
+  Group the last two terms, we have
+  \[%
+    i e^{-a^2} \left( \int_0^b e^{-y^2} e^{-i2ay} \dy - \int_0^b e^{-y^2} e^{i2ay} \dy \right) = -2 e^{-a^2} \int_0^b e^{-y^2} \sin(2ay) \dy
+  .\]%
+  So we can rewrite the equation as
+  \[%
+    0 = 2 \int_0^a e^{-x^2} \dx - 2 e^{-b^2} \int_0^a e^{-x^2} \cos(2bx) \dx - 2 e^{-a^2} \int_0^b e^{-y^2} \sin(2ay) \dy
+  .\]%
+  Divide through by 2 and rearrange, we obtain
+  \[%
+    \int_0^a e^{-x^2} \cos(2bx) \dx = e^{-b^2} \int_0^a e^{-x^2} \dx + e^{-(a^2 + b^2)} \int_0^b e^{y^2} \sin(2ay) \dy
+  .\qedhere\]%
+\end{proof}
+
+\begin{proof}[Solution to (ii)]
+  I'm going to evaluate the Gaussian integral, as it's finally being covered and I've been waiting for this moment. Consider the full Gaussian integral over $(-\infty, \infty)$,
+  \[%
+    I \coloneqq \int_{-\infty}^\infty e^{-x^2} \dx
+  .\]%
+  This integral cannot be evaluated by elementary antiderivatives, so instead we compute $I^2$ by considering a double integral
+  \begin{align*}
+    I^2 = \left(\int_{-\infty}^\infty e^{-x^2} \dx\right)^2 &= \int_{-\infty}^\infty e^{-x^2} \dx \cdot \int_{-\infty}^\infty e^{-x^2} \dx \\
+                                                            &= \int_{-\infty}^\infty e^{-x^2} \dx \cdot \int_{-\infty}^\infty e^{-y^2} \dy \\
+                                                            &= \int_{-\infty}^\infty \int_{-\infty}^\infty e^{-x^2-y^2} \dx \dy
+  .\end{align*}
+  Changing to polar coordinates, we have $x = r \cos(\theta), y = r \sin(\theta)$, so that $\dxy = r\dd{r,\theta}$ and $x^2 + y^2 = r^2$. Then
+  \[%
+    I^2 = \int_0^{2\pi} \int_0^\infty e^{-r^2} r \dd{r,\theta}
+  .\]%
+  Evaluating the polar integral, we have
+  \begin{align*}
+    \int_0^{2\pi} \int_0^\infty e^{-r^2} r \dd{r,\theta} &= \int_0^{2\pi} \left[-\frac{1}{2} e^{-r^2}\right]_0^\infty \dd{\theta} \\
+                                                         &= \int_0^{2\pi} \frac{1}{2} \dd{\theta} \\
+                                                         &= \pi
+  .\end{align*}
+  Thus, we have
+  \[%
+    I = \sqrt{\pi}
+  .\]%
+
+  Now, we can deduce the half-line integral. Since $e^{-x^2}$ is an even function, we have
+  \[%
+    \int_{-\infty}^\infty e^{-x^2} \dx = 2 \int_0^\infty e^{-x^2} \dx = \sqrt{\pi} \implies \int_0^\infty e^{-x^2} \dx = \frac{\sqrt{\pi}}{2}
+  .\]%
+  Use this in the expression from part (i), we have
+  \[%
+    \int_0^a e^{-x^2} \cos(2bx) \dx = e^{-b^2} \int_0^a e^{-x^2} \dx + e^{-(a^2 + b^2)} \int_0^b e^{y^2} \sin(2ay) \dy
+  .\]%
+  Let $a \to \infty$, we have
+  \[%
+    \int_0^a e^{-x^2} \dx \to \frac{\sqrt{\pi}}{2} \aand e^{-(a^2 + b^2)} \to 0 \quad \text{exponentially fast}
+  .\]%
+  Notice that
+  \[%
+    \int_0^b e^{y^2} \sin(2ay) \dy
+  ,\]%
+  is bounded, so its contribution vanishes in the limit. Hence
+  \[%
+    \int_0^\infty e^{-x^2} \cos(2bx) \dx = e^{-b^2} \cdot \frac{\sqrt{\pi}}{2}
+  .\]%
+  Finally, we have
+  \[%
+    \int_0^\infty e^{-x^2} \cos(2bx) \dx = \frac{\sqrt{\pi}}{2} e^{-b^2} \qquad (b > 0)
+  .\qedhere\]%
+\end{proof}
