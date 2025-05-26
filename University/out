@@ -1,0 +1,880 @@
+.
+├── _files
+│   ├── assignments
+│   │   └── my-assignments
+│   │       ├── Makefile
+│   │       ├── master.tex
+│   │       └── preamble.tex
+│   ├── intro.tex
+│   ├── Makefile
+│   ├── master.tex
+│   ├── preamble.tex
+│   ├── README.md
+│   └── UltiSnips
+│       ├── README.md
+│       └── tex.snippets
+├── out
+├── Year-1
+│   ├── fall
+│   │   ├── mth-281
+│   │   │   ├── assignments
+│   │   │   │   ├── graded-assignments
+│   │   │   │   │   └── README.md
+│   │   │   │   ├── my-assignments
+│   │   │   │   │   ├── image-files
+│   │   │   │   │   │   ├── homework-01
+│   │   │   │   │   │   │   ├── 1.jpg
+│   │   │   │   │   │   │   └── 2.jpg
+│   │   │   │   │   │   ├── homework-05
+│   │   │   │   │   │   │   ├── problem-3-c.png
+│   │   │   │   │   │   │   ├── problem-4-a.png
+│   │   │   │   │   │   │   └── problem-4-b.png
+│   │   │   │   │   │   └── README.md
+│   │   │   │   │   ├── latex-files
+│   │   │   │   │   │   ├── homework-01.tex
+│   │   │   │   │   │   ├── homework-02.tex
+│   │   │   │   │   │   ├── homework-03.tex
+│   │   │   │   │   │   ├── homework-04.tex
+│   │   │   │   │   │   ├── homework-05.tex
+│   │   │   │   │   │   ├── homework-06.tex
+│   │   │   │   │   │   ├── homework-07.tex
+│   │   │   │   │   │   ├── homework-08.tex
+│   │   │   │   │   │   ├── homework-09.tex
+│   │   │   │   │   │   └── README.md
+│   │   │   │   │   ├── Makefile -> /home/singularisart/Documents/school-notes/University/_files/assignments/my-assignments/Makefile
+│   │   │   │   │   ├── master.tex
+│   │   │   │   │   ├── pdf-files
+│   │   │   │   │   │   ├── homework-01.pdf
+│   │   │   │   │   │   ├── homework-02.pdf
+│   │   │   │   │   │   ├── homework-03.pdf
+│   │   │   │   │   │   ├── homework-04.pdf
+│   │   │   │   │   │   ├── homework-05.pdf
+│   │   │   │   │   │   ├── homework-06.pdf
+│   │   │   │   │   │   ├── homework-07.pdf
+│   │   │   │   │   │   ├── homework-08.pdf
+│   │   │   │   │   │   ├── homework-09.pdf
+│   │   │   │   │   │   └── README.md
+│   │   │   │   │   ├── preamble.tex -> /home/singularisart/Documents/school-notes/University/_files/assignments/my-assignments/preamble.tex
+│   │   │   │   │   ├── README.md
+│   │   │   │   │   └── yaml-files
+│   │   │   │   │       ├── homework-01.yaml
+│   │   │   │   │       ├── homework-02.yaml
+│   │   │   │   │       ├── homework-03.yaml
+│   │   │   │   │       ├── homework-04.yaml
+│   │   │   │   │       ├── homework-05.yaml
+│   │   │   │   │       ├── homework-06.yaml
+│   │   │   │   │       ├── homework-07.yaml
+│   │   │   │   │       ├── homework-08.yaml
+│   │   │   │   │       └── README.md
+│   │   │   │   ├── online-assignments
+│   │   │   │   │   ├── homework-01.pdf
+│   │   │   │   │   ├── homework-02.pdf
+│   │   │   │   │   ├── homework-03.pdf
+│   │   │   │   │   ├── homework-04.pdf
+│   │   │   │   │   ├── homework-05.pdf
+│   │   │   │   │   ├── homework-06.pdf
+│   │   │   │   │   ├── homework-07.pdf
+│   │   │   │   │   ├── homework-08.pdf
+│   │   │   │   │   └── README.md
+│   │   │   │   ├── README.md
+│   │   │   │   └── solution-keys
+│   │   │   │       └── README.md
+│   │   │   ├── books
+│   │   │   │   ├── multivariable-calculus
+│   │   │   │   │   ├── master.pdf
+│   │   │   │   │   └── solutions.pdf
+│   │   │   │   └── README.md
+│   │   │   ├── figures
+│   │   │   │   └── README.md
+│   │   │   ├── info.yaml
+│   │   │   ├── intro.tex
+│   │   │   ├── lectures
+│   │   │   │   └── lec-04.tex
+│   │   │   ├── Makefile -> /home/singularisart/Documents/school-notes/University/_files/Makefile
+│   │   │   ├── master.pdf
+│   │   │   ├── master.tex
+│   │   │   ├── preamble.tex -> /home/singularisart/Documents/school-notes/University/_files/preamble.tex
+│   │   │   ├── professor-notes
+│   │   │   │   ├── lecture-01.pdf
+│   │   │   │   ├── lecture-02.pdf
+│   │   │   │   ├── lecture-03.pdf
+│   │   │   │   ├── lecture-04.pdf
+│   │   │   │   ├── lecture-05.pdf
+│   │   │   │   ├── lecture-06.pdf
+│   │   │   │   ├── lecture-07.pdf
+│   │   │   │   ├── lecture-08.pdf
+│   │   │   │   ├── lecture-09.pdf
+│   │   │   │   ├── lecture-10.pdf
+│   │   │   │   ├── lecture-11.pdf
+│   │   │   │   ├── lecture-12.pdf
+│   │   │   │   ├── lecture-13.pdf
+│   │   │   │   ├── lecture-14.pdf
+│   │   │   │   ├── lecture-15.pdf
+│   │   │   │   ├── lecture-16.pdf
+│   │   │   │   ├── lecture-17.pdf
+│   │   │   │   ├── lecture-18.pdf
+│   │   │   │   ├── lecture-19.pdf
+│   │   │   │   ├── lecture-20.pdf
+│   │   │   │   ├── lecture-21.pdf
+│   │   │   │   ├── lecture-22.pdf
+│   │   │   │   ├── lecture-23.pdf
+│   │   │   │   ├── lecture-24.pdf
+│   │   │   │   ├── lecture-25.pdf
+│   │   │   │   ├── lecture-26.pdf
+│   │   │   │   ├── lecture-27.pdf
+│   │   │   │   ├── lecture-28.pdf
+│   │   │   │   ├── lecture-29.pdf
+│   │   │   │   ├── lecture-30.pdf
+│   │   │   │   ├── lecture-31.pdf
+│   │   │   │   └── lecture-32.pdf
+│   │   │   ├── syllabus.pdf
+│   │   │   └── UltiSnips
+│   │   │       ├── README.md
+│   │   │       └── tex.snippets -> /home/singularisart/Documents/school-notes/University/_files/UltiSnips/tex.snippets
+│   │   ├── mth-307
+│   │   │   ├── assignments
+│   │   │   │   ├── graded-assignments
+│   │   │   │   │   └── README.md
+│   │   │   │   ├── my-assignments
+│   │   │   │   │   ├── image-files
+│   │   │   │   │   │   └── README.md
+│   │   │   │   │   ├── latex-files
+│   │   │   │   │   │   ├── homework-01.tex
+│   │   │   │   │   │   ├── homework-02.tex
+│   │   │   │   │   │   ├── homework-03.tex
+│   │   │   │   │   │   ├── homework-04.tex
+│   │   │   │   │   │   ├── homework-05.tex
+│   │   │   │   │   │   ├── homework-06.tex
+│   │   │   │   │   │   ├── homework-07.tex
+│   │   │   │   │   │   ├── homework-08.tex
+│   │   │   │   │   │   ├── homework-09.tex
+│   │   │   │   │   │   └── README.md
+│   │   │   │   │   ├── Makefile -> /home/singularisart/Documents/school-notes/University/_files/assignments/my-assignments/Makefile
+│   │   │   │   │   ├── master.pdf
+│   │   │   │   │   ├── master.tex
+│   │   │   │   │   ├── pdf-files
+│   │   │   │   │   │   ├── homework-01.pdf
+│   │   │   │   │   │   ├── homework-02.pdf
+│   │   │   │   │   │   ├── homework-03.pdf
+│   │   │   │   │   │   ├── homework-04.pdf
+│   │   │   │   │   │   ├── homework-05.pdf
+│   │   │   │   │   │   ├── homework-06.pdf
+│   │   │   │   │   │   ├── homework-07.pdf
+│   │   │   │   │   │   ├── homework-08.pdf
+│   │   │   │   │   │   ├── homework-09.pdf
+│   │   │   │   │   │   └── README.md
+│   │   │   │   │   ├── preamble.tex -> /home/singularisart/Documents/school-notes/University/_files/assignments/my-assignments/preamble.tex
+│   │   │   │   │   ├── README.md
+│   │   │   │   │   └── yaml-files
+│   │   │   │   │       ├── homework-01.yaml
+│   │   │   │   │       ├── homework-02.yaml
+│   │   │   │   │       ├── homework-03.yaml
+│   │   │   │   │       ├── homework-04.yaml
+│   │   │   │   │       ├── homework-05.yaml
+│   │   │   │   │       ├── homework-06.yaml
+│   │   │   │   │       ├── homework-07.yaml
+│   │   │   │   │       └── README.md
+│   │   │   │   ├── online-assignments
+│   │   │   │   │   ├── homework-01.pdf
+│   │   │   │   │   ├── homework-02.pdf
+│   │   │   │   │   ├── homework-03.pdf
+│   │   │   │   │   ├── homework-04.pdf
+│   │   │   │   │   ├── homework-05.pdf
+│   │   │   │   │   ├── homework-06.pdf
+│   │   │   │   │   ├── homework-07.pdf
+│   │   │   │   │   ├── homework-08.pdf
+│   │   │   │   │   ├── homework-09.pdf
+│   │   │   │   │   └── README.md
+│   │   │   │   ├── README.md
+│   │   │   │   └── solution-keys
+│   │   │   │       ├── homework-01.pdf
+│   │   │   │       ├── homework-02.pdf
+│   │   │   │       ├── homework-03.pdf
+│   │   │   │       ├── homework-04.pdf
+│   │   │   │       ├── homework-05.pdf
+│   │   │   │       ├── homework-06.pdf
+│   │   │   │       ├── homework-07.pdf
+│   │   │   │       ├── homework-08.pdf
+│   │   │   │       ├── homework-09.pdf
+│   │   │   │       ├── midterm-01.pdf
+│   │   │   │       ├── midterm-02.pdf
+│   │   │   │       └── README.md
+│   │   │   ├── books
+│   │   │   │   ├── mathematical-reasoning
+│   │   │   │   │   ├── master.pdf
+│   │   │   │   │   └── tautologies.pdf
+│   │   │   │   └── README.md
+│   │   │   ├── figures
+│   │   │   │   └── README.md
+│   │   │   ├── info.yaml
+│   │   │   ├── intro.tex
+│   │   │   ├── lectures
+│   │   │   │   ├── lec-01.tex
+│   │   │   │   ├── lec-02.tex
+│   │   │   │   ├── lec-03.tex
+│   │   │   │   ├── lec-04.tex
+│   │   │   │   ├── lec-05.tex
+│   │   │   │   ├── lec-06.tex
+│   │   │   │   ├── lec-08.tex
+│   │   │   │   ├── lec-09.tex
+│   │   │   │   ├── lec-10.tex
+│   │   │   │   ├── lec-11.tex
+│   │   │   │   ├── lec-12.tex
+│   │   │   │   ├── lec-13.tex
+│   │   │   │   ├── lec-14.tex
+│   │   │   │   ├── lec-15.tex
+│   │   │   │   ├── lec-16.tex
+│   │   │   │   ├── lec-17.tex
+│   │   │   │   ├── lec-18.tex
+│   │   │   │   ├── lec-19.tex
+│   │   │   │   ├── lec-20.tex
+│   │   │   │   ├── lec-21.tex
+│   │   │   │   ├── lec-22.tex
+│   │   │   │   ├── lec-23.tex
+│   │   │   │   ├── lec-24.tex
+│   │   │   │   ├── lec-25.tex
+│   │   │   │   ├── lec-26.tex
+│   │   │   │   ├── lec-27.tex
+│   │   │   │   ├── lec-28.tex
+│   │   │   │   └── lec-7.tex
+│   │   │   ├── Makefile -> /home/singularisart/Documents/school-notes/University/_files/Makefile
+│   │   │   ├── master.pdf
+│   │   │   ├── master.tex
+│   │   │   ├── papers
+│   │   │   │   └── README.md
+│   │   │   ├── preamble.tex -> /home/singularisart/Documents/school-notes/University/_files/preamble.tex
+│   │   │   ├── professor-notes
+│   │   │   │   └── online-lecture-notes
+│   │   │   │       ├── induction-examples.pdf
+│   │   │   │       ├── logic-summary.pdf
+│   │   │   │       └── syllabus.pdf
+│   │   │   ├── study-guides
+│   │   │   │   ├── study-guide-01.pdf
+│   │   │   │   ├── study-guide-02.pdf
+│   │   │   │   └── study-guide-03.pdf
+│   │   │   ├── syllabus.pdf
+│   │   │   └── UltiSnips
+│   │   │       ├── README.md
+│   │   │       └── tex.snippets -> /home/singularisart/Documents/school-notes/University/_files/UltiSnips/tex.snippets
+│   │   └── mth-316
+│   │       ├── assignments
+│   │       │   ├── graded-assignments
+│   │       │   │   └── README.md
+│   │       │   ├── my-assignments
+│   │       │   │   ├── image-files
+│   │       │   │   │   └── README.md
+│   │       │   │   ├── latex-files
+│   │       │   │   │   ├── homework-01.tex
+│   │       │   │   │   ├── homework-02.tex
+│   │       │   │   │   ├── homework-03.tex
+│   │       │   │   │   ├── homework-04.tex
+│   │       │   │   │   ├── homework-05.tex
+│   │       │   │   │   ├── homework-06.tex
+│   │       │   │   │   ├── homework-07.tex
+│   │       │   │   │   ├── homework-08.tex
+│   │       │   │   │   ├── homework-09.tex
+│   │       │   │   │   └── README.md
+│   │       │   │   ├── Makefile -> /home/singularisart/Documents/school-notes/University/_files/assignments/my-assignments/Makefile
+│   │       │   │   ├── master.tex
+│   │       │   │   ├── pdf-files
+│   │       │   │   │   ├── homework-01.pdf
+│   │       │   │   │   ├── homework-02.pdf
+│   │       │   │   │   ├── homework-03.pdf
+│   │       │   │   │   ├── homework-04.pdf
+│   │       │   │   │   ├── homework-05.pdf
+│   │       │   │   │   ├── homework-06.pdf
+│   │       │   │   │   ├── homework-07.pdf
+│   │       │   │   │   ├── homework-08.pdf
+│   │       │   │   │   ├── homework-09.pdf
+│   │       │   │   │   └── README.md
+│   │       │   │   ├── preamble.tex -> /home/singularisart/Documents/school-notes/University/_files/assignments/my-assignments/preamble.tex
+│   │       │   │   ├── README.md
+│   │       │   │   └── yaml-files
+│   │       │   │       ├── homework-01.yaml
+│   │       │   │       ├── homework-02.yaml
+│   │       │   │       ├── homework-03.yaml
+│   │       │   │       ├── homework-04.yaml
+│   │       │   │       ├── homework-05.yaml
+│   │       │   │       ├── homework-06.yaml
+│   │       │   │       ├── homework-07.yaml
+│   │       │   │       ├── homework-08.yaml
+│   │       │   │       ├── homework-09.yaml
+│   │       │   │       └── README.md
+│   │       │   ├── online-assignments
+│   │       │   │   └── README.md
+│   │       │   ├── README.md
+│   │       │   └── solution-keys
+│   │       │       ├── homework-01.pdf
+│   │       │       ├── homework-02.pdf
+│   │       │       ├── homework-03.pdf
+│   │       │       ├── homework-04.pdf
+│   │       │       ├── homework-05.pdf
+│   │       │       ├── homework-06.pdf
+│   │       │       ├── homework-07.pdf
+│   │       │       ├── homework-08.pdf
+│   │       │       ├── midterm-01.pdf
+│   │       │       ├── midterm-02.pdf
+│   │       │       ├── quiz-01.pdf
+│   │       │       ├── quiz-02.pdf
+│   │       │       └── README.md
+│   │       ├── books
+│   │       │   ├── README.md
+│   │       │   └── understanding-analysis
+│   │       │       ├── master.pdf
+│   │       │       └── solutions.pdf
+│   │       ├── figures
+│   │       │   └── README.md
+│   │       ├── info.yaml
+│   │       ├── intro.tex
+│   │       ├── lectures
+│   │       │   ├── lec-01.tex
+│   │       │   ├── lec-02.tex
+│   │       │   ├── lec-03.tex
+│   │       │   ├── lec-04.tex
+│   │       │   ├── lec-05.tex
+│   │       │   ├── lec-06.tex
+│   │       │   ├── lec-07.tex
+│   │       │   ├── lec-08.tex
+│   │       │   ├── lec-09.tex
+│   │       │   ├── lec-10.tex
+│   │       │   ├── lec-11.tex
+│   │       │   ├── lec-12.tex
+│   │       │   ├── lec-13.tex
+│   │       │   ├── lec-14.tex
+│   │       │   ├── lec-15.tex
+│   │       │   ├── lec-16.tex
+│   │       │   ├── lec-17.tex
+│   │       │   ├── lec-18.tex
+│   │       │   ├── lec-19.tex
+│   │       │   ├── lec-20.tex
+│   │       │   └── lec-21.tex
+│   │       ├── Makefile -> /home/singularisart/Documents/school-notes/University/_files/Makefile
+│   │       ├── master.pdf
+│   │       ├── master.tex
+│   │       ├── papers
+│   │       │   └── README.md
+│   │       ├── preamble.tex -> /home/singularisart/Documents/school-notes/University/_files/preamble.tex
+│   │       ├── sympy-scripts
+│   │       │   └── README.md
+│   │       └── UltiSnips
+│   │           ├── README.md
+│   │           └── tex.snippets -> /home/singularisart/Documents/school-notes/University/_files/UltiSnips/tex.snippets
+│   ├── spring
+│   │   ├── cs-410
+│   │   │   ├── assignments
+│   │   │   │   ├── graded-assignments
+│   │   │   │   │   └── README.md
+│   │   │   │   ├── my-assignments
+│   │   │   │   │   ├── image-files
+│   │   │   │   │   │   ├── homework-01
+│   │   │   │   │   │   │   └── problem-03.png
+│   │   │   │   │   │   └── README.md
+│   │   │   │   │   ├── latex-files
+│   │   │   │   │   │   └── homework-01.tex
+│   │   │   │   │   ├── Makefile -> /home/singularisart/Documents/school-notes/University/_files/assignments/my-assignments/Makefile
+│   │   │   │   │   ├── master.aux
+│   │   │   │   │   ├── master.fdb_latexmk
+│   │   │   │   │   ├── master.fls
+│   │   │   │   │   ├── master.log
+│   │   │   │   │   ├── master.out
+│   │   │   │   │   ├── master.pdf
+│   │   │   │   │   ├── master.synctex.gz
+│   │   │   │   │   ├── master.tex
+│   │   │   │   │   ├── pdf-files
+│   │   │   │   │   │   └── homework-01.pdf
+│   │   │   │   │   ├── preamble.tex -> /home/singularisart/Documents/school-notes/University/_files/assignments/my-assignments/preamble.tex
+│   │   │   │   │   ├── README.md
+│   │   │   │   │   └── yaml-files
+│   │   │   │   │       └── README.md
+│   │   │   │   ├── online-assignments
+│   │   │   │   │   └── README.md
+│   │   │   │   ├── README.md
+│   │   │   │   └── solution-keys
+│   │   │   │       └── README.md
+│   │   │   ├── books
+│   │   │   │   └── README.md
+│   │   │   ├── figures
+│   │   │   │   └── README.md
+│   │   │   ├── final-paper
+│   │   │   │   ├── arxiv.sty
+│   │   │   │   ├── cknn_circle_edges.csv
+│   │   │   │   ├── cknn_circle_nodes.csv
+│   │   │   │   ├── data
+│   │   │   │   │   └── figure-03.csv
+│   │   │   │   ├── epsball_edges.csv
+│   │   │   │   ├── epsball_nodes.csv
+│   │   │   │   ├── fodsOF.cls
+│   │   │   │   ├── get-data.py
+│   │   │   │   ├── LICENSE
+│   │   │   │   ├── Makefile
+│   │   │   │   ├── master.pdf
+│   │   │   │   ├── master.tex
+│   │   │   │   ├── papers
+│   │   │   │   │   ├── Consistent-Manifold-Representation-For-Topological-Data-Analysis.pdf
+│   │   │   │   │   ├── Diffusion-Maps.pdf
+│   │   │   │   │   ├── Laplacian-Eigenmaps-for-Dimensionality-Reduction-and-Data-Representation.pdf
+│   │   │   │   │   ├── Spectral-Exterior-Calculus.pdf
+│   │   │   │   │   └── Testing-the-Manifold-Hypothesis.pdf
+│   │   │   │   ├── README.md
+│   │   │   │   └── references.bib
+│   │   │   ├── info.yaml
+│   │   │   ├── intro.tex
+│   │   │   ├── lectures
+│   │   │   ├── Makefile -> /home/singularisart/Documents/school-notes/University/_files/Makefile
+│   │   │   ├── master.pdf
+│   │   │   ├── master.tex
+│   │   │   ├── papers
+│   │   │   │   └── README.md
+│   │   │   ├── preamble.tex -> /home/singularisart/Documents/school-notes/University/_files/preamble.tex
+│   │   │   ├── sympy-scripts
+│   │   │   │   └── README.md
+│   │   │   └── UltiSnips
+│   │   │       ├── README.md
+│   │   │       └── tex.snippets -> /home/singularisart/Documents/school-notes/University/_files/UltiSnips/tex.snippets
+│   │   ├── mth-411
+│   │   │   ├── assignments
+│   │   │   │   ├── graded-assignments
+│   │   │   │   │   └── README.md
+│   │   │   │   ├── my-assignments
+│   │   │   │   │   ├── image-files
+│   │   │   │   │   │   └── README.md
+│   │   │   │   │   ├── latex-files
+│   │   │   │   │   │   ├── homework-01.tex
+│   │   │   │   │   │   ├── homework-02.tex
+│   │   │   │   │   │   ├── homework-03.tex
+│   │   │   │   │   │   ├── homework-04.tex
+│   │   │   │   │   │   ├── homework-05.tex
+│   │   │   │   │   │   └── homework-06.tex
+│   │   │   │   │   ├── Makefile -> /home/singularisart/Documents/school-notes/University/_files/assignments/my-assignments/Makefile
+│   │   │   │   │   ├── master.pdf
+│   │   │   │   │   ├── master.tex
+│   │   │   │   │   ├── pdf-files
+│   │   │   │   │   │   ├── homework-01.pdf
+│   │   │   │   │   │   ├── homework-02.pdf
+│   │   │   │   │   │   ├── homework-03.pdf
+│   │   │   │   │   │   ├── homework-04.pdf
+│   │   │   │   │   │   ├── homework-05.pdf
+│   │   │   │   │   │   └── homework-06.pdf
+│   │   │   │   │   ├── preamble.tex -> /home/singularisart/Documents/school-notes/University/_files/assignments/my-assignments/preamble.tex
+│   │   │   │   │   ├── README.md
+│   │   │   │   │   └── yaml-files
+│   │   │   │   │       └── README.md
+│   │   │   │   ├── online-assignments
+│   │   │   │   │   └── README.md
+│   │   │   │   ├── README.md
+│   │   │   │   └── solution-keys
+│   │   │   │       └── README.md
+│   │   │   ├── books
+│   │   │   │   ├── complex-variables-and-its-applications.pdf
+│   │   │   │   └── README.md
+│   │   │   ├── figures
+│   │   │   │   └── README.md
+│   │   │   ├── info.yaml
+│   │   │   ├── intro.tex
+│   │   │   ├── lectures
+│   │   │   │   ├── lec-00.tex
+│   │   │   │   ├── lec-01.tex
+│   │   │   │   └── lec-02.tex
+│   │   │   ├── Makefile -> /home/singularisart/Documents/school-notes/University/_files/Makefile
+│   │   │   ├── master.pdf
+│   │   │   ├── master.tex
+│   │   │   ├── papers
+│   │   │   │   └── README.md
+│   │   │   ├── preamble.tex -> /home/singularisart/Documents/school-notes/University/_files/preamble.tex
+│   │   │   ├── sympy-scripts
+│   │   │   │   └── README.md
+│   │   │   └── UltiSnips
+│   │   │       ├── README.md
+│   │   │       └── tex.snippets -> /home/singularisart/Documents/school-notes/University/_files/UltiSnips/tex.snippets
+│   │   └── mth-433
+│   │       ├── assignments
+│   │       │   ├── graded-assignments
+│   │       │   │   └── README.md
+│   │       │   ├── my-assignments
+│   │       │   │   ├── image-files
+│   │       │   │   │   └── README.md
+│   │       │   │   ├── latex-files
+│   │       │   │   │   ├── homework-01.tex
+│   │       │   │   │   ├── homework-02.tex
+│   │       │   │   │   ├── homework-03.tex
+│   │       │   │   │   ├── homework-04.tex
+│   │       │   │   │   ├── homework-05.tex
+│   │       │   │   │   ├── homework-06.tex
+│   │       │   │   │   └── homework-07.tex
+│   │       │   │   ├── Makefile -> /home/singularisart/Documents/school-notes/University/_files/assignments/my-assignments/Makefile
+│   │       │   │   ├── master.aux
+│   │       │   │   ├── master.fdb_latexmk
+│   │       │   │   ├── master.fls
+│   │       │   │   ├── master.log
+│   │       │   │   ├── master.out
+│   │       │   │   ├── master.pdf
+│   │       │   │   ├── master.synctex.gz
+│   │       │   │   ├── master.tex
+│   │       │   │   ├── pdf-files
+│   │       │   │   │   ├── homework-01.pdf
+│   │       │   │   │   ├── homework-02.pdf
+│   │       │   │   │   ├── homework-03.pdf
+│   │       │   │   │   ├── homework-04.pdf
+│   │       │   │   │   ├── homework-05.pdf
+│   │       │   │   │   ├── homework-06.pdf
+│   │       │   │   │   └── homework-07.pdf
+│   │       │   │   ├── preamble.tex -> /home/singularisart/Documents/school-notes/University/_files/assignments/my-assignments/preamble.tex
+│   │       │   │   ├── README.md
+│   │       │   │   └── yaml-files
+│   │       │   │       └── README.md
+│   │       │   ├── online-assignments
+│   │       │   │   └── README.md
+│   │       │   ├── README.md
+│   │       │   └── solution-keys
+│   │       │       └── README.md
+│   │       ├── books
+│   │       │   ├── differential-geometry-of-curves-and-surfaces.pdf
+│   │       │   └── README.md
+│   │       ├── cheat-sheet
+│   │       │   ├── h
+│   │       │   ├── midterm-01.aux
+│   │       │   ├── midterm-01.fdb_latexmk
+│   │       │   ├── midterm-01.fls
+│   │       │   ├── midterm-01.log
+│   │       │   ├── midterm-01.out
+│   │       │   ├── midterm-01.pdf
+│   │       │   ├── midterm-01.synctex.gz
+│   │       │   ├── midterm-01.tex
+│   │       │   └── texput.log
+│   │       ├── figures
+│   │       │   ├── hello-world.svg
+│   │       │   └── README.md
+│   │       ├── info.yaml
+│   │       ├── intro.tex
+│   │       ├── lectures
+│   │       │   ├── lec-00.tex
+│   │       │   ├── lec-01.tex
+│   │       │   ├── lec-02.tex
+│   │       │   ├── lec-03.tex
+│   │       │   ├── lec-04.tex
+│   │       │   ├── lec-05.tex
+│   │       │   ├── lec-06.tex
+│   │       │   ├── lec-07.tex
+│   │       │   ├── lec-08.tex
+│   │       │   ├── lec-09.tex
+│   │       │   ├── lec-10.tex
+│   │       │   ├── lec-11.tex
+│   │       │   ├── lec-12.tex
+│   │       │   ├── lec-13.tex
+│   │       │   ├── lec-14.tex
+│   │       │   ├── lec-15.tex
+│   │       │   ├── lec-16.tex
+│   │       │   ├── lec-17.tex
+│   │       │   ├── lec-18.tex
+│   │       │   ├── lec-19.tex
+│   │       │   └── lec-20.tex
+│   │       ├── Makefile -> /home/singularisart/Documents/school-notes/University/_files/Makefile
+│   │       ├── master.pdf
+│   │       ├── master.tex
+│   │       ├── papers
+│   │       │   └── README.md
+│   │       ├── preamble.tex -> /home/singularisart/Documents/school-notes/University/_files/preamble.tex
+│   │       ├── sympy-scripts
+│   │       │   └── README.md
+│   │       └── UltiSnips
+│   │           ├── README.md
+│   │           └── tex.snippets -> /home/singularisart/Documents/school-notes/University/_files/UltiSnips/tex.snippets
+│   └── winter
+│       ├── drp
+│       │   ├── chapter-02.pdf
+│       │   ├── chapters
+│       │   │   ├── chapter-02.tex
+│       │   │   ├── chapter-03.tex
+│       │   │   └── chapter-05.tex
+│       │   ├── Makefile
+│       │   ├── master.pdf
+│       │   ├── master.tex
+│       │   ├── slides
+│       │   │   ├── Makefile
+│       │   │   ├── master.aux
+│       │   │   ├── master.bbl
+│       │   │   ├── master.blg
+│       │   │   ├── master.fdb_latexmk
+│       │   │   ├── master.fls
+│       │   │   ├── master.log
+│       │   │   ├── master.nav
+│       │   │   ├── master.out
+│       │   │   ├── master.pdf
+│       │   │   ├── master.snm
+│       │   │   ├── master.synctex.gz
+│       │   │   ├── master.tex
+│       │   │   ├── master.toc
+│       │   │   └── reference.bib
+│       │   └── textbook.pdf
+│       ├── mth-282
+│       │   ├── assignments
+│       │   │   ├── graded-assignments
+│       │   │   │   └── README.md
+│       │   │   ├── my-assignments
+│       │   │   │   ├── image-files
+│       │   │   │   │   ├── homework-03
+│       │   │   │   │   │   ├── problem-01-solid.jpg
+│       │   │   │   │   │   ├── problem-02-solid.jpg
+│       │   │   │   │   │   ├── problem-03-solid.jpg
+│       │   │   │   │   │   └── problem-04-solid.jpg
+│       │   │   │   │   ├── homework-04
+│       │   │   │   │   │   ├── problem-01-solid.jpg
+│       │   │   │   │   │   ├── problem-02-solid.jpg
+│       │   │   │   │   │   └── problem-03-solid.jpg
+│       │   │   │   │   └── README.md
+│       │   │   │   ├── latex-files
+│       │   │   │   │   ├── homework-01.tex
+│       │   │   │   │   ├── homework-02.tex
+│       │   │   │   │   ├── homework-03.tex
+│       │   │   │   │   ├── homework-04.tex
+│       │   │   │   │   ├── homework-05.tex
+│       │   │   │   │   ├── homework-06.tex
+│       │   │   │   │   ├── homework-07.tex
+│       │   │   │   │   ├── homework-08.tex
+│       │   │   │   │   ├── homework-09.tex
+│       │   │   │   │   └── README.md
+│       │   │   │   ├── Makefile -> /home/singularisart/Documents/school-notes/University/_files/assignments/my-assignments/Makefile
+│       │   │   │   ├── master.tex
+│       │   │   │   ├── pdf-files
+│       │   │   │   │   ├── homework-01.pdf
+│       │   │   │   │   ├── homework-02.pdf
+│       │   │   │   │   ├── homework-03.pdf
+│       │   │   │   │   ├── homework-04.pdf
+│       │   │   │   │   ├── homework-05.pdf
+│       │   │   │   │   ├── homework-06.pdf
+│       │   │   │   │   ├── homework-07.pdf
+│       │   │   │   │   ├── homework-08.pdf
+│       │   │   │   │   ├── homework-09.pdf
+│       │   │   │   │   └── README.md
+│       │   │   │   ├── preamble.tex -> /home/singularisart/Documents/school-notes/University/_files/assignments/my-assignments/preamble.tex
+│       │   │   │   ├── README.md
+│       │   │   │   └── yaml-files
+│       │   │   │       ├── homework-01.yaml
+│       │   │   │       ├── homework-02.yaml
+│       │   │   │       ├── homework-03.yaml
+│       │   │   │       ├── README.md
+│       │   │   │       ├── webwork-01.yaml
+│       │   │   │       ├── webwork-02-a.yaml
+│       │   │   │       ├── webwork-02-b.yaml
+│       │   │   │       ├── webwork-03-a.yaml
+│       │   │   │       ├── webwork-03-b.yaml
+│       │   │   │       └── webwork-04.yaml
+│       │   │   ├── online-assignments
+│       │   │   │   ├── homework-01.pdf
+│       │   │   │   ├── homework-02.pdf
+│       │   │   │   ├── homework-03.pdf
+│       │   │   │   ├── homework-04.pdf
+│       │   │   │   └── README.md
+│       │   │   ├── README.md
+│       │   │   └── solution-keys
+│       │   │       └── README.md
+│       │   ├── books
+│       │   │   ├── multivariable-calculus
+│       │   │   │   ├── master.pdf
+│       │   │   │   └── solutions.pdf
+│       │   │   └── README.md
+│       │   ├── figures
+│       │   │   └── README.md
+│       │   ├── info.yaml
+│       │   ├── intro.tex
+│       │   ├── lectures
+│       │   ├── Makefile -> /home/singularisart/Documents/school-notes/University/_files/Makefile
+│       │   ├── master.pdf
+│       │   ├── master.tex
+│       │   ├── papers
+│       │   │   └── README.md
+│       │   ├── preamble.tex -> /home/singularisart/Documents/school-notes/University/_files/preamble.tex
+│       │   ├── sympy-scripts
+│       │   │   └── README.md
+│       │   └── UltiSnips
+│       │       ├── README.md
+│       │       └── tex.snippets -> /home/singularisart/Documents/school-notes/University/_files/UltiSnips/tex.snippets
+│       ├── mth-317
+│       │   ├── assignments
+│       │   │   ├── graded-assignments
+│       │   │   │   ├── homework-01.pdf
+│       │   │   │   └── README.md
+│       │   │   ├── my-assignments
+│       │   │   │   ├── image-files
+│       │   │   │   │   └── README.md
+│       │   │   │   ├── latex-files
+│       │   │   │   │   ├── homework-01.tex
+│       │   │   │   │   ├── homework-02.tex
+│       │   │   │   │   ├── homework-03.tex
+│       │   │   │   │   ├── homework-04.tex
+│       │   │   │   │   ├── homework-05.tex
+│       │   │   │   │   ├── homework-06.tex
+│       │   │   │   │   ├── homework-07.tex
+│       │   │   │   │   ├── homework-08.tex
+│       │   │   │   │   ├── homework-09.tex
+│       │   │   │   │   └── README.md
+│       │   │   │   ├── Makefile -> /home/singularisart/Documents/school-notes/University/_files/assignments/my-assignments/Makefile
+│       │   │   │   ├── master.pdf
+│       │   │   │   ├── master.tex
+│       │   │   │   ├── pdf-files
+│       │   │   │   │   ├── homework-01.pdf
+│       │   │   │   │   ├── homework-02.pdf
+│       │   │   │   │   ├── homework-03.pdf
+│       │   │   │   │   ├── homework-04.pdf
+│       │   │   │   │   ├── homework-05.pdf
+│       │   │   │   │   ├── homework-06.pdf
+│       │   │   │   │   ├── homework-07.pdf
+│       │   │   │   │   ├── homework-08.pdf
+│       │   │   │   │   ├── homework-09.pdf
+│       │   │   │   │   └── README.md
+│       │   │   │   ├── preamble.tex -> /home/singularisart/Documents/school-notes/University/_files/assignments/my-assignments/preamble.tex
+│       │   │   │   ├── README.md
+│       │   │   │   └── yaml-files
+│       │   │   │       ├── homework-01.yaml
+│       │   │   │       └── README.md
+│       │   │   ├── online-assignments
+│       │   │   │   └── README.md
+│       │   │   ├── README.md
+│       │   │   └── solution-keys
+│       │   │       ├── homework-01.pdf
+│       │   │       ├── homework-02.pdf
+│       │   │       ├── quiz-01.pdf
+│       │   │       └── README.md
+│       │   ├── books
+│       │   │   ├── README.md
+│       │   │   └── understanding-analysis
+│       │   │       ├── master.pdf
+│       │   │       └── solutions.pdf
+│       │   ├── figures
+│       │   │   └── README.md
+│       │   ├── info.yaml
+│       │   ├── intro.tex
+│       │   ├── lectures
+│       │   ├── Makefile -> /home/singularisart/Documents/school-notes/University/_files/Makefile
+│       │   ├── master.pdf
+│       │   ├── master.tex
+│       │   ├── papers
+│       │   │   └── README.md
+│       │   ├── preamble.tex -> /home/singularisart/Documents/school-notes/University/_files/preamble.tex
+│       │   ├── sympy-scripts
+│       │   │   └── README.md
+│       │   └── UltiSnips
+│       │       ├── README.md
+│       │       └── tex.snippets -> /home/singularisart/Documents/school-notes/University/_files/UltiSnips/tex.snippets
+│       └── mth-441
+│           ├── assignments
+│           │   ├── graded-assignments
+│           │   │   ├── homework-01.pdf
+│           │   │   ├── homework-02.pdf
+│           │   │   ├── homework-03.pdf
+│           │   │   ├── homework-05.pdf
+│           │   │   ├── homework-06.pdf
+│           │   │   ├── homework-07.pdf
+│           │   │   ├── homework-08.pdf
+│           │   │   ├── homework-09.pdf
+│           │   │   ├── homework-10.pdf
+│           │   │   ├── midterm.pdf
+│           │   │   ├── quiz-01.pdf
+│           │   │   ├── quiz-02.pdf
+│           │   │   ├── quiz-03.pdf
+│           │   │   └── README.md
+│           │   ├── my-assignments
+│           │   │   ├── image-files
+│           │   │   │   └── README.md
+│           │   │   ├── latex-files
+│           │   │   │   ├── homework-01.tex
+│           │   │   │   ├── homework-02.tex
+│           │   │   │   ├── homework-03.tex
+│           │   │   │   ├── homework-04.tex
+│           │   │   │   ├── homework-05.tex
+│           │   │   │   ├── homework-06.tex
+│           │   │   │   ├── homework-07.tex
+│           │   │   │   ├── homework-08.tex
+│           │   │   │   ├── homework-09.tex
+│           │   │   │   ├── homework-10.tex
+│           │   │   │   └── README.md
+│           │   │   ├── Makefile -> /home/singularisart/Documents/school-notes/University/_files/assignments/my-assignments/Makefile
+│           │   │   ├── master.pdf
+│           │   │   ├── master.tex
+│           │   │   ├── pdf-files
+│           │   │   │   ├── homework-01.pdf
+│           │   │   │   ├── homework-02.pdf
+│           │   │   │   ├── homework-03.pdf
+│           │   │   │   ├── homework-04.pdf
+│           │   │   │   ├── homework-05.pdf
+│           │   │   │   ├── homework-06.pdf
+│           │   │   │   ├── homework-07.pdf
+│           │   │   │   ├── homework-08.pdf
+│           │   │   │   ├── homework-09.pdf
+│           │   │   │   ├── homework-10.pdf
+│           │   │   │   └── README.md
+│           │   │   ├── preamble.tex -> /home/singularisart/Documents/school-notes/University/_files/assignments/my-assignments/preamble.tex
+│           │   │   ├── README.md
+│           │   │   └── yaml-files
+│           │   │       └── README.md
+│           │   ├── online-assignments
+│           │   │   ├── homework-01.pdf
+│           │   │   ├── homework-02.pdf
+│           │   │   ├── homework-03.pdf
+│           │   │   ├── homework-04.pdf
+│           │   │   ├── homework-05.pdf
+│           │   │   ├── homework-06.pdf
+│           │   │   ├── homework-07.pdf
+│           │   │   ├── homework-08.pdf
+│           │   │   ├── homework-09.pdf
+│           │   │   ├── homework-10.pdf
+│           │   │   └── README.md
+│           │   ├── README.md
+│           │   └── solution-keys
+│           │       ├── homework-01.pdf
+│           │       ├── homework-02.pdf
+│           │       ├── homework-03.pdf
+│           │       ├── quiz-01.pdf
+│           │       ├── quiz-02.pdf
+│           │       ├── quiz-03.pdf
+│           │       └── README.md
+│           ├── books
+│           │   └── README.md
+│           ├── figures
+│           │   └── README.md
+│           ├── info.yaml
+│           ├── intro.tex
+│           ├── lectures
+│           ├── Makefile -> /home/singularisart/Documents/school-notes/University/_files/Makefile
+│           ├── master.pdf
+│           ├── master.tex
+│           ├── preamble.tex -> /home/singularisart/Documents/school-notes/University/_files/preamble.tex
+│           ├── professor-notes
+│           │   ├── lecture-01.pdf
+│           │   ├── lecture-02.pdf
+│           │   ├── lecture-03.pdf
+│           │   ├── lecture-04.pdf
+│           │   ├── lecture-05.pdf
+│           │   ├── lecture-06.pdf
+│           │   ├── lecture-07.pdf
+│           │   ├── lecture-08.pdf
+│           │   ├── lecture-09.pdf
+│           │   ├── lecture-10.pdf
+│           │   ├── lecture-11.pdf
+│           │   ├── lecture-12.pdf
+│           │   ├── lecture-13.pdf
+│           │   ├── lecture-14.pdf
+│           │   ├── lecture-15.pdf
+│           │   ├── lecture-16.pdf
+│           │   ├── lecture-17.pdf
+│           │   ├── lecture-18.pdf
+│           │   ├── lecture-19.pdf
+│           │   ├── lecture-20.pdf
+│           │   ├── lecture-21.pdf
+│           │   ├── lecture-22.pdf
+│           │   ├── lecture-23.pdf
+│           │   ├── lecture-24.pdf
+│           │   ├── lecture-25.pdf
+│           │   └── lecture-26.pdf
+│           ├── syllabus.pdf
+│           ├── sympy-scripts
+│           │   └── README.md
+│           └── UltiSnips
+│               ├── README.md
+│               └── tex.snippets -> /home/singularisart/Documents/school-notes/University/_files/UltiSnips/tex.snippets
+└── Year-2
+    ├── fall
+    ├── spring
+    └── winter
+
+175 directories, 703 files

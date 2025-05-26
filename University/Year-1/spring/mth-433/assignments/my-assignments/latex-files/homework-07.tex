@@ -144,6 +144,24 @@
 \end{problem}
 
 \begin{solution}
+  Let $S^2 \subset \R^3$ be the unit sphere centered at the origin. The stereographic projection from the north pole $N = (0, 0, 1)$ onto the plane $z = 0$ is given by
+  \[%
+    \pi(x, y, z) = \left(\frac{x}{1 - z}, \frac{y}{1 - z}\right)
+  .\]%
+  This map is smooth on $S^2 \setminus \{N\}$ and its inverse is
+  \[%
+    \pi^{-1}(u, v) = \left(\frac{2u}{u^2 + v^2 + 1}, \frac{2v}{u^2 + v^2 + 1}, \frac{u^2 + v^2 - 1}{u^2 + v^2 + 1}\right)
+  .\]%
+
+  Let $\x(u, v) = \pi^{-1}(u, v)$ be a parametrization of the sphere minus the north pole. Computing the first fundamental form of this parametrization yields
+  \[%
+    E = G = \frac{4}{(u^2 + v^2 + 1)^2}, \quad F = 0
+  .\]%
+  Thus, the metric in $(u, v)$ coordinates is conformal to the Euclidean metric
+  \[%
+    \fff = \lambda(u, v)^2 (\du^2 + \dv^2), \quad \text{with}~\lambda(u, v) = \frac{2}{u^2 + v^2 + 1}
+  .\]%
+  Therefore, the stereographic projection induces a conformal (angle-preserving) correspondence between the sphere (minus a point) and the plane. This proves that the sphere is locally conformal to a plane.
 \end{solution}
 
 \begin{problem}[4.2.8]
@@ -158,6 +176,40 @@
 \end{problem}
 
 \begin{solution}
+  Define $p_0 \coloneqq G(0)$ and $F(p) = G(p) - p_0$, for all $p \in \R^3$. Then, for all $p, q \in \R^3$, we have
+  \[%
+    \abs{F(p) - F(q)} = \abs{(F(p) - p_0) - (F(q) - p_0)} = \abs{G(p) - G(q)} = \abs{p - q}
+  .\]%
+  So, $F$ is a distance-preserving map. It also preserves the norms, via
+  \[%
+    \Abs{F(p)} = \Abs{F(p) - F(0)} = \Abs{G(p) - G(0)} = \Abs{p - 0} = \Abs{p}
+  ,\]%
+  since
+  \[%
+    F(0) = G(0) - p_0 = G(0) - G(0) = 0
+  .\]%
+
+  We now show that $F$ is a linear map. Since $F$ is distance-preserving and satisfies $F(0) = 0$, it also preserves inner products. To see this, for all $p, q \in \R^3$, we use the polarization identity
+  \[%
+    \bra{p, q} = \frac{1}{2}(\Abs{p + q}^2 - \Abs{p}^2 - \Abs{q}^2)
+  ,\]%
+  and since $F$ preserves norms, we get
+  \[%
+    \bra{F(p), F(q)} = \frac{1}{2}(\Abs{F(p) + F(q)}^2 - \Abs{F(p)}^2 - \Abs{F(q)}^2) = \frac{1}{2}(\Abs{p + q}^2 - \Abs{p}^2 - \Abs{q}^2) = \bra{p, q}
+  .\]%
+  Hence, $F$ preserves inner products.
+
+  Now let $p, q \in \R^3$ and $\lambda \in \R$. Then,
+  \[%
+    \Abs{F(p + q) - (F(p) + F(q))}^2 = \Abs{F(p + q)}^2 + \Abs{F(p) + F(q)}^2 - 2\bra{F(p + q), F(p) + F(q)}
+  .\]%
+  Because $F$ preserves norms and inner products, this equals
+  \[%
+    \Abs{p + q}^2 + \Abs{p + q}^2 - 2\bra{p + q, p + q} = 0
+  ,\]%
+  so $F(p + q) = F(p) + F(q)$. A similar argument shows $F(\lambda p) = \lambda F(p)$. Hence, $F$ is linear.
+
+  Finally, since $F$ is a linear map that preserves inner products, it is a linear isometry of $\R^3$. Therefore, $G(p) = F(p) + p_0$, with $F$ a linear isometry and $p_0 = G(0)$, as desired.
 \end{solution}
 
 \begin{problem}[4.2.10]
@@ -165,6 +217,36 @@
 \end{problem}
 
 \begin{solution}
+  Let $\x(u, v) = (f(v)\cos(u), f(v)\sin(u), g(v))$ be a surface of revolution of the generating curve $\alpha(u, v) = (f(v), g(v))$ along some axis of rotation. Computing th first fundamental form, we have
+  \begin{align*}
+    E &= \bra{\x_u, \x_u} = f^2(v) \\
+    F &= \bra{\x_u, \x_v} = 0 \\
+    G &= \bra{\x_v, \x_v} = (f'(v))^2 + (g'(v))^2
+  ,\end{align*}
+  giving us
+  \[%
+    \fff_p(\w) = f^2(v) \du^2 + ((f'(v))^2 + (g'(v))^2) \dv^2
+  ,\]%
+  for some $p \in S$ and $\w \in T_p(S)$.
+
+  Now consider the map $\phi_\theta(u, v) = (u + \theta, v)$, which corresponds to a rotation about the axis of revolution by a fixed angle $\theta$. This induces a new parametrization of the surface,
+  \[%
+    \bar{\x}(u, v) = \x(\phi_\theta(u, v)) = \x(u + \theta, v)
+  .\]%
+  We compute the first fundamental form of $\bar{\x}$ to get
+  \begin{align*}
+    \bar{\x}_u(u, v) &= \frac{\partial}{\partial u} \x(u + \theta, v) = \x_u(u + \theta, v) \\
+    \bar{\x}_v(u, v) &= \frac{\partial}{\partial v} \x(u + \theta, v) = \x_v(u + \theta, v)
+  .\end{align*}
+  Then the coefficients of the first fundamental form for $\bar{\x}$ are
+  \begin{align*}
+    \bar{E} &= \bra{\bar{\x}_u, \bar{\x}_u} = \bra{\x_u(u + \theta, v), \x_u(u + \theta, v)} = f^2(v) \\
+    \bar{F} &= \bra{\bar{\x}_u, \bar{\x}_v} = \bra{\x_u(u + \theta, v), \x_v(u + \theta, v)} = 0 \\
+    \bar{G} &= \bra{\bar{\x}_v, \bar{\x}_v} = \bra{\x_v(u + \theta, v), \x_v(u + \theta, v)} = (f'(v))^2 + (g'(v))^2
+  .\end{align*}
+  These are identical to the original coefficients $E, F, G$.
+
+  Since the map $\phi_\theta(u, v) = (u + \theta, v)$ is smooth, has a smooth inverse $\phi_{-\theta}$, and preserves the first fundamental form everywhere on the domain of the parametrization, it defines a global isometry of the surface. In particular, $\phi_\theta$ acts globally on $S$ because the surface of revolution is entirely covered by the parametrization $\x(u, v)$ with $u \in [0, 2\pi)$ (mod $2\pi$) and $v$ in an interval $I$. Thus, the rotations about the axis of revolution define smooth diffeomorphisms from $S$ to itself that preserve the Riemannian metric. Therefore, they are global isometries.
 \end{solution}
 
 \begin{problem}[4.2.14]
@@ -234,9 +316,7 @@
 \end{solution}
 
 \begin{problem}[4.2.15]
-  Let $\phi : \R^2 \to \R^2$ be given by $\phi(x, y) = (u(x, y), v(x, y))$,
-  where $u$ and $v$ are differentiable functions that satisfy the Cauchy-Riemann
-  equations
+  Let $\phi : \R^2 \to \R^2$ be given by $\phi(x, y) = (u(x, y), v(x, y))$, where $u$ and $v$ are differentiable functions that satisfy the Cauchy-Riemann equations
   \[%
     u_x = v_y \aand u_y = -v_x
   .\]%
@@ -244,4 +324,47 @@
 \end{problem}
 
 \begin{solution}
+  Let $\phi(x, y) = (u(x, y), v(x, y))$ be a differentiable map satisfying the Cauchy-Riemann equations. Then, the Jacobian matrix $D\phi$ at a point $(x, y)$ is
+  \[%
+    D\phi = \begin{bmatrix}
+      u_x & u_y \\
+      v_x & v_y \\
+    \end{bmatrix}
+    = \begin{bmatrix}
+      u_x & u_y \\
+      -u_y & u_x \\
+    \end{bmatrix}
+  ,\]%
+  since $\phi$ satisfies the Cauchy-Riemann equations.
+
+  This matrix is of the form
+  \[%
+    D\phi = u_x \begin{bmatrix}
+      1 & \frac{u_y}{u_x} \\
+      -\frac{u_y}{u_x} & 1 \\
+    \end{bmatrix}
+    \quad \text{(when $u_x \neq 0$)}
+  .\]%
+  More importantly, for all points not in $Q = \{(x, y) \mid u_x^2 + u_y^2 = 0\}$, the Jacobian is nonzero and we can interpret $D\phi$ as a similarity transformation: a composition of a rotation and a scaling.
+
+  Indeed, the Jacobian satisfies
+  \[%
+    D\phi^\top D\phi
+    = \begin{bmatrix}
+      u_x & -u_y \\
+      u_y & u_x \\
+    \end{bmatrix}
+    \begin{bmatrix}
+      u_x & u_y \\
+      -u_y & u_x \\
+    \end{bmatrix}
+    = \begin{bmatrix}
+      u_x^2 + u_y^2 & 0 \\
+      0 & u_x^2 + u_y^2 \\
+    \end{bmatrix}
+    = (u_x^2 + u_y^2) \fff
+  .\]%
+  This shows that the differential of $\phi$ preserves angles and scales all vectors by the same factor locally -- that is, it is conformal.
+
+  Therefore, $\phi$ is a local conformal map on $\R^2 \setminus Q$.
 \end{solution}
