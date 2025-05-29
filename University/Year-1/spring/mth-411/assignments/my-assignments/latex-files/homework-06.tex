@@ -342,3 +342,77 @@
     \int_0^\infty e^{-x^2} \cos(2bx) \dx = \frac{\sqrt{\pi}}{2} e^{-b^2} \qquad (b > 0)
   .\qedhere\]%
 \end{proof}
+
+\begin{problem}[4.52.2]
+  Find the value of the integral of $g(z)$ around the circle $\abs{z - i} = 2$ in the positive sense when
+  \begin{multicols}{2}
+    \begin{enumerate}
+      \item $\displaystyle g(z) = \frac{1}{z^2 + 4}$;
+
+      \item $\displaystyle g(z) = \frac{1}{(z^2 + 4)^2}$.
+    \end{enumerate}
+  \end{multicols}
+\end{problem}
+
+\begin{solution}[(i)]
+  Factoring the denominator, we have $z^2 + 4 = (z + 2i)(z - 2i)$. The singularities are at $z = 2i$ and $z = -2i$. The contour $\abs{z - i} = 2$ is centered at $z = i$ and has radius $2$. Therefore, $\abs{2i - i} = 1 < 2$ and $\abs{-2i - i} = 3 > 2$, so the singularity at $z = 2i$ lies \emph{inside} the contour, while the singularity at $z = -2i$ lies \emph{outside}.
+
+  Since only $z = 2i$ is inside, we write
+  \[%
+    g(z) = \frac{1}{(z - 2i)(z + 2i)} = \frac{1}{z + 2i} \cdot \frac{1}{z - 2i}
+  .\]%
+  The function $f(z) = \sfrac{1}{(z + 2i)}$ is analytic on and inside the contour (since $z = -2i$ is outside). So we can use Cauchy's Integral Formula for the simple pole at $z = 2i$
+  \[%
+    \int_{\abs{z - i} = 2} \frac{f(z)}{z - 2i} \dz = 2\pi i \cdot f(2i) = 2\pi i \cdot \frac{1}{2i + 2i} = 2\pi i \cdot \frac{1}{4i} = \frac{\pi}{2}
+  .\qedhere\]%
+\end{solution}
+
+\begin{solution}[(ii)]
+  Again, factoring the denominator, we have $(z^2 + 4)^2 = [(z - 2i)(z + 2i)]^2$. So the integrand has a pole of order 2 at $z = 2i$, which is \emph{inside} the circle, and another at $z = -2i$, which is \emph{outside} the circle. We can rewrite the integrand as
+  \[%
+    g(z) = \frac{1}{[(z - 2i)^2 (z + 2i)^2]} = \frac{1}{(z + 2i)^2} \cdot \frac{1}{(z - 2i)^2}
+  .\]%
+
+  Let
+  \[%
+    f(z) = \frac{1}{(z + 2i)^2}
+  ,\]%
+  which is analytic inside and on the circle (since $z = -2i$ is outside). We apply the Cauchy Integral Formula for derivatives, to get
+  \[%
+    \int_{\abs{z - i} = 2} \frac{f(z)}{(z - 2i)^2} \dz = 2\pi i \cdot f'(2i)
+  .\]%
+  Computing the derivative of $f$, we have $f'(z) = -2(z + 2i)^{-3}$. So,
+  \[%
+    f'(2i) = -2(4i)^{-3} = -2 \cdot \frac{1}{64i^3} = -2 \cdot \frac{1}{64(-i)} = \frac{2}{64i} = \frac{1}{32i}
+  .\]%
+  Therefore, we have
+  \[%
+    \int_{\abs{z - i} = 2} \frac{1}{(z^2 + 4)^2} \dz = 2\pi i \cdot \frac{1}{32i} = \frac{\pi}{16}
+  .\qedhere\]%
+\end{solution}
+
+\begin{problem}[4.52.3]
+  Let $C$ be the circle $\abs{z} = 3$, described in the positive sense. Show that if
+  \[%
+    g(z) = \int_C \frac{2s^2 - s - 2}{s - z} \ds \qquad (\abs{z} \ne 3)
+  ,\]%
+  then $g(2) = 8\pi i$. What is the value of $g(z)$ when $\abs{z} > 3$?
+\end{problem}
+
+\begin{solution}
+  Assume that $\abs{2} < 3$. Since $z = 2$ is strictly \emph{inside} the contour $C$ (because $\abs{2} < 3$), we apply Cauchy’s Integral Formula, to get
+  \[%
+    \int_C \frac{f(s)}{s - z} \, ds = 2\pi i \cdot f(z)
+  .\]%
+  Therefore, we have
+  \[%
+    g(2) = 2\pi i \cdot f(2) = 2\pi i \cdot (2(2)^2 - 2 - 2) = 2\pi i \cdot (8 - 2 - 2) = 2\pi i \cdot 4 = 8\pi i
+  .\]%
+
+  Assume that $\abs{z} > 3$, i.e., $z$ is \emph{outside} the contour $C$. In this case, the function $\sfrac{f(s)}{(s - z)}$ is analytic in $s$ on and inside the contour $C$, because $z$ is outside the region enclosed by $C$ and $f$ is entire.
+
+  Since the integrand is analytic inside and on $C$, and $C$ is a closed curve, the Cauchy-Goursat Theorem implies that
+  \[%
+    g(z) = \int_C \frac{f(s)}{s - z} \ds = 0
+  .\qedhere\]%
+\end{solution}
