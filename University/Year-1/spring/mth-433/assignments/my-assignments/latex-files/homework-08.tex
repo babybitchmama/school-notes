@@ -1,0 +1,241 @@
+\begin{problem}[4.3.1]
+  Show that if $\x$ is an orthogonal parametrization, that is, $F = 0$, then
+  \[%
+    K = -\frac{1}{2 \sqrt{EG}}\left[\left(\frac{E_v}{\sqrt{EG}}\right)_v + \left(\frac{G_u}{\sqrt{GE}}\right)_u\right]
+  .\]%
+\end{problem}
+
+\begin{solution}
+\end{solution}
+
+\begin{problem}[4.3.2]
+  Show that if $\x$ is an isothermal parametrization, that is, $E = G = \lambda(u, v)$ and $F = 0$, then
+  \[%
+    K = -\frac{1}{2\lambda} \Delta (\log(\lambda))
+  ,\]%
+  where $\Delta \phi$ denotes the Laplacian $\left(\pdv[2]{\phi}/{u}\right) + \left(\pdv[2]{\phi}/{v}\right)$ of the function $\phi$. Conclude that when $E = G = (u^2 + v^2 + c)^{-2}$ and $F = 0$, then $K =$ const. $= 4c$.
+\end{problem}
+
+\begin{solution}
+\end{solution}
+
+\begin{problem}[4.3.4]
+  Show that no neighborhood of a point in a sphere may be isometrically mapped into a plane.
+\end{problem}
+
+\begin{solution}
+  Parameterizing a sphere by spherical coordinates, we have
+  \[%
+    \x(u, v) = (\rho\sin(u)\cos(v), \rho\sin(u)\sin(v), \rho\cos(u))
+  ,\]%
+  where $\rho$ is the radius of the sphere, $u \in [0, \pi]$ is the polar angle, and $v \in [0, 2\pi)$ is the azimuthal angle. Computing the partial derivatives, we have
+  \[%
+    \x_u = (\rho\cos(u)\cos(v), \rho\cos(u)\sin(v), -\rho\sin(u))
+    \aand
+    \x_v = (-\rho\sin(u)\sin(v), \rho\sin(u)\cos(v), 0)
+  .\]%
+  The first fundamental form coefficients are
+  \[%
+    E = \bra{\x_u, \x_u} = \rho^2,
+    \quad
+    F = \bra{\x_u, \x_v} = 0,
+    \aand
+    G = \bra{\x_v, \x_v} = \rho^2\sin^2(u)
+  .\]%
+  Therefore, using the Gauss formula from exercise 4.3.1, we have
+  \begin{align*}
+    K &= -\frac{1}{2\sqrt{EG}}\left[\left(\frac{E_v}{\sqrt{EG}}\right)_v + \left(\frac{G_u}{\sqrt{GE}}\right)_u\right] \\
+      &= -\frac{1}{2\rho^2\sin(u)}\left[\left(\frac{0}{\rho\sin(u)}\right)_v + \left(\frac{\rho^2\cos(u)}{\rho^2}\right)_u\right] \\
+      &= -\frac{-\sin(u)}{2\rho^2\sin(u)} \\
+      &= \frac{1}{\rho^2}
+  .\end{align*}
+
+  Parametrizing a plane by Cartesian coordinates, we have
+  \[%
+    \bar{\x}(u, v) = (u, v, au + bv + c)
+  .\]%
+  The partial derivatives are
+  \[%
+    \bar{\x}_u = (1, 0, a)
+    \aand
+    \bar{\x}_v = (0, 1, b)
+  .\]%
+  The first fundamental form coefficients are
+  \[%
+    \bar{E} = \bra{\bar{\x}_u, \bar{\x}_u} = 1,
+    \quad
+    \bar{F} = \bra{\bar{\x}_u, \bar{\x}_v} = 0,
+    \aand
+    \bar{G} = \bra{\bar{\x}_v, \bar{\x}_v} = 1
+  .\]%
+  Therefore, using the Gauss formula from exercise 4.3.1, we have
+  \[%
+    \bar{K} = -\frac{1}{2\sqrt{\bar{E}\bar{G}}}\left[\left(\frac{\bar{E}_v}{\sqrt{\bar{E}\bar{G}}}\right)_v + \left(\frac{\bar{G}_u}{\sqrt{\bar{G}\bar{E}}}\right)_u\right] = -\frac{1}{2}\left[\left(\frac{0}{1}\right)_v + \left(\frac{0}{1}\right)_u\right] = 0
+  .\]%
+
+  Since the Gaussian is invariant under isometries and $\sfrac{1}{\rho^2} \ne 0$, $\forall \rho > 0$, we conclude that no neighborhood of a point in a sphere may be isometrically mapped into a plane.
+\end{solution}
+
+\begin{problem}[4.3.8]
+  Compute the Christoffel symbols an open set of the plane
+  \begin{enumerate}
+    \item In Cartesian coordinates.
+    \item In polar coordinates.
+  \end{enumerate}
+  Use the Gauss formula to compute $K$ in both cases.
+\end{problem}
+
+\begin{solution}[(i)]
+  Parametrizing the plane by Cartesian coordinates, we have
+  \[%
+    \x(u, v) = (u, v, au + bv + c)
+  .\]%
+  From exercise 4.3.4, the first fundamental form coefficients are
+  \begin{gather*}
+    E = 1, \quad F = 0, \aand G = 1 \\
+    E_u = 0 = E_v \aand G_u = 0 = G_v
+  \end{gather*}
+  The Christoffel symbols are given by
+  \[%
+    \begin{pmatrix}
+      1 & 0 \\
+      0 & 1 \\
+    \end{pmatrix}
+    \begin{pmatrix}
+      \Gamma^1_{11} \\
+      \Gamma^2_{11} \\
+    \end{pmatrix}
+    = \begin{pmatrix}
+      0 \\
+      0 \\
+    \end{pmatrix},\quad
+    \begin{pmatrix}
+      1 & 0 \\
+      0 & 1 \\
+    \end{pmatrix}
+    \begin{pmatrix}
+      \Gamma^1_{12} \\
+      \Gamma^2_{12} \\
+    \end{pmatrix}
+    = \begin{pmatrix}
+      0 \\
+      0 \\
+    \end{pmatrix},\aand
+    \begin{pmatrix}
+      1 & 0 \\
+      0 & 1 \\
+    \end{pmatrix}
+    \begin{pmatrix}
+      \Gamma^1_{22} \\
+      \Gamma^2_{22} \\
+    \end{pmatrix}
+    = \begin{pmatrix}
+      0 \\
+      0 \\
+    \end{pmatrix}
+  .\]%
+  Clearly, all the Christoffel symbols are zero, which imply that $K = 0$.
+\end{solution}
+
+\begin{solution}[(ii)]
+  Parametrizing the plane by polar coordinates, we have
+  \[%
+    \x(u, v) = (u\cos(v), u\sin(v), au\cos(v) + bu\sin(v) + c)
+  .\]%
+  The first fundamental form coefficients are
+  \begin{gather*}
+    E = u^2, \quad F = 0, \aand G = 1 \\
+    E_u = 2u, \quad E_v = 0, \aand G_u = 0 = G_v
+  .\end{gather*}
+  The Christoffel symbols are given by
+  \[%
+    \begin{pmatrix}
+      u^2 & 0 \\
+      0 & 1 \\
+    \end{pmatrix}
+    \begin{pmatrix}
+      \Gamma^1_{11} \\
+      \Gamma^2_{11} \\
+    \end{pmatrix}
+    = \begin{pmatrix}
+      u \\
+      0 \\
+    \end{pmatrix},\quad
+    \begin{pmatrix}
+      u^2 & 0 \\
+      0 & 1 \\
+    \end{pmatrix}
+    \begin{pmatrix}
+      \Gamma^1_{12} \\
+      \Gamma^2_{12} \\
+    \end{pmatrix}
+    = \begin{pmatrix}
+      0 \\
+      0 \\
+    \end{pmatrix},\aand
+    \begin{pmatrix}
+      u^2 & 0 \\
+      0 & 1 \\
+    \end{pmatrix}
+    \begin{pmatrix}
+      \Gamma^1_{22} \\
+      \Gamma^2_{22} \\
+    \end{pmatrix}
+    = \begin{pmatrix}
+      0 \\
+      0 \\
+    \end{pmatrix}
+  .\]%
+  Therefore, we get
+  \[%
+    \Gamma^1_{11} = \frac{1}{u},\quad \Gamma^2_{11} = 0,\quad \Gamma^1_{12} = 0,\quad \Gamma^2_{12} = 0,\quad \Gamma^1_{22} = 0,\quad \Gamma^2_{22} = 0
+  .\]%
+  Using the Gauss formula from exercise 4.3.1, we have
+  \begin{align*}
+    K &= -\frac{1}{2\sqrt{EG}}\left[\left(\frac{E_v}{\sqrt{EG}}\right)_v + \left(\frac{G_u}{\sqrt{GE}}\right)_u\right] = -\frac{1}{2u}\left[\left(\frac{0}{u}\right)_v + \left(\frac{0}{u}\right)_u\right] \\
+      &= -\frac{1}{2u}\left[\left(\frac{0}{u}\right)_v + \left(\frac{0}{u}\right)_u\right] = 0
+  .\qedhere\end{align*}
+\end{solution}
+
+\begin{problem}[4.4.1]\leavevmode
+  \begin{enumerate}
+    \item Show that if a curve $C \subset S$ is both a line of curvature and a geodesic, then $C$ is a plane curve.
+
+    \item Show that if a (nonrectilinear) geodesic is a plane curve, then it is a line of curvature.
+
+    \item Give an example of a line of curvature which is a plane curve and not a geodesic.
+  \end{enumerate}
+\end{problem}
+
+\begin{solution}[(i)]
+\end{solution}
+
+\begin{solution}[(ii)]
+\end{solution}
+
+\begin{solution}{(iii)}
+\end{solution}
+
+\begin{problem}[4.4.2]
+  Prove that a curve $C \subset S$ is both an asymptotic curve and a geodesic if and only if $C$ is a (segment of a) straight line.
+\end{problem}
+
+\begin{solution}
+\end{solution}
+
+\begin{problem}[4.4.3]
+  Show, without using Prop. 5, that the straight lines are the only geodesics of a plane.
+\end{problem}
+
+\begin{solution}
+\end{solution}
+
+\begin{problem}[4.4.4]
+  Let $u$ and $w$ be vector fields along a curve $\alpha : I \to S$. Prove that
+  \[%
+    \odv{}{t} \bra{v(t), w(t)} = \bra{\codv{v}{t}, w(t)} + \bra{v(t), \codv{w}{t}}
+  .\]%
+\end{problem}
+
+\begin{solution}
+\end{solution}
