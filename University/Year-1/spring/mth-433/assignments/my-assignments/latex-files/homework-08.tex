@@ -18,6 +18,28 @@
   \[%
     \left(\Gamma^2_{12}\right)_u = \left(\frac{G_u}{2G}\right)_u = \frac{GG_{uu} - G^2_u}{2G^2} \aand \left(\Gamma^2_{11}\right)_v = \left(\frac{E_v}{2G}\right)_v = \frac{GE_{vv} - G_vE_v}{2G^2}
   .\]%
+  Now we combine like terms to get
+  \begin{align*}
+    K &= \frac{G^2_u - GG_{uu}}{2EG^2} + \frac{G_vE_v - GE_{vv}}{2EG^2} + \frac{E^2_v}{4E^2G} - \frac{G^2_u}{4EG^2} - \frac{E_vG_v}{4EG^2} + \frac{E_uG_u}{4E^2G} \\
+      &= \frac{-GG_{uu} + G_vE_v - GE_{vv}}{2EG^2} + \frac{G^2_u}{2EG^2} - \frac{G^2_u}{4EG^2} - \frac{E_vG_v}{4EG^2} + \frac{E^2_v}{4E^2G} + \frac{E_uG_u}{4E^2G} \\
+      &= \frac{-GG_{uu} - GE_{vv}}{2EG^2} + \frac{G_vE_v}{2EG^2} - \frac{E_vG_v}{4EG^2} + \frac{G^2_u}{4EG^2} + \frac{E^2_v}{4E^2G} + \frac{E_uG_u}{4E^2G}
+  .\end{align*}
+  Now notice that
+  \[%
+    \left(\frac{G_u}{\sqrt{EG}}\right)_u = \frac{G_{uu}}{\sqrt{EG}} - \frac{G_u}{2(EG)^{3/2}}(E_uG + EG_u)
+  \quad \aand \quad
+    \left(\frac{E_v}{\sqrt{EG}}\right)_v = \frac{E_{vv}}{\sqrt{EG}} - \frac{E_v}{2(EG)^{3/2}}(E_vG + EG_v)
+  .\]%
+  Then combining these results, we have
+  \begin{align*}
+    \left(\frac{E_v}{\sqrt{EG}}\right)_v + \left(\frac{G_u}{\sqrt{EG}}\right)_u
+    &= \frac{E_{vv} + G_{uu}}{\sqrt{EG}} - \frac{1}{2(EG)^{3/2}}\left[E_v(E_vG + EG_v) + G_u(E_uG + EG_u)\right] \\
+    &= \frac{E_{vv} + G_{uu}}{\sqrt{EG}} - \frac{1}{2(EG)^{3/2}}\left(E_v^2G + E_vEG_v + G_uE_uG + G_uEG_u\right)
+  .\end{align*}
+  Therefore,
+  \[%
+    K = -\frac{1}{2\sqrt{EG}}\left[\left(\frac{E_v}{\sqrt{EG}}\right)_v + \left(\frac{G_u}{\sqrt{EG}}\right)_u\right]
+  .\qedhere\]%
 \end{solution}
 
 \begin{problem}[4.3.2]
@@ -29,6 +51,14 @@
 \end{problem}
 
 \begin{solution}
+  Using the equation proven in exercise 4.3.1, we have
+  \begin{align*}
+    K &= -\frac{1}{2\sqrt{\lambda\lambda}}\left(\left(\frac{\lambda_v}{\sqrt{\lambda\lambda}}\right)_v + \left(\frac{\lambda_u}{\sqrt{\lambda\lambda}}\right)_u\right) \\
+      &= -\frac{1}{2\lambda}\left(\left(\frac{\lambda_v}{\lambda}\right)_v + \left(\frac{\lambda_u}{\lambda}\right)_u\right) \\
+      &= -\frac{1}{2\lambda}\left(\left(\ln_v(\lambda)\right)_v + \left(\ln_u(\lambda)\right)_u\right) \\
+      &= -\frac{1}{2\lambda}\left(\pdv[2]{\ln(\lambda)}{u} + \pdv[2]{\ln(\lambda)}{v}\right) \\
+      &= -\frac{1}{2\lambda} \Delta (\log(\lambda))
+  .\qedhere\end{align*}
 \end{solution}
 
 \begin{problem}[4.3.4]
@@ -209,7 +239,7 @@
   .\qedhere\end{align*}
 \end{solution}
 
-\begin{problem}[4.4.1]\leavevmode
+\begin{problem}[4.4.1]
   \begin{enumerate}
     \item Show that if a curve $C \subset S$ is both a line of curvature and a geodesic, then $C$ is a plane curve.
 
@@ -220,12 +250,51 @@
 \end{problem}
 
 \begin{solution}[(i)]
+  Let $\alpha$ be the curve parametrized by arc length. Since $\alpha$ is geodesic, we have $k_g = 0$. Therefore,
+  \[%
+    k^2 = k_g^2 + k_n^2 \implies k^2 = k_n^2 \implies k = k_n = k \bra{n, \Na} \implies \bra{n, \Na} = 1 \implies n = \Na
+  ,\]%
+  where $n$ is the principal normal to the curve in $\R^3$ and $\Na$ is the unit normal to the surface.
+
+  Since $\alpha$ is also a line of curvature, we have $\dd{\Na}(T) = \lambda T$ for some principal curvature $\lambda$. But we also have $n = \Na$, so
+  \[%
+    \odv{n}{s} = \lambda T
+  .\]%
+  This implies that the derivative of the principal normal vector lies in the direction of the tangent vector. Hence, the binormal vector $B = T \times n$ is constant. Since the osculating plane is spanned by $T$ and $n$, it remains fixed. Therefore, $\alpha$ lies entirely in a fixed plane, and is a plane curve.
 \end{solution}
 
 \begin{solution}[(ii)]
+  Let $\alpha$ be a nonrectilinear geodesic parametrized by arc length. Since $\alpha$ is a geodesic, we have $k_g = 0$, and therefore the total curvature satisfies $n = \Na$, as we showed in the previous problem. Thus, the principal normal vector $n$ of the curve agrees with the surface normal vector $\Na$ along $\alpha$.
+
+  Now suppose further that $\alpha$ lies in a plane $P \subset \R^3$. Since the binormal vector $B = T \times n$ is orthogonal to both $T$ and $n = \Na$, we have that $B$ is constant and perpendicular to the plane $P$.
+
+  Because $\Na$ coincides with the principal normal $n$, which is perpendicular to the fixed binormal $B$, it follows that the surface normal vector $\Na$ stays in the same direction as the curve moves — i.e., the surface bends uniformly in the direction of the curve's tangent vector $T$. 
+
+  Differentiating $\Na$ along $\alpha$,
+  \[%
+    \odv{\Na}{s} = \odv{n}{s} = -kT + \tau B
+  .\]%
+  But since $B$ is constant and the curve is planar, we must have $\tau = 0$. So
+  \[%
+    \odv{\Na}{s} = -k T
+  .\]%
+  This implies that the shape operator $S$ satisfies
+  \[%
+    \dd{\Na}(T) = -k T
+  ,\]%
+  i.e., $T$ is an eigenvector of the shape operator. Hence, the curve is a line of curvature.
 \end{solution}
 
 \begin{solution}{(iii)}
+  Consider the parallel curves on a surface of revolution, such as a circle of latitude on a sphere (excluding the equator). Let $S$ be the unit sphere in $\R^3$, and let $\alpha(s)$ be the circle of latitude defined by
+  \[%
+    \alpha(s) = (\cos(s) \sin(\theta_0), \sin(s)\sin(\theta_0), \cos(\theta_0))
+  ,\]%
+  where $\theta_0 \in (0, \pi) \setminus \{\sfrac{\pi}{2}\}$ is fixed. Then $\alpha$ lies in the plane $z = \cos(\theta_0)$ and is clearly a plane curve.
+
+  On a surface of revolution, parallels are always lines of curvature. However, $\alpha$ is not a geodesic unless $\theta_0 = \sfrac{\pi}{2}$, in which case the parallel is a great circle (i.e., a geodesic). Since $\theta_0 \ne \sfrac{\pi}{2}$, $\alpha$ is not a geodesic -- the geodesic curvature $k_g$ is nonzero.
+
+  Therefore, $\alpha$ is a line of curvature, is planar, but not a geodesic.
 \end{solution}
 
 \begin{problem}[4.4.2]
@@ -233,6 +302,19 @@
 \end{problem}
 
 \begin{solution}
+  Let $\alpha(s)$ be a regular curve on $S$ parametrized by arc length. Suppose $\alpha$ is both a geodesic and an asymptotic curve. Since it is a geodesic, we have
+  \[%
+    k_g = 0 \implies k^2 = k_n^2
+  ,\]%
+  and since it is asymptotic, we have
+  \[%
+    k_n = \bra{n, \Na} = 0 \implies k = 0
+  .\]%
+  Thus, the total curvature $k = 0$, which implies that $\alpha''(s) = 0$, so $\alpha$ is a straight line in $\R^3$.
+
+  Conversely, suppose that $\alpha(s)$ is a straight line in $\R^3$ lying on the surface $S$. Then $\alpha''(s) = 0 \implies k = 0$. In particular, both the normal curvature $k_n = k \bra{n, \Na} = 0$ and the geodesic curvature $k_g = 0$ vanish. Therefore, $\alpha$ is both an asymptotic curve and a geodesic, and hence a straight line.
+
+  Thus, a curve $C \subset S$ is both an asymptotic curve and a geodesic if and only if $C$ is a (segment of a) straight line.
 \end{solution}
 
 \begin{problem}[4.4.3]
@@ -240,6 +322,21 @@
 \end{problem}
 
 \begin{solution}
+  Since the surface is a plane, its normal vector $\Na$ is constant and perpendicular to the plane. For any curve $\alpha$ lying in the plane, the principal normal vector $n$ lies in the plane itself. Therefore,
+  \[%
+    \bra{n, \Na} = 0
+  ,\]%
+  for all points on $\alpha$. Consequently, the normal curvature of any curve on the plane satisfies
+  \[%
+    k_n = k \bra{n, \Na} = 0
+  ,\]%
+  so every curve in the plane is an asymptotic curve.
+
+  Recall that the curvature $k$ of the curve satisfies
+  \[%
+    k^2 = k_g^2 + k_n^2 = k_g^2
+  ,\]%
+  since $k_n = 0$. Thus, the geodesic curvature $k_g$ equals the total curvature $k$ of the curve. Geodesics have zero geodesic curvature, so $k_g = 0$, which implies $k = 0$. Hence, the geodesics on the plane are precisely the curves with zero curvature -- that is, straight lines. Therefore, the straight lines are the only geodesics in a plane.
 \end{solution}
 
 \begin{problem}[4.4.4]
@@ -250,4 +347,20 @@
 \end{problem}
 
 \begin{solution}
+  The derivative of the inner product satisfies the product rule, i.e.,
+  \[%
+    \odv{}{t} \bra{v, w} = \bra{\odv{v}{t}, w} + \bra{v, \odv{w}{t}}
+  .\]%
+  However, the ordinary derivatives $\odv{v}/{t}$ and $\odv{w}/{t}$ may not lie in the tangent plane. We can decompose them as
+  \[%
+    \odv{v}{t} = \codv{v}{t} + v_n \Na \aand \odv{w}{t} = \codv{w}{t} + w_n \Na
+  ,\]%
+  where $v_n$ and $w_n$ are scalar functions and $\Na$ is the unit normal vector to the surface.
+
+  Since $v$ and $w$ are tangent vector fields, we have $\bra{\Na, v} = \bra{\Na, w} = 0$. Using the bilinearity of the inner product,
+  \begin{align*}
+    \odv{}{t} \bra{v, w} &= \bra{\codv{v}{t} + v_n \Na, w} + \bra{v, \codv{w}{t} + w_n \Na} \\
+                         &= \bra{\codv{v}{t}, w} + v_n \bra{\Na, w} + \bra{v, \codv{w}{t}} + w_n \bra{v, \Na} \\
+                         &= \bra{\codv{v}{t}, w} + \bra{v, \codv{w}{t}}
+  .\qedhere\end{align*}
 \end{solution}
