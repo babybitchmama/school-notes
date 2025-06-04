@@ -1,0 +1,159 @@
+\begin{problem}[5.59.3]
+  Find the Maclaurin series expansion of the function
+  \[%
+    f(z) = \frac{z}{z^4 + 9} = \frac{z}{9} \cdot \frac{1}{1 + (\sfrac{z^4}{9})}
+  .\]%
+\end{problem}
+
+\begin{solution}
+  Using expression (6) in Sec. 59, we have that
+  \[%
+    \frac{1}{1 + (\sfrac{z^4}{9})} = \sum_{n=0}^\infty \left(-\frac{z^4}{9}\right)^n = \sum_{n=0}^\infty \frac{(-1)^n}{9^n}z^{4n}
+  .\]%
+  Therefore, $f(z)$ can be expressed as
+  \[%
+    f(z) = \frac{z}{9} \cdot \sum_{n=0}^\infty \frac{(-1)^n}{9^n}z^{4n} = \sum_{n=0}^\infty \frac{(-1)^n}{9^{n+1}}z^{4n+1} = \sum_{n=0}^\infty \frac{(-1)^n}{3^{2n+2}}z^{4n+1}
+  .\]%
+  This only holds for $\abs{z^4} < 9$, or equivalently, $\abs{z} < \sqrt[4]{9} = \sqrt{3}$.
+\end{solution}
+
+\begin{problem}[5.59.4]
+  Show that if $f(z) = \sin(z)$, then
+  \[%
+    f^{(2n)}(0) = 0 \aand f^{(2n+1)}(0) = (-1)^n \qquad (n = 0, 1, 2, \dots)
+  .\]%
+  Thus, give an alternative derivation of the Maclaurin series (2) for $\sin(z)$ in Sec. 59.
+\end{problem}
+
+\begin{solution}
+\end{solution}
+
+\begin{problem}[5.59.11]
+  Show that when $z \ne 0$,
+  \begin{enumerate}
+    \item $\displaystyle \frac{e^z}{z^2} = \frac{1}{z^2} + \frac{1}{z} + \frac{1}{2!} + \frac{z}{3!} + \frac{z^2}{4!} + \cdots$;
+
+      \item $\displaystyle \frac{\sin\left(z^2\right)}{z^4} = \frac{1}{z^2} - \frac{z^2}{3!} + \frac{z^6}{5!} - \frac{z^{10}}{7!} + \cdots$.
+  \end{enumerate}
+\end{problem}
+
+\begin{solution}[(i)]
+  We can express $e^z$ as its Maclaurin series:
+  \[%
+    e^z = \sum_{n=0}^\infty \frac{z^n}{n!}
+  .\]%
+  Dividing this series by $z^2$, we get
+  \[%
+    \frac{e^z}{z^2} = \sum_{n=0}^\infty \frac{z^{n-2}}{n!} = \frac{1}{z^2} + \frac{1}{z} + \frac{1}{2!} + \frac{z}{3!} + \frac{z^2}{4!} + \cdots
+  .\]%
+  This series converges for all $z \ne 0$.
+\end{solution}
+
+\begin{solution}[(ii)]
+  The Maclaurin series for $\sin(z)$ is given by
+  \[%
+    \sin(z) = \sum_{n=0}^\infty \frac{(-1)^n}{(2n+1)!}z^{2n+1}
+  .\]%
+  Substituting $z^2$ for $z$, we have
+  \[%
+    \sin(z^2) = \sum_{n=0}^\infty \frac{(-1)^n}{(2n+1)!}(z^2)^{2n+1} = \sum_{n=0}^\infty \frac{(-1)^n}{(2n+1)!}z^{4n+2}
+  .\]%
+  Dividing this series by $z^4$, we get
+  \[%
+    \frac{\sin(z^2)}{z^4} = \sum_{n=0}^\infty \frac{(-1)^n}{(2n+1)!}z^{4n-2} = \sum_{n=0}^\infty \frac{(-1)^n}{(2n+1)!}z^{2(2n-1)} = \frac{1}{z^2} - \frac{z^2}{3!} + \frac{z^6}{5!} - \frac{z^{10}}{7!} + \cdots
+  .\]%
+  This series converges for all $z \ne 0$.
+\end{solution}
+
+\begin{problem}[5.59.13]
+  Show that when $0 < \abs{z} < 4$,
+  \[%
+    \frac{1}{4z - z^2} = \frac{1}{4z} + \sum_{n=0}^\infty \frac{z^n}{4^{n+2}}
+  .\]%
+\end{problem}
+
+\begin{solution}
+  We can factor the denominator as follows:
+  \[%
+    4z - z^2 = z(4 - z)
+  .\]%
+  Thus, we can rewrite the expression as
+  \[%
+    \frac{1}{4z - z^2} = \frac{1}{z(4 - z)} = \frac{1}{4z} \cdot \frac{1}{1 - \sfrac{z}{4}}
+  .\]%
+  The series expansion for $\frac{1}{1 - x}$ is given by
+  \[%
+    \frac{1}{1 - x} = \sum_{n=0}^\infty x^n
+  ,\]%
+  which converges for $\abs{x} < 1$. In our case, we have $x = \sfrac{z}{4}$, so the series converges for $\abs{\sfrac{z}{4}} < 1$, or equivalently, $\abs{z} < 4$.
+
+  Therefore, we can write
+  \[%
+    \frac{1}{4z - z^2} = \frac{1}{4z} \cdot \sum_{n=0}^\infty \left(\frac{z}{4}\right)^n = \frac{1}{4z} + \sum_{n=0}^\infty \frac{z^n}{4^{n+2}}
+  .\qedhere\]%
+\end{solution}
+
+\begin{problem}[6.74.3]
+  Find the value of the integral
+  \[%
+    \int_C \frac{3z^3 + 2}{(z - 1)(z^2 + 9)} \dz
+  ,\]%
+  taken counterclockwise around the circle (i) $\abs{z - 2} = 2$; (ii) $\abs{z} = 4$.
+\end{problem}
+
+\begin{solution}[(i)]
+  The poles of the integrand are at $z = 1$ and $z = \pm 3i$. The circle $\abs{z - 2} = 2$ contains the pole at $z = 1$ but not the poles at $z = 3i$ and $z = -3i$. We can use the residue theorem to evaluate the integral.
+  The function $f(z)$ can be written as
+  \[%
+    f(z) = \frac{\Phi(z)}{z - 1} \qtq{where} \Phi(z) = \frac{3z^3 + 2}{z^2 + 9}
+  .\]%
+  Since $\Phi(z)$ is analytic on the contour $\abs{z - 2} = 2$, we can find the residue at the pole $z = 1$. The residue at $z = 1$ is given by
+  \[%
+    \Res_{z=1} f(z) = \lim_{z \to 1} (z - 1) f(z) = \lim_{z \to 1} (z - 1) \frac{3z^3 + 2}{(z - 1)(z^2 + 9)} = \lim_{z \to 1} \frac{3z^3 + 2}{z^2 + 9}
+  .\]%
+  Evaluating this limit, we get
+  \[%
+    \Res_{z=1} f(z) = \frac{3(1)^3 + 2}{(1)^2 + 9} = \frac{3 + 2}{1 + 9} = \frac{5}{10} = \frac{1}{2}
+  .\]%
+  By the residue theorem, the value of the integral is given by
+  \[%
+    I = 2\pi i \cdot \Res_{z=1}\left(\frac{3z^3 + 2}{(z - 1)(z^2 + 9)}\right) = 2\pi i \cdot \frac{1}{2} = \pi i
+  .\qedhere\]%
+\end{solution}
+
+\begin{solution}[(ii)]
+  The circle $\abs{z} = 4$ contains all three poles: $z = 1$, $z = 3i$, and $z = -3i$. We can find the residues at each of these poles.
+
+  For the pole at $z = 1$, we already calculated the residue:
+  \[%
+    \Res_{z=1} f(z) = \frac{1}{2}
+  .\]%
+  Now, we calculate the residues at the poles $z = 3i$ and $z = -3i$.
+
+  For the pole $z = 3i$, we can use the function
+  \[%
+    f(z) = \frac{\Phi(z)}{z - 3i} \qtq{where} \Phi(z) = \frac{3z^3 + 2}{(z - 1)(z + 3i)}
+  .\]%
+  The residue at $z = 3i$ is given by
+  \[%
+    \Res_{z=3i} f(z) = \Phi(3i) = \frac{3(3i)^3 + 2}{(3i - 1)(3i + 3i)} = \frac{3(-27i) + 2}{(3i - 1)(6i)} = \frac{-81i + 2}{(3i - 1)(6i)} = \frac{5(3 - i)}{12}
+  .\]%
+
+  For the pole $z = -3i$, we can use the function
+  \[%
+    f(z) = \frac{\Phi(z)}{z + 3i} \qtq{where} \Phi(z) = \frac{3z^3 + 2}{(z - 1)(z - 3i)}
+  .\]%
+  The residue at $z = -3i$ is given by
+  \[%
+    \Res_{z=-3i} f(z) = \Phi(-3i) = \frac{3(-3i)^3 + 2}{(-3i - 1)(-3i - 3i)} = \frac{3(27i) + 2}{(-3i - 1)(-6i)} = \frac{5(3 + i)}{12}
+  .\]%
+
+  Now, we can sum the residues
+  \[%
+    \Res_{z=1} f(z) + \Res_{z=3i} f(z) + \Res_{z=-3i} f(z) = \frac{1}{2} + \frac{5(3 - i)}{12} + \frac{5(3 + i)}{12} = 3
+  .\]%
+  By the residue theorem, the value of the integral is given by
+  \[%
+    I = 2\pi i \cdot \left(\Res_{z=1} f(z) + \Res_{z=3i} f(z) + \Res_{z=-3i} f(z)\right) = 2\pi i \cdot 3 = 6\pi i
+  .\qedhere\]%
+\end{solution}
