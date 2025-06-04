@@ -26,6 +26,24 @@
 \end{problem}
 
 \begin{solution}
+  Let $f(z) = \sin(z)$. We compute the first few derivatives of $\sin(z)$ and evaluate them at $z = 0$ to get
+  \begin{alignat*}{4}
+    f(z) &= \phantom{-}\sin(z)           &&\implies f(0) &&= 0 \\
+    f'(z) &= \phantom{-}\cos(z)          &&\implies f'(0) &&= 1 \\
+    f''(z) &= -\sin(z)        &&\implies f''(0) &&= 0 \\
+    f^{(3)}(z) &= -\cos(z)    &&\implies f^{(3)}(0) &&= -1 \\
+    f^{(4)}(z) &= \phantom{-}\sin(z)     &&\implies f^{(4)}(0) &&= 0 \\
+               &~\vdots&& &&
+  \end{alignat*}
+  Notice, we have the following pattern
+  \[
+    f^{(2n)}(0) = 0 \aand f^{(2n+1)}(0) = (-1)^n, \quad n = 0, 1, 2, \dots
+  \]
+  Therefore, the Maclaurin series for $\sin(z)$ is
+  \[%
+    \sin(z) = \sum_{n=0}^\infty \frac{f^{(2n+1)}(0)}{(2n+1)!} z^{2n+1} = \sum_{n=0}^\infty \frac{(-1)^n}{(2n+1)!} z^{2n+1}
+  ,\]%
+  which matches the known Maclaurin series for $\sin(z)$.
 \end{solution}
 
 \begin{problem}[5.59.11]
@@ -102,18 +120,13 @@
 \end{problem}
 
 \begin{solution}[(i)]
-  The poles of the integrand are at $z = 1$ and $z = \pm 3i$. The circle $\abs{z - 2} = 2$ contains the pole at $z = 1$ but not the poles at $z = 3i$ and $z = -3i$. We can use the residue theorem to evaluate the integral.
-  The function $f(z)$ can be written as
+  The poles of the integrand are at $z = 1$ and $z = \pm 3i$. The circle $\abs{z - 2} = 2$ contains the pole at $z = 1$ but not the poles at $z = 3i$ and $z = -3i$. We can use the residue theorem to evaluate the integral. The function $f(z)$ can be written as
   \[%
     f(z) = \frac{\Phi(z)}{z - 1} \qtq{where} \Phi(z) = \frac{3z^3 + 2}{z^2 + 9}
   .\]%
   Since $\Phi(z)$ is analytic on the contour $\abs{z - 2} = 2$, we can find the residue at the pole $z = 1$. The residue at $z = 1$ is given by
   \[%
-    \Res_{z=1} f(z) = \lim_{z \to 1} (z - 1) f(z) = \lim_{z \to 1} (z - 1) \frac{3z^3 + 2}{(z - 1)(z^2 + 9)} = \lim_{z \to 1} \frac{3z^3 + 2}{z^2 + 9}
-  .\]%
-  Evaluating this limit, we get
-  \[%
-    \Res_{z=1} f(z) = \frac{3(1)^3 + 2}{(1)^2 + 9} = \frac{3 + 2}{1 + 9} = \frac{5}{10} = \frac{1}{2}
+    \Res_{z=1} f(z) = \lim_{z \to 1} (z - 1) f(z) = \lim_{z \to 1} (z - 1) \frac{3z^3 + 2}{(z - 1)(z^2 + 9)} = \lim_{z \to 1} \frac{3z^3 + 2}{z^2 + 9} = \frac{1}{2}
   .\]%
   By the residue theorem, the value of the integral is given by
   \[%
@@ -124,33 +137,21 @@
 \begin{solution}[(ii)]
   The circle $\abs{z} = 4$ contains all three poles: $z = 1$, $z = 3i$, and $z = -3i$. We can find the residues at each of these poles.
 
-  For the pole at $z = 1$, we already calculated the residue:
+  For the pole at $z = 1$, we already calculated the residue, specifically,
   \[%
     \Res_{z=1} f(z) = \frac{1}{2}
   .\]%
   Now, we calculate the residues at the poles $z = 3i$ and $z = -3i$.
 
-  For the pole $z = 3i$, we can use the function
-  \[%
-    f(z) = \frac{\Phi(z)}{z - 3i} \qtq{where} \Phi(z) = \frac{3z^3 + 2}{(z - 1)(z + 3i)}
-  .\]%
-  The residue at $z = 3i$ is given by
-  \[%
-    \Res_{z=3i} f(z) = \Phi(3i) = \frac{3(3i)^3 + 2}{(3i - 1)(3i + 3i)} = \frac{3(-27i) + 2}{(3i - 1)(6i)} = \frac{-81i + 2}{(3i - 1)(6i)} = \frac{5(3 - i)}{12}
-  .\]%
-
-  For the pole $z = -3i$, we can use the function
-  \[%
-    f(z) = \frac{\Phi(z)}{z + 3i} \qtq{where} \Phi(z) = \frac{3z^3 + 2}{(z - 1)(z - 3i)}
-  .\]%
-  The residue at $z = -3i$ is given by
-  \[%
-    \Res_{z=-3i} f(z) = \Phi(-3i) = \frac{3(-3i)^3 + 2}{(-3i - 1)(-3i - 3i)} = \frac{3(27i) + 2}{(-3i - 1)(-6i)} = \frac{5(3 + i)}{12}
-  .\]%
+  The residue at $z = \pm 3i$ are given by
+  \begin{alignat*}{4}
+    \Res_{z=3i} f(z) &= \lim_{z \to 3i} (z - 3i) f(z) &&= \lim_{z \to 3i} \frac{3z^3 + 2}{(z - 1)(z + 3i)} &&= \frac{3(3i)^3 + 2}{(3i - 1)(3i + 3i)} &&= \frac{15 + 49i}{12} \\
+    \Res_{z=-3i} f(z) &= \lim_{z \to -3i} (z + 3i) f(z) &&= \lim_{z \to -3i} \frac{3z^3 + 2}{(z - 1)(z - 3i)} &&= \frac{3(-3i)^3 + 2}{(-3i - 1)(-3i - 3i)} &&= \frac{15 - 49i}{12}
+  .\end{alignat*}
 
   Now, we can sum the residues
   \[%
-    \Res_{z=1} f(z) + \Res_{z=3i} f(z) + \Res_{z=-3i} f(z) = \frac{1}{2} + \frac{5(3 - i)}{12} + \frac{5(3 + i)}{12} = 3
+    \Res_{z=1} f(z) + \Res_{z=3i} f(z) + \Res_{z=-3i} f(z) = \frac{1}{2} + \frac{15 + 49i}{12} + \frac{15 - 49i}{12} = 3
   .\]%
   By the residue theorem, the value of the integral is given by
   \[%
