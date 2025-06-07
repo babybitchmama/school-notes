@@ -80,4 +80,16 @@ tmux split-window -v
 tmux send-keys -t "$SESSION_NAME" "clear" Enter
 tmux send-keys -t "$SESSION_NAME" "g aa; g ce; g p; c"
 
+tmux split-window -h
+
+tmux send-keys -t "$SESSION_NAME" "cd ./University/Year-1/spring/cs-410/final-paper; clear" Enter
+tmux send-keys -t "$SESSION_NAME" "g aa; g ce; g p; c"
+
+tmux select-pane -U
+tmux split-window -h
+
+tmux send-keys -t "$SESSION_NAME" "clear" Enter
+tmux send-keys -t "$SESSION_NAME" "cd ./University/Year-1/spring/cs-410/final-paper" Enter
+tmux send-keys -t "$SESSION_NAME" "clear; wgs" Enter
+
 eval "$tmuxAttachCommand"
