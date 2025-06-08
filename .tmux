@@ -77,7 +77,7 @@ tmux send-keys -t "$SESSION_NAME" "clear; wgs" Enter
 
 tmux split-window -v
 
-tmux send-keys -t "$SESSION_NAME" "clear" Enter
+tmux send-keys -t "$SESSION_NAME" "cd ./; clear" Enter
 tmux send-keys -t "$SESSION_NAME" "g aa; g ce; g p; c"
 
 tmux split-window -h
