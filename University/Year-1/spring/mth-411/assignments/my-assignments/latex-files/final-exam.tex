@@ -72,21 +72,55 @@
     \end{tikzpicture}
   \end{figure}
 
-  The integrand is $f(z) = \sfrac{1}{z}$, which has a simple pole at $z = 0$. The value of the contour integral of $\sfrac{1}{z}$ depends on whether the path encloses the origin and in which direction.
-
-  The path $\gamma_0$ consists of the segments from $-1$ to $i$ and then $i$ to $1$. Together, they form a triangle that encloses the origin in the counterclockwise direction. Since $\sfrac{1}{z}$ is holomorphic everywhere on and inside the path except at the singularity $z = 0$, and the path encloses the singularity once counterclockwise, it follows from Cauchy's theorem that
+  For the first integral, parametrizing the contour $\gamma_0$, we have two segments
   \[%
-    \int_{\gamma_0} \frac{1}{z} \dz = 2\pi i
+    z_1(t) = -1(1 - t) + it~\text{where}~t \in [0, 1]
+    \aand
+    z_2(t) = i(1 - t) + t~\text{where}~t \in [0, 1]
   .\]%
-
-  Similarly, the path $\gamma_1$ consists of the segments from $-1$ to $-i$ and then $-i$ to $1$, which also enclose the origin, but now in the clockwise direction. Therefore, we get
+  This gives us the following differentials
   \[%
-    \int_{\gamma_1} \frac{1}{z} \dz = -2\pi i
+    \dz_1 = (1 + i) \dt \aand \dz_2 = (-i + 1) \dt
   .\]%
+  Therefore, we can compute the integral over $\gamma_0$ as follows
+  \begin{align*}
+    \int_{\gamma_0} z^{-1} \dz &= \int_0^1 \frac{1}{z_1(t)} \dz_1 + \int_0^1 \frac{1}{z_2(t)} \dz_2 \\
+                               &= \int_0^1 \frac{1 + i}{-(1 - t) + it} \dt + \int_0^1 \frac{-i + 1}{i(1 - t) + t} \dt
+  .\end{align*}
+  Using the substitution $u_1 = -(1 - t) + it$ in the first integral and $u_2 = i(1 - t) + t$ in the second integral, we can simplify these integrals to get
+  \begin{align*}
+    \int_0^1 \frac{1 + i}{-(1 - t) + it} \dt + \int_0^1 \frac{-i + 1}{i(1 - t) + t} \dt &= \int_{-1}^i \frac{1}{u} \du + \int_i^1 \frac{1}{u} \du \\
+                                                                                        &= \ln(u) \bigg|_{-1}^i + \ln(u) \bigg|_i^1 \\
+                                                                                        &= -\frac{i\pi}{2} - \frac{i\pi}{2} \\
+                                                                                        &= -i\pi
+  .\end{align*}
 
-  Therefore, we have
+  For the second integral, we can use a similar parametrization for $\gamma_1$
   \[%
-    \int_{\gamma_0} \frac{1}{z} \dz = 2\pi i \aand \int_{\gamma_1} \frac{1}{z} \dz = -2\pi i
+    z_1(t) = -1(1 - t) - it~\text{where}~t \in [0, 1]
+    \aand
+    z_2(t) = -i(1 - t) + t~\text{where}~t \in [0, 1]
+  .\]%
+  This gives us the differentials
+  \[%
+    \dz_1 = (1 - i) \dt \aand \dz_2 = (i + 1) \dt
+  .\]%
+  Therefore, we can compute the integral over $\gamma_1$ as follows
+  \begin{align*}
+    \int_{\gamma_1} z^{-1} \dz &= \int_0^1 \frac{1}{z_1(t)} \dz_1 + \int_0^1 \frac{1}{z_2(t)} \dz_2 \\
+                               &= \int_0^1 \frac{1 - i}{-(1 - t) - it} \dt + \int_0^1 \frac{i + 1}{-i(1 - t) + t} \dt
+  .\end{align*}
+  Using the substitutions $u_1 = -(1 - t) - it$ in the first integral and $u_2 = -i(1 - t) + t$ in the second integral, we can simplify these integrals to get
+  \begin{align*}
+    \int_0^1 \frac{-1 - i}{-(1 - t) - it} \dt + \int_0^1 \frac{i + 1}{-i(1 - t) + t} \dt &= \int_{-1}^{-i} \frac{1}{u} \du + \int_{-i}^1 \frac{1}{u} \du \\
+                                                                                        &= \ln(u) \bigg|_{-1}^{-i} + \ln(u) \bigg|_{-i}^1 \\
+                                                                                        &= \frac{i\pi}{2} + \frac{i\pi}{2} \\
+                                                                                        &= i\pi
+  .\end{align*}
+
+  Therefore, we conclude that
+  \[%
+    \int_{\gamma_0} z^{-1} \dz = -i\pi \aand \int_{\gamma_1} z^{-1} \dz = i\pi
   .\qedhere\]%
 \end{solution}
 

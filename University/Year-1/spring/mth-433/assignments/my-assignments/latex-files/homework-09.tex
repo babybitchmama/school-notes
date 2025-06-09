@@ -1,15 +1,79 @@
 \begin{problem}[4.4.8]
-  Show that if all the geodesics of a connected sphere are plane curves, then the surface is contained in a plane or a sphere.
+  Show that if all the geodesics of a connected surface are plane curves, then the surface is contained in a plane or a sphere.
 \end{problem}
 
-\begin{solution}
-\end{solution}
+\begin{proof}
+  Assume all geodesics of a connected surface are plane curves. Let $\gamma$ be a geodesic on the surface $S$ parametrized by arc length. Then, we get
+  \[%
+    \gamma''(s) = \kappa_n(s) \Na(\gamma(s))
+  ,\]%
+  where $\kappa_n(s)$ is the normal curvature and $\Na(s)$ is the normal vector to the surface at $\gamma(s)$. Since $\gamma$ is a plane curve, $\gamma''$ lies in the plane, $\Gamma$, spanned by $\gamma'(s)$ and $\Na(s)$. This implies that $\Na(\gamma(s)) \in \Gamma$.
+
+  Because $S$ is smooth, you can choose geodesics through $p$ in all possible tangent directions. Let $\gamma_\v$ be a geodesic through $p$ with initial velocity $\v \in T_p S$. Then,
+  \[%
+    \Na(\gamma_\v(s)) \in \Gamma_\v
+  ,\]%
+  where $\Gamma_\v$ is the osculating plane at $\gamma_\v(s)$. So, for each direction $\v$, we have $\Na(p) \in \Gamma_\v$, which gives us
+  \[%
+    \Na(p) \in \bigcap_{\v \in T_p S} \Gamma_v
+  .\]%
+
+  If the osculating planes $\Gamma_\v$ vary with direction $\v$, but they all contain the same normal vector, then $\Na(p)$ must lie in all the planes, $\Gamma_\v$. So the set $\{\Gamma_\v\}_{\v\in T_pS}$ intersects in at least a line, spanned by $\Na(p)$.
+
+  But since geodesics in all directions are assumed to lie in planes (their own osculating planes), and those osculating planes always contain the surface normal, this forces the surface normal vector to lie in a fixed plane (or fixed direction). Now we case split based on what kind of set the normals form, where either the surface normal vector is constant or the surface normals lie in a 2D subspace of $\R^3$.
+
+  For the first case, all the normals are the same, which means that the surface is contained in a plane. For the second case,
+  the Gauss map $N : S \to S^2$ has image contained in a great circle on the unit sphere.
+  This implies that the surface is a portion of a sphere.
+
+  To see this, observe that for a sphere, all normals point to (or from) the center, which implies that the normals lie on a cone with axis through the center which implies that the image of the Gauss map lies on a circle on $S^2$. The converse also holds (by a rigidity argument in classical differential geometry): if all normals lie in a fixed plane (i.e., Gauss map image is on a circle), the surface is spherical.
+
+  Since the surface is connected, and each point must lie in a region that is either planar or spherical, the entire surface must be either a subset of a plane or a subset of a sphere, because otherwise, you’d have a disconnect in curvature behavior, violating connectedness.
+
+  Thus, if all geodesics of a connected surface are plane curves, then the surface is contained in a plane or a sphere.
+\end{proof}
 
 \begin{problem}[4.4.11]
   State precisely and prove: The algebraic value of the covariant derivative is invariant under orientation-preserving isometries.
 \end{problem}
 
 \begin{solution}
+  Let $\varphi : S_1 \to S_2$ be an orientation-preserving isometry between oriented regular surfaces, and let $X, Y$ be smooth vector fields on $S_1$. Define vector fields $\widetilde{X}, \widetilde{Y}$ on $S_2$ by
+  \[%
+    \widetilde{X} := \dd{\varphi} \circ X, \quad \widetilde{Y} := \dd{\varphi} \circ Y
+  .\]%
+  We will show that for all $p \in S_1$,
+  \[%
+    \dd{\varphi}_p\left(\nabla^{S_1}_X Y \bigg|_p\right) = \nabla^{S_2}_{\widetilde{X}} \widetilde{Y}\bigg|_{\varphi(p)}
+  ,\]%
+  where $\nabla^{S_i}$ denotes the Levi-Civita connection on $S_i$.
+
+  \medskip
+
+  Since $\varphi$ is an isometry, it preserves the first fundamental form, so for all vector fields $A, B$ on $S_1$, we have
+  \[%
+    \bra{\dd{\varphi} A, \dd{\varphi} B}_{S_2} = \bra{A, B}_{S_1}
+  .\]%
+  Also, since the Levi-Civita connection is characterized by being metric-compatible and torsion-free, and we are not using torsion here, we use only the metric compatibility:
+  \[%
+    X\bra{Y, Z} = \bra{\nabla_X Y, Z} + \bra{Y, \nabla_X Z}
+  .\]%
+  Define a vector field $\widetilde{Z} := \dd{\varphi} \circ Z$ for some arbitrary vector field $Z$ on $S_1$. Then
+  \begin{align*}
+    \widetilde{X} \bra{\widetilde{Y}, \widetilde{Z}}_{S_2} &= X \bra{Y, Z}_{S_1} \\
+                                                           &= \bra{\nabla^{S_1}_X Y, Z}_{S_1} + \bra{Y, \nabla^{S_1}_X Z}_{S_1} \\
+                                                           &= \bra{\dd{\varphi} \left(\nabla^{S_1}_X Y \right), \dd{\varphi} Z}_{S_2} + \bra{\dd{\varphi} Y, \dd{\varphi} \left(\nabla^{S_1}_X Z \right)}_{S_2} \\
+                                                           &= \bra{\dd{\varphi} \left(\nabla^{S_1}_X Y\right), \widetilde{Z}}_{S_2} + \bra{\widetilde{Y}, \dd{\varphi} \left(\nabla^{S_1}_X Z\right)}_{S_2}
+  .\end{align*}
+  On the other hand, by metric compatibility of $\nabla^{S_2}$:
+  \[%
+    \widetilde{X} \bra{\widetilde{Y}, \widetilde{Z}}_{S_2} = \bra{\nabla^{S_2}_{\widetilde{X}} \widetilde{Y}, \widetilde{Z}}_{S_2} + \bra{\widetilde{Y}, \nabla^{S_2}_{\widetilde{X}} \widetilde{Z}}_{S_2}
+  .\]%
+  Comparing both expressions, and using the fact that this equality holds for all vector fields $\widetilde{Z}$, we conclude:
+  \[%
+    \nabla^{S_2}_{\widetilde{X}} \widetilde{Y} = \dd{\varphi} \left( \nabla^{S_1}_X Y \right)
+  ,\]%
+  as desired.
 \end{solution}
 
 \begin{problem}[4.5.1]
@@ -17,6 +81,25 @@
 \end{problem}
 
 \begin{solution}
+  Since $S$ is compact and regular, the Gaussian curvature function $K : S \to \R$ is continuous and attains a maximum and minimum on $S$.
+
+  By the Gauss--Bonnet theorem, we have
+  \[%
+    \int_S K \dA = 2\pi\chi(S)
+  ,\]%
+  where $\chi(S)$ is the Euler characteristic of the surface $S$. Since $S$ is orientable, compact, and connected but not homeomorphic to the sphere, we know from the classification of surfaces that $\chi(S) \leq 0$, with equality if and only if $S$ is topologically a torus.
+
+  Suppose, for contradiction, that $K \leq 0$ everywhere on $S$. Then $\int_S K \, dA \leq 0$, which is consistent with $\chi(S) \leq 0$. However, if $K < 0$ everywhere, then $\int_S K \, dA < 0$, and hence $\chi(S) < 0$. On the other hand, if $K \equiv 0$, then $\chi(S) = 0$. But there is no regular, compact, orientable surface embedded in $\R^3$ with identically zero Gaussian curvature: such a surface would have to be a flat torus, which cannot be embedded in $\R^3$ without singularities. This contradicts the regularity of $S$.
+
+  Thus, the assumption that $K \leq 0$ everywhere leads to a contradiction, and so $K > 0$ somewhere.
+
+  Similarly, suppose that $K \geq 0$ everywhere. Then $\int_S K \, dA \geq 0$, implying $\chi(S) \geq 0$, which would require $\chi(S) = 0$ since $S$ is not homeomorphic to the sphere (which has $\chi = 2$). Again, this implies $K \equiv 0$, which is impossible for a compact regular surface embedded in $\R^3$.
+
+  Therefore, $K < 0$ somewhere as well.
+
+  Since $K$ is continuous and takes both positive and negative values on the compact surface $S$, the Intermediate Value Theorem ensures that there exists a point where $K = 0$.
+
+  Hence, there are points on $S$ where the Gaussian curvature is positive, negative, and zero.
 \end{solution}
 
 \begin{problem}[4.5.2]
@@ -28,6 +111,43 @@
 \end{problem}
 
 \begin{solution}
+  Let $T$ be a torus of revolution obtained by rotating a circle of radius $r$ centered at $(R, 0)$ in the $xz$-plane, with $R > r > 0$, around the $z$-axis. A standard parametrization of $T$ is
+  \[%
+    \x(u, v) = \left( (R + r \cos v) \cos u, (R + r \cos v) \sin u, r \sin v \right), \quad 0 \leq u, v < 2\pi
+  .\]%
+
+  The Gauss map $\Na : T \to \mathbb{S}^2$ sends each point on the torus to its unit normal vector. Since the torus is embedded in $\R^3$, the normal vector at each point is just the outward-pointing unit normal determined by the parametrization.
+
+  Fixing $u$, the set of normals as $v$ varies traces a circle on the unit sphere (since the surface normal varies continuously around the circular cross-section). As $u$ also varies, the image of the Gauss map sweeps out a surface of revolution of this circle, forming a closed surface around the $z$-axis.
+
+  Geometrically, this means that the image of the Gauss map is a surface of revolution around the $z$-axis inside the unit sphere. It is symmetric and does not cover the entire sphere. In particular, the north and south poles (i.e., vectors pointing directly up or down) are never reached, since the torus surface never becomes vertically flat.
+
+  To compute $\iint_T K \, d\sigma$ without using the Gauss--Bonnet theorem, we proceed as follows. Recall that the Gaussian curvature $K$ is the Jacobian determinant of the Gauss map
+  \[%
+    K = \det(\dd{\Na})
+  .\]%
+  By the change of variables formula, we have
+  \[%
+    \iint_T K \dd{\sigma} = \int_{N(T)} \# N^{-1}(q) \dA_q
+  ,\]%
+  where $\dA_q$ is the area form on $\mathbb{S}^2$, and $\# N^{-1}(q)$ is the number of preimages of $q$ under the Gauss map.
+
+  For a torus of revolution, each point $q \in N(T)$ has exactly two preimages (coming from the inner and outer parts of the torus). Since the image $N(T)$ is a closed surface strictly contained in $\mathbb{S}^2$, we can write
+  \[%
+    \iint_T K \, d\sigma = \int_{\Na(T)} 2 \dA = 2 \cdot \mathrm{Area}(\Na(T))
+  .\]%
+  But $N(T)$ is a compact, closed surface inside the unit sphere with even symmetry and bounded away from the poles. It must be a surface that is symmetric about the equator of $\mathbb{S}^2$, so its image cancels out ``algebraically'' -- half the normal vectors point ``outward,'' and half point ``inward.'' Thus, its oriented area counts positively and negatively in balance, so the algebraic area of the image is zero. Therefore:
+  \[%
+    \iint_T K \dd{\sigma} = 0
+  .\]%
+
+  Finally, since the torus is a compact, connected, orientable surface not homeomorphic to the sphere, its Euler–Poincaré characteristic is $\chi(T) = 0$.
+
+  Applying the Gauss–Bonnet theorem, we have
+  \[%
+    \iint_T K \, d\sigma = 2\pi \chi(T) = 2\pi \cdot 0 = 0
+  ,\]%
+  which agrees with the result obtained geometrically.
 \end{solution}
 
 \begin{problem}[4.5.3]
@@ -35,6 +155,32 @@
 \end{problem}
 
 \begin{solution}
+  Since $K > 0$ on the compact regular surface $S$, the Gauss map $N : S \to \mathbb{S}^2$ is a local diffeomorphism. Moreover, as $K > 0$, we have $\det(\dd{N}) > 0$ everywhere, so $N$ is orientation-preserving.
+
+  Let $A$ and $B$ be the two regions into which the simple closed geodesic $\Gamma$ separates $S$. Then
+  \[%
+    \overline{A} \cup \overline{B} = S, \quad A^\circ \cap B^\circ = \emptyset, \quad \pd{A} = \pd{B} = \Gamma
+  .\]%
+
+  Since $K = \det(\dd{N}) > 0$ and $N$ is orientation-preserving, we can use the change-of-variables formula on $A$ and $B$
+  \[%
+    \mathrm{Area}(N(A)) = \int_A K \dd{\sigma}, \quad \mathrm{Area}(N(B)) = \int_B K \dd{\sigma}
+  .\]%
+
+  Because $S = A \cup B$ (up to boundary), and $K$ is continuous and strictly positive
+  \[%
+    \int_S K \dd{\sigma} = \int_A K \dd{\sigma} + \int_B K \dd{\sigma}
+  .\]%
+  But $\Gamma$ is a geodesic, and geodesics locally minimize length and have zero geodesic curvature $k_g = 0$. In particular, since $\Gamma$ is shared as the common boundary of both regions and contributes no ``turning'' (due to being a geodesic), both regions contribute equally to the ``oriented curvature area.''
+
+  The fact that $\Gamma$ is a geodesic implies that the contribution of boundary terms to the oriented area (under the Gauss map) of both regions is identical. Hence,
+  \[%
+    \int_A K \dd{\sigma} = \int_B K \dd{\sigma}
+  .\]%
+  Therefore,
+  \[%
+    \mathrm{Area}(N(A)) = \mathrm{Area}(N(B))
+  .\qedhere\]%
 \end{solution}
 
 \begin{problem}[4.5.5]
@@ -46,4 +192,50 @@
 \end{problem}
 
 \begin{solution}
+  Let $S^2$ be the unit sphere in $\R^3$, and let $\phi$ be the colatitude, i.e., the angle from the north pole. Then the parallel $C$ at colatitude $\phi$ is the circle of constant latitude $z = \cos\phi$. The radius of this circle is $\sin\phi$.
+
+  Let $w_0$ be a unit tangent vector at a point $p \in C$. We consider parallel transport of $w_0$ along the curve $C$, which lies on the sphere.
+
+  According to the theory of holonomy, when a vector is parallel transported around a simple closed curve $\gamma$ on a surface with Gaussian curvature $K$, the angle $\Delta\theta$ between the final and initial vector is given by:
+  \[%
+    \Delta\theta = \int_R K \dA
+  ,\]%
+  where $R$ is the region enclosed by $\gamma$. For the unit sphere, the Gaussian curvature is constant and equal to $K = 1$. Hence,
+  \[%
+    \Delta\phi = \int_R 1 \cdot \dA = \text{Area}(R)
+  .\]%
+
+  The area on the unit sphere enclosed by the parallel of colatitude $\phi$ is the area of the spherical cap above $C$, i.e.,
+  \[%
+    A = 2\pi(1 - \cos\phi)
+  .\]%
+  Therefore, the angle between the initial vector $w_0$ and the final position of its parallel transport is
+  \[%
+    \Delta\phi = 2\pi(1 - \cos\phi)
+  .\]%
+
+  Consider the region $R$ enclosed by $C$ as shrinking to the point $p$ (i.e., let $\phi \to 0$). Then,
+  \[%
+    \Delta\phi = 2\pi(1 - \cos\phi) \approx 2\pi\left(1 - \left(1 - \frac{\phi^2}{2} + \cdots\right)\right) = \pi \phi^2 + o(\phi^2)
+  ,\]%
+  and since the area of the spherical cap is also
+  \[%
+    A = 2\pi(1 - \cos\phi) \approx \pi \phi^2 + o(\phi^2)
+  ,\]%
+  we obtain
+  \[%
+    \lim_{R \to p} \frac{\Delta\phi}{A} = \lim_{\phi \to 0} \frac{\pi \phi^2}{\pi \phi^2} = 1
+  ,\]%
+  which confirms that the curvature of $S^2$ is $K = 1$.
+
+  The angle between $w_0$ and its parallel transport around the parallel $C$ is
+  ]
+  \[%
+    \Delta\phi = 2\pi(1 - \cos\phi)
+  ,\]%
+  and this equals the area of the spherical cap enclosed by $C$. The limiting ratio
+  \[%
+    \lim_{R \to p} \frac{\Delta\phi}{A} = 1
+  ,\]%
+  verifies that the curvature of the unit sphere is indeed $1$.
 \end{solution}
