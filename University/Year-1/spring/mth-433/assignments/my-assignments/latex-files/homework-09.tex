@@ -22,9 +22,7 @@
 
   But since geodesics in all directions are assumed to lie in planes (their own osculating planes), and those osculating planes always contain the surface normal, this forces the surface normal vector to lie in a fixed plane (or fixed direction). Now we case split based on what kind of set the normals form, where either the surface normal vector is constant or the surface normals lie in a 2D subspace of $\R^3$.
 
-  For the first case, all the normals are the same, which means that the surface is contained in a plane. For the second case,
-  the Gauss map $N : S \to S^2$ has image contained in a great circle on the unit sphere.
-  This implies that the surface is a portion of a sphere.
+  For the first case, all the normals are the same, which means that the surface is contained in a plane. For the second case, the Gauss map $N : S \to S^2$ has image contained in a great circle on the unit sphere. This implies that the surface is a portion of a sphere.
 
   To see this, observe that for a sphere, all normals point to (or from) the center, which implies that the normals lie on a cone with axis through the center which implies that the image of the Gauss map lies on a circle on $S^2$. The converse also holds (by a rigidity argument in classical differential geometry): if all normals lie in a fixed plane (i.e., Gauss map image is on a circle), the surface is spherical.
 
@@ -40,7 +38,7 @@
 \begin{solution}
   Let $\varphi : S_1 \to S_2$ be an orientation-preserving isometry between oriented regular surfaces, and let $X, Y$ be smooth vector fields on $S_1$. Define vector fields $\widetilde{X}, \widetilde{Y}$ on $S_2$ by
   \[%
-    \widetilde{X} := \dd{\varphi} \circ X, \quad \widetilde{Y} := \dd{\varphi} \circ Y
+    \widetilde{X} \coloneqq \dd{\varphi} \circ X, \quad \widetilde{Y} \coloneqq \dd{\varphi} \circ Y
   .\]%
   We will show that for all $p \in S_1$,
   \[%
@@ -54,22 +52,22 @@
   \[%
     \bra{\dd{\varphi} A, \dd{\varphi} B}_{S_2} = \bra{A, B}_{S_1}
   .\]%
-  Also, since the Levi-Civita connection is characterized by being metric-compatible and torsion-free, and we are not using torsion here, we use only the metric compatibility:
+  Also, since the Levi-Civita connection is characterized by being metric-compatible and torsion-free, and we are not using torsion here, we use only the metric compatibility
   \[%
     X\bra{Y, Z} = \bra{\nabla_X Y, Z} + \bra{Y, \nabla_X Z}
   .\]%
-  Define a vector field $\widetilde{Z} := \dd{\varphi} \circ Z$ for some arbitrary vector field $Z$ on $S_1$. Then
+  Define a vector field $\widetilde{Z} \coloneqq \dd{\varphi} \circ Z$ for some arbitrary vector field $Z$ on $S_1$. Then
   \begin{align*}
     \widetilde{X} \bra{\widetilde{Y}, \widetilde{Z}}_{S_2} &= X \bra{Y, Z}_{S_1} \\
                                                            &= \bra{\nabla^{S_1}_X Y, Z}_{S_1} + \bra{Y, \nabla^{S_1}_X Z}_{S_1} \\
                                                            &= \bra{\dd{\varphi} \left(\nabla^{S_1}_X Y \right), \dd{\varphi} Z}_{S_2} + \bra{\dd{\varphi} Y, \dd{\varphi} \left(\nabla^{S_1}_X Z \right)}_{S_2} \\
                                                            &= \bra{\dd{\varphi} \left(\nabla^{S_1}_X Y\right), \widetilde{Z}}_{S_2} + \bra{\widetilde{Y}, \dd{\varphi} \left(\nabla^{S_1}_X Z\right)}_{S_2}
   .\end{align*}
-  On the other hand, by metric compatibility of $\nabla^{S_2}$:
+  On the other hand, by metric compatibility of $\nabla^{S_2}$
   \[%
     \widetilde{X} \bra{\widetilde{Y}, \widetilde{Z}}_{S_2} = \bra{\nabla^{S_2}_{\widetilde{X}} \widetilde{Y}, \widetilde{Z}}_{S_2} + \bra{\widetilde{Y}, \nabla^{S_2}_{\widetilde{X}} \widetilde{Z}}_{S_2}
   .\]%
-  Comparing both expressions, and using the fact that this equality holds for all vector fields $\widetilde{Z}$, we conclude:
+  Comparing both expressions, and using the fact that this equality holds for all vector fields $\widetilde{Z}$, we conclude
   \[%
     \nabla^{S_2}_{\widetilde{X}} \widetilde{Y} = \dd{\varphi} \left( \nabla^{S_1}_X Y \right)
   ,\]%
@@ -136,7 +134,7 @@
   \[%
     \iint_T K \, d\sigma = \int_{\Na(T)} 2 \dA = 2 \cdot \mathrm{Area}(\Na(T))
   .\]%
-  But $N(T)$ is a compact, closed surface inside the unit sphere with even symmetry and bounded away from the poles. It must be a surface that is symmetric about the equator of $\mathbb{S}^2$, so its image cancels out ``algebraically'' -- half the normal vectors point ``outward,'' and half point ``inward.'' Thus, its oriented area counts positively and negatively in balance, so the algebraic area of the image is zero. Therefore:
+  But $N(T)$ is a compact, closed surface inside the unit sphere with even symmetry and bounded away from the poles. It must be a surface that is symmetric about the equator of $\mathbb{S}^2$, so its image cancels out ``algebraically'' -- half the normal vectors point ``outward,'' and half point ``inward.'' Thus, its oriented area counts positively and negatively in balance, so the algebraic area of the image is zero. Therefore
   \[%
     \iint_T K \dd{\sigma} = 0
   .\]%
@@ -196,7 +194,7 @@
 
   Let $w_0$ be a unit tangent vector at a point $p \in C$. We consider parallel transport of $w_0$ along the curve $C$, which lies on the sphere.
 
-  According to the theory of holonomy, when a vector is parallel transported around a simple closed curve $\gamma$ on a surface with Gaussian curvature $K$, the angle $\Delta\theta$ between the final and initial vector is given by:
+  According to the theory of holonomy, when a vector is parallel transported around a simple closed curve $\gamma$ on a surface with Gaussian curvature $K$, the angle $\Delta\theta$ between the final and initial vector is given by
   \[%
     \Delta\theta = \int_R K \dA
   ,\]%
