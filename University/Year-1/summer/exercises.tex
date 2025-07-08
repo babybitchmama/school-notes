@@ -1,0 +1,328 @@
+\documentclass[notitlepage]{report}
+
+\title{Several-Variab Calc II}
+\date{January 6, 2025}
+
+\usepackage{hyperref}
+\usepackage{derivative}
+\usepackage{xcolor}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{breqn}
+\usepackage{ifthen}
+\usepackage{xifthen}
+\usepackage{geometry}
+\usepackage{xfrac}
+\geometry{
+  top=1in,
+  bottom=1.5in,
+  right=1in,
+  left=1in,
+}
+
+\renewcommand\a{\mathbf{a}}
+\renewcommand\b{\mathbf{b}}
+\renewcommand\c{\mathbf{c}}
+\renewcommand\d{\mathbf{d}}
+\newcommand\e{\mathbf{e}}
+\newcommand\f{\mathbf{f}}
+\newcommand\FF{\mathbf{F}}
+\newcommand\g{\mathbf{g}}
+\newcommand\n{\mathbf{n}}
+\newcommand\p{\mathbf{p}}
+\renewcommand\r{\mathbf{r}}
+\newcommand\Ta{\mathbf{T}}
+\renewcommand\u{\mathbf{u}}
+\renewcommand\v{\mathbf{v}}
+\newcommand\w{\mathbf{w}}
+\newcommand\x{\mathbf{x}}
+\newcommand\y{\mathbf{y}}
+\newcommand\z{\mathbf{z}}
+\newcommand\zero{\mathbf{0}}
+\newcommand\hb{\hbar}
+
+% Hat vectors
+\newcommand\ah{\mathbf{a}}
+\newcommand\bh{\mathbf{b}}
+\newcommand\ch{\mathbf{c}}
+\renewcommand\dh{\mathbf{d}}
+\newcommand\eh{\mathbf{e}}
+\newcommand\ph{\mathbf{p}}
+\newcommand\uh{\mathbf{u}}
+\newcommand\vh{\mathbf{v}}
+\newcommand\wh{\mathbf{w}}
+\newcommand\xh{\mathbf{x}}
+\newcommand\yh{\mathbf{y}}
+\newcommand\zh{\mathbf{z}}
+
+% Unit vectors
+\newcommand\ui{\boldsymbol{\imath}}
+\newcommand\uj{\boldsymbol{\jmath}}
+\newcommand\uk{\mathbf{k}}
+
+% Matrix groups
+\newcommand\GL{\operatorname{GL}}
+\newcommand\Or{\operatorname{O}}
+\newcommand\PGL{\operatorname{PGL}}
+\newcommand\PSL{\operatorname{PSL}}
+\newcommand\PSO{\operatorname{PSO}}
+\newcommand\PSU{\operatorname{PSU}}
+\newcommand\SL{\operatorname{SL}}
+\newcommand\SO{\operatorname{SO}}
+\newcommand\Spin{\operatorname{Spin}}
+\newcommand\Sp{\operatorname{Sp}}
+\newcommand\SU{\operatorname{SU}}
+\newcommand\U{\operatorname{U}}
+\newcommand\Mat{\operatorname{Mat}}
+\renewcommand\P{\operatorname{P}}
+
+% Random functions
+\newcommand\sech{\operatorname{sech}}
+\newcommand\fff{\mathrm{I}}
+\newcommand\sff{\mathrm{II}}
+
+% Lie algebras
+\newcommand\ec{\mathrm{e}}
+\newcommand\gl{\mathrm{gl}}
+\newcommand\so{\mathrm{so}}
+\newcommand\su{\mathrm{su}}
+\newcommand\ggl{\mathfrak{g}}
+\newcommand\hl{\mathfrak{h}}
+
+% Subspaces
+\newcommand\B{\mathbb{B}}
+\newcommand\C{\mathbb{C}}
+\newcommand\D{\mathbb{D}}
+\newcommand\E{\mathbb{E}}
+\newcommand\F{\mathbb{F}}
+\newcommand\I{\mathbb{I}}
+\newcommand\N{\mathbb{N}}
+\newcommand\Q{\mathbb{Q}}
+\newcommand\R{\mathbb{R}}
+\newcommand\Z{\mathbb{Z}}
+
+% Math operators
+\let\div\relax
+\let\Re\relax
+\let\Im\relax
+
+% Operators
+% \DeclareMathOperator\arg{arg}
+\DeclareMathOperator\Arg{Arg}
+\DeclareMathOperator\curl{curl}
+\DeclareMathOperator\div{div}
+\DeclareMathOperator\Col{Col}
+\DeclareMathOperator\Null{Null}
+\DeclareMathOperator\Range{Range}
+\DeclareMathOperator\Ker{Ker}
+\DeclareMathOperator\Tr{Tr}
+\DeclareMathOperator\Rank{Rank}
+\DeclareMathOperator\proj{proj}
+\DeclareMathOperator\comp{comp}
+\DeclareMathOperator\Sspan{Span}
+\DeclareMathOperator\Re{Re}
+\DeclareMathOperator*\Res{Res}
+\DeclareMathOperator\Im{Im}
+\DeclareMathOperator\ad{ad}
+\DeclareMathOperator\Ad{Ad}
+\DeclareMathOperator\Log{Log}
+\DeclareMathOperator\Hom{Hom}
+
+\newcommand\aand{\quad\text{and}\quad}
+\newcommand\oor{\quad\text{or}\quad}
+\renewcommand\and{\text{and}}
+\newcommand\qtq[1]{\quad\text{#1}\quad}
+
+% Fancy letters
+\newcommand\BB{\mathcal{B}}
+\newcommand\DD{\mathcal{D}}
+
+\newenvironment{exercise}[1][-1]{\noindent\textbf{Exercise #1}.}
+
+\newenvironment{solution}[1][]{%
+  \begin{proof}[Solution\ifthenelse{\equal{#1}{}}{}{~to~#1}]
+}{%
+  \end{proof}
+}
+
+\begin{document}
+  \chapter{Introduction to Soergel Bimodules}
+
+  \begin{exercise}[7.8]
+    Show that the axioms of a 2-category imply the following equalities.
+  \end{exercise}
+
+  \begin{solution}[7.8]
+  \end{solution}
+
+  \begin{exercise}[7.16]
+    We can view the algebra $A = \R[x]/(x^2)$ as an object in the monoidal category of $\R$-vector spaces. Let $\cap : A \otimes A \to \R$ denote the linear map which sends $f \otimes g$ to the coefficient of $x$ in $fg$. Let $\cup : \R \to A \otimes A$ denote the map which sends $1$ to $x \otimes 1 + 1 \otimes x$.
+
+    \begin{enumerate}
+      \item We wish to encode these maps diagrammatically, drawing $\cap$ as a cap and $\cup$ as a cup. Justify this diagrammatic notation, by checking the isotopy relations.
+
+      \item Draw a sequence of nested circles, as in an archery target. Evaluate this morphism.
+    \end{enumerate}
+  \end{exercise}
+
+  \begin{solution}[7.16(i)]
+  \end{solution}
+
+  \begin{solution}[7.16(i)]
+  \end{solution}
+
+  \begin{exercise}[7.17]
+    This question is about the Temperley–Lieb category.
+    \begin{enumerate}
+      \item Finish the proof that the isotopy relation holds in vector spaces.
+
+      \item There is a map $V \otimes V \to V \otimes V$ which sends $x \otimes y \mapsto y \otimes x$. Draw this as an element of the Temperley–Lieb category (a linear combination of diagrams).
+
+      \item Find an endomorphism of $2$ strands which is killed by placing a cap on top. Can you find one which is an idempotent? Also find an endomorphism killed by putting a cup on bottom.
+
+      \item (Harder) Find an idempotent endomorphism of $3$ strands which is killed by a cap on top (for either of the two placements of the cap). \end{enumerate}
+  \end{exercise}
+
+  \begin{solution}[7.17(i)]
+  \end{solution}
+
+  \begin{solution}[7.17(ii)]
+  \end{solution}
+
+  \begin{solution}[7.17(iii)]
+  \end{solution}
+
+  \begin{exercise}[7.19]
+    One can think about the right mate and the left mate as ``twisting'' or ``rotating'' $\alpha$ by $180^{\circ}$ to the right or to the left. Visualize what it would mean to twist $\alpha$ by $360^{\circ}$ to the right, yielding another $2$-morphism $\alpha^{\lor\lor} : E \to F$. Verify that $^{\lor}\alpha = \alpha^{\lor}$, if and only if $\alpha = \alpha^{\lor\lor}$. Thus cyclicity is the same as ``$360$ degree rotation invariance,'' which one might expect from any planar picture.
+  \end{exercise}
+
+  \begin{solution}[7.19]
+  \end{solution}
+
+  \begin{exercise}[7.20]
+    Suppose that $B$ is an object in a monoidal category with biadjoints, and $\Phi : B \otimes B \otimes B \to \mathbb{1}$ is a cyclic morphism. What should it mean to ``rotate'' $\Phi$ by $120^{\circ}$? Suppose that $\Hom(B \otimes B \otimes B, \mathbb{1})$ is one-dimensional over $\C$. What can you say about the $120^{\circ}$ rotation of $\Phi$, vis a vis $\Phi$? What if $\Hom(B \otimes B \otimes B, \mathbb{1})$ is one-dimensional over $\R$?
+  \end{exercise}
+
+  \begin{solution}[7.20]
+  \end{solution}
+
+  \begin{exercise}[9.25]
+  \end{exercise}
+
+  \begin{solution}[9.25]
+  \end{solution}
+
+  \begin{exercise}[9.26]
+  \end{exercise}
+
+  \begin{solution}[9.26]
+  \end{solution}
+
+  \begin{exercise}[9.27]
+  \end{exercise}
+
+  \begin{solution}[9.27]
+  \end{solution}
+
+  \begin{exercise}[9.28]
+  \end{exercise}
+
+  \begin{solution}[9.28]
+  \end{solution}
+
+  \chapter{Research Papers}
+
+  \begin{exercise}[1]
+    Compute the value of a bigon at $q = 1$ or at general $q$.
+  \end{exercise}
+
+  \begin{solution}[1]
+  \end{solution}
+
+  \begin{exercise}[2]
+    Look at (2.9). Can you find associativity and coassociativity inside? Use only these relations and (2.4) to prove (2.9).
+  \end{exercise}
+
+  \begin{solution}[2]
+  \end{solution}
+
+  \begin{exercise}[3]
+    Write down what (2.10) means explicitly for some small values of k, l, r, s, until you get a feeling for how it works. You'll definitely want an exampel where k-l+r-s is at least 2 eventually. Then try to verify it using vectors for small values.
+  \end{exercise}
+
+  \begin{solution}[3]
+  \end{solution}
+
+  \begin{exercise}[4]
+    Try to prove Lemma 2.9 from \href{https://arxiv.org/pdf/1510.06840}{Light Ladders and Clasp Conjectures}
+  \end{exercise}
+
+  \begin{solution}[4]
+  \end{solution}
+
+  \begin{exercise}[5]
+    Remember how for the Temperley-Lieb algebra you described the "Crossing" $v \otimes w \mapsto w \otimes v$ as a linear combination of other maps. Let's do this again, but with webs this time. You're going to have to use $q = 1$ do this exercise, so forget about the q-deformation.
+
+    Consider the map $\Lambda^1 V \otimes \Lambda^2 V \to \Lambda^2 V \otimes \Lambda^1 V$ which just swaps the tensor factors. This is a linear combination of:
+    \begin{enumerate}
+      \item The web which merges $1,2$ into $3$ and then splits $3$ into $2,1$.
+
+      \item The web which splits $1,2$ into $1,1,1$ and then merges $1,1,1$ into $2,1$.
+    \end{enumerate}
+    Find the linear combo.
+  \end{exercise}
+
+  \begin{solution}[5(i)]
+  \end{solution}
+
+  \begin{solution}[5(ii)]
+  \end{solution}
+
+  \begin{exercise}[6]
+    Consider the map $\Lambda^2 V \otimes \Lambda^2 V \to \Lambda^2 V \otimes \Lambda^2 V$ which just swaps the tensor factors. This is a linear combination of:
+    \begin{enumerate}
+      \item the web which merges $2,2$ into $4$ and then splits $4$ into $2,2$.
+
+      \item the web which splits $2,2$ into $2,1,1$ and then merges $2,1,1$ into $3,1$ and then splits back to $2,1,1$ and marges back to $2,2$.
+
+      \item the identity of $2,2$.
+    \end{enumerate}
+    Find the linear combo.
+  \end{exercise}
+
+  \begin{solution}[6(i)]
+  \end{solution}
+
+  \begin{solution}[6(ii)]
+  \end{solution}
+
+  \begin{solution}[6(iii)]
+  \end{solution}
+
+  \chapter{Misc}
+
+  \begin{exercise}[1]
+    Find a formula for the product $[n][3]$ when $n \ge 3$ and $[n][4]$ when $n \ge 4$. Generalize this.
+  \end{exercise}
+
+  \begin{solution}[1]
+  \end{solution}
+
+  \begin{exercise}[2]
+    What is $[n][n] - [n + 1][n - 1]$?
+  \end{exercise}
+
+  \begin{solution}[2]
+  \end{solution}
+
+  \begin{exercise}[3]
+    What is $[n][k] - [n + 1][k - 1]$ for $k < n$?
+  \end{exercise}
+
+  \begin{solution}[3]
+  \end{solution}
+\end{document}
