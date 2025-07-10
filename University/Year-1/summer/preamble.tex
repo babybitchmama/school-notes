@@ -1,0 +1,243 @@
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{amssymb}
+
+\usepackage{xparse}
+
+\usepackage{thmtools}
+\usepackage[framemethod=TikZ]{mdframed}
+
+\usepackage{tikz}
+
+\usepackage{etoolbox}
+\usepackage{subcaption}
+\usepackage{enumitem}
+\usepackage{environ}
+\usepackage{float}
+\usepackage{hyperref}
+\usepackage{derivative}
+\usepackage{xcolor}
+\usepackage{mathrsfs}
+\usepackage{breqn}
+\usepackage{ifthen}
+\usepackage{xifthen}
+\usepackage{geometry}
+\usepackage{xfrac}
+\geometry{
+  top=1in,
+  bottom=1.5in,
+  right=1in,
+  left=1in,
+}
+
+%%%%%%%%%%%%%%
+%  Settings  %
+%%%%%%%%%%%%%%
+
+% hyperref
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+  filecolor=magenta,
+  urlcolor=cyan,
+  pdftitle={Solutions to Random Exercises},
+  pdfpagemode=FullScreen,
+}
+
+\usetikzlibrary{
+  shadings,
+  intersections,
+  angles,
+  quotes,
+  calc,
+  positioning,
+  3d,
+  perspective,
+  arrows,
+  arrows.meta,
+  patterns,
+  decorations.markings,
+  decorations.pathreplacing,
+  decorations.pathmorphing,
+  bending,
+  calligraphy,
+  backgrounds,
+}
+
+% Lists
+\renewcommand{\labelitemi}{--}
+\renewcommand{\labelitemii}{$\circ$}
+\renewcommand{\labelenumi}{\textnormal{(\roman{*})}}
+
+%%%%%%%%%%%%%%%%%%%%%
+%  Custom Commands  %
+%%%%%%%%%%%%%%%%%%%%%
+
+% Vectors
+\renewcommand\a{\mathbf{a}}
+\renewcommand\b{\mathbf{b}}
+\renewcommand\c{\mathbf{c}}
+\renewcommand\d{\mathbf{d}}
+\newcommand\e{\mathbf{e}}
+\newcommand\f{\mathbf{f}}
+\newcommand\FF{\mathbf{F}}
+\newcommand\g{\mathbf{g}}
+\newcommand\n{\mathbf{n}}
+\newcommand\p{\mathbf{p}}
+\renewcommand\r{\mathbf{r}}
+\newcommand\Ta{\mathbf{T}}
+\renewcommand\u{\mathbf{u}}
+\renewcommand\v{\mathbf{v}}
+\newcommand\w{\mathbf{w}}
+\newcommand\x{\mathbf{x}}
+\newcommand\y{\mathbf{y}}
+\newcommand\z{\mathbf{z}}
+\newcommand\zero{\mathbf{0}}
+\newcommand\hb{\hbar}
+
+% Hat vectors
+\newcommand\ah{\mathbf{a}}
+\newcommand\bh{\mathbf{b}}
+\newcommand\ch{\mathbf{c}}
+\renewcommand\dh{\mathbf{d}}
+\newcommand\eh{\mathbf{e}}
+\newcommand\ph{\mathbf{p}}
+\newcommand\uh{\mathbf{u}}
+\newcommand\vh{\mathbf{v}}
+\newcommand\wh{\mathbf{w}}
+\newcommand\xh{\mathbf{x}}
+\newcommand\yh{\mathbf{y}}
+\newcommand\zh{\mathbf{z}}
+
+% Unit vectors
+\newcommand\ui{\boldsymbol{\imath}}
+\newcommand\uj{\boldsymbol{\jmath}}
+\newcommand\uk{\mathbf{k}}
+
+% Matrix groups
+\newcommand\GL{\operatorname{GL}}
+\newcommand\Or{\operatorname{O}}
+\newcommand\PGL{\operatorname{PGL}}
+\newcommand\PSL{\operatorname{PSL}}
+\newcommand\PSO{\operatorname{PSO}}
+\newcommand\PSU{\operatorname{PSU}}
+\newcommand\SL{\operatorname{SL}}
+\newcommand\SO{\operatorname{SO}}
+\newcommand\Spin{\operatorname{Spin}}
+\newcommand\Sp{\operatorname{Sp}}
+\newcommand\SU{\operatorname{SU}}
+\newcommand\U{\operatorname{U}}
+\newcommand\Mat{\operatorname{Mat}}
+\renewcommand\P{\operatorname{P}}
+
+% Lie algebras
+\newcommand\ec{\mathrm{e}}
+\newcommand\gl{\mathrm{gl}}
+\newcommand\so{\mathrm{so}}
+\newcommand\su{\mathrm{su}}
+\newcommand\ggl{\mathfrak{g}}
+\newcommand\hl{\mathfrak{h}}
+
+% Subspaces
+\newcommand\B{\mathbb{B}}
+\newcommand\C{\mathbb{C}}
+\newcommand\D{\mathbb{D}}
+\newcommand\E{\mathbb{E}}
+\newcommand\F{\mathbb{F}}
+\newcommand\I{\mathbb{I}}
+\newcommand\N{\mathbb{N}}
+\newcommand\Q{\mathbb{Q}}
+\newcommand\R{\mathbb{R}}
+\newcommand\Z{\mathbb{Z}}
+
+% Fancy letters
+\newcommand\BB{\mathcal{B}}
+\newcommand\CC{\mathcal{C}}
+\newcommand\DD{\mathcal{D}}
+\newcommand\EE{\mathcal{E}}
+
+% Math operators
+\let\div\relax
+\let\Re\relax
+\let\Im\relax
+
+\DeclareMathOperator\Arg{Arg}
+\DeclareMathOperator\curl{curl}
+\DeclareMathOperator\div{div}
+\DeclareMathOperator\Col{Col}
+\DeclareMathOperator\Null{Null}
+\DeclareMathOperator\Range{Range}
+\DeclareMathOperator\Ker{Ker}
+\DeclareMathOperator\Tr{Tr}
+\DeclareMathOperator\Rank{Rank}
+\DeclareMathOperator\proj{proj}
+\DeclareMathOperator\comp{comp}
+\DeclareMathOperator\Sspan{Span}
+\DeclareMathOperator\Re{Re}
+\DeclareMathOperator*\Res{Res}
+\DeclareMathOperator\Im{Im}
+\DeclareMathOperator\ad{ad}
+\DeclareMathOperator\Ad{Ad}
+\DeclareMathOperator\Log{Log}
+\DeclareMathOperator\Hom{Hom}
+\DeclareMathOperator\TL{TL}
+\DeclareMathOperator\JW{JW}
+\DeclareMathOperator\BS{BS}
+\DeclareMathOperator\sech{sech}
+\DeclareMathOperator\id{id}
+\renewcommand\Cup{\mathop{\cup}}
+\renewcommand\Cap{\mathop{\cap}}
+
+% Helpful text in math mode
+\newcommand\aand{\quad\text{and}\quad}
+\newcommand\oor{\quad\text{or}\quad}
+\renewcommand\and{\text{and}}
+\newcommand\qtq[1]{\quad\text{#1}\quad}
+
+%%%%%%%%%%%%%%%%%%
+%  Environments  %
+%%%%%%%%%%%%%%%%%%
+
+\declaretheoremstyle[
+  headformat=\NAME\NOTE,
+  headfont=\bfseries,
+  notefont=\bfseries,
+  bodyfont=\normalfont,
+  numbered=no,
+  notebraces={}{},
+]{thmexcbox}
+
+\declaretheoremstyle[
+  headformat=\NAME\NOTE,
+  headfont=\itshape,
+  notefont=\itshape,
+  bodyfont=\normalfont,
+  numbered=no,
+  notebraces={}{},
+  qed=\qedsymbol,
+]{thmsolbox}
+
+\declaretheorem[style=thmexcbox, title=Exercise]{excenv}
+\declaretheorem[style=thmsolbox, title=Solution]{solenv}
+
+\makeatletter
+\NewDocumentEnvironment{exercise}{O{}}{
+  \begin{excenv}[#1]
+    \phantomsection
+    \def\@currentlabel{#1}%
+}{
+  \end{excenv}
+}
+
+\NewDocumentEnvironment{solution}{O{}}{
+  \begin{solenv}[\ifstrempty{#1}{}{to~#1}]%
+    \ifstrempty{#1}{}{%
+      \phantomsection
+      \def\@currentlabel{#1}%
+    }%
+}{%
+  \end{solenv}
+}
+\makeatother
