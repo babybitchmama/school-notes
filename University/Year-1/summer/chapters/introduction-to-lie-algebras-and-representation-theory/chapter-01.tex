@@ -1,0 +1,261 @@
+\section{Basic Concepts}
+
+\subsection{Definitions and first examples}
+
+\begin{exercise}[1.1.1.1]\label{exc:1.1.1.1}
+  Let $L$ be the real vector space $\R^3$. Define $[xy] = x \times y$ (cross product of vectors) for $x, y \in L$, and verify that $L$ is a Lie algebra. Write down the structure constants relative to the usual basis of $\R^3$.
+\end{exercise}
+
+\begin{solution}[1.1.1.1]\label{sol:1.1.1.1}
+\end{solution}
+
+\begin{exercise}[1.1.1.2]\label{exc:1.1.1.2}
+  Verify that the following equations and those implied by (L1) (L2) define a Lie algebra structure on a three dimensional vector space with basis $(x, y, z): [xy] = z, [x z] = y, [y z] = 0$.
+\end{exercise}
+
+\begin{solution}[1.1.1.2]\label{sol:1.1.1.2}
+\end{solution}
+
+\begin{exercise}[1.1.1.3]\label{exc:1.1.1.3}
+  Let
+  $x = \left(\begin{array}{ll}
+    0 & 1 \\
+    0 & 0 \\
+  \end{array}\right),
+  h = \left(\begin{array}{rr}
+    1 & 0 \\
+    0 & -1 \\
+  \end{array}\right),
+  y = \left(\begin{array}{ll}
+    0 & 0 \\
+    1 & 0 \\
+  \end{array}\right)$
+  be an ordered basis for $\sl(2, \F)$. Compute the matrices of $\ad x$, $\ad h$, $\ad y$ relative to this basis.
+\end{exercise}
+
+\begin{solution}[1.1.1.3]\label{sol:1.1.1.3}
+\end{solution}
+
+\begin{exercise}[1.1.1.4]\label{exc:1.1.1.4}
+  Find a linear Lie algebra isomorphic to the nonabelian two dimensional algebra constructed in (1.4). [Hint: Look at the adjoint representation.]
+\end{exercise}
+
+\begin{solution}[1.1.1.4]\label{sol:1.1.1.4}
+\end{solution}
+
+\begin{exercise}[1.1.1.5]\label{exc:1.1.1.5}
+  Verify the assertions made in (1.2) about $\t(n, \F), \d(n, \F), \n(n, \F)$, and compute the dimension of each algebra, by exhibiting bases.
+\end{exercise}
+
+\begin{solution}[1.1.1.5]\label{sol:1.1.1.5}
+\end{solution}
+
+\begin{exercise}[1.1.1.6]\label{exc:1.1.1.6}
+  Let $x \in \gl(n, \F)$ have $n$ distinct eigenvalues $a_1, \ldots, a_n$ in $\F$. Prove that the eigenvalues of $\ad x$ are precisely the $n^2$ scalars $a_i - a_j$ $(1 \leq i, j \leq n)$, which of course need not be distinct.
+\end{exercise}
+
+\begin{solution}[1.1.1.6]\label{sol:1.1.1.6}
+\end{solution}
+
+\begin{exercise}[1.1.1.7]\label{exc:1.1.1.7}
+  Let $\s(n, \F)$ denote the \textbf{scalar matrices} ($=$ scalar multiples of
+  the identity) in $\gl(n, \F)$. If char $\F$ is $0$ or else a prime not
+  dividing $n$, prove that $\gl(n, \F) = \sl(n, \F) + \s(n, \F)$ (direct sum
+  of vector spaces), with $[\s(n, \F)$, $\gl[(n, \F)] = 0$.
+\end{exercise}
+
+\begin{solution}[1.1.1.7]\label{sol:1.1.1.7}
+\end{solution}
+
+\begin{exercise}[1.1.1.8]\label{exc:1.1.1.8}
+  Verify the stated dimension of $\mathrm{D}_{\ell}$.
+\end{exercise}
+
+\begin{solution}[1.1.1.8]\label{sol:1.1.1.8}
+\end{solution}
+
+\begin{exercise}[1.1.1.9]\label{exc:1.1.1.9}
+  When char $\F = 0$, show that each classical algebra $L = \mathrm{A}_{\ell}, \mathrm{B}_{\ell}, \mathrm{C}_{\ell}$, or $\mathrm{D}_{\ell}$ is equal to $[LL]$. (This shows again that each algebra consists of trace $0$ matrices.)
+\end{exercise}
+
+\begin{solution}[1.1.1.9]\label{sol:1.1.1.9}
+\end{solution}
+
+\begin{exercise}[1.1.1.10]\label{exc:1.1.1.10}
+  For small values of $\ell$, isomorphisms occur among certain of the classical algebras. Show that $\mathrm{A}_1, \mathrm{B}_1, \mathrm{C}_1$ are all isomorphic, while $\mathrm{D}_1$ is the one dimensional Lie algebra. Show that $\mathrm{B}_2$ is isomorphic to $\mathrm{C}_2, \mathrm{D}_3$ to $\mathrm{A}_3$. What can you say about $\mathrm{D}_2$ ?
+\end{exercise}
+
+\begin{solution}[1.1.1.10]\label{sol:1.1.1.10}
+\end{solution}
+
+\begin{exercise}[1.1.1.11]\label{exc:1.1.1.11}
+  Verify that the commutator of two derivations of an $\F$-algebra is again a derivation, whereas the ordinary product need not be.
+\end{exercise}
+
+\begin{solution}[1.1.1.11]\label{sol:1.1.1.11}
+\end{solution}
+
+\begin{exercise}[1.1.1.12]\label{exc:1.1.1.12}
+  Let $L$ be a Lie algebra and let $x \in L$. Prove that the subspace of $L$ spanned by the eigenvectors of $\ad x$ is a subalgebra.
+\end{exercise}
+
+\begin{solution}[1.1.1.12]\label{sol:1.1.1.12}
+\end{solution}
+
+\subsection{Ideals and homomorphisms}
+
+\begin{exercise}[1.1.2.1]\label{exc:1.1.2.1}
+  Prove that the set of all inner derivations $\ad x, x \in L$, is an ideal of $\Der L$.
+\end{exercise}
+
+\begin{solution}[1.1.2.1]\label{sol:1.1.2.1}
+\end{solution}
+
+\begin{exercise}[1.1.2.2]\label{exc:1.1.2.2}
+  Show that $\sl(n, \F)$ is precisely the derived algebra of $\gl(n, \F)$ (cf. Exercise \ref{exc:1.1.1.9}).
+\end{exercise}
+
+\begin{solution}[1.1.2.2]\label{sol:1.1.2.2}
+\end{solution}
+
+\begin{exercise}[1.1.2.3]\label{exc:1.1.2.3}
+  Prove that the center of $\gl(n, \F)$ equals $\s(n, \F)$ (the scalar matrices). Prove that $\sl(n, \F)$ has center 0, unless char $F$ divides $n$, in which case the center is $\s(n, \F)$.
+\end{exercise}
+
+\begin{solution}[1.1.2.3]\label{sol:1.1.2.3}
+\end{solution}
+
+\begin{exercise}[1.1.2.4]\label{exc:1.1.2.4}
+  Show that (up to isomorphism) there is a unique Lie algebra over $\F$ of dimension 3 whose derived algebra has dimension 1 and lies in $Z(L)$.
+\end{exercise}
+
+\begin{solution}[1.1.2.4]\label{sol:1.1.2.4}
+\end{solution}
+
+\begin{exercise}[1.1.2.5]\label{exc:1.1.2.5}
+  Suppose $\dim L = 3$, $L = [LL]$. Prove that $L$ must be simple. [Observe first that any homomorphic image of $L$ also equals its derived algebra.] Recover the simplicity of $\sl(2, \F)$, char $\F \neq 2$.
+\end{exercise}
+
+\begin{solution}[1.1.2.5]\label{sol:1.1.2.5}
+\end{solution}
+
+\begin{exercise}[1.1.2.6]\label{exc:1.1.2.6}
+  Prove that $\sl(3, \F)$ is simple, unless char $\F = 3$ (cf. Exercise \ref{exc:1.1.2.3}). [Use the standard basis $h_1, h_2, e_{ij}$ $(i \neq j)$. If $I \neq 0$ is an ideal, then $I$ is the direct sum of eigenspaces for $\ad h_1$ or $\ad h_2$; compare the eigenvalues of $\ad h_1$, ad $h_2$ acting on the $e_{ij}$.]
+\end{exercise}
+
+\begin{solution}[1.1.2.6]\label{sol:1.1.2.6}
+\end{solution}
+
+\begin{exercise}[1.1.2.7]\label{exc:1.1.2.7}
+  Prove that $\t(n, \F)$ and $\d(n, \F)$ are self-normalizing subalgebras of $\gl(n, \F)$, whereas $\n(n, \F)$ has normalizer $\t(n, \F)$.
+\end{exercise}
+
+\begin{solution}[1.1.2.7]\label{sol:1.1.2.7}
+\end{solution}
+
+\begin{exercise}[1.1.2.8]\label{exc:1.1.2.8}
+  Prove that in each classical linear Lie algebra (1.2), the set of diagonal matrices is a self-normalizing subalgebra, when char $\F = 0$.
+\end{exercise}
+
+\begin{solution}[1.1.2.8]\label{sol:1.1.2.8}
+\end{solution}
+
+\begin{exercise}[1.1.2.9]\label{exc:1.1.2.9}
+  Prove Proposition 2.2.
+\end{exercise}
+
+\begin{solution}[1.1.2.9]\label{sol:1.1.2.9}
+\end{solution}
+
+\begin{exercise}[1.1.2.10]\label{exc:1.1.2.10}
+  Let $\sigma$ be the automorphism of $\sl(2, \F)$ defined in (2.3). Verify that $\sigma(x) = -y, \sigma(y) = -x, \sigma(h) = -h$.
+\end{exercise}
+
+\begin{solution}[1.1.2.10]\label{sol:1.1.2.10}
+\end{solution}
+
+\begin{exercise}[1.1.2.11]\label{exc:1.1.2.11}
+  If $L = \sl(n, \F)$, $g \in \GL(n, \F)$, prove that the map of $L$ to itself defined by $x \mapsto -gx^tg^{-1}$ ($x^t =$ transpose of $x$) belongs to $\Aut L$. When $n = 2$, $g =$ identity matrix, prove that this automorphism is inner.
+\end{exercise}
+
+\begin{solution}[1.1.2.11]\label{sol:1.1.2.11}
+\end{solution}
+
+\begin{exercise}[1.1.2.12]\label{exc:1.1.2.12}
+  Let $L$ be an orthogonal Lie algebra (type $\mathrm{B}_{\ell}$ or $\mathrm{D}_{\ell}$). If $g$ is an \textbf{orthogonal} matrix, in the sense that $g$ is invertible and $g^tsg = s$, prove that $x \mapsto gxg^{-1}$ defines an automorphism of $L$.
+\end{exercise}
+
+\begin{solution}[1.1.2.12]\label{sol:1.1.2.12}
+\end{solution}
+
+\subsection{Solvable and nilpotent Lie algebras}
+
+\begin{exercise}[1.1.3.1]\label{exc:1.1.3.1}
+  Let $I$ be an ideal of $L$. Then each member of the derived series or descending central series of $I$ is also an ideal of $L$.
+\end{exercise}
+
+\begin{solution}[1.1.3.1]\label{sol:1.1.3.1}
+\end{solution}
+
+\begin{exercise}[1.1.3.2]\label{exc:1.1.3.2}
+  Prove that $L$ is solvable if and only if there exists a chain of subalgebras $L = L_0 \supset L_1 \supset L_2 \supset \cdots \supset L_k = 0$ such that $L_{i+1}$ is an ideal of $L_i$ and such that each quotient $L_i / L_{i+1}$ is abelian.
+\end{exercise}
+
+\begin{solution}[1.1.3.2]\label{sol:1.1.3.2}
+\end{solution}
+
+\begin{exercise}[1.1.3.3]\label{exc:1.1.3.3}
+  Let char $\F = 2$. Prove that $\sl(2, \F)$ is nilpotent.
+\end{exercise}
+
+\begin{solution}[1.1.3.3]\label{sol:1.1.3.3}
+\end{solution}
+
+\begin{exercise}[1.1.3.4]\label{exc:1.1.3.4}
+  Prove that $L$ is solvable (resp. nilpotent) if and only if ad $L$ is solvable (resp. nilpotent).
+\end{exercise}
+
+\begin{solution}[1.1.3.4]\label{sol:1.1.3.4}
+\end{solution}
+
+\begin{exercise}[1.1.3.5]\label{exc:1.1.3.5}
+  Prove that the nonabelian two dimensional algebra constructed in (1.4) is solvable but not nilpotent. Do the same for the algebra in Exercise \ref{exc:1.1.1.2}.
+\end{exercise}
+
+\begin{solution}[1.1.3.5]\label{sol:1.1.3.5}
+\end{solution}
+
+\begin{exercise}[1.1.3.6]\label{exc:1.1.3.6}
+  Prove that the sum of two nilpotent ideals of a Lie algebra $L$ is again a nilpotent ideal. Therefore, $L$ possesses a unique maximal nilpotent ideal. Determine this ideal for each algebra in Exercise \ref{exc:1.1.3.5}.
+\end{exercise}
+
+\begin{solution}[1.1.3.6]\label{sol:1.1.3.6}
+\end{solution}
+
+\begin{exercise}[1.1.3.7]\label{exc:1.1.3.7}
+  Let $L$ be nilpotent, $K$ a proper subalgebra of $L$. Prove that $N_L(K)$ includes $K$ properly.
+\end{exercise}
+
+\begin{solution}[1.1.3.7]\label{sol:1.1.3.7}
+\end{solution}
+
+\begin{exercise}[1.1.3.8]\label{exc:1.1.3.8}
+  Let $L \neq 0$ be nilpotent. Prove that $L$ has an ideal of codimension 1 .
+\end{exercise}
+
+\begin{solution}[1.1.3.8]\label{sol:1.1.3.8}
+\end{solution}
+
+\begin{exercise}[1.1.3.9]\label{exc:1.1.3.9}
+  Prove that every nilpotent Lie algebra $L \neq 0$ has an outer derivation (see (1.3)), as follows: Write $L= K + \F x$ for some ideal $K$ of codimension one (Exercise \ref{exc:1.1.3.8}). Then $C_L(K) \neq 0$ (why?). Choose $n$ so that $C_L(K) \subset L^n$, $C_L(K) \nsubseteq L^{n+1}$, and let $z \in C_L(K) - L^{n+1}$. Then the linear map $\delta$ sending $K$ to $0, x$ to $z$, is an outer derivation.
+\end{exercise}
+
+\begin{solution}[1.1.3.9]\label{sol:1.1.3.9}
+\end{solution}
+
+\begin{exercise}[1.1.3.10]\label{exc:1.1.3.10}
+  Let $L$ be a Lie algebra, $K$ an ideal of $L$ such that $L / K$ is nilpotent and such that $\ad \left.x\right|_K$ is nilpotent for all $x \in L$. Prove that $L$ is nilpotent.
+\end{exercise}
+
+\begin{solution}[1.1.3.10]\label{sol:1.1.3.10}
+\end{solution}

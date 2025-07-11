@@ -43,6 +43,7 @@
   filecolor=magenta,
   urlcolor=cyan,
   pdftitle={Solutions to Random Exercises},
+  pdfauthor={Hashem Alaa Hashem Muhammad Masood Damrah},
   pdfpagemode=FullScreen,
 }
 
@@ -75,46 +76,8 @@
 %  Custom Commands  %
 %%%%%%%%%%%%%%%%%%%%%
 
-% Vectors
-\renewcommand\a{\mathbf{a}}
-\renewcommand\b{\mathbf{b}}
-\renewcommand\c{\mathbf{c}}
-\renewcommand\d{\mathbf{d}}
-\newcommand\e{\mathbf{e}}
-\newcommand\f{\mathbf{f}}
-\newcommand\FF{\mathbf{F}}
-\newcommand\g{\mathbf{g}}
-\newcommand\n{\mathbf{n}}
-\newcommand\p{\mathbf{p}}
-\renewcommand\r{\mathbf{r}}
-\newcommand\Ta{\mathbf{T}}
-\renewcommand\u{\mathbf{u}}
-\renewcommand\v{\mathbf{v}}
-\newcommand\w{\mathbf{w}}
-\newcommand\x{\mathbf{x}}
-\newcommand\y{\mathbf{y}}
-\newcommand\z{\mathbf{z}}
-\newcommand\zero{\mathbf{0}}
-\newcommand\hb{\hbar}
-
-% Hat vectors
-\newcommand\ah{\mathbf{a}}
-\newcommand\bh{\mathbf{b}}
-\newcommand\ch{\mathbf{c}}
-\renewcommand\dh{\mathbf{d}}
-\newcommand\eh{\mathbf{e}}
-\newcommand\ph{\mathbf{p}}
-\newcommand\uh{\mathbf{u}}
-\newcommand\vh{\mathbf{v}}
-\newcommand\wh{\mathbf{w}}
-\newcommand\xh{\mathbf{x}}
-\newcommand\yh{\mathbf{y}}
-\newcommand\zh{\mathbf{z}}
-
-% Unit vectors
-\newcommand\ui{\boldsymbol{\imath}}
-\newcommand\uj{\boldsymbol{\jmath}}
-\newcommand\uk{\mathbf{k}}
+% Mathfrak
+\newcommand\W{\mathscr{W}}
 
 % Matrix groups
 \newcommand\GL{\operatorname{GL}}
@@ -134,20 +97,19 @@
 
 % Lie algebras
 \newcommand\ec{\mathrm{e}}
-\newcommand\gl{\mathrm{gl}}
+\newcommand\gl{\mathfrak{gl}}
+\renewcommand\sl{\mathfrak{sl}}
 \newcommand\so{\mathrm{so}}
 \newcommand\su{\mathrm{su}}
 \newcommand\ggl{\mathfrak{g}}
 \newcommand\hl{\mathfrak{h}}
+\renewcommand\d{\mathfrak{d}}
+\newcommand\n{\mathfrak{n}}
+\newcommand\s{\mathfrak{s}}
+\renewcommand\t{\mathfrak{t}}
 
 % Subspaces
-\newcommand\B{\mathbb{B}}
 \newcommand\C{\mathbb{C}}
-\newcommand\D{\mathbb{D}}
-\newcommand\E{\mathbb{E}}
-\newcommand\F{\mathbb{F}}
-\newcommand\I{\mathbb{I}}
-\newcommand\N{\mathbb{N}}
 \newcommand\Q{\mathbb{Q}}
 \newcommand\R{\mathbb{R}}
 \newcommand\Z{\mathbb{Z}}
@@ -187,8 +149,30 @@
 \DeclareMathOperator\BS{BS}
 \DeclareMathOperator\sech{sech}
 \DeclareMathOperator\id{id}
+\DeclareMathOperator\Der{Der}
+\DeclareMathOperator\Aut{Aut}
+\DeclareMathOperator\Rad{Rad}
+\DeclareMathOperator\diag{diag}
+\DeclareMathOperator\End{End}
+
 \renewcommand\Cup{\mathop{\cup}}
 \renewcommand\Cap{\mathop{\cap}}
+
+\newcommand\A{\mathrm{A}}
+\newcommand\B{\mathrm{B}}
+\newcommand\Cr{\mathrm{C}}
+\newcommand\D{\mathrm{D}}
+
+\newcommand\E{\mathrm{E}}
+\newcommand\F{\mathrm{F}}
+\newcommand\G{\mathrm{G}}
+
+\newcommand\Al{\mathrm{A}_{\ell}}
+\newcommand\Bl{\mathrm{B}_{\ell}}
+\newcommand\Cl{\mathrm{C}_{\ell}}
+\newcommand\Dl{\mathrm{D}_{\ell}}
+
+\newcommand\bra[1]{\left\langle #1 \right\rangle}
 
 % Helpful text in math mode
 \newcommand\aand{\quad\text{and}\quad}
@@ -199,6 +183,9 @@
 %%%%%%%%%%%%%%%%%%
 %  Environments  %
 %%%%%%%%%%%%%%%%%%
+
+\theoremstyle{definition}
+\newtheorem*{note}{Note}
 
 \declaretheoremstyle[
   headformat=\NAME\NOTE,
