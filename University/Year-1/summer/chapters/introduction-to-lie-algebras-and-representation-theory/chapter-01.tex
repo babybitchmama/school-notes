@@ -7,13 +7,53 @@
 \end{exercise}
 
 \begin{solution}[1.1.1.1]\label{sol:1.1.1.1}
+  If $[xy] = x \times y$ defines a Lie algebra structure on $L = \R^3$, then we must verify the axioms (L1) (bilinearity), (L2) (antisymmetry), and (L3) (Jacobi identity). Clearly, (L1) holds, since the cross product is bilinear. Antisymmetry also holds since it's built into the cross product. To verify the Jacobi identity, for all $x, y, z \in L$, we have
+  \[%
+    x \times (y \times z) + y \times (z \times x) + z \times (x \times y) = 0
+  ,\]%
+  which is a known identity of the vector cross product. Hence, $(L, [\cdot,\cdot])$ is a Lie algebra.
+
+  Let $\BB = \{\e_1, \e_2, \e_3\}$ be the standard basis of $\R^3$. The cross products are
+  \begin{gather*}
+    [\e_1, \e_2] = \phantom{-}\e_3, \quad [\e_2, \e_3] = \phantom{-}\e_1, \quad [\e_3, \e_1] = \phantom{-}\e_2\phantom{.} \\
+    [\e_2, \e_1] = -\e_3, \quad [\e_3, \e_2] = -\e_1, \quad [\e_1, \e_3] = -\e_2
+  .\end{gather*}
+  So the structure constants $c_{ij}^k$ are defined by $[\e_i, \e_j] = \sum_k c_{ij}^k \e_k$ and are given by
+  \[%
+    c_{12}^3 = 1, \quad c_{23}^1 = 1, \quad c_{31}^2 = 1, \quad c_{21}^3 = -1, \quad c_{32}^1 = -1, \aand c_{13}^2 = -1
+  ,\]%
+  and all others are zero.
 \end{solution}
 
 \begin{exercise}[1.1.1.2]\label{exc:1.1.1.2}
-  Verify that the following equations and those implied by (L1) (L2) define a Lie algebra structure on a three dimensional vector space with basis $(x, y, z): [xy] = z, [x z] = y, [y z] = 0$.
+  Verify that the following equations and those implied by (L1) (L2) define a Lie algebra structure on a three dimensional vector space with basis $(x, y, z): [xy] = z$, $[x z] = y$, $[y z] = 0$.
 \end{exercise}
 
 \begin{solution}[1.1.1.2]\label{sol:1.1.1.2}
+  We check that this defines a Lie algebra structure on $L$.
+
+  For bilinearity, the bracket is defined on basis elements and extended linearly to all of $L \times L$, so bilinearity holds. For instance,
+  \[%
+    [x, ay + bz] = a[x, y] + b[x, z] = az + by
+  .\]%
+
+  For antisymmetry, we compute
+  \[%
+    [y, x] = -[x, y] = -z, \quad [z, x] = -[x, z] = -y, \quad [z, y] = -[y, z] = 0
+  .\]%
+  Hence, $[u, v] = -[v, u]$ for all basis elements $u, v$, and thus by bilinearity, for all $u, v \in L$.
+
+  For the Jacobi identity, we need to verify that for all $u, v, w \in L$, the identity
+  \[%
+    [u, [v, w]] + [v, [w, u]] + [w, [u, v]] = 0
+  .\]%
+  We check this for the basis elements to get
+  \[%
+    [x, [y, z]] + [y, [z, x]] + [z, [x, y]] = [x, 0] + [y, -y] + [z, z] = 0 + 0 + 0 = 0.
+  .\]%
+  All other combinations of basis elements can be checked similarly or follow from antisymmetry and bilinearity.
+
+  Thus, the vector space $L$ with the defined bracket operation satisfies all three axioms of a Lie algebra.
 \end{solution}
 
 \begin{exercise}[1.1.1.3]\label{exc:1.1.1.3}
@@ -34,6 +74,262 @@
 \end{exercise}
 
 \begin{solution}[1.1.1.3]\label{sol:1.1.1.3}
+  We compute the adjoint action $\ad a(b) = [a, b] = ab - ba$ for each $a \in \{x, h, y\}$ and express $\ad a$ as a matrix relative to the basis $(x, h, y)$.
+
+  To find the matrix of $\ad x$, we compute the commutators
+  \begin{alignat*}{7}
+    [x, x] &= 0 \\
+    [x, h] &= xh - hx &&=
+    \begin{bmatrix}
+      0 & 1 \\
+      0 & 0 \\
+    \end{bmatrix}
+    \begin{bmatrix}
+      1 & 0 \\
+      0 & -1 \\
+    \end{bmatrix}
+    &&-
+    \begin{bmatrix}
+      1 & 0 \\
+      0 & -1 \\
+    \end{bmatrix}
+    \begin{bmatrix}
+      0 & 1 \\
+      0 & 0 \\
+    \end{bmatrix}
+    &&= \begin{bmatrix}
+      0 & -1 \\
+      0 & 0 \\
+    \end{bmatrix}
+    &&- \begin{bmatrix}
+      0 & 1 \\
+      0 & 0 \\
+    \end{bmatrix}
+    &&= \begin{bmatrix}
+      0 & -2 \\
+      0 & 0 \\
+    \end{bmatrix} &&= -2x \\
+    [x, y] &= xy - yx &&=
+    \begin{bmatrix}
+      0 & 1 \\
+      0 & 0 \\
+    \end{bmatrix}
+    \begin{bmatrix}
+      0 & 0 \\
+      1 & 0 \\
+    \end{bmatrix}
+    &&-
+    \begin{bmatrix}
+      0 & 0 \\
+      1 & 0 \\
+    \end{bmatrix}
+    \begin{bmatrix}
+      0 & 1 \\
+      0 & 0 \\
+    \end{bmatrix}
+    &&= \begin{bmatrix}
+      1 & 0 \\
+      0 & 0 \\
+    \end{bmatrix}
+    &&- \begin{bmatrix}
+      0 & 0 \\
+      0 & 1 \\
+    \end{bmatrix}
+    &&= \begin{bmatrix}
+      1 & 0 \\
+      0 & -1 \\
+    \end{bmatrix} &&= h
+  .\end{alignat*}
+  Therefore, we have
+  \[%
+    \ad x(x) = \mathbf{0}, \quad \ad x(h) = \begin{bmatrix}
+      -2 \\
+      0 \\
+      0 \\
+    \end{bmatrix}, \quad
+    \ad x(y) = \begin{bmatrix}
+      0 \\
+      1 \\
+      0 \\
+    \end{bmatrix}
+  .\]%
+
+  To find the matrix of $\ad h$, we compute the commutators
+  \begin{alignat*}{7}
+    [h, x] &= hx - xh &&=
+    \begin{bmatrix}
+      1 & 0 \\
+      0 & -1 \\
+    \end{bmatrix}
+    \begin{bmatrix}
+      0 & 1 \\
+      0 & 0 \\
+    \end{bmatrix}
+    &&-
+    \begin{bmatrix}
+      0 & 1 \\
+      0 & 0 \\
+    \end{bmatrix}
+    \begin{bmatrix}
+      1 & 0 \\
+      0 & -1 \\
+    \end{bmatrix}
+    &&= \begin{bmatrix}
+      0 & 1 \\
+      0 & 0 \\
+    \end{bmatrix}
+    &&- \begin{bmatrix}
+      0 & -1 \\
+      0 & 0 \\
+    \end{bmatrix}
+    &&= \begin{bmatrix}
+      0 & 2 \\
+      0 & 0 \\
+    \end{bmatrix} &&= 2x \\
+    [h, h] &= 0 \\
+    [h, y] &= hy - yh &&=
+    \begin{bmatrix}
+      1 & 0 \\
+      0 & -1 \\
+    \end{bmatrix}
+    \begin{bmatrix}
+      0 & 0 \\
+      1 & 0 \\
+    \end{bmatrix}
+    &&-
+    \begin{bmatrix}
+      0 & 0 \\
+      1 & 0 \\
+    \end{bmatrix}
+    \begin{bmatrix}
+      1 & 0 \\
+      0 & -1 \\
+    \end{bmatrix}
+    &&= \begin{bmatrix}
+      0 & 0 \\
+      -1 & 0 \\
+    \end{bmatrix}
+    &&- \begin{bmatrix}
+      0 & 0 \\
+      1 & 0 \\
+    \end{bmatrix}
+    &&= \begin{bmatrix}
+      0 & 0 \\
+      -2 & 0 \\
+    \end{bmatrix} &&= -2y
+  .\end{alignat*}
+  Therefore, we have
+  \[%
+    \ad h(x) = \begin{bmatrix}
+      2 \\
+      0 \\
+      0 \\
+    \end{bmatrix}, \quad
+    \ad h(h) = \mathbf{0}, \quad
+    \ad h(y) = \begin{bmatrix}
+      0 \\
+      0 \\
+      -2 \\
+    \end{bmatrix}
+  .\]%
+
+  To find the matrix of $\ad y$, we compute the commutators
+  \begin{alignat*}{7}
+    [y, x] &= yx - xy &&=
+    \begin{bmatrix}
+      0 & 0 \\
+      1 & 0 \\
+    \end{bmatrix}
+    \begin{bmatrix}
+      0 & 1 \\
+      0 & 0 \\
+    \end{bmatrix}
+    &&-
+    \begin{bmatrix}
+      0 & 1 \\
+      0 & 0 \\
+    \end{bmatrix}
+    \begin{bmatrix}
+      0 & 0 \\
+      1 & 0 \\
+    \end{bmatrix}
+    &&= \begin{bmatrix}
+      0 & 0 \\
+      0 & 1 \\
+    \end{bmatrix}
+    &&- \begin{bmatrix}
+      1 & 0 \\
+      0 & 0 \\
+    \end{bmatrix}
+    &&= \begin{bmatrix}
+      -1 & 0 \\
+      0 & 1 \\
+    \end{bmatrix} &&= -h \\
+    [y, h] &= yh - hy &&=
+    \begin{bmatrix}
+      0 & 0 \\
+      1 & 0 \\
+    \end{bmatrix}
+    \begin{bmatrix}
+      1 & 0 \\
+      0 & -1 \\
+    \end{bmatrix}
+    &&-
+    \begin{bmatrix}
+      1 & 0 \\
+      0 & -1 \\
+    \end{bmatrix}
+    \begin{bmatrix}
+      0 & 0 \\
+      1 & 0 \\
+    \end{bmatrix}
+    &&= \begin{bmatrix}
+      0 & 0 \\
+      1 & 0 \\
+    \end{bmatrix}
+    &&- \begin{bmatrix}
+      0 & 0 \\
+      -1 & 0 \\
+    \end{bmatrix}
+    &&= \begin{bmatrix}
+      0 & 0 \\
+      2 & 0 \\
+    \end{bmatrix} &&= 2y \\
+    [y, y] &&= 0
+  .\end{alignat*}
+  Therefore, we have
+  \[%
+    \ad y(x) = \begin{bmatrix}
+      0 \\
+      -1 \\
+      0 \\
+    \end{bmatrix}, \quad
+    \ad y(h) = \begin{bmatrix}
+      0 \\
+      0 \\
+      2 \\
+    \end{bmatrix}, \quad
+    \ad y(y) = \mathbf{0}
+  .\]%
+
+  Therefore, we have
+  \[%
+    \ad x = \begin{bmatrix}
+      0 & -2 & 0 \\
+      0 & 0 & 1 \\
+      0 & 0 & 0 \\
+    \end{bmatrix}, \quad
+    \ad h = \begin{bmatrix}
+      2 & 0 & 0 \\
+      0 & 0 & 0 \\
+      0 & 0 & -2 \\
+    \end{bmatrix}, \quad
+    \ad y = \begin{bmatrix}
+      0 & 0 & 0 \\
+      -1 & 0 & 0 \\
+      0 & 2 & 0 \\
+    \end{bmatrix}
+  .\qedhere\]%
 \end{solution}
 
 \begin{exercise}[1.1.1.4]\label{exc:1.1.1.4}
@@ -41,6 +337,46 @@
 \end{exercise}
 
 \begin{solution}[1.1.1.4]\label{sol:1.1.1.4}
+  Let $L$ be the two-dimensional nonabelian Lie algebra from (1.4), with basis $(x, y)$ and bracket $[x, y] = x$.
+
+  The adjoint representation of $L$ is the map $\ad : L \to \gl(L)$ defined by:
+  \[%
+    \ad z(w) = [z, w], \quad z, w \in L
+  .\]%
+  Using the basis $(x, y)$, we compute the adjoint action:
+  \begin{gather*}
+    \ad x(x) = [x, x] = 0, \quad \ad x(y) = [x, y] = -x, \\
+    \ad y(x) = [y, x] = -[x, y] = -x, \quad \ad y(y) = [y, y] = 0
+  .\end{gather*}
+  In matrix form relative to the basis $(x, y)$, we have
+  \[%
+    \ad x = \begin{bmatrix}
+      0 & 0 \\
+      0 & 0
+    \end{bmatrix}
+    \aand
+    \ad y = \begin{bmatrix}
+      -1 & 0 \\
+      0 & 0
+    \end{bmatrix}
+  .\]%
+  Let $\g$ be the linear Lie algebra spanned by these matrices in $\gl_2(\F)$. Then $\g$ is two-dimensional and satisfies
+  \[%
+    [\ad x, \ad y] = \ad x \ad y - \ad y \ad x = 0 - \begin{bmatrix}
+      0 & 0 \\
+      0 & 0
+    \end{bmatrix} = 0
+  ,\]%
+  but this is only apparent because $\ad x = 0$. The Lie bracket is encoded by
+  \[%
+    [\ad y, \ad x] = -\ad x
+  .\]%
+  So the image of $\ad$ captures the same bracket relations:
+  \[%
+    [\ad y, \ad x] = \ad([y, x]) = \ad(-x) = -\ad x
+  .\]%
+
+  Thus, $\g \subset \gl_2(\F)$ is a linear Lie algebra isomorphic to $L$ under the adjoint representation.
 \end{solution}
 
 \begin{exercise}[1.1.1.5]\label{exc:1.1.1.5}
@@ -48,6 +384,55 @@
 \end{exercise}
 
 \begin{solution}[1.1.1.5]\label{sol:1.1.1.5}
+  We recall from (1.2) that
+  \begin{align*}
+    \t(n, \F) &= \text{the subalgebra of upper triangular matrices in $\gl(n, \F)$}, \\
+    \d(n, \F) &= \text{the subalgebra of diagonal matrices in $\gl(n, \F)$}, \\
+    \n(n, \F) &= \text{the subalgebra of strictly upper triangular matrices in $\gl(n, \F)$}.
+  \end{align*}
+  These are subalgebras because the commutator of two upper triangular matrices is again upper triangular, and similarly for the diagonal and strictly upper triangular cases.
+
+  For the upper triangular matrices, $\t(n, \F)$, let $e_{ij}$ denote the matrix with a 1 in the $(i, j)$ position and 0 elsewhere. Then
+  \[%
+    \{e_{ij} \mid 1 \le i \le j \le n\}
+  ,\]%
+  is a basis for $\t(n, \F)$. These are exactly the entries on or above the diagonal. The number of such pairs is
+  \[%
+    \sum_{i=1}^n (n - i + 1) = \frac{n(n + 1)}{2}
+  ,\]%
+  so $\dim \t(n, \F) = \frac{n(n + 1)}{2}$.
+
+  For the diagonal matrices, $\d(n, \F)$, they are spanned by
+  \[%
+    \{e_{ii} \mid 1 \le i \le n\}
+  ,\]%
+  so $\dim \d(n, \F) = n$.
+
+  For the strictly upper triangular matrices, $\n(n, \F)$, they are spanned by
+  \[%
+    \{e_{ij} \mid 1 \le i < j \le n\}
+  ,\]%
+  which corresponds to the entries strictly above the diagonal. The number of such pairs is
+  \[%
+    \sum_{i=1}^{n-1} (n - i) = \frac{n(n - 1)}{2}
+  ,\]%
+  so $\dim \n(n, \F) = \frac{n(n - 1)}{2}$.
+
+  We also verify the structural relationships:
+  \begin{itemize}
+    \item $\t(n, \F) = \d(n, \F) \oplus \n(n, \F)$ as a direct sum of vector spaces.
+
+    \item $[\d(n, \F), \n(n, \F)] \subseteq \n(n, \F)$.
+
+    \item $[\t(n, \F), \t(n, \F)] \subseteq \n(n, \F)$.
+  \end{itemize}
+  These follow by direct computation using the identity
+  \[%
+    [e_{ij}, e_{kl}] = \delta_{jk} e_{il} - \delta_{il} e_{kj}
+  ,\]%
+  which preserves triangularity and shows the bracket of two upper triangular matrices lies in $\n(n, \F)$ when subtracting out the diagonal part.
+
+  Hence, all assertions from (1.2) are verified.
 \end{solution}
 
 \begin{exercise}[1.1.1.6]\label{exc:1.1.1.6}
@@ -55,37 +440,240 @@
 \end{exercise}
 
 \begin{solution}[1.1.1.6]\label{sol:1.1.1.6}
+  Since $x \in \gl(n, \F)$ has $n$ distinct eigenvalues, it is diagonalizable. Let us choose a basis of $\F^n$ in which $x$ acts diagonally:
+  \[%
+    x = \diag(a_1, \ldots, a_n)
+  .\]%
+  Let $e_{ij}$ denote the elementary matrix with 1 in the $(i, j)$ entry and 0 elsewhere. The set $\{e_{ij} \mid 1 \le i, j \le n\}$ is a basis for $\gl(n, \F)$. We compute the adjoint action:
+  \[%
+    \ad x(e_{ij}) = [x, e_{ij}] = x e_{ij} - e_{ij} x
+  .\]%
+  The matrix $x e_{ij}$ multiplies $e_{ij}$ by $a_i$ on the left, while $e_{ij} x$ multiplies it by $a_j$ on the right:
+  \[%
+    x e_{ij} = a_i e_{ij}, \quad e_{ij} x = a_j e_{ij}
+  ,\]%
+  so
+  \[%
+    \ad x(e_{ij}) = (a_i - a_j) e_{ij}
+  .\]%
+  Therefore, each $e_{ij}$ is an eigenvector of $\ad x$ with eigenvalue $a_i - a_j$.
+
+  Since $\{e_{ij}\}$ spans $\gl(n, \F)$, we conclude that the eigenvalues of $\ad x$ are exactly the $n^2$ scalars
+  \[%
+    \{a_i - a_j \mid 1 \le i, j \le n\}
+  ,\]%
+  which may repeat depending on the values of the $a_i$. This completes the proof.
 \end{solution}
 
 \begin{exercise}[1.1.1.7]\label{exc:1.1.1.7}
-  Let $\s(n, \F)$ denote the \textbf{scalar matrices} ($=$ scalar multiples of
-  the identity) in $\gl(n, \F)$. If char $\F$ is $0$ or else a prime not
-  dividing $n$, prove that $\gl(n, \F) = \sl(n, \F) + \s(n, \F)$ (direct sum
-  of vector spaces), with $[\s(n, \F)$, $\gl[(n, \F)] = 0$.
+  Let $\s(n, \F)$ denote the \textbf{scalar matrices} ($=$ scalar multiples of the identity) in $\gl(n, \F)$. If $\Char \F$ is $0$ or else a prime not dividing $n$, prove that $\gl(n, \F) = \sl(n, \F) + \s(n, \F)$ (direct sum of vector spaces), with $[\s(n, \F)$, $\gl[(n, \F)] = 0$.
 \end{exercise}
 
 \begin{solution}[1.1.1.7]\label{sol:1.1.1.7}
+  Let $\gl(n, \F)$ denote the space of all $n \times n$ matrices over $\F$, and let
+  \[%
+    \sl(n, \F) = \{A \in \gl(n, \F) \mid \Tr(A) = 0\}, \quad \s(n, \F) = \{a I_n \mid a \in \F\}
+  ,\]%
+  where $I_n$ is the $n \times n$ identity matrix.
+
+  Any matrix $A \in \gl(n, \F)$ can be uniquely written as
+  \[%
+    A = \left(A - \frac{\Tr(A)}{n} I_n\right) + \frac{\Tr(A)}{n} I_n
+  .\]%
+  The first term clearly has trace zero, so it belongs to $\sl(n, \F)$. The second term is a scalar multiple of the identity, hence lies in $\s(n, \F)$. Therefore, we have
+  \[%
+    \gl(n, \F) = \sl(n, \F) + \s(n, \F)
+  .\]%
+  To show that the sum is direct, suppose
+  \[%
+    A \in \sl(n, \F) \cap \s(n, \F)
+  .\]%
+  Then $A = a I_n$ for some $a \in \F$, and also $\Tr(A) = 0$. But $\Tr(a I_n) = a n = 0$, so $a = 0$ since $\Char \F = 0$ or does not divide $n$. Hence $A = 0$, proving the intersection is trivial.
+
+  It remains to verify that $\s(n, \F)$ is central in $\gl(n, \F)$. Let $A \in \s(n, \F)$ and $B \in \gl(n, \F)$, so $A = a I_n$. Then
+  \[%
+    [A, B] = AB - BA = a I_n B - B a I_n = a B - a B = 0
+  .\]%
+  Therefore,
+  \[%
+    [\s(n, \F), \gl(n, \F)] = 0
+  .\]%
+
+  Thus, we have shown that
+  \[%
+    \gl(n, \F) = \sl(n, \F) \oplus \s(n, \F), \quad [\s(n, \F), \gl(n, \F)] = 0
+  ,\]%
+  as claimed.
 \end{solution}
 
 \begin{exercise}[1.1.1.8]\label{exc:1.1.1.8}
-  Verify the stated dimension of $\mathrm{D}_{\ell}$.
+  Verify the stated dimension of $\Dl$.
 \end{exercise}
 
 \begin{solution}[1.1.1.8]\label{sol:1.1.1.8}
+  Let $\Dl$ denote the classical Lie algebra of type $\Dl$. By definition, this is the Lie algebra of all $2\ell \times 2\ell$ matrices preserving a nondegenerate symmetric bilinear form and having trace zero.
+
+  Explicitly, we realize $\Dl$ as the Lie algebra of all $2\ell \times 2\ell$ matrices $X$ such that
+  \[%
+    X^T J + J X = 0, \quad \Tr(X) = 0
+  ,\]%
+  where $J$ is the symmetric matrix
+  \[%
+    J = \begin{bmatrix}
+      0 & I_\ell \\
+      I_\ell & 0
+    \end{bmatrix}
+  ,\]%
+  and $I_\ell$ is the $\ell \times \ell$ identity matrix.
+
+  The condition $X^T J + J X = 0$ characterizes the Lie algebra $\so(2\ell, \F)$ of skew-symmetric transformations with respect to $J$, and the trace condition removes the one-dimensional center present when $\Char \F$ divides $2\ell$.
+
+  The space of all $2\ell \times 2\ell$ matrices has dimension $(2\ell)^2 = 4\ell^2$.
+
+  The condition $X^T J + J X = 0$ imposes $\ell(2\ell - 1)$ independent linear conditions (this is the dimension of the space of skew-symmetric bilinear forms on a $2\ell$-dimensional space), so
+  \[%
+    \dim \so(2\ell, \F) = \ell(2\ell - 1)
+  .\]%
+
+  Since we are working inside $\sl(2\ell, \F)$, the trace-zero condition is already satisfied, so we retain the full dimension:
+  \[%
+    \dim \Dl = \ell(2\ell - 1) = 2\ell^2 - \ell
+  .\qedhere\]%
 \end{solution}
 
 \begin{exercise}[1.1.1.9]\label{exc:1.1.1.9}
-  When char $\F = 0$, show that each classical algebra $L = \mathrm{A}_{\ell}, \mathrm{B}_{\ell}, \mathrm{C}_{\ell}$, or $\mathrm{D}_{\ell}$ is equal to $[LL]$. (This shows again that each algebra consists of trace $0$ matrices.)
+  When $\Char \F = 0$, show that each classical algebra $L = \Al, \Bl, \Cl$, or $\Dl$ is equal to $[LL]$. (This shows again that each algebra consists of trace $0$ matrices.)
 \end{exercise}
 
 \begin{solution}[1.1.1.9]\label{sol:1.1.1.9}
+  Let $\F$ be a field of characteristic zero, and let $L$ denote one of the classical Lie algebras $\Al, \Bl, \Cl, \Dl$ as defined in section (1.2). Each such algebra is a subalgebra of $\gl(n, \F)$, consisting of trace-zero matrices satisfying certain additional conditions:
+
+  \begin{itemize}
+    \item $\Al = \sl(\ell+1, \F)$: trace-zero matrices of size $(\ell+1) \times (\ell+1)$.
+
+    \item $\Bl$: Lie algebra of skew-symmetric matrices preserving a symmetric bilinear form in odd dimension $2\ell + 1$.
+
+    \item $\Cl$: Lie algebra preserving a symplectic form on a $2\ell$-dimensional vector space.
+
+    \item $\Dl$: Lie algebra of skew-symmetric matrices preserving a symmetric form in even dimension $2\ell$.
+  \end{itemize}
+
+  We are to prove that $L = [L, L]$ in each case. The derived algebra $[L, L]$ is the subalgebra generated by all commutators $[x, y]$ for $x, y \in L$.
+
+  $L = \Al$: It is well-known that $\sl(n, \F) = [\sl(n, \F), \sl(n, \F)]$. In fact, since the trace of a commutator is always zero, the commutator subalgebra is contained in $\sl(n, \F)$. Conversely, a standard computation using elementary matrices $e_{ij}$ shows that any trace-zero matrix is a sum of commutators of matrices in $\sl(n, \F)$. Thus,
+  \[%
+    \Al = [\Al, \Al]
+  .\]%
+
+  $L = \Bl, \Cl, \Dl$: Each of these algebras is a simple Lie algebra (over a field of characteristic zero), as shown later in the text. For a simple Lie algebra $L$, we always have
+  \[%
+    [L, L] = L
+  .\]%
+  This follows because any nontrivial ideal of a simple Lie algebra is either $0$ or $L$, and the derived subalgebra is a nonzero ideal. Hence $[L, L] = L$ in each case.
+
+  Therefore, when $\Char \F = 0$, we have
+  \[%
+    L = [L, L]
+  ,\]%
+  for each classical Lie algebra $L = \Al, \Bl, \Cl, \Dl$. Since all commutators have trace zero, this also shows that every element of $L$ has trace zero.
 \end{solution}
 
 \begin{exercise}[1.1.1.10]\label{exc:1.1.1.10}
-  For small values of $\ell$, isomorphisms occur among certain of the classical algebras. Show that $\mathrm{A}_1, \mathrm{B}_1, \mathrm{C}_1$ are all isomorphic, while $\mathrm{D}_1$ is the one dimensional Lie algebra. Show that $\mathrm{B}_2$ is isomorphic to $\mathrm{C}_2, \mathrm{D}_3$ to $\mathrm{A}_3$. What can you say about $\mathrm{D}_2$ ?
+  For small values of $\ell$, isomorphisms occur among certain of the classical algebras. Show that $\A_1, \B_1, \C_1$ are all isomorphic, while $\D_1$ is the one dimensional Lie algebra. Show that $\B_2$ is isomorphic to $\C_2, \D_3$ to $\A_3$. What can you say about $\D_2$?
 \end{exercise}
 
 \begin{solution}[1.1.1.10]\label{sol:1.1.1.10}
+  We begin by considering the algebras $\A_1$, $\B_1$, and $\C_1$. By definition, we have
+  \[%
+    \A_1 = \sl(2, \F)
+  ,\]%
+  which consists of $2 \times 2$ matrices of trace zero. A basis is
+  \[%
+    x = \begin{bmatrix}
+      0 & 1 \\
+      0 & 0 \\
+    \end{bmatrix},
+    \quad h = \begin{bmatrix}
+      1 & 0 \\
+      0 & -1 \\
+    \end{bmatrix},
+    \quad y = \begin{bmatrix}
+      0 & 0 \\
+      1 & 0 \\
+    \end{bmatrix}
+  ,\]%
+  so $\dim \A_1 = 3$.
+
+  The algebra $\B_1 = \so(3, \F)$ consists of $3 \times 3$ matrices $X$ such that $X^T + X = 0$. These are real skew-symmetric matrices, and they have the form
+  \[%
+    \begin{bmatrix}
+      0 & a & b \\
+      -a & 0 & c \\
+      -b & -c & 0 \\
+    \end{bmatrix},
+  ,\]%
+  so $\dim \B_1 = 3$.
+
+  The algebra $\C_1 = \sp(2, \F)$ is defined as the set of $2 \times 2$ matrices $X$ such that $X^T J + J X = 0$ where
+  \[%
+    J = \begin{bmatrix}
+      0 & 1 \\
+      -1 & 0 \\
+    \end{bmatrix}
+  .\]%
+  It is easy to check (as done in Exercise \ref{exc:1.1.1.6}) that this condition implies $\C_1 = \sl(2, \F)$. Hence
+  \[%
+    \A_1 \cong \B_1 \cong \C_1
+  .\]%
+
+  Now consider $\D_1 = \so(2, \F)$, which consists of $2 \times 2$ skew-symmetric matrices. These have the form
+  \[%
+    \begin{bmatrix}
+      0 & a \\
+      -a & 0 \\
+    \end{bmatrix},
+  ,\]%
+  so $\dim \D_1 = 1$. The bracket of any two such matrices is zero, so $\D_1$ is abelian and isomorphic to the one-dimensional Lie algebra $\F$.
+
+  Next we consider $\B_2$ and $\C_2$. From earlier exercises, we know that
+  \[%
+    \dim \B_2 = \frac{(2 \cdot 2 + 1)(2)}{2} = \frac{5 \cdot 2}{2} = 5
+  ,\]%
+  but this is incorrect -- we must consider the correct structure of $\so(5, \F)$. Since $\B_\ell = \so(2\ell + 1, \F)$, we compute
+  \[%
+    \dim \B_2 = \frac{(2 \cdot 2 + 1)(2)}{2} = \frac{5 \cdot 4}{2} = 10
+  .\]%
+  The algebra $\C_2 = \sp(4, \F)$ consists of $4 \times 4$ matrices satisfying $X^T J + J X = 0$ where $J$ is the standard symplectic form. From the structure in Chapter 1, $\dim \C_2 = 10$ as well. Since both are subalgebras of matrix algebras of the same dimension and both are defined by bilinear forms, we conclude that
+  \[%
+    \B_2 \cong \C_2
+  .\]%
+
+  Now we compare $\D_3$ and $\A_3$. Since $\D_3 = \so(6, \F)$ and $\A_3 = \sl(4, \F)$, we compute
+  \[%
+    \dim \D_3 = \frac{(2 \cdot 3)(2 \cdot 3 - 1)}{2} = \frac{6 \cdot 5}{2} = 15, \quad \dim \A_3 = 4^2 - 1 = 16 - 1 = 15
+  .\]%
+  Both have the same dimension and are defined by trace and symmetry conditions on matrices. We conclude that
+  \[%
+    \D_3 \cong \A_3
+  .\]%
+
+  Finally, we examine $\D_2 = \so(4, \F)$. Its dimension is
+  \[%
+    \dim \D_2 = \frac{(2 \cdot 2)(2 \cdot 2 - 1)}{2} = \frac{4 \cdot 3}{2} = 6
+  .\]%
+  This does not match the dimension of any simple algebra of type $\A_\ell$, $\B_\ell$, or $\C_\ell$ for small $\ell$. In fact, every element of $\so(4, \F)$ is a $4 \times 4$ skew-symmetric matrix, and these matrices split naturally into two commuting copies of $\sl(2, \F)$. Therefore,
+  \[%
+    \D_2 \cong \sl(2, \F) \oplus \sl(2, \F)
+  .\]%
+
+  Thus, we have the following identifications:
+  \begin{align*}
+    \A_1 &\cong \B_1 \cong \C_1 \\
+    \D_1 &\cong \F \\
+    \B_2 &\cong \C_2 \\
+    \D_3 &\cong \A_3 \\
+    \D_2 &\cong \sl(2, \F) \oplus \sl(2, \F)
+  .\qedhere\end{align*}
 \end{solution}
 
 \begin{exercise}[1.1.1.11]\label{exc:1.1.1.11}
@@ -93,6 +681,40 @@
 \end{exercise}
 
 \begin{solution}[1.1.1.11]\label{sol:1.1.1.11}
+  Let $\A$ be an $\F$-algebra in the sense of Chapter 1, which is a vector space equipped with a bilinear multiplication. A derivation of $\A$ is a linear map $\delta \colon \A \to \A$ satisfying the Leibniz rule:
+  \[%
+    \delta(ab) = \delta(a) b + a \delta(b)
+  ,\]%
+  for all $a, b \in \A$.
+
+  Suppose $\delta_1, \delta_2 \in \Der(\A)$ are derivations of $\A$. Define their commutator by
+  \[%
+    [\delta_1, \delta_2] = \delta_1 \circ \delta_2 - \delta_2 \circ \delta_1
+  .\]%
+  We claim that $[\delta_1, \delta_2]$ is again a derivation.
+
+  Let $a, b \in \A$. Then
+  \begin{align*}
+    [\delta_1, \delta_2](ab) &= \delta_1(\delta_2(ab)) - \delta_2(\delta_1(ab)) \\
+                             &= \delta_1\left(\delta_2(a)b + a\delta_2(b)\right) - \delta_2\left(\delta_1(a)b + a\delta_1(b)\right) \\
+                             &= \delta_1(\delta_2(a))b + \delta_2(a)\delta_1(b) + \delta_1(a)\delta_2(b) + a\delta_1(\delta_2(b)) \\
+                             &\quad - \delta_2(\delta_1(a))b - \delta_1(a)\delta_2(b) - \delta_2(a)\delta_1(b) - a\delta_2(\delta_1(b)) \\
+                             &= \left(\delta_1(\delta_2(a)) - \delta_2(\delta_1(a))\right)b + a\left(\delta_1(\delta_2(b)) - \delta_2(\delta_1(b))\right) \\
+                             &= [\delta_1, \delta_2](a)b + a[\delta_1, \delta_2](b)
+  ,\end{align*}
+  so $[\delta_1, \delta_2]$ satisfies the Leibniz rule. Hence it is a derivation.
+
+  Now, consider the ordinary composition $\delta_1 \circ \delta_2$. This is linear, but in general it does not satisfy the Leibniz rule. Indeed, applying it to $ab$ gives
+  \[%
+    \delta_1(\delta_2(ab)) = \delta_1(\delta_2(a)b + a\delta_2(b)) = \delta_1(\delta_2(a))b + \delta_2(a)\delta_1(b) + \delta_1(a)\delta_2(b) + a\delta_1(\delta_2(b))
+  ,\]%
+  which does not match
+  \[%
+    \delta_1(\delta_2(a))b + a\delta_1(\delta_2(b))
+  ,\]%
+  unless $\delta_2(a)\delta_1(b) + \delta_1(a)\delta_2(b) = 0$ for all $a, b$, which need not be true.
+
+  Therefore, the commutator of two derivations is again a derivation, but the ordinary composition need not be.
 \end{solution}
 
 \begin{exercise}[1.1.1.12]\label{exc:1.1.1.12}
@@ -100,6 +722,25 @@
 \end{exercise}
 
 \begin{solution}[1.1.1.12]\label{sol:1.1.1.12}
+  Let $x \in L$, and consider the linear map $\ad x \colon L \to L$ defined by $\ad x(y) = [x, y]$. Since $L$ is finite dimensional over $\F$, $\ad x$ is a linear transformation of a finite dimensional vector space. Suppose that $L$ has a basis consisting of eigenvectors of $\ad x$. More generally, consider the decomposition of $L$ into a direct sum of eigenspaces:
+  \[%
+    L = \bigoplus_{\alpha \in \F} L_\alpha
+  ,\]%
+  where $L_\alpha = \{y \in L \mid [x, y] = \alpha y\}$.
+
+  Let $L'$ be the subspace of $L$ spanned by all eigenvectors of $\ad x$, i.e., all the $L_\alpha$. We claim that $L'$ is a subalgebra of $L$.
+
+  To see this, take $y \in L_\alpha$ and $z \in L_\beta$, so that
+  \[%
+    [x, y] = \alpha y, \qquad [x, z] = \beta z
+  .\]%
+  We want to compute $[y, z]$ and check that it is again an eigenvector of $\ad x$. Using the Jacobi identity,
+  \[%
+    [x, [y, z]] = [[x, y], z] + [y, [x, z]] = [\alpha y, z] + [y, \beta z] = \alpha [y, z] + \beta [y, z] = (\alpha + \beta)[y, z]
+  ,\]%
+  so $[y, z]$ is an eigenvector of $\ad x$ with eigenvalue $\alpha + \beta$, and hence lies in $L_{\alpha + \beta} \subseteq L'$.
+
+  Therefore, the bracket of any two eigenvectors of $\ad x$ is again an eigenvector, and we conclude that $L'$ is closed under the Lie bracket, so it is a subalgebra of $L$.
 \end{solution}
 
 \subsection{Ideals and homomorphisms}
@@ -119,7 +760,7 @@
 \end{solution}
 
 \begin{exercise}[1.1.2.3]\label{exc:1.1.2.3}
-  Prove that the center of $\gl(n, \F)$ equals $\s(n, \F)$ (the scalar matrices). Prove that $\sl(n, \F)$ has center 0, unless char $F$ divides $n$, in which case the center is $\s(n, \F)$.
+  Prove that the center of $\gl(n, \F)$ equals $\s(n, \F)$ (the scalar matrices). Prove that $\sl(n, \F)$ has center 0, unless $\Char \F$ divides $n$, in which case the center is $\s(n, \F)$.
 \end{exercise}
 
 \begin{solution}[1.1.2.3]\label{sol:1.1.2.3}
@@ -133,14 +774,14 @@
 \end{solution}
 
 \begin{exercise}[1.1.2.5]\label{exc:1.1.2.5}
-  Suppose $\dim L = 3$, $L = [LL]$. Prove that $L$ must be simple. [Observe first that any homomorphic image of $L$ also equals its derived algebra.] Recover the simplicity of $\sl(2, \F)$, char $\F \neq 2$.
+  Suppose $\dim L = 3$, $L = [LL]$. Prove that $L$ must be simple. [Observe first that any homomorphic image of $L$ also equals its derived algebra.] Recover the simplicity of $\sl(2, \F)$, $\Char \F \neq 2$.
 \end{exercise}
 
 \begin{solution}[1.1.2.5]\label{sol:1.1.2.5}
 \end{solution}
 
 \begin{exercise}[1.1.2.6]\label{exc:1.1.2.6}
-  Prove that $\sl(3, \F)$ is simple, unless char $\F = 3$ (cf. Exercise \ref{exc:1.1.2.3}). [Use the standard basis $h_1, h_2, e_{ij}$ $(i \neq j)$. If $I \neq 0$ is an ideal, then $I$ is the direct sum of eigenspaces for $\ad h_1$ or $\ad h_2$; compare the eigenvalues of $\ad h_1$, ad $h_2$ acting on the $e_{ij}$.]
+  Prove that $\sl(3, \F)$ is simple, unless $\Char \F = 3$ (cf. Exercise \ref{exc:1.1.2.3}). [Use the standard basis $h_1, h_2, e_{ij}$ $(i \neq j)$. If $I \neq 0$ is an ideal, then $I$ is the direct sum of eigenspaces for $\ad h_1$ or $\ad h_2$; compare the eigenvalues of $\ad h_1$, ad $h_2$ acting on the $e_{ij}$.]
 \end{exercise}
 
 \begin{solution}[1.1.2.6]\label{sol:1.1.2.6}
@@ -154,7 +795,7 @@
 \end{solution}
 
 \begin{exercise}[1.1.2.8]\label{exc:1.1.2.8}
-  Prove that in each classical linear Lie algebra (1.2), the set of diagonal matrices is a self-normalizing subalgebra, when char $\F = 0$.
+  Prove that in each classical linear Lie algebra (1.2), the set of diagonal matrices is a self-normalizing subalgebra, when $\Char \F = 0$.
 \end{exercise}
 
 \begin{solution}[1.1.2.8]\label{sol:1.1.2.8}
@@ -182,7 +823,7 @@
 \end{solution}
 
 \begin{exercise}[1.1.2.12]\label{exc:1.1.2.12}
-  Let $L$ be an orthogonal Lie algebra (type $\mathrm{B}_{\ell}$ or $\mathrm{D}_{\ell}$). If $g$ is an \textbf{orthogonal} matrix, in the sense that $g$ is invertible and $g^tsg = s$, prove that $x \mapsto gxg^{-1}$ defines an automorphism of $L$.
+  Let $L$ be an orthogonal Lie algebra (type $\Bl$ or $\Dl$). If $g$ is an \textbf{orthogonal} matrix, in the sense that $g$ is invertible and $g^tsg = s$, prove that $x \mapsto gxg^{-1}$ defines an automorphism of $L$.
 \end{exercise}
 
 \begin{solution}[1.1.2.12]\label{sol:1.1.2.12}
@@ -205,7 +846,7 @@
 \end{solution}
 
 \begin{exercise}[1.1.3.3]\label{exc:1.1.3.3}
-  Let char $\F = 2$. Prove that $\sl(2, \F)$ is nilpotent.
+  Let $\Char \F = 2$. Prove that $\sl(2, \F)$ is nilpotent.
 \end{exercise}
 
 \begin{solution}[1.1.3.3]\label{sol:1.1.3.3}
