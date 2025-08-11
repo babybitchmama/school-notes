@@ -1,38 +1,28 @@
 \lecture{13}{Nov 4 2024 Mon (13:02:06)}{Properties of Infinite Series}
 
 \section{Properties of Infinite Series}
-\label{sec:properties_of_infinite_series}
 
-Just as we had an algebraic limit theorem for sequences, we have a similar
-theorem for series.
-\begin{theorem}[Algebraic Limit Theorem for Series] If $\sum_{k=1}^\infty a_k
-  = A$ and $\sum_{k=1}^\infty b_k = B$, then
+Just as we had an algebraic limit theorem for sequences, we have a similar theorem for series.
+\begin{theorem}[Algebraic Limit Theorem for Series]
+  If $\sum_{k=1}^\infty a_k = A$ and $\sum_{k=1}^\infty b_k = B$, then
   \begin{enumerate}
     \item $\sum_{k=1}^\infty ca_k = cA$ for all $c \in \R$.
+
     \item $\sum_{k=1}^\infty (a_k + b_k) = A + B$.
   \end{enumerate}
 \end{theorem}
 
 \begin{proof}\leavevmode
   \begin{enumerate}
-    \item Let $S_n = \sum_{k=1}^n a_k$. Then, $\lim_{m \to \infty} S_m = A$.
-      Thus, by the Algebraic Limit Theorem for Sequences, $c\lim_{m \to \infty}
-      S_m = \lim_{m \to \infty} (cS_m) = cA$. Thus, $\sum_{k=1}^\infty ca_k =
-      cA$.
+    \item Let $S_n = \sum_{k=1}^n a_k$. Then, $\lim_{m \to \infty} S_m = A$. Thus, by the Algebraic Limit Theorem for Sequences, $c\lim_{m \to \infty} S_m = \lim_{m \to \infty} (cS_m) = cA$. Thus, $\sum_{k=1}^\infty ca_k = cA$.
 
-    \item Let $S_n = \sum_{k=1}^n a_k$ and $T_n = \sum_{k=1}^n b_k$. Then,
-      $\lim_{m \to \infty} S_m = A$ and $\lim_{m \to \infty} T_m = B$. Thus, by
-      the Algebraic Limit Theorem for Sequences, $\lim_{m \to \infty} (S_m +
-      T_m) = A + B$. Thus, $\sum_{k=1}^\infty (a_k + b_k) = A + B$. \qedhere
+    \item Let $S_n = \sum_{k=1}^n a_k$ and $T_n = \sum_{k=1}^n b_k$. Then, $\lim_{m \to \infty} S_m = A$ and $\lim_{m \to \infty} T_m = B$. Thus, by the Algebraic Limit Theorem for Sequences, $\lim_{m \to \infty} (S_m + T_m) = A + B$. Thus, $\sum_{k=1}^\infty (a_k + b_k) = A + B$. \qedhere
   \end{enumerate}
 \end{proof}
 
-Just as we had the Cauchy criterion for sequences, we have a similar criterion
-for series.
+Just as we had the Cauchy criterion for sequences, we have a similar criterion for series.
 \begin{theorem}[Cauchy Criterion for Series]
-  The series $\sum_{k=1}^\infty a_k$ converges if and only if, given $\epsilon
-  > 0$, there exists an $N \in \N$ such that whenever $n > m > N$, it follows
-  that
+  The series $\sum_{k=1}^\infty a_k$ converges if and only if, given $\epsilon > 0$, there exists an $N \in \N$ such that whenever $n > m > N$, it follows that
   \[%
     \lvert a_{m+1} + a_{m+2} + \cdots + a_n \rvert < \epsilon
   .\]%
@@ -43,26 +33,20 @@ for series.
   \[%
     \left\lvert \sum_{k=1}^n a_k - \sum_{k=1}^m a_k \right\rvert = \lvert S_n - S_m \rvert = \lvert a_{m+1} + a_{m+2} + \cdots + a_n \rvert
   .\]%
-  Thus, the series converges if and only if the sequence of partial sums is a
-  Cauchy sequence.
+  Thus, the series converges if and only if the sequence of partial sums is a Cauchy sequence.
 \end{proof}
 
-This is a very powerful criterion. We use this theorem to prove all of the basic
-tests for series in section \ref{sub_sec:conversion_tests}.
+This is a very powerful criterion. We use this theorem to prove all of the basic tests for series in section \ref{sub_sec:conversion_tests}.
 
 \begin{definition}[Absolute Convergence]
-  A series $\sum_{k=1}^\infty a_k$ is said to \emph{converge absolutely} if
-  the series $\sum_{k=1}^\infty \lvert a_k \rvert$ converges.
+  A series $\sum_{k=1}^\infty a_k$ is said to \emph{converge absolutely} if the series $\sum_{k=1}^\infty \lvert a_k \rvert$ converges.
 \end{definition}
 
 \begin{definition}[Conditional Convergence]
-  A series $\sum_{k=1}^\infty a_k$ is said to \emph{converge conditionally}
-  if the series $\sum_{k=1}^\infty a_k$ converges, but the series
-  $\sum_{k=1}^\infty \lvert a_k \rvert$ diverges.
+  A series $\sum_{k=1}^\infty a_k$ is said to \emph{converge conditionally} if the series $\sum_{k=1}^\infty a_k$ converges, but the series $\sum_{k=1}^\infty \lvert a_k \rvert$ diverges.
 \end{definition}
 
 \subsection{Conversion Tests}
-\label{sub_sec:conversion_tests}
 
 Now, we can start proving tests that have some substance.
 
@@ -71,9 +55,7 @@ Now, we can start proving tests that have some substance.
 \end{lemma}
 
 \begin{proof}
-  Let $S_n = \sum_{k=1}^n a_k$. Then, $a_n = S_n - S_{n-1}$. Since the series
-  converges, the sequence of partial sums is Cauchy. Thus, given $\epsilon > 0$,
-  there exists an $N \in \N$ such that whenever $n > m > N$, it follows that
+  Let $S_n = \sum_{k=1}^n a_k$. Then, $a_n = S_n - S_{n-1}$. Since the series converges, the sequence of partial sums is Cauchy. Thus, given $\epsilon > 0$, there exists an $N \in \N$ such that whenever $n > m > N$, it follows that
   \[%
     \lvert S_n - S_m \rvert = \lvert a_{m+1} + a_{m+2} + \cdots + a_n \rvert < \epsilon
   .\]%
@@ -85,19 +67,15 @@ Now, we can start proving tests that have some substance.
 \end{proof}
 
 \begin{note}
-  The converse isn't true. Take, for example, the harmonic series
-  $\sum_{k=1}^\infty \frac{1}{k}$. This series diverges, but $\frac{1}{k} \to
-  0$.
+  The converse isn't true. Take, for example, the harmonic series $\sum_{k=1}^\infty \frac{1}{k}$. This series diverges, but $\frac{1}{k} \to 0$.
 \end{note}
 
 \begin{lemma}[Absolute Convergence Test]
-  If $\sum_{k=1}^\infty \lvert a_k \rvert$ converges, then
-  $\sum_{k=1}^\infty a_k$ converges.
+  If $\sum_{k=1}^\infty \lvert a_k \rvert$ converges, then $\sum_{k=1}^\infty a_k$ converges.
 \end{lemma}
 
 \begin{proof}
-  Assume $\sum_{k=1}^\infty \lvert a_k \rvert$ converges. Let $\epsilon > 0$.
-  Then, there exists an $N \in \N$ such that for every $n > m > N$, we have
+  Assume $\sum_{k=1}^\infty \lvert a_k \rvert$ converges. Let $\epsilon > 0$. Then, there exists an $N \in \N$ such that for every $n > m > N$, we have
   \[%
     \lvert a_{m+1} \rvert + \lvert a_{m+2} \rvert + \cdots + \lvert a_n \rvert < \epsilon
   .\]%
@@ -122,9 +100,7 @@ Now, we can start proving tests that have some substance.
   \[%
     \lvert a_{m+1} + a_{m+2} + \cdots + a_n \rvert \le \lvert b_{m+1} + b_{m+2} + \cdots + b_n \rvert
   .\]%
-  If the right-hand side is less than $\epsilon$, then the left-hand side is
-  less than $\epsilon$. Thus, the series converges. The second statement follows
-  from the contrapositive of the first statement.
+  If the right-hand side is less than $\epsilon$, then the left-hand side is less than $\epsilon$. Thus, the series converges. The second statement follows from the contrapositive of the first statement.
 \end{proof}
 
 \begin{lemma}[Limit Comparison Test]
@@ -132,14 +108,11 @@ Now, we can start proving tests that have some substance.
   \[%
     \lim_{k \to \infty} \frac{a_k}{b_k} = c
   ,\]%
-  where $c$ is a positive real number, then $\sum_{k=1}^\infty a_k$ converges
-  if and only if $\sum_{k=1}^\infty b_k$ converges.
+  where $c$ is a positive real number, then $\sum_{k=1}^\infty a_k$ converges if and only if $\sum_{k=1}^\infty b_k$ converges.
 \end{lemma}
 
 \begin{proof}
-  Let $c > 0$ such that $\lim_{k \to \infty} \frac{a_k}{b_k} = c$. This means
-  for any $\epsilon > 0$, there exists an $N \in \N$ such that for all $k \geq
-  N$, we have
+  Let $c > 0$ such that $\lim_{k \to \infty} \frac{a_k}{b_k} = c$. This means for any $\epsilon > 0$, there exists an $N \in \N$ such that for all $k \geq N$, we have
   \[%
     c - \epsilon < \frac{a_k}{b_k} < c + \epsilon
   .\]%
@@ -147,8 +120,7 @@ Now, we can start proving tests that have some substance.
   \[%
     (c - \epsilon)b_k < a_k < (c + \epsilon)b_k
   .\]%
-  Choose $\epsilon$ such that $0 < \epsilon < c$, so $c - \epsilon > 0$. For $k
-  \geq N$, we now have
+  Choose $\epsilon$ such that $0 < \epsilon < c$, so $c - \epsilon > 0$. For $k \geq N$, we now have
   \[%
     0 < (c - \epsilon) b_k \leq a_k \leq (c + \epsilon) b_k
   .\]%
@@ -156,21 +128,14 @@ Now, we can start proving tests that have some substance.
   \begin{enumerate}
     \item Convergence of $\sum_{k=1}^\infty b_k$:
 
-      If $\sum_{k=1}^\infty b_k$ converges, then $(c -
-      \epsilon)\sum_{k=1}^\infty b_k$ converges because $c - \epsilon > 0$ is
-      a constant multiple. By the Comparison Test applied to $(c - \epsilon)b_k
-      \leq a_k$, it follows that $\sum_{k=1}^\infty a_k$ also converges.
+      If $\sum_{k=1}^\infty b_k$ converges, then $(c - \epsilon)\sum_{k=1}^\infty b_k$ converges because $c - \epsilon > 0$ is a constant multiple. By the Comparison Test applied to $(c - \epsilon)b_k \leq a_k$, it follows that $\sum_{k=1}^\infty a_k$ also converges.
 
     \item Divergence of $\sum_{k=1}^\infty b_k$:
 
-      If $\sum_{k=1}^\infty b_k$ diverges, then $(c +
-      \epsilon)\sum_{k=1}^\infty b_k$ also diverges because $c + \epsilon > 0$
-      is a constant multiple. By the Comparison Test applied to $a_k \geq (c -
-      \epsilon)b_k$, it follows that $\sum_{k=1}^\infty a_k$ also diverges.
+      If $\sum_{k=1}^\infty b_k$ diverges, then $(c + \epsilon)\sum_{k=1}^\infty b_k$ also diverges because $c + \epsilon > 0$ is a constant multiple. By the Comparison Test applied to $a_k \geq (c - \epsilon)b_k$, it follows that $\sum_{k=1}^\infty a_k$ also diverges.
   \end{enumerate}
 
-  Hence, $\sum_{k=1}^\infty a_k$ converges if and only if $\sum_{k=1}^\infty
-  b_k$ converges.
+  Hence, $\sum_{k=1}^\infty a_k$ converges if and only if $\sum_{k=1}^\infty b_k$ converges.
 \end{proof}
 
 \begin{lemma}[Ratio Test]
@@ -193,8 +158,7 @@ Now, we can start proving tests that have some substance.
   \begin{enumerate}
     \item $L < 1$:
 
-      Choose $\epsilon > 0$ such that $L + \epsilon < 1$. By the definition of
-      the limit,
+      Choose $\epsilon > 0$ such that $L + \epsilon < 1$. By the definition of the limit,
       \[%
         (\exists N \in \N)(\forall n \ge N)\left[\left\lvert \frac{a_{n+1}}{a_n} \right\rvert < L + \epsilon\right]
       .\]%
@@ -206,16 +170,11 @@ Now, we can start proving tests that have some substance.
       \[%
         \lvert a_{n+1} \rvert < (L + \epsilon)^{n-N+1} \lvert a_N \rvert
       .\]%
-      Since $L + \epsilon < 1$, the geometric series $\sum_{n=N}^\infty (L +
-      \epsilon)^{n-N+1}$ converges. Therefore, by the Comparison Test,
-      $\sum_{n=N}^\infty \lvert a_n \rvert$ converges, which implies that
-      $\sum_{n=1}^\infty \lvert a_n \rvert$ converges. Thus,
-      $\sum_{n=1}^\infty a_n$ converges absolutely.
+      Since $L + \epsilon < 1$, the geometric series $\sum_{n=N}^\infty (L + \epsilon)^{n-N+1}$ converges. Therefore, by the Comparison Test, $\sum_{n=N}^\infty \lvert a_n \rvert$ converges, which implies that $\sum_{n=1}^\infty \lvert a_n \rvert$ converges. Thus, $\sum_{n=1}^\infty a_n$ converges absolutely.
 
     \item $L > 1$:
 
-      Choose $\epsilon > 0$ such that $L - \epsilon > 1$. By the definition of
-      the limit,
+      Choose $\epsilon > 0$ such that $L - \epsilon > 1$. By the definition of the limit,
       \[%
         (\exists N \in \N)(\forall n \ge N)\left[\left\lvert \frac{a_{n+1}}{a_n} \right\rvert > L - \epsilon\right]
       .\]%
@@ -227,17 +186,11 @@ Now, we can start proving tests that have some substance.
       \[%
         \lvert a_{n+1} \rvert > (L - \epsilon)^{n-N+1} \lvert a_N \rvert
       .\]%
-      Since $L - \epsilon > 1$, the terms $\lvert a_n \rvert$ do not approach
-      zero, and hence $\sum_{n=1}^\infty \lvert a_n \rvert$ diverges. Thus,
-      $\sum_{n=1}^\infty a_n$ diverges.
+      Since $L - \epsilon > 1$, the terms $\lvert a_n \rvert$ do not approach zero, and hence $\sum_{n=1}^\infty \lvert a_n \rvert$ diverges. Thus, $\sum_{n=1}^\infty a_n$ diverges.
 
     \item $L = 1$:
 
-      The test provides no information about the convergence or divergence of
-      the series. For example, the series $\sum_{n=1}^\infty \frac{1}{n}$
-      diverges, but $\sum_{n=1}^\infty \frac{1}{n^2}$ converges, and both
-      satisfy $\lim_{n \to \infty} \left\lvert \frac{a_{n+1}}{a_n} \right\rvert
-      = 1$. Therefore, the test is inconclusive in this case. \qedhere
+      The test provides no information about the convergence or divergence of the series. For example, the series $\sum_{n=1}^\infty \frac{1}{n}$ diverges, but $\sum_{n=1}^\infty \frac{1}{n^2}$ converges, and both satisfy $\lim_{n \to \infty} \left\lvert \frac{a_{n+1}}{a_n} \right\rvert = 1$. Therefore, the test is inconclusive in this case. \qedhere
   \end{enumerate}
 \end{proof}
 
@@ -249,7 +202,9 @@ Now, we can start proving tests that have some substance.
   then
   \begin{enumerate}
     \item If $L < 1$, then $\sum_{n=1}^\infty a_n$ converges absolutely.
+
     \item If $L > 1$, then $\sum_{n=1}^\infty a_n$ diverges.
+
     \item If $L = 1$, then the test is inconclusive.
   \end{enumerate}
 \end{lemma}
@@ -260,9 +215,7 @@ Now, we can start proving tests that have some substance.
   \begin{enumerate}
     \item $L < 1$:
 
-      Choose $\epsilon > 0$ such that $L + \epsilon < 1$. By the definition of
-      the $\limsup$, there exists $N \in \mathbb{N}$ such that for all $n \geq
-      N$
+      Choose $\epsilon > 0$ such that $L + \epsilon < 1$. By the definition of the $\limsup$, there exists $N \in \mathbb{N}$ such that for all $n \geq N$
       \[%
         \sqrt[n]{\lvert a_n \rvert} < L + \epsilon
       .\]%
@@ -270,16 +223,11 @@ Now, we can start proving tests that have some substance.
       \[%
         (\forall n \geq N)\left[\lvert a_n \rvert < (L + \epsilon)^n\right]
       .\]%
-      Since $L + \epsilon < 1$, the series $\sum_{n=N}^\infty (L + \epsilon)^n$
-      converges because it is a geometric series with ratio less than $1$. By
-      the Comparison Test, $\sum_{n=N}^\infty \lvert a_n \rvert$ converges, and
-      therefore $\sum_{n=1}^\infty \lvert a_n \rvert$ converges. Thus,
-      $\sum_{n=1}^\infty a_n$ converges absolutely.
+      Since $L + \epsilon < 1$, the series $\sum_{n=N}^\infty (L + \epsilon)^n$ converges because it is a geometric series with ratio less than $1$. By the Comparison Test, $\sum_{n=N}^\infty \lvert a_n \rvert$ converges, and therefore $\sum_{n=1}^\infty \lvert a_n \rvert$ converges. Thus, $\sum_{n=1}^\infty a_n$ converges absolutely.
 
     \item $L > 1$:
 
-      By the definition of $\limsup$, there exists a subsequence $(a_{n_k})$
-      such that
+      By the definition of $\limsup$, there exists a subsequence $(a_{n_k})$ such that
       \[%
         \sqrt[n_k]{\lvert a_{n_k} \rvert} \to L~\textrm{as}~k \to \infty
       .\]%
@@ -291,18 +239,15 @@ Now, we can start proving tests that have some substance.
       \[%
         \lvert a_{n_k} \rvert > 1^n = 1
       .\]%
-      Thus, $\lvert a_{n_k} \rvert$ does not approach $0$, so the series
-      $\sum_{n=1}^\infty a_n$ diverges.
+      Thus, $\lvert a_{n_k} \rvert$ does not approach $0$, so the series $\sum_{n=1}^\infty a_n$ diverges.
 
     \item $L = 1$:
 
-      The test is inconclusive because series with $L = 1$ may
-      either converge or diverge. For instance
+      The test is inconclusive because series with $L = 1$ may either converge or diverge. For instance
       \[%
         \sum_{n=1}^\infty \frac{1}{n^2}~\textrm{converges, while}~\sum_{n=1}^\infty \frac{1}{n}~\textrm{diverges}
       .\]%
-      Both of these series satisfy $\limsup_{n \to \infty} \sqrt[n]{\lvert a_n
-      \rvert} = 1$.\qedhere
+      Both of these series satisfy $\limsup_{n \to \infty} \sqrt[n]{\lvert a_n \rvert} = 1$.\qedhere
   \end{enumerate}
 \end{proof}
 
@@ -317,19 +262,15 @@ Now, we can start proving tests that have some substance.
 \end{lemma}
 
 \begin{proof}
-  Let $S_n = \sum_{k=1}^n (-1)^{k+1} a_k$. Then, $S_{2n} = a_1 - a_2 + a_3 - a_4
-  + \cdots + a_{2n-1} - a_{2n}$. Since $a_n \to 0$, we have
+  Let $S_n = \sum_{k=1}^n (-1)^{k+1} a_k$. Then, $S_{2n} = a_1 - a_2 + a_3 - a_4 + \cdots + a_{2n-1} - a_{2n}$. Since $a_n \to 0$, we have
   \[%
     \lvert S_{2n} - S_{2n-2} \rvert = \lvert a_{2n-1} - a_{2n} \rvert \to 0
   .\]%
-  Thus, $(S_{2n})$ is a Cauchy sequence. Similarly, $(S_{2n+1})$ is also a
-  Cauchy sequence. Thus, both sequences converge. Since the series is the sum of
-  these two sequences, the series converges.
+  Thus, $(S_{2n})$ is a Cauchy sequence. Similarly, $(S_{2n+1})$ is also a Cauchy sequence. Thus, both sequences converge. Since the series is the sum of these two sequences, the series converges.
 \end{proof}
 
 \begin{lemma}[Condensation Test]
-  Suppose $(b_n)$ is decreasing and satisfies $b_n \ge 0$ for all $n \in \N$.
-  Then, the series $\sum_{n=1}^\infty b_n$ converges if and only if the series
+  Suppose $(b_n)$ is decreasing and satisfies $b_n \ge 0$ for all $n \in \N$. Then, the series $\sum_{n=1}^\infty b_n$ converges if and only if the series
   \[%
     \sum_{n=0}^\infty 2^nb_{2^n} = b_1 + 2b_2 + 4b_4 + 8b_8 + 16b_{16} + \cdots
   ,\]%
@@ -337,26 +278,20 @@ Now, we can start proving tests that have some substance.
 \end{lemma}
 
 \begin{proof}
-  First, assume that $\sum_{n=0}^\infty 2^nb_{2^n}$ converges. Then, the
-  partial sum
+  First, assume that $\sum_{n=0}^\infty 2^nb_{2^n}$ converges. Then, the partial sum
   \[%
     T_k = b_1 + 2b_2 + 4b_4 + \cdots + 2^kb_{2^k}
   ,\]%
-  is bounded, by some number $M$. Because $b_n \ge 0$, we know that the partial
-  sums are increasing. Let $S_m = b_1 + b_2 + b_3 + \cdots + b_m$. Fix $m$ and
-  let $k$ be large enough to ensure $m \le 2_{k+1} - 1$. Then, $S_m \le S_{2^k +
-  1} - 1$ and
+  is bounded, by some number $M$. Because $b_n \ge 0$, we know that the partial sums are increasing. Let $S_m = b_1 + b_2 + b_3 + \cdots + b_m$. Fix $m$ and let $k$ be large enough to ensure $m \le 2_{k+1} - 1$. Then, $S_m \le S_{2^k + 1} - 1$ and
   \begin{align*}
     S_{2^{k+1}} - 1 &= b_1 + (b_2 + b_3) + (b_4 + \cdots + b_7) + \cdots + (b_{2^k} + \cdots + b_{2^{k+1} - 1}) \\
                     &\le b_1 + 2b_2 + 4b_4 + \cdots + 2^kb_{2^k} \\
                     &= T_k
   .\end{align*}
-  Therefore, $S_m \le T_k \le M$ for all $m \in \N$. This implies that $(S_m)$
-  is bounded and therefore converges.
+  Therefore, $S_m \le T_k \le M$ for all $m \in \N$. This implies that $(S_m)$ is bounded and therefore converges.
 \end{proof}
 
-This is a more general statement of the statement that the sum
-$\sum_{n=1}^\infty \frac{1}{n}$ diverges and that $\sum_{n=1}^\infty
+This is a more general statement of the statement that the sum $\sum_{n=1}^\infty \frac{1}{n}$ diverges and that $\sum_{n=1}^\infty
 \frac{1}{n^\rho}$ converges for $\rho > 1$.
 
 \begin{corollary}[P-Series Test]
@@ -368,26 +303,19 @@ $\sum_{n=1}^\infty \frac{1}{n}$ diverges and that $\sum_{n=1}^\infty
 \end{corollary}
 
 \begin{proof}
-  Let $b_n = \frac{1}{n^\rho}$. By the Cauchy Condensation Test, the series
-  $\sum_{n=1}^\infty b_n$ converges if and only if the series
+  Let $b_n = \frac{1}{n^\rho}$. By the Cauchy Condensation Test, the series $\sum_{n=1}^\infty b_n$ converges if and only if the series
   \[%
     \sum_{n=0}^\infty 2^n \cdot \frac{1}{(2^n)^\rho} = \sum_{n=0}^\infty \frac{1}{2^{n(\rho-1)}}
   .\]%
-  converges. The latter is a geometric series with common ratio $r =
-  \frac{1}{2^{\rho-1}}$. A geometric series converges if and only if $\lvert r
-  \rvert < 1$. Thus, $\lvert r \rvert < 1$ implies
+  converges. The latter is a geometric series with common ratio $r = \frac{1}{2^{\rho-1}}$. A geometric series converges if and only if $\lvert r \rvert < 1$. Thus, $\lvert r \rvert < 1$ implies
   \[%
-    \frac{1}{2^{\rho-1}} < 1,
-  \]%
-  which holds if and only if $\rho - 1 > 0$, or equivalently, $\rho > 1$.
-  Therefore, $\sum_{n=1}^\infty \frac{1}{n^\rho}$ converges if and only if
-  $\rho > 1$.
+    \frac{1}{2^{\rho-1}} < 1
+  ,\]%
+  which holds if and only if $\rho - 1 > 0$, or equivalently, $\rho > 1$. Therefore, $\sum_{n=1}^\infty \frac{1}{n^\rho}$ converges if and only if $\rho > 1$.
 \end{proof}
 
 \begin{lemma}[Abel's Test]
-  Let $a_1 \ge a_2 \ge a_3 \ge \cdots \ge 0$, and suppose that $a_n \to 0$. Let
-  $z \in \C$ such that $\lvert z \rvert = 1$ and $z \ne 1$. Then, the series
-  $\sum_{n=1}^\infty a_nz^n$ converges.
+  Let $a_1 \ge a_2 \ge a_3 \ge \cdots \ge 0$, and suppose that $a_n \to 0$. Let $z \in \C$ such that $\lvert z \rvert = 1$ and $z \ne 1$. Then, the series $\sum_{n=1}^\infty a_nz^n$ converges.
 \end{lemma}
 
 \begin{proof}
@@ -412,6 +340,7 @@ $\sum_{n=1}^\infty \frac{1}{n}$ diverges and that $\sum_{n=1}^\infty
   Let $(a_n)$ and $(b_n)$ be sequences. If
   \begin{enumerate}
     \item $(a_n)$ is monotonic and converges to $0$, and
+
     \item the partial sums of $(b_n)$ are bounded,
   \end{enumerate}
   then the series $\sum_{n=1}^\infty a_nb_n$ converges.
@@ -423,14 +352,10 @@ This proof requires the usage of Summation by Parts.
   TODO
 \end{proof}
 
-% subsection conversion_tests (end)
-
 \subsection{Rearrangements of Infinite Series}
-\label{sub_sec:rearrangements_of_infinite_series}
 
 \begin{definition}[Rearrangement of a Series]
-  Let $\sum_{n=1}^\infty a_n$ be an infinite series. A \emph{rearrangement} of
-  this series is a series obtained by permuting its terms, that is
+  Let $\sum_{n=1}^\infty a_n$ be an infinite series. A \emph{rearrangement} of this series is a series obtained by permuting its terms, that is
   \[%
     \sum_{n=1}^\infty a_{\sigma(n)}
   ,\]%
@@ -438,91 +363,63 @@ This proof requires the usage of Summation by Parts.
 \end{definition}
 
 \begin{theorem}[Riemann's Rearrangement Theorem]
-  If $\sum_{n=1}^\infty a_n$ is a conditionally convergent series, then for any
-  real number $L \in \R$ (or even $\pm\infty$), there exists a rearrangement
-  $\sigma$ such that,
+  If $\sum_{n=1}^\infty a_n$ is a conditionally convergent series, then for any real number $L \in \R$ (or even $\pm\infty$), there exists a rearrangement $\sigma$ such that,
   \[%
     \sum_{n=1}^\infty a_{\sigma(n)} = L
   .\]%
 \end{theorem}
 
 \begin{proof}
-  Since $\sum_{n=1}^\infty a_n$ is conditionally convergent, the positive terms
-  $\{a_n^+\}$ and negative terms $\{a_n^-\}$ both diverge to $+\infty$ in
-  absolute value. To construct a rearrangement summing to $L$, proceed as
-  follows.
+  Since $\sum_{n=1}^\infty a_n$ is conditionally convergent, the positive terms $\{a_n^+\}$ and negative terms $\{a_n^-\}$ both diverge to $+\infty$ in absolute value. To construct a rearrangement summing to $L$, proceed as follows.
   \begin{itemize}
-    \item Select positive terms $\{a_n^+\}$ to sum until the partial sum exceeds
-      $L$.
+    \item Select positive terms $\{a_n^+\}$ to sum until the partial sum exceeds $L$.
 
-    \item Then add negative terms $\{a_n^-\}$ to decrease the partial sum until
-      it falls below $L$.
+    \item Then add negative terms $\{a_n^-\}$ to decrease the partial sum until it falls below $L$.
 
-    \item Alternate between adding positive and negative terms in this manner,
-      ensuring the partial sums oscillate closer and closer to $L$.
+    \item Alternate between adding positive and negative terms in this manner, ensuring the partial sums oscillate closer and closer to $L$.
   \end{itemize}
-  This process guarantees convergence to $L$, as the series' terms tend to zero
-  and the oscillations diminish.
+  This process guarantees convergence to $L$, as the series' terms tend to zero and the oscillations diminish.
 \end{proof}
 
 \begin{corollary}
-  If $\sum_{n=1}^\infty a_n$ converges absolutely, then any rearrangement
-  $\sum_{n=1}^\infty a_{\sigma(n)}$ also converges to the same sum,
+  If $\sum_{n=1}^\infty a_n$ converges absolutely, then any rearrangement $\sum_{n=1}^\infty a_{\sigma(n)}$ also converges to the same sum,
   \[%
     \sum_{n=1}^\infty a_{\sigma(n)} = \sum_{n=1}^\infty a_n
   .\]%
 \end{corollary}
 
 \begin{proof}
-  Absolute convergence implies that $\sum_{n=1}^\infty a_n \le \sum_{n=1}^\infty
-  \lvert a_n \rvert \in \R$. Rearranging the terms does not affect the total sum
-  since the series converges uniformly regardless of order.
+  Absolute convergence implies that $\sum_{n=1}^\infty a_n \le \sum_{n=1}^\infty \lvert a_n \rvert \in \R$. Rearranging the terms does not affect the total sum since the series converges uniformly regardless of order.
 \end{proof}
 
 \begin{example}[Harmonic Series Rearrangements]
-  The harmonic series $\sum_{n=1}^\infty \frac{(-1)^{n+1}}{n}$ converges
-  conditionally to $\ln(2)$. By Riemann’s Rearrangement Theorem, this series can
-  be rearranged to sum to any real number $L$ or diverge to $\pm\infty$.
+  The harmonic series $\sum_{n=1}^\infty \frac{(-1)^{n+1}}{n}$ converges conditionally to $\ln(2)$. By Riemann’s Rearrangement Theorem, this series can be rearranged to sum to any real number $L$ or diverge to $\pm\infty$.
 \end{example}
 
 \begin{lemma}[Group Rearrangements]
-  Grouping terms of an absolutely convergent series into blocks does not change
-  its sum. For example, if $a_n = \frac{1}{n^2}$, grouping the terms as $(a_1)$,
-  $(a_2 + a_3)$, $(a_4 + a_5 + a_6)$, etc., preserves the sum,
+  Grouping terms of an absolutely convergent series into blocks does not change its sum. For example, if $a_n = \frac{1}{n^2}$, grouping the terms as $(a_1)$, $(a_2 + a_3)$, $(a_4 + a_5 + a_6)$, etc., preserves the sum,
   \[%
     \sum_{n=1}^\infty a_n = \sum_{k=1}^\infty \left( \sum_{j=1}^k a_j \right)
   .\]%
 \end{lemma}
 
 \begin{proof}
-  Let $S_n$ denote the partial sums of $\sum_{n=1}^\infty a_n$. Grouping terms
-  corresponds to defining a new sequence of partial sums $T_m$, where $T_m$
-  involves summing blocks of $S_n$. Since $\sum_{n=1}^\infty a_n$ converges
-  absolutely, $T_m$ converges to the same limit as $S_n$.
+  Let $S_n$ denote the partial sums of $\sum_{n=1}^\infty a_n$. Grouping terms corresponds to defining a new sequence of partial sums $T_m$, where $T_m$ involves summing blocks of $S_n$. Since $\sum_{n=1}^\infty a_n$ converges absolutely, $T_m$ converges to the same limit as $S_n$.
 \end{proof}
 
 \begin{example}[Rearrangement and Divergence]
-  Consider the series $\sum_{n=1}^\infty \frac{1}{n}$, which diverges. Any
-  rearrangement of this series also diverges, as the partial sums tend to
-  infinity regardless of the order of terms.
+  Consider the series $\sum_{n=1}^\infty \frac{1}{n}$, which diverges. Any rearrangement of this series also diverges, as the partial sums tend to infinity regardless of the order of terms.
 \end{example}
 
 \begin{theorem}[Unordered Series Convergence]
-  If $\sum_{n=1}^\infty a_n$ converges conditionally, the set of all sums
-  obtained by rearranging the series is unbounded. That is, the sums can fill
-  the entire real number line $\R$.
+  If $\sum_{n=1}^\infty a_n$ converges conditionally, the set of all sums obtained by rearranging the series is unbounded. That is, the sums can fill the entire real number line $\R$.
 \end{theorem}
 
 \begin{proof}
-  By Riemann’s Rearrangement Theorem, for any $L \in \R$, there exists a
-  rearrangement $\sigma$ such that $\sum_{n=1}^\infty a_{\sigma(n)} = L$. This
-  implies that the set of rearranged sums is dense in $\R$ and unbounded.
+  By Riemann’s Rearrangement Theorem, for any $L \in \R$, there exists a rearrangement $\sigma$ such that $\sum_{n=1}^\infty a_{\sigma(n)} = L$. This implies that the set of rearranged sums is dense in $\R$ and unbounded.
 \end{proof}
 
-% subsection rearrangements (end)
-
 \subsection{Double Summations of Infinite Series}
-\label{sub_sec:double_summations_of_infinite_series}
 
 \begin{note}
   These next two sections aren't part of the course, but they are interesting to know. In future courses, such as Complex Analysis, professors often assume familiarity with these concepts.
@@ -530,40 +427,33 @@ This proof requires the usage of Summation by Parts.
 
 \begin{definition}[Iterated Summation]
   Given a doubly indexed array of real numbers $\{a_{ij} \mid i, j \in \N\}$, the \emph{iterated sum} of the array is defined as
-  \[
-    S_{mn} = \sum_{i=1}^m \sum_{j=1}^n a_{ij}.
-  \]
+  \[%
+    S_{mn} = \sum_{i=1}^m \sum_{j=1}^n a_{ij}
+  .\]%
   The \emph{double summation} is defined as
-  \[
-    \sum_{i,j=1}^\infty a_{ij} = \lim_{m, n \to \infty} S_{mn}.
-  \]
+  \[%
+    \sum_{i,j=1}^\infty a_{ij} = \lim_{m, n \to \infty} S_{mn}
+  .\]%
 \end{definition}
 
 \begin{theorem}[Fubini's Theorem for Double Series]
   Let $\{a_{ij} \mid i, j \in \N\}$ be a doubly indexed array of real numbers.
   \begin{enumerate}
-    \item If $\sum_{i,j=1}^\infty \lvert a_{ij} \rvert < \infty$ (absolute
-      convergence), then the double series converges, and the order of summation
-      does not matter
+    \item If $\sum_{i,j=1}^\infty \lvert a_{ij} \rvert < \infty$ (absolute convergence), then the double series converges, and the order of summation does not matter
       \[%
         \sum_{i=1}^\infty \sum_{j=1}^\infty a_{ij} = \sum_{j=1}^\infty \sum_{i=1}^\infty a_{ij} = \sum_{i,j=1}^\infty a_{ij}
       .\]%
 
-    \item If $\sum_{i=1}^\infty \sum_{j=1}^\infty a_{ij}$ converges
-      conditionally (not absolutely), then rearranging the terms or changing the
-      order of summation may alter the sum or even lead to divergence.
+    \item If $\sum_{i=1}^\infty \sum_{j=1}^\infty a_{ij}$ converges conditionally (not absolutely), then rearranging the terms or changing the order of summation may alter the sum or even lead to divergence.
   \end{enumerate}
 \end{theorem}
 
 \begin{proof}
-  Suppose $\sum_{i,j=1}^\infty \lvert a_{ij} \rvert < \infty$. Let $S_{mn} =
-  \sum_{i=1}^m \sum_{j=1}^n a_{ij}$. For any fixed $m, n \in \N$, we can write
+  Suppose $\sum_{i,j=1}^\infty \lvert a_{ij} \rvert < \infty$. Let $S_{mn} = \sum_{i=1}^m \sum_{j=1}^n a_{ij}$. For any fixed $m, n \in \N$, we can write
   \[%
     \lvert S_{mn} \rvert \leq \sum_{i=1}^m \sum_{j=1}^n \lvert a_{ij} \rvert \leq \sum_{i,j=1}^\infty \lvert a_{ij} \rvert
   .\]%
-  By the monotone convergence theorem, the limits $\lim_{m \to \infty}
-  \sum_{i=1}^m \sum_{j=1}^n a_{ij}$ and $\lim_{n \to \infty} \sum_{j=1}^n
-  \sum_{i=1}^m a_{ij}$ exist and are equal. Thus,
+  By the monotone convergence theorem, the limits $\lim_{m \to \infty} \sum_{i=1}^m \sum_{j=1}^n a_{ij}$ and $\lim_{n \to \infty} \sum_{j=1}^n \sum_{i=1}^m a_{ij}$ exist and are equal. Thus,
   \[%
     \sum_{i=1}^\infty \sum_{j=1}^\infty a_{ij} = \sum_{j=1}^\infty \sum_{i=1}^\infty a_{ij}
   .\]%
@@ -578,9 +468,7 @@ This proof requires the usage of Summation by Parts.
 \end{corollary}
 
 \begin{proof}
-  For nonnegative terms, $\sum_{i,j=1}^\infty a_{ij}$ converges by monotonicity
-  if and only if the partial sums $\sum_{i=1}^m \sum_{j=1}^n a_{ij}$ converge.
-  Thus, the iterated sums also converge and are equal.
+  For nonnegative terms, $\sum_{i,j=1}^\infty a_{ij}$ converges by monotonicity if and only if the partial sums $\sum_{i=1}^m \sum_{j=1}^n a_{ij}$ converge. Thus, the iterated sums also converge and are equal.
 \end{proof}
 
 \begin{example}[Harmonic Series Grid]
@@ -588,81 +476,58 @@ This proof requires the usage of Summation by Parts.
   \[%
     \sum_{i=1}^\infty \sum_{j=1}^\infty a_{ij} \aand \sum_{j=1}^\infty \sum_{i=1}^\infty a_{ij}
   .\]%
-  Since $a_{ij}$ is not absolutely convergent (due to divergence of
-  $\sum_{i,j=1}^\infty \frac{1}{i+j}$), the series cannot be rearranged freely.
-  Direct computation of either summation requires careful handling of the
-  partial sums.
+  Since $a_{ij}$ is not absolutely convergent (due to divergence of $\sum_{i,j=1}^\infty \frac{1}{i+j}$), the series cannot be rearranged freely. Direct computation of either summation requires careful handling of the partial sums.
 \end{example}
 
 \begin{lemma}[Symmetry of Convergent Double Series]
-  If $\{a_{ij}\}$ is absolutely convergent and symmetric, i.e., $a_{ij} =
-  a_{ji}$ for all $i, j$, then
+  If $\{a_{ij}\}$ is absolutely convergent and symmetric, i.e., $a_{ij} = a_{ji}$ for all $i, j$, then
   \[%
     \sum_{i,j=1}^\infty a_{ij} = 2 \sum_{i=1}^\infty \sum_{j=i+1}^\infty a_{ij}
   .\]%
 \end{lemma}
 
 \begin{proof}
-  Partition the terms into two symmetric halves: $a_{ij}$ for $i < j$ and
-  $a_{ij}$ for $j < i$. Add the diagonal terms $a_{ii}$ separately. Absolute
-  convergence ensures this rearrangement is valid.
+  Partition the terms into two symmetric halves: $a_{ij}$ for $i < j$ and $a_{ij}$ for $j < i$. Add the diagonal terms $a_{ii}$ separately. Absolute convergence ensures this rearrangement is valid.
 \end{proof}
 
-% subsection double_summations_of_infinite_series (end)
-
 \subsection{Products of Infinite Series}
-\label{sub_sec:products_of_infinite_series}
 
 \begin{definition}[Cauchy Product of Infinite Series]
-  Let $\sum_{n=0}^\infty a_n$ and $\sum_{n=0}^\infty b_n$ be two infinite
-  series. The \emph{Cauchy product} of these series is defined as
+  Let $\sum_{n=0}^\infty a_n$ and $\sum_{n=0}^\infty b_n$ be two infinite series. The \emph{Cauchy product} of these series is defined as
   \[%
     \left(\sum_{n=0}^\infty a_n\right) \cdot \left(\sum_{n=0}^\infty b_n\right) = \sum_{n=0}^\infty \underbrace{\sum_{k=0}^n a_k b_{n-k}}_{c_n}
   .\]%
 \end{definition}
 
 \begin{theorem}[Cauchy Product Convergence]
-  If $\sum_{n=0}^\infty a_n$ and $\sum_{n=0}^\infty b_n$ converge absolutely,
-  then their Cauchy product also converges, and
+  If $\sum_{n=0}^\infty a_n$ and $\sum_{n=0}^\infty b_n$ converge absolutely, then their Cauchy product also converges, and
   \[%
     \sum_{n=0}^\infty c_n = \left(\sum_{n=0}^\infty a_n\right) \cdot \left(\sum_{n=0}^\infty b_n\right)
   .\]%
 \end{theorem}
 
 \begin{proof}
-  Since $\sum_{n=0}^\infty \lvert a_n \rvert < \infty$ and $\sum_{n=0}^\infty
-  \lvert b_n \rvert < \infty$, the absolute convergence allows us to rearrange
-  and group terms freely. Using the definition of the Cauchy product and the
-  triangle inequality, we can write
+  Since $\sum_{n=0}^\infty \lvert a_n \rvert < \infty$ and $\sum_{n=0}^\infty \lvert b_n \rvert < \infty$, the absolute convergence allows us to rearrange and group terms freely. Using the definition of the Cauchy product and the triangle inequality, we can write
   \[%
     \left\lvert\sum_{n=0}^\infty \sum_{k=0}^n a_k b_{n-k}\right\rvert \leq \sum_{n=0}^\infty \sum_{k=0}^n \lvert a_k \rvert \lvert b_{n-k} \rvert
   .\]%
-  By Fubini's theorem for double series, the double sum can be rearranged into a
-  product of two convergent series
+  By Fubini's theorem for double series, the double sum can be rearranged into a product of two convergent series
   \[%
     \sum_{n=0}^\infty \sum_{k=0}^n \lvert a_k \rvert \lvert b_{n-k} \rvert = \left(\sum_{n=0}^\infty \lvert a_n \rvert\right) \cdot \left(\sum_{n=0}^\infty \lvert b_n \rvert\right)
   .\]%
-  Thus, the Cauchy product converges absolutely, and the value is given by the
-  product of the original sums.
+  Thus, the Cauchy product converges absolutely, and the value is given by the product of the original sums.
 \end{proof}
 
 \begin{corollary}[Conditional Convergence of the Cauchy Product]
-  If $\sum_{n=0}^\infty a_n$ and $\sum_{n=0}^\infty b_n$ converge conditionally
-  (not absolutely), the Cauchy product may fail to converge or yield a different
-  sum than the product of the original series.
+  If $\sum_{n=0}^\infty a_n$ and $\sum_{n=0}^\infty b_n$ converge conditionally (not absolutely), the Cauchy product may fail to converge or yield a different sum than the product of the original series.
 \end{corollary}
 
 \begin{example}[Harmonic Series and Cauchy Product]
-  Let $a_n = \frac{1}{n+1}$ and $b_n = \frac{1}{n+1}$, corresponding to the
-  harmonic series. Since the harmonic series diverges, their Cauchy product also
-  diverges. However, truncating the series to $n$ terms and analyzing the
-  partial sums provides useful approximations.
+  Let $a_n = \frac{1}{n+1}$ and $b_n = \frac{1}{n+1}$, corresponding to the harmonic series. Since the harmonic series diverges, their Cauchy product also diverges. However, truncating the series to $n$ terms and analyzing the partial sums provides useful approximations.
 \end{example}
 
 \begin{lemma}[Cauchy Product and Power Series]
-  Let $\sum_{n=0}^\infty a_n x^n$ and $\sum_{n=0}^\infty b_n x^n$ be power
-  series with radii of convergence $R_1$ and $R_2$, respectively. Then the
-  Cauchy product of these series,
+  Let $\sum_{n=0}^\infty a_n x^n$ and $\sum_{n=0}^\infty b_n x^n$ be power series with radii of convergence $R_1$ and $R_2$, respectively. Then the Cauchy product of these series,
   \[%
     \sum_{n=0}^\infty c_n x^n, \quad c_n = \sum_{k=0}^n a_k b_{n-k}
   ,\]%
@@ -670,15 +535,11 @@ This proof requires the usage of Summation by Parts.
 \end{lemma}
 
 \begin{proof}
-  Within the radius of convergence, the partial sums of the power series
-  converge absolutely. Applying the Cauchy product formula term by term
-  preserves convergence, as long as $\lvert x \rvert$ is strictly less than the
-  minimum of the radii.
+  Within the radius of convergence, the partial sums of the power series converge absolutely. Applying the Cauchy product formula term by term preserves convergence, as long as $\lvert x \rvert$ is strictly less than the minimum of the radii.
 \end{proof}
 
 \begin{example}[Product of Geometric Series]
-  Consider the geometric series $\sum_{n=0}^\infty x^n = \frac{1}{1-x}$ for
-  $\lvert x \rvert < 1$. The product of two such series is given by
+  Consider the geometric series $\sum_{n=0}^\infty x^n = \frac{1}{1-x}$ for $\lvert x \rvert < 1$. The product of two such series is given by
   \[%
     \left(\sum_{n=0}^\infty x^n\right) \cdot \left(\sum_{n=0}^\infty x^n\right) = \sum_{n=0}^\infty c_n x^n
   ,\]%
@@ -689,12 +550,11 @@ This proof requires the usage of Summation by Parts.
   Thus, the product is
   \[%
     \sum_{n=0}^\infty (n + 1)x^n = \frac{1}{(1 - x)^2}
-  .\]%
+  \qedhere.\]%
 \end{example}
 
 \begin{theorem}[Multiplication of Exponential Series]
-  Let $e^x = \sum_{n=0}^\infty \frac{x^n}{n!}$. The product of two exponential
-  series satisfies
+  Let $e^x = \sum_{n=0}^\infty \frac{x^n}{n!}$. The product of two exponential series satisfies
   \[%
     \left(\sum_{n=0}^\infty \frac{x^n}{n!}\right) \cdot \left(\sum_{n=0}^\infty \frac{y^n}{n!}\right) = \sum_{n=0}^\infty \frac{(x+y)^n}{n!}
   .\]%
@@ -709,10 +569,5 @@ This proof requires the usage of Summation by Parts.
   \[%
     \frac{1}{n!} (x+y)^n
   .\]%
-  Thus, the product of the exponential series is the exponential series of $x +
-  y$.
+  Thus, the product of the exponential series is the exponential series of $x + y$.
 \end{proof}
-
-% subsection products_of_infinite_series (end)
-
-% section properties_of_infinite_series (end)

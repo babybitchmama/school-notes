@@ -1,1 +1,109 @@
 \lecture{17}{Nov 15 2024 Fri (13:03:05)}{Perfect and Connected Sets}
+
+\section{Perfect Sets}
+
+We recall that a \emph{limit point} of a set $E \subseteq \R^n$ is a point $p$ such that every $\epsilon$-neighborhood of $p$ contains a point of $E$ different from $p$ itself (Lecture~14).
+
+\begin{definition}[Perfect Set]
+  A set $P \subseteq \R^n$ is \emph{perfect} if it is closed and every point of $P$ is a limit point of $P$.
+\end{definition}
+
+Equivalently, $P$ is perfect if $P = P'$, where $P'$ denotes the set of all limit points of $P$.
+
+\begin{remark}
+  A few basic observations, we notice that every perfect set is closed, by definition, perfect sets have no isolated points, and the closure of a perfect set is the set itself.
+\end{remark}
+
+\begin{example}\leavevmode
+  \begin{enumerate}
+    \item \textbf{Closed intervals:} $[0,1]$ is perfect. It is closed, and every point is a limit point: interior points because of nearby points on both sides, and endpoints because of points approaching from within the interval.
+
+    \item \textbf{The Cantor set:} The standard middle-third Cantor set $C$ is closed, totally disconnected, and has no isolated points -- hence perfect.
+
+    \item \textbf{Rationals in an interval:} $\Q \cap [0,1]$ is not perfect because it is not closed; its closure is $[0,1]$, which \emph{is} perfect.
+
+    \item \textbf{Union with isolated points:} $[0,1] \cup \{2\}$ is not perfect because $2$ is isolated.
+
+    \item The set
+      \[%
+        E = \{x \in [0,1] \mid x!\text{is irrational}\}
+      ,\]%
+      is perfect. It is closed (complement is $\Q \cap [0,1]$, which is open in the subspace topology) and every irrational in $[0,1]$ is a limit point because rationals and irrationals are both dense in $\R$.
+
+    \item The set of all real numbers whose decimal expansions contain only the digits 4 and 7 is perfect. It is closed, and every point can be approached by other such numbers differing only far out in the decimal expansion. \qedhere
+  \end{enumerate}
+\end{example}
+
+\begin{theorem}
+  Every nonempty perfect set in $\R^n$ is uncountable.
+\end{theorem}
+
+\begin{proof}
+  Suppose $P$ is perfect and countable, $P = \{p_1, p_2, p_3, \dots\}$. We inductively construct a nested sequence of closed balls
+  \[%
+    \overline{B}_1 \supseteq \overline{B}_2 \supseteq \cdots
+  .\]%
+  such that $\overline{B}_n$ contains points of $P$ but not $p_n$, and with diameters tending to zero. The Nested Interval Property implies the intersection contains exactly one point, but that point would have been excluded at some stage -- contradiction. Thus $P$ must be uncountable.
+\end{proof}
+
+\section{Connected Sets}
+
+Intuitively, a set is connected if it is “all in one piece” and cannot be split into two nonempty parts that are apart from each other.
+
+\begin{definition}[Connected Set]
+  A set $E \subseteq \R^n$ is \emph{connected} if it cannot be expressed as the union $E = U \cup V$ of two disjoint nonempty sets $U$ and $V$ that are open in the relative topology on $E$.
+\end{definition}
+
+Equivalently: the only subsets of $E$ that are both open and closed (in the relative topology) are $\emptyset$ and $E$ itself.
+
+\begin{example}\leavevmode
+  \begin{enumerate}
+    \item \textbf{Intervals:} Every interval in $\R$ (open, closed, half-open, bounded, or unbounded) is connected.
+
+    \item \textbf{Disconnected union:} $(0,1) \cup (2,3)$ is disconnected: the pieces $(0,1)$ and $(2,3)$ are disjoint, nonempty, and relatively open.
+
+    \item The set
+      \[%
+        E = \{(x, \sin(1/x)) \mid 0 < x \leq 1\}
+      ,\]%
+      is connected. The oscillations do not break the set into separated pieces; it is even path-connected.
+
+    \item Adding the vertical segment $\{0\} \times [-1,1]$ to the set in the previous example produces a closed connected set -- it is the closure of the original connected set.
+
+    \item The union of two connected sets that intersect is connected. For instance, $[0,2] \cup [2,3] = [0,3]$. \qedhere
+  \end{enumerate}
+\end{example}
+
+\begin{theorem}[Characterization in $\R$]
+  A subset $E \subseteq \R$ is connected if and only if it is an interval.
+\end{theorem}
+
+\begin{proof}
+  Suppose $E$ is connected but not an interval. Then there exist $a < c < b$ with $a, b \in E$ but $c \notin E$. Let
+  \[%
+    U = E \cap (-\infty, c), \quad V = E \cap (c, \infty)
+  .\]%
+  These are nonempty, relatively open in $E$, disjoint, and their union is $E$, contradicting connectedness.
+
+  If $E$ is an interval, any attempt to split it into two disjoint nonempty relatively open sets will fail because the completeness of $\R$ forces the two sets to touch, producing a common boundary point in $E$.
+\end{proof}
+
+\begin{theorem}\leavevmode
+  \begin{enumerate}
+    \item The continuous image of a connected set is connected.
+
+    \item The closure of a connected set is connected.
+
+    \item The union of connected sets with nonempty intersection is connected.
+  \end{enumerate}
+\end{theorem}
+
+\begin{proof}\leavevmode
+  \begin{enumerate}
+    \item If $f: E \to \R^m$ is continuous and $f(E)$ were disconnected, the preimages of a separating pair of open sets would disconnect $E$ -- contradiction.
+
+    \item Let $E$ be connected. If $\overline{E}$ were disconnected, the separation would pull back to a separation of $E$ by intersecting with open sets.
+
+    \item If $E_1$ and $E_2$ are connected and intersect, their union cannot be split without breaking one of them. \qedhere
+  \end{enumerate}
+\end{proof}

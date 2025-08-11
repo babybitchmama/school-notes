@@ -1,1 +1,33 @@
 \lecture{19}{Nov 20 2024 Wed (13:02:06)}{Sequential Criterion for Limits}
+
+\section{Sequential Criterion for Functional Limits}
+
+Recall from Chapter~\ref{chap:sequences} that limits of sequences can be characterized entirely in terms of their terms approaching a fixed number. For functions, the \emph{Sequential Criterion} provides a way to check functional limits using only sequences -- often easier in proofs because we can apply results from sequence convergence.
+
+\begin{theorem}[Sequential Criterion for Functional Limits]
+  Let $A \subseteq \R$, let $f : A \to \R$, and let $c$ be a limit point of $A$. Then $\lim_{x \to c} f(x) = L$ if and only if for every sequence $(x_n)$ in $A \setminus \{c\}$ such that $x_n \to c$, we have $f(x_n) \to L$.
+\end{theorem}
+
+\begin{proof}
+  Assume $\lim_{x \to c} f(x) = L$. Let $(x_n)$ be a sequence in $A \setminus \{c\}$ with $x_n \to c$.  Given $\epsilon > 0$, choose $\delta > 0$ from the $\epsilon$--$\delta$ definition. Since $x_n \to c$, there exists $N$ such that $n \ge N$ implies $|x_n - c| < \delta$.  Then for $n \ge N$, $0 < |x_n - c| < \delta$, so $|f(x_n) - L| < \epsilon$. Hence $f(x_n) \to L$.
+
+  Conversely, suppose the sequential condition holds. Assume for contradiction that $\lim_{x \to c} f(x) \neq L$.  Then there exists $\epsilon_0 > 0$ such that for every $\delta > 0$ there exists $x \in A$ with $0 < |x - c| < \delta$ but $|f(x) - L| \ge \epsilon_0$.  We can construct a sequence $(x_n)$ as follows: for each $n$, pick $x_n \in A$ such that $0 < |x_n - c| < 1/n$ and $|f(x_n) - L| \ge \epsilon_0$.  Then $x_n \to c$, but $f(x_n)$ does not converge to $L$, contradicting the assumption. Thus the $\epsilon$--$\delta$ condition must hold.
+\end{proof}
+
+\begin{remark}
+  This criterion is useful for proving \emph{non-existence} of limits: it suffices to find two sequences $(x_n)$ and $(y_n)$ both tending to $c$ such that $f(x_n)$ and $f(y_n)$ converge to \emph{different} limits.
+\end{remark}
+
+\subsection{Examples}
+
+\begin{example}[Verifying a limit]
+  Let $f(x) = 3x + 1$ and $c = 2$. Choose any sequence $(x_n)$ in $\R \setminus \{2\}$ with $x_n \to 2$. Then $f(x_n) = 3x_n + 1 \to 3\cdot 2 + 1 = 7$. Since the limit is independent of the choice of $(x_n)$, the sequential criterion confirms $\lim_{x \to 2} f(x) = 7$.
+\end{example}
+
+\begin{example}[Non-existence of limit]
+  Let $f(x) = \frac{|x|}{x}$ for $x \neq 0$ and $c = 0$. Take $x_n = 1/n \to 0$; then $f(x_n) = 1$. Take $y_n = -1/n \to 0$; then $f(y_n) = -1$. Since the sequence limits differ, $\lim_{x \to 0} f(x)$ does not exist.
+\end{example}
+
+\begin{example}[A removable discontinuity]
+  Let $f(x) = \frac{x^2 - 4}{x - 2}$ for $x \neq 2$, and $c = 2$. For $x \neq 2$, $f(x) = x + 2$. Any sequence $(x_n) \to 2$ with $x_n \neq 2$ gives $f(x_n) \to 4$. Thus $\lim_{x \to 2} f(x) = 4$ by the sequential criterion.
+\end{example}

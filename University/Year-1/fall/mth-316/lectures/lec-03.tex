@@ -1,50 +1,33 @@
 \lecture{3}{Oct 4 2024 Fri (13:00:10)}{Axiom of Completeness}
 
 \section{Logic}
-\label{sec:logic}
 
-The easiest proof to see as a beginner is the proof that $\sqrt{2}$ is
-irrational.
+The easiest proof to see as a beginner is the proof that $\sqrt{2}$ is irrational.
 
 \begin{theorem}
   There is no rational number whose square is $2$.
 \end{theorem}
 
 \begin{proof}
-  Assume that $\sqrt{2}$ is rational, meaning that $(\exists p \in \Z)(\exists q
-  \in \Z)[2 = \sfrac{p}{q}]$. Assume that $\sfrac{p}{q}$ is in simplest form,
-  meaning $p$ and $q$ have no common factor. Then $\sqrt{2} = \sfrac{p}{q} \iff
-  2 = \sfrac{p^2}{q^2} \implies 2q^2 = p^2$. This means $p^2$ is an even
-  integer. Then $(\exists r \in \N)[p = 2r]$, giving us $4r^2 = 2q^2$. This
-  means $q^2$ is also an even integer, which is a contradiction, since $p$ and
-  $q$ were assumed to be in simplest form. Therefore, $\sqrt{2}$ is irrational.
+  Assume that $\sqrt{2}$ is rational, meaning that $(\exists p \in \Z)(\exists q \in \Z)[2 = \sfrac{p}{q}]$. Assume that $\sfrac{p}{q}$ is in simplest form, meaning $p$ and $q$ have no common factor. Then $\sqrt{2} = \sfrac{p}{q} \iff 2 = \sfrac{p^2}{q^2} \implies 2q^2 = p^2$. This means $p^2$ is an even integer. Then $(\exists r \in \N)[p = 2r]$, giving us $4r^2 = 2q^2$. This means $q^2$ is also an even integer, which is a contradiction, since $p$ and $q$ were assumed to be in simplest form. Therefore, $\sqrt{2}$ is irrational.
 \end{proof}
 
 \begin{theorem}
-  Let $a, b \in \R$. Then $a = b$ if and only if $(\forall \epsilon > 0)[\lvert
-  a - b \rvert < \epsilon]$.
+  Let $a, b \in \R$. Then $a = b$ if and only if $(\forall \epsilon > 0)[\abs{a - b} < \epsilon]$.
 \end{theorem}
 
-\begin{proof}\leavevmode
-  \begin{enumerate}
-    \item[$\implies$)] Let $\epsilon > 0$. Assume that $a = b$. Then $\lvert a -
-      b \rvert = 0 < \epsilon$.
+\begin{proof}
+  Let $\epsilon > 0$. Assume that $a = b$. Then $\abs{a - b} = 0 < \epsilon$.
 
-    \item[$\impliedby$)] Assume $a \ne b$. Then $\lvert a - b \rvert \ne 0$. Let
-      $\epsilon = \lvert a - b \rvert > 0$. Then $\lvert a - b \rvert = \epsilon
-      < \epsilon$, which is a contradiction, implying that $a = b$. \qedhere
-  \end{enumerate}
+  Assume $a \ne b$. Then $\abs{a - b} \ne 0$. Let $\epsilon = \abs{a - b} > 0$. Then $\abs{a - b} = \epsilon < \epsilon$, which is a contradiction, implying that $a = b$.
 \end{proof}
 
 \subsection{Induction}
-\label{sub_sec:induction}
 
-Let $S(n)$ be a statement. If $S(1)$ is true and $S(n) \implies S(n + 1)$ is
-true, $(\forall n \in \N)[S(n)]$.
+Let $S(n)$ be a statement. If $S(1)$ is true and $S(n) \implies S(n + 1)$ is true, $(\forall n \in \N)[S(n)]$.
 
 \begin{question}
-  Let $x_1 = 1$ and $x_{n+1} = \frac{1}{2} x_n + 1$. Show that $x_n$ is
-  increasing, meaning, prove $(\forall n \in \N)[x_n \le x_{n+1}]$.
+  Let $x_1 = 1$ and $x_{n+1} = \frac{1}{2} x_n + 1$. Show that $x_n$ is increasing, meaning, prove $(\forall n \in \N)[x_n \le x_{n+1}]$.
 \end{question}
 
 \begin{proof}[Solution]
@@ -52,15 +35,13 @@ true, $(\forall n \in \N)[S(n)]$.
 
   Base case: $x_1 = 1$ and $x_2 = \sfrac{3}{2} > x_1$.
 
-  Induction step: Let $n$ be an arbitrary natural number and suppose that
-  $x_{n+1} \ge x_n$. Then
+  Induction step: Let $n$ be an arbitrary natural number and suppose that $x_{n+1} \ge x_n$. Then
   \begin{align*}
     x_{n+2} - x_{n+1} &= \frac{1}{2}(x_{n+1} + 1) - \frac{1}{2}(x_n + 1) \\
                       &= \frac{1}{2}(x_{n+1} - x_n) > 0
   .\end{align*}
 
-  Therefore, by the principle of mathematical induction, $(\forall n \in \N)[x_n
-  \le x_{n+1}]$.
+  Therefore, by the principle of mathematical induction, $(\forall n \in \N)[x_n \le x_{n+1}]$.
 \end{proof}
 
 \begin{question}
@@ -72,65 +53,47 @@ true, $(\forall n \in \N)[S(n)]$.
 
   Base case: $1^3 + 2 \cdot 1 = 3$ is divisible by $3$.
 
-  Induction step: Let $n$ be an arbitrary natural number and suppose that $n^3 +
-  2n$ is divisible by $3$. Then
+  Induction step: Let $n$ be an arbitrary natural number and suppose that $n^3 + 2n$ is divisible by $3$. Then
   \begin{align*}
     (n + 1)^3 + 2(n + 1) &= n^3 + 3n^2 + 3n + 1 + 2(n + 1) \\
                          &= n^3 + 2n + 3(n^2 + n + 1)
   ,\end{align*}
-  which is divisible by $3$, since both $n^3 + 2n$ and $3(n^2 + n + 1)$ are
-  divisible by $3$.
+  which is divisible by $3$, since both $n^3 + 2n$ and $3(n^2 + n + 1)$ are divisible by $3$.
 
-  Therefore, by the principle of mathematical induction, $(\forall n \in \N)[3
-  \mid (n^3 + 2n)]$.
+  Therefore, by the principle of mathematical induction, $(\forall n \in \N)[3 \mid (n^3 + 2n)]$.
 \end{proof}
 
-% subsection induction (end)
-
-% section logic (end)
-
 \section{Axiom of Completeness}
-\label{sec:axiom_of_completeness}
 
-The defining difference between $\R$ and $\Q$ is that $\R$ does not contain the
-gaps that permeate $\Q$. We will be precise about how we phrase this assumption.
-This is referred to as the \emph{Axiom of Completeness}.
+The defining difference between $\R$ and $\Q$ is that $\R$ does not contain the gaps that permeate $\Q$. We will be precise about how we phrase this assumption. This is referred to as the \emph{Axiom of Completeness}.
 \begin{frame}[Axiom of Completeness]
   \begin{center}
-    Every nonempty set of real numbers that is bounded above has a least upper
-    bound.
+    Every nonempty set of real numbers that is bounded above has a least upper bound.
   \end{center}
 \end{frame}
 
 \begin{note}
-  We will never be able to prove the Axiom of Completeness, as axioms are meant
-  to be taken as true. However, this will be the only statement that we naively
-  accept without any rigorous proof. Everything else will be proven from this
-  axiom.
+  We will never be able to prove the Axiom of Completeness, as axioms are meant to be taken as true. However, this will be the only statement that we naively accept without any rigorous proof. Everything else will be proven from this axiom.
 \end{note}
 
 Now, let's break down the definition of the least upper bound.
 
 \subsection{Least Upper Bound and Greatest Lower Bound}
-\label{sub_sec:least_upper_bound_and_greatest_lower_bound}
 
 \begin{definition}[Upper Bound]
-  A set $A \subseteq \R$ is bounded above if $(\exists b \in \R)(\forall a \in
-  A)[a \le b]$. The number $b$ is called the \emph{upper bound} for $A$.
+  A set $A \subseteq \R$ is bounded above if $(\exists b \in \R)(\forall a \in A)[a \le b]$. The number $b$ is called the \emph{upper bound} for $A$.
 \end{definition}
 
 \begin{definition}[Least Upper Bound]
-  A real number $s$ is the \emph{least upper bound} for a set $A \subseteq \R$
-  if it meets the following two criteria
+  A real number $s$ is the \emph{least upper bound} for a set $A \subseteq \R$ if it meets the following two criteria
   \begin{enumerate}
     \item $s$ is an upper bound for $A$.
+
     \item If $b$ is any upper bound for $A$, then $s \le b$.
   \end{enumerate}
 \end{definition}
 
-The least upper bound is also called the \emph{supremum} of the set $A$. The
-\emph{greatest lower bound}/\emph{infimum} for $A$ is also defined similarly
-(see the figure below for a graphical representation).
+The least upper bound is also called the \emph{supremum} of the set $A$. The \emph{greatest lower bound}/\emph{infimum} for $A$ is also defined similarly (see the figure below for a graphical representation).
 \begin{figure}[H]
   \centering
 
@@ -175,8 +138,7 @@ The least upper bound is also called the \emph{supremum} of the set $A$. The
 \end{figure}
 
 \begin{notation}
-  The supremum is denoted as $s = \sup(A)$ and the infimum is denoted as $s =
-  \inf(A)$.
+  The supremum is denoted as $s = \sup(A)$ and the infimum is denoted as $s = \inf(A)$.
 \end{notation}
 
 \begin{claim}
@@ -184,58 +146,35 @@ The least upper bound is also called the \emph{supremum} of the set $A$. The
 \end{claim}
 
 \begin{proof}
-  By property (ii) of the definition of the least upper bound, if $s$ and $t$
-  are both least upper bounds for $A$, then $s \le t$ and $t \le s$, implying
-  that $s = t$.
+  By property (ii) of the definition of the least upper bound, if $s$ and $t$ are both least upper bounds for $A$, then $s \le t$ and $t \le s$, implying that $s = t$.
 \end{proof}
 
 \begin{example}
-  The closed interval $[a, b]$ has a supremum of $b$ and an infimum of $a$. So
-  does the open interval $(a, b)$. But what's the difference between the two?
-  We'll investigate that later on.
+  The closed interval $[a, b]$ has a supremum of $b$ and an infimum of $a$. So does the open interval $(a, b)$. But what's the difference between the two? We'll investigate that later on.
 \end{example}
 
 \begin{example}
-  Let $A = \left.\left\{\frac{1}{n}~\right\rvert n \in \N\right\} = \left\{1,
-  \frac{1}{2}, \frac{1}{3}, \dots\right\}$. It's clear that $\sup(A) = 1$ and
-  $\inf(A) = 0$.
+  Let $A = \left.\left\{\frac{1}{n}~\right\rvert n \in \N\right\} = \left\{1, \frac{1}{2}, \frac{1}{3}, \dots\right\}$. It's clear that $\sup(A) = 1$ and $\inf(A) = 0$.
 \end{example}
-
-% subsection least_upper_bound_and_greatest_lower_bound (end)
 
 \subsection{Maximum and Minimum}
-\label{sub_sec:maximum_and_minimum}
 
 \begin{definition}[Maximum and Minimum]
-  A real number $a_0$ is a \emph{maximum} of the set $A$ if $a_0$ is an element
-  of $A$ and $(\forall a \in A)[a_0 \ge a]$. Similarly, $a_0$ is a
-  \emph{minimum} of the set $A$ if $a_0$ is an element of $A$ and $(\forall a
-  \in A)[a_0 \le a]$.
+  A real number $a_0$ is a \emph{maximum} of the set $A$ if $a_0$ is an element of $A$ and $(\forall a \in A)[a_0 \ge a]$. Similarly, $a_0$ is a \emph{minimum} of the set $A$ if $a_0$ is an element of $A$ and $(\forall a \in A)[a_0 \le a]$.
 \end{definition}
 
-The closed interval $[a, b]$ has a maximum of $b$ and a minimum of $a$, since
-they're both elements of the set. However, the open interval $(a, b)$ has
-neither a maximum nor a minimum, since $a$ and $b$ aren't in the set.
+The closed interval $[a, b]$ has a maximum of $b$ and a minimum of $a$, since they're both elements of the set. However, the open interval $(a, b)$ has neither a maximum nor a minimum, since $a$ and $b$ aren't in the set.
 
 \begin{example}
-  Let $A = \left.\left\{1 + \frac{1}{n}~\right\rvert n \in \N\right\}$, giving
-  us $\sup(A) = 2 = \max(A)$, but $\inf(A) = 1 \ne \min(A)$, as it does not
-  exist.
+  Let $A = \left.\left\{1 + \frac{1}{n}~\right\rvert n \in \N\right\}$, giving us $\sup(A) = 2 = \max(A)$, but $\inf(A) = 1 \ne \min(A)$, as it does not exist.
 \end{example}
 
 \begin{question}
-  Let $A \subseteq \R$ be nonempty and bounded above, let $c \in \R$. Define the
-  set $c + A = \left\{c + a \mid a \in A\right\}$. Then, $\sup(c + A) = c +
-  \sup(A)$.
+  Let $A \subseteq \R$ be nonempty and bounded above, let $c \in \R$. Define the set $c + A = \left\{c + a \mid a \in A\right\}$. Then, $\sup(c + A) = c + \sup(A)$.
 \end{question}
 
 \begin{proof}[Solution]
-  Let $s = \sup(A)$. Let $a \in A$. Since $s$ is an upper bound of $A$, then $a
-  \le s \implies a + c \le s + c$ implies that $c + s$ is an upper bound of $c +
-  A$. Then, $a \le s \implies a + c \le s + c \implies c + s$ is an upper bound
-  of $c + A$. If $b$ is an upper bound of $A$, then $s \le b$. Now, let $d$ be
-  an upper bound of $c + A$. Then, $c + a \le d \implies a \le d - c \iff d - c$
-  is an upper bound of $A$. Then,
+  Let $s = \sup(A)$. Let $a \in A$. Since $s$ is an upper bound of $A$, then $a \le s \implies a + c \le s + c$ implies that $c + s$ is an upper bound of $c + A$. Then, $a \le s \implies a + c \le s + c \implies c + s$ is an upper bound of $c + A$. If $b$ is an upper bound of $A$, then $s \le b$. Now, let $d$ be an upper bound of $c + A$. Then, $c + a \le d \implies a \le d - c \iff d - c$ is an upper bound of $A$. Then,
   \begin{align*}
     \phantom{\implies}\quad&s = \sup(A) \le d - c \\
     \implies\quad&s + c \le d \\
@@ -243,45 +182,23 @@ neither a maximum nor a minimum, since $a$ and $b$ aren't in the set.
   .\qedhere\end{align*}
 \end{proof}
 
-% subsection maximum_and_minimum (end)
-
 \subsection{Proving the upper bound}
-\label{sub_sec:proving_the_upper_bound}
 
-How do we actually show that $a$ is an upper bound for a set $A \subseteq \R$?
-We use the following
+How do we actually show that $a$ is an upper bound for a set $A \subseteq \R$? We use the following
 \begin{lemma}
-  Assume $s \in \R$ is an upper bound for a set $A \subseteq \R$. Then, $s =
-  \sup(A)$ if and only if, $(\forall \epsilon > 0)(\exists a \in A)[s - \epsilon
-  < a]$.
+  Assume $s \in \R$ is an upper bound for a set $A \subseteq \R$. Then, $s = \sup(A)$ if and only if, $(\forall \epsilon > 0)(\exists a \in A)[s - \epsilon < a]$.
 \end{lemma}
 
 \begin{proof}\leavevmode
-  \begin{enumerate}
-    \item[$\implies$)] Assume $s = \sup(A)$. Let $\epsilon > 0$. Then $s -
-      \epsilon < s$, implying that $s - \epsilon$ is not an upper bound for $A$.
-      Then, there must exist some $a \in A$ such that $s - \epsilon < a$,
-      because otherwise, $s - \epsilon$ would be an upper bound.
+  Assume $s = \sup(A)$. Let $\epsilon > 0$. Then $s - \epsilon < s$, implying that $s - \epsilon$ is not an upper bound for $A$. Then, there must exist some $a \in A$ such that $s - \epsilon < a$, because otherwise, $s - \epsilon$ would be an upper bound.
 
-    \item[$\impliedby$)] Assume $b$ is an upper bound for $A$. Assume $b < s
-      \iff s - b > 0$. Let $\epsilon = s - b$. Then, $(\exists a \in A)[(s -
-      \epsilon < a \iff b < a)]$, which is a contradiction, since $b$ is an
-      upper bound. Therefore, $s = \sup(A)$. \qedhere
-  \end{enumerate}
+  Assume $b$ is an upper bound for $A$. Assume $b < s \iff s - b > 0$. Let $\epsilon = s - b$. Then, $(\exists a \in A)[(s - \epsilon < a \iff b < a)]$, which is a contradiction, since $b$ is an upper bound. Therefore, $s = \sup(A)$.
 \end{proof}
 
 \begin{question}
-  Define $A = \left.\left\{1 - \frac{1}{n}~\right\rvert n \in \N\right\}$. Using
-  the lemma, show that $\sup(A) = 1$.
+  Define $A = \left.\left\{1 - \frac{1}{n}~\right\rvert n \in \N\right\}$. Using the lemma, show that $\sup(A) = 1$.
 \end{question}
 
 \begin{proof}[Solution]
-  Assume $s = \sup(A) = 1$. Then, $(\forall \epsilon > 0)(\exists a = 1 -
-  \sfrac{1}{n} \in A)[s - \epsilon < a]$. Then, $1 - \epsilon < 1 -
-  \sfrac{1}{n}$. This implies that $\epsilon > \sfrac{1}{n}$, which is true for
-  all $n \in \N$. Therefore, $s = 1$.
+  Assume $s = \sup(A) = 1$. Then, $(\forall \epsilon > 0)(\exists a = 1 - \sfrac{1}{n} \in A)[s - \epsilon < a]$. Then, $1 - \epsilon < 1 - \sfrac{1}{n}$. This implies that $\epsilon > \sfrac{1}{n}$, which is true for all $n \in \N$. Therefore, $s = 1$.
 \end{proof}
-
-% subsection proving_the_upper_bound (end)
-
-% section axiom_of_completeness (end)

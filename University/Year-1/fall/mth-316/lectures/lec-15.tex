@@ -1,1 +1,78 @@
 \lecture{15}{Nov 11 2024 Mon (13:02:06)}{Closure}
+
+\section{Closure of a Set}
+
+The concept of closure allows us to ``complete'' a set by adding all the points that are ``infinitely close'' to it.  This is done by including all of its limit points.
+
+\begin{definition}[Closure]
+  Let $E \subseteq \R^n$. The \textit{closure} of $E$, denoted $\overline{E}$, is the union of $E$ with the set of all limit points of $E$:
+  \[%
+    \overline{E} = E \cup E'
+  .\]%
+  Here $E'$ denotes the set of limit points of $E$.
+\end{definition}
+
+Intuitively, $\overline{E}$ is the smallest closed set containing $E$. If $E$ is already closed, then $\overline{E} = E$.
+
+\begin{example}\leavevmode
+  \begin{enumerate}
+    \item If $E = (0,1) \subset \R$, then $E' = [0,1]$, since every point in $(0,1)$ and the endpoints $0$ and $1$ can be approached by points from $(0,1)$. Hence $\overline{E} = [0,1]$.
+
+    \item If $E = \Q \cap [0,1]$, then $E' = [0,1]$ because the rationals are dense in $\R$. Thus $\overline{E} = [0,1]$.
+
+    \item If $E = \{1/n \mid n \in \N\}$, then $E' = \{0\}$, since $0$ is the only point that can be approached by distinct points of $E$. Thus $\overline{E} = \{1/n \mid n \in \N\} \cup \{0\}$. \qedhere
+  \end{enumerate}
+\end{example}
+
+We now state and prove the key properties that make the closure useful.
+
+\begin{theorem}
+  Let $E \subseteq \R^n$. Then:
+  \begin{enumerate}
+    \item $\overline{E}$ is closed.
+
+    \item $\overline{E}$ is the smallest closed set containing $E$, meaning that if $F$ is closed and $E \subseteq F$, then $\overline{E} \subseteq F$.
+
+    \item $\overline{E}$ is the intersection of all closed sets containing $E$:
+      \[%
+        \overline{E} = \bigcap \{F \subseteq \R^n \mid F \text{ is closed and } E \subseteq F\}
+      .\]%
+  \end{enumerate}
+\end{theorem}
+
+\begin{proof}\leavevmode
+  \begin{enumerate}
+    \item By definition, $\overline{E} = E \cup E'$. Every limit point of $\overline{E}$ belongs to $E'$ and hence is in $\overline{E}$, so $\overline{E}$ contains all its limit points. By Theorem~\ref{thm:limit_point_closed_equiv} (from Lecture~14), this means $\overline{E}$ is closed.
+
+    \item Suppose $F$ is closed and $E \subseteq F$. Since $F$ contains $E$, it must also contain all limit points of $E$ (otherwise it would not be closed). Thus $E' \subseteq F$, and hence $E \cup E' \subseteq F$, i.e., $\overline{E} \subseteq F$.
+
+    \item Let
+      \[%
+        C = \bigcap \{F \subseteq \R^n \mid F \text{ is closed and } E \subseteq F\}
+      .\]%
+      From (ii), $\overline{E}$ is contained in every closed set that contains $E$, so $\overline{E} \subseteq C$. Conversely, $C$ is a closed set containing $E$, so by (2) again, $\overline{E} \subseteq C$ and $C \subseteq \overline{E}$. Therefore $C = \overline{E}$. \qedhere
+  \end{enumerate}
+\end{proof}
+
+The closure can be described entirely in terms of neighborhoods.
+
+\begin{proposition}
+  For $x \in \R^n$, we have:
+  \[%
+    x \in \overline{E} \iff (\forall \epsilon > 0)[V_\epsilon(x) \cap E \neq \emptyset]
+  .\]%
+\end{proposition}
+
+\begin{proof}
+  Suppose $x \in \overline{E}$. If $x \in E$, the statement is immediate since $x \in V_\epsilon(x) \cap E$ for all $\epsilon > 0$. If $x \in E'$ (a limit point of $E$), then by definition, every neighborhood of $x$ contains a point of $E$ distinct from $x$, so in particular $V_\epsilon(x) \cap E \neq \emptyset$.
+
+  Conversely, suppose every neighborhood of $x$ meets $E$. If $x \in E$, then $x \in \overline{E}$ trivially. If $x \notin E$, then the given condition implies that $x$ is a limit point of $E$, so $x \in E' \subseteq \overline{E}$.
+\end{proof}
+
+\begin{example}\leavevmode
+  \begin{enumerate}
+    \item If $E = [0,1)$, then $E' = [0,1]$, and hence $\overline{E} = [0,1]$. In particular, $1$ is not in $E$ but belongs to its closure because every neighborhood of $1$ intersects $E$.
+
+    \item If $E = (0,1) \cup \{2\}$, then $E' = [0,1]$. The closure is $\overline{E} = [0,1] \cup \{2\}$. Note that $2$ is in $E$ but is an isolated point; it is not a limit point of $E$. \qedhere
+  \end{enumerate}
+\end{example}

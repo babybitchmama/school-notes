@@ -1,1 +1,64 @@
 \lecture{20}{Nov 22 2024 Fri (13:02:06)}{ALT for Functional Limits}
+
+\section{Algebraic Limit Theorem for Functional Limits}
+
+We have already seen in Chapter 2, the \emph{Algebraic Limit Theorem} (ALT) for sequences, which allows us to compute limits of sums, products, and quotients from the limits of the individual sequences. A similar result holds for functions, and it is proved using exactly the same $\epsilon$--$\delta$ techniques, often by reducing to the sequential criterion.
+
+\begin{theorem}[Algebraic Limit Theorem for Functional Limits]
+  Let $A \subseteq \R$, let $f, g : A \to \R$, and let $c$ be a limit point of $A$.  
+  If $\lim_{x \to c} f(x) = L$ and $\lim_{x \to c} g(x) = M$, then:
+  \begin{enumerate}
+    \item $\lim_{x \to c} [f(x) + g(x)] = L + M$,
+
+    \item $\lim_{x \to c} [f(x) - g(x)] = L - M$,
+
+    \item $\lim_{x \to c} [f(x) g(x)] = LM$,
+
+    \item If $M \neq 0$ and $g(x) \neq 0$ near $c$, then
+      \[%
+        \lim_{x \to c} \frac{f(x)}{g(x)} = \frac{L}{M}
+      .\]%
+  \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+  We prove (i); the other parts follow by similar estimates.
+
+  Let $\epsilon > 0$ be given. Since $\lim_{x \to c} f(x) = L$, there exists $\delta_1 > 0$ such that $0 < |x - c| < \delta_1 \implies |f(x) - L| < \epsilon/2$. Similarly, since $\lim_{x \to c} g(x) = M$, there exists $\delta_2 > 0$ such that $0 < |x - c| < \delta_2 \implies |g(x) - M| < \epsilon/2$.
+
+  Let $\delta = \min\{\delta_1, \delta_2\}$. Then for $0 < |x - c| < \delta$, we have:
+  \[%
+    |[f(x) + g(x)] - (L + M)| \le |f(x) - L| + |g(x) - M| < \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon
+  .\]%
+  Thus, $\lim_{x \to c} [f(x) + g(x)] = L + M$.
+
+  The proofs for (2), (3), and (4) use the same $\epsilon$--$\delta$ reasoning, along with the identity
+  \[%
+    |f(x)g(x) - LM| \le |f(x)|\,|g(x) - M| + |M|\,|f(x) - L|
+  ,\]%
+  and for the quotient rule, the fact that $g(x)$ is bounded away from $0$ near $c$ when $M \neq 0$.
+\end{proof}
+
+\subsection{Consequences and Computation Rules}
+
+\begin{remark}
+  The ALT allows us to compute many limits mechanically: break the function into pieces whose limits are known, and then reassemble the result using the theorem.
+\end{remark}
+
+\begin{example}
+  Let $f(x) = 2x^2 - 3x + 4$ and $c = 1$.  Using ALT and the fact that $\lim_{x \to 1} x = 1$:
+  \[%
+    \lim_{x \to 1} f(x) = 2(1)^2 - 3(1) + 4 = 3
+  .\qedhere\]%
+\end{example}
+
+\begin{example}
+  Compute $\lim_{x \to 0} \frac{\sin x}{x}$. We already know $\lim_{x \to 0} \sin x = 0$ and $\lim_{x \to 0} x = 0$, so direct application of ALT for quotients would be invalid (denominator limit $= 0$). This reminds us that the quotient rule requires the denominator’s limit to be \emph{nonzero}. The correct approach is to use the standard special limit $\lim_{x \to 0} \frac{\sin x}{x} = 1$ proved separately.
+\end{example}
+
+\begin{example}[Product limit]
+  Let $f(x) = \sqrt{x}$ and $g(x) = x + 2$, and let $c = 4$. Since $\lim_{x \to 4} \sqrt{x} = 2$ and $\lim_{x \to 4} (x + 2) = 6$, we get:
+  \[%
+    \lim_{x \to 4} f(x) g(x) = (2)(6) = 12
+  .\qedhere\]%
+\end{example}

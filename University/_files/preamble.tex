@@ -577,12 +577,16 @@
 \newtheorem*{claim}{Claim}
 \newtheorem*{conjecture}{Conjecture}
 \newtheorem*{definition}{Definition}
-\newtheorem*{example}{Example}
 \newtheorem*{notation}{Notation}
 \newtheorem*{proposition}{Proposition}
 \newtheorem*{question}{Question}
 \newtheorem*{problem}{Problem}
 \newtheorem*{rrule}{Rule}
+
+\newtheorem*{examplepln}{Example}
+\newenvironment{example}
+  {\pushQED{\qed}\renewcommand{\qedsymbol}{\mbox{$\backslash\backslash$}}\begin{examplepln}}
+  {\popQED\end{examplepln}}
 
 \newtheorem*{remark}{Remark}
 \newtheorem*{note}{Note}

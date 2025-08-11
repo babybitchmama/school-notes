@@ -3,60 +3,44 @@
 \section{Functions}
 
 \begin{definition}[Function]
-  Let $A$ and $B$ be two sets. A \emph{function} $f : A \to B$ assigns an
-  element from the \emph{domain} $A$ to the \emph{range} $B$.
-\end{definition}
+  Let $A$ and $B$ be two sets. A \emph{function} $f : A \to B$ assigns an element from the \emph{domain} $A$ to the \emph{range} $B$. \end{definition}
 
 \begin{example}
-  Let $A$ be the set of chairs in a classroom and let $B$ be the set of all
-  students in the room. Then, $f : A \to B$ assigns each chair to a student,
-  like a seating chart.
-\end{example}\leavevmode\vspace{-0.8cm}
-
-\begin{example}
-  Let $f(x) = x^2 + 1$, where $f : \R \to \R$. Then, the domain of $f$ is $\R$
-  and the range is the interval $[1, \infty)$.
+  Let $A$ be the set of chairs in a classroom and let $B$ be the set of all students in the room. Then, $f : A \to B$ assigns each chair to a student, like a seating chart.
 \end{example}
 
-% section functions (end)
+\begin{example}
+  Let $f(x) = x^2 + 1$, where $f : \R \to \R$. Then, the domain of $f$ is $\R$ and the range is the interval $[1, \infty)$.
+\end{example}
 
 \section{Triangle Inequality}
 
-The absolute value function is so important, that it has it's own notation,
-$\lvert x \rvert$ in place of the usual $f(x)$. It's defined as
+The absolute value function is so important, that it has it's own notation, $\abs{x}$ in place of the usual $f(x)$. It's defined as
 \begin{equation}
-  \empheq{
-    \lvert x \rvert = \begin{cases}
-      x & \text{if}~x \geq 0, \\
-      -x & \text{if}~x < 0
-    \end{cases}
-  }
+  \abs{x} = \begin{cases}
+    x & \text{if}~x \geq 0, \\
+    -x & \text{if}~x < 0
+  \end{cases}
 \end{equation}
 
 The absolute value function satisfies the following properties
 \begin{enumerate}
-  \item $\lvert ab \rvert = \lvert a \rvert \cdot \lvert b \rvert$.
+  \item $\abs{ab} = \abs{a} \cdot \abs{b}$.
 
-  \item $\lvert a + b \rvert \le \lvert a \rvert + \lvert b \rvert$.
+  \item $\abs{a + b} \le \abs{a} + \abs{b}$.
 \end{enumerate}
 
-The second property is known as the \emph{Triangle Inequality}, and it's mostly
-used with three numbers, $a$, $b$, and $c$. Rearranging the inequality, we get
+The second property is known as the \emph{Triangle Inequality}, and it's mostly used with three numbers, $a$, $b$, and $c$. Rearranging the inequality, we get
 \[%
-  \lvert a - b \rvert = \lvert (a - c) + (c - b) \rvert \implies \lvert (a - c) + (c - b) \rvert \le \lvert a - c \rvert + \lvert c - b \rvert
+  \abs{a - b} = \abs{(a - c) + (c - b)} \implies \abs{(a - c) + (c - b)} \le \abs{a - c} + \abs{c - b}
 ,\]%
 giving us
-\begin{equation}\label{eq:triangle_inequality}
-  \empheq{\lvert a - b \rvert \le \lvert a - c \rvert + \lvert c - b \rvert}
+\begin{equation}
+  \abs{a - b} \le \abs{a - c} + \abs{c - b}
 \end{equation}
 
 \begin{note}
-  The expression $\lvert a - b \rvert$ is the distance between $a$ and $b$ on
-  the real number line, which is also equivalent to $\lvert b - a \rvert$.
+  The expression $\abs{a - b}$ is the distance between $a$ and $b$ on the real number line, which is also equivalent to $\abs{b - a}$.
 \end{note}
 
-Restating the triangle inequality in terms of distance, we get that the distance
-between $a$ and $b$ is less than or equal to the sum of the distances between
-$a$ and $c$ and $c$ and $b$.
-
-% section triangle_inequality (end)
+Restating the triangle inequality in terms of distance, we get that the distance between $a$ and $b$ is less than or equal to the sum of the distances between $a$ and $c$ and $c$ and $b$.
