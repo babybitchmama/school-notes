@@ -51,18 +51,8 @@ tmux new-session -d -s "$SESSION_NAME"
 ############
 
 source ./University/Year-1/fall/.tmux
-tmux new-window -t "$SESSION_NAME"
-
 source ./University/Year-1/winter/.tmux
-tmux new-window -t "$SESSION_NAME"
-
 source ./University/Year-1/spring/.tmux
-tmux new-window -t "$SESSION_NAME"
-
-tmux rename-window -t "$SESSION_NAME" "DRP"
-tmux send-keys -t "$SESSION_NAME" "cd ./University/Year-1/winter/drp/; clear" Enter
-
-tmux new-window -t "$SESSION_NAME"
 
 ############
 #  Year 2  #
@@ -79,17 +69,5 @@ tmux split-window -v
 
 tmux send-keys -t "$SESSION_NAME" "cd ./; clear" Enter
 tmux send-keys -t "$SESSION_NAME" "g aa; g ce; g p; c"
-
-tmux split-window -h
-
-tmux send-keys -t "$SESSION_NAME" "cd ./University/Year-1/spring/cs-410/final-paper; clear" Enter
-tmux send-keys -t "$SESSION_NAME" "g aa; g ce; g p; c"
-
-tmux select-pane -U
-tmux split-window -h
-
-tmux send-keys -t "$SESSION_NAME" "clear" Enter
-tmux send-keys -t "$SESSION_NAME" "cd ./University/Year-1/spring/cs-410/final-paper" Enter
-tmux send-keys -t "$SESSION_NAME" "clear; wgs" Enter
 
 eval "$tmuxAttachCommand"
