@@ -1,4 +1,4 @@
-DOCNAME=exercises
+DOCNAME=master
 PDF_VIEWER=zathura
 
 .PHONY:
