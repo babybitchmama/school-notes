@@ -17,28 +17,43 @@
   \createintro
   \newpage
 
-  \chapter*{0 Introduction}
-  \addcontentsline{toc}{chapter}{\numberline{0}Introduction}
+  % \begin{lemma}[Abel's Test]
+  %   Let $a_1 \ge a_2 \ge a_3 \ge \cdots \ge 0$, and suppose that $a_n \to 0$. Let $z \in \C$ such that $\lvert z \rvert = 1$ and $z \ne 1$. Then, the series $\sum_{n=1}^\infty a_nz^n$ converges.
+  % \end{lemma}
 
-  % start notes 0
-  \input{./lectures/lec-00.tex}
-  % end notes 0
+  % \begin{proof}
+  %   Notice that
+  %   \begin{align*}
+  %     \sum_{n=M}^N a_n z^n &= \sum_{n=M}^N a_n \frac{z^{n+1} - z^n}{z - 1} \\
+  %                         &= \frac{1}{z - 1} \sum_{n=M}^N a_n\left(z^{n+1} - z^n\right) \\
+  %                         &= \frac{1}{z - 1}\left(\sum_{n=M}^N a_n z^{n+1} - \sum_{n=M}^N a_n z^n\right) \\
+  %                         &= \frac{1}{z - 1}\left(\sum_{n=M}^N a_n z^{n+1} - \sum_{n=M-1}^{N-1} a_{n+1} z^{n+1}\right) \\
+  %                         &= \frac{1}{z - 1}\left(a_N z^{N+1} - a_M z^M + \sum_{n=M}^{N-1}\left(a_n - a_{n+1}\right) z^{n+1}\right)
+  %   .\end{align*}
+  %   Taking the absolute value gives us
+  %   \begin{align*}
+  %     \left\lvert \sum_{n=M}^N a_n z^n \right\rvert &\leq \frac{1}{\lvert z - 1 \rvert}\left(a_N + a_M + \sum_{n=M}^{N-1}\left(a_n - a_{n+1}\right)\right) \\
+  %                                       &= \frac{1}{\lvert z - 1 \rvert}\left(a_N + a_M + \left(a_M - a_{M+1}\right) + \cdots + \left(a_{N-1} - a_N\right)\right) \\
+  %                                       &= \frac{2 a_M}{\lvert z - 1 \rvert} \to 0
+  %   .\end{align*}
+  %   Thus, the series is Cauchy and converges.
+  % \end{proof}
 
-  \chapter{Complex Numbers}
-  \label{chap:complex_numbers}
+  % \chapter{Complex Numbers}
+  % \label{chap:complex_numbers}
 
-  \begin{note}
-    This first chapter just a review of basic concepts of complex numbers that
-    students should be familiar with from basic pre-calc in high school. The goal
-    here is to make sure that everyone is on the same page and to introduce some
-    notation that we will use throughout the course. I also wanted to include this
-    material to make my notes complete.
-  \end{note}
+  % \begin{note}
+  %   This first chapter just a review of basic concepts of complex numbers that
+  %   students should be familiar with from basic pre-calc in high school. The goal
+  %   here is to make sure that everyone is on the same page and to introduce some
+  %   notation that we will use throughout the course. I also wanted to include this
+  %   material to make my notes complete.
+  % \end{note}
 
-  % start notes 1-2
-  \input{./lectures/lec-01.tex}
-  \input{./lectures/lec-02.tex}
-  % end notes 1-2
+  % % start notes 1-2
+  % \input{./lectures/lec-01.tex}
+  % \input{./lectures/lec-02.tex}
+  % % end notes 1-2
 
   % \chapter{Analytic Functions}
   % \label{chap:analytic_functions}

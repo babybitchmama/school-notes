@@ -270,7 +270,6 @@
     \fancyfoot[C]{%
       \textit{For more notes like this, visit \href{\othernotes}{\othernotes}}. \\%
       \noindent\makebox[\linewidth]{\rule{0.8\textwidth}{0.4pt}}
-      \nterm: \nyear, \\%
       Last Update: \today, \\%
       \faculty, \location.%
     }%
@@ -280,7 +279,9 @@
 % Intro
 \pagestyle{plain}
 \newcommand\createintro{
+  \title{\nshort~--~\ncourse}
   \author{Based on lectures by \nlecturer \\\small Notes taken by \nauthor}
+  \date{\nterm~--~\nyear}
 
   \pagenumbering{roman}
   \renewcommand\headrulewidth{0pt}
@@ -289,16 +290,11 @@
 
   \begin{center}
     \begin{minipage}[c]{0.9\textwidth}
-      \centering\footnotesize \textit{Disclaimer:} This document will inevitably
-      contain some mistakes--both simple typos and legitimate errors. Keep in
-      mind that these are the notes of an undergraduate student in the process
-      of learning the material himself, so take what you read with a grain of
-      salt. If you find mistakes and feel like telling me, I will be grateful
-      and happy to hear from you, even for the most trivial of errors. You can
-      reach me by email, in English, Arabic, Hebrew, or Spanish at
-      \href{mailto:singularisartt@gmail.com}{singularisartt@gmail.com}.
+      \centering\footnotesize \textit{Disclaimer:} This document will inevitably contain some mistakes--both simple typos and legitimate errors. Keep in mind that these are the notes of an undergraduate student in the process of learning the material himself, so take what you read with a grain of salt. If you find mistakes and feel like telling me, I will be grateful and happy to hear from you, even for the most trivial of errors. You can reach me by email, in English, Arabic, Hebrew, or Spanish at \href{mailto:singularisartt@gmail.com}{singularisartt@gmail.com}.
     \end{minipage}
   \end{center}
+
+  \vspace{0.5cm}
 
   \input{intro.tex}
 
