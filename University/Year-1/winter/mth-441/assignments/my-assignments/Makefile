@@ -1,1 +1,1 @@
-/home/singularisart/Documents/school-notes/University/_files/assignments/my-assignments/Makefile
+/home/singularisart/Documents/school-notes/University/template-files/assignments/my-assignments/Makefile
