@@ -167,10 +167,38 @@ This theorem showed us that the cardinality of $\R$ is a larger infinity. The na
   \end{enumerate}
 \end{proof}
 
+Now, we will prove a surprising fact, that the set of irrational numbers $\I$ is uncountable. We will use the fact that $\R$ is uncountable and $\Q$ is countable. Before that, we need a few lemmas.
+
+\begin{lemma}\leavevmode
+  \begin{enumerate}
+    \item The set $\Q$ is countable.
+    \item The interval $(0, 1)$ is uncountable.
+    \item If $A$ is uncountable and $B$ is countable, then $A \setminus B$ is uncountable.
+  \end{enumerate}
+\end{lemma}
+
+\begin{proof}\leavevmode
+  \begin{enumerate}
+    \item We briefly indicate a standard enumeration. Every nonzero rational can be written uniquely in lowest terms as $\sfrac{p}{q}$ with $p \in \Z$, $q \in \N$. Arrange pairs $(p, q)$ in a two-dimensional grid and list them by increasing $|p| + q$, skipping those not in lowest terms; include $0 = \sfrac{0}{1}$. This produces a sequence containing every rational exactly once. Thus $\Q$ is countable, and so is $\Q \cap (0,1)$.
+
+    \item The function $g(t) = \tan(t)$ is a bijection from $(-\sfrac{\pi}{2}, \sfrac{\pi}{2})$ onto $\R$, strictly increasing with limits $\pm\infty$ at the endpoints. The affine map $h(x) = \pi(x - \sfrac{1}{2})$ is a bijection from $(0,1)$ onto $(-\sfrac{\pi}{2}, \sfrac{\pi}{2})$. Then $f = g\circ h$ is a bijection $(0, 1) \to \R$.
+
+    \item Suppose $A\setminus B$ were countable. Then
+      \[%
+        A = (A\setminus B)\,\cup\,(A\cap B)
+      ,\]%
+      a union of two countable sets (since $A\cap B\subseteq B$). Hence $A$ would be countable, contradicting the hypothesis. \qedhere
+  \end{enumerate}
+\end{proof}
+
 \begin{theorem}
   The set $\I$ is uncountable.
 \end{theorem}
 
 \begin{proof}
-  This proof is relatively simple. Suppose that $\I$ is countable. Since we know that the union of two countable sets is countable and we know that $\Q$ is countable, then $\R = \Q \cup \I$ would imply that $\R$ is countable. This is a contradiction, as we've already shown that $\R$ is uncountable. Therefore, $\I$ is uncountable.
+  Applying the lemma with $A = (0,1)$ (i) and $B = \Q \cap (0, 1)$ (ii), we conclude that $(0,1) \setminus \Q$ is uncountable. Since $(0,1) \setminus \Q \subseteq \R \setminus \Q$, the set of all irrationals $\R \setminus \Q$ is uncountable as well.
 \end{proof}
+
+\begin{remark}
+  An alternative route is to first prove directly that $\R$ is uncountable by the diagonal argument (e.g., on $(0,1)$), then combine this with the countability of $\Q$ and the lemma to conclude $\R \setminus \Q$ is uncountable. Both approaches are equivalent in substance.
+\end{remark}
