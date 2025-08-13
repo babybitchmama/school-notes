@@ -1,6 +1,6 @@
 \lecture{4}{Oct 07 2024 Mon (13:01:52)}{Consequences of Completeness}
 
-\section{Nested Interval Property}
+\subsection{Nested Interval Property}
 
 \begin{theorem}[Nested Interval Property]
   For each $n \in \N$, assume we are given a closed interval $I_n = [a_n, b_n] = \left\{x \in \R \mid a_n \le x \le b_n\right\}$. Assume also that each $I_n$ contains the next interval, i.e., $I_n \supseteq I_{n+1}$. Then, the resulting sequence of closed intervals
@@ -14,7 +14,17 @@
 \end{theorem}
 
 \begin{proof}
-  Define $A = \left\{a_n \mid n \in \N\right\}$. Because the intervals are nested, we see that every $b_n$ serves as an upper bound for $A$. Thus, we let $x = \sup(A)$. Now, consider a particular $I_n = [a_n, b_n]$. Because $x$ is an upper bound for $A$, we have $a_n \le x$. Since $x$ is the least upper bound, we have $x \le b_n$. This implies that $a_n \le x \le b_n$, which means $x \in I_n$, for every choice of $n \in \N$. Therefore, $x \in \bigcap_{n=1}^\infty I_n$.
+  Let $A = \{a_n : n \in \N\}$. Since $I_n \supseteq I_{n+1}$, we have $a_1 \le a_2 \le a_3 \le \cdots$ (the left endpoints are nondecreasing) and $b_1 \ge b_2 \ge b_3 \ge \cdots$ (the right endpoints are nonincreasing). Moreover, for each $n$ we have $a_n \le b_n \le b_1$, so $A$ is bounded above by $b_1$.
+
+  By the Axiom of Completeness, $A$ has a least upper bound $s = \sup(A)$. Combining these inequalities, for every $n$ we have
+  \[%
+    a_n \le s \le b_n
+  ,\]%
+  which means $s \in I_n$ for all $n \in \N$. Hence
+  \[%
+    s \in \bigcap_{n=1}^\infty I_n
+  ,\]%
+  proving that the intersection is nonempty.
 \end{proof}
 
 The Nested Interval Property can be viewed graphically, as shown below.
@@ -43,20 +53,14 @@ The Nested Interval Property can be viewed graphically, as shown below.
   \end{tikzpicture}
 \end{figure}
 
-\begin{example}
-  The interval $I_n = \left[0, \frac{1}{n}\right]$, which is clearly $I_n \supset I_{n+1}$, since $\bigcap_{n=1}^\infty = \{0\}$.
+\begin{example}\leavevmode
+  \begin{enumerate}
+    \item The interval $I_n = \left[0, \frac{1}{n}\right]$, which is clearly $I_n \supset I_{n+1}$, since $\bigcap_{n=1}^\infty = \{0\}$.
 
-  The counter example is $I_n = \left(0, \frac{1}{n}\right)$ because $\bigcap_{n=0}^\infty I_n = \emptyset$.
+    \item The counter example is $I_n = \left(0, \frac{1}{n}\right)$, $\bigcap_{n=0}^\infty I_n = \emptyset$, since $0 \notin I_n$. \qedhere
+  \end{enumerate}
 \end{example}
 
-\begin{proof}
-  Let $A = \left\{a_n \mid n \in \N\right\}$. From this, we know that $a_n \le b_n$ and $I_n \supseteq I_{n+1}$. From this, we know that $a_n \le b_1$, $\forall n \in \N$. This means that $A$ is bounded.
-
-  By the Axiom of Completeness, $A$ has a least upper bound, $s = \sup(A)$. Then, $a_n \le s$, $\forall a_n \in A$. Since $s$ is the least upper bound, we get $s \le b_n$, giving us
-  \[%
-    a_n \le s \le b_n, \forall n \in \N \iff s \in \bigcup_{n=0}^\infty I_n
-  .\qedhere\]%
-\end{proof}
 
 \begin{proposition}
   The set $\N$ is unbounded.
@@ -82,74 +86,74 @@ The Nested Interval Property can be viewed graphically, as shown below.
   \end{enumerate}
 \end{proof}
 
-\section{Density of $\Q$ in $\R$}
+% \section{Density of $\Q$ in $\R$}
 
-\begin{theorem}[Density of $\Q$ in $\R$]
-  Between any two real numbers $a$ and $b$ with $a < b$, there exists a rational number $q$ such that $a < q < b$.
-\end{theorem}
+% \begin{theorem}[Density of $\Q$ in $\R$]
+%   Between any two real numbers $a$ and $b$ with $a < b$, there exists a rational number $q$ such that $a < q < b$.
+% \end{theorem}
 
-\begin{proof}
-  Let $a > 0$, giving us $0 < a < b$. Then, $b - a > 0$. By the archimedean property, $(\exists n \in \N)[\sfrac{1}{n} < b - a \iff a < b - \sfrac{1}{n}]$.
+% \begin{proof}
+%   Let $a > 0$, giving us $0 < a < b$. Then, $b - a > 0$. By the archimedean property, $(\exists n \in \N)[\sfrac{1}{n} < b - a \iff a < b - \sfrac{1}{n}]$.
 
-  There is an $m \in \N$ such that $m - 1 \le na \le m \iff \frac{m - 1}{n} \le a \le \frac{m}{n}$.
+%   There is an $m \in \N$ such that $m - 1 \le na \le m \iff \frac{m - 1}{n} \le a \le \frac{m}{n}$.
 
-  On the right hand side, we have $a \le \sfrac{m}{n}$, and on the left hand side, we have
-  \begin{align*}
-    \phantom{\implies}\quad&m \le an + 1 \\
-    \implies\quad&\frac{m}{n} \le b \\
-    \iff\quad&a \le \frac{m}{n} \le b
-  .\qedhere\end{align*}
-\end{proof}
+%   On the right hand side, we have $a \le \sfrac{m}{n}$, and on the left hand side, we have
+%   \begin{align*}
+%     \phantom{\implies}\quad&m \le an + 1 \\
+%     \implies\quad&\frac{m}{n} \le b \\
+%     \iff\quad&a \le \frac{m}{n} \le b
+%   .\qedhere\end{align*}
+% \end{proof}
 
-Essentially, there are an infinite number of rational numbers between any two real numbers, giving us
-\[%
-  a < r_1 < r_2 < r_3 < \dots < b
-.\]%
+% Essentially, there are an infinite number of rational numbers between any two real numbers, giving us
+% \[%
+%   a < r_1 < r_2 < r_3 < \dots < b
+% .\]%
 
-\begin{corollary}
-  Between any two real numbers $a < b$, then there are infinitely many irrational numbers.
-\end{corollary}
+% \begin{corollary}
+%   Between any two real numbers $a < b$, then there are infinitely many irrational numbers.
+% \end{corollary}
 
-\begin{proof}
-  Assume $a > 0$. Given $a < b$, then $a - \sqrt{2} < b - \sqrt{2}$. By the density of $\Q$, then there exists $r \in \Q$ such that $a - \sqrt{2} < r_1 < b - \sqrt{2} \implies a < r + \sqrt{2} < b$. Since $r$ is rational, then $r + \sqrt{2}$ is irrational.
-\end{proof}
+% \begin{proof}
+%   Assume $a > 0$. Given $a < b$, then $a - \sqrt{2} < b - \sqrt{2}$. By the density of $\Q$, then there exists $r \in \Q$ such that $a - \sqrt{2} < r_1 < b - \sqrt{2} \implies a < r + \sqrt{2} < b$. Since $r$ is rational, then $r + \sqrt{2}$ is irrational.
+% \end{proof}
 
-\section{Square Roots}
+% \section{Square Roots}
 
-\begin{proposition}
-  There exists a real number $\alpha$ satisfying $\alpha^2 = 2$.
-\end{proposition}
+% \begin{proposition}
+%   There exists a real number $\alpha$ satisfying $\alpha^2 = 2$.
+% \end{proposition}
 
-\begin{proof}
-  Let $S = \left\{x \in \R \mid x^2 < 2\right\}$. Then $S$ is bounded, nonempty, and has a least upper bound. Let $\alpha = \sup(S)$. We want to show $\alpha^2 = 2$ by showing that $\alpha^2 \nless 2$ and $\alpha^2 \ngtr 2$.
+% \begin{proof}
+%   Let $S = \left\{x \in \R \mid x^2 < 2\right\}$. Then $S$ is bounded, nonempty, and has a least upper bound. Let $\alpha = \sup(S)$. We want to show $\alpha^2 = 2$ by showing that $\alpha^2 \nless 2$ and $\alpha^2 \ngtr 2$.
 
-  \textbf{Case 1} ($\alpha^2 \nless 2$): Suppose $\alpha^2 < 2$. We consider
-  \begin{align*}
-    \left(\alpha + \frac{1}{n}\right)^2 &= \alpha^2 + \frac{2\alpha}{n} + \frac{1}{n^2} \\
-                                        &< \alpha^2 + \frac{2\alpha + 1}{n}
-  .\end{align*}
-  Since $\alpha^2 < 2$, we can choose $n$ large enough such that
-  \[%
-    \alpha^2 + \frac{2\alpha + 1}{n} < 2 \iff 0 < \frac{2\alpha + 1}{2 - \alpha^2} < n
-  .\]%
-  By the archimedian property, there is an $n \in \N$ such that
-  \[%
-    \left(\alpha + \frac{1}{n}\right)^2 < 2 \implies \alpha + \frac{1}{n} \in S
-  ,\]%
-  but $\alpha$ is the least upper bound, which is a contradiction. Therefore, $\alpha \nless 2$.
+%   \textbf{Case 1} ($\alpha^2 \nless 2$): Suppose $\alpha^2 < 2$. We consider
+%   \begin{align*}
+%     \left(\alpha + \frac{1}{n}\right)^2 &= \alpha^2 + \frac{2\alpha}{n} + \frac{1}{n^2} \\
+%                                         &< \alpha^2 + \frac{2\alpha + 1}{n}
+%   .\end{align*}
+%   Since $\alpha^2 < 2$, we can choose $n$ large enough such that
+%   \[%
+%     \alpha^2 + \frac{2\alpha + 1}{n} < 2 \iff 0 < \frac{2\alpha + 1}{2 - \alpha^2} < n
+%   .\]%
+%   By the archimedian property, there is an $n \in \N$ such that
+%   \[%
+%     \left(\alpha + \frac{1}{n}\right)^2 < 2 \implies \alpha + \frac{1}{n} \in S
+%   ,\]%
+%   but $\alpha$ is the least upper bound, which is a contradiction. Therefore, $\alpha \nless 2$.
 
-  \textbf{Case 2} ($\alpha^2 \ngtr 2$): Suppose $\alpha^2 > 2$. We consider
-  \begin{align*}
-    \left(\alpha - \frac{1}{n}\right)^2 &= \alpha^2 - \frac{2\alpha}{n} + \frac{1}{n^2} \\
-                                        &> \alpha^2 - \frac{2\alpha}{n}
-  .\end{align*}
-  Since $\alpha^2 > 2$, we can choose $n$ large enough such that
-  \[%
-    \alpha^2 - \frac{2\alpha}{n} > 2 \iff 0 < \frac{2\alpha}{\alpha^2 - 2} < n
-  .\]%
-  By the archimedian property, there is an $n \in \N$ such that
-  \[%
-    \left(\alpha - \frac{1}{n}\right)^2 > 2 \implies \alpha - \frac{1}{n} \notin S
-  ,\]%
-  but $\alpha$ is the least upper bound, which is a contradiction. Therefore, $\alpha \ngtr 2$.
-\end{proof}
+%   \textbf{Case 2} ($\alpha^2 \ngtr 2$): Suppose $\alpha^2 > 2$. We consider
+%   \begin{align*}
+%     \left(\alpha - \frac{1}{n}\right)^2 &= \alpha^2 - \frac{2\alpha}{n} + \frac{1}{n^2} \\
+%                                         &> \alpha^2 - \frac{2\alpha}{n}
+%   .\end{align*}
+%   Since $\alpha^2 > 2$, we can choose $n$ large enough such that
+%   \[%
+%     \alpha^2 - \frac{2\alpha}{n} > 2 \iff 0 < \frac{2\alpha}{\alpha^2 - 2} < n
+%   .\]%
+%   By the archimedian property, there is an $n \in \N$ such that
+%   \[%
+%     \left(\alpha - \frac{1}{n}\right)^2 > 2 \implies \alpha - \frac{1}{n} \notin S
+%   ,\]%
+%   but $\alpha$ is the least upper bound, which is a contradiction. Therefore, $\alpha \ngtr 2$.
+% \end{proof}

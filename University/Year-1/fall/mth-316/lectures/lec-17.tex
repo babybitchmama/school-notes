@@ -1,109 +1,142 @@
-\lecture{17}{Nov 15 2024 Fri (13:03:05)}{Perfect and Connected Sets}
+\lecture{17}{Nov 15 2024 Fri (13:03:05)}{Compact Sets}
 
-\section{Perfect Sets}
+In analysis, many theorems about continuous functions — such as attaining maximum and minimum values, or being uniformly continuous -- require the underlying set to have a special property: \emph{compactness}. Compact sets can be thought of as the natural generalization of ``closed and bounded intervals'' in $\R$ to more abstract spaces.
 
-We recall that a \emph{limit point} of a set $E \subseteq \R^n$ is a point $p$ such that every $\epsilon$-neighborhood of $p$ contains a point of $E$ different from $p$ itself (Lecture~14).
+Intuitively, a set is compact if it is ``small'' in a certain topological sense: it can be completely covered by finitely many neighborhoods, no matter how we try to cover it.
 
-\begin{definition}[Perfect Set]
-  A set $P \subseteq \R^n$ is \emph{perfect} if it is closed and every point of $P$ is a limit point of $P$.
+\section{Open Covers}
+
+There are two main definitions of compactness, one using open covers (topology esk) and the other using sequences (analysis esk). We will start with the easier definition, which is based on sequences.
+
+\begin{definition}[Compactness V1]
+  A set $K \subseteq \R$ is \emph{compact} if every sequence in $K$ has a subsequence that converges to a limit that is also in $K$.
 \end{definition}
 
-Equivalently, $P$ is perfect if $P = P'$, where $P'$ denotes the set of all limit points of $P$.
+\begin{example}
+  The most basic class of compact sets are closed and bounded intervals in $\R$. To see this, notice that if $(a_n)$ is a sequence contained in $[b, c]$, then the Bolzano-Weierstrass theorem guarantees that there exists a subsequence $(a_{n_k})$ that converges to some limit $L$. Since $[b, c]$ is closed, $L$ must also be in $[b, c]$.
+\end{example}
+
+Some basic properties of compact sets are
+\begin{theorem}
+  A set $K \subseteq \R$ is compact if and only if it is closed and bounded (i.e., $(\exists M > 0)(\forall a \in K)[\abs{a} \le M]$).
+\end{theorem}
+
+\begin{proof}
+  Suppose $K$ is compact. We first show that $K$ must be bounded. If $K$ were unbounded, then we could inductively construct a sequence $(x_n) \subseteq K$ with $\abs{x_n} > n$ for each $n \in \N$. Indeed, choose $x_1 \in K$ with $\abs{x_1} > 1$, then $x_2 \in K$ with $\abs{x_2} > 2$, and so on. This sequence is unbounded, and therefore cannot have a convergent subsequence, since every convergent sequence in $\R$ is bounded. But compactness requires that every sequence in $K$ have a convergent subsequence whose limit lies in $K$, a contradiction. Thus $K$ must be bounded.
+
+  To see that $K$ is closed, let $x$ be a limit point of $K$. Then there exists a sequence $(x_n) \subseteq K$ such that $x_n \to x$. By compactness, $(x_n)$ has a subsequence $(x_{n_k})$ converging to some $y \in K$. Since subsequences of a convergent sequence converge to the same limit, we have $y = x$, and hence $x \in K$. This shows that $K$ contains all of its limit points and is therefore closed.
+
+  Now suppose $K$ is closed and bounded. Being bounded, every sequence in $K$ is bounded, so by the Bolzano--Weierstrass Theorem it has a convergent subsequence. Let $(x_n) \subseteq K$ be any sequence, and let $(x_{n_k})$ be a convergent subsequence with limit $x \in \R$. Since $K$ is closed, $x \in K$. Thus every sequence in $K$ has a convergent subsequence whose limit lies in $K$, meaning $K$ is sequentially compact. In metric spaces, sequential compactness is equivalent to compactness in the open-cover sense, so $K$ is compact.
+\end{proof}
+
+The usefulness of compact sets aren't apparent from the current definition, as it's just, essentially, defined as a set whose closed and bounded. But, there's more to it, a more topological definition. To formally define compactness, we first need the notion of an \emph{open cover}.
+
+\begin{definition}[Open Cover]
+  Let $E \subseteq \R^n$. An \emph{open cover} of $E$ is a collection (possibly infinite) of open sets $\{O_\alpha\}_{\alpha \in A}$ indexed by some set $A$ such that
+  \[%
+    E \subseteq \bigcup_{\alpha \in A} O_\alpha
+  .\]%
+  This means that every point $x \in E$ lies in at least one $O_\alpha$.
+\end{definition}
+
+The index set $A$ can be finite, countably infinite, or uncountable; the definition does not restrict its size. What matters is that each $O_\alpha$ is open in $\R^n$ and that together they ``cover'' $E$.
+
+\begin{example}\leavevmode
+  \begin{enumerate}
+    \item The collection $\{(k,k+2) \mid k \in \Z\}$ is an open cover of $\R$, since every real number lies in one of these open intervals.
+
+    \item The collection $\{(1/n, 2) \mid n \in \N\}$ is an open cover of $(0,2)$, because every point of $(0,2)$ lies in at least one of these intervals.
+
+    \item If $E = (0,1)$, then $\{(0, 1 - 1/n) \mid n \ge 2\}$ is \emph{not} an open cover of $E$, because points close to $1$ (e.g., $x = 0.99$) are missed. \qedhere
+  \end{enumerate}
+\end{example}
+
+\begin{definition}[Finite Subcover]
+  Given an open cover $\{O_\alpha\}_{\alpha \in A}$ of $E$, a \emph{finite subcover} is a finite subcollection $\{O_{\alpha_1}, \dots, O_{\alpha_m}\}$ that still covers $E$:
+  \[%
+    E \subseteq \bigcup_{i=1}^m O_{\alpha_i}
+  .\]%
+\end{definition}
+
+It is important to stress that in general, an open cover need not admit a finite subcover. For example, the collection $\{(n, n+2) \mid n \in \Z\}$ is an open cover of $\R$, but no finite subcollection covers $\R$. This observation leads directly to the idea of compactness: those sets for which \emph{every} open cover does have a finite subcover are called compact.
 
 \begin{remark}
-  A few basic observations, we notice that every perfect set is closed, by definition, perfect sets have no isolated points, and the closure of a perfect set is the set itself.
+  In many contexts, we will construct open covers using \emph{balls} or \emph{intervals} centered at points of $E$, but the definition allows for any shape of open set. The ``openness'' ensures that each point of $E$ has a small open neighborhood entirely contained in one of the covering sets.
 \end{remark}
 
-\begin{example}\leavevmode
-  \begin{enumerate}
-    \item \textbf{Closed intervals:} $[0,1]$ is perfect. It is closed, and every point is a limit point: interior points because of nearby points on both sides, and endpoints because of points approaching from within the interval.
+Now, we are prepared to define compactness in the topological sense.
 
-    \item \textbf{The Cantor set:} The standard middle-third Cantor set $C$ is closed, totally disconnected, and has no isolated points -- hence perfect.
-
-    \item \textbf{Rationals in an interval:} $\Q \cap [0,1]$ is not perfect because it is not closed; its closure is $[0,1]$, which \emph{is} perfect.
-
-    \item \textbf{Union with isolated points:} $[0,1] \cup \{2\}$ is not perfect because $2$ is isolated.
-
-    \item The set
-      \[%
-        E = \{x \in [0,1] \mid x!\text{is irrational}\}
-      ,\]%
-      is perfect. It is closed (complement is $\Q \cap [0,1]$, which is open in the subspace topology) and every irrational in $[0,1]$ is a limit point because rationals and irrationals are both dense in $\R$.
-
-    \item The set of all real numbers whose decimal expansions contain only the digits 4 and 7 is perfect. It is closed, and every point can be approached by other such numbers differing only far out in the decimal expansion. \qedhere
-  \end{enumerate}
-\end{example}
-
-\begin{theorem}
-  Every nonempty perfect set in $\R^n$ is uncountable.
-\end{theorem}
-
-\begin{proof}
-  Suppose $P$ is perfect and countable, $P = \{p_1, p_2, p_3, \dots\}$. We inductively construct a nested sequence of closed balls
-  \[%
-    \overline{B}_1 \supseteq \overline{B}_2 \supseteq \cdots
-  .\]%
-  such that $\overline{B}_n$ contains points of $P$ but not $p_n$, and with diameters tending to zero. The Nested Interval Property implies the intersection contains exactly one point, but that point would have been excluded at some stage -- contradiction. Thus $P$ must be uncountable.
-\end{proof}
-
-\section{Connected Sets}
-
-Intuitively, a set is connected if it is “all in one piece” and cannot be split into two nonempty parts that are apart from each other.
-
-\begin{definition}[Connected Set]
-  A set $E \subseteq \R^n$ is \emph{connected} if it cannot be expressed as the union $E = U \cup V$ of two disjoint nonempty sets $U$ and $V$ that are open in the relative topology on $E$.
+\begin{definition}[Compact Set]
+  A set $K \subseteq \R^n$ is \textit{compact} if every open cover of $K$ has a finite subcover.
 \end{definition}
 
-Equivalently: the only subsets of $E$ that are both open and closed (in the relative topology) are $\emptyset$ and $E$ itself.
-
 \begin{example}\leavevmode
   \begin{enumerate}
-    \item \textbf{Intervals:} Every interval in $\R$ (open, closed, half-open, bounded, or unbounded) is connected.
+    \item The closed interval $[0,1]$ in $\R$ is compact (this is a nontrivial theorem, proved below).
 
-    \item \textbf{Disconnected union:} $(0,1) \cup (2,3)$ is disconnected: the pieces $(0,1)$ and $(2,3)$ are disjoint, nonempty, and relatively open.
+    \item The open interval $(0,1)$ is \emph{not} compact: the cover $\{(1/n, 1) \mid n \in \N\}$ has no finite subcover.
 
-    \item The set
-      \[%
-        E = \{(x, \sin(1/x)) \mid 0 < x \leq 1\}
-      ,\]%
-      is connected. The oscillations do not break the set into separated pieces; it is even path-connected.
-
-    \item Adding the vertical segment $\{0\} \times [-1,1]$ to the set in the previous example produces a closed connected set -- it is the closure of the original connected set.
-
-    \item The union of two connected sets that intersect is connected. For instance, $[0,2] \cup [2,3] = [0,3]$. \qedhere
+    \item Any finite set is compact: given any open cover, each point lies in at least one open set from the cover; choosing those sets for each point yields a finite subcover. \qedhere
   \end{enumerate}
 \end{example}
 
-\begin{theorem}[Characterization in $\R$]
-  A subset $E \subseteq \R$ is connected if and only if it is an interval.
+\begin{definition}[Sequential Compactness]
+  A set $K \subseteq \R^n$ is \textit{sequentially compact} if every sequence in $K$ has a subsequence converging to a point in $K$.
+\end{definition}
+
+In $\R^n$, compactness and sequential compactness are equivalent, but in more general spaces they may differ.
+
+One of the foundational results in analysis is that, in $\R^n$, compactness has a simple characterization in terms of closedness and boundedness.
+
+\begin{theorem}[Heine Borel]
+  A set $K \subseteq \R^n$ is compact if and only if it is closed and bounded.
 \end{theorem}
 
 \begin{proof}
-  Suppose $E$ is connected but not an interval. Then there exist $a < c < b$ with $a, b \in E$ but $c \notin E$. Let
+  Suppose $K$ is compact. To see that $K$ is bounded, argue by contradiction: if $K$ were unbounded, then for each $m \in \N$ consider the open set
   \[%
-    U = E \cap (-\infty, c), \quad V = E \cap (c, \infty)
+    O_m = \{x \in \R^n \mid \|x\| < m\}
   .\]%
-  These are nonempty, relatively open in $E$, disjoint, and their union is $E$, contradicting connectedness.
+  The collection $\{O_m\}_{m \in \N}$ is an open cover of $\R^n$, hence also of $K$. If $K$ were unbounded, then for any finite subcollection $\{O_{m_1}, \dots, O_{m_k}\}$, with $M = \max\{m_1, \dots, m_k\}$, there would exist a point $x \in K$ with $\|x\| > M$, not covered by the finite subcover -- contradiction. Thus $K$ is bounded.
 
-  If $E$ is an interval, any attempt to split it into two disjoint nonempty relatively open sets will fail because the completeness of $\R$ forces the two sets to touch, producing a common boundary point in $E$.
+  To see that $K$ is closed, let $p$ be a limit point of $K$. Suppose $p \notin K$. Then $p \in K^c$, which is open. Let $\epsilon > 0$ be such that $V_\epsilon(p) \subseteq K^c$. The sets $\{V_\epsilon(p)\} \cup \{O_\alpha\}_{\alpha \in A}$ (where the latter covers $K$) form an open cover of $K \cup \{p\}$. The compactness of $K$ forces $p$ to be included if it is a limit point, which contradicts $p \notin K$. Therefore $K$ contains all its limit points and is closed.
+
+  Now suppose $K$ is closed and bounded. Boundedness means $K \subseteq B_R(0)$ for some $R > 0$. It is a fact (proved via the Bolzano--Weierstrass theorem) that every bounded sequence in $\R^n$ has a convergent subsequence. Closedness ensures that the limit of any convergent sequence in $K$ is still in $K$. Using these facts, we prove sequential compactness: every sequence in $K$ has a convergent subsequence with limit in $K$. In $\R^n$, sequential compactness is equivalent to open-cover compactness. Hence $K$ is compact.
 \end{proof}
 
-\begin{theorem}\leavevmode
+\begin{lemma}
+  Let $K$ be compact and $F$ be closed in $\R^n$.
   \begin{enumerate}
-    \item The continuous image of a connected set is connected.
+    \item Any closed subset of $K$ is compact.
 
-    \item The closure of a connected set is connected.
+    \item Any compact subset of $\R^n$ is bounded and closed.
 
-    \item The union of connected sets with nonempty intersection is connected.
+    \item The continuous image of a compact set is compact.
+
+    \item If $K \subseteq \R^n$ is compact, then $K$ is bounded and $\sup K$ and $\inf K$ exist (in $\R$ for $n=1$), and in fact $\max K$ and $\min K$ exist.
   \end{enumerate}
-\end{theorem}
+\end{lemma}
 
 \begin{proof}\leavevmode
   \begin{enumerate}
-    \item If $f: E \to \R^m$ is continuous and $f(E)$ were disconnected, the preimages of a separating pair of open sets would disconnect $E$ -- contradiction.
+    \item Let $F \subseteq K$ be closed. If $\{O_\alpha\}$ is an open cover of $F$, then $\{O_\alpha\} \cup \{K^c\}$ is an open cover of $K$. Since $K$ is compact, there is a finite subcover; removing $K^c$ leaves a finite subcover of $F$.
 
-    \item Let $E$ be connected. If $\overline{E}$ were disconnected, the separation would pull back to a separation of $E$ by intersecting with open sets.
+    \item Already proved via Heine Borel.
 
-    \item If $E_1$ and $E_2$ are connected and intersect, their union cannot be split without breaking one of them. \qedhere
+    \item Let $f : K \to \R^m$ be continuous and $\{U_\beta\}$ be an open cover of $f(K)$. Then $\{f^{-1}(U_\beta)\}$ is an open cover of $K$ (by continuity of $f$). Compactness of $K$ yields a finite subcover; applying $f$ gives a finite subcover of $f(K)$.
+
+    \item If $K$ is compact in $\R$, the Extreme Value Theorem (proved using sequential compactness) gives the existence of $\max K$ and $\min K$. \qedhere
   \end{enumerate}
 \end{proof}
+
+\begin{example}\leavevmode
+  \begin{enumerate}
+    \item $[0,1]^n$ is compact in $\R^n$.
+
+    \item The set $\{1/n \mid n \in \N\} \cup \{0\}$ is compact: it is closed and bounded.
+
+    \item The set $(0,1)$ is not compact: consider the open cover $\{(1/n,1) \mid n \in \N\}$, which has no finite subcover.
+
+    \item The set $\Z$ is closed but not bounded, hence not compact. \qedhere
+  \end{enumerate}
+\end{example}

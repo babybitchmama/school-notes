@@ -16,8 +16,17 @@
   \createintro
   \newpage
 
+  \setcounter{chapter}{-1}
+  \chapter{Introduction}
+
+  % notes start 0-0
+  \input{lectures/lec-00.tex}
+  % notes end 0-0
+
   \chapter{The Real Numbers}
-  \label{chap:the_real_numbers}
+
+  \pagenumbering{arabic}
+  \setcounter{page}{1}
 
   % notes start 1-5
   \input{lectures/lec-01.tex}
@@ -27,37 +36,47 @@
   \input{lectures/lec-05.tex}
   % notes end 1-5
 
-  \chapter{Sequences and Series}
-  \label{chap:sequences_and_series}
+  \chapter{Convergence of Sequences}
 
   % notes start 6-13
   \input{lectures/lec-06.tex}
   \input{lectures/lec-07.tex}
   \input{lectures/lec-08.tex}
   \input{lectures/lec-09.tex}
+  % notes end 6-9
+
+  \chapter{Convergence of Series}
+
+  % notes start 10-14
   \input{lectures/lec-10.tex}
   \input{lectures/lec-11.tex}
   \input{lectures/lec-12.tex}
   \input{lectures/lec-13.tex}
-  % % notes end 6-13
-
-  \chapter{Basic Topology of $\R$}
-  \label{chap:basic_topology_of_r}
-
-  % notes start 14-17
   \input{lectures/lec-14.tex}
+  % notes end 10-14
+
+  \chapter{Topology of the Reals}
+
+  % notes start 15-17
   \input{lectures/lec-15.tex}
   \input{lectures/lec-16.tex}
   \input{lectures/lec-17.tex}
-  % notes end 14-17
+  \input{lectures/lec-18.tex}
+  % notes end 15-17
 
-  \chapter{Functional Limits and Continuity}
-  \label{chap:functional_limits_and_continuity}
+  \chapter{Limits of Functions}
 
-  % notes start 18-21
+  % notes start 18-20
   \input{lectures/lec-18.tex}
   \input{lectures/lec-19.tex}
   \input{lectures/lec-20.tex}
+  % notes end 18-20
+
+  \chapter{Continuous Functions}
+
+  % notes start 21-23
   \input{lectures/lec-21.tex}
-  % notes end 18-21
+  \input{lectures/lec-22.tex}
+  \input{lectures/lec-23.tex}
+  % notes end 21-23
 \end{document}

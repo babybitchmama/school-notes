@@ -1,6 +1,6 @@
 \lecture{6}{Oct 14 2024 Mon (13:00:26)}{Limit of a Sequence}
 
-\section{Required Definitions}
+\subsection{Definitions}
 
 \begin{definition}
   A \emph{sequence} is a function whose domain is $\N$.
@@ -118,9 +118,7 @@ We can re-write the definition of convergence as follows using a topological ver
 
 Both definitions are equivalent. The topological version is more general and applies to more than just sequences. It should be apparent that the value of $N$ depends on the choice of $\epsilon$. The smaller the $\epsilon$-neighborhood, the larger $N$ may need to be.
 
-\section{Working with Limits}
-
-\subsection{Quantifiers}
+\subsection{Working with Limits}
 
 The definition begins with $\forall \epsilon > 0$. This means that we are trying to prove that the sequence converges for all $\epsilon > 0$. Say, $\epsilon = 0.00000001$, or $\epsilon = 100000000$, and so on.
 
@@ -146,7 +144,7 @@ Here's a template for a proof of $x_n \to x$.
   \end{itemize}
 \end{proof}
 
-\subsection{Examples}
+\subsubsection*{Examples}
 
 \begin{question}
   Prove that $\frac{1}{\sqrt{n}} \to 0$.
@@ -168,7 +166,7 @@ Here's a template for a proof of $x_n \to x$.
   Now that we've chosen our $N$, we can finalize and formalize our proof, giving us the following.
 \end{worksheet}
 
-\begin{proof}[Solution]
+\begin{solution}
   Let $\epsilon > 0$ be arbitrarily chosen. Choose a natural number $N$ satisfying
   \[%
     N > \frac{1}{\epsilon^2}
@@ -178,7 +176,7 @@ Here's a template for a proof of $x_n \to x$.
     n > \frac{1}{\epsilon^2} \implies \frac{1}{n} < \epsilon^2 \implies \frac{1}{\sqrt{n}} < \epsilon \implies \lvert a_n - 0 \rvert < \epsilon
   .\]%
   Hence, $\frac{1}{\sqrt{n}} \to 0$.
-\end{proof}
+\end{solution}
 
 \begin{question}
   Prove that $\lim_{n \to \infty} \frac{2n + 1}{5n + 4} = \frac{2}{5}$.
@@ -200,7 +198,7 @@ Here's a template for a proof of $x_n \to x$.
   Now, all that's left is to show that this $N$ works, and we're done.
 \end{worksheet}
 
-\begin{proof}[Solution]
+\begin{solution}
   Let $\epsilon > 0$ be arbitrarily chosen. Choose a natural number $N$ such
   \[%
     N > \frac{3}{25\epsilon} - \frac{4}{5}
@@ -209,7 +207,7 @@ Here's a template for a proof of $x_n \to x$.
   \[%
     \lvert a_n - a \rvert = \left\lvert \frac{2n + 1}{5n + 4} - \frac{2}{5} \right\rvert = \frac{3}{5(5n + 4)} < \frac{3}{5(5N + 4)} = \frac{3}{5\left(5\left(\frac{3}{25\epsilon} - \frac{4}{5}\right) + 4\right)} = \frac{3}{5\left(\frac{3}{5\epsilon}\right)} = \epsilon
   .\qedhere\]%
-\end{proof}
+\end{solution}
 
 \begin{theorem}[Uniqueness of Limits]
   The limit of a sequence, when it exists, must be unique.

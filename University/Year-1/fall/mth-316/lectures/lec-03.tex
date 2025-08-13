@@ -1,70 +1,5 @@
 \lecture{3}{Oct 4 2024 Fri (13:00:10)}{Axiom of Completeness}
 
-\section{Logic}
-
-The easiest proof to see as a beginner is the proof that $\sqrt{2}$ is irrational.
-
-\begin{theorem}
-  There is no rational number whose square is $2$.
-\end{theorem}
-
-\begin{proof}
-  Assume that $\sqrt{2}$ is rational, meaning that $(\exists p \in \Z)(\exists q \in \Z)[2 = \sfrac{p}{q}]$. Assume that $\sfrac{p}{q}$ is in simplest form, meaning $p$ and $q$ have no common factor. Then $\sqrt{2} = \sfrac{p}{q} \iff 2 = \sfrac{p^2}{q^2} \implies 2q^2 = p^2$. This means $p^2$ is an even integer. Then $(\exists r \in \N)[p = 2r]$, giving us $4r^2 = 2q^2$. This means $q^2$ is also an even integer, which is a contradiction, since $p$ and $q$ were assumed to be in simplest form. Therefore, $\sqrt{2}$ is irrational.
-\end{proof}
-
-\begin{theorem}
-  Let $a, b \in \R$. Then $a = b$ if and only if $(\forall \epsilon > 0)[\abs{a - b} < \epsilon]$.
-\end{theorem}
-
-\begin{proof}
-  Let $\epsilon > 0$. Assume that $a = b$. Then $\abs{a - b} = 0 < \epsilon$.
-
-  Assume $a \ne b$. Then $\abs{a - b} \ne 0$. Let $\epsilon = \abs{a - b} > 0$. Then $\abs{a - b} = \epsilon < \epsilon$, which is a contradiction, implying that $a = b$.
-\end{proof}
-
-\subsection{Induction}
-
-Let $S(n)$ be a statement. If $S(1)$ is true and $S(n) \implies S(n + 1)$ is true, $(\forall n \in \N)[S(n)]$.
-
-\begin{question}
-  Let $x_1 = 1$ and $x_{n+1} = \frac{1}{2} x_n + 1$. Show that $x_n$ is increasing, meaning, prove $(\forall n \in \N)[x_n \le x_{n+1}]$.
-\end{question}
-
-\begin{proof}[Solution]
-  Let $P(n) : x_n \le x_{n+1}$.
-
-  Base case: $x_1 = 1$ and $x_2 = \sfrac{3}{2} > x_1$.
-
-  Induction step: Let $n$ be an arbitrary natural number and suppose that $x_{n+1} \ge x_n$. Then
-  \begin{align*}
-    x_{n+2} - x_{n+1} &= \frac{1}{2}(x_{n+1} + 1) - \frac{1}{2}(x_n + 1) \\
-                      &= \frac{1}{2}(x_{n+1} - x_n) > 0
-  .\end{align*}
-
-  Therefore, by the principle of mathematical induction, $(\forall n \in \N)[x_n \le x_{n+1}]$.
-\end{proof}
-
-\begin{question}
-  Show that $(\forall n \in \N)[3 \mid (n^3 + 2n)]$.
-\end{question}
-
-\begin{proof}[Solution]
-  Let $P(n) : 3 \mid (n^3 + 2n)$.
-
-  Base case: $1^3 + 2 \cdot 1 = 3$ is divisible by $3$.
-
-  Induction step: Let $n$ be an arbitrary natural number and suppose that $n^3 + 2n$ is divisible by $3$. Then
-  \begin{align*}
-    (n + 1)^3 + 2(n + 1) &= n^3 + 3n^2 + 3n + 1 + 2(n + 1) \\
-                         &= n^3 + 2n + 3(n^2 + n + 1)
-  ,\end{align*}
-  which is divisible by $3$, since both $n^3 + 2n$ and $3(n^2 + n + 1)$ are divisible by $3$.
-
-  Therefore, by the principle of mathematical induction, $(\forall n \in \N)[3 \mid (n^3 + 2n)]$.
-\end{proof}
-
-\section{Axiom of Completeness}
-
 The defining difference between $\R$ and $\Q$ is that $\R$ does not contain the gaps that permeate $\Q$. We will be precise about how we phrase this assumption. This is referred to as the \emph{Axiom of Completeness}.
 \begin{frame}[Axiom of Completeness]
   \begin{center}
@@ -92,6 +27,10 @@ Now, let's break down the definition of the least upper bound.
     \item If $b$ is any upper bound for $A$, then $s \le b$.
   \end{enumerate}
 \end{definition}
+
+\begin{example}
+  Take the set $A = [-M, M]$. Then, all the numbers $m \ge M$ are upper bounds for $A$, while, only $M$ is the least upper bound.
+\end{example}
 
 The least upper bound is also called the \emph{supremum} of the set $A$. The \emph{greatest lower bound}/\emph{infimum} for $A$ is also defined similarly (see the figure below for a graphical representation).
 \begin{figure}[H]
@@ -189,16 +128,43 @@ How do we actually show that $a$ is an upper bound for a set $A \subseteq \R$? W
   Assume $s \in \R$ is an upper bound for a set $A \subseteq \R$. Then, $s = \sup(A)$ if and only if, $(\forall \epsilon > 0)(\exists a \in A)[s - \epsilon < a]$.
 \end{lemma}
 
-\begin{proof}\leavevmode
+\begin{proof}
   Assume $s = \sup(A)$. Let $\epsilon > 0$. Then $s - \epsilon < s$, implying that $s - \epsilon$ is not an upper bound for $A$. Then, there must exist some $a \in A$ such that $s - \epsilon < a$, because otherwise, $s - \epsilon$ would be an upper bound.
 
   Assume $b$ is an upper bound for $A$. Assume $b < s \iff s - b > 0$. Let $\epsilon = s - b$. Then, $(\exists a \in A)[(s - \epsilon < a \iff b < a)]$, which is a contradiction, since $b$ is an upper bound. Therefore, $s = \sup(A)$.
 \end{proof}
 
-\begin{question}
-  Define $A = \left.\left\{1 - \frac{1}{n}~\right\rvert n \in \N\right\}$. Using the lemma, show that $\sup(A) = 1$.
-\end{question}
+\begin{example}[Applying the Lemma]
+  Let $A = \{1 - \frac{1}{n} : n \in \N\}$. We suspect $\sup(A) = 1$.
+  \begin{enumerate}
+    \item \textbf{Check upper bound:} For every $n$, $1 - \frac{1}{n} < 1$, so $1$ is an upper bound.
 
-\begin{proof}[Solution]
-  Assume $s = \sup(A) = 1$. Then, $(\forall \epsilon > 0)(\exists a = 1 - \sfrac{1}{n} \in A)[s - \epsilon < a]$. Then, $1 - \epsilon < 1 - \sfrac{1}{n}$. This implies that $\epsilon > \sfrac{1}{n}$, which is true for all $n \in \N$. Therefore, $s = 1$.
-\end{proof}
+    \item \textbf{Check $\epsilon$-condition:} Given $\epsilon > 0$, choose $n$ such that $\frac{1}{n} < \epsilon$ (possible by the Archimedean property). Then $a = 1 - \frac{1}{n} \in A$ and
+    \[
+      s - \epsilon = 1 - \epsilon < 1 - \frac{1}{n} = a.
+    \]
+    Therefore, the lemma confirms $\sup(A) = 1$. \qedhere
+  \end{enumerate}
+\end{example}
+
+\begin{example}[Supremum not in the Set]
+  Consider $B = (0, 2) \cap \Q$. The set is bounded above by $2$. We claim $\sup(B) = 2$.
+  \begin{itemize}
+    \item $2$ is an upper bound.
+
+    \item Given $\epsilon > 0$, choose $q \in \Q$ such that $2 - \epsilon < q < 2$ (possible since rationals are dense in $\R$). Then $q \in B$ and $2 - \epsilon < q$.
+
+    \item The lemma ensures $\sup(B) = 2$ even though $2 \notin B$. \qedhere
+  \end{itemize}
+\end{example}
+
+\begin{note}
+  This $\epsilon$-characterization also works for $\inf(A)$ with signs flipped:
+  \[%
+    t = \inf(A) \iff [t~\text{is a lower bound and}~(\forall \epsilon > 0)(\exists a \in A)[a < t + \epsilon]]
+  .\]%
+\end{note}
+
+\begin{example}[Non-Example]
+  Let $C = \{x \in \R : x^2 < 2\}$. The number $s = 1.4$ is an upper bound for $C$ (since $1.4^2 = 1.96 < 2$). However, $s$ is not the supremum, because for $\epsilon = 0.05$, we can find $c \in C$ such that $1.4 + \epsilon = 1.45$ is still in $C$, contradicting $1.4$ being an upper bound. The real supremum is $\sqrt{2}$.
+\end{example}

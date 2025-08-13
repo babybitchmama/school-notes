@@ -2,9 +2,11 @@
 
 The set $\I$ is the set of all irrational numbers. So far, we know that $\Q$ and $\I$ are densely packed in $\R$. This means that, given an interval $(a, b)$, there exists rational and irrational numbers alike. For a while, we've thought that they're in equal proportions. But, we'll see there are way more irrational numbers than rational numbers.
 
-\section{Types of Functions}
-
 The term \emph{cardinality} is used to refer to the size of a set. The cardinalities of finite sets can be compared by attaching a natural number to them and using the property that $\N$ is an ordered and you can compare numbers, i.e., $5 > 3$, $10 < 17$, and so on. But how do we do the same thing when we can't use any natural numbers, say, for a set with an infinite number of elements?
+
+\begin{note}
+  Bijective functions are also called \emph{one-to-one correspondences}.
+\end{note}
 
 Here's Cantor's idea: Create a one-to-one correspondence with each other. This method's incredible since it works with sizes of sets that have infinitely many elements. First, let's define a few more definitions before going into one-to-one correspondences.
 
@@ -13,30 +15,8 @@ Here's Cantor's idea: Create a one-to-one correspondence with each other. This m
 \end{definition}
 
 \begin{definition}
-  Let $f$ be a function $f : A \to B$. We say $f$ is \emph{onto} if $(\forall y \in B)(\exists x \in A)[f(x) = y]$. We say $f$ is \emph{one-to-one} if $(\forall x_1 \in A)(\forall x_2 \in A)[f(x_1) = f(x_2) \implies x_1 = x_2]$.
-\end{definition}
-
-\begin{example}\leavevmode
-  \begin{enumerate}
-    \item Let $A$ be the set of all the students in a room and $B$ be the set of all the chairs in the room. Then, $f$ is onto if every chair has a student, and $f$ is one-to-one if no two students are sitting in the same chair.
-
-    \item The function $f : \N \to \{-1, 1\}$ defined by $f(n) = (-1)^n$ is onto, as all natural numbers are being mapped to either $-1$ or $1$. However, $f$ is not one-to-one, as $f(2) = f(4) = 1$. \qedhere
-  \end{enumerate}
-\end{example}
-
-\begin{definition}
-  Let $f$ be a function $f : A \to B$. If $f$ is both onto and one-to-one, then we call $f$ a \emph{one-to-one correspondence} of $A$ and $B$.
-\end{definition}
-
-\begin{note}
-  Sometimes, onto is referred to as \emph{surjective}, one-to-one is referred to as \emph{injective}, and a one-to-one correspondence is referred to as a \emph{bijection}.
-\end{note}
-
-\begin{definition}
   The set $A$ \emph{has the same cardinality as} $B$ if there exists $f : A \to B$ that is a one-to-one correspondence. In this case, we write $A \sim B$.
 \end{definition}
-
-\section{Countable Sets}
 
 \begin{definition}
   A set $A$ is \emph{countable} if $A \sim \N$. An infinite set that is not countable is called \emph{uncountable}.

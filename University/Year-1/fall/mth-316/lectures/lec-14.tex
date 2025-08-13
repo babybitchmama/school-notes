@@ -1,145 +1,148 @@
-\lecture{14}{Nov 6 2024 Wed (13:02:06)}{Limit Points, Open, and Closed Sets}
+\lecture{14}{Nov 6 2024 Wed (13:02:06)}{Double Summations of Infinite Series}
 
-\begin{definition}[$\epsilon$-Neighborhood]
-  Let $x \in \R^n$ and let $\epsilon > 0$. The \textit{$\epsilon$-neighborhood} of $x$ is
+\begin{definition}[Iterated Summation]
+  Given a doubly indexed array of real numbers $\{a_{ij} \mid i, j \in \N\}$, the \emph{iterated sum} of the array is defined as
   \[%
-    V_\epsilon(x) = \{ y \in \R^n \mid \lvert y - x \rvert < \epsilon \}
+    S_{mn} = \sum_{i=1}^m \sum_{j=1}^n a_{ij}
   .\]%
-  This is also referred to as the \textit{open ball} of radius $\epsilon$ centered at $x$.
+  The \emph{double summation} is defined as
+  \[%
+    \sum_{i,j=1}^\infty a_{ij} = \lim_{m, n \to \infty} S_{mn}
+  .\]%
 \end{definition}
 
-\begin{note}
-  The $\epsilon$-neighborhood $V_\epsilon(x)$ consists of all points whose Euclidean distance from $x$ is \emph{strictly less} than $\epsilon$. Points exactly at distance $\epsilon$ are not included.
-\end{note}
-
-\section{Open Sets}
-
-\begin{definition}[Open Set]
-  A set $U \subseteq \R^n$ is \textit{open} if for every $x \in U$, there exists an $\epsilon > 0$ such that $V_\epsilon(x) \subseteq U$.
-\end{definition}
-
-In words: a set is open if every point of the set lies entirely in the interior of the set, in the sense that we can ``wiggle'' the point a little in any direction without leaving the set.
-
-\begin{example}\leavevmode
+\begin{theorem}[Fubini's Theorem for Double Series]
+  Let $\{a_{ij} \mid i, j \in \N\}$ be a doubly indexed array of real numbers.
   \begin{enumerate}
-    \item Consider the open interval $(a,b) \subset \R$. Let $x \in (a,b)$. The distances from $x$ to each endpoint are $x-a > 0$ and $b-x > 0$. Set $\epsilon = \min\{x-a, b-x\}$. Then $V_\epsilon(x) \subseteq (a,b)$.
+    \item If $\sum_{i,j=1}^\infty \lvert a_{ij} \rvert < \infty$ (absolute convergence), then the double series converges, and the order of summation does not matter
+      \[%
+        \sum_{i=1}^\infty \sum_{j=1}^\infty a_{ij} = \sum_{j=1}^\infty \sum_{i=1}^\infty a_{ij} = \sum_{i,j=1}^\infty a_{ij}
+      .\]%
 
-    \item The entire space $\R^n$ is open: given $x \in \R^n$ and any $\epsilon > 0$, $V_\epsilon(x) \subseteq \R^n$ holds trivially.
-
-    \item The empty set $\emptyset$ is open: the definition is vacuously satisfied because there is no $x$ to check.
-
-    \item For any $x_0 \in \R^n$ and $r > 0$, the open ball $B_r(x_0) = \{x \in \R^n : \lvert x - x_0 \rvert < r\}$ is open. If $x \in B_r(x_0)$, then $d = r - \lvert x - x_0 \rvert > 0$. Taking $\epsilon = d$ ensures $V_\epsilon(x) \subseteq B_r(x_0)$. \qedhere
-  \end{enumerate}
-\end{example}
-
-\begin{theorem}\leavevmode
-  \begin{enumerate}
-    \item The union of any collection of open sets is open.
-
-    \item The intersection of finitely many open sets is open.
-  \end{enumerate}
-\end{theorem}
-
-\begin{proof}\leavevmode
-  \begin{enumerate}
-    \item Let $\{O_\lambda \mid \lambda \in \Lambda\}$ be a collection of open sets indexed by some set $\Lambda$. Let
-    \[%
-      O = \bigcup_{\lambda \in \Lambda} O_\lambda
-    .\]%
-    Suppose $x \in O$. Then, by the definition of union, $x$ belongs to at least one $O_{\lambda_0}$ for some $\lambda_0 \in \Lambda$. Because $O_{\lambda_0}$ is open, there exists $\epsilon > 0$ such that $V_\epsilon(x) \subseteq O_{\lambda_0}$. But $O_{\lambda_0} \subseteq O$, so we also have $V_\epsilon(x) \subseteq O$. Since $x$ was arbitrary, $O$ is open.
-
-    \item Let $O_1, O_2, \dots, O_m$ be open sets and set $O = \bigcap_{i=1}^m O_i$. Take any $x \in O$. Then $x \in O_i$ for every $i$. Because each $O_i$ is open, there exists $\epsilon_i > 0$ such that $V_{\epsilon_i}(x) \subseteq O_i$. Let
-    \[%
-      \epsilon = \min\{\epsilon_1, \epsilon_2, \dots, \epsilon_m\}
-    .\]%
-    Since $\epsilon \leq \epsilon_i$ for each $i$, it follows that $V_\epsilon(x) \subseteq V_{\epsilon_i}(x) \subseteq O_i$ for all $i$. Hence $V_\epsilon(x) \subseteq O$, so $O$ is open. \qedhere
-  \end{enumerate}
-\end{proof}
-
-\section{Closed Sets}
-
-Closed sets are defined in terms of their complements.
-
-\begin{definition}[Closed Set]
-  A set $F \subseteq \R^n$ is \textit{closed} if its complement $\R^n \setminus F$ is open.
-\end{definition}
-
-This definition is purely topological: a set is closed precisely when everything \emph{outside} it forms an open set.
-
-\begin{example}\leavevmode
-  \begin{enumerate}
-    \item The closed interval $[a,b]$ is closed because its complement is $(-\infty,a) \cup (b,\infty)$, which is the union of two open sets.
-
-    \item $\R^n$ is closed because its complement $\emptyset$ is open.
-
-    \item $\emptyset$ is closed because its complement $\R^n$ is open.
-
-    \item Any finite subset of $\R$ is closed. For example, $\{p\}$ is closed since $\R \setminus \{p\} = (-\infty, p) \cup (p, \infty)$ is open. By finite unions of closed sets being closed (a fact proved below), any finite set is closed. \qedhere
-  \end{enumerate}
-\end{example}
-
-\begin{theorem}\leavevmode
-  \begin{enumerate}
-    \item The intersection of any collection of closed sets is closed.
-
-    \item The union of finitely many closed sets is closed.
+    \item If $\sum_{i=1}^\infty \sum_{j=1}^\infty a_{ij}$ converges conditionally (not absolutely), then rearranging the terms or changing the order of summation may alter the sum or even lead to divergence.
   \end{enumerate}
 \end{theorem}
 
 \begin{proof}
-  These are dual statements to the openness properties proved earlier. Let $\{F_\alpha \mid \alpha \in A\}$ be a collection of closed sets.
-  \begin{enumerate}
-    \item Consider $\bigcap_{\alpha \in A} F_\alpha$. Its complement is
-    \[%
-      \left( \bigcap_{\alpha \in A} F_\alpha \right)^c = \bigcup_{\alpha \in A} F_\alpha^c
-    .\]%
-    Each $F_\alpha^c$ is open (since $F_\alpha$ is closed), and the union of any collection of open sets is open. Hence the complement of $\bigcap_{\alpha \in A} F_\alpha$ is open, so the intersection itself is closed.
-
-    \item Let $F_1, \dots, F_m$ be closed sets. Then
-    \[%
-      \left( \bigcup_{i=1}^m F_i \right)^c = \bigcap_{i=1}^m F_i^c
-    .\]%
-    Each $F_i^c$ is open, and the intersection of finitely many open sets is open. Therefore the complement of $\bigcup_{i=1}^m F_i$ is open, so the union is closed. \qedhere
-  \end{enumerate}
+  Suppose $\sum_{i,j=1}^\infty \lvert a_{ij} \rvert < \infty$. Let $S_{mn} = \sum_{i=1}^m \sum_{j=1}^n a_{ij}$. For any fixed $m, n \in \N$, we can write
+  \[%
+    \lvert S_{mn} \rvert \leq \sum_{i=1}^m \sum_{j=1}^n \lvert a_{ij} \rvert \leq \sum_{i,j=1}^\infty \lvert a_{ij} \rvert
+  .\]%
+  By the monotone convergence theorem, the limits $\lim_{m \to \infty} \sum_{i=1}^m \sum_{j=1}^n a_{ij}$ and $\lim_{n \to \infty} \sum_{j=1}^n \sum_{i=1}^m a_{ij}$ exist and are equal. Thus,
+  \[%
+    \sum_{i=1}^\infty \sum_{j=1}^\infty a_{ij} = \sum_{j=1}^\infty \sum_{i=1}^\infty a_{ij}
+  .\qedhere\]%
 \end{proof}
 
-\section{Limit Points}
-
-The idea of a \emph{limit point} (or \emph{accumulation point}) makes precise what it means for a set to have points ``arbitrarily close'' to a given point.
-
-\begin{definition}[Limit Point]
-  Let $E \subseteq \R^n$. A point $p \in \R^n$ is called a \textit{limit point} of $E$ if every $\epsilon$-neighborhood of $p$ contains at least one point $q \in E$ with $q \neq p$. Equivalently, $p$ is a limit point of $E$ if
+\begin{corollary}[Order of Summation for Nonnegative Terms]
+  If $a_{ij} \geq 0$ for all $i, j \in \N$, then
   \[%
-    (\forall \epsilon > 0)\big[(V_\epsilon(p) \setminus \{p\}) \cap E \neq \emptyset\big]
+    \sum_{i=1}^\infty \sum_{j=1}^\infty a_{ij} = \sum_{j=1}^\infty \sum_{i=1}^\infty a_{ij}
+  ,\]%
+  even if the series does not converge absolutely.
+\end{corollary}
+
+\begin{proof}
+  For nonnegative terms, $\sum_{i,j=1}^\infty a_{ij}$ converges by monotonicity if and only if the partial sums $\sum_{i=1}^m \sum_{j=1}^n a_{ij}$ converge. Thus, the iterated sums also converge and are equal.
+\end{proof}
+
+\begin{example}[Harmonic Series Grid]
+  Consider $a_{ij} = \frac{1}{i+j}$. We investigate the sums
+  \[%
+    \sum_{i=1}^\infty \sum_{j=1}^\infty a_{ij} \aand \sum_{j=1}^\infty \sum_{i=1}^\infty a_{ij}
+  .\]%
+  Since $a_{ij}$ is not absolutely convergent (due to divergence of $\sum_{i,j=1}^\infty \frac{1}{i+j}$), the series cannot be rearranged freely. Direct computation of either summation requires careful handling of the partial sums.
+\end{example}
+
+\begin{lemma}[Symmetry of Convergent Double Series]
+  If $\{a_{ij}\}$ is absolutely convergent and symmetric, i.e., $a_{ij} = a_{ji}$ for all $i, j$, then
+  \[%
+    \sum_{i,j=1}^\infty a_{ij} = 2 \sum_{i=1}^\infty \sum_{j=i+1}^\infty a_{ij}
+  .\]%
+\end{lemma}
+
+\begin{proof}
+  Partition the terms into two symmetric halves: $a_{ij}$ for $i < j$ and $a_{ij}$ for $j < i$. Add the diagonal terms $a_{ii}$ separately. Absolute convergence ensures this rearrangement is valid.
+\end{proof}
+
+\subsection{Products of Infinite Series}
+
+\begin{definition}[Cauchy Product of Infinite Series]
+  Let $\sum_{n=0}^\infty a_n$ and $\sum_{n=0}^\infty b_n$ be two infinite series. The \emph{Cauchy product} of these series is defined as
+  \[%
+    \left(\sum_{n=0}^\infty a_n\right) \cdot \left(\sum_{n=0}^\infty b_n\right) = \sum_{n=0}^\infty \underbrace{\sum_{k=0}^n a_k b_{n-k}}_{c_n}
   .\]%
 \end{definition}
 
-In other words, $p$ is a limit point of $E$ if we can find points of $E$ \emph{distinct from $p$} that are as close to $p$ as we like.
-
-\begin{example}\leavevmode
-  \begin{enumerate}
-    \item Every point of the open interval $(0,1)$ is a limit point of $(0,1)$. This is because for any $x \in (0,1)$ and any $\epsilon > 0$, the neighborhood $V_\epsilon(x)$ contains other points of $(0,1)$ besides $x$.
-
-    \item The point $0$ is a limit point of $(0,1)$ even though $0 \notin (0,1)$, since any neighborhood around $0$ contains points of $(0,1)$.
-
-    \item Every rational number in $\R$ is a limit point of the set of rationals $\Q$, and every irrational number is also a limit point of $\Q$. This follows from the density of $\Q$ in $\R$.
-
-    \item An isolated point, such as $5$ in the set $\{5\}$, is \emph{not} a limit point, because we can choose $\epsilon$ small enough so that $V_\epsilon(5)$ contains no points of the set other than $5$ itself. \qedhere
-  \end{enumerate}
-\end{example}
-
-\begin{theorem}
-  A set $F \subseteq \R^n$ is closed if and only if it contains all its limit points.
+\begin{theorem}[Cauchy Product Convergence]
+  If $\sum_{n=0}^\infty a_n$ and $\sum_{n=0}^\infty b_n$ converge absolutely, then their Cauchy product also converges, and
+  \[%
+    \sum_{n=0}^\infty c_n = \left(\sum_{n=0}^\infty a_n\right) \cdot \left(\sum_{n=0}^\infty b_n\right)
+  .\]%
 \end{theorem}
 
 \begin{proof}
-  Suppose first that $F$ is closed. Let $p$ be a limit point of $F$. We must show $p \in F$. Assume for contradiction that $p \notin F$. Then $p \in F^c$, which is open because $F$ is closed. Since $F^c$ is open, there exists $\epsilon > 0$ such that $V_\epsilon(p) \subseteq F^c$. But then $V_\epsilon(p)$ contains no points of $F$, contradicting the fact that $p$ is a limit point of $F$. Thus $p \in F$.
-
-  Conversely, suppose $F$ contains all its limit points. We will show $F^c$ is open. Let $p \in F^c$. If $p$ were a limit point of $F$, it would belong to $F$ by assumption, contradicting $p \in F^c$. Hence $p$ is not a limit point of $F$. By the definition of limit point, there exists $\epsilon > 0$ such that $V_\epsilon(p) \cap F = \emptyset$, which means $V_\epsilon(p) \subseteq F^c$. This shows $F^c$ is open, so $F$ is closed.
+  Since $\sum_{n=0}^\infty \lvert a_n \rvert < \infty$ and $\sum_{n=0}^\infty \lvert b_n \rvert < \infty$, the absolute convergence allows us to rearrange and group terms freely. Using the definition of the Cauchy product and the triangle inequality, we can write
+  \[%
+    \left\lvert\sum_{n=0}^\infty \sum_{k=0}^n a_k b_{n-k}\right\rvert \leq \sum_{n=0}^\infty \sum_{k=0}^n \lvert a_k \rvert \lvert b_{n-k} \rvert
+  .\]%
+  By Fubini's theorem for double series, the double sum can be rearranged into a product of two convergent series
+  \[%
+    \sum_{n=0}^\infty \sum_{k=0}^n \lvert a_k \rvert \lvert b_{n-k} \rvert = \left(\sum_{n=0}^\infty \lvert a_n \rvert\right) \cdot \left(\sum_{n=0}^\infty \lvert b_n \rvert\right)
+  .\]%
+  Thus, the Cauchy product converges absolutely, and the value is given by the product of the original sums.
 \end{proof}
 
-\begin{definition}[Isolated Point]
-  A point $x \in E$ is called an \textit{isolated point} of $E$ if it is not a limit point of $E$. Equivalently, there exists $\epsilon > 0$ such that $V_\epsilon(x) \cap E = \{x\}$.
-\end{definition}
+\begin{corollary}[Conditional Convergence of the Cauchy Product]
+  If $\sum_{n=0}^\infty a_n$ and $\sum_{n=0}^\infty b_n$ converge conditionally (not absolutely), the Cauchy product may fail to converge or yield a different sum than the product of the original series.
+\end{corollary}
 
-Thus, points of a set are either limit points or isolated points. A set with no isolated points is called \emph{perfect}, a concept we will return to in a future date.
+\begin{example}[Harmonic Series and Cauchy Product]
+  Let $a_n = \frac{1}{n+1}$ and $b_n = \frac{1}{n+1}$, corresponding to the harmonic series. Since the harmonic series diverges, their Cauchy product also diverges. However, truncating the series to $n$ terms and analyzing the partial sums provides useful approximations.
+\end{example}
+
+\begin{lemma}[Cauchy Product and Power Series]
+  Let $\sum_{n=0}^\infty a_n x^n$ and $\sum_{n=0}^\infty b_n x^n$ be power series with radii of convergence $R_1$ and $R_2$, respectively. Then the Cauchy product of these series,
+  \[%
+    \sum_{n=0}^\infty c_n x^n, \quad c_n = \sum_{k=0}^n a_k b_{n-k}
+  ,\]%
+  converges for $\lvert x \rvert < \min(\{R_1, R_2\})$.
+\end{lemma}
+
+\begin{proof}
+  Within the radius of convergence, the partial sums of the power series converge absolutely. Applying the Cauchy product formula term by term preserves convergence, as long as $\lvert x \rvert$ is strictly less than the minimum of the radii.
+\end{proof}
+
+\begin{example}[Product of Geometric Series]
+  Consider the geometric series $\sum_{n=0}^\infty x^n = \frac{1}{1-x}$ for $\lvert x \rvert < 1$. The product of two such series is given by
+  \[%
+    \left(\sum_{n=0}^\infty x^n\right) \cdot \left(\sum_{n=0}^\infty x^n\right) = \sum_{n=0}^\infty c_n x^n
+  ,\]%
+  where
+  \[%
+    c_n = \sum_{k=0}^n 1 = n + 1
+  .\]%
+  Thus, the product is
+  \[%
+    \sum_{n=0}^\infty (n + 1)x^n = \frac{1}{(1 - x)^2}
+  .\qedhere\]%
+\end{example}
+
+\begin{theorem}[Multiplication of Exponential Series]
+  Let $e^x = \sum_{n=0}^\infty \frac{x^n}{n!}$. The product of two exponential series satisfies
+  \[%
+    \left(\sum_{n=0}^\infty \frac{x^n}{n!}\right) \cdot \left(\sum_{n=0}^\infty \frac{y^n}{n!}\right) = \sum_{n=0}^\infty \frac{(x+y)^n}{n!}
+  .\]%
+\end{theorem}
+
+\begin{proof}
+  Using the Cauchy product, the coefficient of $z^n$ in the product is given by
+  \[%
+    \sum_{k=0}^n \frac{x^k}{k!} \cdot \frac{y^{n-k}}{(n-k)!} = \frac{1}{n!} \sum_{k=0}^n \binom{n}{k} x^k y^{n-k}
+  .\]%
+  By the binomial theorem, this simplifies to
+  \[%
+    \frac{1}{n!} (x+y)^n
+  .\]%
+  Thus, the product of the exponential series is the exponential series of $x + y$.
+\end{proof}
