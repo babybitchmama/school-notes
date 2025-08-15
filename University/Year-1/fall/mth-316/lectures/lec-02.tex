@@ -1,221 +1,221 @@
 \lecture{2}{Oct 2 2024 Wed (13:02:51)}{Intro to Basic Proofs}
 
-% \subsection{Basic Logic for Proofs}
+\subsection{Basic Logic for Proofs}
 
-% Mathematics relies on precise logical reasoning. A \emph{proposition} is a statement that is either \emph{true} (T) or \emph{false} (F), but not both.
+Mathematics relies on precise logical reasoning. A \emph{proposition} is a statement that is either \emph{true} (T) or \emph{false} (F), but not both.
 
-% \begin{definition}[Logical Connectives]
-%   Let $P$ and $Q$ be propositions. We define:
-%   \begin{enumerate}
-%     \item $\neg P$ (\emph{not} $P$): True if $P$ is false, false if $P$ is true.
-%     \item $P \land Q$ (\emph{$P$ and $Q$}): True if both $P$ and $Q$ are true.
-%     \item $P \lor Q$ (\emph{$P$ or $Q$}, inclusive): True if at least one of $P$, $Q$ is true.
-%     \item $P \implies Q$ (\emph{$P$ implies $Q$}): False only when $P$ is true and $Q$ is false.
-%     \item $P \iff Q$ (\emph{$P$ if and only if $Q$}): True if $P$ and $Q$ have the same truth value.
-%   \end{enumerate}
-% \end{definition}
+\begin{definition}[Logical Connectives]
+  Let $P$ and $Q$ be propositions. We define:
+  \begin{enumerate}
+    \item $\neg P$ (\emph{not} $P$): True if $P$ is false, false if $P$ is true.
+    \item $P \land Q$ (\emph{$P$ and $Q$}): True if both $P$ and $Q$ are true.
+    \item $P \lor Q$ (\emph{$P$ or $Q$}, inclusive): True if at least one of $P$, $Q$ is true.
+    \item $P \implies Q$ (\emph{$P$ implies $Q$}): False only when $P$ is true and $Q$ is false.
+    \item $P \iff Q$ (\emph{$P$ if and only if $Q$}): True if $P$ and $Q$ have the same truth value.
+  \end{enumerate}
+\end{definition}
 
-% \begin{note}
-%   The implication $P \implies Q$ is equivalent to $\neg P \lor Q$.
-% \end{note}
+\begin{note}
+  The implication $P \implies Q$ is equivalent to $\neg P \lor Q$.
+\end{note}
 
-% \begin{definition}[Contrapositive and Converse]
-%   The \emph{contrapositive} of $P \implies Q$ is $\neg Q \implies \neg P$ (logically equivalent to the original).
-%   The \emph{converse} of $P \implies Q$ is $Q \implies P$ (not generally equivalent).
-% \end{definition}
+\begin{definition}[Contrapositive and Converse]
+  The \emph{contrapositive} of $P \implies Q$ is $\neg Q \implies \neg P$ (logically equivalent to the original).
+  The \emph{converse} of $P \implies Q$ is $Q \implies P$ (not generally equivalent).
+\end{definition}
 
-% \begin{example}
-%   Let $P$: ``$n$ is divisible by $4$'' and $Q$: ``$n$ is even.''
-%   Then $P \implies Q$ is true for all integers $n$, and the contrapositive is: ``If $n$ is not even, then $n$ is not divisible by $4$.''
-%   The converse, ``If $n$ is even, then $n$ is divisible by $4$,'' is false (counterexample: $n=2$).
-% \end{example}
+\begin{example}
+  Let $P$: ``$n$ is divisible by $4$'' and $Q$: ``$n$ is even.''
+  Then $P \implies Q$ is true for all integers $n$, and the contrapositive is: ``If $n$ is not even, then $n$ is not divisible by $4$.''
+  The converse, ``If $n$ is even, then $n$ is divisible by $4$,'' is false (counterexample: $n=2$).
+\end{example}
 
-% \subsubsection*{Common Logical Equivalences}
+\subsubsection*{Common Logical Equivalences}
 
-% For propositions $P$, $Q$, $R$:
-% \begin{alignat*}{3}
-%     \text{(Double negation)} &\quad \neg(\neg P) &&\equiv P, \\
-%     \text{(De Morgan's laws)} &\quad \neg(P \land Q) &&\equiv (\neg P) \lor (\neg Q), \\
-%                               &\quad \neg(P \lor Q) &&\equiv (\neg P) \land (\neg Q), \\
-%     \text{(Implication rewrite)} &\quad P \implies Q &&\equiv \neg P \lor Q, \\
-%     \text{(Contrapositive)} &\quad P \implies Q &&\equiv (\neg Q) \implies (\neg P), \\
-%     \text{(Distributive)} &\quad P \land (Q \lor R) &&\equiv (P \land Q) \lor (P \land R)
-% .\end{alignat*}
+For propositions $P$, $Q$, $R$:
+\begin{alignat*}{3}
+    \text{(Double negation)} &\quad \neg(\neg P) &&\equiv P, \\
+    \text{(De Morgan's laws)} &\quad \neg(P \land Q) &&\equiv (\neg P) \lor (\neg Q), \\
+                              &\quad \neg(P \lor Q) &&\equiv (\neg P) \land (\neg Q), \\
+    \text{(Implication rewrite)} &\quad P \implies Q &&\equiv \neg P \lor Q, \\
+    \text{(Contrapositive)} &\quad P \implies Q &&\equiv (\neg Q) \implies (\neg P), \\
+    \text{(Distributive)} &\quad P \land (Q \lor R) &&\equiv (P \land Q) \lor (P \land R)
+.\end{alignat*}
 
-% \subsubsection*{Negating Quantified Statements}
+\subsubsection*{Negating Quantified Statements}
 
-% For predicates $P(x)$:
-% \begin{align*}
-%   \neg (\forall x\ P(x)) &\equiv \exists x \ (\neg P(x)), \\
-%   \neg (\exists x\ P(x)) &\equiv \forall x \ (\neg P(x)).
-% \end{align*}
+For predicates $P(x)$:
+\begin{align*}
+  \neg (\forall x\ P(x)) &\equiv \exists x \ (\neg P(x)), \\
+  \neg (\exists x\ P(x)) &\equiv \forall x \ (\neg P(x)).
+\end{align*}
 
-% \begin{example}
-%   Negate: ``For every $x \in \R$, $x^2 \ge 0$.''
-%   Negation: ``There exists $x \in \R$ such that $x^2 < 0$.''
-%   The negated statement is false, so the original statement is true.
-% \end{example}
+\begin{example}
+  Negate: ``For every $x \in \R$, $x^2 \ge 0$.''
+  Negation: ``There exists $x \in \R$ such that $x^2 < 0$.''
+  The negated statement is false, so the original statement is true.
+\end{example}
 
-% \subsubsection*{Proof Strategy: Given $\to$ Goal}
-% When proving a statement:
-% \begin{enumerate}
-%   \item Identify the \emph{givens} -- hypotheses you can use freely.
-%   \item Identify the \emph{goal} -- what must be shown.
-%   \item Work \emph{forward} from the givens using definitions, algebra, and known theorems.
-%   \item Work \emph{backward} from the goal: ask ``What would guarantee this is true?''
-%   If the two chains meet, you have your proof.
-% \end{enumerate}
+\subsubsection*{Proof Strategy: Given $\to$ Goal}
+When proving a statement:
+\begin{enumerate}
+  \item Identify the \emph{givens} -- hypotheses you can use freely.
+  \item Identify the \emph{goal} -- what must be shown.
+  \item Work \emph{forward} from the givens using definitions, algebra, and known theorems.
+  \item Work \emph{backward} from the goal: ask ``What would guarantee this is true?''
+  If the two chains meet, you have your proof.
+\end{enumerate}
 
-% \begin{note}
-%   This ``two-way'' thinking is especially useful for direct proofs and for deciding when to switch to a contrapositive or contradiction argument.
-% \end{note}
+\begin{note}
+  This ``two-way'' thinking is especially useful for direct proofs and for deciding when to switch to a contrapositive or contradiction argument.
+\end{note}
 
-% \subsection{Fundamental Proof Techniques}
+\subsection{Fundamental Proof Techniques}
 
-% In mathematical reasoning, several standard proof strategies are used repeatedly. Mastery of these approaches will greatly enhance problem-solving ability.
+In mathematical reasoning, several standard proof strategies are used repeatedly. Mastery of these approaches will greatly enhance problem-solving ability.
 
-% \subsubsection{Direct Proof}
+\subsubsection{Direct Proof}
 
-% A \emph{direct proof} establishes the truth of an implication $P \implies Q$ by assuming $P$ and logically deducing $Q$.
+A \emph{direct proof} establishes the truth of an implication $P \implies Q$ by assuming $P$ and logically deducing $Q$.
 
-% Generally, you assume $P$ is true, then use definitions, axioms, and previously established results to show that $Q$ must also be true.
+Generally, you assume $P$ is true, then use definitions, axioms, and previously established results to show that $Q$ must also be true.
 
-% \begin{question}
-%   Prove if $n$ is even, then $n^2$ is even.
-% \end{question}
+\begin{question}
+  Prove if $n$ is even, then $n^2$ is even.
+\end{question}
 
-% \begin{proof}
-%   The assumption is that $n$ is even, meaning there exists some integer $k$ such that $n = 2k$. Then, $n^2 = (2k)^2 = 4k^2 = 2(2k^2) = 2m$, where $m = 2k^2$, making $n^2$ even.
-% \end{proof}
+\begin{proof}
+  The assumption is that $n$ is even, meaning there exists some integer $k$ such that $n = 2k$. Then, $n^2 = (2k)^2 = 4k^2 = 2(2k^2) = 2m$, where $m = 2k^2$, making $n^2$ even.
+\end{proof}
 
-% \begin{question}
-%   Prove that if $a$ and $b$ are rational numbers, then $a + b$ is also a rational number.
-% \end{question}
+\begin{question}
+  Prove that if $a$ and $b$ are rational numbers, then $a + b$ is also a rational number.
+\end{question}
 
-% \begin{solution}
-%   Write $a = \frac{p}{q}$ and $b = \frac{r}{s}$ with integers $p,q,r,s$, $q,s \neq 0$. Then
-%   \[%
-%     a + b = \frac{ps + rq}{qs}
-%   ,\]%
-%   is a ratio of integers, hence rational.
-% \end{solution}
+\begin{solution}
+  Write $a = \frac{p}{q}$ and $b = \frac{r}{s}$ with integers $p,q,r,s$, $q,s \neq 0$. Then
+  \[%
+    a + b = \frac{ps + rq}{qs}
+  ,\]%
+  is a ratio of integers, hence rational.
+\end{solution}
 
-% \subsubsection{Proof by Contrapositive}
+\subsubsection{Proof by Contrapositive}
 
-% To prove $P \implies Q$, prove instead $\neg Q \implies \neg P$.
+To prove $P \implies Q$, prove instead $\neg Q \implies \neg P$.
 
-% \begin{question}
-%   Prove if $n^2$ is odd, then $n$ is odd.
-% \end{question}
+\begin{question}
+  Prove if $n^2$ is odd, then $n$ is odd.
+\end{question}
 
-% \begin{proof}
-%   If $n$ is even, then $n^2$ is even. This is immediate from the direct proof above.
-% \end{proof}
+\begin{proof}
+  If $n$ is even, then $n^2$ is even. This is immediate from the direct proof above.
+\end{proof}
 
-% \begin{question}
-%   Prove if $\sfrac{n}{m}$ is irrational, then $n$ is irrational or $m$ is irrational.
-% \end{question}
+\begin{question}
+  Prove if $\sfrac{n}{m}$ is irrational, then $n$ is irrational or $m$ is irrational.
+\end{question}
 
-% \begin{proof}
-%   If $n$ and $m$ are rational, then $\sfrac{n}{m}$ is rational. Clear from closure of rationals under division.
-% \end{proof}
+\begin{proof}
+  If $n$ and $m$ are rational, then $\sfrac{n}{m}$ is rational. Clear from closure of rationals under division.
+\end{proof}
 
-% \subsubsection{Proof by Contradiction}
+\subsubsection{Proof by Contradiction}
 
-% Assume $P$ is true and $Q$ is false, then derive a contradiction.
+Assume $P$ is true and $Q$ is false, then derive a contradiction.
 
-% \paragraph{How to do it:}
-% \begin{enumerate}
-%   \item Assume the negation of the conclusion.
-%   \item Derive an impossibility (e.g., $0 = 1$, $x$ both rational and irrational).
-% \end{enumerate}
+\paragraph{How to do it:}
+\begin{enumerate}
+  \item Assume the negation of the conclusion.
+  \item Derive an impossibility (e.g., $0 = 1$, $x$ both rational and irrational).
+\end{enumerate}
 
-% \paragraph{Tips:}
-% \begin{itemize}
-%   \item Useful when proving existence or impossibility.
-%   \item Often used with number theory and irrationality proofs.
-% \end{itemize}
+\paragraph{Tips:}
+\begin{itemize}
+  \item Useful when proving existence or impossibility.
+  \item Often used with number theory and irrationality proofs.
+\end{itemize}
 
-% \begin{question}
-%   Prove $\sqrt{2}$ is irrational.
-% \end{question}
+\begin{question}
+  Prove $\sqrt{2}$ is irrational.
+\end{question}
 
-% \begin{proof}
-%   Assume $\sqrt{2} = \sfrac{p}{q}$ in lowest terms. Then $2q^2 = p^2$ implies $p$ even. Let $p=2k$, then $q$ is also even.
-% \end{proof}
+\begin{proof}
+  Assume $\sqrt{2} = \sfrac{p}{q}$ in lowest terms. Then $2q^2 = p^2$ implies $p$ even. Let $p=2k$, then $q$ is also even.
+\end{proof}
 
-% \begin{question}
-%   Prove there are infinitely many primes.
-% \end{question}
+\begin{question}
+  Prove there are infinitely many primes.
+\end{question}
 
-% \begin{proof}
-%   Assume finitely many primes $p_1, \cdots, p_n$. Consider $P = p_1 \cdots p_n + 1$. Then $P$ has a prime factor not in the list.
-% \end{proof}
+\begin{proof}
+  Assume finitely many primes $p_1, \cdots, p_n$. Consider $P = p_1 \cdots p_n + 1$. Then $P$ has a prime factor not in the list.
+\end{proof}
 
-% \subsubsection{Proof by Mathematical Induction}
+\subsubsection{Proof by Mathematical Induction}
 
-% A method for statements involving $n \in \N$.
+A method for statements involving $n \in \N$.
 
-% \begin{definition}[Mathematical induction]
-%   Let $P(n)$ be a statement involving $n \in \N$. If:
-%   \begin{enumerate}
-%     \item $P(1)$ is true (base case), and
-%     \item $P(n) \implies P(n+1)$ holds for all $n$ (inductive step),
-%   \end{enumerate}
-%   then $P(n)$ holds for all $n \in \N$.
-% \end{definition}
+\begin{definition}[Mathematical induction]
+  Let $P(n)$ be a statement involving $n \in \N$. If:
+  \begin{enumerate}
+    \item $P(1)$ is true (base case), and
+    \item $P(n) \implies P(n+1)$ holds for all $n$ (inductive step),
+  \end{enumerate}
+  then $P(n)$ holds for all $n \in \N$.
+\end{definition}
 
-% \begin{question}
-%   Prove $\sum_{i=1}^n i = \frac{n(n+1)}{2}$.
-% \end{question}
+\begin{question}
+  Prove $\sum_{i=1}^n i = \frac{n(n+1)}{2}$.
+\end{question}
 
-% \begin{proof}
-%   It clearly holds for $n = 1$. Assume true for $n = k$. Then,
-%   \[%
-%     \sum_{i=1}^{k+1} i = \frac{k(k + 1)}{2} + (k + 1) = \frac{(k + 1)(k + 2)}{2}
-%   .\qedhere\]%
-% \end{proof}
+\begin{proof}
+  It clearly holds for $n = 1$. Assume true for $n = k$. Then,
+  \[%
+    \sum_{i=1}^{k+1} i = \frac{k(k + 1)}{2} + (k + 1) = \frac{(k + 1)(k + 2)}{2}
+  .\qedhere\]%
+\end{proof}
 
-% \begin{question}
-%   Prove $2^n > n$ for $n \geq 1$.
-% \end{question}
+\begin{question}
+  Prove $2^n > n$ for $n \geq 1$.
+\end{question}
 
-% \begin{proof}
-%   It holds for $n = 1$, since $2 > 1$. Assume that $2^k > k$, then $2^{k+1} = 2 \cdot 2^k > 2k \ge k + 1$, for $k \ge 1$.
-% \end{proof}
+\begin{proof}
+  It holds for $n = 1$, since $2 > 1$. Assume that $2^k > k$, then $2^{k+1} = 2 \cdot 2^k > 2k \ge k + 1$, for $k \ge 1$.
+\end{proof}
 
-% \begin{question}
-%   Let $x_1 = 1$ and $x_{n+1} = \frac{1}{2}x_n + 1$. Show that $(x_n)$ is increasing.
-% \end{question}
+\begin{question}
+  Let $x_1 = 1$ and $x_{n+1} = \frac{1}{2}x_n + 1$. Show that $(x_n)$ is increasing.
+\end{question}
 
-% \begin{solution}
-%   Let $P(n)$ be the statement $x_n \le x_{n+1}$.
+\begin{solution}
+  Let $P(n)$ be the statement $x_n \le x_{n+1}$.
 
-%   \emph{Base case:} $x_1 = 1$ and $x_2 = \frac{1}{2}(1) + 1 = \frac{3}{2} > x_1$.
+  \emph{Base case:} $x_1 = 1$ and $x_2 = \frac{1}{2}(1) + 1 = \frac{3}{2} > x_1$.
 
-%   \emph{Inductive step:} Assume $x_{n+1} \ge x_n$. Then:
-%   \[%
-%     x_{n+2} - x_{n+1} = \frac12(x_{n+1} + 1) - \frac12(x_n + 1) = \frac12(x_{n+1} - x_n) > 0
-%   .\]%
-%   Therefore $x_{n+2} > x_{n+1}$, completing the step. By induction, $(x_n)$ is increasing.
-% \end{solution}
+  \emph{Inductive step:} Assume $x_{n+1} \ge x_n$. Then:
+  \[%
+    x_{n+2} - x_{n+1} = \frac12(x_{n+1} + 1) - \frac12(x_n + 1) = \frac12(x_{n+1} - x_n) > 0
+  .\]%
+  Therefore $x_{n+2} > x_{n+1}$, completing the step. By induction, $(x_n)$ is increasing.
+\end{solution}
 
-% \begin{question}
-%   Show that $(\forall n \in \N)[3 \mid (n^3 + 2n)]$.
-% \end{question}
+\begin{question}
+  Show that $(\forall n \in \N)[3 \mid (n^3 + 2n)]$.
+\end{question}
 
-% \begin{solution}
-%   Let $P(n)$ be: $3 \mid (n^3 + 2n)$.
+\begin{solution}
+  Let $P(n)$ be: $3 \mid (n^3 + 2n)$.
 
-%   \emph{Base case:} For $n=1$, $1^3 + 2(1) = 3$ is divisible by $3$.
+  \emph{Base case:} For $n=1$, $1^3 + 2(1) = 3$ is divisible by $3$.
 
-%   \emph{Inductive step:} Assume $n^3 + 2n$ is divisible by $3$. Then:
-%   \begin{align*}
-%     (n+1)^3 + 2(n+1)
-%       &= n^3 + 3n^2 + 3n + 1 + 2n + 2 \\
-%       &= (n^3 + 2n) + 3(n^2 + n + 1)
-%   .\end{align*}
-%   By hypothesis, $n^3 + 2n$ is divisible by $3$, and $3(n^2 + n + 1)$ is clearly divisible by $3$. Thus the sum is divisible by $3$.
+  \emph{Inductive step:} Assume $n^3 + 2n$ is divisible by $3$. Then:
+  \begin{align*}
+    (n+1)^3 + 2(n+1)
+      &= n^3 + 3n^2 + 3n + 1 + 2n + 2 \\
+      &= (n^3 + 2n) + 3(n^2 + n + 1)
+  .\end{align*}
+  By hypothesis, $n^3 + 2n$ is divisible by $3$, and $3(n^2 + n + 1)$ is clearly divisible by $3$. Thus the sum is divisible by $3$.
 
-%   By induction, $3 \mid (n^3 + 2n)$ for all $n \in \N$.
-% \end{solution}
+  By induction, $3 \mid (n^3 + 2n)$ for all $n \in \N$.
+\end{solution}

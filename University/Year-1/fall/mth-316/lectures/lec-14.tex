@@ -1,148 +1,148 @@
 \lecture{14}{Nov 1 2024 Fri (13:02:06)}{Double Summations of Infinite Series}
 
-% \begin{definition}[Iterated Summation]
-%   Given a doubly indexed array of real numbers $\{a_{ij} \mid i, j \in \N\}$, the \emph{iterated sum} of the array is defined as
-%   \[%
-%     S_{mn} = \sum_{i=1}^m \sum_{j=1}^n a_{ij}
-%   .\]%
-%   The \emph{double summation} is defined as
-%   \[%
-%     \sum_{i,j=1}^\infty a_{ij} = \lim_{m, n \to \infty} S_{mn}
-%   .\]%
-% \end{definition}
+\begin{definition}[Iterated Summation]
+  Given a doubly indexed array of real numbers $\{a_{ij} \mid i, j \in \N\}$, the \emph{iterated sum} of the array is defined as
+  \[%
+    S_{mn} = \sum_{i=1}^m \sum_{j=1}^n a_{ij}
+  .\]%
+  The \emph{double summation} is defined as
+  \[%
+    \sum_{i,j=1}^\infty a_{ij} = \lim_{m, n \to \infty} S_{mn}
+  .\]%
+\end{definition}
 
-% \begin{theorem}[Fubini's Theorem for Double Series]
-%   Let $\{a_{ij} \mid i, j \in \N\}$ be a doubly indexed array of real numbers.
-%   \begin{enumerate}
-%     \item If $\sum_{i,j=1}^\infty \lvert a_{ij} \rvert < \infty$ (absolute convergence), then the double series converges, and the order of summation does not matter
-%       \[%
-%         \sum_{i=1}^\infty \sum_{j=1}^\infty a_{ij} = \sum_{j=1}^\infty \sum_{i=1}^\infty a_{ij} = \sum_{i,j=1}^\infty a_{ij}
-%       .\]%
+\begin{theorem}[Fubini's Theorem for Double Series]
+  Let $\{a_{ij} \mid i, j \in \N\}$ be a doubly indexed array of real numbers.
+  \begin{enumerate}
+    \item If $\sum_{i,j=1}^\infty \lvert a_{ij} \rvert < \infty$ (absolute convergence), then the double series converges, and the order of summation does not matter
+      \[%
+        \sum_{i=1}^\infty \sum_{j=1}^\infty a_{ij} = \sum_{j=1}^\infty \sum_{i=1}^\infty a_{ij} = \sum_{i,j=1}^\infty a_{ij}
+      .\]%
 
-%     \item If $\sum_{i=1}^\infty \sum_{j=1}^\infty a_{ij}$ converges conditionally (not absolutely), then rearranging the terms or changing the order of summation may alter the sum or even lead to divergence.
-%   \end{enumerate}
-% \end{theorem}
+    \item If $\sum_{i=1}^\infty \sum_{j=1}^\infty a_{ij}$ converges conditionally (not absolutely), then rearranging the terms or changing the order of summation may alter the sum or even lead to divergence.
+  \end{enumerate}
+\end{theorem}
 
-% \begin{proof}
-%   Suppose $\sum_{i,j=1}^\infty \lvert a_{ij} \rvert < \infty$. Let $S_{mn} = \sum_{i=1}^m \sum_{j=1}^n a_{ij}$. For any fixed $m, n \in \N$, we can write
-%   \[%
-%     \lvert S_{mn} \rvert \leq \sum_{i=1}^m \sum_{j=1}^n \lvert a_{ij} \rvert \leq \sum_{i,j=1}^\infty \lvert a_{ij} \rvert
-%   .\]%
-%   By the monotone convergence theorem, the limits $\lim_{m \to \infty} \sum_{i=1}^m \sum_{j=1}^n a_{ij}$ and $\lim_{n \to \infty} \sum_{j=1}^n \sum_{i=1}^m a_{ij}$ exist and are equal. Thus,
-%   \[%
-%     \sum_{i=1}^\infty \sum_{j=1}^\infty a_{ij} = \sum_{j=1}^\infty \sum_{i=1}^\infty a_{ij}
-%   .\qedhere\]%
-% \end{proof}
+\begin{proof}
+  Suppose $\sum_{i,j=1}^\infty \lvert a_{ij} \rvert < \infty$. Let $S_{mn} = \sum_{i=1}^m \sum_{j=1}^n a_{ij}$. For any fixed $m, n \in \N$, we can write
+  \[%
+    \lvert S_{mn} \rvert \leq \sum_{i=1}^m \sum_{j=1}^n \lvert a_{ij} \rvert \leq \sum_{i,j=1}^\infty \lvert a_{ij} \rvert
+  .\]%
+  By the monotone convergence theorem, the limits $\lim_{m \to \infty} \sum_{i=1}^m \sum_{j=1}^n a_{ij}$ and $\lim_{n \to \infty} \sum_{j=1}^n \sum_{i=1}^m a_{ij}$ exist and are equal. Thus,
+  \[%
+    \sum_{i=1}^\infty \sum_{j=1}^\infty a_{ij} = \sum_{j=1}^\infty \sum_{i=1}^\infty a_{ij}
+  .\qedhere\]%
+\end{proof}
 
-% \begin{corollary}[Order of Summation for Nonnegative Terms]
-%   If $a_{ij} \geq 0$ for all $i, j \in \N$, then
-%   \[%
-%     \sum_{i=1}^\infty \sum_{j=1}^\infty a_{ij} = \sum_{j=1}^\infty \sum_{i=1}^\infty a_{ij}
-%   ,\]%
-%   even if the series does not converge absolutely.
-% \end{corollary}
+\begin{corollary}[Order of Summation for Nonnegative Terms]
+  If $a_{ij} \geq 0$ for all $i, j \in \N$, then
+  \[%
+    \sum_{i=1}^\infty \sum_{j=1}^\infty a_{ij} = \sum_{j=1}^\infty \sum_{i=1}^\infty a_{ij}
+  ,\]%
+  even if the series does not converge absolutely.
+\end{corollary}
 
-% \begin{proof}
-%   For nonnegative terms, $\sum_{i,j=1}^\infty a_{ij}$ converges by monotonicity if and only if the partial sums $\sum_{i=1}^m \sum_{j=1}^n a_{ij}$ converge. Thus, the iterated sums also converge and are equal.
-% \end{proof}
+\begin{proof}
+  For nonnegative terms, $\sum_{i,j=1}^\infty a_{ij}$ converges by monotonicity if and only if the partial sums $\sum_{i=1}^m \sum_{j=1}^n a_{ij}$ converge. Thus, the iterated sums also converge and are equal.
+\end{proof}
 
-% \begin{example}[Harmonic Series Grid]
-%   Consider $a_{ij} = \frac{1}{i+j}$. We investigate the sums
-%   \[%
-%     \sum_{i=1}^\infty \sum_{j=1}^\infty a_{ij} \aand \sum_{j=1}^\infty \sum_{i=1}^\infty a_{ij}
-%   .\]%
-%   Since $a_{ij}$ is not absolutely convergent (due to divergence of $\sum_{i,j=1}^\infty \frac{1}{i+j}$), the series cannot be rearranged freely. Direct computation of either summation requires careful handling of the partial sums.
-% \end{example}
+\begin{example}[Harmonic Series Grid]
+  Consider $a_{ij} = \frac{1}{i+j}$. We investigate the sums
+  \[%
+    \sum_{i=1}^\infty \sum_{j=1}^\infty a_{ij} \aand \sum_{j=1}^\infty \sum_{i=1}^\infty a_{ij}
+  .\]%
+  Since $a_{ij}$ is not absolutely convergent (due to divergence of $\sum_{i,j=1}^\infty \frac{1}{i+j}$), the series cannot be rearranged freely. Direct computation of either summation requires careful handling of the partial sums.
+\end{example}
 
-% \begin{lemma}[Symmetry of Convergent Double Series]
-%   If $\{a_{ij}\}$ is absolutely convergent and symmetric, i.e., $a_{ij} = a_{ji}$ for all $i, j$, then
-%   \[%
-%     \sum_{i,j=1}^\infty a_{ij} = 2 \sum_{i=1}^\infty \sum_{j=i+1}^\infty a_{ij}
-%   .\]%
-% \end{lemma}
+\begin{lemma}[Symmetry of Convergent Double Series]
+  If $\{a_{ij}\}$ is absolutely convergent and symmetric, i.e., $a_{ij} = a_{ji}$ for all $i, j$, then
+  \[%
+    \sum_{i,j=1}^\infty a_{ij} = 2 \sum_{i=1}^\infty \sum_{j=i+1}^\infty a_{ij}
+  .\]%
+\end{lemma}
 
-% \begin{proof}
-%   Partition the terms into two symmetric halves: $a_{ij}$ for $i < j$ and $a_{ij}$ for $j < i$. Add the diagonal terms $a_{ii}$ separately. Absolute convergence ensures this rearrangement is valid.
-% \end{proof}
+\begin{proof}
+  Partition the terms into two symmetric halves: $a_{ij}$ for $i < j$ and $a_{ij}$ for $j < i$. Add the diagonal terms $a_{ii}$ separately. Absolute convergence ensures this rearrangement is valid.
+\end{proof}
 
-% \subsection{Products of Infinite Series}
+\subsection{Products of Infinite Series}
 
-% \begin{definition}[Cauchy Product of Infinite Series]
-%   Let $\sum_{n=0}^\infty a_n$ and $\sum_{n=0}^\infty b_n$ be two infinite series. The \emph{Cauchy product} of these series is defined as
-%   \[%
-%     \left(\sum_{n=0}^\infty a_n\right) \cdot \left(\sum_{n=0}^\infty b_n\right) = \sum_{n=0}^\infty \underbrace{\sum_{k=0}^n a_k b_{n-k}}_{c_n}
-%   .\]%
-% \end{definition}
+\begin{definition}[Cauchy Product of Infinite Series]
+  Let $\sum_{n=0}^\infty a_n$ and $\sum_{n=0}^\infty b_n$ be two infinite series. The \emph{Cauchy product} of these series is defined as
+  \[%
+    \left(\sum_{n=0}^\infty a_n\right) \cdot \left(\sum_{n=0}^\infty b_n\right) = \sum_{n=0}^\infty \underbrace{\sum_{k=0}^n a_k b_{n-k}}_{c_n}
+  .\]%
+\end{definition}
 
-% \begin{theorem}[Cauchy Product Convergence]
-%   If $\sum_{n=0}^\infty a_n$ and $\sum_{n=0}^\infty b_n$ converge absolutely, then their Cauchy product also converges, and
-%   \[%
-%     \sum_{n=0}^\infty c_n = \left(\sum_{n=0}^\infty a_n\right) \cdot \left(\sum_{n=0}^\infty b_n\right)
-%   .\]%
-% \end{theorem}
+\begin{theorem}[Cauchy Product Convergence]
+  If $\sum_{n=0}^\infty a_n$ and $\sum_{n=0}^\infty b_n$ converge absolutely, then their Cauchy product also converges, and
+  \[%
+    \sum_{n=0}^\infty c_n = \left(\sum_{n=0}^\infty a_n\right) \cdot \left(\sum_{n=0}^\infty b_n\right)
+  .\]%
+\end{theorem}
 
-% \begin{proof}
-%   Since $\sum_{n=0}^\infty \lvert a_n \rvert < \infty$ and $\sum_{n=0}^\infty \lvert b_n \rvert < \infty$, the absolute convergence allows us to rearrange and group terms freely. Using the definition of the Cauchy product and the triangle inequality, we can write
-%   \[%
-%     \left\lvert\sum_{n=0}^\infty \sum_{k=0}^n a_k b_{n-k}\right\rvert \leq \sum_{n=0}^\infty \sum_{k=0}^n \lvert a_k \rvert \lvert b_{n-k} \rvert
-%   .\]%
-%   By Fubini's theorem for double series, the double sum can be rearranged into a product of two convergent series
-%   \[%
-%     \sum_{n=0}^\infty \sum_{k=0}^n \lvert a_k \rvert \lvert b_{n-k} \rvert = \left(\sum_{n=0}^\infty \lvert a_n \rvert\right) \cdot \left(\sum_{n=0}^\infty \lvert b_n \rvert\right)
-%   .\]%
-%   Thus, the Cauchy product converges absolutely, and the value is given by the product of the original sums.
-% \end{proof}
+\begin{proof}
+  Since $\sum_{n=0}^\infty \lvert a_n \rvert < \infty$ and $\sum_{n=0}^\infty \lvert b_n \rvert < \infty$, the absolute convergence allows us to rearrange and group terms freely. Using the definition of the Cauchy product and the triangle inequality, we can write
+  \[%
+    \left\lvert\sum_{n=0}^\infty \sum_{k=0}^n a_k b_{n-k}\right\rvert \leq \sum_{n=0}^\infty \sum_{k=0}^n \lvert a_k \rvert \lvert b_{n-k} \rvert
+  .\]%
+  By Fubini's theorem for double series, the double sum can be rearranged into a product of two convergent series
+  \[%
+    \sum_{n=0}^\infty \sum_{k=0}^n \lvert a_k \rvert \lvert b_{n-k} \rvert = \left(\sum_{n=0}^\infty \lvert a_n \rvert\right) \cdot \left(\sum_{n=0}^\infty \lvert b_n \rvert\right)
+  .\]%
+  Thus, the Cauchy product converges absolutely, and the value is given by the product of the original sums.
+\end{proof}
 
-% \begin{corollary}[Conditional Convergence of the Cauchy Product]
-%   If $\sum_{n=0}^\infty a_n$ and $\sum_{n=0}^\infty b_n$ converge conditionally (not absolutely), the Cauchy product may fail to converge or yield a different sum than the product of the original series.
-% \end{corollary}
+\begin{corollary}[Conditional Convergence of the Cauchy Product]
+  If $\sum_{n=0}^\infty a_n$ and $\sum_{n=0}^\infty b_n$ converge conditionally (not absolutely), the Cauchy product may fail to converge or yield a different sum than the product of the original series.
+\end{corollary}
 
-% \begin{example}[Harmonic Series and Cauchy Product]
-%   Let $a_n = \frac{1}{n+1}$ and $b_n = \frac{1}{n+1}$, corresponding to the harmonic series. Since the harmonic series diverges, their Cauchy product also diverges. However, truncating the series to $n$ terms and analyzing the partial sums provides useful approximations.
-% \end{example}
+\begin{example}[Harmonic Series and Cauchy Product]
+  Let $a_n = \frac{1}{n+1}$ and $b_n = \frac{1}{n+1}$, corresponding to the harmonic series. Since the harmonic series diverges, their Cauchy product also diverges. However, truncating the series to $n$ terms and analyzing the partial sums provides useful approximations.
+\end{example}
 
-% \begin{lemma}[Cauchy Product and Power Series]
-%   Let $\sum_{n=0}^\infty a_n x^n$ and $\sum_{n=0}^\infty b_n x^n$ be power series with radii of convergence $R_1$ and $R_2$, respectively. Then the Cauchy product of these series,
-%   \[%
-%     \sum_{n=0}^\infty c_n x^n, \quad c_n = \sum_{k=0}^n a_k b_{n-k}
-%   ,\]%
-%   converges for $\lvert x \rvert < \min(\{R_1, R_2\})$.
-% \end{lemma}
+\begin{lemma}[Cauchy Product and Power Series]
+  Let $\sum_{n=0}^\infty a_n x^n$ and $\sum_{n=0}^\infty b_n x^n$ be power series with radii of convergence $R_1$ and $R_2$, respectively. Then the Cauchy product of these series,
+  \[%
+    \sum_{n=0}^\infty c_n x^n, \quad c_n = \sum_{k=0}^n a_k b_{n-k}
+  ,\]%
+  converges for $\lvert x \rvert < \min(\{R_1, R_2\})$.
+\end{lemma}
 
-% \begin{proof}
-%   Within the radius of convergence, the partial sums of the power series converge absolutely. Applying the Cauchy product formula term by term preserves convergence, as long as $\lvert x \rvert$ is strictly less than the minimum of the radii.
-% \end{proof}
+\begin{proof}
+  Within the radius of convergence, the partial sums of the power series converge absolutely. Applying the Cauchy product formula term by term preserves convergence, as long as $\lvert x \rvert$ is strictly less than the minimum of the radii.
+\end{proof}
 
-% \begin{example}[Product of Geometric Series]
-%   Consider the geometric series $\sum_{n=0}^\infty x^n = \frac{1}{1-x}$ for $\lvert x \rvert < 1$. The product of two such series is given by
-%   \[%
-%     \left(\sum_{n=0}^\infty x^n\right) \cdot \left(\sum_{n=0}^\infty x^n\right) = \sum_{n=0}^\infty c_n x^n
-%   ,\]%
-%   where
-%   \[%
-%     c_n = \sum_{k=0}^n 1 = n + 1
-%   .\]%
-%   Thus, the product is
-%   \[%
-%     \sum_{n=0}^\infty (n + 1)x^n = \frac{1}{(1 - x)^2}
-%   .\qedhere\]%
-% \end{example}
+\begin{example}[Product of Geometric Series]
+  Consider the geometric series $\sum_{n=0}^\infty x^n = \frac{1}{1-x}$ for $\lvert x \rvert < 1$. The product of two such series is given by
+  \[%
+    \left(\sum_{n=0}^\infty x^n\right) \cdot \left(\sum_{n=0}^\infty x^n\right) = \sum_{n=0}^\infty c_n x^n
+  ,\]%
+  where
+  \[%
+    c_n = \sum_{k=0}^n 1 = n + 1
+  .\]%
+  Thus, the product is
+  \[%
+    \sum_{n=0}^\infty (n + 1)x^n = \frac{1}{(1 - x)^2}
+  .\qedhere\]%
+\end{example}
 
-% \begin{theorem}[Multiplication of Exponential Series]
-%   Let $e^x = \sum_{n=0}^\infty \frac{x^n}{n!}$. The product of two exponential series satisfies
-%   \[%
-%     \left(\sum_{n=0}^\infty \frac{x^n}{n!}\right) \cdot \left(\sum_{n=0}^\infty \frac{y^n}{n!}\right) = \sum_{n=0}^\infty \frac{(x+y)^n}{n!}
-%   .\]%
-% \end{theorem}
+\begin{theorem}[Multiplication of Exponential Series]
+  Let $e^x = \sum_{n=0}^\infty \frac{x^n}{n!}$. The product of two exponential series satisfies
+  \[%
+    \left(\sum_{n=0}^\infty \frac{x^n}{n!}\right) \cdot \left(\sum_{n=0}^\infty \frac{y^n}{n!}\right) = \sum_{n=0}^\infty \frac{(x+y)^n}{n!}
+  .\]%
+\end{theorem}
 
-% \begin{proof}
-%   Using the Cauchy product, the coefficient of $z^n$ in the product is given by
-%   \[%
-%     \sum_{k=0}^n \frac{x^k}{k!} \cdot \frac{y^{n-k}}{(n-k)!} = \frac{1}{n!} \sum_{k=0}^n \binom{n}{k} x^k y^{n-k}
-%   .\]%
-%   By the binomial theorem, this simplifies to
-%   \[%
-%     \frac{1}{n!} (x+y)^n
-%   .\]%
-%   Thus, the product of the exponential series is the exponential series of $x + y$.
-% \end{proof}
+\begin{proof}
+  Using the Cauchy product, the coefficient of $z^n$ in the product is given by
+  \[%
+    \sum_{k=0}^n \frac{x^k}{k!} \cdot \frac{y^{n-k}}{(n-k)!} = \frac{1}{n!} \sum_{k=0}^n \binom{n}{k} x^k y^{n-k}
+  .\]%
+  By the binomial theorem, this simplifies to
+  \[%
+    \frac{1}{n!} (x+y)^n
+  .\]%
+  Thus, the product of the exponential series is the exponential series of $x + y$.
+\end{proof}

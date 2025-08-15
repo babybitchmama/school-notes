@@ -1,45 +1,45 @@
 \lecture{11}{Oct 23 2024 Wed (13:03:26)}{Properties of Infinite Series}
 
-% Just as we had an algebraic limit theorem for sequences, we have a similar theorem for series.
-% \begin{theorem}[Algebraic Limit Theorem for Series]
-%   If $\sum_{k=1}^\infty a_k = A$ and $\sum_{k=1}^\infty b_k = B$, then
-%   \begin{enumerate}
-%     \item $\sum_{k=1}^\infty ca_k = cA$ for all $c \in \R$.
+Just as we had an algebraic limit theorem for sequences, we have a similar theorem for series.
+\begin{theorem}[Algebraic Limit Theorem for Series]
+  If $\sum_{k=1}^\infty a_k = A$ and $\sum_{k=1}^\infty b_k = B$, then
+  \begin{enumerate}
+    \item $\sum_{k=1}^\infty ca_k = cA$ for all $c \in \R$.
 
-%     \item $\sum_{k=1}^\infty (a_k + b_k) = A + B$.
-%   \end{enumerate}
-% \end{theorem}
+    \item $\sum_{k=1}^\infty (a_k + b_k) = A + B$.
+  \end{enumerate}
+\end{theorem}
 
-% \begin{proof}\leavevmode
-%   \begin{enumerate}
-%     \item Let $S_n = \sum_{k=1}^n a_k$. Then, $\lim_{m \to \infty} S_m = A$. Thus, by the Algebraic Limit Theorem for Sequences, $c\lim_{m \to \infty} S_m = \lim_{m \to \infty} (cS_m) = cA$. Thus, $\sum_{k=1}^\infty ca_k = cA$.
+\begin{proof}\leavevmode
+  \begin{enumerate}
+    \item Let $S_n = \sum_{k=1}^n a_k$. Then, $\lim_{m \to \infty} S_m = A$. Thus, by the Algebraic Limit Theorem for Sequences, $c\lim_{m \to \infty} S_m = \lim_{m \to \infty} (cS_m) = cA$. Thus, $\sum_{k=1}^\infty ca_k = cA$.
 
-%     \item Let $S_n = \sum_{k=1}^n a_k$ and $T_n = \sum_{k=1}^n b_k$. Then, $\lim_{m \to \infty} S_m = A$ and $\lim_{m \to \infty} T_m = B$. Thus, by the Algebraic Limit Theorem for Sequences, $\lim_{m \to \infty} (S_m + T_m) = A + B$. Thus, $\sum_{k=1}^\infty (a_k + b_k) = A + B$. \qedhere
-%   \end{enumerate}
-% \end{proof}
+    \item Let $S_n = \sum_{k=1}^n a_k$ and $T_n = \sum_{k=1}^n b_k$. Then, $\lim_{m \to \infty} S_m = A$ and $\lim_{m \to \infty} T_m = B$. Thus, by the Algebraic Limit Theorem for Sequences, $\lim_{m \to \infty} (S_m + T_m) = A + B$. Thus, $\sum_{k=1}^\infty (a_k + b_k) = A + B$. \qedhere
+  \end{enumerate}
+\end{proof}
 
-% Just as we had the Cauchy criterion for sequences, we have a similar criterion for series.
-% \begin{theorem}[Cauchy Criterion for Series]
-%   The series $\sum_{k=1}^\infty a_k$ converges if and only if, given $\epsilon > 0$, there exists an $N \in \N$ such that whenever $n > m > N$, it follows that
-%   \[%
-%     \lvert a_{m+1} + a_{m+2} + \cdots + a_n \rvert < \epsilon
-%   .\]%
-% \end{theorem}
+Just as we had the Cauchy criterion for sequences, we have a similar criterion for series.
+\begin{theorem}[Cauchy Criterion for Series]
+  The series $\sum_{k=1}^\infty a_k$ converges if and only if, given $\epsilon > 0$, there exists an $N \in \N$ such that whenever $n > m > N$, it follows that
+  \[%
+    \lvert a_{m+1} + a_{m+2} + \cdots + a_n \rvert < \epsilon
+  .\]%
+\end{theorem}
 
-% \begin{proof}
-%   Notice that
-%   \[%
-%     \left\lvert \sum_{k=1}^n a_k - \sum_{k=1}^m a_k \right\rvert = \lvert S_n - S_m \rvert = \lvert a_{m+1} + a_{m+2} + \cdots + a_n \rvert
-%   .\]%
-%   Thus, the series converges if and only if the sequence of partial sums is a Cauchy sequence.
-% \end{proof}
+\begin{proof}
+  Notice that
+  \[%
+    \left\lvert \sum_{k=1}^n a_k - \sum_{k=1}^m a_k \right\rvert = \lvert S_n - S_m \rvert = \lvert a_{m+1} + a_{m+2} + \cdots + a_n \rvert
+  .\]%
+  Thus, the series converges if and only if the sequence of partial sums is a Cauchy sequence.
+\end{proof}
 
-% This is a very powerful criterion. We use this theorem to prove all of the basic tests in the future.
+This is a very powerful criterion. We use this theorem to prove all of the basic tests in the future.
 
-% \begin{definition}[Absolute Convergence]
-%   A series $\sum_{k=1}^\infty a_k$ is said to \emph{converge absolutely} if the series $\sum_{k=1}^\infty \lvert a_k \rvert$ converges.
-% \end{definition}
+\begin{definition}[Absolute Convergence]
+  A series $\sum_{k=1}^\infty a_k$ is said to \emph{converge absolutely} if the series $\sum_{k=1}^\infty \lvert a_k \rvert$ converges.
+\end{definition}
 
-% \begin{definition}[Conditional Convergence]
-%   A series $\sum_{k=1}^\infty a_k$ is said to \emph{converge conditionally} if the series $\sum_{k=1}^\infty a_k$ converges, but the series $\sum_{k=1}^\infty \lvert a_k \rvert$ diverges.
-% \end{definition}
+\begin{definition}[Conditional Convergence]
+  A series $\sum_{k=1}^\infty a_k$ is said to \emph{converge conditionally} if the series $\sum_{k=1}^\infty a_k$ converges, but the series $\sum_{k=1}^\infty \lvert a_k \rvert$ diverges.
+\end{definition}

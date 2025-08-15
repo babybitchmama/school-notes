@@ -1,57 +1,57 @@
 \lecture{9}{Oct 18 2024 Fri (13:02:06)}{Subsequences}
 
-% \begin{definition}[Subsequence]
-%   Let $(a_n)$ be a sequence and $(n_k)$ be a strictly increasing sequence of natural numbers. Then, the sequence $(a_{n_k}) = (a_{n_1}, a_{n_2}, \dots)$ is called a \emph{subsequence of $(a_n)$}.
-% \end{definition}
+\begin{definition}[Subsequence]
+  Let $(a_n)$ be a sequence and $(n_k)$ be a strictly increasing sequence of natural numbers. Then, the sequence $(a_{n_k}) = (a_{n_1}, a_{n_2}, \dots)$ is called a \emph{subsequence of $(a_n)$}.
+\end{definition}
 
-% \begin{example}
-%   The sequence $(n)$ contains the subsequences $(2^n)$, $(2n)$, and $(n^2)$.
-% \end{example}
+\begin{example}
+  The sequence $(n)$ contains the subsequences $(2^n)$, $(2n)$, and $(n^2)$.
+\end{example}
 
-% Now, a bunch of questions arise. If $(a_n)$ is a bounded sequence, can it have a convergent subsequence? If $(a_n)$ is an unbounded sequence, can it have a bounded sequence? For now, I'll answer the question if all subsequences of a convergent sequence converge to the same limit.
+Now, a bunch of questions arise. If $(a_n)$ is a bounded sequence, can it have a convergent subsequence? If $(a_n)$ is an unbounded sequence, can it have a bounded sequence? For now, I'll answer the question if all subsequences of a convergent sequence converge to the same limit.
 
-% \begin{theorem}
-%   If $(a_n)$ is a convergent sequence, then all its subsequences converge to the same limit.
-% \end{theorem}
+\begin{theorem}
+  If $(a_n)$ is a convergent sequence, then all its subsequences converge to the same limit.
+\end{theorem}
 
-% \begin{proof}
-%   Let $\epsilon > 0$. There is an $N \in \N$ such that for all $n > N$, $\lvert a_n - a \rvert < \epsilon$.
+\begin{proof}
+  Let $\epsilon > 0$. There is an $N \in \N$ such that for all $n > N$, $\lvert a_n - a \rvert < \epsilon$.
 
-%   Let $(a_{n_k})$ be a subsequence. Then, $n_k \ge k$. Hence, $n_N \ge N$. Hence, for all $n_k > n_N$, $\lvert a_{n_k} - a \rvert < \epsilon$.
-% \end{proof}
+  Let $(a_{n_k})$ be a subsequence. Then, $n_k \ge k$. Hence, $n_N \ge N$. Hence, for all $n_k > n_N$, $\lvert a_{n_k} - a \rvert < \epsilon$.
+\end{proof}
 
-% \begin{example}
-%   Let $0 < b < 1$. Since $b > b^2 > b^3 > \cdots > 0$, the sequence $(b^n)$ is decreasing and bounded below by $0$. Hence, by the Monotone Convergence Theorem, $b^n \to l$. Notice that $\left(b^{2n}\right)$ is a subsequence of $\left(b^n\right)$, so $b^{2n} \to l \cdot l = l^2$. Since limits are unique, it follows that $l = 0$. We can then generalize this example to conclude that $b^n \to 0 \iff -1 < b < 1$.
-% \end{example}
+\begin{example}
+  Let $0 < b < 1$. Since $b > b^2 > b^3 > \cdots > 0$, the sequence $(b^n)$ is decreasing and bounded below by $0$. Hence, by the Monotone Convergence Theorem, $b^n \to l$. Notice that $\left(b^{2n}\right)$ is a subsequence of $\left(b^n\right)$, so $b^{2n} \to l \cdot l = l^2$. Since limits are unique, it follows that $l = 0$. We can then generalize this example to conclude that $b^n \to 0 \iff -1 < b < 1$.
+\end{example}
 
-% We can use this theorem to prove that a sequence doesn't converge by finding two subsequences that converge to different limits.
+We can use this theorem to prove that a sequence doesn't converge by finding two subsequences that converge to different limits.
 
-% \begin{example}[Divergence Criterion]
-%   Let $(a_n)$ be the sequence defined by
-%   \[%
-%     (a_n) = \left(0, \frac{1}{2}, -\frac{1}{2}, \frac{1}{3}, \frac{2}{3}, -\frac{2}{3}, \dots\right)
-%   .\]%
-%   Notice that we get three different subsequences
-%   \[%
-%     \left(a_{n_1}\right) = \left(0, \frac{1}{2}, \frac{1}{3}, \cdots\right), \quad
-%     \left(a_{n_2}\right) = \left(0, \frac{1}{2}, \frac{2}{3}, \cdots\right), \aand
-%     \left(a_{n_3}\right) = \left(0, -\frac{1}{2}, -\frac{2}{3}, \cdots\right)
-%   .\]%
-%   The first subsequence converges to $0$, the second subsequence converges to $1$, and the third subsequence converges to $-1$. Hence, the sequence $(a_n)$ doesn't converge.
-% \end{example}
+\begin{example}[Divergence Criterion]
+  Let $(a_n)$ be the sequence defined by
+  \[%
+    (a_n) = \left(0, \frac{1}{2}, -\frac{1}{2}, \frac{1}{3}, \frac{2}{3}, -\frac{2}{3}, \dots\right)
+  .\]%
+  Notice that we get three different subsequences
+  \[%
+    \left(a_{n_1}\right) = \left(0, \frac{1}{2}, \frac{1}{3}, \cdots\right), \quad
+    \left(a_{n_2}\right) = \left(0, \frac{1}{2}, \frac{2}{3}, \cdots\right), \aand
+    \left(a_{n_3}\right) = \left(0, -\frac{1}{2}, -\frac{2}{3}, \cdots\right)
+  .\]%
+  The first subsequence converges to $0$, the second subsequence converges to $1$, and the third subsequence converges to $-1$. Hence, the sequence $(a_n)$ doesn't converge.
+\end{example}
 
-% A very powerful theorem is the Bolzano-Weierstrass Theorem.
+A very powerful theorem is the Bolzano-Weierstrass Theorem.
 
-% \begin{theorem}[Bolzano-Weierstrass Theorem]
-%   Every bounded sequence has a convergent subsequence.
-% \end{theorem}
+\begin{theorem}[Bolzano-Weierstrass Theorem]
+  Every bounded sequence has a convergent subsequence.
+\end{theorem}
 
-% \begin{proof}
-%   Let $(a_n)$ be a bounded sequence so that there exists $M > 0$ satisfying that $(\forall n \in \N)[\lvert a_n \rvert < M]$. Bisect the closed interval $[-M, M]$ into two closed intervals $[-M, 0]$ and $[0, M]$. Select the interval that contains infinitely many terms of the sequence $(a_n)$ and call it $I_1$. Then, let $a_{n_1}$ be some term in the sequence $(a_n)$ satisfying $a_{n_1} \in I_1$. Bisect $I_1$ into two closed intervals and select the one that contains infinitely many terms of the sequence $(a_n)$ and call it $I_2$. Then, let $a_{n_2}$ be some term in the sequence $(a_n)$ satisfying $n_2 > n_1$ and $a_{n_2} \in I_2$. Continue this process indefinitely to construct a subsequence $(a_{n_k})$. Then, we get
-%   \[%
-%     I_1 \supseteq I_2 \supseteq I_3 \supseteq \cdots
-%   .\]%
-%   By the Nested Interval Property, there exists a point $a$ that is in all the intervals $I_k$.
+\begin{proof}
+  Let $(a_n)$ be a bounded sequence so that there exists $M > 0$ satisfying that $(\forall n \in \N)[\lvert a_n \rvert < M]$. Bisect the closed interval $[-M, M]$ into two closed intervals $[-M, 0]$ and $[0, M]$. Select the interval that contains infinitely many terms of the sequence $(a_n)$ and call it $I_1$. Then, let $a_{n_1}$ be some term in the sequence $(a_n)$ satisfying $a_{n_1} \in I_1$. Bisect $I_1$ into two closed intervals and select the one that contains infinitely many terms of the sequence $(a_n)$ and call it $I_2$. Then, let $a_{n_2}$ be some term in the sequence $(a_n)$ satisfying $n_2 > n_1$ and $a_{n_2} \in I_2$. Continue this process indefinitely to construct a subsequence $(a_{n_k})$. Then, we get
+  \[%
+    I_1 \supseteq I_2 \supseteq I_3 \supseteq \cdots
+  .\]%
+  By the Nested Interval Property, there exists a point $a$ that is in all the intervals $I_k$.
 
-%   Let $\epsilon > 0$. The length of $I_k$ is $M\left(\frac{1}{2}\right)^{k-1}$ which converges to zero. Choose $N$ so that $k \ge N$ implies that the length of $I_k$ is less than $\epsilon$. Because $a, a_{n_k} \in I_k$, it follows that $\lvert a_{n_k} - a \rvert < \epsilon$.
-% \end{proof}
+  Let $\epsilon > 0$. The length of $I_k$ is $M\left(\frac{1}{2}\right)^{k-1}$ which converges to zero. Choose $N$ so that $k \ge N$ implies that the length of $I_k$ is less than $\epsilon$. Because $a, a_{n_k} \in I_k$, it follows that $\lvert a_{n_k} - a \rvert < \epsilon$.
+\end{proof}
