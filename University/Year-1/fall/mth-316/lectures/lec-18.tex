@@ -1,82 +1,92 @@
-\lecture{18}{Nov 18 2024 Mon (13:03:05)}{Definition of Functional Limits}
+\lecture{18}{Nov 13 2024 Wed (13:03:05)}{SCFL and ALT for Functional Limits}
 
-\section{Functional Limits}
+% \subsection{Sequential Criterion for Functional Limits}
 
-In Chapter 2, we studied limits of sequences. We now extend this concept to functions of a real variable. Intuitively, we say that $f(x)$ approaches $L$ as $x$ approaches $c$ if the values $f(x)$ can be made arbitrarily close to $L$ by taking $x$ sufficiently close to (but not equal to) $c$. This definition concerns the \emph{local behavior} of $f$ near $c$.
+% Recall from Chapter 2 that limits of sequences can be characterized entirely in terms of their terms approaching a fixed number. For functions, the \emph{Sequential Criterion} provides a way to check functional limits using only sequences -- often easier in proofs because we can apply results from sequence convergence.
 
-\begin{definition}[Limit of a function]
-  Let $A \subseteq \R$ and let $f : A \to \R$. A point $c \in \R$ is a \emph{limit point} of $A$ if every neighborhood of $c$ contains a point of $A$ different from $c$ itself. We say that
-  \[%
-    \lim_{x \to c} f(x) = L
-  ,\]%
-  if for every $\epsilon > 0$ there exists $\delta > 0$ such that whenever $x \in A$ satisfies $0 < |x - c| < \delta$, we have $|f(x) - L| < \epsilon$.
-\end{definition}
+% \begin{theorem}[Sequential Criterion for Functional Limits]
+%   Let $A \subseteq \R$, let $f : A \to \R$, and let $c$ be a limit point of $A$. Then $\lim_{x \to c} f(x) = L$ if and only if for every sequence $(x_n)$ in $A \setminus \{c\}$ such that $x_n \to c$, we have $f(x_n) \to L$.
+% \end{theorem}
 
-\begin{remark}
-  The condition $0 < |x - c|$ ensures that the value $f(c)$ (if defined) is irrelevant to the limit; limits depend only on nearby values. The notation $\lim_{x \to c} f(x) = L$ asserts that the limit exists and equals $L$.
-\end{remark}
+% \begin{proof}
+%   Assume $\lim_{x \to c} f(x) = L$. Let $(x_n)$ be a sequence in $A \setminus \{c\}$ with $x_n \to c$.  Given $\epsilon > 0$, choose $\delta > 0$ from the $\epsilon$--$\delta$ definition. Since $x_n \to c$, there exists $N$ such that $n \ge N$ implies $|x_n - c| < \delta$.  Then for $n \ge N$, $0 < |x_n - c| < \delta$, so $|f(x_n) - L| < \epsilon$. Hence $f(x_n) \to L$.
 
-\begin{example}
-  Let $f(x) = 3x + 2$ on $\R$. We claim that $\lim_{x \to 1} f(x) = 5$. Given $\epsilon > 0$, choose $\delta = \epsilon/3$. If $0 < |x - 1| < \delta$, then
-  \[%
-    |f(x) - 5| = |3x + 2 - 5| = 3|x - 1| < 3 \cdot \frac{\epsilon}{3} = \epsilon
-  .\]%
-  Thus, the definition is satisfied and the limit is $5$.
-\end{example}
+%   Conversely, suppose the sequential condition holds. Assume for contradiction that $\lim_{x \to c} f(x) \neq L$.  Then there exists $\epsilon_0 > 0$ such that for every $\delta > 0$ there exists $x \in A$ with $0 < |x - c| < \delta$ but $|f(x) - L| \ge \epsilon_0$.  We can construct a sequence $(x_n)$ as follows: for each $n$, pick $x_n \in A$ such that $0 < |x_n - c| < 1/n$ and $|f(x_n) - L| \ge \epsilon_0$.  Then $x_n \to c$, but $f(x_n)$ does not converge to $L$, contradicting the assumption. Thus the $\epsilon$--$\delta$ condition must hold.
+% \end{proof}
 
-\begin{example}
-  Let
-  \[%
-    f(x) = \begin{cases}
-      \frac{x^2 - 1}{x - 1} & x \neq 1 \\
-      7 & x = 1
-    \end{cases}
-  .\]%
-  For $x \neq 1$, $f(x) = x + 1$, so $\lim_{x \to 1} f(x) = 2$. The value $f(1) = 7$ is irrelevant to the limit.
-\end{example}
+% \begin{remark}
+%   This criterion is useful for proving \emph{non-existence} of limits: it suffices to find two sequences $(x_n)$ and $(y_n)$ both tending to $c$ such that $f(x_n)$ and $f(y_n)$ converge to \emph{different} limits.
+% \end{remark}
 
-\begin{example}
-  Let $f(x) = \frac{\sin x}{x}$ for $x \neq 0$. Using the inequality $|\sin x| \le |x|$, we see that
-  \[%
-    \left| \frac{\sin x}{x} - 1 \right| = \left| \frac{\sin x - x}{x} \right| \to 0
-  ,\]%
-  as $x \to 0$, hence $\lim_{x \to 0} \frac{\sin x}{x} = 1$.
-\end{example}
+% \begin{example}[Verifying a limit]
+%   Let $f(x) = 3x + 1$ and $c = 2$. Choose any sequence $(x_n)$ in $\R \setminus \{2\}$ with $x_n \to 2$. Then $f(x_n) = 3x_n + 1 \to 3\cdot 2 + 1 = 7$. Since the limit is independent of the choice of $(x_n)$, the sequential criterion confirms $\lim_{x \to 2} f(x) = 7$.
+% \end{example}
 
-\section{Basic Limit Laws}
+% \begin{example}[Non-existence of limit]
+%   Let $f(x) = \frac{|x|}{x}$ for $x \neq 0$ and $c = 0$. Take $x_n = 1/n \to 0$; then $f(x_n) = 1$. Take $y_n = -1/n \to 0$; then $f(y_n) = -1$. Since the sequence limits differ, $\lim_{x \to 0} f(x)$ does not exist.
+% \end{example}
 
-\begin{theorem}[Limit laws]
-  Suppose $\lim_{x \to c} f(x) = L$ and $\lim_{x \to c} g(x) = M$. Then:
-  \begin{enumerate}
-    \item $\lim_{x \to c} [f(x) + g(x)] = L + M$,
+% \begin{example}[A removable discontinuity]
+%   Let $f(x) = \frac{x^2 - 4}{x - 2}$ for $x \neq 2$, and $c = 2$. For $x \neq 2$, $f(x) = x + 2$. Any sequence $(x_n) \to 2$ with $x_n \neq 2$ gives $f(x_n) \to 4$. Thus $\lim_{x \to 2} f(x) = 4$ by the sequential criterion.
+% \end{example}
 
-    \item $\lim_{x \to c} [f(x) - g(x)] = L - M$,
+% \subsection{Algebraic Limit Theorem for Functional Limits}
 
-    \item $\lim_{x \to c} [f(x) g(x)] = LM$,
+% We have already seen in Chapter 2, the \emph{Algebraic Limit Theorem} (ALT) for sequences, which allows us to compute limits of sums, products, and quotients from the limits of the individual sequences. A similar result holds for functions, and it is proved using exactly the same $\epsilon$--$\delta$ techniques, often by reducing to the sequential criterion.
 
-    \item If $M \neq 0$, then $\lim_{x \to c} \frac{f(x)}{g(x)} = \frac{L}{M}$.
-  \end{enumerate}
-\end{theorem}
+% \begin{theorem}[Algebraic Limit Theorem for Functional Limits]
+%   Let $A \subseteq \R$, let $f, g : A \to \R$, and let $c$ be a limit point of $A$.  
+%   If $\lim_{x \to c} f(x) = L$ and $\lim_{x \to c} g(x) = M$, then:
+%   \begin{enumerate}
+%     \item $\lim_{x \to c} [f(x) + g(x)] = L + M$,
 
-\begin{proof}
-  We prove (i); the others are similar. Let $\epsilon > 0$ be given. Choose $\delta_1 > 0$ such that $0 < |x - c| < \delta_1$ implies $|f(x) - L| < \epsilon/2$, and choose $\delta_2 > 0$ such that $0 < |x - c| < \delta_2$ implies $|g(x) - M| < \epsilon/2$. Let $\delta = \min\{\delta_1, \delta_2\}$. Then for $0 < |x - c| < \delta$,
-  \[%
-    |[f(x) + g(x)] - (L + M)| \le |f(x) - L| + |g(x) - M| < \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon
-  .\qedhere\]%
-\end{proof}
+%     \item $\lim_{x \to c} [f(x) - g(x)] = L - M$,
 
-\section{One-Sided Limits}
+%     \item $\lim_{x \to c} [f(x) g(x)] = LM$,
 
-\begin{definition}[One-sided limits]
-  Let $c$ be a limit point of $A \subseteq \R$ from the left or right.
-  \begin{itemize}
-    \item The \emph{left-hand limit} $\lim_{x \to c^-} f(x) = L$ means that the $\epsilon$--$\delta$ condition holds for all $x < c$ sufficiently close to $c$.
+%     \item If $M \neq 0$ and $g(x) \neq 0$ near $c$, then
+%       \[%
+%         \lim_{x \to c} \frac{f(x)}{g(x)} = \frac{L}{M}
+%       .\]%
+%   \end{enumerate}
+% \end{theorem}
 
-    \item The \emph{right-hand limit} $\lim_{x \to c^+} f(x) = L$ means it holds for all $x > c$ sufficiently close to $c$.
-  \end{itemize}
-  The two-sided limit $\lim_{x \to c} f(x)$ exists if and only if both one-sided limits exist and are equal.
-\end{definition}
+% \begin{proof}
+%   We prove (i); the other parts follow by similar estimates.
 
-\begin{example}
-  Let $f(x) = \frac{|x|}{x}$ for $x \neq 0$. Then $\lim_{x \to 0^-} f(x) = -1$ and $\lim_{x \to 0^+} f(x) = 1$. Since these are unequal, $\lim_{x \to 0} f(x)$ does not exist.
-\end{example}
+%   Let $\epsilon > 0$ be given. Since $\lim_{x \to c} f(x) = L$, there exists $\delta_1 > 0$ such that $0 < |x - c| < \delta_1 \implies |f(x) - L| < \epsilon/2$. Similarly, since $\lim_{x \to c} g(x) = M$, there exists $\delta_2 > 0$ such that $0 < |x - c| < \delta_2 \implies |g(x) - M| < \epsilon/2$.
+
+%   Let $\delta = \min\{\delta_1, \delta_2\}$. Then for $0 < |x - c| < \delta$, we have:
+%   \[%
+%     |[f(x) + g(x)] - (L + M)| \le |f(x) - L| + |g(x) - M| < \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon
+%   .\]%
+%   Thus, $\lim_{x \to c} [f(x) + g(x)] = L + M$.
+
+%   The proofs for (2), (3), and (4) use the same $\epsilon$--$\delta$ reasoning, along with the identity
+%   \[%
+%     |f(x)g(x) - LM| \le |f(x)|\,|g(x) - M| + |M|\,|f(x) - L|
+%   ,\]%
+%   and for the quotient rule, the fact that $g(x)$ is bounded away from $0$ near $c$ when $M \neq 0$.
+% \end{proof}
+
+% \begin{remark}
+%   The ALT allows us to compute many limits mechanically: break the function into pieces whose limits are known, and then reassemble the result using the theorem.
+% \end{remark}
+
+% \begin{example}
+%   Let $f(x) = 2x^2 - 3x + 4$ and $c = 1$.  Using ALT and the fact that $\lim_{x \to 1} x = 1$:
+%   \[%
+%     \lim_{x \to 1} f(x) = 2(1)^2 - 3(1) + 4 = 3
+%   .\qedhere\]%
+% \end{example}
+
+% \begin{example}
+%   Compute $\lim_{x \to 0} \frac{\sin x}{x}$. We already know $\lim_{x \to 0} \sin x = 0$ and $\lim_{x \to 0} x = 0$, so direct application of ALT for quotients would be invalid (denominator limit $= 0$). This reminds us that the quotient rule requires the denominator’s limit to be \emph{nonzero}. The correct approach is to use the standard special limit $\lim_{x \to 0} \frac{\sin x}{x} = 1$ proved separately.
+% \end{example}
+
+% \begin{example}[Product limit]
+%   Let $f(x) = \sqrt{x}$ and $g(x) = x + 2$, and let $c = 4$. Since $\lim_{x \to 4} \sqrt{x} = 2$ and $\lim_{x \to 4} (x + 2) = 6$, we get:
+%   \[%
+%     \lim_{x \to 4} f(x) g(x) = (2)(6) = 12
+%   .\qedhere\]%
+% \end{example}

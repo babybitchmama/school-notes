@@ -1,238 +1,238 @@
 \lecture{1}{Sep 30 2024 Mon (13:01:47)}{Basic Preliminaries}
 
-\subsection{Set Theory}
+% \subsection{Set Theory}
 
-\begin{definition}
-  A \emph{set} is a collection of objects, called \emph{elements} of the set.
-\end{definition}
+% \begin{definition}
+%   A \emph{set} is a collection of objects, called \emph{elements} of the set.
+% \end{definition}
 
-Let's define the following sets, as we'll be using them throughout the notes
-\begin{align*}
-  \N &= \{1, 2, 3, \ldots\} \\
-  \N_0 &= \{0, 1, 2, 3, \ldots\} \\
-  \Z &= \{\ldots, -2, -1, 0, 1, 2, \ldots\} \\
-  \Q &= \left.\left\{\frac{m}{n} \right\rvert m \in \Z, n \in \N\right\} \\
-  \R &= \textrm{real numbers}
-.\end{align*}
+% Let's define the following sets, as we'll be using them throughout the notes
+% \begin{align*}
+%   \N &= \{1, 2, 3, \ldots\} \\
+%   \N_0 &= \{0, 1, 2, 3, \ldots\} \\
+%   \Z &= \{\ldots, -2, -1, 0, 1, 2, \ldots\} \\
+%   \Q &= \left.\left\{\frac{m}{n} \right\rvert m \in \Z, n \in \N\right\} \\
+%   \R &= \textrm{real numbers}
+% .\end{align*}
 
-\begin{note}
-  We won't properly define $\R$, as we don't have the necessary tools to do so.
-\end{note}
+% \begin{note}
+%   We won't properly define $\R$, as we don't have the necessary tools to do so.
+% \end{note}
 
-Let $S$ be a set. We have the following notation regarding sets
-\begin{enumerate}
-  \item $x \in S$: $x$ is an element of the set $S$.
+% Let $S$ be a set. We have the following notation regarding sets
+% \begin{enumerate}
+%   \item $x \in S$: $x$ is an element of the set $S$.
 
-  \item $A \cap B = \left\{x \mid x \in A \land x \in B\right\}$: the intersection of sets $A$ and $B$.
+%   \item $A \cap B = \left\{x \mid x \in A \land x \in B\right\}$: the intersection of sets $A$ and $B$.
 
-  \item $A \cup B = \left\{x \mid x \in A \lor x \in B\right\}$: the union of sets $A$ and $B$.
+%   \item $A \cup B = \left\{x \mid x \in A \lor x \in B\right\}$: the union of sets $A$ and $B$.
 
-  \item $A \subseteq S$: $A$ is a subset of $S$.
-\end{enumerate}
+%   \item $A \subseteq S$: $A$ is a subset of $S$.
+% \end{enumerate}
 
-\begin{note}
-  The notation $\land$ is the logical \emph{and} operator, and $\lor$ is the logical \emph{or} operator. Or in math is an inclusive or, meaning that the statement $A \lor B$ is true if at least one of $A$ or $B$ or both are true.
-\end{note}
+% \begin{note}
+%   The notation $\land$ is the logical \emph{and} operator, and $\lor$ is the logical \emph{or} operator. Or in math is an inclusive or, meaning that the statement $A \lor B$ is true if at least one of $A$ or $B$ or both are true.
+% \end{note}
 
-\begin{note}
-  I'll be using the following notation throughout the notes
-  \begin{enumerate}
-    \item $\forall x \in S$: for all $x$ in the set $S$.
+% \begin{note}
+%   I'll be using the following notation throughout the notes
+%   \begin{enumerate}
+%     \item $\forall x \in S$: for all $x$ in the set $S$.
 
-    \item $\exists x \in S$: there exists an $x$ in the set $S$.
-  \end{enumerate}
-  When I combine quantifiers, I do so as such $(\forall x \in S)(\exists y \in S)[P(x, y)]$. This means that for all $x$ in the set $S$, there exists a $y$ in the set $S$ such that the statement $P(x, y)$ is true.
-\end{note}
+%     \item $\exists x \in S$: there exists an $x$ in the set $S$.
+%   \end{enumerate}
+%   When I combine quantifiers, I do so as such $(\forall x \in S)(\exists y \in S)[P(x, y)]$. This means that for all $x$ in the set $S$, there exists a $y$ in the set $S$ such that the statement $P(x, y)$ is true.
+% \end{note}
 
-So, for we can re-write all of the definitions as follows
-\[%
-  A \subseteq S \implies (\forall x \in A)[x \in S]
-.\]%
+% So, for we can re-write all of the definitions as follows
+% \[%
+%   A \subseteq S \implies (\forall x \in A)[x \in S]
+% .\]%
 
-A set $A$ is equal to another set $B$ if and only if $A \subseteq B$ and $B \subseteq A$.
-\begin{note}
-  The symbol $\iff$ means \emph{if and only if}. The statement $A \iff B$ is shorthand notation for $(A \implies B) \land (B \implies A)$.
-\end{note}
+% A set $A$ is equal to another set $B$ if and only if $A \subseteq B$ and $B \subseteq A$.
+% \begin{note}
+%   The symbol $\iff$ means \emph{if and only if}. The statement $A \iff B$ is shorthand notation for $(A \implies B) \land (B \implies A)$.
+% \end{note}
 
-\begin{question}
-  Using that statement, prove the following statement: $A \cap (B \cup C) = (A \cap B) \cup C$.
-\end{question}
+% \begin{question}
+%   Using that statement, prove the following statement: $A \cap (B \cup C) = (A \cap B) \cup C$.
+% \end{question}
 
-\begin{proof}[Solution]\leavevmode
-  Suppose $x \in A \cap (B \cup C)$. That means $(x \in A) \land (x \in B \cup C)$, implying $(x \in A) \land (x \in B \lor x \in C)$. This is equivalent to $x \in (A \cap B) \cup C$, since $x$ must be in $A$ and must be in either $B$ or $C$ (or both). If $x \in B$, then $x \in A \cup B \implies x \in (A \cap B) \cup C$ and if $x \in C$, then $x \in (A \cap B) \cup C$. Thus, $A \cap (B \cup C) \subseteq (A \cap B) \cup C$.
+% \begin{proof}[Solution]\leavevmode
+%   Suppose $x \in A \cap (B \cup C)$. That means $(x \in A) \land (x \in B \cup C)$, implying $(x \in A) \land (x \in B \lor x \in C)$. This is equivalent to $x \in (A \cap B) \cup C$, since $x$ must be in $A$ and must be in either $B$ or $C$ (or both). If $x \in B$, then $x \in A \cup B \implies x \in (A \cap B) \cup C$ and if $x \in C$, then $x \in (A \cap B) \cup C$. Thus, $A \cap (B \cup C) \subseteq (A \cap B) \cup C$.
 
-  Suppose $x \in (A \cap B) \cup C$. That means $(x \in A \land x \in B) \lor (x \in C)$. Notice that it isn't the same thing as the previous statement, as $x$ doesn't have to be in $A \cap B$ and can be in $C$. Example: $A = \{1, 2\}$, $B = \{1, 2\}$, and $C = \{1, 3\}$. Therefore, we get
-  \[%
-    A \cap (B \cup C) = \{1, 2\} \cap (\{1, 2\} \cup \{1, 2, 3\}) = \{1, 2\}
-  ,\]%
-  but
-  \[%
-    (A \cap B) \cup C = (\{1, 2\} \cap \{1, 2\}) \cup \{1, 3\} = \{1, 2, 3\}
-  ,\]%
-  meaning $(A \cap B) \cup C \not\subseteq A \cap (B \cup C)$.
+%   Suppose $x \in (A \cap B) \cup C$. That means $(x \in A \land x \in B) \lor (x \in C)$. Notice that it isn't the same thing as the previous statement, as $x$ doesn't have to be in $A \cap B$ and can be in $C$. Example: $A = \{1, 2\}$, $B = \{1, 2\}$, and $C = \{1, 3\}$. Therefore, we get
+%   \[%
+%     A \cap (B \cup C) = \{1, 2\} \cap (\{1, 2\} \cup \{1, 2, 3\}) = \{1, 2\}
+%   ,\]%
+%   but
+%   \[%
+%     (A \cap B) \cup C = (\{1, 2\} \cap \{1, 2\}) \cup \{1, 3\} = \{1, 2, 3\}
+%   ,\]%
+%   meaning $(A \cap B) \cup C \not\subseteq A \cap (B \cup C)$.
 
-  Therefore, $A \cap (B \cup C) \ne (A \cap B) \cup C$.
-\end{proof}
+%   Therefore, $A \cap (B \cup C) \ne (A \cap B) \cup C$.
+% \end{proof}
 
-\begin{definition}[Complement]
-  Given $A \subseteq \R$, the \emph{complement} of $A$, written $A^c$, refers to the set of all elements of $\R$ not in $A$, written as
-  \[%
-    A^c = \left\{x \in \R \mid x \notin A\right\}
-  .\]%
-\end{definition}
+% \begin{definition}[Complement]
+%   Given $A \subseteq \R$, the \emph{complement} of $A$, written $A^c$, refers to the set of all elements of $\R$ not in $A$, written as
+%   \[%
+%     A^c = \left\{x \in \R \mid x \notin A\right\}
+%   .\]%
+% \end{definition}
 
-This gives us our first
-\begin{theorem}[DeMorgan's Law]
-  Let $A$ and $B$ be sets. Then
-  \begin{enumerate}
-    \item $(A \cup B)^c = A^c \cap B^c$.
+% This gives us our first
+% \begin{theorem}[DeMorgan's Law]
+%   Let $A$ and $B$ be sets. Then
+%   \begin{enumerate}
+%     \item $(A \cup B)^c = A^c \cap B^c$.
 
-    \item $(A \cap B)^c = A^c \cup B^c$.
-  \end{enumerate}
-\end{theorem}
+%     \item $(A \cap B)^c = A^c \cup B^c$.
+%   \end{enumerate}
+% \end{theorem}
 
-\begin{proof}\leavevmode
-  \begin{enumerate}
-    \item Suppose $x \in (A \cap B)^c$, then $x \notin A \cap B$ so $x \notin A \lor x \notin B$, implying that $x \in A^c \lor x \in B^c$, which is equivalent to $x \in A^c \cup B^c$.
+% \begin{proof}\leavevmode
+%   \begin{enumerate}
+%     \item Suppose $x \in (A \cap B)^c$, then $x \notin A \cap B$ so $x \notin A \lor x \notin B$, implying that $x \in A^c \lor x \in B^c$, which is equivalent to $x \in A^c \cup B^c$.
 
-      Suppose $x \in A^c \cup B^c$, then $x \in A^c \lor x \in B^c$ so $x \notin A \lor x \notin B$, implying that $x \notin A \cap B$, which is equivalent to $x \in (A \cap B)^c$.
+%       Suppose $x \in A^c \cup B^c$, then $x \in A^c \lor x \in B^c$ so $x \notin A \lor x \notin B$, implying that $x \notin A \cap B$, which is equivalent to $x \in (A \cap B)^c$.
 
-    \item Suppose $x \in (A \cup B)^c$, then $x \notin A \cup B$ so $x \notin A \land x \notin B$, implying that $x \in A^c \land x \in B^c$, which is equivalent to $x \in A^c \cap B^c$.
+%     \item Suppose $x \in (A \cup B)^c$, then $x \notin A \cup B$ so $x \notin A \land x \notin B$, implying that $x \in A^c \land x \in B^c$, which is equivalent to $x \in A^c \cap B^c$.
 
-      Suppose $x \in A^c \cap B^c$, then $x \in A^c \land x \in B^c$ so $x \notin A \land x \notin B$, implying that $x \notin A \cup B$, which is equivalent to $x \in (A \cup B)^c$. \qedhere
-  \end{enumerate}
-\end{proof}
+%       Suppose $x \in A^c \cap B^c$, then $x \in A^c \land x \in B^c$ so $x \notin A \land x \notin B$, implying that $x \notin A \cup B$, which is equivalent to $x \in (A \cup B)^c$. \qedhere
+%   \end{enumerate}
+% \end{proof}
 
-We will, in the upcoming notes, be dealing with families of sets. A family of sets is a set of sets.
+% We will, in the upcoming notes, be dealing with families of sets. A family of sets is a set of sets.
 
-\begin{example}
-  Let $A_n = \left\{n, n + 1, n + 2, \cdots\right\}$, where $n \in \N$. The result is a nest chain of sets $A_1 \supseteq A_2 \supseteq A_3 \supseteq \ldots$, where each successive set is a subset of the previous set. The set $\{ A_n \}$ is a family of sets.
-\end{example}
+% \begin{example}
+%   Let $A_n = \left\{n, n + 1, n + 2, \cdots\right\}$, where $n \in \N$. The result is a nest chain of sets $A_1 \supseteq A_2 \supseteq A_3 \supseteq \ldots$, where each successive set is a subset of the previous set. The set $\{ A_n \}$ is a family of sets.
+% \end{example}
 
-Notationally, we denote the union of a family of sets as
-\[%
-  \bigcup_{n=1}^\infty A_n, \quad \bigcup_{n \in \N} A_n, \oor A_1 \cup A_2 \cup A_3 \cup \ldots
-.\]%
-Similarly, we denote the intersection of a family of sets as
-\[%
-  \bigcap_{n=1}^\infty A_n, \quad \bigcap_{n \in \N} A_n, \oor A_1 \cap A_2 \cap A_3 \cap \ldots
-.\]%
+% Notationally, we denote the union of a family of sets as
+% \[%
+%   \bigcup_{n=1}^\infty A_n, \quad \bigcup_{n \in \N} A_n, \oor A_1 \cup A_2 \cup A_3 \cup \ldots
+% .\]%
+% Similarly, we denote the intersection of a family of sets as
+% \[%
+%   \bigcap_{n=1}^\infty A_n, \quad \bigcap_{n \in \N} A_n, \oor A_1 \cap A_2 \cap A_3 \cap \ldots
+% .\]%
 
-What exactly does this mean? Let's re-write the unions and intersections using quantifiers
-\begin{align*}
-  x \in \bigcup_{n=1}^\infty A_n &\iff (\exists n \in \N)[x \in A_n] \\
-  x \in \bigcap_{n=1}^\infty A_n &\iff (\forall n \in \N)[x \in A_n]
-.\end{align*}
+% What exactly does this mean? Let's re-write the unions and intersections using quantifiers
+% \begin{align*}
+%   x \in \bigcup_{n=1}^\infty A_n &\iff (\exists n \in \N)[x \in A_n] \\
+%   x \in \bigcap_{n=1}^\infty A_n &\iff (\forall n \in \N)[x \in A_n]
+% .\end{align*}
 
-\subsection{Mappings and Functions}
+% \subsection{Mappings and Functions}
 
-\begin{definition}[Mapping]
-  Let $A$ and $B$ be two sets. A \emph{mapping} $f : A \to B$ assigns an element from the \emph{domain} $A$ to the \emph{range} $B$.
-\end{definition}
+% \begin{definition}[Mapping]
+%   Let $A$ and $B$ be two sets. A \emph{mapping} $f : A \to B$ assigns an element from the \emph{domain} $A$ to the \emph{range} $B$.
+% \end{definition}
 
-\begin{note}
-  There's no difference between a mapping and a function. Although, in this text, my usage will vary slightly. I say \emph{mapping} when I want to emphasize the relationship between the two sets, and \emph{function} when I want to emphasize the rule that assigns elements from one set to another.
-\end{note}
+% \begin{note}
+%   There's no difference between a mapping and a function. Although, in this text, my usage will vary slightly. I say \emph{mapping} when I want to emphasize the relationship between the two sets, and \emph{function} when I want to emphasize the rule that assigns elements from one set to another.
+% \end{note}
 
-\begin{example}[Triangle Inequality]
-  One very useful function is the \emph{absolute value function}, denoted as $\abs{x}$. It's defined as
-  \[%
-    \abs{x} = \begin{cases}
-      x & \text{if}~x \geq 0 \\
-      -x & \text{if}~x < 0
-    \end{cases}
-  .\qedhere\]%
+% \begin{example}[Triangle Inequality]
+%   One very useful function is the \emph{absolute value function}, denoted as $\abs{x}$. It's defined as
+%   \[%
+%     \abs{x} = \begin{cases}
+%       x & \text{if}~x \geq 0 \\
+%       -x & \text{if}~x < 0
+%     \end{cases}
+%   .\qedhere\]%
 
-  The absolute value function satisfies the following properties
-  \begin{enumerate}
-    \item $\abs{ab} = \abs{a} \cdot \abs{b}$.
+%   The absolute value function satisfies the following properties
+%   \begin{enumerate}
+%     \item $\abs{ab} = \abs{a} \cdot \abs{b}$.
 
-    \item $\abs{a + b} \le \abs{a} + \abs{b}$.
-  \end{enumerate}
+%     \item $\abs{a + b} \le \abs{a} + \abs{b}$.
+%   \end{enumerate}
 
-  The second property is known as the \emph{Triangle Inequality}, and it's mostly used with three numbers, $a$, $b$, and $c$. Rearranging the inequality, we get
-  \[%
-    \abs{a - b} = \abs{(a - c) + (c - b)} \implies \abs{(a - c) + (c - b)} \le \abs{a - c} + \abs{c - b}
-  ,\]%
-  giving us
-  \[%
-    \abs{a - b} \le \abs{a - c} + \abs{c - b}
-  .\qedhere\]%
-\end{example}
+%   The second property is known as the \emph{Triangle Inequality}, and it's mostly used with three numbers, $a$, $b$, and $c$. Rearranging the inequality, we get
+%   \[%
+%     \abs{a - b} = \abs{(a - c) + (c - b)} \implies \abs{(a - c) + (c - b)} \le \abs{a - c} + \abs{c - b}
+%   ,\]%
+%   giving us
+%   \[%
+%     \abs{a - b} \le \abs{a - c} + \abs{c - b}
+%   .\qedhere\]%
+% \end{example}
 
-\begin{note}
-  The expression $\abs{a - b}$ is the distance between $a$ and $b$ on the real number line, which means $\abs{a - b} = \abs{b - a}$.
-\end{note}
+% \begin{note}
+%   The expression $\abs{a - b}$ is the distance between $a$ and $b$ on the real number line, which means $\abs{a - b} = \abs{b - a}$.
+% \end{note}
 
-\subsubsection{Types of Functions}
+% \subsubsection{Types of Functions}
 
-\begin{definition}[Injective, Surjective, and Bijective Functions]
-  Let $f : A \to B$ be a function.
-  \begin{enumerate}
-    \item $f$ is \emph{injective} if
-      \[%
-        (\forall a_1, a_2 \in A)[f(a_1) = f(a_2) \implies a_1 = a_2]
-      .\]%
-      In other words, different elements of $A$ are sent to different elements of $B$. No two distinct inputs share the same output.
+% \begin{definition}[Injective, Surjective, and Bijective Functions]
+%   Let $f : A \to B$ be a function.
+%   \begin{enumerate}
+%     \item $f$ is \emph{injective} if
+%       \[%
+%         (\forall a_1, a_2 \in A)[f(a_1) = f(a_2) \implies a_1 = a_2]
+%       .\]%
+%       In other words, different elements of $A$ are sent to different elements of $B$. No two distinct inputs share the same output.
 
-    \item $f$ is \emph{surjective} if
-      \[%
-        (\forall b \in B)(\exists a \in A)[f(a) = b]
-      .\]%
-      In other words, every element of $B$ is hit by the function. There are no ``leftover'' elements in $B$ that are not images of something in $A$.
+%     \item $f$ is \emph{surjective} if
+%       \[%
+%         (\forall b \in B)(\exists a \in A)[f(a) = b]
+%       .\]%
+%       In other words, every element of $B$ is hit by the function. There are no ``leftover'' elements in $B$ that are not images of something in $A$.
 
-    \item $f$ is \emph{bijective} if it is both injective and surjective. This means that each element of $B$ corresponds to exactly one element of $A$, and the function has an inverse $f^{-1} : B \to A$.
-  \end{enumerate}
-\end{definition}
+%     \item $f$ is \emph{bijective} if it is both injective and surjective. This means that each element of $B$ corresponds to exactly one element of $A$, and the function has an inverse $f^{-1} : B \to A$.
+%   \end{enumerate}
+% \end{definition}
 
-\begin{note}
-  An injective function is also known as a \emph{one-to-one} function, and a surjective function is also known as an \emph{onto} function. A bijective function is a \emph{one-to-one correspondence}.
-\end{note}
+% \begin{note}
+%   An injective function is also known as a \emph{one-to-one} function, and a surjective function is also known as an \emph{onto} function. A bijective function is a \emph{one-to-one correspondence}.
+% \end{note}
 
-\begin{example}[Injective but not Surjective]
-  Let $f : \N \to \R$, defined by $f(x) = x^2$. Then:
-  \begin{itemize}
-    \item For any $x_1, x_2 \in E$, if $f(x_1) = f(x_2)$, then $x_1^2 = x_2^2$. Since $x_1$ and $x_2$ are even integers, this implies $x_1 = x_2$. Thus, $f$ is injective.
+% \begin{example}[Injective but not Surjective]
+%   Let $f : \N \to \R$, defined by $f(x) = x^2$. Then:
+%   \begin{itemize}
+%     \item For any $x_1, x_2 \in E$, if $f(x_1) = f(x_2)$, then $x_1^2 = x_2^2$. Since $x_1$ and $x_2$ are even integers, this implies $x_1 = x_2$. Thus, $f$ is injective.
 
-    \item However, $f$ does not hit all of $\R$, since, for instance, there is no $x \in \N$ such that $f(x) = 0.5$. Thus, $f$ is not surjective. \qedhere
-  \end{itemize}
-\end{example}
+%     \item However, $f$ does not hit all of $\R$, since, for instance, there is no $x \in \N$ such that $f(x) = 0.5$. Thus, $f$ is not surjective. \qedhere
+%   \end{itemize}
+% \end{example}
 
-\begin{example}[Surjective but not Injective]
-  Let $g : \R \to [0, \infty)$ be defined by $g(x) = x^2$.
-  \begin{itemize}
-    \item Every $y \geq 0$ has at least one preimage: if $y \ge 0$, then $x = \sqrt{y}$ or $x = -\sqrt{y}$ satisfies $g(x) = y$. Thus $g$ is surjective onto $[0, \infty)$.
+% \begin{example}[Surjective but not Injective]
+%   Let $g : \R \to [0, \infty)$ be defined by $g(x) = x^2$.
+%   \begin{itemize}
+%     \item Every $y \geq 0$ has at least one preimage: if $y \ge 0$, then $x = \sqrt{y}$ or $x = -\sqrt{y}$ satisfies $g(x) = y$. Thus $g$ is surjective onto $[0, \infty)$.
 
-    \item However, $g(1) = 1 = g(-1)$, so $g$ is not injective. \qedhere
-  \end{itemize}
-\end{example}
+%     \item However, $g(1) = 1 = g(-1)$, so $g$ is not injective. \qedhere
+%   \end{itemize}
+% \end{example}
 
-\begin{example}[Bijective Function]
-  The exponential function $h : \R \to (0, \infty)$ given by $h(x) = e^x$ is:
-  \begin{itemize}
-    \item Injective: If $e^a = e^b$, then taking $\ln$ of both sides gives $a = b$.
+% \begin{example}[Bijective Function]
+%   The exponential function $h : \R \to (0, \infty)$ given by $h(x) = e^x$ is:
+%   \begin{itemize}
+%     \item Injective: If $e^a = e^b$, then taking $\ln$ of both sides gives $a = b$.
 
-    \item Surjective onto $(0, \infty)$: For any $y > 0$, $x = \ln y$ satisfies $e^x = y$.
+%     \item Surjective onto $(0, \infty)$: For any $y > 0$, $x = \ln y$ satisfies $e^x = y$.
 
-    \item Hence, $h$ is bijective. \qedhere
-  \end{itemize}
-\end{example}
+%     \item Hence, $h$ is bijective. \qedhere
+%   \end{itemize}
+% \end{example}
 
-\begin{remark}
-  Bijective functions have inverses that are also functions. For example, the inverse of $e^x$ is $\ln x$, defined on $(0, \infty)$. If a function is not bijective, it cannot have a well-defined two-sided inverse.
-\end{remark}
+% \begin{remark}
+%   Bijective functions have inverses that are also functions. For example, the inverse of $e^x$ is $\ln x$, defined on $(0, \infty)$. If a function is not bijective, it cannot have a well-defined two-sided inverse.
+% \end{remark}
 
-\begin{example}[Finite Set Illustration]
-  Consider $A = \{1, 2, 3\}$ and $B = \{a, b, c, d\}$.
-  \begin{enumerate}
-    \item $f(1) = a, f(2) = b, f(3) = c$ is injective but not surjective (misses $d$).
+% \begin{example}[Finite Set Illustration]
+%   Consider $A = \{1, 2, 3\}$ and $B = \{a, b, c, d\}$.
+%   \begin{enumerate}
+%     \item $f(1) = a, f(2) = b, f(3) = c$ is injective but not surjective (misses $d$).
 
-    \item $g(1) = a, g(2) = a, g(3) = b$ is surjective only if $B = \{a, b\}$ — otherwise it misses elements and is not injective either.
+%     \item $g(1) = a, g(2) = a, g(3) = b$ is surjective only if $B = \{a, b\}$ -- otherwise it misses elements and is not injective either.
 
-    \item $h(1) = a, h(2) = b, h(3) = c$ with $B = \{a, b, c\}$ is bijective. \qedhere
-  \end{enumerate}
-\end{example}
+%     \item $h(1) = a, h(2) = b, h(3) = c$ with $B = \{a, b, c\}$ is bijective. \qedhere
+%   \end{enumerate}
+% \end{example}
 
-\begin{note}
-  When the domain and codomain are finite sets with the same number of elements, a function is injective if and only if it is surjective, and hence bijective.
-\end{note}
+% \begin{note}
+%   When the domain and codomain are finite sets with the same number of elements, a function is injective if and only if it is surjective, and hence bijective.
+% \end{note}

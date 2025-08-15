@@ -1,66 +1,66 @@
-\lecture{13}{Nov 4 2024 Mon (13:02:06)}{Rearrangements of Infinite Series}
+\lecture{13}{Oct 30 2024 Wed (13:02:06)}{Rearrangements of Infinite Series}
 
-\begin{definition}[Rearrangement of a Series]
-  Let $\sum_{n=1}^\infty a_n$ be an infinite series. A \emph{rearrangement} of this series is a series obtained by permuting its terms, that is
-  \[%
-    \sum_{n=1}^\infty a_{\sigma(n)}
-  ,\]%
-  where $\sigma : \N \to \N$ is a bijection (a one-to-one and onto mapping).
-\end{definition}
+% \begin{definition}[Rearrangement of a Series]
+%   Let $\sum_{n=1}^\infty a_n$ be an infinite series. A \emph{rearrangement} of this series is a series obtained by permuting its terms, that is
+%   \[%
+%     \sum_{n=1}^\infty a_{\sigma(n)}
+%   ,\]%
+%   where $\sigma : \N \to \N$ is a bijection (a one-to-one and onto mapping).
+% \end{definition}
 
-\begin{theorem}[Riemann's Rearrangement Theorem]
-  If $\sum_{n=1}^\infty a_n$ is a conditionally convergent series, then for any real number $L \in \R$ (or even $\pm\infty$), there exists a rearrangement $\sigma$ such that,
-  \[%
-    \sum_{n=1}^\infty a_{\sigma(n)} = L
-  .\]%
-\end{theorem}
+% \begin{theorem}[Riemann's Rearrangement Theorem]
+%   If $\sum_{n=1}^\infty a_n$ is a conditionally convergent series, then for any real number $L \in \R$ (or even $\pm\infty$), there exists a rearrangement $\sigma$ such that,
+%   \[%
+%     \sum_{n=1}^\infty a_{\sigma(n)} = L
+%   .\]%
+% \end{theorem}
 
-\begin{proof}
-  Since $\sum_{n=1}^\infty a_n$ is conditionally convergent, the positive terms $\{a_n^+\}$ and negative terms $\{a_n^-\}$ both diverge to $+\infty$ in absolute value. To construct a rearrangement summing to $L$, proceed as follows.
-  \begin{itemize}
-    \item Select positive terms $\{a_n^+\}$ to sum until the partial sum exceeds $L$.
+% \begin{proof}
+%   Since $\sum_{n=1}^\infty a_n$ is conditionally convergent, the positive terms $\{a_n^+\}$ and negative terms $\{a_n^-\}$ both diverge to $+\infty$ in absolute value. To construct a rearrangement summing to $L$, proceed as follows.
+%   \begin{itemize}
+%     \item Select positive terms $\{a_n^+\}$ to sum until the partial sum exceeds $L$.
 
-    \item Then add negative terms $\{a_n^-\}$ to decrease the partial sum until it falls below $L$.
+%     \item Then add negative terms $\{a_n^-\}$ to decrease the partial sum until it falls below $L$.
 
-    \item Alternate between adding positive and negative terms in this manner, ensuring the partial sums oscillate closer and closer to $L$.
-  \end{itemize}
-  This process guarantees convergence to $L$, as the series' terms tend to zero and the oscillations diminish.
-\end{proof}
+%     \item Alternate between adding positive and negative terms in this manner, ensuring the partial sums oscillate closer and closer to $L$.
+%   \end{itemize}
+%   This process guarantees convergence to $L$, as the series' terms tend to zero and the oscillations diminish.
+% \end{proof}
 
-\begin{corollary}
-  If $\sum_{n=1}^\infty a_n$ converges absolutely, then any rearrangement $\sum_{n=1}^\infty a_{\sigma(n)}$ also converges to the same sum,
-  \[%
-    \sum_{n=1}^\infty a_{\sigma(n)} = \sum_{n=1}^\infty a_n
-  .\]%
-\end{corollary}
+% \begin{corollary}
+%   If $\sum_{n=1}^\infty a_n$ converges absolutely, then any rearrangement $\sum_{n=1}^\infty a_{\sigma(n)}$ also converges to the same sum,
+%   \[%
+%     \sum_{n=1}^\infty a_{\sigma(n)} = \sum_{n=1}^\infty a_n
+%   .\]%
+% \end{corollary}
 
-\begin{proof}
-  Absolute convergence implies that $\sum_{n=1}^\infty a_n \le \sum_{n=1}^\infty \lvert a_n \rvert \in \R$. Rearranging the terms does not affect the total sum since the series converges uniformly regardless of order.
-\end{proof}
+% \begin{proof}
+%   Absolute convergence implies that $\sum_{n=1}^\infty a_n \le \sum_{n=1}^\infty \lvert a_n \rvert \in \R$. Rearranging the terms does not affect the total sum since the series converges uniformly regardless of order.
+% \end{proof}
 
-\begin{example}[Harmonic Series Rearrangements]
-  The harmonic series $\sum_{n=1}^\infty \frac{(-1)^{n+1}}{n}$ converges conditionally to $\ln(2)$. By Riemann’s Rearrangement Theorem, this series can be rearranged to sum to any real number $L$ or diverge to $\pm\infty$.
-\end{example}
+% \begin{example}[Harmonic Series Rearrangements]
+%   The harmonic series $\sum_{n=1}^\infty \frac{(-1)^{n+1}}{n}$ converges conditionally to $\ln(2)$. By Riemann’s Rearrangement Theorem, this series can be rearranged to sum to any real number $L$ or diverge to $\pm\infty$.
+% \end{example}
 
-\begin{lemma}[Group Rearrangements]
-  Grouping terms of an absolutely convergent series into blocks does not change its sum. For example, if $a_n = \frac{1}{n^2}$, grouping the terms as $(a_1)$, $(a_2 + a_3)$, $(a_4 + a_5 + a_6)$, etc., preserves the sum,
-  \[%
-    \sum_{n=1}^\infty a_n = \sum_{k=1}^\infty \left( \sum_{j=1}^k a_j \right)
-  .\]%
-\end{lemma}
+% \begin{lemma}[Group Rearrangements]
+%   Grouping terms of an absolutely convergent series into blocks does not change its sum. For example, if $a_n = \frac{1}{n^2}$, grouping the terms as $(a_1)$, $(a_2 + a_3)$, $(a_4 + a_5 + a_6)$, etc., preserves the sum,
+%   \[%
+%     \sum_{n=1}^\infty a_n = \sum_{k=1}^\infty \left( \sum_{j=1}^k a_j \right)
+%   .\]%
+% \end{lemma}
 
-\begin{proof}
-  Let $S_n$ denote the partial sums of $\sum_{n=1}^\infty a_n$. Grouping terms corresponds to defining a new sequence of partial sums $T_m$, where $T_m$ involves summing blocks of $S_n$. Since $\sum_{n=1}^\infty a_n$ converges absolutely, $T_m$ converges to the same limit as $S_n$.
-\end{proof}
+% \begin{proof}
+%   Let $S_n$ denote the partial sums of $\sum_{n=1}^\infty a_n$. Grouping terms corresponds to defining a new sequence of partial sums $T_m$, where $T_m$ involves summing blocks of $S_n$. Since $\sum_{n=1}^\infty a_n$ converges absolutely, $T_m$ converges to the same limit as $S_n$.
+% \end{proof}
 
-\begin{example}[Rearrangement and Divergence]
-  Consider the series $\sum_{n=1}^\infty \frac{1}{n}$, which diverges. Any rearrangement of this series also diverges, as the partial sums tend to infinity regardless of the order of terms.
-\end{example}
+% \begin{example}[Rearrangement and Divergence]
+%   Consider the series $\sum_{n=1}^\infty \frac{1}{n}$, which diverges. Any rearrangement of this series also diverges, as the partial sums tend to infinity regardless of the order of terms.
+% \end{example}
 
-\begin{theorem}[Unordered Series Convergence]
-  If $\sum_{n=1}^\infty a_n$ converges conditionally, the set of all sums obtained by rearranging the series is unbounded. That is, the sums can fill the entire real number line $\R$.
-\end{theorem}
+% \begin{theorem}[Unordered Series Convergence]
+%   If $\sum_{n=1}^\infty a_n$ converges conditionally, the set of all sums obtained by rearranging the series is unbounded. That is, the sums can fill the entire real number line $\R$.
+% \end{theorem}
 
-\begin{proof}
-  By Riemann’s Rearrangement Theorem, for any $L \in \R$, there exists a rearrangement $\sigma$ such that $\sum_{n=1}^\infty a_{\sigma(n)} = L$. This implies that the set of rearranged sums is dense in $\R$ and unbounded.
-\end{proof}
+% \begin{proof}
+%   By Riemann’s Rearrangement Theorem, for any $L \in \R$, there exists a rearrangement $\sigma$ such that $\sum_{n=1}^\infty a_{\sigma(n)} = L$. This implies that the set of rearranged sums is dense in $\R$ and unbounded.
+% \end{proof}

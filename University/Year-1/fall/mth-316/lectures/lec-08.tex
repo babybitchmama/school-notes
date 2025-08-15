@@ -1,159 +1,159 @@
-\lecture{8}{Oct 18 2024 Fri (13:02:05)}{Cauchy Sequences}
+\lecture{8}{Oct 16 2024 Wed (13:02:05)}{Cauchy Sequences}
 
-Another alternative way of defining convergent sequences is by using Cauchy sequences.
+% Another alternative way of defining convergent sequences is by using Cauchy sequences.
 
-\begin{definition}[Cauchy Sequence]
-  A sequence $(a_n)$ is called a \emph{Cauchy Sequence} if,
-  \[%
-    (\forall \epsilon > 0)(\exists N \in \N)(\forall m, n > N)[\lvert a_n - a_m \rvert < \epsilon]
-  .\]%
-\end{definition}
+% \begin{definition}[Cauchy Sequence]
+%   A sequence $(a_n)$ is called a \emph{Cauchy Sequence} if,
+%   \[%
+%     (\forall \epsilon > 0)(\exists N \in \N)(\forall m, n > N)[\lvert a_n - a_m \rvert < \epsilon]
+%   .\]%
+% \end{definition}
 
-The apparent use of Cauchy sequences is that they don't require a limit to exist in order to be defined. They only require that the terms of the sequence get arbitrarily close to each other. But these two definitions are equivalent, which we will prove later.
+% The apparent use of Cauchy sequences is that they don't require a limit to exist in order to be defined. They only require that the terms of the sequence get arbitrarily close to each other. But these two definitions are equivalent, which we will prove later.
 
-The simplest property of Cauchy sequences is that they are bounded.
+% The simplest property of Cauchy sequences is that they are bounded.
 
-\begin{theorem}
-  Every Cauchy sequence is bounded.
-\end{theorem}
+% \begin{theorem}
+%   Every Cauchy sequence is bounded.
+% \end{theorem}
 
-\begin{proof}
-  Given $\epsilon = 1$, there exists an $N \in \N$ such that $\lvert x_m - x_n \rvert < 1$ for all $m, n \in \N$. Fix $m = N + 1$. Then, for all $n > N$,
-  \begin{align*}
-    \lvert x_n - x_{N + 1} \rvert < 1 &\implies \lvert x_n \rvert < \lvert x_{N+1} \rvert + 1 \\
-                                      &\implies 1 - \lvert x_{N+1} \rvert < x_n < 1 + \lvert x_{N+1} \rvert
-  .\end{align*}
-  It follows that
-  \begin{align*}
-    A &= \max(\{\lvert x_1 \rvert, \lvert x_2 \rvert, \lvert x_3 \rvert, \cdots, \lvert x_{N-1} \rvert, \lvert x_{N + 1} \rvert + 1\}) \\
-    B &= \min(\{\lvert x_1 \rvert, \lvert x_2 \rvert, \lvert x_3 \rvert, \cdots, \lvert x_{N-1} \rvert, \lvert x_{N + 1} \rvert - 1\})
-  .\end{align*}
-  Then, $A \le x_n \le B$.
-\end{proof}
+% \begin{proof}
+%   Given $\epsilon = 1$, there exists an $N \in \N$ such that $\lvert x_m - x_n \rvert < 1$ for all $m, n \in \N$. Fix $m = N + 1$. Then, for all $n > N$,
+%   \begin{align*}
+%     \lvert x_n - x_{N + 1} \rvert < 1 &\implies \lvert x_n \rvert < \lvert x_{N+1} \rvert + 1 \\
+%                                       &\implies 1 - \lvert x_{N+1} \rvert < x_n < 1 + \lvert x_{N+1} \rvert
+%   .\end{align*}
+%   It follows that
+%   \begin{align*}
+%     A &= \max(\{\lvert x_1 \rvert, \lvert x_2 \rvert, \lvert x_3 \rvert, \cdots, \lvert x_{N-1} \rvert, \lvert x_{N + 1} \rvert + 1\}) \\
+%     B &= \min(\{\lvert x_1 \rvert, \lvert x_2 \rvert, \lvert x_3 \rvert, \cdots, \lvert x_{N-1} \rvert, \lvert x_{N + 1} \rvert - 1\})
+%   .\end{align*}
+%   Then, $A \le x_n \le B$.
+% \end{proof}
 
-Now, let's prove that the two definitions of convergence are equivalent.
+% Now, let's prove that the two definitions of convergence are equivalent.
 
-\begin{theorem}[Cauchy Criterion]
-  A sequence converges if and only if it is a Cauchy sequence.
-\end{theorem}
+% \begin{theorem}[Cauchy Criterion]
+%   A sequence converges if and only if it is a Cauchy sequence.
+% \end{theorem}
 
-\begin{proof}
-  Assume $x_n \to x$. Given $\epsilon > 0$, there exists an $N_1 \in \N$ such that $\lvert x_n - x \rvert < \frac{\epsilon}{2}$ for all $n > N$ and there exists an $N_2 \in \N$ such that $\lvert x_m - x \rvert < \frac{\epsilon}{2}$ for all $m > N$. Let $N = \max(\{N_1, N_2\})$. Then, for all $m, n > N$,
-  \begin{align*}
-    \lvert x_n - x_m \rvert &= \lvert x_n - x + x - x_m \rvert \\
-                            &\le \lvert x_n - x \rvert + \lvert x - x_m \rvert \\
-                            &< \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon
-  .\end{align*}
+% \begin{proof}
+%   Assume $x_n \to x$. Given $\epsilon > 0$, there exists an $N_1 \in \N$ such that $\lvert x_n - x \rvert < \frac{\epsilon}{2}$ for all $n > N$ and there exists an $N_2 \in \N$ such that $\lvert x_m - x \rvert < \frac{\epsilon}{2}$ for all $m > N$. Let $N = \max(\{N_1, N_2\})$. Then, for all $m, n > N$,
+%   \begin{align*}
+%     \lvert x_n - x_m \rvert &= \lvert x_n - x + x - x_m \rvert \\
+%                             &\le \lvert x_n - x \rvert + \lvert x - x_m \rvert \\
+%                             &< \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon
+%   .\end{align*}
 
-  Assume $(x_n)$ is a Cauchy sequence. Then, it is bounded. By the Bolzano-Weierstrass Theorem, there exists a convergent subsequence $(x_{n_k})$. Let $x = \lim x_{n_k}$. Let $\epsilon > 0$. Since $(x_n)$ is Cauchy, there exists $N \in \N$ such that $\lvert x_n - x_m \rvert < \frac{\epsilon}{2}$ for all $m, n > N$. Since $x_{n_k} \to x$, choose a term in the subsequence $x_{n_K}$, with $n_K > N$ and $\lvert x_{n_K} - x \rvert < \frac{\epsilon}{2}$. Notice that
-  \begin{align*}
-    \lvert x_n - x \rvert &= \lvert x_n - x_{n_K} + x_{n_K} - x \rvert \\
-                          &\le \lvert x_n - x_{n_K} \rvert + \lvert x_{n_K} - x \rvert \\
-                          &< \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon
-  .\qedhere\end{align*}
-\end{proof}
+%   Assume $(x_n)$ is a Cauchy sequence. Then, it is bounded. By the Bolzano-Weierstrass Theorem, there exists a convergent subsequence $(x_{n_k})$. Let $x = \lim x_{n_k}$. Let $\epsilon > 0$. Since $(x_n)$ is Cauchy, there exists $N \in \N$ such that $\lvert x_n - x_m \rvert < \frac{\epsilon}{2}$ for all $m, n > N$. Since $x_{n_k} \to x$, choose a term in the subsequence $x_{n_K}$, with $n_K > N$ and $\lvert x_{n_K} - x \rvert < \frac{\epsilon}{2}$. Notice that
+%   \begin{align*}
+%     \lvert x_n - x \rvert &= \lvert x_n - x_{n_K} + x_{n_K} - x \rvert \\
+%                           &\le \lvert x_n - x_{n_K} \rvert + \lvert x_{n_K} - x \rvert \\
+%                           &< \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon
+%   .\qedhere\end{align*}
+% \end{proof}
 
-\subsection{Limit Supremum and Infimum}
+% \subsection{Limit Supremum and Infimum}
 
-\begin{note}
-  This isn't part of the course, but in the next few courses, professors assume that you magically know this. So, better know it now.
-\end{note}
+% \begin{note}
+%   This isn't part of the course, but in the next few courses, professors assume that you magically know this. So, better know it now.
+% \end{note}
 
-\begin{definition}[Limit Supremum and Infimum]
-  Let $(a_n)$ be a sequence of real numbers. We define the \emph{limit supremum} and \emph{limit infimum} as
-  \begin{align*}
-    \limsup_{n \to \infty} a_n &= \lim_{n \to \infty} \left(\sup_{k \geq n} a_k\right) \\
-    \liminf_{n \to \infty} a_n &= \lim_{n \to \infty} \left(\inf_{k \geq n} a_k\right)
-  .\end{align*}
-  where $\sup_{k \geq n} a_k$ and $\inf_{k \geq n} a_k$ denote the supremum and infimum, respectively, of the tail of the sequence starting from the $n$-th term.
-\end{definition}
+% \begin{definition}[Limit Supremum and Infimum]
+%   Let $(a_n)$ be a sequence of real numbers. We define the \emph{limit supremum} and \emph{limit infimum} as
+%   \begin{align*}
+%     \limsup_{n \to \infty} a_n &= \lim_{n \to \infty} \left(\sup_{k \geq n} a_k\right) \\
+%     \liminf_{n \to \infty} a_n &= \lim_{n \to \infty} \left(\inf_{k \geq n} a_k\right)
+%   .\end{align*}
+%   where $\sup_{k \geq n} a_k$ and $\inf_{k \geq n} a_k$ denote the supremum and infimum, respectively, of the tail of the sequence starting from the $n$-th term.
+% \end{definition}
 
-\begin{remark}
-  The \emph{limit supremum} (\emph{limsup}) is the largest value that the sequence approaches infinitely often, while the \emph{limit infimum} (\emph{liminf}) is the smallest value that the sequence approaches infinitely often.
-\end{remark}
+% \begin{remark}
+%   The \emph{limit supremum} (\emph{limsup}) is the largest value that the sequence approaches infinitely often, while the \emph{limit infimum} (\emph{liminf}) is the smallest value that the sequence approaches infinitely often.
+% \end{remark}
 
-The \emph{limsup} and \emph{liminf} of a sequence provide insights into its long-term behavior.
-\begin{itemize}
-  \item \textbf{Supremum} ($\sup$) of a set is the least upper bound: the smallest number that is greater than or equal to every element of the set.
+% The \emph{limsup} and \emph{liminf} of a sequence provide insights into its long-term behavior.
+% \begin{itemize}
+%   \item \textbf{Supremum} ($\sup$) of a set is the least upper bound: the smallest number that is greater than or equal to every element of the set.
 
-  \item \textbf{Infimum} ($\inf$) of a set is the greatest lower bound: the largest number that is less than or equal to every element of the set.
-\end{itemize}
+%   \item \textbf{Infimum} ($\inf$) of a set is the greatest lower bound: the largest number that is less than or equal to every element of the set.
+% \end{itemize}
 
-By taking the $\sup$ or $\inf$ of the tail of the sequence ($k \geq n$) and letting $n \to \infty$, we focus on how the sequence behaves ``eventually.''
+% By taking the $\sup$ or $\inf$ of the tail of the sequence ($k \geq n$) and letting $n \to \infty$, we focus on how the sequence behaves ``eventually.''
 
-\begin{theorem}\leavevmode
-  \begin{enumerate}
-    \item $\liminf_{n \to \infty} a_n \leq \limsup_{n \to \infty} a_n$.
+% \begin{theorem}\leavevmode
+%   \begin{enumerate}
+%     \item $\liminf_{n \to \infty} a_n \leq \limsup_{n \to \infty} a_n$.
 
-    \item If $\liminf_{n \to \infty} a_n = \limsup_{n \to \infty} a_n = L$, then the sequence converges to $L$.
+%     \item If $\liminf_{n \to \infty} a_n = \limsup_{n \to \infty} a_n = L$, then the sequence converges to $L$.
 
-    \item $\limsup_{n \to \infty} a_n$ is finite if and only if the sequence is bounded above, and $\liminf_{n \to \infty} a_n$ is finite if and only if the sequence is bounded below.
-  \end{enumerate}
-\end{theorem}
+%     \item $\limsup_{n \to \infty} a_n$ is finite if and only if the sequence is bounded above, and $\liminf_{n \to \infty} a_n$ is finite if and only if the sequence is bounded below.
+%   \end{enumerate}
+% \end{theorem}
 
-\begin{proof}\leavevmode
-  \begin{enumerate}
-    \item To prove $\liminf_{n \to \infty} a_n \leq \limsup_{n \to \infty} a_n$, note that by definition
-      \[%
-        \liminf_{n \to \infty} a_n = \sup_{n \in \N} \inf_{k \geq n} a_k \aand \limsup_{n \to \infty} a_n = \inf_{n \in \N} \sup_{k \geq n} a_k
-      .\]%
-      For every $n$, $\inf_{k \geq n} a_k \leq \sup_{k \geq n} a_k$. Taking the supremum over all $n$ for the infimum and the infimum over all $n$ for the supremum preserves this inequality. Hence
-      \[%
-        \liminf_{n \to \infty} a_n \leq \limsup_{n \to \infty} a_n
-      .\]%
+% \begin{proof}\leavevmode
+%   \begin{enumerate}
+%     \item To prove $\liminf_{n \to \infty} a_n \leq \limsup_{n \to \infty} a_n$, note that by definition
+%       \[%
+%         \liminf_{n \to \infty} a_n = \sup_{n \in \N} \inf_{k \geq n} a_k \aand \limsup_{n \to \infty} a_n = \inf_{n \in \N} \sup_{k \geq n} a_k
+%       .\]%
+%       For every $n$, $\inf_{k \geq n} a_k \leq \sup_{k \geq n} a_k$. Taking the supremum over all $n$ for the infimum and the infimum over all $n$ for the supremum preserves this inequality. Hence
+%       \[%
+%         \liminf_{n \to \infty} a_n \leq \limsup_{n \to \infty} a_n
+%       .\]%
 
-    \item Assume $\liminf_{n \to \infty} a_n = \limsup_{n \to \infty} a_n = L$. By definition of $\limsup$ and $\liminf$, for every $\epsilon > 0$, there exists $N \in \N$ such that for all $n > N$,
-      \[%
-        L - \epsilon < \inf_{k \geq n} a_k \leq a_n \leq \sup_{k \geq n} a_k < L + \epsilon
-      .\]%
-      This implies $|a_n - L| < \epsilon$ for all $n > N$, so $(a_n) \to L$.
+%     \item Assume $\liminf_{n \to \infty} a_n = \limsup_{n \to \infty} a_n = L$. By definition of $\limsup$ and $\liminf$, for every $\epsilon > 0$, there exists $N \in \N$ such that for all $n > N$,
+%       \[%
+%         L - \epsilon < \inf_{k \geq n} a_k \leq a_n \leq \sup_{k \geq n} a_k < L + \epsilon
+%       .\]%
+%       This implies $|a_n - L| < \epsilon$ for all $n > N$, so $(a_n) \to L$.
 
-    \item To show $\limsup_{n \to \infty} a_n$ is finite if and only if $(a_n)$ is bounded above.
-      \begin{itemize}
-        \item If $\limsup_{n \to \infty} a_n$ is finite, then for every $\epsilon > 0$, there exists $N \in \N$ such that for all $n > N$, $\sup_{k \geq n} a_k < \limsup_{n \to \infty} a_n + \epsilon$. Thus, $a_k$ is bounded above.
+%     \item To show $\limsup_{n \to \infty} a_n$ is finite if and only if $(a_n)$ is bounded above.
+%       \begin{itemize}
+%         \item If $\limsup_{n \to \infty} a_n$ is finite, then for every $\epsilon > 0$, there exists $N \in \N$ such that for all $n > N$, $\sup_{k \geq n} a_k < \limsup_{n \to \infty} a_n + \epsilon$. Thus, $a_k$ is bounded above.
 
-        \item Conversely, if $(a_n)$ is bounded above, then $\sup_{k \geq n} a_k$ is finite for every $n$, and $\limsup_{n \to \infty} a_n = \inf_{n} \sup_{k \geq n} a_k$ is also finite.
-      \end{itemize}
+%         \item Conversely, if $(a_n)$ is bounded above, then $\sup_{k \geq n} a_k$ is finite for every $n$, and $\limsup_{n \to \infty} a_n = \inf_{n} \sup_{k \geq n} a_k$ is also finite.
+%       \end{itemize}
 
-      Similarly, $\liminf_{n \to \infty} a_n$ is finite if and only if $(a_n)$ is bounded below. The argument follows the same structure as above by considering $\inf_{k \geq n} a_k$. \qedhere
-  \end{enumerate}
-\end{proof}
+%       Similarly, $\liminf_{n \to \infty} a_n$ is finite if and only if $(a_n)$ is bounded below. The argument follows the same structure as above by considering $\inf_{k \geq n} a_k$. \qedhere
+%   \end{enumerate}
+% \end{proof}
 
-If a sequence is Cauchy, then
-\begin{itemize}
-  \item $\limsup_{n \to \infty} a_n = \liminf_{n \to \infty} a_n$,
+% If a sequence is Cauchy, then
+% \begin{itemize}
+%   \item $\limsup_{n \to \infty} a_n = \liminf_{n \to \infty} a_n$,
 
-  \item And the sequence converges to their common value.
-\end{itemize}
+%   \item And the sequence converges to their common value.
+% \end{itemize}
 
-The \emph{limsup} captures the ``upper boundary'' of eventual values of the sequence, while the \emph{liminf} captures the ``lower boundary.''
+% The \emph{limsup} captures the ``upper boundary'' of eventual values of the sequence, while the \emph{liminf} captures the ``lower boundary.''
 
-\begin{lemma}
-  Let $(a_n)$ be a sequence of real numbers. Then the following are equivalent
-  \begin{itemize}
-    \item $a_n \to a$,
+% \begin{lemma}
+%   Let $(a_n)$ be a sequence of real numbers. Then the following are equivalent
+%   \begin{itemize}
+%     \item $a_n \to a$,
 
-    \item $\limsup_{n \to \infty} a_n = \liminf_{n \to \infty} a_n = a$.
-  \end{itemize}
-\end{lemma}
+%     \item $\limsup_{n \to \infty} a_n = \liminf_{n \to \infty} a_n = a$.
+%   \end{itemize}
+% \end{lemma}
 
-\begin{proof}
-  We will prove the equivalence in both directions.
+% \begin{proof}
+%   We will prove the equivalence in both directions.
 
-  Suppose $a_n \to a$. By definition of convergence, for any $\epsilon > 0$, there exists $N \in \N$ such that for all $n > N$,
-  \[%
-    |a_n - a| < \epsilon \implies a - \epsilon < a_n < a + \epsilon
-  .\]%
-  Hence, the terms of the sequence are eventually arbitrarily close to $a$. For any $n$, the supremum of the tail $\sup_{k \geq n} a_k$ and the infimum of the tail $\inf_{k \geq n} a_k$ also converge to $a$ as $n \to \infty$. Thus, 
-  \[%
-    \limsup_{n \to \infty} a_n = \liminf_{n \to \infty} a_n = a
-  .\]%
+%   Suppose $a_n \to a$. By definition of convergence, for any $\epsilon > 0$, there exists $N \in \N$ such that for all $n > N$,
+%   \[%
+%     |a_n - a| < \epsilon \implies a - \epsilon < a_n < a + \epsilon
+%   .\]%
+%   Hence, the terms of the sequence are eventually arbitrarily close to $a$. For any $n$, the supremum of the tail $\sup_{k \geq n} a_k$ and the infimum of the tail $\inf_{k \geq n} a_k$ also converge to $a$ as $n \to \infty$. Thus, 
+%   \[%
+%     \limsup_{n \to \infty} a_n = \liminf_{n \to \infty} a_n = a
+%   .\]%
 
-  Suppose $\limsup_{n \to \infty} a_n = \liminf_{n \to \infty} a_n = a$. By definition of $\limsup$ and $\liminf$, for every $\epsilon > 0$, there exists $N \in \N$ such that for all $n > N$,
-  \[%
-    a - \epsilon < \inf_{k \geq n} a_k \leq a_n \leq \sup_{k \geq n} a_k < a + \epsilon
-  .\]%
-  This implies that the terms of the sequence are eventually confined to the interval $(a - \epsilon, a + \epsilon)$. Therefore, $a_n \to a$.
+%   Suppose $\limsup_{n \to \infty} a_n = \liminf_{n \to \infty} a_n = a$. By definition of $\limsup$ and $\liminf$, for every $\epsilon > 0$, there exists $N \in \N$ such that for all $n > N$,
+%   \[%
+%     a - \epsilon < \inf_{k \geq n} a_k \leq a_n \leq \sup_{k \geq n} a_k < a + \epsilon
+%   .\]%
+%   This implies that the terms of the sequence are eventually confined to the interval $(a - \epsilon, a + \epsilon)$. Therefore, $a_n \to a$.
 
-  Since both implications hold, the two statements are equivalent. \qedhere
-\end{proof}
+%   Since both implications hold, the two statements are equivalent. \qedhere
+% \end{proof}
