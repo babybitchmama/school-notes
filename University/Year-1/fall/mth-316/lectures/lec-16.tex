@@ -1,250 +1,511 @@
-\lecture{16}{Nov 6 2024 Wed (13:02:06)}{Compact, Perfect, and Connected Sets}
+\lecture{16}{Nov 6 2024 Wed (13:02:06)}{Conversion Tests for Series and Double Summations}
 
-\subsection{Compact Sets}
-
-In analysis, many theorems about continuous functions -- such as attaining maximum and minimum values, or being uniformly continuous -- require the underlying set to have a special property: \emph{compactness}. Compact sets can be thought of as the natural generalization of ``closed and bounded intervals'' in $\R$ to more abstract spaces.
-
-Intuitively, a set is compact if it is ``small'' in a certain topological sense: it can be completely covered by finitely many neighborhoods, no matter how we try to cover it.
-
-There are two main definitions of compactness, one using open covers (topology esk) and the other using sequences (analysis esk). We will start with the easier definition, which is based on sequences.
-
-\begin{definition}[Compactness V1]
-  A set $K \subseteq \R$ is \emph{compact} if every sequence in $K$ has a subsequence that converges to a limit that is also in $K$.
-\end{definition}
-
-\begin{example}
-  The most basic class of compact sets are closed and bounded intervals in $\R$. To see this, notice that if $(a_n)$ is a sequence contained in $[b, c]$, then the Bolzano-Weierstrass theorem guarantees that there exists a subsequence $(a_{n_k})$ that converges to some limit $L$. Since $[b, c]$ is closed, $L$ must also be in $[b, c]$.
-\end{example}
-
-Some basic properties of compact sets are
-\begin{theorem}
-  A set $K \subseteq \R$ is compact if and only if it is closed and bounded (i.e., $(\exists M > 0)(\forall a \in K)[\abs{a} \le M]$).
-\end{theorem}
-
-\begin{proof}
-  Suppose $K$ is compact. We first show that $K$ must be bounded. If $K$ were unbounded, then we could inductively construct a sequence $(x_n) \subseteq K$ with $\abs{x_n} > n$ for each $n \in \N$. Indeed, choose $x_1 \in K$ with $\abs{x_1} > 1$, then $x_2 \in K$ with $\abs{x_2} > 2$, and so on. This sequence is unbounded, and therefore cannot have a convergent subsequence, since every convergent sequence in $\R$ is bounded. But compactness requires that every sequence in $K$ have a convergent subsequence whose limit lies in $K$, a contradiction. Thus $K$ must be bounded.
-
-  To see that $K$ is closed, let $x$ be a limit point of $K$. Then there exists a sequence $(x_n) \subseteq K$ such that $x_n \to x$. By compactness, $(x_n)$ has a subsequence $(x_{n_k})$ converging to some $y \in K$. Since subsequences of a convergent sequence converge to the same limit, we have $y = x$, and hence $x \in K$. This shows that $K$ contains all of its limit points and is therefore closed.
-
-  Now suppose $K$ is closed and bounded. Being bounded, every sequence in $K$ is bounded, so by the Bolzano--Weierstrass Theorem it has a convergent subsequence. Let $(x_n) \subseteq K$ be any sequence, and let $(x_{n_k})$ be a convergent subsequence with limit $x \in \R$. Since $K$ is closed, $x \in K$. Thus every sequence in $K$ has a convergent subsequence whose limit lies in $K$, meaning $K$ is sequentially compact. In metric spaces, sequential compactness is equivalent to compactness in the open-cover sense, so $K$ is compact.
-\end{proof}
-
-The usefulness of compact sets aren't apparent from the current definition, as it's just, essentially, defined as a set whose closed and bounded. But, there's more to it, a more topological definition. To formally define compactness, we first need the notion of an \emph{open cover}.
-
-\begin{definition}[Open Cover]
-  Let $E \subseteq \R^n$. An \emph{open cover} of $E$ is a collection (possibly infinite) of open sets $\{O_\alpha\}_{\alpha \in A}$ indexed by some set $A$ such that
-  \[%
-    E \subseteq \bigcup_{\alpha \in A} O_\alpha
-  .\]%
-  This means that every point $x \in E$ lies in at least one $O_\alpha$.
-\end{definition}
-
-The index set $A$ can be finite, countably infinite, or uncountable; the definition does not restrict its size. What matters is that each $O_\alpha$ is open in $\R^n$ and that together they ``cover'' $E$.
-
-\begin{example}\leavevmode
-  \begin{enumerate}
-    \item The collection $\{(k,k+2) \mid k \in \Z\}$ is an open cover of $\R$, since every real number lies in one of these open intervals.
-
-    \item The collection $\{(1/n, 2) \mid n \in \N\}$ is an open cover of $(0,2)$, because every point of $(0,2)$ lies in at least one of these intervals.
-
-    \item If $E = (0,1)$, then $\{(0, 1 - 1/n) \mid n \ge 2\}$ is \emph{not} an open cover of $E$, because points close to $1$ (e.g., $x = 0.99$) are missed. \qedhere
-  \end{enumerate}
-\end{example}
-
-\begin{definition}[Finite Subcover]
-  Given an open cover $\{O_\alpha\}_{\alpha \in A}$ of $E$, a \emph{finite subcover} is a finite subcollection $\{O_{\alpha_1}, \dots, O_{\alpha_m}\}$ that still covers $E$:
-  \[%
-    E \subseteq \bigcup_{i=1}^m O_{\alpha_i}
-  .\]%
-\end{definition}
-
-It is important to stress that in general, an open cover need not admit a finite subcover. For example, the collection $\{(n, n+2) \mid n \in \Z\}$ is an open cover of $\R$, but no finite subcollection covers $\R$. This observation leads directly to the idea of compactness: those sets for which \emph{every} open cover does have a finite subcover are called compact.
-
-\begin{remark}
-  In many contexts, we will construct open covers using \emph{balls} or \emph{intervals} centered at points of $E$, but the definition allows for any shape of open set. The ``openness'' ensures that each point of $E$ has a small open neighborhood entirely contained in one of the covering sets.
-\end{remark}
-
-Now, we are prepared to define compactness in the topological sense.
-
-\begin{definition}[Compact Set]
-  A set $K \subseteq \R^n$ is \textit{compact} if every open cover of $K$ has a finite subcover.
-\end{definition}
-
-\begin{example}\leavevmode
-  \begin{enumerate}
-    \item The closed interval $[0,1]$ in $\R$ is compact (this is a nontrivial theorem, proved below).
-
-    \item The open interval $(0,1)$ is \emph{not} compact: the cover $\{(1/n, 1) \mid n \in \N\}$ has no finite subcover.
-
-    \item Any finite set is compact: given any open cover, each point lies in at least one open set from the cover; choosing those sets for each point yields a finite subcover. \qedhere
-  \end{enumerate}
-\end{example}
-
-\begin{definition}[Sequential Compactness]
-  A set $K \subseteq \R^n$ is \textit{sequentially compact} if every sequence in $K$ has a subsequence converging to a point in $K$.
-\end{definition}
-
-In $\R^n$, compactness and sequential compactness are equivalent, but in more general spaces they may differ.
-
-One of the foundational results in analysis is that, in $\R^n$, compactness has a simple characterization in terms of closedness and boundedness.
-
-\begin{theorem}[Heine Borel]
-  A set $K \subseteq \R^n$ is compact if and only if it is closed and bounded.
-\end{theorem}
-
-\begin{proof}
-  Suppose $K$ is compact. To see that $K$ is bounded, argue by contradiction: if $K$ were unbounded, then for each $m \in \N$ consider the open set
-  \[%
-    O_m = \{x \in \R^n \mid \|x\| < m\}
-  .\]%
-  The collection $\{O_m\}_{m \in \N}$ is an open cover of $\R^n$, hence also of $K$. If $K$ were unbounded, then for any finite subcollection $\{O_{m_1}, \dots, O_{m_k}\}$, with $M = \max\{m_1, \dots, m_k\}$, there would exist a point $x \in K$ with $\|x\| > M$, not covered by the finite subcover -- contradiction. Thus $K$ is bounded.
-
-  To see that $K$ is closed, let $p$ be a limit point of $K$. Suppose $p \notin K$. Then $p \in K^c$, which is open. Let $\epsilon > 0$ be such that $V_\epsilon(p) \subseteq K^c$. The sets $\{V_\epsilon(p)\} \cup \{O_\alpha\}_{\alpha \in A}$ (where the latter covers $K$) form an open cover of $K \cup \{p\}$. The compactness of $K$ forces $p$ to be included if it is a limit point, which contradicts $p \notin K$. Therefore $K$ contains all its limit points and is closed.
-
-  Now suppose $K$ is closed and bounded. Boundedness means $K \subseteq B_R(0)$ for some $R > 0$. It is a fact (proved via the Bolzano--Weierstrass theorem) that every bounded sequence in $\R^n$ has a convergent subsequence. Closedness ensures that the limit of any convergent sequence in $K$ is still in $K$. Using these facts, we prove sequential compactness: every sequence in $K$ has a convergent subsequence with limit in $K$. In $\R^n$, sequential compactness is equivalent to open-cover compactness. Hence $K$ is compact.
-\end{proof}
+Now, we can start proving tests that have some substance.
 
 \begin{lemma}
-  Let $K$ be compact and $F$ be closed in $\R^n$.
+  If the series $\sum_{k=1}^\infty a_k$ converges, then $a_k \to 0$.
+\end{lemma}
+
+\begin{proof}
+  Let $S_n = \sum_{k=1}^n a_k$. Then, $a_n = S_n - S_{n-1}$. Since the series converges, the sequence of partial sums is Cauchy. Thus, given $\epsilon > 0$, there exists an $N \in \N$ such that whenever $n > m > N$, it follows that
+  \[%
+    \lvert S_n - S_m \rvert = \lvert a_{m+1} + a_{m+2} + \cdots + a_n \rvert < \epsilon
+  .\]%
+  In particular, if we take $m = n - 1$, we have
+  \[%
+    \lvert a_n \rvert = \lvert S_n - S_{n-1} \rvert < \epsilon
+  .\]%
+  Thus, $a_n \to 0$.
+\end{proof}
+
+\begin{note}
+  The converse isn't true. Take, for example, the harmonic series $\sum_{k=1}^\infty \frac{1}{k}$. This series diverges, but $\frac{1}{k} \to 0$.
+\end{note}
+
+\subsection{Absolute Conversion Test}
+
+\begin{lemma}[Absolute Convergence Test]
+  If $\sum_{k=1}^\infty \lvert a_k \rvert$ converges, then $\sum_{k=1}^\infty a_k$ converges.
+\end{lemma}
+
+\begin{proof}
+  Assume $\sum_{k=1}^\infty \lvert a_k \rvert$ converges. Let $\epsilon > 0$. Then, there exists an $N \in \N$ such that for every $n > m > N$, we have
+  \[%
+    \lvert a_{m+1} \rvert + \lvert a_{m+2} \rvert + \cdots + \lvert a_n \rvert < \epsilon
+  .\]%
+  Notice that
+  \[%
+    \lvert a_{m+1} + a_{m+2} + \cdots + a_n \rvert \leq \lvert a_{m+1} \rvert + \lvert a_{m+2} \rvert + \cdots + \lvert a_n \rvert < \epsilon
+  .\]%
+  Thus, by the Cauchy Criterion for Series, $\sum_{k=1}^\infty a_k$ converges.
+\end{proof}
+
+\subsection{Comparison Tests}
+
+\begin{lemma}[Comparison Test]
+  Assume $(a_k)$ and $(b_k)$ are sequences satisfying $(\forall k \in \N)[0 \le a_k \le b_k]$
   \begin{enumerate}
-    \item Any closed subset of $K$ is compact.
+    \item If $\sum_{k=1}^\infty b_k$ converges, then $\sum_{k=1}^\infty a_k$ converges.
 
-    \item Any compact subset of $\R^n$ is bounded and closed.
-
-    \item The continuous image of a compact set is compact.
-
-    \item If $K \subseteq \R^n$ is compact, then $K$ is bounded and $\sup K$ and $\inf K$ exist (in $\R$ for $n=1$), and in fact $\max K$ and $\min K$ exist.
+    \item If $\sum_{k=1}^\infty a_k$ diverges, then $\sum_{k=1}^\infty b_k$ diverges.
   \end{enumerate}
 \end{lemma}
 
 \begin{proof}\leavevmode
-  \begin{enumerate}
-    \item Let $F \subseteq K$ be closed. If $\{O_\alpha\}$ is an open cover of $F$, then $\{O_\alpha\} \cup \{K^c\}$ is an open cover of $K$. Since $K$ is compact, there is a finite subcover; removing $K^c$ leaves a finite subcover of $F$.
-
-    \item Already proved via Heine Borel.
-
-    \item Let $f : K \to \R^m$ be continuous and $\{U_\beta\}$ be an open cover of $f(K)$. Then $\{f^{-1}(U_\beta)\}$ is an open cover of $K$ (by continuity of $f$). Compactness of $K$ yields a finite subcover; applying $f$ gives a finite subcover of $f(K)$.
-
-    \item If $K$ is compact in $\R$, the Extreme Value Theorem (proved using sequential compactness) gives the existence of $\max K$ and $\min K$. \qedhere
-  \end{enumerate}
+  Both statements follow directly from the Cauchy Criterion for Series.
+  \[%
+    \lvert a_{m+1} + a_{m+2} + \cdots + a_n \rvert \le \lvert b_{m+1} + b_{m+2} + \cdots + b_n \rvert
+  .\]%
+  If the right-hand side is less than $\epsilon$, then the left-hand side is less than $\epsilon$. Thus, the series converges. The second statement follows from the contrapositive of the first statement.
 \end{proof}
 
-\begin{example}\leavevmode
-  \begin{enumerate}
-    \item $[0,1]^n$ is compact in $\R^n$.
+\subsection{Limit Comparison Test}
 
-    \item The set $\{1/n \mid n \in \N\} \cup \{0\}$ is compact: it is closed and bounded.
-
-    \item The set $(0,1)$ is not compact: consider the open cover $\{(1/n,1) \mid n \in \N\}$, which has no finite subcover.
-
-    \item The set $\Z$ is closed but not bounded, hence not compact. \qedhere
-  \end{enumerate}
-\end{example}
-
-\subsection{Perfect Sets}
-
-We recall that a \emph{limit point} of a set $E \subseteq \R^n$ is a point $p$ such that every $\epsilon$-neighborhood of $p$ contains a point of $E$ different from $p$ itself (Lecture~14).
-
-\begin{definition}[Perfect Set]
-  A set $P \subseteq \R^n$ is \emph{perfect} if it is closed and every point of $P$ is a limit point of $P$.
-\end{definition}
-
-Equivalently, $P$ is perfect if $P = P'$, where $P'$ denotes the set of all limit points of $P$.
-
-\begin{remark}
-  A few basic observations, we notice that every perfect set is closed, by definition, perfect sets have no isolated points, and the closure of a perfect set is the set itself.
-\end{remark}
-
-\begin{example}\leavevmode
-  \begin{enumerate}
-    \item \textbf{Closed intervals:} $[0,1]$ is perfect. It is closed, and every point is a limit point: interior points because of nearby points on both sides, and endpoints because of points approaching from within the interval.
-
-    \item \textbf{The Cantor set:} The standard middle-third Cantor set $C$ is closed, totally disconnected, and has no isolated points -- hence perfect.
-
-    \item \textbf{Rationals in an interval:} $\Q \cap [0,1]$ is not perfect because it is not closed; its closure is $[0,1]$, which \emph{is} perfect.
-
-    \item \textbf{Union with isolated points:} $[0,1] \cup \{2\}$ is not perfect because $2$ is isolated.
-
-    \item The set
-      \[%
-        E = \{x \in [0,1] \mid x!\text{is irrational}\}
-      ,\]%
-      is perfect. It is closed (complement is $\Q \cap [0,1]$, which is open in the subspace topology) and every irrational in $[0,1]$ is a limit point because rationals and irrationals are both dense in $\R$.
-
-    \item The set of all real numbers whose decimal expansions contain only the digits 4 and 7 is perfect. It is closed, and every point can be approached by other such numbers differing only far out in the decimal expansion. \qedhere
-  \end{enumerate}
-\end{example}
-
-\begin{theorem}
-  Every nonempty perfect set in $\R^n$ is uncountable.
-\end{theorem}
+\begin{lemma}[Limit Comparison Test]
+  Assume $(a_k)$ and $(b_k)$ are sequences satisfying $(\forall k \in \N)[0 < a_k \le b_k]$. If
+  \[%
+    \lim_{k \to \infty} \frac{a_k}{b_k} = c
+  ,\]%
+  where $c$ is a positive real number, then $\sum_{k=1}^\infty a_k$ converges if and only if $\sum_{k=1}^\infty b_k$ converges.
+\end{lemma}
 
 \begin{proof}
-  Suppose $P$ is perfect and countable, $P = \{p_1, p_2, p_3, \dots\}$. We inductively construct a nested sequence of closed balls
+  Let $c > 0$ such that $\lim_{k \to \infty} \frac{a_k}{b_k} = c$. This means for any $\epsilon > 0$, there exists an $N \in \N$ such that for all $k \geq N$, we have
   \[%
-    \overline{B}_1 \supseteq \overline{B}_2 \supseteq \cdots
+    c - \epsilon < \frac{a_k}{b_k} < c + \epsilon
   .\]%
-  such that $\overline{B}_n$ contains points of $P$ but not $p_n$, and with diameters tending to zero. The Nested Interval Property implies the intersection contains exactly one point, but that point would have been excluded at some stage -- contradiction. Thus $P$ must be uncountable.
+  Multiplying through by $b_k$ (which is positive), we get
+  \[%
+    (c - \epsilon)b_k < a_k < (c + \epsilon)b_k
+  .\]%
+  Choose $\epsilon$ such that $0 < \epsilon < c$, so $c - \epsilon > 0$. For $k \geq N$, we now have
+  \[%
+    0 < (c - \epsilon) b_k \leq a_k \leq (c + \epsilon) b_k
+  .\]%
+
+  \begin{enumerate}
+    \item Convergence of $\sum_{k=1}^\infty b_k$:
+
+      If $\sum_{k=1}^\infty b_k$ converges, then $(c - \epsilon)\sum_{k=1}^\infty b_k$ converges because $c - \epsilon > 0$ is a constant multiple. By the Comparison Test applied to $(c - \epsilon)b_k \leq a_k$, it follows that $\sum_{k=1}^\infty a_k$ also converges.
+
+    \item Divergence of $\sum_{k=1}^\infty b_k$:
+
+      If $\sum_{k=1}^\infty b_k$ diverges, then $(c + \epsilon)\sum_{k=1}^\infty b_k$ also diverges because $c + \epsilon > 0$ is a constant multiple. By the Comparison Test applied to $a_k \geq (c - \epsilon)b_k$, it follows that $\sum_{k=1}^\infty a_k$ also diverges.
+  \end{enumerate}
+
+  Hence, $\sum_{k=1}^\infty a_k$ converges if and only if $\sum_{k=1}^\infty b_k$ converges.
 \end{proof}
 
-\subsection{Connected Sets}
+\subsection{Ratio Test}
 
-Intuitively, a set is connected if it is “all in one piece” and cannot be split into two nonempty parts that are apart from each other.
-
-\begin{definition}[Connected Set]
-  A set $E \subseteq \R^n$ is \emph{connected} if it cannot be expressed as the union $E = U \cup V$ of two disjoint nonempty sets $U$ and $V$ that are open in the relative topology on $E$.
-\end{definition}
-
-Equivalently: the only subsets of $E$ that are both open and closed (in the relative topology) are $\emptyset$ and $E$ itself.
-
-\begin{example}\leavevmode
-  \begin{enumerate}
-    \item \textbf{Intervals:} Every interval in $\R$ (open, closed, half-open, bounded, or unbounded) is connected.
-
-    \item \textbf{Disconnected union:} $(0,1) \cup (2,3)$ is disconnected: the pieces $(0,1)$ and $(2,3)$ are disjoint, nonempty, and relatively open.
-
-    \item The set
-      \[%
-        E = \{(x, \sin(1/x)) \mid 0 < x \leq 1\}
-      ,\]%
-      is connected. The oscillations do not break the set into separated pieces; it is even path-connected.
-
-    \item Adding the vertical segment $\{0\} \times [-1,1]$ to the set in the previous example produces a closed connected set -- it is the closure of the original connected set.
-
-    \item The union of two connected sets that intersect is connected. For instance, $[0,2] \cup [2,3] = [0,3]$. \qedhere
-  \end{enumerate}
-\end{example}
-
-\begin{theorem}[Characterization in $\R$]
-  A subset $E \subseteq \R$ is connected if and only if it is an interval.
-\end{theorem}
-
-\begin{proof}
-  Suppose $E$ is connected but not an interval. Then there exist $a < c < b$ with $a, b \in E$ but $c \notin E$. Let
+\begin{lemma}[Ratio Test]
+  Let $(a_n)$ be a sequence. If
   \[%
-    U = E \cap (-\infty, c), \quad V = E \cap (c, \infty)
-  .\]%
-  These are nonempty, relatively open in $E$, disjoint, and their union is $E$, contradicting connectedness.
-
-  If $E$ is an interval, any attempt to split it into two disjoint nonempty relatively open sets will fail because the completeness of $\R$ forces the two sets to touch, producing a common boundary point in $E$.
-\end{proof}
-
-\begin{theorem}\leavevmode
+    \lim_{n \to \infty} \left\lvert \frac{a_{n+1}}{a_n} \right\rvert = L
+  ,\]%
+  then
   \begin{enumerate}
-    \item The continuous image of a connected set is connected.
+    \item If $L < 1$, then $\sum_{n=1}^\infty a_n$ converges absolutely.
 
-    \item The closure of a connected set is connected.
+    \item If $L > 1$, then $\sum_{n=1}^\infty a_n$ diverges.
 
-    \item The union of connected sets with nonempty intersection is connected.
+    \item If $L = 1$, then the test is inconclusive.
   \end{enumerate}
-\end{theorem}
+\end{lemma}
 
 \begin{proof}\leavevmode
+  Let $L = \lim_{n \to \infty} \left\lvert \frac{a_{n+1}}{a_n} \right\rvert$.
   \begin{enumerate}
-    \item If $f: E \to \R^m$ is continuous and $f(E)$ were disconnected, the preimages of a separating pair of open sets would disconnect $E$ -- contradiction.
+    \item $L < 1$:
 
-    \item Let $E$ be connected. If $\overline{E}$ were disconnected, the separation would pull back to a separation of $E$ by intersecting with open sets.
+      Choose $\epsilon > 0$ such that $L + \epsilon < 1$. By the definition of the limit,
+      \[%
+        (\exists N \in \N)(\forall n \ge N)\left[\left\lvert \frac{a_{n+1}}{a_n} \right\rvert < L + \epsilon\right]
+      .\]%
+      This implies that for $n \geq N$
+      \[%
+        \lvert a_{n+1} \rvert < (L + \epsilon) \lvert a_n \rvert
+      .\]%
+      Iterating this inequality, we get
+      \[%
+        \lvert a_{n+1} \rvert < (L + \epsilon)^{n-N+1} \lvert a_N \rvert
+      .\]%
+      Since $L + \epsilon < 1$, the geometric series $\sum_{n=N}^\infty (L + \epsilon)^{n-N+1}$ converges. Therefore, by the Comparison Test, $\sum_{n=N}^\infty \lvert a_n \rvert$ converges, which implies that $\sum_{n=1}^\infty \lvert a_n \rvert$ converges. Thus, $\sum_{n=1}^\infty a_n$ converges absolutely.
 
-    \item If $E_1$ and $E_2$ are connected and intersect, their union cannot be split without breaking one of them. \qedhere
+    \item $L > 1$:
+
+      Choose $\epsilon > 0$ such that $L - \epsilon > 1$. By the definition of the limit,
+      \[%
+        (\exists N \in \N)(\forall n \ge N)\left[\left\lvert \frac{a_{n+1}}{a_n} \right\rvert > L - \epsilon\right]
+      .\]%
+      This implies that for $n \geq N$
+      \[%
+        \lvert a_{n+1} \rvert > (L - \epsilon) \lvert a_n \rvert
+      .\]%
+      Iterating this inequality, we get
+      \[%
+        \lvert a_{n+1} \rvert > (L - \epsilon)^{n-N+1} \lvert a_N \rvert
+      .\]%
+      Since $L - \epsilon > 1$, the terms $\lvert a_n \rvert$ do not approach zero, and hence $\sum_{n=1}^\infty \lvert a_n \rvert$ diverges. Thus, $\sum_{n=1}^\infty a_n$ diverges.
+
+    \item $L = 1$:
+
+      The test provides no information about the convergence or divergence of the series. For example, the series $\sum_{n=1}^\infty \frac{1}{n}$ diverges, but $\sum_{n=1}^\infty \frac{1}{n^2}$ converges, and both satisfy $\lim_{n \to \infty} \left\lvert \frac{a_{n+1}}{a_n} \right\rvert = 1$. Therefore, the test is inconclusive in this case. \qedhere
   \end{enumerate}
+\end{proof}
+
+\subsection{Root Test}
+
+\begin{lemma}[Root Test]
+  Let $(a_n)$ be a sequence. If
+  \[%
+    \limsup_{n \to \infty} \sqrt[n]{\lvert a_n \rvert} = L
+  ,\]%
+  then
+  \begin{enumerate}
+    \item If $L < 1$, then $\sum_{n=1}^\infty a_n$ converges absolutely.
+
+    \item If $L > 1$, then $\sum_{n=1}^\infty a_n$ diverges.
+
+    \item If $L = 1$, then the test is inconclusive.
+  \end{enumerate}
+\end{lemma}
+
+\begin{proof}
+  Let $L = \limsup_{n \to \infty} \sqrt[n]{\lvert a_n \rvert}$.
+
+  \begin{enumerate}
+    \item $L < 1$:
+
+      Choose $\epsilon > 0$ such that $L + \epsilon < 1$. By the definition of the $\limsup$, there exists $N \in \mathbb{N}$ such that for all $n \geq N$
+      \[%
+        \sqrt[n]{\lvert a_n \rvert} < L + \epsilon
+      .\]%
+      Raising both sides to the $n$th power, we have
+      \[%
+        (\forall n \geq N)\left[\lvert a_n \rvert < (L + \epsilon)^n\right]
+      .\]%
+      Since $L + \epsilon < 1$, the series $\sum_{n=N}^\infty (L + \epsilon)^n$ converges because it is a geometric series with ratio less than $1$. By the Comparison Test, $\sum_{n=N}^\infty \lvert a_n \rvert$ converges, and therefore $\sum_{n=1}^\infty \lvert a_n \rvert$ converges. Thus, $\sum_{n=1}^\infty a_n$ converges absolutely.
+
+    \item $L > 1$:
+
+      By the definition of $\limsup$, there exists a subsequence $(a_{n_k})$ such that
+      \[%
+        \sqrt[n_k]{\lvert a_{n_k} \rvert} \to L~\textrm{as}~k \to \infty
+      .\]%
+      Since $L > 1$, for sufficiently large $k$, we have
+      \[%
+        \sqrt[n_k]{\lvert a_{n_k} \rvert} > 1
+      ,\]%
+      which implies
+      \[%
+        \lvert a_{n_k} \rvert > 1^n = 1
+      .\]%
+      Thus, $\lvert a_{n_k} \rvert$ does not approach $0$, so the series $\sum_{n=1}^\infty a_n$ diverges.
+
+    \item $L = 1$:
+
+      The test is inconclusive because series with $L = 1$ may either converge or diverge. For instance
+      \[%
+        \sum_{n=1}^\infty \frac{1}{n^2}~\textrm{converges, while}~\sum_{n=1}^\infty \frac{1}{n}~\textrm{diverges}
+      .\]%
+      Both of these series satisfy $\limsup_{n \to \infty} \sqrt[n]{\lvert a_n \rvert} = 1$.\qedhere
+  \end{enumerate}
+\end{proof}
+
+\subsection{Alternating Series Test}
+
+\begin{lemma}[Alternating Series Test]
+  Let $(a_n)$ be a sequence satisfying the following requirements
+  \begin{enumerate}
+    \item $a_1 \ge a_2 \ge a_3 \ge \cdots \ge a_n \ge a_{n+1} \ge \cdots$,
+
+    \item $a_n \to 0$,
+  \end{enumerate}
+  Then, the alternating series $\sum_{n=1}^\infty (-1)^{n+1} a_n$ converges.
+\end{lemma}
+
+\begin{proof}
+  Let $S_n = \sum_{k=1}^n (-1)^{k+1} a_k$. Then, $S_{2n} = a_1 - a_2 + a_3 - a_4 + \cdots + a_{2n-1} - a_{2n}$. Since $a_n \to 0$, we have
+  \[%
+    \lvert S_{2n} - S_{2n-2} \rvert = \lvert a_{2n-1} - a_{2n} \rvert \to 0
+  .\]%
+  Thus, $(S_{2n})$ is a Cauchy sequence. Similarly, $(S_{2n+1})$ is also a Cauchy sequence. Thus, both sequences converge. Since the series is the sum of these two sequences, the series converges.
+\end{proof}
+
+\subsection{Condensation Test}
+
+\begin{lemma}[Condensation Test]
+  Suppose $(b_n)$ is decreasing and satisfies $b_n \ge 0$ for all $n \in \N$. Then, the series $\sum_{n=1}^\infty b_n$ converges if and only if the series
+  \[%
+    \sum_{n=0}^\infty 2^nb_{2^n} = b_1 + 2b_2 + 4b_4 + 8b_8 + 16b_{16} + \cdots
+  ,\]%
+  converges.
+\end{lemma}
+
+\begin{proof}
+  First, assume that $\sum_{n=0}^\infty 2^nb_{2^n}$ converges. Then, the partial sum
+  \[%
+    T_k = b_1 + 2b_2 + 4b_4 + \cdots + 2^kb_{2^k}
+  ,\]%
+  is bounded, by some number $M$. Because $b_n \ge 0$, we know that the partial sums are increasing. Let $S_m = b_1 + b_2 + b_3 + \cdots + b_m$. Fix $m$ and let $k$ be large enough to ensure $m \le 2_{k+1} - 1$. Then, $S_m \le S_{2^k + 1} - 1$ and
+  \begin{align*}
+    S_{2^{k+1}} - 1 &= b_1 + (b_2 + b_3) + (b_4 + \cdots + b_7) + \cdots + (b_{2^k} + \cdots + b_{2^{k+1} - 1}) \\
+                    &\le b_1 + 2b_2 + 4b_4 + \cdots + 2^kb_{2^k} \\
+                    &= T_k
+  .\end{align*}
+  Therefore, $S_m \le T_k \le M$ for all $m \in \N$. This implies that $(S_m)$ is bounded and therefore converges.
+\end{proof}
+
+This is a more general statement of the statement that the sum $\sum_{n=1}^\infty \frac{1}{n}$ diverges and that $\sum_{n=1}^\infty
+\frac{1}{n^\rho}$ converges for $\rho > 1$.
+
+\subsection{P-Series Test}
+
+\begin{corollary}[P-Series Test]
+  The series
+  \[%
+    \sum_{n=1}^\infty \frac{1}{n^\rho}
+  .\]%
+  converges if and only if $\rho > 1$.
+\end{corollary}
+
+\begin{proof}
+  Let $b_n = \frac{1}{n^\rho}$. By the Cauchy Condensation Test, the series $\sum_{n=1}^\infty b_n$ converges if and only if the series
+  \[%
+    \sum_{n=0}^\infty 2^n \cdot \frac{1}{(2^n)^\rho} = \sum_{n=0}^\infty \frac{1}{2^{n(\rho-1)}}
+  .\]%
+  converges. The latter is a geometric series with common ratio $r = \frac{1}{2^{\rho-1}}$. A geometric series converges if and only if $\lvert r \rvert < 1$. Thus, $\lvert r \rvert < 1$ implies
+  \[%
+    \frac{1}{2^{\rho-1}} < 1
+  ,\]%
+  which holds if and only if $\rho - 1 > 0$, or equivalently, $\rho > 1$. Therefore, $\sum_{n=1}^\infty \frac{1}{n^\rho}$ converges if and only if $\rho > 1$.
+\end{proof}
+
+The discrete analogue of integration by parts is often called \emph{summation by parts} or \emph{Abel's transformation}. It is the fundamental identity used to prove Dirichlet's test.
+
+\subsection{Summation by Parts}
+
+\begin{lemma}[Summation by parts]
+  Let $(a_n)_{n \ge 1}$ and $(b_n)_{n \ge 1}$ be real sequences and set
+  \[%
+    B_n \coloneqq \sum_{k=1}^n b_k \quad (B_0 \coloneqq 0)
+  .\]%
+  For every integer $N\ge 1$ we have
+  \[%
+    \sum_{k=1}^N a_k b_k = a_N B_N + \sum_{k=1}^{N-1} (a_k - a_{k+1}) B_k
+  .\]%
+\end{lemma}
+
+\begin{proof}
+  Write each $b_k$ as a difference of partial sums, $b_k = B_k - B_{k-1}$. Then
+  \[%
+    \sum_{k=1}^N a_k b_k = \sum_{k=1}^N a_k (B_k - B_{k-1}) = \sum_{k=1}^N a_k B_k - \sum_{k=1}^N a_k B_{k-1}
+  .\]%
+  In the second sum shift the index $k \mapsto k + 1$ (noting $B_0 = 0$)
+  \[%
+    \sum_{k=1}^N a_k B_{k-1} = \sum_{k=0}^{N-1} a_{k+1} B_k = \sum_{k=1}^{N-1} a_{k+1} B_k
+  .\]%
+  Therefore
+  \[%
+    \sum_{k=1}^N a_k b_k = a_N B_N + \sum_{k=1}^{N-1} (a_k - a_{k+1}) B_k
+  ,\]%
+  as claimed.
+\end{proof}
+
+\subsection{Dirichlet's Test}
+
+\begin{lemma}[Dirichlet's Test]
+  Let $(a_n)$ and $(b_n)$ be sequences. Suppose
+  \begin{enumerate}
+    \item $(a_n)$ is monotone and $\lim_{n\to\infty} a_n = 0$,
+
+    \item the partial sums $B_n=\sum_{k=1}^n b_k$ are bounded: there exists $M>0$ with $\abs{B_n} \le M$ for all $n$.
+  \end{enumerate}
+  Then the series $\sum_{n=1}^\infty a_n b_n$ converges.
+\end{lemma}
+
+\begin{proof}
+  We give the standard proof using summation by parts. For clarity assume $(a_n)$ is nonincreasing (the other monotone cases are handled similarly by sign changes) and that $a_n\ge 0$ for all $n$; the general monotone-to-$0$ case is reduced to this by multiplying by $-1$ if necessary.
+
+  Let $S_N \coloneqq \sum_{k=1}^N a_k b_k$ denote the $N$-th partial sum. By summation by parts,
+  \[%
+    S_N = a_N B_N + \sum_{k=1}^{N-1} (a_k - a_{k+1}) B_k
+  .\]%
+  By hypothesis there is $M>0$ with $\abs{B_k} \le M$ for every $k$. Because $(a_k)$ is nonincreasing and nonnegative, each difference $a_k-a_{k+1}\ge 0$, and the finite sum in the identity involves nonnegative weights. Estimate the absolute value of $S_N$ as follows:
+  \[%
+    \abs{S_N} \le \abs{a_N B_N} + \sum_{k=1}^{N-1} (a_k-a_{k+1}) \abs{B_k} \le M a_N + M\sum_{k=1}^{N-1} (a_k-a_{k+1})
+  .\]%
+  The telescoping sum equals
+  \[%
+    \sum_{k=1}^{N-1} (a_k-a_{k+1}) = a_1 - a_N
+  .\]%
+  Hence
+  \[%
+    \abs{S_N} \le M a_N + M(a_1 - a_N) = M a_1
+  .\]%
+  In particular the sequence $(S_N)$ of partial sums is bounded. To prove convergence we show it is Cauchy: for $N>n$ the same identity applied to $S_N-S_n$ gives
+  \[%
+    S_N - S_n = a_N B_N - a_n B_n + \sum_{k=n}^{N-1} (a_k-a_{k+1}) B_k
+  ,\]%
+  and therefore, using $\abs{B_k} \le M$,
+  \[%
+    \abs{S_N - S_n} \le M\abs{a_N} + M\abs{a_n} + M\sum_{k=n}^{N-1} (a_k-a_{k+1}) = M(\abs{a_N} + \abs{a_n} + a_n - a_N)
+  .\]%
+  Because $a_n \ge 0$ and $a_N \ge 0$ this simplifies to
+  \[%
+    \abs{S_N - S_n} \le 2M a_n
+  .\]%
+  Since $a_n \to 0$ as $n \to \infty$, for every $\epsilon > 0$ we can choose $n$ large enough that $2M a_n<\epsilon$, and then for all $N>n$ we have $\abs{S_N-S_n} < \epsilon$. Thus $(S_N)$ is Cauchy and hence convergent. This proves that $\sum_{n=1}^\infty a_n b_n$ converges.
+
+  If $(a_n)$ is monotone but not nonnegative, write $a_n = a_n^+ - a_n^-$ with the monotone parts and apply the same argument to each part (or reduce to the nonnegative monotone case by multiplying by $-1$ when necessary). This completes the proof.
+\end{proof}
+
+\subsection{Double Summation of Infinite Series}
+
+\begin{definition}[Iterated Summation]
+  Given a doubly indexed array of real numbers $\{a_{ij} \mid i, j \in \N\}$, the \emph{iterated sum} of the array is defined as
+  \[%
+    S_{mn} = \sum_{i=1}^m \sum_{j=1}^n a_{ij}
+  .\]%
+  The \emph{double summation} is defined as
+  \[%
+    \sum_{i,j=1}^\infty a_{ij} = \lim_{m, n \to \infty} S_{mn}
+  .\]%
+\end{definition}
+
+\begin{theorem}[Fubini's Theorem for Double Series]
+  Let $\{a_{ij} \mid i, j \in \N\}$ be a doubly indexed array of real numbers.
+  \begin{enumerate}
+    \item If $\sum_{i,j=1}^\infty \lvert a_{ij} \rvert < \infty$ (absolute convergence), then the double series converges, and the order of summation does not matter
+      \[%
+        \sum_{i=1}^\infty \sum_{j=1}^\infty a_{ij} = \sum_{j=1}^\infty \sum_{i=1}^\infty a_{ij} = \sum_{i,j=1}^\infty a_{ij}
+      .\]%
+
+    \item If $\sum_{i=1}^\infty \sum_{j=1}^\infty a_{ij}$ converges conditionally (not absolutely), then rearranging the terms or changing the order of summation may alter the sum or even lead to divergence.
+  \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+  Suppose $\sum_{i,j=1}^\infty \lvert a_{ij} \rvert < \infty$. Let $S_{mn} = \sum_{i=1}^m \sum_{j=1}^n a_{ij}$. For any fixed $m, n \in \N$, we can write
+  \[%
+    \lvert S_{mn} \rvert \leq \sum_{i=1}^m \sum_{j=1}^n \lvert a_{ij} \rvert \leq \sum_{i,j=1}^\infty \lvert a_{ij} \rvert
+  .\]%
+  By the monotone convergence theorem, the limits $\lim_{m \to \infty} \sum_{i=1}^m \sum_{j=1}^n a_{ij}$ and $\lim_{n \to \infty} \sum_{j=1}^n \sum_{i=1}^m a_{ij}$ exist and are equal. Thus,
+  \[%
+    \sum_{i=1}^\infty \sum_{j=1}^\infty a_{ij} = \sum_{j=1}^\infty \sum_{i=1}^\infty a_{ij}
+  .\qedhere\]%
+\end{proof}
+
+\begin{corollary}[Order of Summation for Nonnegative Terms]
+  If $a_{ij} \geq 0$ for all $i, j \in \N$, then
+  \[%
+    \sum_{i=1}^\infty \sum_{j=1}^\infty a_{ij} = \sum_{j=1}^\infty \sum_{i=1}^\infty a_{ij}
+  ,\]%
+  even if the series does not converge absolutely.
+\end{corollary}
+
+\begin{proof}
+  For nonnegative terms, $\sum_{i,j=1}^\infty a_{ij}$ converges by monotonicity if and only if the partial sums $\sum_{i=1}^m \sum_{j=1}^n a_{ij}$ converge. Thus, the iterated sums also converge and are equal.
+\end{proof}
+
+\begin{example}[Harmonic Series Grid]
+  Consider $a_{ij} = \frac{1}{i+j}$. We investigate the sums
+  \[%
+    \sum_{i=1}^\infty \sum_{j=1}^\infty a_{ij} \aand \sum_{j=1}^\infty \sum_{i=1}^\infty a_{ij}
+  .\]%
+  Since $a_{ij}$ is not absolutely convergent (due to divergence of $\sum_{i,j=1}^\infty \frac{1}{i+j}$), the series cannot be rearranged freely. Direct computation of either summation requires careful handling of the partial sums.
+\end{example}
+
+\begin{lemma}[Symmetry of Convergent Double Series]
+  If $\{a_{ij}\}$ is absolutely convergent and symmetric, i.e., $a_{ij} = a_{ji}$ for all $i, j$, then
+  \[%
+    \sum_{i,j=1}^\infty a_{ij} = 2 \sum_{i=1}^\infty \sum_{j=i+1}^\infty a_{ij}
+  .\]%
+\end{lemma}
+
+\begin{proof}
+  Partition the terms into two symmetric halves: $a_{ij}$ for $i < j$ and $a_{ij}$ for $j < i$. Add the diagonal terms $a_{ii}$ separately. Absolute convergence ensures this rearrangement is valid.
+\end{proof}
+
+\subsection{Products of Infinite Series}
+
+\begin{definition}[Cauchy Product of Infinite Series]
+  Let $\sum_{n=0}^\infty a_n$ and $\sum_{n=0}^\infty b_n$ be two infinite series. The \emph{Cauchy product} of these series is defined as
+  \[%
+    \left(\sum_{n=0}^\infty a_n\right) \cdot \left(\sum_{n=0}^\infty b_n\right) = \sum_{n=0}^\infty \underbrace{\sum_{k=0}^n a_k b_{n-k}}_{c_n}
+  .\]%
+\end{definition}
+
+\begin{theorem}[Cauchy Product Convergence]
+  If $\sum_{n=0}^\infty a_n$ and $\sum_{n=0}^\infty b_n$ converge absolutely, then their Cauchy product also converges, and
+  \[%
+    \sum_{n=0}^\infty c_n = \left(\sum_{n=0}^\infty a_n\right) \cdot \left(\sum_{n=0}^\infty b_n\right)
+  .\]%
+\end{theorem}
+
+\begin{proof}
+  Since $\sum_{n=0}^\infty \lvert a_n \rvert < \infty$ and $\sum_{n=0}^\infty \lvert b_n \rvert < \infty$, the absolute convergence allows us to rearrange and group terms freely. Using the definition of the Cauchy product and the triangle inequality, we can write
+  \[%
+    \left\lvert\sum_{n=0}^\infty \sum_{k=0}^n a_k b_{n-k}\right\rvert \leq \sum_{n=0}^\infty \sum_{k=0}^n \lvert a_k \rvert \lvert b_{n-k} \rvert
+  .\]%
+  By Fubini's theorem for double series, the double sum can be rearranged into a product of two convergent series
+  \[%
+    \sum_{n=0}^\infty \sum_{k=0}^n \lvert a_k \rvert \lvert b_{n-k} \rvert = \left(\sum_{n=0}^\infty \lvert a_n \rvert\right) \cdot \left(\sum_{n=0}^\infty \lvert b_n \rvert\right)
+  .\]%
+  Thus, the Cauchy product converges absolutely, and the value is given by the product of the original sums.
+\end{proof}
+
+\begin{corollary}[Conditional Convergence of the Cauchy Product]
+  If $\sum_{n=0}^\infty a_n$ and $\sum_{n=0}^\infty b_n$ converge conditionally (not absolutely), the Cauchy product may fail to converge or yield a different sum than the product of the original series.
+\end{corollary}
+
+\begin{example}[Harmonic Series and Cauchy Product]
+  Let $a_n = \frac{1}{n+1}$ and $b_n = \frac{1}{n+1}$, corresponding to the harmonic series. Since the harmonic series diverges, their Cauchy product also diverges. However, truncating the series to $n$ terms and analyzing the partial sums provides useful approximations.
+\end{example}
+
+\begin{lemma}[Cauchy Product and Power Series]
+  Let $\sum_{n=0}^\infty a_n x^n$ and $\sum_{n=0}^\infty b_n x^n$ be power series with radii of convergence $R_1$ and $R_2$, respectively. Then the Cauchy product of these series,
+  \[%
+    \sum_{n=0}^\infty c_n x^n, \quad c_n = \sum_{k=0}^n a_k b_{n-k}
+  ,\]%
+  converges for $\lvert x \rvert < \min(\{R_1, R_2\})$.
+\end{lemma}
+
+\begin{proof}
+  Within the radius of convergence, the partial sums of the power series converge absolutely. Applying the Cauchy product formula term by term preserves convergence, as long as $\lvert x \rvert$ is strictly less than the minimum of the radii.
+\end{proof}
+
+\begin{example}[Product of Geometric Series]
+  Consider the geometric series $\sum_{n=0}^\infty x^n = \frac{1}{1-x}$ for $\lvert x \rvert < 1$. The product of two such series is given by
+  \[%
+    \left(\sum_{n=0}^\infty x^n\right) \cdot \left(\sum_{n=0}^\infty x^n\right) = \sum_{n=0}^\infty c_n x^n
+  ,\]%
+  where
+  \[%
+    c_n = \sum_{k=0}^n 1 = n + 1
+  .\]%
+  Thus, the product is
+  \[%
+    \sum_{n=0}^\infty (n + 1)x^n = \frac{1}{(1 - x)^2}
+  .\qedhere\]%
+\end{example}
+
+\begin{theorem}[Multiplication of Exponential Series]
+  Let $e^x = \sum_{n=0}^\infty \frac{x^n}{n!}$. The product of two exponential series satisfies
+  \[%
+    \left(\sum_{n=0}^\infty \frac{x^n}{n!}\right) \cdot \left(\sum_{n=0}^\infty \frac{y^n}{n!}\right) = \sum_{n=0}^\infty \frac{(x+y)^n}{n!}
+  .\]%
+\end{theorem}
+
+\begin{proof}
+  Using the Cauchy product, the coefficient of $z^n$ in the product is given by
+  \[%
+    \sum_{k=0}^n \frac{x^k}{k!} \cdot \frac{y^{n-k}}{(n-k)!} = \frac{1}{n!} \sum_{k=0}^n \binom{n}{k} x^k y^{n-k}
+  .\]%
+  By the binomial theorem, this simplifies to
+  \[%
+    \frac{1}{n!} (x+y)^n
+  .\]%
+  Thus, the product of the exponential series is the exponential series of $x + y$.
 \end{proof}

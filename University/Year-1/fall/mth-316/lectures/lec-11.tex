@@ -1,45 +1,122 @@
-\lecture{11}{Oct 23 2024 Wed (13:03:26)}{Properties of Infinite Series}
+\lecture{11}{Oct 23 2024 Wed (13:03:26)}{Introduction to Series}
 
-Just as we had an algebraic limit theorem for sequences, we have a similar theorem for series.
-\begin{theorem}[Algebraic Limit Theorem for Series]
-  If $\sum_{k=1}^\infty a_k = A$ and $\sum_{k=1}^\infty b_k = B$, then
-  \begin{enumerate}
-    \item $\sum_{k=1}^\infty ca_k = cA$ for all $c \in \R$.
-
-    \item $\sum_{k=1}^\infty (a_k + b_k) = A + B$.
-  \end{enumerate}
-\end{theorem}
-
-\begin{proof}\leavevmode
-  \begin{enumerate}
-    \item Let $S_n = \sum_{k=1}^n a_k$. Then, $\lim_{m \to \infty} S_m = A$. Thus, by the Algebraic Limit Theorem for Sequences, $c\lim_{m \to \infty} S_m = \lim_{m \to \infty} (cS_m) = cA$. Thus, $\sum_{k=1}^\infty ca_k = cA$.
-
-    \item Let $S_n = \sum_{k=1}^n a_k$ and $T_n = \sum_{k=1}^n b_k$. Then, $\lim_{m \to \infty} S_m = A$ and $\lim_{m \to \infty} T_m = B$. Thus, by the Algebraic Limit Theorem for Sequences, $\lim_{m \to \infty} (S_m + T_m) = A + B$. Thus, $\sum_{k=1}^\infty (a_k + b_k) = A + B$. \qedhere
-  \end{enumerate}
-\end{proof}
-
-Just as we had the Cauchy criterion for sequences, we have a similar criterion for series.
-\begin{theorem}[Cauchy Criterion for Series]
-  The series $\sum_{k=1}^\infty a_k$ converges if and only if, given $\epsilon > 0$, there exists an $N \in \N$ such that whenever $n > m > N$, it follows that
+\begin{definition}[Infinite Series and Partial Sums]
+  Let $b_n$ be a sequence. An \emph{infinite series} is a formal expression of the form
   \[%
-    \lvert a_{m+1} + a_{m+2} + \cdots + a_n \rvert < \epsilon
+    \sum_{n=1}^\infty b_n = b_1 + b_2 + b_3 + \cdots
   .\]%
+  The $n$-th \emph{partial sum} of the series is
+  \[%
+    S_N = \sum_{n=1}^{N} b_n = b_1 + b_2 + \cdots + b_N
+  .\]%
+\end{definition}
+
+If $(b_n)$ converges to $L$, then we say $\sum_{n=1}^\infty b_n$ converges. The following are equivalent
+\[%
+  \lim_{n \to \infty} S_n = L = \lim_{n \to \infty} \sum_{k=1}^n b_k
+.\]%
+
+\begin{theorem}
+  If $(\forall n \in \N)[a_n \ge 0]$, then $\sum_{n=1}^\infty a_n$ converges if and only if the sequence of partial sums $(S_n)$ is bounded.
 \end{theorem}
 
 \begin{proof}
-  Notice that
-  \[%
-    \left\lvert \sum_{k=1}^n a_k - \sum_{k=1}^m a_k \right\rvert = \lvert S_n - S_m \rvert = \lvert a_{m+1} + a_{m+2} + \cdots + a_n \rvert
-  .\]%
-  Thus, the series converges if and only if the sequence of partial sums is a Cauchy sequence.
+  If $a_n \ge 0$, then $S_{n+1} = S_n + a_n \ge S_n$. By the Monotone Convergence Theorem, $(S_n)$ converges if and only if it is bounded.
 \end{proof}
 
-This is a very powerful criterion. We use this theorem to prove all of the basic tests in the future.
+\begin{example}
+  Given the sequence $a_n = \frac{1}{n^2}$, we can re-write this as
+  \[%
+    \sum_{n=1}^N \frac{1}{n^2} = 1 + \sum_{n=2}^N \frac{1}{n^2}
+  .\]%
+  This gives us
+  \begin{align*}
+    n^2 &\ge n(n - 1) \\
+        &< 1 + \sum_{n=2}^N \frac{1}{n(n - 1)} = 1 + \sum_{n=2}^N \left(\frac{1}{n - 1} - \frac{1}{n}\right) \\
+        &= 1 + \left(1 - \frac{1}{N}\right) = 2 - \frac{1}{N} < 2
+  .\end{align*}
+  So, $n^2 \ge 2$ for all $n \in \N$. Thus, $a_n = \frac{1}{n^2}$ is bounded below by $0$ and above by $2$. Therefore, $\sum_{n=1}^\infty \frac{1}{n^2}$ converges.
+\end{example}
 
-\begin{definition}[Absolute Convergence]
-  A series $\sum_{k=1}^\infty a_k$ is said to \emph{converge absolutely} if the series $\sum_{k=1}^\infty \lvert a_k \rvert$ converges.
-\end{definition}
+\subsection{Types of Series}
 
-\begin{definition}[Conditional Convergence]
-  A series $\sum_{k=1}^\infty a_k$ is said to \emph{converge conditionally} if the series $\sum_{k=1}^\infty a_k$ converges, but the series $\sum_{k=1}^\infty \lvert a_k \rvert$ diverges.
-\end{definition}
+\begin{example}[Geometric Series]
+  Let $\lvert \rho \rvert < 1$. Then
+  \[%
+    \sum_{n=0}^\infty \rho^n = \frac{1}{1 - \rho}
+  .\]%
+  Consider the partial sum
+  \[%
+    S_N = \sum_{n=0}^N \rho^N = \frac{1 - \rho^{N+1}}{1 - \rho}
+  .\]%
+  Therefore, $\sum_{n=0}^\infty \rho^n$ converges to $\frac{1}{1 - \rho}$.
+\end{example}
+
+\begin{example}[Harmonic Series]
+  Let $a_n = \frac{1}{n}$, then $a_n \to 0$ but $\sum_{n=1}^\infty
+  \frac{1}{n} \to \infty$. This can be shown by
+  \[%
+    S_{2^n} - S_{2^{n-1}} = \frac{1}{S^{n-1} + 1} + \cdots + \frac{1}{S^n} \ge \frac{2^{n-1}}{2^n} = \frac{1}{2}
+  .\]%
+  Therefore, $S_{2^n} \ge S_1 + \frac{n}{2}$, meaning that the harmonic series diverges.
+\end{example}
+
+\begin{example}[Alternating Series]
+  Let $a_n = \frac{(-1)^n}{n}$, then $a_n \to 0$. But, the series $\sum_{n=1}^\infty \frac{(-1)^n}{n} = -\ln(2)$ by the Alternating Series Test (see section \ref{sub_sec:conversion_tests}).
+\end{example}
+
+\begin{example}[P-Series]
+  Let $a_n = \frac{1}{n^\rho}$, then $a_n \to 0$. The series $\sum_{n=1}^\infty \frac{1}{n^\rho}$ converges if $\rho > 1$ and diverges if $\rho \le 1$.
+\end{example}
+
+\subsection{Infinite Products}
+
+\begin{note}
+  This isn't part of the course, but it's interesting to know.
+\end{note}
+
+Infinite products are an extension of finite products, where an infinite sequence of terms is multiplied together. They are often used in advanced mathematics to study sequences, series, and special functions. An infinite product takes the form
+\[%
+  \prod_{n=1}^\infty (1 + a_n) = (1 + a_1)(1 + a_2)(1 + a_3) \cdots
+.\]%
+Similar to infinite series, the convergence of an infinite product depends on the behavior of the terms $a_n$.
+
+\subsubsection{Convergence of Infinite Products}
+
+An infinite product $\prod_{n=1}^\infty (1 + a_n)$ converges if the partial product
+\[%
+  P_N = \prod_{n=1}^{N} (1 + a_n)
+.\]%
+converges to a finite, nonzero limit as $N \to \infty$. For convergence, a necessary condition is that $a_n \to 0$ as $n \to \infty$, since large terms would make the product diverge.
+
+\begin{remark}
+  If $\prod_{n=1}^\infty (1 + a_n)$ converges, then $\sum_{n=1}^\infty \ln(1 + a_n)$ must also converge, provided $\ln(1 + a_n)$ is well-defined. Thus, infinite products can often be analyzed by studying the associated series $\sum_{n=0}^\infty \ln(1 + a_n)$.
+\end{remark}
+
+\subsubsection{Relation to Infinite Series}
+
+Infinite products are closely related to infinite series via the logarithm function. For small $a_n$, the approximation $\ln(1 + a_n) \approx a_n$ can be used to study the convergence of the series
+\[%
+  \ln\left(\prod_{n=1}^\infty (1 + a_n) \right) = \sum_{n=1}^\infty \ln(1 + a_n)
+.\]%
+This connection allows us to convert between infinite products and infinite series in many cases.
+
+\subsubsection{Examples}
+
+\begin{example}[Geometric Infinite Product]
+  Consider $a_n = \rho^n$ with $\lvert \rho \rvert < 1$. Then the infinite product is
+  \[%
+    \prod_{n=1}^\infty (1 + \rho^n)
+  .\]%
+  By taking the logarithm, this can be related to the sum $\sum_{n=0}^\infty \ln(1 + \rho^n)$, and convergence is determined by the geometric series properties of $\rho^n$.
+\end{example}
+
+\begin{example}[Euler's Product Formula for Primes]
+  A famous infinite product representation of the Riemann zeta function is
+  \[%
+    \zeta(s) = \prod_{p~\textrm{prime}} \frac{1}{1 - p^{-s}}
+  ,\]%
+  for $s > 1$. This connects infinite products to the distribution of prime numbers and is a cornerstone in analytic number theory.
+\end{example}
+
+Infinite products often appear in advanced topics such as special functions, infinite series transformations, and number theory. While not covered in depth here, they are worth exploring further in future courses.

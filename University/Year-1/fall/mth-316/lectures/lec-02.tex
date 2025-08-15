@@ -84,9 +84,9 @@ Generally, you assume $P$ is true, then use definitions, axioms, and previously 
   Prove if $n$ is even, then $n^2$ is even.
 \end{question}
 
-\begin{proof}
+\begin{solution}
   The assumption is that $n$ is even, meaning there exists some integer $k$ such that $n = 2k$. Then, $n^2 = (2k)^2 = 4k^2 = 2(2k^2) = 2m$, where $m = 2k^2$, making $n^2$ even.
-\end{proof}
+\end{solution}
 
 \begin{question}
   Prove that if $a$ and $b$ are rational numbers, then $a + b$ is also a rational number.
@@ -108,17 +108,17 @@ To prove $P \implies Q$, prove instead $\neg Q \implies \neg P$.
   Prove if $n^2$ is odd, then $n$ is odd.
 \end{question}
 
-\begin{proof}
+\begin{solution}
   If $n$ is even, then $n^2$ is even. This is immediate from the direct proof above.
-\end{proof}
+\end{solution}
 
 \begin{question}
   Prove if $\sfrac{n}{m}$ is irrational, then $n$ is irrational or $m$ is irrational.
 \end{question}
 
-\begin{proof}
+\begin{solution}
   If $n$ and $m$ are rational, then $\sfrac{n}{m}$ is rational. Clear from closure of rationals under division.
-\end{proof}
+\end{solution}
 
 \subsubsection{Proof by Contradiction}
 
@@ -140,17 +140,17 @@ Assume $P$ is true and $Q$ is false, then derive a contradiction.
   Prove $\sqrt{2}$ is irrational.
 \end{question}
 
-\begin{proof}
+\begin{solution}
   Assume $\sqrt{2} = \sfrac{p}{q}$ in lowest terms. Then $2q^2 = p^2$ implies $p$ even. Let $p=2k$, then $q$ is also even.
-\end{proof}
+\end{solution}
 
 \begin{question}
   Prove there are infinitely many primes.
 \end{question}
 
-\begin{proof}
+\begin{solution}
   Assume finitely many primes $p_1, \cdots, p_n$. Consider $P = p_1 \cdots p_n + 1$. Then $P$ has a prime factor not in the list.
-\end{proof}
+\end{solution}
 
 \subsubsection{Proof by Mathematical Induction}
 
@@ -169,20 +169,20 @@ A method for statements involving $n \in \N$.
   Prove $\sum_{i=1}^n i = \frac{n(n+1)}{2}$.
 \end{question}
 
-\begin{proof}
+\begin{solution}
   It clearly holds for $n = 1$. Assume true for $n = k$. Then,
   \[%
     \sum_{i=1}^{k+1} i = \frac{k(k + 1)}{2} + (k + 1) = \frac{(k + 1)(k + 2)}{2}
   .\qedhere\]%
-\end{proof}
+\end{solution}
 
 \begin{question}
   Prove $2^n > n$ for $n \geq 1$.
 \end{question}
 
-\begin{proof}
+\begin{solution}
   It holds for $n = 1$, since $2 > 1$. Assume that $2^k > k$, then $2^{k+1} = 2 \cdot 2^k > 2k \ge k + 1$, for $k \ge 1$.
-\end{proof}
+\end{solution}
 
 \begin{question}
   Let $x_1 = 1$ and $x_{n+1} = \frac{1}{2}x_n + 1$. Show that $(x_n)$ is increasing.

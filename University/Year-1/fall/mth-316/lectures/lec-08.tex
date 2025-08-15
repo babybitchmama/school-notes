@@ -1,159 +1,115 @@
-\lecture{8}{Oct 16 2024 Wed (13:02:05)}{Cauchy Sequences}
+\lecture{8}{Oct 16 2024 Wed (13:02:05)}{Algebraic Limit and Order Limit Theorems}
 
-Another alternative way of defining convergent sequences is by using Cauchy sequences.
+\subsection{Algebraic Limit Theorem}
 
-\begin{definition}[Cauchy Sequence]
-  A sequence $(a_n)$ is called a \emph{Cauchy Sequence} if,
-  \[%
-    (\forall \epsilon > 0)(\exists N \in \N)(\forall m, n > N)[\lvert a_n - a_m \rvert < \epsilon]
-  .\]%
+\begin{definition}[Bounded]
+  A sequence $(x_n)$ is \emph{bounded} if there exists a number $M > 0$ such that $\lvert x_n \rvert \le M$ for all $n \in \N$.
 \end{definition}
 
-The apparent use of Cauchy sequences is that they don't require a limit to exist in order to be defined. They only require that the terms of the sequence get arbitrarily close to each other. But these two definitions are equivalent, which we will prove later.
-
-The simplest property of Cauchy sequences is that they are bounded.
+Geometrically, this means that we can find an interval $[-M, M]$ that contains every term in the sequence $(x_n)$.
 
 \begin{theorem}
-  Every Cauchy sequence is bounded.
+  Every convergent sequence is bounded.
 \end{theorem}
 
-\begin{proof}
-  Given $\epsilon = 1$, there exists an $N \in \N$ such that $\lvert x_m - x_n \rvert < 1$ for all $m, n \in \N$. Fix $m = N + 1$. Then, for all $n > N$,
-  \begin{align*}
-    \lvert x_n - x_{N + 1} \rvert < 1 &\implies \lvert x_n \rvert < \lvert x_{N+1} \rvert + 1 \\
-                                      &\implies 1 - \lvert x_{N+1} \rvert < x_n < 1 + \lvert x_{N+1} \rvert
-  .\end{align*}
-  It follows that
-  \begin{align*}
-    A &= \max(\{\lvert x_1 \rvert, \lvert x_2 \rvert, \lvert x_3 \rvert, \cdots, \lvert x_{N-1} \rvert, \lvert x_{N + 1} \rvert + 1\}) \\
-    B &= \min(\{\lvert x_1 \rvert, \lvert x_2 \rvert, \lvert x_3 \rvert, \cdots, \lvert x_{N-1} \rvert, \lvert x_{N + 1} \rvert - 1\})
-  .\end{align*}
-  Then, $A \le x_n \le B$.
-\end{proof}
-
-Now, let's prove that the two definitions of convergence are equivalent.
-
-\begin{theorem}[Cauchy Criterion]
-  A sequence converges if and only if it is a Cauchy sequence.
-\end{theorem}
+\begin{worksheet}
+  Given $(a_n)$, we need to show that if $\lim_{n \to \infty} a_n = a$, then $(a_n)$ is bounded. Using the definition of a limit, $(\forall \epsilon > 0)(\exists N \in \N)(\forall n > N)[\lvert a_n - a \rvert < \epsilon]$. Expanding the inequality using \ref{eq:triangle_inequality}, we get
+  \[%
+    \lvert a_n \rvert = \lvert a_n - a + a \rvert \le \lvert a_n + a \rvert - \lvert a \rvert < \epsilon + \lvert a \rvert
+  .\]%
+  We then can let $M$ be the biggest number in the set $\{\lvert a_1 \rvert, \lvert a_2 \rvert, \cdots, \lvert a_n \rvert, \lvert a \rvert + \epsilon\}$. Then, that means that every term in the sequence $(a_n)$ is less than or equal to $M$, so $(a_n)$ is bounded.
+\end{worksheet}
 
 \begin{proof}
-  Assume $x_n \to x$. Given $\epsilon > 0$, there exists an $N_1 \in \N$ such that $\lvert x_n - x \rvert < \frac{\epsilon}{2}$ for all $n > N$ and there exists an $N_2 \in \N$ such that $\lvert x_m - x \rvert < \frac{\epsilon}{2}$ for all $m > N$. Let $N = \max(\{N_1, N_2\})$. Then, for all $m, n > N$,
-  \begin{align*}
-    \lvert x_n - x_m \rvert &= \lvert x_n - x + x - x_m \rvert \\
-                            &\le \lvert x_n - x \rvert + \lvert x - x_m \rvert \\
-                            &< \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon
-  .\end{align*}
-
-  Assume $(x_n)$ is a Cauchy sequence. Then, it is bounded. By the Bolzano-Weierstrass Theorem, there exists a convergent subsequence $(x_{n_k})$. Let $x = \lim x_{n_k}$. Let $\epsilon > 0$. Since $(x_n)$ is Cauchy, there exists $N \in \N$ such that $\lvert x_n - x_m \rvert < \frac{\epsilon}{2}$ for all $m, n > N$. Since $x_{n_k} \to x$, choose a term in the subsequence $x_{n_K}$, with $n_K > N$ and $\lvert x_{n_K} - x \rvert < \frac{\epsilon}{2}$. Notice that
-  \begin{align*}
-    \lvert x_n - x \rvert &= \lvert x_n - x_{n_K} + x_{n_K} - x \rvert \\
-                          &\le \lvert x_n - x_{n_K} \rvert + \lvert x_{n_K} - x \rvert \\
-                          &< \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon
-  .\qedhere\end{align*}
+  For $\epsilon > 1$, there exists an $N \in \N$ such that for all $n > N$, $\lvert a_n - a \rvert < \epsilon$. Then, by the triangle inequality, we have
+  \[%
+    \lvert a_n \rvert = \lvert a_n - a + a \rvert \le \lvert a_n - a \rvert + \lvert a \rvert < \epsilon + \lvert a \rvert
+  .\]%
+  We let $M = \max(\{\lvert a_1 \rvert, \lvert a_2 \rvert, \cdots, \lvert a_n \rvert, \lvert a \rvert + \epsilon \})$. Then, $(\forall n \in \N)[\lvert a_n \rvert \le M]$, implying that $(a_n)$ is bounded.
 \end{proof}
 
-\subsection{Limit Supremum and Infimum}
-
-\begin{note}
-  This isn't part of the course, but in the next few courses, professors assume that you magically know this. So, better know it now.
-\end{note}
-
-\begin{definition}[Limit Supremum and Infimum]
-  Let $(a_n)$ be a sequence of real numbers. We define the \emph{limit supremum} and \emph{limit infimum} as
-  \begin{align*}
-    \limsup_{n \to \infty} a_n &= \lim_{n \to \infty} \left(\sup_{k \geq n} a_k\right) \\
-    \liminf_{n \to \infty} a_n &= \lim_{n \to \infty} \left(\inf_{k \geq n} a_k\right)
-  .\end{align*}
-  where $\sup_{k \geq n} a_k$ and $\inf_{k \geq n} a_k$ denote the supremum and infimum, respectively, of the tail of the sequence starting from the $n$-th term.
-\end{definition}
-
-\begin{remark}
-  The \emph{limit supremum} (\emph{limsup}) is the largest value that the sequence approaches infinitely often, while the \emph{limit infimum} (\emph{liminf}) is the smallest value that the sequence approaches infinitely often.
-\end{remark}
-
-The \emph{limsup} and \emph{liminf} of a sequence provide insights into its long-term behavior.
-\begin{itemize}
-  \item \textbf{Supremum} ($\sup$) of a set is the least upper bound: the smallest number that is greater than or equal to every element of the set.
-
-  \item \textbf{Infimum} ($\inf$) of a set is the greatest lower bound: the largest number that is less than or equal to every element of the set.
-\end{itemize}
-
-By taking the $\sup$ or $\inf$ of the tail of the sequence ($k \geq n$) and letting $n \to \infty$, we focus on how the sequence behaves ``eventually.''
-
-\begin{theorem}\leavevmode
+\begin{theorem}[Algebraic Limit Theorem]
+  Let $\lim_{n \to \infty} a_n = a$, and $\lim_{n \to \infty} b_n = b$. Then,
   \begin{enumerate}
-    \item $\liminf_{n \to \infty} a_n \leq \limsup_{n \to \infty} a_n$.
+    \item $\lim_{n \to \infty} (ca_n) = ca$, for all $c \in \R$.
 
-    \item If $\liminf_{n \to \infty} a_n = \limsup_{n \to \infty} a_n = L$, then the sequence converges to $L$.
+    \item $\lim_{n \to \infty} (a_n + b_n) = a + b$.
 
-    \item $\limsup_{n \to \infty} a_n$ is finite if and only if the sequence is bounded above, and $\liminf_{n \to \infty} a_n$ is finite if and only if the sequence is bounded below.
+    \item $\lim_{n \to \infty} (a_nb_n) = ab$.
+
+    \item $\lim_{n \to \infty} \frac{a_n}{b_n} = \frac{a}{b}$, provided that $b
+      \ne 0$.
   \end{enumerate}
 \end{theorem}
 
 \begin{proof}\leavevmode
   \begin{enumerate}
-    \item To prove $\liminf_{n \to \infty} a_n \leq \limsup_{n \to \infty} a_n$, note that by definition
+    \item Let $\epsilon > 0$. Then, there exists an $N \in \N$ such that for all $n > N$, $\lvert a_n - a \rvert < \frac{\epsilon}{\lvert c \rvert}$. Then, we have
       \[%
-        \liminf_{n \to \infty} a_n = \sup_{n \in \N} \inf_{k \geq n} a_k \aand \limsup_{n \to \infty} a_n = \inf_{n \in \N} \sup_{k \geq n} a_k
-      .\]%
-      For every $n$, $\inf_{k \geq n} a_k \leq \sup_{k \geq n} a_k$. Taking the supremum over all $n$ for the infimum and the infimum over all $n$ for the supremum preserves this inequality. Hence
-      \[%
-        \liminf_{n \to \infty} a_n \leq \limsup_{n \to \infty} a_n
+        \lvert ca_n - ca \rvert = \lvert c \rvert \cdot \lvert a_n - a \rvert < \lvert c \rvert \cdot \frac{\epsilon}{\lvert c \rvert} = \epsilon
       .\]%
 
-    \item Assume $\liminf_{n \to \infty} a_n = \limsup_{n \to \infty} a_n = L$. By definition of $\limsup$ and $\liminf$, for every $\epsilon > 0$, there exists $N \in \N$ such that for all $n > N$,
+    \item Let $\epsilon > 0$. Then, there exists an $N \in \N$ such that for all $n > N$, $\lvert a_n - a \rvert < \frac{\epsilon}{2}$ and $\lvert b_n - b \rvert < \frac{\epsilon}{2}$. Then, we have
       \[%
-        L - \epsilon < \inf_{k \geq n} a_k \leq a_n \leq \sup_{k \geq n} a_k < L + \epsilon
+        \lvert (a_n + b_n) - (a + b) \rvert = \lvert (a_n - a) + (b_n - b) \rvert \le \lvert a_n - a \rvert + \lvert b_n - b \rvert < \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon
       .\]%
-      This implies $|a_n - L| < \epsilon$ for all $n > N$, so $(a_n) \to L$.
 
-    \item To show $\limsup_{n \to \infty} a_n$ is finite if and only if $(a_n)$ is bounded above.
-      \begin{itemize}
-        \item If $\limsup_{n \to \infty} a_n$ is finite, then for every $\epsilon > 0$, there exists $N \in \N$ such that for all $n > N$, $\sup_{k \geq n} a_k < \limsup_{n \to \infty} a_n + \epsilon$. Thus, $a_k$ is bounded above.
+    \item Let $\epsilon > 0$. Observe the fact that
+      \begin{align*}
+        \lvert a_nb_n - ab \rvert &= \lvert a_nb_n - ab_n + ab_n - ab \rvert \\
+                                  &\le \lvert a_nb_n - ab_n \rvert + \lvert ab_n - ab \rvert \\
+                                  &= \lvert b_n \rvert \cdot \lvert a_n - a \rvert + \lvert a \rvert \cdot \lvert b_n - b \rvert
+      .\end{align*}
+      Since $(b_n)$ converges, that means it's bounded by some $M > 0$. Then, we have
+      \[%
+        \lvert b_n \rvert \cdot \lvert a_n - a \rvert + \lvert a \rvert \cdot \lvert b_n - b \rvert \le M \cdot \lvert a_n - a \rvert + \lvert a \rvert \cdot \lvert b_n - b \rvert
+      .\]%
+      Choose an $N_1$ and $N_2$ such that
+      \[%
+        (\forall n \ge N_1)\left[\lvert b_n - b \rvert < \frac{1}{\lvert a \rvert} \cdot \frac{\epsilon}{2}\right] \aand (\forall n \ge N_2)\left[\lvert a_n - a \rvert < \frac{1}{M} \cdot \frac{\epsilon}{2}\right]
+      .\]%
+      Pick $N = \max(\{N_1, N_2\})$. If $n \ge N$, then we get
+      \begin{align*}
+        \lvert a_nb_n - ab \rvert &< M \cdot \lvert a_n - a \rvert + \lvert a \rvert \cdot \lvert b_n - b \rvert \\
+                                  &< M \left(\frac{\epsilon}{2M}\right) + \lvert a \rvert \cdot \left(\frac{\epsilon}{2 \lvert a \rvert}\right) = \epsilon
+      .\end{align*}
 
-        \item Conversely, if $(a_n)$ is bounded above, then $\sup_{k \geq n} a_k$ is finite for every $n$, and $\limsup_{n \to \infty} a_n = \inf_{n} \sup_{k \geq n} a_k$ is also finite.
-      \end{itemize}
-
-      Similarly, $\liminf_{n \to \infty} a_n$ is finite if and only if $(a_n)$ is bounded below. The argument follows the same structure as above by considering $\inf_{k \geq n} a_k$. \qedhere
+    \item Using part (iii), we only need to show that $\lim_{n \to \infty} \frac{1}{b_n} = \frac{1}{b}$. Let $\epsilon > 0$. Observe the fact that
+      \[%
+        \left\lvert \frac{1}{b_n} - \frac{1}{b} \right\rvert = \frac{\lvert b - b_n \rvert}{\lvert b \rvert \cdot \lvert b_n \rvert}
+      .\]%
+      Choose $N_1$ and $N_2$ such that
+      \[%
+        (\forall n \ge N_1)\left[\lvert a_n - b \rvert < \frac{\lvert b \rvert}{2}\right] \aand (\forall n \ge N_2)\left[\lvert b_n - b \rvert < \frac{\epsilon \lvert b \rvert^2}{2}\right]
+      .\]%
+      Pick $N = \max(\{N_1, N_2\})$, then we get
+      \[%
+        \left\lvert \frac{1}{b_n} - \frac{1}{b} \right\rvert = \lvert b - b_n \rvert < \frac{\epsilon \lvert b \rvert^2}{2} \cdot \frac{1}{\lvert b \rvert \cdot \frac{\lvert b \rvert}{2}} = \epsilon
+      .\qedhere\]%
   \end{enumerate}
 \end{proof}
 
-If a sequence is Cauchy, then
-\begin{itemize}
-  \item $\limsup_{n \to \infty} a_n = \liminf_{n \to \infty} a_n$,
+\subsection{Order Limit Theorem}
 
-  \item And the sequence converges to their common value.
-\end{itemize}
+\begin{theorem}[Order Limit Theorem]
+  Assume $\lim_{n \to \infty} a_n = a$ and $\lim_{n \to \infty} b_n = b$.
+  \begin{enumerate}
+    \item If $a_n \ge 0$ for all $n \in \N$, then $a \ge 0$.
 
-The \emph{limsup} captures the ``upper boundary'' of eventual values of the sequence, while the \emph{liminf} captures the ``lower boundary.''
+    \item If $a_n \le b_n$ for all $n \in \N$, then $a \le b$.
 
-\begin{lemma}
-  Let $(a_n)$ be a sequence of real numbers. Then the following are equivalent
-  \begin{itemize}
-    \item $a_n \to a$,
+    \item If there exists $c \in \R$ for which $c \le b_n$ for all $n \in \N$, then $c \le b$. Similarly, if $a_n \le c$ for all $n \in \N$, then $a \le c$.
+  \end{enumerate}
+\end{theorem}
 
-    \item $\limsup_{n \to \infty} a_n = \liminf_{n \to \infty} a_n = a$.
-  \end{itemize}
-\end{lemma}
+\begin{proof}\leavevmode
+  \begin{enumerate}
+    \item Assume $a < 0$. Consider the particular value $\epsilon = \lvert a \rvert$. Then, we can find an $N$ such that $\lvert a_n - a \rvert < \lvert a \rvert$, for all $n \ge N$. This would mean that $\lvert a_N - a \rvert < \lvert a \rvert$, which implies that $a_N < 0$, which contradicts our hypothesis. Therefore, $a \ge 0$
 
-\begin{proof}
-  We will prove the equivalence in both directions.
+    \item By the Algebraic Limit Theorem, the sequence $(b_n - a_n)$ converges to $b - a$. Because $b_n - a_n > 0$, we can apply part (i) to get $b - a \ge 0$, which implies that $a \le b$.
 
-  Suppose $a_n \to a$. By definition of convergence, for any $\epsilon > 0$, there exists $N \in \N$ such that for all $n > N$,
-  \[%
-    |a_n - a| < \epsilon \implies a - \epsilon < a_n < a + \epsilon
-  .\]%
-  Hence, the terms of the sequence are eventually arbitrarily close to $a$. For any $n$, the supremum of the tail $\sup_{k \geq n} a_k$ and the infimum of the tail $\inf_{k \geq n} a_k$ also converge to $a$ as $n \to \infty$. Thus, 
-  \[%
-    \limsup_{n \to \infty} a_n = \liminf_{n \to \infty} a_n = a
-  .\]%
-
-  Suppose $\limsup_{n \to \infty} a_n = \liminf_{n \to \infty} a_n = a$. By definition of $\limsup$ and $\liminf$, for every $\epsilon > 0$, there exists $N \in \N$ such that for all $n > N$,
-  \[%
-    a - \epsilon < \inf_{k \geq n} a_k \leq a_n \leq \sup_{k \geq n} a_k < a + \epsilon
-  .\]%
-  This implies that the terms of the sequence are eventually confined to the interval $(a - \epsilon, a + \epsilon)$. Therefore, $a_n \to a$.
-
-  Since both implications hold, the two statements are equivalent. \qedhere
+    \item Take $a_n = c$ or $b_n = c$ in part (ii) to get the desired result. \qedhere
+  \end{enumerate}
 \end{proof}
+
+Limits and their properties don't depend on the first few terms of the sequence. Changing the value of the first ten or even ten thousand terms doesn't change the limit of the sequence.

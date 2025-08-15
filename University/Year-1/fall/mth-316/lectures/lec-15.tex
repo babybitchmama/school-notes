@@ -1,222 +1,112 @@
-\lecture{15}{Nov 4 2024 Mon (13:02:06)}{Limit Points, Open, Closed, Closure}
+\lecture{15}{Nov 4 2024 Mon (13:02:06)}{Properties of infinite series and Rearrangements}
 
-\begin{definition}[$\epsilon$-Neighborhood]
-  Let $x \in \R^n$ and let $\epsilon > 0$. The \textit{$\epsilon$-neighborhood} of $x$ is
-  \[%
-    V_\epsilon(x) = \{ y \in \R^n \mid \lvert y - x \rvert < \epsilon \}
-  .\]%
-  This is also referred to as the \textit{open ball} of radius $\epsilon$ centered at $x$.
-\end{definition}
-
-\begin{note}
-  The $\epsilon$-neighborhood $V_\epsilon(x)$ consists of all points whose Euclidean distance from $x$ is \emph{strictly less} than $\epsilon$. Points exactly at distance $\epsilon$ are not included.
-\end{note}
-
-\subsection{Open Sets}
-
-\begin{definition}[Open Set]
-  A set $U \subseteq \R^n$ is \textit{open} if for every $x \in U$, there exists an $\epsilon > 0$ such that $V_\epsilon(x) \subseteq U$.
-\end{definition}
-
-In words: a set is open if every point of the set lies entirely in the interior of the set, in the sense that we can ``wiggle'' the point a little in any direction without leaving the set.
-
-\begin{example}\leavevmode
+Just as we had an algebraic limit theorem for sequences, we have a similar theorem for series.
+\begin{theorem}[Algebraic Limit Theorem for Series]
+  If $\sum_{k=1}^\infty a_k = A$ and $\sum_{k=1}^\infty b_k = B$, then
   \begin{enumerate}
-    \item Consider the open interval $(a,b) \subset \R$. Let $x \in (a,b)$. The distances from $x$ to each endpoint are $x-a > 0$ and $b-x > 0$. Set $\epsilon = \min\{x-a, b-x\}$. Then $V_\epsilon(x) \subseteq (a,b)$.
+    \item $\sum_{k=1}^\infty ca_k = cA$ for all $c \in \R$.
 
-    \item The entire space $\R^n$ is open: given $x \in \R^n$ and any $\epsilon > 0$, $V_\epsilon(x) \subseteq \R^n$ holds trivially.
-
-    \item The empty set $\emptyset$ is open: the definition is vacuously satisfied because there is no $x$ to check.
-
-    \item For any $x_0 \in \R^n$ and $r > 0$, the open ball $B_r(x_0) = \{x \in \R^n : \lvert x - x_0 \rvert < r\}$ is open. If $x \in B_r(x_0)$, then $d = r - \lvert x - x_0 \rvert > 0$. Taking $\epsilon = d$ ensures $V_\epsilon(x) \subseteq B_r(x_0)$. \qedhere
-  \end{enumerate}
-\end{example}
-
-\begin{theorem}\leavevmode
-  \begin{enumerate}
-    \item The union of any collection of open sets is open.
-
-    \item The intersection of finitely many open sets is open.
+    \item $\sum_{k=1}^\infty (a_k + b_k) = A + B$.
   \end{enumerate}
 \end{theorem}
 
 \begin{proof}\leavevmode
   \begin{enumerate}
-    \item Let $\{O_\lambda \mid \lambda \in \Lambda\}$ be a collection of open sets indexed by some set $\Lambda$. Let
-    \[%
-      O = \bigcup_{\lambda \in \Lambda} O_\lambda
-    .\]%
-    Suppose $x \in O$. Then, by the definition of union, $x$ belongs to at least one $O_{\lambda_0}$ for some $\lambda_0 \in \Lambda$. Because $O_{\lambda_0}$ is open, there exists $\epsilon > 0$ such that $V_\epsilon(x) \subseteq O_{\lambda_0}$. But $O_{\lambda_0} \subseteq O$, so we also have $V_\epsilon(x) \subseteq O$. Since $x$ was arbitrary, $O$ is open.
+    \item Let $S_n = \sum_{k=1}^n a_k$. Then, $\lim_{m \to \infty} S_m = A$. Thus, by the Algebraic Limit Theorem for Sequences, $c\lim_{m \to \infty} S_m = \lim_{m \to \infty} (cS_m) = cA$. Thus, $\sum_{k=1}^\infty ca_k = cA$.
 
-    \item Let $O_1, O_2, \dots, O_m$ be open sets and set $O = \bigcap_{i=1}^m O_i$. Take any $x \in O$. Then $x \in O_i$ for every $i$. Because each $O_i$ is open, there exists $\epsilon_i > 0$ such that $V_{\epsilon_i}(x) \subseteq O_i$. Let
-    \[%
-      \epsilon = \min\{\epsilon_1, \epsilon_2, \dots, \epsilon_m\}
-    .\]%
-    Since $\epsilon \leq \epsilon_i$ for each $i$, it follows that $V_\epsilon(x) \subseteq V_{\epsilon_i}(x) \subseteq O_i$ for all $i$. Hence $V_\epsilon(x) \subseteq O$, so $O$ is open. \qedhere
+    \item Let $S_n = \sum_{k=1}^n a_k$ and $T_n = \sum_{k=1}^n b_k$. Then, $\lim_{m \to \infty} S_m = A$ and $\lim_{m \to \infty} T_m = B$. Thus, by the Algebraic Limit Theorem for Sequences, $\lim_{m \to \infty} (S_m + T_m) = A + B$. Thus, $\sum_{k=1}^\infty (a_k + b_k) = A + B$. \qedhere
   \end{enumerate}
 \end{proof}
 
-\subsection{Closed Sets}
-
-Closed sets are defined in terms of their complements.
-
-\begin{definition}[Closed Set]
-  A set $F \subseteq \R^n$ is \textit{closed} if its complement $\R^n \setminus F$ is open.
-\end{definition}
-
-This definition is purely topological: a set is closed precisely when everything \emph{outside} it forms an open set.
-
-\begin{example}\leavevmode
-  \begin{enumerate}
-    \item The closed interval $[a,b]$ is closed because its complement is $(-\infty,a) \cup (b,\infty)$, which is the union of two open sets.
-
-    \item $\R^n$ is closed because its complement $\emptyset$ is open.
-
-    \item $\emptyset$ is closed because its complement $\R^n$ is open.
-
-    \item Any finite subset of $\R$ is closed. For example, $\{p\}$ is closed since $\R \setminus \{p\} = (-\infty, p) \cup (p, \infty)$ is open. By finite unions of closed sets being closed (a fact proved below), any finite set is closed. \qedhere
-  \end{enumerate}
-\end{example}
-
-\begin{theorem}\leavevmode
-  \begin{enumerate}
-    \item The intersection of any collection of closed sets is closed.
-
-    \item The union of finitely many closed sets is closed.
-  \end{enumerate}
+Just as we had the Cauchy criterion for sequences, we have a similar criterion for series.
+\begin{theorem}[Cauchy Criterion for Series]
+  The series $\sum_{k=1}^\infty a_k$ converges if and only if, given $\epsilon > 0$, there exists an $N \in \N$ such that whenever $n > m > N$, it follows that
+  \[%
+    \lvert a_{m+1} + a_{m+2} + \cdots + a_n \rvert < \epsilon
+  .\]%
 \end{theorem}
 
 \begin{proof}
-  These are dual statements to the openness properties proved earlier. Let $\{F_\alpha \mid \alpha \in A\}$ be a collection of closed sets.
-  \begin{enumerate}
-    \item Consider $\bigcap_{\alpha \in A} F_\alpha$. Its complement is
-    \[%
-      \left( \bigcap_{\alpha \in A} F_\alpha \right)^c = \bigcup_{\alpha \in A} F_\alpha^c
-    .\]%
-    Each $F_\alpha^c$ is open (since $F_\alpha$ is closed), and the union of any collection of open sets is open. Hence the complement of $\bigcap_{\alpha \in A} F_\alpha$ is open, so the intersection itself is closed.
-
-    \item Let $F_1, \dots, F_m$ be closed sets. Then
-    \[%
-      \left( \bigcup_{i=1}^m F_i \right)^c = \bigcap_{i=1}^m F_i^c
-    .\]%
-    Each $F_i^c$ is open, and the intersection of finitely many open sets is open. Therefore the complement of $\bigcup_{i=1}^m F_i$ is open, so the union is closed. \qedhere
-  \end{enumerate}
+  Notice that
+  \[%
+    \left\lvert \sum_{k=1}^n a_k - \sum_{k=1}^m a_k \right\rvert = \lvert S_n - S_m \rvert = \lvert a_{m+1} + a_{m+2} + \cdots + a_n \rvert
+  .\]%
+  Thus, the series converges if and only if the sequence of partial sums is a Cauchy sequence.
 \end{proof}
 
-\subsection{Limit Points}
+This is a very powerful criterion. We use this theorem to prove all of the basic tests in the future.
 
-The idea of a \emph{limit point} (or \emph{accumulation point}) makes precise what it means for a set to have points ``arbitrarily close'' to a given point.
-
-\begin{definition}[Limit Point]
-  Let $E \subseteq \R^n$. A point $p \in \R^n$ is called a \textit{limit point} of $E$ if every $\epsilon$-neighborhood of $p$ contains at least one point $q \in E$ with $q \neq p$. Equivalently, $p$ is a limit point of $E$ if
-  \[%
-    (\forall \epsilon > 0)\big[(V_\epsilon(p) \setminus \{p\}) \cap E \neq \emptyset\big]
-  .\]%
+\begin{definition}[Absolute Convergence]
+  A series $\sum_{k=1}^\infty a_k$ is said to \emph{converge absolutely} if the series $\sum_{k=1}^\infty \lvert a_k \rvert$ converges.
 \end{definition}
 
-In other words, $p$ is a limit point of $E$ if we can find points of $E$ \emph{distinct from $p$} that are as close to $p$ as we like.
+\begin{definition}[Conditional Convergence]
+  A series $\sum_{k=1}^\infty a_k$ is said to \emph{converge conditionally} if the series $\sum_{k=1}^\infty a_k$ converges, but the series $\sum_{k=1}^\infty \lvert a_k \rvert$ diverges.
+\end{definition}
 
-\begin{example}\leavevmode
-  \begin{enumerate}
-    \item Every point of the open interval $(0,1)$ is a limit point of $(0,1)$. This is because for any $x \in (0,1)$ and any $\epsilon > 0$, the neighborhood $V_\epsilon(x)$ contains other points of $(0,1)$ besides $x$.
+\subsection{Rearrangements of Infinite Series}
 
-    \item The point $0$ is a limit point of $(0,1)$ even though $0 \notin (0,1)$, since any neighborhood around $0$ contains points of $(0,1)$.
+\begin{definition}[Rearrangement of a Series]
+  Let $\sum_{n=1}^\infty a_n$ be an infinite series. A \emph{rearrangement} of this series is a series obtained by permuting its terms, that is
+  \[%
+    \sum_{n=1}^\infty a_{\sigma(n)}
+  ,\]%
+  where $\sigma : \N \to \N$ is a bijection (a one-to-one and onto mapping).
+\end{definition}
 
-    \item Every rational number in $\R$ is a limit point of the set of rationals $\Q$, and every irrational number is also a limit point of $\Q$. This follows from the density of $\Q$ in $\R$.
-
-    \item An isolated point, such as $5$ in the set $\{5\}$, is \emph{not} a limit point, because we can choose $\epsilon$ small enough so that $V_\epsilon(5)$ contains no points of the set other than $5$ itself. \qedhere
-  \end{enumerate}
-\end{example}
-
-\begin{theorem}
-  A set $F \subseteq \R^n$ is closed if and only if it contains all its limit points.
+\begin{theorem}[Riemann's Rearrangement Theorem]
+  If $\sum_{n=1}^\infty a_n$ is a conditionally convergent series, then for any real number $L \in \R$ (or even $\pm\infty$), there exists a rearrangement $\sigma$ such that,
+  \[%
+    \sum_{n=1}^\infty a_{\sigma(n)} = L
+  .\]%
 \end{theorem}
 
 \begin{proof}
-  Suppose first that $F$ is closed. Let $p$ be a limit point of $F$. We must show $p \in F$. Assume for contradiction that $p \notin F$. Then $p \in F^c$, which is open because $F$ is closed. Since $F^c$ is open, there exists $\epsilon > 0$ such that $V_\epsilon(p) \subseteq F^c$. But then $V_\epsilon(p)$ contains no points of $F$, contradicting the fact that $p$ is a limit point of $F$. Thus $p \in F$.
+  Since $\sum_{n=1}^\infty a_n$ is conditionally convergent, the positive terms $\{a_n^+\}$ and negative terms $\{a_n^-\}$ both diverge to $+\infty$ in absolute value. To construct a rearrangement summing to $L$, proceed as follows.
+  \begin{itemize}
+    \item Select positive terms $\{a_n^+\}$ to sum until the partial sum exceeds $L$.
 
-  Conversely, suppose $F$ contains all its limit points. We will show $F^c$ is open. Let $p \in F^c$. If $p$ were a limit point of $F$, it would belong to $F$ by assumption, contradicting $p \in F^c$. Hence $p$ is not a limit point of $F$. By the definition of limit point, there exists $\epsilon > 0$ such that $V_\epsilon(p) \cap F = \emptyset$, which means $V_\epsilon(p) \subseteq F^c$. This shows $F^c$ is open, so $F$ is closed.
+    \item Then add negative terms $\{a_n^-\}$ to decrease the partial sum until it falls below $L$.
+
+    \item Alternate between adding positive and negative terms in this manner, ensuring the partial sums oscillate closer and closer to $L$.
+  \end{itemize}
+  This process guarantees convergence to $L$, as the series' terms tend to zero and the oscillations diminish.
 \end{proof}
 
-\begin{definition}[Isolated Point]
-  A point $x \in E$ is called an \textit{isolated point} of $E$ if it is not a limit point of $E$. Equivalently, there exists $\epsilon > 0$ such that $V_\epsilon(x) \cap E = \{x\}$.
-\end{definition}
-
-Thus, points of a set are either limit points or isolated points. A set with no isolated points is called \emph{perfect}, a concept we will return to in a future date.
-
-\subsection{Closure}
-
-The concept of closure allows us to ``complete'' a set by adding all the points that are ``infinitely close'' to it.  This is done by including all of its limit points.
-
-\begin{definition}[Closure]
-  Let $E \subseteq \R^n$. The \textit{closure} of $E$, denoted $\overline{E}$, is the union of $E$ with the set of all limit points of $E$:
+\begin{corollary}
+  If $\sum_{n=1}^\infty a_n$ converges absolutely, then any rearrangement $\sum_{n=1}^\infty a_{\sigma(n)}$ also converges to the same sum,
   \[%
-    \overline{E} = E \cup E'
+    \sum_{n=1}^\infty a_{\sigma(n)} = \sum_{n=1}^\infty a_n
   .\]%
-  Here $E'$ denotes the set of limit points of $E$.
-\end{definition}
-
-Intuitively, $\overline{E}$ is the smallest closed set containing $E$. If $E$ is already closed, then $\overline{E} = E$.
-
-\begin{example}\leavevmode
-  \begin{enumerate}
-    \item If $E = (0,1) \subset \R$, then $E' = [0,1]$, since every point in $(0,1)$ and the endpoints $0$ and $1$ can be approached by points from $(0,1)$. Hence $\overline{E} = [0,1]$.
-
-    \item If $E = \Q \cap [0,1]$, then $E' = [0,1]$ because the rationals are dense in $\R$. Thus $\overline{E} = [0,1]$.
-
-    \item If $E = \{1/n \mid n \in \N\}$, then $E' = \{0\}$, since $0$ is the only point that can be approached by distinct points of $E$. Thus $\overline{E} = \{1/n \mid n \in \N\} \cup \{0\}$. \qedhere
-  \end{enumerate}
-\end{example}
-
-We now state and prove the key properties that make the closure useful.
-
-\begin{theorem}
-  Let $E \subseteq \R^n$. Then:
-  \begin{enumerate}
-    \item $\overline{E}$ is closed.
-
-    \item $\overline{E}$ is the smallest closed set containing $E$, meaning that if $F$ is closed and $E \subseteq F$, then $\overline{E} \subseteq F$.
-
-    \item $\overline{E}$ is the intersection of all closed sets containing $E$:
-      \[%
-        \overline{E} = \bigcap \{F \subseteq \R^n \mid F \text{ is closed and } E \subseteq F\}
-      .\]%
-  \end{enumerate}
-\end{theorem}
-
-\begin{proof}\leavevmode
-  \begin{enumerate}
-    \item By definition, $\overline{E} = E \cup E'$. Every limit point of $\overline{E}$ belongs to $E'$ and hence is in $\overline{E}$, so $\overline{E}$ contains all its limit points. By Theorem~\ref{thm:limit_point_closed_equiv} (from Lecture~14), this means $\overline{E}$ is closed.
-
-    \item Suppose $F$ is closed and $E \subseteq F$. Since $F$ contains $E$, it must also contain all limit points of $E$ (otherwise it would not be closed). Thus $E' \subseteq F$, and hence $E \cup E' \subseteq F$, i.e., $\overline{E} \subseteq F$.
-
-    \item Let
-      \[%
-        C = \bigcap \{F \subseteq \R^n \mid F \text{ is closed and } E \subseteq F\}
-      .\]%
-      From (ii), $\overline{E}$ is contained in every closed set that contains $E$, so $\overline{E} \subseteq C$. Conversely, $C$ is a closed set containing $E$, so by (2) again, $\overline{E} \subseteq C$ and $C \subseteq \overline{E}$. Therefore $C = \overline{E}$. \qedhere
-  \end{enumerate}
-\end{proof}
-
-The closure can be described entirely in terms of neighborhoods.
-
-\begin{proposition}
-  For $x \in \R^n$, we have:
-  \[%
-    x \in \overline{E} \iff (\forall \epsilon > 0)[V_\epsilon(x) \cap E \neq \emptyset]
-  .\]%
-\end{proposition}
+\end{corollary}
 
 \begin{proof}
-  Suppose $x \in \overline{E}$. If $x \in E$, the statement is immediate since $x \in V_\epsilon(x) \cap E$ for all $\epsilon > 0$. If $x \in E'$ (a limit point of $E$), then by definition, every neighborhood of $x$ contains a point of $E$ distinct from $x$, so in particular $V_\epsilon(x) \cap E \neq \emptyset$.
-
-  Conversely, suppose every neighborhood of $x$ meets $E$. If $x \in E$, then $x \in \overline{E}$ trivially. If $x \notin E$, then the given condition implies that $x$ is a limit point of $E$, so $x \in E' \subseteq \overline{E}$.
+  Absolute convergence implies that $\sum_{n=1}^\infty a_n \le \sum_{n=1}^\infty \lvert a_n \rvert \in \R$. Rearranging the terms does not affect the total sum since the series converges uniformly regardless of order.
 \end{proof}
 
-\begin{example}\leavevmode
-  \begin{enumerate}
-    \item If $E = [0,1)$, then $E' = [0,1]$, and hence $\overline{E} = [0,1]$. In particular, $1$ is not in $E$ but belongs to its closure because every neighborhood of $1$ intersects $E$.
-
-    \item If $E = (0,1) \cup \{2\}$, then $E' = [0,1]$. The closure is $\overline{E} = [0,1] \cup \{2\}$. Note that $2$ is in $E$ but is an isolated point; it is not a limit point of $E$. \qedhere
-  \end{enumerate}
+\begin{example}[Harmonic Series Rearrangements]
+  The harmonic series $\sum_{n=1}^\infty \frac{(-1)^{n+1}}{n}$ converges conditionally to $\ln(2)$. By Riemann’s Rearrangement Theorem, this series can be rearranged to sum to any real number $L$ or diverge to $\pm\infty$.
 \end{example}
+
+\begin{lemma}[Group Rearrangements]
+  Grouping terms of an absolutely convergent series into blocks does not change its sum. For example, if $a_n = \frac{1}{n^2}$, grouping the terms as $(a_1)$, $(a_2 + a_3)$, $(a_4 + a_5 + a_6)$, etc., preserves the sum,
+  \[%
+    \sum_{n=1}^\infty a_n = \sum_{k=1}^\infty \left( \sum_{j=1}^k a_j \right)
+  .\]%
+\end{lemma}
+
+\begin{proof}
+  Let $S_n$ denote the partial sums of $\sum_{n=1}^\infty a_n$. Grouping terms corresponds to defining a new sequence of partial sums $T_m$, where $T_m$ involves summing blocks of $S_n$. Since $\sum_{n=1}^\infty a_n$ converges absolutely, $T_m$ converges to the same limit as $S_n$.
+\end{proof}
+
+\begin{example}[Rearrangement and Divergence]
+  Consider the series $\sum_{n=1}^\infty \frac{1}{n}$, which diverges. Any rearrangement of this series also diverges, as the partial sums tend to infinity regardless of the order of terms.
+\end{example}
+
+\begin{theorem}[Unordered Series Convergence]
+  If $\sum_{n=1}^\infty a_n$ converges conditionally, the set of all sums obtained by rearranging the series is unbounded. That is, the sums can fill the entire real number line $\R$.
+\end{theorem}
+
+\begin{proof}
+  By Riemann’s Rearrangement Theorem, for any $L \in \R$, there exists a rearrangement $\sigma$ such that $\sum_{n=1}^\infty a_{\sigma(n)} = L$. This implies that the set of rearranged sums is dense in $\R$ and unbounded.
+\end{proof}
