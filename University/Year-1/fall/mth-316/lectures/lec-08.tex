@@ -1,9 +1,9 @@
-\lecture{8}{Oct 16 2024 Wed (13:02:05)}{Algebraic Limit and Order Limit Theorems}
+\lecture{8}{Oct 16 2024 Wed (13:02:05)}{Algebraic and Order Limit Theorems}
 
 \subsection{Algebraic Limit Theorem}
 
 \begin{definition}[Bounded]
-  A sequence $(x_n)$ is \emph{bounded} if there exists a number $M > 0$ such that $\lvert x_n \rvert \le M$ for all $n \in \N$.
+  A sequence $(x_n)$ is \emph{bounded} if there exists a number $M > 0$ such that $|x_n| \le M$ for all $n \in \N$.
 \end{definition}
 
 Geometrically, this means that we can find an interval $[-M, M]$ that contains every term in the sequence $(x_n)$.
@@ -13,19 +13,19 @@ Geometrically, this means that we can find an interval $[-M, M]$ that contains e
 \end{theorem}
 
 \begin{worksheet}
-  Given $(a_n)$, we need to show that if $\lim_{n \to \infty} a_n = a$, then $(a_n)$ is bounded. Using the definition of a limit, $(\forall \epsilon > 0)(\exists N \in \N)(\forall n > N)[\lvert a_n - a \rvert < \epsilon]$. Expanding the inequality using \ref{eq:triangle_inequality}, we get
+  Given $(a_n)$, we need to show that if $\lim_{n \to \infty} a_n = a$, then $(a_n)$ is bounded. Using the definition of a limit, $(\forall \epsilon > 0)(\exists N \in \N)(\forall n > N)[|a_n - a| < \epsilon]$. Expanding the inequality using \ref{eq:triangle_inequality}, we get
   \[%
-    \lvert a_n \rvert = \lvert a_n - a + a \rvert \le \lvert a_n + a \rvert - \lvert a \rvert < \epsilon + \lvert a \rvert
+    |a_n| = |a_n - a + a| \le |a_n + a| - |a| < \epsilon + |a|
   .\]%
-  We then can let $M$ be the biggest number in the set $\{\lvert a_1 \rvert, \lvert a_2 \rvert, \cdots, \lvert a_n \rvert, \lvert a \rvert + \epsilon\}$. Then, that means that every term in the sequence $(a_n)$ is less than or equal to $M$, so $(a_n)$ is bounded.
+  We then can let $M$ be the biggest number in the set $\{|a_1|, |a_2|, \cdots, |a_n|, |a| + \epsilon\}$. Then, that means that every term in the sequence $(a_n)$ is less than or equal to $M$, so $(a_n)$ is bounded.
 \end{worksheet}
 
 \begin{proof}
-  For $\epsilon > 1$, there exists an $N \in \N$ such that for all $n > N$, $\lvert a_n - a \rvert < \epsilon$. Then, by the triangle inequality, we have
+  For $\epsilon > 1$, there exists an $N \in \N$ such that for all $n > N$, $|a_n - a| < \epsilon$. Then, by the triangle inequality, we have
   \[%
-    \lvert a_n \rvert = \lvert a_n - a + a \rvert \le \lvert a_n - a \rvert + \lvert a \rvert < \epsilon + \lvert a \rvert
+    |a_n| = |a_n - a + a| \le |a_n - a| + |a| < \epsilon + |a|
   .\]%
-  We let $M = \max(\{\lvert a_1 \rvert, \lvert a_2 \rvert, \cdots, \lvert a_n \rvert, \lvert a \rvert + \epsilon \})$. Then, $(\forall n \in \N)[\lvert a_n \rvert \le M]$, implying that $(a_n)$ is bounded.
+  We let $M = \max(\{|a_1|, |a_2|, \cdots, |a_n|, |a| + \epsilon \})$. Then, $(\forall n \in \N)[|a_n| \le M]$, implying that $(a_n)$ is bounded.
 \end{proof}
 
 \begin{theorem}[Algebraic Limit Theorem]
@@ -44,47 +44,47 @@ Geometrically, this means that we can find an interval $[-M, M]$ that contains e
 
 \begin{proof}\leavevmode
   \begin{enumerate}
-    \item Let $\epsilon > 0$. Then, there exists an $N \in \N$ such that for all $n > N$, $\lvert a_n - a \rvert < \frac{\epsilon}{\lvert c \rvert}$. Then, we have
+    \item Let $\epsilon > 0$. Then, there exists an $N \in \N$ such that for all $n > N$, $|a_n - a| < \frac{\epsilon}{|c|}$. Then, we have
       \[%
-        \lvert ca_n - ca \rvert = \lvert c \rvert \cdot \lvert a_n - a \rvert < \lvert c \rvert \cdot \frac{\epsilon}{\lvert c \rvert} = \epsilon
+        |ca_n - ca| = |c| \cdot |a_n - a| < |c| \cdot \frac{\epsilon}{|c|} = \epsilon
       .\]%
 
-    \item Let $\epsilon > 0$. Then, there exists an $N \in \N$ such that for all $n > N$, $\lvert a_n - a \rvert < \frac{\epsilon}{2}$ and $\lvert b_n - b \rvert < \frac{\epsilon}{2}$. Then, we have
+    \item Let $\epsilon > 0$. Then, there exists an $N \in \N$ such that for all $n > N$, $|a_n - a| < \frac{\epsilon}{2}$ and $|b_n - b| < \frac{\epsilon}{2}$. Then, we have
       \[%
-        \lvert (a_n + b_n) - (a + b) \rvert = \lvert (a_n - a) + (b_n - b) \rvert \le \lvert a_n - a \rvert + \lvert b_n - b \rvert < \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon
+        |(a_n + b_n) - (a + b)| = |(a_n - a) + (b_n - b)| \le |a_n - a| + |b_n - b| < \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon
       .\]%
 
     \item Let $\epsilon > 0$. Observe the fact that
       \begin{align*}
-        \lvert a_nb_n - ab \rvert &= \lvert a_nb_n - ab_n + ab_n - ab \rvert \\
-                                  &\le \lvert a_nb_n - ab_n \rvert + \lvert ab_n - ab \rvert \\
-                                  &= \lvert b_n \rvert \cdot \lvert a_n - a \rvert + \lvert a \rvert \cdot \lvert b_n - b \rvert
+        |a_nb_n - ab| &= |a_nb_n - ab_n + ab_n - ab| \\
+                                  &\le |a_nb_n - ab_n| + |ab_n - ab| \\
+                                  &= |b_n| \cdot |a_n - a| + |a| \cdot |b_n - b|
       .\end{align*}
       Since $(b_n)$ converges, that means it's bounded by some $M > 0$. Then, we have
       \[%
-        \lvert b_n \rvert \cdot \lvert a_n - a \rvert + \lvert a \rvert \cdot \lvert b_n - b \rvert \le M \cdot \lvert a_n - a \rvert + \lvert a \rvert \cdot \lvert b_n - b \rvert
+        |b_n| \cdot |a_n - a| + |a| \cdot |b_n - b| \le M \cdot |a_n - a| + |a| \cdot |b_n - b|
       .\]%
       Choose an $N_1$ and $N_2$ such that
       \[%
-        (\forall n \ge N_1)\left[\lvert b_n - b \rvert < \frac{1}{\lvert a \rvert} \cdot \frac{\epsilon}{2}\right] \aand (\forall n \ge N_2)\left[\lvert a_n - a \rvert < \frac{1}{M} \cdot \frac{\epsilon}{2}\right]
+        (\forall n \ge N_1)\left[|b_n - b| < \frac{1}{|a|} \cdot \frac{\epsilon}{2}\right] \aand (\forall n \ge N_2)\left[|a_n - a| < \frac{1}{M} \cdot \frac{\epsilon}{2}\right]
       .\]%
       Pick $N = \max(\{N_1, N_2\})$. If $n \ge N$, then we get
       \begin{align*}
-        \lvert a_nb_n - ab \rvert &< M \cdot \lvert a_n - a \rvert + \lvert a \rvert \cdot \lvert b_n - b \rvert \\
-                                  &< M \left(\frac{\epsilon}{2M}\right) + \lvert a \rvert \cdot \left(\frac{\epsilon}{2 \lvert a \rvert}\right) = \epsilon
+        |a_nb_n - ab| &< M \cdot |a_n - a| + |a| \cdot |b_n - b| \\
+                                  &< M \left(\frac{\epsilon}{2M}\right) + |a| \cdot \left(\frac{\epsilon}{2 |a|}\right) = \epsilon
       .\end{align*}
 
     \item Using part (iii), we only need to show that $\lim_{n \to \infty} \frac{1}{b_n} = \frac{1}{b}$. Let $\epsilon > 0$. Observe the fact that
       \[%
-        \left\lvert \frac{1}{b_n} - \frac{1}{b} \right\rvert = \frac{\lvert b - b_n \rvert}{\lvert b \rvert \cdot \lvert b_n \rvert}
+        \left|\frac{1}{b_n} - \frac{1}{b} \right\rvert = \frac{|b - b_n|}{|b| \cdot |b_n|}
       .\]%
       Choose $N_1$ and $N_2$ such that
       \[%
-        (\forall n \ge N_1)\left[\lvert a_n - b \rvert < \frac{\lvert b \rvert}{2}\right] \aand (\forall n \ge N_2)\left[\lvert b_n - b \rvert < \frac{\epsilon \lvert b \rvert^2}{2}\right]
+        (\forall n \ge N_1)\left[|a_n - b| < \frac{|b|}{2}\right] \aand (\forall n \ge N_2)\left[|b_n - b| < \frac{\epsilon |b|^2}{2}\right]
       .\]%
       Pick $N = \max(\{N_1, N_2\})$, then we get
       \[%
-        \left\lvert \frac{1}{b_n} - \frac{1}{b} \right\rvert = \lvert b - b_n \rvert < \frac{\epsilon \lvert b \rvert^2}{2} \cdot \frac{1}{\lvert b \rvert \cdot \frac{\lvert b \rvert}{2}} = \epsilon
+        \left|\frac{1}{b_n} - \frac{1}{b} \right\rvert = |b - b_n| < \frac{\epsilon |b|^2}{2} \cdot \frac{1}{|b| \cdot \frac{|b|}{2}} = \epsilon
       .\qedhere\]%
   \end{enumerate}
 \end{proof}
@@ -104,7 +104,7 @@ Geometrically, this means that we can find an interval $[-M, M]$ that contains e
 
 \begin{proof}\leavevmode
   \begin{enumerate}
-    \item Assume $a < 0$. Consider the particular value $\epsilon = \lvert a \rvert$. Then, we can find an $N$ such that $\lvert a_n - a \rvert < \lvert a \rvert$, for all $n \ge N$. This would mean that $\lvert a_N - a \rvert < \lvert a \rvert$, which implies that $a_N < 0$, which contradicts our hypothesis. Therefore, $a \ge 0$
+    \item Assume $a < 0$. Consider the particular value $\epsilon = |a|$. Then, we can find an $N$ such that $|a_n - a| < |a|$, for all $n \ge N$. This would mean that $|a_N - a| < |a|$, which implies that $a_N < 0$, which contradicts our hypothesis. Therefore, $a \ge 0$
 
     \item By the Algebraic Limit Theorem, the sequence $(b_n - a_n)$ converges to $b - a$. Because $b_n - a_n > 0$, we can apply part (i) to get $b - a \ge 0$, which implies that $a \le b$.
 

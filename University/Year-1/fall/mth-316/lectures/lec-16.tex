@@ -1,6 +1,8 @@
-\lecture{16}{Nov 6 2024 Wed (13:02:06)}{Conversion Tests for Series and Double Summations}
+\lecture{16}{Nov 6 2024 Wed (13:02:06)}{Conversion Tests and Double Sums}
 
-Now, we can start proving tests that have some substance.
+\subsection{Conversion Tests}
+
+We finalize this chapter with a collection of conversion tests for series (total of $11$). These tests are essential tools in analysis, allowing us to determine whether a given series converges or diverges without having to compute the sum explicitly.
 
 \begin{lemma}
   If the series $\sum_{k=1}^\infty a_k$ converges, then $a_k \to 0$.
@@ -22,8 +24,6 @@ Now, we can start proving tests that have some substance.
   The converse isn't true. Take, for example, the harmonic series $\sum_{k=1}^\infty \frac{1}{k}$. This series diverges, but $\frac{1}{k} \to 0$.
 \end{note}
 
-\subsection{Absolute Conversion Test}
-
 \begin{lemma}[Absolute Convergence Test]
   If $\sum_{k=1}^\infty \lvert a_k \rvert$ converges, then $\sum_{k=1}^\infty a_k$ converges.
 \end{lemma}
@@ -40,7 +40,6 @@ Now, we can start proving tests that have some substance.
   Thus, by the Cauchy Criterion for Series, $\sum_{k=1}^\infty a_k$ converges.
 \end{proof}
 
-\subsection{Comparison Tests}
 
 \begin{lemma}[Comparison Test]
   Assume $(a_k)$ and $(b_k)$ are sequences satisfying $(\forall k \in \N)[0 \le a_k \le b_k]$
@@ -58,8 +57,6 @@ Now, we can start proving tests that have some substance.
   .\]%
   If the right-hand side is less than $\epsilon$, then the left-hand side is less than $\epsilon$. Thus, the series converges. The second statement follows from the contrapositive of the first statement.
 \end{proof}
-
-\subsection{Limit Comparison Test}
 
 \begin{lemma}[Limit Comparison Test]
   Assume $(a_k)$ and $(b_k)$ are sequences satisfying $(\forall k \in \N)[0 < a_k \le b_k]$. If
@@ -95,8 +92,6 @@ Now, we can start proving tests that have some substance.
 
   Hence, $\sum_{k=1}^\infty a_k$ converges if and only if $\sum_{k=1}^\infty b_k$ converges.
 \end{proof}
-
-\subsection{Ratio Test}
 
 \begin{lemma}[Ratio Test]
   Let $(a_n)$ be a sequence. If
@@ -153,8 +148,6 @@ Now, we can start proving tests that have some substance.
       The test provides no information about the convergence or divergence of the series. For example, the series $\sum_{n=1}^\infty \frac{1}{n}$ diverges, but $\sum_{n=1}^\infty \frac{1}{n^2}$ converges, and both satisfy $\lim_{n \to \infty} \left\lvert \frac{a_{n+1}}{a_n} \right\rvert = 1$. Therefore, the test is inconclusive in this case. \qedhere
   \end{enumerate}
 \end{proof}
-
-\subsection{Root Test}
 
 \begin{lemma}[Root Test]
   Let $(a_n)$ be a sequence. If
@@ -213,8 +206,6 @@ Now, we can start proving tests that have some substance.
   \end{enumerate}
 \end{proof}
 
-\subsection{Alternating Series Test}
-
 \begin{lemma}[Alternating Series Test]
   Let $(a_n)$ be a sequence satisfying the following requirements
   \begin{enumerate}
@@ -232,8 +223,6 @@ Now, we can start proving tests that have some substance.
   .\]%
   Thus, $(S_{2n})$ is a Cauchy sequence. Similarly, $(S_{2n+1})$ is also a Cauchy sequence. Thus, both sequences converge. Since the series is the sum of these two sequences, the series converges.
 \end{proof}
-
-\subsection{Condensation Test}
 
 \begin{lemma}[Condensation Test]
   Suppose $(b_n)$ is decreasing and satisfies $b_n \ge 0$ for all $n \in \N$. Then, the series $\sum_{n=1}^\infty b_n$ converges if and only if the series
@@ -260,8 +249,6 @@ Now, we can start proving tests that have some substance.
 This is a more general statement of the statement that the sum $\sum_{n=1}^\infty \frac{1}{n}$ diverges and that $\sum_{n=1}^\infty
 \frac{1}{n^\rho}$ converges for $\rho > 1$.
 
-\subsection{P-Series Test}
-
 \begin{corollary}[P-Series Test]
   The series
   \[%
@@ -283,8 +270,6 @@ This is a more general statement of the statement that the sum $\sum_{n=1}^\inft
 \end{proof}
 
 The discrete analogue of integration by parts is often called \emph{summation by parts} or \emph{Abel's transformation}. It is the fundamental identity used to prove Dirichlet's test.
-
-\subsection{Summation by Parts}
 
 \begin{lemma}[Summation by parts]
   Let $(a_n)_{n \ge 1}$ and $(b_n)_{n \ge 1}$ be real sequences and set
@@ -312,8 +297,6 @@ The discrete analogue of integration by parts is often called \emph{summation by
   ,\]%
   as claimed.
 \end{proof}
-
-\subsection{Dirichlet's Test}
 
 \begin{lemma}[Dirichlet's Test]
   Let $(a_n)$ and $(b_n)$ be sequences. Suppose
