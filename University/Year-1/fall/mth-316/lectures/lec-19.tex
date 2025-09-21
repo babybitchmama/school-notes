@@ -14,15 +14,15 @@ Equivalently, $P$ is perfect if $P = P'$, where $P'$ denotes the set of all limi
   A few basic observations, we notice that every perfect set is closed, by definition, perfect sets have no isolated points, and the closure of a perfect set is the set itself.
 \end{remark}
 
-\begin{example}\leavevmode
+\begin{examples}\leavevmode
   \begin{enumerate}
-    \item \textbf{Closed intervals:} $[0,1]$ is perfect. It is closed, and every point is a limit point: interior points because of nearby points on both sides, and endpoints because of points approaching from within the interval.
+    \item $[0,1]$ is perfect. It is closed, and every point is a limit point: interior points because of nearby points on both sides, and endpoints because of points approaching from within the interval.
 
-    \item \textbf{The Cantor set:} The standard middle-third Cantor set $C$ is closed, totally disconnected, and has no isolated points -- hence perfect.
+    \item The standard middle-third Cantor set $C$ is closed, totally disconnected, and has no isolated points -- hence perfect.
 
-    \item \textbf{Rationals in an interval:} $\Q \cap [0,1]$ is not perfect because it is not closed; its closure is $[0,1]$, which \emph{is} perfect.
+    \item $\Q \cap [0,1]$ is not perfect because it is not closed; its closure is $[0,1]$, which \emph{is} perfect.
 
-    \item \textbf{Union with isolated points:} $[0,1] \cup \{2\}$ is not perfect because $2$ is isolated.
+    \item $[0,1] \cup \{2\}$ is not perfect because $2$ is isolated.
 
     \item The set
       \[%
@@ -32,18 +32,47 @@ Equivalently, $P$ is perfect if $P = P'$, where $P'$ denotes the set of all limi
 
     \item The set of all real numbers whose decimal expansions contain only the digits 4 and 7 is perfect. It is closed, and every point can be approached by other such numbers differing only far out in the decimal expansion. \qedhere
   \end{enumerate}
-\end{example}
+\end{examples}
 
 \begin{theorem}
-  Every nonempty perfect set in $\R^n$ is uncountable.
+  A nonempty perfect set is uncountable.
 \end{theorem}
 
 \begin{proof}
-  Suppose $P$ is perfect and countable, $P = \{p_1, p_2, p_3, \dots\}$. We inductively construct a nested sequence of closed balls
+  If $P$ is perfect and nonempty, then it must be infinite because otherwise it would consist only of isolated points. Let's assume, for contradiction, that $P$ is countable. Thus, we can write
   \[%
-    \overline{B}_1 \supseteq \overline{B}_2 \supseteq \cdots
+    P=\left\{x_1, x_2, x_3, \cdots\right\}
+  ,\]%
+  where every element of $P$ appears on this list. The idea is to construct a sequence of nested compact sets $K_n$, all contained in $P$, with the property that
+  $x_1 \notin K_2, x_2 \notin K_3, x_3 \notin K_4, \cdots$. We can use the Nested
+  Compact Set Property to produce an
+  \[%
+    x \in \bigcap_{n=1}^{\infty} K_n \subseteq P
+  ,\]%
+  that cannot be on the list $\left\{x_1, x_2, x_3, \cdots\right\}$.
+
+  Let $I_1$ be a closed interval that contains $x_1$ in its interior (i.e., $x_1$ is not an endpoint of $I_1$ ). Now, $x_1$ is not isolated, so there exists some other point $y_2 \in P$ that is also in the interior of $I_1$. Construct a closed interval $I_2$, centered on $y_2$, so that $I_2 \subseteq I_1$ but $x_1 \notin I_2$. More explicitly, if $I_1=[a, b]$, let
+  \[%
+    \epsilon = \min(\{y_2 - a, b - y_2, |x_1 - y_2|\})
   .\]%
-  such that $\overline{B}_n$ contains points of $P$ but not $p_n$, and with diameters tending to zero. The Nested Interval Property implies the intersection contains exactly one point, but that point would have been excluded at some stage -- contradiction. Thus $P$ must be uncountable.
+
+  Then, the interval $I_2 = [y_2 - \epsilon/2, y_2 + \epsilon/2]$ has the desired properties.
+
+  This process can be continued. Because $y_2 \in P$ is not isolated, there must exist another point $y_3 \in P$ in the interior of $I_2$, and we may insist that $y_3 \neq x_2$. Now, construct $I_3$ centered on $y_3$ and small enough so that $x_2 \notin I_3$ and $I_3 \subseteq I_2$. Observe that $I_3 \cap P \neq \emptyset$ because this intersection contains at least $y_3$.
+
+  If we carry out this construction inductively, the result is a sequence of closed intervals $I_n$ satisfying
+  \begin{enumerate}
+    \item $I_{n+1} \subseteq I_n$,
+    \item $x_n \notin I_{n+1}$, and
+    \item $I_n \cap P \neq \emptyset$.
+  \end{enumerate}
+
+  To finish the proof, we let $K_n = I_n \cap P$. For each $n \in \N$, we have that $K_n$ is closed because it is the intersection of closed sets, and bounded because it is contained in the bounded set $I_n$. Hence, $K_n$ is compact. By construction, $K_n$ is not empty and $K_{n+1} \subseteq K_n$. Thus, we can employ the Nested Compact Set Property to conclude that the intersection
+  \[%
+    \bigcap_{n=1}^{\infty} K_n \neq \emptyset
+  .\]%
+
+  But each $K_n$ is a subset of $P$, and the fact that $x_n \notin I_{n+1}$ leads to the conclusion that $\bigcap_{n=1}^{\infty} K_n = \emptyset$, which is the sought-after contradiction.
 \end{proof}
 
 \subsection{Connected Sets}
@@ -56,139 +85,74 @@ Intuitively, a set is connected if it is ``all in one piece'' and cannot be spli
 
 Equivalently: the only subsets of $E$ that are both open and closed (in the relative topology) are $\emptyset$ and $E$ itself.
 
-\begin{example}\leavevmode
+\begin{examples}\leavevmode
   \begin{enumerate}
-    \item \textbf{Intervals:} Every interval in $\R$ (open, closed, half-open, bounded, or unbounded) is connected.
+    \item If we let $A=(1,2)$ and $B=(2,5)$, then it is not difficult to verify that $E=(1,2) \cup(2,5)$ is disconnected. Notice that the sets $C=(1,2]$ and $D=(2,5)$ are not separated because $C \cap \bar{D}=\{2\}$ is not empty. This should be comforting. The union $C \cup D$ is equal to the interval $(1,5)$, which better not qualify as a disconnected set. We will prove in a moment that every interval is a connected subset of $\R$ and vice versa.
 
-    \item \textbf{Disconnected union:} $(0,1) \cup (2,3)$ is disconnected: the pieces $(0,1)$ and $(2,3)$ are disjoint, nonempty, and relatively open.
-
-    \item The set
+    \item Let's show that the set of rational numbers is disconnected. If we let
       \[%
-        E = \{(x, \sin(1/x)) \mid 0 < x \leq 1\}
+        A = \Q \cap(-\infty, \sqrt{2}) \aand B = \Q \cap(\sqrt{2}, \infty)
       ,\]%
-      is connected. The oscillations do not break the set into separated pieces; it is even path-connected.
-
-    \item Adding the vertical segment $\{0\} \times [-1,1]$ to the set in the previous example produces a closed connected set -- it is the closure of the original connected set.
-
-    \item The union of two connected sets that intersect is connected. For instance, $[0,2] \cup [2,3] = [0,3]$. \qedhere
+      then we certainly have $\Q = A \cup B$. The fact that $A \subseteq(-\infty, \sqrt{2})$ implies (by the Order Limit Theorem) that any limit point of $A$ will necessarily fall in $(-\infty, \sqrt{2}]$. Because this is disjoint from $B$, we get $\bar{A} \cap B = \emptyset$. We can similarly show that $A \cap \bar{B} = \emptyset$, which implies that $A$ and $B$ are separated.
   \end{enumerate}
-\end{example}
+\end{examples}
 
-\begin{theorem}[Characterization in $\R$]
-  A subset $E \subseteq \R$ is connected if and only if it is an interval.
+\begin{theorem}
+  A set $E \subseteq \R$ is connected if and only if, for all nonempty disjoint sets $A$ and $B$ satisfying $E = A \cup B$, there always exists a convergent sequence $(x_n) \to x$ with $(x_n)$ contained in one of $A$ or $B$, and $x$ an element of the other.
 \end{theorem}
 
 \begin{proof}
-  Suppose $E$ is connected but not an interval. Then there exist $a < c < b$ with $a, b \in E$ but $c \notin E$. Let
-  \[%
-    U = E \cap (-\infty, c), \quad V = E \cap (c, \infty)
-  .\]%
-  These are nonempty, relatively open in $E$, disjoint, and their union is $E$, contradicting connectedness.
+  We use the usual topological definition: $E$ is \emph{connected} iff there do not exist nonempty disjoint sets $U,V$ that are open in the subspace topology of $E$ and satisfy $E = U\cup V$.
 
-  If $E$ is an interval, any attempt to split it into two disjoint nonempty relatively open sets will fail because the completeness of $\R$ forces the two sets to touch, producing a common boundary point in $E$.
+  \begin{enumerate}
+    \item[$\implies$] If $E$ is connected then the sequence property holds.
+
+      Let $E$ be connected and suppose $E=A\cup B$ where $A$ and $B$ are nonempty and disjoint. We prove that either there is a sequence in $A$ converging to a point of $B$, or there is a sequence in $B$ converging to a point of $A$.
+
+      Assume, toward a contradiction, that neither happens. That is,
+      \[%
+        \overline{A} \cap B = \emptyset \aand \overline{B} \cap A = \emptyset
+      ,\]%
+      where closures are taken in $\R$. (If there were a point $x \in \overline{A} \cap B$ then, by definition of closure, every neighborhood of $x$ meets $A$, so we could choose $x_n \in A \cap (x - 1/n, x + 1/n)$ and get $x_n \to x$ with $x \in B$, giving the desired sequence; the symmetric statement holds for $\overline{B} \cap A$.)
+
+      From $\overline{A} \cap B = \emptyset$ we get $A \subseteq \R \setminus \overline{B}$, and since $\R \setminus \overline{B}$ is open in $\R$, the set
+      \[%
+        A = E \cap (\R \setminus \overline{B})
+      ,\]%
+      is open in the subspace topology of $E$. Similarly,
+      \[%
+        B = E \cap (\R \setminus \overline{A})
+      ,\]%
+      is open in $E$. Thus $A$ and $B$ are nonempty, disjoint, relatively open subsets of $E$ whose union is $E$. This contradicts the assumption that $E$ is connected. Therefore our assumption was false: at least one of $\overline{A} \cap B$ or $\overline{B} \cap A$ must be nonempty, which yields the required convergent sequence in one part converging to a point of the other.
+
+    \item[$\impliedby$] If the sequence property holds then $E$ is connected.
+
+      Assume the sequence property: every partition $E = A\cup B$ into nonempty disjoint sets forces a sequence contained in one part to converge to a point in the other part. Suppose, for contradiction, that $E$ is disconnected. Then there exist nonempty disjoint sets $U$ and $V$ which are open in the subspace topology of $E$ and satisfy $E = U \cup V$.
+
+      We claim that $\overline{U} \cap V = \emptyset$ and $\overline{V} \cap U = \emptyset$. Indeed, take any $x \in V$. Since $V$ is open in $E$, there is an $\varepsilon > 0$ such that $(x - \varepsilon, x + \varepsilon) \cap E \subseteq V$. Thus $(x - \varepsilon, x + \varepsilon) \cap U = \emptyset$, so $x \notin \overline{U}$. As $x \in V$ was arbitrary we obtain $\overline{U} \cap V = \emptyset$. The same reasoning (swapping $U$ and $V$) gives $\overline{V} \cap U = \emptyset$.
+
+      But $\overline{U} \cap V = \emptyset$ means there is no sequence from $U$ converging to any point of $V$, and $\overline{V} \cap U = \emptyset$ means there is no sequence from $V$ converging to any point of $U$. This contradicts the assumed sequence property applied to the partition $E = U \cup V$. Hence $E$ cannot be disconnected; that is, $E$ is connected.
+
+      Combining the two directions proves the equivalence.\qedhere
+  \end{enumerate}
 \end{proof}
 
-\begin{theorem}\leavevmode
-  \begin{enumerate}
-    \item The continuous image of a connected set is connected.
+The concept of connectedness is more relevant when working with subsets of the plane and other higher-dimensional spaces. This is because, in $\R$, the connected sets coincide precisely with the collection of intervals (with the understanding that unbounded intervals such as $(-\infty, 3)$ and $[0, \infty)$ are included).
 
-    \item The closure of a connected set is connected.
-
-    \item The union of connected sets with nonempty intersection is connected.
-  \end{enumerate}
-\end{theorem}
-
-\begin{proof}\leavevmode
-  \begin{enumerate}
-    \item If $f: E \to \R^m$ is continuous and $f(E)$ were disconnected, the preimages of a separating pair of open sets would disconnect $E$ -- contradiction.
-
-    \item Let $E$ be connected. If $\overline{E}$ were disconnected, the separation would pull back to a separation of $E$ by intersecting with open sets.
-
-    \item If $E_1$ and $E_2$ are connected and intersect, their union cannot be split without breaking one of them. \qedhere
-  \end{enumerate}
-\end{proof}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Definition of Functional Limits %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsection{Functional Limits}
-
-In Chapter 2, we studied limits of sequences. We now extend this concept to functions of a real variable. Intuitively, we say that $f(x)$ approaches $L$ as $x$ approaches $c$ if the values $f(x)$ can be made arbitrarily close to $L$ by taking $x$ sufficiently close to (but not equal to) $c$. This definition concerns the \emph{local behavior} of $f$ near $c$.
-
-\begin{definition}[Limit of a function]
-  Let $A \subseteq \R$ and let $f : A \to \R$. A point $c \in \R$ is a \emph{limit point} of $A$ if every neighborhood of $c$ contains a point of $A$ different from $c$ itself. We say that
-  \[%
-    \lim_{x \to c} f(x) = L
-  ,\]%
-  if for every $\epsilon > 0$ there exists $\delta > 0$ such that whenever $x \in A$ satisfies $0 < |x - c| < \delta$, we have $|f(x) - L| < \epsilon$.
-\end{definition}
-
-\begin{remark}
-  The condition $0 < |x - c|$ ensures that the value $f(c)$ (if defined) is irrelevant to the limit; limits depend only on nearby values. The notation $\lim_{x \to c} f(x) = L$ asserts that the limit exists and equals $L$.
-\end{remark}
-
-\begin{example}
-  Let $f(x) = 3x + 2$ on $\R$. We claim that $\lim_{x \to 1} f(x) = 5$. Given $\epsilon > 0$, choose $\delta = \epsilon/3$. If $0 < |x - 1| < \delta$, then
-  \[%
-    |f(x) - 5| = |3x + 2 - 5| = 3|x - 1| < 3 \cdot \frac{\epsilon}{3} = \epsilon
-  .\]%
-  Thus, the definition is satisfied and the limit is $5$.
-\end{example}
-
-\begin{example}
-  Let
-  \[%
-    f(x) = \begin{cases}
-      \frac{x^2 - 1}{x - 1} & x \neq 1 \\
-      7 & x = 1
-    \end{cases}
-  .\]%
-  For $x \neq 1$, $f(x) = x + 1$, so $\lim_{x \to 1} f(x) = 2$. The value $f(1) = 7$ is irrelevant to the limit.
-\end{example}
-
-\begin{example}
-  Let $f(x) = \frac{\sin x}{x}$ for $x \neq 0$. Using the inequality $|\sin x| \le |x|$, we see that
-  \[%
-    \left| \frac{\sin x}{x} - 1 \right| = \left| \frac{\sin x - x}{x} \right| \to 0
-  ,\]%
-  as $x \to 0$, hence $\lim_{x \to 0} \frac{\sin x}{x} = 1$.
-\end{example}
-
-\subsection{Basic Limit Laws}
-
-\begin{theorem}[Limit laws]
-  Suppose $\lim_{x \to c} f(x) = L$ and $\lim_{x \to c} g(x) = M$. Then:
-  \begin{enumerate}
-    \item $\lim_{x \to c} [f(x) + g(x)] = L + M$,
-
-    \item $\lim_{x \to c} [f(x) - g(x)] = L - M$,
-
-    \item $\lim_{x \to c} [f(x) g(x)] = LM$,
-
-    \item If $M \neq 0$, then $\lim_{x \to c} \frac{f(x)}{g(x)} = \frac{L}{M}$.
-  \end{enumerate}
+\begin{theorem}
+  $A$ set $E \subseteq \R$ is connected if and only if whenever $a < c < b$ with $a, b \in E$, it follows that $c \in E$ as well.
 \end{theorem}
 
 \begin{proof}
-  We prove (i); the others are similar. Let $\epsilon > 0$ be given. Choose $\delta_1 > 0$ such that $0 < |x - c| < \delta_1$ implies $|f(x) - L| < \epsilon/2$, and choose $\delta_2 > 0$ such that $0 < |x - c| < \delta_2$ implies $|g(x) - M| < \epsilon/2$. Let $\delta = \min\{\delta_1, \delta_2\}$. Then for $0 < |x - c| < \delta$,
+  Assume $E$ is connected, and let $a, b \in E$ and $a<c<b$. Set
   \[%
-    |[f(x) + g(x)] - (L + M)| \le |f(x) - L| + |g(x) - M| < \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon
-  .\qedhere\]%
+    A = (-\infty, c) \cap E \aand B = (c, \infty) \cap E
+  .\]%
+  Because $a \in A$ and $b \in B$, neither set is empty and, neither set contains a limit point of the other. If $E = A \cup B$, then we would have that $E$ is disconnected, which it is not. It must then be that $A \cup B$ is missing some element of $E$, and $c$ is the only possibility. Thus, $c \in E$.
+
+  Conversely, assume that $E$ is an interval in the sense that whenever $a, b \in E$ satisfy $a < c < b$ for some $c$, then $c \in E$. Our intent is to use the characterization of connected sets, so let $E = A \cup B$, where $A$ and $B$ are nonempty and disjoint. We need to show that one of these sets contains a limit point of the other. Pick $a_0 \in A$ and $b_0 \in B$, and, for the sake of the argument, assume $a_0 < b_0$. Because $E$ is itself an interval, the interval $I_0 = [a_0, b_0]$ is contained in $E$. Now, bisect $I_0$ into two equal halves. The midpoint of $I_0$ must either be in $A$ or $B$, and so choose $I_1 = [a_1, b_1]$ to be the half that allows us to have $a_1 \in A$ and $b_1 \in B$. Continuing this process yields a sequence of nested intervals $I_n = [a_n, b_n]$, where $a_n \in A, b_n \in B$, and the length $(b_n - a_n) \to 0$. The remainder of this argument should feel familiar. By the Nested Interval Property, there exists an
+  \[%
+    x \in \bigcap_{n=0}^{\infty} I_n
+  ,\]%
+  and it is straightforward to show that the sequences of endpoints each satisfy $\lim a_n = x$ and $\lim b_n = x$. But now $x \in E$ must belong to either $A$ or $B$, thus making it a limit point of the other. This completes the argument.
 \end{proof}
-
-\subsection{One-Sided Limits}
-
-\begin{definition}[One-sided limits]
-  Let $c$ be a limit point of $A \subseteq \R$ from the left or right.
-  \begin{itemize}
-    \item The \emph{left-hand limit} $\lim_{x \to c^-} f(x) = L$ means that the $\epsilon$--$\delta$ condition holds for all $x < c$ sufficiently close to $c$.
-
-    \item The \emph{right-hand limit} $\lim_{x \to c^+} f(x) = L$ means it holds for all $x > c$ sufficiently close to $c$.
-  \end{itemize}
-  The two-sided limit $\lim_{x \to c} f(x)$ exists if and only if both one-sided limits exist and are equal.
-\end{definition}
-
-\begin{example}
-  Let $f(x) = \frac{|x|}{x}$ for $x \neq 0$. Then $\lim_{x \to 0^-} f(x) = -1$ and $\lim_{x \to 0^+} f(x) = 1$. Since these are unequal, $\lim_{x \to 0} f(x)$ does not exist.
-\end{example}

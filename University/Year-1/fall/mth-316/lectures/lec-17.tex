@@ -20,7 +20,7 @@
 
 In words: a set is open if every point of the set lies entirely in the interior of the set, in the sense that we can ``wiggle'' the point a little in any direction without leaving the set.
 
-\begin{example}\leavevmode
+\begin{examples}\leavevmode
   \begin{enumerate}
     \item Consider the open interval $(a,b) \subset \R$. Let $x \in (a,b)$. The distances from $x$ to each endpoint are $x-a > 0$ and $b-x > 0$. Set $\epsilon = \min\{x-a, b-x\}$. Then $V_\epsilon(x) \subseteq (a,b)$.
 
@@ -30,7 +30,7 @@ In words: a set is open if every point of the set lies entirely in the interior 
 
     \item For any $x_0 \in \R^n$ and $r > 0$, the open ball $B_r(x_0) = \{x \in \R^n : \lvert x - x_0 \rvert < r\}$ is open. If $x \in B_r(x_0)$, then $d = r - \lvert x - x_0 \rvert > 0$. Taking $\epsilon = d$ ensures $V_\epsilon(x) \subseteq B_r(x_0)$. \qedhere
   \end{enumerate}
-\end{example}
+\end{examples}
 
 \begin{theorem}\leavevmode
   \begin{enumerate}
@@ -66,7 +66,7 @@ Closed sets are defined in terms of their complements.
 
 This definition is purely topological: a set is closed precisely when everything \emph{outside} it forms an open set.
 
-\begin{example}\leavevmode
+\begin{examples}\leavevmode
   \begin{enumerate}
     \item The closed interval $[a,b]$ is closed because its complement is $(-\infty,a) \cup (b,\infty)$, which is the union of two open sets.
 
@@ -76,7 +76,7 @@ This definition is purely topological: a set is closed precisely when everything
 
     \item Any finite subset of $\R$ is closed. For example, $\{p\}$ is closed since $\R \setminus \{p\} = (-\infty, p) \cup (p, \infty)$ is open. By finite unions of closed sets being closed (a fact proved below), any finite set is closed. \qedhere
   \end{enumerate}
-\end{example}
+\end{examples}
 
 \begin{theorem}\leavevmode
   \begin{enumerate}
@@ -116,7 +116,7 @@ The idea of a \emph{limit point} (or \emph{accumulation point}) makes precise wh
 
 In other words, $p$ is a limit point of $E$ if we can find points of $E$ \emph{distinct from $p$} that are as close to $p$ as we like.
 
-\begin{example}\leavevmode
+\begin{examples}\leavevmode
   \begin{enumerate}
     \item Every point of the open interval $(0,1)$ is a limit point of $(0,1)$. This is because for any $x \in (0,1)$ and any $\epsilon > 0$, the neighborhood $V_\epsilon(x)$ contains other points of $(0,1)$ besides $x$.
 
@@ -126,7 +126,7 @@ In other words, $p$ is a limit point of $E$ if we can find points of $E$ \emph{d
 
     \item An isolated point, such as $5$ in the set $\{5\}$, is \emph{not} a limit point, because we can choose $\epsilon$ small enough so that $V_\epsilon(5)$ contains no points of the set other than $5$ itself. \qedhere
   \end{enumerate}
-\end{example}
+\end{examples}
 
 \begin{theorem}
   A set $F \subseteq \R^n$ is closed if and only if it contains all its limit points.
