@@ -1,1 +1,132 @@
 \lecture{20}{Nov 18 2024 Mon (13:02:06)}{Intro to Functional Limits}
+
+Consider a function $f : A \to \R$. If $c$ is a limit point of the domain of $f$, then, intuitively, the statement
+\[%
+  \lim_{x \to c} f(x) = L
+,\]%
+is stating that the values of $f(x)$ get arbitrarily close to $L$ as $x$ gets closer and closer but not equal to $c$. Notice that $c$ doesn't have to be in the domain of $f$. Recall the definition of a limit of a sequence $(a_n)$, as $n \to \infty$, $a_n \to a$. We defined this using $\epsilon$-neighborhoods, $V_\epsilon(L)$ centered around $L$, where, there's a point in the sequence, call it $a_N$, such that for all $n > N$, $a_n \in V_\epsilon(L)$. Each $\epsilon$-neighborhood of $L$ must have such an $N$. We can use a similar idea to define the limit of a function as $x$ approaches $c$.
+
+Just like with compactness, there are two common ways to define limits of functions. The first is the neighborhood definition, and the second is the topological definition. We will start with the neighborhood definition.
+
+\begin{definition}[Functional Limit: Neighborhood Definition]
+  Let $f : A \to \R$, and let $c$ be a limit point of the domain $A$. We say
+  \[%
+    \lim_{x \to c} f(x) = L
+  ,\]%
+  provided that
+  \[%
+    (\forall \epsilon > 0)(\exists \delta > 0)(\forall x \in A)[0 < |x - c| < \delta \implies |f(x) - L| < \epsilon]
+  .\]%
+\end{definition}
+
+This definition is called the $\epsilon$-$\delta$ definition of a limit. Recall that the statement $|f(x) - L| < \epsilon$ is equivalent to saying $f(x) \in V_\epsilon(L)$. And likewise, the statement $|x - c| < \delta$ is equivalent to saying $x \in V_\delta(c)$. So we can rewrite the above definition as follows:
+
+\begin{definition}[Functional Limit: Topological Definition]
+  Let $f : A \to \R$, and let $c$ be a limit point of the domain $A$. We say
+  \[%
+    \lim_{x \to c} f(x) = L
+  ,\]%
+  if for every neighborhood $V$ of $L$ in $\R$, there exists a neighborhood $U$ of $c$ in $\R$ such that
+  \[%
+    (U \setminus \{c\}) \cap A \subseteq f^{-1}(V)
+  .\]%
+\end{definition}
+
+\begin{note}
+  The restriction that $0 < |x - c|$ is to ensure that we are only considering $x$ values that are close to $c$ but not equal to $c$. This is important because the limit of a function as $x$ approaches $c$ does not depend on the value of the function at $c$ itself. In fact, $f(c)$ may not even be defined if $c \notin A$.
+\end{note}
+
+\begin{figure}[H]
+  \centering
+
+  \begin{tikzpicture}[scale=1.5]
+    % Axes
+    \draw[->] (-0.5,0) -- (6,0) node[right] {};
+    \draw[->] (0,-0.5) -- (0,4) node[above] {};
+
+    % Curve (hand-drawn style using smooth plot)
+    \draw[thick,domain=-0.1:5.5,smooth,variable=\x]
+      plot ({\x},{3*(1/(1+exp(-(\x-2))))+0.5});
+
+    % Horizontal dashed lines for L - eps, L, L + eps
+    \draw[dashed] (0,2) -- (2,2);
+    \draw[dashed] (0,2.625) -- (2.8873,2.625);
+    \draw[dashed] (0,3.12634) -- (3.95,3.12634);
+
+    % Vertical dashed lines for c - delta, c, c + delta
+    \draw[dashed] (2,0) -- (2,2);
+    \draw[dashed] (2.8873,0) -- (2.8873,2.625);
+    \draw[dashed] (3.95,0) -- (3.95,3.12634);
+
+    % Labels for c, c - delta, c + delta
+    \draw[thick] (2.8873,0.1) -- (2.8873,-0.1) node[below] {\footnotesize $c$};
+    \draw[thick] (3.5746,0.1) -- (3.5746,-0.1) node[below] {\footnotesize $c + \delta$};
+    \draw[thick] (2.2,0.1) -- (2.2,-0.1) node[below] {\footnotesize $c - \delta$};
+
+    % Labels for epsilon neighborhood
+    \node[left] at (0,2) {\footnotesize $L - \epsilon$};
+    \node[left] at (0,2.625) {\footnotesize $L$};
+    \node[left] at (0,3.12634) {\footnotesize $L + \epsilon$};
+  \end{tikzpicture}
+
+  \caption{Graphical representation of the $\epsilon$-$\delta$ definition of a limit.}
+\end{figure}
+
+\begin{question}
+  Let's start with simple. Consider the function $f(x) = 2x + 1$. Prove that $\lim_{x \to 1} f(x) = 3$ using the $\epsilon$-$\delta$ definition of a limit.
+\end{question}
+
+\begin{worksheet}
+  We want to show that for every $\epsilon > 0$, there exists a $\delta > 0$ such that whenever $0 < |x - 1| < \delta$, it follows that $|f(x) - 3| < \epsilon$. Computing $|f(x) - L|$, we have
+  \[%
+    |f(x) - 3| = |(2x + 1) - 3| = |2x - 2| = 2|x - 1|
+  .\]%
+  To ensure that $|f(x) - 3| < \epsilon$, we need $2|x - 1| < \epsilon$, or equivalently, $|x - 1| < \epsilon/2$. Therefore, we can choose $\delta = \epsilon/2$. Now, whenever $0 < |x - 1| < \delta$, it follows that
+  \[%
+    |f(x) - 3| = 2|x - 1| < 2\delta = 2 \cdot \frac{\epsilon}{2} = \epsilon
+  .\]%
+  Now, we just need to write this up formally.
+\end{worksheet}
+
+\begin{proof}
+  Let $\epsilon > 0$ be given. Choose $\delta = \epsilon/2$. Now, suppose $x \in \R$ is such that $0 < |x - 1| < \delta$. Then,
+  \[%
+    |f(x) - 3| = |(2x + 1) - 3| = |2x - 2| = 2|x - 1| < 2\delta = 2 \cdot \frac{\epsilon}{2} = \epsilon
+  .\]%
+  Since $\epsilon > 0$ was arbitrary, we conclude that $\lim_{x \to 1} f(x) = 3$.
+\end{proof}
+
+\begin{question}
+  Let $f(x) = x^2$. Let's prove that $\lim_{x \to 2} f(x) = 4$ using the $\epsilon$-$\delta$ definition of a limit.
+\end{question}
+
+\begin{worksheet}
+  We want to prove that for every $\epsilon > 0$ there exists a $\delta > 0$ such that if $0 < |x - 2| < \delta$, then $|f(x) - 4| < \epsilon$. To begin, we compute the difference $|f(x) - 4|$. Since $f(x) = x^2$, we have
+  \[%
+    |f(x) - 4| = |x^2 - 4| = |(x - 2)(x + 2)| = |x - 2||x + 2|
+  .\]%
+  This already looks promising because we want to control $|x - 2|$ with our choice of $\delta$, but the factor $|x + 2|$ depends on $x$ in a way that we cannot directly control with $\epsilon$. To resolve this, we restrict $x$ to stay close to $2$. Specifically, let us assume $|x - 2| < 1$. This condition forces $x$ to lie between $1$ and $3$, which means that $x + 2$ lies between $3$ and $5$. Therefore, whenever $|x - 2| < 1$, we can guarantee that $|x + 2| < 5$. 
+
+  Now our inequality becomes
+  \[%
+    |f(x) - 4| = |x - 2||x + 2| < |x - 2| \cdot 5
+  .\]%
+  This tells us that to make $|f(x) - 4| < \epsilon$, it suffices to have $|x - 2| < \epsilon/5$. At this point, we have two conditions: first, $|x - 2| < 1$ so that we can control $|x + 2|$, and second, $|x - 2| < \epsilon/5$ so that the product stays within $\epsilon$. To ensure both conditions hold, we simply take 
+  \[%
+    \delta = \min\!\left(1, \frac{\epsilon}{5}\right)
+  .\]%
+
+  Now we check. If $0 < |x - 2| < \delta$, then since $\delta \leq 1$ we know $|x + 2| < 5$, and since $\delta \leq \epsilon/5$ we also know $|x - 2| < \epsilon/5$. Putting these together gives
+  \[%
+    |f(x) - 4| = |x - 2||x + 2| < \frac{\epsilon}{5} \cdot 5 = \epsilon
+  ,\]%
+  which is exactly what we wanted.
+\end{worksheet}
+
+\begin{proof}
+  Let $\epsilon > 0$ be given and set $\delta = \min\!\left(1, \frac{\epsilon}{5}\right)$. Suppose $x \in \R$ with $0 < |x - 2| < \delta$. Then $|x - 2| < 1$, so $1 < x < 3$ and hence $|x + 2| < 5$. Thus
+  \[%
+    |f(x) - 4| = |x^2 - 4| = |x - 2||x + 2| < |x - 2| \cdot 5 \leq \delta \cdot 5 \leq \frac{\epsilon}{5} \cdot 5 = \epsilon
+  .\]%
+  Therefore, by the $\epsilon$-$\delta$ definition of a limit, $\lim_{x \to 2} x^2 = 4$.
+\end{proof}
