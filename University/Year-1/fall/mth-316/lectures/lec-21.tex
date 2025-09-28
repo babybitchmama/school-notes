@@ -1,1 +1,173 @@
 \lecture{21}{Nov 20 2024 Wed (13:01:49)}{Properties of Functional Limits}
+
+\subsection{Sequential criterion for functional limits}
+
+Recall from Chapter 2 that limits of sequences can be characterized entirely in terms of their terms approaching a fixed number. For functions, the \emph{Sequential Criterion} provides a way to check functional limits using only sequences -- often easier in proofs because we can apply results from sequence convergence.
+
+\begin{theorem}[Sequential Criterion for Functional Limits]
+  Given a function $f : A \to \R$ and a limit point $c$ of $A$, the following are equivalent:
+  \begin{enumerate}
+    \item $\lim_{x \to c} f(x) = L$,
+
+    \item For all sequences $(x_n) \subseteq A$ satisfying $x_n \ne c$ and $(x_n) \to c$, it follows that $f(x_n) \to L$.
+  \end{enumerate}
+\end{theorem}
+
+\begin{proof}\leavevmode
+  \begin{enumerate}
+    \item[($\implies$)] Suppose that $\lim_{x \to c} f(x) = L$. We want to show that whenever $(x_n)$ is a sequence in $A$ with $x_n \to c$ and $x_n \neq c$, it follows that $f(x_n) \to L$.
+
+      Let $\epsilon > 0$ be arbitrary. Since $\lim_{x \to c} f(x) = L$, by the definition of a limit there exists a $\delta > 0$ such that whenever $0 < |x - c| < \delta$, with $x \in A$, we have $|f(x) - L| < \epsilon$.
+
+      Now let $(x_n)$ be a sequence in $A$ with $x_n \neq c$ and $x_n \to c$. Because $x_n \to c$, there exists some index $N \in \N$ such that for all $n \geq N$ we have $|x_n - c| < \delta$.
+
+      Since $x_n \neq c$, the condition $0 < |x_n - c| < \delta$ is satisfied for all $n \geq N$. Therefore, by the choice of $\delta$, for all $n \ge N$, we have $|f(x_n) - L| < \epsilon$. This shows that $f(x_n) \to L$, as required.
+
+    \item[($\impliedby$)] Now suppose that condition (ii) holds. We will prove (i) by contrapositive. That is, we will assume that $\lim_{x \to c} f(x) \neq L$ and show that (ii) must fail.
+
+      The negation of $\lim_{x \to c} f(x) = L$ is the statement
+      \[%
+        (\exists \epsilon_0 > 0)(\forall \delta > 0)(\exists x \in A)[0 < |x - c| < \delta \implies |f(x) - L| \geq \epsilon_0]
+      .\]%
+      In words: no matter how small we make $\delta$, we can always find an $x$ near $c$ (but not equal to $c$) for which $f(x)$ is \emph{not} within $\epsilon_0$ of $L$.
+
+      Now let us use this fact to construct a sequence. For each $n \in \mathbb{N}$, take $\delta = 1/n$. By the negation above, there exists a point $x_n \in A$ with
+      \[%
+        0 < |x_n - c| < \tfrac{1}{n} \aand |f(x_n) - L| \geq \epsilon_0
+      .\]%
+
+      This gives us a sequence $(x_n)$ with $x_n \neq c$ for all $n$. Moreover, since $|x_n - c| < \tfrac{1}{n}$, we clearly have $x_n \to c$. But at the same time, the condition $|f(x_n) - L| \geq \epsilon_0$ for all $n$ shows that $f(x_n)$ does \emph{not} converge to $L$.
+
+      Thus, we have found a sequence $(x_n)$ with $x_n \to c$ and $x_n \neq c$ for all $n$, but $f(x_n) \not\to L$. This is exactly the negation of statement (ii). Therefore, by contrapositive, if (ii) holds then (i) must also hold. \qedhere
+  \end{enumerate}
+\end{proof}
+
+\begin{examples}\leavevmode
+  \begin{enumerate}
+    \item Consider $f(x) = \sin(1/x)$ for $x \neq 0$, and let $c = 0$. Take the sequence $x_n = 1/n\pi \to 0$. Then $f(x_n) = \sin(n\pi) = 0 \to 0$. On the other hand, take $y_n = 1/(2n\pi + \pi/2) \to 0$. Then $f(y_n) = \sin(2n\pi + \pi/2) = 1 \to 1$. Since different sequences give different limits, the sequential criterion tells us that $\lim_{x \to 0} f(x)$ does not exist.
+
+    \item Consider $f(x) = x \sin(1/x)$ for $x \neq 0$, and let $c = 0$. Let $(x_n) \to 0$ with $x_n \neq 0$. Then
+      \[%
+        |f(x_n)| = |x_n| \cdot \left|\sin\left(\frac{1}{x_n}\right)\right| \leq |x_n|
+      .\]%
+      Since $|x_n| \to 0$, the squeeze theorem gives $f(x_n) \to 0$. Because this is true for every sequence $(x_n) \to 0$ with $x_n \neq 0$, the sequential criterion shows that $\lim_{x \to 0} f(x) = 0$.
+
+    \item Consider $f(x) = \sin(x)/x$ for $x \neq 0$, and let $c = 0$. Let us check several different sequences approaching $0$:
+      \begin{itemize}
+        \item If $x_n = 1/n$, then $f(x_n) = \sin(1/n)/(1/n) \to 1$.
+        \item If $y_n = 1/\sqrt{n}$, then $f(y_n) = (\sin(1/\sqrt{n}))/(1/\sqrt{n}) \to 1$.
+        \item If $z_n = \pi/n$, then $f(z_n) = (\sin(\pi/n))/(\pi/n) \to 1$.
+      \end{itemize}
+      No matter how the sequence approaches $0$, the values always approach $1$. Thus, by the sequential criterion, $\lim_{x \to 0} f(x) = 1$. \qedhere
+  \end{enumerate}
+\end{examples}
+
+\subsection{Algebraic limit theorem}
+
+We have already seen in Chapter 2, the \emph{Algebraic Limit Theorem} (ALT) for sequences, which allows us to compute limits of sums, products, and quotients from the limits of the individual sequences. A similar result holds for functions, and it is proved using exactly the same $\epsilon$--$\delta$ techniques, often by reducing to the sequential criterion.
+
+\begin{corollary}[Algebraic Limit Theorem for Functional Limits]
+  Let $A \subseteq \R$, let $f, g : A \to \R$, and let $c$ be a limit point of $A$.  If $\lim_{x \to c} f(x) = L$ and $\lim_{x \to c} g(x) = M$, then:
+  \begin{enumerate}
+    \item $\lim_{x \to c} [f(x) + g(x)] = L + M$,
+
+    \item $\lim_{x \to c} [f(x) - g(x)] = L - M$,
+
+    \item $\lim_{x \to c} [f(x) g(x)] = LM$,
+
+    \item If $M \neq 0$ and $g(x) \neq 0$ near $c$, then
+      \[%
+        \lim_{x \to c} \frac{f(x)}{g(x)} = \frac{L}{M}
+      .\]%
+  \end{enumerate}
+\end{corollary}
+
+\begin{proof}
+  We use the sequential criterion for functional limits: a statement of the form $\lim_{x \to c} h(x) = H$ is equivalent to the assertion that for every sequence $(x_n) \subset A$ with $x_n \neq c$ and $x_n \to c$, we have $h(x_n) \to H$.
+
+  So let $(x_n) \subset A$ be any sequence with $x_n \neq c$ for all $n$ and $x_n \to c$. By the hypothesis and the sequential criterion applied to $f$ and $g$, we have $f(x_n) \to L$ and $g(x_n) \to M$ as $n \to \infty$.
+
+  \begin{enumerate}
+    \item The algebraic limit theorem for sequences (simple fact about sequences) says that if $a_n \to a$ and $b_n \to b$, then $a_n + b_n \to a + b$. Applying that with $a_n = f(x_n)$ and $b_n = g(x_n)$ yields $f(x_n) + g(x_n) \to L + M$, and hence,
+      \[%
+        \lim_{x \to c} (f(x) + g(x)) = L + M
+      .\]%
+
+    \item Similarly, from $a_n \to a$ and $b_n \to b$ we know $a_n - b_n \to a - b$. Applying this with $a_n = f(x_n)$ and $b_n = g(x_n)$ gives $f(x_n) - g(x_n) \to L - M$, and hence,
+      \[%
+        \lim_{x\to c}\big( f(x)-g(x)\big)=L-M
+      .\]%
+
+    \item The sequence-level result: if $a_n \to a$ and $b_n \to b$, then $a_n b_n \to ab$. Using $a_n = f(x_n)$ and $b_n = g(x_n)$ we obtain $f(x_n)g(x_n) \to LM$, and hence,
+      \[%
+        \lim_{x \to c} (f(x)g(x)) = LM
+      .\]%
+
+    \item Assume $M \neq 0$ and that $g(x) \neq 0$ for all $x$ in some punctured neighborhood of $c$ (this is the usual hypothesis ``$g(x) \neq0$ near $c$''). We want to show $\lim_{x \to c} f(x)/g(x) = L/M$.
+
+      Again let $(x_n) \subset A$ with $x_n \neq c$ and $x_n \to c$. We have $g(x_n) \to M$ with $M \neq 0$. From basic sequence facts there exists $N$ such that for all $n \ge N$,
+      \[%
+        |g(x_n) - M| < \frac{|M|}{2}
+      ,\]%
+      hence for $n\ge N$,
+      \[%
+        |g(x_n)| \ge |M| - |g(x_n) - M| > |M| - \frac{|M|}{2} = \frac{|M|}{2} > 0
+      .\]%
+      Thus for large \(n\) the values $g(x_n)$ are nonzero, so the quotients $\dfrac{f(x_n)}{g(x_n)}$ are defined for all sufficiently large $n$.
+
+      Now use the sequence-level quotient rule: since $f(x_n) \to L$ and $g(x_n) \to M$ with $M \neq 0$, we have
+      \[%
+        \frac{f(x_n)}{g(x_n)} \to \frac{L}{M}
+      .\]%
+      Because $(x_n)$ was arbitrary, the sequential criterion yields
+      \[%
+        \lim_{x \to c} \frac{f(x)}{g(x)} = \frac{L}{M}
+      .\qedhere\]%
+  \end{enumerate}
+\end{proof}
+
+\begin{remark}
+  This result allows us to compute many limits mechanically: break the function into pieces whose limits are known, and then reassemble the result.
+\end{remark}
+
+\subsection{Divergence criterion and Squeeze Theorem}
+
+A very strong tool for showing that a limit does not exist is the \emph{Divergence Criterion}, which is essentially the contrapositive of the sequential criterion.
+
+\begin{corollary}[Divergence Criterion]
+  Let $A$ be a set and $c$ is a limit point of $A$. If there exists two sequences, $\{a_n\}$ and $\{y_n\}$ in $A$ such that $\lim_{n \to \infty} x_n = c$ and $\lim_{n \to \infty} y_n = c$, but $\lim_{n \to \infty} f(a_n) \ne \lim_{n \to \infty} f(y_n)$, then $\lim_{x \to c} f(x)$ does not exist.
+\end{corollary}
+
+\begin{example}
+  Let $f(x) = \sin(\sfrac{1}{x})$. Choose $x_n = \sfrac{1}{n\pi} \to 0$ as $n \to \infty$. Then, $\sin(\sfrac{1}{x_n}) = \sin(n\pi) = 0$. Choose $y_n = \frac{1}{(2n + \sfrac{1}{2})\pi} \to 0$ as $n \to \infty$. Then, $\sin(\sfrac{1}{y_n}) = \sin(\sfrac{\pi}{2}) = 1$. Therefore, by the Divergence Criterion, $\lim_{x \to 0} f(x)$ does not exist.
+\end{example}
+
+Another useful theorem is the \emph{Squeeze Theorem}, which allows us to find limits of functions that are ``squeezed'' between two other functions whose limits are known.
+
+\begin{theorem}[Squeeze Theorem]
+  If $g(x) \le f(x) \le h(x)$ in a neighborhood of $c$ and $\lim_{x \to c} g(x) = L$ and $\lim_{x \to c} h(x) = L$, then $\lim_{x \to c} f(x) = L$.
+\end{theorem}
+
+There are two ways we can prove this theorem: using the definition of the limit, i.e., the $\epsilon$--$\delta$ version, or using the sequential criterion for functional limits. We present both proofs here.
+
+\begin{proof}[Proof ($\epsilon$-$\delta$ version)]
+  Let $\epsilon > 0$ be arbitrary. Since $\lim_{x \to c} g(x) = L$, there exists $\delta_1 > 0$ such that for all $x \in A$ with $0 < |x - c| < \delta_1$ we have $|g(x) - L| < \epsilon$. Similarly, since $\lim_{x \to c} h(x) = L$, there exists $\delta_2 > 0$ such that for all $x \in A$ with $0 < |x - c| < \delta_2$ we have $|h(x) - L| < \epsilon$.
+
+  Set $\delta = \min(\{\delta_0, \delta_1, \delta_2\})$. Then for every $x \in A$ with $0 < |x - c| < \delta$ we have both
+  \[%
+    g(x) \le f(x)\le h(x), \quad |g(x) - L| < \epsilon, \quad |h(x) - L| < \epsilon
+  .\]%
+  The inequalities $|g(x) - L| < \epsilon$ and $|h(x) - L| < \epsilon$ are equivalent to
+  \[%
+    L - \epsilon < g(x) \le f(x) \le h(x) < L + \epsilon
+  .\]%
+  Hence for such $x$ we obtain $|f(x) - L| < \epsilon$. Because $\epsilon>0$ was arbitrary, this shows $\lim_{x\to c} f(x)=L$.
+\end{proof}
+
+\begin{proof}[Proof (Sequential version)]
+  Let $(x_n) \subset A$ be any sequence with $x_n \neq c$ for all $n$ and $x_n \to c$. By the hypothesis on the functions, for all sufficiently large $n$ (namely those with $0 < |x_n - c| < \delta_0$) we have
+  \[%
+    g(x_n) \le f(x_n) \le h(x_n)
+  .\]%
+  Since $\lim_{x \to c} g(x) = L$ and $\lim_{x \to c} h(x) = L$, by the sequential criterion for those functions we have $g(x_n) \to L$ and $h(x_n) \to L$. Applying the squeeze (or sandwich) theorem for sequences yields $f(x_n) \to L$. Because the sequence $(x_n)$ was arbitrary, the sequential criterion for functional limits implies $\lim_{x \to c} f(x) = L$.
+\end{proof}
