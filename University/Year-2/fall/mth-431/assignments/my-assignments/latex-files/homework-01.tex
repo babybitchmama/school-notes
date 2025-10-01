@@ -73,9 +73,23 @@
 \end{problem}
 
 \begin{solution}[i]
+  Clearly, $\metric_X(p, q) = \metric_X(q, p)$ for all $p, q \in X$. Also, $\metric_X(p, q) = 0$ if and only if $p = q$. We now prove that the metric satisfies the triangle inequality. Let $p, q, r \in X$. If any two of the points are equal, then the triangle inequality hold trivially. So, assume that $p, q, r$ are all distinct. Then,
+  \[%
+    \metric_X(p, r) = 1 \le \metric_X(p, q) + \metric_X(q, r) = 1 + 1 = 2
+  .\]%
+  Thus, $\metric_X$ is a metric on $X$.
 \end{solution}
 
 \begin{solution}[ii]
+  Let $\epsilon > 0$ and choose any $\delta \in (0, 1)$. Let $q \in X$. Since the distance between any two points in $X$ is either $0$ or $1$, that means $B(p, \delta) = \{p\}$. Therefore, for every $q \in X$
+  \[%
+    \metric_X(p, q) = \metric_X(p, p) = 0 < \delta
+  ,\]%
+  which implies that
+  \[%
+    \metric_Y(f(p), f(q)) = \metric_Y(f(p), f(p)) = 0 < \epsilon
+  .\]%
+  Therefore, every map $f : X \to Y$ is continuous.
 \end{solution}
 
 \begin{solution}[iii]
