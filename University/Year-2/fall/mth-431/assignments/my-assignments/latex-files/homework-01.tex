@@ -44,6 +44,21 @@
 \end{problem}
 
 \begin{solution}[i]
+  Clearly, $\metric((x_1, y_1), (x_2, y_2)) = \metric((x_2, y_2), (x_1, y_1))$. Also $\metric((x_1, y_1), (x_2, y_2)) = 0$ if and only if $(x_1, y_1) = (x_2, y_2)$.
+
+  Let $(x_1, y_1), (x_2, y_2), (x_3, y_3) \in \R^2$. For the triangle inequality, observe that we may write
+  \[%
+    \metric((x_i, y_i), (x_j, y_j)) = |y_i - y_j| + \delta_{x_i}^{x_j}
+  ,\]%
+  where $\delta_a^b$ is the indicator function that is $0$ if $a = b$ and $1$ if $a \neq b$. The usual triangle inequality in $\R$ gives $|y_1 - y_3| \le |y_1 - y_2| + |y_2 - y_3|$, and the indicator satisfies
+  \[%
+    \delta_{x_1}^{x_3} \le \delta_{x_1}^{x_2} + \delta_{x_2}^{x_3}
+  .\]%
+  Adding these inequalities yields
+  \[%
+    \metric((x_1,y_1),(x_3,y_3)) \le \metric((x_1, y_1), (x_2, y_2)) + \metric((x_2, y_2), (x_3, y_3))
+  ,\]%
+  so the triangle inequality holds. Therefore $\metric$ is a metric on $\R^2$.
 \end{solution}
 
 \begin{solution}[ii]
@@ -81,23 +96,23 @@
 \end{solution}
 
 \begin{solution}[ii]
-  Let $\epsilon > 0$ and choose any $\delta \in (0, 1)$. Let $q \in X$. Since the distance between any two points in $X$ is either $0$ or $1$, that means $B(p, \delta) = \{p\}$. Therefore, for every $q \in X$
+  Let $p \in X$ and $\epsilon > 0$. Choose $\delta = 1/2$. Then $B(p,\delta) = \{p\}$. Thus, if $q \in B(p,\delta)$, we must have $q = p$, and so
   \[%
-    \metric_X(p, q) = \metric_X(p, p) = 0 < \delta
-  ,\]%
-  which implies that
-  \[%
-    \metric_Y(f(p), f(q)) = \metric_Y(f(p), f(p)) = 0 < \epsilon
+    d_Y(f(p), f(q)) = d_Y(f(p), f(p)) = 0 < \epsilon
   .\]%
-  Therefore, every map $f : X \to Y$ is continuous.
+  Hence $f$ is continuous at $p$. Since $p \in X$ was arbitrary, $f$ is continuous on $X$. 
 \end{solution}
 
 \begin{solution}[iii]
+  Assume that the sequence $(p_n) = (p_1, p_2, p_3, \dots)$ converges to $p \in X$. By definition, for every $\epsilon > 0$, there exists $N \in \N$ such that for all $n \geq N$, $\metric_X(p_n, p) < \epsilon$. Choose $\epsilon = 1/2$. Then, for all $n \geq N$, $\metric_X(p_n, p) < 1/2$. Since the distance between any two distinct points in $X$ is $1$, this implies that $p_n = p$ for all $n \geq N$. Thus, the sequence is eventually constant.
+
+  Conversely, assume that the sequence $(p_n)$ is eventually constant. Then there exists $N \in \N$ and $p \in X$ such that $p_n = p$ for all $n \geq N$. Let $\epsilon > 0$ be arbitrary. For this $N$, we have $\metric_X(p_n, p) = 0 < \epsilon$ whenever $n \geq N$. Hence, by definition, $(p_n)$ converges to $p$.
 \end{solution}
 
 \begin{problem}[1.11]
-  Let $(X, \metric_X)$ and $(Y, \metric_Y)$ be metric spaces, let $p_1, p_2, p_3, \cdots$ be a sequence that converges to a point $\ell$ in $X$, and let $f : X \to Y$ be continuous at $\ell$. Prove that the sequence $f(p_1), f(p_2), f(p_3), \cdots$ converges to $f(\ell)$ in $Y$.
+  Let $(X, \metric_X)$ and $(Y, \metric_Y)$ be metric spaces, let $(p_n) = (p_1, p_2, p_3, \cdots)$ be a sequence that converges to a point $\ell$ in $X$, and let $f : X \to Y$ be continuous at $\ell$. Prove that the sequence $f(p_n) = f(p_1), f(p_2), f(p_3), \cdots$ converges to $f(\ell)$ in $Y$.
 \end{problem}
 
 \begin{solution}
+  Since $f$ is continuous at $\ell$ (since $\ell \in X$), for every $\epsilon > 0$, there exists $\delta > 0$ such that for all $x \in X$ with $\metric_X(x, \ell) < \delta$, we have $\metric_Y(f(x), f(\ell)) < \epsilon$. Since $(p_n)$ converges to $\ell$, for this $\delta > 0$, there exists $N \in \N$ such that for all $n \geq N$, $\metric_X(p_n, \ell) < \delta$. Therefore, for all $n \geq N$, we have $\metric_Y(f(p_n), f(\ell)) < \epsilon$. This shows that the sequence $(f(p_n))$ converges to $f(\ell)$ in $Y$.
 \end{solution}
