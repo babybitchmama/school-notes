@@ -16,13 +16,93 @@
 \end{problem}
 
 \begin{solution}[i]
+  For the Euclidean metric, we have $\metric_2((x, y), (0, 0))$, we have
+  \[%
+    B_r^{(2)}(0) = \{(x, y) \in \R^2 \mid \sqrt{x^2 + y^2} < r\} = \{(x, y) \in \R^2 \mid x^2 + y^2 < r^2\}
+  .\]%
+  This is an open disk of radius $r$ centered ta the origin.
+
+  For the taxicab metric, we have $\metric_1((x, y), (0, 0))$, we have
+  \[%
+    B_r^{(1)}(0) = \{(x, y) \in \R^2 \mid |x| + |y| < r\}
+  .\]%
+  This is the interior of a diamond (a square rotated by $45^\circ$) with vertices at $(r, 0)$, $(0, r)$, $(-r, 0)$, and $(0, -r)$.
+
+  For the supremum metric, we have $\metric_\infty((x, y), (0, 0))$, we have
+  \[%
+    B_r^{(\infty)}(0) = \{(x, y) \in \R^2 \mid \max(|x|, |y|) < r\} = \{(x, y) \in \R^2 \mid |x| < r, |y| < r\}
+  .\]%
+  This is the interior of an axis-aligned square with vertices at $(r, r)$, $(-r, r)$, $(-r, -r)$, and $(r, -r)$.
+
+  \begin{figure}[h]
+    \centering
+
+    \def\r{2}
+    \begin{subfigure}[b]{0.45\textwidth}
+      \centering
+
+      \begin{tikzpicture}[scale=1]
+        % axes
+        \draw[->] (-3,0) -- (3,0);
+        \draw[->] (0,-3) -- (0,3);
+        \draw[blue,fill=blue,opacity=0.12] (0,0) circle (\r);
+        \draw[blue,dashed] (0,0) circle (\r);
+        \node[below] at (0,-3.1) {Euclidean ($\metric_2$): circle of radius $r$};
+      \end{tikzpicture}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.45\textwidth}
+      \centering
+
+      \begin{tikzpicture}[scale=1]
+        \draw[->] (-3,0) -- (3,0);
+        \draw[->] (0,-3) -- (0,3);
+        \draw[red,fill=red,opacity=0.12] (\r,0) -- (0,\r) -- (-\r,0) -- (0,-\r) -- cycle;
+        \draw[red,dashed] (\r,0) -- (0,\r) -- (-\r,0) -- (0,-\r) -- cycle;
+        \node[below] at (0,-3.1) {Taxicab ($\metric_1$): diamond (rotated square)};
+      \end{tikzpicture}
+    \end{subfigure}
+
+    \begin{subfigure}[b]{0.45\textwidth}
+      \centering
+
+      \begin{tikzpicture}[scale=1]
+        \draw[->] (-3,0) -- (3,0);
+        \draw[->] (0,-3) -- (0,3);
+        \draw[green,fill=green,opacity=0.12] (-\r,-\r) rectangle (\r,\r);
+        \draw[green,dashed] (-\r,-\r) rectangle (\r,\r);
+        \node[below] at (0,-3.1) {Supremum ($\metric_\infty$): axis-aligned open square};
+      \end{tikzpicture}
+    \end{subfigure}
+
+    \caption{Open balls of radius $r$ around the origin in $\R^2$ for the three metrics.}
+    \label{fig:balls_2}
+  \end{figure}
+
+  Graphing these three shapes, we get Figure~\ref{fig:balls_2}.
 \end{solution}
 
 \begin{solution}[ii]
+  Take the Euclidean metric $\metric_2$. Assume that $(x_n, y_n) \to (x, y)$ in the Euclidean metric. Let $\epsilon > 0$ be arbitrary. Choose $N \in \N$ such that for all $n \ge N$, $\metric_2((x_n, y_n), (x, y)) < \epsilon$. Notice that for all $n \ge N$, we have
+  \[%
+    |x_n - x| \le \sqrt{(x_n - x)^2 + (y_n - y)^2} = \metric_2((x_n, y_n), (x, y)) < \epsilon
+  ,\]%
+  and similarly $|y_n - y| < \epsilon$. Hence, $x_n \to x$ and $y_n \to y$ separately.
+
+  For the converse, assume that $x_n \to x$ and $y_n \to y$. Let $\epsilon > 0$ be arbitrary. Choose $N = \max(\{N_1, N_2\})$, where $N_1, N_2 \in \N$ are such that for all $n \ge N_1$, $|x_n - x| < \epsilon/\sqrt{2}$ and for all $n \ge N_2$, $|y_n - y| < \epsilon/\sqrt{2}$. Then, for all $n \ge N$,
+  \[%
+    \metric_2((x_n, y_n), (x, y)) = \sqrt{(x_n - x)^2 + (y_n - y)^2} < \sqrt{\frac{\epsilon^2}{2} + \frac{\epsilon^2}{2}} = \epsilon
+  .\]%
+  Hence, $(x_n, y_n) \to (x, y)$ in the Euclidean metric.
+
+  Therefore, a sequence $(x_n, y_n)$ converges to $(x, y)$ in the Euclidean metric if and only if $x_n \to x$ and $y_n \to y$ separately.
 \end{solution}
 
 \begin{solution}[iii]
-  Clearly, $\metric(\x, \y)$ satisfies the first two properties of a metric. However, it does not satisfy the triangle inequality.
+  Clearly, $\metric(\x, \y)$ satisfies the first property of a metric. However, it fails the second identity, since if two points agree in at least one coordinate, then $\metric(\x, \y) = 0$ even if $\x \neq \y$. For example,
+  \[%
+    \metric((0, 0), (0, 1)) = \min\{|0 - 0|, |0 - 1|\} = 0
+  ,\]%
+  although $(0, 0) \neq (0, 1)$. Thus $\metric$ is not a metric on $\R^n$.
 \end{solution}
 
 \begin{problem}[1.3]
@@ -63,12 +143,87 @@
 \end{solution}
 
 \begin{solution}[ii]
+  In this metric, points with the same $x$-coordinate have distance $|y_1 - y_2|$, while points with different $x$-coordinates have distance $|y_1-y_2|+1$. Hence, for any $r > 0$,
+  \[%
+    B_\metric((0, 0), r) = \{(0,y) \mid x = 0~\text{and}~|y| < r\} \,\cup\, \{(x,y) \mid x \neq 0~\text{and}~|y| < r - 1\}
+  .\]%
+  The second set is empty if $r \le 1$. Thus:
+  \begin{align*}
+    B_\metric((0, 0), 1/2) &= \{(0,y) \mid x = 0~\text{and}~|y| < 1/2\} \\
+    B_\metric((0, 0), 1) &= \{(0,y) \mid x = 0~\text{and}~|y| < 1\} \\
+    B_\metric((0, 0), 2) &= \{(0,y) \mid x = 0~\text{and}~|y| < 2\} \cup \{(x,y) \mid x \neq 0~\text{and}~|y| < 1\}
+  .\end{align*}
+
+  \begin{figure}[h]
+    \centering
+
+    \begin{subfigure}[b]{0.45\textwidth}
+      \centering
+
+      % Ball of radius 1/2
+      \begin{tikzpicture}[scale=1.0]
+        \draw[->] (-2,0) -- (2,0) node[right] {$x$};
+        \draw[->] (0,-2) -- (0,2) node[above] {$y$};
+        % Ball of radius 1/2: vertical line segment along x=0
+        \draw[very thick,blue] (0,-0.5) -- (0,0.5);
+        \node at (1.2,1.5) {$B_\rho((0,0),1/2)$};
+      \end{tikzpicture}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.45\textwidth}
+      \centering
+
+      \begin{tikzpicture}[scale=1.0]
+        \draw[->] (-2,0) -- (2,0) node[right] {$x$};
+        \draw[->] (0,-2) -- (0,2) node[above] {$y$};
+        % Ball of radius 1: vertical line segment along x=0
+        \draw[very thick,blue] (0,-1) -- (0,1);
+        \node at (1.2,1.5) {$B_\rho((0,0),1)$};
+      \end{tikzpicture}
+    \end{subfigure}
+
+    \begin{subfigure}[b]{0.45\textwidth}
+      \centering
+
+      \begin{tikzpicture}[scale=1.0]
+        \draw[->] (-3,0) -- (3,0) node[right] {$x$};
+        \draw[->] (0,-3) -- (0,3) node[above] {$y$};
+        % Part on x=0: vertical line segment from -2 to 2
+        \draw[very thick,blue] (0,-2) -- (0,2);
+        % For all x != 0: vertical line segments from -1 to 1
+        \foreach \x in {-2.5,-2,...,-0.5,0.5,1,...,2.5} {
+          \draw[blue] (\x,-1) -- (\x,1);
+        }
+        \node at (1.8,2.3) {$B_\rho((0,0),2)$};
+      \end{tikzpicture}
+    \end{subfigure}
+
+    \caption{}
+    \label{fig:balls_1}
+  \end{figure}
+
+  Graphing these three shapes, we get Figure~\ref{fig:balls_1}.
 \end{solution}
 
 \begin{solution}[iii]
+  Take $(a_n) = (1/n, 0)$. Then $(a_n)$ converges to $(0, 0)$ in the Euclidean metric $\metric_2$ since
+  \[%
+    \metric_2(a_n, (0, 0)) = \sqrt{(1/n - 0)^2 + (0 - 0)^2} = 1/n \to 0
+  .\]%
+  But in the silly metric $\metric$, we have
+  \[%
+    \metric(a_n, (0, 0)) = |0 - 0| + 1 = 1 \not\to 0
+  .\]%
+  Hence, $(a_n)$ does not converge to $(0, 0)$ in the silly metric.
 \end{solution}
 
 \begin{solution}[iv]
+  Let $(a_n) = (x_n, y_n)$ converge to $a = (x, y)$ in the metric d, so $\metric(a_n, a) \to 0$. Choose $\epsilon = 1/2$. Then, there exists $N_1 \in \N$ such that for all $n \ge N_1$, $\metric(a_n, a) < 1/2$. But if $x_n \ne x$ then $\metric(a_n, a) = |y_n - y| + 1 \ge 1$, contradiction. Hence $x_n = x$ for all $n \ge N_1$.
+
+  Now, let $\epsilon > 0$ be arbitrary. Since $\metric(a_n, a) \to 0$, there exists $N_2 \in \N$ such that for all $n \ge N_2$, $\metric(a_n, a) < \epsilon$. For $n \ge N \coloneqq \max(\{N_1, N_2\})$, we have $x_n = x$ and so $\metric(a_n, a) = |y_n - y| < ε$. Hence, for $n \ge N$,
+  \[%
+    \metric_2(a_n, a) = \sqrt{(x_n - x)^2 + (y_n - y)^2} = |y_n - y| < \epsilon
+  .\]%
+  Therefore $\metric_2(a_n, a) \to 0$, and $(a_n)$ converges to $a$ in the Euclidean metric.
 \end{solution}
 
 \begin{problem}[1.4]
