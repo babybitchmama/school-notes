@@ -75,10 +75,10 @@
     \end{subfigure}
 
     \caption{Open balls of radius $r$ around the origin in $\R^2$ for the three metrics.}
-    \label{fig:balls_2}
+    \label{fig:balls_1}
   \end{figure}
 
-  Graphing these three shapes, we get Figure~\ref{fig:balls_2}.
+  Graphing these three shapes, we get Figure~\ref{fig:balls_1}.
 \end{solution}
 
 \begin{solution}[ii]
@@ -166,8 +166,9 @@
         \draw[->] (0,-2) -- (0,2) node[above] {$y$};
         % Ball of radius 1/2: vertical line segment along x=0
         \draw[very thick,blue] (0,-0.5) -- (0,0.5);
-        \node at (1.2,1.5) {$B_\rho((0,0),1/2)$};
       \end{tikzpicture}
+
+      \caption{Radius $1/2$}
     \end{subfigure}
     \begin{subfigure}[b]{0.45\textwidth}
       \centering
@@ -177,8 +178,9 @@
         \draw[->] (0,-2) -- (0,2) node[above] {$y$};
         % Ball of radius 1: vertical line segment along x=0
         \draw[very thick,blue] (0,-1) -- (0,1);
-        \node at (1.2,1.5) {$B_\rho((0,0),1)$};
       \end{tikzpicture}
+
+      \caption{Radius $1$}
     \end{subfigure}
 
     \begin{subfigure}[b]{0.45\textwidth}
@@ -190,18 +192,18 @@
         % Part on x=0: vertical line segment from -2 to 2
         \draw[very thick,blue] (0,-2) -- (0,2);
         % For all x != 0: vertical line segments from -1 to 1
-        \foreach \x in {-2.5,-2,...,-0.5,0.5,1,...,2.5} {
-          \draw[blue] (\x,-1) -- (\x,1);
-        }
-        \node at (1.8,2.3) {$B_\rho((0,0),2)$};
+        \draw[fill=blue,opacity=0.12] (-2.5,-1) rectangle (2.5,1);
+        \draw[blue,dashed] (-2.5,-1) rectangle (2.5,1);
       \end{tikzpicture}
+
+      \caption{Radius $2$}
     \end{subfigure}
 
     \caption{}
-    \label{fig:balls_1}
+    \label{fig:balls_2}
   \end{figure}
 
-  Graphing these three shapes, we get Figure~\ref{fig:balls_1}.
+  Graphing these three shapes, we get Figure~\ref{fig:balls_2}.
 \end{solution}
 
 \begin{solution}[iii]
