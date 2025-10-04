@@ -16,8 +16,23 @@
   \createintro
   \newpage
 
-  \chapter{Chapter Name}
+  \setcounter{chapter}{-1}
+  \chapter{Introduction}
 
-  % start notes a-b
-  % end notes a-b
+  % notes start 0-0
+  \input{lectures/lec-00.tex}
+  % notes end 0-0
+
+  \newpage
+  \pagenumbering{arabic}
+  \setcounter{page}{1}
+
+  \setcounter{chapter}{0}
+  \chapter{Metric Spaces}
+
+  % start notes 1-b
+  \input{lectures/lec-01.tex}
+  \input{lectures/lec-02.tex}
+  \input{lectures/lec-03.tex}
+  % end notes 1-b
 \end{document}
