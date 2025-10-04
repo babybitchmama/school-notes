@@ -1,0 +1,203 @@
+\begin{problem}[1]
+  How many 4-digit numbers, divisible by five, are there?
+\end{problem}
+
+\begin{solution}
+  A number is divisible by 5 iff its last digit is either 0 or 5. The first 3 digits can be any digit from 0 to 9 (with the exception that the first digit cannot be 0, since we want a 4-digit number). Therefore, we have
+  \[%
+    9 \times 10 \times 10 \times 2 = 1,800
+  .\]%
+  Thus, there are 1,800 4-digit numbers divisible by 5.
+\end{solution}
+
+\begin{problem}[2]
+  For years, telephone area codes in the United States and Canada consisted of a sequence of three digits. The first digit was an integer between 2 and 9, the second digit was either 0 or 1, and the third digit was an integer between 1 and 9.
+  \begin{enumerate}
+    \item How many area codes were possible?
+    \item How many area codes starting with a 5 were possible?
+  \end{enumerate}
+\end{problem}
+
+\begin{solution}[(i)]
+  The first digit can be any integer from 2 to 9, so there are 8 choices for the first digit. The second digit can be either 0 or 1, so there are 2 choices for the second digit. The third digit can be any integer from 1 to 9, so there are 9 choices for the third digit. Therefore, the total number of possible area codes is
+  \[%
+    8 \times 2 \times 9 = 144
+  .\]%
+  Thus, there are 144 possible area codes.
+\end{solution}
+
+\begin{solution}[(ii)]
+  If the area code starts with a 5, then there is only 1 choice for the first digit. All the other choices remain the same as in part (i). Therefore, the total number of possible area codes starting with a 5 is
+  \[%
+    1 \times 2 \times 9 = 18
+  .\]%
+  Thus, there are 18 possible area codes starting with a 5.
+\end{solution}
+
+\begin{problem}[3]
+  How many different letter arrangements can be made from the letters
+  \begin{enumerate}
+    \item COMMITTEE
+    \item PROPOSITION
+    \item BARRACUDA
+  \end{enumerate}
+\end{problem}
+
+\begin{solution}[(i)]
+  The word \textit{COMMITTEE} has 9 letters in total. The letters and their frequencies are
+  \[%
+    \text{C:}~1,\quad \text{O:}~1,\quad \text{M:}~2,\quad \text{I:}~1,\quad \text{T:}~2,\quad \text{E:}~2
+  .\]%
+  Therefore, the number of distinct arrangements is
+  \[%
+    \frac{9!}{2!\,2!\,2!} = \frac{362,880}{8} = 45,360
+  .\]%
+  Thus, there are 45,360 different letter arrangements of the word \textit{COMMITTEE}.
+\end{solution}
+
+\begin{solution}[(ii)]
+  The word \textit{PROPOSITION} has 1 letters in total. The letters and their frequencies are as follows:
+  \[%
+    \text{P:}~1,\quad \text{R:}~1,\quad \text{O:}~3,\quad \text{S:}~1,\quad \text{I:}~2,\quad \text{T:}~1,\quad \text{N:}~1
+  .\]%
+  Therefore, the number of distinct arrangements is
+  \[%
+    \frac{11!}{3!\,2!} = \frac{39,916,800}{12} = 3,326,400
+  .\]%
+  Thus, there are 3,326,400 different letter arrangements of the word \textit{PROPOSITION}.
+\end{solution}
+
+\begin{solution}[(iii)]
+  The word \textit{BARRACUDA} has 9 letters in total. The letters and their frequencies are
+  \[%
+    \text{B:}~1,\quad \text{A:}~3,\quad \text{R:}~2,\quad \text{C:}~1,\quad \text{U:}~1,\quad \text{D:}~1
+  .\]%
+  Therefore, the number of distinct arrangements is
+  \[%
+    \frac{9!}{3!\,2!} = \frac{362,880}{12} = 30,240
+  .\]%
+  Thus, there are 30,240 different letter arrangements of the word \textit{BARRACUDA}.
+\end{solution}
+
+\begin{problem}[4]
+  In how many ways can 10 people be seated in a row if
+  \begin{enumerate}
+    \item there are no restrictions on the seating arrangement?
+    \item persons A and B must sit next to each other?
+    \item there are 5 men and 5 women and no 2 men or 2 women can sit next to each other?
+    \item there are 6 men and they must sit next to one another?
+    \item there are 5 married couples and each couple must sit together?
+  \end{enumerate}
+\end{problem}
+
+\begin{solution}[(i)]
+  With no restrictions, all 10 people are distinct and can be arranged in a row in $10! = 3,628,800$ ways.
+\end{solution}
+
+\begin{solution}[(ii)]
+  If persons A and B must sit next to each other, treat \{A, B\} as a single block. Then we have the block plus the other 8 people, i.e., 9 items to arrange, and inside the block A and B can be ordered in 2! ways. Thus the total number is $9! \times 2! = 362,880 \times 2 = 725,760$.
+\end{solution}
+
+\begin{solution}[(iii)]
+  To ensure no two men or two women sit next to each other with 5 men and 5 women, the seats must alternate man-woman-man-$\cdots$ or woman-man-woman-$\cdots$. There are 2 possible patterns (start with a man or start with a woman). For a fixed pattern, the 5 men can be arranged among the men-positions in 5! ways and the 5 women in 5! ways. Hence the total number is $2 \times 5! \times 5! = 2 \times 120 \times 120 = 28,800$.
+\end{solution}
+
+\begin{solution}[(iv)]
+  If the 6 men must sit next to one another, treat the block of 6 men as a single item. Together with the remaining 4 people this gives 5 items to arrange in a row, so 5! orderings of the items. Inside the men-block the 6 men may be arranged in 6! ways. Thus the total number is $5! \times 6! = 120 \times 720 = 86,400$.
+\end{solution}
+
+\begin{solution}[(v)]
+  If each of the 5 married couples must sit together, treat each couple as a block. Then there are 5 blocks to arrange, giving 5! orderings, and within each couple the two spouses may be arranged in 2! ways independently. Therefore the total number is $5! \times (2!)^{5} = 120 \times 32 = 3,840$.
+\end{solution}
+
+\begin{problem}[5]
+  A student has to sell 3 books from a collection of 10 math, 4 science, and 3 economics books. How many choices are possible if
+  \begin{enumerate}
+    \item all three books are to be on the same subject?
+    \item the books are to be on different subjects?
+  \end{enumerate}
+\end{problem}
+
+\begin{solution}[(i)]
+  If all three books are on the same subject, then the student can choose
+  \[%
+    \binom{10}{3}~\text{from math,} \quad \binom{4}{3}~\text{from science, or}\quad \binom{3}{3}~\text{from economics}
+  .\]%
+  Therefore, the total number of ways is
+  \[
+    \binom{10}{3} + \binom{4}{3} + \binom{3}{3} = 120 + 4 + 1 = 125
+  .\]%
+  Thus, there are 125 possible choices if all three books are on the same subject.
+\end{solution}
+
+\begin{solution}[(ii)]
+  If the three books are to be on different subjects, then one must be chosen from each subject category. The number of choices is therefore
+  \[
+    \binom{10}{1} \times \binom{4}{1} \times \binom{3}{1} = 10 \times 4 \times 3 = 120.
+  \]
+  Thus, there are 120 possible choices if the three books are on different subjects.
+\end{solution}
+
+\begin{problem}[6]
+  Six different gifts are to be distributed among 12 children. How many distinct results are possible if no child is to receive more than one gift?
+\end{problem}
+
+\begin{solution}
+  Since no child can receive more than one gift, we must select 6 children from the 12 to receive the gifts, and then assign one distinct gift to each of them.
+
+  First, choose which 6 children will receive gifts,
+  \[%
+    \binom{12}{6}~\text{ways}
+  .\]%
+  Then, distribute the 6 distinct gifts among these 6 children, 6! ways. Therefore, the total number of distinct results is
+  \[%
+    \binom{12}{6} \times 6! = \frac{12!}{6!}
+  .\]%
+  Simplifying,
+  \[%
+    \frac{12!}{6!} = 665,280
+  .\]%
+  Thus, there are 665,280 distinct ways to distribute the 6 gifts among 12 children if no child receives more than one gift.
+\end{solution}
+
+\begin{problem}[7]
+  A person has 10 friends, of whom 7 will be invited to a party.
+  \begin{enumerate}
+    \item How many choices are there if 2 of the friends are feuding and will not attend together?
+    \item How many choices if 2 of the friends will only attend together?
+  \end{enumerate}
+\end{problem}
+
+\begin{solution}[(i)]
+  Let the two feuding friends be \(A\) and \(B\). We must count the number of ways to invite \(7\) friends such that \(A\) and \(B\) are not both invited.
+
+  There are two cases:
+  \begin{enumerate}
+    \item A is invited and B is not: choose 6 more from the remaining 8 friends, giving $\binom{8}{6}$ ways.
+    \item B is invited and A is not: again, $\binom{8}{6}$ ways.
+    \item Neither A nor B is invited: choose all 7 from the remaining 8 friends, giving $\binom{8}{7}$ ways.
+  \end{enumerate}
+  Therefore, the total number of choices is
+  \[%
+    \binom{8}{6} + \binom{8}{6} + \binom{8}{7} = 2 \times 28 + 8 = 64
+  .\]%
+  Thus, there are 64 possible choices if the two feuding friends will not attend together.
+\end{solution}
+
+\begin{solution}[(ii)]
+  Let the two friends who will only attend together be \(A\) and \(B\). We can treat them as a single unit, so that \(A\) and \(B\) either both attend or both do not.
+
+  If they both attend, then this pair counts as one “block,” so we need 5 additional friends from the remaining 8,
+  \[%
+    \binom{8}{5} = 56~\text{ways}
+  .\]%
+  If they both do not attend, we must choose all 7 from the remaining 8 friends:
+  \[%
+    \binom{8}{7} = 8~\text{ways}
+  .\]%
+  Therefore, the total number of possible invitations is
+  \[%
+    \binom{8}{5} + \binom{8}{7} = 56 + 8 = 64
+  .\]%
+  Thus, there are 64 possible choices if the two friends will only attend together.
+\end{solution}

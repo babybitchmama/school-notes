@@ -62,24 +62,55 @@
 \end{solution}
 
 \begin{problem}[0.30]
-  Determine whether $x \mathscr{R} y$ in $\R$ if $x \ge y$ is an equivalence relation on the set. Describe the partition arising from each equivalence relation.
+  Determine whether $x \mathscr{R} y$ in $\R$ if $x \ge y$ is an equivalence relation on the set. Describe the partition arising from the relation.
 \end{problem}
 
 \begin{solution}
+  The relation $x \mathscr{R} y$ defined by $x \ge y$ is not an equivalence relation because it fails the symmetry property. For example, if $x = 3$ and $y = 2$, then $3 \ge 2$ (so $3 \mathscr{R} 2$), but $2 \not\ge 3$.
+
+  Since it is not an equivalence relation, there is no partition arising from this relation.
 \end{solution}
 
 \begin{problem}[0.32]
-  Determine whether $(x_1, y_1) \mathscr{R} (x_2, y_2)$ in $\R \times \R$ if $x_1^2 + y_1^2 = x_2^2 + y_2^2$ is an equivalence relation on the set. Describe the partition arising from each equivalence relation.
+  Determine whether $(x_1, y_1) \mathscr{R} (x_2, y_2)$ in $\R \times \R$ if $x_1^2 + y_1^2 = x_2^2 + y_2^2$ is an equivalence relation on the set. Describe the partition arising from the relation.
 \end{problem}
 
 \begin{solution}
+  The relation $(x_1, y_1) \mathscr{R} (x_2, y_2)$ defined by $x_1^2 + y_1^2 = x_2^2 + y_2^2$ is an equivalence relation because it satisfies the following properties:
+  \begin{enumerate}
+    \item Reflexivity: For any point $(x, y)$, we have $x^2 + y^2 = x^2 + y^2$, so $(x, y) \mathscr{R} (x, y)$.
+    \item Symmetry: If $(x_1, y_1) \mathscr{R} (x_2, y_2)$, then $x_1^2 + y_1^2 = x_2^2 + y_2^2$. This implies that $x_2^2 + y_2^2 = x_1^2 + y_1^2$, so $(x_2, y_2) \mathscr{R} (x_1, y_1)$.
+    \item Transitivity: If $(x_1, y_1) \mathscr{R} (x_2, y_2)$ and $(x_2, y_2) \mathscr{R} (x_3, y_3)$, then $x_1^2 + y_1^2 = x_2^2 + y_2^2$ and $x_2^2 + y_2^2 = x_3^2 + y_3^2$. Therefore, $x_1^2 + y_1^2 = x_3^2 + y_3^2$, so $(x_1, y_1) \mathscr{R} (x_3, y_3)$.
+  \end{enumerate}
+
+  The partition arising from this equivalence relation consists of sets of points in $\R \times \R$ that lie on circles centered at the origin with radius $\sqrt{r}$ for each non-negative real number $r$. Each equivalence class corresponds to a circle defined by the equation $x^2 + y^2 = \sqrt{r}$ for some fixed $r \geq 0$.
 \end{solution}
 
 \begin{problem}[0.34]
-  Determine whether $n \mathscr{R} m$ in $\Z$ if $x_1^2 + y_1^2 = x_2^2 + y_2^2$ is an equivalence relation on the set. Describe the partition arising from each equivalence relation.
+  Determine whether $n \mathscr{R} m$ in $\Z^+$ if $n$ and $m$ have the same final digit in the usual base ten notation is an equivalence relation on the set. Describe the partition arising from the relation.
 \end{problem}
 
 \begin{solution}
+  The relation $n \mathscr{R} m$ defined by $n$ and $m$ having the same final digit in base ten is an equivalence relation because it satisfies the following properties:
+  \begin{enumerate}
+    \item Reflexivity: For any positive integer $n$, the final digit of $n$ is the same as itself, so $n \mathscr{R} n$.
+    \item Symmetry: If $n \mathscr{R} m$, then $n$ and $m$ have the same final digit. This implies that $m$ and $n$ also have the same final digit, so $m \mathscr{R} n$.
+    \item Transitivity: If $n \mathscr{R} m$ and $m \mathscr{R} p$, then $n$ and $m$ have the same final digit, and $m$ and $p$ have the same final digit. Therefore, $n$ and $p$ must also have the same final digit, so $n \mathscr{R} p$.
+  \end{enumerate}
+
+  The partition arising from this equivalence relation consists of sets of positive integers that share the same final digit. There are ten equivalence classes corresponding to the final digits 0 through 9:
+  \begin{enumerate}
+    \item Class for final digit 0: $\{0, 10, 20, 30, \cdots\}$.
+    \item Class for final digit 1: $\{1, 11, 21, 31, \cdots\}$.
+    \item Class for final digit 2: $\{2, 12, 22, 32, \cdots\}$.
+    \item Class for final digit 3: $\{3, 13, 23, 33, \cdots\}$.
+    \item Class for final digit 4: $\{4, 14, 24, 34, \cdots\}$.
+    \item Class for final digit 5: $\{5, 15, 25, 35, \cdots\}$.
+    \item Class for final digit 6: $\{6, 16, 26, 36, \cdots\}$.
+    \item Class for final digit 7: $\{7, 17, 27, 37, \cdots\}$.
+    \item Class for final digit 8: $\{8, 18, 28, 38, \cdots\}$.
+    \item Class for final digit 9: $\{9, 19, 29, 39, \cdots\}$. \qedhere
+  \end{enumerate}
 \end{solution}
 
 \begin{problem}[1.7]
@@ -87,6 +118,11 @@
 \end{problem}
 
 \begin{solution}
+  The operation is not associative since $(3 * 2) * 1 = 1 * 1 = 0$, while $3 * (2 * 1) = 3 * 1 = 2$.
+
+  The operation is also not commutative since $3 * 2 = 3 - 2 = 1$, while $2 * 3 = 2 - 3 = -1$.
+
+  Finally, the set does not have an identity element for this operation. An identity element $e$ would need to satisfy $a * e = a$ for all $a \in \Z$. This implies $a - e = a \implies e = 0$. However, checking with $e = 0$, we have $a * 0 = a - 0 = a$, which holds true, but we also need to check if $0 * a = -a$, which does not equal $a$ unless $a = 0$. Therefore, there is no identity element that works for all integers.
 \end{solution}
 
 \begin{problem}[1.8]
@@ -94,6 +130,11 @@
 \end{problem}
 
 \begin{solution}
+  The operation is not associative since $(a*b)*c = (2ab + 3)*c = 2(2ab + 3)c + 3 = 4abc + 6c + 3$, while $a*(b*c) = a*(2bc + 3) = 2a(2bc + 3) + 3 = 4abc + 6a + 3$.
+
+  The operation is commutative since $a * b = 2ab + 3 = b * a$.
+
+  To find the identity element $e$, we need $a * e = a$ for all $a \in \Q$. This gives $a * e = 2ae + 3 = a$. Rearranging, we get $2ae - a + 3 = 0 \implies a(2e - 1) + 3 = 0$. For this to hold for all $a$, we must have $2e - 1 = 0$ and $3 = 0$, which is impossible. Therefore, there is no identity element in $\Q$ for this operation.
 \end{solution}
 
 \begin{problem}[1.10]
@@ -101,4 +142,9 @@
 \end{problem}
 
 \begin{solution}
+  The operation is not associative since $(a * b) * c = 2^{(2^{ab})c} = 2^{c \cdot 2^{ab}}$, while $a * (b * c) = 2^{a(2^{bc})} = 2^{a \cdot 2^{bc}}$.
+
+  The operation is commutative since $a * b = 2^{ab} = 2^{ba} = b * a$.
+
+  If an identity $e$ existed, we would need $a * e = a$ for all $a$, i.e. $2^{ae} = a$. Taking $\log_2$ gives $ae = \log_2(a)$, which has no single solution $e$ valid for all $a$. Therefore, no identity element exists.
 \end{solution}
