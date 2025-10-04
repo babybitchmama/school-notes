@@ -246,7 +246,12 @@
 \end{problem}
 
 \begin{solution}[i]
-  Clearly, $\metric_X(p, q) = \metric_X(q, p)$ for all $p, q \in X$. Also, $\metric_X(p, q) = 0$ if and only if $p = q$. We now prove that the metric satisfies the triangle inequality. Let $p, q, r \in X$. If any two of the points are equal, then the triangle inequality hold trivially. So, assume that $p, q, r$ are all distinct. Then,
+  Clearly, $\metric_X(p, q) = \metric_X(q, p)$ for all $p, q \in X$. Also, $\metric_X(p, q) = 0$ if and only if $p = q$. We now prove that the metric satisfies the triangle inequality. Let $p, q, r \in X$.
+  Assume any two of the points are equal, say $p = q$. Then,
+  \[%
+    \metric_X(p, r) = \metric_X(q, r) \le \metric_X(p, q) + \metric_X(q, r) = 0 + \metric_X(q, r) = \metric_X(p, r)
+  .\]%
+  The cases $p = r$ and $q = r$ are similar. So, assume that $p, q, r$ are all distinct. Then,
   \[%
     \metric_X(p, r) = 1 \le \metric_X(p, q) + \metric_X(q, r) = 1 + 1 = 2
   .\]%
