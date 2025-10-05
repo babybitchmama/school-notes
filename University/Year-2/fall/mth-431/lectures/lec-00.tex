@@ -1,0 +1,15 @@
+In analysis, we defined properties such as \emph{convergence of sequences} and \emph{continuity of functions}. For example, $(x_n) \to x$ means
+\[%
+  (\forall \epsilon > 0)(\exists N \in \N)(\forall n \ge N)[|x_n - x| < \epsilon]
+.\]%
+A function $f : A \to B$ is continuous at $x_0 \in A$ if
+\[%
+  (\forall \epsilon > 0)(\exists \delta > 0)(\forall x \in A)[|x - x_0| < \delta \implies |f(x) - f(x_0)| < \epsilon]
+.\]%
+However, these definitions are not very useful when we want to generalize them to other settings, such as metric spaces or topological spaces, because what does $|x - x_n|$ mean if $x$ and $x_n$ aren't numbers? So, to define convergence, we don't need to rely on our traditional distance in Euclidean space. We need a sensible notion of distance between two points in a set. This leads us to the concept of a \emph{metric space}.
+
+Given a set $X$, a \emph{metric} on $X$ is a function $\metric_X : X \times X \to \R$, where $\metric_X(x, y)$ is the distance between two arbitrary points $x, y \in X$. Now, we can replace the traditional distance $|x - y|$ with $\metric_X(x, y)$ in our definitions. So, we get
+\[%
+  (x_n) \to x \iff (\forall \epsilon > 0)(\exists N \in \N)(\forall n \ge N)[\metric_X(x_n, x) < \epsilon]
+.\]%
+Of course, the metric $\metric_X$ must satisfy certain properties to be a valid notion of distance.
