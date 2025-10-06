@@ -6,10 +6,22 @@ A function $f : A \to B$ is continuous at $x_0 \in A$ if
 \[%
   (\forall \epsilon > 0)(\exists \delta > 0)(\forall x \in A)[|x - x_0| < \delta \implies |f(x) - f(x_0)| < \epsilon]
 .\]%
-However, these definitions are not very useful when we want to generalize them to other settings, such as metric spaces or topological spaces, because what does $|x - x_n|$ mean if $x$ and $x_n$ aren't numbers? So, to define convergence, we don't need to rely on our traditional distance in Euclidean space. We need a sensible notion of distance between two points in a set. This leads us to the concept of a \emph{metric space}.
+However, these definitions are not very useful when we want to generalize them to other settings, such as metric spaces or topological spaces, because what does $|x - x_n|$ mean if $x$ and $x_n$ aren’t numbers? To define convergence more generally, we don’t need to rely on the traditional distance in Euclidean space. We just need a sensible notion of distance between two points in a set. This leads us to the concept of a \emph{metric space}.
 
-Given a set $X$, a \emph{metric} on $X$ is a function $\metric_X : X \times X \to \R$, where $\metric_X(x, y)$ is the distance between two arbitrary points $x, y \in X$. Now, we can replace the traditional distance $|x - y|$ with $\metric_X(x, y)$ in our definitions. So, we get
+Given a set $X$, a \emph{metric} on $X$ is a function $\metric_X : X \times X \to \R$, where $\metric_X(x, y)$ represents the distance between two arbitrary points $x, y \in X$. Now we can replace the traditional distance $|x - y|$ with $\metric_X(x, y)$ in our definitions. So we get
 \[%
   (x_n) \to x \iff (\forall \epsilon > 0)(\exists N \in \N)(\forall n \ge N)[\metric_X(x_n, x) < \epsilon]
 .\]%
-Of course, the metric $\metric_X$ must satisfy certain properties to be a valid notion of distance.
+Similarly, a function $f : A \to B$ is continuous at $x_0 \in A$ if
+\[%
+  (\forall \epsilon > 0)(\exists \delta > 0)(\forall x \in A)[\metric_A(x, x_0) < \delta \implies \metric_B(f(x), f(x_0)) < \epsilon]
+,\]%
+where $\metric_A$ and $\metric_B$ are metrics on $A$ and $B$, respectively. Of course, these metrics must satisfy certain axioms to be a valid notion of distance.
+
+Even though metric spaces let us talk about ideas like convergence and continuity in settings far beyond $\R^n$, the notion of distance can still be too restrictive. Sometimes, we only care about which subsets of a space are “open,” not about how far apart points are. This motivates the study of \emph{topological spaces}, which capture the essence of continuity and convergence without referring to distance at all.
+
+Topology can be thought of as the study of the underlying shape or structure of spaces—what remains unchanged when we bend, stretch, or deform them without tearing. It provides a unified language for understanding continuity, connectedness, compactness, and many other concepts that appear across analysis, geometry, and beyond.
+
+These notes will follow that progression: starting with metric spaces, where we still have a notion of distance, and then moving to topological spaces, where we generalize further. Along the way, we’ll revisit familiar analytical ideas in a new light and see how they fit into a broader mathematical framework.
+
+This is the first half of a sequence. In the second half, Introduction to Topology II, we will study topological spaces in more depth, as this course mainly focuses on metric spaces.
