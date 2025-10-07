@@ -5,6 +5,54 @@
 \end{problem}
 
 \begin{solution}
+  Define
+  \[%
+    X = \{(x, 1) \mid x \in \R\} \cup \{(x, -1) \mid x \in \R\} \cong \R \times \{\pm 1\}
+  ,\]%
+  with the subspace topology from $\R^2$. Let $q : X \to M$ be the quotient map under the equivalence relation $(x, 1) \sim (x, -1)$ for all $x \neq 0$. Denote $0_+ = q(0, 1)$ and $0_- = q(0, -1)$.
+
+  Let $p \in M$. If $p = q(x_0, y_0)$ with $x_0 \neq 0$, then there exists $\varepsilon > 0$ such that $(x_0 - \varepsilon, x_0 + \varepsilon)$ does not contain $0$. Define
+  \[%
+    U = q\!\left( (x_0 - \varepsilon, x_0 + \varepsilon) \times \{1, -1\} \right)
+  .\]%
+  The map $\Phi : U \to (x_0 - \varepsilon, x_0 + \varepsilon)$ defined by $\Phi(q(x, y)) = x$ is well-defined, bijective, continuous, and its inverse $\Phi^{-1}(x) = q(x, 1)$ is continuous. Hence $U$ is homeomorphic to an open interval in $\R$.
+
+  But if $p = 0_+$, choose $\varepsilon > 0$ and define
+  \[%
+    U_+ = q\!\left((-\varepsilon, \varepsilon) \times \{1\} \right) = \{0_+\} \cup \{ q(x, 1) \mid 0 < |x| < \varepsilon \}
+  .\]%
+  Define $\Phi_+ : U_+ \to (-\varepsilon, \varepsilon)$ by
+  \[%
+    \Phi_+(0_+) = 0, \quad \Phi_+(q(x, 1)) = x \text{ for } x \ne 0
+  .\]%
+  Then $\Phi_+$ is bijective, continuous, and has a continuous inverse $\Phi_+^{-1}(x) = q(x, 1)$. Thus, $U_+$ is homeomorphic to an open interval. The same argument applies for $p = 0_-$ using
+  \[%
+    U_- = q\!\left( (-\varepsilon, \varepsilon) \times \{-1\} \right), \quad \Phi_-(0_-) = 0, \ \Phi_-(q(x, -1)) = x
+  .\]%
+  Therefore, every point of $M$ has a neighborhood homeomorphic to an open subset of $\R$, and hence $M$ is locally Euclidean of dimension $1$.
+
+  Now, we show that $M$ is second-countable. For each $a \in \Q$ and $r \in \Q^+$, define
+  \[%
+    U_{a, r}^+ = q\!\left( (a - r, a + r) \times \{1\} \right), \quad U_{a, r}^- = q\!\left( (a - r, a + r) \times \{-1\} \right),
+  ,\]%
+  and for the two origins, define for each $\epsilon \in \Q^+$,
+  \[%
+    U_+(\epsilon) = q\!\left( (-\epsilon, \epsilon) \times \{1\} \right), \quad
+    U_-(\epsilon) = q\!\left( (-\epsilon, \epsilon) \times \{-1\} \right)
+  .\]%
+  Let
+  \[%
+    \mathcal{B} = \{U_{a, r}^+, U_{a, r}^- \mid a \in \Q, r \in \Q^+\} \cup \{U_+(\epsilon), U_-(\epsilon) \mid \epsilon \in \Q^+\}
+  .\]%
+  Since $\Q$ and $\Q^+$ are countable, $\mathcal{B}$ is countable. Each $B \in \mathcal{B}$ is open in $M$ because $q^{-1}(B)$ is open in $X$. To see that $\mathcal{B}$ is a basis, take any open $O \subset M$ and any $p \in O$. Then $q^{-1}(O)$ is open in $X$, so there exists an open interval $(a - r, a + r)$ (with $a, r \in \Q$) such that $q((a - r, a + r) \times \{y_0\}) \subset O$. Hence $O$ is a union of elements of $\mathcal{B}$, and $\mathcal{B}$ is a countable basis. Thus, $M$ is second-countable.
+
+  Lastly, we show that $M$ is not Hausdorff. Suppose $U$ and $V$ are disjoint open neighborhoods of $0_+$ and $0_-$, respectively. Then $q^{-1}(U)$ is an open subset of $X$ containing $(0, 1)$, so there exists $\delta > 0$ such that $(-\delta, \delta) \times \{1\} \subset q^{-1}(U)$. Similarly, there exists $\varepsilon > 0$ such that $(-\varepsilon, \varepsilon) \times \{-1\} \subset q^{-1}(V)$. Let $0 < |x| < \min(\delta, \varepsilon)$. Then
+  \[%
+    q(x, 1) = q(x, -1) \in U \cap V
+  ,\]%
+  contradicting that $U$ and $V$ are disjoint. Hence, no disjoint open neighborhoods can separate $0_+$ and $0_-$, and $M$ fails to be Hausdorff.
+
+  Therefore, the space $M$ is locally Euclidean and second-countable, but not Hausdorff.
 \end{solution}
 
 \begin{problem}[1.2]
@@ -24,7 +72,7 @@
 \begin{problem}[1.7]
   Let $N$ denote the \emph{\textbf{north pole}} $(0, \cdots, 0, 1) \in \S^n \subseteq \R^{n+1}$, and let $S$ denote the \emph{\textbf{south pole}} $(0, \cdots, 0, -1)$. Define the \emph{\textbf{stereographic projection}} $\sigma : \S^n \setminus \{N\} \to \R^n$ by
   \[%
-    \sigma(x^1, \cdots, x^{n+1}) = \frac{(x^1, \cdots, x^n}{1 - x^{n+1}}
+    \sigma(x^1, \cdots, x^{n+1}) = \frac{(x^1, \cdots, x^n)}{1 - x^{n+1}}
   .\]%
   Let $\widetilde{\sigma} = -\sigma(-x)$ for $x \in \S^n \setminus \{S\}$.
   \begin{enumerate}
@@ -42,9 +90,47 @@
 \end{problem}
 
 \begin{solution}[(i)]
+  Let $x = (x^1, \cdots, x^n, x^{n+1}) \in \S^n \setminus \{N\}$. The line from $N$ to $x$ can be written as $\ell(t) = N + t(x - N)$. We seek the point $\ell(t)$ whose last coordinate is zero, i.e., the intersection with the hyperplane $x^{n+1} = 0$. Setting the last coordinate of $\ell(t)$ to zero gives:
+  \[%
+    1 + t(x^{n+1} - 1) = 0 \implies t = \frac{1}{1 - x^{n+1}}
+  .\]%
+  Substituting this back into the first $n$ coordinates of $\ell(t)$, we have:
+  \[%
+    \ell(t) = \left(\frac{x^1}{1 - x^{n+1}}, \cdots, \frac{x^n}{1 - x^{n+1}}, 0\right) = \frac{(x^1, \cdots, x^n, 0)}{1 - x^{n+1}} = (\sigma(x), 0)
+  .\]%
+  Thus, $\sigma(x) = u$ where $(u, 0)$ is the intersection point.
+
+
+  To find $\widetilde{\sigma}(x)$, note that it is defined by $\widetilde{\sigma}(x) = -\sigma(-x)$. Applying $\sigma$ to the antipodal point $-x$ gives
+  \[%
+    \sigma(-x) = \frac{(-x^1, \cdots, -x^n)}{1 + x^{n+1}} = -\frac{(x^1, \cdots, x^n)}{1 + x^{n+1}}
+  .\]%
+  But $\widetilde{\sigma}(x) = -\sigma(-x)$, giving us
+  \[%
+    \widetilde{\sigma}(x) = -\sigma(-x) = -\left(-\frac{(x^1, \cdots, x^n)}{1 + x^{n+1}}\right) = \frac{(x^1, \cdots, x^n)}{1 + x^{n+1}}
+  .\]%
+  Therefore, $\widetilde{\sigma}(x) = u$ where $(u, 0)$ is the intersection of the line through $S$ and $x$ with the hyperplane $x^{n+1} = 0$.
 \end{solution}
 
 \begin{solution}[(ii)]
+  If $\sigma$ is a bijection, there its inverse $\sigma^{-1}$ is well-defined. Solving for each coordinate of $u$, we get
+  \[%
+    u^i = \frac{x^i}{1 - x^{n+1}}
+  .\]%
+  Since the radius of $\S^n$ is $1$, we have
+  \begin{alignat*}{3}
+      \phantom{\implies}\quad&\sum_{i=1}^n (x^i)^2 + \left(x^{n+1}\right)^2 &&= 1 \\
+      \implies\quad&\sum_{i=1}^n (u^i)^2\left(1 - x^{n+1}\right)^2 + \left(x^{n+1}\right)^2 &&= 1 \\
+      \implies\quad&\left(1 - x^{n+1}\right)^2 \sum_{i=1}^n (u^i)^2 + \left(x^{n+1}\right)^2 &&= 1 \\
+      \implies\quad&\left(1 - x^{n+1}\right)^2 |u|^2 + \left(x^{n+1}\right)^2 &&= 1 \\
+      \implies\quad&|u|^2\left(1 - 2x^{n+1} + (x^{n+1})^2\right) + \left(x^{n+1}\right)^2 &&= 1 \\
+      \implies\quad&|u|^2 - 2|u|^2x^{n+1} + |u|^2\left(x^{n+1}\right)^2 + \left(x^{n+1}\right)^2 &&= 1 \\
+      \implies\quad&\left(|u|^2 + 1\right)\left(x^{n+1}\right)^2 - 2|u|^2x^{n+1} + (|u|^2 - 1) &&= 0
+  .\end{alignat*}
+  This is a quadratic equation in $x^{n+1}$. From the equation, we know $A = |u|^2 + 1$, $B = -2|u|^2$, and $C = |u|^2 + 1$. There are two solutions to this equation, but we want the one less than $1$ since $x^{n+1} \ne 1$ (as $N$ is not in the domain of $\sigma$). Thus, we have
+  % \[%
+
+  % .\]%
 \end{solution}
 
 \begin{solution}[(iii)]
