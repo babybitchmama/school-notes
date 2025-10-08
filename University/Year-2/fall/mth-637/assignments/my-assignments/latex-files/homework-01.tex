@@ -127,10 +127,35 @@
       \implies\quad&|u|^2 - 2|u|^2x^{n+1} + |u|^2\left(x^{n+1}\right)^2 + \left(x^{n+1}\right)^2 &&= 1 \\
       \implies\quad&\left(|u|^2 + 1\right)\left(x^{n+1}\right)^2 - 2|u|^2x^{n+1} + (|u|^2 - 1) &&= 0
   .\end{alignat*}
-  This is a quadratic equation in $x^{n+1}$. From the equation, we know $A = |u|^2 + 1$, $B = -2|u|^2$, and $C = |u|^2 + 1$. There are two solutions to this equation, but we want the one less than $1$ since $x^{n+1} \ne 1$ (as $N$ is not in the domain of $\sigma$). Thus, we have
-  % \[%
+  This is a quadratic equation in $x^{n+1}$. From the equation, we know $A = |u|^2 + 1$, $B = -2|u|^2$, and $C = |u|^2 - 1$. There are two solutions to this equation, but we want the one less than $1$ since $x^{n+1} \ne 1$ (as $N$ is not in the domain of $\sigma$). Let $r^2 = |u|^2$ and $t = x^{n+1}$. From this, we get the following quadratic
+  \[%
+    (r^2 + 1)t^2 - 2r^2 t + (r^2 - 1) = 0
+  .\]%
+  Using the quadratic formula, we find
+  \begin{align*}
+    t &= \frac{2r^2 \pm \sqrt{(-2r^2)^2 - 4(r^2 + 1)(r^2 - 1)}}{2(r^2 + 1)} \\
+      &= \frac{2r^2 \pm \sqrt{4r^4 - 4(r^4 - 1)}}{2(r^2 + 1)} \\
+      &= \frac{2r^2\pm 2}{2(r^2 + 1)} \\
+      &= \frac{r^2\pm 1}{r^2 + 1}
+  .\end{align*}
+  Therefore, the two roots are
+  \[%
+    x^{n+1} = 1 \aand x^{n+1} = \frac{|u|^2 - 1}{|u|^2 + 1}
+  .\]%
+  Taking the second root, we can substitute back to find $x^i$ for $i = 1, \cdots, n$:
+  \[%
+    1 - x^{n+1} = 1 - \frac{|u|^2 - 1}{|u|^2 + 1} = \frac{2}{|u|^2 + 1}
+  .\]%
+  Plugging that into the equation for $x^i$, we get
+  \[%
+    x^i = u^i\left(1 - x^{n+1}\right) = u^i \frac{2}{|u|^2 + 1} = \frac{2u^i}{|u|^2 + 1}
+  .\]%
+  Thus, we have
+  \[%
+    \sigma^{-1}(u^1, \cdots, u^n) = \left(\frac{2u^1}{|u|^2 + 1}, \cdots, \frac{2u^n}{|u|^2 + 1}, \frac{|u|^2 - 1}{|u|^2 + 1}\right) = \frac{(2u^1, \cdots, 2u^n, |u|^2 - 1)}{|u|^2 + 1}
+  .\]%
 
-  % .\]%
+  Since $\sigma^{-1}$ exists and is well-defined, $\sigma$ is bijective.
 \end{solution}
 
 \begin{solution}[(iii)]
