@@ -33,12 +33,11 @@
 
 %   Now, we show that $M$ is second-countable. For each $a \in \Q$ and $r \in \Q^+$, define
 %   \[%
-%     U_{a, r}^+ = q\!\left( (a - r, a + r) \times \{1\} \right), \quad U_{a, r}^- = q\!\left( (a - r, a + r) \times \{-1\} \right),
+%     U_{a, r}^+ = q\!\left( (a - r, a + r) \times \{1\} \right), \quad U_{a, r}^- = q\!\left( (a - r, a + r) \times \{-1\} \right)
 %   ,\]%
 %   and for the two origins, define for each $\epsilon \in \Q^+$,
 %   \[%
-%     U_+(\epsilon) = q\!\left( (-\epsilon, \epsilon) \times \{1\} \right), \quad
-%     U_-(\epsilon) = q\!\left( (-\epsilon, \epsilon) \times \{-1\} \right)
+%     U_+(\epsilon) = q\!\left( (-\epsilon, \epsilon) \times \{1\} \right), \quad U_-(\epsilon) = q\!\left( (-\epsilon, \epsilon) \times \{-1\} \right)
 %   .\]%
 %   Let
 %   \[%
@@ -82,13 +81,26 @@
 \end{problem}
 
 \begin{solution}
-  Assume $M$ is a locally Euclidean Hausdorff topological manifold. TODO
+  Assume $M$ is a locally Euclidean Hausdorff topological manifold. Then, there exists a countable amount of charts $\{(U_\alpha, \Phi_\alpha)\}_{\alpha=1}$ such that
+  \[%
+    M = \bigcup_{\alpha=1}^\infty U_\alpha
+  ,\]%
+  where each $\Phi_\alpha : U_\alpha \subset M \to \R^n$ is a homeomorphism, and $U_\alpha$ is an open subset of $M$. Since $M$ is Hausdorff, for any point $p_{\alpha_1} \in U_\alpha$, there exists an open ball $B_r(p)$ that's fully contained in $U_\alpha$ such that $\overline{B_r(p_{\alpha_1})}$ is compact.
+  Continuing this process, we can find a countable collection of open balls $\{B_{r_i}(p_{\alpha_i})\}_{i=1}^\infty$ such that
+  \[%
+    U_\alpha = \bigcup_{i=1}^\infty B_{r_i}(p_{\alpha_i})
+  .\]%
+  We do this for every $\alpha$, and we get a countable collection of open balls $\{B_{r_i}(p_{\alpha_i})\}_{i=1}^\infty$ such that
+  \[%
+    M = \bigcup_{\alpha=1}^\infty \bigcup_{i=1}^\infty B_{r_i}(p_{\alpha_i})
+  .\]%
+  Since each $\overline{B_{r_i}(p_{\alpha_i})}$ is compact, $M$ is the union of countably many compact subsets. Thus, $M$ is $\sigma$-compact.
 
   Now, for the converse, suppose $M$ is a locally Euclidean Hausdorff space that is $\sigma$-compact. Then, there exists a countable collection of compact subsets $\{K_n\}_{n=1}^\infty$ such that
   \[%
     M = \bigcup_{n=1}^\infty K_n
   .\]%
-  To show that $M$ is second-countable, we will construct a countable basis for its topology. Since each $K_n$ is compact, there exists a finite collection of charts $\{(U_{\alpha_1}, \Phi_{\alpha_1}), \cdots, (U_{\alpha_{m_n}}, \Phi_{\alpha_{m_n}})\}$ such that for every $i \le n$, $\Phi_{\alpha_i} : U_{\alpha_i} \subset M \to \R^n$ is a homeomorphism. Define $B_{\alpha_i}$ to be the collection of all countably many open balls with rational radii and centers with rational coordinates in $\R^n$. Then, the collection
+  To show that $M$ is second-countable, we will construct a countable basis for its topology. Since each $K_n$ is compact, there exists a finite collection of charts $\{(U_{\alpha_1}, \Phi_{\alpha_1}), \cdots, (U_{\alpha_{m_n}}, \Phi_{\alpha_{m_n}})\}$ such that for every $i \le n$, $\Phi_{\alpha_i} : U_{\alpha_i} \subset M \to \R^n$ is a homeomorphism. Define $B_{\alpha_i}$ to be the collection of the pre-image of all countably many open balls with rational radii and centers with rational coordinates in $\R^n$. Then, the collection
   \[%
     \mathcal{B}_n = \bigcup_{i=1}^{m_n} \{\Phi_{\alpha_i}^{-1}(B) \mid B \in B_{\alpha_i}\}
   ,\]%
