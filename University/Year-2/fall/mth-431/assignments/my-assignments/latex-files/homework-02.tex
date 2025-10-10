@@ -45,28 +45,19 @@
 \begin{solution}[(iv)]
 \end{solution}
 
-\begin{problem}[2.4]
-  Prove the analogue of Proposition 2.7 for closures, without appealing to Proposition 2.6.
-  \begin{enumerate}
-    \item $\bar{\bar{A}} = \bar{A}$.
-    \item If $A \subset B$, then $\bar{A} \subset \bar{B}$.
-    \item $\bar{A} \cup \bar{B} = \overline{A \cup B}$.
-    \item $\overline{A \cap B} \subset \bar{A} \cap \bar{B}$.
-
-      Give an example to show that the inclusion can be strict.
-  \end{enumerate}
+\begin{problem}[2.3]
+  Let $(X, \metric)$ be a metric space and $A \subset X$. Use Proposition 2.6 to prove that
+  \[%
+    \partial A = \partial(X \setminus A) = \bar{A} \cap \overline{X \setminus A}
+  .\]%
 \end{problem}
 
-\begin{solution}[(i)]
-\end{solution}
+\begin{solution}
+  Assume $x \in \partial A$. By definition, that means $x \in \bar{A} \setminus \sint A$. Then, $x \in \bar{A}$ and $x \notin \sint A$. By Proposition 2.6, $x \in \sint A$ is equivalent to $x \in \overline{X \setminus A}$. Therefore, $x \in \bar{A}$ and $x \in \overline{X \setminus A}$, which implies $x \in \bar{A} \cap \overline{X \setminus A}$. Hence, $\partial A \subset \bar{A} \cap \overline{X \setminus A}$.
 
-\begin{solution}[(ii)]
-\end{solution}
+  Now, for the converse. Assume $x \in \bar{A} \cap \overline{X \setminus A}$. Then, $x \in \bar{A}$ and $x \in \overline{X \setminus A}$. By Proposition 2.6, $x \in \overline{X \setminus A}$ implies $x \notin \sint A$. Therefore, $x \in \bar{A}$ and $x \notin \sint A$, which means $x \in \partial A$. Hence, $\bar{A} \cap \overline{X \setminus A} \subset \partial A$.
 
-\begin{solution}[(iii)]
-\end{solution}
-
-\begin{solution}[(iv)]
+  Combining both directions, we conclude that $\partial A = \bar{A} \cap \overline{X \setminus A}$.
 \end{solution}
 
 \begin{problem}[2.6]
