@@ -261,9 +261,44 @@
 \end{problem}
 
 \begin{solution}[(i)]
+  Since $\S^1 \subseteq \C$, $z$ can be represented in polar coordinates as $z = e^{i\theta} = \cos(\theta) + i\sin(\theta)$, where $\theta \in (0, 2\pi]$. Re-writing $p_n$ in terms of $\theta$, we have
+  \[%
+    p_n(z) = p_n\left(e^{i\theta}\right) = e^{in\theta} = \cos(n\theta) + i\sin(n\theta)
+  .\]%
+  Computing $\sigma(e^{i\theta})$, $\widetilde{\sigma}(e^{i\theta})$, $\sigma^{-1}(e^{i\theta})$, and $\widetilde{\sigma}^{-1}(e^{i\theta})$ using the equations from Problem 1.7, we get
+  \begin{gather*}
+    \sigma(e^{i\theta}) = \frac{\cos(\theta)}{1 - \sin(\theta)}, \quad \widetilde{\sigma}(e^{i\theta}) = \frac{\cos(\theta)}{1 + \sin(\theta)}, \\
+    \sigma^{-1}(u) = \frac{2u + i(u^2 - 1)}{u^2 + 1}, \quad \widetilde{\sigma}^{-1}(u) = \frac{2u - i(u^2 - 1)}{u^2 + 1}
+  ,\end{gather*}
+  for $u \in \R$. Now, we compute the following coordinate representations of $p_n$:
+  \[%
+    \sigma \circ p_n \circ \sigma^{-1}, \quad \sigma \circ p_n \circ \widetilde{\sigma}^{-1}, \quad \widetilde{\sigma} \circ p_n \circ \sigma^{-1}, \quad \widetilde{\sigma} \circ p_n \circ \widetilde{\sigma}^{-1}
+  .\]%
+  Define $\widehat{p_n} : \R \to \R$ by
+  \[%
+    \widehat{p_n}(u) = \left(\sigma \circ p_n \circ \sigma^{-1}\right)(u)
+  .\]%
+  Computing $\widehat{p_n}(u)$, we get
+  \begin{align*}
+    \widehat{p_n}(u) &= \sigma\left(p_n\left(\sigma^{-1}(u)\right)\right) \\
+                     &= \frac{\Re(p_n(\sigma^{-1}(u))}{1 - \Im(p_n(\sigma^{-1}(u)))} \\
+                     &= \frac{\Re\left(\left(\frac{2u + i(u^2 - 1)}{u^2 + 1}\right)^n\right)}{1 - \Im\left(\left(\frac{2u + i(u^2 - 1)}{u^2 + 1}\right)^n\right)}
+  .\end{align*}
+  Notice that this is a quotient of polynomials in $u$, sines, and cosines, which are all smooth in $\R$. Also, raising to the $n$-th power in $\C$ is smooth, taking real and imaginary parts are linear maps, and dividing by a non-zero denominator is also smooth. Thus, $\widehat{p_n}$ is smooth on $\R$.
+
+  The remaining coordinate representations differ from this one by smooth transition maps between stereographic charts (proved in Problem~1.7), so they are also smooth. Hence $p_n$ is a smooth map $\S^1 \to \S^1$.
 \end{solution}
 
 \begin{solution}[(ii)]
+  Using the same stereographic charts $\sigma$ and $\widetilde{\sigma}$ from Problem 1.7, we compute the following coordinate representations of $\alpha$:
+  \[%
+    \widehat{\alpha} = (\widetilde{\sigma} \circ \alpha \circ \sigma^{-1})(u) = \widetilde{\sigma}(\alpha(\sigma^{-1}(u))) = \widetilde{\sigma}(-\sigma^{-1}(u)) = -u
+  ,\]%
+  for $u \in \R^n$. By symmetry, the other three coordinate representations
+  \[%
+    \sigma \circ \alpha \circ \sigma^{-1}, \quad \sigma \circ \alpha \circ \widetilde{\sigma}^{-1}, \quad \widetilde{\sigma} \circ \alpha \circ \widetilde{\sigma}^{-1}
+  ,\]%
+  are also $-u$. Since $-u$ is smooth on $\R^n$, all four coordinate representations of $\alpha$ are smooth. Hence, $\alpha$ is a smooth map $\S^n \to \S^n$.
 \end{solution}
 
 \begin{solution}[(iii)]
@@ -273,5 +308,16 @@
   Show that the inclusion map $\overline{\B}^n \hookrightarrow \R^n$ is smooth when $\overline{\B}^n$ is regarded as a smooth manifold with boundary.
 \end{problem}
 
-\begin{solution}
-\end{solution}
+\begin{proof}
+  Let $\iota : \overline{\B}^n \hookrightarrow \R^n$ denote the inclusion map $\iota(x) = x$. To check smoothness it suffices to check smoothness of every coordinate representation
+  \[%
+    \psi \circ \iota \circ \varphi^{-1}
+  ,\]%
+  where $(U, \varphi)$ is a chart of the manifold-with-boundary $\overline{\B}^n$ with $U \subset \overline{\B}^n$
+  and $\psi$ is a chart of $\R^n$. We may take $\psi$ to be the identity chart on $\R^n$ (so $\psi = \mathrm{id}_{\R^n}$),
+  and hence the coordinate representation reduces to
+  \[%
+    \mathrm{id}_{\R^n} \circ \iota \circ \varphi^{-1} = \iota \circ \varphi^{-1} = \varphi^{-1}
+  .\]%
+  By definition of a chart, $\varphi : U \to V \subset \H^n$ is a diffeomorphism onto an open set $V$ of the half-space $\H^n$, so $\varphi^{-1} : V \to U$ is smooth. Therefore every coordinate representation of $\iota$ is smooth, and thus the inclusion $\iota : \overline{\B}^n \to \R^n$ is a smooth map.
+\end{proof}
