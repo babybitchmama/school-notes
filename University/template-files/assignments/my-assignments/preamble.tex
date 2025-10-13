@@ -38,4 +38,4 @@
 \date{}
 \makeatother
 
-\renewenvironment{problem}[1][-1]{\ifthenelse{\equal{\type}{problem}}{\noindent\textbf{Problem #1}.}{\noindent\textbf{Exercise #1}.}}{}
+\renewenvironment{problem}[1][-1]{\ifthenelse{\equal{\type}{problem}}{\ifthenelse{\equal{#1}{-1}}{\noindent\textbf{Problem}.~}{\noindent\textbf{Problem~#1}.}}{\ifthenelse{\equal{#1}{-1}}{\noindent\textbf{Exercise}.~}{\noindent\textbf{Exercise #1}.}}}{}

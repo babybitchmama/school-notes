@@ -2,22 +2,6 @@
   In Example 1.8(a) we saw a sequence in $C([0, 1])$ that converges in the $L^1$ metric but not in the sup metric. Prove that the reverse cannot happen: every sequence that converges in the sup metric converges in the $L^1$ metric.
 \end{problem}
 
-% \begin{solution}
-%   Let $(f_n)$ be a sequence in $C([0,1])$ and suppose $f_n \to f$ in the sup (uniform) metric, i.e.
-%   \[%
-%     \metric_\infty(f_n, f) := \sup_{x\in[0,1]} |f_n(x)-f(x)| \to 0\qquad(n\to\infty)
-%   .\]%
-%   For each $n$ we have the pointwise inequality $|f_n(x) - f(x)| \le \metric_\infty(f_n, f)$, for all $x \in [0, 1]$. Integrating both sides over $[0,1]$ gives
-%   \[%
-%     \int_0^1 |f_n(x)-f(x)| \dx \le \int_0^1 \metric_\infty(f_n ,f) \dx = \metric_\infty(f_n ,f) \cdot 1
-%   .\]%
-%   Hence
-%   \[%
-%     \metric_1(f_n, f) := \int_0^1 |f_n(x) - f(x) \dx \le \metric_\infty(f_n, f) \to 0
-%   .\]%
-%   Since the right-hand side tends to $0$ as $n \to \infty$, we conclude $\metric_1(f_n, f) \to 0$. Thus convergence in the sup metric implies convergence in the $L^1$ metric on $C([0,1])$.
-% \end{solution}
-
 \begin{solution}
   Let $(f_n)$ be a sequence in $C([0,1])$ and suppose
   \[%

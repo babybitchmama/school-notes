@@ -1,24 +1,33 @@
 \begin{problem}[2.2]
-  Define the closed ball
+  Let $(X, \metric)$ be a metric space and $A \subset X$. Use Proposition 2.6 to prove that
   \[%
-    \bar{B}_r(p) = \{q \in X \mid \metric(d, q) \le r\}
+    \partial A = \partial(X \setminus A) = \overline A \cap \overline{X \setminus A}
   .\]%
-  \begin{enumerate}
-    \item Prove that $\overline{B_r(p)} \subset \bar{B}_r(p)$, that is, the closure of the open ball is contained in the closed ball.
-
-    \item Give an example to show that the inclusion can be strict.
-
-      Hint: You might take $X = \Z$ with the usual metric inherited from $\R$, or any set with a discrete metric (Exercise 1.4).
-  \end{enumerate}
 \end{problem}
 
-\begin{solution}[(i)]
+\begin{solution}
+  Assume $x \in \partial A$. By definition, that means $x \in \overline A \setminus \sint A$. Then, $x \in \overline A$ and $x \notin \sint A$. By Proposition~2.6, we have $x \notin \sint A$ if and only if $x \in \overline{X \setminus A}$. Therefore, $x \in \overline A$ and $x \in \overline{X \setminus A}$, which implies
+  \[%
+    x \in \overline A \cap \overline{X \setminus A}
+  .\]%
+  Hence, $\partial A \subset \overline A \cap \overline{X \setminus A}$.
+
+  Now, for the converse. Assume $x \in \overline A \cap \overline{X \setminus A}$. Then, $x \in \overline A$ and $x \in \overline{X \setminus A}$. By Proposition~2.6 again, $x \in \overline{X \setminus A}$ if and only if $x \notin \sint A$. Therefore, $x \in \overline A$ and $x \notin \sint A$, which means $x \in \partial A$. Hence,
+  \[%
+    \overline A \cap \overline{X \setminus A} \subset \partial A
+  .\]%
+
+  Combining both inclusions, we conclude that
+  \[%
+    \partial A = \overline A \cap \overline{X \setminus A}
+  .\]%
+  Finally, since the expression is symmetric in $A$ and $X \setminus A$, it follows that
+  \[%
+    \partial A = \partial(X \setminus A)
+  .\qedhere\]%
 \end{solution}
 
-\begin{solution}[(ii)]
-\end{solution}
-
-\begin{problem}[2.4]
+\begin{problem}[2.3]
   Prove the analogue of Proposition 2.7 for closures, without appealing to Proposition 2.6.
   \begin{enumerate}
     \item $\bar{\bar{A}} = \bar{A}$.
@@ -45,18 +54,27 @@
 \begin{solution}[(iv)]
 \end{solution}
 
-\begin{problem}[3.1]
-  Let $X = \R^2$ with the Euclidean metric. Sketch the subset
+\begin{problem}[2.4]
+  Define the closed ball
   \[%
-    A = \{(x, y) \in \R^2 \mid x \ne 0~\text{or}~y = 0\}
+    \bar{B}_r(p) = \{q \in X \mid \metric(p, q) \le r\}
   .\]%
-  Prove that $A$ is neither open nor closed.
+  \begin{enumerate}
+    \item Prove that $\overline{B_r(p)} \subset \bar{B}_r(p)$, that is, the closure of the open ball is contained in the closed ball.
+
+    \item Give an example to show that the inclusion can be strict.
+
+      Hint: You might take $X = \Z$ with the usual metric inherited from $\R$, or any set with a discrete metric (Exercise 1.4).
+  \end{enumerate}
 \end{problem}
 
-\begin{solution}
+\begin{solution}[(i)]
 \end{solution}
 
-\begin{problem}[3.2]
+\begin{solution}[(ii)]
+\end{solution}
+
+\begin{problem}[3.1]
   In Example 1.4 we saw three different metrics on $\R^2$. Prove one of the following:
   \begin{enumerate}
     \item A subset $A \subset \R^2$ is open in the Euclidean metric if and only if it is open in the taxicab metric.
@@ -76,7 +94,7 @@
 \begin{solution}[(iii)]
 \end{solution}
 
-\begin{problem}[3.3]
+\begin{problem}[3.2]
   Let $X = \Q$ with the metric induced from the usual one on $\R$: that is, $\metric(x, y) = |x - y|$ for all $x, y \in \Q$, but we're thinking about $\Q$ in itself and forgetting about the rest of $\R$.
   \begin{enumerate}
     \item Prove that the subset
@@ -101,11 +119,29 @@
 \begin{solution}[(ii)]
 \end{solution}
 
-\begin{problem}[3.5]
-  Let $S \subset [0, 1]$, and let $F \subset C([0, 1])$ be the set of continuous functions that vanish on $S$ as in Example 3.4. Prove that $F$ is closed in the sup metric.
+\begin{problem}[3.3]
+  Let $A \subset C^1([0, 1])$ be the set of functions with simple roots as in Example 3.3. Prove that $A$ is open in the $C^1$ metric.
 
-  Hint: One possibility is to use Proposition 1.10 together with Example 1.8(c), which is stated for evaluation at $x = 0$ but which we can see is equally valid for evaluation at any $x \in [0, 1]$.
+  Hint: For a given $f \in A$, take the ball of radius
+  \[%
+    r = \inf_{x\in[0,1]} (|f(x)| + |f'(x)|))
+  .\]%
 \end{problem}
 
 \begin{solution}
+\end{solution}
+
+\begin{problem}[3.5]
+  Without using Proposition 3.9,
+  \begin{enumerate}
+    \item Prove that if $U, V \subset X$ are open, then the intersection is again open.
+
+    \item Give an example of a metric space $(X, \metric)$ and countably many open sets $U_1, U_2, U_3, \cdots \subset X$ such that their intersection $U_1 \cap U_2 \cap U_3 \cap \cdots$ is not open.
+  \end{enumerate}
+\end{problem}
+
+\begin{solution}[(i)]
+\end{solution}
+
+\begin{solution}[(ii)]
 \end{solution}
