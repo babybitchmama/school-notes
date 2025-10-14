@@ -30,8 +30,6 @@
 \begin{problem}[2.3]
   Prove the analogue of Proposition 2.7 for closures, without appealing to Proposition 2.6.
   \begin{enumerate}
-    \item $\bar{\bar{A}} = \bar{A}$.
-
     \item If $A \subset B$, then $\bar{A} \subset \bar{B}$.
 
     \item $\bar{A} \cup \bar{B} = \overline{A \cup B}$.
@@ -39,19 +37,64 @@
     \item $\overline{A \cap B} \subset \bar{A} \cap \bar{B}$
 
       Give an example to show that the inclusion can be strict.
+
+    \item $\bar{\bar{A}} = \bar{A}$.
   \end{enumerate}
 \end{problem}
 
 \begin{solution}[(i)]
+  Assume $A \subset B$. Let $p \in \bar{A}$. By definition of closure, for every $r > 0$, the open ball $B_r(p)$ intersects $A$. Since $A \subset B$, it follows that $B_r(p)$ also intersects $B$. Therefore, for every $r > 0$, the open ball $B_r(p)$ intersects $B$, which means $p \in \bar{B}$. Hence, $\bar{A} \subset \bar{B}$.
 \end{solution}
 
 \begin{solution}[(ii)]
+  We will prove both inclusions to show that $\bar{A} \cup \bar{B} = \overline{A \cup B}$.
+
+  First, let $p \in \bar{A} \cup \bar{B}$. Without loss of generality, assume $p \in \bar{A}$. By definition of closure, for every $r > 0$, the open ball $B_r(p)$ intersects $A$. Since $A \subset A \cup B$, it follows that $B_r(p)$ also intersects $A \cup B$. Therefore, for every $r > 0$, the open ball $B_r(p)$ intersects $A \cup B$, which means $p \in \overline{A \cup B}$. Hence, $\bar{A} \cup \bar{B} \subset \overline{A \cup B}$.
+
+  Now, let $p \in \overline{A \cup B}$. By definition of closure, for every $r > 0$, the open ball $B_r(p)$ intersects $A \cup B$. This means that for each $r > 0$, there exists a point in either $A$ or $B$ that lies within the ball. If there are infinitely many such points in $A$, then $p$ is a limit point of $A$ and thus belongs to $\bar{A}$. Similarly, if there are infinitely many such points in $B$, then $p$ is a limit point of $B$ and thus belongs to $\bar{B}$. In either case, we have $p \in \bar{A} \cup \bar{B}$. Hence, $\overline{A \cup B} \subset \bar{A} \cup \bar{B}$.
+
+  Combining both inclusions, we conclude that $\bar{A} \cup \bar{B} = \overline{A \cup B}$.
 \end{solution}
 
 \begin{solution}[(iii)]
+  We will prove the inclusion $\overline{A \cap B} \subset \bar{A} \cap \bar{B}$.
+
+  Let $p \in \overline{A \cap B}$. By definition of closure, for every $r > 0$, the open ball $B_r(p)$ intersects $A \cap B$. This means that for each $r > 0$, there exists a point in both $A$ and $B$ that lies within the ball. Therefore, for every $r > 0$, the open ball $B_r(p)$ intersects $A$ and also intersects $B$. This implies that $p \in \bar{A}$ and $p \in \bar{B}$. Hence, $p \in \bar{A} \cap \bar{B}$, and we conclude that
+  \[%
+    \overline{A \cap B} \subset \bar{A} \cap \bar{B}
+  .\]%
+
+  To show that the inclusion can be strict, consider the metric space $(\R, \metric)$ with the usual metric. Let
+  \[%
+    A = (0, 1) \quad\text{and}\quad B = (1, 2)
+  .\]%
+  Then,
+  \[%
+    A \cap B = (0, 1) \cap (1, 2) = \emptyset
+  ,\]%
+  so
+  \[%
+    \overline{A \cap B} = \overline{\emptyset} = \emptyset
+  .\]%
+  However,
+  \[%
+    \bar{A} = [0, 1] \quad\text{and}\quad \bar{B} = [1, 2]
+  ,\]%
+  so
+  \[%
+    \bar{A} \cap \bar{B} = [0, 1] \cap [1, 2] = \{1\}
+  .\]%
+  Thus, $\overline{A \cap B} = \emptyset \subsetneq \{1\} = \bar{A} \cap \bar{B}$.
 \end{solution}
 
 \begin{solution}[(iv)]
+  We will prove that $\bar{\bar{A}} = \bar{A}$.
+
+  First, let $p \in \bar{\bar{A}}$. By definition of closure, for every $r > 0$, the open ball $B_r(p)$ intersects $\bar{A}$. This means that for each $r > 0$, there exists a point in $\bar{A}$ that lies within the ball. Since $\bar{A}$ is the closure of $A$, it follows that for every $r > 0$, the open ball $B_r(p)$ also intersects $A$. Therefore, $p \in \bar{A}$. Hence, $\bar{\bar{A}} \subset \bar{A}$.
+
+  Now, let $p \in \bar{A}$. By definition of closure, for every $r > 0$, the open ball $B_r(p)$ intersects $A$. Since $A \subset \bar{A}$, it follows that for every $r > 0$, the open ball $B_r(p)$ also intersects $\bar{A}$. Therefore, $p \in \bar{\bar{A}}$. Hence, $\bar{A} \subset \bar{\bar{A}}$.
+
+  Combining both inclusions, we conclude that $\bar{\bar{A}} = \bar{A}$.
 \end{solution}
 
 \begin{problem}[2.4]
@@ -60,18 +103,36 @@
     \bar{B}_r(p) = \{q \in X \mid \metric(p, q) \le r\}
   .\]%
   \begin{enumerate}
-    \item Prove that $\overline{B_r(p)} \subset \bar{B}_r(p)$, that is, the closure of the open ball is contained in the closed ball.
+    \item Prove that $\bar{B}_r(p)$ equals its own closure.
 
-    \item Give an example to show that the inclusion can be strict.
+    \item Prove that $\overline{B_r(p)} \subset \bar{B}_r(p)$: that is, the closure of the open ball is contained in the closed ball. But give an example to show that the inclusion can be strict.
 
-      Hint: You might take $X = \Z$ with the usual metric inherited from $\R$, or any set with a discrete metric (Exercise 1.4).
+      Hint: For the proof, you may quote Exercise 2.3(a). For the example, you might take $X = \Z$ with the usual metric inherited from $\R$, or any set with a discrete metric (Exercise 1.4).
   \end{enumerate}
 \end{problem}
 
 \begin{solution}[(i)]
+  We will prove that $\bar{B}_r(p)$ equals its own closure, i.e., $\overline{\bar{B}_r(p)} = \bar{B}_r(p)$.
+
+  First, let $q \in \overline{\bar{B}_r(p)}$. By definition of closure, for every $s > 0$, the open ball $B_s(q)$ intersects $\bar{B}_r(p)$. This means that for each $s > 0$, there exists a point $x \in \bar{B}_r(p)$ such that $\metric(q, x) < s$. Since $x \in \bar{B}_r(p)$, we have $\metric(p, x) \le r$. Now, consider the triangle inequality:
+  \[%
+    \metric(p, q) \le \metric(p, x) + \metric(x, q) < r + s
+  .\]%
+  Since this holds for every $s > 0$, we can let $s$ approach $0$, which gives us $\metric(p, q) \le r$. Therefore, $q \in \bar{B}_r(p)$. Hence, we conclude that $\overline{\bar{B}_r(p)} \subset \bar{B}_r(p)$.
+
+  Next, let $q \in \bar{B}_r(p)$. By definition of closed ball, we have $\metric(p, q) \le r$. For every $s > 0$, the open ball $B_s(q)$ contains points that are arbitrarily close to $q$. Since $\metric(p, q) \le r$, it follows that for every $s > 0$, there exists a point in $B_s(q)$ that lies within $\bar{B}_r(p)$. Therefore, for every $s > 0$, the open ball $B_s(q)$ intersects $\bar{B}_r(p)$, which means $q \in \overline{\bar{B}_r(p)}$. Hence, we conclude that $\bar{B}_r(p) \subset \overline{\bar{B}_r(p)}$.
+
+  Combining both inclusions, we conclude that $\overline{\bar{B}_r(p)} = \bar{B}_r(p)$.
 \end{solution}
 
 \begin{solution}[(ii)]
+  Let $p \in \overline{B_r(p)}$. By definition of closure, for every $s > 0$, the open ball $B_s(p)$ intersects $B_r(p)$. This means that for each $s > 0$, there exists a point $q \in B_r(p)$ such that $\metric(p, q) < s$. Since $q \in B_r(p)$, we have $\metric(p, q) < r$. 
+
+  Now, consider the limit as $s$ approaches $0$. As $s$ gets smaller and smaller, the points $q$ that lie within the open ball $B_s(p)$ get closer and closer to $p$. Since $\metric(p, q) < r$ for all such points, it follows that $\metric(p, p) = 0 \le r$. Therefore, $p \in \bar{B}_r(p)$.
+
+  Hence, we conclude that $\overline{B_r(p)} \subset \bar{B}_r(p)$.
+
+  Example: TODO!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 \end{solution}
 
 \begin{problem}[3.1]
@@ -114,9 +175,31 @@
 \end{problem}
 
 \begin{solution}[(i)]
+  Let $A = \{x \in \Q \mid x^2 < 1\}$. We will show that $A$ is open in $\Q$.
+
+  Clearly, $A = (-1, 1) \cap \Q$. Let $p \in A$. Then, $p \in (-1, 1)$, so there exists an $\epsilon > 0$ such that the open interval $(p - \epsilon, p + \epsilon)$ is contained in $(-1, 1)$. Since $\Q$ is dense in $\R$, we can choose $\epsilon$ small enough so that $(p - \epsilon, p + \epsilon) \cap \Q \subset A$. Therefore, for every $p \in A$, there exists an $\epsilon > 0$ such that the open ball $B_\epsilon(p) \cap \Q \subset A$. This shows that $A$ is open in $\Q$.
+
+  Next, we will show that $A$ is not closed in $\Q$. The closure of $A$ in $\Q$ is given by
+  \[%
+    \overline{A} = \{x \in \Q \mid x^2 \le 1\}
+  .\]%
+  This is because the points $-1$ and $1$ are limit points of $A$ in $\R$, but they are not in $\Q$. Since $-1, 1 \notin A$, we have $\overline{A} \neq A$. Therefore, $A$ is not closed in $\Q$.
+
+  Hence, we conclude that $A$ is open but not closed in $\Q$.
 \end{solution}
 
 \begin{solution}[(ii)]
+  Let $B = \{x \in \Q \mid x^2 \le 2\}$. We will show that $B$ is both open and closed in $\Q$.
+
+  First, we show that $B$ is closed in $\Q$. The closure of $B$ in $\Q$ is given by
+  \[%
+    \overline{B} = \{x \in \Q \mid x^2 \le 2\}
+  .\]%
+  This is because the points $-\sqrt{2}$ and $\sqrt{2}$ are limit points of $B$ in $\R$, but they are not in $\Q$. Since $-\sqrt{2}, \sqrt{2} \notin B$, we have $\overline{B} = B$. Therefore, $B$ is closed in $\Q$.
+
+  Next, we show that $B$ is open in $\Q$. Let $p \in B$. Then, $p^2 \le 2$, so there exists an $\epsilon > 0$ such that the open interval $(p - \epsilon, p + \epsilon)$ is contained in the interval $(-\sqrt{2}, \sqrt{2})$. Since $\Q$ is dense in $\R$, we can choose $\epsilon$ small enough so that $(p - \epsilon, p + \epsilon) \cap \Q \subset B$. Therefore, for every $p \in B$, there exists an $\epsilon > 0$ such that the open ball $B_\epsilon(p) \cap \Q \subset B$. This shows that $B$ is open in $\Q$.
+
+  Hence, we conclude that $B$ is both open and closed in $\Q$.
 \end{solution}
 
 \begin{problem}[3.3]
@@ -137,11 +220,24 @@
     \item Prove that if $U, V \subset X$ are open, then the intersection is again open.
 
     \item Give an example of a metric space $(X, \metric)$ and countably many open sets $U_1, U_2, U_3, \cdots \subset X$ such that their intersection $U_1 \cap U_2 \cap U_3 \cap \cdots$ is not open.
+
+    \item Let $I$ be a set, and suppose that for each $i \in I$, we have an open set $U_i \subset X$. Prove that the union $\bigcup_{i\in I} U_i$ is again open.
+
+      (Don't assume that the index set $I$ is countable!)
   \end{enumerate}
 \end{problem}
 
 \begin{solution}[(i)]
+  Assume $U, V \subset X$ are open sets. We will show that their intersection $U \cap V$ is also open.
+
+  Let $p \in U \cap V$. Since $U$ is open, there exists an $\epsilon_1 > 0$ such that the open ball $B_{\epsilon_1}(p) \subset U$. Similarly, since $V$ is open, there exists an $\epsilon_2 > 0$ such that the open ball $B_{\epsilon_2}(p) \subset V$. Let $\epsilon = \min(\epsilon_1, \epsilon_2)$. Then, the open ball $B_{\epsilon}(p)$ is contained in both $U$ and $V$, i.e., $B_{\epsilon}(p) \subset U \cap V$. Therefore, for every point $p \in U \cap V$, there exists an $\epsilon > 0$ such that the open ball $B_{\epsilon}(p) \subset U \cap V$. This shows that $U \cap V$ is open.
 \end{solution}
 
 \begin{solution}[(ii)]
+\end{solution}
+
+\begin{solution}[(iii)]
+  Let $I$ be an index set, and for each $i \in I$, let $U_i \subset X$ be an open set. We will show that the union $\bigcup_{i \in I} U_i$ is also open.
+
+  Let $p \in \bigcup_{i \in I} U_i$. Then, there exists some index $j \in I$ such that $p \in U_j$. Since $U_j$ is open, there exists an $\epsilon > 0$ such that the open ball $B_{\epsilon}(p) \subset U_j$. Since $U_j \subset \bigcup_{i \in I} U_i$, it follows that $B_{\epsilon}(p) \subset \bigcup_{i \in I} U_i$. Therefore, for every point $p \in \bigcup_{i \in I} U_i$, there exists an $\epsilon > 0$ such that the open ball $B_{\epsilon}(p) \subset \bigcup_{i \in I} U_i$. This shows that $\bigcup_{i \in I} U_i$ is open.
 \end{solution}
