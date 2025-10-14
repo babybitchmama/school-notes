@@ -8,9 +8,46 @@
 \end{problem}
 
 \begin{solution}[(i)]
+  We verify the group axioms for $\bra{n\Z, +}$.
+
+  Let $a, b \in n\Z$. Then $a = nm$ and $b = nk$ for some $m, k \in \Z$. Hence,
+  \[%
+    a + b = nm + nk = n(m + k)
+  .\]%
+  Since $m + k \in \Z$, it follows that $a + b \in n\Z$.
+
+  Addition in $\Z$ is associative, and $n\Z$ inherits this property. Thus, for all $a, b, c \in n\Z$,
+  \[%
+    (a + b) + c = a + (b + c)
+  .\]%
+
+  The additive identity is $0$, since for any $a \in n\Z$,
+  \[%
+    a + 0 = a
+  .\]%
+
+  For any $a = nm \in n\Z$, the additive inverse is $-a = n(-m)$, because
+  \[%
+    a + (-a) = nm + n(-m) = n(m - m) = 0
+  .\]%
+
+  Therefore, all group axioms are satisfied, and $\bra{n\Z, +}$ is a group.
 \end{solution}
 
 \begin{solution}[(ii)]
+  Define a map $\phi : \Z \to n\Z$ by $\phi(m) = nm$, for all $m \in \Z$. We show that $\phi$ is an isomorphism.
+
+  For any $m_1, m_2 \in \Z$,
+  \[
+    \phi(m_1 + m_2) = n(m_1 + m_2) = nm_1 + nm_2 = \phi(m_1) + \phi(m_2).
+  \]
+  Hence, $\phi$ preserves addition.
+
+  Suppose $\phi(m_1) = \phi(m_2)$. Then $nm_1 = nm_2$, and since $n \neq 0$, we may divide by $n$ to obtain $m_1 = m_2$. Thus, $\phi$ is injective.
+
+  For any $a \in n\Z$, there exists $k \in \Z$ such that $a = nk$. Then $\phi(k) = nk = a$, so $\phi$ is surjective.
+
+  Since $\phi$ is an isomorphism, it follows that $\bra{n\Z, +} \cong \bra{\Z, +}$.
 \end{solution}
 
 \begin{problem}[2.19]
@@ -28,12 +65,75 @@
 \end{problem}
 
 \begin{solution}[(i)]
+  We need to show that for any $a, b \in S$, the result of the operation $a * b$ is also in $S$. 
+
+  Let $a, b \in S$. Then, $a * b = a + b + ab$. We need to check that $a * b \neq -1$. Suppose for contradiction that $a * b = -1$. Then, $a + b + ab = -1$. Rearranging gives $ab + a + b + 1 = 0$, which can be factored as $(a + 1)(b + 1) = 0$.
+
+  Since $a, b \in S$, we have $a \neq -1$ and $b \neq -1$, so neither factor can be zero. This is a contradiction. Therefore, $a * b \neq -1$, and thus $a * b \in S$.
+
+  Hence, $*$ is a binary operation on $S$.
 \end{solution}
 
 \begin{solution}[(ii)]
+  We verify the group axioms for $\bra{S, *}$.
+
+  As shown in part (i), for any $a, b \in S$, $a * b \in S$.
+
+  For any $a, b, c \in S$,
+  \[%
+    (a * b) * c = (a + b + ab) * c = (a + b + ab) + c + (a + b + ab)c
+  .\]%
+  Expanding this gives
+  \[%
+    a + b + ab + c + ac + bc + abc
+  .\]%
+  Similarly,
+  \[%
+    a * (b * c) = a * (b + c + bc) = a + (b + c + bc) + a(b + c + bc)
+  .\]%
+  Expanding this also gives
+  \[%
+    a + b + c + bc + ab + ac + abc
+  .\]%
+  Since both expressions are equal, $*$ is associative.
+
+  We need to find an element $e \in S$ such that for all $a \in S$, $a * e = e * a = a$. Let $e = 0$. Then,
+  \[%
+    a * 0 = a + 0 + a \cdot 0 = a
+  ,\]%
+  and
+  \[%
+    0 * a = 0 + a + 0 \cdot a = a
+  .\]%
+  Thus, $0$ is the identity element.
+
+  Fix $a \in S$. We want to find a $b \in S$ with $a * b = 0$. Solving the equation $a + b + ab = 0$, we get $(a + 1)(b + 1) = 1$. Thus $b + 1 = 1/(a + 1)$, so
+  \[%
+    b = \frac{1}{a + 1} - 1 = -\frac{a}{a + 1}
+  .\]%
+  Since $a \neq -1$ the denominator $a + 1 \neq 0$, so this $b$ is well-defined and satisfies $b \neq -1$. Notice that $b \ne -1$, since that would imply that $-a/(a+1) = -1$, which gives us $0 = 1$, which is a contradiction. Hence every element has a two-sided inverse in $S$.
+
+  Since all group axioms are satisfied, $\bra{S, *}$ is a group.
 \end{solution}
 
 \begin{solution}[(iii)]
+  We need to solve the equation $2 * x * 3 = 7$ in $S$. First, we compute $2 * x$:
+  \[%
+    2 * x = 2 + x + 2x = x + 2 + 2x = 3x + 2
+  .\]%
+  Next, we compute $(2 * x) * 3$:
+  \[%
+    (3x + 2) * 3 = (3x + 2) + 3 + (3x + 2) \cdot 3 = 3x + 2 + 3 + 9x + 6 = 12x + 11
+  .\]%
+  We set this equal to $7$:
+  \[%
+    12x + 11 = 7
+  .\]%
+  Solving for $x$, we get
+  \[%
+    12x = -4 \implies x = -\frac{1}{3}
+  .\]%
+  Since $-1/3 \in S$, the solution is $x = -1/3$.
 \end{solution}
 
 \begin{problem}[2.28]
@@ -41,6 +141,11 @@
 \end{problem}
 
 \begin{solution}
+  Assume $a \ne e$ is an element of order 2 in the group $G$, i.e., $a * a = e$. Then, for any $b \in G$, we compute the square of the element $b' * a * b$:
+  \[%
+    (b' * a * b) * (b' * a * b) = b' * a * (b * b') * a * b = b' * a * a * b = b' * b = e
+  .\]%
+  Thus, $(b' * a * b)$ has order 2.
 \end{solution}
 
 \begin{problem}[2.29]
@@ -48,6 +153,11 @@
 \end{problem}
 
 \begin{solution}
+  Let $G$ be a finite group with identity $e$ and an even number of elements. Consider the set $G \setminus \{e\}$, which has an odd number of elements.
+
+  For each element $a \in G \setminus \{e\}$, consider its inverse $a'$. If $a \ne a'$, then we can pair $a$ with $a'$. Each such pair contributes two distinct elements to the set. Since the total number of elements in $G \setminus \{e\}$ is odd, there must be at least one element that is its own inverse, i.e., an element $a$ such that $a = a'$.
+
+  For this element, we have $a * a = e$. Since $a \ne e$, we have found an element in $G$ such that $a * a = e$.
 \end{solution}
 
 \begin{problem}[2.30]
@@ -64,15 +174,59 @@
 \end{problem}
 
 \begin{solution}[(i)]
+  We need to show that for any $a, b \in \R^*$, the result of the operation $a * b$ is also in $\R^*$. 
+
+  Let $a, b \in \R^*$. Then, $a * b = |a|b$. Since $|a| > 0$ and $b \neq 0$, it follows that $|a|b \neq 0$. Thus, $a * b \in \R^*$.
+
+  Next, we verify associativity. For any $a, b, c \in \R^*$,
+  \[%
+    (a * b) * c = (|a|b) * c = | |a|b | c = |a||b|c
+  .\]%
+  Similarly,
+  \[%
+    a * (b * c) = a * (|b|c) = |a|(|b|c) = |a||b|c
+  .\]%
+  Since both expressions are equal, $*$ is associative.
+
+  Therefore, $*$ is an associative binary operation on $\R^*$.
 \end{solution}
 
 \begin{solution}[(ii)]
+  We need to find a left identity element $e \in \R^*$ such that for all $a \in \R^*$, $e * a = a$. Let $e = 1$. Then,
+  \[%
+    e * a = 1 * a = |1|a = a
+  .\]%
+  Thus, $1$ is a left identity.
+
+  Next, we need to find a right inverse for each element $a \in \R^*$. We want to find $b \in \R^*$ such that $a * b = e$. Using the left identity found above, we have:
+  \[%
+    a * b = |a|b = 1
+  .\]%
+  Solving for $b$, we get:
+  \[%
+    b = \frac{1}{|a|}
+  .\]%
+  Since $|a| > 0$, it follows that $b \neq 0$, and thus $b \in \R^*$. Therefore, every element in $\R^*$ has a right inverse.
+
+  Hence, there is a left identity and a right inverse for each element in $\R^*$.
 \end{solution}
 
 \begin{solution}[(iii)]
+  To determine if $\R^*$ with the operation $*$ is a group, we need to check if it satisfies all group axioms.
+
+  We have already shown that $*$ is an associative binary operation on $\R^*$, and that there is a left identity element (1) and a right inverse for each element.
+
+  However, we need to check if the left identity is also a right identity. For any $a \in \R^*$,
+  \[%
+    a * e = a * 1 = |a| \cdot 1 = |a|
+  .\]%
+  Since $|a|$ is not necessarily equal to $a$ (for example, if $a = -2$, then $|a| = 2$), the left identity is not a right identity.
+
+  Therefore, $\R^*$ with this binary operation does not satisfy all the group axioms, and hence it is not a group.
 \end{solution}
 
 \begin{solution}[(iv)]
+  The significance of this exercise is to illustrate that having a left identity and right inverses for each element does not guarantee that a set with a binary operation forms a group. The failure of the left identity to also be a right identity shows that the group axioms are not fully satisfied. This shows the importance of verifying all group properties when determining if a structure is indeed a group.
 \end{solution}
 
 \begin{problem}[2.31]
@@ -80,6 +234,17 @@
 \end{problem}
 
 \begin{solution}
+  Let $G$ be a group with identity element $e$. We first show that $e$ is an idempotent element. Obviously, $e * e = e$.
+
+  Now, suppose there is another idempotent element $x \in G$ such that $x * x = x$. We will show that $x = e$.
+
+  Since $G$ is a group, every element has an inverse. Let $x'$ be the inverse of $x$. Then,
+  \[%
+    x' * (x * x) = x' * x
+  .\]%
+  Using associativity, we have $(x' * x) * x = e * x = x$. But since $x' * x = e$, we have $e * x = x$. Therefore, $x = e$.
+
+  Thus, the only idempotent element in the group $G$ is the identity element $e$. Hence, a group has exactly one idempotent element.
 \end{solution}
 
 \begin{problem}[2.32]
@@ -87,6 +252,17 @@
 \end{problem}
 
 \begin{solution}
+  Let $a, b \in G$. Since $x * x = e$ for all $x \in G$, each element is its own inverse; i.e. $x' = x$ for every $x \in G$.
+
+  Consider $(a * b) * (a * b)$. By hypothesis $(a * b) * (a * b) = e$, so
+  \[%
+    (a * b)' = (a * b)
+  .\]%
+  On the other hand, the general inverse formula in any group gives $(a * b)' = b' * a'$. Using $x' = x$ for $a$ and $b$ we obtain
+  \[%
+    (a * b)' = b' * a' = b * a
+  .\]%
+  Combining the two expressions for $(a * b)'$ yields $a * b = b * a$. Thus, $G$ is abelian.
 \end{solution}
 
 \begin{problem}[2.33]
@@ -94,6 +270,35 @@
 \end{problem}
 
 \begin{solution}
+  We will prove by induction on $n$ that for all $a, b \in G$, $(a * b)^n = (a^n) * (b^n)$.
+
+  For the base case, we have $n = 1$, which gives us
+  \[%
+    (a * b)^1 = a * b
+  .\]%
+  Also,
+  \[%
+    a^1 * b^1 = a * b
+  .\]%
+  Thus, the base case holds.
+
+  Assume that the statement holds for some $k \in \Z^+$, i.e., assume that
+  \[%
+    (a * b)^k = (a^k) * (b^k)
+  .\]%
+  We need to show that it holds for $k + 1$. Consider:
+  \[%
+    (a * b)^{k + 1} = (a * b)^k * (a * b)
+  .\]%
+  By the inductive hypothesis, we have:
+  \[%
+    (a * b)^{k + 1} = ((a^k) * (b^k)) * (a * b)
+  .\]%
+  Since $G$ is abelian, we can rearrange the terms:
+  \[%
+    (a * b)^{k + 1} = (a^k * a) * (b^k * b) = a^{k + 1} * b^{k + 1}
+  .\]%
+  Thus, by the principle of mathematical induction, the statement holds for all $n \in \Z^+$.
 \end{solution}
 
 \begin{problem}[2.34]
@@ -101,11 +306,51 @@
 \end{problem}
 
 \begin{solution}
+  Given that $a * b = b * a'$, we want to show that $b * a = a' * b$.
+
+  Starting from the given equation, we can multiply both sides on the left by $a'$:
+  \[%
+    a' * (a * b) = a' * (b * a')
+  .\]%
+  Using associativity, we have:
+  \[%
+    (a' * a) * b = a' * b * a'
+  .\]%
+  Simplifying, we get:
+  \[%
+    b = a' * b * a'
+  .\]%
+  Now, we can multiply both sides on the right by $a$:
+  \[%
+    b * a = (a' * b * a') * a
+  .\]%
+  Again, using associativity, we have:
+  \[%
+    b * a = a' * b * (a' * a)
+  .\]%
+  Since $a' * a = e$, this simplifies to:
+  \[%
+    b * a = a' * b
+  .\]%
+  Thus, we have shown that $b * a = a' * b$.
 \end{solution}
 
 \begin{problem}[2.36]
-  Let $G$ be a group with finite number of elements. Show that for any $a \in G$, there exists $n \in \Z^+$ such that $a^n = e$. See Exercise 33 for the meaning of $a^n$. [Hint: Consider $e, a, a^2, a^3, \cdots, a^m$, where $m$ is the number of elements in $G$, and use the cancellation laws.]
+  Let $G$ be a group with a finite number of elements. Show that for any $a \in G$, there exists $n \in \Z^+$ such that $a^n = e$. See Exercise 33 for the meaning of $a^n$. [Hint: Consider $e, a, a^2, a^3, \cdots, a^m$, where $m$ is the number of elements in $G$, and use the cancellation laws.]
 \end{problem}
 
 \begin{solution}
+  Let $G$ be a finite group with $m$ elements. Consider the sequence of elements:
+  \[%
+    e, a, a^2, a^3, \cdots, a^m
+  .\]%
+  Since $G$ has only $m$ elements, by the pigeonhole principle, at least two of these elements must be equal. Thus, there exist integers $i$ and $j$ with $0 \leq i < j \leq m$ such that:
+  \[%
+    a^i = a^j
+  .\]%
+  Using the cancellation law (which holds in groups), we can multiply both sides on the left by $(a^i)'$, the inverse of $a^i$, to obtain:
+  \[%
+    e = a^{j - i}
+  .\]%
+  Letting $n = j - i$, we have found a positive integer $n$ such that $a^n = e$. Thus, for any element $a \in G$, there exists $n \in \Z^+$ such that $a^n = e$.
 \end{solution}

@@ -10,12 +10,27 @@
 \end{problem}
 
 \begin{solution}[(i)]
+  Using the formula for the union of two events, we have
+  \[%
+    P(A \cup B) = P(A) + P(B) - P(A \cap B) = 0.2 + 0.6 - 0 = 0.8
+  .\]%
+  Therefore, the probability that either A or B occurs is 0.8.
 \end{solution}
 
 \begin{solution}[(ii)]
+  Since A and B are mutually exclusive events, the probability that both A and B occur is
+  \[%
+    P(A \cap B) = 0
+  .\]%
+  Therefore, the probability that A and B occur is 0.
 \end{solution}
 
 \begin{solution}[(iii)]
+  The probability that A occurs but B does not is given by
+  \[%
+    P(A \cap B^c) = P(A) - P(A \cap B) = 0.2 - 0 = 0.2
+  .\]%
+  Therefore, the probability that A occurs but B does not is 0.2.
 \end{solution}
 
 \begin{problem}[2]
@@ -23,6 +38,25 @@
 \end{problem}
 
 \begin{solution}
+  Let $P$ be the set of professionals, $M$ be the set of married persons, and $C$ be the set of college graduates. We are given the following information:
+  \begin{align*}
+    |P| & = 310 \\
+    |M| & = 475 \\
+    |C| & = 525 \\
+    |P \cap C| & = 45 \\
+    |M \cap C| & = 145 \\
+    |M \cap P| & = 86 \\
+    |M \cap P \cap C| & = 27
+  .\end{align*}
+  We can use the principle of inclusion-exclusion to find the total number of subscribers:
+  \[%
+    |P \cup M \cup C| = |P| + |M| + |C| - |P \cap M| - |P \cap C| - |M \cap C| + |P \cap M \cap C|
+  .\]%
+  Substituting the given values, we have
+  \[%
+    |P \cup M \cup C|  = 310 + 475 + 525 - 86 - 45 - 145 + 27 = 1061
+  .\]%
+  However, this contradicts the fact that there are a total of 1000 subscribers. Therefore, the numbers reported in the study must be incorrect.
 \end{solution}
 
 \begin{problem}[3]
@@ -37,12 +71,43 @@
 \end{problem}
 
 \begin{solution}[(i)]
+  To calculate the probability of being dealt a flush, we first determine the number of ways to choose 5 cards from a single suit. There are 4 suits, and for each suit, we can choose 5 cards from the 13 available cards in that suit. The number of ways to choose 5 cards from 13 is given by $\binom{13}{5}$. Therefore, the total number of flush hands is
+  \[%
+    4 \times \binom{13}{5}
+  .\]%
+  The total number of possible poker hands is $\binom{52}{5}$. Thus, the probability of being dealt a flush is
+  \[%
+    P(\text{flush}) = \frac{4 \times \binom{13}{5}}{\binom{52}{5}} = \frac{4 \times 1287}{2598960} = \frac{5148}{2598960} \approx 0.001981
+  .\]%
+  Therefore, the probability of being dealt a flush is approximately 0.1981 percent.
 \end{solution}
 
 \begin{solution}[(ii)]
+  To calculate the probability of being dealt two pairs, we first determine the number of ways to choose 2 different ranks for the pairs from the 13 available ranks. This can be done in $\binom{13}{2}$ ways. For each chosen rank, we can select 2 cards from the 4 available cards of that rank, which can be done in $\binom{4}{2}$ ways. Therefore, the number of ways to choose the two pairs is
+  \[%
+    \binom{13}{2} \times \left(\binom{4}{2}\right)^2
+  .\]%
+  Next, we need to choose a fifth card that is not of the same rank as either of the pairs. There are 11 remaining ranks (since we have already chosen 2 ranks for the pairs), and for each rank, there are 4 available cards. Thus, the number of ways to choose the fifth card is $11 \times 4$. Therefore, the total number of two pair hands is
+  \[%
+    \binom{13}{2} \times \left(\binom{4}{2}\right)^2 \times (11 \times 4)
+  .\]%
+  The total number of possible poker hands is $\binom{52}{5}$. Thus, the probability of being dealt two pairs is
+  \[%
+    P(\text{two pairs}) = \frac{\binom{13}{2} \times \left(\binom{4}{2}\right)^2 \times (11 \times 4)}{\binom{52}{5}} = \frac{78 \times 6^2 \times 44}{2598960} = \frac{123552}{2598960} \approx 0.04754
+  .\]%
+  Therefore, the probability of being dealt two pairs is approximately 4.754 percent.
 \end{solution}
 
 \begin{solution}[(iii)]
+  To calculate the probability of being dealt four of a kind, we first determine the number of ways to choose 1 rank for the four of a kind from the 13 available ranks. This can be done in $\binom{13}{1}$ ways. For the chosen rank, we take all 4 cards of that rank. Next, we need to choose a fifth card that is not of the same rank as the four of a kind. There are 12 remaining ranks (since we have already chosen 1 rank for the four of a kind), and for each rank, there are 4 available cards. Thus, the number of ways to choose the fifth card is $12 \times 4$. Therefore, the total number of four of a kind hands is
+  \[%
+    \binom{13}{1} \times (12 \times 4)
+  .\]%
+  The total number of possible poker hands is $\binom{52}{5}$. Thus, the probability of being dealt four of a kind is
+  \[%
+    P(\text{four of a kind}) = \frac{\binom{13}{1} \times (12 \times 4)}{\binom{52}{5}} = \frac{13 \times 48}{2598960} = \frac{624}{2598960} \approx 0.0002401
+  .\]%
+  Therefore, the probability of being dealt four of a kind is approximately 0.02401 percent.
 \end{solution}
 
 \begin{problem}[4]
@@ -52,6 +117,28 @@
 \end{problem}
 
 \begin{solution}
+  The sample space for a roll of two dice has $36$ equally likely outcomes. The outcomes summing to $5$ are 4 in number, and the outcomes summing to $7$ are 6 in number. Hence
+  \[%
+    P(5) = \frac{4}{36} = \frac{1}{9}, \qquad P(7) = \frac{6}{36} = \frac{1}{6}
+  .\]%
+  The probability that a single roll is neither a 5 nor a 7 is
+  \[%
+    P(\text{neither}) = 1 - P(5) - P(7) = 1 - \frac{1}{9} - \frac{1}{6} = \frac{13}{18}
+  .\]%
+
+  Let $E_n$ be the event that the first $n-1$ rolls are neither 5 nor 7 and the $n$th roll is a 5. Then
+  \[%
+    P(E_n) = \left(\frac{13}{18}\right)^{n-1} \cdot \frac{1}{9}
+  .\]%
+  The desired probability (a 5 occurs before a 7) is
+  \[%
+    \sum_{n=1}^\infty P(E_n) = \sum_{n=1}^\infty \left(\frac{13}{18}\right)^{n-1} \frac{1}{9}
+  .\]%
+  This is an infinite geometric series with first term $a = 1/9$ and ratio $r = 13/18$, so
+  \[%
+    \sum_{n=1}^\infty P(E_n) = \frac{a}{1-r} = \frac{\frac{1}{9}}{1 - \frac{13}{18}} = \frac{\frac{1}{9}}{\frac{5}{18}} = \frac{2}{5}
+  .\]%
+  Therefore, the probability that a 5 occurs before a 7 is $2/5$, or 40\%.
 \end{solution}
 
 \begin{problem}[5]
@@ -68,15 +155,52 @@
 \end{problem}
 
 \begin{solution}[(i)]
+  The total number of balls in the urn is $12+16+18=46$. The total number of ways to choose 7 balls from 46 is $\binom{46}{7}$. The number of ways to choose 3 red, 2 blue, and 2 green is
+  \[%
+    \binom{12}{3} \binom{16}{2} \binom{18}{2}
+  .\]%
+  Hence
+  \[%
+    P(3R, 2B, 2G) = \frac{\binom{12}{3} \binom{16}{2} \binom{18}{2}}{\binom{46}{7}} = \frac{4,039,200}{53,524,680} \approx 0.0754643
+  .\]%
+  Therefore $P(3R, 2B, 2G) \approx 0.07546$, or about 7.546\%.
 \end{solution}
 
 \begin{solution}[(ii)]
+  ``At least 2 red'' means exactly $k$ red for $k = 2,3,4,5,6,7$. For each $k$ the count is
+  \[%
+    \binom{12}{k} \binom{34}{7-k}
+  ,\]%
+  so
+  \[%
+    P(\text{at least 2 red}) = \frac{\sum_{k=2}^{7} \binom{12}{k} \binom{34}{7-k}}{\binom{46}{7}} = \frac{32,006,216}{53,524,680} \approx 0.5979712
+  .\]%
+  Therefore $P(\text{at least 2 red}) \approx 0.59797$, or about 59.797\%.
 \end{solution}
 
 \begin{solution}[(iii)]
+  All withdrawn balls the same color can be red, blue, or green:
+  \[%
+    \binom{12}{7} + \binom{16}{7} + \binom{18}{7}
+  .\]%
+  Hence
+  \[%
+    P(\text{all same color}) = \frac{\binom{12}{7} + \binom{16}{7} + \binom{18}{7}}{\binom{46}{7}} = \frac{44,056}{53,524,680} \approx 0.00082310
+  .\]%
+  Therefore $P(\text{all same color}) \approx 0.0008231$, or about 0.08231\%.
 \end{solution}
 
 \begin{solution}[(iv)]
+  We have two cases:
+  \begin{enumerate}
+    \item Exactly 3 red: $\binom{12}{3} \binom{34}{4}$.
+    \item Exactly 3 blue: $\binom{16}{3} \binom{30}{4}$.
+  \end{enumerate}
+  Sum them and divide by $\binom{46}{7}$:
+  \[%
+    P(\text{exactly 3 red or exactly 3 blue}) = \frac{\binom{12}{3} \binom{34}{4} + \binom{16}{3} \binom{30}{4}}{\binom{46}{7}} = \frac{25,549,520}{53,524,680} \approx 0.4773409
+  .\]%
+  Therefore $P(\text{exactly 3 red or exactly 3 blue})\approx 0.47734$, or about 47.734\%.
 \end{solution}
 
 \begin{problem}[6]
@@ -90,6 +214,35 @@
 \end{problem}
 
 \begin{solution}
+  Let $A_i$ be the event that the hand is void in the $i$th suit. We want
+  \[%
+    P\left(\bigcup_{i=1}^4 A_i\right)
+  .\]%
+  By inclusion–exclusion,
+  \[%
+    P\left(\bigcup_{i=1}^4 A_i\right) = \sum_{i} P(A_i) - \sum_{i<j} P(A_i\cap A_j) + \sum_{i<j<k} P(A_i \cap A_j \cap A_k) - P(A_1 \cap A_2 \cap A_3 \cap A_4)
+  .\]%
+  For any single suit void,
+  \[%
+    P(A_i) = \frac{\binom{39}{13}}{\binom{52}{13}}
+  ,\]%
+  for any two suits void,
+  \[%
+    P(A_i\cap A_j) = \frac{\binom{26}{13}}{\binom{52}{13}}
+  ,\]%
+  for any three suits void,
+  \[%
+    P(A_i \cap A_j \cap A_k) = \frac{\binom{13}{13}}{\binom{52}{13}} = \frac{1}{\binom{52}{13}}
+  ,\]%
+  and all four void is impossible. Hence
+  \[%
+    P(\text{void in at least one suit}) = 4\frac{\binom{39}{13}}{\binom{52}{13}} - 6\frac{\binom{26}{13}}{\binom{52}{13}} + 4\frac{1}{\binom{52}{13}}
+  .\]%
+  Substituting exact values,
+  \[%
+    P(\text{void in at least one suit}) = \frac{4\cdot 8,122,425,444 - 6\cdot 10,400,600 + 4}{635,013,559,600} = \frac{32,427,298,180}{635,013,559,600} \approx 0.05106552
+  .\]%
+  Therefore, the probability that a bridge hand is void in at least one suit is approximately $0.05107$, or about 5.1066\%.
 \end{solution}
 
 \begin{problem}[7]
@@ -102,7 +255,17 @@
 \end{problem}
 
 \begin{solution}[(i)]
+  The probability that one person has a birthday on the 6th of any month is $12/365$, since there are 12 months in a year. Assuming birthdays are independent, the probability that both people have birthdays on the 6th of any month is
+  \[%
+    P(\text{both on 6th}) = \left(\frac{12}{365}\right)^2 = \frac{144}{133,225} \approx 0.00108
+  .\]%
+  Therefore, the probability that two people have birthdays on the 6th of any month is approximately $0.00108$, or about $0.108\%$.
 \end{solution}
 
 \begin{solution}[(ii)]
+  The probability that one person has a birthday on a specific day of the year is $1/365$. For two people, the probability that both have birthdays on the same day of the same month is
+  \[%
+    P(\text{same birthday}) = \frac{1}{365} \approx 0.00274
+  .\]%
+  Therefore, the probability that two people share the same birthday is approximately $0.00274$, or about $0.274\%$.
 \end{solution}
