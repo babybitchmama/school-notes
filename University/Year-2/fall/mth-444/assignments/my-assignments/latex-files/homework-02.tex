@@ -8,46 +8,33 @@
 \end{problem}
 
 \begin{solution}[(i)]
-  We verify the group axioms for $\bra{n\Z, +}$.
+  We verify that $\bra{n\Z, +}$ is a group.
 
-  Let $a, b \in n\Z$. Then $a = nm$ and $b = nk$ for some $m, k \in \Z$. Hence,
-  \[%
-    a + b = nm + nk = n(m + k)
-  .\]%
-  Since $m + k \in \Z$, it follows that $a + b \in n\Z$.
+  Let $a, b \in n\Z$. Then $a = nm$ and $b = nk$ for some $m, k \in \Z$. Hence, $a + b = nm + nk = n(m + k)$. Since $m + k \in \Z$, it follows that $a + b \in n\Z$, so $n\Z$ is closed under addition.
 
-  Addition in $\Z$ is associative, and $n\Z$ inherits this property. Thus, for all $a, b, c \in n\Z$,
-  \[%
-    (a + b) + c = a + (b + c)
-  .\]%
+  Because addition in $\Z$ is associative, $n\Z$ inherits this property. Thus, for all $a, b, c \in n\Z$, $(a + b) + c = a + (b + c)$.
 
-  The additive identity is $0$, since for any $a \in n\Z$,
-  \[%
-    a + 0 = a
-  .\]%
+  The additive identity is $0$, since for any $a \in n\Z$, $a + 0 = a$.
 
-  For any $a = nm \in n\Z$, the additive inverse is $-a = n(-m)$, because
-  \[%
-    a + (-a) = nm + n(-m) = n(m - m) = 0
-  .\]%
+  For any $a = nm \in n\Z$, the additive inverse is $-a = n(-m)$, because $a + (-a) = nm + n(-m) = n(m - m) = 0$.
 
   Therefore, all group axioms are satisfied, and $\bra{n\Z, +}$ is a group.
 \end{solution}
 
 \begin{solution}[(ii)]
-  Define a map $\phi : \Z \to n\Z$ by $\phi(m) = nm$, for all $m \in \Z$. We show that $\phi$ is an isomorphism.
+  Define a map $\phi : \Z \to n\Z$ by $\phi(m) = nm$, for all $m \in \Z$. We will show that $\phi$ is an isomorphism.
 
   For any $m_1, m_2 \in \Z$,
-  \[
-    \phi(m_1 + m_2) = n(m_1 + m_2) = nm_1 + nm_2 = \phi(m_1) + \phi(m_2).
-  \]
-  Hence, $\phi$ preserves addition.
+  \[%
+    \phi(m_1 + m_2) = n(m_1 + m_2) = nm_1 + nm_2 = \phi(m_1) + \phi(m_2)
+  ,\]%
+  so $\phi$ preserves addition and is therefore a homomorphism.
 
-  Suppose $\phi(m_1) = \phi(m_2)$. Then $nm_1 = nm_2$, and since $n \neq 0$, we may divide by $n$ to obtain $m_1 = m_2$. Thus, $\phi$ is injective.
+  Suppose $\phi(m_1) = \phi(m_2)$. Then $nm_1 = nm_2$, and subtracting gives $n(m_1 - m_2) = 0$. Since $n \neq 0$ and $\Z$ has no zero divisors, we conclude that $m_1 - m_2 = 0$, or $m_1 = m_2$. Thus, $\phi$ is injective.
 
   For any $a \in n\Z$, there exists $k \in \Z$ such that $a = nk$. Then $\phi(k) = nk = a$, so $\phi$ is surjective.
 
-  Since $\phi$ is an isomorphism, it follows that $\bra{n\Z, +} \cong \bra{\Z, +}$.
+  Therefore, $\phi$ is a bijective homomorphism, and hence an isomorphism. We conclude that $\bra{n\Z, +} \cong \bra{\Z, +}$.
 \end{solution}
 
 \begin{problem}[2.19]
@@ -65,75 +52,47 @@
 \end{problem}
 
 \begin{solution}[(i)]
-  We need to show that for any $a, b \in S$, the result of the operation $a * b$ is also in $S$. 
-
-  Let $a, b \in S$. Then, $a * b = a + b + ab$. We need to check that $a * b \neq -1$. Suppose for contradiction that $a * b = -1$. Then, $a + b + ab = -1$. Rearranging gives $ab + a + b + 1 = 0$, which can be factored as $(a + 1)(b + 1) = 0$.
-
-  Since $a, b \in S$, we have $a \neq -1$ and $b \neq -1$, so neither factor can be zero. This is a contradiction. Therefore, $a * b \neq -1$, and thus $a * b \in S$.
-
-  Hence, $*$ is a binary operation on $S$.
+  Let $a, b \in S$, so $a \neq -1$ and $b \neq -1$. If $a * b = -1$ then $a+b+ab=-1$,
+  which rearranges to
+  \[%
+    ab + a + b + 1=(a + 1)(b + 1) = 0
+  .\]%
+  But $a + 1 \neq0$ and $b + 1 \neq0$, so this is impossible. Hence $a * b \neq-1$, and therefore $a * b \in S$. Thus $*$ is a binary operation on $S$.
 \end{solution}
 
 \begin{solution}[(ii)]
-  We verify the group axioms for $\bra{S, *}$.
+  We first check that associativity holds. Notice that for any $a, b, c \in S$, we have
+  \begin{align*}
+    (a * b) * c &= (a + b + ab) + c + (a + b + ab)c \\
+                &= a + b + c + ab + ac + bc + abc \\
+                &= a + (b + c + bc) + a(b + c + bc) \\
+                &= a * (b * c)
+  .\end{align*}
+  So $(a * b) * c = a * (b * c)$. Thus $*$ is associative.
 
-  As shown in part (i), for any $a, b \in S$, $a * b \in S$.
-
-  For any $a, b, c \in S$,
+  The identity element is $0$, since for any $a\in S$,
   \[%
-    (a * b) * c = (a + b + ab) * c = (a + b + ab) + c + (a + b + ab)c
+    a * 0 = a + 0 + a \cdot 0 = a \aand 0 * a = 0 + a + 0 \cdot a = a.
   .\]%
-  Expanding this gives
+  Now fix $a \in S$ and solve $a * b = 0$. The equation $a + b + ab = 0$ can be rewritten as $(a + 1)(b + 1) = 1$, hence
   \[%
-    a + b + ab + c + ac + bc + abc
+    b + 1 = \frac{1}{a + 1}, \quad b = \frac{1}{a + 1} - 1 = -\frac{a}{a + 1}
   .\]%
-  Similarly,
+  Since $a \neq-1$ the denominator $a + 1 \neq 0$, so this $b$ is well-defined and satisfies $b \neq -1$. Notice that
   \[%
-    a * (b * c) = a * (b + c + bc) = a + (b + c + bc) + a(b + c + bc)
-  .\]%
-  Expanding this also gives
-  \[%
-    a + b + c + bc + ab + ac + abc
-  .\]%
-  Since both expressions are equal, $*$ is associative.
-
-  We need to find an element $e \in S$ such that for all $a \in S$, $a * e = e * a = a$. Let $e = 0$. Then,
-  \[%
-    a * 0 = a + 0 + a \cdot 0 = a
+    -\frac{a}{a + 1} = -1 \iff a = a + 1 \iff 1 = 0
   ,\]%
-  and
-  \[%
-    0 * a = 0 + a + 0 \cdot a = a
-  .\]%
-  Thus, $0$ is the identity element.
+  which is false. Therefore, $b \in S$. Because $*$ is commutative, this element is both a left and right inverse of $a$. Therefore every element of $S$ has a two-sided inverse.
 
-  Fix $a \in S$. We want to find a $b \in S$ with $a * b = 0$. Solving the equation $a + b + ab = 0$, we get $(a + 1)(b + 1) = 1$. Thus $b + 1 = 1/(a + 1)$, so
-  \[%
-    b = \frac{1}{a + 1} - 1 = -\frac{a}{a + 1}
-  .\]%
-  Since $a \neq -1$ the denominator $a + 1 \neq 0$, so this $b$ is well-defined and satisfies $b \neq -1$. Notice that $b \ne -1$, since that would imply that $-a/(a+1) = -1$, which gives us $0 = 1$, which is a contradiction. Hence every element has a two-sided inverse in $S$.
-
-  Since all group axioms are satisfied, $\bra{S, *}$ is a group.
+  Since $\bra{S, *}$ has associativity, an identity, and two-sided inverses, $\bra{S, *}$ is a group.
 \end{solution}
 
 \begin{solution}[(iii)]
-  We need to solve the equation $2 * x * 3 = 7$ in $S$. First, we compute $2 * x$:
+  To solve $2 * x * 3 = 7$ let us first compute $2 * x = 2 + x + 2x = 3x + 2$. Then
   \[%
-    2 * x = 2 + x + 2x = x + 2 + 2x = 3x + 2
+    (2 * x) * 3 = (3x + 2) + 3 + (3x + 2)\cdot 3 = 3x + 2 + 3 + 9x + 6 = 12x + 11
   .\]%
-  Next, we compute $(2 * x) * 3$:
-  \[%
-    (3x + 2) * 3 = (3x + 2) + 3 + (3x + 2) \cdot 3 = 3x + 2 + 3 + 9x + 6 = 12x + 11
-  .\]%
-  We set this equal to $7$:
-  \[%
-    12x + 11 = 7
-  .\]%
-  Solving for $x$, we get
-  \[%
-    12x = -4 \implies x = -\frac{1}{3}
-  .\]%
-  Since $-1/3 \in S$, the solution is $x = -1/3$.
+  Setting $12x + 11 = 7$ gives $12x = -4$, so $x = -1/3$. Since $-1/3 \neq -1$, this solution lies in $S$.
 \end{solution}
 
 \begin{problem}[2.28]
@@ -141,11 +100,18 @@
 \end{problem}
 
 \begin{solution}
-  Assume $a \ne e$ is an element of order 2 in the group $G$, i.e., $a * a = e$. Then, for any $b \in G$, we compute the square of the element $b' * a * b$:
-  \[%
-    (b' * a * b) * (b' * a * b) = b' * a * (b * b') * a * b = b' * a * a * b = b' * b = e
-  .\]%
-  Thus, $(b' * a * b)$ has order 2.
+  Let $a \ne e$ be an element of order $2$ in the group $G$, so $a * a = e$. For any $b \in G$, we consider the element $b' * a * b$ and compute its square:
+  \begin{align*}
+    (b' * a * b) * (b' * a * b) &= b' * a * (b * b') * a * b \\
+                                &= b' * a * e * a * b \\
+                                &= b' * a * a * b \\
+                                &= b' * e * b \\
+                                &= b' * b \\
+                                &= e
+  .\end{align*}
+  Hence, $(b' * a * b)$ has order $2$.
+
+  Therefore, for any $b \in G$, the element $b' * a * b$ also has order $2$. In other words, conjugation by $b$ preserves the order of elements in $G$.
 \end{solution}
 
 \begin{problem}[2.29]
@@ -155,9 +121,11 @@
 \begin{solution}
   Let $G$ be a finite group with identity $e$ and an even number of elements. Consider the set $G \setminus \{e\}$, which has an odd number of elements.
 
-  For each element $a \in G \setminus \{e\}$, consider its inverse $a'$. If $a \ne a'$, then we can pair $a$ with $a'$. Each such pair contributes two distinct elements to the set. Since the total number of elements in $G \setminus \{e\}$ is odd, there must be at least one element that is its own inverse, i.e., an element $a$ such that $a = a'$.
+  For each $a \in G \setminus \{e\}$, let $a'$ denote its inverse. If $a \ne a'$, we can pair $a$ with $a'$, and each such pair contributes two distinct elements to the set. These pairs together account for an even number of elements.
 
-  For this element, we have $a * a = e$. Since $a \ne e$, we have found an element in $G$ such that $a * a = e$.
+  Since $G \setminus \{e\}$ has an odd number of elements, at least one element must remain unpaired. For this element $a$, we must have $a = a'$, that is, $a * a = e$.
+
+  Because $a \ne e$, we have found a non-identity element $a \in G$ such that $a * a = e$.
 \end{solution}
 
 \begin{problem}[2.30]
@@ -168,8 +136,6 @@
     \item Show that there is a left identity for $*$ and a right inverse for each element in $\R^*$.
 
     \item Is $\R^*$ with this binary operation a group?
-
-    \item Explain the significance of this exercise.
   \end{enumerate}
 \end{problem}
 
@@ -225,26 +191,20 @@
   Therefore, $\R^*$ with this binary operation does not satisfy all the group axioms, and hence it is not a group.
 \end{solution}
 
-\begin{solution}[(iv)]
-  The significance of this exercise is to illustrate that having a left identity and right inverses for each element does not guarantee that a set with a binary operation forms a group. The failure of the left identity to also be a right identity shows that the group axioms are not fully satisfied. This shows the importance of verifying all group properties when determining if a structure is indeed a group.
-\end{solution}
-
 \begin{problem}[2.31]
   If $*$ is a binary operation on a set $S$, an element $x$ of $S$ is an \emph{idempotent for} $*$ if $x * x = x$. Prove that a group has exactly one idempotent element. (You may use any theorems proved so far in the text.)
 \end{problem}
 
 \begin{solution}
-  Let $G$ be a group with identity element $e$. We first show that $e$ is an idempotent element. Obviously, $e * e = e$.
+  Let $G$ be a group with identity $e$. First, e is idempotent since $e * e = e$.
 
-  Now, suppose there is another idempotent element $x \in G$ such that $x * x = x$. We will show that $x = e$.
-
-  Since $G$ is a group, every element has an inverse. Let $x'$ be the inverse of $x$. Then,
+  Now let $x \in G$ be idempotent, so $x * x = x$. Left-multiply this equation by $x'$ and use associativity:
   \[%
     x' * (x * x) = x' * x
   .\]%
-  Using associativity, we have $(x' * x) * x = e * x = x$. But since $x' * x = e$, we have $e * x = x$. Therefore, $x = e$.
+  By associativity this is $(x' * x) * x = x' * x$, i.e. $e * x = e$. Hence $x = e$.
 
-  Thus, the only idempotent element in the group $G$ is the identity element $e$. Hence, a group has exactly one idempotent element.
+  Therefore, the only idempotent in $G$ is the identity $e$.
 \end{solution}
 
 \begin{problem}[2.32]
@@ -252,17 +212,9 @@
 \end{problem}
 
 \begin{solution}
-  Let $a, b \in G$. Since $x * x = e$ for all $x \in G$, each element is its own inverse; i.e. $x' = x$ for every $x \in G$.
+  Let $a, b \in G$. Since $x * x = e$ for all $x \in G$, it follows that every element is its own inverse; i.e. $x' = x$ for every $x \in G$.
 
-  Consider $(a * b) * (a * b)$. By hypothesis $(a * b) * (a * b) = e$, so
-  \[%
-    (a * b)' = (a * b)
-  .\]%
-  On the other hand, the general inverse formula in any group gives $(a * b)' = b' * a'$. Using $x' = x$ for $a$ and $b$ we obtain
-  \[%
-    (a * b)' = b' * a' = b * a
-  .\]%
-  Combining the two expressions for $(a * b)'$ yields $a * b = b * a$. Thus, $G$ is abelian.
+  Consider $(a * b) * (a * b)$. By the hypothesis $(a * b) * (a * b) = e$, so $(a * b)' = (a * b)$. On the other hand, the general inverse formula in any group gives $(a * b)' = b' * a'$. Using $x' = x$ for $a$ and $b$ we obtain $(a * b)' = b' * a' = b * a$. Combining the two expressions for $(a * b)'$ yields $a * b = b * a$. Thus, $G$ is abelian.
 \end{solution}
 
 \begin{problem}[2.33]
@@ -272,33 +224,16 @@
 \begin{solution}
   We will prove by induction on $n$ that for all $a, b \in G$, $(a * b)^n = (a^n) * (b^n)$.
 
-  For the base case, we have $n = 1$, which gives us
-  \[%
-    (a * b)^1 = a * b
-  .\]%
-  Also,
-  \[%
-    a^1 * b^1 = a * b
-  .\]%
-  Thus, the base case holds.
+  For $n = 1$, we have $(a * b)^1 = a * b$, and also $a^1 * b^1 = a * b$. Thus, the base case holds.
 
-  Assume that the statement holds for some $k \in \Z^+$, i.e., assume that
-  \[%
-    (a * b)^k = (a^k) * (b^k)
-  .\]%
-  We need to show that it holds for $k + 1$. Consider:
-  \[%
-    (a * b)^{k + 1} = (a * b)^k * (a * b)
-  .\]%
-  By the inductive hypothesis, we have:
-  \[%
-    (a * b)^{k + 1} = ((a^k) * (b^k)) * (a * b)
-  .\]%
-  Since $G$ is abelian, we can rearrange the terms:
-  \[%
-    (a * b)^{k + 1} = (a^k * a) * (b^k * b) = a^{k + 1} * b^{k + 1}
-  .\]%
-  Thus, by the principle of mathematical induction, the statement holds for all $n \in \Z^+$.
+  Assume that the statement holds for some $k \in \Z^+$, i.e., assume that $(a * b)^k = (a^k) * (b^k)$. We need to show that it holds for $k + 1$. Consider $(a * b)^{k + 1} = (a * b)^k * (a * b)$. By the inductive hypothesis, we have
+  \begin{align*}
+    (a * b)^{k+1} &= (a * b)^k * (a * b) \\
+                  &= ((a^k) * (b^k)) * (a * b) \tag*{(inductive hyp.)} \\
+                  &= (a^k * a) * (b^k * b) \\
+                  &= a^{k + 1} * b^{k + 1}
+  .\end{align*}
+  Therefore, by the principle of mathematical induction, the statement holds for all $n \in \Z^+$.
 \end{solution}
 
 \begin{problem}[2.34]
@@ -306,33 +241,13 @@
 \end{problem}
 
 \begin{solution}
-  Given that $a * b = b * a'$, we want to show that $b * a = a' * b$.
-
   Starting from the given equation, we can multiply both sides on the left by $a'$:
-  \[%
-    a' * (a * b) = a' * (b * a')
-  .\]%
-  Using associativity, we have:
-  \[%
-    (a' * a) * b = a' * b * a'
-  .\]%
-  Simplifying, we get:
-  \[%
-    b = a' * b * a'
-  .\]%
-  Now, we can multiply both sides on the right by $a$:
-  \[%
-    b * a = (a' * b * a') * a
-  .\]%
-  Again, using associativity, we have:
-  \[%
-    b * a = a' * b * (a' * a)
-  .\]%
-  Since $a' * a = e$, this simplifies to:
-  \[%
-    b * a = a' * b
-  .\]%
-  Thus, we have shown that $b * a = a' * b$.
+  \begin{align*}
+    a' * (a * b) &= a' * (b * a') \\
+    (a' * a) * b &= a' * b * a' \\
+    b &= a' * b * a'
+  .\end{align*}
+  Multiplying both sides on the right by $a$, we have $b * a = (a' * b * a') * a$. Since $a' * a = e$, this simplifies to $b * a = a' * b$. Therefore, $b * a = a' * b$.
 \end{solution}
 
 \begin{problem}[2.36]
