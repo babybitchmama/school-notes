@@ -47,9 +47,7 @@
 \end{solution}
 
 \begin{solution}[(ii)]
-  We will prove both inclusions to show that $\bar{A} \cup \bar{B} = \overline{A \cup B}$.
-
-  First, let $p \in \bar{A} \cup \bar{B}$. Without loss of generality, assume $p \in \bar{A}$. By definition of closure, for every $r > 0$, the open ball $B_r(p)$ intersects $A$. Since $A \subset A \cup B$, it follows that $B_r(p)$ also intersects $A \cup B$. Therefore, for every $r > 0$, the open ball $B_r(p)$ intersects $A \cup B$, which means $p \in \overline{A \cup B}$. Hence, $\bar{A} \cup \bar{B} \subset \overline{A \cup B}$.
+  Assume $p \in \bar{A} \cup \bar{B}$. Without loss of generality, assume $p \in \bar{A}$. By definition of closure, for every $r > 0$, the open ball $B_r(p)$ intersects $A$. Since $A \subset A \cup B$, it follows that $B_r(p)$ also intersects $A \cup B$. Therefore, for every $r > 0$, the open ball $B_r(p)$ intersects $A \cup B$, which means $p \in \overline{A \cup B}$. Hence, $\bar{A} \cup \bar{B} \subset \overline{A \cup B}$.
 
   Now, let $p \in \overline{A \cup B}$. By definition of closure, for every $r > 0$, the open ball $B_r(p)$ intersects $A \cup B$. This means that for each $r > 0$, there exists a point in either $A$ or $B$ that lies within the ball. If there are infinitely many such points in $A$, then $p$ is a limit point of $A$ and thus belongs to $\bar{A}$. Similarly, if there are infinitely many such points in $B$, then $p$ is a limit point of $B$ and thus belongs to $\bar{B}$. In either case, we have $p \in \bar{A} \cup \bar{B}$. Hence, $\overline{A \cup B} \subset \bar{A} \cup \bar{B}$.
 
@@ -57,9 +55,7 @@
 \end{solution}
 
 \begin{solution}[(iii)]
-  We will prove the inclusion $\overline{A \cap B} \subset \bar{A} \cap \bar{B}$.
-
-  Let $p \in \overline{A \cap B}$. By definition of closure, for every $r > 0$, the open ball $B_r(p)$ intersects $A \cap B$. This means that for each $r > 0$, there exists a point in both $A$ and $B$ that lies within the ball. Therefore, for every $r > 0$, the open ball $B_r(p)$ intersects $A$ and also intersects $B$. This implies that $p \in \bar{A}$ and $p \in \bar{B}$. Hence, $p \in \bar{A} \cap \bar{B}$, and we conclude that
+  Assume $p \in \overline{A \cap B}$. By definition of closure, for every $r > 0$, the open ball $B_r(p)$ intersects $A \cap B$. This means that for each $r > 0$, there exists a point in both $A$ and $B$ that lies within the ball. Therefore, for every $r > 0$, the open ball $B_r(p)$ intersects $A$ and also intersects $B$. This implies that $p \in \bar{A}$ and $p \in \bar{B}$. Hence, $p \in \bar{A} \cap \bar{B}$, and we conclude that
   \[%
     \overline{A \cap B} \subset \bar{A} \cap \bar{B}
   .\]%
@@ -88,9 +84,7 @@
 \end{solution}
 
 \begin{solution}[(iv)]
-  We will prove that $\bar{\bar{A}} = \bar{A}$.
-
-  First, let $p \in \bar{\bar{A}}$. By definition of closure, for every $r > 0$, the open ball $B_r(p)$ intersects $\bar{A}$. This means that for each $r > 0$, there exists a point in $\bar{A}$ that lies within the ball. Since $\bar{A}$ is the closure of $A$, it follows that for every $r > 0$, the open ball $B_r(p)$ also intersects $A$. Therefore, $p \in \bar{A}$. Hence, $\bar{\bar{A}} \subset \bar{A}$.
+  Assume $p \in \bar{\bar{A}}$. By definition of closure, for every $r > 0$, the open ball $B_r(p)$ intersects $\bar{A}$. This means that for each $r > 0$, there exists a point in $\bar{A}$ that lies within the ball. Since $\bar{A}$ is the closure of $A$, it follows that for every $r > 0$, the open ball $B_r(p)$ also intersects $A$. Therefore, $p \in \bar{A}$. Hence, $\bar{\bar{A}} \subset \bar{A}$.
 
   Now, let $p \in \bar{A}$. By definition of closure, for every $r > 0$, the open ball $B_r(p)$ intersects $A$. Since $A \subset \bar{A}$, it follows that for every $r > 0$, the open ball $B_r(p)$ also intersects $\bar{A}$. Therefore, $p \in \bar{\bar{A}}$. Hence, $\bar{A} \subset \bar{\bar{A}}$.
 
@@ -112,27 +106,29 @@
 \end{problem}
 
 \begin{solution}[(i)]
-  We will prove that $\bar{B}_r(p)$ equals its own closure, i.e., $\overline{\bar{B}_r(p)} = \bar{B}_r(p)$.
-
-  First, let $q \in \overline{\bar{B}_r(p)}$. By definition of closure, for every $s > 0$, the open ball $B_s(q)$ intersects $\bar{B}_r(p)$. This means that for each $s > 0$, there exists a point $x \in \bar{B}_r(p)$ such that $\metric(q, x) < s$. Since $x \in \bar{B}_r(p)$, we have $\metric(p, x) \le r$. Now, consider the triangle inequality:
-  \[%
-    \metric(p, q) \le \metric(p, x) + \metric(x, q) < r + s
-  .\]%
-  Since this holds for every $s > 0$, we can let $s$ approach $0$, which gives us $\metric(p, q) \le r$. Therefore, $q \in \bar{B}_r(p)$. Hence, we conclude that $\overline{\bar{B}_r(p)} \subset \bar{B}_r(p)$.
-
-  Next, let $q \in \bar{B}_r(p)$. By definition of closed ball, we have $\metric(p, q) \le r$. For every $s > 0$, the open ball $B_s(q)$ contains points that are arbitrarily close to $q$. Since $\metric(p, q) \le r$, it follows that for every $s > 0$, there exists a point in $B_s(q)$ that lies within $\bar{B}_r(p)$. Therefore, for every $s > 0$, the open ball $B_s(q)$ intersects $\bar{B}_r(p)$, which means $q \in \overline{\bar{B}_r(p)}$. Hence, we conclude that $\bar{B}_r(p) \subset \overline{\bar{B}_r(p)}$.
-
-  Combining both inclusions, we conclude that $\overline{\bar{B}_r(p)} = \bar{B}_r(p)$.
+  If $q \in \overline{\bar B_r(p)}$ then for every $s > 0$ there exists $x \in \bar B_r(p)$ with $\metric(q, x) < s$. Thus $\metric(p, q) \le \metric(p, x) + \metric(x, q) \le r + s$ for every $s > 0$, so $\metric(p,q)\le r$ and $q \in \bar B_r(p)$. Conversely, if $q \in \bar B_r(p)$ then for every $s > 0$ we have $q \in B_s(q) \cap \bar B_r(p)$, so $q \in \overline{\bar B_r(p)}$. Hence $\overline{\bar B_r(p)} = \bar B_r(p)$.
 \end{solution}
 
 \begin{solution}[(ii)]
-  Let $p \in \overline{B_r(p)}$. By definition of closure, for every $s > 0$, the open ball $B_s(p)$ intersects $B_r(p)$. This means that for each $s > 0$, there exists a point $q \in B_r(p)$ such that $\metric(p, q) < s$. Since $q \in B_r(p)$, we have $\metric(p, q) < r$. 
+  Let $q \in \overline{B_r(p)}$. By definition of closure (or Exercise 2.3(a)), every open neighbourhood of $q$ meets $B_r(p)$. Hence for each $s>0$ there exists a point $x_s \in B_r(p)$ with
+  \[%
+    \metric(q, x_s) < s \aand \metric(p, x_s) < r
+  .\]%
+  By the triangle inequality,
+  \[%
+    \metric(p, q) \le \metric(p, x_s) + \metric(x_s, q) < r + s
+  .\]%
+  This inequality holds for every $s > 0$. If $d(p, q) > r$ then choosing $s < \metric(p, q) - r$ would contradict $\metric(p, q) < r + s$. Thus we must have $\metric(p + q) \le r$, so $q \in \bar B_r(p)$. Since $q$ was arbitrary in $\overline{B_r(p)}$, we obtain $\overline{B_r(p)} \subset \bar B_r(p)$.
 
-  Now, consider the limit as $s$ approaches $0$. As $s$ gets smaller and smaller, the points $q$ that lie within the open ball $B_s(p)$ get closer and closer to $p$. Since $\metric(p, q) < r$ for all such points, it follows that $\metric(p, p) = 0 \le r$. Therefore, $p \in \bar{B}_r(p)$.
-
-  Hence, we conclude that $\overline{B_r(p)} \subset \bar{B}_r(p)$.
-
-  Example: TODO!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  As for the example where the inclusion is strict, take $X = \Z$ with the metric inherited from $\R$ let $p = 0$ and $r = 1$.
+  \[%
+    B_1(0) = \{n \in \Z \mid |n| < 1\} = \{0\}
+  ,\]%
+  so $\overline{B_1(0)} = \{0\}$ (closure in $X$ is still $\{0\}$). But
+  \[%
+    \bar B_1(0) = \{n \in \Z \mid |n| \le 1\} = \{-1,0,1\}
+  .\]%
+  Hence $\overline{B_1(0)} = \{0\}\subsetneq\{-1,0,1\} = \bar B_1(0)$, so the inclusion can be strict.
 \end{solution}
 
 \begin{problem}[3.1]
@@ -146,13 +142,34 @@
   \end{enumerate}
 \end{problem}
 
-\begin{solution}[(i)]
-\end{solution}
+\begin{solution}
+  We show that a subset $A \subset \R^2$ is open in the Euclidean metric if and only if it is open in the taxicab metric. Notice that we have
+  \[%
+    \metric_2(x, y) \le \metric_1(x, y) \le \sqrt{2}\, \metric_2(x, y)
+  ,\]%
+  which holds for all $x, y \in \R^2$. We will use these inequalities to show that openness in one metric implies openness in the other.
 
-\begin{solution}[(ii)]
-\end{solution}
+  Suppose that $A$ is open in the Euclidean metric. Let $x \in A$. Then, by definition of openness, there exists $r > 0$ such that the Euclidean open ball
+  \[%
+    B_2(x, r) = \{ y \in \R^2 : \metric_2(x, y) < r \}
+  ,\]%
+  is contained in $A$. Now consider any point $y \in B_1(x, r)$, where
+  \[%
+    B_1(x, r) = \{ y \in \R^2 : \metric_1(x, y) < r \}
+  .\]%
+  Using the inequality $\metric_2(x, y) \le \metric_1(x, y)$, we have $\metric_2(x, y) < r$ whenever $\metric_1(x, y) < r$. Hence $B_1(x, r) \subseteq B_2(x, r) \subseteq A$. This shows that for every $x \in A$, there exists an $r > 0$ such that $B_1(x, r) \subset A$. Therefore, $A$ is open in the taxicab metric.
 
-\begin{solution}[(iii)]
+  Conversely, suppose that $A$ is open in the taxicab metric. Let $x \in A$. Then there exists $r > 0$ such that
+  \[%
+    B_1(x, r) = \{ y \in \R^2 : \metric_1(x, y) < r \} \subseteq A
+  .\]%
+  Using the inequality $\metric_1(x, y) \le \sqrt{2}\, \metric_2(x, y)$, we see that if $\metric_2(x, y) < r / \sqrt{2}$, then $\metric_1(x, y) < r$, and hence $y \in B_1(x, r) \subseteq A$. Therefore,
+  \[%
+    B_2\left(x, \frac{r}{\sqrt{2}}\right) \subseteq B_1(x, r) \subseteq A
+  .\]%
+  This shows that each point $x \in A$ has a Euclidean neighborhood contained in $A$, so $A$ is open in the Euclidean metric.
+
+  Thus a subset $A \subset \R^2$ is open in the Euclidean metric if and only if it is open in the taxicab metric.
 \end{solution}
 
 \begin{problem}[3.2]
@@ -212,6 +229,48 @@
 \end{problem}
 
 \begin{solution}
+  We show that the set $A \subset C^1([0, 1])$ consisting of all functions with simple roots is open in the $C^1$ metric. Recall that for $f, g \in C^1([0, 1])$, the $C^1$ metric is given by
+  \[%
+    \metric(f, g) = \max_{x \in [0, 1]} |f(x) - g(x)| + \max_{x \in [0, 1]} |f'(x) - g'(x)|
+  .\]%
+  A function $f \in C^1([0, 1])$ has a \emph{simple root} at $x_0$ if $f(x_0) = 0$ and $f'(x_0) \ne 0$. The set $A$ is defined as
+  \[%
+    A = \{ f \in C^1([0, 1]) : f(x) = 0 \implies f'(x) \ne 0 \}
+  .\]%
+
+  Let $f \in A$. We must show that there exists $r > 0$ such that if $g \in C^1([0, 1])$ satisfies $\metric(f, g) < r$, then $g \in A$. Taking
+  \[%
+    r = \inf_{x \in [0, 1]} (|f(x)| + |f'(x)|)
+  ,\]%
+  notice that $r > 0$ must hold. This is because $f$ is continuously differentiable, implying both $|f(x)|$ and $|f'(x)|$ are continuous on $[0, 1]$, meaning their sum is continuous and attains a minimum. If this minimum were zero, then there would exist $x_0 \in [0, 1]$ such that $f(x_0) = 0$ and $f'(x_0) = 0$, contradicting the assumption that all roots of $f$ are simple. Hence $r > 0$.
+
+  Now suppose $g \in C^1([0, 1])$ satisfies $\metric(f, g) < r$. This means that for all $x \in [0, 1]$,
+  \[%
+    |f(x) - g(x)| < r \quad \text{and} \quad |f'(x) - g'(x)| < r
+  .\]%
+  We claim that $g$ also has only simple roots. Suppose, for contradiction, that there exists $x_0 \in [0, 1]$ such that $g(x_0) = 0$ and $g'(x_0) = 0$. Then
+  \[%
+    |f(x_0)| + |f'(x_0)| = |f(x_0) - g(x_0)| + |f'(x_0) - g'(x_0)|
+  ,\]%
+  Since both $|f(x_0) - g(x_0)|$ and $|f'(x_0) - g'(x_0)|$ are strictly less than $r$, we obtain
+  \[%
+    |f(x_0)| + |f'(x_0)| < 2r
+  .\]%
+  However, by the definition of $r$ as the infimum of $|f(x)| + |f'(x)|$, we must have $|f(x_0)| + |f'(x_0)| \ge r$, giving us
+  \[%
+    r \le |f(x_0)| + |f'(x_0)| < 2r
+  ,\]%
+  which is not a contradiction in itself. But notice that if $\metric(f, g) < r/2$, then both $|f(x_0) - g(x_0)|$ and $|f'(x_0) - g'(x_0)|$ are less than $r/2$, giving
+  \[%
+    |f(x_0)| + |f'(x_0)| \le |f(x_0) - g(x_0)| + |f'(x_0) - g'(x_0)| < r
+  ,\]%
+  contradicting the definition of $r$ as the infimum of $|f(x)| + |f'(x)|$. Therefore, for all $g$ with $\metric(f, g) < r/2$, no such $x_0$ can exist, and $g$ must have only simple roots.
+
+  Hence, for each $f \in A$, the $C^1$ ball
+  \[%
+    B\left(f, \frac{r}{2}\right) = \{ g \in C^1([0, 1]) : \metric(f, g) < r/2 \}
+  ,\]%
+  is contained in $A$. Therefore, $A$ is open in the $C^1$ metric.
 \end{solution}
 
 \begin{problem}[3.5]
@@ -228,16 +287,25 @@
 \end{problem}
 
 \begin{solution}[(i)]
-  Assume $U, V \subset X$ are open sets. We will show that their intersection $U \cap V$ is also open.
-
-  Let $p \in U \cap V$. Since $U$ is open, there exists an $\epsilon_1 > 0$ such that the open ball $B_{\epsilon_1}(p) \subset U$. Similarly, since $V$ is open, there exists an $\epsilon_2 > 0$ such that the open ball $B_{\epsilon_2}(p) \subset V$. Let $\epsilon = \min(\epsilon_1, \epsilon_2)$. Then, the open ball $B_{\epsilon}(p)$ is contained in both $U$ and $V$, i.e., $B_{\epsilon}(p) \subset U \cap V$. Therefore, for every point $p \in U \cap V$, there exists an $\epsilon > 0$ such that the open ball $B_{\epsilon}(p) \subset U \cap V$. This shows that $U \cap V$ is open.
+  Assume $U, V \subset X$ are open sets. Let $p \in U \cap V$. Since $U$ is open, there exists an $\epsilon_1 > 0$ such that the open ball $B_{\epsilon_1}(p) \subset U$. Similarly, since $V$ is open, there exists an $\epsilon_2 > 0$ such that the open ball $B_{\epsilon_2}(p) \subset V$. Let $\epsilon = \min(\epsilon_1, \epsilon_2)$. Then, the open ball $B_{\epsilon}(p)$ is contained in both $U$ and $V$, i.e., $B_{\epsilon}(p) \subset U \cap V$. Therefore, for every point $p \in U \cap V$, there exists an $\epsilon > 0$ such that the open ball $B_{\epsilon}(p) \subset U \cap V$. This shows that $U \cap V$ is open.
 \end{solution}
 
 \begin{solution}[(ii)]
+  Consider the metric space $(\R, \metric)$, where $d$ is the standard Euclidean metric. For each $n \in \N$, define
+  \[%
+    U_n = \left(-\frac{1}{n}, \frac{1}{n}\right)
+  .\]%
+  Each $U_n$ is open in $\R$ because it is an open interval. Observe that the sequence of sets is nested, i.e.,
+  \[%
+    U_1 \supset U_2 \supset U_3 \supset \cdots
+  .\]%
+  Now consider their intersection:
+  \[%
+    \bigcap_{n = 1}^\infty U_n = \{0\}
+  .\]%
+  The set $\{0\}$ is not open in $\R$, since for any $\epsilon > 0$, the open ball $B_\epsilon(0) = (-\epsilon, \epsilon)$ contains points other than $0$. Therefore, no open ball centered at $0$ is contained in $\{0\}$.
 \end{solution}
 
 \begin{solution}[(iii)]
-  Let $I$ be an index set, and for each $i \in I$, let $U_i \subset X$ be an open set. We will show that the union $\bigcup_{i \in I} U_i$ is also open.
-
-  Let $p \in \bigcup_{i \in I} U_i$. Then, there exists some index $j \in I$ such that $p \in U_j$. Since $U_j$ is open, there exists an $\epsilon > 0$ such that the open ball $B_{\epsilon}(p) \subset U_j$. Since $U_j \subset \bigcup_{i \in I} U_i$, it follows that $B_{\epsilon}(p) \subset \bigcup_{i \in I} U_i$. Therefore, for every point $p \in \bigcup_{i \in I} U_i$, there exists an $\epsilon > 0$ such that the open ball $B_{\epsilon}(p) \subset \bigcup_{i \in I} U_i$. This shows that $\bigcup_{i \in I} U_i$ is open.
+  Let $I$ be an index set, and for each $i \in I$, let $U_i \subset X$ be an open set. Let $p \in \bigcup_{i \in I} U_i$. Then, there exists some index $j \in I$ such that $p \in U_j$. Since $U_j$ is open, there exists an $\epsilon > 0$ such that the open ball $B_{\epsilon}(p) \subset U_j$. Since $U_j \subset \bigcup_{i \in I} U_i$, it follows that $B_{\epsilon}(p) \subset \bigcup_{i \in I} U_i$. Therefore, for every point $p \in \bigcup_{i \in I} U_i$, there exists an $\epsilon > 0$ such that the open ball $B_{\epsilon}(p) \subset \bigcup_{i \in I} U_i$. This shows that $\bigcup_{i \in I} U_i$ is open.
 \end{solution}
