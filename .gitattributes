@@ -147,3 +147,23 @@ University/Year-1/winter/mth-441/books/abstract-linear-algebra.pdf filter=lfs di
 
 University/Year-1/spring/mth-411/books/complex-variables-and-its-applications.pdf filter=lfs diff=lfs merge=lfs -text
 University/Year-1/spring/mth-433/books/differential-geometry-of-curves-and-surfaces.pdf filter=lfs diff=lfs merge=lfs -text
+
+#######################################################################
+#                                                                     #
+#                         University: Year 2                          #
+#                                                                     #
+#######################################################################
+
+###############
+#  Fall Term  #
+###############
+
+University/Year-2/fall/mth-444/books/a-first-course-in-abstract-algebra.pdf filter=lfs diff=lfs merge=lfs -text
+
+#################
+#  Winter Term  #
+#################
+
+#################
+#  Spring Term  #
+#################
