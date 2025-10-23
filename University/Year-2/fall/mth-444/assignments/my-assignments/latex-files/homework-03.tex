@@ -19,6 +19,11 @@
 \end{problem}
 
 \begin{solution}
+  Re-writing the equation, we have $x + \pi \equiv \pi/2 \pmod{2\pi}$. Subtracting $\pi$ from both sides, we have $x \equiv \pi/2 - \pi$, which simplifies to $x \equiv -\pi/2$. Since we are working in $\R_{2\pi}$, we can add $2\pi$ to $-\pi/2$ to find the equivalent positive solution. Thus, we have
+  \[%
+    x \equiv -\pi/2 + 2\pi \pmod{2\pi} \implies x \equiv 3\pi/2 \pmod{2\pi}
+  .\]%
+  Therefore, the only solution to the equation $x +_{2\pi} \pi = \pi/2$ in $\R_{2\pi}$ is $3\pi/2$.
 \end{solution}
 
 \begin{problem}[3.32]
@@ -26,6 +31,11 @@
 \end{problem}
 
 \begin{solution}
+  Re-writing the equation, we have $3x \equiv 5 \pmod{13}$. To solve for $x$, we need to find the multiplicative inverse of 3 module 13, which is 9, since $3 \times 9 = 27$ and $27 \equiv 1 \pmod{13}$. Multiplying both sides of the equation by 9, we get
+  \[%
+    9 \cdot 3x \equiv 9 \cdot 5 \pmod{13} \implies x \equiv 45 \pmod{13}
+  .\]%
+  Reducing $45$ modulo $13$, we find $45 \equiv 6 \pmod{13}$. Therefore, the only solution to the equation $x +_{13} x +_{13} x = 5$ in $\Z_{13}$ is $x \equiv 6$.
 \end{solution}
 
 \begin{problem}[3.35]
@@ -33,6 +43,20 @@
 \end{problem}
 
 \begin{solution}
+  By definition of $x +_n x$, we have
+  \[%
+    x +_n x = \begin{cases}
+      2x, & \text{if}~0 \le 2x < n \\
+      2x - n, & \text{if}~n \le 2x \ge n
+    \end{cases}
+  .\]%
+  We will consider two cases based on the value of $a$.
+
+  If $0 \le a < n/2$, then in this case, we have $2x \equiv a \pmod{n}$. Since $0 \le a < n/2$, we can solve for $x$ as follows:
+  \[%
+    2x = a + kn \implies x = \frac{a + kn}{2}
+  .\]%
+  For $k = 0$, we have $x = a/2$. For $k = 1$, we have $x = (a + n)/2$. Since $a < n/2$, we have $(a + n)/2 < n$. Thus, both $a/2$ and $(a + n)/2$ are valid solutions in $\Z_n$.
 \end{solution}
 
 \begin{problem}[3.38]
@@ -40,6 +64,28 @@
 \end{problem}
 
 \begin{solution}
+  Let $f : U_7 \to \Z_7$ be an isomorphism such that $f(\zeta) = 4$, where $\zeta = e^{i(2\pi/7)}$. Since $f$ is a group isomorphism, it preserves the group operation. The operation in $U_7$ is multiplication, while in $\Z_7$ it is addition modulo $7$. Therefore, for any integer $m$, we have
+  \[%
+    f(\zeta^m) = f(\underbrace{\zeta \cdot \zeta \cdots \zeta}_{m\text{ times}}) = \underbrace{f(\zeta) +_7 f(\zeta) +_7 \cdots +_7 f(\zeta)}_{m\text{ times}} \equiv 4m \pmod{7}
+  .\]%
+  Because isomorphisms map identity to identity, we also have $f(\zeta^0) = f(1) = 0$.
+  We can now compute $f(\zeta^m)$ for each given value of $m$:
+  \begin{align*}
+    f(\zeta^0) &= 4(0) \equiv 0 \pmod{7} \\
+    f(\zeta^2) &= 4(2) \equiv 8 \equiv 1 \pmod{7} \\
+    f(\zeta^3) &= 4(3) \equiv 12 \equiv 5 \pmod{7} \\
+    f(\zeta^4) &= 4(4) \equiv 16 \equiv 2 \pmod{7} \\
+    f(\zeta^5) &= 4(5) \equiv 20 \equiv 6 \pmod{7} \\
+    f(\zeta^6) &= 4(6) \equiv 24 \equiv 3 \pmod{7}
+  .\end{align*}
+  Hence, under this isomorphism,
+  \[%
+    \begin{array}{c|ccccccc}
+      \zeta^m & 1=\zeta^0 & \zeta & \zeta^2 & \zeta^3 & \zeta^4 & \zeta^5 & \zeta^6 \\ \hline
+      f(\zeta^m) & 0 & 4 & 1 & 5 & 2 & 6 & 3
+    \end{array}
+  .\]%
+  Therefore, each power of $\zeta$ corresponds to a unique element of $\Z_7$ given by $f(\zeta^m) \equiv 4m \pmod{7}$.
 \end{solution}
 
 \begin{problem}[4.10]
@@ -47,6 +93,27 @@
 \end{problem}
 
 \begin{solution}
+  We have the following permutations defined in two-line notation
+  \[%
+    \sigma = \begin{pmatrix}
+      1 & 2 & 3 & 4 & 5 & 6 \\
+      3 & 1 & 4 & 5 & 6 & 2 \\
+    \end{pmatrix},
+    \qquad
+    \tau = \begin{pmatrix}
+      1 & 2 & 3 & 4 & 5 & 6 \\
+      2 & 4 & 1 & 3 & 6 & 5 \\
+    \end{pmatrix},
+    \qquad
+    \mu = \begin{pmatrix}
+      1 & 2 & 3 & 4 & 5 & 6 \\
+      5 & 2 & 4 & 3 & 1 & 6 \\
+    \end{pmatrix}
+  .\]%
+  Tracking the orbits for $\sigma$, we find $1 \mapsto 3 \mapsto 4 \mapsto 5 \mapsto 6 \mapsto 2 \mapsto 1$. Thus, in disjoint cycle notation, we have $\sigma = (1\, 3\, 4\, 5\, 6\, 2)$. For $\tau$, tracking the orbits, we find $1 \mapsto 2 \mapsto 4 \mapsto 3 \mapsto 1$ and $5 \mapsto 6 \mapsto 5$. Thus, in disjoint cycle notation, we have $\tau = (1\, 2\, 4\, 3)(5\, 6)$. For $\mu$, tracking the orbits, we find $1 \mapsto 5 \mapsto 1$, $3 \mapsto 4 \mapsto 3$, and 2 and 6 are fixed points. Thus, in disjoint cycle notation, we have $\mu = (1\, 5)(3\, 4)$. Therefore, the permutations in disjoint cycle notation are
+  \[%
+    \sigma = (1\, 3\, 4\, 5\, 6\, 2), \quad \tau = (1\, 2\, 4\, 3)(5\, 6), \quad \mu = (1\, 5)(3\, 4)
+  .\qedhere\]%
 \end{solution}
 
 \begin{problem}[4.12]
@@ -119,16 +186,66 @@
 \end{solution}
 
 \begin{problem}[4.14]
-  Write the group table for $D_3$. Compare the group tables for $D_3$ and $S_5$. Are the groups isomorphic?
-
-  Let $A$ be a set and let $\sigma \in S_A$. For a fixed $a \in A$, the set
-  \[%
-    \mathcal{O}_{a,\sigma} = \{\sigma^n(a) \mid n \in \Z\}
-  ,\]%
-  is the \emph{orbit} of a under $\sigma$. In Exercises 15 through 17, find the orbit of 1 under the permutation defined prior to Exercise 1.
+  Write the group table for $D_3$. Compare the group tables for $D_3$ and $S_3$. Are the groups isomorphic?
 \end{problem}
 
 \begin{solution}
+  Writing out the group table for $D_3$, we have
+  \begin{center}
+    \begin{tabular}{c|cccccc}
+      $D_3$ & $e$ & $r$ & $r^2$ & $s$ & $sr$ & $sr^2$ \\
+      \hline
+      $e$   & $e$ & $r$ & $r^2$ & $s$ & $sr$ & $sr^2$ \\
+      $r$   & $r$ & $r^2$ & $rr^2$ & $rs$ & $r(sr)$ & $r(sr^2)$ \\
+      $r^2$ & $r^2$ & $r^2r$ & $r^2r^2$ & $r^2s$ & $r^2(sr)$ & $r^2(sr^2)$ \\
+      $s$   & $s$ & $sr$ & $sr^2$ & $ss$ & $s(sr)$ & $s(sr^2)$ \\
+      $sr$  & $sr$ & $(sr)r$ & $(sr)r^2$ & $(sr)s$ & $(sr)(sr)$ & $(sr)(sr^2)$ \\
+      $sr^2$& $sr^2$ & $(sr^2)r$ & $(sr^2)r^2$ & $(sr^2)s$ & $(sr^2)(sr)$ & $(sr^2)(sr^2)$ \\
+    \end{tabular}
+  \end{center}
+  Since $D_n = \bra{r, s \mid r^n = e = s^2~\text{and}~rs = sr^{n-1}}$, we can fill in the rest of the table using these relations.
+
+  Firstly, let's show, with induction that $r^ms = sr^{n-m}$ for all integers $0 \le m \le n$.
+  For the base case, when $m = 0$, we have $r^0s = s = sr^n$ since $r^n = e$. Now, assume that for some $k$ with $0 \le k < n$, we have $r^ks = sr^{n-k}$. Then, for $m = k + 1$, we have
+  \[%
+    r^{k+1}s = r(r^ks) = r(sr^{n-k}) = (rs)r^{n-k}
+  .\]%
+  Using the relation $rs = sr^{n-1}$, we get
+  \[%
+    (rs)r^{n-k} = (sr^{n-1})r^{n-k} = sr^{(n-1)+(n-k)} = sr^{2n - (k+1)} \equiv sr^{n-(k+1)} \pmod{n}
+  .\]%
+  Thus, by induction, we have $r^ms = sr^{n-m}$ for all integers $0 \le m \le n$.
+
+  Now, using that relation, we can simplify the entries in the group table. Notice that $rr^2 = e = r^2r$ and $ss = e = s^2$. Also, $(sr)(sr) = s(rs)r = ssr^2r = ee = e$. A similar computation shows that $(sr^2)(sr^2) = e$. Continuing, we have $(sr)(sr^2) = s(rs)r^2 = ssr^2r^2 = r$ and $(sr^2)(sr) = s(r^2s)r = ssr r = r^2$. For $(sr^2)s = s(r^2s) = ssr = r$. Similarly, $(sr)s = s(rs) = ssr^2 = r^2$ and $(sr^2)s = s(r^2s) = ssr = r$. Finally, $r(sr) = (rs)r = (sr^2)r = s = s$ and $r(sr^2) = (rs)r^2 = (sr^2)r^2 = sr^4 = sr$.
+
+  Filling in these values, we get the completed group table for $D_3$:
+  \begin{center}
+    \begin{tabular}{c|cccccc}
+      $D_3$ & $e$ & $r$ & $r^2$ & $s$ & $sr$ & $sr^2$ \\
+      \hline
+      $e$   & $e$ & $r$ & $r^2$ & $s$ & $sr$ & $sr^2$ \\
+      $r$   & $r$ & $r^2$ & $e$ & $sr^2$ & $s$ & $sr$ \\
+      $r^2$ & $r^2$ & $e$ & $r$ & $r^2s$ & $sr^2$ & $s$ \\
+      $s$   & $s$ & $sr$ & $sr^2$ & $e$ & $r$ & $r^2$ \\
+      $sr$  & $sr$ & $sr^2$ & $s$ & $r^2$ & $e$ & $r$ \\
+      $sr^2$& $sr^2$ & $s$ & $sr$ & $r$ & $r^2$ & $e$ \\
+    \end{tabular}
+  \end{center}
+
+  The symmetric group $S_3$ has elements, namely, $e$, $(1\ 2)$, $(1\ 3)$, $(2\ 3)$, $(1\ 2\ 3)$, and $(1\ 3\ 2)$ Define a map $\phi : D_3 \to S_3$ by
+  \begin{gather*}
+    \phi(e) = e, \quad \phi(r) = (1\ 2\ 3), \quad \phi(r^2) = (1\ 3\ 2) \\
+    \phi(s)=(2\ 3), \quad \phi(sr)=(1\ 3), \quad \phi(sr^2)=(1\ 2)
+  .\end{gather*}
+  Clearly, $\phi$ is a bijection between the elements of $D_3$ and $S_3$ (both groups have six elements and $\varphi$ is injective on generators). To show that $\phi$ is a homomorphism, we need to verify that $\phi(xy) = \phi(x)\phi(y)$ for all $x, y \in D_3$. This can be checked by comparing the group tables of $D_3$ and $S_3$. For example, consider the product $r \cdot s$ in $D_3$. From the group table, we have $r \cdot s = sr^2$. Applying $\phi$, we get
+  \[%
+    \phi(r \cdot s) = \phi(sr^2) = (1\ 2)
+  .\]%
+  On the other hand, we have
+  \[%
+    \phi(r) \cdot \phi(s) = (1\ 2\ 3) \cdot (2\ 3) = (1\ 2)
+  .\]%
+  Since $\phi(r \cdot s) = \phi(r) \cdot \phi(s)$, the homomorphism property holds for this pair. Similar checks can be performed for all other pairs of elements in $D_3$. Since $\phi$ is a bijection and satisfies the homomorphism property, it is an isomorphism. Therefore, $D_3 \cong S_3$.
 \end{solution}
 
 \begin{problem}[4.32]
@@ -136,6 +253,9 @@
 \end{problem}
 
 \begin{solution}
+  Suppose, for contradiction, that $\sigma \in S_n$ commutes with every $\gamma \in S_n$ but $\sigma \neq \iota$. Then there exists at least one element $a \in \{1, \dots, n\}$ with $\sigma(a) \neq a$. Set $b := \sigma(a)$. Since $n \ge 3$ we can choose $c \in \{1, \dots, n\}$ distinct from both $a$ and $b$. Let $\tau=(b c)$ be the transposition swapping $b$ and $c$ (and fixing all other points). By hypothesis $\sigma$ commutes with $\tau$, so $\sigma \tau = \tau \sigma$. Apply both sides to the element $a$. Because $a \neq b, c$ we have $\tau(a) = a$, hence $(\sigma \tau)(a) = \sigma(\tau(a)) = \sigma(a) = b$. On the other hand, $(\tau \sigma)(a) = \tau(\sigma(a)) = \tau(b) = c$. Thus $b = (\sigma \tau)(a) = (\tau \sigma)(a) = c$, contradicting the choice $b \neq c$.
+
+  This contradiction shows our assumption $\sigma \neq \iota$ was false. Therefore the only permutation that commutes with every element of $S_n$ is the identity $\iota$.
 \end{solution}
 
 \begin{problem}[4.36]
@@ -143,4 +263,13 @@
 \end{problem}
 
 \begin{solution}
+    Let $C_{2n} = \langle x \mid x^{2n} = e \rangle$ be the cyclic group generated by $x$. Clearly $|C_{2n}| = 2n$, and $C_{2n}$ contains an element (namely $x$) of order $2n$.
+
+    Let $D_n = \langle r, s \mid r^n = e = s^2, rs = sr^{n-1} \rangle$ be the dihedral group of the regular $n$-gon. Clearly, $|D_n| = 2n$. The elements split into two types: the powers $r^k$ (the rotations) each have order dividing $n$ and the elements $sr^k$ (the reflections) each have order $2$.
+
+    In particular no element of $D_n$ can have order $2n$ (since every element has order $\le n$ or equal to $2$).
+
+    Suppose, for contradiction, there were an isomorphism $\phi \colon C_{2n} \to D_n$. An isomorphism preserves element orders, so $D_n$ would contain an element of order $2n$ (the image of the generator of $C_{2n}$), contradicting the fact that every element of $D_n$ has order dividing $n$ or equal to $2$. Hence no such isomorphism exists.
+
+    Therefore $C_{2n}$ and $D_n$ are two groups of order $2n$ which are not isomorphic.
 \end{solution}
