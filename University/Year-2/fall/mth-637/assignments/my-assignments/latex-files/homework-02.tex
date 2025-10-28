@@ -1,11 +1,7 @@
 \renewcommand\S{\mathbb{S}}
 
 \begin{problem}
-  Suppose that $M^n$ is a compact smooth $n$-manifold. Show that there exists a smooth map
-  \[%
-    F : M \to \R^k
-  ,\]%
-  for some $k$ such that
+  Suppose that $M^n$ is a compact smooth $n$-manifold. Show that there exists a smooth map $F : M \to \R^k$, for some $k$ such that
   \begin{enumerate}
     \item $F$ is injective at each point,
     \item and
@@ -16,10 +12,16 @@
   \end{enumerate}
 \end{problem}
 
-\begin{solution}[(i)]
-\end{solution}
+\begin{solution}
+  Since $M$ is compact, it emits a finite atlas, say $\{(U_i, \phi_i)\}_{i=1}^r$, where each $\phi_i : U_i \to \R^n$ is a smooth chart.
 
-\begin{solution}[(ii)]
+  Let $\{\rho\}^r_i$ be a smooth partition of unity subordinate to this cover. Define the map $G : M \to \R^N$, where
+  \[%
+    p \mapsto (\rho_1(p)\phi_1(p), \rho_1(p), \rho_2(p)\phi_2(p), \rho_2(p), \cdots, \rho_r(p)\phi_r(p), \rho_r(p))
+  ,\]%
+  where $N = r(n + 1)$. This map is an immersion and is locally injective on $M$.
+
+  Now, view $G(M) \subseteq \R^N$. By the Whitney Embedding Theorem, for a generic linear map $L : \R^N \to \R^{2n}$, the composition $F = L \circ G : M \to \R^{2n}$ is an embedding. Thus, $F$ is injective and $\dd{F}_p$ is injective at each point.
 \end{solution}
 
 \begin{problem}
@@ -27,17 +29,26 @@
   \[%
     X = \left\{f \in L^2[0, 1] \left\vert \int_0^1 f^2 \dx = 1\right\}\right.
   .\]%
-  What makes most sense as to define as
-  \[%
-    T_hX
-  ,\]%
-  for
-  \[%
-    h = \sqrt{3}x
-  .\]%
+  What makes most sense as to define as $T_hX$, for $h = \sqrt{3}x$?
 \end{problem}
 
 \begin{solution}
+  Notice that $X$ is the unit sphere in the Hilbert space $L^2[0, 1]$. Define $F$ such that $F : L^2[0, 1] \to \R$ where
+  \[%
+    F(f) = \int_0^1 f(x)^2 \dx \implies X = F^{-1}(1)
+  .\]%
+  Then, the differential of $F$ at $h$ is given by
+  \[%
+    \dd{F}_h(g) = 2\int_0^1 g(x)h(x) \dx = 2\bra{g, h}_{L^2}
+  .\]%
+  We want the differential to be tangent to $F = 1$, which gives us the condition that $\dd{F}_h(g) = 0$. We first must check that $\sqrt{3}x$ is in $X$
+  \[%
+    \int_0^1 (\sqrt{3}x)^2 \dx = 3\int_0^1 x^2 \dx = 1
+  .\]%
+  Then, $T_hX$ is given by
+  \[%
+    T_hX = \left\{g \in L^2[0, 1] \left\lvert \int_0^1 xg(x) \dx = 0\right\}\right.~\text{or}~\left\{g \in L^2[0, 1] \left\lvert \bra{x, g}_{L^2} = 0\right\}\right.
+  .\qedhere\]%
 \end{solution}
 
 \begin{problem}[3.1]
@@ -45,6 +56,23 @@
 \end{problem}
 
 \begin{solution}
+  Assume $\dd{F}_p$ is the zero map for each $p \in M$. Let $p, q \in M$ be in the same component, and let $\gamma : [0, 1] \to M$ be a smooth curve such that $\gamma(0) = p$ and $\gamma(1) = q$. Then, the composition $F \circ \gamma : [0, 1] \to N$ is a smooth curve in $N$, and its derivative at any $t \in [0, 1]$ is given by
+  \[%
+    (F \circ \gamma)'(t) = \dd{F}_{\gamma(t)}(\gamma'(t)) = 0
+  .\]%
+  Thus, $F \circ \gamma$ is constant, and in particular,
+  \[%
+    F(p) = (F \circ \gamma)(0) = (F \circ \gamma)(1) = F(q)
+  .\]%
+  Therefore, $F$ is constant on each component of $M$.
+
+  Conversely, assume the converse. Let $F$ be constant in each component of $M$. Then, for any vector $v = v^j \pdv{}{x^j}\mid_p~\in T_pM$, we have
+  \[%
+    \dd{F}_p(v) = v^j \left.\pdv{F}{x^j}\right\rvert_p \left.\pdv{}{y^i}\right\rvert_{F(p)} = 0
+  .\]%
+  Thus, $\dd{F}_p$ is the zero map for each $p \in M$.
+
+  Therefore, $\dd{F}_p : T_pM \to T_{F(p)}N$ is the zero map for each $p \in M$ if and only if $F$ is constant on each component of $M$.
 \end{solution}
 
 \begin{problem}[3.4]
@@ -52,6 +80,23 @@
 \end{problem}
 
 \begin{solution}
+  Define the map $\Phi : \S^1 \times \R \to T\S^1$ by
+  \[%
+    \Phi\left((x, y), t\right) = ((x, y), tu_{(x,y)}) = \left((x, y), t(-y, x)\right)
+  .\]%
+  This is well defined since $u_{(x,y)} = (-y, x)$ is a unit tangent vector at the point $(x, y) \in \S^1$. For each fixed $p$, the mapping $t \mapsto tu_p$ is a linear bijection $\R \to T_p\S^1$.
+
+  Let $(p, v) \in T\S^1$. Write $p = (x, y)$. Because $v$ is tangent, $v \cdot p = 0$, so $v$ is a scalar multiple of the tangent direction $u_p$. Thus there exists $t \in \R$ with $v = t u_p$. Then $\Phi((p, t)) = (p, v)$.
+
+  If $\Phi((p, t)) = \Phi((p', t'))$ then the basepoints must match $p = p'$ and $tu_p = t'u_p$. Since $u_p \neq 0$, this forces $t = t'$. So $\Phi$ is injective.
+
+  Thus $\Phi$ is a bijection. Its inverse $\Psi : T\S^1 \to \S^1 \times \R$ is explicitly
+  \[%
+    \Psi((x, y), v) = ((x,y), t),\qquad t = v\cdot u_{(x,y)}
+  .\]%
+  Indeed $v$ lies in the span of $u_p$ so taking the inner product with $u_p$ recovers the scalar $t$.
+
+  Both $\Phi$ and $\Psi$ are given by polynomial (hence smooth) formulas in the coordinates $(x, y, t)$ or $(x, y, v_1, v_2)$. Therefore $\Phi$ and $\Psi$ are smooth and are inverses of each other, so $\Phi$ is a diffeomorphism. Thus, $T\S^1$ is diffeomorphic to $\S^1 \times \R$.
 \end{solution}
 
 \begin{problem}[3.5]
@@ -59,6 +104,23 @@
 \end{problem}
 
 \begin{solution}
+  Define a map $k : \S^1 \to K$ by
+  \[%
+    k(u_1, u_2) = \frac{(u_1, u_2)}{\max(|u_1|, |u_2|)}
+  .\]%
+  This is well-defined, continuous, bijective, and has a continuous inverse $k^{-1} : K \to \S^1$ given by $k^{-1}(y) = y/\|y\|$. Extend this map radially to all of $\R^2$ by defining $F : \R^2 \to \R^2$ as
+  \[%
+    F(0) = 0, \qquad F(r, u) = rk(u)~\text{for}~r > 0~\text{and}~u \in \S^1
+  .\]%
+  Clearly, $F$ is continuous because $k$ is continuous and the radial extension is continuous in polar coordinates and is bijective with inverse
+  \[%
+    F^{-1}(0) = 0, \qquad F^{-1}(y) = \|y\|\, k^{-1}\!\Big(\frac{y}{\|y\|}\Big) \text{ for } y \neq 0,
+  \]%
+  which is continuous. It's also on the circle, $F(u) = k(u) \in K$, so $F(\S^1) = K$.
+
+  Hence $F$ is a homeomorphism of $\R^2$ sending $\S^1$ to $K$. 
+
+  Now, suppose for contradiction, that there exists a diffeomorphism $G : \R^2 \to \R^2$ with $G(\S^1) = K$. Since $\S^1$ is a smooth embedded $1$-manifold in $\R^2$, the image $G(\S^1)$ would also be a smooth embedded $1$-manifold in $\R^2$. However, $K$ has corner points (e.g., $(1,1)$) where no well-defined tangent line exists. A smooth embedded $1$-manifold cannot have such singular points. Therefore, no such diffeomorphism $G$ can exist.
 \end{solution}
 
 \begin{problem}[3.8]
@@ -66,4 +128,5 @@
 \end{problem}
 
 \begin{solution}
+
 \end{solution}

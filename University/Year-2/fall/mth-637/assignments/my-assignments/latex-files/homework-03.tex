@@ -1,0 +1,125 @@
+\renewcommand\S{\mathbb{S}}
+\newcommand\M{\mathcal{M}}
+
+% \begin{problem}[1]
+%   Let $M$ be $\R^2$, and let $x_0 \in \R^2$ and $f \in C^\infty(M)$. Given a metric $g$ we can define a gradient flow for $f$, call this flow $\gamma_{g,x_0}(t)$, which satisfies
+%   \begin{gather*}
+%     \gamma_{g,x_0}(0) = x_0 \\
+%     \odv{}{t} \gamma_{g,x_0}(t) = -\nabla_g f
+%   .\end{gather*}
+%   Suppose we have two different metrics $g_1$ and $g_2$. Let
+%   \begin{align*}
+%     a_1 &= \lim_{t \to \infty} \gamma_{g_1,x_0}(t) \\
+%     a_2 &= \lim_{t \to \infty} \gamma_{g_2,x_0}(t)
+%   .\end{align*}
+%   Give an example of a function $f$ and two metrics such that $a_1$ and $a_2$ exist, but $a_1 \neq a_2$.
+% \end{problem}
+
+% \begin{solution}
+% \end{solution}
+
+% \begin{problem}[2]
+%   Show that every smooth manifold admits a Riemmanian metric.
+% \end{problem}
+
+% \begin{solution}
+% \end{solution}
+
+% \begin{problem}[3]
+%   Consider the function on $L^2(\R)$
+%   \[%
+%     F(u) = \int_\R u^2 \dx
+%   .\]%
+%   Given a function $u_0 \in L^2$, explicitly write down the gradient flow for $F$ starting at $u_0$.
+% \end{problem}
+
+% \begin{solution}
+%   Let $H = L^2(\R)$ and $F(u) = \int_\R u^2 \dx$. Fix $u, v \in L^2(\R)$ and compute
+%   \[%
+%     DF(u)[v] = \odv{}{\epsilon} \bigg|_{\epsilon=0} F(u + \epsilon v) = \odv{}{\epsilon} \bigg|_{\epsilon=0} \int_\R (u + \epsilon v)^2 \dx = \int_\R 2u v \dx = 2\bra{u, v}_{L^2}
+%   .\]%
+%   Therefore, $DF(u)$ is a linear functional that sends $v \mapsto 2\bra{u, v}_{L^2}$.
+
+%   By the Riesz representation theorem, there exists a unique element $\nabla_{L^2} F(u) \in L^2(\R)$ such that
+%   \[%
+%     DF(u)[v] = \bra{\nabla_{L^2} F(u), v}_{L^2}~\text{for all}~v \in L^2(\R)
+%   ,\]%
+%   which is just simply $\nabla_{L^2} F(u) = 2u$.
+
+%   Therefore, the gradient flow starting at $u_0$ is given by the ODE
+%   \begin{gather*}
+%     \gamma_{u_0}(0) = u_0 \\
+%     \odv{}{t} \gamma_{u_0}(t) = -\nabla_{L^2} F(\gamma_{u_0}(t)) = -2 \gamma_{u_0}(t)
+%   .\end{gather*}
+%   This is a simple ODE with solution
+%   \[%
+%     \gamma_{u_0}(t) = u_0 e^{-2t}
+%   .\]%
+
+%   Now, we can verify that this is indeed the gradient flow:
+%   \[%
+%     \odv{}{t} F(u(t)) = \bra{\nabla F(u(t)), \dot u(t)}_{L^2} = -\|\nabla F(u(t))\|_{L^2}^2 = -4\|u(t)\|_{L^2}^2 = -4F(u(t)) \le 0
+%   ,\]%
+%   which shows that $F$ is decreasing along the flow.
+% \end{solution}
+
+\begin{problem}[4]
+  Let
+  \[%
+    \M = \{F : \S^1 \to \R^2, F~\text{is a smooth immersion}\}
+  .\]%
+  \begin{enumerate}
+    \item Given $F$ in $\M$, show that there is a metric on the tangent space defined as follows
+      \[%
+        g_F(V, W) = \int \bra{V(\theta), W(\theta)} \left\lvert \odv{F}{\theta} \right\rvert \d\theta
+      ,\]%
+      where $\bra{\cdot, \cdot}$ is the standard inner product on $\R^2$ (In this case, $V$, $W$ are smooth functions $\S^1 : \R^2$ so that there is a path defined by
+      \[%
+        \gamma(t) = F(\theta) + tV(\theta)
+      ,\]%
+      which gives a velocity vector
+      \[%
+        \odv{}{t} \gamma(0) = V(\theta)
+      .\]%
+
+    \item Show that given any path $\gamma(t)$ in $\M$, that is, a path of maps
+      \[%
+        F(\theta, t) \to \R^2
+      ,\]%
+      there is (at least for small $t$) a family of diffeomorphisms $\Phi_t : \S^1 \times (-\epsilon, \epsilon) \to \S^1$ such that
+      \[%
+        \odv{}{t} \dd{F}(\Phi(\theta, t), t) \perp \odv{F}{\theta}~\text{for all}~\theta~\text{when}~t = 0
+      ,\]%
+      and $\Phi(\theta, 0) = \theta$.
+
+    \item Consider the arclength function on $\M$ given by
+      \[%
+        L(F) = \int_{\S^1} \left\lvert \odv{F}{\theta} \right\rvert \d\theta
+      .\]%
+      Assume that $F$ is a constant speed map,
+      \[%
+        \left\lvert \odv{F}{\theta} \right\rvert = C~\text{for some constant}~C
+      ,\]%
+      and $V$ is a normal tangent vector,
+      \[%
+        V \perp \odv{F}{\theta}~\text{for all}~\theta
+      .\]%
+      Show that
+      \[%
+        VL(F) = -\int \bra{\odv[2]{F}{s}, V} \dd{\theta}
+      ,\]%
+      where $s$ is the arclength parameter: Hint: you may want to use the fact that
+      \[%
+        \odv{}{\theta} \bra{\odv{F}{\theta}, \odv{F}{t}} = 0 = \bra{\odv[2]{F}{\theta}, \odv{F}{t}} + \bra{\odv{F}{\theta}, \odv{}{\theta}\odv{F}{t}}
+      .\]%
+  \end{enumerate}
+\end{problem}
+
+\begin{solution}[(i)]
+\end{solution}
+
+\begin{solution}[(ii)]
+\end{solution}
+
+\begin{solution}[(iii)]
+\end{solution}
