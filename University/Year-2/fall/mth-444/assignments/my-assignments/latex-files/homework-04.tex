@@ -50,6 +50,11 @@
 \end{problem}
 
 \begin{solution}
+  Define the set $B_S = \{\sigma \in S_A \mid \sigma(b) = b\}$. It's clearly non-empty, since the identity permutation $e$ is in $B_S$, as $e(b) = b$. Notice that, for any two permutations $\sigma_1, \sigma_2 \in B_S$, we have
+  \[%
+    (\sigma_1 \circ \sigma_2)(b) = \sigma_1(\sigma_2(b)) = \sigma_1(b) = b
+  .\]%
+  Thus, the composition $\sigma_1 \circ \sigma_2$ is also in $B_S$, showing closure under the group operation. Finally, if $\sigma \in B_S$, then $\sigma \in S_A$. Since $S_A$ is a group, the inverse permutation $\sigma^{-1}$ also exists in $S_A$. Moreover, $\sigma^{-1}(b) = b$. Thus, $\sigma^{-1} \in B_S$. Since $B_S$ is closed under the group operation, contains the identity element, and contains inverses, we conclude that $B_S$ is a subgroup of $S_A$ under the induced operation.
 \end{solution}
 
 \begin{problem}[5.42]
@@ -57,6 +62,11 @@
 \end{problem}
 
 \begin{solution}
+  Define the set $B_S = \{\sigma \in S_A \mid \sigma(b) = B\}$. Again, it's clearly non-empty, since the identity permutation $e$ is in $B_S$, as $e(b) = b \in B$. However, consider two permutations $\sigma_1, \sigma_2 \in B_S$. We have
+  \[%
+    (\sigma_1 \circ \sigma_2)(b) = \sigma_1(\sigma_2(b)) = \sigma_1(B)
+  ,\]%
+  which may not equal $B$ unless $\sigma_1$ maps all elements of $B$ back to $B$. Thus, the composition $\sigma_1 \circ \sigma_2$ may not be in $B_S$, showing that $B_S$ is not closed under the group operation. Therefore, we conclude that $B_S$ is not a subgroup of $S_A$ under the induced operation.
 \end{solution}
 
 \begin{problem}[5.45]
@@ -64,6 +74,21 @@
 \end{problem}
 
 \begin{solution}
+  Let $H$ be a subgroup of $G$. Since $H$ is a subgroup of $G$, it contains the identity element $e$. Therefore, $\Phi(e_G) = e'$ is in $\Phi[H]$, so $\Phi[H]$ is non-empty.
+
+  Let $\Phi(h_1), \Phi(h_2) \in \Phi[H]$ for some $h_1, h_2 \in H$. Since $\Phi$ is an isomorphism, we have
+  \[%
+    \Phi(h_1 * h_2) = \Phi(h_1) *' \Phi(h_2)
+  .\]%
+  We have $h_1 * h_2 \in H$ because $H$ is a subgroup of $G$. Thus, $\Phi(h_1 * h_2) \in \Phi[H]$. Therefore, $\Phi[H]$ is closed under the operation $*'$.
+
+  Let $\Phi(h) \in \Phi[H]$ for some $h \in H$. Since $\Phi$ is an isomorphism, we have
+  \[%
+    \Phi(h^{-1}) = (\Phi(h))^{-1}
+  .\]%
+  Since $H$ is a subgroup, $h^{-1} \in H$. Thus, $\Phi(h^{-1}) \in \Phi[H]$. Therefore, $\Phi[H]$ contains inverses.
+
+  Hence, $\Phi[H]$ is non-empty, closed under the operation $*'$, and contains inverses. Thus, $\Phi[H]$ is a subgroup of $G'$.
 \end{solution}
 
 \begin{problem}[5.46]
@@ -71,6 +96,15 @@
 \end{problem}
 
 \begin{solution}
+  Since $\bra{a} = G$, every element $g \in G$ can be expressed as $g = a^n$ for some integer $n$. Consider the element $\Phi(a) \in G'$. We will show that $\bra{\Phi(a)} = G'$.
+
+  Let $g' \in G'$. Since $\Phi$ is an isomorphism, there exists a unique $g \in G$ such that $\Phi(g) = g'$. Since $g \in G$, we can write $g = a^n$ for some integer $n$. Therefore,
+  \[%
+    g' = \Phi(g) = \Phi(a^n) = (\Phi(a))^n
+  .\]%
+  This shows that every element $g' \in G'$ can be expressed as a power of $\Phi(a)$.
+
+  Thus, $\bra{\Phi(a)} = G'$, and hence $G'$ is cyclic.
 \end{solution}
 
 \begin{problem}[5.48]
@@ -85,6 +119,17 @@
 \end{problem}
 
 \begin{solution}
+  Let $H = \{x \in G \mid x^2 = e\}$. The identity element $e$ of $G$ satisfies $e^2 = e$, so $e \in H$. Thus, $H$ is non-empty. Let $x, y \in H$. Then $x^2 = e$ and $y^2 = e$. We have
+  \[%
+    (xy)^2 = xyxy = x(yx)y = x(xy)y = (xx)(yy) = e \cdot e = e
+  .\]%
+  Thus, $xy \in H$. Let $x \in H$. We have
+  \[%
+    (x^{-1})^2 = x^{-1}x^{-1} = (xx)^{-1} = e^{-1} = e
+  .\]%
+  Thus, $x^{-1} \in H$.
+
+  Since $H$ is non-empty, closed under the group operation, and contains inverses, we conclude that $H$ is a subgroup of $G$.
 \end{solution}
 
 \begin{problem}[5.55]

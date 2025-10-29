@@ -327,32 +327,67 @@
 \end{solution}
 
 \begin{problem}[2.3]
-  Let $(X, \metric)$ be a metric space and $A \subset X$. Use Proposition 2.6 to prove that
-  \[%
-    \partial A = \partial(X \setminus A) = \overline A \cap \overline{X \setminus A}
-  .\]%
+  Prove the analogue of Proposition 2.7 for closures, without appealing to Proposition 2.6.
+  \begin{enumerate}
+    \item If $A \subset B$, then $\bar{A} \subset \bar{B}$.
+
+    \item $\bar{A} \cup \bar{B} = \overline{A \cup B}$.
+
+    \item $\overline{A \cap B} \subset \bar{A} \cap \bar{B}$
+
+      Give an example to show that the inclusion can be strict.
+
+    \item $\bar{\bar{A}} = \bar{A}$.
+  \end{enumerate}
 \end{problem}
 
-\begin{solution}
-  Assume $x \in \partial A$. By definition, that means $x \in \overline A \setminus \sint A$. Then, $x \in \overline A$ and $x \notin \sint A$. By Proposition~2.6, we have $x \notin \sint A$ if and only if $x \in \overline{X \setminus A}$. Therefore, $x \in \overline A$ and $x \in \overline{X \setminus A}$, which implies
-  \[%
-    x \in \overline A \cap \overline{X \setminus A}
-  .\]%
-  Hence, $\partial A \subset \overline A \cap \overline{X \setminus A}$.
+\begin{solution}[(i)]
+  Assume $A \subset B$. Let $p \in \bar{A}$. By definition of closure, for every $r > 0$, the open ball $B_r(p)$ intersects $A$. Since $A \subset B$, it follows that $B_r(p)$ also intersects $B$. Therefore, for every $r > 0$, the open ball $B_r(p)$ intersects $B$, which means $p \in \bar{B}$. Hence, $\bar{A} \subset \bar{B}$.
+\end{solution}
 
-  Now, for the converse. Assume $x \in \overline A \cap \overline{X \setminus A}$. Then, $x \in \overline A$ and $x \in \overline{X \setminus A}$. By Proposition~2.6 again, $x \in \overline{X \setminus A}$ if and only if $x \notin \sint A$. Therefore, $x \in \overline A$ and $x \notin \sint A$, which means $x \in \partial A$. Hence,
+\begin{solution}[(ii)]
+  Assume $p \in \bar{A} \cup \bar{B}$. Without loss of generality, assume $p \in \bar{A}$. By definition of closure, for every $r > 0$, the open ball $B_r(p)$ intersects $A$. Since $A \subset A \cup B$, it follows that $B_r(p)$ also intersects $A \cup B$. Therefore, for every $r > 0$, the open ball $B_r(p)$ intersects $A \cup B$, which means $p \in \overline{A \cup B}$. Hence, $\bar{A} \cup \bar{B} \subset \overline{A \cup B}$.
+
+  Now, let $p \in \overline{A \cup B}$. By definition of closure, for every $r > 0$, the open ball $B_r(p)$ intersects $A \cup B$. This means that for each $r > 0$, there exists a point in either $A$ or $B$ that lies within the ball. If there are infinitely many such points in $A$, then $p$ is a limit point of $A$ and thus belongs to $\bar{A}$. Similarly, if there are infinitely many such points in $B$, then $p$ is a limit point of $B$ and thus belongs to $\bar{B}$. In either case, we have $p \in \bar{A} \cup \bar{B}$. Hence, $\overline{A \cup B} \subset \bar{A} \cup \bar{B}$.
+
+  Combining both inclusions, we conclude that $\bar{A} \cup \bar{B} = \overline{A \cup B}$.
+\end{solution}
+
+\begin{solution}[(iii)]
+  Assume $p \in \overline{A \cap B}$. By definition of closure, for every $r > 0$, the open ball $B_r(p)$ intersects $A \cap B$. This means that for each $r > 0$, there exists a point in both $A$ and $B$ that lies within the ball. Therefore, for every $r > 0$, the open ball $B_r(p)$ intersects $A$ and also intersects $B$. This implies that $p \in \bar{A}$ and $p \in \bar{B}$. Hence, $p \in \bar{A} \cap \bar{B}$, and we conclude that
   \[%
-    \overline A \cap \overline{X \setminus A} \subset \partial A
+    \overline{A \cap B} \subset \bar{A} \cap \bar{B}
   .\]%
 
-  Combining both inclusions, we conclude that
+  To show that the inclusion can be strict, consider the metric space $(\R, \metric)$ with the usual metric. Let
   \[%
-    \partial A = \overline A \cap \overline{X \setminus A}
+    A = (0, 1) \quad\text{and}\quad B = (1, 2)
   .\]%
-  Finally, since the expression is symmetric in $A$ and $X \setminus A$, it follows that
+  Then,
   \[%
-    \partial A = \partial(X \setminus A)
-  .\qedhere\]%
+    A \cap B = (0, 1) \cap (1, 2) = \emptyset
+  ,\]%
+  so
+  \[%
+    \overline{A \cap B} = \overline{\emptyset} = \emptyset
+  .\]%
+  However,
+  \[%
+    \bar{A} = [0, 1] \quad\text{and}\quad \bar{B} = [1, 2]
+  ,\]%
+  so
+  \[%
+    \bar{A} \cap \bar{B} = [0, 1] \cap [1, 2] = \{1\}
+  .\]%
+  Thus, $\overline{A \cap B} = \emptyset \subsetneq \{1\} = \bar{A} \cap \bar{B}$.
+\end{solution}
+
+\begin{solution}[(iv)]
+  Assume $p \in \bar{\bar{A}}$. By definition of closure, for every $r > 0$, the open ball $B_r(p)$ intersects $\bar{A}$. This means that for each $r > 0$, there exists a point in $\bar{A}$ that lies within the ball. Since $\bar{A}$ is the closure of $A$, it follows that for every $r > 0$, the open ball $B_r(p)$ also intersects $A$. Therefore, $p \in \bar{A}$. Hence, $\bar{\bar{A}} \subset \bar{A}$.
+
+  Now, let $p \in \bar{A}$. By definition of closure, for every $r > 0$, the open ball $B_r(p)$ intersects $A$. Since $A \subset \bar{A}$, it follows that for every $r > 0$, the open ball $B_r(p)$ also intersects $\bar{A}$. Therefore, $p \in \bar{\bar{A}}$. Hence, $\bar{A} \subset \bar{\bar{A}}$.
+
+  Combining both inclusions, we conclude that $\bar{\bar{A}} = \bar{A}$.
 \end{solution}
 
 \begin{problem}[2.6]
