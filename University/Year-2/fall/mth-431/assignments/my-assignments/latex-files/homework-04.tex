@@ -13,6 +13,11 @@
 \end{problem}
 
 \begin{solution}
+  Assume $p_n \to \ell$. Each point $1/n$ is isolated in $W$, meaning that there exists $r > 0$ such that $B_W(1/n, r) = \{1/n\}$. Hence for any $\epsilon > 0$ choose $\delta = r$. Then whenever $\metric_W(x, 1/n) < \delta$ we have $x = 1/n$ and therefore $\metric_X(f(x), f(1/n)) = 0 < \epsilon$. Thus $f$ is continuous at each $1/n$. Let $\epsilon > 0$. Since $p_n \to \ell$, there exists $N$ such that for all $n \ge N$ we have $\metric_X(p_n, \ell) < \epsilon$. In $W$ the open interval $ (-1/(N + 1), 1/(N + 1)) \cap W$ is an open neighborhood of $0$ containing $0$ and all points $1/n$ with $n \ge N + 1$. Choose $\delta = 1/(N + 1)$. Then if $x \in W$ and $\metric_W(x, 0) < \delta$, necessarily $x = 0$ or $x = 1/n$ with $n \ge N + 1$. In either case $\metric_X(f(x), f(0)) = \metric_X(p_n, \ell) < \epsilon$ (when $x = 0$ the distance is $0$). Thus $f$ is continuous at $0$. Combining the two parts, $f$ is continuous on all of $W$.
+
+  Conversely, assume $f$ is continuous. Let $\epsilon > 0$. By continuity of $f$ at $0$ there exists $\delta > 0$ such that whenever $x \in W$ and $\metric_W(x, 0) < \delta$ we have $\metric_X(f(x), f(0)) < \epsilon$. Choose $N$ with $1/N < \delta$. Then for every $n\ge N$ we have $\metric_W(1/n, 0) = 1/n < \delta$, so $\metric_X(p_n, \ell) = \metric_X(f(1/n), f(0)) < \epsilon$. Hence $p_n \to \ell$.
+
+  Therefore $p_n \to \ell$ if and only if $f$ is continuous.
 \end{solution}
 
 \begin{problem}[3.4]
@@ -22,13 +27,31 @@
 \end{problem}
 
 \begin{solution}
+  Let $f_n \in A$ and $f_n \to f$ in the sup norm. Fix $s \in S$. For every $n$ we have $f_n(s) = 0$. Hence
+  \[%
+    |f(s)| = \lim_{n \to \infty} |f(s) - f_n(s)| \le \lim_{n \to \infty} \metric_\infty(f, f_n) = 0
+  ,\]%
+  so $f(s) = 0$. As $s\in S$ was arbitrary, $f$ vanishes on $S$, i.e. $f\in A$. Therefore $A$ is closed.
 \end{solution}
 
 \begin{problem}[4.1]
-  Prove that the sequence of piecewise-linear functions $f_1, f_2, f_3, \cdots \in C([0, 1])$  introduced at the beginning of the section is Cauchy in the $L^1$ metric.
+  Prove that the sequence of piecewise-linear functions $f_1, f_2, f_3, \cdots \in C([0, 1])$ introduced at the beginning of the section is Cauchy in the $L^1$ metric.
 \end{problem}
 
 \begin{solution}
+  Let $f_n$ be the piecewise-linear function with $f_n(0) = 0$, $f_n(1/n) = 1$,  and $f_n(1) = 1$. Let $g \equiv 1$. For each $n$,
+  \[%
+    \metric_1(f_n, g) = \int_0^1 |f_n(x) - 1| \dx = \frac{1}{2n}
+  .\]%
+  Hence for $m, n \ge `1$,
+  \[%
+    \metric_1(f_m, f_n) \le \metric_1(f_m, g) + \metric_1(g, f_n) = \frac{1}{2m} + \frac{1}{2n} \le \frac{1}{\min\{m, n\}}
+  .\]%
+  Given $\epsilon > 0$ choose $N > 1/\epsilon$. Then for $m, n \ge N$,
+  \[%
+    \metric_1(f_m,f_n)\le\frac{1}{\min\{m,n\}}\le\frac{1}{N} < \epsilon
+  .\]%
+  Thus $(f_n)$ is Cauchy in the $L^1$ metric.
 \end{solution}
 
 \begin{problem}[4.3]
@@ -38,4 +61,9 @@
 \end{problem}
 
 \begin{solution}
+  Since $(p_n)$ is Cauchy, pick $\epsilon = 1$. Then there exists $N$ such that for all $m, n \ge N$, $\metric(p_m, p_n) < 1$. Fix $q := p_N$ and define
+  \[%
+    R := \max\left\{1, \max_{1 \le k \le N - 1} \metric(p_N, p_k)\right\}
+  .\]%
+  If $n \ge N$ then $\metric(p_n, q) = \metric(p_n, p_N) < 1 \le R$. If $n < N$ then by definition $\metric(p_n, q) = \metric(p_n, p_N) \le R$. Hence for every $n$ we have $\metric(p_n, q) \le R$, so $p_n \in B_R(q)$. Thus $(p_n)$ is bounded.
 \end{solution}
