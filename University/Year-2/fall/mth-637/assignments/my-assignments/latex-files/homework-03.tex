@@ -16,6 +16,29 @@
 \end{problem}
 
 \begin{solution}
+  We can consider the function
+  \[%
+    f(x, y) = (x^2 + y^2 - 1)^2 + (x - 1)^2
+  .\]%
+  This function has two local minima: one at $(1, 0)$ and another at approximately $(-0.5, 0)$. Now, we can define two different metrics on $\R^2$:
+  \[%
+    g_1 = \begin{pmatrix}
+      1 & 0 \\
+      0 & 1
+    \end{pmatrix}, \quad g_2 = \begin{pmatrix}
+      10 & 0 \\
+      0 & 1
+    \end{pmatrix}
+  .\]%
+  The first metric $g_1$ is the standard Euclidean metric, while the second metric $g_2$ stretches the $x$-direction by a factor of 10. Now, let's consider the gradient flows starting from the point $x_0 = (0, 0)$. Under the metric $g_1$, the gradient flow will move towards the local minimum at $(1, 0)$, so we have
+  \[%
+    a_1 = (1, 0)
+  .\]%
+  On the other hand, under the metric $g_2$, the gradient flow will be influenced more heavily in the $x$-direction, causing it to move towards the local minimum at approximately $(-0.5, 0)$. Thus, we have
+  \[%
+    a_2 \approx (-0.5, 0)
+  .\]%
+  Therefore, we have constructed a function $f$ and two metrics $g_1$ and $g_2$ such that the limits of the gradient flows starting from the same point $x_0$ are different $a_1 \neq a_2$.
 \end{solution}
 
 \begin{problem}[2]
@@ -23,6 +46,15 @@
 \end{problem}
 
 \begin{solution}
+  Assume that $M$ is a smooth manifold. By definition, $M$ is locally diffeomorphic to $\R^n$. Therefore, for each point $p \in M$, there exists an open neighborhood $U_p$ of $p$ and a diffeomorphism $\phi_p : U_p \to V_p \subset \R^n$. Since $\R^n$ has a standard Euclidean metric $g_{\text{std}}$, we can pull back this metric to $U_p$ via the diffeomorphism $\phi_p$. Specifically, we define a metric $g_p$ on $U_p$ by
+  \[%
+    g_p(X, Y) = g_{\text{std}}(D\phi_p(X), D\phi_p(Y))
+  ,\]%
+  for any tangent vectors $X, Y \in T_q M$ with $q \in U_p$. Now, the collection $\{U_p\}_{p \in M}$ forms an open cover of $M$. Since $M$ is a smooth manifold, it is paracompact, which means that there exists a partition of unity subordinate to this open cover. Let $\{\psi_p\}_{p \in M}$ be such a partition of unity, where each $\psi_p : M \to [0, 1]$ is a smooth function with support contained in $U_p$ and $\sum_{p \in M} \psi_p(q) = 1$ for all $q \in M$. We can now define a global Riemannian metric
+  \[%
+    g(X, Y) = \sum_{p \in M} \psi_p(q) g_p(X, Y)
+  ,\]%
+  for any tangent vectors $X, Y \in T_q M$. This metric $g$ is smooth because it is a finite sum of smooth functions (due to the local finiteness of the partition of unity) and is positive-definite since each $g_p$ is positive-definite and the weights $\psi_p(q)$ are non-negative and sum to 1. Therefore, we have constructed a Riemannian metric on the smooth manifold $M$. Thus, every smooth manifold admits a Riemannian metric.
 \end{solution}
 
 \begin{problem}[3]
