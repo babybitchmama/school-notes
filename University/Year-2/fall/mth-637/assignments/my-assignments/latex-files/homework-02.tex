@@ -128,5 +128,39 @@
 \end{problem}
 
 \begin{solution}
+  Let $\gamma_1$ and $\gamma_2$ be two smooth curves starting at $p$ such that $\gamma_1 \sim \gamma_2$. By definition, this means that for every smooth real-valued function $f$ defined in a neighborhood of $p$, we have
+  \[%
+    (f \circ \gamma_1)'(0) = (f \circ \gamma_2)'(0)
+  .\]%
+  The derivative of the composition can be expressed using the chain rule:
+  \[%
+    (f \circ \gamma_i)'(0) = \dd{f}_p(\gamma_i'(0)) \quad \text{for } i = 1, 2
+  .\]%
+  Therefore, we have
+  \[%
+    \dd{f}_p(\gamma_1'(0)) = \dd{f}_p(\gamma_2'(0))
+  .\]%
+  Since this holds for all smooth functions $f$, it follows that $\gamma_1'(0) = \gamma_2'(0)$. Thus, the map $\Psi$ is well defined.
 
+  To show that $\Psi$ is bijective, we first prove injectivity. Suppose $\Psi[\gamma_1] = \Psi[\gamma_2]$. This means that $\gamma_1'(0) = \gamma_2'(0)$. For any smooth function $f$ defined in a neighborhood of $p$, we have
+  \[%
+    (f \circ \gamma_1)'(0) = \dd{f}_p(\gamma_1'(0)) = \dd{f}_p(\gamma_2'(0)) = (f \circ \gamma_2)'(0)
+  .\]%
+  Thus, $\gamma_1 \sim \gamma_2$, and hence $[\gamma_1] = [\gamma_2]$. Therefore, $\Psi$ is injective.
+
+  Next, we prove surjectivity. Let $v \in T_pM$. We need to find a smooth curve $\gamma$ starting at $p$ such that $\gamma'(0) = v$. Choose a coordinate chart $(U, \phi)$ around $p$ such that $\phi(p) = 0$. In these coordinates, we can define a smooth curve $\tilde{\gamma} : (-\epsilon, \epsilon) \to \R^n$ by
+  \[%
+    \tilde{\gamma}(t) = tv
+  .\]%
+  Then, we can define $\gamma : (-\epsilon, \epsilon) \to M$ by
+  \[%
+    \gamma(t) = \phi^{-1}(\tilde{\gamma}(t))
+  .\]%
+  This curve is smooth, starts at $p$, and its derivative at $0$ is
+  \[%
+    \gamma'(0) = \dd{\phi^{-1}}_0(v) = v
+  .\]%
+  Thus, $\Psi[\gamma] = v$, proving that $\Psi$ is surjective.
+
+  Since $\Psi$ is both injective and surjective, it is a bijection. Therefore, the map $\Psi : \mathcal{V}_pM \to T_pM$ defined by $\Psi[\gamma] = \gamma'(0)$ is well defined and bijective.
 \end{solution}
