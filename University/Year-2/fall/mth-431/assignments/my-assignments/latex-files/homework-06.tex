@@ -7,26 +7,67 @@
 \end{problem}
 
 \begin{solution}[(i)]
+  For $f(x) = x^2$ we have:
+  \begin{gather*}
+    f([-1,1]) = [0,1], \quad f([-1,1)) = [0,1], \quad f((-1,1)) = [0,1), \quad f([0,1]) = [0,1] \\
+    f([0,1)) = [0,1), \quad f((0,1)) = (0,1), \quad f(\{-1\}) = \{1\}, \quad f(\{0\}) = \{0\}, \quad f(\{1\}) = \{1\}
+  .\qedhere\end{gather*}
 \end{solution}
 
 \begin{solution}[(ii)]
+  Let $f : X \to Y$ and let $A, B \subset X$.
+
+  If $A \subset B$, then for every $x \in A$ we have $x \in B$. Hence $f(x) \in f(B)$ for all $x \in A$, so $f(A) \subset f(B)$.
+
+  For the union,
+  \[%
+    f(A \cup B) = \{f(x) \mid x \in A \cup B\} = \{f(x) \mid x \in A\} \cup \{f(x) : x \in B\} = f(A) \cup f(B)
+  .\]%
+
+  For the intersection, if $x \in A \cap B$ then $x \in A$ and $x \in B$, hence $f(x) \in f(A)$ and $f(x) \in f(B)$. Therefore $f(A \cap B) \subset f(A) \cap f(B)$.
+
+  Equality doesn't have to hold. Take, for instance, $f : \R \to \R$ be given by $f(x) = x^2$, and $A = \{-1\}$, $B = \{1\}$. Then, we have that $A \cap B = \emptyset$. Therefore, $f(A \cap B) = \emptyset$, but $f(A) = \{1\} = f(B)$, so
+  \[%
+    f(A) \cap f(B) = \{1\} \neq \emptyset = f(A \cap B)
+  .\]%
+  Thus, in this case, we have $f(A \cap B) \neq f(A) \cap f(B)$.
 \end{solution}
 
 \begin{problem}[6.2]
   \begin{enumerate}
     \item Let $f : \R \to \R$ be defined by $f(x) = x^2$. Find $f^{-1}(B)$ for the following subsets $B \subset \R$: the intervals $[-1,1]$, $[-1,1)$, $(-1,1)$, $[0,1]$, $[0,1)$, $(0,1)$, and the singletons $\{-1\}$, $\{0\}$, and $\{1\}$.
 
-    \item Now let $f : X \to Y$ be arbitrary, and let $A, B \subset Y$. Prove that if $A \subset B$ then $f^{-1}(A) \subset f^{-1}(B)$. Prove that $f^{-1}(A \cup B) = f^{-1}(A) \cup f^{-1}(B)$. Prove that $f^{-1}(A \cap B) \subset f^{-1}(A) \cap f^{-1}(B)$, but give an example where they are not equal.
+    \item Now let $f : X \to Y$ be arbitrary, and let $A, B \subset Y$. Prove that if $A \subset B$ then $f^{-1}(A) \subset f^{-1}(B)$. Prove that $f^{-1}(A \cup B) = f^{-1}(A) \cup f^{-1}(B)$. Prove that $f^{-1}(A \cap B) = f^{-1}(A) \cap f^{-1}(B)$.
   \end{enumerate}
 \end{problem}
 
 \begin{solution}[(i)]
+  For $f(x) = x^2$ we have:
+  \begin{gather*}
+    f^{-1}([-1,1]) = [-1,1],
+    \quad f^{-1}([-1,1)) = (-1,1),
+    \quad f^{-1}((-1,1)) = (-1,1) \\
+    \quad f^{-1}([0,1]) = [-1,1],
+    \quad f^{-1}([0,1)) = (-1,1),
+    \quad f^{-1}((0,1)) = (-1,0) \cup (0,1) \\
+    \quad f^{-1}(\{-1\}) = \emptyset,
+    \quad f^{-1}(\{0\}) = \{0\},
+    \quad f^{-1}(\{1\}) = \{-1,1\}
+  .\qedhere\end{gather*}
 \end{solution}
 
 \begin{solution}[(ii)]
-\end{solution}
+  Let $f : X \to Y$ and let $A,B \subset Y$.
 
-7.1, 7.2
+  If $A \subset B$ and $x \in f^{-1}(A)$, then $f(x) \in A \subset B$, so $x \in f^{-1}(B)$. Thus $f^{-1}(A) \subset f^{-1}(B)$. For the union, we have
+  \[%
+    f^{-1}(A \cup B) = \{x \in X \mid f(x) \in A \cup B\} = f^{-1}(A) \cup f^{-1}(B)
+  ,\]%
+  and for the intersection, we have
+  \[%
+    f^{-1}(A \cap B) = \{x \mid f(x) \in A \cap B\} = \{x \mid f(x) \in A~\text{and}~f(x) \in B\} = f^{-1}(A) \cap f^{-1}(B)
+  .\qedhere\]%
+\end{solution}
 
 \begin{problem}[6.5]
   The function $f : \R \to \R$ defined by
@@ -40,6 +81,11 @@
 \end{problem}
 
 \begin{solution}
+  Take the open set $V = (-1/2, 1/2) \subset \R$. Now, we compute $f^{-1}(V)$. If $x \le 0$ then $f(x) = x$, so $x \in f^{-1}(V)$ precisely when $-1/2 < x \le 0$, i.e. this contribution is $(-1/2, 0]$. If $x > 0$ then $f(x) = x +1$, and $x +1 \in (-1/2, 1/2)$ would force $-3/2 < x < -1/2$, which is impossible for $x > 0$. Hence the $x > 0$ part contributes nothing. Therefore
+  \[%
+    f^{-1}(V) = \left(-\frac{1}{2}, 0\right]
+  .\]%
+  The set $(-1/2, 0]$ is not open in $\R$ because it contains the point $0$ but no open interval around $0$ is contained. Thus $f^{-1}(V)$ is not open.
 \end{solution}
 
 \begin{problem}[6.6]
@@ -72,7 +118,29 @@
   Prove that each of the four topologies on $\R$ given in Example 7.3 is a topology, that is, it satisfies the three conditions in Definition 7.1.
 \end{problem}
 
+\renewcommand\B{\mathcal{B}}
+\renewcommand\S{\mathcal{S}}
+\renewcommand\T{\mathcal{T}}
 \begin{solution}
+  Let $\T_1 = \{U \subseteq \R \mid U^c~\text{is finite}\} \cup \{\emptyset\}$. Then, $\emptyset, \R \in \T_1$. If $U, V \in \T_1$, then notice that $(U \cap V)^c = U^c \cup V^c$, which is a union of finite sets. Hence, $U \cap V \in \T_1$. For any arbitrary collection $\{U_i\}_{i \in I} \subseteq \T_1$, for any arbitrary index set $I$, we have
+  \[%
+    \left(\bigcup_{i \in I} U_i\right)^c = \bigcap_{i \in I} U_i^c
+  ,\]%
+  which is an intersection of finite sets, and hence finite. Therefore, $\bigcup_{i \in I} U_i \in \T_1$. Thus, the finite complement topology is indeed a topology.
+
+  Fix $p \in \R$, and let $\T_2 = \{U \subseteq \R \mid p \in U\} \cup \{\emptyset\}$. Then $\emptyset, \R \in \T_2$. If $U,V \in \T_2$, then $p \in U$ and $p \in V$, so $p \in U \cap V$, hence $U \cap V \in \T_2$. For any collection $\{U_i\}_{i \in I} \subseteq \T_2$, we have $p \in U_i$ for all $i$, so $p \in \bigcup_{i \in I} U_i$, hence $\bigcup_{i \in I} U_i \in \T_2$. Thus $\T_2$ is a topology.
+
+  Let $\S = \{(-\infty, a) \mid a \in \R\}$ and let $\T_3$ be the topology generated by $\S$, i.e., the smallest topology containing all sets of the form $(-\infty, a)$. Since $\emptyset, \R$ are unions of sets in $\S$, they lie in $\T_3$. Let $U, V \in \T_3$. Then $U$ and $V$ are unions of sets from $\S$, and for any $a,b \in \R$,
+  \[%
+    (-\infty, a) \cap (-\infty, b) = (-\infty, \min\{a, b\})
+  ,\]%
+  which is again in $\S$. Thus $U \cap V$ is a union of sets in $\S$, hence in $\T_3$. Arbitrary unions of unions of sets in $\S$ remain unions of sets in $\S$, so $\T_3$ is a topology.
+
+  Let $\B = \{[a, b) \mid a < b, a, b \in \R\}$, and let $\T_4$ be the topology generated by $\B$. Then $\emptyset, \R$ are unions of sets in $\B$, so they belong to $\T_4$. For $[a, b), [c, d) \in \B$, we have
+  \[%
+    [a, b) \cap [c, d) = [\max\{a, c\}, \min\{b, d\})
+  ,\]%
+  which is either empty or again in $\B$. Hence the intersection of any two basis elements is a union of basis elements. Arbitrary unions of basis elements remain in $\T_4$, so $\T_4$ is a topology.
 \end{solution}
 
 \begin{problem}[7.2]
@@ -86,13 +154,35 @@
 \end{problem}
 
 \begin{solution}[(i)]
+  The interior of $\Z$ is the largest open set contained in $\Z$. Any nonempty open set is cofinite and thus contains non-integer real numbers, so no nonempty open set is contained in $\Z$. Hence $\sint(\Z) = \emptyset$.
+
+  Closed sets are exactly $\R$ and all finite subsets. Since $\Z$ is infinite, the only closed set containing $\Z$ is $\R$. Thus $\overline{\Z} = \R$.
+
+  The boundary is just given by $\partial \Z = \overline{\Z} \setminus \sint(\Z) = \R \setminus \emptyset = \R$.
 \end{solution}
 
 \begin{solution}[(ii)]
+  First consider $\{0\}$. If $p = 0$, then $\{0\}$ contains $p$, so it is open. Therefore $\sint(\{0\}) = \{0\}$. To compute the closure, note that a closed set contains $\{0\}$ only if it is $\mathbb{R}$ (since any closed set other than $\mathbb{R}$ must omit $p$, but here $p = 0$). Hence $\overline{\{0\}} = \mathbb{R}$, and $\partial\{0\} = \mathbb{R} \setminus \{0\}$.
+
+  Now assume $p \neq 0$. Then $\{0\}$ does not contain $p$, so it is closed. The largest open subset of $\{0\}$ is $\emptyset$, so $\sint(\{0\}) = \emptyset$. Since $\{0\}$ is closed, $\overline{\{0\}} = \{0\}$, and therefore $\partial\{0\} = \{0\}$.
+
+  Next consider $\{1\}$. If $p = 1$, then $\{1\}$ is open, so $\sint(\{1\}) = \{1\}$. The only closed set containing $\{1\}$ is $\mathbb{R}$, so $\overline{\{1\}} = \mathbb{R}$, and thus $\partial\{1\} = \mathbb{R} \setminus \{1\}$.
+
+  Finally, if $p \neq 1$, then $\{1\}$ does not contain $p$, hence it is closed. Its interior is $\emptyset$, its closure is $\{1\}$, and therefore $\partial\{1\} = \{1\}$.
 \end{solution}
 
 \begin{solution}[(iii)]
+  To find the interior, note that any basic open set $(-\infty,a)$ that is contained in $(0,1)$ must satisfy $a \le 0$, which forces $(-\infty,a) \subseteq (-\infty,0]$. But no such set lies inside $(0,1)$ except the empty set. Hence the interior of $(0,1)$ is empty, so $\sint(A) = \emptyset$.
+
+  To find the closure, suppose $x \in \mathbb{R}$. Then every basic open neighborhood of $x$ is of the form $(-\infty,a)$ with $a > x$, and such a neighborhood always intersects $(0,1)$ whenever $x < 1$, since $(0,1) \subset (-\infty,a)$ for all $a > 1$. If $x \ge 1$, then every basic neighborhood $(-\infty,a)$ of $x$ with $a > x \ge 1$ also contains $(0,1)$. Thus every point $x \in \mathbb{R}$ satisfies the condition for being in the closure, and therefore $\overline{A} = \mathbb{R}$.
+
+  Since $\partial A = \overline{A} \setminus \sint(A)$, we conclude that $\partial(0,1) = \mathbb{R}$.
 \end{solution}
 
 \begin{solution}[(iv)]
+  To find the interior, observe that for any $x \in (0,1)$, we may choose a basis element $[x, x+\epsilon)$ for some $\epsilon > 0$, and this set is contained in $(0,1)$ provided $x + \epsilon \le 1$. Therefore each $x \in (0,1)$ has a basis neighborhood contained in $(0,1)$, and hence $\sint(A) = (0,1)$.
+
+  To find the closure, let $x < 0$. Then every basis neighborhood $[x, x+\epsilon)$ contains negative points only, and thus cannot intersect $(0,1)$. Hence such $x$ are not in the closure. If $0 \le x \le 1$, then every basis neighborhood $[x, x+\epsilon)$ intersects $(0,1)$, since it contains points in $(0,1)$ whenever $\epsilon > 0$. If $x > 1$, then we may take $\epsilon$ small enough so that $[x, x+\epsilon)$ lies entirely to the right of $1$, hence such neighborhoods do not intersect $(0,1)$. Therefore $\overline{A} = [0,1]$.
+
+  Finally, since $\partial A = \overline{A} \setminus \sint(A)$, we conclude that $\partial(0,1) = [0,1] \setminus (0,1) = \{0,1\}$.
 \end{solution}
