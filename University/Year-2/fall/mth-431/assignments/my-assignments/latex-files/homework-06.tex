@@ -100,18 +100,53 @@
 \end{problem}
 
 \begin{solution}[(i)]
+  Let $A = (a, \infty) \subset \R$. Then $f^{-1}(A) = \{x \in \R \mid x^2 > a\}$. If $a < 0$, then $x^2 > a$ for all $x \in \R$, so $f^{-1}(A) = \R$. If $a = 0$, then $f^{-1}(A) = \{x \mid x^2 > 0\} = \R \setminus \{0\}$. If $a > 0$, then $f^{-1}(A) = \{x \mid |x| > \sqrt{a}\} = (-\infty, -\sqrt{a}) \cup (\sqrt{a}, \infty)$. In each case, $f^{-1}(A)$ is open.
 \end{solution}
 
 \begin{solution}[(ii)]
+  Let $B = (-\infty, b) \subset \R$. Then $f^{-1}(B) = \{x \in \R \mid x^2 < b\}$. If $b \le 0$, then there is no $x \in \R$ with $x^2 < b$, so $f^{-1}(B) = \emptyset$. If $b > 0$, then $f^{-1}(B) = \{x \mid |x| < \sqrt{b}\} = (-\sqrt{b}, \sqrt{b})$. In both cases, $f^{-1}(B)$ is open.
 \end{solution}
 
 \begin{solution}[(iii)]
+  Let $C = (a, b) \subset \R$. Then
+  \[%
+    f^{-1}(C) = \{x \in \R \mid a < x^2 < b\} = \{x \mid x^2 > a\} \cap \{x \mid x^2 < b\} = f^{-1}((a, \infty)) \cap f^{-1}((-\infty, b))
+  .\]%
+  By parts (i) and (ii), both $f^{-1}((a, \infty))$ and $f^{-1}((-\infty, b))$ are open, so their intersection $f^{-1}(C)$ is also open.
 \end{solution}
 
 \begin{solution}[(iv)]
+  Let $V \subset \R$ be an arbitrary open set. By definition of the usual topology on $\R$, for each $x \in V$ there exists an open interval $(a_x, b_x)$ such that $x \in (a_x, b_x) \subset V$. Therefore,
+  \[%
+    V = \bigcup_{x \in V} (a_x, b_x)
+  .\]%
+  Since each $(a_x, b_x)$ is an open interval, by part (iii) each $f^{-1}((a_x, b_x))$ is open. Hence,
+  \[%
+    f^{-1}(V) = f^{-1}\left(\bigcup_{x \in V} (a_x, b_x)\right) = \bigcup_{x \in V} f^{-1}((a_x, b_x))
+  ,\]%
+  which is a union of open sets, and therefore open. By Proposition~6.6, it follows that $f$ is continuous.
 \end{solution}
 
 \begin{solution}[(v)]
+  To prove that $f$ is continuous using the $\delta$-$\epsilon$ definition, let $\epsilon > 0$ and $x_0 \in \R$. We want to find a $\delta > 0$ such that if $|x - x_0| < \delta$, then $|f(x) - f(x_0)| < \epsilon$. Notice that
+  \[%
+    |f(x) - f(x_0)| = |x^2 - x_0^2| = |x - x_0||x + x_0|
+  .\]%
+  To bound $|x + x_0|$, choose $\delta \le 1$. Then $|x - x_0| < \delta \le 1$ implies $|x| < |x_0| + 1$, so
+  \[%
+    |x + x_0| \le |x| + |x_0| < 2|x_0| + 1
+  .\]%
+  Thus,
+  \[%
+    |f(x) - f(x_0)| < \delta(2|x_0| + 1)
+  .\]%
+  To ensure that this is less than $\epsilon$, choose
+  \[%
+    \delta = \min\left\{1, \frac{\epsilon}{2|x_0| + 1}\right\}
+  .\]%
+  Then whenever $|x - x_0| < \delta$, it follows that $|f(x) - f(x_0)| < \epsilon$. Therefore, $f$ is continuous at every point $x_0 \in \R$.
+
+  Between the two proofs, the one using preimages of open sets is more straightforward, because it avoids all the technical details of choosing $\delta$ in terms of $\epsilon$ and just deals with open sets directly.
 \end{solution}
 
 \begin{problem}[7.1]
