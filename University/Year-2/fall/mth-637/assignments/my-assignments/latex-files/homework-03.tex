@@ -172,6 +172,26 @@
 \end{solution}
 
 \begin{solution}[(ii)]
+  Suppose we have a path $\gamma(t)$ in $\M$ given by $F(\theta, t)$. We want to find a family of diffeomorphisms $\Phi_t : \S^1 \times (-\epsilon, \epsilon) \to \S^1$ such that
+  \[%
+    \odv{}{t} \dd{F}(\Phi(\theta, t), t) \perp \odv{F}{\theta}~\text{for all}~\theta~\text{when}~t = 0
+  .\]%
+  To achieve this, we can define $\Phi(\theta, t)$ as the solution to the following ODE:
+  \[%
+    \odv{\Phi}{t}(\theta, t) = -\frac{\bra{\odv{F}{t}(\Phi(\theta, t), t), \odv{F}{\theta}(\Phi(\theta, t), t)}}{\left\lvert \odv{F}{\theta}(\Phi(\theta, t), t) \right\rvert^2} \odv{F}{\theta}(\Phi(\theta, t), t)
+  ,\]%
+  with the initial condition $\Phi(\theta, 0) = \theta$. This ODE ensures that the derivative of $F$ with respect to $t$ at $\Phi(\theta, t)$ is orthogonal to the derivative of $F$ with respect to $\theta$ at the same point when $t = 0$. To see this, we compute
+  \begin{align*}
+    \odv{}{t} F(\Phi(\theta, t), t) &= \odv{F}{t}(\Phi(\theta, t), t) + \odv{F}{\theta}(\Phi(\theta, t), t) \odv{\Phi}{t}(\theta, t) \\
+                                   &= \odv{F}{t}(\Phi(\theta, t), t) - \frac{\bra{\odv{F}{t}(\Phi(\theta, t), t), \odv{F}{\theta}(\Phi(\theta, t), t)}}{\left\lvert \odv{F}{\theta}(\Phi(\theta, t), t) \right\rvert^2} \odv{F}{\theta}(\Phi(\theta, t), t)
+  .\end{align*}%
+  Taking the inner product with $\odv{F}{\theta}(\Phi(\theta, t), t)$, we get
+  \begin{align*}
+    \bra{\odv{}{t} F(\Phi(\theta, t), t), \odv{F}{\theta}(\Phi(\theta, t), t)} &= \bra{\odv{F}{t}(\Phi(\theta, t), t), \odv{F}{\theta}(\Phi(\theta, t), t)} \\
+    &\quad - \frac{\bra{\odv{F}{t}(\Phi(\theta, t), t), \odv{F}{\theta}(\Phi(\theta, t), t)}}{\left\lvert \odv{F}{\theta}(\Phi(\theta, t), t) \right\rvert^2} \bra{\odv{F}{\theta}(\Phi(\theta, t), t), \odv{F}{\theta}(\Phi(\theta, t), t)} \\
+    &= 0
+  .\end{align*}%
+  Thus, we have constructed the desired family of diffeomorphisms $\Phi_t$.
 \end{solution}
 
 \begin{solution}[(iii)]
