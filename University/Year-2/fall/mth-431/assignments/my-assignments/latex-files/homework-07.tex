@@ -1,0 +1,135 @@
+\begin{problem}[7.3]
+  Let $(X, \metric)$ be a metric space. A function $f : X \to \R$ is called \emph{lower semi-continuous} at a point $p \in X$ if $\lim_{q \to p} f(q) \ge f(p)$, or equivalently, for every $\epsilon > 0$ there is a $\delta > 0$ such that $\metric(p, q) < \delta$ implies $f(q) > f(p) - \epsilon$. The idea is that in the limit, $f$ can only jump down. You can guess what \emph{upper semi-continuous means}.
+  \begin{enumerate}
+    \item Let $X = \R$ with the usual metric, and consider the floor function $\lfloor x \rfloor$, which returns the greatest integer $\le x$, and the ceiling function $\lceil x \rceil$, which returns the least integer $\ge x$. Which one is lower semi-continuous, and which one is upper semi-continuous?
+
+      (You don’t have to prove it.)
+
+    \item Prove that $f : X \to \R$ is lower semi-continuous (at every point) if and only if it is continuous as a map of topological spaces when the codomain $\R$ is given the lower semi-continuous topology from Example 7.3(c).
+  \end{enumerate}
+\end{problem}
+
+\begin{solution}[(i)]
+\end{solution}
+
+\begin{solution}[(ii)]
+\end{solution}
+
+\begin{problem}[7.4]
+  Let $(X, \metric)$ be a metric space. A function $f : \R \to X$ is called \emph{continuous from the right} at a point $p \in \R$ if $\lim_{q \to p^+} f(q) = f(p)$: that is, for every $\epsilon > 0$ there is a $\delta > 0$ such that $p \le q < p + \delta$ implies $\metric(f(p), f(q)) < \epsilon$. You can guess what continuous from the left means.
+
+  \begin{enumerate}
+    \item Again take $X = \R$ in the usual metric, and consider the floor and ceiling functions. Which one is continuous from the right, and which one is continuous from the left?
+
+      (You don’t have to prove it.)
+
+    \item Prove that a map $f : \R \to X$ is continuous from the right (at every point) if and only if it is continuous as a map of topological spaces when the domain $\R$ is given the lower limit topology from Example 7.3(d).
+  \end{enumerate}
+\end{problem}
+
+\begin{solution}[(i)]
+\end{solution}
+
+\begin{solution}[(ii)]
+\end{solution}
+
+\begin{problem}[7.5]
+  The countable complement topology on $\R$ is like the finite complement topology, but we say that a subset $U \subset \R$ is open if either the complement $\R \setminus U$ is countable, or $U = \emptyset$.
+  \begin{enumerate}
+    \item Prove that in this topology, a sequence $p_1, p_2, p_3, \ldots \in \R$ converges to a limit $\ell \in \R$ if and only if it is eventually constant, meaning that there is an $N$ such that for all $n \ge N$ we have $p_n = \ell$.
+    \item Give an example of a subset $A \subset \R$ that is not closed in this topology, but nonetheless for every sequence $p_1, p_2, \ldots \in A$ converging to a limit $\ell \in \R$, we have $\ell \in A$. (Thus Proposition 2.10 does not hold in a general topological space.)
+    \item Give an example of a metric space $(Y, \metric)$ and a map $f : \R \to Y$ that is not continuous with respect to the co-countable topology on $\R$ and the metric topology on $Y$, but nonetheless for every convergent $p_n \to \ell$ in $\R$, we have $f(p_n) \to f(\ell)$ in $Y$ . (Thus Proposition 1.10 does not hold in a general topological space.)
+  \end{enumerate}
+\end{problem}
+
+\begin{solution}[(i)]
+\end{solution}
+
+\begin{solution}[(ii)]
+\end{solution}
+
+\begin{solution}[(iii)]
+\end{solution}
+
+\begin{problem}[8.1]
+  Let $X$ be a topological space. Let $Y \subset X$, and give $Y$ the subspace topology. Let $A \subset Y$.
+  \begin{enumerate}
+    \item Prove that if $A$ is closed in $Y$ and $Y$ is closed in $X$, then $A$ is closed in $X$.
+    \item Give two examples to show that if $A$ is closed in $Y$ and $Y$ is not closed in $X$, then $A$ may or may not be closed in $X$.
+    \item Prove that if $A$ is open in $Y$ and $Y$ is open in $X$, then $A$ is open in $X$.
+    \item Give two examples to show that if $A$ is open in $Y$ and $Y$ is not open in $X$, then $A$ may or may not be open in $X$.
+    \item Let $A \subset Y$, let $\cl_Y(A)$ denote the closure of $A$ in $X$, and let $\cl_Y(A)$ denote the closure of $A$ in $Y$ . Prove that
+      \[%
+        \cl_Y(A) = \cl_X(A) \cap Y
+      .\]%
+    \item Let $A \subset Y$, let $\sint_X(A)$ denote the interior of $A$ as a subset of $X$, and let $\sint_Y(A)$ denote the interior of $A$ as a subset of $Y$. Prove that
+      \[%
+        \sint_X(A) \subset \sint_Y(A)
+      .\]%
+    \item Give an example where the inclusion in part (vi) is strict.
+  \end{enumerate}
+\end{problem}
+
+\begin{solution}[(i)]
+\end{solution}
+
+\begin{solution}[(ii)]
+\end{solution}
+
+\begin{solution}[(iii)]
+\end{solution}
+
+\begin{solution}[(iv)]
+\end{solution}
+
+\begin{solution}[(v)]
+\end{solution}
+
+\begin{solution}[(vi)]
+\end{solution}
+
+\begin{solution}[(vii)]
+\end{solution}
+
+\begin{problem}[8.2]
+  \begin{enumerate}
+    \item Let $X$ be a topological space, and suppose that we can write $X = F_1 \cup \cdots \cup F_n$ , where each $F_i$ is closed. Let $Y$ be another topological space, let $f : X \to Y$, and let $f_i : F_i \to Y$ be the restriction of $f$ to $F_i$: that is, for $x \in F_i$ we set $f_i(x) = f(x)$. Prove that $f$ is continuous if and only if $f_i$ is continuous for all $i$.
+
+      Hint: Use the fact that a map is continuous if and only if the preimage of every closed set is closed.
+
+    \item This is usually applied to show that a piecewise function is continuous. Consider the function $f : [0, 1] \to \R$ defined by
+      \[%
+        f(x) = \begin{cases}
+          0 & \text{if}~x \le 1/3, \\
+          3x - 1 & \text{if}~1/3 \le x \le 2/3, \\
+          1 & \text{if}~x \ge 2/3.
+        \end{cases}
+      \]%
+      If we wanted to apply part (i) to show that $f$ is continuous, which should sets should we take for the $F_i$?
+
+    \item Give an example of how part (i) can fail if we allow countably many closed sets $F_i$.
+  \end{enumerate}
+\end{problem}
+
+\begin{solution}[(i)]
+\end{solution}
+
+\begin{solution}[(ii)]
+\end{solution}
+
+\begin{solution}[(iii)]
+\end{solution}
+
+\begin{problem}[9.3]
+  \begin{enumerate}
+    \item Let $X$ and $Y$ be topological spaces, and let $p : X \times Y \to X$ be the map given by $p(x, y) = x$. Prove that $p$ is continuous.
+
+    \item Write ``Similarly, the map $q : X \times Y → Y$ be the map given by $q(x, y) = y$ is continuous.''
+  \end{enumerate}
+\end{problem}
+
+\begin{solution}[(i)]
+\end{solution}
+
+\begin{solution}[(ii)]
+\end{solution}

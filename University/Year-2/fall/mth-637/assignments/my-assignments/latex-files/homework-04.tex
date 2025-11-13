@@ -18,7 +18,38 @@
   \end{enumerate}
 \end{problem}
 
-\begin{solution}
+\begin{solution}[(i)]
+  Smoothness and surjectivity is rather straightforward. Every point in $\C\P^n$ is an equivalence class $[z]$ of some nonzero $z \in \C^{n+1}$, so $\pi(z) = [z]$ is surjective. To prove smoothness, fix an index $j \in \{0, \cdots, n\}$ and consider the chart
+  \[%
+    U_j = \{[z] \in \C\P^n \mid z_j \neq 0\}
+  .\]%
+  The usual coordinate chart $\phi_j : U_j \to \C^n$ is
+  \[%
+    \phi_j([z]) = \left(z_0/z_j, \cdots, z_{j-1}/z_j, z_{j+1}/z_j, \cdots, z_n/z_j\right)
+  ,\]%
+  where $z_0 ~ \cdots ~ z_n$ are the coordinates of any representative of $[z]$ with $z_j \neq 0$. On the open subset $V_j := \{z \in \C^{n+1} \setminus \{0\} \mid z_j \neq 0\}$ of the domain we have the map
+  \begin{gather*}
+    \phi_j \circ \pi : V_j \to \C^n \\
+    z \mapsto \left(\frac{z_0}{z_j}, \cdots, \widehat{\frac{z_j}{z_j}}, \cdots, \frac{z_n}{z_j}\right)
+  ,\end{gather*}
+  where the hat indicates omission. This map is smooth and since the charts, $\{(U_j, \phi_j)\}$, cover the codomain. Thus, $\pi$ is smooth. Hence, $\pi$ is a surjective smooth map.
+
+  Now, we show that $\pi$ is a submersion. Define a local smooth section $\sigma_j : \C^n \to V_j \subset \C^{n+1} \setminus \{0\}$ by
+  \[%
+    \sigma_j(w_0, \cdots, w_{n-1}) = (w_0, \cdots, w_{j-1}, 1, w_j, \cdots, w_{n-1})
+  ,\]%
+  i.e., the representative with $j$-th coordinate $1$. Then for every point of $U_j$, we have
+  \[%
+    (\phi_j \circ \pi) \circ \sigma_j = \Id_{\C^n}
+  .\]%
+  Differentiate this identity to get $D(\phi_j \circ \pi) \circ D \sigma_j = I$. Thus $D(\phi_j \circ \pi)$ has a right inverse $D\sigma_j$, so it is surjective. But $D(\phi_j \circ \pi)$ is the coordinate representation of $d\pi$ on $V_j$, so $d\pi$ is surjective at every point of $V_j$. Since the $V_j$ cover the domain, $d\pi$ is surjective everywhere: $\pi$ is a submersion. Conclude
+  \[%
+    \Rank(d\pi) = \dim_\R \C^n = 2n
+  ,\]%
+  at every point.
+\end{solution}
+
+\begin{solution}[(ii)]
 \end{solution}
 
 \begin{problem}[4.6]
