@@ -1,5 +1,5 @@
 \begin{problem}[7.3]
-  Let $(X, \metric)$ be a metric space. A function $f : X \to \R$ is called \emph{lower semi-continuous} at a point $p \in X$ if $\lim_{q \to p} f(q) \ge f(p)$, or equivalently, for every $\epsilon > 0$ there is a $\delta > 0$ such that $\metric(p, q) < \delta$ implies $f(q) > f(p) - \epsilon$. The idea is that in the limit, $f$ can only jump down. You can guess what \emph{upper semi-continuous means}.
+  Let $(X, \metric)$ be a metric space. A function $f : X \to \R$ is called \emph{lower semi-continuous} at a point $p \in X$ if $\liminf_{q \to p} f(q) \ge f(p)$, or equivalently, for every $\epsilon > 0$ there is a $\delta > 0$ such that $\metric(p, q) < \delta$ implies $f(q) > f(p) - \epsilon$. The idea is that in the limit, $f$ can only jump down. You can guess what \emph{upper semi-continuous means}.
   \begin{enumerate}
     \item Let $X = \R$ with the usual metric, and consider the floor function $\lfloor x \rfloor$, which returns the greatest integer $\le x$, and the ceiling function $\lceil x \rceil$, which returns the least integer $\ge x$. Which one is lower semi-continuous, and which one is upper semi-continuous?
 
@@ -10,27 +10,15 @@
 \end{problem}
 
 \begin{solution}[(i)]
+  The ceiling function is lower semi-continuous, and the floor function is upper semi-continuous.
 \end{solution}
 
 \begin{solution}[(ii)]
-\end{solution}
+  Assume $f : X \to \R$ is lower semi-continuous. Let $U \subset \R$ is open in the lower semi-continuous topology. Then for every $y \in U$, there exists an $\epsilon > 0$ such that $(y - \epsilon, \infty) \subset U$. Now, for any $p \in f^{-1}(U)$, we have $f(p) \in U$, so there exists an $\epsilon > 0$ such that $(f(p) - \epsilon, \infty) \subset U$. By the lower semi-continuity of $f$ at $p$, there exists a $\delta > 0$ such that for all $q \in X$ with $\metric(p, q) < \delta$, we have $f(q) > f(p) - \epsilon$. This implies that $f(q) \in (f(p) - \epsilon, \infty) \subset U$. Therefore, $f^{-1}(U)$ contains the open ball $B_\delta(p)$ showing that $f^{-1}(U)$ is open in $X$. Hence, $f$ is continuous as a map of topological spaces.
 
-\begin{problem}[7.4]
-  Let $(X, \metric)$ be a metric space. A function $f : \R \to X$ is called \emph{continuous from the right} at a point $p \in \R$ if $\lim_{q \to p^+} f(q) = f(p)$: that is, for every $\epsilon > 0$ there is a $\delta > 0$ such that $p \le q < p + \delta$ implies $\metric(f(p), f(q)) < \epsilon$. You can guess what continuous from the left means.
+  Conversely, assume $f : X \to \R$ is continuous as a map of topological spaces when $\R$ is given the lower semi-continuous topology. Let $p \in X$ and $\epsilon > 0$. Consider the open set $U = (f(p) - \epsilon, \infty)$ in the lower semi-continuous topology. By continuity, $f^{-1}(U)$ is open in $X$, and since $p \in f^{-1}(U)$, there exists a $\delta > 0$ such that the open ball $B_\delta(p)$ is contained in $f^{-1}(U)$. This means that for all $q \in X$ with $\metric(p, q) < \delta$, we have $f(q) \in U$, which implies $f(q) > f(p) - \epsilon$. Therefore, $f$ is lower semi-continuous at $p$. Since $p$ was arbitrary, $f$ is lower semi-continuous at every point in $X$.
 
-  \begin{enumerate}
-    \item Again take $X = \R$ in the usual metric, and consider the floor and ceiling functions. Which one is continuous from the right, and which one is continuous from the left?
-
-      (You don’t have to prove it.)
-
-    \item Prove that a map $f : \R \to X$ is continuous from the right (at every point) if and only if it is continuous as a map of topological spaces when the domain $\R$ is given the lower limit topology from Example 7.3(d).
-  \end{enumerate}
-\end{problem}
-
-\begin{solution}[(i)]
-\end{solution}
-
-\begin{solution}[(ii)]
+  Thus, $f : X \to \R$ is lower semi-continuous if and only if it is continuous as a map of topological spaces when the codomain $\R$ is given the lower semi-continuous topology.
 \end{solution}
 
 \begin{problem}[7.5]
@@ -43,12 +31,32 @@
 \end{problem}
 
 \begin{solution}[(i)]
+  Assume $p_n \to \ell$. Suppose, towards a contradiction, that $(p_n)$ is not eventually constant equal to $\ell$. Then for every $N \in \N$ there exists $n \ge N$ with $p_n \ne \ell$. In particular there are infinitely many indices $n$ for which $p_n \ne \ell$. Let
+  \[%
+    S := \{p_n \mid n \in \N~\text{and}~p_n \ne \ell\}
+  ,\]%
+  be the set of distinct terms of the sequence different from $\ell$. Since $S$ is a subset of the countable set $\{p_1, p_2, \dots\}$, the set $S$ is countable.
+
+  Consider the set $U = \R \setminus S$. Because $S$ is countable, $U$ is open in the countable-complement topology, and $\ell \in U$ (by construction $\ell \notin S$). By the definition of convergence, there exists $N_0$ such that for all $n \ge N_0$ we have $p_n \in U$. But $U = \R \setminus S$ contains no point of $S$, so this implies there are no indices $n \ge N_0$ with $p_n \ne \ell$. This contradicts the assumption that there are infinitely many indices with $p_n \ne \ell$. Therefore our assumption was false, and the sequence must be eventually constant equal to $\ell$.
+
+  Conversely, assume that there exists $N$ such that $p_n = \ell$ for all $n \ge N$. Let $U$ be any open neighborhood of $\ell$ in the countable-complement topology. By definition of convergence in a topological space, we must find $N'$ so that $p_n \in U$ for all $n \ge N'$. But since $p_n = \ell \in U$ for every $n \ge N$, taking $N' = N$ works. Thus $p_n \to \ell$.
+
+  Thus, a sequence converges to a limit $\ell$ in the countable complement topology if and only if it is eventually constant at $\ell$.
 \end{solution}
 
 \begin{solution}[(ii)]
+  Pick any point $x_0 \in \R$ such that $p_n \ne x_0$ for all $n$. Let $A = \R \setminus \{x_0\}$. Then, $A$ is not closed in the countable complement topology since its complement $\{x_0\}$ is finite (and hence countable). However, for any sequence $p_1, p_2, \ldots \in A$ that converges to a limit $\ell \in \R$, the sequence must be eventually constant at $\ell$. Since all terms of the sequence are in $A$, it follows that $\ell$ must also be in $A$. Thus, $A$ satisfies the required condition.
 \end{solution}
 
 \begin{solution}[(iii)]
+  Let $Y = \R$ with the usual metric, and define the function $f : \R \to Y$ by
+  \[%
+    f(x) = \begin{cases}
+      0 & \text{if}~x \ne 0, \\
+      1 & \text{if}~x = 0.
+    \end{cases}
+  \]%
+  The function $f$ is not continuous at $x = 0$ with respect to the co-countable topology on $\R$ and the metric topology on $Y$. To see this, consider the open set $U = (0.5, 1.5)$ in $Y$. The preimage $f^{-1}(U) = \{0\}$, which is not open in the co-countable topology since its complement $\R \setminus \{0\}$ is uncountable. However, for any convergent sequence $p_n \to \ell$ in $\R$, the sequence must be eventually constant at $\ell$. If $\ell \ne 0$, then $f(p_n) = 0$ for all sufficiently large $n$, so $f(p_n) \to f(\ell) = 0$. If $\ell = 0$, then $f(p_n) = 1$ for all sufficiently large $n$, so $f(p_n) \to f(\ell) = 1$. Thus, for every convergent sequence $p_n \to \ell$ in $\R$, we have $f(p_n) \to f(\ell)$ in $Y$.
 \end{solution}
 
 \begin{problem}[8.1]
@@ -58,7 +66,7 @@
     \item Give two examples to show that if $A$ is closed in $Y$ and $Y$ is not closed in $X$, then $A$ may or may not be closed in $X$.
     \item Prove that if $A$ is open in $Y$ and $Y$ is open in $X$, then $A$ is open in $X$.
     \item Give two examples to show that if $A$ is open in $Y$ and $Y$ is not open in $X$, then $A$ may or may not be open in $X$.
-    \item Let $A \subset Y$, let $\cl_Y(A)$ denote the closure of $A$ in $X$, and let $\cl_Y(A)$ denote the closure of $A$ in $Y$ . Prove that
+    \item Let $A \subset Y$, let $\cl_X(A)$ denote the closure of $A$ in $X$, and let $\cl_Y(A)$ denote the closure of $A$ in $Y$ . Prove that
       \[%
         \cl_Y(A) = \cl_X(A) \cap Y
       .\]%
@@ -71,24 +79,37 @@
 \end{problem}
 
 \begin{solution}[(i)]
+  Assume $A$ is closed in $Y$ and $Y$ is closed in $X$. Then, there exists a closed set $C$ in $X$ such that $A = C \cap Y$. Since $Y$ is closed in $X$, the intersection of two closed sets, $C$ and $Y$, is also closed in $X$. Therefore, $A$ is closed in $X$.
 \end{solution}
 
 \begin{solution}[(ii)]
+  Let $X = \R$ with the usual topology and let $Y = (0,1) \subset X$. Define $A = (0,1) \subset Y$. Then $A$ is closed in $Y$ because its complement in $Y$ is empty, which is open in $Y$. However, $A$ is not closed in $X$, since its closure in $X$ is $[0,1]$, and thus $A \ne \cl_X(A)$.
+
+  For another example, let $X = \R$ and let $Y = (0,1) \subset X$ as before, and define $A = \{1/2\} \subset Y$. Then $A$ is closed in $Y$ because singletons are closed in any subspace. In this case, $A$ is also closed in $X$, since $\{1/2\}$ is closed in the real topology. This shows that when $Y$ is not closed in $X$, a set may be closed in $Y$ while either failing to be closed in $X$ or still being closed in $X$.
 \end{solution}
 
 \begin{solution}[(iii)]
+  Assume $A$ is open in $Y$ and $Y$ is open in $X$. Then, by definition, we have that $A = V \cap Y$ for some open set $V$ in $X$. Since $Y$ is open in $X$, the intersection of two open sets, $V$ and $Y$, is also open in $X$. Therefore, $A$ is open in $X$.
 \end{solution}
 
 \begin{solution}[(iv)]
+  Suppose we have $x \in \cl_Y(A)$. By definition of closure in $Y$, every open subset $U \subset Y$ containing $x$ intersects $A$. Then, by Proposition 8.1, there is an open subset $V \subset X$ such that $U = V \cap Y$. Since $U$ intersects $A$, we have that $V \cap Y \cap A \ne \emptyset$, and thus $V$ intersects $A$ as well. Therefore, every open subset $V \subset X$ containing $x$ intersects $A$, and so $x \in \cl_X(A)$. Thus, $\cl_Y(A) \subseteq \cl_X(A) \cap Y$.
+
+  Conversely, suppose we have $x \in \cl_X(A) \cap Y$. Using the same logic as above, we can show that every open subset $U \subset Y$ containing $x$ intersects $A$. Therefore, $x \in \cl_Y(A)$. Thus, $\cl_X(A) \cap Y \subseteq \cl_Y(A)$.
+
+  Therefore, we have $\cl_Y(A) = \cl_X(A) \cap Y$.
 \end{solution}
 
 \begin{solution}[(v)]
+  Suppose we have $x \in \sint_X(A)$. By definition of interior of $X$, there exists an open subset $U \subset X$ such that $x \in U$ and $U \subset A$. Construct the open subset $V = U \cap Y$. By Proposition 8.1, $V$ is open in $Y$, and since $x \in U$ and $U \subset A$, we have $x \in V$ and $V \subset A$, since $A \subset Y$. Hence, $x \in \sint_Y(A)$. Therefore, we have $\sint_X(A) \subset \sint_Y(A)$.
 \end{solution}
 
 \begin{solution}[(vi)]
+  Let $X = \R$ with the usual topology and let $Y = [0,2) \subset X$. Define $A = [0,1] \subset Y$. Then the interior of $A$ in $X$ is $(0,1)$, since the endpoint $0$ does not admit an open neighborhood in $X$ contained in $A$. However, the interior of $A$ in $Y$ is $[0,1)$, because sets of the form $U \cap Y$ with $U$ open in $X$ give a neighborhood basis in $Y$, and any such set containing $0$ is contained in $A$. Thus $\sint_X(A) = (0,1)$ is strictly contained in $\sint_Y(A) = [0,1)$.
 \end{solution}
 
 \begin{solution}[(vii)]
+  Consider again the sets $X = \R$, $Y = [0,2)$, and $A = [0,1]$. As shown in part (vi), we have $\sint_X(A) = (0,1)$ while $\sint_Y(A) = [0,1)$. Since $(0,1)$ is a proper subset of $[0,1)$, this provides an example where the inclusion $\sint_X(A) \subset \sint_Y(A)$ is strict.
 \end{solution}
 
 \begin{problem}[8.2]
@@ -112,24 +133,56 @@
 \end{problem}
 
 \begin{solution}[(i)]
+  Assume first that $f : X \to Y$ is continuous. Fix an index $i$ and let $U \subset Y$ be open. Then
+  \[%
+    f_i^{-1}(U) = \{x \in F_i \mid f_i(x) \in U\} = \{x \in F_i \mid f(x) \in U\} = f^{-1}(U) \cap F_i
+  .\]%
+  Since $f^{-1}(U)$ is open in $X$, its intersection with $F_i$ is open in the subspace topology on $F_i$. Hence $f_i$ is continuous.
+
+  Conversely, assume that each restriction $f_i : F_i \to Y$ is continuous. Let $C \subset Y$ be closed. For each $i$, the set $f_i^{-1}(C)$ is closed in the subspace $F_i$, and because $F_i$ is closed in $X$, it follows that $f_i^{-1}(C)$ is closed in $X$. Since
+  \[%
+    f^{-1}(C) = \bigcup_{i=1}^n f_i^{-1}(C)
+  ,\]%
+  we see that $f^{-1}(C)$ is a finite union of closed sets in $X$, and is therefore closed in $X$. Thus the preimage of every closed set in $Y$ is closed in $X$, which shows that $f$ is continuous. This completes the proof.
 \end{solution}
 
 \begin{solution}[(ii)]
+  To apply part (i), we decompose the domain $[0,1]$ into closed sets on which $f$ is defined by a single expression. The appropriate choice is
+  \[%
+    F_1 = [0,1/3], \qquad F_2 = [1/3, 2/3], \qquad F_3 = [2/3, 1]
+  .\]%
+  Each of these sets is closed in the subspace topology on $[0,1]$, and the restriction of $f$ to each $F_i$ is continuous. By part (i), it follows that $f$ is continuous on $[0,1]$.
 \end{solution}
 
 \begin{solution}[(iii)]
+  To demonstrate the failure of part (i) when countably many closed sets are used, consider the function $f : \R \to \R$ defined by
+  \[%
+    f(x) = \begin{cases}
+      0 & \text{if } x \le 0, \\
+      1 & \text{if } x > 0.
+    \end{cases}
+  \]%
+  This function is not continuous at $0$, since the left-hand limit equals $0$ while the right-hand limit equals $1$. However, we may write $\R$ as a countable union of closed sets on which the restriction of $f$ is continuous. Define $F_1 = (-\infty, 0]$ and, for each integer $n \ge 2$, define $F_n = [1/n, \infty)$. Each $F_n$ is closed in $\R$, and $\bigcup F_n = \R$. On $F_1$, the function $f$ is constantly equal to $0$ and is therefore continuous, while on every $F_n$ with $n \ge 2$, the function $f$ is constantly equal to $1$ and is again continuous. Thus each restriction $f|_{F_n}$ is continuous, but the function $f$ itself is discontinuous. This example shows that the conclusion of part (i) does not extend to countable unions of closed sets.
 \end{solution}
 
 \begin{problem}[9.3]
   \begin{enumerate}
     \item Let $X$ and $Y$ be topological spaces, and let $p : X \times Y \to X$ be the map given by $p(x, y) = x$. Prove that $p$ is continuous.
 
-    \item Write ``Similarly, the map $q : X \times Y → Y$ be the map given by $q(x, y) = y$ is continuous.''
+    \item Write ``Similarly, the map $q : X \times Y \to Y$ be the map given by $q(x, y) = y$ is continuous.''
   \end{enumerate}
 \end{problem}
 
 \begin{solution}[(i)]
+  Let $U \subset X$ be open. Then
+  \[%
+    p^{-1}(U) = \{(x, y) \in X \times Y \mid p(x, y) \in U\}
+    = \{(x, y) \in X \times Y \mid x \in U\}
+    = U \times Y
+  .\]%
+  By definition of the product topology, the set $U \times Y$ is open in $X \times Y$ whenever $U$ is open in $X$ and $Y$ is open in itself. Hence $p^{-1}(U)$ is open in $X \times Y$. Since the preimage of every open set is open, the map $p$ is continuous.
 \end{solution}
 
 \begin{solution}[(ii)]
+  Similarly, the map $q : X \times Y \to Y$ given by $q(x, y) = y$ is continuous.
 \end{solution}
