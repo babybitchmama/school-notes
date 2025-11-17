@@ -1,0 +1,75 @@
+\begin{problem}[9.4]
+  Let $X$, $Y$, and $Z$ be topological spaces, let $f : X \times Y \to Z$ be continuous, and let $c \in X$. Prove that the map $h : Y \to Z$ given by $h(y) = f(c, y)$ is continuous
+\end{problem}
+
+\begin{solution}
+\end{solution}
+
+\begin{problem}[9.5]
+  Let $f : \R^2 \to \R$ be the discontinuous function given in (9.2). Find an open set $V \subset \R$ such that $f^{-1}(V)$ is not open in $\R^2$. But notice that the intersection of $f^{-1}(V)$ with line of the form $\{c\} \times \R$ or $\R \times \{c'\}$ is open (in that line), reflecting the fact that $f(c, y)$ is continuous as a function of $y$ and $f(x, c')$ is continuous as a function of $x$.
+\end{problem}
+
+\begin{solution}
+\end{solution}
+
+\begin{problem}[10.4]
+  Given a map $f : X \to Y$, we can consider its graph
+  \[%
+    \Gamma_f = \{(x, y) \in X \times Y \mid y = f(x)\}
+  .\]%
+  \begin{enumerate}
+    \item Prove that if $X$ and $Y$ are topological spaces, $Y$ is Hausdorff, and $f$ is continuous, then $\Gamma_f$ is closed.
+
+      Hint: You could do this by hand, or you could consider the pre-image of the diagonal $\Delta \subset Y \times Y$ and under the map $X \times Y \to Y \times Y$ that sends $(x, y)$ to $(f(x), y)$.
+
+    \item Give an example of a function $f : \R \to \R$ that is not continuous (in the usual topology) but whose graph is nonetheless closed.
+
+      Hint: It won’t work if f is bounded.
+  \end{enumerate}
+\end{problem}
+
+\begin{solution}[(i)]
+  Define the diagonal subset of $Y \times Y$ as $\Delta = \{(y, y) \mid y \in Y\}$. Since $Y$ is Hausdorff, by Proposition 10.4, the diagonal, $\Delta$, is closed in $Y \times Y$. Define the function $F : X \times Y \to Y \times Y$, where $(x, y) \mapsto (f(x), y)$. Notice that we can re-write $F$ as
+  \[%
+    F(x, y) = (f \circ \pi_X(x, y), \pi_Y(x, y))
+  ,\]%
+  where $\pi_X : X \times Y \to X$ and $\pi_Y : X \times Y \to Y$ are the projection maps. Since $f$ and the projection maps are continuous, $F$ is continuous as well. Then, we have
+  \[%
+    (x, y) \in F^{-1}(\Delta) \iff (f(x), y) \in \Delta \iff f(x) = y \iff (x, y) \in \Gamma_f
+  ,\]%
+  so $\Gamma_f = F^{-1}(\Delta)$. Since $\Delta$ is closed in $Y \times Y$ and $F$ is continuous, $F^{-1}(\Delta)$ is closed in $X \times Y$. Therefore, $\Gamma_f$ is closed in $X \times Y$.
+\end{solution}
+
+\begin{solution}[(ii)]
+  Consider the function $f : \R \to \R$ defined by
+  \[%
+    f(x) =
+    \begin{cases}
+      \frac{1}{x}, & x \neq 0, \\
+      0, & x = 0.
+    \end{cases}
+  \]%
+  This function is not continuous at $x = 0$, since $\lim_{x \to 0} f(x)$ does not exist. However, we can show that its graph $\Gamma_f$ is closed in $\R^2$.
+
+  Let $(x_n, f(x_n))$ be a sequence in $\Gamma_f$ that converges to some point $(x, y) \in \R^2$. We need to show that $(x, y) \in \Gamma_f$.
+
+  If $x \neq 0$, then for sufficiently large $n$, $x_n \neq 0$ and $f(x_n) = 1/x_n$. Since $(x_n, f(x_n)) \to (x, y)$, it follows that $y = 1/x$, so $(x, y) \in \Gamma_f$.
+
+  If $x = 0$, then for the sequence $(x_n)$ to converge to $0$, infinitely many $x_n$ must be nonzero. But for $x_n \neq 0$, we have $f(x_n) = 1/x_n$, which becomes arbitrarily large in magnitude. Therefore, in order for $(f(x_n))$ to converge to a finite $y$, eventually $x_n = 0$. Then $f(x_n) = 0$, so $y = 0$. Hence, $(0,0) \in \Gamma_f$.
+
+  In both cases, any limit of a sequence in $\Gamma_f$ lies in $\Gamma_f$, proving that $\Gamma_f$ is closed in $\R^2$.
+\end{solution}
+
+\begin{problem}[10.5]
+  \begin{enumerate}
+    \item Let $X$ and $Y$ be topological spaces, and suppose that $Y$ is Hausdorff. Prove that if two continuous maps $f, g : X \to Y$ agree on a dense subset $D \subset X$, then $f = g$.
+
+      Hint: Let $E = \{x \in X \mid f (x) = g(x)\}$, and prove that it’s closed.
+  \end{enumerate}
+\end{problem}
+
+\begin{solution}[(i)]
+\end{solution}
+
+\begin{solution}[(ii)]
+\end{solution}
