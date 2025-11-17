@@ -1,0 +1,472 @@
+\begin{problem}[1]
+  A system consisting of one original unit plus a spare can function for a random amount of time $X$. If the probability density of $X$ is given (in units of months) by
+  \[%
+    f(x) = \begin{cases}
+      Cxe^{-x/2} & x > 0, \\
+      0 & x \le 0.
+    \end{cases}%
+  \]%
+  what is the probability that the system functions for at least 5 months?
+\end{problem}
+
+\begin{solution}
+  To determine the normalizing constant, we first set
+  \[%
+    \int_0^\infty Cxe^{-x/2} \dx = 1
+  .\]%
+  To evaluate the integral, it is convenient to use Feynman's technique (differentiation under the integral sign). Define
+  \[%
+    I(\alpha) = \int_0^\infty x e^{-\alpha x} \dx
+  .\]%
+  Differentiating with respect to $\alpha$ under the integral sign gives
+  \[%
+    \odv{I}{\alpha} = \int_0^\infty \pdv{}{\alpha} \big(x e^{-\alpha x}\big) \dx = -\int_0^\infty x^2 e^{-\alpha x} \dx
+  .\]%
+  The last integral can be computed by integrating by parts twice, or by recalling the standard Gamma-type formula, resulting in
+  \[%
+    \int_0^\infty x^2 e^{-\alpha x} \dx = \frac{2}{\alpha^3}
+  .\]%
+  Hence
+  \[%
+    \odv{I}{\alpha} = -\frac{2}{\alpha^3}
+  .\]%
+  Integrating with respect to $\alpha$ gives
+  \[%
+    I(\alpha) = \int -\frac{2}{\alpha^3} \dd{\alpha} = \frac{1}{\alpha^2} + C_1
+  \]%
+  To determine $C_1$, observe that as $\alpha \to \infty$ the integrand $xe^{-\alpha x}$ tends pointwise to $0$ and is dominated by an integrable function, so $I(\alpha) \to 0$. Therefore $C_1 = 0$, and we have
+  \[%
+    I(\alpha) = \frac{1}{\alpha^2}
+  .\]%
+
+  Now the normalizing constant can be found from
+  \[%
+    \int_0^\infty Cxe^{-x/2} \dx = C I(1/2) = C \cdot \frac{1}{(1/2)^2} = 4C
+  ,\]%
+  so $4C = 1$ and therefore $C = 1/4$. The density is thus
+  \[%
+    f(x) = \frac{1}{4} xe^{-x/2}, \qquad x > 0
+  .\]%
+
+  To compute the probability that the system functions for at least five months, we evaluate
+  \[%
+    P(X \ge 5) = \int_5^\infty \frac{1}{4} xe^{-x/2} \dx
+  .\]%
+  An antiderivative of $xe^{-x/2}$ is $-2e^{-x/2}(x + 2)$, so
+  \[%
+    \int_5^\infty xe^{-x/2} \dx = \left[-2e^{-x/2}(x+2)\right]_5^{\infty} = 14e^{-5/2}
+  .\]%
+  Thus
+  \[%
+    P(X \ge 5) =  \frac{1}{4} \cdot 14e^{-5/2} = \frac{7}{2} e^{-5/2}
+  .\]%
+  Thus, we have around a $28.7\%$ chance the system lasts at least five months.
+\end{solution}
+
+\begin{problem}[2]
+  The probability density function of $X$, the lifetime of a certain type of electronic device (measured in hours), is given by
+  \[%
+    f(x) = \begin{cases}
+      \displaystyle\frac{10}{x^2} & x > 10, \\[6pt]
+      0 & x \le 10.
+    \end{cases}
+  \]%
+  \begin{enumerate}
+    \item Find $P\{X > 15\}$.
+    \item What is the cumulative distribution function of $X$?
+    \item What is the probability that of 6 such types of devices, at least 3 will function for at least 15 hours? What assumptions are you making?
+  \end{enumerate}
+\end{problem}
+
+\begin{solution}[(i)]
+  The density is normalized since
+  \[%
+    \int_{10}^\infty \frac{10}{x^2} \dx = 10\left[-\frac{1}{x}\right]_{10}^\infty = 10\left(0 - \left[-\frac{1}{10}\right]\right) = 1
+  ,\]%
+  so it is a valid pdf. The tail probability for $x > 10$ is
+  \[%
+    P(X > x) = \int_x^\infty \frac{10}{t^2} \dt = 10\left[-\frac{1}{t}\right]_x^\infty = \frac{10}{x}
+  .\]%
+  Hence
+  \[%
+    P\{X > 15\} = \frac{10}{15} = \frac{2}{3}
+  .\]%
+  Thus there is a $66.67\%$ chance that a device lasts more than 15 hours.
+\end{solution}
+
+\begin{solution}[(ii)]
+  The cumulative distribution function is obtained by integrating the pdf from the left endpoint of the support. For $x\le 10$ we have $F(x)=0$. For $x>10$,
+  \[%
+    F(x) = \int_{10}^x \frac{10}{t^2} \dt = 10\left[-\frac{1}{t}\right]_{10}^x = 1 - \frac{10}{x}
+  .\]%
+  Thus the CDF is
+  \[%
+    F(x)=\begin{cases}
+      0, & x \le 10, \\[6pt]
+      1 - \frac{10}{x}, & x > 10,
+    \end{cases}
+  \]%
+  which satisfies $F(10^+) = 0$ and $\lim_{x \to \infty} F(x) = 1$.
+\end{solution}
+
+\begin{solution}[(iii)]
+  Let a ``success'' be the event that a device lasts at least $15$ hours. From part (i) the single-device success probability is $p = P(X \ge 15) = 2/3$. Assuming the six devices are independent and identically distributed, the number of successes among the six is $\mathrm{Binomial}(n = 6, p = 2/3)$. Therefore the probability that at least three of the six last at least $15$ hours is
+  \[%
+    \sum_{k=3}^6 \binom{6}{k} \left(\frac{2}{3}\right)^k \left(\frac{1}{3}\right)^{6-k} = \frac{656}{729}
+  .\]%
+  The assumptions are that each device's lifetime follows the given pdf and that the six lifetimes are independent.
+\end{solution}
+
+\begin{problem}[3]
+  Compute $E[X]$ if X has the probability density function given by
+  \begin{enumerate}
+    \item $\displaystyle\begin{cases}
+        \frac{1}{4}xe^{-x/2} & x > 0, \\
+        0 & \text{otherwise}.
+    \end{cases}$
+
+    \item $\displaystyle\begin{cases}
+        c(1 - x^2) & -1 < x < 1 \\
+        0 & \text{otherwise}.
+    \end{cases}$
+  \end{enumerate}
+\end{problem}
+
+\begin{solution}
+  Recall from Problem 1 that for $\alpha > 0$
+  \[%
+    I(\alpha) = \int_0^\infty x e^{-\alpha x} \dx = \frac{1}{\alpha^2}
+  .\]%
+  Differentiate $I(\alpha)$ with respect to $\alpha$ under the integral sign:
+  \[%
+    \odv{I}{\alpha} = \int_0^\infty \pdv{}{\alpha} \left(xe^{-\alpha x}\right) \dx = -\int_0^\infty x^2 e^{-\alpha x} \dx
+  .\]%
+  Hence
+  \[%
+    \int_0^\infty x^2 e^{-\alpha x} \dx = -\odv{}{\alpha} \left(\frac{1}{\alpha^2}\right) = \frac{2}{\alpha^3}
+  .\]%
+  For the expectation in Problem 3(i) we need the case $\alpha = 1/2$:
+  \[%
+    \int_0^\infty x^2 e^{-x/2} \dx = \frac{2}{(1/2)^3} = 16
+  ,\]%
+  and therefore
+  \[%
+    E[X] = \frac{1}{4}\int_0^\infty x^2 e^{-x/2} \dx = \frac{1}{4} \cdot 16 = 4
+  .\]%
+  Thus, the expected value is $E[X] = 4$.
+\end{solution}
+
+\begin{solution}[(ii)]
+  We require
+  \[%
+    1 = \int_{-1}^1 c(1 - x^2) \dx = c\left[x - \frac{x^3}{3}\right]_{-1}^1 = \frac{4c}{3}
+  ,\]%
+  so $c = 3/4$. The expectation is
+  \[%
+    E[X] = \int_{-1}^1 x \cdot \frac{3}{4} (1 - x^2) \dx = \frac{3}{4} \int_{-1}^1 x(1 - x^2) \dx
+  .\]%
+  The integrand is odd and the interval is symmetric, hence the integral vanishes and $E[X] = 0$.
+\end{solution}
+
+\begin{problem}[4]
+  The lifetime in hours of an electronic tube is a random variable having a probability density function given by $f(x) = xe^{-x}$, $x \ge 0$. Compute the expected lifetime of such a tube.
+\end{problem}
+
+\begin{solution}
+  Recall from Problem 1 that
+  \[%
+    I(\alpha) = \int_0^\infty x e^{-\alpha x} \dx = \frac{1}{\alpha^2}, \qquad \alpha > 0
+  .\]%
+  Differentiate $I(\alpha)$ under the integral sign:
+  \[%
+    \odv{I}{\alpha} = \int_0^\infty \pdv{}{\alpha} \left(xe^{-\alpha x}\right) \dx = -\int_0^\infty x^2 e^{-\alpha x} \dx
+  .\]%
+  Hence
+  \[%
+    \int_0^\infty x^2 e^{-\alpha x} \dx = -\odv{}{\alpha} \left(\frac{1}{\alpha^2}\right) = \frac{2}{\alpha^3}
+  .\]%
+  For the given density we have $\alpha = 1$, so
+  \[%
+    E[X] = \int_0^\infty x^2 e^{-x} \dx = \frac{2}{1^3} = 2.
+  \]%
+  Also, you could have noticed that the integral is just the definition of the Gamma function at 3, i.e.,
+  \[%
+    E[X] = \int_0^\infty x^2 e^{-x} \dx = \Gamma(3) = 2!
+  ,\]%
+  but this way is way less fun.
+\end{solution}
+
+\begin{problem}[5]
+  If $X$ is a normal random variable with parameters $\mu = 10$ and $\sigma^2 = 36$, compute the following probabilities.
+  \begin{enumerate}
+    \item $P\{X < 20\}$
+    \item $P\{4 < X < 12\}$
+  \end{enumerate}
+\end{problem}
+
+\begin{solution}[(i)]
+  Since $X \sim N(10,36)$, we standardize using
+  \[%
+    Z = \frac{X - \mu}{\sigma} = \frac{X - 10}{6}, \qquad Z\sim N(0,1)
+  .\]%
+  Then
+  \[%
+    P\{X < 20\} = P\left\{\frac{X-10}{6} < \frac{20-10}{6}\right\} = P\{Z < 10/6\} = P\{Z < 5/3\}
+  .\]%
+  Thus the answer is
+  \[%
+    P\{X < 20\} = \Phi\left(\frac{5}{3}\right)
+  ,\]%
+  where $\Phi$ denotes the standard normal CDF, which is given by
+  \[%
+    \Phi(z) = \int_{-\infty}^z \frac{1}{\sqrt{2\pi}} e^{-t^2/2} \dt
+  .\]%
+  Now, let's try and find a numerical approximation for $\Phi(5/3)$. Using Feynman's technique (once again, this technique is super useful), define
+  \[%
+    J(\alpha) = \int_0^a e^{-\alpha t^2} \dt, \qquad \alpha > 0
+  .\]%
+  Differentiate under the integral sign:
+  \[%
+    \odv{J}{\alpha} = -\int_0^a t^2 e^{-\alpha t^2} \dt.
+  \]%
+  Instead of solving this differential equation directly, note the standard Gaussian integral on $[0,\infty)$:
+  \[%
+    \int_0^\infty e^{-\alpha t^2} \dt = \frac{1}{2}\sqrt{\frac{\pi}{\alpha}}
+  .\]%
+  Using the substitution $u = t\sqrt{\alpha}$ in the finite integral gives the closed form
+  \[%
+    J(\alpha) = \frac{\sqrt{\pi}}{2\sqrt{\alpha}}\operatorname{erf}\big(a\sqrt{\alpha}\big)
+  ,\]%
+  where
+  \[%
+    \operatorname{erf}(x) = \frac{2}{\sqrt{\pi}} \int_0^x e^{-u^2} \du
+  .\]%
+  Put $\alpha = 1/2$ and recall the relationship between $\Phi$ and the integral from $0$ to $a$:
+  \[%
+    \Phi(a) = \frac{1}{2} + \frac{1}{\sqrt{2\pi}}\int_0^{a} e^{-t^2/2} \dt = \frac12 + \frac{1}{\sqrt{2\pi}}J(1/2)
+  .\]%
+  Hence
+  \[%
+    \Phi(a) = \frac{1}{2} + \frac{1}{2}\operatorname{erf}\left(\tfrac{a}{\sqrt{2}}\right) = \frac{1}{2}\left(1 + \operatorname{erf}\left(\tfrac{a}{\sqrt{2}}\right)\right)
+  .\]%
+
+  Now, we can expand $e^{-t^2/2}$ as
+  \[%
+    e^{-t^2/2} = \sum_{n=0}^\infty \frac{(-1)^n}{2^n n!}t^{2n}
+  ,\]%
+  and integrate termwise to get
+  \[%
+    \Phi(a) = \frac{1}{2} + \frac{1}{\sqrt{2\pi}}\sum_{n=0}^\infty \frac{(-1)^n}{2^n n!}\frac{a^{2n + 1}}{2n + 1}
+  ,\]%
+  which is a perfectly valid Feynman-style series representation you can use for hand computations (it converges rapidly for moderate $a$).
+
+  Using the $\operatorname{erf}$ representation,
+  \[%
+    \Phi\left(\frac{5}{3}\right) = \frac{1}{2}\left(1+\operatorname{erf}\left(\frac{5}{3\sqrt{2}}\right)\right) \approx 0.9522096477
+  .\]%
+  Thus, there is around a $95.22\%$ chance that $X$ is less than $20$.
+\end{solution}
+
+\begin{solution}[(ii)]
+  Again using the standardization $Z=(X-10)/6$, we have
+  \[%
+    P\{4 < X < 12\} = P\left\{\frac{4 - 10}{6} < Z < \frac{12 - 10}{6}\right\} = P\left\{-1 < Z < \frac{1}{3}\right\}
+  .\]%
+  Therefore
+  \[%
+    P\{4 < X < 12\} = \Phi\left(\frac{1}{3}\right) - \Phi(-1)
+  ,\]%
+  where $\Phi$ is the standard normal CDF (I'm not computing this again).
+\end{solution}
+
+\begin{problem}[6]
+  Suppose that $X$ is a normal random variable with mean 8. If $P\{X > 14\} = 0.2$ approximately what is $\Var(X)$?
+\end{problem}
+
+\begin{solution}
+  Since $X$ is normal with mean $\mu = 8$ and unknown variance $\sigma^2$, we standardize:
+  \[%
+    P\{X > 14\} = P\left\{\frac{X - 8}{\sigma} > \frac{14 - 8}{\sigma}\right\} = P\left\{Z > \frac{6}{\sigma}\right\}
+  ,\]%
+  where $Z \sim N(0, 1)$. We are given that this probability equals $0.2$, so
+  \[%
+    P\{Z > 6/\sigma\} = 0.2
+  .\]%
+  This is equivalent to
+  \[%
+    \Phi\left(\frac{6}{\sigma}\right) = 0.8
+  .\]%
+  From standard normal tables, we have
+  \[%
+    \Phi^{-1}(0.8) \approx 0.841621
+  .\]%
+  Therefore
+  \[%
+    \frac{6}{\sigma} = 0.841621 \implies \sigma = \frac{6}{0.841621} \approx 7.128
+  .\]%
+  Hence
+  \[%
+    \Var(X) = \sigma^2 \approx (7.128)^2 \approx 50.8
+  .\]%
+  Thus, the variance is approximately $50.8$.
+\end{solution}
+
+\begin{problem}[7]
+  Every day Jo practices her tennis serve by continually serving until she has had a total of 50 successful serves. If each of her serves is, independently of previous serves, successful with probability 0.4, approximately what is the probability that she will need more than 100 serves to accomplish her goal? Use all possible improvements.
+\end{problem}
+
+\begin{solution}
+  Let $N$ be the total number of serves Jo needs to obtain $50$ successes. Equivalently, after $100$ serves she will still need more than $0$ additional serves precisely when the number of successes in the first $100$ serves is at most $49$. If $S_{100}$ denotes the number of successes in 100 independent Bernoulli$(p=0.4)$ trials, then
+  \[
+    P\{N>100\}=P\{S_{100}\le 49\},
+  \]
+  and $S_{100}\sim\operatorname{Binomial}(100,0.4)$.
+
+  The binomial has mean and variance
+  \[%
+    \mu := E[S_{100}] = 100 \cdot 0.4 = 40 \aand \sigma^2 := \Var(S_{100}) = 100 \cdot 0.4 \cdot 0.6 = 24
+  ,\]%
+  so $\sigma=\sqrt{24}\approx 4.8989795$. Using the normal approximation with the continuity correction (the usual improvement), we approximate
+  \[%
+    P\{S_{100} \le 49\} \approx \Phi\left(\frac{49.5 - \mu}{\sigma}\right) = \Phi\left(\frac{49.5 - 40}{\sqrt{24}}\right) = \Phi(1.93899\ldots)
+  ,\]%
+  where $\Phi$ is the standard normal CDF. Numerically,
+  \[%
+    \Phi(1.93899\ldots) \approx 0.97376
+  .\]%
+
+  For comparison, the exact binomial tail evaluates to
+  \[%
+    P\{S_{100} \le 49\} = \sum_{k=0}^{49} \binom{100}{k}0.4^k 0.6^{100-k} \approx 0.9729008
+  ,\]%
+  so the continuity-corrected normal approximation is very accurate. Therefore the probability that Jo needs more than $100$ serves is approximately $97.38\%$.
+\end{solution}
+
+\begin{problem}[8]
+  A fire station is to be located on a road of infinite length stretching from point 0 outward to $\infty$. If the distance of a fire from point 0 is exponentially distributed with rate $\lambda$, where should the fire station be located? That is, we want to minimize $E[|X - a|]$, where $X$ is exponential with rate $\lambda$.
+\end{problem}
+
+\begin{solution}
+  To minimize $g(a) := E[|X-a|]$ it is convenient to use the standard fact (which we derive briefly) that any minimizer of $E|X-a|$ is a median of the distribution of $X$. For a continuous $X$ one may differentiate under the expectation: since
+  \[%
+    \pdv{}{a} |x - a| = -\operatorname{sgn}(x - a)
+  ,\]%
+  dominated convergence gives
+  \[%
+    g'(a) = \odv{}{a} E[|X - a|] = -E[\operatorname{sgn}(X - a)] = -(P\{X > a\} - P\{X < a\}) = 2F_X(a) - 1
+  ,\]%
+  where $F_X$ is the CDF of $X$. Thus $g'(a) = 0$ iff $F_X(a) = 1/2$. Hence, any minimizer of $g(a)$ is a median of $X$.
+
+  For $X \sim \operatorname{Exponential}(\lambda)$ we have
+  \[%
+    F_X(a) = 1 - e^{-\lambda a}, \qquad a \ge 0
+  .\]%
+  Setting $F_X(a) = 1/2$ gives $1 - e^{-\lambda a} = 1/2$, so
+  \[%
+    e^{-\lambda a} = 1/2 \implies a = \frac{\ln(2)}{\lambda}
+  .\]%
+  Therefore the fire station should be located at $a = \ln(2)/\lambda$, the median of the exponential distribution.
+
+  Writing $m = \ln(2)/\lambda$ and evaluating
+  \[%
+    E[|X - m|] = \int_0^m (m - x) \lambda e^{-\lambda x} \dx + \int_m^\infty (x - m) \lambda e^{-\lambda x} \dx
+  ,\]%
+  and using $e^{-\lambda m} = 1/2$, we get
+  \[%
+    E[|X - m|] = m - \frac{1}{\lambda} + \frac{2e^{-\lambda m}}{\lambda} = m
+  .\]%
+  Thus at the optimal location the minimal expected distance equals the median, i.e.,
+  \[%
+    \min_{a \ge 0} E[|X - a|] = \frac{\ln(2)}{\lambda}
+  .\qedhere\]%
+\end{solution}
+
+\begin{problem}[9]
+  The time (in hours) required to repair a machine is an exponentially distributed random variable with parameter $\lambda = 1/2$. What is the conditional probability that a repair takes at least 11 hours, given that its duration exceeds 9 hours?
+\end{problem}
+
+\begin{solution}
+  If $X$ is exponentially distributed with rate $\lambda = 1/2$, then
+  \[%
+    P\{X > x\} = e^{-\lambda x} = e^{-x/2}
+  .\]%
+  We want
+  \[%
+    P\{X \ge 11 \mid X > 9\} = \frac{P\{X \ge 11\}}{P\{X > 9\}}
+  .\]%
+  Using the exponential tail formula,
+  \[%
+    P\{X \ge 11\} = e^{-11/2} \aand P\{X > 9\} = e^{-9/2}.
+  .\]%
+  Thus
+  \[%
+    P\{X \ge 11 \mid X > 9\} = \frac{e^{-11/2}}{e^{-9/2}} = e^{-1} = \frac{1}{e}
+  .\]%
+  This is exactly the memoryless property of the exponential distribution: after waiting 9 hours, the additional time until completion is still exponential with the same rate.
+\end{solution}
+
+\begin{problem}[10]
+  If $X$ is uniformly distributed over the interval $(0, 3)$, find the probability density function for $Y = e^X$
+\end{problem}
+
+\begin{solution}
+  Since $X$ is uniformly distributed on $(0,3)$, its density is
+  \[%
+    f_X(x) = \frac{1}{3}, \qquad 0 < x < 3.
+  \]%
+  We define $Y = e^X$. Because the function $y = e^x$ is strictly increasing, we may use the standard change-of-variables formula
+  \[%
+    f_Y(y) = f_X(g^{-1}(y)) \left|\odv{}{y} g^{-1}(y)\right|
+  ,\]%
+  where $g(x) = e^x$ and hence $g^{-1}(y) = \ln(y)$.
+
+  The range of $Y$ is determined by the range of $X$:
+  \[%
+    X \in (0,3) \implies Y \in (e^0, e^3) = (1, e^3).
+  \]%
+  Thus,
+  \[%
+    f_Y(y) = f_X(\ln y)\left|\frac{d}{dy}(\ln y)\right| = \frac{1}{3} \cdot \frac{1}{y}, \qquad 1 < y < e^3.
+  .\]%
+  Therefore, the density of $Y$ is
+  \[%
+    f_Y(y) = \begin{cases}
+      \displaystyle\frac{1}{3y}, & 1 < y < e^3, \\[6pt]
+      0, & \text{otherwise}.
+    \end{cases}
+  \qedhere\]%
+\end{solution}
+
+\begin{problem}[11]
+  Show that if a random variable $X$ has pdf $f_X(x)$ then $Y = aX + b$ has pdf $\displaystyle f_Y(y) = \frac{1}{|a|} f_X \left(\frac{y - b}{a}\right)$, where $a$ and $b$ are real-valued constants.
+\end{problem}
+
+\begin{solution}
+  Let $X$ be a continuous random variable with pdf $f_X(x)$ and let $Y=aX+b$ for real constants $a$ and $b$ with $a\neq 0$. We derive the pdf of $Y$ from its distribution function. For any $y \in \R$,
+  \[%
+    F_Y(y) = P(Y \le y) = P(aX + b \le y)
+  .\]%
+  If $a > 0$ then $aX + b \le y$ is equivalent to $X \le (y - b)/a$, so
+  \[%
+    F_Y(y) = P\left(X \le \frac{y - b}{a}\right) = F_X\left(\frac{y-b}{a}\right)
+  .\]%
+  Differentiating with respect to $y$ and using the chain rule gives
+  \[%
+    f_Y(y) = \odv{}{y} F_Y(y) = F_X'\left(\frac{y - b}{a}\right) \cdot \frac{1}{a} = \frac{1}{a}f_X \left(\frac{y - b}{a}\right)
+  .\]%
+
+  If $a < 0$ then $aX + b \le y$ is equivalent to $X \ge (y - b)/a$ (the inequality reverses), so
+  \[%
+    F_Y(y) = P\left(X\ge\frac{y - b}{a}\right) = 1 - F_X\left(\frac{y - b}{a}\right)
+  .\]%
+  Differentiating yields
+  \[%
+    f_Y(y) = \odv{}{y} F_Y(y) = -F_X'\left(\frac{y - b}{a}\right) \cdot \frac{1}{a} = \frac{1}{|a|}f_X\left(\frac{y - b}{a}\right)
+  ,\]%
+  since $-1/a = 1/|a|$ when $a < 0$.
+
+  Combining both cases, we have shown that for any $a \neq 0$,
+  \[%
+    f_Y(y) = \frac{1}{|a|} f_X\left(\frac{y - b}{a}\right)
+  .\qedhere\]%
+\end{solution}
