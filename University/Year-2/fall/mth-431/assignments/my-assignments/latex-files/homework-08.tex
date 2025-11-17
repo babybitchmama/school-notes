@@ -43,15 +43,12 @@
 \begin{solution}[(ii)]
   Consider the function $f : \R \to \R$ defined by
   \[%
-    f(x) =
-    \begin{cases}
-      \frac{1}{x}, & x \neq 0, \\
+    f(x) = \begin{cases}
+      1/x, & x \neq 0, \\
       0, & x = 0.
     \end{cases}
   \]%
-  This function is not continuous at $x = 0$, since $\lim_{x \to 0} f(x)$ does not exist. However, we can show that its graph $\Gamma_f$ is closed in $\R^2$.
-
-  Let $(x_n, f(x_n))$ be a sequence in $\Gamma_f$ that converges to some point $(x, y) \in \R^2$. We need to show that $(x, y) \in \Gamma_f$.
+  This function is not continuous at $x = 0$, since $\lim_{x \to 0} f(x)$ does not exist. However, we can show that its graph $\Gamma_f$ is closed in $\R^2$. Let $(x_n, f(x_n))$ be a sequence in $\Gamma_f$ that converges to some point $(x, y) \in \R^2$. We need to show that $(x, y) \in \Gamma_f$.
 
   If $x \neq 0$, then for sufficiently large $n$, $x_n \neq 0$ and $f(x_n) = 1/x_n$. Since $(x_n, f(x_n)) \to (x, y)$, it follows that $y = 1/x$, so $(x, y) \in \Gamma_f$.
 
@@ -65,6 +62,8 @@
     \item Let $X$ and $Y$ be topological spaces, and suppose that $Y$ is Hausdorff. Prove that if two continuous maps $f, g : X \to Y$ agree on a dense subset $D \subset X$, then $f = g$.
 
       Hint: Let $E = \{x \in X \mid f (x) = g(x)\}$, and prove that it’s closed.
+
+    \item Give a counterexample when $Y$ is not Hausdorff.
   \end{enumerate}
 \end{problem}
 
