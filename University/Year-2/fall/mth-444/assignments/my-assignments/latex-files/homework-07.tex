@@ -3,23 +3,15 @@
 \end{problem}
 
 \begin{solution}
-  Suppose we have three groups, $(G, \oplus)$, $(G', \otimes)$, and $(G'', \circ)$. Let $\phi : G \to G'$ and $\gamma : G' \to G''$ be group homomorphisms. We want to show that the composition $\gamma \circ \phi : G \to G''$ is also a group homomorphism. Take any two elements $a, b \in G$. Then, we have
+  Let $\phi : G \to G'$ and $\gamma : G' \to G''$ be group homomorphisms. We want to show that the composition $\gamma \circ \phi : G \to G''$ is also a group homomorphism. Take any two elements $a, b \in G$. Then, we have
   \[%
-    (\gamma \circ \phi)(a \oplus b) = \gamma(\phi(a \oplus b))
-  .\]%
-  Since $\phi$ is a group homomorphism, we know that
+    (\gamma \circ \phi)(ab) = \gamma(\phi(ab)) = \gamma(\phi(a) \phi(b))
+  ,\]%
+  since $\phi$ is a group homomorphism. Since $\gamma$ is also a group homomorphism, we have
   \[%
-    \gamma(\phi(a \oplus b)) = \gamma(\phi(a) \otimes \phi(b))
+    \gamma(\phi(a) \phi(b)) = \gamma(\phi(a)) \circ \gamma(\phi(b)) = (\gamma \circ \phi)(a) \circ (\gamma \circ \phi)(b)
   .\]%
-  Now, since $\gamma$ is also a group homomorphism, we have
-  \[%
-    \gamma(\phi(a) \otimes \phi(b)) = \gamma(\phi(a)) \circ \gamma(\phi(b))
-  .\]%
-  Therefore, we can conclude that
-  \[%
-    (\gamma \circ \phi)(a \oplus b) = (\gamma \circ \phi)(a) \circ (\gamma \circ \phi)(b)
-  .\]%
-  This shows that $\gamma \circ \phi$ preserves the group operation, and hence it is a group homomorphism.
+  Thus, $\gamma \circ \phi : G \to G''$ is a group homomorphism.
 \end{solution}
 
 \begin{problem}[8.41]
@@ -47,6 +39,8 @@
     \sum_{i=1}^r (m_i - 1) = \left(\sum_{i=1}^r m_i\right) - r = n - r
   ,\]%
   transpositions. Since $r \ge 1$, we have $n - r \le n - 1$, so $\sigma$ is a product of at most $n - 1$ transpositions.
+
+  Notice that we get $n - 1$ transpositions when $\sigma$ is a single $n$-cycle, but we can never exceed $n - 1$ transpositions for any permutation in $S_n$. Thus, every permutation in $S_n$ can be written as a product of at most $n - 1$ transpositions.
 \end{solution}
 
 \begin{problem}[8.43]
@@ -54,10 +48,21 @@
 \end{problem}
 
 \begin{solution}
-  Let $H$ be a subgroup of $S_n$ for $n \ge 2$. Take the $\sgn : S_n \to \{1, -1\}$ group homomorphism, and restrict it to $H$, giving us $\sgn|_H : H \to \{1, -1\}$. The kernel of this homomorphism is given by
-  \[%
-    \ker(\sgn|_H) = \{ \sigma \in H \mid \sgn(\sigma) = 1 \} = H \cap A_n
-  .\]%
+  Let $H$ be a subgroup of $S_n$ for $n \ge 2$. Let $\sigma_1$ and $\sigma_2$ be two even permutations and $\tau_1$ and $\tau_2$ be two odd permutations in $H$. We note that
+  \begin{align*}
+    \sgn(\sigma_1 \sigma_2) &= \sgn(\sigma_1) \sgn(\sigma_2) = (1)(1) = 1, \\
+    \sgn(\tau_1 \tau_2) &= \sgn(\tau_1) \sgn(\tau_2) = (-1)(-1) = 1, \\
+    \sgn(\sigma_1 \tau_1) &= \sgn(\sigma_1) \sgn(\tau_1) = (1)(-1) = -1
+  .\end{align*}
+  This comes from the fact that $\sgn$ is a group homomorphism from $S_n$ to $\{1, -1\}$. From the above calculations, we see that the product of two even permutations is even, the product of two odd permutations is even, and the product of an even permutation and an odd permutation is odd.
+
+  Since $H$ is closed under composition, if there exists an odd function, there must exist an even function in $H$ as well. So, $H$ cannot just consist of only odd functions, but it can consist of only even functions.
+
+  Let $m$ be the number of even permutations in $H$ and $k$ be the number of odd permutations in $H$. Taking all the odd functions, $\tau_1, \tau_2, \ldots, \tau_k$, we can create $k$ even functions by composing each odd function with a fixed odd function $\tau_i$. Therefore, we have $m \ge k$.
+
+  Similarly, taking all the even functions, $\sigma_1, \sigma_2, \ldots, \sigma_m$, we can create $m$ odd functions by composing each even function with a fixed odd function $\tau_j$. Therefore, we have $k \ge m$.
+
+  Therefore, we conclude that $m = k$. In summary, either all the permutations in $H$ are even, or exactly half of them are even.
 \end{solution}
 
 \begin{problem}[9.6]
@@ -67,11 +72,7 @@
 \begin{solution}
   The order of $3$ in $\Z_4$ is 4, since $3 \times 4 \equiv 0 \pmod{4}$. The order of $10$ in $\Z_{12}$ is 6, since $10 \times 6 \equiv 0 \pmod{12}$. The order of $9$ in $\Z_{15}$ is 5, since $9 \times 5 \equiv 0 \pmod{15}$.
 
-  To find the order of the element $(3, 10, 9)$ in the direct product $\Z_4 \times \Z_{12} \times \Z_{15}$, we take the least common multiple (LCM) of the individual orders:
-  \[%
-    \ord(3, 10, 9) = \lcm(4, 6, 5) = 60
-  .\]%
-  Therefore, the order of the element $(3, 10, 9)$ in $\Z_4 \times \Z_{12} \times \Z_{15}$ is 60.
+  To find the order of the element $(3, 10, 9)$ in the direct product $\Z_4 \times \Z_{12} \times \Z_{15}$, we take the least common multiple (LCM) of the individual orders to get $\ord(3, 10, 9) = \lcm(4, 6, 5) = 60$. Therefore, the order of the element $(3, 10, 9)$ in $\Z_4 \times \Z_{12} \times \Z_{15}$ is 60.
 \end{solution}
 
 \begin{problem}[9.8]
@@ -99,13 +100,13 @@
 \begin{solution}
   Breaking down each group into its primary components, we have
   \begin{gather*}
-    G = \Z_8 \times \Z_{10} \times \Z_{24} \cong \Z_2 \times \Z_{2^3} \times \Z_{2^3} \times \Z_3 \times \Z_5 \\
-    H = \Z_4 \times \Z_{12} \times \Z_{40} \cong \Z_{2^2} \times \Z_{2^2} \times \Z_{2^3} \times \Z_3 \times \Z_5
+    G = \Z_8 \times \Z_{10} \times \Z_{24} \cong \Z_2 \times \Z_3 \times \Z_5 \times \Z_8 \times \Z_8 \\
+    H = \Z_4 \times \Z_{12} \times \Z_{40} \cong \Z_3 \times \Z_4 \times \Z_4 \times \Z_5 \times \Z_8
   .\end{gather*}
   The primary components of $G$ and $H$ are given as
   \begin{gather*}
     G_{(3)} \cong \Z_3 \cong H_{(3)}, \quad G_{(5)} \cong \Z_5 \cong H_{(5)} \\
-    G_{(2)} \cong \Z_2 \times \Z_{2^3} \times \Z_{2^3} \not\cong \Z_{2^2} \times \Z_{2^2} \times \Z_{2^3} \cong H_{(2)}
+    G_{(2)} \cong \Z_2 \times \Z_8 \times \Z_8 \not\cong \Z_4 \times \Z_4 \times \Z_8 \cong H_{(2)}
   .\end{gather*}
   Since the primary components corresponding to the prime 2 are not isomorphic, we conclude that the groups $G$ and $H$ are not isomorphic.
 \end{solution}
@@ -118,9 +119,9 @@
   Factoring 16 into its prime power components, we have $16 = 2^4$. The abelian groups of order 16, up to isomorphism, are given by the following decompositions, $4$, $3 + 1$, $2 + 2$, $2 + 1 + 1$, and $1 + 1 + 1 + 1$. Thus, the abelian groups of order 16 along with their invariant factors are
   \begin{align*}
     \Z_{16} &: (16) \\
-    \Z_8 \times \Z_2 &: (8, 2) \\
+    \Z_2 \times \Z_8 &: (8, 2) \\
     \Z_4 \times \Z_4 &: (4, 4) \\
-    \Z_4 \times \Z_2 \times \Z_2 &: (4, 2, 2) \\
+    \Z_2 \times \Z_2 \times \Z_4 &: (4, 2, 2) \\
     \Z_2 \times \Z_2 \times \Z_2 \times \Z_2 &: (2, 2, 2, 2)
   .\qedhere\end{align*}
 \end{solution}
@@ -132,18 +133,18 @@
 \begin{solution}
   For 24, we have the prime factorization $24 = 2^3 \times 3^1$. The number of abelian groups of order $2^3$ is given by the number of partitions of 3, which are $3$, $2 + 1$, and $1 + 1 + 1$. Thus, there are 3 abelian groups of order $2^3$. For $3^1$, there is only 1 abelian group. Therefore, the total number of abelian groups of order 24 is $3 \times 1 = 3$. They are
   \[%
-    \Z_8 \times \Z_3, \quad \Z_4 \times \Z_2 \times \Z_3, \quad \Z_2 \times \Z_2 \times \Z_2 \times \Z_3
+    \Z_3 \times \Z_8, \quad \Z_2 \times \Z_3 \times \Z_4, \quad \Z_2 \times \Z_2 \times \Z_2 \times \Z_3
   .\]%
 
   For 25, we have the prime factorization $25 = 5^2$. The number of abelian groups of order $5^2$ is given by the number of partitions of 2, which are $2$ and $1 + 1$. Thus, there are 2 abelian groups of order 25. They are
   \[%
-    \Z_{25}, \quad \Z_5 \times \Z_5
+    \Z_5, \quad \Z_5 \times \Z_{25}
   .\]%
 
   For $(24)(25) = 600$, we have the prime factorization $600 = 2^3 \times 3^1 \times 5^2$. From the previous calculations, we know there are 3 abelian groups of order $2^3$, 1 abelian group of order $3^1$, and 2 abelian groups of order $5^2$. Therefore, the total number of abelian groups of order 600 is $3 \times 1 \times 2 = 6$. They are
   \begin{gather*}
-    \Z_8 \times \Z_3 \times \Z_{25}, \quad \Z_8 \times \Z_3 \times \Z_5 \times \Z_5, \\
-    \Z_4 \times \Z_2 \times \Z_3 \times \Z_{25}, \quad \Z_4 \times \Z_2 \times \Z_3 \times \Z_5 \times \Z_5, \\
+    \Z_3 \times \Z_8 \times \Z_{25}, \quad \Z_3 \times \Z_5 \times \Z_5 \times \Z_8, \\
+    \Z_2 \times \Z_3 \times \Z_4 \times \Z_{25}, \quad \Z_2 \times \Z_3 \times \Z_4 \times \Z_5 \times \Z_5, \\
     \Z_2 \times \Z_2 \times \Z_2 \times \Z_3 \times \Z_{25}, \quad \Z_2 \times \Z_2 \times \Z_2 \times \Z_3 \times \Z_5 \times \Z_5
   .\qedhere\end{gather*}
 \end{solution}
