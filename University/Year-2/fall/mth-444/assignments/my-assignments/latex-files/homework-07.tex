@@ -1,29 +1,175 @@
 \begin{problem}[8.39]
+  Show that if $\phi : G \to G'$ and $\gamma : G' \to G''$ are group homomorphisms, then $\gamma \circ \phi : G \to G''$ is also a group homomorphism.
 \end{problem}
 
-\begin{problem}[8.41i]
+\begin{solution}
+  Suppose we have three groups, $(G, \oplus)$, $(G', \otimes)$, and $(G'', \circ)$. Let $\phi : G \to G'$ and $\gamma : G' \to G''$ be group homomorphisms. We want to show that the composition $\gamma \circ \phi : G \to G''$ is also a group homomorphism. Take any two elements $a, b \in G$. Then, we have
+  \[%
+    (\gamma \circ \phi)(a \oplus b) = \gamma(\phi(a \oplus b))
+  .\]%
+  Since $\phi$ is a group homomorphism, we know that
+  \[%
+    \gamma(\phi(a \oplus b)) = \gamma(\phi(a) \otimes \phi(b))
+  .\]%
+  Now, since $\gamma$ is also a group homomorphism, we have
+  \[%
+    \gamma(\phi(a) \otimes \phi(b)) = \gamma(\phi(a)) \circ \gamma(\phi(b))
+  .\]%
+  Therefore, we can conclude that
+  \[%
+    (\gamma \circ \phi)(a \oplus b) = (\gamma \circ \phi)(a) \circ (\gamma \circ \phi)(b)
+  .\]%
+  This shows that $\gamma \circ \phi$ preserves the group operation, and hence it is a group homomorphism.
+\end{solution}
+
+\begin{problem}[8.41]
+  Prove the following about $S_n$ if $n \ge 3$.
+  \begin{enumerate}
+    \item Every permutation in $S_n$ can be written as a product of at most $n - 1$ transpositions.
+  \end{enumerate}
 \end{problem}
+
+\begin{solution}[(i)]
+  Let $\sigma \in S_n$ and write $\sigma$ as a product of disjoint cycles (including $1$-cycles for fixed points):
+  \[%
+    \sigma = \gamma_1 \gamma_2 \cdots \gamma_r
+  ,\]%
+  where $\gamma_i$ has length $m_i\ge1$ and $\sum_{i=1}^r m_i = n$.
+
+  A $k$-cycle can be written as a product of $k-1$ transpositions; for distinct elements $a_1,\dots,a_k$,
+  \[%
+    (a_1, a_2, \dots, a_k) = (a_1, a_k)(a_1, a_{k-1}) \cdots (a_1, a_2)
+  ,\]%
+  which uses exactly $k - 1$ transpositions (and a 1-cycle uses 0).
+
+  Applying this to each $\gamma_i$ we express $\sigma$ as a product of
+  \[%
+    \sum_{i=1}^r (m_i - 1) = \left(\sum_{i=1}^r m_i\right) - r = n - r
+  ,\]%
+  transpositions. Since $r \ge 1$, we have $n - r \le n - 1$, so $\sigma$ is a product of at most $n - 1$ transpositions.
+\end{solution}
 
 \begin{problem}[8.43]
+  Show that for every subgroup $H$ of $S_n$ for $n \ge 2$, either all the permutations in $H$ are even or exactly half of them are even.
 \end{problem}
+
+\begin{solution}
+  Let $H$ be a subgroup of $S_n$ for $n \ge 2$. Take the $\sgn : S_n \to \{1, -1\}$ group homomorphism, and restrict it to $H$, giving us $\sgn|_H : H \to \{1, -1\}$. The kernel of this homomorphism is given by
+  \[%
+    \ker(\sgn|_H) = \{ \sigma \in H \mid \sgn(\sigma) = 1 \} = H \cap A_n
+  .\]%
+\end{solution}
 
 \begin{problem}[9.6]
+  Find the order of the given element of the direct product $(3, 10, 9)$ in $\Z_4 \times \Z_{12} \times \Z_{15}$.
 \end{problem}
+
+\begin{solution}
+  The order of $3$ in $\Z_4$ is 4, since $3 \times 4 \equiv 0 \pmod{4}$. The order of $10$ in $\Z_{12}$ is 6, since $10 \times 6 \equiv 0 \pmod{12}$. The order of $9$ in $\Z_{15}$ is 5, since $9 \times 5 \equiv 0 \pmod{15}$.
+
+  To find the order of the element $(3, 10, 9)$ in the direct product $\Z_4 \times \Z_{12} \times \Z_{15}$, we take the least common multiple (LCM) of the individual orders:
+  \[%
+    \ord(3, 10, 9) = \lcm(4, 6, 5) = 60
+  .\]%
+  Therefore, the order of the element $(3, 10, 9)$ in $\Z_4 \times \Z_{12} \times \Z_{15}$ is 60.
+\end{solution}
 
 \begin{problem}[9.8]
+  What is the largest order among the orders of all the cyclic subgroups of $\Z_6 \times \Z_8$ and $\Z_{12} \times \Z_{15}$?
 \end{problem}
+
+\begin{solution}
+  For $\Z_6 \times \Z_8$, the largest order among all the orders of all cyclic subgroups is given by
+  \[%
+    \max \ord(\Z_6 \times \Z_8) = \lcm(6, 8) = 24
+  .\]%
+
+  For $\Z_{12} \times \Z_{15}$, the same thing applies, giving us
+  \[%
+    \max \ord(\Z_{12} \times \Z_{15}) = \lcm(12, 15) = 60
+  .\]%
+
+  Therefore, the largest order among the orders of all the cyclic subgroups of $\Z_6 \times \Z_8$ is 24, and for $\Z_{12} \times \Z_{15}$ it is 60.
+\end{solution}
 
 \begin{problem}[9.18]
+  Are the groups $\Z_8 \times \Z_{10} \times \Z_{24}$ and $\Z_4 \times \Z_{12} \times \Z_{40}$ isomorphic? Why or why not?
 \end{problem}
+
+\begin{solution}
+  Breaking down each group into its primary components, we have
+  \begin{gather*}
+    G = \Z_8 \times \Z_{10} \times \Z_{24} \cong \Z_2 \times \Z_{2^3} \times \Z_{2^3} \times \Z_3 \times \Z_5 \\
+    H = \Z_4 \times \Z_{12} \times \Z_{40} \cong \Z_{2^2} \times \Z_{2^2} \times \Z_{2^3} \times \Z_3 \times \Z_5
+  .\end{gather*}
+  The primary components of $G$ and $H$ are given as
+  \begin{gather*}
+    G_{(3)} \cong \Z_3 \cong H_{(3)}, \quad G_{(5)} \cong \Z_5 \cong H_{(5)} \\
+    G_{(2)} \cong \Z_2 \times \Z_{2^3} \times \Z_{2^3} \not\cong \Z_{2^2} \times \Z_{2^2} \times \Z_{2^3} \cong H_{(2)}
+  .\end{gather*}
+  Since the primary components corresponding to the prime 2 are not isomorphic, we conclude that the groups $G$ and $H$ are not isomorphic.
+\end{solution}
 
 \begin{problem}[9.22]
+  Find all abelian groups, up to isomorphism, of order 16. Find the invariant factors and find an isomorphic group of the form indicated in Theorem 9.14.
 \end{problem}
+
+\begin{solution}
+  Factoring 16 into its prime power components, we have $16 = 2^4$. The abelian groups of order 16, up to isomorphism, are given by the following decompositions, $4$, $3 + 1$, $2 + 2$, $2 + 1 + 1$, and $1 + 1 + 1 + 1$. Thus, the abelian groups of order 16 along with their invariant factors are
+  \begin{align*}
+    \Z_{16} &: (16) \\
+    \Z_8 \times \Z_2 &: (8, 2) \\
+    \Z_4 \times \Z_4 &: (4, 4) \\
+    \Z_4 \times \Z_2 \times \Z_2 &: (4, 2, 2) \\
+    \Z_2 \times \Z_2 \times \Z_2 \times \Z_2 &: (2, 2, 2, 2)
+  .\qedhere\end{align*}
+\end{solution}
 
 \begin{problem}[9.26]
+  How many abelian groups (up to isomorphism) are there of order 24, order 25, and of order $(24)(25)$?
 \end{problem}
+
+\begin{solution}
+  For 24, we have the prime factorization $24 = 2^3 \times 3^1$. The number of abelian groups of order $2^3$ is given by the number of partitions of 3, which are $3$, $2 + 1$, and $1 + 1 + 1$. Thus, there are 3 abelian groups of order $2^3$. For $3^1$, there is only 1 abelian group. Therefore, the total number of abelian groups of order 24 is $3 \times 1 = 3$. They are
+  \[%
+    \Z_8 \times \Z_3, \quad \Z_4 \times \Z_2 \times \Z_3, \quad \Z_2 \times \Z_2 \times \Z_2 \times \Z_3
+  .\]%
+
+  For 25, we have the prime factorization $25 = 5^2$. The number of abelian groups of order $5^2$ is given by the number of partitions of 2, which are $2$ and $1 + 1$. Thus, there are 2 abelian groups of order 25. They are
+  \[%
+    \Z_{25}, \quad \Z_5 \times \Z_5
+  .\]%
+
+  For $(24)(25) = 600$, we have the prime factorization $600 = 2^3 \times 3^1 \times 5^2$. From the previous calculations, we know there are 3 abelian groups of order $2^3$, 1 abelian group of order $3^1$, and 2 abelian groups of order $5^2$. Therefore, the total number of abelian groups of order 600 is $3 \times 1 \times 2 = 6$. They are
+  \begin{gather*}
+    \Z_8 \times \Z_3 \times \Z_{25}, \quad \Z_8 \times \Z_3 \times \Z_5 \times \Z_5, \\
+    \Z_4 \times \Z_2 \times \Z_3 \times \Z_{25}, \quad \Z_4 \times \Z_2 \times \Z_3 \times \Z_5 \times \Z_5, \\
+    \Z_2 \times \Z_2 \times \Z_2 \times \Z_3 \times \Z_{25}, \quad \Z_2 \times \Z_2 \times \Z_2 \times \Z_3 \times \Z_5 \times \Z_5
+  .\qedhere\end{gather*}
+\end{solution}
 
 \begin{problem}[9.28]
+  Use Exercise 27 to determine the number of abelian groups (up to isomorphism) of order $(10)^5$.
 \end{problem}
 
+\begin{solution}
+  Exercise 27 states that if we have $r$ abelian groups of order $m$ and $s$ abelian groups of order $n$, then there are $rs$ abelian groups of order $mn$, provided that $m$ and $n$ are coprime. Notice that $10 = 2 \times 5$. Then, we have $10^5 = 2^5 \times 5^5$. The number of abelian groups of order $2^5$ is given by the number of partitions of 5, which are $7$ in total. Similarly, the number of abelian groups of order $5^5$ is also given by the number of partitions of 5, which is again $7$. Therefore, by Exercise 27, the total number of abelian groups of order $(10)^5$ is $7 \times 7 = 49$.
+\end{solution}
+
 \begin{problem}[9.39]
+  Let $G$ be an abelian group. Show that the elements of finite order in $G$ form a subgroup. This subgroup is called the \emph{torsion subgroup} of $G$.
 \end{problem}
+
+\begin{solution}
+  Let $H$ be the set of all elements of finite order in the abelian group $G$. Notice that $e^1 = e$, so the identity element $e$ of $G$ has finite order and is in $H$.
+
+  Next, take any two elements $a, b \in H$. Suppose $a$ has order $m$ and $b$ has order $n$. This means $a^m = e$ and $b^n = e$. Now, consider the element $a \cdot b$. Take the exponent $mn$ and using the fact that $G$ is abelian, we have
+  \[%
+    (a \cdot b)^{mn} = a^{mn} \cdot b^{mn} = (a^m)^n \cdot (b^n)^m = e \cdot e = e
+  .\]%
+  Thus, the order of $a \cdot b$ divides $mn$, which is finite. Therefore, $a \cdot b \in H$.
+
+  Finally, we need to show that if $a \in H$, then its inverse $a^{-1}$ is also in $H$. If $a$ has finite order $m$, then $a^m = e$. Taking inverses on both sides gives $(a^{-1})^m = e$. Thus, the order of $a^{-1}$ is also finite, so $a^{-1} \in H$.
+
+  Since we have shown that the identity element is in $H$, that the product of any two elements in $H$ is also in $H$, and that the inverse of any element in $H$ is also in $H$, we conclude that $H$ is a subgroup of $G$. This subgroup is called the torsion subgroup of $G$.
+\end{solution}
