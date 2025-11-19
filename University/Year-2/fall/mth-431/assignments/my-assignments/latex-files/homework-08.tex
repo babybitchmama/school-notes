@@ -3,6 +3,11 @@
 \end{problem}
 
 \begin{solution}
+  Let $U \subset Z$ be an open set. Since $f$ is continuous, the preimage $f^{-1}(U)$ is open in $X \times Y$. By the definition of the product topology, there exist open sets $A \subset X$ and $B \subset Y$ such that $(c, y) \in A \times B \subset f^{-1}(U)$. Since $c \in A$, we have
+  \[%
+    h^{-1}(U) = \{y \in Y \mid h(y) \in U\} = \{y \in Y \mid f(c, y) \in U\} = \{y \in Y \mid (c, y) \in f^{-1}(U)\} \supset B
+  .\]%
+  Therefore, for every open set $U$ in $Z$, the preimage $h^{-1}(U)$ contains an open set $B$ in $Y$. This shows that $h^{-1}(U)$ is open in $Y$, and thus $h$ is continuous.
 \end{solution}
 
 \begin{problem}[9.5]
@@ -10,6 +15,26 @@
 \end{problem}
 
 \begin{solution}
+  The function $f : \R^2 \to \R$ is defined by
+  \[%
+    f(x, y) = \begin{cases}
+      \frac{xy}{x^2 + y^2}, & (x, y) \neq (0, 0), \\
+      0, & (x, y) = (0, 0).
+    \end{cases}
+  \]%
+  Take $V = (0, 1) \subset \R$. This gives us
+  \[%
+    U = f^{-1}(V) = \left\{(x, y) \in \R^2 \mid 0 < \frac{xy}{x^2 + y^2} < 1\right\}
+  .\]%
+  Notice that $(0, 0)$ is a limit point of $U$, but $(0, 0) \notin U$. Therefore, $U$ is not open in $\R^2$.
+
+  Now, consider the intersection of $U$ with the line $\{c\} \times \R$ for some fixed $c \in \R$. We have
+  \[%
+    U \cap (\{c\} \times \R) = \left\{(c, y) \in \R^2 \mid 0 < \frac{cy}{c^2 + y^2} < 1\right\}
+  .\]%
+  If $c = 0$, then $U \cap (\{0\} \times \R) = \emptyset$, which is open in the line $\{0\} \times \R$. If $c \neq 0$, we can solve the inequality $0 < \frac{cy}{c^2 + y^2} < 1$ to find that $y$ must be in the interval $(0, \infty)$ if $c > 0$ or $(-\infty, 0)$ if $c < 0$. In either case, $U \cap (\{c\} \times \R)$ is an open interval in the line $\{c\} \times \R$. The can be done to show that $U \cap (\R \times \{c'\})$ is also open in the line $\R \times \{c'\}$ for any fixed $c' \in \R$.
+
+  This shows that while $f^{-1}(V)$ isn't open in $\R^2$, but $f(c, y)$ is continuous as a function of $y$ and $f(x, c')$ is continuous as a function of $x$.
 \end{solution}
 
 \begin{problem}[10.4]
@@ -68,7 +93,16 @@
 \end{problem}
 
 \begin{solution}[(i)]
+  Let $E = \{x \in X \mid f(x) = g(x)\}$. Define the following mapping $h : X \to Y \times Y$ by $h(x) = (f(x), g(x))$. Since $f$ and $g$ are continuous, the map $h$ is also continuous. Now, take the diagonal subset $\Delta = \{(y_1, y_2) \in Y \times Y \mid y_1 = y_2\}$. Since $Y$ is Hausdorff, by Proposition 10.4, the diagonal $\Delta$ is closed in $Y \times Y$. Notice that $x \in E$ if and only if $f(x) = g(x)$. This is equivalent to saying $(f(x), g(x)) \in \Delta$, which is also equivalent to saying $h(x) \in \Delta$. Thus, we have $E = h^{-1}(\Delta)$. Since $\Delta$ is closed in $Y \times Y$ and $h$ is continuous, $h^{-1}(\Delta)$ is closed in $X$. Therefore, $E$ is closed in $X$. Since $f$ and $g$ agree on the dense subset $D \subset X$, we have $D \subset E$. Then, we have $\overline{D} \subseteq \overline{E}$, but $\overline{D} = X$, so $X \subseteq \overline{E}$. This implies that $E = X$. Hence, $f(x) = g(x)$ for all $x \in X$, and thus $f = g$.
 \end{solution}
 
 \begin{solution}[(ii)]
+  Consider the topological space $Y = \{a, b\}$ with the trivial topology $\{\emptyset, Y\}$. Define the functions $f, g : \R \to Y$ by $f(x) = a$, for all $x \in \R$, and
+  \[%
+    g(x) = \begin{cases}
+      a, & x \neq 0, \\
+      b, & x = 0.
+    \end{cases}
+  \]%
+  Both $f$ and $g$ are continuous since the preimage of any open set in $Y$ is either $\emptyset$ or $\R$, both of which are open in $\R$. The functions $f$ and $g$ agree on the dense subset $D = \R \setminus \{0\}$, but they do not agree at $x = 0$, where $f(0) = a$ and $g(0) = b$.
 \end{solution}
