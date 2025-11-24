@@ -1,0 +1,134 @@
+\begin{problem}[10.14]
+  Find the index of $12\Z$ in $3\Z$.
+\end{problem}
+
+\begin{solution}
+  The left cosets of $12\Z$ in $3\Z$ are given by
+  \[%
+    m + 12\Z = \{m, m + 12, m - 12, m + 24, m - 24, \ldots\}
+  .\]%
+  Taking $m$ to be an element that isn't in $12\Z$, we find the distinct left cosets
+  \begin{align*}
+    0 + 12\Z &= \{0, \pm 12, \pm 24, \ldots\} \\
+    3 + 12\Z &= \{3, 15, -9, 27, -21, \ldots\} \\
+    6 + 12\Z &= \{6, 18, -6, 30, -18, \ldots\} \\
+    9 + 12\Z &= \{9, 21, -3, 33, -15, \ldots\}
+  .\end{align*}
+  Thus, there are 4 distinct left cosets of $12\Z$ in $3\Z$, so we have $(3\Z : 12\Z) = 4$.
+\end{solution}
+
+\begin{problem}[10.16]
+  Let $\mu = (1, 2, 4, 5)(3, 6)$ in $S_6$. Find the index of $\bra{\mu}$ in $S_6$.
+\end{problem}
+
+\begin{solution}
+  The order of $\mu$ is given by the least common multiple of the lengths of its disjoint cycles, which is $\lcm(4, 2) = 4$. Thus, the subgroup $\bra{\mu}$ has order 4. Since $S_6$ has order $6! = 720$, the index of $\bra{\mu}$ in $S_6$ is given by
+  \[%
+    (S_6 : \bra{\mu}) = |S_6|/|\bra{\mu}| = \frac{720}{4} = 180
+  .\]%
+  Thus, there are 180 distinct left cosets of $\bra{\mu}$ in $S_6$, so we have $(S_6 : \bra{\mu}) = 180$.
+\end{solution}
+
+\begin{problem}[10.32]
+  Let $H$ be a subgroup of a group $G$ and let $a, b \in G$. Prove or provide a counterexample: if $aH = bH$, then $Ha = Hb$.
+\end{problem}
+
+\begin{solution}
+  Suppose $aH = bH$. Then for any $h \in H$, there exists some $h' \in H$ such that $ah = bh'$. Rearranging this equation gives
+  \[%
+    a = bh'h^{-1}
+  .\]%
+  Since $h'h^{-1} \in H$ (because $H$ is a subgroup and thus closed under the group operation and taking inverses), we can denote $h'' = h'h^{-1}$. Therefore, we have $a = bh''$. Multiplying both sides on the left by $b^{-1}$ gives $b^{-1}a = h''$. Since $h'' \in H$, we have $b^{-1}a \in H$. Thus, we can write $a \in Hb$. Therefore, for any $h \in H$, we have $ha \in Hb$. This implies that $Ha \subseteq Hb$.
+
+  By a similar argument, we can show that $Hb \subseteq Ha$. Therefore, we conclude that $Ha = Hb$.
+\end{solution}
+
+\begin{problem}[10.34]
+  Let $H$ be a subgroup of a group $G$ and let $a, b \in G$. Prove or provide a counterexample: if $Ha = Hb$, then $Ha^{-1} = Hb^{-1}$.
+\end{problem}
+
+\begin{solution}
+  Suppose $Ha = Hb$. Then for any $h \in H$, there exists some $h' \in H$ such that $ha = h'b$. Rearranging this equation gives $hb^{-1} = h'a^{-1}$. Since $h, h' \in H$ and $H$ is a subgroup, we have $hb^{-1} \in Ha^{-1}$. Therefore, for any $h \in H$, we have $hb^{-1} \in Ha^{-1}$. This implies that $Hb^{-1} \subseteq Ha^{-1}$.
+
+  By a similar argument, we can show that $Ha^{-1} \subseteq Hb^{-1}$. Therefore, we conclude that $Ha^{-1} = Hb^{-1}$.
+\end{solution}
+
+\begin{problem}[12.10]
+  Give the order of the element in the factor group $26 + \bra{12}$ in $\Z_{60} / \bra{12}$.
+\end{problem}
+
+\begin{solution}
+  To find the order of the element $26 + \bra{12}$ in $\Z_{60}/\bra{12}$, we need to find the smallest positive integer $n$ such that
+  \[%
+    n(26 + \bra{12}) = \bra{12}
+  .\]%
+  This is equivalent to finding $n$ such that $n \cdot 26 \in \bra{12}$. Since $\bra{12}$ consists of multiples of 12, we need to solve the congruence
+  \[%
+    n \cdot 26 \equiv 0 \pmod{12}
+  .\]%
+  Reducing $26$ modulo $12$, we have $26 \equiv 2 \pmod{12}$. Thus, we need to solve
+  \[%
+    2n \equiv 0 \pmod{12}
+  .\]%
+  This implies that $n$ must be a multiple of $6$. The smallest positive integer satisfying this is $n = 6$. Therefore, the order of the element $26 + \bra{12}$ in $\Z_{60}/\bra{12}$ is $6$.
+\end{solution}
+
+\begin{problem}[12.16]
+  Compute $i_\rho[H]$ for the subgroup $H = \{\iota, \mu\}$ of the dihedral group $D_3$.
+\end{problem}
+
+\begin{solution}
+  The map $i_\rho : D_3 \to D_3$ is defined by $i_\rho(x) = \rho x\rho^{-1}$. We need to compute $i_\rho[H]$, which is the image of the subgroup $H$ under the map $i_\rho$. The subgroup $H$ consists of the elements $\iota$ and $\mu$.
+  \begin{align*}
+    i_\rho[\iota] &= \rho \iota \rho^{-1} = \rho \rho^{-1} = \iota \\
+    i_\rho[\mu] &= \rho\mu\rho^{-1} = \rho\mu\rho^2 = \mu\rho^2\rho^2 = \mu\rho
+  .\end{align*}
+  Thus, we have
+  \[%
+    i_\rho[H] = \{\iota, \mu\rho\}
+  .\qedhere\]%
+\end{solution}
+
+\begin{problem}[12.24]
+  Let $G_1$ and $G_2$ be groups and $\pi_1 : G_1 \times G_2 \to G_1$ be the function defined by $\pi_1(a, b) = a$. Prove that $\pi_1$ is a homomorphism, find $\Ker(\pi_1)$, and prove $(G_1 \times G_2)/\Ker(\pi_1)$ is isomorphic to $G_1$.
+\end{problem}
+
+\begin{solution}
+  Let $(a_1, b_1), (a_2, b_2) \in G_1 \times G_2$. Then we have
+  \[%
+    \pi_1((a_1, b_1)(a_2, b_2)) = \pi_1(a_1a_2, b_1b_2) = a_1a_2 = \pi_1(a_1, b_1)\pi_1(a_2, b_2)
+  .\]%
+  Thus, $\pi_1$ is a homomorphism.
+
+  The kernel of $\pi_1$ is the set of all elements in $G_1 \times G_2$ that look like $(e_1, b)$ where $e_1$ is the identity in $G_1$ and $b$ is any arbitrary element in $G_2$. Thus, we have
+  \[%
+    \Ker(\pi_1) = \{(e_1, b) \mid b \in G_2\} \cong \{e_1\} \times G_2
+  .\]%
+
+  By the Fundamental Homomorphism Theorem, we have
+  \[%
+    (G_1 \times G_2)/\Ker(\pi_1) \cong \pi_1[G_1 \times G_2] = G_1
+  .\]%
+  Therefore, we conclude that $(G_1 \times G_2)/\Ker(\pi_1)$ is homomorphic to $G_1$. It's also clear that this is an isomorphism since the mapping is bijective.
+\end{solution}
+
+\begin{problem}[12.27]
+  Prove that the torsion subgroup $T$ of an abelian group $G$ is a normal subgroup of $G$, and that $G/T$ is torsion free. (See Exercise 22.)
+\end{problem}
+
+\begin{solution}
+\end{solution}
+
+\begin{problem}[12.28]
+  A subgroup $H$ is \emph{conjugate to a subgroup} $K$ of a group $G$ if there exists an inner automorphism $i_g$ of $G$ such that $i_g[H] = K$. Show that conjugacy is an equivalence relation on the collection of subgroups of $G$.
+\end{problem}
+
+\begin{solution}
+\end{solution}
+
+\begin{problem}[12.30]
+  Find all subgroups of $D_3$ that are conjugate to $H = \{\iota, \mu\}$. (See Exercise 28.)
+\end{problem}
+
+\begin{solution}
+\end{solution}

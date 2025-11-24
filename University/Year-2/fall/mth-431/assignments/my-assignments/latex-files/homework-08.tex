@@ -22,19 +22,18 @@
       0, & (x, y) = (0, 0).
     \end{cases}
   \]%
-  Take $V = (0, 1) \subset \R$. This gives us
-  \[%
-    U = f^{-1}(V) = \left\{(x, y) \in \R^2 \mid 0 < \frac{xy}{x^2 + y^2} < 1\right\}
-  .\]%
-  Notice that $(0, 0)$ is a limit point of $U$, but $(0, 0) \notin U$. Therefore, $U$ is not open in $\R^2$.
-
-  Now, consider the intersection of $U$ with the line $\{c\} \times \R$ for some fixed $c \in \R$. We have
-  \[%
-    U \cap (\{c\} \times \R) = \left\{(c, y) \in \R^2 \mid 0 < \frac{cy}{c^2 + y^2} < 1\right\}
-  .\]%
-  If $c = 0$, then $U \cap (\{0\} \times \R) = \emptyset$, which is open in the line $\{0\} \times \R$. If $c \neq 0$, we can solve the inequality $0 < \frac{cy}{c^2 + y^2} < 1$ to find that $y$ must be in the interval $(0, \infty)$ if $c > 0$ or $(-\infty, 0)$ if $c < 0$. In either case, $U \cap (\{c\} \times \R)$ is an open interval in the line $\{c\} \times \R$. The can be done to show that $U \cap (\R \times \{c'\})$ is also open in the line $\R \times \{c'\}$ for any fixed $c' \in \R$.
-
-  This shows that while $f^{-1}(V)$ isn't open in $\R^2$, but $f(c, y)$ is continuous as a function of $y$ and $f(x, c')$ is continuous as a function of $x$.
+  Take $U = (-0.1, 0.1)$. Then, we have
+  \begin{align*}
+    f^{-1}(U) &= \{(x, y) \in \R^2 \mid -0.1 < f(x, y) < 0.1\} \\
+              &= \left\{(x, y) \in \R^2 \left\lvert -0.1 < \frac{xy}{x^2 + y^2} < 0.1\right\}\right\rvert \\
+              &= \left\{(x, y) \in \R^2 \left\lvert -0.1(x^2 + y^2) < xy < 0.1(x^2 + y^2)\right\}\right\rvert \\
+              &= \left\{(x, y) \in \R^2 \left\lvert 0.1x^2 - xy + 0.1y^2 > 0~\text{and}~0.1x^2 + xy + 0.1y^2 > 0\right\}\right\rvert \\
+              &= \R^2 \setminus \left\{(x, y) \in \R^2 \left\lvert 0.1x^2 - xy + 0.1y^2 \leq 0~\text{or}~0.1x^2 + xy + 0.1y^2 \leq 0\right\}\right\rvert \\
+              &= \R^2 \setminus \left\{(x, y) \in \R^2 \left\lvert (x - 5y)^2 \leq 0~\text{or}~(x + 5y)^2 \leq 0\right\}\right\rvert \\
+              &= \R^2 \setminus \left(\{(5y, y) \mid y \in \R\} \cup \{(-5y, y) \mid y \in \R\}\right) \\
+              &= \R^2 \setminus (L_1 \cup L_2)
+  ,\end{align*}
+  where $L_1$ and $L_2$ are the lines defined by $y = \frac{1}{5}x$ and $y = -\frac{1}{5}x$, respectively.
 \end{solution}
 
 \begin{problem}[10.4]
