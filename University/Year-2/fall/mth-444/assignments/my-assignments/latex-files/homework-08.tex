@@ -34,13 +34,11 @@
 \end{problem}
 
 \begin{solution}
-  Suppose $aH = bH$. Then for any $h \in H$, there exists some $h' \in H$ such that $ah = bh'$. Rearranging this equation gives
-  \[%
-    a = bh'h^{-1}
-  .\]%
-  Since $h'h^{-1} \in H$ (because $H$ is a subgroup and thus closed under the group operation and taking inverses), we can denote $h'' = h'h^{-1}$. Therefore, we have $a = bh''$. Multiplying both sides on the left by $b^{-1}$ gives $b^{-1}a = h''$. Since $h'' \in H$, we have $b^{-1}a \in H$. Thus, we can write $a \in Hb$. Therefore, for any $h \in H$, we have $ha \in Hb$. This implies that $Ha \subseteq Hb$.
-
-  By a similar argument, we can show that $Hb \subseteq Ha$. Therefore, we conclude that $Ha = Hb$.
+  Take the group $G = S_4$ and the subgroup $H = \{\iota, (2, 4)\}$. Let $a = (1, 2, 3, 4)$, and $b = (1, 2)(3, 4)$. Then, we have
+  \begin{gather*}
+    aH = \{(1, 2, 3, 4), (1, 2, 3, 4)(2, 4) = (1, 4, 3, 2)\} \quad bH = \{(1, 2)(3, 4), (1, 2)(3, 4)(2, 4) = (1, 4)(2, 3)\}
+  .\end{gather*}
+  Therefore, we have $aH = bH$, but $Ha = Hb$. Therefore, the statement is false.
 \end{solution}
 
 \begin{problem}[10.34]
@@ -80,8 +78,8 @@
 \begin{solution}
   The map $i_\rho : D_3 \to D_3$ is defined by $i_\rho(x) = \rho x\rho^{-1}$. We need to compute $i_\rho[H]$, which is the image of the subgroup $H$ under the map $i_\rho$. The subgroup $H$ consists of the elements $\iota$ and $\mu$.
   \begin{align*}
-    i_\rho[\iota] &= \rho \iota \rho^{-1} = \rho \rho^{-1} = \iota \\
-    i_\rho[\mu] &= \rho\mu\rho^{-1} = \rho\mu\rho^2 = \mu\rho^2\rho^2 = \mu\rho
+    i_\rho(\iota) &= \rho \iota \rho^{-1} = \rho \rho^{-1} = \iota \\
+    i_\rho(\mu) &= \rho\mu\rho^{-1} = \rho\mu\rho^2 = \mu\rho^2\rho^2 = \mu\rho
   .\end{align*}
   Thus, we have
   \[%
@@ -117,6 +115,13 @@
 \end{problem}
 
 \begin{solution}
+  The torsion subgroup $T$ of an abelian group $G$ is defined as the set of all elements in $G$ that have finite order. To show that $T$ is a normal subgroup of $G$, we need to verify that for any $g \in G$ and any $t \in T$, the element $gtg^{-1}$ is also in $T$. Since $G$ is abelian, we have
+  \[%
+    gtg^{-1} = t
+  .\]%
+  Since $t$ has finite order, it follows that $gtg^{-1}$ also has finite order, and thus $gtg^{-1} \in T$. Therefore, $T$ is a normal subgroup of $G$.
+
+  Now, to show that $G/T$ is torsion free, we go by contradiction. Suppose there exists an element $gT \in G/T$ such that $(gT)^n = T$ for some positive integer $n$. This implies that $g^n \in T$, meaning that $g^n$ has finite order. However, this contradicts the assumption that $gT$ is a torsion element in $G/T$. Therefore, no such $gT$ exists, and we conclude that $G/T$ is torsion free.
 \end{solution}
 
 \begin{problem}[12.28]
@@ -124,6 +129,19 @@
 \end{problem}
 
 \begin{solution}
+  To show that conjugacy is an equivalence relation on the collection of subgroups of $G$, we need to verify that it satisfies the properties of reflexivity, symmetry, and transitivity.
+
+  For reflexivity, let $H$ be a subgroup of $G$. The identity inner automorphism $i_e$ (where $e$ is the identity element of $G$) satisfies $i_e[H] = H$. Thus, $H$ is conjugate to itself.
+
+  For symmetry, let $H$ and $K$ be subgroups of $G$ such that $H$ is conjugate to $K$. This means there exists an inner automorphism $i_g$ such that $i_g[H] = K$. The inverse inner automorphism $i_{g^{-1}}$ satisfies $i_{g^{-1}}[K] = H$. Therefore, if $H$ is conjugate to $K$, then $K$ is conjugate to $H$.
+
+  And for transitivity, let $H$, $K$, and $L$ be subgroups of $G$ such that $H$ is conjugate to $K$ and $K$ is conjugate to $L$. This means there exist inner automorphisms $i_g$ and $i_h$ such that $i_g[H] = K$ and $i_h[K] = L$. The composition of these inner automorphisms, $i_{hg}$, satisfies
+  \[%
+    i_{hg}[H] = i_h[i_g[H]] = i_h[K] = L
+  .\]%
+  Therefore, $H$ is conjugate to $L$.
+
+  Since conjugacy satisfies reflexivity, symmetry, and transitivity, we conclude that it is an equivalence relation on the collection of subgroups of $G$.
 \end{solution}
 
 \begin{problem}[12.30]
