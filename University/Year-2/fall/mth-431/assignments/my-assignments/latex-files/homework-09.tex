@@ -1,0 +1,110 @@
+\begin{problem}[11.2]
+  Prove that the subset $[0, 1] \subset \R$ is not compact in the lower limit topology from Example 7.3(d).
+\end{problem}
+
+\begin{solution}
+\end{solution}
+
+\begin{problem}[11.4]
+  Let $X$ be a topological space, and let $\Phi$ be a set of continuous functions $X \to [0, \infty)$ such that for every $x \in $ there is some $f \in \Phi$ with $f(x) > 0$.
+  \begin{enumerate}
+    \item Prove that if $X$ is compact then there are $f_1, \cdot, f_n \in \Phi$ such that $f_1(x) + \cdot + f_n(x)$ for all $x \in X$.
+    \item Give a counterexample when $X$ is not compact.
+
+      (If you know something about rings and ideals, you can consider the ring of continuous functions on a topological space $X$; then for any $p \in X$, the functions that vanish at $p$ turn out to form a maximal ideal. This problem can be used to prove that if $X$ is compact, then every maximal ideal comes from some point $p$ in this way. But if $X$ is not compact then there are more maximal ideals.)
+  \end{enumerate}
+\end{problem}
+
+\begin{solution}[(i)]
+\end{solution}
+
+\begin{solution}[(ii)]
+\end{solution}
+
+\begin{problem}[11.6]
+  \begin{enumerate}
+    \item Let $X$ be a Hausdorff space. By definition, distinct points of $X$ have disjoint neighborhoods. Proposition 11.6 proved that a compact subset $K \subset X$ and a point $p \not\in K$ have disjoint neighborhoods. Now prove that two disjoint compact sets $C$, $K \subset X$ have disjoint neighborhoods: that is, if $C \cap K = \emptyset$ then there are open sets $U, V \subset X$ with $C \subset X$, $K \subset V$, and $U \cap V = \emptyset$.
+
+    \item Give an example of a non-Hausdorff space $X$, a compact subset $K \subset X$, and a point $p \in X \setminus K$ such that every neighborhood of $p$ meets every neighborhood of $K$.
+  \end{enumerate}
+\end{problem}
+
+\begin{solution}[(i)]
+\end{solution}
+
+\begin{solution}[(ii)]
+\end{solution}
+
+\begin{problem}[11.7]
+  \begin{enumerate}
+    \item Prove that a non-empty subset $A \subset \R$ is compact in the lower semi-continuous topology from Example 7.3(c) if and only if $A$ is bounded below and contains its infimum.
+
+    \item Let X be a compact space, and let $f : X \to \R$ be lower semicontinuous, that is, continuous with respect to the lower semicontinuous topology on $\R$. Prove that $f$ attains its minimum: there is a point $p \in X$ such that $f(p) \le f(x)$ for all $x \in X$.
+  \end{enumerate}
+\end{problem}
+
+\begin{solution}[(i)]
+\end{solution}
+
+\begin{solution}[(ii)]
+\end{solution}
+
+\begin{problem}[11.8]
+  Let $(X, \metric)$ be a metric space. A map $f : X \to X$ is called a contraction mapping if there is an $r \in [0, 1)$ such that
+  \[%
+    \metric(f(p), f(q)) \le r \cdot \metric(p, q)
+  ,\]%
+  for all $p, q \in X$, while it is called a weak contraction mapping if we just have
+  \[%
+    \metric(f(p), f(q)) < \metric(p, q)
+  ,\]%
+  whenever $p \ne q$. If $X$ is complete then the Banach fixed-point theorem (Theorem 4.13) stated that a contraction mapping has a fixed point, while Exercise 4.5(a) asked you to show that a weak contraction mapping need not have a fixed point.
+  \begin{enumerate}
+    \item Prove that if $X$ is compact and $f : X \to X$ is a weak contraction mapping, then $f$ has fixed point.
+
+      Hint: Prove that the function $g : X \to \R$ given by $g(p) = \metric(f(p), p)$ is continuous; thus it achieves its minimum by the extreme value theorem, and if this minimum is not zero then you get a contradiction.
+
+    \item Let $X = [0, 1/2]$ with the usual metric, which is compact. Prove that the map $f : X \to X$ given by $f(x) = x^2$ is a weak contraction mapping, but not a contraction mapping.
+
+    \item Give an example of a compact metric space $(X, \metric)$ and a map $f : X \to X$ that satisfies $\metric(f(p), f(q)) \le \metric(p, q)$ but has no fixed point.
+  \end{enumerate}
+\end{problem}
+
+\begin{solution}[(i)]
+\end{solution}
+
+\begin{solution}[(ii)]
+\end{solution}
+
+\begin{solution}[(iii)]
+\end{solution}
+
+\begin{problem}[11.10]
+  A continuous map $f : X \to Y$ is called proper if the preimage of any compact set $K \subset Y$ is compact.
+  \begin{enumerate}
+    \item Prove that the map $f : \R^2 \to \R$ given by $f(x, y) = x^2 + y^2$ is proper.
+    \item Prove that the map $f : \R^2 \to \R$ given by $f(x, y) = x^2 - y^2$ is not proper.
+    \item Prove that if $f$ is proper then the preimage of every point is compact.
+    \item Give an example of a continuous map $f: X \to Y$ for which the preimage of every point is compact, but nonetheless $f$ is not proper.
+    \item Prove that if $X$ is compact and $Y$ is Hausdorff then any continuous map $f : X \to Y$ is proper.
+    \item Let $X$ and $Y$ be topological spaces. Prove that the projection $p : X \times Y \to X$ is proper if and only if $Y$ is compact.
+  \end{enumerate}
+\end{problem}
+
+\begin{solution}[(i)]
+\end{solution}
+
+\begin{solution}[(ii)]
+\end{solution}
+
+\begin{solution}[(iii)]
+\end{solution}
+
+\begin{solution}[(iv)]
+\end{solution}
+
+\begin{solution}[(v)]
+\end{solution}
+
+\begin{solution}[(vi)]
+\end{solution}
