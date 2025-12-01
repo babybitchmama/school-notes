@@ -3,12 +3,18 @@
 \end{problem}
 
 \begin{solution}
+  Let $U = [0, 1]$. Take the open cover of $U$ given by $V_x = [x, x + \epsilon)$, for some $\epsilon > 0$. Clearly, each $V_x$ is open in the lower limit topology, and
+  \[%
+    U \subset \bigcup_{x \in [0, 1]} V_x
+  .\]%
+  Take any finite subcover $\{V_{x_1}, \cdots, V_{x_n}\}$. Pick any two points, $x_i$ and $x_j$ such that $x_i < x_j$. Make $\epsilon > 0$ small enough such that $x_i + \epsilon < x_j$. Then, the there exists a point $p \in (x_i + \epsilon, x_j)$ that is not covered by any of the $V_{x_k}$'s. Thus, no finite subcover exists, and $[0, 1]$ is not compact in the lower limit topology.
 \end{solution}
 
 \begin{problem}[11.4]
-  Let $X$ be a topological space, and let $\Phi$ be a set of continuous functions $X \to [0, \infty)$ such that for every $x \in $ there is some $f \in \Phi$ with $f(x) > 0$.
+  Let $X$ be a topological space, and let $\Phi$ be a set of continuous functions $X \to [0, \infty)$ such that for every $x \in X$ there is some $f \in \Phi$ with $f(x) > 0$.
   \begin{enumerate}
-    \item Prove that if $X$ is compact then there are $f_1, \cdot, f_n \in \Phi$ such that $f_1(x) + \cdot + f_n(x)$ for all $x \in X$.
+    \item Prove that if $X$ is compact then there are $f_1, \cdots, f_n \in \Phi$ such that $f_1(x) + \cdots + f_n(x) > 0$ for all $x \in X$.
+
     \item Give a counterexample when $X$ is not compact.
 
       (If you know something about rings and ideals, you can consider the ring of continuous functions on a topological space $X$; then for any $p \in X$, the functions that vanish at $p$ turn out to form a maximal ideal. This problem can be used to prove that if $X$ is compact, then every maximal ideal comes from some point $p$ in this way. But if $X$ is not compact then there are more maximal ideals.)
@@ -16,6 +22,7 @@
 \end{problem}
 
 \begin{solution}[(i)]
+  Assume $X$ is compact. For each $x \in X$, there exists some $f_x \in \Phi$ such that $f_x(x) > 0$. Since $f_x$ is continuous, there exists an open neighborhood $U_x$ of $x$ such that for all $y \in U_x$, $f_x(y) > 0$. The collection $\{U_x : x \in X\}$ forms an open cover of $X$. By compactness, there exists a finite subcover $\{U_{x_1}, U_{x_2}, \ldots, U_{x_n}\}$. Correspondingly, we have functions $f_{x_1}, f_{x_2}, \ldots, f_{x_n} \in \Phi$. Now, for any $y \in X$, there exists some $U_{x_i}$ in the finite subcover such that $y \in U_{x_i}$. Therefore, $f_{x_i}(y) > 0$. This implies that $f_{x_1}(y) + f_{x_2}(y) + \cdots + f_{x_n}(y) > 0$.
 \end{solution}
 
 \begin{solution}[(ii)]
