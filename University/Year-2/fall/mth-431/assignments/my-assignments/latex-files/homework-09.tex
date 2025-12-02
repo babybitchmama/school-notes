@@ -22,7 +22,7 @@
 \end{problem}
 
 \begin{solution}[(i)]
-  Assume $X$ is compact. For each $x \in X$, there exists some $f_x \in \Phi$ such that $f_x(x) > 0$. Since $f_x$ is continuous, there exists an open neighborhood $U_x$ of $x$ such that for all $y \in U_x$, $f_x(y) > 0$. The collection $\{U_x : x \in X\}$ forms an open cover of $X$. By compactness, there exists a finite subcover $\{U_{x_1}, U_{x_2}, \ldots, U_{x_n}\}$. Correspondingly, we have functions $f_{x_1}, f_{x_2}, \ldots, f_{x_n} \in \Phi$. Now, for any $y \in X$, there exists some $U_{x_i}$ in the finite subcover such that $y \in U_{x_i}$. Therefore, $f_{x_i}(y) > 0$. Then, we have
+  Assume $X$ is compact. For each $x \in X$, there exists some $f_x \in \Phi$ such that $f_x(x) > 0$. Since $f_x$ is continuous, there exists an open neighborhood $U_x$ of $x$ such that for all $y \in U_x$, $f_x(y) > 0$. The collection $\{U_x \mid x \in X\}$ forms an open cover of $X$. By compactness, there exists a finite subcover $\{U_{x_1}, U_{x_2}, \ldots, U_{x_n}\}$. Correspondingly, we have functions $f_{x_1}, f_{x_2}, \ldots, f_{x_n} \in \Phi$. Now, for any $y \in X$, there exists some $U_{x_i}$ in the finite subcover such that $y \in U_{x_i}$. Therefore, $f_{x_i}(y) > 0$. Then, we have
   \[%
     f_{x_1}(y) + f_{x_2}(y) + \cdots + f_{x_n}(y) \ge f_{x_i}(y) > 0
   .\qedhere\]%
@@ -40,11 +40,11 @@
 \end{problem}
 
 \begin{solution}[(i)]
-  Let $C$ and $K$ be two disjoint compact subsets of a Hausdorff space $X$. For each point $c \in C$, since $X$ is Hausdorff, for each point $k \in K$, there exist disjoint open neighborhoods $U_{c,k}$ of $c$ and $V_{c,k}$ of $k$. The collection $\{V_{c,k} : k \in K\}$ forms an open cover of $K$. By compactness of $K$, there exists a finite subcover $\{V_{c,k_1}, V_{c,k_2}, \ldots, V_{c,k_m}\}$. Correspondingly, we have open neighborhoods $U_{c,k_1}, U_{c,k_2}, \ldots, U_{c,k_m}$ of $c$. Define
+  Let $C$ and $K$ be two disjoint compact subsets of a Hausdorff space $X$. For each point $c \in C$, since $X$ is Hausdorff, for each point $k \in K$, there exist disjoint open neighborhoods $U_{c,k}$ of $c$ and $V_{c,k}$ of $k$. The collection $\{V_{c,k} \mid k \in K\}$ forms an open cover of $K$. By compactness of $K$, there exists a finite subcover $\{V_{c,k_1}, V_{c,k_2}, \ldots, V_{c,k_m}\}$. Correspondingly, we have open neighborhoods $U_{c,k_1}, U_{c,k_2}, \ldots, U_{c,k_m}$ of $c$. Define
   \[%
     U_c = \bigcap_{i=1}^m U_{c,k_i} \aand V_c = \bigcup_{i=1}^m V_{c,k_i}
   .\]%
-  Then, $U_c$ is an open neighborhood of $c$ and $V_c$ is an open neighborhood of $K$, with $U_c \cap V_c = \emptyset$. The collection $\{U_c : c \in C\}$ forms an open cover of $C$. By compactness of $C$, there exists a finite subcover $\{U_{c_1}, U_{c_2}, \ldots, U_{c_n}\}$. Correspondingly, we have open neighborhoods $V_{c_1}, V_{c_2}, \ldots, V_{c_n}$ of $K$. Define
+  Then, $U_c$ is an open neighborhood of $c$ and $V_c$ is an open neighborhood of $K$, with $U_c \cap V_c = \emptyset$. The collection $\{U_c \mid c \in C\}$ forms an open cover of $C$. By compactness of $C$, there exists a finite subcover $\{U_{c_1}, U_{c_2}, \ldots, U_{c_n}\}$. Correspondingly, we have open neighborhoods $V_{c_1}, V_{c_2}, \ldots, V_{c_n}$ of $K$. Define
   \[%
     U = \bigcup_{j=1}^n U_{c_j} \aand V = \bigcap_{j=1}^n V_{c_j}
   .\]%
