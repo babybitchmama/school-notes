@@ -22,7 +22,10 @@
 \end{problem}
 
 \begin{solution}[(i)]
-  Assume $X$ is compact. For each $x \in X$, there exists some $f_x \in \Phi$ such that $f_x(x) > 0$. Since $f_x$ is continuous, there exists an open neighborhood $U_x$ of $x$ such that for all $y \in U_x$, $f_x(y) > 0$. The collection $\{U_x : x \in X\}$ forms an open cover of $X$. By compactness, there exists a finite subcover $\{U_{x_1}, U_{x_2}, \ldots, U_{x_n}\}$. Correspondingly, we have functions $f_{x_1}, f_{x_2}, \ldots, f_{x_n} \in \Phi$. Now, for any $y \in X$, there exists some $U_{x_i}$ in the finite subcover such that $y \in U_{x_i}$. Therefore, $f_{x_i}(y) > 0$. This implies that $f_{x_1}(y) + f_{x_2}(y) + \cdots + f_{x_n}(y) > 0$.
+  Assume $X$ is compact. For each $x \in X$, there exists some $f_x \in \Phi$ such that $f_x(x) > 0$. Since $f_x$ is continuous, there exists an open neighborhood $U_x$ of $x$ such that for all $y \in U_x$, $f_x(y) > 0$. The collection $\{U_x : x \in X\}$ forms an open cover of $X$. By compactness, there exists a finite subcover $\{U_{x_1}, U_{x_2}, \ldots, U_{x_n}\}$. Correspondingly, we have functions $f_{x_1}, f_{x_2}, \ldots, f_{x_n} \in \Phi$. Now, for any $y \in X$, there exists some $U_{x_i}$ in the finite subcover such that $y \in U_{x_i}$. Therefore, $f_{x_i}(y) > 0$. Then, we have
+  \[%
+    f_{x_1}(y) + f_{x_2}(y) + \cdots + f_{x_n}(y) \ge f_{x_i}(y) > 0
+  .\qedhere\]%
 \end{solution}
 
 \begin{solution}[(ii)]
@@ -37,6 +40,15 @@
 \end{problem}
 
 \begin{solution}[(i)]
+  Let $C$ and $K$ be two disjoint compact subsets of a Hausdorff space $X$. For each point $c \in C$, since $X$ is Hausdorff, for each point $k \in K$, there exist disjoint open neighborhoods $U_{c,k}$ of $c$ and $V_{c,k}$ of $k$. The collection $\{V_{c,k} : k \in K\}$ forms an open cover of $K$. By compactness of $K$, there exists a finite subcover $\{V_{c,k_1}, V_{c,k_2}, \ldots, V_{c,k_m}\}$. Correspondingly, we have open neighborhoods $U_{c,k_1}, U_{c,k_2}, \ldots, U_{c,k_m}$ of $c$. Define
+  \[%
+    U_c = \bigcap_{i=1}^m U_{c,k_i} \aand V_c = \bigcup_{i=1}^m V_{c,k_i}
+  .\]%
+  Then, $U_c$ is an open neighborhood of $c$ and $V_c$ is an open neighborhood of $K$, with $U_c \cap V_c = \emptyset$. The collection $\{U_c : c \in C\}$ forms an open cover of $C$. By compactness of $C$, there exists a finite subcover $\{U_{c_1}, U_{c_2}, \ldots, U_{c_n}\}$. Correspondingly, we have open neighborhoods $V_{c_1}, V_{c_2}, \ldots, V_{c_n}$ of $K$. Define
+  \[%
+    U = \bigcup_{j=1}^n U_{c_j} \aand V = \bigcap_{j=1}^n V_{c_j}
+  .\]%
+  Then, $U$ is an open neighborhood of $C$ and $V$ is an open neighborhood of $K$, with $U \cap V = \emptyset$.
 \end{solution}
 
 \begin{solution}[(ii)]
@@ -51,17 +63,28 @@
 \end{problem}
 
 \begin{solution}[(i)]
+  Assume $A$ is compact in the lower semi-continuous topology. Since $A$ is non-empty, let $m = \inf A$. Assume for contradiction that $m \notin A$. Consider the open cover of $A$ given by
+  \[%
+    U_a = \left(\frac{m + a}{2}, \infty\right)
+  .\]%
+  Clearly, the collection $\{U_a \mid a \in A\}$ is an open cover for $A$. Now, since $A$ is compact, there exists a finite subcover $\{U_{a_1}, U_{a_2}, \cdots, U_{a_n}\}$ that covers $A$. Let
+  \[%
+    b = \min_{i\in[1,n]} \frac{m + a_i}{2}
+  .\]%
+  Clearly, $m < b$. However, pick any point $c \in (m, b)$. Then, $c \notin U_{a_i}$ for all $i \in [1, n]$, which contradicts the fact that $\{U_{a_1}, U_{a_2}, \cdots, U_{a_n}\}$ is a cover for $A$. Thus, $m \in A$. Also, since $A$ is non-empty and compact, it must be bounded below.
+
+  Now, conversely, assume $A$ is bounded below and contains its infimum $m$. Since $m \in A$, it's contained in any open cover, $U_m$, of $A$, which has the form $(a, \infty)$, where $a < m$. But then, $A \subset (a, \infty) = U_m$, since every $x \in A$ satisfies $x \ge m > a$. Thus, any open cover of $A$ has a finite subcover (in fact, just one set suffices), and $A$ is compact.
 \end{solution}
 
 \begin{solution}[(ii)]
 \end{solution}
 
 \begin{problem}[11.8]
-  Let $(X, \metric)$ be a metric space. A map $f : X \to X$ is called a contraction mapping if there is an $r \in [0, 1)$ such that
+  Let $(X, \metric)$ be a metric space. A map $f : X \to X$ is called a \emph{contraction mapping} if there is an $r \in [0, 1)$ such that
   \[%
     \metric(f(p), f(q)) \le r \cdot \metric(p, q)
   ,\]%
-  for all $p, q \in X$, while it is called a weak contraction mapping if we just have
+  for all $p, q \in X$, while it is called a \emph{weak contraction mapping} if we just have
   \[%
     \metric(f(p), f(q)) < \metric(p, q)
   ,\]%
