@@ -77,6 +77,15 @@
 \end{solution}
 
 \begin{solution}[(ii)]
+  Assume $X$ is compact and $f : X \to \R$ is lower semicontinuous. Let $\displaystyle m = \inf_{x \in X} f(x)$. Consider the open cover of $X$ given by
+  \[%
+    U_x = \left(f(x), \infty\right)
+  .\]%
+  Clearly, the collection $\{U_x \mid x \in X\}$ is an open cover for $X$. Since $X$ is compact, there exists a finite subcover $\{U_{x_1}, U_{x_2}, \cdots, U_{x_n}\}$ that covers $X$. Let
+  \[%
+    b = \min_{i\in[1,n]} f(x_i)
+  .\]%
+  Clearly, $b \ge m$. Now, for any $x \in X$, there exists some $U_{x_i}$ in the finite subcover such that $x \in U_{x_i}$. Therefore, $f(x) > f(x_i) \ge b$. Thus, for all $x \in X$, $f(x) \ge b$. Since $b$ is a lower bound for $f(X)$ and $m$ is the greatest lower bound, we have $m \ge b$. Combining this with the earlier inequality, we get $m \le b \le m$, which implies $b = m$. Therefore, there exists some $x_j$ such that $f(x_j) = m$, or equivalently, $f(x_j) = m$. Thus, $f$ attains its minimum at the point $x_j \in X$.
 \end{solution}
 
 \begin{problem}[11.8]
@@ -101,6 +110,23 @@
 \end{problem}
 
 \begin{solution}[(i)]
+  Assume $X$ is compact and $f : X \to X$ is a weak contraction mapping. Define the mapping $g : X \to \R$ by $g(p) = \metric(f(p), p)$. Pick two points $p, q \in X$. By the triangle inequality, we have
+  \[%
+    \metric(f(p), p) \le \metric(f(p), f(q)) + \metric(f(q), q) + \metric(q, p)
+  .\]%
+  But since $f$ is a weak contraction mapping, we have
+  \[%
+    \metric(f(p), p) < \metric(p, q) + \metric(f(q), q) + \metric(q, p) = 2\metric(p, q) + \metric(f(q), q)
+  .\]%
+  Therefore, we have
+  \[%
+    g(p) - g(q) = \metric(f(p), p) - \metric(f(q), q) < 2\metric(p, q)
+  .\]%
+  By symmetry, we also have $g(q) - g(p) < 2\metric(p, q)$. Therefore, we have $|g(p) - g(q)| < 2\metric(p, q)$. This shows that $g$ is continuous. Since $X$ is compact, $g$ attains a minimum at some $p_0 \in X$. If $g(p_0) = 0$, then $f(p_0) = p_0$, and we have found a fixed point. Now, assume for contradiction that $g(p_0) > 0$. Then, we have
+  \[%
+    g(f(p_0)) = \metric(f(f(p_0)), f(p_0)) < \metric(f(p_0), p_0) = g(p_0)
+  .\]%
+  This contradicts the fact that $g(p_0)$ is the minimum value of $g$. Thus, we must have $g(p_0) = 0$, and $f$ has a fixed point at $p_0$.
 \end{solution}
 
 \begin{solution}[(ii)]
