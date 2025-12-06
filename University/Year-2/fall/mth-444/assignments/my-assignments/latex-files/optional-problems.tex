@@ -1,8 +1,26 @@
 \begin{problem}[0.17]
-  Let $A$ be a finite set, and let $|A| = s$. Based on the preceding exercise, make a conjecture about the value of $|\Pow(A)|$ Then try to prove your conjecture.
+  Let $A$ be a finite set, and let $|A| = s$. Based on the preceding exercise, make a conjecture about the value of $|\Pow(A)|$. Then try to prove your conjecture.
 \end{problem}
 
 \begin{solution}
+  I conjecture that the cardinality of the power set of a finite set $A$ with $s$ elements is given by
+  \[%
+    |\Pow(A)| = 2^s
+  .\]%
+
+  We will prove this by induction on the number of elements in the set $A$. For the base case, let $|A| = 0$. Then $A = \emptyset$, and the only subset of $A$ is the empty set itself. Thus, $|\Pow(A)| = 1 = 2^0$, which establishes the base case.
+
+  Now, assume that for some $k \geq 0$, the statement holds for all sets with $k$ elements; that is, if $|A| = k$, then $|\Pow(A)| = 2^k$. We need to show that the statement holds for a set with $k + 1$ elements. Let $A$ be a set with $k + 1$ elements, and let $a \in A$. We can express $A$ as $A = B \cup \{a\}$, where $B$ is a subset of $A$ with $k$ elements. By the induction hypothesis, we know that $|\Pow(B)| = 2^k$. The power set of $A$ can be constructed by taking all subsets of $B$ and adding the element $a$ to each of those subsets. Therefore, the power set of $A$ can be expressed as
+  \[%
+    \Pow(A) = \Pow(B) \cup \{S \cup \{a\} \mid S \in \Pow(B)\}
+  .\]%
+  The number of subsets in $\Pow(A)$ is thus twice the number of subsets in $\Pow(B)$, since for each subset $S$ in $\Pow(B)$, there are two corresponding subsets in $\Pow(A)$: one that includes $a$ and one that does not. Therefore,
+  \[%
+    |\Pow(A)| = 2 \cdot |\Pow(B)| = 2 \cdot 2^k = 2^{k + 1}
+  .\]%
+  Therefore, by the principle of mathematical induction, the conjecture holds for all finite sets $A$ with $|A| = s$.
+
+  Thus, we have shown that for any finite set $A$ with $s$ elements, the cardinality of its power set is given by $|\Pow(A)| = 2^s$.
 \end{solution}
 
 \begin{problem}[0.18]
@@ -10,6 +28,26 @@
 \end{problem}
 
 \begin{solution}
+  To show that the cardinality of the set $B^A$ is the same as the cardinality of the power set $\Pow(A)$, we will construct a bijection between these two sets.
+
+  Let $f \in B^A$ be a function that maps elements of $A$ to either 0 or 1. We can associate each function $f$ with a subset $S_f$ of $A$ defined as
+  \[%
+    S_f = \{a \in A \mid f(a) = 1\}
+  .\]%
+  In other words, $S_f$ consists of all elements of $A$ that are mapped to 1 by the function $f$. This defines a mapping $\Phi : B^A \to \Pow(A)$ given by $\Phi(f) = S_f$. Next, we need to show that this mapping $\Phi$ is both injective and surjective.
+
+  Suppose that $\Phi(f_1) = \Phi(f_2)$ for two functions $f_1, f_2 \in B^A$. This means that the subsets $S_{f_1}$ and $S_{f_2}$ are equal. Therefore, for every element $a \in A$, we have two cases. If $a \in S_{f_1}$, then $f_1(a) = 1$, and since $S_{f_1} = S_{f_2}$, it follows that $f_2(a) = 1$. Otherwise, then $f_1(a) = 0$, and since $S_{f_1} = S_{f_2}$, it follows that $f_2(a) = 0$. Thus, for all $a \in A$, we have $f_1(a) = f_2(a)$, which implies that $f_1 = f_2$. Therefore, $\Phi$ is injective.
+
+  Now, we need to show that $\Phi$ is surjective. Let $S \in \Pow(A)$ be any subset of $A$. We can define a function $f_S \in B^A$ as
+  \[%
+    f_S(a) = \begin{cases}
+      1 & \text{if}~a \in S \\
+      0 & \text{if}~a \notin S
+    \end{cases}
+  .\]%
+  By construction, we have $\Phi(f_S) = S$. Therefore, for every subset $S \in \Pow(A)$, there exists a function $f_S \in B^A$ such that $\Phi(f_S) = S$. This shows that $\Phi$ is surjective.
+
+  Since $\Phi$ is both injective and surjective, it is a bijection between the sets $B^A$ and $\Pow(A)$. Therefore, the cardinality of $B^A$ is the same as the cardinality of $\Pow(A)$, i.e., $|B^A| = |\Pow(A)|$.
 \end{solution}
 
 \begin{problem}[0.19]
@@ -17,6 +55,25 @@
 \end{problem}
 
 \begin{solution}
+  To show that the power set of a set $A$, denoted as $\Pow(A)$, has too many elements to be put in a one-to-one correspondence with $A$, we will use a proof by contradiction.
+
+  Assume that there exists a one-to-one function $\phi : A \to \Pow(A)$ that is also onto, meaning that for every subset $S \in \Pow(A)$, there exists an element $x \in A$ such that $\phi(x) = S$.
+
+  Consider the subset $S$ of $A$ defined as
+  \[%
+    S = \{x \in A \mid x \notin \phi(x)\}
+  .\]%
+  In other words, $S$ consists of all elements of $A$ that are not contained in their corresponding subset under the function $\phi$.
+
+  Now, since $\phi$ is assumed to be onto, there must exist an element $y \in A$ such that $\phi(y) = S$. We now consider whether $y$ is an element of the subset $S$.
+
+  If $y \in S$, then by the definition of $S$, it must be the case that $y \notin \phi(y)$. However, since $\phi(y) = S$, this implies that $y \notin S$, which is a contradiction. Otherwise, if $y \notin S$, then by the definition of $S$, it must be the case that $y \in \phi(y)$. However, since $\phi(y) = S$, this implies that $y \in S$, which is again a contradiction.
+
+  In both cases, we arrive at a contradiction. Therefore, the function $\phi$ cannot be onto $\Pow(A)$, which means that there is no one-to-one correspondence between $A$ and $\Pow(A)$. This shows that the cardinality of $\Pow(A)$ is strictly greater than the cardinality of $A$, i.e., $|\Pow(A)| > |A|$.
+
+  This result intuitively means that there are an infinite number of infinite cardinal numbers because for any infinite set $A$, we can always find a larger set $\Pow(A)$ with a strictly greater cardinality. This process can be repeated indefinitely, leading to an infinite hierarchy of infinite cardinal numbers.
+
+  Regarding the question of whether the set of everything is a logically acceptable concept, it is not. The reason is that if we consider the ``set of everything,'' it would include all sets, including itself. This leads to paradoxes such as Russell's paradox, which popup when we consider the set of all sets that do not contain themselves. Therefore, the concept of a ``set of everything'' is not well-defined, and it is not considered a logically acceptable concept.
 \end{solution}
 
 \begin{problem}[1.44]
@@ -30,57 +87,111 @@
 \end{problem}
 
 \begin{solution}
+  We start with showing that for all $x, y \in S$, $x * y = y * x$. Using the second law, we have
+  \[%
+    (x * y) * z = (y * z) * x
+  .\]%
+  Now, let $z = x$. Then we have
+  \[%
+    (x * y) * x = (y * x) * x
+  .\]%
+  Using the first law, we know that $x * x = x$. Therefore, we can simplify both sides:
+  \[%
+    (x * y) * x = (y * x) * x \implies (x * y) = (y * x)
+  .\]%
+  Thus, we have shown that $x * y = y * x$ for all $x, y \in S$, proving commutativity.
+
+  Lastly, we show that for all $x, y, z \in S$, $(x * y) * z = x * (y * z)$. Using the second law again, we have
+  \[%
+    (x * y) * z = (y * z) * x
+  .\]%
+  Now, let $z = y$. Then we have
+  \[%
+    (x * y) * y = (y * y) * x
+  .\]%
+  Using the first law, we know that $y * y = y$. Therefore, we can simplify both sides:
+  \[%
+    (x * y) * y = (y) * x \implies (x * y) = (y * x)
+  .\]%
+  Since we have already established commutativity, we can rewrite this as
+  \[%
+    (x * y) = (x * y)
+  .\]%
+  This shows that $(x * y) * z = x * (y * z)$ for all $x, y, z \in S$, proving associativity.
+
+  Therefore, we have shown that the binary operation $*$ is both associative and commutative.
 \end{solution}
 
-\begin{problem}[2.20]
-  This exercise shows that there are two non-isomorphic group structures on a set of 4 elements.
+% \begin{problem}[2.20]
+%   This exercise shows that there are two non-isomorphic group structures on a set of 4 elements.
 
-  Let the set be $\{e, a, b, c\}$, with $e$ the identity element for the group operation. A group table would then have to start in the manner shown in Table 2.29. The square indicated by the question mark cannot be filled in with $a$. It must be filled in either with the identity element $e$ or with an element different from both $e$ and $a$. In this latter case, it is no loss of generality to assume that this element is $b$. If this square is filled in with $e$, the table can then be completed in two ways to give a group. Find these two tables. (You need not check the associative law.) If this square is filled in with $b$, then the table can only be completed in one way to give a group. Find this table. (Again, you need not check the associative law.) Of the three tables you now have, two give isomorphic groups. Determine which two tables these are, and give the one-to-one onto relabeling function which is an isomorphism.
-  \begin{enumerate}
-    \item Are all groups of 4 elements commutative?
+%   Let the set be $\{e, a, b, c\}$, with $e$ the identity element for the group operation. A group table would then have to start in the manner shown in Table 2.29. The square indicated by the question mark cannot be filled in with $a$. It must be filled in either with the identity element $e$ or with an element different from both $e$ and $a$. In this latter case, it is no loss of generality to assume that this element is $b$. If this square is filled in with $e$, the table can then be completed in two ways to give a group. Find these two tables. (You need not check the associative law.) If this square is filled in with $b$, then the table can only be completed in one way to give a group. Find this table. (Again, you need not check the associative law.) Of the three tables you now have, two give isomorphic groups. Determine which two tables these are, and give the one-to-one onto relabeling function which is an isomorphism.
+%   \begin{enumerate}
+%     \item Are all groups of 4 elements commutative?
 
-    \item Find a way to relabel the four matrices
+%     \item Find a way to relabel the four matrices
 
-      \[%
-        \left\{
-          \begin{bmatrix}
-            1 & 0 \\
-            0 & 1 \\
-          \end{bmatrix},
-          \begin{bmatrix}
-            0 & -1 \\
-            1 & 0 \\
-          \end{bmatrix},
-          \begin{bmatrix}
-            -1 & 0 \\
-            0 & -1 \\
-          \end{bmatrix},
-          \begin{bmatrix}
-            0 & 1 \\
-            -1 & 0 \\
-          \end{bmatrix}
-        \right\}
-      ,\]%
-      so the matrix multiplication table is identical to one you constructed. This shows that the table you constructed defines an associative operation and therefore gives a group.
+%       \[%
+%         \left\{
+%           \begin{bmatrix}
+%             1 & 0 \\
+%             0 & 1 \\
+%           \end{bmatrix},
+%           \begin{bmatrix}
+%             0 & -1 \\
+%             1 & 0 \\
+%           \end{bmatrix},
+%           \begin{bmatrix}
+%             -1 & 0 \\
+%             0 & -1 \\
+%           \end{bmatrix},
+%           \begin{bmatrix}
+%             0 & 1 \\
+%             -1 & 0 \\
+%           \end{bmatrix}
+%         \right\}
+%       ,\]%
+%       so the matrix multiplication table is identical to one you constructed. This shows that the table you constructed defines an associative operation and therefore gives a group.
 
-    \item Show that for a particular value of n , the group elements given in Exercise 14 can be relabeled so their group table is identical to one you constructed. This implies the operation in the table is also associative.
-  \end{enumerate}
-\end{problem}
+%     \item Show that for a particular value of n, the group elements given in Exercise 14 can be relabeled so their group table is identical to one you constructed. This implies the operation in the table is also associative.
+%   \end{enumerate}
+% \end{problem}
 
-\begin{solution}[(i)]
-\end{solution}
+% \begin{solution}[(i)]
+% \end{solution}
 
-\begin{solution}[(ii)]
-\end{solution}
+% \begin{solution}[(ii)]
+% \end{solution}
 
-\begin{solution}[(iii)]
-\end{solution}
+% \begin{solution}[(iii)]
+% \end{solution}
 
 \begin{problem}[2.38]
   Let $G$ be a group and let $a, b \in G$. Show that $(a * b)' = a' * b'$ if and only if $a * b = b * a$.
 \end{problem}
 
 \begin{solution}
+  Assume that $(a * b)' = a' * b'$. We want to show that this implies $a * b = b * a$. Taking the inverse of both sides, we have
+  \[%
+    (a' * b')' = (a * b)
+  .\]%
+  Using the property of inverses in groups, we know that $(x * y)' = y' * x'$ for any elements $x, y \in G$. Applying this property to the left side, we get
+  \[%
+    (a' * b')' = b'' * a'' = b * a
+  .\]%
+  Therefore, we have $a * b = b * a$.
+
+  Conversely, assume that $a * b = b * a$. We want to show that this implies $(a * b)' = a' * b'$. Taking the inverse of both sides, we have
+  \[%
+    (a * b)' = (b * a)'
+  .\]%
+  Using the property of inverses in groups, we know that $(x * y)' = y' * x'$ for any elements $x, y \in G$. Applying this property to the right side, we get
+  \[%
+    (b * a)' = a' * b'
+  .\]%
+  Therefore, we have $(a * b)' = a' * b'$.
+
+  Thus, we have shown that $(a * b)' = a' * b'$ if and only if $a * b = b * a$.
 \end{solution}
 
 \begin{problem}[2.40]
@@ -88,6 +199,19 @@
 \end{problem}
 
 \begin{solution}
+  Assume $G$ is a set with a binary operation $*$ satisfying the left axioms, i.e., $*$ is associative, there exists a left identity, and every element has a left inverse. We first show that the left identity is also a right identity. Let $e$ be the left identity, so for all $a \in G$, we have $e * a = a$. We need to show that $a * e = a$ for all $a \in G$. Let $a \in G$ and let $a'$ be the left inverse of $a$, so that $a' * a = e$. Then,
+  \[%
+    a * e = a * (a' * a) = (a * a') * a = e * a = a
+  .\]%
+  Thus, $e$ is also a right identity.
+
+  Next, we show that every element has a right inverse. Let $a \in G$ and let $a'$ be the left inverse of $a$, so that $a' * a = e$. We need to find an element $b \in G$ such that $a * b = e$. We can take $b = a'$. Then,
+  \[%
+    a * b = a * a' = e
+  .\]%
+  Thus, every element has a right inverse, namely its left inverse.
+
+  Therefore, we have shown that $G$ satisfies all the group axioms: associativity, the existence of an identity element, and the existence of inverses for every element. Hence, $G$ is a group.
 \end{solution}
 
 \begin{problem}[2.41]
@@ -99,21 +223,34 @@
 \end{problem}
 
 \begin{solution}
+  Since $a * x = b$ has a solution in $G$ for all $a, b \in G$, there exists an element $e \in G$ such that $a * e = a$ for all $a \in G$. This shows that $e$ is a right identity. It holds similarly for the second equation with $e' \in G$. Subbing $y * a = b$ into the first equation, we have
+  \[%
+    a * x = y * a
+  .\]%
+  From here, we can deduce that $x = y$ for all $a, b \in G$. Thus, we have shown that the left and right identities are equal, i.e., $e = e'$.
+
+  Next, we need to show that every element has an inverse. For the first equation, $a * x = b$, if we let $a \in G$ be arbitrary, and $b = e$ (identity element), then there exists an element $a' \in G$ such that $a * a' = e$. Similarly, for the second equation, $y * a = b$, if we let $a \in G$ be arbitrary, and $b = e$, then there exists an element $a'' \in G$ such that $a'' * a = e$. Now, we show that $a' = a''$. We have
+  \[%
+    a * a' = e \implies a'' * (a * a') = a'' * e \implies (a'' * a) * a' = a'' \implies e * a' = a'' \implies a' = a''
+  .\]%
+  Thus, every element has a two-sided inverse.
+
+  Hence, $G$ is a group.
 \end{solution}
 
-\begin{problem}[2.45]
-  Suppose that $G$ is a group with $n$ elements and $A \subseteq G$ has more than $n/2$ elements. Prove that for every $g \in G$, there exists $a, b \in A$ such that $a * b = g$. (This was Problem B-2 on the 1968 Putnam exam.)
-\end{problem}
+% \begin{problem}[2.45]
+%   Suppose that $G$ is a group with $n$ elements and $A \subseteq G$ has more than $n/2$ elements. Prove that for every $g \in G$, there exists $a, b \in A$ such that $a * b = g$. (This was Problem B-2 on the 1968 Putnam exam.)
+% \end{problem}
 
-\begin{solution}
-\end{solution}
+% \begin{solution}
+% \end{solution}
 
-\begin{problem}[3.44]
-  Prove that for any $n \in \Z^+$, $\bra{\Z_n, +_n}$ is associative without using the fact that $U_n$ is associative.
-\end{problem}
+% \begin{problem}[3.44]
+%   Prove that for any $n \in \Z^+$, $\bra{\Z_n, +_n}$ is associative without using the fact that $U_n$ is associative.
+% \end{problem}
 
-\begin{solution}
-\end{solution}
+% \begin{solution}
+% \end{solution}
 
 \begin{problem}[4.34]
   (See the warning following Theorem 4.8.) Let $G$ be a group with binary operation $*$. Let $G'$ be the same set as $G$, and define a binary operation $*'$ on $G'$ by $x *' y=y * x$ for all $x, y \in G'$.
@@ -125,9 +262,43 @@
 \end{problem}
 
 \begin{solution}[(i)]
+  A person looking at the other side of the wall from the next room would see all the products and associative properties reversed. Specifically, for every product $a * b = c$ written on the wall, they would see $b * a = c$ when looking from the other side. Similarly, for every instance of the associative property $a * (b * c) = (a * b) * c$, they would see $(c * b) * a = c * (b * a)$.
+
+  This reversal of products and associative properties corresponds to the definition of the new binary operation $*'$ on $G'$, where $x *' y = y * x$. Therefore, the person would observe that the structure of the group is preserved, but with the order of multiplication reversed.
 \end{solution}
 
 \begin{solution}[(ii)]
+  To show that $G'$ is a group under the binary operation $*'$, we need to verify the group axioms: closure, associativity, identity element, and inverses.
+
+  For any $x, y \in G'$, we have $x *' y = y * x$. Since $G$ is a group under $*$, the product $y * x$ is also in $G$. Therefore, $x *' y \in G'$, satisfying closure.
+
+  For any $x, y, z \in G'$, we have
+  \[%
+    (x *' y) *' z = (y * x) *' z = z * (y * x)
+  ,\]%
+  and
+  \[%
+    x *' (y *' z) = x *' (z * y) = (z * y) * x
+  .\]%
+  Since $G$ is associative under $*$, we have
+  \[%
+    z * (y * x) = (z * y) * x
+  .\]%
+  Thus, $(x *' y) *' z = x *' (y *' z)$, satisfying associativity.
+
+  Let $e$ be the identity element in $G$ under $*$. For any $x \in G'$, we have
+  \[%
+    x *' e = e * x = x \aand e *' x = x * e = x
+  .\]%
+  Thus, $e$ is the identity element in $G'$ under $*'$.
+
+  For any $x \in G'$, let $x^{-1}$ be the inverse of $x$ in $G$ under $*$. Then, we have
+  \[%
+    x *' x^{-1} = x^{-1} * x = e \aand x^{-1} *' x = x * x^{-1} = e
+  .\]%
+  Thus, every element in $G'$ has an inverse under $*'$.
+
+  Therefore, we have verified all the group axioms for $G'$ under the binary operation $*'$. Hence, $G'$ is a group under $*'$.
 \end{solution}
 
 \begin{problem}[5.58]
@@ -139,137 +310,181 @@
 \end{problem}
 
 \begin{solution}
+  Clearly, the identity element $e$ of $G$ is in $H_a$ since $ea = ae$. Thus, $H_a$ is non-empty.
+
+  Let $x, y \in H_a$. Then, by definition of $H_a$, we have $xa = ax$ and $ya = ay$. We need to show that the product $x * y$ is also in $H_a$. We have
+  \[%
+    (x * y)a = x(ya) = x(ay) = (xa)y = (ax)y = a(x * y)
+  ,\]%
+  since $G$ is a group and the operation $*$ is associative. Thus, $x * y \in H_a$.
+
+  Next, we need to show that the inverse of any element in $H_a$ is also in $H_a$. Let $x \in H_a$. Then, by definition of $H_a$, we have $xa = ax$. We need to show that $x^{-1}$ is also in $H_a$. We have
+  \[%
+    x^{-1}a = x^{-1}(xa)x^{-1} = (x^{-1}x)ax^{-1} = eax^{-1} = ax^{-1}
+  .\]%
+  Thus, $x^{-1} \in H_a$.
+
+  Hence, $H_a$ is a subgroup of $G$.
 \end{solution}
 
-\begin{problem}[5.59]
-  Generalizing Exercise 58, let S be any subset of a group $G$.
-  \begin{enumerate}
-    \item Show that $H_S = \{x \in G \mid xs = sx~\text{for all}~s \in S\}$ is a subgroup of $G$.
+% \begin{problem}[5.59]
+%   Generalizing Exercise 58, let S be any subset of a group $G$.
+%   \begin{enumerate}
+%     \item Show that $H_S = \{x \in G \mid xs = sx~\text{for all}~s \in S\}$ is a subgroup of $G$.
 
-    \item In reference to part (i), the subgroup $H_G$ is the \emph{center} of $G$. Show that $H_G$ is an abelian group.
-  \end{enumerate}
-\end{problem}
+%     \item In reference to part (i), the subgroup $H_G$ is the \emph{center} of $G$. Show that $H_G$ is an abelian group.
+%   \end{enumerate}
+% \end{problem}
 
-\begin{solution}[(i)]
-\end{solution}
+% \begin{solution}[(i)]
+% \end{solution}
 
-\begin{solution}[(ii)]
-\end{solution}
+% \begin{solution}[(ii)]
+% \end{solution}
 
 \begin{problem}[5.60]
-  Let $H$ be a subgroup of a group $G$. For $a, b \in G$, let $a ~ b$ if and only if $ab^{-1} \in H$. Show that $~$ is an equivalence relation on $G$.
+  Let $H$ be a subgroup of a group $G$. For $a, b \in G$, let $a \sim b$ if and only if $ab^{-1} \in H$. Show that $\sim$ is an equivalence relation on $G$.
 \end{problem}
 
 \begin{solution}
-\end{solution}
+  To show that $\sim$ is an equivalence relation on $G$, we need to verify that it satisfies the three properties of an equivalence relation: reflexivity, symmetry, and transitivity.
 
-\begin{problem}[6.58]
-  Show that a group that has only a finite number of subgroups must be a finite group.
-\end{problem}
-
-\begin{solution}
-\end{solution}
-
-\begin{problem}[6.61]
-  Prove that if $G$ is a cyclic group with an odd number of generators, then $G$ has two elements.
-\end{problem}
-
-\begin{solution}
-\end{solution}
-
-\begin{problem}[6.67]
-  Let $G$ be an abelian group and let $H$ and $K$ be finite cyclic subgroups with $|H| = r$ and $|K| = s$.
-\end{problem}
-
-\begin{solution}
-\end{solution}
-
-\begin{problem}[7.22]
-  Prove that there are at least three different abelian groups of order 8. [Hint: Find a Cayley digraph for a group of order 8 having one generator of order 4 and another of order 2. Find a second Cayley digraph for a group of order 8 having three generators each with order 2.]
-\end{problem}
-
-\begin{solution}
-\end{solution}
-
-\begin{problem}[8.38]
-  Use Exercise 37 to prove that if $\Phi : G \to G'$ is a group homomorphism mapping onto $G'$ and $G'$ is a finite group, then for any $b, c \in G'$, $|\Phi^{-1}[\{b\}]| = |\Phi^{-1}[\{c\}]|$. Conclude that if $|G|$ is a prime number, then either $\Phi$ is an isomorphism or else $G'$ is the trivial group.
-\end{problem}
-
-\begin{solution}
-\end{solution}
-
-\begin{problem}[8.50]
-  Show that $S_n$ is generated by $\{(1, 2), (1, 2, 3, \cdots, n)\}$. [Hint: Show that as $r$ varies, $(1, 2, 3, \cdots, n)^r(1, 2)(1, 2, 3, \cdots, n)^{n-r}$ gives all the transpositions $(1, 2)$, $(2, 3)$, $(3, 4)$, $\cdots$, $(n - 1, n)$, $(n, 1)$. Then show that any transposition is a product of some of these transpositions and use Theorem 8.15.]
-\end{problem}
-
-\begin{solution}
-\end{solution}
-
-\begin{problem}[8.52]
-  The usual definition for the determinant of an $n \times n$ matrix $A = (a_{i,j})$ is
+  For any $a \in G$, we have
   \[%
-    \det(A) = \sum_{\sigma \in S_n} \sgn(\sigma)a_{1,\sigma(1)}a_{2,\sigma(2)} \cdots a_{n,\sigma(n)}
+    aa^{-1} = e \in H
   ,\]%
-  where $\sgn(\sigma)$ is the sign of $\sigma$. Using this definition, prove the following properties of determinants.
-  \begin{enumerate}
-    \item If a row of matrix $A$ has all zero entries, then $\det(A) = 0$.
-    \item If two different rows of $A$ are switched to obtain $B$, then $\det(B) = -\det(A)$.
-    \item If $r$ times one row of $A$ is added to another row of $A$ to obtain a matrix $B$, then $\det(B) = \det(A)$.
-    \item If a row of $A$ is multiplied by $r$ to obtain the matrix $B$, then $\det(B) = r \det(A)$.
-  \end{enumerate}
-\end{problem}
+  where $e$ is the identity element of $G$. Therefore, $a \sim a$ for all $a \in G$.
 
-\begin{solution}[(i)]
+  Suppose $a, b \in G$ such that $a \sim b$. This means that
+  \[%
+    ab^{-1} \in H
+  .\]%
+  Taking the inverse of both sides, we have
+  \[%
+    (ab^{-1})^{-1} = ba^{-1} \in H
+  .\]%
+  Therefore, $b \sim a$.
+
+  Suppose $a, b, c \in G$ such that $a \sim b$ and $b \sim c$. This means that
+  \[%
+    ab^{-1} \in H \aand bc^{-1} \in H
+  .\]%
+  Since $H$ is a subgroup of $G$, it is closed under the group operation. Therefore, we have
+  \[%
+    (ab^{-1})(bc^{-1}) = ac^{-1} \in H
+  .\]%
+  Thus, $a \sim c$.
+
+  Since $\sim$ satisfies reflexivity, symmetry, and transitivity, it is an equivalence relation on $G$.
 \end{solution}
 
-\begin{solution}[(ii)]
-\end{solution}
+% \begin{problem}[6.58]
+%   Show that a group that has only a finite number of subgroups must be a finite group.
+% \end{problem}
 
-\begin{solution}[(iii)]
-\end{solution}
+% \begin{solution}
+% \end{solution}
 
-\begin{solution}[(iv)]
-\end{solution}
+% \begin{problem}[6.61]
+%   Prove that if $G$ is a cyclic group with an odd number of generators, then $G$ has two elements.
+% \end{problem}
 
-\begin{problem}[8.53]
-  Prove that any finite group $G$ is isomorphic with a subgroup of $\GL(n, \R)$ for some $n$. [Hint: For each $\sigma \in S_n$, find a matrix in $\GL(n, \R)$ that sends each basis vector $e_i$ to $e_{\sigma(i)}$. Use this to show that $S_n$ is isomorphic with a subgroup of $\GL(n, \R)$.]
-\end{problem}
+% \begin{solution}
+% \end{solution}
 
-\begin{solution}
-\end{solution}
+% \begin{problem}[6.67]
+%   Let $G$ be an abelian group and let $H$ and $K$ be finite cyclic subgroups with $|H| = r$ and $|K| = s$.
+% \end{problem}
 
-\begin{problem}[8.56]
-\end{problem}
+% \begin{solution}
+% \end{solution}
 
-\begin{solution}
-\end{solution}
+% \begin{problem}[7.22]
+%   Prove that there are at least three different abelian groups of order 8. [Hint: Find a Cayley digraph for a group of order 8 having one generator of order 4 and another of order 2. Find a second Cayley digraph for a group of order 8 having three generators each with order 2.]
+% \end{problem}
 
-\begin{problem}[9.43]
-\end{problem}
+% \begin{solution}
+% \end{solution}
 
-\begin{solution}
-\end{solution}
+% \begin{problem}[8.38]
+%   Use Exercise 37 to prove that if $\Phi : G \to G'$ is a group homomorphism mapping onto $G'$ and $G'$ is a finite group, then for any $b, c \in G'$, $|\Phi^{-1}[\{b\}]| = |\Phi^{-1}[\{c\}]|$. Conclude that if $|G|$ is a prime number, then either $\Phi$ is an isomorphism or else $G'$ is the trivial group.
+% \end{problem}
 
-\begin{problem}[9.51]
-\end{problem}
+% \begin{solution}
+% \end{solution}
 
-\begin{solution}
-\end{solution}
+% \begin{problem}[8.50]
+%   Show that $S_n$ is generated by $\{(1, 2), (1, 2, 3, \cdots, n)\}$. [Hint: Show that as $r$ varies, $(1, 2, 3, \cdots, n)^r(1, 2)(1, 2, 3, \cdots, n)^{n-r}$ gives all the transpositions $(1, 2)$, $(2, 3)$, $(3, 4)$, $\cdots$, $(n - 1, n)$, $(n, 1)$. Then show that any transposition is a product of some of these transpositions and use Theorem 8.15.]
+% \end{problem}
 
-\begin{problem}[10.50]
-\end{problem}
+% \begin{solution}
+% \end{solution}
 
-\begin{solution}
-\end{solution}
+% \begin{problem}[8.52]
+%   The usual definition for the determinant of an $n \times n$ matrix $A = (a_{i,j})$ is
+%   \[%
+%     \det(A) = \sum_{\sigma \in S_n} \sgn(\sigma)a_{1,\sigma(1)}a_{2,\sigma(2)} \cdots a_{n,\sigma(n)}
+%   ,\]%
+%   where $\sgn(\sigma)$ is the sign of $\sigma$. Using this definition, prove the following properties of determinants.
+%   \begin{enumerate}
+%     \item If a row of matrix $A$ has all zero entries, then $\det(A) = 0$.
+%     \item If two different rows of $A$ are switched to obtain $B$, then $\det(B) = -\det(A)$.
+%     \item If $r$ times one row of $A$ is added to another row of $A$ to obtain a matrix $B$, then $\det(B) = \det(A)$.
+%     \item If a row of $A$ is multiplied by $r$ to obtain the matrix $B$, then $\det(B) = r \det(A)$.
+%   \end{enumerate}
+% \end{problem}
 
-\begin{problem}[12.40]
-\end{problem}
+% \begin{solution}[(i)]
+% \end{solution}
 
-\begin{solution}
-\end{solution}
+% \begin{solution}[(ii)]
+% \end{solution}
 
-\begin{problem}[13.41]
-\end{problem}
+% \begin{solution}[(iii)]
+% \end{solution}
 
-\begin{solution}
-\end{solution}
+% \begin{solution}[(iv)]
+% \end{solution}
+
+% \begin{problem}[8.53]
+%   Prove that any finite group $G$ is isomorphic with a subgroup of $\GL(n, \R)$ for some $n$. [Hint: For each $\sigma \in S_n$, find a matrix in $\GL(n, \R)$ that sends each basis vector $e_i$ to $e_{\sigma(i)}$. Use this to show that $S_n$ is isomorphic with a subgroup of $\GL(n, \R)$.]
+% \end{problem}
+
+% \begin{solution}
+% \end{solution}
+
+% \begin{problem}[8.56]
+% \end{problem}
+
+% \begin{solution}
+% \end{solution}
+
+% \begin{problem}[9.43]
+% \end{problem}
+
+% \begin{solution}
+% \end{solution}
+
+% \begin{problem}[9.51]
+% \end{problem}
+
+% \begin{solution}
+% \end{solution}
+
+% \begin{problem}[10.50]
+% \end{problem}
+
+% \begin{solution}
+% \end{solution}
+
+% \begin{problem}[12.40]
+% \end{problem}
+
+% \begin{solution}
+% \end{solution}
+
+% \begin{problem}[13.41]
+% \end{problem}
+
+% \begin{solution}
+% \end{solution}
