@@ -130,6 +130,23 @@
 \end{solution}
 
 \begin{solution}[(ii)]
+  Let $X = [0, 1/2]$ with the usual metric $\metric(x, y) = |x - y|$. Consider the map $f : X \to X$ given by $f(x) = x^2$. For any two points $x, y \in X$, without loss of generality, assume $x < y$. Then, we have
+  \[%
+    \metric(f(x), f(y)) = |x^2 - y^2| = |x - y||x + y| \le |x - y| \cdot 1 = \metric(x, y)
+  .\]%
+  Since $x + y \le 1$ for all $x, y \in [0, 1/2]$, we have $\metric(f(x), f(y)) < \metric(x, y)$ whenever $x \ne y$. Thus, $f$ is a weak contraction mapping. However, to show that $f$ is not a contraction mapping, assume for contradiction that there exists some $r \in [0, 1)$ such that
+  \[%
+    \metric(f(x), f(y)) \le r \cdot \metric(x, y)
+  ,\]%
+  for all $x, y \in X$. Pick $x = 0$ and $y = 1/2$. Then, we have
+  \[%
+    \metric(f(0), f(1/2)) = |0 - (1/2)^2| = 1/4 \le r \cdot |0 - 1/2| = r/2
+  .\]%
+  This implies that $r \ge 1/2$. Now, pick $x = 1/4$ and $y = 1/2$. Then, we have
+  \[%
+    \metric(f(1/4), f(1/2)) = |(1/4)^2 - (1/2)^2| = 3/16 \le r \cdot |1/4 - 1/2| = r/4
+  .\]%
+  This implies that $r \ge 3/4$. Continuing this process, we can see that for any $\epsilon > 0$, we can find points $x, y \in X$
 \end{solution}
 
 \begin{solution}[(iii)]
@@ -148,19 +165,50 @@
 \end{problem}
 
 \begin{solution}[(i)]
+  The pre-image of some number $a$ under the map $f$ is given by
+  \[%
+    f^{-1}(a) = \{(x, y) \in \R^2 \mid x^2 + y^2 = a\}
+  .\]%
+  If $a < 0$, then $f^{-1}(a) = \emptyset$, which is compact. If $a = 0$, then $f^{-1}(a) = \{(0, 0)\}$, which is also compact. If $a > 0$, then $f^{-1}(a)$ is the circle of radius $\sqrt{a}$ centered at the origin, which is closed and bounded in $\R^2$, and hence compact by the Heine-Borel theorem. Now, consider any compact set $K \subset \R$. Since $K$ is compact, it is closed and bounded, so there exist real numbers $m$ and $M$ such that
+  \[%
+    K \subset [m, M]
+  .\]%
+  Therefore, we have
+  \[%
+    f^{-1}(K) \subset f^{-1}([m, M]) = \bigcup_{a \in [m, M]} f^{-1}(a)
+  .\]%
+  Since $[m, M]$ is closed and bounded, it is compact. The union of the pre-images of all points in a compact set is also compact, as each pre-image is compact. Thus, $f^{-1}(K)$ is compact, and $f$ is a proper map.
 \end{solution}
 
 \begin{solution}[(ii)]
+  The equation $x^2 - y^2 = 0$ is true if and only if $x = y$. Thus, the pre-image of $0$ under the map $f$ is given by
+  \[%
+    f^{-1}(0) = \{(x, y) \in \R^2 \mid x = y\} = \{(t, t) \mid t \in \R\}
+  ,\]%
+  which is the line $y = x$ in $\R^2$. This set is not bounded, and hence not compact. Therefore, $f$ is not a proper map.
 \end{solution}
 
 \begin{solution}[(iii)]
+  Let $f : X \to Y$ be a proper map. Consider any point $y \in Y$. The set $\{y\}$ is compact in $Y$ since we can take the finite subcover consisting of just the set $\{y\}$ itself. Since $f$ is proper, the pre-image $f^{-1}(\{y\})$ is compact in $X$. Thus, the pre-image of every point under a proper map is compact.
 \end{solution}
 
 \begin{solution}[(iv)]
 \end{solution}
 
 \begin{solution}[(v)]
+  Assume that $X$ is compact, $Y$ is Hausdorff, and $f : X \to Y$ is continuous. Consider any compact set $K \subset Y$. Since $Y$ is Hausdorff, $K$ is closed in $Y$. Since $f$ is continuous, the pre-image $f^{-1}(K)$ is closed in $X$. Since $X$ is compact, any closed subset of $X$ is also compact. Therefore, $f^{-1}(K)$ is compact in $X$, and $f$ is a proper map.
 \end{solution}
 
 \begin{solution}[(vi)]
+  Assume that the projection $p : X \times Y \to X$ is proper. Consider any compact set $K \subset X$. Since $p$ is proper, the pre-image
+  \[%
+    p^{-1}(K) = K \times Y
+  .\]%
+  is compact in $X \times Y$. By the Heine-Borel theorem, this implies that $Y$ is compact.
+
+  Now, conversely, assume that $Y$ is compact. Consider any compact set $K \subset X$. The pre-image
+  \[%
+    p^{-1}(K) = K \times Y
+  .\]%
+  Since both $K$ and $Y$ are compact, their product $K \times Y$ is also compact by the Tychonoff theorem. Thus, $p$ is a proper map.
 \end{solution}
