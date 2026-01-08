@@ -1,0 +1,71 @@
+\begin{problem}[1]
+  Let $\bra{\cdot, \cdot}$ be a real inner product on a vector space $V$, with induced norm $\|\cdot\|$. Prove the following (called the Cauchy--Schwarz inequality):
+  \[%
+    |\bra{\v, \w}| \leq \|v\|\,\|w\| \quad \text{for all}~v, w \in V
+  .\]%
+  \textit{Hint.} Consider the quadratic polynomial $p(t) = \bra{v + tw, v + tw}$, where $t \in \R$.
+\end{problem}
+
+\begin{solution}
+  Let $\v, \w \in V$. Consider the quadratic polynomial
+  \[%
+    p(t) = \bra{\v + t\w, \v + t\w} = \bra{\v, \v} + 2t\bra{\v, \w} + t^2\bra{\w, \w} = \|\v\|^2 + 2t\bra{\v, \w} + t^2\|\w\|^2
+  .\]%
+  Since $V$ is an inner product space, we have $p(t) \ge 0$, since $\bra{v, w} \ge 0$ and $\|v\|, \|w\| \ge 0$. Therefore, we have
+  \[%
+    \|\w\|^2 t^2 + 2\bra{\v, \w} t + \|\v\|^2 \ge 0
+  .\]%
+  The discriminant of this quadratic polynomial must be less than or equal to zero, so we have
+  \[%
+    b^2 - 4ac = (2\bra{\v, \w})^2 - 4\|\w\|^2 \|\v\|^2 \le 0
+  .\]%
+  Solving this inequality gives
+  \[%
+    \bra{\v, \w}^2 \le \|\w\|^2 \|\v\|^2
+  .\]%
+  Taking the square root of both sides, the Cauchy--Schwarz inequality holds.
+\end{solution}
+
+\begin{problem}[2]
+  Show that a line segment in $\R^2$ has two-dimensional Lebesgue measure equal to zero. \emph{Optional}: Prove that the same result is true even if the line has infinite length.
+\end{problem}
+
+\begin{solution}
+\end{solution}
+
+\begin{problem}[3]
+  Find a sequence of continuous functions $f_n : [0, 1] \to \R$ such that
+  \[%
+    \lim_{n \to \infty} f_n(x) = 0 \quad \text{for all}~x \in [0, 1]
+  ,\]%
+  but
+  \[%
+    \lim_{n \to \infty} \int_0^1 f_n(x) \dx = 1
+  .\]%
+
+  \noindent Why does this not contradict the Lebesgue Dominated Convergence Theorem? 
+\end{problem}
+
+\begin{solution}
+\end{solution}
+
+\begin{problem}[4]
+  Let $V = L^1(\R^n)$ and $W = L^\infty(\R^n)$. Show that if $K \in L^\infty(\R^n \times \R^n)$ then the mapping $T$ defined by
+  \[%
+    [Tf](x) = \int_{\R^n} K(x, y) f(y) \dy
+  ,\]%
+  is a bounded linear transformation from $V$ to $W$, with
+  \[%
+    \|T\|_{L^1 \to L^\infty} \leq \|K\|_{L^\infty(\R^n \times \R^n)}
+  .\]%
+\end{problem}
+
+\begin{solution}
+\end{solution}
+
+\begin{problem}[5]
+  Let $W$ be a closed subset of a normed space $V$. Show that if $w_k\in W$ and $\lim_{k \to \infty} w_k = w$, then $w \in W$. Recall that by definition $W$ is closed if its complement is open.
+\end{problem}
+
+\begin{solution}
+\end{solution}

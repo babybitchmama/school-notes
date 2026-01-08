@@ -1,0 +1,34 @@
+\documentclass[notitlepage]{report}
+
+\input{preamble.tex}
+
+\def\nshort{MTH-445}
+\def\ncourse{Introduction to Abstract Algebra II}
+\def\nlecturer{V. Ostrik}
+\def\nterm{Winter}
+\def\nyear{$2026$}
+
+\def\othernotes{singularisart.github.io/notes}
+\def\faculty{Faculty of Mathematics}
+\def\location{University of Oregon}
+
+\begin{document}
+  \createintro
+  \newpage
+
+  \setcounter{chapter}{-1}
+  \chapter{Introduction}
+
+  % notes start 0-0
+  \input{lectures/lec-00.tex}
+  % notes end 0-0
+
+  \newpage
+  \pagenumbering{arabic}
+  \setcounter{page}{1}
+
+  \chapter{Chapter Name}
+
+  % start notes a-b
+  % end notes a-b
+\end{document}

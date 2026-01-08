@@ -1,0 +1,80 @@
+\begin{problem}[1]
+  Show that, if $X$ has finitely many connected components, then each component is both open and closed. On the other hand, find an example of a space $X$ none of whose connected components are open sets.
+\end{problem}
+
+\begin{solution}
+\end{solution}
+
+\begin{problem}[2]
+  Fix real numbers $a < b$, and let $f : [a, b] \to \R$ be a continuous function with $f(a) < 0 < f(b)$. Use connectedness of the interval $[a, b]$ to prove the intermediate value theorem, which says that there exists an element $c \in (a, b)$ with $f(c) = 0$.
+\end{problem}
+
+\begin{solution}
+  Take the partition $A = \{x \in A \mid f(x) \le 0\} = [f(a), f(0)]$ and $B = \{x \in A \mid f(x) \ge 0\} = [f(0), f(b)]$. Both $A$ and $B$ are non-empty, as $f(a) < 0$ and $f(b) > 0$. Notice that $A \cup B = [a, b]$. Since $[a, b]$ is connected, then $\bar{A} \cap B \ne \emptyset$ or $A \cap \bar{B} \ne \emptyset$.
+
+  Take a point $c$ in either of these intersections. If $c \in \bar{A} \cap B$, then there exists a sequence $(a_n)$ in $A$ such that $a_n \to c$. By continuity of $f$, we have $f(a_n) \to f(c)$. Since $f(a_n) \le 0$ for all $n$, we have $f(c) \le 0$. But since $c \in B$, we also have $f(c) \ge 0$. Therefore, $f(c) = 0$.
+
+  Likewise, if $c \in A \cap \bar{B}$, then there exists a sequence $(b_n)$ in $B$ such that $b_n \to c$. By continuity of $f$, we have $f(b_n) \to f(c)$. Since $f(b_n) \ge 0$ for all $n$, we have $f(c) \ge 0$. But since $c \in A$, we also have $f(c) \le 0$. Therefore, $f(c) = 0$.
+
+  Thus, there must exist a point $c \in (a, b)$ such that $f(c) = 0$.
+\end{solution}
+
+\begin{problem}[3]
+  Prove that, if $f : X \to Y$ is surjective and $X$ is path-connected, then so is $Y$.
+\end{problem}
+
+\begin{solution}
+  Since $X$ is path-connected, for any two points $x_1, x_2 \in X$, there exists a continuous map $\gamma : [0, 1] \to X$ such that $\gamma(0) = x_1$ and $\gamma(1) = x_2$. Since $f$ is surjective, for every point $c \in [f(x_1), f(x_2)]$, there exists a point $d \in [x_1, x_2]$ such that $f(d) = c$. Since $f$ is continuous, the composition $f \circ \gamma : [0, 1] \to Y$ is also continuous. Furthermore, $(f \circ \gamma)(0) = f(x_1)$ and $(f \circ \gamma)(1) = f(x_2)$. Therefore, $Y$ is path-connected.
+\end{solution}
+
+\begin{problem}[4]
+  Prove that, if $X$ and $Y$ are path-connected, then so is $X \times Y$.
+\end{problem}
+
+\begin{solution}
+  Since $X$ and $Y$ are path-connected, for any two points $x_1, x_2 \in X$ and $y_1, y_2 \in Y$, there exist continuous maps $\gamma_X : [0, 1] \to X$ and $\gamma_Y : [0, 1] \to Y$ such that $\gamma_X(0) = x_1$, $\gamma_X(1) = x_2$, $\gamma_Y(0) = y_1$, and $\gamma_Y(1) = y_2$. For two points $(x_1, y_1), (x_2, y_2) \in X \times Y$, we can the continuous map $\gamma : [0, 1] \to X \times Y$ defined by
+  \[%
+    \gamma(t) = (\gamma_X(t), \gamma_Y(t))
+  .\]%
+  Since $\gamma$ is composed of two continuous maps, it is also continuous. Furthermore, $\gamma(0) = (x_1, y_1)$ and $\gamma(1) = (x_2, y_2)$. Therefore, $X \times Y$ is path-connected.
+\end{solution}
+
+\begin{problem}[5]
+  Suppose that $X = A \cup B$ with $A$, $B$, and $A \cap B$ all path-connected. Show that, if $A \cap B$ is nonempty, then $X$ is also path-connected.
+\end{problem}
+
+\begin{solution}
+  Assume $A \cap B$ is non-empty. Then, since $A$ and $B$ are path-connected, we can find a path between any point in $A$ to $A \cap B$, and a path between any point in $B$ to $A \cap B$. Let $x_1, x_2 \in X$. If both points are in $A$ or both points are in $B$, then there exists a path between them. If $x_1 \in A$ and $x_2 \in B$, then, we can define the path $\gamma : [0, 1] \to X$, where $\gamma(0) = x_1$, $\gamma(0.5) = c$, and $\gamma(1) = x_2$. Since $A \cap B$ is path-connected, there exists a continuous map $\delta : [0, 1] \to A \cap B$ such that $\delta(0) = x_1$ and $\delta(1) = x_2$. Therefore, $X$ is path-connected.
+\end{solution}
+
+\begin{problem}[6]
+  For each description below, name a familiar space that is homeomorphic to the corresponding identification space (no proofs required).
+  \begin{enumerate}
+    \item The cylinder $S^1 \times [0, 1]$ with each of its boundary circles collapsed to a point. (That is, $(x, s) \sim (y, t)$ if and only if $s = t \in \{0, 1\}$.)
+    \item The torus $S^1 \times S^1$ with both a longitude $(1, 0) \times S^1$ and a meridian $S^1 \times (0, 1)$ collapsed to a point.
+    \item The Möbius strip $M$ with its boundary circle collapsed to a point.
+  \end{enumerate}
+\end{problem}
+
+\begin{solution}[(i)]
+\end{solution}
+
+\begin{solution}[(ii)]
+\end{solution}
+
+\begin{solution}[(iii)]
+\end{solution}
+
+\begin{problem}[7]
+  Give an example of an identification map $f : X \to Y$ and a subspace $A \subset X$ such that the surjection $f : A \to f(A)$ is not an identification map.
+\end{problem}
+
+\begin{solution}
+\end{solution}
+
+\begin{problem}[8]
+  Define $f : S^2 \to \R^4$ by the formula $f(x, y, z) = (x^2 - y^2, xy, xz, yz)$. You can convince yourself (and you may assume) that $f(x, y, z) = f(a, b, c)$ only if $(a, b, c) = (x, y, z)$ or $(a, b, c) = (-x, -y, -z)$. Show that $f$ descends to a map $g : \R P^2 \to \R^4$, and that $g$ is a homeomorphism from $\R P^2$ onto its image.
+\end{problem}
+
+\begin{solution}
+\end{solution}

@@ -1,0 +1,136 @@
+\begin{problem}[1]
+  \textit{Lorentz Transformation}
+  \begin{enumerate}
+    \item (2 points) The coordinate transformation for an observer moving at a constant velocity Vx relative to a stationary observer is given by
+      \begin{align*}
+        t' &= \gamma_x(t - V_xx) \\
+        x' &= \gamma_x(x - V_xt) \\
+        y' &= y \\
+        z' &= z
+      .\end{align*}
+      How can we write this as a $4 \times 4$ Lorentz transformation matrix?
+
+    \item (5 points) More generally, suppose we have
+      \begin{align*}
+        t' &= \mu t + + \nu x \\
+        x' &= \sigma t + \gamma x \\
+        y' &= \rho y \\
+        z' &= \lambda z
+      .\end{align*}
+      How can we write this as a $4 \times 4$ Lorentz transformation matrix?
+  \end{enumerate}
+\end{problem}
+
+\begin{solution}[(i)]
+\end{solution}
+
+\begin{solution}[(ii)]
+\end{solution}
+
+\begin{problem}[2]
+  \textit{Coordinate Transformations} Let
+  \[%
+    x = r\cos(\theta) \aand y = r\sin(\theta)
+  .\]%
+  \begin{enumerate}
+    \item (2 points) Compute $\pdv{x}/{r}$, $\pdv{x}/{\theta}$, $\pdv{y}/{r}$, and $\pdv{y}/{\theta}$.
+    \item (2 points) Use the chain rule to express $\pdv{}/{r}$ in terms of $\pdv{}/{x}$ and $\pdv{}/{y}$.
+    \item (2 points) Interpret $\pdv{}/{r}$ geometrically.
+  \end{enumerate}
+\end{problem}
+
+\begin{solution}[(i)]
+\end{solution}
+
+\begin{solution}[(ii)]
+\end{solution}
+
+\begin{solution}[(iii)]
+\end{solution}
+
+\begin{problem}[3]
+  \textit{Differentials and Geometry} Given the scalar function $f(x, y) = x^2y$:
+  \begin{enumerate}
+    \item (3 points) Compute the differential $\dd{f}$.
+    \item (2 points) Interpret $\dd{f}$ geometrically.
+  \end{enumerate}
+\end{problem}
+
+\begin{solution}[(i)]
+\end{solution}
+
+\begin{solution}[(ii)]
+\end{solution}
+
+\begin{problem}[4]
+  \textit{Change of Basis} Write the $2 \times 2$ rotation matrix $R(\theta)$
+  and show how vector components transform.
+\end{problem}
+
+\begin{solution}
+\end{solution}
+
+\begin{problem}[5]
+  Consider a torsion balance consisting of two equal inertial masses mounted at opposite ends of a light horizontal rod and suspended from a thin fiber. The apparatus is fixed to the surface of the rotating Earth at latitude $\theta$.
+  \begin{enumerate}
+    \item (3 points) Define a convenient coordinate system for analyzing the torsion balance. Using this coordinate system, state the condition that must be satisfied for the torsion balance to be in mechanical equilibrium.
+    \item (3 points) Determine the torque on the torsion balance arising from the Earth's rotation. Your answer should involve the Earth's angular velocity $\Omega$, the latitude $\theta$, and the relevant geometric parameters of the apparatus.
+    \item (2 points) What is the optimal latitude to perform this experiment? In other words, at what latitude would one expect to measure the largest potential torque?
+    \item (2 points)  State the condition required for the weak equivalence principle to be satisfied for the two test masses in this experiment.
+  \end{enumerate}
+\end{problem}
+
+\begin{solution}[(i)]
+\end{solution}
+
+\begin{solution}[(ii)]
+\end{solution}
+
+\begin{solution}[(iii)]
+\end{solution}
+
+\begin{solution}[(iv)]
+\end{solution}
+
+\begin{problem}[6]
+  \textit{Thomas Precession} Suppose that students $A$ and $B$ start out in the lab frame. Student $A$ remains in the lab frame. Student $B$ gets in a rocket ship and changes their velocity by $V_x$ in the $x$-direction (with $V_x \ll 1$) by firing the ``$+X$'' thrusters on their rocket. Then they change their velocity by $V_y$ in the new $y$-direction (again with $V_y \ll 1$) by firing the ``$+Y$'' thrusters. Then, they fire the ``$-X$'' thrusters (changing their velocity by $-V_x$), and the ``$-Y$'' thrusters (changing their velocity by $-V_y$). To lowest order in the $V$s, how does $B$'s reference frame now differ from $A$'s?
+
+  \textit{Note: The problem is designed so that in Newtonian physics, $B$'s final reference frame is the same as $A$'s: they are at rest with respect to each other, with no rotation of the coordinate systems.}
+\end{problem}
+
+\begin{solution}
+\end{solution}
+
+\begin{problem}[7]
+  ($\star$) \textit{The sky as viewed from a spaceship} Let's suppose that observer $\mathcal{O}$ remains on Earth in the lab frame. A second observer $\bar{\mathcal{O}}$ moves in a spaceship at velocity $V = \tanh(\alpha)$ in the $z$-direction with respect to Earth. As you may recall from watching science-fiction movies, if $V$ is large enough, $\bar{\mathcal{O}}$ sees the stars bunch up in front of them (the $+z$ direction). This problem works through the effect.
+
+  We suppose that the direction to the star makes an angle $\theta$ to the $z$-axis as seen from Earth, and $\bar{\theta}$ as seen from the spaceship. Without loss of generality, we will place the direction to the star at zero longitude (i.e., in the $xz$-plane).
+  \begin{enumerate}
+    \item (2 points) Show that in the Earth’s frame, in time $\Delta t$, a photon from the star undergoes a displacement $\Delta x^\alpha = (\Delta t, -\Delta t\sin(\theta), 0, -\Delta t\cos(\theta))$.
+    \item (5 points) Apply a Lorentz transformation to find the photon’s displacement in $\bar{\mathcal{O}}$'s frame. You may leave some results in terms of $\gamma = 1/\sqrt{1 - V^2}$. Show that in the barred frame, the direction of the photon satisfies
+      \[%
+        \cos(\bar{\theta}) = \frac{V + \cos(\theta)}{1 + V\cos(\theta)}
+      .\]%
+    \item (3 points) Show that a star that appears on the ``Equator'' as seen from Earth ($\theta = \pi/2$)  has an apparent position $\bar{\theta} = \arccos(V)$ as seen from the spaceship. How far from the North Pole does the star appear in the spaceship frame if $V = 0.9c$? What about $0.99c$?
+    \item (5 points) Now take the limit of small  $\theta \ll 1$ (i.e., we will consider a constellation that contains the North Pole). Show that
+      \[%
+        \bar{\theta} \approx \sqrt{\frac{1 - V}{1 + V}\theta}
+      .\]%
+      \textit{Hint: Take the Taylor expansion of your answer to (i) to 2nd order in $\theta$. This means that the constellation containing the North Pole appears shrunk by a factor of $\sqrt{(1 - V)/(1 + V)}$ when seen from the spaceship.}
+  \end{enumerate}
+\end{problem}
+
+\begin{solution}[(i)]
+\end{solution}
+
+\begin{solution}[(ii)]
+\end{solution}
+
+\begin{solution}[(iii)]
+\end{solution}
+
+\begin{solution}[(iv)]
+\end{solution}
+
+\begin{solution}[(v)]
+\end{solution}
