@@ -1,0 +1,92 @@
+\begin{problem}[22.12]
+  Decide whether the set $\{a + b\sqrt{2} \mid a, b \in \Z\}$ with the usual addition and multiplication are defined (closed), and give a ring structure. If a ring is not formed, tell why this is the case. If a ring is formed, state whether the ring is commutative, whether it has unity, and whether it is a field.
+\end{problem}
+
+\begin{solution}
+  Let $x, y \in A = \{a + b\sqrt{2} \mid a, b \in \Z\}$. Adding them, we have
+  \[%
+    x + y = (a_1 + b_1\sqrt{2}) + (a_2 + b_2\sqrt{2}) = (a_1 + a_2) + (b_1 + b_2)\sqrt{2} \in A.
+  .\]%
+  Multiplying them, we have
+  \[%
+    x \cdot y = (a_1 + b_1\sqrt{2})(a_2 + b_2\sqrt{2}) = (a_1 a_2 + 2 b_1 b_2) + (a_1 b_2 + a_2 b_1)\sqrt{2} \in A.
+  .\]%
+  Therefore, $A$ is closed under addition and multiplication.
+\end{solution}
+
+\begin{problem}[22.18]
+  Describe all the units of the ring $\Z \times \Q \times \Z$.
+\end{problem}
+
+\begin{solution}
+  The units of the ring $\Z \times \Q \times \Z$ are the elements $(a, b, c)$ such that $a$ and $c$ are units in $\Z$ and $b$ is a unit in $\Q$. The only units in $\Z$ are $1$ and $-1$, while every non-zero element in $\Q$ is a unit. Therefore, the units of the ring $\Z \times \Q \times \Z$ are of the form $(\pm 1, b, \pm 1)$ where $b \in \Q^*$.
+\end{solution}
+
+\begin{problem}[22.20]
+  Consider the matrix ring $M_2(\Z_2)$.
+  \begin{enumerate}
+    \item Find the \textit{order} of the ring, that is, the number of elements in it.
+    \item List all units in the ring.
+  \end{enumerate}
+\end{problem}
+
+\begin{solution}[(i)]
+  Each entry in each $2 \times 2$ matrix has $2$ possible options, either $0$ or $1$. Since there are $4$ slots, each with $2$ options, the total number of elements in the ring is $2^4 = 16$.
+\end{solution}
+
+\begin{solution}[(ii)]
+\end{solution}
+
+\begin{problem}[22.21]
+  If possible, give an example of a homomorphism $\phi : R \to R'$ where $R$ and $R'$ are rings with unity $1 \ne 0$ and $1' \ne 0'$, and where $\phi(1) \ne 0'$ and $\phi(1) \ne 1'$.
+\end{problem}
+
+\begin{solution}
+  Assume we have an isomorphism $\phi : R \to R'$ such that $\phi(1) \ne 0'$ and $\phi(1) \ne 1'$. Since $\phi$ is a homomorphism, we have
+  \[%
+    \phi(1) = \phi(1 \cdot 1) = \phi(1) \cdot' \phi(1)
+  .\]%
+  This implies that $\phi(1)$ is an idempotent element in $R'$. However, in a ring with unity, the only idempotent elements are $0'$ and $1'$. Therefore, this isn't possible.
+\end{solution}
+
+\begin{problem}[22.26]
+  How many homomorphisms are there of $\Z \times \Z \times \Z$ into $\Z$?
+\end{problem}
+
+\begin{solution}
+\end{solution}
+
+\begin{problem}[22.28]
+  Find all solutions of the equation $x^2 + x - 6 = 0$ in the ring $\Z_{14}$ by factoring the quadratic polynomial. Compare with Exercise 27.
+\end{problem}
+
+\begin{solution}
+\end{solution}
+
+\begin{problem}[22.39]
+  Show that if $U$ is the collection of all units in a ring $\bra{R, +, \cdot}$ with unity, then $\bra{U, \cdot}$ is a group. [\textit{Warning:} Be sure to show that $U$ is closed under multiplication.]
+\end{problem}
+
+\begin{solution}
+\end{solution}
+
+\begin{problem}[22.40]
+  Show that $a^2 - b^2 = (a + b)(a - b)$ for all $a$ and $b$ in a ring $R$ if and only if $R$ is commutative.
+\end{problem}
+
+\begin{solution}
+\end{solution}
+
+\begin{problem}[22.42]
+  Show that the rings $2\Z$ and $3\Z$ are not isomorphic. Show that the fields $\R$ and $\C$ are not isomorphic.
+\end{problem}
+
+\begin{solution}
+\end{solution}
+
+\begin{problem}[22.43]
+  Let $p$ be a prime. Show that in the ring $\Z_p$ we have $(a + b)^p = a^p + b^p$ for all $a, b \in \Z_p$. [\textit{Hint:} Observe that the usual binomial expansion $(a + b)^n$ is valid in a \textit{commutative ring}.]
+\end{problem}
+
+\begin{solution}
+\end{solution}

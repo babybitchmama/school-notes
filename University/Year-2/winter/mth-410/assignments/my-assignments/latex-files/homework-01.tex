@@ -31,6 +31,15 @@
 \end{problem}
 
 \begin{solution}
+  Let $A$ be the set of a line segment in $\R^2$. Without loss of generality, we can assume that the line segment is horizontal. Let the length of the line segment be $L$. For $A$ to have measure zero, for any $\epsilon > 0$, there exists a countable collection of open intervals such that
+  \[%
+    A \subseteq \bigcup_{i=1}^\infty I_i \aand \sum_{i=1}^\infty \text{area}(I_i) < \epsilon
+  .\]%
+  Let $A$ be the collection of rectangles of width $L$ and height $\delta$, where $\delta = \frac{\epsilon}{L}$. Then, we have
+  \[%
+    \text{area}(A) = L \cdot \delta = L \cdot \frac{\epsilon}{L} = \epsilon
+  .\]%
+  Therefore, the line segment has measure zero.
 \end{solution}
 
 \begin{problem}[3]
@@ -43,10 +52,30 @@
     \lim_{n \to \infty} \int_0^1 f_n(x) \dx = 1
   .\]%
 
-  \noindent Why does this not contradict the Lebesgue Dominated Convergence Theorem? 
+  \noindent Why does this not contradict the Lebesgue Dominated Convergence Theorem?
 \end{problem}
 
 \begin{solution}
+  Take the sequence of functions defined by
+  \[%
+    f_n(x) = \begin{cases}
+      n, & \text{if}~0 \leq x \leq 1/n \\
+      0, & \text{if}~1/n < x \leq 1
+    \end{cases}
+  .\]%
+  For all $x \in [0, 1]$, we have
+  \[%
+    \lim_{n \to \infty} f_n(x) = 0
+  .\]%
+  Integrating $f_n(x)$ over $[0, 1]$, we have
+  \[%
+    \int_0^1 f_n(x) \dx = \int_0^{1/n} n \dx + \int_{1/n}^1 0 \dx = n \cdot \frac{1}{n} + 0 = 1
+  .\]%
+  The Lebesgue Dominated Convergence Theorem states that given a converging sequence of functions $(f_n)$ on a measurable space $(S, \Sigma, \mu)$ that converges pointwise to a function $f$ and is dominated by an integrable function $g(x)$ (i.e., $|f(x)| \le g(x)$), then the following must hold
+  \[%
+    \lim_{n \to \infty} \int_S f_n(x) \dd{\mu} = \int_S f(x) \dd{\mu}
+  .\]%
+  We don't get any contradictions because there is no integrable function $g(x)$ that dominates the sequence of functions $f_n(x)$ on $[0, 1]$.
 \end{solution}
 
 \begin{problem}[4]
@@ -61,6 +90,26 @@
 \end{problem}
 
 \begin{solution}
+  The norm of $K$ in $L^\infty(\R^n \times \R^n)$ is defined as
+  \[%
+    \|K\|_{L^\infty(\R^n \times \R^n)} \coloneqq \inf\{\alpha > 0 : |\{(x, y) \in \R^n \times \R^n : |f(x)| > \alpha\}| = 0\} < \infty
+  .\]%
+  This means that $\|K\|_{L^\infty(\R^n \times \R^n}$ is the smallest number such that $|K(x, y)| \leq \|K\|_{L^\infty(\R^n \times \R^n)}$ for all $(x, y) \in \R^n \times \R^n$. Let $f \in L^1(\R^n)$. Then, for every $x \in \R^n$, we have
+  \begin{align*}
+    |[Tf](x)| &= \left|\int_{\R^n} K(x, y) f(y) \dy\right| \\
+              &\leq \int_{\R^n} |K(x, y)||f(y)| \dy \\
+              &\leq \|K\|_{L^\infty(\R^n \times \R^n)} \int_{\R^n} |f(y)| \dy \\
+              &= \|K\|_{L^\infty(\R^n \times \R^n)} \|f\|_{L^1(\R^n)}
+  .\end{align*}
+  We have the norm $\|T\|_{L^1 \to L^\infty}$ defined as
+  \[%
+    \|T\|_{L^1 \to L^\infty} \coloneqq \sup\{\|Tf\|_{L^\infty} : \|f\|_{L^1} = 1\}
+  .\]%
+  Therefore, we have
+  \[%
+    \|Tf\|_{L^\infty} = \sup_{x \in \R^n} |[Tf](x)| \leq \|K\|_{L^\infty(\R^n \times \R^n)} \|f\|_{L^1(\R^n)} = \|K\|_{L^\infty(\R^n \times \R^n)}
+  ,\]%
+  since $\|f\|_{L^1} = 1$. Thus, $T$ is a bounded linear transformation from $V$ to $W$.
 \end{solution}
 
 \begin{problem}[5]
@@ -68,4 +117,5 @@
 \end{problem}
 
 \begin{solution}
+  Assume $w_k \in W$ for all $k \in \Z$. Since $W$ is closed, then $W^c$ is open. Since $w_k \to w$, for any $\epsilon > 0$, there exists $N \in \N$ such that for all $k \ge N$, we have $\|w_k - w\| < \epsilon$. Suppose, for the sake of contradiction, that $w \notin W$. Then, $w \in W^c$. Since $W^c$ is open, there exists $\delta > 0$ such that the open ball $B(w, \delta) \subseteq W^c$. However, since $w_k \to w$, there exists $N' \in \N$ such that for all $k \ge N'$, we have $\|w_k - w\| < \delta$. This implies that $w_k \in B(w, \delta) \subseteq W^c$ for all $k \ge N'$, contradicting the assumption that $w_k \in W$ for all $k$. Therefore, $w \notin W^c$, and thus $w \in W$.
 \end{solution}
