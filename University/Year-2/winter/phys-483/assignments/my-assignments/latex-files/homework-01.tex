@@ -1,5 +1,4 @@
-\begin{problem}[1]
-  \textit{Lorentz Transformation}
+\begin{problem}[1 (Lorentz Transformation)]
   \begin{enumerate}
     \item (2 points) The coordinate transformation for an observer moving at a constant velocity Vx relative to a stationary observer is given by
       \begin{align*}
@@ -22,13 +21,57 @@
 \end{problem}
 
 \begin{solution}[(i)]
+  Given the coordinate transformations, we can express them in matrix form as follows
+  \[%
+    \begin{pmatrix}
+      t' \\
+      x' \\
+      y' \\
+      z'
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+      \gamma_x & -\gamma_x V_x & 0 & 0 \\
+      -\gamma_x V_x & \gamma_x & 0 & 0 \\
+      0 & 0 & 1 & 0 \\
+      0 & 0 & 0 & 1
+    \end{pmatrix}
+    \begin{pmatrix}
+      t \\
+      x \\
+      y \\
+      z
+    \end{pmatrix}
+  .\qedhere\]%
 \end{solution}
 
 \begin{solution}[(ii)]
+  More generally, we can express the given coordinate transformations in matrix form as follows
+  \[%
+    \begin{pmatrix}
+      t' \\
+      x' \\
+      y' \\
+      z'
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+      \mu & \nu & 0 & 0 \\
+      \sigma & \gamma & 0 & 0 \\
+      0 & 0 & \rho & 0 \\
+      0 & 0 & 0 & \lambda
+    \end{pmatrix}
+    \begin{pmatrix}
+      t \\
+      x \\
+      y \\
+      z
+    \end{pmatrix}
+  .\qedhere\]%
 \end{solution}
 
-\begin{problem}[2]
-  \textit{Coordinate Transformations} Let
+\begin{problem}[2 (Coordinate Transformations)]
+  Let
   \[%
     x = r\cos(\theta) \aand y = r\sin(\theta)
   .\]%
@@ -40,16 +83,26 @@
 \end{problem}
 
 \begin{solution}[(i)]
+  Computing the partial derivatives, we have
+  \begin{gather*}
+    \pdv{x}{r} = \cos(\theta), \quad \pdv{x}{\theta} = -r\sin(\theta) \\
+    \pdv{y}{r} = \sin(\theta), \quad \pdv{y}{\theta} = r\cos(\theta)
+  .\qedhere\end{gather*}
 \end{solution}
 
 \begin{solution}[(ii)]
+  Using the Chain Rule, we have
+  \[%
+    \pdv{}{r} = \pdv{x}{r}\pdv{}{x} + \pdv{y}{r}\pdv{}{y} = \cos(\theta)\pdv{}{x} + \sin(\theta)\pdv{}{y}
+  .\qedhere\]%
 \end{solution}
 
 \begin{solution}[(iii)]
+  Geometrically, $\pdv{}/{r}$ represents the rate of change of a function as we move radially outward from the origin in the direction specified by the angle $\theta$. It combines the contributions from both the $x$ and $y$ directions, weighted by the cosine and sine of the angle $\theta$, respectively. This operator shows how a function changes as we increase our distance from the origin while maintaining a constant angle $\theta$.
 \end{solution}
 
-\begin{problem}[3]
-  \textit{Differentials and Geometry} Given the scalar function $f(x, y) = x^2y$:
+\begin{problem}[3 (Differentials and Geometry)]
+  Given the scalar function $f(x, y) = x^2y$:
   \begin{enumerate}
     \item (3 points) Compute the differential $\dd{f}$.
     \item (2 points) Interpret $\dd{f}$ geometrically.
@@ -57,17 +110,48 @@
 \end{problem}
 
 \begin{solution}[(i)]
+  The differential of $f$ is given by
+  \[%
+    \dd{f} = \pdv{f}{x}\dd{x} + \pdv{f}{y}\dd{y} = 2xy\dd{x} + x^2\dd{y}
+  .\qedhere\]%
 \end{solution}
 
 \begin{solution}[(ii)]
+  Geometrically, the differential $\dd{f}$ represents the approximate change in the function $f$ resulting from small changes in the variables $x$ and $y$. Specifically, it quantifies how much $f$ will change when we make infinitesimal adjustments $\dd{x}$ and $\dd{y}$ to the coordinates. The terms $2xy\dd{x}$ and $x^2\dd{y}$ indicate how sensitive the function is to changes in each variable, weighted by their respective partial derivatives.
 \end{solution}
 
-\begin{problem}[4]
-  \textit{Change of Basis} Write the $2 \times 2$ rotation matrix $R(\theta)$
-  and show how vector components transform.
+\begin{problem}[4 (Change of Basis)]
+  Write the $2 \times 2$ rotation matrix $R(\theta)$ and show how vector components transform.
 \end{problem}
 
 \begin{solution}
+  The $2 \times 2$ rotation matrix $R(\theta)$ is given by
+  \[%
+    R(\theta) = \begin{pmatrix}
+      \cos(\theta) & -\sin(\theta) \\
+      \sin(\theta) & \cos(\theta)
+    \end{pmatrix}
+  .\]%
+  Taking a vector, say $\v = (v_x~v_y)^T$, its components transform under rotation as follows
+  \[%
+    \v' = R(\theta)\v = \begin{pmatrix}
+      \cos(\theta) & -\sin(\theta) \\
+      \sin(\theta) & \cos(\theta)
+    \end{pmatrix}
+    \begin{pmatrix}
+      v_x \\
+      v_y
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+      v_x\cos(\theta) - v_y\sin(\theta) \\
+      v_x\sin(\theta) + v_y\cos(\theta)
+    \end{pmatrix}
+  .\]%
+  Thus, the new components of the vector after rotation are
+  \[%
+    v_x' = v_x\cos(\theta) - v_y\sin(\theta) \aand v_y' = v_x\sin(\theta) + v_y\cos(\theta)
+  .\qedhere\]%
 \end{solution}
 
 \begin{problem}[5]
@@ -92,8 +176,8 @@
 \begin{solution}[(iv)]
 \end{solution}
 
-\begin{problem}[6]
-  \textit{Thomas Precession} Suppose that students $A$ and $B$ start out in the lab frame. Student $A$ remains in the lab frame. Student $B$ gets in a rocket ship and changes their velocity by $V_x$ in the $x$-direction (with $V_x \ll 1$) by firing the ``$+X$'' thrusters on their rocket. Then they change their velocity by $V_y$ in the new $y$-direction (again with $V_y \ll 1$) by firing the ``$+Y$'' thrusters. Then, they fire the ``$-X$'' thrusters (changing their velocity by $-V_x$), and the ``$-Y$'' thrusters (changing their velocity by $-V_y$). To lowest order in the $V$s, how does $B$'s reference frame now differ from $A$'s?
+\begin{problem}[6 (Thomas Precession)]
+  Suppose that students $A$ and $B$ start out in the lab frame. Student $A$ remains in the lab frame. Student $B$ gets in a rocket ship and changes their velocity by $V_x$ in the $x$-direction (with $V_x \ll 1$) by firing the ``$+X$'' thrusters on their rocket. Then they change their velocity by $V_y$ in the new $y$-direction (again with $V_y \ll 1$) by firing the ``$+Y$'' thrusters. Then, they fire the ``$-X$'' thrusters (changing their velocity by $-V_x$), and the ``$-Y$'' thrusters (changing their velocity by $-V_y$). To lowest order in the $V$s, how does $B$'s reference frame now differ from $A$'s?
 
   \textit{Note: The problem is designed so that in Newtonian physics, $B$'s final reference frame is the same as $A$'s: they are at rest with respect to each other, with no rotation of the coordinate systems.}
 \end{problem}
@@ -101,8 +185,8 @@
 \begin{solution}
 \end{solution}
 
-\begin{problem}[7]
-  ($\star$) \textit{The sky as viewed from a spaceship} Let's suppose that observer $\mathcal{O}$ remains on Earth in the lab frame. A second observer $\bar{\mathcal{O}}$ moves in a spaceship at velocity $V = \tanh(\alpha)$ in the $z$-direction with respect to Earth. As you may recall from watching science-fiction movies, if $V$ is large enough, $\bar{\mathcal{O}}$ sees the stars bunch up in front of them (the $+z$ direction). This problem works through the effect.
+\begin{problem}[7 (The sky as viewed from a spaceship)]
+  ($\star$) Let's suppose that observer $\mathcal{O}$ remains on Earth in the lab frame. A second observer $\bar{\mathcal{O}}$ moves in a spaceship at velocity $V = \tanh(\alpha)$ in the $z$-direction with respect to Earth. As you may recall from watching science-fiction movies, if $V$ is large enough, $\bar{\mathcal{O}}$ sees the stars bunch up in front of them (the $+z$ direction). This problem works through the effect.
 
   We suppose that the direction to the star makes an angle $\theta$ to the $z$-axis as seen from Earth, and $\bar{\theta}$ as seen from the spaceship. Without loss of generality, we will place the direction to the star at zero longitude (i.e., in the $xz$-plane).
   \begin{enumerate}
