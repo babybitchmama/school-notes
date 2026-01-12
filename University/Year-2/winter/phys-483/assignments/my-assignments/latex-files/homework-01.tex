@@ -183,6 +183,18 @@
 \end{problem}
 
 \begin{solution}
+  Since the velocities involved are small ($V_x, V_y \ll 1$), we can use the non-relativistic approximation for the Lorentz transformations. The sequence of velocity changes can be analyzed step by step.
+  \begin{enumerate}
+    \item After the first boost in the $x$-direction by $V_x$, student $B$'s velocity is $(V_x, 0)$.
+    \item After the second boost in the $y$-direction by $V_y$, the new velocity becomes $(V_x, V_y)$.
+    \item The third boost in the $-x$ direction by $-V_x$ results in a velocity of $(0, V_y)$.
+    \item Finally, the fourth boost in the $-y$ direction by $-V_y$ brings the velocity back to $(0, 0)$.
+  \end{enumerate}
+  However, due to the non-commutative nature of Lorentz transformations, the final reference frame of student $B$ will be rotated with respect to student $A$'s frame. The rotation angle $\theta$ can be approximated by
+  \[%
+    \theta \approx \frac{V_x V_y}{c^2}
+  .\]%
+  Thus, to lowest order in the velocities, student $B$'s reference frame is rotated by an angle proportional to the product of the two small velocities. This effect is known as Thomas precession.
 \end{solution}
 
 \begin{problem}[7 (The sky as viewed from a spaceship)]
