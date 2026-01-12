@@ -12,6 +12,8 @@
     x \cdot y = (a_1 + b_1\sqrt{2})(a_2 + b_2\sqrt{2}) = (a_1 a_2 + 2 b_1 b_2) + (a_1 b_2 + a_2 b_1)\sqrt{2} \in A.
   .\]%
   Therefore, $A$ is closed under addition and multiplication.
+
+  Since addition and multiplication of integers are associative and commutative, the same properties hold for $A$. The additive identity is $0 + 0\sqrt{2}$, and the multiplicative identity is $1 + 0\sqrt{2}$. The additive inverse of $a + b\sqrt{2}$ is $-a - b\sqrt{2}$, which is also in $A$. Thus, $A$ forms a commutative ring with unity. However, $A$ is not a field because not every non-zero element has a multiplicative inverse.
 \end{solution}
 
 \begin{problem}[22.18]
@@ -31,10 +33,67 @@
 \end{problem}
 
 \begin{solution}[(i)]
-  Each entry in each $2 \times 2$ matrix has $2$ possible options, either $0$ or $1$. Since there are $4$ slots, each with $2$ options, the total number of elements in the ring is $2^4 = 16$.
+  Each entry in each $2 \times 2$ matrix has $2$ possible options, either $0$ or $1$. Since there are $4$ slots, each with $2$ options, the total number of matrices is $2^4 = 16$. Therefore, the order of the ring $M_2(\Z_2)$ is $16$.
 \end{solution}
 
 \begin{solution}[(ii)]
+  A matrix in $M_2(\Z_2)$ is a unit if its determinant is $1$ in $\Z_2$. The determinant of a $2 \times 2$ matrix is given by $ad - bc$. Meaning that either $ad = 1$ and $bc = 0$, or $ad = 0$ and $bc = 1$. For the first case, when $ad = 1$ and $bc = 0$, we have the following matrices
+  \[%
+    \begin{pmatrix}
+      1 & 0 \\
+      0 & 1
+    \end{pmatrix}, \qquad
+    \begin{pmatrix}
+      1 & 1 \\
+      0 & 1
+    \end{pmatrix}, \qquad
+    \begin{pmatrix}
+      1 & 0 \\
+      1 & 1
+    \end{pmatrix}
+  .\]%
+  For the second case, when $ad = 0$ and $bc = 1$, we have the following matrices
+  \[%
+    \begin{pmatrix}
+      0 & 1 \\
+      1 & 0
+    \end{pmatrix}, \qquad
+    \begin{pmatrix}
+      0 & 1 \\
+      1 & 1
+    \end{pmatrix}, \qquad
+    \begin{pmatrix}
+      1 & 1 \\
+      1 & 0
+    \end{pmatrix}
+  .\]%
+  Therefore, the units in the ring $M_2(\Z_2)$ are
+  \[%
+    \begin{pmatrix}
+      1 & 0 \\
+      0 & 1
+    \end{pmatrix}, \quad
+    \begin{pmatrix}
+      1 & 1 \\
+      0 & 1
+    \end{pmatrix}, \quad
+    \begin{pmatrix}
+      1 & 0 \\
+      1 & 1
+    \end{pmatrix}, \quad
+    \begin{pmatrix}
+      0 & 1 \\
+      1 & 0
+    \end{pmatrix}, \quad
+    \begin{pmatrix}
+      0 & 1 \\
+      1 & 1
+    \end{pmatrix}, \quad
+    \begin{pmatrix}
+      1 & 1 \\
+      1 & 0
+    \end{pmatrix}
+  .\qedhere\]%
 \end{solution}
 
 \begin{problem}[22.21]
@@ -108,7 +167,17 @@
 \end{problem}
 
 \begin{solution}
-  Assume $a^2 - b^2 = (a + b)(a - b)$ for all $a, b \in R$.
+  Assume $a^2 - b^2 = (a + b)(a - b)$ for all $a, b \in R$. Expanding, we have
+  \[%
+    a^2 - b^2 = a^2 - ab + ba - b^2
+  .\]%
+  Adding $b^2 - a^2$ to both sides, we have $0 = -ab + ba$, which implies that $ab = ba$ for all $a, b \in R$. Therefore, $R$ is commutative.
+
+  Conversely, assume $R$ is commutative. Then, for all $a, b \in R$, we have
+  \[%
+    (a + b)(a - b) = a^2 - ab + ba - b^2 = a^2 - ab + ab - b^2 = a^2 - b^2
+  .\]%
+  Therefore, $a^2 - b^2 = (a + b)(a - b)$ for all $a, b \in R$.
 \end{solution}
 
 \begin{problem}[22.42]
@@ -116,6 +185,25 @@
 \end{problem}
 
 \begin{solution}
+  Assume there exists an isomorphism $\phi : 2\Z \to 3\Z$. Then, we have
+  \[%
+    \phi(2) = \phi(1 \cdot 2) = \phi(1) \cdot' \phi(2)
+  ,\]%
+  where $\cdot$ is the multiplication in $2\Z$ and $\cdot'$ is the multiplication in $3\Z$. Since $\phi(1) \in 3\Z$, we can write $\phi(1) = 3k$ for some $k \in \Z$. Therefore,
+  \[%
+    \phi(2) = (3k) \cdot' \phi(2) = 3k \cdot \phi(2)
+  .\]%
+  This implies that $\phi(2)$ is divisible by $3$. However, $2$ is not divisible by $3$, which contradicts the fact that $\phi$ is an isomorphism. Therefore, $2\Z$ and $3\Z$ are not isomorphic.
+
+  Assume that there exists an isomorphism $\phi : \R \to \C$. Then, we have
+  \[%
+    \phi(1) = \phi(1 \cdot 1) = \phi(1) \cdot' \phi(1)
+  .\]%
+  This implies that $\phi(1)$ is an idempotent element in $\C$. The only idempotent elements in $\C$ are $0$ and $1$. Since $\phi(1) \ne 0$, we have $\phi(1) = 1$. Now, consider the element $i \in \C$, where $i^2 = -1$. Since $\phi$ is surjective, there exists $r \in \R$ such that $\phi(r) = i$. Then, we have
+  \[%
+    \phi(r^2) = \phi(r) \cdot' \phi(r) = i \cdot' i = -1
+  .\]%
+  However, there is no real number $r$ such that $r^2 = -1$. This contradicts the fact that $\phi$ is an isomorphism. Therefore, $\R$ and $\C$ are not isomorphic.
 \end{solution}
 
 \begin{problem}[22.43]
@@ -123,4 +211,17 @@
 \end{problem}
 
 \begin{solution}
+  In a commutative ring, the binomial expansion states that
+  \[%
+    (a + b)^n = \sum_{k=0}^{n} \binom{n}{k} a^{n-k} b^k
+  .\]%
+  Applying this to our case with $n = p$, we have
+  \[%
+    (a + b)^p = \sum_{k=0}^{p} \binom{p}{k} a^{p-k} b^k
+  .\]%
+  Since $p$ is a prime, the binomial coefficients $\binom{p}{k}$ for $1 \le k \le p-1$ are all divisible by $p$. Therefore, in the ring $\Z_p$, these coefficients are equivalent to $0$. Thus, the only terms that survive in the sum are those for $k = 0$ and $k = p$. Hence, we have
+  \[%
+    (a + b)^p = \binom{p}{0} a^p b^0 + \binom{p}{p} a^0 b^p = a^p + b^p
+  .\]%
+  Therefore, in the ring $\Z_p$, we have $(a + b)^p = a^p + b^p$ for all $a, b \in \Z_p$.
 \end{solution}
