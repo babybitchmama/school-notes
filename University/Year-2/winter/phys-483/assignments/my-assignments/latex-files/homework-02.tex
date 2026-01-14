@@ -1,0 +1,206 @@
+\begin{problem}[1]
+  Two inertial frames $S$ and $S'$ are related by a Lorentz boost with speed $v$ in the $x$-direction. Units are chosen so that $c = 1$. The transformation is
+  \begin{align*}
+    t' &= \gamma(t - vx) \\
+    x' &= \gamma(x - vt) \\
+    y' &= y \\
+    z' &= z
+  ,\end{align*}
+  where $\gamma = (1 - v^2)^{1/2}$.
+
+  A particle moves along the $x$-axis in frame $S$ with worldline
+  \[%
+    x(t) = at^2, \qquad y = 0 = z
+  ,\]%
+  where $a$ is a constant.
+
+  The four-position is $x^\mu = (t, x, y, z)$, and the four-velocity is defined as
+  \[%
+    u^\mu = \odv{x^\mu}{\tau}
+  ,\]%
+  where $\tau$ is the particle's proper time.
+  \begin{enumerate}
+    \item (5 points) Compute $u^\mu$ in frame S, expressing your answer in terms of $t$ and $a$. (Hint: first compute $\odv{x^\mu}/{t}$, then use $\dd{\tau} = \sqrt{1 - v^2}$, where $v = \odv{x}/{t}$.)
+    \item (2 points) Show explicitly that
+      \[%
+        u^\mu u_\mu = -1
+      .\]%
+    \item (5 points) Using the Lorentz transformation above, compute the components of ${u'}^\mu$ in frame $S'$. Verify that
+      \[%
+        {u'}^\mu u'_\mu = -1
+      ,\]%
+      and explain briefly why this result is expected.
+    \item (5 points) The four-acceleration is defined as
+      \[%
+        a^\mu = \odv{u^\mu}{\tau}
+      .\]%
+      Compute $a^\mu$ for the particle in frame $S$ and show that
+      \[%
+        u^\mu a_\mu = 0
+      .\]%
+    \item (2 points) Explain why differentiation with respect to proper time preserves the four-vector character of a quantity, whereas differentiation with respect to coordinate time $t$ generally does not.
+  \end{enumerate}
+\end{problem}
+
+\begin{solution}[(i)]
+  Computing $\odv{x^\mu}/{t}$, we get
+  \[%
+    \odv{x^\mu}{t} = \left(1, 2at, 0, 0\right)
+  .\]%
+  The three-velocity is $v = \odv{x}/{t} = 2at$, so
+  \[%
+    \dd{\tau} = \sqrt{1 - v^2} \dd{t} = \sqrt{1 - (2at)^2} \dd{t}
+  .\]%
+  Therefore,
+  \[%
+    u^\mu = \odv{x^\mu}{\tau} = \odv{x^\mu}{t} \odv{t}{\tau} = \frac{(1, 2at, 0, 0)}{\sqrt{1 - (2at)^2}} = \left(\frac{1}{\sqrt{1 - 4a^2t^2}}, \frac{2at}{\sqrt{1 - 4a^2t^2}}, 0, 0\right)
+  .\qedhere\]%
+\end{solution}
+
+\begin{solution}[(ii)]
+  Remember that
+  \[%
+    u^\mu u_\mu = \eta_{\mu\nu} \odv{x^\mu}{\tau} \odv{x^\nu}{\tau} = \frac{1}{\dd{\tau}^2} \eta_{\mu\nu} \dx^\mu\dx^\nu = \frac{\ds^2}{\dd{\tau}^2}
+  .\]%
+  Then, we can use the fact that $\ds^2 = -\dd{\tau}^2 = \eta_{\mu\nu} \dd{x^\mu} \dd{x^\nu}$ to write
+  \[%
+    u^\mu u_\mu = \frac{\ds^2}{\dd{\tau}^2} = -\frac{\dd{\tau}^2}{\dd{\tau}^2} = -1
+  .\qedhere\]%
+\end{solution}
+
+\begin{solution}[(iii)]
+  Using the Lorentz transformation, we find that
+  \[%
+    {u'}^\mu = \Lambda_\nu^\mu u^\nu \aand u'_\mu = \eta_{\mu\nu} \Lambda_\alpha^\nu u^\alpha
+  .\]%
+  Combining these, we get
+  \[%
+    {u'}^\mu u'_\mu = \left(\Lambda_\nu^\mu u^\nu\right) \left(\eta_{\mu\sigma} \Lambda_\alpha^\sigma u^\alpha\right) = \left(\eta_{\mu\sigma} \Lambda_\nu^\mu \Lambda_\alpha^\sigma\right) u^\nu u^\alpha = \eta_{\nu\alpha} u^\nu u^\alpha = u^\mu u_\mu = -1
+  .\]%
+
+  This result is expected because the quantity $u^\mu u_\mu$ is a Lorentz invariant, meaning it has the same value in all inertial frames. Since we have already shown that $u^\mu u_\mu = -1$ in frame $S$, it must also hold true in frame $S'$.
+\end{solution}
+
+\begin{solution}[(iv)]
+  Using the fact that $a^mu = \du^\mu/\dd{\tau}$, we have
+  \[%
+    u^\mu a_\mu = u^\mu \eta_{\mu\nu} a^\nu = \eta_{\mu\nu} u^\mu \frac{\du^\nu}{\dd{\tau}}
+  ,\]%
+  using the fact that $a_\mu = \eta_{\mu\nu} a^\nu$. Now, computing the derivative of $\du^\nu/\dd{\tau}$, we get
+  \[%
+    \frac{\du^\mu}{\dd{\tau}} = \frac{\du^\mu}{\dd{\tau}} \odv{t}{\tau} = \gamma \frac{\du^\mu}{\dt}
+  .\]%
+  Therefore,
+  \[%
+    u^\mu a_\mu = \eta_{\mu\nu} u^\mu \gamma \frac{\du^\nu}{\dt} = \gamma \frac{\dd}{\dt} \left(\eta_{\mu\nu} u^\mu u^\nu\right) - \gamma \eta_{\mu\nu} \frac{\du^\mu}{\dt} u^\nu
+  .\]%
+  But since $\eta_{\mu\nu} u^\mu u^\nu = -1$ is a constant, its derivative is zero. Thus,
+  \[%
+    u^\mu a_\mu = -\gamma \eta_{\mu\nu} \frac{\du^\mu}{\dt} u^\nu
+  .\]%
+  Notice that the right-hand side is just $-u^\mu a_\mu$. Therefore,
+  \[%
+    u^\mu a_\mu = -u^\mu a_\mu \implies 2u^\mu a_\mu = 0 \implies u^\mu a_\mu = 0
+  .\qedhere\]%
+\end{solution}
+
+\begin{solution}[(v)]
+  Proper time $\tau$ is the Lorentz invariant time measured by a clock moving along with the particle. Since it is invariant under Lorentz transformations, differentiating with respect to $\tau$ preserves the four-vector character of a quantity. On the other hand, coordinate time $t$ is frame-dependent and varies between different inertial frames. Differentiating with respect to $t$ can mix components of four-vectors in a way that does not respect their transformation properties, leading to quantities that may not transform as four-vectors.
+\end{solution}
+
+\renewcommand\V{\mathbf{v}}
+\begin{problem}[2 (Tachyons)]
+  \begin{enumerate}
+    \item (2 points) Argue that a kind of particle that always moves faster than the velocity of light would be consistent with Lorentz invariance in the sense that if its speed is greater than light in one frame, it will be greater than light in all frames. (Such a hypothetical particle is called a tachyon).
+    \item (2 points) Show that the tangent vector to the trajectory of a tachyon is spacelike and can be written $u^\alpha = \odv{x^\alpha}/{s}$, where $s$ is the spacelike interval along the trajectory. Show that $\u \cdot \u = 1$.
+    \item (2 points) Evaluate the components of a tachyon's four-velocity u in terms of the three velocity $\V = \odv{\x}/{t}$
+    \item (2 points) Define the four-momentum by $\p = m\u$ and find the relation between energy and momentum for a tachyon.
+    \item (2 points) Show that there is an inertial frame where the energy of any tachyon is negative.
+    \item (2 points) Show that if tachyons interact with normal particles, a normal particle could emit a tachyon with total energy and three-momentum being conserved. This result suggests a world containing tachyons would be unstable and there is no evidence for tachyons in nature.
+  \end{enumerate}
+\end{problem}
+
+\begin{solution}[(i)]
+\end{solution}
+
+\begin{solution}[(ii)]
+\end{solution}
+
+\begin{solution}[(iii)]
+\end{solution}
+
+\begin{solution}[(iv)]
+\end{solution}
+
+\begin{solution}[(v)]
+\end{solution}
+
+\begin{solution}[(vi)]
+\end{solution}
+
+\begin{problem}[3 (Relativistic charged particle)]
+  Consider the action of a (relativistic) charge particle coupled to a background gauge field, $A_\mu$, living in Minkowski space. It is governed by the action
+  \[%
+    S = -m\int \dd{\tau} + q\int A_\mu(\x) \dx^\mu
+  ,\]%
+  where $A$ is a 1-form and $m$, $q$ are the mass and charge of the particle, respectively.
+  \begin{enumerate}
+    \item (3 points) Suppose that the particle travels along the worldline $x^\mu(\lambda)$. Write the action in terms of $x^\mu$ and $\odv{x^\mu}/{\lambda}$.
+
+    \item (5 points) Find the canonical momenta $p_\mu$ and show that
+      \[%
+        p_\mu = mu_\mu + qA_\mu
+      .\]%
+      In other words, show that the canonical momentum, which is defined by the Lagrangian procedure, is different than the mechanical momentum $p_\mu = mu_\mu$.
+
+    \item (3 points) Complete the Euler-Lagrange equations to show that
+      \[%
+        \odv{p_\gamma}{\lambda} = q\pdv{A_\mu}{x^\gamma} \odv{x^\mu}{\lambda}
+      .\]%
+
+    \item (6 points) ($\star$) Show that your answer in the previous part can be written as
+      \[%
+        m\odv{u_\gamma}{\tau} = qF_{\gamma\mu}u^\mu
+      ,\]%
+      where
+      \begin{equation}\label{eq:15}
+        F_{\gamma\mu} = \partial_\gamma A_\mu - \partial_\mu A_\gamma
+      ,\end{equation}
+      is the field strength tensor.
+
+    \item (5 points) Show that $F_{\gamma\mu}$ is antisymmetric and has the correct transformation properties to be a tensor.
+
+    \item (6 points) ($\star$) By considering the acceleration of slow-moving particles, show that the components of $F_{\gamma\mu}$ agree with
+      \[%
+        F_{\gamma\mu} = \begin{pmatrix}
+          0 & -E_x & -E_y & -E_z \\
+          E_x & 0 & B_z & -B_y \\
+          E_y & -B_z & 0 & B_x \\
+          E_z & B_y & -B_x & 0 \\
+        \end{pmatrix}
+      .\]%
+
+    \item (4 points) ($\star$) Write the independent components of Eq. \ref{eq:15} corresponding to $E_x$ and $B_x$. Does this match with what you've learned in E\&M of how fields are derived from a vector potential? What is the physical interpretation of the component $A_0$?
+  \end{enumerate}
+\end{problem}
+
+\begin{solution}[(i)]
+\end{solution}
+
+\begin{solution}[(ii)]
+\end{solution}
+
+\begin{solution}[(iii)]
+\end{solution}
+
+\begin{solution}[(iv)]
+\end{solution}
+
+\begin{solution}[(v)]
+\end{solution}
+
+\begin{solution}[(vi)]
+\end{solution}
+
+\begin{solution}[(vii)]
+\end{solution}

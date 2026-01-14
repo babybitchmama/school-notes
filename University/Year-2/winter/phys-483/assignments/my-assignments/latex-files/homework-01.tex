@@ -154,33 +154,60 @@
   .\qedhere\]%
 \end{solution}
 
-\begin{problem}[5]
+\begin{problem}[5 (Eotvos Experiment)]
   Consider a torsion balance consisting of two equal inertial masses mounted at opposite ends of a light horizontal rod and suspended from a thin fiber. The apparatus is fixed to the surface of the rotating Earth at latitude $\theta$.
   \begin{enumerate}
     \item (3 points) Define a convenient coordinate system for analyzing the torsion balance. Using this coordinate system, state the condition that must be satisfied for the torsion balance to be in mechanical equilibrium.
     \item (3 points) Determine the torque on the torsion balance arising from the Earth's rotation. Your answer should involve the Earth's angular velocity $\Omega$, the latitude $\theta$, and the relevant geometric parameters of the apparatus.
     \item (2 points) What is the optimal latitude to perform this experiment? In other words, at what latitude would one expect to measure the largest potential torque?
-    \item (2 points)  State the condition required for the weak equivalence principle to be satisfied for the two test masses in this experiment.
+    \item (2 points) State the condition required for the weak equivalence principle to be satisfied for the two test masses in this experiment.
   \end{enumerate}
 \end{problem}
 
+\renewcommand\O{\boldsymbol{\Omega}}
 \begin{solution}[(i)]
-  Define the following coordinate system
-  \begin{alignat*}{3}
-    \hat{x} &= r\cos(\theta) \quad &&(\text{pointing East}) \\
-    \hat{y} &= r\sin(\theta) \quad &&(\text{pointing North}) \\
-    \hat{z} &= r\cos(\phi) &&(\text{pointing Upward})
-  .\end{alignat*}
-  For the torsion balance to be in mechanical equilibrium, the net torque acting on the system must be zero. This means that the sum of all torques due to gravitational forces, centrifugal forces, and any other external influences must cancel out.
+  Define the following coordinate system:
+  \begin{enumerate}
+    \item $\hat{z}$: be vertical (pointing upwards)
+    \item $\hat{x}$: point towards the North
+    \item $\hat{y}$: point towards the East
+  \end{enumerate}
+  The Earth's rotation vector decomposes as
+  \[%
+    \O = \Omega(\cos(\theta)\hat{z} + \sin(\theta)\hat{x})
+  .\]%
+  The angular coordinate $\phi$ measures the rod's orientation relative to $\hat{z}$. For mechanical equilibrium, the net torque on the torsion balance must be zero:
+  \[%
+    \tau_{\text{net}} = \tau_{\text{Earth}} - \kappa\phi = 0
+  ,\]%
+  which gives us that $\tau_{\text{Earth}} = \kappa\phi$.
 \end{solution}
 
 \begin{solution}[(ii)]
+  Each mass experiences a centrifugal acceleration given by
+  \[%
+    \a_c = \O \times (\O \times \r)
+  ,\]%
+  where $\r$ is the position of each mass in the local frame. Only the horizontal component contributes to a torque about the suspension axis. Each mass produces an identical torque magnitude, giving us
+  \[%
+    \a_c = 2ma^2\O^2\sin(\theta)\cos(\theta)\sin(2\phi)
+  .\]%
+  For small enough $\phi$, we have $\sin(2\phi) \approx 2\phi$. Therefore, we have
+  \[%
+    \tau_{\text{Earth}} = 4ma^2\O^2\sin(\theta)\cos(\theta)\phi
+  .\qedhere\]%
 \end{solution}
 
 \begin{solution}[(iii)]
+  The optimal latitude to perform this experiment is at $\theta = \pi/2$, where the product $\sin(\theta)\cos(\theta)$ is maximized.
 \end{solution}
 
 \begin{solution}[(iv)]
+  An equivalent statement to the weak equivalence principle is
+  \[%
+    \frac{m_{q,1}}{m_{i,1}} = \frac{m_{q,2}}{m_{i,2}}
+  ,\]%
+  where $m_{q,i}$ is the gravitational mass and $m_{i,i}$ is the inertial mass of the $i$-th test mass. This condition ensures that both masses experience the same acceleration in a gravitational field, leading to no differential torque on the torsion balance.
 \end{solution}
 
 \begin{problem}[6 (Thomas Precession)]
@@ -190,6 +217,60 @@
 \end{problem}
 
 \begin{solution}
+  Define the following Lorentz transformation matrices for each boost
+  \[%
+    \Lambda_x(V_x) = \begin{pmatrix}
+      1 + \frac{1}{2}V_x^2 & -V_x & 0 & 0 \\
+      -V_x & 1 + \frac{1}{2}V_x^2 & 0 & 0 \\
+      0 & 0 & 1 & 0 \\
+      0 & 0 & 0 & 1 \\
+    \end{pmatrix} + \mathcal{O}(V_y^2)
+    \aand
+    \Lambda_y(V_y) = \begin{pmatrix}
+      1 + \frac{1}{2}V_y^2 & 0 & -V_y & 0 \\
+      -V_y & 1 & 1 + \frac{1}{2}V_y^2 & 0 \\
+      0 & 0 & 1 & 0 \\
+      0 & 0 & 0 & 1 \\
+    \end{pmatrix} + \mathcal{O}(V_y^2)
+  .\]%
+  The total transformation after the sequence of boosts is given by
+  \[%
+    \Lambda(V) = \Lambda_y(-V_y)\Lambda_x(-V_x)\Lambda_y(V_y)\Lambda_x(V_x)
+  .\]%
+  Notice that we can expand $\Lambda_x(V_x)$ and $\Lambda_y(V_y)$ to first order in $V_x$ and $V_y$ to get
+  \[%
+    \Lambda_x(V_x) = 1 + A \aand \Lambda_y(V_y) = 1 + B
+  ,\]%
+  where we define
+  \[%
+    A = \begin{pmatrix}
+      0 & -V_x & 0 & 0 \\
+      -V_x & 0 & 0 & 0 \\
+      0 & 0 & 0 & 0 \\
+      0 & 0 & 0 & 0 \\
+    \end{pmatrix}
+    \aand
+    B = \begin{pmatrix}
+      0 & 0 & -V_y & 0 \\
+      0 & 0 & 0 & 0 \\
+      -V_y & 0 & 0 & 0 \\
+      0 & 0 & 0 & 0 \\
+    \end{pmatrix}
+  .\]%
+  Computing $\Lambda(V)$, we get
+  \[%
+    \Lambda(V) = (1 - B)(1 - A)(1 + B)(1 + A) = 1 + [B, A] + \mathcal{O}(V)
+  .\]%
+  Computing the commutator $[B, A]$, we find
+  \[%
+    \Lambda(V) = I + \begin{pmatrix}
+      0 & 0 & 0 & 0 \\
+      0 & 0 & -V_xV_y & 0 \\
+      0 & V_xV_y & 0 & 0 \\
+      0 & 0 & 0 & 0 \\
+    \end{pmatrix} + \mathcal{O}(V^3)
+  .\]%
+  Therefore, this new coordinate system is rotated with respect to the original one by an angle $\omega_z = V_xV_y$ about the $xy$-plane.
 \end{solution}
 
 \begin{problem}[7 (The sky as viewed from a spaceship)]
@@ -212,16 +293,66 @@
 \end{problem}
 
 \begin{solution}[(i)]
+  The photon's displacement in the Earth's frame over a time interval $\Delta t$ is defined to be $\Delta x^0 = \Delta t$. Since the particle is traveling at the speed of light, the magnitude of its spatial displacement must equal the time interval, $\Delta t$. The given direction, $(\sin(\theta), \cos(\theta), 0)$ is a unit vector. But this is the direction of the photon, so we have
+  \[%
+    \Delta x^i = -\Delta t(\sin(\theta), 0, \cos(\theta)) = (-\Delta t\sin(\theta), 0, -\Delta t\cos(\theta))
+  .\]%
+  Therefore, the full displacement four-vector is
+  \[%
+    \Delta x^\alpha = (\Delta t, -\Delta t\sin(\theta), 0, -\Delta t\cos(\theta))
+  .\qedhere\]%
 \end{solution}
 
 \begin{solution}[(ii)]
+  Setting up the Lorentz transformation matrix for a boost in the $z$-direction, we have
+  \[%
+    \Lambda = \begin{pmatrix}
+      \gamma & -\gamma V & 0 & 0 \\
+      -\gamma V & \gamma & 0 & 0 \\
+      0 & 0 & 1 & 0 \\
+      0 & 0 & 0 & 1 \\
+    \end{pmatrix}
+  .\]%
+  Therefore, we have the new displacement four-vector in the spaceship frame as
+  \[%
+    \Delta \bar{x}^\alpha = \left(\gamma (\Delta t - V \Delta z), - \Delta t\sin(\theta), 0, \gamma(\Delta z - V \Delta t)\right)
+  .\]%
+  In the barred frame, the photon travels at $c = 1$, so its spatial direction is given by
+  \[%
+    \cos(\bar{\theta}) = \frac{\Delta \bar{z}}{(\Delta \bar{x})^2 + (\Delta \bar{z})^2}
+  .\]%
+  Using the fact that $\sqrt{(\Delta \bar{x})^2 + (\Delta \bar{z}} = \Delta \bar{t}$, since the photon travels at the speed of light, we have
+  \[%
+    \cos(\bar{\theta}) = \frac{\Delta \bar{z}}{\Delta \bar{t}}
+  .\]%
+  Expanding and solving, we find that
+  \[%
+    \cos(\bar{\theta}) = \frac{\Delta z - V \Delta t}{\Delta t - V \Delta z} = \frac{-\Delta t\cos(\theta) - V \Delta t}{\Delta t - V(-\Delta t\cos(\theta))} = \frac{V + \cos(\theta)}{1 + V\cos(\theta)}
+  .\qedhere\]%
 \end{solution}
 
 \begin{solution}[(iii)]
+  Plugging $\theta = \pi/2$ into the formula from part (ii), we have
+  \[%
+    \cos(\bar{\theta}) = \frac{V + 0}{1 + V \cdot 0} = V
+  .\]%
+  This gives us that $\bar{\theta} = \arccos(V)$. If $V = 0.9c$, then we get $\bar{\theta} \approx 25.9^{\circ}$ and if $V = 0.99c$, then we get $\bar{\theta} \approx 8.1^{\circ}$.
 \end{solution}
 
 \begin{solution}[(iv)]
-\end{solution}
-
-\begin{solution}[(v)]
+  Taking the Taylor series expansion of $\cos(\theta)$ to second order in $\theta$, we have
+  \begin{align*}
+    \cos(\bar{\theta}) &= \frac{V + \cos(\theta)}{1 + V\cos(\theta)} \\
+                       &= \frac{V + 1 - \frac{1}{2}\theta^2}{1 + V - \frac{1}{2}V\theta^2} + \mathcal{O}(\theta^4) \\
+                       &= 1 - \frac{\frac{1}{2}(1 - V)\theta^2}{1 + V - \frac{1}{2}V\theta^2} + \mathcal{O}(\theta^4) \\
+                       &\approx 1 - \frac{1}{2}\frac{(1 - V)}{(1 + V)}\theta^2 + \mathcal{O}(\theta^4)
+  .\end{align*}
+  Taking the Taylor series expansion of $\arccos(x)$ about $x = 1$, we have
+  \[%
+    \bar{\theta} = \arccos\left(1 - \frac{1}{2}\frac{(1 - V)}{(1 + V)}\theta^2\right) \approx \sqrt{\frac{1 - V}{1 + V}}\theta + \mathcal{O}(\theta^3)
+  .\]%
+  Thus, we have shown that for small $\theta$, the angle in the spaceship frame is approximately
+  \[%
+    \bar{\theta} \approx \sqrt{\frac{1 - V}{1 + V}}\theta
+  .\qedhere\]%
 \end{solution}
