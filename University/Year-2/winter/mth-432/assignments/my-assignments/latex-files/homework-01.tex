@@ -3,6 +3,17 @@
 \end{problem}
 
 \begin{solution}
+  Assume that $X$ has finitely many connected components, say
+  \[%
+    X = \bigcup_{i=1}^n C_i
+  .\]%
+  Each component $C_i$ is closed in $X$ since connected components are always closed. To see that $C_i$ is also open, note that
+  \[%
+    X \setminus C_i = \bigcup_{j \neq i} C_j
+  ,\]%
+  which is a finite union of closed sets and hence closed. Therefore $C_i$ is open. Thus every connected component of $X$ is both open and closed.
+
+  For the second part, let $X = \mathbb{Q}$ with the subspace topology inherited from $\mathbb{R}$. Since $\mathbb{Q}$ is totally disconnected, every connected component is a single point. No singleton $\{q\} \subset \mathbb{Q}$ is open, because every open set in $\mathbb{Q}$ contains infinitely many rational numbers. Hence $\mathbb{Q}$ is a space none of whose connected components are open.
 \end{solution}
 
 \begin{problem}[2]
@@ -57,12 +68,15 @@
 \end{problem}
 
 \begin{solution}[(i)]
+  Collapsing each boundary circle of the cylinder $S^1 \times [0,1]$ to a point identifies the two ends of the cylinder to two distinct points. The resulting space is homeomorphic to the $2$-sphere $S^2$.
 \end{solution}
 
 \begin{solution}[(ii)]
+  Collapsing both a longitude and a meridian of the torus $S^1 \times S^1$ to a point yields a space homeomorphic to the wedge sum of two $2$-spheres, $S^2 \vee S^2$.
 \end{solution}
 
 \begin{solution}[(iii)]
+  Collapsing the boundary circle of the Möbius strip $M$ to a point produces a space homeomorphic to the real projective plane $\R P^2$.
 \end{solution}
 
 \begin{problem}[7]
@@ -70,6 +84,11 @@
 \end{problem}
 
 \begin{solution}
+  Let $X = [0,1]$ and define an equivalence relation by identifying the endpoints $0 \sim 1$. Let $Y = X/{\sim}$, which is homeomorphic to the circle $S^1$, and let $f : X \to Y$ be the quotient map. Then $f$ is an identification map.
+
+  Now let $A = \{0\} \cup (1/2,1] \subset X$. The restriction $f|_A : A \to f(A)$ is a continuous surjection. However, it is not an identification map. Indeed, the subset $(1/2,1]$ is open in $A$, but its image under $f$ is not open in the subspace $f(A)$, since neighborhoods of $f(0) = f(1)$ necessarily intersect the image of $(1/2,1]$. Thus the quotient topology on $f(A)$ does not agree with the subspace topology induced from $Y$.
+
+  Therefore, $f : X \to Y$ is an identification map, but the restricted map $f : A \to f(A)$ is not.
 \end{solution}
 
 \begin{problem}[8]
@@ -77,4 +96,13 @@
 \end{problem}
 
 \begin{solution}
+  Let $\pi : S^2 \to \R P^2$ denote the quotient map identifying antipodal points. By assumption, if
+  \[%
+    f(x,y,z) = f(a,b,c)
+  ,\]%
+  then $(a,b,c) = (x,y,z)$ or $(a,b,c) = (-x,-y,-z)$. Hence $f$ is constant on the equivalence classes of $\pi$, and therefore $f$ descends to a well-defined map $g : \R P^2 \to \R^4$, satisfying $g \circ \pi = f$.
+
+  Since $f$ is continuous and $\pi$ is a quotient map, the induced map $g$ is continuous. Moreover, $g$ is injective: if $g([\mathbf{x}]) = g([\mathbf{y}])$, then $f(\mathbf{x}) = f(\mathbf{y})$, which implies $\mathbf{y} = \mathbf{x}$ or $\mathbf{y} = -\mathbf{x}$, so $[\mathbf{x}] = [\mathbf{y}]$ in $\R P^2$.
+
+  The space $\R P^2$ is compact, being the continuous image of the compact space $S^2$, and $\R^4$ is Hausdorff. Therefore, a continuous injective map from $\R P^2$ into $\R^4$ is a homeomorphism onto its image. Hence $g$ is a homeomorphism from $\R P^2$ onto $g(\R P^2) \subset \R^4$.
 \end{solution}
