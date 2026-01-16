@@ -1,0 +1,97 @@
+\begin{problem}[1 (Gaussian integral computation)]
+  Let $a > 0$. Compute the value of
+  \[%
+    \int_{\R^n} e^{-a|x|^2} \dx
+  .\]%
+  \textit{Hint:} First reduce matters to computing a one-dimensional integral by writing $|x|^2 = x^2_1 + \cdots + x^2_n$. To compute the one-dimensional case, start with
+  \[%
+    \left(\int_\R e^{-ax^2} \dx\right)^2
+  .\]%
+  View this as a two-dimensional integral and then use polar coordinates.
+\end{problem}
+
+\begin{solution}
+  Computing the two-dimensional integral using polar coordinates, we have
+  \[%
+    \int_{-\infty}^\infty e^{-ax^2} \dx = \int_0^{2\pi} \int_0^\infty e^{-ar^2} r \dd{r,\theta} = 2\pi \int_0^\infty r e^{-ar^2} \dd{r} = \sqrt{\frac{\pi}{a}}
+  .\]%
+  Then, we can convert the $n$-dimensional integral into a product of one-dimensional integrals to get
+  \begin{align*}
+    \int_{\R^n} e^{-a|x|^2} \dx &= \int_{-\infty}^\infty \cdots \int_{-\infty}^\infty e^{-a(x_1^2 + \cdots + x_n^2)} \,\dx_1 \cdots \dx_n \\
+                                &= \int_{-\infty}^\infty e^{-ax_1^2} \dx_1 \cdots \int_{-\infty}^\infty e^{-ax_n^2} \dx_n \\
+                                &= \sqrt{\frac{\pi}{a}} \cdots \sqrt{\frac{\pi}{a}} = \left(\frac{\pi}{a}\right)^{n/2}
+  .\qedhere\end{align*}
+\end{solution}
+
+\begin{problem}[2 (Radon transform of a Gaussian)]
+  Let $f(x) = e^{-a|x|^2}$. Compute the Radon transform of $f$. (You will need your solution from Problem 1.)
+\end{problem}
+
+\newcommand\Radon{\mathcal{R}}
+\begin{solution}
+  The Radon transform is given by
+  \[%
+    \Radon f(t, \omega) = \int_{-\infty}^\infty f(s\hat{\omega} + t\omega) \ds
+  .\]%
+  We can compute this integral as follows
+  \[%
+    \Radon f(t, \omega) = \int_{-\infty}^\infty e^{-a|s\hat{\omega} + t\omega|^2} \ds
+  .\]%
+  Notice that the vectors $\hat{\omega}$ and $\omega$ are orthogonal unit vectors, so we have
+  \[%
+    |s\hat{\omega} + t\omega|^2 = s^2 + t^2
+  .\]%
+  Thus, we can rewrite the Radon transform as
+  \[%
+    \Radon f(t, \omega) = \int_{-\infty}^\infty e^{-a(s^2 + t^2)} \ds = e^{-at^2} \int_{-\infty}^\infty e^{-as^2} \ds = e^{-at^2} \sqrt{\frac{\pi}{a}}
+  .\qedhere\]%
+\end{solution}
+
+\begin{problem}[3 (Back-projection)]
+  Let $f$ be the characteristic function of the unit ball in $\R^2$. First verify that the Radon transform is given by
+  \[%
+    \Radon\chi_{\mathcal{B}}(t, \omega) = \begin{cases}
+      2\sqrt{1 - t^2}, & |t| \leq 1, \\
+      0, & |t| > 1.
+    \end{cases}
+  \]%
+  Now consider the back-projection defined by
+  \begin{itemize}
+    \item For $0 \le r \le 1$, we have
+      \[%
+        \tilde{f}((r, 0)) = \frac{1}{\pi} \int^{2\pi}_0 \sqrt{1 - r^2\cos^2(\theta)} \dd{\theta}
+      .\]%
+    \item For $r > 1$, we have a bound of the form
+      \[%
+        |\tilde{f}((r, 0))| \le \frac{C}{r}
+      .\]%
+  \end{itemize}
+\end{problem}
+
+\begin{solution}
+\end{solution}
+
+\begin{problem}[4 (Projection onto a hyperplane)]
+  Let $p \in \R$ and $r \in \R^J$. Show that the projection of a vector $y \in \R^J$ onto the hyperplane $\{x \in \R^J : x \cdot r = p\}$ is given by
+  \[%
+    y \mapsto y - \left[\frac{y \cdot r - p}{r \cdot r}\right] r
+  .\]%
+\end{problem}
+
+\begin{solution}
+\end{solution}
+
+\begin{problem}[5 ($1d$ version of pixel basis]
+  For each $N = 1, 2, \dots$, define the following intervals
+  \[%
+    I^N_j = \left[\frac{j}{N}, \frac{j + 1}{N}\right], \quad j = 0, \dots, N - 2 \aand I^N_{N-1} = \left[\frac{N - 1}{N}, 1\right]
+  .\]%
+  Suppose $f : [0, 1] \to \R$ is continuous and for each $N$ define
+  \[%
+    f_N(x) = N \sum_{j=0}^{N-1} \left[\int_{I^N_j} f(y) \dy\right] \chi_{I^N_j}(x)
+  ,\]%
+  where $\chi_{I^N_j}$ is the characteristic function of $I^N_j$. Show that $f_N$ converges to $f$ uniformly on $[0, 1]$ as $N \to \infty$.
+\end{problem}
+
+\begin{solution}
+\end{solution}
