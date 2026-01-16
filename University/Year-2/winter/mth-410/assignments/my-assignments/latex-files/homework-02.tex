@@ -55,7 +55,7 @@
       0, & |t| > 1.
     \end{cases}
   \]%
-  Now consider the back-projection defined by
+  Fix $x = (r, \theta)$ for some $r \ge 0$, and establish the following properties:
   \begin{itemize}
     \item For $0 \le r \le 1$, we have
       \[%
@@ -69,6 +69,42 @@
 \end{problem}
 
 \begin{solution}
+  Let $f$ be defined by
+  \[%
+    f(x) = \begin{cases}
+      1, & |x| \leq 1, \\
+      0, & |x| > 1.
+    \end{cases}
+  \]%
+  The Radon transform of $f$ is given by
+  \begin{align*}
+    \Radon f(t, \omega) &= \int_{-\infty}^\infty f(s\hat{\omega} + t\omega) \ds \\
+                        &= \int_{-\infty}^\infty \chi_{\mathcal{B}}(s\hat{\omega} + t\omega) \ds \\
+                        &= \int_{-\infty}^\infty \begin{cases}
+                          1, & |s\hat{\omega} + t\omega| \leq 1, \\
+                          0, & |s\hat{\omega} + t\omega| > 1.
+                        \end{cases} \ds \\
+                        &= \int_{-\sqrt{1 - t^2}}^{\sqrt{1 - t^2}} 1 \ds = 2\sqrt{1 - t^2}
+  .\end{align*}
+  Therefore, we have
+  \[%
+    \Radon\chi_{\mathcal{B}}(t, \omega) = \begin{cases}
+      2\sqrt{1 - t^2}, & |t| \leq 1, \\
+      0, & |t| > 1.
+    \end{cases}
+  \]%
+
+  Now, we consider the back-projection defined by
+  \[%
+    \tilde{f}(x) = \frac{1}{2\pi}\int_0^{2\pi} \Radon f(\bra{x, \omega}, \omega) \dd{\theta}
+  .\]%
+  Computing this for $x = (r, 0)$ with $0 \leq r \leq 1$, we have
+  \begin{align*}
+    \tilde{f}((r, 0)) &= \frac{1}{2\pi} \int_0^{2\pi} \Radon f(r\cos(\theta), \omega) \dd{\theta} \\
+                     &= \frac{1}{\pi} \int_0^{2\pi} \sqrt{1 - r^2\cos^2(\theta)} \dd{\theta} \\
+                     &= \frac{1}{\pi} \int_0^{2\pi} \sqrt{1 - r^2\cos^2(\theta)} \dd{\theta}
+  .\end{align*}
+  For $r > 1$, we have
 \end{solution}
 
 \begin{problem}[4 (Projection onto a hyperplane)]
@@ -81,7 +117,7 @@
 \begin{solution}
 \end{solution}
 
-\begin{problem}[5 ($1d$ version of pixel basis]
+\begin{problem}[5 (1d version of pixel basis)]
   For each $N = 1, 2, \dots$, define the following intervals
   \[%
     I^N_j = \left[\frac{j}{N}, \frac{j + 1}{N}\right], \quad j = 0, \dots, N - 2 \aand I^N_{N-1} = \left[\frac{N - 1}{N}, 1\right]

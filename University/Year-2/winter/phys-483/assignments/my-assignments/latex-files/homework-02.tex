@@ -113,7 +113,7 @@
   \begin{enumerate}
     \item (2 points) Argue that a kind of particle that always moves faster than the velocity of light would be consistent with Lorentz invariance in the sense that if its speed is greater than light in one frame, it will be greater than light in all frames. (Such a hypothetical particle is called a tachyon).
     \item (2 points) Show that the tangent vector to the trajectory of a tachyon is spacelike and can be written $u^\alpha = \odv{x^\alpha}/{s}$, where $s$ is the spacelike interval along the trajectory. Show that $\u \cdot \u = 1$.
-    \item (2 points) Evaluate the components of a tachyon's four-velocity u in terms of the three velocity $\V = \odv{\x}/{t}$
+    \item (2 points) Evaluate the components of a tachyon's four-velocity $\u$ in terms of the three velocity $\V = \odv{\x}/{t}$
     \item (2 points) Define the four-momentum by $\p = m\u$ and find the relation between energy and momentum for a tachyon.
     \item (2 points) Show that there is an inertial frame where the energy of any tachyon is negative.
     \item (2 points) Show that if tachyons interact with normal particles, a normal particle could emit a tachyon with total energy and three-momentum being conserved. This result suggests a world containing tachyons would be unstable and there is no evidence for tachyons in nature.
@@ -121,15 +121,71 @@
 \end{problem}
 
 \begin{solution}[(i)]
+  Consider a tachyon moving with velocity $u > c$ in frame $S$. Using the relativistic velocity transformation, the velocity $u'$ of the tachyon in another inertial frame $S'$ moving at velocity $v$ relative to $S$ is given by
+  \[%
+    u' = \frac{u - v}{1 - \frac{uv}{c^2}}
+  .\]%
+  Since $u > c$, the denominator $1 - \frac{uv}{c^2}$ will always be negative for any $v < c$. Therefore, the magnitude of $u'$ will also be greater than $c$. This shows that if a particle moves faster than light in one frame, it will do so in all inertial frames, thus preserving Lorentz invariance.
 \end{solution}
 
 \begin{solution}[(ii)]
+  For ordinary particles, we have
+  \[%
+    u^\alpha = \odv{x^\alpha}{\tau} \aand u^\alpha u_\alpha = -1
+  .\]%
+  We also have
+  \[%
+    \dd{\tau}^2 = -\ds^2 = -\eta_{\mu\nu} \dd{x^\mu} \dd{x^\nu}
+  .\]%
+  But since tachyons are spacelike, we can define $s$ such that $\ds^2 = +\dx^\alpha \dx_\alpha$. Defining
+  \[%
+    u^\alpha = \odv{x^\alpha}{s}
+  ,\]%
+  we check this works out by computing
+  \[%
+    u^\alpha u_\alpha = \eta_{\alpha\beta} \odv{x^\alpha}{s} \odv{x^\beta}{s} = \frac{1}{\dd{s}^2} \eta_{\alpha\beta} \dd{x^\alpha} \dd{x^\beta} = \frac{\ds^2}{\ds^2} = 1
+  .\]%
+  Lastly, we show that $u^\alpha$ is spacelike. Since $s$ is defined such that $\ds^2 > 0$, we have
+  \[%
+    u^\alpha u_\alpha = 1 > 0
+  .\]%
+  Thus, $u^\alpha$ is indeed spacelike.
 \end{solution}
 
 \begin{solution}[(iii)]
+  The three-velocity $\v$ is defined as
+  \[%
+    \v = \odv{\x}{t}
+  .\]%
+  We can express the four-velocity components in terms of $\v$ as
+  \[%
+    u^0 = \odv{t}{s} \aand u^i = \odv{x^i}{s} = \odv{x^i}{t} \odv{t}{s} = v^i \odv{t}{s}
+  .\]%
+  Therefore, the components of the four-velocity $\u$ in terms of the three-velocity $\V$ are
+  \[%
+    u^\mu = \left(\frac{1}{\sqrt{\V^2 - 1}}, \frac{\V}{\sqrt{\V^2 - 1}}\right)
+  .\qedhere\]%
 \end{solution}
 
 \begin{solution}[(iv)]
+  The four-moment $\p$ is given as $\p = m\u$. Using the components of $\u$ from part (iii), we have
+  \[%
+    \p = m\left(\frac{1}{\sqrt{\V^2 - 1}}, \frac{\V}{\sqrt{\V^2 - 1}}\right) = \left(E, \mathbf{p}\right)
+  .\]%
+  Therefore, the energy $E$ and momentum $\p$ of the tachyon are
+  \[%
+    E = \frac{m}{\sqrt{\V^2 - 1}} \aand \p = \frac{m\V}{\sqrt{\V^2 - 1}}
+  .\]%
+  To find the relation between energy and momentum, we can eliminate $\v$ to get
+  \begin{align*}
+    E^2 - \p^2 &= \left(\frac{m}{\sqrt{\V^2 - 1}}\right)^2 - \left(\frac{m\V}{\sqrt{\V^2 - 1}}\right)^2 \\
+               &= \frac{m^2}{\V^2 - 1} - \frac{m^2\V^2}{\V^2 - 1} \\
+               &= \frac{m^2(1 - \V^2)}{\V^2 - 1} = -m^2
+  .\end{align*}
+  Thus, the relation between energy and momentum for a tachyon is
+  \[%
+    E^2 - \p^2 = -m^2
+  .\qedhere\]%
 \end{solution}
 
 \begin{solution}[(v)]
@@ -143,7 +199,7 @@
   \[%
     S = -m\int \dd{\tau} + q\int A_\mu(\x) \dx^\mu
   ,\]%
-  where $A$ is a 1-form and $m$, $q$ are the mass and charge of the particle, respectively.
+  where $\mathbf{A}$ is a 1-form and $m$, $q$ are the mass and charge of the particle, respectively.
   \begin{enumerate}
     \item (3 points) Suppose that the particle travels along the worldline $x^\mu(\lambda)$. Write the action in terms of $x^\mu$ and $\odv{x^\mu}/{\lambda}$.
 
@@ -180,17 +236,94 @@
         \end{pmatrix}
       .\]%
 
-    \item (4 points) ($\star$) Write the independent components of Eq. \ref{eq:15} corresponding to $E_x$ and $B_x$. Does this match with what you've learned in E\&M of how fields are derived from a vector potential? What is the physical interpretation of the component $A_0$?
+    \item (4 points) ($\star$) Write the independent components of Eq.~\ref{eq:15} corresponding to $E_x$ and $B_x$. Does this match with what you've learned in E\&M of how fields are derived from a vector potential? What is the physical interpretation of the component $A_0$?
   \end{enumerate}
 \end{problem}
 
 \begin{solution}[(i)]
+  Since $x^\mu = x^\mu(\lambda)$, we have
+  \[%
+    \dx^\mu = \frac{\dx^\mu}{\dd{\tau}} \dd{\tau} \aand \dd{\tau} = \sqrt{-\eta_{\mu\nu} \dx^\mu\dx^\nu}
+  .\]%
+  Therefore, re-writing the action in terms of $x^\mu$ and $\odv{x^\mu}/{\lambda}$, we get
+  \[%
+    S = -m\int \dd{\tau} + q\int A_\mu(\x) \dx^\mu = -m\int \sqrt{-\eta_{\mu\nu} \frac{\dx^\mu}{\dd{\lambda}} \frac{\dx^\nu}{\dd{\lambda}}} \dd{\lambda} + q\int A_\mu(\x) \frac{\dx^\mu}{\dd{\lambda}} \dd{\lambda}
+  .\qedhere\]%
 \end{solution}
 
 \begin{solution}[(ii)]
+  The canonical momenta are defined as
+  \[%
+    p_\mu \equiv \pdv{L}{\dot{x}^\mu}
+  .\]%
+  From part (ii), we found the Lagrangian to be
+  \[%
+    L = -m\sqrt{-\eta_{\mu\nu} \dot{x}^\mu \dot{x}^\nu} + qA_\mu(\x) \dot{x}^\mu
+  .\]%
+  Therefore, we compute
+  \begin{align*}
+    p_\mu = \pdv{L}{\dot{x}^\mu} &= -m \pdv{}{\dot{x}^\mu} \sqrt{-\eta_{\alpha\beta} \dot{x}^\alpha \dot{x}^\beta} + qA_\mu(\x) \\
+                                 &= -m \frac{1}{2\sqrt{-\eta_{\alpha\beta} \dot{x}^\alpha \dot{x}^\beta}} \left(-2\eta_{\mu\nu} \dot{x}^\nu\right) + qA_\mu(\x) \\
+                                 &= \frac{m \eta_{\mu\nu} \dot{x}^\nu}{\sqrt{-\eta_{\alpha\beta} \dot{x}^\alpha \dot{x}^\beta}} + qA_\mu(\x) \\
+                                 &= m \eta_{\mu\nu} \dot{x}^\nu \odv{\tau}{\lambda} + qA_\mu(\x) \\
+                                 &= m\eta_{\mu\nu} \frac{\dx^\mu}{\dd{\lambda}} \frac{\dd{\lambda}}{\dd{\tau}} + qA_\mu(\x) \\
+                                 &= m\eta_{\mu\nu} \frac{\dx^\mu}{\dd{\tau}} + qA_\mu(\x)
+  .\end{align*}
+  Using the fact that
+  \[%
+    u^\mu = \odv{x^\mu}{\tau} = \eta_{\mu\nu} \frac{\dx^\mu}{\dd{\tau}}
+  ,\]%
+  we get that
+  \[%
+    p_\mu = mu_\mu + qA_\mu
+  .\qedhere\]%
 \end{solution}
 
 \begin{solution}[(iii)]
+  Computing the derivative, we have
+  \[%
+    \odv{p_\gamma}{\lambda} = \odv{}{\lambda} \left(mu_\gamma + qA_\gamma\right) = m\odv{u_\gamma}{\lambda} + q\odv{}{\lambda} A_\gamma = m\odv{u_\gamma}{\lambda} + q\pd{\lambda} A_\gamma \odv{x^\mu}{\lambda}
+  .\]%
+  We can re-write $u_\gamma$ as
+  \[%
+    u_\gamma = \eta_{\gamma\mu} \odv{x^\mu}{\tau} = \eta_{\gamma\mu} \frac{\dx^\mu}{\dd{\lambda}} \odv{\lambda}{\tau}
+  .\]%
+  Therefore,
+  \[%
+    \odv{u_\gamma}{\lambda} = \eta_{\gamma\mu} \odv{\lambda}{\tau} \odv{}{\lambda} \left(\frac{\dx^\mu}{\dd{\lambda}}\right) + \eta_{\gamma\mu} \frac{\dx^\mu}{\dd{\lambda}} \odv{}{\lambda} \left(\frac{\dd{\lambda}}{\dd{\tau}}\right)
+  .\]%
+  But since $\lambda$ is an affine parameter, i.e.,
+  \[%
+    \odv[2]{\lambda}{\tau} = 0 \implies \odv{\lambda}{\tau} = C
+  ,\]%
+  for some constant $C$, we have
+  \[%
+    \odv{}{\lambda} \left(\odv{\lambda}{\tau}\right) = 0
+  .\]%
+  Thus, we have
+  \[%
+    \odv{u_\gamma}{\lambda} = \eta_{\gamma\mu} \odv{\lambda}{\tau} \odv{}{\lambda} \left(\frac{\dx^\mu}{\dd{\lambda}}\right) = \eta_{\gamma\mu} \odv{\lambda}{\tau} \odv[2]{x^\mu}{\lambda}
+  .\]%
+  Thus, we get
+  \[%
+    \odv{p_\gamma}{\lambda} = m \eta_{\gamma\mu} \odv{\lambda}{\tau} \odv[2]{x^\mu}{\lambda} + q\pdv{A_\mu}{x^\gamma} \odv{x^\mu}{\lambda} = m\eta_{\gamma\mu} \odv{\lambda}{\tau} \odv[2]{x^\mu}{\lambda} + q\pd{\gamma}A_\mu \odv{x^\mu}{\lambda}
+  .\]%
+  Rearranging, we find
+  \[%
+    m\eta_{\gamma\mu} \odv{\lambda}{\tau} \odv[2]{x^\mu}{\lambda} = \odv{p_\gamma}{\lambda} - q\pd{\gamma}A_\mu \odv{x^\mu}{\lambda}
+  .\]%
+  But since $\odv{\lambda}/{\tau}$ is just a constant, we can absorb it into the definition of $\lambda$ by re-scaling it. Therefore, we have
+  \[%
+    m\eta_{\gamma\mu} \odv[2]{x^\mu}{\lambda} = \odv{p_\gamma}{\lambda} - q\pd{\gamma}A_\mu \odv{x^\mu}{\lambda}
+  .\]%
+  But notice that
+  \[%
+    m\eta_{\gamma\mu} \odv[2]{x^\mu}{\lambda} = m\odv{u_\gamma}{\lambda} = 0
+  .\]%
+  Therefore, we have
+  \[%
+    \odv{p_\gamma}{\lambda} = q\pdv{A_\mu}{x^\gamma} \odv{x^\mu}{\lambda}
+  .\qedhere\]%
 \end{solution}
 
 \begin{solution}[(iv)]
