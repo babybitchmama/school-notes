@@ -256,83 +256,95 @@
   \[%
     p_\mu \equiv \pdv{L}{\dot{x}^\mu}
   .\]%
-  From part (ii), we found the Lagrangian to be
+  From part (i), the Lagrangian is
   \[%
-    L = -m\sqrt{-\eta_{\mu\nu} \dot{x}^\mu \dot{x}^\nu} + qA_\mu(\x) \dot{x}^\mu
+    L = -m\sqrt{-\eta_{\alpha\beta} \odv{x^\alpha}{\lambda} \odv{x^\beta}{\lambda}} + qA_\nu(\x) \odv{x^\nu}{\lambda}
   .\]%
   Therefore, we compute
   \begin{align*}
-    p_\mu = \pdv{L}{\dot{x}^\mu} &= -m \pdv{}{\dot{x}^\mu} \sqrt{-\eta_{\alpha\beta} \dot{x}^\alpha \dot{x}^\beta} + qA_\mu(\x) \\
-                                 &= -m \frac{1}{2\sqrt{-\eta_{\alpha\beta} \dot{x}^\alpha \dot{x}^\beta}} \left(-2\eta_{\mu\nu} \dot{x}^\nu\right) + qA_\mu(\x) \\
-                                 &= \frac{m \eta_{\mu\nu} \dot{x}^\nu}{\sqrt{-\eta_{\alpha\beta} \dot{x}^\alpha \dot{x}^\beta}} + qA_\mu(\x) \\
-                                 &= m \eta_{\mu\nu} \dot{x}^\nu \odv{\tau}{\lambda} + qA_\mu(\x) \\
-                                 &= m\eta_{\mu\nu} \frac{\dx^\mu}{\dd{\lambda}} \frac{\dd{\lambda}}{\dd{\tau}} + qA_\mu(\x) \\
-                                 &= m\eta_{\mu\nu} \frac{\dx^\mu}{\dd{\tau}} + qA_\mu(\x)
-  .\end{align*}
-  Using the fact that
-  \[%
-    u^\mu = \odv{x^\mu}{\tau} = \eta_{\mu\nu} \frac{\dx^\mu}{\dd{\tau}}
-  ,\]%
-  we get that
-  \[%
-    p_\mu = mu_\mu + qA_\mu
-  .\qedhere\]%
+    p_\mu = \pdv{L}{\dot{x}^\mu} &= -m \pdv{}{\dot{x}^\mu} \sqrt{-\eta_{\alpha\beta} \dot{x}^\alpha \dot{x}^\beta} + q A_\mu(\x) \\
+                                          &= -m \frac{1}{2\sqrt{-\eta_{\alpha\beta} \dot{x}^\alpha \dot{x}^\beta}} \left(-2 \eta_{\mu\nu} \dot{x}^\nu\right) + q A_\mu(\x) \\
+                                          &= \frac{m \eta_{\mu\nu} \dot{x}^\nu}{\sqrt{-\eta_{\alpha\beta} \dot{x}^\alpha \dot{x}^\beta}} + q A_\mu(\x) \\
+                                          &= m \eta_{\mu\nu} \odv{x^\nu}{\lambda} + q A_\mu(\x) \\
+                                          &= m\odv{x_\mu}{\lambda} + q A_\mu(\x) \\
+                                          &= m u_\mu + q A_\mu(\x)
+  .\qedhere\end{align*}
 \end{solution}
 
 \begin{solution}[(iii)]
-  Computing the derivative, we have
+  Using Euler-Lagrange equations, we have
   \[%
-    \odv{p_\gamma}{\lambda} = \odv{}{\lambda} \left(mu_\gamma + qA_\gamma\right) = m\odv{u_\gamma}{\lambda} + q\odv{}{\lambda} A_\gamma = m\odv{u_\gamma}{\lambda} + q\pd{\lambda} A_\gamma \odv{x^\mu}{\lambda}
-  .\]%
-  We can re-write $u_\gamma$ as
-  \[%
-    u_\gamma = \eta_{\gamma\mu} \odv{x^\mu}{\tau} = \eta_{\gamma\mu} \frac{\dx^\mu}{\dd{\lambda}} \odv{\lambda}{\tau}
-  .\]%
-  Therefore,
-  \[%
-    \odv{u_\gamma}{\lambda} = \eta_{\gamma\mu} \odv{\lambda}{\tau} \odv{}{\lambda} \left(\frac{\dx^\mu}{\dd{\lambda}}\right) + \eta_{\gamma\mu} \frac{\dx^\mu}{\dd{\lambda}} \odv{}{\lambda} \left(\frac{\dd{\lambda}}{\dd{\tau}}\right)
-  .\]%
-  But since $\lambda$ is an affine parameter, i.e.,
-  \[%
-    \odv[2]{\lambda}{\tau} = 0 \implies \odv{\lambda}{\tau} = C
+    \odv{p_\gamma}{\lambda} = \pdv{L}{x^\gamma}
   ,\]%
-  for some constant $C$, we have
+  where
   \[%
-    \odv{}{\lambda} \left(\odv{\lambda}{\tau}\right) = 0
+    L = -m\sqrt{-\eta_{\mu\nu} \odv{x^\mu}{\lambda} \odv{x^\nu}{\lambda}} + qA_\mu(\x) \odv{x^\mu}{\lambda}
   .\]%
-  Thus, we have
+  Computing $\pdv{L}/{x^\gamma}$, we have
   \[%
-    \odv{u_\gamma}{\lambda} = \eta_{\gamma\mu} \odv{\lambda}{\tau} \odv{}{\lambda} \left(\frac{\dx^\mu}{\dd{\lambda}}\right) = \eta_{\gamma\mu} \odv{\lambda}{\tau} \odv[2]{x^\mu}{\lambda}
-  .\]%
-  Thus, we get
-  \[%
-    \odv{p_\gamma}{\lambda} = m \eta_{\gamma\mu} \odv{\lambda}{\tau} \odv[2]{x^\mu}{\lambda} + q\pdv{A_\mu}{x^\gamma} \odv{x^\mu}{\lambda} = m\eta_{\gamma\mu} \odv{\lambda}{\tau} \odv[2]{x^\mu}{\lambda} + q\pd{\gamma}A_\mu \odv{x^\mu}{\lambda}
-  .\]%
-  Rearranging, we find
-  \[%
-    m\eta_{\gamma\mu} \odv{\lambda}{\tau} \odv[2]{x^\mu}{\lambda} = \odv{p_\gamma}{\lambda} - q\pd{\gamma}A_\mu \odv{x^\mu}{\lambda}
-  .\]%
-  But since $\odv{\lambda}/{\tau}$ is just a constant, we can absorb it into the definition of $\lambda$ by re-scaling it. Therefore, we have
-  \[%
-    m\eta_{\gamma\mu} \odv[2]{x^\mu}{\lambda} = \odv{p_\gamma}{\lambda} - q\pd{\gamma}A_\mu \odv{x^\mu}{\lambda}
-  .\]%
-  But notice that
-  \[%
-    m\eta_{\gamma\mu} \odv[2]{x^\mu}{\lambda} = m\odv{u_\gamma}{\lambda} = 0
-  .\]%
-  Therefore, we have
-  \[%
-    \odv{p_\gamma}{\lambda} = q\pdv{A_\mu}{x^\gamma} \odv{x^\mu}{\lambda}
+    \pdv{L}{x^\gamma} = \pdv{}{x^\gamma} \left(-m\sqrt{-\eta_{\mu\nu} \odv{x^\mu}{\lambda} \odv{x^\nu}{\lambda}} + qA_\mu(\x) \odv{x^\mu}{\lambda}\right) = q\pdv{A_\mu}{x^\gamma} \odv{x^\mu}{\lambda} = \odv{p_\gamma}{\lambda}
   .\qedhere\]%
 \end{solution}
 
 \begin{solution}[(iv)]
+  Using the result from part (iii), we have
+  \[%
+    \odv{p_\gamma}{\lambda} = q\pdv{A_\mu}{x^\gamma} \odv{x^\mu}{\lambda}
+  .\]%
+  Computing the derivative on the left-hand side, we get
+  \begin{align*}
+    \odv{p_\gamma}{\lambda} &= \odv{}{\lambda} \left(mu_\gamma + qA_\gamma\right) \\
+                           &= m\odv{u_\gamma}{\lambda} + q\pdv{A_\gamma}{x^\mu} \odv{x^\mu}{\lambda}
+  .\end{align*}
+  Therefore, we can write
+  \[%
+    m\odv{u_\gamma}{\lambda} + q\pdv{A_\gamma}{x^\mu} \odv{x^\mu}{\lambda} = q\pdv{A_\mu}{x^\gamma} \odv{x^\mu}{\lambda}
+  .\]%
+  Rearranging terms, we have
+  \[%
+    m\odv{u_\gamma}{\lambda} = q\left(\pdv{A_\mu}{x^\gamma} - \pdv{A_\gamma}{x^\mu}\right) \odv{x^\mu}{\lambda} = qF_{\gamma\mu} u^\mu
+  .\qedhere\]%
 \end{solution}
 
 \begin{solution}[(v)]
+  Re-writing $F_{\gamma\mu}$, we have
+  \[%
+    F_{\gamma\mu} = \partial_\gamma A_\mu - \partial_\mu A_\gamma = -(\partial_\mu A_\gamma - \partial_\gamma A_\mu) = -F_{\mu\gamma}
+  .\]%
+  Thus, $F_{\gamma\mu}$ is antisymmetric.
+
+  To show that $F_{\gamma\mu}$ has the correct transformation properties to be a tensor, we consider a Lorentz transformation $\Lambda$. Under this transformation, the vector potential transforms as
+  \[%
+    A'_\mu = \Lambda_\mu^\nu A_\nu
+  .\]%
+  Therefore, the derivatives transform as
+  \[%
+    \partial'_\gamma = \Lambda_\gamma^\delta \partial_\delta
+  .\]%
+  Using these transformations, we can express $F'_{\gamma\mu}$ as
+  \[%
+    F'_{\gamma\mu} = \partial'_\gamma A'_\mu - \partial'_\mu A'_\gamma = \Lambda_\gamma^\delta \partial_\delta (\Lambda_\mu^\nu A_\nu) - \Lambda_\mu^\delta \partial_\delta (\Lambda_\gamma^\nu A_\nu)
+  .\]%
+  Expanding this expression, we get
+  \[%
+    F'_{\gamma\mu} = \Lambda_\gamma^\delta \Lambda_\mu^\nu \partial_\delta A_\nu - \Lambda_\mu^\delta \Lambda_\gamma^\nu \partial_\delta A_\nu = \Lambda_\gamma^\delta \Lambda_\mu^\nu F_{\delta\nu}
+  .\]%
+  This shows that $F_{\gamma\mu}$ transforms as a rank-2 tensor under Lorentz transformations.
 \end{solution}
 
 \begin{solution}[(vi)]
+  Since $\mathbf{E} = -\nabla A_0 - \pd{i}\mathbf{A}$, giving us
+  \begin{align*}
+    E_x = -F_{01} = -(\partial_0 A_1 - \partial_1 A_0) = -\pd{t}A_x - \pd{x}A_0 \\
+    E_y = -F_{02} = -(\partial_0 A_2 - \partial_2 A_0) = -\pd{t}A_y - \pd{y}A_0 \\
+    E_z = -F_{03} = -(\partial_0 A_3 - \partial_3 A_0) = -\pd{t}A_z - \pd{z}A_0
+  ,\end{align*}
+  and for $\mathbf{B} = \nabla \times \mathbf{A}$, we have
+  \begin{align*}
+    B_x = F_{23} = \partial_2 A_3 - \partial_3 A_2 = \pd{y}A_z - \pd{z}A_y \\
+    B_y = F_{31} = \partial_3 A_1 - \partial_1 A_3 = \pd{z}A_x - \pd{x}A_z \\
+    B_z = F_{12} = \partial_1 A_2 - \partial_2 A_1 = \pd{x}A_y - \pd{y}A_x
+  .\end{align*}
 \end{solution}
 
 \begin{solution}[(vii)]
