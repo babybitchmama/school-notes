@@ -189,9 +189,28 @@
 \end{solution}
 
 \begin{solution}[(v)]
+  Consider a Lorentz transformation to a frame moving at velocity $v$ relative to the original frame. The energy $E'$ in the new frame is given by
+  \[%
+    E' = \gamma(E - v p_x)
+  ,\]%
+  where $\gamma = \frac{1}{\sqrt{1 - v^2}}$. Since tachyons have $E^2 - p^2 = -m^2$, we can choose $v$ such that $v p_x > E$. This is always possible since tachyons can have arbitrarily large momentum for a given energy. Therefore, we can find a frame where
+  \[%
+    E' = \gamma(E - v p_x) < 0
+  .\]%
+  This shows that there exists an inertial frame where the energy of any tachyon is negative.
 \end{solution}
 
 \begin{solution}[(vi)]
+  Consider a normal particle with four-momentum $p^\mu = (E, \p)$ emitting a tachyon with four-momentum $k^\mu = (E_k, \mathbf{k})$. The final four-momentum of the normal particle after emission is ${p'}^\mu = (E', \p')$. Conservation of four-momentum requires
+  \[%
+    p^\mu = {p'}^\mu + k^\mu
+  .\]%
+  This leads to the following conservation equations:
+  \begin{align*}
+    E &= E' + E_k \\
+    \p &= \p' + \mathbf{k}
+  .\end{align*}
+  Since tachyons can have negative energy in some frames (as shown in part (v)), we can choose a frame where $E_k < 0$. In this frame, it is possible for the normal particle to emit a tachyon while still satisfying the conservation of energy and momentum. Thus, a normal particle could emit a tachyon with total energy and three-momentum being conserved, suggesting that a world containing tachyons would be unstable.
 \end{solution}
 
 \begin{problem}[3 (Relativistic charged particle)]
@@ -333,19 +352,50 @@
 \end{solution}
 
 \begin{solution}[(vi)]
-  Since $\mathbf{E} = -\nabla A_0 - \pd{i}\mathbf{A}$, giving us
-  \begin{align*}
-    E_x = -F_{01} = -(\partial_0 A_1 - \partial_1 A_0) = -\pd{t}A_x - \pd{x}A_0 \\
-    E_y = -F_{02} = -(\partial_0 A_2 - \partial_2 A_0) = -\pd{t}A_y - \pd{y}A_0 \\
-    E_z = -F_{03} = -(\partial_0 A_3 - \partial_3 A_0) = -\pd{t}A_z - \pd{z}A_0
-  ,\end{align*}
-  and for $\mathbf{B} = \nabla \times \mathbf{A}$, we have
-  \begin{align*}
-    B_x = F_{23} = \partial_2 A_3 - \partial_3 A_2 = \pd{y}A_z - \pd{z}A_y \\
-    B_y = F_{31} = \partial_3 A_1 - \partial_1 A_3 = \pd{z}A_x - \pd{x}A_z \\
-    B_z = F_{12} = \partial_1 A_2 - \partial_2 A_1 = \pd{x}A_y - \pd{y}A_x
-  .\end{align*}
+  The relativistic charge particle obeys
+  \[%
+    m\odv{u_\gamma}{\tau} = qF_{\gamma\mu}u^\mu
+  .\]%
+  Since the particle is slow moving, we have $u^0 \approx 1$ and $u^i \ll 1$. Looking at the spatial components ($\gamma = i$), we have
+  \[%
+    m\odv{u_i}{\tau} = q(F_{i0}u^0 + F_{ij}u^j) \approx q(F_{i0} + F_{ij}u^j)
+  .\]%
+  Now, define $E_i = F_{i0}$, since the term $qF_{i0}$ since it produces acceleration even when the particle is nearly at rest, which is characteristic of an electric field. Now, define $B_k = \epsilon_{ijk} F_{ij}$, since the term $qF_{ij}u^j$ depends on the velocity of the particle, which is characteristic of a magnetic field. Now, we can define
+  \begin{gather*}
+    B_x = F_{23}, \quad B_y = F_{31}, \quad B_z = F_{12} \\
+    E_x = F_{10}, \quad E_y = F_{20}, \quad E_z = F_{30}
+  \end{gather*}
+  From part (v), we have
+  \[%
+    F_{0i} = -F_{i0} = -E_i \aand F_{ij} = \epsilon_{ijk} B_k
+  .\]%
+  Therefore,
+  \[%
+    m\odv{u_i}{\tau} = q(E_i + \epsilon_{ijk} B_k u^j)
+  .\]%
+  This matches the Lorentz force law for a charged particle in an electromagnetic field, which states that the force on a charged particle is given by
+  \[%
+    \mathbf{F} = q(\mathbf{E} + \mathbf{v} \times \mathbf{B})
+  .\]%
+  The physical interpretation of the component $A_0$ is that it represents the scalar potential (or electric potential) in electromagnetism. It contributes to the electric field $\mathbf{E}$ and influences the energy of charged particles in the presence of an electromagnetic field.
 \end{solution}
 
 \begin{solution}[(vii)]
+  The independent components of Eq.~\ref{eq:15} corresponding to $B_i$ are
+  \begin{align*}
+    B_x &= F_{23} = \partial_2 A_3 - \partial_3 A_2 = \pdv{A_z}{y} - \pdv{A_y}{z} \\
+    B_y &= F_{31} = \partial_3 A_1 - \partial_1 A_3 = \pdv{A_x}{z} - \pdv{A_z}{x} \\
+    B_z &= F_{12} = \partial_1 A_2 - \partial_2 A_1 = \pdv{A_y}{x} - \pdv{A_x}{y}
+  .\end{align*}
+  The independent components corresponding to $E_i$ are
+  \begin{align*}
+    E_x &= F_{10} = \partial_1 A_0 - \partial_0 A_1 = \pdv{A_0}{x} - \pdv{A_x}{t} \\
+    E_y &= F_{20} = \partial_2 A_0 - \partial_0 A_2 = \pdv{A_0}{y} - \pdv{A_y}{t} \\
+    E_z &= F_{30} = \partial_3 A_0 - \partial_0 A_3 = \pdv{A_0}{z} - \pdv{A_z}{t}
+  .\end{align*}
+  This makes sense with how fields are derived from a vector potential in E\&M. They are derived as
+  \[%
+    \mathbf{E} = -\nabla A_0 - \pdv{\mathbf{A}}{t} \aand \mathbf{B} = \nabla \times \mathbf{A}
+  ,\]%
+  where $A_0$ is the scalar potential and $\mathbf{A}$ is the vector potential. The component $A_0$ represents the electric potential, which contributes to the electric field $\mathbf{E}$ and influences the energy of charged particles in the presence of an electromagnetic field.
 \end{solution}
