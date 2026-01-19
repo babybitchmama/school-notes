@@ -105,6 +105,11 @@
                      &= \frac{1}{\pi} \int_0^{2\pi} \sqrt{1 - r^2\cos^2(\theta)} \dd{\theta}
   .\end{align*}
   For $r > 1$, we have
+  \begin{align*}
+    |\tilde{f}((r, 0))| &= \left|\frac{1}{2\pi} \int_0^{2\pi} \Radon f(r\cos(\theta), \omega) \dd{\theta}\right| \\
+                     &\leq \frac{1}{2\pi} \int_0^{2\pi} |\Radon f(r\cos(\theta), \omega)| \dd{\theta} \\
+                     &\leq \frac{1}{2\pi} \int_0^{2\pi} 0 \dd{\theta} = 1 \leq \frac{C}{r}
+  .\qedhere\end{align*}
 \end{solution}
 
 \begin{problem}[4 (Projection onto a hyperplane)]
@@ -115,12 +120,28 @@
 \end{problem}
 
 \begin{solution}
+  The projection of $y$ onto the hyperplane is given by
+  \[%
+    \proj_H(y) = y - \proj_r y
+  .\]%
+  The projection of $y$ onto the vector $r$ is given by
+  \[%
+    \proj_r y = \frac{y \cdot r}{r \cdot r} r
+  .\]%
+  Therefore, we have
+  \[%
+    \proj_H(y) = y - \frac{y \cdot r}{r \cdot r} r
+  .\]%
+  To ensure that the projection lies on the hyperplane defined by $x \cdot r = p$, we need to adjust the projection by adding a term that accounts for the difference between $y \cdot r$ and $p$. Thus, we have
+  \[%
+    \proj_H(y) = y - \left[\frac{y \cdot r - p}{r \cdot r}\right] r
+  .\qedhere\]%
 \end{solution}
 
 \begin{problem}[5 (1d version of pixel basis)]
   For each $N = 1, 2, \dots$, define the following intervals
   \[%
-    I^N_j = \left[\frac{j}{N}, \frac{j + 1}{N}\right], \quad j = 0, \dots, N - 2 \aand I^N_{N-1} = \left[\frac{N - 1}{N}, 1\right]
+    I^N_j = \left[\frac{j}{N}, \frac{j + 1}{N}\right], \quad j = 0, \dots, N - 2, \aand I^N_{N-1} = \left[\frac{N - 1}{N}, 1\right]
   .\]%
   Suppose $f : [0, 1] \to \R$ is continuous and for each $N$ define
   \[%
@@ -130,4 +151,17 @@
 \end{problem}
 
 \begin{solution}
+  By the Mean Value Theorem for Integrals, there exists some $c_j \in I^N_j$ such that
+  \[%
+    \int_{I^N_j} f(y) \dy = f(c_j) \cdot \frac{1}{N}
+  .\]%
+  Therefore, we can rewrite $f_N(x)$ as
+  \[%
+    f_N(x) = N \sum_{j=0}^{N-1} f(c_j) \cdot \frac{1}{N} \chi_{I^N_j}(x) = \sum_{j=0}^{N-1} f(c_j) \chi_{I^N_j}(x)
+  .\]%
+  Since $f$ is continuous on the compact interval $[0, 1]$, it's uniformly continuous. Thus, for any $\epsilon > 0$, there exists a $\delta > 0$ such that for all $x, y \in [0, 1]$ with $|x - y| < \delta$, we have $|f(x) - f(y)| < \epsilon$. Now, choose $N$ such that $1/N < \epsilon$. For any $x \in [0, 1]$, there exists a unique $j$ such that $x \in I^N_j$. Then, we have
+  \[%
+    |f_N(x) - f(x)| = |f(c_j) - f(x)| < \epsilon
+  .\]%
+  This shows that $f_N$ converges to $f$ uniformly on $[0, 1]$ as $N \to \infty$.
 \end{solution}
