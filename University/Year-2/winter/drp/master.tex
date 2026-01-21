@@ -1,0 +1,215 @@
+\documentclass[notitlepage]{report}
+
+\input{preamble.tex}
+
+\def\nshort{DRP}
+\def\ncourse{Directed Reading Program}
+\def\nlecturer{A. Yae}
+\def\nterm{Winter}
+\def\nyear{$2026$}
+
+\def\othernotes{singularisart.github.io/notes}
+\def\faculty{Faculty of Mathematics}
+\def\location{University of Oregon}
+
+\renewcommand\S{\mathbb{S}}
+
+\begin{document}
+  \section*{Problems}
+
+  \begin{enumerate}
+    \item Let $z = x + iy$ be the standard coordinate on $\C$. Show that the standard volume form (symplectic form) $\omega = \dx \wedge \dy$ can be written as $\frac{1}{2i} \dd{\bar{z}} \wedge \dz$, whereas the standard metric $\dx^2 + \dy^2$ is equal to $\dd{\bar{z}} \cdot \dz$ (here $\cdot$ is understood to be a symmetric product). The latter is what the M.R.S. paper denotes $|\dz|^2$.
+
+      \textbf{Solution:} Computing $\dd{\bar{z}}$ and $\dz$, we have
+      \begin{align*}
+        \dd{\bar{z}} &= \dx - i\dy \\
+        \dz &= \dx + i\dy
+      .\end{align*}
+      Therefore,
+      \begin{align*}
+        \dd{\bar{z}} \wedge \dz &= (\dx - i\dy) \wedge (\dx + i\dy) \\
+                              &= 2i \dx \wedge \dy
+      .\end{align*}
+      This shows that
+      \[%
+        \omega = \dx \wedge \dy = \frac{1}{2i} \dd{\bar{z}} \wedge \dz
+      .\]%
+      Next, we compute the symmetric product:
+      \begin{align*}
+        \dd{\bar{z}} \cdot \dz &= (\dx - i\dy) \cdot (\dx + i\dy) \\
+                             &= \dx^2 + \dy^2
+      .\end{align*}
+      This shows that the standard metric is given by
+      \[%
+        \dx^2 + \dy^2 = \dd{\bar{z}} \cdot \dz
+      .\tag*{$\square$}\]%
+
+    \item Let $\beta \in (0, 1]$. Under the map $f_\beta : \C \to \C$ given by $z \mapsto z^\beta$, check that $f_\beta^*(\omega) = \beta^2 r^{2\beta-2}\omega$, which is a rescaling of $r^{2\beta-2}\omega$. See if you can understand what this has to do with a cone.
+
+      \textbf{Solution:} The form $\omega$ describes the area in $\C$, which is given by $\omega = \dx \wedge \dy$. Converting to polar coordinates, we have $\omega = r \dr \wedge \dd{\theta}$. This gives us $f_\beta(r, \theta) = (r^\beta, \beta\theta)$. The pullback is a map from $f_\beta^* : \Omega^k(N) \to \Omega^k(M)$, where $\Omega^k(N)$ is the space of $k$-forms on the manifold $N$.
+
+      Writing $(u^1, u^2) = (r^\beta, \beta\theta)$, the pullback satisfies
+      \begin{equation}\label{eq:pullback_wedge}
+        f_\beta^*\left(\bigwedge_{i=1}^k \du^i\right) = \bigwedge_{i=1}^k f(\du^i) = \bigwedge_{i=1}^k \pd{j} u^i \dx^j
+      ,\end{equation}
+      where $\dx^1 = \dr$ and $\dx^2 = \dd{\theta}$ (we're using Einstein's notation to simplify the expression). Computing the individual pullbacks, we have
+      \[%
+        f_\beta^*(\du^1) = \pd{1} u^1 \dr = \beta r^{\beta-1} \dr \aand f_\beta^*(\du^2) = \pd{2} u^2 \dd{\theta} = \beta \dd{\theta}
+      .\]%
+      Using Equation~\eqref{eq:pullback_wedge}, we compute
+      \begin{align*}
+        f_\beta^*(\omega) &= f_\beta^*(\dr \wedge \dd{\theta}) \\
+                          &= f_\beta^*(\dr) \wedge f_\beta^*(\dd{\theta}) \\
+                          &= (\beta r^{\beta-1} \dr) \wedge (\beta \dd{\theta}) \\
+                          &= \beta^2 r^{2\beta-1} \omega
+      .\end{align*}
+      But since we have
+      \[%
+        \dr \wedge \dd{\theta} = \frac{1}{r} \omega
+      ,\]%
+      we have
+      \[%
+        f_\beta^*(\omega) = \beta^2 r^{2\beta-2} \omega
+      .\]%
+
+      The pullback form $f_\beta^*(\omega)$ describes the area in the new coordinates. When $\beta = 1$, we have the standard area form. However, when $0 < \beta < 1$, we see that the area form is scaled by a factor of $r^{2\beta-2}$, which blows up as $r \to 0$. This indicates that near the origin, the geometry is distorted in such a way that it resembles a cone with a singularity at the tip. The angle around the origin is effectively reduced, leading to a conical structure. \hfill$\square$
+
+    \item Consider the maps: $\phi : \R_{\ge 0} \times \S^1 \to \C$ given by $\phi(r, \theta) = re^{i\theta}$ and $\tau : \R \times \S^1 \to \R_{\ge 0} \times \S^1$ given by $\tau(y, \theta) = (e^y, \theta)$. Calculate the pullback forms, $\phi^*(\omega)$ and then $\tau^*(\phi^*(\omega))$.
+
+      \textbf{Solution:} We first compute the pullback of $\phi^*(\omega)$, where $\omega = \dx \wedge \dy$. Writing $(u^1, u^2) = (r, \theta)$, computing the individual pullbacks using the chain rule, we have
+      \begin{gather*}
+        \phi^*(\du^1) = \pd{1} u^1 \dr + \pd{2} u^1 \dd{\theta} = \cos(\theta) \dr - r \sin(\theta) \dd{\theta} \\
+        \phi^*(\du^2) = \pd{1} u^2 \dr + \pd{2} u^2 \dd{\theta} = \sin(\theta) \dr + r \cos(\theta) \dd{\theta}
+      \end{gather*}
+      Using Equation~\eqref{eq:pullback_wedge}, we compute
+      \begin{align*}
+        \phi^*(\omega) &= \phi^*(\dx \wedge \dy) \\
+                      &= \phi^*(\dx) \wedge \phi^*(\dy) \\
+                      &= (\cos(\theta) \dr - r \sin(\theta) \dd{\theta}) \wedge (\sin(\theta) \dr + r \cos(\theta) \dd{\theta}) \\
+                      &= r (\cos^2(\theta) + \sin^2(\theta)) \dr \wedge \dd{\theta} \\
+                      &= r \dr \wedge \dd{\theta}
+      .\end{align*}
+
+      Next, we compute the pullback of $\tau^*(\phi^*(\omega))$. Writing $(v^1, v^2) = (y, \theta)$, computing the individual pullbacks, we have
+      \begin{gather*}
+        \tau^*(\dv^1) = \pd{1} v^1 \dy + \pd{2} v^1 \dd{\theta} = e^y \dy \\
+        \tau^*(\dv^2) = \pd{1} v^2 \dy + \pd{2} v^2 \dd{\theta} = \dd{\theta}
+      \end{gather*}
+      Using Equation~\eqref{eq:pullback_wedge}, we compute
+      \begin{align*}
+        \tau^*(\phi^*(\omega)) &= \tau^*(r \dr \wedge \dd{\theta}) \\
+                                &= \tau^*(r \dr) \wedge \tau^*(\dd{\theta}) \\
+                                &= e^y (e^y \dy) \wedge \dd{\theta} \\
+                                &= e^{2y} \dy \wedge \dd{\theta}
+      .\end{align*}
+      Therefore, we have
+      \[%
+        \phi^*(\omega) = r \dr \wedge \dd{\theta} \aand \tau^*(\phi^*(\omega)) = e^{2y} \dy \wedge \dd{\theta}
+      .\tag*{$\square$}\]%
+
+    \item Now let $g_\beta = r^{2\beta-2}|\dz|^2$ be the canonical metric from the M.R.S. paper, which has corresponding symplectic form
+      \[%
+        \omega_\beta = \frac{r^{2\beta-2}}{2i} \dd{\bar{z}} \wedge \dz = r^{2\beta-2} \dr \wedge \dd{\theta}
+      .\]%
+      (Verify the last equality). Calculate these pullbacks $\phi^*(\omega_\beta)$ and $\tau^*(\phi^*(\omega_\beta))$.
+
+      \textbf{Solution:} We first verify the last equality. We have
+      \begin{align*}
+        \dd{z} &= e^{i\theta} \dr + ire^{i\theta} \dd{\theta} \\
+        \dd{\bar{z}} &= e^{-i\theta} \dr - ire^{-i\theta} \dd{\theta}
+      .\end{align*}
+      Therefore,
+      \begin{align*}
+        \frac{1}{2i} \dd{\bar{z}} \wedge \dz &= \frac{1}{2i} (e^{-i\theta} \dr - ire^{-i\theta} \dd{\theta}) \wedge (e^{i\theta} \dr + ire^{i\theta} \dd{\theta}) \\
+                                           &= \frac{1}{2i} (ire^{-i\theta} e^{i\theta} + ire^{i\theta} e^{-i\theta}) \dr \wedge \dd{\theta} \\
+                                           &= \dr \wedge \dd{\theta}
+      .\end{align*}
+      Thus, we have
+      \[%
+        \omega_\beta = r^{2\beta-1} \dr \wedge \dd{\theta}
+      .\]%
+
+      Now, we calculate the pullback of $\phi^*(\omega_\beta)$. Using the previous result for $\phi^*(\dr \wedge \dd{\theta})$, we have
+      \begin{align*}
+        \phi^*(\omega_\beta) &= \phi^*(r^{2\beta-2} \dr \wedge \dd{\theta}) \\
+                            &= r^{2\beta-1} \phi^*(\dr \wedge \dd{\theta}) \\
+                            &= r^{2\beta-1} (r \dr \wedge \dd{\theta}) \\
+                            &= r^{2\beta-1} \dr \wedge \dd{\theta}
+      .\end{align*}
+      Next, we compute the pullback of $\tau^*(\phi^*(\omega_\beta))$. Using the previous result for $\tau^*(\dr \wedge \dd{\theta})$, we have
+      \begin{align*}
+        \tau^*(\phi^*(\omega_\beta)) &= \tau^*(r^{2\beta-1} \dr \wedge \dd{\theta}) \\
+                                    &= e^{(2\beta-1)y} \tau^*(\dr \wedge \dd{\theta}) \\
+                                    &= e^{(2\beta-1)y} (e^y \dy \wedge \dd{\theta}) \\
+                                    &= e^{2\beta y} \dy \wedge \dd{\theta}
+      .\end{align*}
+      Therefore, we have
+      \[%
+        \phi^*(\omega_\beta) = r^{2\beta-1} \dr \wedge \dd{\theta} \aand \tau^*(\phi^*(\omega_\beta)) = e^{2\beta y} \dy \wedge \dd{\theta}
+      .\tag*{$\square$}\]%
+
+    \item (Harder) Calculate the pushforward of the vector fields $\pd{z}$ and $\pd{\bar{z}}$ under the inverse map $\phi^{-1}$. Use this to derive the formula for the Laplacian in polar coordinates
+      \[%
+        \Delta = \pd{rr} + \frac{1}{r} \pd{r} + \frac{1}{r^2} \pd{\theta\theta}
+      .\]%
+
+      \textbf{Solution:} Computing the inverse map, we have $\phi^{-1}(x, y) = (r, \theta)$, where $r = \sqrt{x^2 + y^2}$ and $\theta = \arctan(y/x)$. Letting $z = x + iy$ and $\bar{z} = x - iy$.
+      Computing the partials, we have
+      \[%
+        \pd{z} = \frac{1}{2} \left(\pd{x} - i\pd{y}\right) \aand \pd{\bar{z}} = \frac{1}{2} \left(\pd{x} + i\pd{y}\right)
+      .\]%
+      Solving for $x$ and $y$, we have
+      \begin{align*}
+        x = \frac{z + \bar{z}}{2} \aand y = \frac{z - \bar{z}}{2i}
+      .\end{align*}
+      Computing $\pd{x}$ and $\pd{y}$ in terms of $\pd{z}$ and $\pd{\bar{z}}$, we have
+      \begin{align*}
+        \pd{x} = \pd{x} r \pd{r} + \pd{x} \theta \pd{\theta} = \cos(\theta) \pd{r} - \frac{\sin(\theta)}{r} \pd{\theta} \\
+        \pd{y} = \pd{y} r \pd{r} + \pd{y} \theta \pd{\theta} = \sin(\theta) \pd{r} + \frac{\cos(\theta)}{r} \pd{\theta}
+      .\end{align*}
+      Plugging these values into the expressions for $\pd{z}$ and $\pd{\bar{z}}$, we have
+      \begin{align*}
+        \pd{z} &= \frac{1}{2} \left(\cos(\theta) \pd{r} - \frac{\sin(\theta)}{r} \pd{\theta} - i\sin(\theta) \pd{r} - i\frac{\cos(\theta)}{r} \pd{\theta}\right) \\
+               &= \frac{e^{-i\theta}}{2} \left(\pd{r} - \frac{i}{r} \pd{\theta}\right) \\
+        \pd{\bar{z}} &= \frac{1}{2} \left(\cos(\theta) \pd{r} - \frac{\sin(\theta)}{r} \pd{\theta} + i\sin(\theta) \pd{r} + i\frac{\cos(\theta)}{r} \pd{\theta}\right) \\
+                     &= \frac{e^{i\theta}}{2} \left(\pd{r} + \frac{i}{r} \pd{\theta}\right)
+      .\end{align*}
+      Computing $\pd{z} \pd{\bar{z}}$, we have
+      \[%
+        \pd{z,\bar{z}} = \frac{1}{4} e^{-i\theta} e^{i\theta} \left(\pd{r} - \frac{i}{r} \pd{\theta}\right)\left(\pd{r} + \frac{i}{r} \pd{\theta}\right) = D
+      .\]%
+      Computing $Df$ for a smooth function $f$, we have
+      \begin{align*}
+        4Df &= \left(\pd{rr} f + \frac{i}{r} \pd{r\theta} f - \frac{i}{r} \pd{\theta r} f + \frac{1}{r^2} \pd{\theta\theta} f\right) \\
+            &= \pd{r} \left(\pd{r}f + \frac{i}{r}\pd{\theta}f\right) - \frac{i}{r}\pd{\theta}\left(\pd{r}f + \frac{i}{r}\pd{\theta}f\right) \\
+            &= \pd{rr}f + \pd{r} \left(\frac{i}{r}\pd{\theta}f\right) - \frac{i}{r}\pd{\theta,r}f + \frac{1}{r^2}\pd{\theta\theta}f \\
+            &= \pd{rr}f - \frac{i}{r^2} \pd{\theta}f + \frac{i}{r}\pd{r,\theta}f - \frac{i}{r}\pd{\theta,r}f + \frac{1}{r^2}\pd{\theta\theta}f \\
+            &= \pd{rr}f - \frac{i}{r^2} \pd{\theta}f + \frac{1}{r^2}\pd{\theta\theta}f
+      .\end{align*}
+
+    \item When evaluating $\Delta$ on a radially symmetric function, we can ignore the last term $\frac{1}{r^2} \pd{\theta\theta}$. Calculate the pushforward of $\pd{rr} + \frac{1}{r} \pd{r}$ under the inverse map $\tau^{-1}(r, \theta) = (\log(r), \theta)$.
+
+      \textbf{Solution:} We have $\tau^{-1}(r, \theta) = (\log(r), \theta)$. We want to compute the pushforward of the vector fields $\pd{r}$ and $\pd{rr}$ under this map. Using the chain rule, we have
+      \begin{align*}
+        \pd{r} &= \pd{r}(\log(r)) \pd{y} + \pd{r}(\theta) \pd{\theta} = \frac{1}{r} \pd{y} \\
+        \pd{rr} &= \pd{r}\left(\frac{1}{r} \pd{y}\right) = \frac{1}{r^2} \pd{yy} - \frac{1}{r^2} \pd{y}
+      .\end{align*}
+      Therefore, we have
+      \begin{align*}
+        \pd{rr} + \frac{1}{r} \pd{r} &= \left(\frac{1}{r^2} \pd{yy} - \frac{1}{r^2} \pd{y}\right) + \frac{1}{r} \left(\frac{1}{r} \pd{y}\right) \\
+                                     &= \frac{1}{r^2} \pd{yy}
+      .\end{align*}
+      Thus, the pushforward of $\pd{rr} + \frac{1}{r} \pd{r}$ under the inverse map $\tau^{-1}$ is given by
+      \[%
+        \tau_*^{-1}(\Delta) = e^{-2y} \pd{yy}
+      .\tag*{$\square$}\]%
+
+    \item Now incorporate the $\pd{\theta\theta}$ term in the above to recover the standard Laplacian on the infinite cylinder $C = \R \times \S^1$.
+
+      \textbf{Solution:}
+
+    \item Compute the line integral of a geodesic on the cone with the metric $g_\beta$ around the singularity. (Hint: such a geodesic is given by a straight line in the $y, \theta$ coordinates on the infinite cylinder).
+
+      \textbf{Solution:}
+  \end{enumerate}
+\end{document}

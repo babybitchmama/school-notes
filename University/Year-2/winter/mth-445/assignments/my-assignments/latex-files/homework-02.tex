@@ -1,0 +1,142 @@
+\begin{problem}[23.4]
+  Find all solutions of $x^3 - 2x^2 - 3x = 0$ in $\Z_6$.
+\end{problem}
+
+\begin{solution}
+  The solutions are $x = 0, 2, 3$, and 5 in $\Z_6$.
+\end{solution}
+
+\begin{problem}[23.10]
+  Find the characteristic of the given ring $\Z_6 \times \Z_{15}$.
+\end{problem}
+
+\begin{solution}
+  The characteristic of a product ring is the least common multiple of the characteristics of the component rings. The characteristic of $\Z_6$ is 6, and the characteristic of $\Z_{15}$ is 15. Therefore, the characteristic of $\Z_6 \times \Z_{15}$ is $\text{lcm}(6, 15) = 30$.
+\end{solution}
+
+\begin{problem}[23.12]
+  Classify each nonzero element of the ring $\Z_8$ as a unit, a divisor of 0, or neither.
+\end{problem}
+
+\begin{solution}
+  In $\Z_8$, the nonzero elements are 1, 2, 3, 4, 5, 6, and 7. The units of $\Z_8$ are 1, 3, 5, and 7, while the divisors of zero are 2, 4, and 6.
+\end{solution}
+
+\begin{problem}[23.20]
+  Show that the matrix $\begin{bmatrix}
+    1 & 2 \\
+    2 & 4 \\
+  \end{bmatrix}$ is a divisor of zero in $M_2(\Z)$.
+\end{problem}
+
+\begin{solution}
+  The matrix $A$ is a zero divisor if there exists a nonzero matrix $B$ such that $AB = 0$. Let $B = \begin{bmatrix}
+    a & b \\
+    c & d \\
+  \end{bmatrix}$. Then,
+  \[%
+    AB = \begin{bmatrix}
+      1 & 2 \\
+      2 & 4 \\
+    \end{bmatrix} \begin{bmatrix}
+      a & b \\
+      c & d \\
+    \end{bmatrix} = \begin{bmatrix}
+      a + 2c & b + 2d \\
+      2a + 4c & 2b + 4d \\
+    \end{bmatrix} = \begin{bmatrix}
+      0 & 0 \\
+      0 & 0 \\
+    \end{bmatrix}
+  .\]%
+  This gives us the system of equations:
+  \[%
+    a + 2c = 0, \quad b + 2d = 0, \quad 2a + 4c = 0, \aand 2b + 4d = 0
+  .\]%
+  From the first equation, we have $a = -2c$. Substituting into the second equation gives $b = -2d$. Choosing $c = 1$ and $d = 1$, we get $a = -2$ and $b = -2$. Thus, we can take
+  \[%
+    B = \begin{bmatrix}
+      -2 & -2 \\
+      1 & 1 \\
+    \end{bmatrix}
+  .\]%
+  Therefore, $A$ is a divisor of zero in $M_2(\Z)$.
+\end{solution}
+
+\begin{problem}[23.29]
+  An element $a$ of a ring $R$ is \textit{idempotent} if $a^2 = a$. Show that a division ring contains exactly two idempotent elements.
+\end{problem}
+
+\begin{solution}
+  Let $R$ be a division ring and let $a \in R$ be an idempotent element, so $a^2 = a$. Rearranging gives $a^2 - a = 0$, or $a(a - 1) = 0$. Since $R$ is a division ring, it has no zero divisors, so either $a = 0$ or $a = 1$. Therefore, the only idempotent elements in a division ring are 0 and 1.
+\end{solution}
+
+\begin{problem}[23.35]
+  Show that the characteristic of an integral domain $D$ must be either 0 or a prime $p$. [Hint: If the characteristic of $D$ is $mn$, consider $(m \cdot 1)(n \cdot 1)$ in $D$.]
+\end{problem}
+
+\begin{solution}
+\end{solution}
+
+\begin{problem}[24.2]
+  Show that the multiplicative group of nonzero elements of the field $\Z_{11}$ is cyclic. Illustrate this by finding a generator for this group for the finite field. $\Z_{11}$.
+\end{problem}
+
+\begin{solution}
+  Let $F^\times$ denote the set of all non-zero elements of the field $\Z_{11}$. We will show that $F^\times$ is cyclic by finding a generator. The order of $F^\times$ is $11 - 1 = 10$. Notice that the set $\bra{2}$ generates $F^\times$ since the powers of 2 modulo 11 yield all non-zero elements of $\Z_{11}$
+  \begin{gather*}
+    2^1 \equiv 2 \pmod{11}, \quad 2^2 \equiv 4 \pmod{11}, \quad 2^3 \equiv 8 \pmod{11}, \quad 2^4 \equiv 5 \pmod{11}, \quad 2^5 \equiv 10 \pmod{11} \\
+    2^6 \equiv 9 \pmod{11}, \quad 2^7 \equiv 7 \pmod{11}, \quad 2^8 \equiv 3 \pmod{11}, \quad 2^9 \equiv 6 \pmod{11}, \quad 2^{10} \equiv 1 \pmod{11}
+  .\end{gather*}
+  Thus, $F^\times$ is cyclic with generator 2.
+\end{solution}
+
+\begin{problem}[24.6]
+  Compute the remainder of $2^{\left(2^{17}\right)}$ when divided by 19. [Hint: You will need to compute the remainder of $2^{17}$ modulo 18.]
+\end{problem}
+
+\begin{solution}
+  We will first compute $2^{17}$ module 18. Notice that the powers of 2 modulo 18 are:
+  \begin{gather*}
+    2^1 \equiv 2 \pmod{18}, \quad 2^2 \equiv 4 \pmod{18}, \quad 2^3 \equiv 8 \pmod{18}, \quad 2^4 \equiv 16 \pmod{18}, \quad 2^5 \equiv 14 \pmod{18} \\
+    2^6 \equiv 10 \pmod{18}, \quad 2^7 \equiv 2 \pmod{18}
+  .\end{gather*}
+  Thus, the powers of 2 modulo 18 repeat every 6 powers. Therefore,
+  \[%
+    2^{17} \equiv 2^{(6 \cdot 2 + 5)} \equiv 2^5 \equiv 14 \pmod{18}
+  .\]%
+  Now, we need to compute $2^{14}$ modulo 19. The powers of 2 modulo 19 are:
+  \begin{gather*}
+    2^1 \equiv 2 \pmod{19}, \quad 2^2 \equiv 4 \pmod{19}, \quad 2^3 \equiv 8 \pmod{19}, \quad 2^4 \equiv 16 \pmod{19}, \quad 2^5 \equiv 13 \pmod{19} \\
+    2^6 \equiv 7 \pmod{19}, \quad 2^7 \equiv 14 \pmod{19}, \quad 2^8 \equiv 9 \pmod{19}, \quad 2^9 \equiv 18 \pmod{19}, \quad 2^{10} \equiv 17 \pmod{19} \\
+    2^{11} \equiv 15 \pmod{19}, \quad 2^{12} \equiv 11 \pmod{19}, \quad 2^{13} \equiv 3 \pmod{19}, \quad 2^{14} \equiv 6 \pmod{19}
+  \end{gather*}
+  Therefore, the remainder of $2^{\left(2^{17}\right)}$ when divided by 19 is 6.
+\end{solution}
+
+\begin{problem}[24.27]
+  Show that 1 and $p - 1$ are the only elements of the field $\Z_p$ that are their own multiplicative inverse. [Hint: Consider the equation $x^2 - 1 = 0$.]
+\end{problem}
+
+\begin{solution}
+  Solving the equation $x^2 - 1 = 0$ in $\Z_p$, we have $(x - 1)(x + 1) = 0$. The only two solutions in $\Z_p$ are $1$ and $-1$, which is congruent to $p - 1$ modulo $p$. Therefore, the only elements of $\Z_p$ that are their own multiplicative inverse are 1 and $p - 1$.
+\end{solution}
+
+\begin{problem}[25.8]
+  The public key is $n = 1457$ and $s = 239$.
+  \begin{enumerate}
+    \item Compute the value of $y$ if the message is $m = 999$.
+    \item Find $r$. (Computer Algebra Systems have built-in functions to compute in $\Z_m$.)
+    \item Use your answers to parts (i) and (ii) to decrypt $y$.
+  \end{enumerate}
+\end{problem}
+
+\begin{solution}[(i)]
+  Breaking up $n = 1457$ into a product of primes, we get $n = 31 \times 47$. Therefore, $p = 31$ and $q = 47$. Next, we compute $\phi(n) = (p - 1)(q - 1) = 30 \times 46 = 1380$.
+\end{solution}
+
+\begin{solution}[(ii)]
+\end{solution}
+
+\begin{solution}[(iii)]
+\end{solution}
