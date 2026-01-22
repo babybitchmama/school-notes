@@ -1,0 +1,231 @@
+\renewcommand\V{\mathbf{V}}
+
+\begin{problem}[1]
+  Consider flat spacetime written in cylindrical coordinates
+  \[%
+    (t, r, \phi, z)
+  ,\]%
+  with line element
+  \[%
+    \ds^2 = -\dt^2 + \dr^2 + r^2\dd{\phi}^2 + \dz^2
+  .\]%
+  \begin{enumerate}
+    \item (6 points) Coordinate Basis
+      \begin{itemize}
+        \item Write down the coordinate basis vectors.
+        \item Compute the squared norm of each basis vector using the metric.
+        \item Explain why this basis is not orthonormal, even though the spacetime is flat.
+      \end{itemize}
+    \item (6 points) Orthonormal Basis
+
+      Define a new set of basis vectors
+      \[%
+        \e_{\hat{t}} = \pd{t}, \quad \e_{\hat{r}} = \pd{r}, \quad \e_{\hat{\phi}} = \frac{1}{r} \pd{\phi}, \quad \e_{\hat{z}} = \pd{z}
+      .\]%
+      \begin{itemize}
+        \item Show that this is orthonormal.
+        \item Explain the physical meaning of this basis.
+      \end{itemize}
+    \item (6 points) Vector Components in Different Bases
+
+      Consider the vector
+      \[%
+        \V = V^r\pd{r} + V^{\phi}\pd{\phi}
+      ,\]%
+      with
+      \[%
+        V^r = 0, \quad V^{\phi} = \omega
+      ,\]%
+      where $\omega$ is constant.
+      \begin{itemize}
+        \item Compute the magnitude of $\V$ using the metric.
+        \item Find the components of $\V$ in the orthonormal basis.
+        \item Explain why the orthonormal components correspond to physical measurements.
+      \end{itemize}
+  \end{enumerate}
+\end{problem}
+
+\begin{solution}[(i)]
+  We first write down the coordinate basis vectors:
+  \[%
+    \e_t = \pd{t}, \quad \e_r = \pd{r}, \quad \e_{\phi} = \pd{\phi}, \quad \e_z = \pd{z}
+  .\]%
+  Computing the squared norm of each term in the basis using the metric, we have:
+  \begin{align*}
+    \e_t \cdot \e_t &= g_{tt} = -1 \\
+    \e_r \cdot \e_r &= g_{rr} = 1 \\
+    \e_{\phi} \cdot \e_{\phi} &= g_{\phi\phi} = r^2 \\
+    \e_z \cdot \e_z &= g_{zz} = 1
+  .\end{align*}
+  This basis isn't orthonormal because the basis vector $\e_{\phi}$ has a squared norm of $r^2$, which is not equal to 1. An orthonormal basis requires that each basis vector has a squared norm of either +1 or -1 (for timelike vectors), but here the norm depends on the coordinate $r$.
+\end{solution}
+
+\begin{solution}[(ii)]
+  When computing the squared norm of each term in the new basis, we'll have the same values for everything except for $\e_{\hat{\phi}}$:
+  \[%
+    \e_{\hat{\phi}} \cdot \e_{\hat{\phi}} = \frac{1}{r^2} g_{\phi\phi} = \frac{1}{r^2} \cdot r^2 = 1
+  .\]%
+  Thus, the squared norms of all basis vectors in this new basis are either +1 or -1, confirming that it is orthonormal.
+
+  The physical meaning of this basis is that it represents measurements made by an observer who is at rest in the cylindrical coordinate system. The orthonormal basis vectors correspond to directions that are locally flat and normalized, allowing for direct physical interpretations of measurements such as distances and angles.
+\end{solution}
+
+\begin{solution}[(iii)]
+  Computing the magnitude of $\V$ using the metric, we have:
+  \[%
+    \bra{\V, \V} = g_{ij} V^i V^j = g_{\phi\phi} (V^{\phi})^2 = \omega^2
+  .\]%
+  Writing $\V$ in terms of the orthonormal basis, we have:
+  \[%
+    \V = V^{\hat{r}} \e_{\hat{r}} + V^{\hat{\phi}} \e_{\hat{\phi}} = 0 \cdot \e_{\hat{r}} + \omega r \cdot \e_{\hat{\phi}} = \omega r \e_{\hat{\phi}}
+  .\]%
+  The orthonormal components correspond to physical measurements because they are defined in a locally flat frame where the basis vectors have unit length. This means that the components directly represent measurable quantities, such as distances and angles, without any scaling factors that depend on the coordinates.
+\end{solution}
+
+\begin{problem}[2 (Euler-Lagrange)] (10 points) Let
+  \[%
+    L = \frac{1}{2}mg_{ij}(x)\dot{x}^i\dot{x}^j
+  .\]%
+  Prove that the Euler-Lagrange equations can be written as
+  \[%
+    \ddot{x}^i + \Gamma_{jk}^i \dot{x}^j\dot{x}^k = 0
+  ,\]%
+  where
+  \[%
+    \Gamma_{jk}^i = \frac{1}{2}g^{i\ell}(\pd{k}g_{\ell j} + \pd{j}g_{\ell k} - \pd{\ell}g_{jk})
+  .\]%
+\end{problem}
+
+\begin{solution}
+  The Euler-Lagrange equations are given by:
+  \begin{equation}\label{eq:euler_lagrange}
+    \odv{}{t} \left(\pdv{L}{\dot{x}^k}\right) - \pdv{L}{x^k} = 0
+  \end{equation}
+  Computing the partial derivatives of $L$, we have:
+  \begin{align*}
+    \pdv{L}{x^k} &= \pdv{}{x^k} \left(\frac{1}{2}mg_{ij}\dot{x}^i\dot{x}^j\right) = \frac{1}{2}m\left(\pdv{g_{ij}}{x^k}\right)\dot{x}^i\dot{x}^j \\
+    \pdv{L}{\dot{x}^k} &= \pdv{}{\dot{x}^k} \left(\frac{1}{2}mg_{ij}\dot{x}^i\dot{x}^j\right) = \frac{1}{2}mg_{ij}\left(\pdv{}{\dot{x}^k}\dot{x}^i\dot{x}^j\right) \\
+                       &= \frac{1}{2}m\left(g_{ij}\delta_k^i \dot{x}^j + g_{ij}\dot{x}^i\delta_k^j\right) = \frac{1}{2}m \left(g_{kj}\dot{x}^j + g_{jk}\dot{x}^j\right) = mg_{jk}\dot{x}^j
+  .\end{align*}
+  Using the chain rule to compute the time derivative, we have:
+  \[%
+    \odv{}{t} \pdv{L}{\dot{x}^k} = m\left(g_{jk}\ddot{x}^j + \pd{i}g_{jk}\dot{x}^i\dot{x}^j\right)
+  .\]%
+  Using Equation~\eqref{eq:euler_lagrange}, we have:
+  \[%
+    g_{jk}\ddot{x}^j + \pd{i}g_{jk}\dot{x}^i\dot{x}^j - \frac{1}{2}\pd{k}g_{ij}\dot{x}^i\dot{x}^j = 0
+  .\]%
+  Since $\dot{x}^i\dot{x}^j$ is symmetric in $i$ and $j$, we can symmetrize the coefficients, giving us
+  \[%
+    \pd{i}g_{jk} = \frac{1}{2}[\pd{i}g_{jk} + \pd{i}g_{jk}] = \frac{1}{2}[\pd{i}g_{jk} + \pd{j}g_{ik}]
+  .\]%
+  Therefore, we obtain
+  \begin{align*}
+    g_{jk}\ddot{x}^j + \pd{i}g_{jk}\dot{x}^i\dot{x}^j - \frac{1}{2}\pd{k}g_{ij}\dot{x}^i\dot{x}^j &= g_{jk}\ddot{x}^j + \frac{1}{2}\left[\pd{i}g_{jk} + \pd{j}g_{ik}\right]\dot{x}^i\dot{x}^j - \frac{1}{2}\pd{k}g_{ij}\dot{x}^i\dot{x}^j \\
+                                                                                                      &= g_{ik}\ddot{x}^i + \frac{1}{2}\left[\pd{i}g_{jk} + \pd{j}g_{ik} - \pd{k}g_{ij}\right]\dot{x}^i\dot{x}^j \\
+                                                                                                      &= g^{\ell k}g_{ik}\ddot{x}^i + \frac{1}{2}g^{\ell k}\left[\pd{i}g_{jk} + \pd{j}g_{ik} - \pd{k}g_{ij}\right]\dot{x}^i\dot{x}^j
+  .\end{align*}
+  Simplifying, $g^{\ell k}g_{ik} \ddot{x}^i = \delta_i^\ell \ddot{x}^i = \ddot{x}^\ell$. Thus, we have
+  \[%
+    g^{\ell k}g_{ik}\ddot{x}^i + \frac{1}{2}g^{\ell k}\left[\pd{i}g_{jk} + \pd{j}g_{ik} - \pd{k}g_{ij}\right]\dot{x}^i\dot{x}^j = \ddot{x}^\ell + \frac{1}{2}g^{\ell k}\left[\pd{i}g_{jk} + \pd{j}g_{ik} - \pd{k}g_{ij}\right]\dot{x}^i\dot{x}^j
+  .\]%
+  Re-labeling the dummy indices to $\ell \longleftrightarrow i \longleftrightarrow k$, we get
+  \[%
+    \ddot{x}^\ell + \frac{1}{2}g^{\ell k}\left[\pd{i}g_{jk} + \pd{j}g_{ik} - \pd{k}g_{ij}\right]\dot{x}^i\dot{x}^j = \ddot{x}^i + \frac{1}{2}g^{i\ell}\left[\pd{k}g_{j\ell} + \pd{j}g_{k\ell} - \pd{\ell}g_{kj}\right]\dot{x}^k\dot{x}^j
+  .\]%
+  Therefore, we have
+  \[%
+    \ddot{x}^i + \frac{1}{2}g^{i\ell}\left[\pd{k}g_{j\ell} + \pd{j}g_{k\ell} - \pd{\ell}g_{kj}\right]\dot{x}^k\dot{x}^j = \ddot{x}^i + \Gamma_{jk}^i \dot{x}^k\dot{x}^j
+  .\]%
+  Thus, we have
+  \[%
+    \ddot{x}^i + \Gamma_{jk}^i \dot{x}^k\dot{x}^j = 0
+  .\qedhere\]%
+\end{solution}
+
+\begin{problem}[3 (Practice with Christoffel symbols)]
+  Consider the geometry of a 2-sphere of radius $R$. We define the usual coordinate system on the sphere with coordinate $\theta$ as the co-latitude (i.e., $\pi/2$-latitude) and $\phi$ as the longitude.
+  \begin{enumerate}
+    \item (4 points) Show, using a geometric argument, that the line element is
+      \[%
+        \ds^2 = R^2\dd{\theta}^2 + R^2\sin^2(\theta)\dd{\phi}^2
+      .\]%
+    \item (12 points) Find the metric tensor component $g_{\mu\nu}$ and the Christoffel symbols $\Gamma_{\alpha\beta}^\mu$ on the sphere.
+  \end{enumerate}
+\end{problem}
+
+\begin{solution}[(i)]
+  For the $g_{\theta\theta}$ component, we can consider a small change in $\theta$ while keeping $\phi$ constant. The distance traveled along the sphere for a small change in $\theta$ is simply the arc length of a circle of radius $R$, which gives us:
+  \[%
+    \ds = R\dd{\theta}
+  .\]%
+  Thus, we have, $g_{\theta\theta} = R^2$.
+
+  For the $g_{\phi\phi}$ component, we consider a small change in $\phi$ while keeping $\theta$ constant. The distance traveled along the sphere for a small change in $\phi$ is the arc length of a circle of radius $R\sin(\theta)$ (the radius of the circle at latitude $\theta$), which gives us:
+  \[%
+    \ds = R\sin(\theta)\dd{\phi}
+  .\]%
+  Thus, we have, $g_{\phi\phi} = R^2\sin^2(\theta)$.
+\end{solution}
+
+\begin{solution}[(ii)]
+  We know the metric tensor components from the line element:
+  \begin{gather*}
+    g_{\theta\theta} = R^2, \quad g_{\phi\phi} = R^2\sin^2(\theta), \quad g_{\theta\phi} = g_{\phi\theta} = 0 \\
+    g^{\theta\theta} = \frac{1}{R^2}, \quad g^{\phi\phi} = \frac{1}{R^2\sin^2(\theta)}, \quad g^{\theta\phi} = g^{\phi\theta} = 0
+  \end{gather*}
+  We first compute the partial derivatives of the metric components:
+  \begin{gather*}
+    \pd{\theta}g_{\theta\theta} = 0, \quad \pd{\phi}g_{\theta\theta} = 0, \quad \pd{\theta}g_{\phi\phi} = 2R^2\sin(\theta)\cos(\theta), \quad \pd{\phi}g_{\phi\phi} = 0 \\
+    \pd{\theta}g_{\theta\phi} = 0, \quad \pd{\phi}g_{\theta\phi} = 0, \quad \pd{\theta}g_{\phi\theta} = 0, \quad \pd{\phi}g_{\phi\theta} = 0
+  \end{gather*}
+  Since the metric is diagonal and its components depend only on $\theta$, all derivatives $\pd{\phi}g_{\mu\nu}$ vanish, and any Christoffel symbol involving only $\theta\theta$-components is zero because $g_{\theta\theta}$ is constant. Moreover, because the Christoffel symbols are symmetric in their lower indices, it suffices to compute only those with distinct lower indices. Therefore, the only non-zero Christoffel symbols are
+  \begin{align*}
+    \Gamma_{\phi\phi}^\theta &= -\frac{1}{2}g^{\theta\theta}\pd{\theta}g_{\phi\phi} = -\frac{1}{2R^2}\pd{\theta}(R^2\sin^2(\theta)) = -\sin(\theta)\cos(\theta) \\
+    \Gamma_{\phi\theta}^\phi &= \frac{1}{2}g^{\phi\phi}\pd{\theta}g_{\phi\phi} = \frac{1}{2R^2\sin^2(\theta)}\pd{\theta}(R^2\sin^2(\theta)) = \cot(\theta)
+  .\end{align*}
+  Since the Christoffel symbols are symmetric in the lower two indices, we also have $\Gamma_{\theta\phi}^\phi = \cot(\theta) = \Gamma_{\phi\theta}^\phi$. Thus, the non-zero Christoffel symbols are:
+  \[%
+    \Gamma_{\phi\phi}^\theta = -\sin(\theta)\cos(\theta) \aand \Gamma_{\phi\theta}^\phi = \cot(\theta) = \Gamma_{\theta\phi}^\phi
+  .\qedhere\]%
+\end{solution}
+
+\begin{problem}[4 (Geodesics on the sphere)] ($\star$)
+  \begin{enumerate}
+    \item (4 points) Write the geodesic equations on the sphere in the form of $\ddot{\theta} = f(\theta, \phi, \dot{\theta}, \dot{\phi})$ and $\ddot{\phi} = g(\theta, \phi, \dot{\theta}, \dot{\phi})$, where the dot indicates a derivative with respect to arc-length.
+    \item (5 points) Show from these equations that the quantities
+      \[%
+        \tilde{L} = R^2\sin^2(\theta)\dot{\phi} \aand \u \cdot \u = R^2(\dot{\theta}^2 + \sin^2(\theta)\dot{\phi}^2)
+      ,\]%
+      are conserved. What is the interpretation of $\tilde{L}$?
+
+      For the rest of the problem, we will take the normalization that $\u \cdot \u = 1$.
+    \item (5 points) Use the result of part (b) to write an equation for $\dot{\theta}$ in terms of $\theta$ and $\tilde{L}$.
+
+      Use this to show that $s$ can be written as
+      \[%
+        s = \pm R\int \frac{\dd{\theta}}{\sqrt{1 - \frac{\tilde{L}^2}{R^2\sin^2(\theta)}}}
+      .\]%
+    \item (6 points) Evaluate this integral and show that
+      \[%
+        \cos(\theta) = \sin(I)\cos\left(\frac{s - C}{R}\right)
+      ,\]%
+      where $\tilde{L} = R\cos(I)$ and $C$ are constants. \textit{Hint: first do the substitution $z = R\cos(\theta)$ and then $z = R\sin(I)\psi$}
+    \item (4 points) Explain, based on your 3D Euclidean intuition, why a particle moving at constant speed along a great circle on a sphere should exhibit sinusoidal motion on the z-axis. What are the interpretations of $z$, $I$, and $\psi$ in this picture.
+  \end{enumerate}
+\end{problem}
+
+\begin{solution}[(i)]
+\end{solution}
+
+\begin{solution}[(ii)]
+\end{solution}
+
+\begin{solution}[(iii)]
+\end{solution}
+
+\begin{solution}[(iv)]
+\end{solution}
+
+\begin{solution}[(v)]
+\end{solution}

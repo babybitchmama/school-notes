@@ -107,9 +107,10 @@
   For $r > 1$, we have
   \begin{align*}
     |\tilde{f}((r, 0))| &= \left|\frac{1}{2\pi} \int_0^{2\pi} \Radon f(r\cos(\theta), \omega) \dd{\theta}\right| \\
-                     &\leq \frac{1}{2\pi} \int_0^{2\pi} |\Radon f(r\cos(\theta), \omega)| \dd{\theta} \\
-                     &\leq \frac{1}{2\pi} \int_0^{2\pi} 0 \dd{\theta} = 1 \leq \frac{C}{r}
-  .\qedhere\end{align*}
+                     &\leq \frac{1}{2\pi} \int_0^{2\pi} |\sqrt{1 - r^2\cos^2(\theta)}| \dd{\theta} \\
+                     &\leq \frac{1}{2\pi} \int_0^{2\pi} 1 \dd{\theta} = 1 \leq \frac{C}{r}
+  ,\end{align*}
+  for some constant $C > 0$.
 \end{solution}
 
 \begin{problem}[4 (Projection onto a hyperplane)]

@@ -1,9 +1,18 @@
 \begin{problem}[23.4]
-  Find all solutions of $x^3 - 2x^2 - 3x = 0$ in $\Z_6$.
+  Find all solutions of $x^2 + 2x + 4 = 0$ in $\Z_6$.
 \end{problem}
 
 \begin{solution}
-  The solutions are $x = 0, 2, 3$, and 5 in $\Z_6$.
+  Trying all possible values of $x$ in $\Z_6$:
+  \begin{alignat*}{3}
+    x = 0 & : 0^2 + 2 \cdot 0 + 4 \equiv 4 &&\pmod{6} \\
+    x = 1 & : 1^2 + 2 \cdot 1 + 4 \equiv 7 \equiv 1 &&\pmod{6} \\
+    x = 2 & : 2^2 + 2 \cdot 2 + 4 \equiv 12 \equiv 0 &&\pmod{6} \\
+    x = 3 & : 3^2 + 2 \cdot 3 + 4 \equiv 19 \equiv 1 &&\pmod{6} \\
+    x = 4 & : 4^2 + 2 \cdot 4 + 4 \equiv 28 \equiv 4 &&\pmod{6} \\
+    x = 5 & : 5^2 + 2 \cdot 5 + 4 \equiv 39 \equiv 3 &&\pmod{6}
+  .\end{alignat*}
+  Therefore, the solutions is $x \equiv 2 \pmod{6}$
 \end{solution}
 
 \begin{problem}[23.10]
@@ -76,6 +85,11 @@
 \end{problem}
 
 \begin{solution}
+  Let the characteristic of the integral domain $D$ be $k$. If $k = 0$, we are done. Suppose $k$ is a positive integer that is not prime, so $k = mn$ for some integers $m, n > 1$. Then,
+  \[%
+    (m \cdot 1)(n \cdot 1) = (mn) \cdot 1 = k \cdot 1 = 0
+  .\]%
+  Since $D$ is an integral domain, it has no zero divisors, so either $m \cdot 1 = 0$ or $n \cdot 1 = 0$. This contradicts the assumption that $k$ is the smallest positive integer such that $k \cdot 1 = 0$. Therefore, if the characteristic of $D$ is positive, it must be prime.
 \end{solution}
 
 \begin{problem}[24.2]
@@ -132,11 +146,21 @@
 \end{problem}
 
 \begin{solution}[(i)]
-  Breaking up $n = 1457$ into a product of primes, we get $n = 31 \times 47$. Therefore, $p = 31$ and $q = 47$. Next, we compute $\phi(n) = (p - 1)(q - 1) = 30 \times 46 = 1380$.
+  Breaking up $n = 1457$ into a product of primes, we get $n = 31 \times 47$. Therefore, $p = 31$ and $q = 47$. Next, we compute $\phi(n) = (p - 1)(q - 1) = 30 \times 46 = 1380$. To compute $y$, we use the formula $y \equiv m^s \pmod{n}$. Thus,
+  \[%
+    y \equiv 999^{239} \pmod{1457}
+  .\]%
+  Using modular exponentiation, we find that $y \equiv 1000 \pmod{1457}$.
 \end{solution}
 
 \begin{solution}[(ii)]
+  To find $r$, we need to compute the modular inverse of $s$ modulo $\phi(n)$. We need to find $r$ such that $sr \equiv 1 \pmod{1380}$. Using the Extended Euclidean Algorithm, we find that $r \equiv 1159 \pmod{1380}$.
 \end{solution}
 
 \begin{solution}[(iii)]
+  To decrypt $y$, we use the formula $m \equiv y^r \pmod{n}$. Thus,
+  \[%
+    m \equiv 1000^{1159} \pmod{1457}
+  .\]%
+  Using modular exponentiation, we find that $m \equiv 999 \pmod{1457}$, which matches our original message.
 \end{solution}
