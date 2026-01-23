@@ -200,7 +200,7 @@
       are conserved. What is the interpretation of $\tilde{L}$?
 
       For the rest of the problem, we will take the normalization that $\u \cdot \u = 1$.
-    \item (5 points) Use the result of part (b) to write an equation for $\dot{\theta}$ in terms of $\theta$ and $\tilde{L}$.
+    \item (5 points) Use the result of part (ii) to write an equation for $\dot{\theta}$ in terms of $\theta$ and $\tilde{L}$.
 
       Use this to show that $s$ can be written as
       \[%
@@ -216,9 +216,49 @@
 \end{problem}
 
 \begin{solution}[(i)]
+  The geodesic equations are given by:
+  \[%
+    \ddot{x}^\mu + \Gamma_{\alpha\beta}^\mu \dot{x}^\alpha \dot{x}^\beta = 0
+  .\]%
+  For $\mu = \theta$, we have:
+  \[%
+    \ddot{\theta} + \Gamma_{\phi\phi}^\theta \dot{\phi}\dot{\phi} = 0 \implies \ddot{\theta} - \sin(\theta)\cos(\theta)\dot{\phi}^2 = 0 \implies \ddot{\theta} = \sin(\theta)\cos(\theta)\dot{\phi}^2
+  .\]%
+  For $\mu = \phi$, we have:
+  \[%
+    \ddot{\phi} + \Gamma_{\phi\theta}^\phi \dot{\phi}\dot{\theta} = \ddot{\phi} + \Gamma_{\theta\phi}^\phi \dot{\phi}\dot{\theta} = 0 \implies \ddot{\phi} + 2\cot(\theta)\dot{\phi}\dot{\theta} = 0 \implies \ddot{\phi} = -\cot(\theta)\dot{\phi}\dot{\theta}
+  .\]%
+  Thus, the geodesic equations on the sphere are:
+  \begin{equation}\label{eq:geodesic_equations}
+    \ddot{\theta} = \sin(\theta)\cos(\theta)\dot{\phi}^2 \aand \ddot{\phi} = -2\cot(\theta)\dot{\phi}\dot{\theta}
+  .\end{equation}
+  Thus, we have expressed the geodesic equations in the desired form.
 \end{solution}
 
 \begin{solution}[(ii)]
+  Since $\theta = \theta(s)$ and $\phi = \phi(s)$, we must use the chain rule when computing the derivatives with respect to $s$. Computing the derivative of $\tilde{L}$ with respect to $s$, we have:
+  \begin{equation}\label{eq:dL_ds}
+    \pdv{\tilde{L}}{s} = \odv{}{s} \left(R^2\sin^2(\theta)\dot{\phi}\right) = R^2\left(2\sin(\theta)\cos(\theta)\dot{\theta}\dot{\phi} + \sin^2(\theta)\ddot{\phi}\right)
+  \end{equation}
+  Computing the derivative of $\u \cdot \u$ with respect to $s$, we have:
+  \begin{align}
+    \pdv{(\u \cdot \u)}{s} &= \odv{}{s} \left(R^2\left(\dot{\theta}^2(s) + \sin^2(\theta)\dot{\phi}^2(s)\right)\right)\tag*{} \\
+                           &= R^2\left(2\dot{\theta}\ddot{\theta}+ 2\sin(\theta)\cos(\theta)\dot{\theta}\dot{\phi}^2(s) + \sin^2(\theta)2\dot{\phi}\ddot{\phi}\right)\label{eq:du_ds}
+  .\end{align}
+
+  Plugging in the value we got from Equation~\eqref{eq:geodesic_equations} for $\ddot{\phi}$ into Equation~\eqref{eq:dL_ds}, we have:
+  \begin{align*}
+    \pdv{\tilde{L}}{s} &= R^2\left(2\sin(\theta)\cos(\theta)\dot{\theta}\dot{\phi} + \sin^2(\theta)\left(-\cot(\theta)\dot{\phi}\dot{\theta}\right)\right) \\
+                       &= R^2\left(2\sin(\theta)\cos(\theta)\dot{\theta}\dot{\phi} - 2\sin(\theta)\cos(\theta)\dot{\theta}\dot{\phi}\right) = 0
+  .\end{align*}
+  Thus, we have shown that $\tilde{L}$ is conserved.
+
+  Lastly, plugging in the values we got from Equation~\eqref{eq:geodesic_equations} for $\ddot{\theta}$ and $\ddot{\phi}$ into Equation~\eqref{eq:du_ds}, we have:
+  \begin{align*}
+    \pdv{(\u \cdot \u)}{s} &= R^2\left(2\dot{\theta}\left(\sin(\theta)\cos(\theta)\dot{\phi}^2\right) + 2\sin(\theta)\cos(\theta)\dot{\theta}\dot{\phi}^2 + \sin^2(\theta)2\dot{\phi}\left(-2\cot(\theta)\dot{\phi}\dot{\theta}\right)\right) \\
+                           &= R^2\left(2\sin(\theta)\cos(\theta)\dot{\theta}\dot{\phi}^2 + 2\sin(\theta)\cos(\theta)\dot{\theta}\dot{\phi}^2 - 4\sin(\theta)\cos(\theta)\dot{\theta}\dot{\phi}^2\right) = 0
+  .\end{align*}
+  Thus, we have shown that $\u \cdot \u$ is conserved.
 \end{solution}
 
 \begin{solution}[(iii)]
@@ -228,4 +268,7 @@
 \end{solution}
 
 \begin{solution}[(v)]
+  If a particle is moving at constant speed along a great circle on a sphere, its height ($z$-coordinate) will increase from the south pole to the north pole, then start decreasing back to the south pole, and so on. This up-and-down motion is sinusoidal in nature, as the particle's height varies periodically as it moves along the great circle.
+
+  The variable $z$ just represents the height of the particle above or below the equatorial plane of the sphere. It varies sinusoidally as the particle moves along the great circle. The variable $I$ represents the inclination of the great circle with respect to the equatorial plane. It determines the maximum and minimum heights (amplitudes) that the particle reaches during its motion. Lastly, the variable $\psi$ represents the phase of the sinusoidal motion. It determines the position of the particle along the great circle at any given time, effectively tracking its progress through one complete oscillation from south to north and back.
 \end{solution}
