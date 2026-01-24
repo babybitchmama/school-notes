@@ -86,11 +86,11 @@
   \[%
     L = \frac{1}{2}mg_{ij}(x)\dot{x}^i\dot{x}^j
   .\]%
-  Prove that the Euler-Lagrange equations can be written as
+  Prove that the Euler-Lagrange equations can be written as:
   \[%
     \ddot{x}^i + \Gamma_{jk}^i \dot{x}^j\dot{x}^k = 0
   ,\]%
-  where
+  where:
   \[%
     \Gamma_{jk}^i = \frac{1}{2}g^{i\ell}(\pd{k}g_{\ell j} + \pd{j}g_{\ell k} - \pd{\ell}g_{jk})
   .\]%
@@ -115,29 +115,29 @@
   \[%
     g_{jk}\ddot{x}^j + \pd{i}g_{jk}\dot{x}^i\dot{x}^j - \frac{1}{2}\pd{k}g_{ij}\dot{x}^i\dot{x}^j = 0
   .\]%
-  Since $\dot{x}^i\dot{x}^j$ is symmetric in $i$ and $j$, we can symmetrize the coefficients, giving us
+  Since $\dot{x}^i\dot{x}^j$ is symmetric in $i$ and $j$, we can symmetrize the coefficients, giving us:
   \[%
     \pd{i}g_{jk} = \frac{1}{2}[\pd{i}g_{jk} + \pd{i}g_{jk}] = \frac{1}{2}[\pd{i}g_{jk} + \pd{j}g_{ik}]
   .\]%
-  Therefore, we obtain
+  Therefore, we obtain:
   \begin{align*}
     g_{jk}\ddot{x}^j + \pd{i}g_{jk}\dot{x}^i\dot{x}^j - \frac{1}{2}\pd{k}g_{ij}\dot{x}^i\dot{x}^j &= g_{jk}\ddot{x}^j + \frac{1}{2}\left[\pd{i}g_{jk} + \pd{j}g_{ik}\right]\dot{x}^i\dot{x}^j - \frac{1}{2}\pd{k}g_{ij}\dot{x}^i\dot{x}^j \\
                                                                                                       &= g_{ik}\ddot{x}^i + \frac{1}{2}\left[\pd{i}g_{jk} + \pd{j}g_{ik} - \pd{k}g_{ij}\right]\dot{x}^i\dot{x}^j \\
                                                                                                       &= g^{\ell k}g_{ik}\ddot{x}^i + \frac{1}{2}g^{\ell k}\left[\pd{i}g_{jk} + \pd{j}g_{ik} - \pd{k}g_{ij}\right]\dot{x}^i\dot{x}^j
   .\end{align*}
-  Simplifying, $g^{\ell k}g_{ik} \ddot{x}^i = \delta_i^\ell \ddot{x}^i = \ddot{x}^\ell$. Thus, we have
+  Simplifying, $g^{\ell k}g_{ik} \ddot{x}^i = \delta_i^\ell \ddot{x}^i = \ddot{x}^\ell$. Thus, we have:
   \[%
     g^{\ell k}g_{ik}\ddot{x}^i + \frac{1}{2}g^{\ell k}\left[\pd{i}g_{jk} + \pd{j}g_{ik} - \pd{k}g_{ij}\right]\dot{x}^i\dot{x}^j = \ddot{x}^\ell + \frac{1}{2}g^{\ell k}\left[\pd{i}g_{jk} + \pd{j}g_{ik} - \pd{k}g_{ij}\right]\dot{x}^i\dot{x}^j
   .\]%
-  Re-labeling the dummy indices to $\ell \longleftrightarrow i \longleftrightarrow k$, we get
+  Re-labeling the dummy indices to $\ell \longleftrightarrow i \longleftrightarrow k$, we get:
   \[%
     \ddot{x}^\ell + \frac{1}{2}g^{\ell k}\left[\pd{i}g_{jk} + \pd{j}g_{ik} - \pd{k}g_{ij}\right]\dot{x}^i\dot{x}^j = \ddot{x}^i + \frac{1}{2}g^{i\ell}\left[\pd{k}g_{j\ell} + \pd{j}g_{k\ell} - \pd{\ell}g_{kj}\right]\dot{x}^k\dot{x}^j
   .\]%
-  Therefore, we have
+  Therefore, we have:
   \[%
     \ddot{x}^i + \frac{1}{2}g^{i\ell}\left[\pd{k}g_{j\ell} + \pd{j}g_{k\ell} - \pd{\ell}g_{kj}\right]\dot{x}^k\dot{x}^j = \ddot{x}^i + \Gamma_{jk}^i \dot{x}^k\dot{x}^j
   .\]%
-  Thus, we have
+  Thus, we have:
   \[%
     \ddot{x}^i + \Gamma_{jk}^i \dot{x}^k\dot{x}^j = 0
   .\qedhere\]%
@@ -179,7 +179,7 @@
     \pd{\theta}g_{\theta\theta} = 0, \quad \pd{\phi}g_{\theta\theta} = 0, \quad \pd{\theta}g_{\phi\phi} = 2R^2\sin(\theta)\cos(\theta), \quad \pd{\phi}g_{\phi\phi} = 0 \\
     \pd{\theta}g_{\theta\phi} = 0, \quad \pd{\phi}g_{\theta\phi} = 0, \quad \pd{\theta}g_{\phi\theta} = 0, \quad \pd{\phi}g_{\phi\theta} = 0
   \end{gather*}
-  Since the metric is diagonal and its components depend only on $\theta$, all derivatives $\pd{\phi}g_{\mu\nu}$ vanish, and any Christoffel symbol involving only $\theta\theta$-components is zero because $g_{\theta\theta}$ is constant. Moreover, because the Christoffel symbols are symmetric in their lower indices, it suffices to compute only those with distinct lower indices. Therefore, the only non-zero Christoffel symbols are
+  Since the metric is diagonal and its components depend only on $\theta$, all derivatives $\pd{\phi}g_{\mu\nu}$ vanish, and any Christoffel symbol involving only $\theta\theta$-components is zero because $g_{\theta\theta}$ is constant. Moreover, because the Christoffel symbols are symmetric in their lower indices, it suffices to compute only those with distinct lower indices. Therefore, the only non-zero Christoffel symbols are:
   \begin{align*}
     \Gamma_{\phi\phi}^\theta &= -\frac{1}{2}g^{\theta\theta}\pd{\theta}g_{\phi\phi} = -\frac{1}{2R^2}\pd{\theta}(R^2\sin^2(\theta)) = -\sin(\theta)\cos(\theta) \\
     \Gamma_{\phi\theta}^\phi &= \frac{1}{2}g^{\phi\phi}\pd{\theta}g_{\phi\phi} = \frac{1}{2R^2\sin^2(\theta)}\pd{\theta}(R^2\sin^2(\theta)) = \cot(\theta)
@@ -210,7 +210,7 @@
       \[%
         \cos(\theta) = \sin(I)\cos\left(\frac{s - C}{R}\right)
       ,\]%
-      where $\tilde{L} = R\cos(I)$ and $C$ are constants. \textit{Hint: first do the substitution $z = R\cos(\theta)$ and then $z = R\sin(I)\psi$}
+      where $\tilde{L} = R\cos(I)$ and $C$ is some constant. \textit{Hint: first do the substitution $z = R\cos(\theta)$ and then $z = R\sin(I)\psi$}
     \item (4 points) Explain, based on your 3D Euclidean intuition, why a particle moving at constant speed along a great circle on a sphere should exhibit sinusoidal motion on the z-axis. What are the interpretations of $z$, $I$, and $\psi$ in this picture.
   \end{enumerate}
 \end{problem}
@@ -226,7 +226,7 @@
   .\]%
   For $\mu = \phi$, we have:
   \[%
-    \ddot{\phi} + \Gamma_{\phi\theta}^\phi \dot{\phi}\dot{\theta} = \ddot{\phi} + \Gamma_{\theta\phi}^\phi \dot{\phi}\dot{\theta} = 0 \implies \ddot{\phi} + 2\cot(\theta)\dot{\phi}\dot{\theta} = 0 \implies \ddot{\phi} = -\cot(\theta)\dot{\phi}\dot{\theta}
+    \ddot{\phi} + \Gamma_{\phi\theta}^\phi \dot{\phi}\dot{\theta} = \ddot{\phi} + \Gamma_{\theta\phi}^\phi \dot{\phi}\dot{\theta} = 0 \implies \ddot{\phi} + 2\cot(\theta)\dot{\phi}\dot{\theta} = 0 \implies \ddot{\phi} = -2\cot(\theta)\dot{\phi}\dot{\theta}
   .\]%
   Thus, the geodesic equations on the sphere are:
   \begin{equation}\label{eq:geodesic_equations}
@@ -259,12 +259,78 @@
                            &= R^2\left(2\sin(\theta)\cos(\theta)\dot{\theta}\dot{\phi}^2 + 2\sin(\theta)\cos(\theta)\dot{\theta}\dot{\phi}^2 - 4\sin(\theta)\cos(\theta)\dot{\theta}\dot{\phi}^2\right) = 0
   .\end{align*}
   Thus, we have shown that $\u \cdot \u$ is conserved.
+
+  The quantity $\tilde{L}$ represents the angular momentum per unit mass of a particle moving on the sphere. It is conserved because there are no external torques acting on the particle, and thus its angular momentum remains constant throughout its motion.
 \end{solution}
 
 \begin{solution}[(iii)]
+  Using the fact that $\u \cdot \u = 1$, we can solve for $\dot{\theta}$ to get:
+  \begin{equation}\label{eq:dot_theta}
+    \dot{\theta} = \pm\sqrt{\frac{1}{R^2} - \sin^2(\theta)\dot{\phi}^2}
+  \end{equation}
+  Using the fact that $\tilde{L} = R^2\sin^2(\theta)\dot{\phi}$, we can solve for $\dot{\phi}$ to get:
+  \begin{equation}\label{eq:dot_phi}
+    \dot{\phi} = \frac{\tilde{L}}{R^2\sin^2(\theta)}
+  \end{equation}
+  Plugging Equation~\eqref{eq:dot_phi} into Equation~\eqref{eq:dot_theta}, we have:
+  \[%
+    \dot{\theta} = \pm\sqrt{\frac{1}{R^2} - \sin^2(\theta)\left(\frac{\tilde{L}}{R^2\sin^2(\theta)}\right)^2} = \pm\sqrt{\frac{1}{R^2} - \frac{\tilde{L}^2}{R^4\sin^2(\theta)}} = \pm\frac{1}{R}\sqrt{1 - \frac{\tilde{L}^2}{R^2\sin^2(\theta)}}
+  .\]%
+  Since $\dot{\theta} = \odv{\theta}/{s}$, we can rearrange to get:
+  \[%
+    \ds = \pm R\frac{\dd{\theta}}{\sqrt{1 - \frac{\tilde{L}^2}{R^2\sin^2(\theta)}}}
+  .\]%
+  Thus, we have shown that $s$ can be written as:
+  \[%
+    s = \pm R\int \frac{\dd{\theta}}{\sqrt{1 - \frac{\tilde{L}^2}{R^2\sin^2(\theta)}}}
+  .\qedhere\]%
 \end{solution}
 
 \begin{solution}[(iv)]
+  Using the substitution $z = R\cos(\theta)$, we have $\dd{z} = -R\sin(\theta)\dd{\theta}$, which gives us $\dd{\theta} = -\frac{\dd{z}}{R\sin(\theta)}$. Thus, we have:
+  \[%
+    s = \pm R\int \frac{-\frac{\dd{z}}{R\sin(\theta)}}{\sqrt{1 - \frac{\tilde{L}^2}{R^2\sin^2(\theta)}}} = \mp \int \frac{\dd{z}}{\sin(\theta)\sqrt{1 - \frac{\tilde{L}^2}{R^2\sin^2(\theta)}}}
+  .\]%
+  Then, using the identity $\sin^2(\theta) = 1 - \cos^2(\theta) = 1 - \frac{z^2}{R^2}$, we have:
+  \[%
+    s = \mp \int \frac{\dd{z}}{\sqrt{1 - \frac{z^2}{R^2}}\sqrt{1 - \frac{\tilde{L}^2}{R^2 - z^2}}}
+  .\]%
+  Next, we use the substitution $z = R\sin(I)\cos(\psi)$, which gives us $\dd{z} = -R\sin(I)\sin(\psi)\dd{\psi}$. Thus, we have:
+  \[%
+    s = \pm \int \frac{R\sin(I)\sin(\psi)\dd{\psi}}{\sqrt{1 - \sin^2(I)\cos^2(\psi)}\sqrt{1 - \frac{\tilde{L}^2}{R^2 - R^2\sin^2(I)\cos^2(\psi)}}}
+  .\]%
+  Using the substitution $u = \sin(I)\cos(\psi)$, we have $\du = -\sin(I)\sin(\psi)\dd{\psi}$. Thus, we have:
+  \[%
+    s = \mp R\int \frac{\du}{\sqrt{1 - u^2}\sqrt{1 - \frac{\tilde{L}^2}{R^2 - R^2u^2}}}
+  .\]%
+  Factoring out $R^2$ from the denominator of the second square root, we have:
+  \[%
+    s = \mp R\int \frac{\du}{\sqrt{1 - u^2}\sqrt{1 - \frac{\tilde{L}^2/R^2}{1 - u^2}}}
+  .\]%
+  Since $\tilde{L} = R\cos(I)$, we have $\tilde{L}^2/R^2 = \cos^2(I)$. Thus, we have:
+  \[%
+    s = \mp R\int \frac{\du}{\sqrt{1 - u^2}\sqrt{1 - \frac{\cos^2(I)}{1 - u^2}}} = \mp R\int \frac{\du}{\sqrt{1 - u^2}\sqrt{\frac{1 - u^2 - \cos^2(I)}{1 - u^2}}} = \mp R\int \frac{\du}{\sqrt{1 - u^2 - \cos^2(I)}}
+  .\]%
+  Using the identity $1 - u^2 - \cos^2(I) = \sin^2(I) - u^2$, we have:
+  \[%
+    s = \mp R\int \frac{\du}{\sqrt{\sin^2(I) - u^2}} = \mp R\arcsin\left(\frac{u}{\sin(I)}\right) + C
+  .\]%
+  Substituting back for $u$, we have:
+  \[%
+    s = \mp R\arcsin\left(\frac{\sin(I)\cos(\psi)}{\sin(I)}\right) + C = \mp R\arcsin(\cos(\psi)) + C
+  .\]%
+  Solving for $\cos(\psi)$, we have:
+  \[%
+    \cos(\psi) = \sin\left(\pm\frac{s - C}{R}\right)
+  .\]%
+  Since $\sin(x)$ is an odd function, we can absorb the negative sign into the constant $C$, giving us:
+  \[%
+    \cos(\psi) = \sin\left(\frac{s - C}{R}\right)
+  .\]%
+  Finally, substituting back for $z$, we have:
+  \[%
+    \cos(\theta) = \frac{z}{R} = \sin(I)\cos(\psi) = \sin(I)\cos\left(\frac{s - C}{R}\right)
+  .\qedhere\]%
 \end{solution}
 
 \begin{solution}[(v)]
