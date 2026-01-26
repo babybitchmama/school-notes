@@ -7,6 +7,19 @@
 \end{problem}
 
 \begin{solution}
+  The elements of the integral subdomain $D$ are the Gaussian integers, which can be expressed as $n + im$ where $n$ and $m$ are integers. The field of quotients of $D$, denoted as $F$, consists of all possible fractions formed by elements of $D$.
+  Therefore, the elements of the field of quotients $F$ can be expressed as:
+  \[%
+    F = \left\{\left.\frac{a + ib}{c + id}~\right\rvert a, b, c, d \in \Z, c + id \neq 0\right\}
+  .\]%
+  To simplify this expression, we can multiply the numerator and denominator by the complex conjugate of the denominator:
+  \[%
+    \frac{a + ib}{c + id} \cdot \frac{c - id}{c - id} = \frac{(a + ib)(c - id)}{c^2 + d^2}
+  .\]%
+  Thus, the elements of the field of quotients $F$ can be expressed as:
+  \[%
+    F = \left\{\left.\frac{p + iq}{r}~\right\rvert p, q, r \in \Z, r \neq 0 \right\}
+  .\qedhere\]%
 \end{solution}
 
 \begin{problem}[27.6]
@@ -14,6 +27,15 @@
 \end{problem}
 
 \begin{solution}
+  A polynomial of degree $\le 2$ in $\Z_5[x]$ can be expressed in the form:
+  \[%
+    p(x) = a + bx + cx^2
+  ,\]%
+  where $a, b, c$ can take any value from the set $\{0, 1, 2, 3, 4\}$ (the elements of $\Z_5$). Since there are 5 choices for each coefficient $a$, $b$, and $c$, the total number of polynomials of degree $\le 2$ in $\Z_5[x]$ is given by:
+  \[%
+    5 \times 5 \times 5 = 125
+  .\]%
+  Therefore, there are 125 polynomials of degree $\le 2$ in $\Z_5[x]$, including the zero polynomial.
 \end{solution}
 
 \begin{problem}[27.10]
@@ -21,6 +43,17 @@
 \end{problem}
 
 \begin{solution}
+  Let $p(x) = x^3 + 2$, $q(x) = 4x^2 + 3$, and $r(x) = x^7 + 3x^2 + 1$. We need to compute $\phii_5[p(x)q(x)r(x)]$. Using the evaluation homomorphism $\phii_5$, we evaluate each polynomial at $x = 5$:
+  \begin{gather*}
+    \phii_5[p(x)] = p(5) = 5^3 + 2 = 125 + 2 = 127 \equiv 1 \pmod{7}, \\
+    \phii_5[q(x)] = q(5) = 4(5^2) + 3 = 4(25) + 3 = 100 + 3 = 103 \equiv 5 \pmod{7}, \\
+    \phii_5[r(x)] = r(5) = 5^7 + 3(5^2) + 1 = 78125 + 75 + 1 = 78201 \equiv 4 \pmod{7}
+  .\end{gather*}
+  Now, we can compute $\phii_5[p(x)q(x)r(x)]$:
+  \[%
+    \phii_5[p(x)q(x)r(x)] = \phii_5[p(x)] \cdot \phii_5[q(x)] \cdot \phii_5[r(x)] \equiv 1 \cdot 5 \cdot 4 \equiv 20 \equiv 6 \pmod{7}
+  .\]%
+  Therefore, $\phii_5[(x^3 + 2)(4x^2 + 3)(x^7 + 3x^2 + 1)] \equiv 6 \pmod{7}$.
 \end{solution}
 
 \begin{problem}[27.14]
@@ -28,6 +61,15 @@
 \end{problem}
 
 \begin{solution}
+  Trying all candidates in $\Z_5 = \{0, 1, 2, 3, 4\}$:
+  \begin{gather*}
+    x = 0: 0^5 + 3(0^3) + 0^2 + 2(0) = 0 \equiv 0 \pmod{5}, \\
+    x = 1: 1^5 + 3(1^3) + 1^2 + 2(1) = 1 + 3 + 1 + 2 = 7 \equiv 2 \pmod{5}, \\
+    x = 2: 2^5 + 3(2^3) + 2^2 + 2(2) = 32 + 24 + 4 + 4 = 64 \equiv 4 \pmod{5}, \\
+    x = 3: 3^5 + 3(3^3) + 3^2 + 2(3) = 243 + 81 + 9 + 6 = 339 \equiv 4 \pmod{5}, \\
+    x = 4: 4^5 + 3(4^3) + 4^2 + 2(4) = 1024 + 192 + 16 + 8 = 1240 \equiv 0 \pmod{5}
+  .\end{gather*}
+  Therefore, the zeros of the polynomial $x^5 + 3x^3 + x^2 + 2x$ in $\Z_5$ are $x = 0$ and $x = 4$.
 \end{solution}
 
 \begin{problem}[27.16]
@@ -35,6 +77,20 @@
 \end{problem}
 
 \begin{solution}
+  Using Fermat's Theorem, we know that for any integer $a$ not divisible by a prime $p$, $a^{p-1} \equiv 1 \pmod{p}$. In this case, we have $p = 5$ and $a = 3$. Therefore, $3^4 \equiv 1 \pmod{5}$. We can reduce the exponents of each term in the polynomial modulo 4:
+  \begin{gather*}
+    231 \equiv 3 \pmod{4}, \\
+    117 \equiv 1 \pmod{4}, \\
+    53 \equiv 1 \pmod{4}
+  .\end{gather*}
+  Now, we can evaluate $\phii_3(x^{231} + 3x^{117} - 2x^{53} + 1)$:
+  \begin{align*}
+    \phii_3\left(x^{231} + 3x^{117} - 2x^{53} + 1\right) &= 3^{231} + 3\left(3^{117}\right) - 2\left(3^{53}\right) + 1 \\
+                                              &\equiv 3^3 + 3\left(3^1\right) - 2\left(3^1\right) + 1 \pmod{5} \\
+                                              &\equiv 27 + 9 - 6 + 1 \pmod{5} \\
+                                              &\equiv 31 \equiv 1 \pmod{5}
+  .\end{align*}
+  Therefore, $\phii_3(x^{231} + 3x^{117} - 2x^{53} + 1) \equiv 1 \pmod{5}$.
 \end{solution}
 
 \begin{problem}[27.17]
@@ -42,6 +98,25 @@
 \end{problem}
 
 \begin{solution}
+  We first check for the zero at $x = 0$ since we can't have $0^0$ in Fermat's theorem:
+  \[%
+    2(0^{219}) + 3(0^{74}) + 2(0^{57}) + 3(0^{44}) = 0 \equiv 0 \pmod{5}
+  .\]%
+  Again, picking $p = 5$, we reduce the exponents modulo 4:
+  \begin{gather*}
+    219 \equiv 3 \pmod{4}, \\
+    74 \equiv 2 \pmod{4}, \\
+    57 \equiv 1 \pmod{4}, \\
+    44 \equiv 0 \pmod{4}
+  .\end{gather*}
+  Now, we can evaluate the polynomial $2x^{219} + 3x^{74} + 2x^{57} + 3x^{44}$ for each $x$ in $\Z_5 = \{0, 1, 2, 3, 4\}$:
+  \begin{gather*}
+    x = 1: 2(1^3) + 3(1^2) + 2(1^1) + 3(1^0) = 2 + 3 + 2 + 3 = 10 \equiv 0 \pmod{5}, \\
+    x = 2: 2(2^3) + 3(2^2) + 2(2^1) + 3(2^0) = 16 + 12 + 4 + 3 = 35 \equiv 0 \pmod{5}, \\
+    x = 3: 2(3^3) + 3(3^2) + 2(3^1) + 3(3^0) = 54 + 27 + 6 + 3 = 90 \equiv 0 \pmod{5}, \\
+    x = 4: 2(4^3) + 3(4^2) + 2(4^1) + 3(4^0) = 128 + 48 + 8 + 3 = 187 \equiv 2 \pmod{5}
+  .\end{gather*}
+  Therefore, the zeros of the polynomial $2x^{219} + 3x^{74} + 2x^{57} + 3x^{44}$ in $\Z_5$ are $x = 0, 1, 2, 3$.
 \end{solution}
 
 \begin{problem}[27.24]
@@ -49,6 +124,7 @@
 \end{problem}
 
 \begin{solution}
+  Assume $D$ is an integral domain. We need to show that $D[x]$, the ring of polynomials with coefficients in $D$, is also an integral domain. Clearly, $D[x]$ is a commutative ring with unity since the addition and multiplication of polynomials are commutative and associative, and there exists a multiplicative identity (the polynomial $1$). To prove that $D[x]$ is an integral domain, we need to show that it has no zero divisors. Let $f(x), g(x) \in D[x]$ such that $f(x)g(x) = 0$. We need to show that either $f(x) = 0$ or $g(x) = 0$. Using Einstein's notation, we can write $f(x) = a_ix^i$ and $g(x) = b_jx^j$. The product $f(x)g(x)$ can be written as $a_ib_jx^{i+j}$. Since $D$ is an integral domain, the product of $a_ib_j$ is non-zero unless either $a_i = 0$ or $b_j = 0$. Therefore, if $f(x)g(x) = 0$, it must be that either $f(x) = 0$ or $g(x) = 0$. Thus, $D[x]$ is an integral domain.
 \end{solution}
 
 \begin{problem}[27.25]
@@ -61,12 +137,15 @@
 \end{problem}
 
 \begin{solution}[(i)]
+  The units of $D[x]$ given that $D$ is an integral domain are precisely the constant polynomials whose coefficients are units in $D$. This is because a polynomial $f(x) \in D[x]$ is a unit if there exists another polynomial $g(x) \in D[x]$ such that $f(x)g(x) = 1$. For this to hold, the degree of $f(x)$ must be zero (i.e., it must be a constant polynomial), and its coefficient must be a unit in $D$. Therefore, the units in $D[x]$ are exactly the elements of the form $u$, where $u$ is a unit in $D$.
 \end{solution}
 
 \begin{solution}[(ii)]
+  The units in $\Z[x]$ are the constant polynomials whose coefficients are units in $\Z$. The only units in $\Z$ are $1$ and $-1$. Therefore, the units in $\Z[x]$ are the constant polynomials $1$ and $-1$.
 \end{solution}
 
 \begin{solution}[(iii)]
+  The units in $\Z_7[x]$ are the constant polynomials whose coefficients are units in $\Z_7$. The units in $\Z_7$ are the non-zero elements $\{1, 2, 3, 4, 5, 6\}$. Therefore, the units in $\Z_7[x]$ are the constant polynomials $1, 2, 3, 4, 5,$ and $6$.
 \end{solution}
 
 \begin{problem}[27.32]
@@ -74,6 +153,20 @@
 \end{problem}
 
 \begin{solution}
+  To construct the ring homomorphism $\psi : R_1[x] \to R_2[x]$, we define it on the basis elements of $R_1[x]$. Any polynomial $f(x) \in R_1[x]$ can be expressed as $f(x) = a_ix^i$. We define $\psi$ on $f(x)$ as follows:
+  \[%
+    \psi(f(x)) = \psi\left(a_ix^i\right) = \phii(a_i)x^i
+  .\]%
+  We first verify that $\psi$ is a ring homomorphism. For any $f(x), g(x) \in R_1[x]$, we have:
+  \begin{gather*}
+    \psi(f(x) + g(x)) = \psi\left((a_i + b_i)x^i\right) = \phii(a_i + b_i)x^i = (\phii(a_i) + \phii(b_i))x^i = \psi(f(x)) + \psi(g(x)), \\
+    \psi(f(x)g(x)) = \psi\left(c_kx^k\right) = \phii(c_k)x^k = \left(\phii(a_i)\phii(b_j)\right)x^k = \psi(f(x))\psi(g(x))
+  .\end{gather*}
+  Therefore, $\psi$ is a ring homomorphism. Next, we show uniqueness. For any polynomial $f(x) = a_ix^i \in R_1[x]$, we have:
+  \[%
+    \psi'(f(x)) = \psi'\left(a_ix^i\right) = \phii(a_i)x^i = \psi(f(x))
+  .\]%
+  Thus, $\psi' = \psi$, proving the uniqueness of the ring homomorphism $\psi$.
 \end{solution}
 
 \begin{problem}[28.4]
@@ -81,4 +174,28 @@
 \end{problem}
 
 \begin{solution}
+  Using the division algorithm for polynomials in $\Z_7[x]$, we divide $f(x)$ by $g(x)$. Multiplying $g(x)$ by $x^4$ and subtracting it from $f(x)$, we get:
+  \[%
+    x^5 + 3x^4 + 4x^2 - 3x + 2
+  .\]%
+  Multiplying the remainder by $x^3$ and subtracting, we get:
+  \[%
+    x^4 + 3x^3 + 4x^2 - 3x + 2
+  .\]%
+  Multiplying $g(x)$ by $x^2$ and subtracting it from the remainder, we get:
+  \[%
+    x^3 + 7x^2 - 3x + 2
+  .\]%
+  Multiplying $g(x)$ by $x$ and subtracting it from the remainder, we get:
+  \[%
+    5x^2 - 6x + 2
+  .\]%
+  Lastly, multiplying $g(x)$ by $5$ and subtracting it from the remainder, we get:
+  \[%
+    -4x + 12 \equiv -4x + 5 \pmod{7}
+  .\]%
+  Therefore, the quotient and remainder are:
+  \[%
+    q(x) = x^4 + x^3 + x^2 + x + 5 \aand r(x) = -4x + 12 \equiv -4x + 5 \pmod{7}
+  .\qedhere\]%
 \end{solution}
