@@ -42,6 +42,11 @@
         \item Find the components of $\V$ in the orthonormal basis.
         \item Explain why the orthonormal components correspond to physical measurements.
       \end{itemize}
+    \item (2 points) An observer at fixed $r$ and $z$ moves in the $\phi$ direction with angular velocity $\omega$.
+      \begin{itemize}
+        \item Which basis corresponds to what the observer measures?
+        \item Why can coordinate components be misleading?
+      \end{itemize}
   \end{enumerate}
 \end{problem}
 
@@ -73,13 +78,19 @@
 \begin{solution}[(iii)]
   Computing the magnitude of $\V$ using the metric, we have:
   \[%
-    \bra{\V, \V} = g_{ij} V^i V^j = g_{\phi\phi} (V^{\phi})^2 = \omega^2
+    \sqrt{\bra{\V, \V}} = \sqrt{g_{ij} V^i V^j} = \sqrt{g_{\phi\phi} (V^{\phi})^2} = \sqrt{r^2\omega^2} = r\omega
   .\]%
   Writing $\V$ in terms of the orthonormal basis, we have:
   \[%
-    \V = V^{\hat{r}} \e_{\hat{r}} + V^{\hat{\phi}} \e_{\hat{\phi}} = 0 \cdot \e_{\hat{r}} + \omega r \cdot \e_{\hat{\phi}} = \omega r \e_{\hat{\phi}}
+    \V = V^{\hat{r}} \e_{\hat{r}} + V^{\hat{\phi}} \e_{\hat{\phi}} = 0 \cdot \e_{\hat{r}} + \omega r \cdot \e_{\hat{\phi}} = \omega r \e_{\hat{\phi}} = \omega\e_\phi
   .\]%
   The orthonormal components correspond to physical measurements because they are defined in a locally flat frame where the basis vectors have unit length. This means that the components directly represent measurable quantities, such as distances and angles, without any scaling factors that depend on the coordinates.
+\end{solution}
+
+\begin{solution}[(iv)]
+  The orthonormal basis corresponds to what the observer measures. This is because the orthonormal basis vectors are normalized and represent directions that are locally flat, making them suitable for physical measurements.
+
+  Coordinate components can be misleading because they depend on the choice of coordinates and may not reflect the actual physical distances or angles. For example, in cylindrical coordinates, the $\phi$ component of a vector can be scaled by the radial distance $r$, which can distort the interpretation of the vector's magnitude and direction. In contrast, orthonormal components provide a direct representation of physical quantities.
 \end{solution}
 
 \begin{problem}[2 (Euler-Lagrange)] (10 points) Let
