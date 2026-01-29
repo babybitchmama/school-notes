@@ -295,5 +295,7 @@ TSWLatexianTemp*
 
 # textbooks, current course, and the like
 current-course
-College/**/books/*.pdf
-University/**/books/*.pdf
+College/Year-1/**/books/*.pdf
+College/Year-2/**/books/*.pdf
+University/Year-1/books/*.pdf
+University/Year-2/books/*.pdf
