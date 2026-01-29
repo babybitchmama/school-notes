@@ -296,5 +296,5 @@ TSWLatexianTemp*
 current-course
 
 # Remove all the pdf folders inside the `book` that's located in the folder College (or University)/(fall,winter,spring)/mth-(crn)/books/*
-College/**/books/**
-University/**/books/**
+College/**/books/**/*.pdf
+University/**/books/**/*.pdf
