@@ -1,3 +1,5 @@
+For each of these problems, we will suppose that $X$ is a topological space and $f : X \to X$ is a map such that $f(p) \ne p$ for all $p \in X$, but $(f \circ f)(x) = \Id_X$. (In particular, $f(U) = f^{-1}(U)$ for any set $U$.) Define an equivalence relation on $X$ by putting $p \sim f(p)$ for all $p \in X$ (so every equivalence class has exactly two elements). Let $Y$ be the identification space $X/\sim$. Let $\pi : X \to Y$ be the identification map. \vspace{1em}
+
 \begin{problem}[1]
   Assume that $X$ is Hausdorff. The purpose of this problem is to prove that $Y$ is Hausdorff, as well.
   \begin{enumerate}
@@ -51,6 +53,7 @@
 \end{problem}
 
 \begin{solution}
+  For the orientation preserving map, take $K$ to be the boundary of a triangle with vertices $v_1$, $v_2$, and $v_3$. Define the map $\phi : K \to K$ by $\phi(v_1) = v_2$, $\phi(v_2) = v_3$, and $\phi(v_3) = v_1$. This map is an isomorphism of the simplicial complex $K$ that preserves the orientation of the triangle. The identification space $Y = |K|/\sim$ will be homeomorphic to a circle, which can be triangulated with a single edge and two vertices. For the non-orientation preserving map, take $K$ to be the boundary of a square with vertices $v_1$, $v_2$, $v_3$, and $v_4$. Define the map $\phi : K \to K$ by $\phi(v_1) = v_2$, $\phi(v_2) = v_1$, $\phi(v_3) = v_4$, and $\phi(v_4) = v_3$. This map is an isomorphism of the simplicial complex $K$ that reverses the orientation of the square. The identification space $Y = |K|/\sim$ will be homeomorphic to a figure-eight shape, which cannot be triangulated in a way that corresponds directly to equivalence classes of simplices in $K$ without further subdivision.
 \end{solution}
 
 \begin{problem}[4]
