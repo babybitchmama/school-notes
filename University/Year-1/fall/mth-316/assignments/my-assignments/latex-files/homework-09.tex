@@ -1,0 +1,334 @@
+\begin{center}
+  SECTION 4.2
+\end{center}
+
+\setcounter{chapter}{4}
+\setcounter{section}{2}
+
+\medskip
+
+\begin{exercise}[1]
+  \begin{enumerate}
+    \item Supply the details for how Corollary 4.2.4 part (ii) follows from the
+      Sequential Criterion for Functional Limits in Theorem 4.2.3 and the
+      Algebraic Limit Theorem for sequences proved in Chapter 2.
+
+    \item Now, write another proof of Corollary 4.2.4 part (ii) directly from
+      Definition 4.2.1 without using the sequential criterion in Theorem 4.2.3.
+  \end{enumerate}
+\end{exercise}
+
+\begin{proof}[Solution to (i)]
+  Let $f : A \to \R$ and $g : A \to \R$. By the Sequential Criterion for
+  Functional Limits, since $\lim_{x \to c} f(x) = L$, $\lim_{x \to c} g(x) = M$,
+  all sequences $(a_n) \to c$, we have $f(x_n) \to L$ and $g(x_n) \to M$. By the
+  Algebraic Limit Theorem for sequences, we have $\lim_{n \to \infty} [f(x_n) +
+  g(x_n)] = L + M$. Therefore, $\lim_{x \to c} [f(x) + g(x)] = L + M$.
+\end{proof}
+
+\begin{proof}[Solution to (ii)]
+  Let $\epsilon > 0$. Let $\delta_1$ such that $0 < \lvert x - c \rvert <
+  \delta_1 \implies \lvert f(x) - L \rvert < \sfrac{\epsilon}{2}$. Let
+  $\delta_2$ such that $0 < \lvert x - c \rvert < \delta_2 \implies \lvert g(x)
+  - M \rvert < \sfrac{\epsilon}{2}$. Let $\delta = \min\{\delta_1, \delta_2\}$.
+  Let $x$ be arbitrary. Suppose $0 < \lvert x - c \rvert < \delta$. Then, we get
+  the following
+  \[%
+    0 < \lvert x - c \rvert < \delta \implies \lvert [f(x) + g(x)] - [M + L] \rvert < \lvert f(x) - M \rvert + \lvert g(x) - L \rvert < \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon
+  .\]%
+
+  Therefore, $0 < \lvert x - c \rvert < \delta \implies \lvert [f(x) + g(x)] -
+  [M + L] \rvert < \epsilon$.
+
+  It follows that $(\forall \epsilon > 0)(\exists \delta > 0)(\forall x \in A)[0
+  < \lvert x - c \rvert < \delta \implies \lvert [f(x) + g(x)] - [M + L] \rvert
+  < \epsilon]$.
+\end{proof}
+
+\medskip
+
+\begin{exercise}[3]
+  Review the definition of Thomae's function $t(x)$ from Section 4.1.
+  \[%
+    t(x) = \begin{cases}
+      1 & \textrm{if $x = 0$} \\
+      1/n & \textrm{if $x = \sfrac{m}{n}$ in lowest terms with $n > 0$} \\
+      0 & \textrm{if $x \notin \Q$}
+    \end{cases}
+  .\]%
+
+  \begin{enumerate}
+    \item Construct three different sequences $(x_n)$, $(y_n)$, and $(z_n)$,
+      each of which converges to $1$ without using the number $1$ as a term in
+      the sequence.
+
+    \item Now, compute $\lim_{n \to \infty} t(x_n)$, $\lim_{n \to \infty}
+      t(y_n)$, and $\lim_{n \to \infty} t(z_n)$.
+
+    \item Make an educated conjecture for $\lim_{x \to 1} t(x)$, and use
+      Definition 4.2.1 B to verify the claim (Given $\epsilon > 0$, consider the
+      set of points $\{x \in \R \mid t(x) \ge \epsilon\}$. Argue that all the
+      points in this set are isolated).
+  \end{enumerate}
+\end{exercise}
+
+\begin{proof}[Solution to (i)]
+  Let $(a_n) = (0, \sfrac{1}{2}, \sfrac{2}{3}, \sfrac{3}{4}, \dots)$, $(b_n) =
+  (0, \sfrac{1}{3}, \sfrac{2}{4}, \sfrac{3}{5}, \dots)$, and $(c_n) = (0,
+  \sfrac{1}{4}, \sfrac{2}{5}, \sfrac{3}{6}, \dots)$.
+\end{proof}
+
+\begin{proof}[Solution to (ii)]
+  We have $\lim_{n \to \infty} t(a_n) = 1$, $\lim_{n \to \infty} t(b_n) = 1$,
+  and $\lim_{n \to \infty} t(c_n) = 1$.
+\end{proof}
+
+\begin{proof}[Solution to (iii)]
+  I conjecture that $\lim_{x \to 1} t(x) = 0$.
+
+  Let $\epsilon > 0$. From the definition of $t(x)$, the condition $t(x) \geq
+  \epsilon$ implies that $x = \frac{m}{n}$ in lowest terms with $n \leq
+  \frac{1}{\epsilon}$. Since $m$ is bounded by $\lvert m \rvert \leq n$ and $n$
+  is bounded by $\frac{1}{\epsilon}$, there are finitely many such rational
+  numbers.
+
+  These rational points $\frac{m}{n}$, where $n \leq \frac{1}{\epsilon}$, form a
+  discrete set. Hence, outside a small neighborhood of these points, $t(x) <
+  \epsilon$. Define $\delta > 0$ as the minimum distance between $1$ and any of
+  these finitely many rational points
+  \[%
+    \delta = \min\left(\left\{\abs(1 - x) \left\lvert~x = \frac{m}{n}, n \leq \frac{1}{\epsilon}\right\}\right)\right.
+  .\]%
+
+  Then, for any $x \in \R$ such that $0 < \lvert x - 1 \rvert < \delta$, it
+  follows that $t(x) < \epsilon$.
+
+  Therefore, $(\forall \epsilon > 0)(\exists \delta > 0)(\forall x \in \R)[0 <
+  \lvert x - 1 \rvert < \delta \implies t(x) < \epsilon]$.
+
+  It follows that $\lim_{x \to 1} t(x) = 0$.
+\end{proof}
+
+\medskip
+
+\begin{exercise}[7]
+  Let $g : A \to \R$ and assume that $f$ is a bounded function on $A$ in the
+  sense that that there exists $M > 0$ satisfying $\lvert f(x) \rvert \le M$ for
+  all $x \in A$.
+
+  Show that $\lim_{x \to \infty} f(x) = 0$, then $\lim_{x \to a} f(x)g(x) = 0$
+  for any function $g$ (with domain equal to the domain of $f$).
+\end{exercise}
+
+\begin{proof}[Solution]
+  Let $g : A \to \R$ and let $f$ be bounded on $A$. Then, there exists an $M >
+  0$ such that $(\forall x \in A)[\lvert f(x) \rvert \le M]$. Then, $(\forall x
+  \in A)[\lvert f(x) \cdot g(x) \rvert \le M \cdot \lvert g(x) \rvert]$. Set
+  $\delta$ small enough such that $\lvert g(x) \rvert < \frac{\epsilon}{M}$.
+  Then, we get $\lvert f(x) \cdot g(x) \rvert \le M \cdot \lvert g(x) \rvert < M
+  \cdot \frac{\epsilon}{M} = \epsilon$.
+\end{proof}
+
+\medskip
+
+\begin{exercise}[8]
+  Compute each limit or state that it does not exist. Use the tools developed in
+  this section to justify your answer.
+
+  \begin{enumerate}
+    \item $\lim_{x \to 2} \frac{\lvert x - 2 \rvert}{x - 2}$.
+    \item $\lim_{x \to \frac{7}{4}} \frac{\lvert x - 2 \rvert}{x - 2}$.
+    \item $\lim_{x \to 0} (-1)^{\lfloor \sfrac{1}{x} \rfloor}$.
+    \item $\lim_{x \to 0} \sqrt[3]{x} (-1)^{\lfloor \sfrac{1}{x} \rfloor}$.
+  \end{enumerate}
+\end{exercise}
+
+\begin{proof}[Solution to (i)]
+  The limit does not exist.
+
+  Let $(x_n) = 2 + \frac{1}{n}$ and $(y_n) = 2 - \frac{1}{n}$. Since $\lim_{n
+  \to \infty} a_n = 2 = \lim_{n \to \infty} y_n$ and $\lim_{n \to \infty} f(x_n)
+  = 1 \ne -1 = \lim_{n \to \infty} f(y_n)$, then by the Divergence Criterion for
+  Functional Limits, the limit does not exist.
+\end{proof}
+
+\begin{proof}[Solution to (ii)]
+  The limit is $-1$.
+
+  The function $\frac{\lvert x - 2 \rvert}{x - 2}$ can be simplified as
+  \[%
+    \frac{\lvert x - 2 \rvert}{x - 2} =
+    \begin{cases}
+      \phantom{-}1, & \text{if } x - 2 > 0 \\
+      -1, & \text{if } x - 2 < 0
+    \end{cases}
+  .\]%
+  Notice that when $x = \frac{7}{4}$, we have $x - 2 = \frac{7}{4} - 2 =
+  -\frac{1}{4} < 0$. Thus, as $x \to \frac{7}{4}$, $x - 2 < 0$.
+
+  Let $\epsilon > 0$. Suppose $0 < \lvert x - \frac{7}{4} \rvert < \delta$, for
+  some $\delta > 0$. Thus, for $x$ sufficiently close to $\frac{7}{4}$,
+  $\frac{\lvert x - 2 \rvert}{x - 2} = -1$, and we find
+  \[%
+    \left\lvert \frac{\lvert x - 2 \rvert}{x - 2} + 1 \right\rvert = \lvert -1 + 1 \rvert = 0 < \epsilon
+  .\]%
+  We can choose any $\delta > 0$, such as $\delta = 1$, to ensure this
+  inequality holds because the function is constant at $-1$ near $x =
+  \frac{7}{4}$ when $x - 2 < 0$.
+
+  Therefore, $\lim_{x \to \frac{7}{4}} \frac{\lvert x - 2 \rvert}{x - 2} = -1$.
+\end{proof}
+
+\begin{proof}[Solution to (iii)]
+  The limit does not exist.
+
+  Let $(x_n) = \frac{1}{2n}$ and $(y_n) = \frac{1}{2n + 1}$. Since $\lim_{n \to
+  \infty} x_n = 0 = \lim_{n \to \infty} y_n$ and $\lim_{n \to \infty} f(x_n) = 1
+  \ne -1 = \lim_{n \to \infty} f(y_n)$, then by the Divergence Criterion for
+  Functional Limits, the limit does not exist.
+\end{proof}
+
+\begin{proof}[Solution to (iv)]
+  The limit is $0$.
+
+  Let $g(x) = (-1)^{\lfloor \sfrac{1}{x} \rfloor}$ and $g(x) = \sqrt[3]{x}$.
+  Then $\lim_{x \to 0} g(x) = 0$ and $f(x)$ is bounded by $M > 0$, then, by
+  Exercise 4.2.7, $\lim_{x \to 0} f(x) \cdot g(x) = 0$.
+\end{proof}
+
+I don't know if you want me to prove $\lim_{x \to 0} f(x)$, but I will anyway.
+
+\begin{proof}[Proof of $\lim_{x \to 0} f(x) = 0$]
+  Let $\epsilon > 0$. Let $\delta = \epsilon^3$. Let $x$ be arbitrary. Suppose
+  $0 < \lvert x \rvert < \delta$. Then, we get
+  \[%
+    0 < \lvert x \rvert < \delta \implies \lvert \sqrt[3]{x} \rvert < \delta^{\sfrac{1}{3}} = \epsilon
+  .\]%
+
+  Therefore, $0 < \lvert x \rvert < \delta \implies \lvert \sqrt[3]{x} \rvert <
+  \epsilon$.
+
+  It follows that $(\forall \epsilon > 0)(\exists \delta > 0)(\forall x \in A)[0
+  < \lvert x \rvert < \delta \implies \lvert \sqrt[3]{x} \rvert < \epsilon]$.
+\end{proof}
+
+\medskip
+
+\begin{exercise}[11]
+  Let $f$, $g$, and $h$ satisfy $f(x) \le g(x) \le h(x)$ for all $x$ in some
+  common domain $A$. If $\lim_{x \to c} f(x) = L$ at some point $c \in A$, show
+  $\lim_{x \to c} g(x) = L$ as well.
+\end{exercise}
+
+\begin{proof}[Solution]
+  Let $\epsilon > 0$. Assume $\lim_{x \to c} f(x) = L = \lim_{x \to c} h(x)$. By
+  definition of a limit, there exist $\delta_1 > 0$ and $\delta_2 > 0$ such that
+  \[%
+    0 < \lvert x - c \rvert < \delta_1 \implies \lvert f(x) - L \rvert < \frac{\epsilon}{2} \aand 0 < \lvert x - c \rvert < \delta_2 \implies \lvert h(x) - L \rvert < \frac{\epsilon}{2}
+  .\]%
+  Let $\delta = \min\{\delta_1, \delta_2\}$. Then, for $0 < \lvert x - c \rvert
+  < \delta$, we have
+  \[%
+    L - \frac{\epsilon}{2} < f(x) < L + \frac{\epsilon}{2} \aand L - \frac{\epsilon}{2} < h(x) < L + \frac{\epsilon}{2}
+  .\]%
+  Suppose $0 < \lvert x - c \rvert < \delta$. Then, we get
+  \begin{align*}
+    \lvert g(x) - L \rvert &\le \lvert g(x) - f(x) \rvert + \lvert f(x) - L \rvert \\
+                           &\le \lvert h(x) - f(x) \rvert + \lvert f(x) - L \rvert \\
+                           &\le \lvert h(x) - L \rvert + \lvert L - f(x) \rvert + \lvert f(x) - L \rvert \\
+                           &\le \lvert h(x) - L \rvert + 2\lvert f(x) - L \rvert \\
+                           &< \frac{\epsilon}{2} + 2\frac{\epsilon}{4} = \epsilon
+  .\end{align*}
+
+  Therefore, $0 < \lvert x - c \rvert < \delta \implies \lvert g(x) - L \rvert <
+  \epsilon$.
+
+  It follows that $(\forall \epsilon > 0)(\exists \delta > 0)(\forall x \in A)[0
+  < \lvert x - c \rvert < \delta \implies \lvert g(x) - L \rvert < \epsilon].$
+\end{proof}
+
+\medskip
+
+\begin{center}
+  SECTION 4.3
+\end{center}
+
+\setcounter{section}{3}
+
+\medskip
+
+\begin{exercise}[1]
+  Let $g(x) = \sqrt[3]{x}$
+  \begin{enumerate}
+    \item Prove that $g$ is continuous at $c = 0$.
+
+    \item Prove that $g$ is continuous at a point $c \ne 0$ (The identity $a^3 -
+      b^3 = (a - b)(a^2 + ab + b^2)$ will be helpful).
+  \end{enumerate}
+\end{exercise}
+
+\begin{proof}[Solution to (i)]
+  Let $\epsilon > 0$. Let $\delta = \epsilon^3$. Let $x$ be arbitrary. For $c =
+  0$, suppose $\lvert x - 0 \rvert < \delta$. Then, we get
+  \[%
+    \lvert x \rvert < \delta \implies \lvert \sqrt[3]{x} \rvert < \delta^{\sfrac{1}{3}} = \epsilon
+  .\]%
+
+  Therefore, $\lvert x \rvert < \delta \implies \lvert \sqrt[3]{x} \rvert <
+  \epsilon$.
+
+  It follows that $(\forall \epsilon > 0)(\exists \delta > 0)[\lvert x \rvert <
+  \delta \implies \lvert \sqrt[3]{x} \rvert < \epsilon]$.
+
+  Therefore, by the definition of continuity, $g$ is continuous at $c = 0$.
+\end{proof}
+
+\begin{proof}[Solution to (ii)]
+  Let $\epsilon > 0$. Choose $\delta < \lvert c \rvert$. Let $x$ be arbitrary.
+  For $c \ne 0$, suppose $\lvert x - c \rvert < \delta$. Using the given
+  inequality, we get
+  \[%
+    \lvert x^{\sfrac{1}{3}} - c^{\sfrac{1}{3}} \rvert = \lvert x - c \rvert \cdot \lvert x^{\sfrac{2}{3}} + x^{\sfrac{1}{3}} \cdot c^{\sfrac{1}{3}} + c^{\sfrac{2}{3}} \rvert
+  .\]%
+  Since $\delta < \lvert c \rvert$, we get $\lvert x - c \rvert < \delta
+  \implies \lvert x \rvert < \delta < \delta + \lvert c \rvert < 2 \lvert c
+  \rvert$. Finding an upper bound for the right-hand side of the first
+  inequality gives us
+  \begin{align*}
+    \lvert x - c \rvert \cdot \lvert x^{\sfrac{2}{3}} + x^{\sfrac{1}{3}} \cdot c^{\sfrac{1}{3}} + c^{\sfrac{2}{3}} \rvert &\le \lvert x^{\sfrac{2}{3}} \rvert + \lvert x^{\sfrac{1}{3}} \cdot c^{\sfrac{1}{3}} \rvert + \lvert c^{\sfrac{2}{3}} \rvert \\
+                                                                                                                          &\le 2^{\sfrac{2}{3}} \cdot \lvert c^{\sfrac{2}{3}} \rvert + 2^{\sfrac{1}{3}} \cdot \lvert c^{\sfrac{2}{3}} \rvert + \lvert c^{\sfrac{2}{3}} \rvert = M
+  .\end{align*}
+
+  Then, we get $\lvert x^{\sfrac{1}{3}} - c^{\sfrac{1}{3}} \rvert \le \lvert x -
+  c \rvert \cdot M$. Let $\delta = \frac{\epsilon}{M}$. Then, we get $\lvert x -
+  c \rvert \cdot M < \delta \cdot M = \epsilon$
+
+  Therefore, $\lvert x - c \rvert < \delta \implies \lvert x^{\sfrac{1}{3}} -
+  c^{\sfrac{1}{3}} \rvert < \epsilon$.
+
+  It follows that $(\forall \epsilon > 0)(\exists \delta > 0)(\forall x \in
+  A)[\lvert x - c \rvert < \delta \implies \lvert x^{\sfrac{1}{3}} -
+  c^{\sfrac{1}{3}} \rvert < \epsilon]$.
+
+  Therefore, by the definition of continuity, $g$ is continuous at $c \ne 0$.
+  Since $g$ is continuous at $c = 0$ and $c \ne 0$, $g$ is continuous on $A$
+  (its domain).
+\end{proof}
+
+\medskip
+
+\begin{exercise}[5]
+  Show using Definition 4.3.1 that if $c$ is an isolated point of $A \subseteq \R$, then $f : A \to \R$ is continuous at $c$.
+\end{exercise}
+
+\begin{proof}[Solution]
+  Let $\epsilon > 0$. Since $c$ is an isolated point, then we can choose a
+  $\delta > 0$ small enough such that $x \in V_{\delta}(c)$ if and only if $x =
+  c$. Then, we get $\lvert x - c \rvert = 0 < \delta$. Then, clearly $\lvert
+  f(x) - f(c) \rvert = 0 < \epsilon$.
+
+  Therefore, $(\forall \epsilon > 0)(\exists \delta > 0)[\lvert x - c \rvert <
+  \delta \implies \lvert f(x) - f(c) \rvert < \epsilon]$.
+
+  Therefore, by the definition of continuity, $f$ is continuous at $c$.
+\end{proof}

@@ -1,0 +1,129 @@
+\documentclass[notitlepage]{report}
+
+\title{Several-Variab Calc II}
+\date{January 6, 2025}
+
+\usepackage{derivative}
+\usepackage{xcolor}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{breqn}
+\usepackage{xifthen}
+\usepackage{geometry}
+\usepackage{xfrac}
+\geometry{
+  top=1in,
+  bottom=1.5in,
+  right=1in,
+  left=1in,
+}
+
+\newcommand\adX{\text{ad}X}
+
+\renewcommand\a{\mathbf{a}}
+\renewcommand\b{\mathbf{b}}
+\renewcommand\c{\mathbf{c}}
+\renewcommand\d{\mathbf{d}}
+\newcommand\e{\mathbf{e}}
+\newcommand\f{\mathbf{f}}
+\newcommand\FF{\mathbf{F}}
+\newcommand\g{\mathbf{g}}
+\newcommand\n{\mathbf{n}}
+\newcommand\p{\mathbf{p}}
+\renewcommand\r{\mathbf{r}}
+\newcommand\Ta{\mathbf{T}}
+\renewcommand\u{\mathbf{u}}
+\renewcommand\v{\mathbf{v}}
+\newcommand\w{\mathbf{w}}
+\newcommand\x{\mathbf{x}}
+\newcommand\y{\mathbf{y}}
+\newcommand\z{\mathbf{z}}
+\newcommand\zero{\mathbf{0}}
+\newcommand\ad{\operatorname{ad}}
+\newcommand\Ad{\operatorname{Ad}}
+\newcommand\hb{\hbar}
+
+% Hat vectors
+\newcommand\ah{\mathbf{a}}
+\newcommand\bh{\mathbf{b}}
+\newcommand\ch{\mathbf{c}}
+\renewcommand\dh{\mathbf{d}}
+\newcommand\eh{\mathbf{e}}
+\newcommand\ph{\mathbf{p}}
+\newcommand\uh{\mathbf{u}}
+\newcommand\vh{\mathbf{v}}
+\newcommand\wh{\mathbf{w}}
+\newcommand\xh{\mathbf{x}}
+\newcommand\yh{\mathbf{y}}
+\newcommand\zh{\mathbf{z}}
+
+% Unit vectors
+\newcommand\ui{\boldsymbol{\imath}}
+\newcommand\uj{\boldsymbol{\jmath}}
+\newcommand\uk{\mathbf{k}}
+
+% Matrix groups
+\newcommand\Ec{\mathrm{E}}
+\newcommand\GL{\mathrm{GL}}
+\newcommand\Or{\mathrm{O}}
+\newcommand\PGL{\mathrm{PGL}}
+\newcommand\PSL{\mathrm{PSL}}
+\newcommand\PSO{\mathrm{PSO}}
+\newcommand\PSU{\mathrm{PSU}}
+\newcommand\SL{\mathrm{SL}}
+\newcommand\SO{\mathrm{SO}}
+\newcommand\Spin{\mathrm{Spin}}
+\newcommand\Sp{\mathrm{Sp}}
+\newcommand\SU{\mathrm{SU}}
+\newcommand\U{\mathrm{U}}
+\newcommand\Mat{\mathrm{Mat}}
+\renewcommand\P{\mathbb{P}}
+
+% Lie groups
+\newcommand\ec{\mathrm{e}}
+\newcommand\gl{\mathrm{gl}}
+\newcommand\so{\mathrm{so}}
+\newcommand\su{\mathrm{su}}
+\newcommand\ggl{\mathfrak{g}}
+\newcommand\hl{\mathfrak{h}}
+
+% Subspaces
+\newcommand\B{\mathcal{B}}
+\newcommand\C{\mathbb{C}}
+\newcommand\D{\mathbb{D}}
+\newcommand\E{\mathbb{E}}
+\newcommand\F{\mathbb{F}}
+\newcommand\I{\mathbb{I}}
+\newcommand\N{\mathbb{N}}
+\newcommand\Q{\mathbb{Q}}
+\newcommand\R{\mathbb{R}}
+\newcommand\Z{\mathbb{Z}}
+
+% Helpful text in math mode
+\newcommand\aand{\quad\text{and}\quad}
+\newcommand\oor{\quad\text{or}\quad}
+\renewcommand\and{\text{and}}
+\newcommand\qtq[1]{\quad\text{#1}\quad}
+\newcommand\Col{\text{Col}}
+\newcommand\Nul{\text{Null}}
+\newcommand\Range{\text{Range}}
+\newcommand\Ker{\text{Ker}}
+\newcommand\Tr{\text{Tr}}
+\newcommand\Rank{\text{Rank}}
+\newcommand\proj{\text{proj}}
+\newcommand\comp{\text{comp}}
+\newcommand\Sspan{\text{Span}}
+\renewcommand\Re{\text{Re}}
+\renewcommand\Im{\text{Im}}
+
+\newenvironment{exercise}[1][-1]{\noindent\textbf{Exercise #1}.}
+
+\begin{document}
+  \input{./chapters/chapter-02.tex}
+  % \input{./chapters/chapter-03.tex}
+  % \input{./chapters/chapter-05.tex}
+\end{document}

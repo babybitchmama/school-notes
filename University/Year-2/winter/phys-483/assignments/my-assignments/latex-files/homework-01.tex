@@ -1,0 +1,358 @@
+\begin{problem}[1 (Lorentz Transformation)]
+  \begin{enumerate}
+    \item (2 points) The coordinate transformation for an observer moving at a constant velocity Vx relative to a stationary observer is given by
+      \begin{align*}
+        t' &= \gamma_x(t - V_xx) \\
+        x' &= \gamma_x(x - V_xt) \\
+        y' &= y \\
+        z' &= z
+      .\end{align*}
+      How can we write this as a $4 \times 4$ Lorentz transformation matrix?
+
+    \item (5 points) More generally, suppose we have
+      \begin{align*}
+        t' &= \mu t + + \nu x \\
+        x' &= \sigma t + \gamma x \\
+        y' &= \rho y \\
+        z' &= \lambda z
+      .\end{align*}
+      How can we write this as a $4 \times 4$ Lorentz transformation matrix?
+  \end{enumerate}
+\end{problem}
+
+\begin{solution}[(i)]
+  Given the coordinate transformations, we can express them in matrix form as follows
+  \[%
+    \begin{pmatrix}
+      t' \\
+      x' \\
+      y' \\
+      z'
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+      \gamma_x & -\gamma_x V_x & 0 & 0 \\
+      -\gamma_x V_x & \gamma_x & 0 & 0 \\
+      0 & 0 & 1 & 0 \\
+      0 & 0 & 0 & 1
+    \end{pmatrix}
+    \begin{pmatrix}
+      t \\
+      x \\
+      y \\
+      z
+    \end{pmatrix}
+  .\qedhere\]%
+\end{solution}
+
+\begin{solution}[(ii)]
+  More generally, we can express the given coordinate transformations in matrix form as follows
+  \[%
+    \begin{pmatrix}
+      t' \\
+      x' \\
+      y' \\
+      z'
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+      \mu & \nu & 0 & 0 \\
+      \sigma & \gamma & 0 & 0 \\
+      0 & 0 & \rho & 0 \\
+      0 & 0 & 0 & \lambda
+    \end{pmatrix}
+    \begin{pmatrix}
+      t \\
+      x \\
+      y \\
+      z
+    \end{pmatrix}
+  .\qedhere\]%
+\end{solution}
+
+\begin{problem}[2 (Coordinate Transformations)]
+  Let
+  \[%
+    x = r\cos(\theta) \aand y = r\sin(\theta)
+  .\]%
+  \begin{enumerate}
+    \item (2 points) Compute $\pdv{x}/{r}$, $\pdv{x}/{\theta}$, $\pdv{y}/{r}$, and $\pdv{y}/{\theta}$.
+    \item (2 points) Use the chain rule to express $\pdv{}/{r}$ in terms of $\pdv{}/{x}$ and $\pdv{}/{y}$.
+    \item (2 points) Interpret $\pdv{}/{r}$ geometrically.
+  \end{enumerate}
+\end{problem}
+
+\begin{solution}[(i)]
+  Computing the partial derivatives, we have
+  \begin{gather*}
+    \pdv{x}{r} = \cos(\theta), \quad \pdv{x}{\theta} = -r\sin(\theta) \\
+    \pdv{y}{r} = \sin(\theta), \quad \pdv{y}{\theta} = r\cos(\theta)
+  .\qedhere\end{gather*}
+\end{solution}
+
+\begin{solution}[(ii)]
+  Using the Chain Rule, we have
+  \[%
+    \pdv{}{r} = \pdv{x}{r}\pdv{}{x} + \pdv{y}{r}\pdv{}{y} = \cos(\theta)\pdv{}{x} + \sin(\theta)\pdv{}{y}
+  .\qedhere\]%
+\end{solution}
+
+\begin{solution}[(iii)]
+  Geometrically, $\pdv{}/{r}$ represents the rate of change of a function as we move radially outward from the origin in the direction specified by the angle $\theta$. It combines the contributions from both the $x$ and $y$ directions, weighted by the cosine and sine of the angle $\theta$, respectively. This operator shows how a function changes as we increase our distance from the origin while maintaining a constant angle $\theta$.
+\end{solution}
+
+\begin{problem}[3 (Differentials and Geometry)]
+  Given the scalar function $f(x, y) = x^2y$:
+  \begin{enumerate}
+    \item (3 points) Compute the differential $\dd{f}$.
+    \item (2 points) Interpret $\dd{f}$ geometrically.
+  \end{enumerate}
+\end{problem}
+
+\begin{solution}[(i)]
+  The differential of $f$ is given by
+  \[%
+    \dd{f} = \pdv{f}{x}\dd{x} + \pdv{f}{y}\dd{y} = 2xy\dd{x} + x^2\dd{y}
+  .\qedhere\]%
+\end{solution}
+
+\begin{solution}[(ii)]
+  Geometrically, the differential $\dd{f}$ represents the approximate change in the function $f$ resulting from small changes in the variables $x$ and $y$. Specifically, it quantifies how much $f$ will change when we make infinitesimal adjustments $\dd{x}$ and $\dd{y}$ to the coordinates. The terms $2xy\dd{x}$ and $x^2\dd{y}$ indicate how sensitive the function is to changes in each variable, weighted by their respective partial derivatives.
+\end{solution}
+
+\begin{problem}[4 (Change of Basis)]
+  Write the $2 \times 2$ rotation matrix $R(\theta)$ and show how vector components transform.
+\end{problem}
+
+\begin{solution}
+  The $2 \times 2$ rotation matrix $R(\theta)$ is given by
+  \[%
+    R(\theta) = \begin{pmatrix}
+      \cos(\theta) & -\sin(\theta) \\
+      \sin(\theta) & \cos(\theta)
+    \end{pmatrix}
+  .\]%
+  Taking a vector, say $\v = (v_x~v_y)^T$, its components transform under rotation as follows
+  \[%
+    \v' = R(\theta)\v = \begin{pmatrix}
+      \cos(\theta) & -\sin(\theta) \\
+      \sin(\theta) & \cos(\theta)
+    \end{pmatrix}
+    \begin{pmatrix}
+      v_x \\
+      v_y
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+      v_x\cos(\theta) - v_y\sin(\theta) \\
+      v_x\sin(\theta) + v_y\cos(\theta)
+    \end{pmatrix}
+  .\]%
+  Thus, the new components of the vector after rotation are
+  \[%
+    v_x' = v_x\cos(\theta) - v_y\sin(\theta) \aand v_y' = v_x\sin(\theta) + v_y\cos(\theta)
+  .\qedhere\]%
+\end{solution}
+
+\begin{problem}[5 (Eotvos Experiment)]
+  Consider a torsion balance consisting of two equal inertial masses mounted at opposite ends of a light horizontal rod and suspended from a thin fiber. The apparatus is fixed to the surface of the rotating Earth at latitude $\theta$.
+  \begin{enumerate}
+    \item (3 points) Define a convenient coordinate system for analyzing the torsion balance. Using this coordinate system, state the condition that must be satisfied for the torsion balance to be in mechanical equilibrium.
+    \item (3 points) Determine the torque on the torsion balance arising from the Earth's rotation. Your answer should involve the Earth's angular velocity $\Omega$, the latitude $\theta$, and the relevant geometric parameters of the apparatus.
+    \item (2 points) What is the optimal latitude to perform this experiment? In other words, at what latitude would one expect to measure the largest potential torque?
+    \item (2 points) State the condition required for the weak equivalence principle to be satisfied for the two test masses in this experiment.
+  \end{enumerate}
+\end{problem}
+
+\renewcommand\O{\boldsymbol{\Omega}}
+\begin{solution}[(i)]
+  Define the following coordinate system:
+  \begin{enumerate}
+    \item $\hat{z}$: be vertical (pointing upwards)
+    \item $\hat{x}$: point towards the North
+    \item $\hat{y}$: point towards the East
+  \end{enumerate}
+  The Earth's rotation vector decomposes as
+  \[%
+    \O = \Omega(\cos(\theta)\hat{z} + \sin(\theta)\hat{x})
+  .\]%
+  The angular coordinate $\phi$ measures the rod's orientation relative to $\hat{z}$. For mechanical equilibrium, the net torque on the torsion balance must be zero:
+  \[%
+    \tau_{\text{net}} = \tau_{\text{Earth}} - \kappa\phi = 0
+  ,\]%
+  which gives us that $\tau_{\text{Earth}} = \kappa\phi$.
+\end{solution}
+
+\begin{solution}[(ii)]
+  Each mass experiences a centrifugal acceleration given by
+  \[%
+    \a_c = \O \times (\O \times \r)
+  ,\]%
+  where $\r$ is the position of each mass in the local frame. Only the horizontal component contributes to a torque about the suspension axis. Each mass produces an identical torque magnitude, giving us
+  \[%
+    \a_c = 2ma^2\O^2\sin(\theta)\cos(\theta)\sin(2\phi)
+  .\]%
+  For small enough $\phi$, we have $\sin(2\phi) \approx 2\phi$. Therefore, we have
+  \[%
+    \tau_{\text{Earth}} = 4ma^2\O^2\sin(\theta)\cos(\theta)\phi
+  .\qedhere\]%
+\end{solution}
+
+\begin{solution}[(iii)]
+  The optimal latitude to perform this experiment is at $\theta = \pi/2$, where the product $\sin(\theta)\cos(\theta)$ is maximized.
+\end{solution}
+
+\begin{solution}[(iv)]
+  An equivalent statement to the weak equivalence principle is
+  \[%
+    \frac{m_{q,1}}{m_{i,1}} = \frac{m_{q,2}}{m_{i,2}}
+  ,\]%
+  where $m_{q,i}$ is the gravitational mass and $m_{i,i}$ is the inertial mass of the $i$-th test mass. This condition ensures that both masses experience the same acceleration in a gravitational field, leading to no differential torque on the torsion balance.
+\end{solution}
+
+\begin{problem}[6 (Thomas Precession)]
+  Suppose that students $A$ and $B$ start out in the lab frame. Student $A$ remains in the lab frame. Student $B$ gets in a rocket ship and changes their velocity by $V_x$ in the $x$-direction (with $V_x \ll 1$) by firing the ``$+X$'' thrusters on their rocket. Then they change their velocity by $V_y$ in the new $y$-direction (again with $V_y \ll 1$) by firing the ``$+Y$'' thrusters. Then, they fire the ``$-X$'' thrusters (changing their velocity by $-V_x$), and the ``$-Y$'' thrusters (changing their velocity by $-V_y$). To lowest order in the $V$s, how does $B$'s reference frame now differ from $A$'s?
+
+  \textit{Note: The problem is designed so that in Newtonian physics, $B$'s final reference frame is the same as $A$'s: they are at rest with respect to each other, with no rotation of the coordinate systems.}
+\end{problem}
+
+\begin{solution}
+  Define the following Lorentz transformation matrices for each boost
+  \[%
+    \Lambda_x(V_x) = \begin{pmatrix}
+      1 + \frac{1}{2}V_x^2 & -V_x & 0 & 0 \\
+      -V_x & 1 + \frac{1}{2}V_x^2 & 0 & 0 \\
+      0 & 0 & 1 & 0 \\
+      0 & 0 & 0 & 1 \\
+    \end{pmatrix} + \mathcal{O}(V_y^2)
+    \aand
+    \Lambda_y(V_y) = \begin{pmatrix}
+      1 + \frac{1}{2}V_y^2 & 0 & -V_y & 0 \\
+      -V_y & 1 & 1 + \frac{1}{2}V_y^2 & 0 \\
+      0 & 0 & 1 & 0 \\
+      0 & 0 & 0 & 1 \\
+    \end{pmatrix} + \mathcal{O}(V_y^2)
+  .\]%
+  The total transformation after the sequence of boosts is given by
+  \[%
+    \Lambda(V) = \Lambda_y(-V_y)\Lambda_x(-V_x)\Lambda_y(V_y)\Lambda_x(V_x)
+  .\]%
+  Notice that we can expand $\Lambda_x(V_x)$ and $\Lambda_y(V_y)$ to first order in $V_x$ and $V_y$ to get
+  \[%
+    \Lambda_x(V_x) = 1 + A \aand \Lambda_y(V_y) = 1 + B
+  ,\]%
+  where we define
+  \[%
+    A = \begin{pmatrix}
+      0 & -V_x & 0 & 0 \\
+      -V_x & 0 & 0 & 0 \\
+      0 & 0 & 0 & 0 \\
+      0 & 0 & 0 & 0 \\
+    \end{pmatrix}
+    \aand
+    B = \begin{pmatrix}
+      0 & 0 & -V_y & 0 \\
+      0 & 0 & 0 & 0 \\
+      -V_y & 0 & 0 & 0 \\
+      0 & 0 & 0 & 0 \\
+    \end{pmatrix}
+  .\]%
+  Computing $\Lambda(V)$, we get
+  \[%
+    \Lambda(V) = (1 - B)(1 - A)(1 + B)(1 + A) = 1 + [B, A] + \mathcal{O}(V)
+  .\]%
+  Computing the commutator $[B, A]$, we find
+  \[%
+    \Lambda(V) = I + \begin{pmatrix}
+      0 & 0 & 0 & 0 \\
+      0 & 0 & -V_xV_y & 0 \\
+      0 & V_xV_y & 0 & 0 \\
+      0 & 0 & 0 & 0 \\
+    \end{pmatrix} + \mathcal{O}(V^3)
+  .\]%
+  Therefore, this new coordinate system is rotated with respect to the original one by an angle $\omega_z = V_xV_y$ about the $xy$-plane.
+\end{solution}
+
+\begin{problem}[7 (The sky as viewed from a spaceship)]
+  ($\star$) Let's suppose that observer $\mathcal{O}$ remains on Earth in the lab frame. A second observer $\bar{\mathcal{O}}$ moves in a spaceship at velocity $V = \tanh(\alpha)$ in the $z$-direction with respect to Earth. As you may recall from watching science-fiction movies, if $V$ is large enough, $\bar{\mathcal{O}}$ sees the stars bunch up in front of them (the $+z$ direction). This problem works through the effect.
+
+  We suppose that the direction to the star makes an angle $\theta$ to the $z$-axis as seen from Earth, and $\bar{\theta}$ as seen from the spaceship. Without loss of generality, we will place the direction to the star at zero longitude (i.e., in the $xz$-plane).
+  \begin{enumerate}
+    \item (2 points) Show that in the Earth’s frame, in time $\Delta t$, a photon from the star undergoes a displacement $\Delta x^\alpha = (\Delta t, -\Delta t\sin(\theta), 0, -\Delta t\cos(\theta))$.
+    \item (5 points) Apply a Lorentz transformation to find the photon’s displacement in $\bar{\mathcal{O}}$'s frame. You may leave some results in terms of $\gamma = 1/\sqrt{1 - V^2}$. Show that in the barred frame, the direction of the photon satisfies
+      \[%
+        \cos(\bar{\theta}) = \frac{V + \cos(\theta)}{1 + V\cos(\theta)}
+      .\]%
+    \item (3 points) Show that a star that appears on the ``Equator'' as seen from Earth ($\theta = \pi/2$)  has an apparent position $\bar{\theta} = \arccos(V)$ as seen from the spaceship. How far from the North Pole does the star appear in the spaceship frame if $V = 0.9c$? What about $0.99c$?
+    \item (5 points) Now take the limit of small  $\theta \ll 1$ (i.e., we will consider a constellation that contains the North Pole). Show that
+      \[%
+        \bar{\theta} \approx \sqrt{\frac{1 - V}{1 + V}\theta}
+      .\]%
+      \textit{Hint: Take the Taylor expansion of your answer to (i) to 2nd order in $\theta$. This means that the constellation containing the North Pole appears shrunk by a factor of $\sqrt{(1 - V)/(1 + V)}$ when seen from the spaceship.}
+  \end{enumerate}
+\end{problem}
+
+\begin{solution}[(i)]
+  The photon's displacement in the Earth's frame over a time interval $\Delta t$ is defined to be $\Delta x^0 = \Delta t$. Since the particle is traveling at the speed of light, the magnitude of its spatial displacement must equal the time interval, $\Delta t$. The given direction, $(\sin(\theta), \cos(\theta), 0)$ is a unit vector. But this is the direction of the photon, so we have
+  \[%
+    \Delta x^i = -\Delta t(\sin(\theta), 0, \cos(\theta)) = (-\Delta t\sin(\theta), 0, -\Delta t\cos(\theta))
+  .\]%
+  Therefore, the full displacement four-vector is
+  \[%
+    \Delta x^\alpha = (\Delta t, -\Delta t\sin(\theta), 0, -\Delta t\cos(\theta))
+  .\qedhere\]%
+\end{solution}
+
+\begin{solution}[(ii)]
+  Setting up the Lorentz transformation matrix for a boost in the $z$-direction, we have
+  \[%
+    \Lambda = \begin{pmatrix}
+      \gamma & -\gamma V & 0 & 0 \\
+      -\gamma V & \gamma & 0 & 0 \\
+      0 & 0 & 1 & 0 \\
+      0 & 0 & 0 & 1 \\
+    \end{pmatrix}
+  .\]%
+  Therefore, we have the new displacement four-vector in the spaceship frame as
+  \[%
+    \Delta \bar{x}^\alpha = \left(\gamma (\Delta t - V \Delta z), - \Delta t\sin(\theta), 0, \gamma(\Delta z - V \Delta t)\right)
+  .\]%
+  In the barred frame, the photon travels at $c = 1$, so its spatial direction is given by
+  \[%
+    \cos(\bar{\theta}) = \frac{\Delta \bar{z}}{(\Delta \bar{x})^2 + (\Delta \bar{z})^2}
+  .\]%
+  Using the fact that $\sqrt{(\Delta \bar{x})^2 + (\Delta \bar{z}} = \Delta \bar{t}$, since the photon travels at the speed of light, we have
+  \[%
+    \cos(\bar{\theta}) = \frac{\Delta \bar{z}}{\Delta \bar{t}}
+  .\]%
+  Expanding and solving, we find that
+  \[%
+    \cos(\bar{\theta}) = \frac{\Delta z - V \Delta t}{\Delta t - V \Delta z} = \frac{-\Delta t\cos(\theta) - V \Delta t}{\Delta t - V(-\Delta t\cos(\theta))} = \frac{V + \cos(\theta)}{1 + V\cos(\theta)}
+  .\qedhere\]%
+\end{solution}
+
+\begin{solution}[(iii)]
+  Plugging $\theta = \pi/2$ into the formula from part (ii), we have
+  \[%
+    \cos(\bar{\theta}) = \frac{V + 0}{1 + V \cdot 0} = V
+  .\]%
+  This gives us that $\bar{\theta} = \arccos(V)$. If $V = 0.9c$, then we get $\bar{\theta} \approx 25.9^{\circ}$ and if $V = 0.99c$, then we get $\bar{\theta} \approx 8.1^{\circ}$.
+\end{solution}
+
+\begin{solution}[(iv)]
+  Taking the Taylor series expansion of $\cos(\theta)$ to second order in $\theta$, we have
+  \begin{align*}
+    \cos(\bar{\theta}) &= \frac{V + \cos(\theta)}{1 + V\cos(\theta)} \\
+                       &= \frac{V + 1 - \frac{1}{2}\theta^2}{1 + V - \frac{1}{2}V\theta^2} + \mathcal{O}(\theta^4) \\
+                       &= 1 - \frac{\frac{1}{2}(1 - V)\theta^2}{1 + V - \frac{1}{2}V\theta^2} + \mathcal{O}(\theta^4) \\
+                       &\approx 1 - \frac{1}{2}\frac{(1 - V)}{(1 + V)}\theta^2 + \mathcal{O}(\theta^4)
+  .\end{align*}
+  Taking the Taylor series expansion of $\arccos(x)$ about $x = 1$, we have
+  \[%
+    \bar{\theta} = \arccos\left(1 - \frac{1}{2}\frac{(1 - V)}{(1 + V)}\theta^2\right) \approx \sqrt{\frac{1 - V}{1 + V}}\theta + \mathcal{O}(\theta^3)
+  .\]%
+  Thus, we have shown that for small $\theta$, the angle in the spaceship frame is approximately
+  \[%
+    \bar{\theta} \approx \sqrt{\frac{1 - V}{1 + V}}\theta
+  .\qedhere\]%
+\end{solution}

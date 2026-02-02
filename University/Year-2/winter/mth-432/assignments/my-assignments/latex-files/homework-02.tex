@@ -1,0 +1,54 @@
+\renewcommand\S{\mathbb{S}}
+
+\begin{problem}[1]
+  Describe a simplicial complex in $\R^{n+1}$ whose realization is homeomorphic to the $n$-dimensional sphere $\S^n$.
+\end{problem}
+
+\begin{solution}
+  A simplicial complex in $\R^{n+1}$ whose realization is homeomorphic to the $n$-dimensional sphere $\S^n$ can be constructed as follows. Consider the standard $n$-simplex $\Delta_n$ in $\R^{n+1}$. The $n$-simplex $\Delta_n$ can be defined as the convex hull of its $n+1$ vertices. Specifically, let the vertices be given by the points:
+  \[%
+    v_0 = (1, 0, 0, \ldots, 0), \quad v_1 = (0, 1, 0, \ldots, 0), \quad \cdots, \quad v_n = (0, 0, 0, \cdots, 1).
+  .\]%
+  The realization of the simplicial complex formed by these vertices and their faces is homeomorphic to the $n$-dimensional sphere $\S^n$. This is because the boundary of the $n$-simplex, which consists of all its $(n-1)$-dimensional faces, can be continuously deformed to the $n$-sphere. Thus, the simplicial complex formed by the $n$-simplex and its faces provides a triangulation of $\S^n$.
+\end{solution}
+
+\begin{problem}[2]
+  Describe a simplicial complex whose realization is homeomorphic to the projective plane $\RP^2$. You can be loosey goosey about where it lives, so that your answer is in the same form as the triangulation of the torus given in Section 6.1 of the text book.
+\end{problem}
+
+\begin{solution}
+  A simplicial complex whose realization is homeomorphic to the projective plane $\RP^2$ can be constructed by taking a triangle and identifying its edges in a specific way. Consider a triangle with vertices $A$, $B$, and $C$. We can identify the edges of the triangle as follows:
+  \begin{itemize}
+    \item Identify edge $AB$ with edge $AC$ in such a way that the orientation is reversed.
+    \item Identify edge $BC$ with itself, but with a twist (i.e., identify point $B$ with point $C$).
+  \end{itemize}
+  This identification creates a simplicial complex with one vertex, one edge, and one face. The resulting space is homeomorphic to the projective plane $\RP^2$. The identification of edges effectively glues the triangle in a way that reflects the properties of the projective plane, where opposite points on the boundary are identified.
+\end{solution}
+
+\begin{problem}[3]
+  Let $X$ be any topological space, and let $f : X \to \S^n$ be a map that is not surjective. Prove that $f$ is homotopic to a map that takes all of $X$ to a single point.
+\end{problem}
+
+\begin{solution}
+  Let $f : X \to \S^n$ be a continuous not surjective map. Since $f$ is not surjective, there exists a point $y_0 \in \S^n$ such that $y_0 \notin f(X)$. Define the map $g : X \to \S^n$ by $g(x) = y_0$ for all $x \in X$. We will show that $f$ is homotopic to $g$. Define the map $F : X \times I \to \S^n$ by
+  \[%
+    F(x, t) = \frac{(1 - t) f(x) + t y_0}{\| (1 - t) f(x) + t y_0 \|}
+  .\]%
+  If $t = 0$, we have $F(x, 0) = f(x)$, otherwise, we have $F(x, 1) = g(x)$. The denominator is never zero since $y_0 \notin f(X)$, so $F$ is well-defined and continuous. Thus, $F$ is a homotopy from $f$ to $g$, and we conclude that $f$ is homotopic to a map that takes all of $X$ to a single point.
+\end{solution}
+
+\begin{problem}[4]
+  Let $f : \S^4 \to \S^7$ be any map. Use simplicial approximation to prove that $f$ is homotopic to a map that takes all of $\S^4$ to a single point.
+\end{problem}
+
+\begin{solution}
+  Let $f : \S^4 \to \S^7$ be any continuous map. We can triangulate $\S^4$ and $\S^7$ as simplicial complexes $K$ and $L$, respectively. By the simplicial approximation theorem, there exists a subdivision $K'$ of $K$ and a simplicial map $g : |K'| \to |L|$ such that $f \simeq g$. Since $\dim(\S^4) < \dim(\S^7)$, $g(\S^4)$ cannot cover all of $\S^7$. Therefore, there exists a point $y_0 \in \S^7$ such that $y_0 \notin g(|K'|)$. By Problem 3, we know that $g \simeq h : \S^4 \to \{y_0\} \subset \S^7$, where $h(x) = y_0$, for all $x$. Therefore, we have $f \simeq g \simeq h$. Since homotopy is an equivalence relation, we conclude that $f \simeq h$.
+\end{solution}
+
+\begin{problem}[5]
+  Let $K$ and $L$ be simplicial complexes. Use the simplicial approximation theorem to show that the set of homotopy classes of maps from $|K|$ to $|L|$ is countable.
+\end{problem}
+
+\begin{solution}
+  Let $K$ and $L$ be simplicial complex. By the simplicial approximation theorem, any continuous map $f : |K| \to |L|$ is homotopic to a simplicial map $g : |K^m| \to |L|$, for $m$ large enough, where $K^m$ is the $m$-th barycentric subdivision of $K$. Let $m$ be the smallest number such that $f \simeq [g]_m$. Then, we can associate to each homotopy class of maps $[f]$ a unique simplicial map $[g]_m$. Since $K^m$ has finitely many simplices and $L$ has finitely many simplices, there are only finitely many simplicial maps from $|K^m|$ to $|L|$. Therefore, the set of homotopy classes of maps from $|K|$ to $|L|$ is countable, as there exists a bijection $\pi : A \to \N$, where $A$ is the set of homotopy classes of maps from $|K|$ to $|L|$, by sending each homotopy class $[f]$ to the index of its associated simplicial map $[g]_m$ in a fixed enumeration of all simplicial maps from $|K^m|$ to $|L|$.
+\end{solution}

@@ -1,0 +1,377 @@
+\begin{problem}[1]
+  Evaluate $\displaystyle\int_C \FF \cdot \drr$ for the vector field $\FF = (x +
+  z)\ui + 2y\uj + (y + 2x)\uk$ where $C$ is
+  \begin{enumerate}
+    \item the line segment from $(-1, 0, 1)$ and $(0, -1, 2)$.
+
+    \item the curve $\r(t) = \left\langle t - 1, t^2 - 2t, t^3 + 1
+      \right\rangle$ from $0 \le t \le 1$.
+  \end{enumerate}
+\end{problem}
+
+\begin{proof}[Solution to (i)]
+  Let $C$ be the line segment from $P(-1, 0, 1)$ to $Q(0, -1, 2)$. Then, we have
+  \begin{align*}
+    \phantom{\implies}&~\r(t) = (1 - t)P + tQ = (1 - t)(-1, 0, 1) + t(0, -1, 2) = \langle -1 + t, -t, 1 + t \rangle \\
+    \implies&~\r'(t) = \langle 1, -1, 1 \rangle
+  .\end{align*}
+  Converting $\FF$ from a vector function of $x$ and $y$ to a vector function of
+  $t$, we have
+  \[%
+    \FF(x, y) = \langle x + z, 2y, y + 2x \rangle = \langle (-1 + t) + (-1 + t), -2t, -t + (-1 + t) \rangle = \langle 2t, -2t, -2 + t \rangle = \FF(t)
+  .\]%
+  Therefore, the line integral over the vector field $\FF$ along the line
+  segment $C$ is
+  \begin{align*}
+    \int_C \FF \cdot \drr &= \int_0^1 \FF(t) \cdot \r'(t) \,\dt \\
+                             &= \int_0^1 (1) \cdot (2t) + (-1) \cdot (-2t) + (1) \cdot (-2 + t) \,\dt \\
+                             &= \int_0^1 2t + 2t -2 + t \,\dt \\
+                             &= \int_0^1 5t - 2 \,\dt = \left(\frac{5}{2} - 2\right) = \frac{1}{2}
+  .\qedhere\end{align*}
+\end{proof}
+
+\begin{proof}[Solution to (ii)]
+  Let $C$ be the curve $\r(t) = \langle t - 1, t^2 - 2t, t^3 + 1 \rangle$ where
+  $0 \le t \le 1$. Then, we have
+  \[%
+    \r'(t) = \left\langle 1, 2t - 2, 3t^2 \right\rangle
+  .\]%
+  Converting $\FF$ from a vector function of $x$ and $y$ to a vector function of
+  $t$, we have
+  \begin{align*}
+    \FF(x, y) = \left\langle x + z, 2y, y + 2x \right\rangle &= \left\langle (t - 1) + \left(t^3 + 1\right), 2\left(t^2 - 2t\right), \left(t^2 - 2t\right) + 2(t - 1) \right\rangle \\
+                                                  &= \left\langle t^3 + t, 2t^2 - 4t, t^2 - 2 \right\rangle
+  .\end{align*}
+  Evaluating the dot product of $\FF$ and $\r'$, we have
+  \begin{align*}
+    \FF(t) \cdot \r'(t) &= \left\langle t^3 + t, 2t^2 - 4t, t^2 - 2 \right\rangle \cdot \left\langle 1, 2t - 2, 3t^2 \right\rangle \\
+                        &= \left(t^3 + t\right) \cdot (1) + \left(2t^2 - 4t\right) \cdot (2t - 2) + \left(t^2 - 2\right) \cdot \left(3t^2\right) \\
+                        &= t^3 + t + 4t^3 - 4t^2 - 8t^2 + 8t + 3t^4 - 6t^2 \\
+                        &= 3t^4 + 5t^3 - 18t^2 + 9t
+  .\end{align*}
+  Therefore, the line integral over the vector field $\FF$ along the curve $C$
+  is
+  \begin{align*}
+    \int_C \FF \cdot \drr &= \int_0^1 \FF(t) \cdot \r'(t) \,\dt \\
+                             &= \int_0^1 3t^4 + 5t^3 - 18t^2 + 9t \,\dt \\
+                             &= \frac{3}{5} + \frac{5}{4} - \frac{18}{3} + \frac{9}{2} = \frac{7}{20}
+  .\qedhere\end{align*}
+\end{proof}
+
+\begin{problem}[2]
+  Compute the amount of work done by the vector field $\FF = \langle -y, x, x -
+  z \rangle$ moving a particle along the curve of intersection of the surfaces
+  $x^2 + y^2 = 9$ and $y - x + z = 1$ oriented in the counterclockwise direction
+  about the cylinder.
+
+  Note: Do not use a method we haven’t discussed yet. The use of anything other
+  than directly evaluating the line integral will not be accepted.
+\end{problem}
+
+\begin{proof}[Solution]
+  Let $C$ be the curve of intersection of the surfaces $x^2 + y^2 + z^2 = 9$ and
+  $y - x + z = 1$. Converting to cylindrical coordinates, we have
+  \begin{align*}
+    \begin{rcases}
+      x^2 + y^2 = 9 \\
+      y - x + z = 1
+    \end{rcases}
+    &\implies
+    \begin{rcases}
+      r^2 = 9 \\
+      z = 1 - r(\sin(\theta) - \cos(\theta))
+    \end{rcases}
+    \implies
+    \begin{rcases}
+      r = 3 \\
+      z = 1 - 3(\sin(\theta) - \cos(\theta))
+    \end{rcases} \\
+    &\implies z = 1 - 3(\sin(\theta) - \cos(\theta))
+  .\end{align*}
+  Parametrizing the curve $C$ as
+  \begin{align*}
+    \phantom{\implies}&~\r(t) = \left\langle 3\cos(\theta), 3\sin(\theta), 1 - 3(\sin(\theta) - \cos(\theta)) \right\rangle \\
+    \implies&~\r'(t) = \langle -3\sin(\theta), 3\cos(\theta), 3(\cos(\theta) + \sin(\theta)) \rangle
+  ,\end{align*}
+  where $0 \le t \le 2\pi$, we have Converting $\FF$ from a vector function of
+  $x$ and $y$ to a vector function of $t$, we have
+  \begin{align*}
+    \FF(t) = \langle -y(t), x(t), x(t) - z(t) \rangle &= \langle -3\sin(\theta), 3\cos(\theta), 3\cos(\theta) - \left(1 - 3\left(\sin(\theta) - \cos(\theta)\right)\right) \\
+                                                      &= \langle -3\sin(\theta), 3\cos(\theta), 3\sin(\theta) - 1 \rangle
+  .\end{align*}
+  Evaluating the dot product of $\FF$ and $\r'$, we have
+  \begin{align*}
+    \FF(t) \cdot \r'(t) &= \left\langle -3\sin(\theta), 3\cos(\theta), 3\sin(\theta) - 1 \right\rangle \cdot \left\langle -3\sin(\theta), 3\cos(\theta), 3(\cos(\theta) + \sin(\theta)) \right\rangle \\
+                        &= \left(-3\sin(\theta)\right) \cdot \left(-3\sin(\theta)\right) + \left(3\cos(\theta)\right) \cdot \left(3\cos(\theta)\right) + \left(3\sin(\theta) - 1\right) \cdot \left(3(\cos(\theta) + \sin(\theta))\right) \\
+                        &= 9(\sin^2(\theta) + \cos^2(\theta)) + (-9\sin^2(\theta) - 9\sin(\theta)\cos(\theta) + 3\cos(\theta) + 3\sin(\theta)) \\
+                        &= 9 - 9\sin^2(\theta) - 9\sin(\theta)\cos(\theta) + 3\cos(\theta) + 3\sin(\theta)
+  .\end{align*}
+  Computing the work integral over the vector field $\FF$ along the curve $C$,
+  we have
+  \begin{align*}
+    W = \int_C \FF \cdot \drr &= \int_0^{2\pi} \FF(t) \cdot \r'(t) \,\dt \\
+                                 &= \int_0^{2\pi} 9 - 9\sin^2(\theta) - 9\sin(\theta)\cos(\theta) + 3\cos(\theta) + 3\sin(\theta) \,\dt \\
+                                 &= \int 9 \,\dd{\theta} - 9\int \sin^2(\theta) \,\dd{\theta} - 9\int \sin(\theta)\cos(\theta) \,\dd{\theta} + 3\int \cos(\theta) \,\dd{\theta} + 3\int \sin(\theta) \,\dd{\theta} \bigg\vert_0^{2\pi} \\
+                                 &= 9\theta - \frac{9}{2}(\theta - \sin(\theta)\cos(\theta)) - \frac{9}{2}\cos^2(\theta) + 3\sin(\theta) - 3\cos(\theta) \bigg\vert_0^{2\pi} \\
+                                 &= \left[9(2\pi) - \frac{9}{2}(2\pi - \sin(2\pi)\cos(2\pi)) - \frac{9}{2}\cos^2(2\pi) + 3\sin(2\pi) - 3\cos(2\pi)\right] \\
+                                 &\phantom{=} -\left[9(0) - \frac{9}{2}(0 - \sin(0)\cos(0)) - \frac{9}{2}\cos^2(0) + 3\sin(0) - 3\cos(0)\right] \\
+                                 &= \left[18\pi - \frac{9}{2}(2\pi - (0)(-1)) - \frac{9}{2}(1) + 3(0) - 3(1)\right] \\\
+                                 &\phantom{=} -\left[0 - \frac{9}{2}(0 - (0)(1)) - \frac{9}{2}(1) + 3(0) - 3(1)\right] \\
+                                 &= 18\pi - 9\pi - \frac{9}{2} - 3 + \frac{9}{2} + 3 = 9\pi
+  .\qedhere\end{align*}
+\end{proof}
+
+\begin{problem}[3]
+  Evaluate $\displaystyle\int_C \FF \cdot \drr$. Use the fundamental theorem for line integrals whenever it applies.
+  \begin{enumerate}
+    \item $\FF = \langle 2xe^{xy} + x^2ye^{xy} + 3x^2, x^3e^{xy} + 2\sin(y) \rangle$, $C$ is the line segment from $(-1, 0)$ to $(0, 3)$.
+
+    \item $\FF = \langle y^3 - 2x, 3xy^2 + \sin(\pi y) \rangle$, $C$ is the path
+      $y = \sqrt{x}$ from $(1,1 )$ to $(4, 2)$.
+
+    \item $\FF = \langle 6xy - z^2, 3x^2 + 6y^2, 1 - 2xz \rangle$, $C$ is the
+      circular helix $\r(t) = \langle t, 2\cos(t), 2\sin(t) \rangle$, $0 \le t
+      \le \pi$.
+
+    \item $\FF = \langle y + z, x - 2z, x + 2y \rangle$, $C$ is the intersection of sphere $x^2 + y^2 + z^2 = 5$ and the plane $x = 1$ in the first octant oriented upward.
+  \end{enumerate}
+\end{problem}
+
+\begin{proof}[Solution to (i)]
+  A vector field $\FF = \langle P, Q \rangle$ is conservative if there exists a
+  potential function $f(x, y)$ such that
+  \[%
+    \pdv{P}{y} = \pdv{Q}{x}
+  .\]%
+  Evaluating each partial derivative, we have
+  \begin{align*}
+    \pdv{P}{y} &= \pdv{}{y} \left[2xe^{xy} + x^2ye^{xy} + 3x^2\right] \\
+               &= 2x \cdot \pdv{}{y} \left[e^{xy}\right] + x^2e^{xy} \cdot \pdv{}{y} \left[y\right] + x^2y \cdot \pdv{}{y} \left[e^{xy}\right] + \pdv{}{y} \left[3x^2\right] \\
+               &= 2x^2e^{xy} + x^2e^{xy} + x^3ye^{xy} + 0 \\
+               &= 3x^2e^{xy} + x^3ye^{xy} \\
+    \pdv{Q}{x} &= \pdv{}{x} \left[x^3e^{xy} + 2\sin(y)\right] \\
+               &= e^{xy} \cdot \pdv{}{x} \left[x^3\right] + x^3 \cdot \pdv{}{x} \left[e^{xy}\right] + \pdv{}{x} \left[2\sin(y)\right] \\
+               &= 3x^2e^{xy} + x^3ye^{xy} + 0 \\
+                &= 3x^2e^{xy} + x^3ye^{xy}
+  .\end{align*}
+  Clearly, they are the same. Also, note that $\FF$ is simply connected, as
+  there are no singularities. Therefore, $\FF$ is conservative.
+
+  Therefore, we have the following system of equations
+  \begin{align}
+    f_x &= 2xe^{xy} + x^2ye^{xy} + 3x^2\label{eq:3_i_1} \\
+    f_y &= x^3e^{xy} + 2\sin(y)\label{eq:3_i_2}
+  \end{align}
+  Integrating equation \ref{eq:3_i_2} with respect to $y$, we have
+  \begin{align*}
+    f = \int f_y \,\dy &= \int x^3e^{xy} + 2\sin(y) \,\dx \\
+                       &= x^2e^{xy} + 2\cos(y) + g(x)
+  .\end{align*}
+  Plugging this into equation \ref{eq:3_i_1}, we have
+  \[%
+    f_x = 2xe^{xy} + x^2ye^{xy} + 3x^2 = P \implies g'(x) = 3x^2 \implies g(x) = x^3
+  .\]%
+  Therefore, the potential function is
+  \[%
+    f(x, y) = x^2e^{xy} + 2\cos(y) + x^3
+  .\]%
+  Therefore, the line integral over the vector field $\FF$ along the line
+  segment $C$ is
+  \begin{align*}
+    \int_C \FF \cdot \drr = \int_C \nabla f \cdot \drr &= f(0, 3) - f(-1, 0) \\
+                                                             &= \left[-2\cos(3)\right] - \left[1 - 1 - 2\right] \\
+                                                             &= -2\cos(3) + 2
+  .\qedhere\end{align*}
+\end{proof}
+
+\begin{proof}[Solution to (ii)]
+  A vector field $\FF = \langle P, Q \rangle$ is conservative if there exists a potential function $f(x, y)$ such that
+  \[%
+    \pdv{P}{y} = \pdv{Q}{x}
+  .\]%
+  Evaluating each partial derivative, we have
+  \begin{align*}
+    \pdv{P}{y} &= \pdv{}{y} \left[y^3 - 2x\right] \\
+               &= 3y^2 - 0 \\
+               &= 3y^2 \\
+    \pdv{Q}{x} &= \pdv{}{x} \left[3xy^2 + \sin(\pi y)\right] \\
+               &= 3y^2 + 0 \\
+               &= 3y^2
+  .\end{align*}
+  Clearly, they are the same. Also, note that $\FF$ is simply connected, as
+  there are no singularities. Therefore, $\FF$ is conservative.
+
+  Therefore, we have the following system of equations
+  \begin{align}
+    f_x &= y^3 - 2x\label{eq:3_ii_1} \\
+    f_y &= 3xy^2 + \sin(\pi y)\label{eq:3_ii_2}
+  \end{align}
+  Integrating equation \ref{eq:3_ii_1} with respect to $x$, we have
+  \begin{align*}
+    f = \int f_x \,\dx &= \int y^3 - 2x \,\dx \\
+                       &= y^3x - x^2 + g(y)
+  .\end{align*}
+  Plugging this into equation \ref{eq:3_ii_2}, we have
+  \[%
+    f_y = 3xy^2 + h'(y) = Q \implies h'(y) = \sin(\pi y) \implies h(y) = -\frac{1}{\pi}\cos(\pi y)
+  .\]%
+  Therefore, the potential function is
+  \[%
+    f(x, y) = xy^3 - x^2 - \frac{1}{\pi}\cos(\pi y)
+  .\]%
+  Therefore, the line integral over the vector field $\FF$ along the path $C$ is
+  \begin{align*}
+    \int_C \FF \cdot \drr = \int_C \nabla f \cdot \drr &= f(4, 2) - f(1, 1) \\
+                                                             &= \left[32 - 16 - \frac{1}{\pi}\cos(2\pi)\right] - \left[1 - 1 - \frac{1}{\pi}\cos(\pi)\right] \\
+                                                             &= 16 - \frac{2}{\pi}
+  .\qedhere\end{align*}
+\end{proof}
+
+\begin{proof}[Solution to (iii)]
+  A vector field $\FF = \langle P, Q, R \rangle$ is conservative if there exists
+  a potential function $f(x, y, z)$ such that
+  \[%
+    \pdv{P}{y} = \pdv{Q}{x}, \quad \pdv{P}{z} = \pdv{R}{x}, \aand \pdv{Q}{z} = \pdv{R}{y}
+  .\]%
+  Evaluating each partial derivative, we have
+  \[%
+    \pdv{P}{y} = 6x = \pdv{Q}{x}, \quad \pdv{Q}{z} = 0 = \pdv{R}{y}, \aand \pdv{R}{z} = -2z = \pdv{P}{x}
+  .\]%
+  Clearly, they are the same. Also, note that $\FF$ is simply connected, as
+  there are no singularities. Therefore, $\FF$ is conservative.
+
+  Therefore, we have the following system of equations
+  \begin{align}
+    f_x &= 6xy - z^2\label{eq:3_iii_1} \\
+    f_y &= 3x^2 + 6y^2\label{eq:3_iii_2} \\
+    f_z &= 1 - 2xz\label{eq:3_iii_3}
+  .\end{align}
+  Integrating equation \ref{eq:3_iii_1} with respect to $x$, we have
+  \[%
+    f = \int 6xy - z^2 \,\dx = 3x^2y - xz^2 + g(y, z)
+  .\]%
+  Plugging this into equation \ref{eq:3_iii_2}, we have
+  \[%
+    f_y = 3x^2 + g_y(y, z) = Q \implies g_y(y, z) = 6y^2 \implies g(y, z) = 2y^3 + h(z)
+  .\]%
+  Plugging this into equation \ref{eq:3_iii_3}, we have
+  \[%
+    f_z = 1 - 2xz + h'(z) = R \implies h'(z) = 1 \implies h(z) = z
+  .\]%
+  Therefore, the potential function is
+  \[%
+    f(x, y, z) = 3x^2y - xz^2 + 2y^3 + z
+  .\]%
+  The starting and ending points are
+  \[%
+    A = \r(0) = \langle 0, 2, 0 \rangle \aand B = \langle \pi, -2, 0 \rangle
+  .\]%
+  Therefore, the line integral over the vector field $\FF$ along the circular
+  helix $C$ is
+  \begin{align*}
+    \int_C \FF \cdot \drr = \int_C \nabla f \cdot \drr &= f(\pi, -2, 0) - f(0, 2, 0) \\
+                                                             &= \left[3\pi^2(-2) - \pi(0)^2 + 2(-2)^3 + 0\right] - \left[3(0)^2(2) - 0(0)^2 + 2(2)^3 + 0\right] \\
+                                                             &= -6\pi^2 - 32
+  .\qedhere\end{align*}
+\end{proof}
+
+\begin{proof}[Solution to (iv)]
+  A vector field $\FF = \langle P, Q, R \rangle$ is conservative if there exists
+  a potential function $f(x, y, z)$ such that
+  \[%
+    \pdv{P}{y} = \pdv{Q}{x}, \quad \pdv{P}{z} = \pdv{R}{x}, \aand \pdv{Q}{z} = \pdv{R}{y}
+  .\]%
+  Evaluating each partial derivative, we have
+  \[%
+    \pdv{P}{y} = 1 = \pdv{Q}{x}, \quad \pdv{Q}{z} = -2 \ne 2 = \pdv{R}{y}, \aand \pdv{R}{x} = 1 = \pdv{P}{z}
+  .\]%
+  Clearly, they are not the same. Therefore, $\FF$ is not conservative.
+
+  Since $C$ is the intersection of the sphere $x^2 + y^2 + z^2 = 5$ and the
+  plane $x = 1$ in the first octant, we get $x = 1$, $y^2 + z^2 = 4$, and $y,
+  z \ge 0$. Therefore, we have
+  \[%
+    \r(t) = \langle 1, 2\cos(t), 2\sin(t) \rangle \implies \r'(t) = \langle 0, -2\sin(t), 2\cos(t) \rangle
+  .\]%
+  The bounds for $t$ are $0 \le t \le \frac{\pi}{2}$. Converting $\FF$ from a vector function of $x$ and $y$ to a vector function of $t$, we have
+  \[%
+    \FF(x, y) = \langle y + z, x - 2z, x + 2y \rangle = \langle 2\cos(t) + 2\sin(t), 1 - 8\sin(t), 1 + 8\cos(t) \rangle = \FF(t)
+  .\]%
+  Evaluating the dot product of $\FF$ and $\r'$, we have
+  \begin{align*}
+    \FF(t) \cdot \r'(t) &= \left\langle 2\cos(t) + 2\sin(t), 1 - 8\sin(t), 1 + 8\cos(t) \right\rangle \cdot \left\langle 0, -2\sin(t), 2\cos(t) \right\rangle \\
+                        &= \left(2\cos(t) + 2\sin(t)\right) \cdot (0) + \left(1 - 8\sin(t)\right) \cdot (-2\sin(t)) + \left(1 + 8\cos(t)\right) \cdot (2\cos(t)) \\
+                        &= -2\sin(t) + 16\sin^2(t) + 2\cos(t) + 16\cos^2(t) \\
+                        &= 2\cos(t) + -2\sin(t) + 16
+  .\end{align*}
+  Therefore, the line integral over the vector field $\FF$ along the curve $C$ is
+  \begin{align*}
+    \oint_C \FF \cdot \drr &= \int_0^{\frac{\pi}{2}} \FF(t) \cdot \r'(t) \,\dt \\
+                             &= \int_0^{\frac{\pi}{2}} 2\cos(t) - 2\sin(t) + 16 \,\dt \\
+                             &= \left[2\sin(t) - 2\cos(t) + 16t\right] \bigg\vert_0^{\frac{\pi}{2}} \\
+                             &= \left[2 + 8\pi\right] - \left[-2\right] = 4 + 8\pi
+  .\qedhere\end{align*}
+\end{proof}
+
+\begin{problem}[4]
+  Consider $\FF = \langle P, Q \rangle$ where $\displaystyle P(x, y) =
+  \frac{-y}{x^2 + y^2}$ and $\displaystyle Q(x, y) = \frac{x}{x^2 + y^2}$.
+  \begin{enumerate}
+    \item Show $\displaystyle\pdv{P}{y} = \pdv{Q}{x}$ on the domain of $\FF$.
+
+    \item Use the definition of the line integral to show that
+      $\displaystyle\int_C \FF \cdot \drr = 2\pi$ where $C$ is the circle
+      $x^2 + y^2 = a^2$, counterclockwise orientation, for any constant $a > 0$.
+      Is $\FF$ conservative?
+  \end{enumerate}
+\end{problem}
+
+\begin{proof}[Solution to (i)]
+  We have
+  \begin{align*}
+    \pdv{P}{y} = \pdv{}{y}\left(\frac{-y}{x^2 + y^2}\right) &= \frac{-(x^2 + y^2) - (-y)(2y)}{(x^2 + y^2)^2} = \frac{-x^2 - y^2 + 2y^2}{(x^2 + y^2)^2} = \frac{y^2 - x^2}{(x^2 + y^2)^2} \\
+    \pdv{Q}{x} = \pdv{}{x}\left(\frac{x}{x^2 + y^2}\right) &= \frac{(x^2 + y^2) - x(2x)}{(x^2 + y^2)^2} = \frac{x^2 + y^2 - 2x^2}{(x^2 + y^2)^2} = \frac{y^2 - x^2}{(x^2 + y^2)^2}
+  .\end{align*}
+  Therefore, $\displaystyle\pdv{P}{y} = \pdv{Q}{x}$ on the domain of $\FF$.
+\end{proof}
+
+\begin{proof}[Solution to (ii)]
+  We parameterize the circle $C$
+  \[%
+    \r(t) = \langle a\cos(t), a\sin(t) \rangle
+  .\]%
+  Evaluating $\r'(t)$ gives us
+  \[%
+    \r'(t) = \langle -a\sin(t), a\cos(t) \rangle
+  ,\]%
+  where $0 \le t \le 2\pi$. Converting $\FF$ from a vector function of $x$ and
+  $y$ to a vector function of $t$, we have
+  \[%
+    \FF(t) = \left\langle \frac{-a\sin(t)}{a^2}, \frac{a\cos(t)}{a^2} \right\rangle = \left\langle \frac{-\sin(t)}{a}, \frac{\cos(t)}{a} \right\rangle
+  .\]%
+  Evaluating the dot product of $\FF$ and $\r'$, we have
+  \[%
+    \FF(t) \cdot \r'(t) = \left\langle \frac{-\sin(t)}{a}, \frac{\cos(t)}{a} \right\rangle \cdot \left\langle -a\sin(t), a\cos(t) \right\rangle = \frac{-\sin(t)}{a} \cdot (-a\sin(t)) + \frac{\cos(t)}{a} \cdot (a\cos(t)) = 1
+  .\]%
+  Thus, the line integral evaluates to
+  \[%
+    \int_C \FF \cdot \drr = \int_0^{2\pi} 1 \,\dt = 2\pi
+  .\]%
+
+  A vector field $\FF = \langle P, Q \rangle$ is conservative if and only if
+  there exists a function $f(x, y)$ such that $\nabla f = \langle P, Q \rangle$.
+  A necessary condition for $\FF$ to be conservative is that
+  $\displaystyle\pdv{P}{y} = \pdv{Q}{x}$, which we verified in part (i).
+
+  However, $\FF$ is not defined at $(0, 0)$, and the domain $\R^2 - \{(0, 0)\}$
+  is not simply connected, since any loop enclosing the origin cannot be
+  continuously shrunk to a point without leaving the domain.  A conservative
+  vector field must be path-independent, meaning that the line integral around
+  any closed curve should be zero.
+
+  Since we computed
+  \[%
+    \oint_C \FF \cdot \drr = 2\pi \neq 0
+  ,\]%
+  we conclude that $\FF$ is not conservative.
+\end{proof}

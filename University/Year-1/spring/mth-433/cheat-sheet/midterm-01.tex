@@ -1,0 +1,107 @@
+\documentclass[10pt]{article}
+
+\input{../preamble.tex}
+\usepackage{multicol}
+
+\begin{document}
+  \begin{definition}\leavevmode
+    \begin{enumerate}
+      \item \textbf{Regular Curve:} A parametrized differentiable curve $\alpha : I \to \R^3$ is said to be regular if $\alpha'(t) \ne 0$, for all $t \in I$.
+
+      \item \textbf{Regular Surface:} A subset $S \subset \R^3$ is a regular surface if, for each $p \in S$, there exists a nbd of $V \subset \R^3$ and a map $\x : U \subset \R^2 \to V \cap S$ such that, (1) $\x$ is differentiable, (2) $\x$ is a homeomorphism, and for each $q \in U$, $\dd{\x}_q : \R^2 \to \R^3$ is one-to-one.
+
+        \textbf{How to Show a Surface is Regular:} A subset $S \subset \R^3$ is a regular surface if for every $p \in S$, there exists an open set $U \subset \R^2$ and a map $\x : U \to \R^3$ such that:
+        \begin{itemize}
+          \item $\x$ is differentiable,
+          \item $\x$ is a homeomorphism onto its image,
+          \item $\x_u$ and $\x_v$ are linearly independent $\Rightarrow \x_u \times \x_v \ne 0$.
+        \end{itemize}
+        Common strategies:
+        \begin{itemize}
+          \item \textbf{Explicit parametrization:} Define $\x(u,v)$ and verify regularity by checking $\x_u \times \x_v \ne 0$.
+          \item \textbf{Graph of a function:} $S = \{(x, y, f(x,y))\}$. Use parametrization $\x(x,y) = (x, y, f(x,y))$.
+          \item \textbf{Level set:} $S = \{(x, y, z) : f(x, y, z) = 0\}$ with $\nabla f \ne 0$ $\Rightarrow$ use Implicit Function Theorem.
+        \end{itemize}
+
+      \item \textbf{Differentiable function:} Let $f : V \subset S \to \R$ be a function defined in an open subset $V \subset S$. Then, $f$ is differentiable at $p \in V$ if, for some $\x : U \subset \R^2 \to S$, with $p \in \x(U) \subset V$, $f \circ \x : U \subset \R^2 \to \R$ is differentiable at $\x^{-1}(p)$.
+
+      \item \textbf{Differentiable Map Between $S_1$ and $S_2$:} A continuous map $\Phi : V_1 \subset S_1 \to S_2$ is differentiable at $p \in V_1$ if, $\x_1 : U_1 \subset \R^2 \to S_1$, $\x_2 : U_2 \subset \R^2 \to S_2$, with $p \in \x_1(U)$ and $\Phi(\x_1(U_1)) \subset \x_2(U_2)$, the map $\x_2^{-1} \circ \Phi \circ \x_1 : U_1 \to U_2$ is differentiable at $q = \x_1^{-1}(p)$.
+
+      \item \textbf{First Fundamental Form:} For a surface parametrized by $\x(u,v)$, the first fundamental form $I_p(\w) = E\du^2 + 2F\duv + G\dv^2$, where $E$, $F$, and $G$ are given by
+        \[%
+          E = \langle \x_u, \x_u \rangle, \quad F = \langle \x_u, \x_v \rangle, \aand G = \langle \x_v, \x_v \rangle
+        .\]%
+
+      \item \textbf{Area of a Surface}: The area of a regular surface $S$ and a
+        surface of revolution given by
+        \[%
+          A = \iint_D \sqrt{EG - F^2} \duv = \iint_D \lVert \x_u \times \x_v \rVert \duv
+          \aand
+          A = 2\pi\int_0^\ell \rho(s) \ds
+        ,\]%
+        where $\ell$ is the length of the curve, and $\rho(s)$ is the distance from the axis of rotation to the curve.
+
+      \item \textbf{Orientation of a Surface:} A surface $S$ is \emph{orientable} if it is possible to choose a continuous unit normal vector field $\Na(p)$ on all of $S$. That is, there exists a continuous map $\Na : S \to \R^3$ such that $\Na(p)$ is perpendicular to the tangent plane at $p$ and $\|\Na(p)\| = 1$ for all $p \in S$.
+
+      \textbf{How to Show a Surface is Orientable:}
+        \begin{itemize}
+          \item If the surface has a global parametrization $\x(u,v)$ with $\x_u \times \x_v \ne 0$ and $\Na = \frac{\x_u \times \x_v}{\|\x_u \times \x_v\|}$ is continuous on the domain, then $S$ is orientable.
+          \item If $S$ is given as the graph of a differentiable function $z = f(x, y)$, define $\Na = \frac{(-f_x, -f_y, 1)}{\sqrt{1 + f_x^2 + f_y^2}}$.
+          \item If $S$ is defined implicitly as $f(x, y, z) = 0$ with $\nabla f \ne 0$ on $S$, then $\Na = \frac{\nabla f}{\|\nabla f\|}$ gives a global orientation.
+          \item If $S$ cannot be covered by one consistent choice of normal vectors (e.g., Möbius strip), then it is non-orientable.
+        \end{itemize}
+    \end{enumerate}
+  \end{definition}
+
+  \begin{theorem}[Inverse Function Theorem]
+    Let $f : \R^n \to \R^n$ be continuously differentiable in an open set $U \subset \R^n$. If $Df(a)$ is invertible at $a \in U$, then there exist open sets $V \ni a$ and $W \ni f(a)$ such that $f:V \to W$ is a diffeomorphism (i.e., $f$ is bijective, differentiable, and $f^{-1}$ is differentiable).
+  \end{theorem}
+
+  \begin{proof}[Sketch of Proof]
+    Let $A = Df(a)$. Define $g(x) = f(a) + A(x - a)$. Then $g$ is a linear approximation of $f$. Let $\phi(x) = f(x) - g(x)$ so that $\phi(a) = 0$, and $D\phi(a) = Df(a) - A = 0$. Hence, $\phi$ is small near $a$.
+
+    Define $T(x) = x - A^{-1}(f(x) - f(a))$. Show $T$ is a contraction on a small ball $B_\delta(a)$ using the mean value theorem and continuity of $Df$ near $a$. By Banach Fixed Point Theorem, $T$ has a unique fixed point $x$ such that $f(x) = y$ for all $y$ near $f(a)$.
+
+    The map $x \mapsto f(x)$ is bijective near $a$, and $f^{-1}$ is differentiable by differentiating the identity $f(f^{-1}(y)) = y$.
+  \end{proof}
+
+  \begin{theorem}[Implicit Function Theorem]
+    Let $F : \R^{n + m} \to \R^m$ be a $C^1$ function. Suppose $F(a, b) = 0$ for $(a, b) \in \R^n \times \R^m$ and the $m \times m$ matrix $\frac{\partial F}{\partial y}(a, b)$ is invertible. Then, there exist open sets $U \ni a$ and $V \ni b$ and a $C^1$ function $g : U \to V$ such that
+    \[
+      F(x, g(x)) = 0 \quad \text{for all } x \in U.
+    \]
+    Moreover, $g(a) = b$, and the graph of $g$ locally describes the level set $\{(x, y) : F(x, y) = 0\}$.
+  \end{theorem}
+
+  \begin{proof}[Sketch of Proof]
+    Define $G(x, y) = F(x, y)$. Since $F$ is $C^1$ and $\frac{\partial F}{\partial y}(a,b)$ is invertible, we apply the Inverse Function Theorem to the map $(x, y) \mapsto (x, F(x, y))$.
+
+    Locally, we can solve for $y$ as a function of $x$:
+    \[
+      F(x, y) = 0 \Rightarrow y = g(x)
+    \]
+    where $g$ is $C^1$ and satisfies $g(a) = b$. The existence and differentiability of $g$ follows from the fact that we can locally invert the $y$-coordinates while keeping $x$ fixed. This gives a local parametrization of the level set $\{F(x, y) = 0\}$ by $x \mapsto (x, g(x))$.
+  \end{proof}
+
+  \begin{frame}[Quick References]
+    Normal Vectors (parametrized surfaces) (graph $z = f(x, y)$) (curve)
+    \[%
+      \Na = \frac{\x_u \times \x_v}{\lVert \x_u \times \x_v \rVert},\quad \Na = \frac{(-f_x, -f_y, 1)}{\sqrt{1 + f_x^2 + f_y^2}},\aand \Na = \frac{T'(t)}{\lVert T'(t) \rVert}
+    .\]%
+    Curvature and Torsion:
+    \begin{alignat*}{4}
+      \kappa(t) &= \frac{\lVert \alpha' \times \alpha'' \rVert}{\lVert \alpha' \rVert^3} &&\aand \tau(t) &&= \frac{(\alpha' \times \alpha'') \cdot \alpha'''}{\lVert \alpha' \times \alpha'' \rVert^2} \\
+      \kappa(s) &= \lVert \alpha''(s) \rVert && \aand \Ba'(s) &&= \tau(s)\Na(s)
+    .\end{alignat*}
+    Parametrization of a M$\ddot{\textrm{o}}$bius Strip and a Torus:
+    \begin{align*}
+      \x(u, v) &= \left\langle \left(2 - v\sin\left(\frac{u}{2}\right)\right)\sin(u), \left(2 - v\sin\left(\frac{u}{2}\right)\right)\cos(u), v\cos\left(\frac{u}{2}\right) \right\rangle \\
+      \x(u, v) &= \left\langle (R + r\cos(v))\cos(u), (R + r\cos(v))\sin(u), r\sin(v) \right\rangle
+    .\end{align*}
+    Given two normal vectors $\Na_1$ and $\Na_2$ of two surfaces $S_1$ and $S_2$, we have
+    \begin{align*}
+      \Na_1 \cdot \Na_2 > 0 &\implies \text{same orientation} \\
+      \Na_1 \cdot \Na_2 < 0 &\implies \text{opposite orientation}
+    .\end{align*}
+  \end{frame}
+\end{document}

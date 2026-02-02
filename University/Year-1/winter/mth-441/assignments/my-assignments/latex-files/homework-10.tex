@@ -1,0 +1,789 @@
+\begin{problem}[1]
+  Classify by Jordan Canonical form (i.e. up to similarity and up to the order
+  of the Jordan blocks) for all $6 \times 6$ matrices which have characteristic
+  polynomial $(x - 2)^2(x + 3)^4$.
+\end{problem}
+
+\begin{proof}[Solution]
+  We first need to identify the eigenvalues and their algebraic multiplicities
+  \begin{enumerate}
+    \item $\lambda = 2$ with algebraic multiplicity $2$.
+    \item $\lambda = -3$ with algebraic multiplicity $4$.
+  \end{enumerate}
+
+  Now, we determine the possible Jordan block structures.
+  Since the algebraic multiplicity of $\lambda = 2$ is $2$, the only possible Jordan forms are
+  \begin{enumerate}
+    \item $J_1(2) \oplus J_1(2)$, both blocks are size $1$,
+
+    \item $J_2(2)$, a single block of size $2$.
+  \end{enumerate}
+
+  Since the algebraic multiplicity of $\lambda = -3$ is $4$, the possible Jordan
+  block structures are
+  \begin{enumerate}
+    \item $J_1(-3) \oplus J_1(-3) \oplus J_1(-3) \oplus J_1(-3)$, all blocks are
+      size $1$.
+
+    \item $J_2(-3) \oplus J_1(-3) \oplus J_1(-3)$, one block of size $2$, two
+      blocks of size $1$.
+
+    \item $J_3(-3) \oplus J_1(-3)$, one block of size $3$, one block of size
+      $1$.
+
+    \item $J_2(-3) \oplus J_2(-3)$, two blocks of size $2$.
+
+    \item $J_4(-3)$, a single block of size $4$.
+  \end{enumerate}
+
+  Each Jordan form consists of a combination of the Jordan blocks for $\lambda = 2$ and $\lambda = -3$:
+
+  \begin{enumerate}
+    \item $J_1(2) \oplus J_1(2) \oplus J_1(-3) \oplus J_1(-3) \oplus J_1(-3)
+      \oplus J_1(-3)$
+
+    \item $J_1(2) \oplus J_1(2) \oplus J_2(-3) \oplus J_1(-3) \oplus J_1(-3)$
+
+    \item $J_1(2) \oplus J_1(2) \oplus J_3(-3) \oplus J_1(-3)$
+
+    \item $J_1(2) \oplus J_1(2) \oplus J_2(-3) \oplus J_2(-3)$
+
+    \item $J_1(2) \oplus J_1(2) \oplus J_4(-3)$
+
+    \item $J_2(2) \oplus J_1(-3) \oplus J_1(-3) \oplus J_1(-3) \oplus J_1(-3)$
+
+    \item $J_2(2) \oplus J_2(-3) \oplus J_1(-3) \oplus J_1(-3)$
+
+    \item $J_2(2) \oplus J_3(-3) \oplus J_1(-3)$
+
+    \item $J_2(2) \oplus J_2(-3) \oplus J_2(-3)$
+
+    \item $J_2(2) \oplus J_4(-3)$
+  \end{enumerate}
+
+  Therefore, there are 10 distinct Jordan forms for matrices with the given
+  characteristic polynomial.
+\end{proof}
+
+\begin{problem}[2]
+  Find the Jordan canonical form of the matrix $\begin{pmatrix}
+    a & 0 & 1 & 0 & \cdots & 0 & 0 & 0 & 0 \\
+    0 & a & 0 & 1 & \cdots & 0 & 0 & 0 & 0 \\
+    0 & 0 & a & 0 & \cdots & 0 & 0 & 0 & 0 \\
+    \vdots & \vdots & \vdots & \vdots & \ddots & \vdots & \vdots & \vdots & \vdots \\
+    0 & 0 & 0 & 0 & \cdots & a & 0 & 1 & 0 \\
+    0 & 0 & 0 & 0 & \cdots & 0 & a & 0 & 1 \\
+    0 & 0 & 0 & 0 & \cdots & 0 & 0 & a & 0 \\
+    0 & 0 & 0 & 0 & \cdots & 0 & 0 & 0 & a \\
+  \end{pmatrix}$.
+\end{problem}
+
+\begin{proof}[Solution]
+  We first need to compute the characteristic polynomial. The matrix $A$ has $a$
+  along the main diagonal and ones along the second superdiagonal. This
+  structure suggests that $A$ is a companion-like matrix shifted by $aI$.
+
+  To determine the characteristic polynomial, consider the determinant of $A -
+  xI$
+  \[%
+    A - xI = \begin{pmatrix}
+      a - x & 0 & 1 & 0 & \cdots & 0 & 0 & 0 & 0 \\
+      0 & a - x & 0 & 1 & \cdots & 0 & 0 & 0 & 0 \\
+      0 & 0 & a - x & 0 & \cdots & 0 & 0 & 0 & 0 \\
+      \vdots & \vdots & \vdots & \vdots & \ddots & \vdots & \vdots & \vdots & \vdots \\
+      0 & 0 & 0 & 0 & \cdots & a - x & 0 & 1 & 0 \\
+      0 & 0 & 0 & 0 & \cdots & 0 & a - x & 0 & 1 \\
+      0 & 0 & 0 & 0 & \cdots & 0 & 0 & a - x & 0 \\
+      0 & 0 & 0 & 0 & \cdots & 0 & 0 & 0 & a - x \\
+    \end{pmatrix}
+  .\]%
+  By expanding the determinant recursively, we see that the characteristic
+  polynomial satisfies $\chi_A(x) = (a - x)^n$ This means the only eigenvalue of
+  $A$ is $a$ with algebraic multiplicity $n$.
+
+  To determine the Jordan form, we examine the generalized eigenspaces. Since
+  there is a single eigenvalue $a$ and the superdiagonal structure extends
+  throughout the matrix, we check the size of the largest Jordan block by
+  computing the rank of successive powers of $A - aI$.
+
+  The matrix $A - aI$ is nilpotent. The key observation is that $(A - aI)^{n-1}$
+  has only a single nonzero entry, meaning the generalized eigenspace has a
+  single block of size $n$.
+
+  Thus, the Jordan form of $A$ is
+  \[%
+    J(A) = J_n(a) = \begin{pmatrix}
+      a & 1 & 0 & \cdots & 0 \\
+      0 & a & 1 & \cdots & 0 \\
+      0 & 0 & a & \cdots & 0 \\
+      \vdots & \vdots & \vdots & \ddots & \vdots \\
+      0 & 0 & 0 & \cdots & a \\
+    \end{pmatrix}
+  .\qedhere\]%
+\end{proof}
+
+\begin{problem}[3]
+  Let $A = \begin{pmatrix}
+    11 & -4 & -5 \\
+    21 & -8 & -11 \\
+    3 & -1 & 0 \\
+  \end{pmatrix}$.
+  \begin{enumerate}
+    \item Find a basis for each generalized eigenspace of $A$ consisting of a
+      union of disjoint cycles of generalized eigenvectors.
+
+    \item Find a Jordan canonical form $J$ of $A$ using your basis in Part (i).
+
+    \item Find the minimal polynomial of $A$.
+  \end{enumerate}
+\end{problem}
+
+\begin{proof}[Solution to (i)]
+  Using Wolfram Alpha, we get the characteristic polynomial
+  \[%
+    f_A(\lambda) = -(\lambda - 2)^2(\lambda + 1)
+  ,\]%
+  giving us eigenvalues of $\lambda_1 = -1$ with algebraic multiplicity $1$ and
+  $\lambda_2 = 2$ with algebraic multiplicity $2$.
+
+  An eigenvalue will have a generalized eigenvector if its algebraic
+  multiplicity is greater than the geometric multiplicity. If so, then the
+  eigenvalue will have $n$ generalized eigenvectors, where $n$ is the difference
+  between the algebraic multiplicity and the geometric multiplicity.
+
+  First, we work with $\lambda_1 = -1$. We need to first compute the
+  eigenvectors, giving us
+  \begin{alignat*}{5}
+    \underline{\lambda = -1}: \quad& A - \lambda_1 I
+    &&= \begin{pmatrix}
+      12 & -4 & -5 \\
+      21 & -9 & -11 \\
+      3 & -1 & 1 \\
+    \end{pmatrix}
+    &&= \begin{pmatrix}
+      1 & -\sfrac{1}{3} & 0 \\
+      0 & 0 & 1 \\
+      0 & 0 & 0 \\
+    \end{pmatrix} \\
+    &\implies \ker(A - \lambda_2 I)
+    &&= \begin{pmatrix}
+      1 & -\sfrac{1}{3} & 0 \\
+      0 & 0 & 1 \\
+      0 & 0 & 0 \\
+    \end{pmatrix}\begin{pmatrix}
+      x_1 \\
+      x_2 \\
+      x_3 \\
+    \end{pmatrix}
+    &&= \begin{pmatrix}
+      0 \\
+      0 \\
+      0 \\
+    \end{pmatrix} \\
+    &\implies \v_1 = \begin{pmatrix}
+      1 \\
+      3 \\
+      0 \\
+    \end{pmatrix}
+  .\end{alignat*}
+  Since the algebraic multiplicity of $\lambda_1$ is $1$, there are no
+  generalized eigenvectors.
+
+  Now, we find the generalized eigenvectors for $\lambda_2 = 2$ with
+  multiplicity of $2$.
+  \begin{alignat*}{5}
+    \underline{\lambda = -2}: \quad& A - \lambda_2 I
+    &&= \begin{pmatrix}
+      9 & -4 & -5 \\
+      21 & -10 & -11 \\
+      3 & -1 & -2 \\
+    \end{pmatrix}
+    &&= \begin{pmatrix}
+      1 & 0 & -1 \\
+      0 & 1 & -1 \\
+      0 & 0 & 0 \\
+    \end{pmatrix} \\
+    &\implies \ker(A - \lambda I)
+    &&= \begin{pmatrix}
+      1 & 0 & -1 \\
+      0 & 1 & -1 \\
+      0 & 0 & 0 \\
+    \end{pmatrix}\begin{pmatrix}
+      x_1 \\
+      x_2 \\
+      x_3 \\
+    \end{pmatrix}
+    &&= \begin{pmatrix}
+      0 \\
+      0 \\
+      0 \\
+    \end{pmatrix} \\
+    &\implies
+    \v_1 = \begin{pmatrix}
+      1 \\
+      1 \\
+      1 \\
+    \end{pmatrix}
+  .\end{alignat*}
+  Since the algebraic multiplicity of $\lambda_2$ is $2$, there exists a single
+  generalized eigenvector. To find it, we solve $(A - \lambda_2I)\v_2 = \v_1$.
+  Therefore, we have
+  \[%
+    (A - \lambda_2I)\v_2 = \v_1 \implies
+    \begin{pmatrix}
+      9 & -4 & -5 \\
+      21 & -10 & -11 \\
+      3 & -1 & -2 \\
+    \end{pmatrix}\begin{pmatrix}
+      x_1 \\
+      x_2 \\
+      x_3 \\
+    \end{pmatrix}
+    = \begin{pmatrix}
+      1 \\
+      1 \\
+      1 \\
+    \end{pmatrix}
+    \implies \v_2 = \begin{pmatrix}
+      1 \\
+      2 \\
+      0 \\
+    \end{pmatrix}
+  .\]%
+
+  Therefore, the generalized eigenspaces are given by
+  \[%
+    G_{\lambda_1}(A) = \Sspan\left\{
+      \begin{pmatrix}
+        1 \\
+        3 \\
+        0 \\
+      \end{pmatrix}
+    \right\}
+    \aand
+    G_{\lambda_2}(A) = \Sspan\left\{
+      \begin{pmatrix}
+        1 \\
+        2 \\
+        0 \\
+      \end{pmatrix},
+      \begin{pmatrix}
+        0 \\
+        0 \\
+        1 \\
+      \end{pmatrix}
+    \right\}
+  .\qedhere\]%
+\end{proof}
+
+\begin{proof}[Solution to (ii)]
+  The generalized eigenspace for $\lambda_1 = -1$ has dimension $1$, so there
+  will be a $1 \times 1$ Jordan block for $-1$.
+
+  The generalized eigenspace for $\lambda_2 = 2$ has dimension $2$. Since the
+  geometric multiplicity is $1$ (only one eigenvector for $2$), there will be a
+  single $2 \times 2$ Jordan block for $2$.
+
+  The matrix $P$ is constructed from the combinations of the basis for the
+  generalized eigenspaces for $\lambda_1$ and $\lambda_2$. Therefore, $A$ can be
+  written as
+  \[%
+    A = PJP^{-1} = \begin{pmatrix}
+      1 & 1 & 1 \\
+      3 & 1 & 2 \\
+      0 & 1 & 0 \\
+    \end{pmatrix}
+    \begin{pmatrix}
+      -1 & 0 & 0 \\
+      0 & 2 & 1 \\
+      0 & 0 & 2 \\
+    \end{pmatrix}
+    \begin{pmatrix}
+      -2 & 1 & 1 \\
+      0 & 0 & 1 \\
+      3 & -1 & -2 \\
+    \end{pmatrix}
+  .\qedhere\]%
+\end{proof}
+
+\begin{proof}[Solution to (iii)]
+  The eigenvalue $\lambda_1 = -1$ has a $1 \times 1$ Jordan block, so it appears
+  in the minimal polynomial as $(x + 1)$. The eigenvalue $\lambda_2 = 2$ has a 2
+  × 2 Jordan block, so it appears in the minimal polynomial as $(x - 2)^2$.
+  Thus, the minimal polynomial of $A$ is
+  \[%
+    m_A(x) = (x + 1)(x - 2)^2
+  .\qedhere\]%
+\end{proof}
+
+\begin{problem}[4]
+  Let $D$ be the differential linear operator on the vector space $V =
+  \Sspan\{1, t, t^2, e^t, te^t\}$, i.e.,
+  \[%
+    D(f(x)) = \odv{}{x} f(x),\qtq{for any} f(x) \in V
+  .\]%
+  \begin{enumerate}
+    \item Let $\BB = \{1, t, t^2, e^t, te^t\}$. Find the matrix representation
+      $A = [D]_\BB$.
+
+    \item Find a basis for each generalized eigenspace of $D$ consisting of a
+      union of disjoint cycles of generalized eigenvectors.
+
+    \item Find a Jordan canonical form $J$ of $D$ using your basis in Part (ii).
+
+    \item Find the minimal polynomial of $D$.
+  \end{enumerate}
+\end{problem}
+
+\begin{proof}[Solution to (i)]
+  To find the matrix representation of $D$ with respect to the basis $\BB$, we
+  need to compute $D$ applied to each basis element and express the result as a
+  linear combination of the basis elements.
+
+  \begin{align*}
+    D(1) = 0, \quad D(t) = 1, \quad D(t^2) = 2t, \quad D(e^t) = e^t, \aand D(te^t) = e^t + te^t
+  .\end{align*}
+
+  Now, we can express these results in terms of the basis $\BB$:
+  \begin{align*}
+    D(1) &= 0 \cdot 1 + 0 \cdot t + 0 \cdot t^2 + 0 \cdot e^t + 0 \cdot te^t \\
+    D(t) &= 1 \cdot 1 + 0 \cdot t + 0 \cdot t^2 + 0 \cdot e^t + 0 \cdot te^t \\
+    D(t^2) &= 0 \cdot 1 + 2 \cdot t + 0 \cdot t^2 + 0 \cdot e^t + 0 \cdot te^t \\
+    D(e^t) &= 0 \cdot 1 + 0 \cdot t + 0 \cdot t^2 + 1 \cdot e^t + 0 \cdot te^t \\
+    D(te^t) &= 0 \cdot 1 + 0 \cdot t + 0 \cdot t^2 + 1 \cdot e^t + 1 \cdot te^t
+  .\end{align*}
+  Therefore, the matrix representation $A = [D]_\BB$ is given by
+  \[%
+    A = \begin{pmatrix}
+      0 & 1 & 0 & 0 & 0 \\
+      0 & 0 & 2 & 0 & 0 \\
+      0 & 0 & 0 & 0 & 0 \\
+      0 & 0 & 0 & 1 & 1 \\
+      0 & 0 & 0 & 0 & 1 \\
+    \end{pmatrix}
+  .\qedhere\]%
+\end{proof}
+
+\begin{proof}[Solution to (ii)]
+  First, we need to find the characteristic polynomial of $A$, giving us
+  \[%
+    \det(A - \lambda I) = \det\begin{pmatrix}
+      -\lambda & 1 & 0 & 0 & 0 \\
+      0 & -\lambda & 2 & 0 & 0 \\
+      0 & 0 & -\lambda & 0 & 0 \\
+      0 & 0 & 0 & 1 - \lambda & 1 \\
+      0 & 0 & 0 & 0 & 1 - \lambda \\
+    \end{pmatrix} = -\lambda^3(\lambda - 1)^2
+  .\]%
+  The eigenvalues are $\lambda_1 = 0$ with algebraic multiplicity $3$ and
+  $\lambda_2 = 1$ with algebraic multiplicity $2$. Next, we find the
+  eigenvectors and generalized eigenvectors for each eigenvalue.
+
+  For $\lambda_1 = 0$, we have
+  \begin{alignat*}{4}
+    A\v_1 &= 0 &&\implies
+    \begin{pmatrix}
+      0 & 1 & 0 & 0 & 0 \\
+      0 & 0 & 2 & 0 & 0 \\
+      0 & 0 & 0 & 0 & 0 \\
+      0 & 0 & 0 & 1 & 1 \\
+      0 & 0 & 0 & 0 & 1 \\
+    \end{pmatrix}\begin{pmatrix}
+      x_1 \\
+      x_2 \\
+      x_3 \\
+      x_4 \\
+      x_5 \\
+    \end{pmatrix} &&= \begin{pmatrix}
+      0 \\
+      0 \\
+      0 \\
+      0 \\
+      0 \\
+    \end{pmatrix} \\
+    &&&\implies \begin{pmatrix}
+      0 & 1 & 0 & 0 & 0 \\
+      0 & 0 & 1 & 0 & 0 \\
+      0 & 0 & 0 & 1 & 0 \\
+      0 & 0 & 0 & 0 & 1 \\
+      0 & 0 & 0 & 0 & 0 \\
+    \end{pmatrix}\begin{pmatrix}
+      x_1 \\
+      x_2 \\
+      x_3 \\
+      x_4 \\
+      x_5 \\
+    \end{pmatrix} &&= \begin{pmatrix}
+      0 \\
+      0 \\
+      0 \\
+      0 \\
+      0 \\
+    \end{pmatrix}
+    \implies\v_1 = \begin{pmatrix}
+      1 \\
+      0 \\
+      0 \\
+      0 \\
+      0 \\
+    \end{pmatrix}
+  \end{alignat*}
+  Since the algebraic multiplicity of $\lambda_1$ is $3$ and the geometric
+  multiplicity is $1$, there are $2$ generalized eigenvectors. To find them like
+  we did in problem 3, we solve $(A - \lambda_1I)\v_2 = \v_1$ and $(A -
+  \lambda_1I)\v_3 = \v_2$.
+  \begin{alignat*}{3}
+    (A - \lambda_1I)\v_2 &= \v_1 &&\implies
+    \begin{pmatrix}
+      0 & 1 & 0 & 0 & 0 \\
+      0 & 0 & 2 & 0 & 0 \\
+      0 & 0 & 0 & 0 & 0 \\
+      0 & 0 & 0 & 1 & 1 \\
+      0 & 0 & 0 & 0 & 1 \\
+    \end{pmatrix}\begin{pmatrix}
+      x_1 \\
+      x_2 \\
+      x_3 \\
+      x_4 \\
+      x_5 \\
+      \end{pmatrix} &&= \begin{pmatrix}
+      1 \\
+      0 \\
+      0 \\
+      0 \\
+      0 \\
+    \end{pmatrix} \implies \v_2 = \begin{pmatrix}
+      0 \\
+      1 \\
+      0 \\
+      0 \\
+      0 \\
+    \end{pmatrix} \\
+    (A - \lambda_1I)\v_3 &= \v_2 &&\implies
+    \begin{pmatrix}
+      0 & 1 & 0 & 0 & 0 \\
+      0 & 0 & 2 & 0 & 0 \\
+      0 & 0 & 0 & 0 & 0 \\
+      0 & 0 & 0 & 1 & 1 \\
+      0 & 0 & 0 & 0 & 1 \\
+    \end{pmatrix}\begin{pmatrix}
+      x_1 \\
+      x_2 \\
+      x_3 \\
+      x_4 \\
+      x_5 \\
+    \end{pmatrix} &&= \begin{pmatrix}
+      0 \\
+      1 \\
+      0 \\
+      0 \\
+      0 \\
+    \end{pmatrix} \implies\v_3 = \begin{pmatrix}
+      0 \\
+      0 \\
+      \sfrac{1}{2} \\
+      0 \\
+      0 \\
+    \end{pmatrix}
+  .\end{alignat*}
+
+  For $\lambda_2 = 1$, we have
+  \begin{alignat*}{3}
+    (A - \lambda_2 I) = \v_1 &\implies
+    \begin{pmatrix}
+      -1 & 1 & 0 & 0 & 0 \\
+      0 & -1 & 2 & 0 & 0 \\
+      0 & 0 & -1 & 0 & 0 \\
+      0 & 0 & 0 & 0 & 1 \\
+      0 & 0 & 0 & 0 & 0 \\
+    \end{pmatrix}\begin{pmatrix}
+      x_1 \\
+      x_2 \\
+      x_3 \\
+      x_4 \\
+      x_5 \\
+    \end{pmatrix} &&= \begin{pmatrix}
+      0 \\
+      0 \\
+      0 \\
+      0 \\
+      0 \\
+    \end{pmatrix} \\
+    &\implies \begin{pmatrix}
+      1 & 0 & 0 & 0 & 0 \\
+      0 & 1 & 0 & 0 & 0 \\
+      0 & 0 & 1 & 0 & 0 \\
+      0 & 0 & 0 & 0 & 1 \\
+      0 & 0 & 0 & 0 & 0 \\
+    \end{pmatrix}
+    \begin{pmatrix}
+      x_1 \\
+      x_2 \\
+      x_3 \\
+      x_4 \\
+      x_5 \\
+    \end{pmatrix} &&= \begin{pmatrix}
+      0 \\
+      0 \\
+      0 \\
+      0 \\
+      0 \\
+    \end{pmatrix} \implies \v_1 = \begin{pmatrix}
+      0 \\
+      0 \\
+      0 \\
+      1 \\
+      0 \\
+    \end{pmatrix}
+  .\end{alignat*}
+  Since the algebraic multiplicity of $\lambda_2$ is $2$ and the geometric
+  multiplicity is $1$, there is $1$ generalized eigenvector. To find it, we
+  solve $(A - \lambda_2I)\v_2 = \v_1$.
+  \begin{alignat*}{3}
+    (A - \lambda_2I)\v_2 &= \v_1 \implies
+    \begin{pmatrix}
+      -1 & 1 & 0 & 0 & 0 \\
+      0 & -1 & 2 & 0 & 0 \\
+      0 & 0 & -1 & 0 & 0 \\
+      0 & 0 & 0 & 0 & 1 \\
+      0 & 0 & 0 & 0 & 0 \\
+    \end{pmatrix}\begin{pmatrix}
+      x_1 \\
+      x_2 \\
+      x_3 \\
+      x_4 \\
+      x_5 \\
+    \end{pmatrix} &&= \begin{pmatrix}
+      0 \\
+      0 \\
+      0 \\
+      1 \\
+      0 \\
+    \end{pmatrix} \implies
+    \begin{pmatrix}
+      0 \\
+      0 \\
+      0 \\
+      0 \\
+      1 \\
+    \end{pmatrix}
+  .\end{alignat*}
+
+  Therefore, the generalized eigenspaces are given by
+  \[%
+    G_{\lambda_1}(D) = \Sspan\left\{
+      \begin{pmatrix}
+        1 \\
+        0 \\
+        0 \\
+        0 \\
+        0 \\
+      \end{pmatrix},
+      \begin{pmatrix}
+        0 \\
+        1 \\
+        0 \\
+        0 \\
+        0 \\
+      \end{pmatrix},
+      \begin{pmatrix}
+        0 \\
+        0 \\
+        \sfrac{1}{2} \\
+        0 \\
+        0 \\
+      \end{pmatrix}
+    \right\}
+    \aand
+    G_{\lambda_2}(D) = \Sspan\left\{
+      \begin{pmatrix}
+        0 \\
+        0 \\
+        0 \\
+        1 \\
+        0
+      \end{pmatrix},
+      \begin{pmatrix}
+        0 \\
+        0 \\
+        0 \\
+        0 \\
+        1
+      \end{pmatrix}
+    \right\}
+  .\qedhere\]%
+\end{proof}
+
+\begin{proof}[Solution to (iii)]
+  The generalized eigenspace for $\lambda_1 = 0$ has dimension $3$, so there
+  will be a single $3 \times 3$ Jordan block for $0$.
+
+  The generalized eigenspace for $\lambda_2 = 1$ has dimension $2$. Since the
+  geometric multiplicity is $1$ (only one eigenvector for $1$), there will be a
+  single $2 \times 2$ Jordan block for $1$.
+
+  The matrix $P$ is constructed from the combinations of the basis for the
+  generalized eigenspaces for $\lambda_1$ and $\lambda_2$. Therefore, $A$ can be
+  written as
+  \[%
+    A = PJP^{-1} = \begin{pmatrix}
+      1 & 0 & 0 & 0 & 0 \\
+      0 & 1 & 0 & 0 & 0 \\
+      0 & 0 & \sfrac{1}{2} & 0 & 0 \\
+      0 & 0 & 0 & -1 & 0 \\
+      0 & 0 & 0 & 0 & -1 \\
+    \end{pmatrix}
+    \begin{pmatrix}
+      0 & 1 & 0 & 0 & 0 \\
+      0 & 0 & 1 & 0 & 0 \\
+      0 & 0 & 0 & 0 & 0 \\
+      0 & 0 & 0 & 1 & 1 \\
+      0 & 0 & 0 & 0 & 1 \\
+    \end{pmatrix}
+    \begin{pmatrix}
+      1 & 0 & 0 & 0 & 0 \\
+      0 & 1 & 0 & 0 & 0 \\
+      0 & 0 & 2 & 0 & 0 \\
+      0 & 0 & 0 & -1 & 0 \\
+      0 & 0 & 0 & 0 & -1 \\
+    \end{pmatrix}
+  .\qedhere\]%
+\end{proof}
+
+\begin{proof}[Solution to (iv)]
+  The eigenvalue $\lambda_1 = 0$ has a $3 \times 3$ Jordan block, so it appears
+  in the minimal polynomial as $x^3$. The eigenvalue $\lambda_2 = 1$ has a $2 \times
+  2$ Jordan block, so it appears in the minimal polynomial as $(x - 1)^2$. Thus,
+  the minimal polynomial of $D$ is
+  \[%
+    m_D(x) = x^3(x - 1)^2
+  .\qedhere\]%
+\end{proof}
+
+\begin{problem}[5]
+  Let $A \in \C^{n \times n}$. Assume $(A + I_n)^m = 0$. Prove that $A$ is
+  invertible and find $\det(A)$
+\end{problem}
+
+\begin{proof}[Solution]
+  To show that $A$ is invertible, we must prove that $\det(A) \neq 0$, or
+  equivalently, that $A$ is non-singular. The given condition $(A + I_n)^m = 0$
+  means that $A + I_n$ is nilpotent, i.e., all its eigenvalues are zero. That
+  is, for every eigenvalue $\lambda$ of $A + I_n$, we have $\lambda^m = 0$,
+  implying $\lambda = 0$. This means that the only eigenvalue of $A + I_n$ is 0,
+  so the eigenvalues of $A$ satisfy
+  \[%
+    \mu + 1 = 0 \implies \mu = -1
+  .\]%
+  Thus, all eigenvalues of $A$ are $-1$, which means the matrix $A$ is
+  diagonalizable (if it is already diagonalizable) or similar to a Jordan block
+  form with eigenvalues $-1$. Since $-1$ is never zero, all eigenvalues of $A$
+  are nonzero, which implies that $A$ is invertible.
+
+  Since the determinant of a matrix is the product of its eigenvalues and all
+  eigenvalues of $A$ are $-1$, we obtain $\det(A) = (-1)^n$.
+\end{proof}
+
+\begin{problem}[6]
+  Let $V$ be the vector space of all polynomials over $\R$. Let $D$ be the
+  differentiation operator on the vector space $V$. Find the minimal polynomial
+  of $D$ on $V$ or prove that $D$ has no minimal polynomial on $V$.
+\end{problem}
+
+\begin{proof}[Solution]
+  We consider the minimal polynomial $m_D(x)$, which is the monic polynomial of
+  least degree such that $m_D(D) = 0$. This means there must exist a nonzero
+  polynomial $m_D(x) = a_0 + a_1x + \dots + a_kx^k$ such that
+  \[%
+    m_D(D) = a_0 I + a_1 D + \cdots + a_k D^k = 0
+  .\]%
+  In other words, applying this polynomial expression of $D$ to any polynomial
+  $p(x)$ must yield $0$.
+
+  Now, we check if $D$ Has a Minimal Polynomial. If $D$ had a minimal polynomial
+  of degree $k$, then for every polynomial $p(x)$, applying $D$ repeatedly up to
+  the $k$-th derivative should result in zero. However, differentiation does not
+  satisfy such a condition for all polynomials. Specifically, the space of
+  polynomials is infinite-dimensional. We also know that there exist polynomials
+  of arbitrarily high degree, and differentiation reduces the degree by one at
+  each step. Therefore, no finite power $D^k$ annihilates all polynomials; for
+  any $k$, there exist polynomials of degree higher than $k$, whose $k$-th
+  derivative is nonzero.
+
+  Thus, there is no nonzero polynomial $m_D(x)$ such that $m_D(D)$ annihilates
+  all polynomials.
+
+  Since $D$ does not satisfy a minimal polynomial equation for all polynomials
+  in $V$, we conclude that $D$ has no minimal polynomial on $V$.
+\end{proof}
+
+\begin{problem}[7]
+  Suppose $A \in \C^{n \times n}$ satisfies $A^2 = A$. Prove that $A$ is
+  diagonalizable.
+\end{problem}
+
+\begin{proof}[Solution]
+  Since $A$ satisfies $A^2 - A = 0$, the minimal polynomial of $A$, which is the
+  monic polynomial of least degree that annihilates $A$, must divide $x^2 - x$.
+  The polynomial $x^2 - x = x(x - 1)$. Thus, the minimal polynomial of $A$ must
+  be one of
+  \[%
+    x, \quad x - 1, \oor x(x - 1)
+  .\]%
+  This means that the only possible eigenvalues of $A$ are $0$ and $1$.
+
+  A matrix is diagonalizable if and only if its minimal polynomial splits
+  completely into distinct linear factors. We have already determined that the
+  minimal polynomial of $A$ is one of
+  \[%
+    x, \quad x - 1, \oor x(x - 1)
+  ,\]%
+  all of which are products of distinct linear factors. This guarantees that $A$
+  is diagonalizable.
+
+  Since the only possible eigenvalues are $0$ and $1$, we decompose the space
+  $\C^n$ as a direct sum of the eigenspaces corresponding to $0$ and $1$
+  \[%
+    \C^n = \ker(A) \oplus \Im(A)
+  .\]%
+  From $A^2 = A$, it follows that if $\v$ is in the image of $A$, then $A\v =
+  \v$, meaning all vectors in $\Im(A)$ are eigenvectors corresponding to
+  eigenvalue $1$. Similarly, if $\v \in \ker(A)$, then $A\v = \zero$, meaning
+  all vectors in $\ker(A)$ are eigenvectors corresponding to eigenvalue $0$.
+
+  Since the generalized eigenspaces span $\C^n$ and contain only true
+  eigenvectors (i.e., there are no nontrivial Jordan blocks), $A$ is
+  diagonalizable.
+\end{proof}
+
+\begin{problem}[8]
+  Give an example of two matrices who have the same characteristic polynomial
+  but distinct minimal polynomials.
+\end{problem}
+
+\begin{proof}[Solution]
+  Define $A$ and $B$ as the following matrices
+  \[%
+    A = \begin{pmatrix}
+      2 & 0 & 0 \\
+      0 & 2 & 0 \\
+      0 & 0 & 3 \\
+    \end{pmatrix}
+    \aand
+    B = \begin{pmatrix}
+      2 & 1 & 0 \\
+      0 & 2 & 0 \\
+      0 & 0 & 3 \\
+    \end{pmatrix}
+  .\]%
+  Their characteristic polynomials are
+  \[%
+    \det(A) = -(\lambda - 3)(\lambda - 2)^2 = \det(B)
+  ,\]%
+  but their characteristic polynomials are
+  \[%
+    m_A(x) = (x - 2)(x - 3)
+    \aand
+    m_B(x) = (x - 3)(x - 2)^2
+  .\]%
+\end{proof}

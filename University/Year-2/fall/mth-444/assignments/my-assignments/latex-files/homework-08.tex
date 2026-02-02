@@ -1,0 +1,175 @@
+\begin{problem}[10.14]
+  Find the index of $12\Z$ in $3\Z$.
+\end{problem}
+
+\begin{solution}
+  The left cosets of $12\Z$ in $3\Z$ are given by
+  \[%
+    m + 12\Z = \{m, m + 12, m - 12, m + 24, m - 24, \ldots\}
+  .\]%
+  Taking $m$ to be an element that isn't in $12\Z$, we find the distinct left cosets
+  \begin{align*}
+    0 + 12\Z &= \{0, \pm 12, \pm 24, \ldots\} \\
+    3 + 12\Z &= \{3, 15, -9, 27, -21, \ldots\} \\
+    6 + 12\Z &= \{6, 18, -6, 30, -18, \ldots\} \\
+    9 + 12\Z &= \{9, 21, -3, 33, -15, \ldots\}
+  .\end{align*}
+  Thus, there are 4 distinct left cosets of $12\Z$ in $3\Z$, so we have $(3\Z : 12\Z) = 4$.
+\end{solution}
+
+\begin{problem}[10.16]
+  Let $\mu = (1, 2, 4, 5)(3, 6)$ in $S_6$. Find the index of $\bra{\mu}$ in $S_6$.
+\end{problem}
+
+\begin{solution}
+  The order of $\mu$ is given by the least common multiple of the lengths of its disjoint cycles, which is $\lcm(4, 2) = 4$. Thus, the subgroup $\bra{\mu}$ has order 4. Since $S_6$ has order $6! = 720$, the index of $\bra{\mu}$ in $S_6$ is given by
+  \[%
+    (S_6 : \bra{\mu}) = |S_6|/|\bra{\mu}| = \frac{720}{4} = 180
+  .\]%
+  Thus, there are 180 distinct left cosets of $\bra{\mu}$ in $S_6$, so we have $(S_6 : \bra{\mu}) = 180$.
+\end{solution}
+
+\begin{problem}[10.32]
+  Let $H$ be a subgroup of a group $G$ and let $a, b \in G$. Prove or provide a counterexample: if $aH = bH$, then $Ha = Hb$.
+\end{problem}
+
+\begin{solution}
+  The statement is false in general. Equality of right cosets need not imply equality of left cosets. For a counterexample, consider the group $G = D_4$, $H = \{\iota, \mu\}$, $a = \rho$, and $b = \mu\phi^3$. Then, we have
+  \[%
+    aH = \{\rho, \rho\mu\} = \{\rho, \mu\rho^3\} = bH
+  .\]%
+  However, the left cosets are
+  \[%
+    Ha = \{\iota \rho, \mu\rho\} = \{\rho, \rho^3\mu\} \neq \{\mu\rho^3, \iota \mu\rho^3\} = Hb
+  .\]%
+\end{solution}
+
+\begin{problem}[10.34]
+  Let $H$ be a subgroup of a group $G$ and let $a, b \in G$. Prove or provide a counterexample: if $Ha = Hb$, then $Ha^{-1} = Hb^{-1}$.
+\end{problem}
+
+\begin{solution}
+  Suppose $Ha = Hb$. Then for any $h \in H$, there exists some $h' \in H$ such that $ha = h'b$. Rearranging this equation gives $hb^{-1} = h'a^{-1}$. Since $h, h' \in H$ and $H$ is a subgroup, we have $hb^{-1} \in Ha^{-1}$. Therefore, for any $h \in H$, we have $hb^{-1} \in Ha^{-1}$. This implies that $Hb^{-1} \subseteq Ha^{-1}$.
+
+  By a similar argument, we can show that $Ha^{-1} \subseteq Hb^{-1}$. Therefore, we conclude that $Ha^{-1} = Hb^{-1}$.
+\end{solution}
+
+\begin{problem}[12.10]
+  Give the order of the element in the factor group $26 + \bra{12}$ in $\Z_{60} / \bra{12}$.
+\end{problem}
+
+\begin{solution}
+  Suppose $Ha = Hb$. Then in particular $a \in Hb$, so there exists some $h \in H$ such that $a = hb$. Taking inverses of both sides gives
+  \[%
+    a^{-1} = b^{-1}h^{-1}
+  .\]%
+  Since $h^{-1} \in H$, this shows that $a^{-1} \in Hb^{-1}$, so $Ha^{-1} \subseteq Hb^{-1}$.
+
+  The reverse inclusion follows by a similar argument, so we conclude that $Ha^{-1} = Hb^{-1}$.
+\end{solution}
+
+\begin{problem}[12.16]
+  Compute $i_\rho[H]$ for the subgroup $H = \{\iota, \mu\}$ of the dihedral group $D_3$.
+\end{problem}
+
+\begin{solution}
+  The map $i_\rho : D_3 \to D_3$ is defined by $i_\rho(x) = \rho x\rho^{-1}$. Since $H = \{\iota,\mu\}$, we compute
+  \[%
+    i_\rho(\iota) = \rho \iota \rho^{-1} = \iota
+  .\]%
+  For the reflection $\mu$, using the relation $\mu\rho = \rho^{-1}\mu$, we have
+  \[%
+    i_\rho(\mu) = \rho\mu\rho^{-1} = \rho\mu\rho^{2} = (\rho\mu)\rho^{2} = (\rho^{-1}\mu)\rho^{2} = \mu\rho
+  .\]%
+  Thus the image of $H$ under $i_\rho$ is
+  \[%
+    i_\rho[H] = \{\iota, \mu\rho\}
+  .\qedhere\]%
+\end{solution}
+
+\begin{problem}[12.24]
+  Let $G_1$ and $G_2$ be groups and $\pi_1 : G_1 \times G_2 \to G_1$ be the function defined by $\pi_1(a, b) = a$. Prove that $\pi_1$ is a homomorphism, find $\Ker(\pi_1)$, and prove $(G_1 \times G_2)/\Ker(\pi_1)$ is isomorphic to $G_1$.
+\end{problem}
+
+\begin{solution}
+  Let $(a_1, b_1), (a_2, b_2) \in G_1 \times G_2$. Then we have
+  \[%
+    \pi_1((a_1, b_1)(a_2, b_2)) = \pi_1(a_1a_2, b_1b_2) = a_1a_2 = \pi_1(a_1, b_1)\pi_1(a_2, b_2)
+  .\]%
+  Thus, $\pi_1$ is a homomorphism.
+
+  The kernel of $\pi_1$ is the set of all elements in $G_1 \times G_2$ that look like $(e_1, b)$ where $e_1$ is the identity in $G_1$ and $b$ is any arbitrary element in $G_2$. Thus, we have
+  \[%
+    \Ker(\pi_1) = \{(e_1, b) \mid b \in G_2\} \cong \{e_1\} \times G_2
+  .\]%
+
+  By the Fundamental Homomorphism Theorem, we have
+  \[%
+    (G_1 \times G_2)/\Ker(\pi_1) \cong \pi_1[G_1 \times G_2] = G_1
+  .\]%
+  Therefore, we conclude that $(G_1 \times G_2)/\Ker(\pi_1)$ is homomorphic to $G_1$. It's also clear that this is an isomorphism since the mapping is bijective.
+\end{solution}
+
+\begin{problem}[12.27]
+  Prove that the torsion subgroup $T$ of an abelian group $G$ is a normal subgroup of $G$, and that $G/T$ is torsion free. (See Exercise 22.)
+\end{problem}
+
+\begin{solution}
+  The torsion subgroup $T$ of an abelian group $G$ is defined as the set of all elements in $G$ that have finite order. To show that $T$ is a normal subgroup of $G$, we need to verify that for any $g \in G$ and any $t \in T$, the element $gtg^{-1}$ is also in $T$. Since $G$ is abelian, we have
+  \[%
+    gtg^{-1} = t
+  .\]%
+  Since $t$ has finite order, it follows that $gtg^{-1}$ also has finite order, and thus $gtg^{-1} \in T$. Therefore, $T$ is a normal subgroup of $G$.
+
+  Now we show that $G/T$ is torsion free. Suppose that $gT \in G/T$ is a torsion element. Then $(gT)^n = T$ for some positive integer $n$. This means
+  \[%
+    g^n T = T,
+  ,\]%
+  so $g^n \in T$, and hence $g^n$ has finite order. Thus $(g^n)^k = e$ for some $k$, and so
+  \[%
+    g^{nk} = e
+  .\]%
+  Therefore $g$ has finite order, which implies $g \in T$, and hence $gT = T$. This shows that the only torsion element in $G/T$ is the identity element $T$ itself.
+
+  Therefore $G/T$ is torsion free.
+\end{solution}
+
+\begin{problem}[12.28]
+  A subgroup $H$ is \emph{conjugate to a subgroup} $K$ of a group $G$ if there exists an inner automorphism $i_g$ of $G$ such that $i_g[H] = K$. Show that conjugacy is an equivalence relation on the collection of subgroups of $G$.
+\end{problem}
+
+\begin{solution}
+  To show that conjugacy is an equivalence relation on the collection of subgroups of $G$, we need to verify that it satisfies the properties of reflexivity, symmetry, and transitivity.
+
+  For reflexivity, let $H$ be a subgroup of $G$. The identity inner automorphism $i_e$ (where $e$ is the identity element of $G$) satisfies $i_e[H] = H$. Thus, $H$ is conjugate to itself.
+
+  For symmetry, let $H$ and $K$ be subgroups of $G$ such that $H$ is conjugate to $K$. This means there exists an inner automorphism $i_g$ such that $i_g[H] = K$. The inverse inner automorphism $i_{g^{-1}}$ satisfies $i_{g^{-1}}[K] = H$. Therefore, if $H$ is conjugate to $K$, then $K$ is conjugate to $H$.
+
+  And for transitivity, let $H$, $K$, and $L$ be subgroups of $G$ such that $H$ is conjugate to $K$ and $K$ is conjugate to $L$. This means there exist inner automorphisms $i_g$ and $i_h$ such that $i_g[H] = K$ and $i_h[K] = L$. The composition of these inner automorphisms, $i_{hg}$, satisfies
+  \[%
+    i_{hg}[H] = i_h[i_g[H]] = i_h[K] = L
+  .\]%
+  Therefore, $H$ is conjugate to $L$.
+
+  Since conjugacy satisfies reflexivity, symmetry, and transitivity, we conclude that it is an equivalence relation on the collection of subgroups of $G$.
+\end{solution}
+
+\begin{problem}[12.30]
+  Find all subgroups of $D_3$ that are conjugate to $H = \{\iota, \mu\}$. (See Exercise 28.)
+\end{problem}
+
+\begin{solution}
+  Recall
+  \[%
+    D_3 = \bra{r,s\mid r^3=e,\ s^2=e,\ srs=r^{-1}} = \{e,r,r^2,s,rs,r^2s\}
+  .\]%
+  Let $H = \{e,s\}$. Conjugation by powers of $r$ permutes the reflections, since
+  \[%
+    r s r^{-1} = rs \aand r^2 s r^{-2} = r^2 s
+  .\]%
+  Thus the conjugates of $H$ are the subgroups generated by the three reflections
+  \[%
+    \{e, s\},\qquad \{e, rs\}, \aand \{e, r^2s\}
+  .\]%
+  These are distinct order-2 subgroups, and they form the conjugacy class of $H$.
+\end{solution}

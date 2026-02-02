@@ -1,0 +1,73 @@
+\lecture{4}{Oct 7 2024 Mon (13:01:52)}{Consequences of Completeness}
+
+\subsection{Density of $\Q$ in $\R$}
+
+\begin{theorem}[Density of $\Q$ in $\R$]
+  Between any two real numbers $a$ and $b$ with $a < b$, there exists a rational number $q$ such that $a < q < b$.
+\end{theorem}
+
+\begin{proof}
+  Let $a > 0$, giving us $0 < a < b$. Then, $b - a > 0$. By the archimedean property, $(\exists n \in \N)[\sfrac{1}{n} < b - a \iff a < b - \sfrac{1}{n}]$.
+
+  There is an $m \in \N$ such that $m - 1 \le na \le m \iff \frac{m - 1}{n} \le a \le \frac{m}{n}$.
+
+  On the right hand side, we have $a \le \sfrac{m}{n}$, and on the left hand side, we have
+  \begin{align*}
+    \phantom{\implies}\quad&m \le an + 1 \\
+    \implies\quad&\frac{m}{n} \le b \\
+    \iff\quad&a \le \frac{m}{n} \le b
+  .\qedhere\end{align*}
+\end{proof}
+
+Essentially, there are an infinite number of rational numbers between any two real numbers, giving us
+\[%
+  a < r_1 < r_2 < r_3 < \cdots < b
+.\]%
+
+\begin{corollary}
+  Between any two real numbers $a < b$, then there are infinitely many irrational numbers.
+\end{corollary}
+
+\begin{proof}
+  Assume $a > 0$. Given $a < b$, then $a - \sqrt{2} < b - \sqrt{2}$. By the density of $\Q$, then there exists $r \in \Q$ such that $a - \sqrt{2} < r_1 < b - \sqrt{2} \implies a < r + \sqrt{2} < b$. Since $r$ is rational, then $r + \sqrt{2}$ is irrational.
+\end{proof}
+
+\subsection{Square Roots}
+
+\begin{proposition}
+  There exists a real number $\alpha$ satisfying $\alpha^2 = 2$.
+\end{proposition}
+
+\begin{proof}
+  Let $S = \left\{x \in \R \mid x^2 < 2\right\}$. Then $S$ is bounded, nonempty, and has a least upper bound. Let $\alpha = \sup(S)$. We want to show $\alpha^2 = 2$ by showing that $\alpha^2 \nless 2$ and $\alpha^2 \ngtr 2$.
+
+  \textbf{Case 1} ($\alpha^2 \nless 2$): Suppose $\alpha^2 < 2$. We consider
+  \begin{align*}
+    \left(\alpha + \frac{1}{n}\right)^2 &= \alpha^2 + \frac{2\alpha}{n} + \frac{1}{n^2} \\
+                                        &< \alpha^2 + \frac{2\alpha + 1}{n}
+  .\end{align*}
+  Since $\alpha^2 < 2$, we can choose $n$ large enough such that
+  \[%
+    \alpha^2 + \frac{2\alpha + 1}{n} < 2 \iff 0 < \frac{2\alpha + 1}{2 - \alpha^2} < n
+  .\]%
+  By the archimedian property, there is an $n \in \N$ such that
+  \[%
+    \left(\alpha + \frac{1}{n}\right)^2 < 2 \implies \alpha + \frac{1}{n} \in S
+  ,\]%
+  but $\alpha$ is the least upper bound, which is a contradiction. Therefore, $\alpha \nless 2$.
+
+  \textbf{Case 2} ($\alpha^2 \ngtr 2$): Suppose $\alpha^2 > 2$. We consider
+  \begin{align*}
+    \left(\alpha - \frac{1}{n}\right)^2 &= \alpha^2 - \frac{2\alpha}{n} + \frac{1}{n^2} \\
+                                        &> \alpha^2 - \frac{2\alpha}{n}
+  .\end{align*}
+  Since $\alpha^2 > 2$, we can choose $n$ large enough such that
+  \[%
+    \alpha^2 - \frac{2\alpha}{n} > 2 \iff 0 < \frac{2\alpha}{\alpha^2 - 2} < n
+  .\]%
+  By the archimedian property, there is an $n \in \N$ such that
+  \[%
+    \left(\alpha - \frac{1}{n}\right)^2 > 2 \implies \alpha - \frac{1}{n} \notin S
+  ,\]%
+  but $\alpha$ is the least upper bound, which is a contradiction. Therefore, $\alpha \ngtr 2$.
+\end{proof}

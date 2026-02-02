@@ -1,0 +1,269 @@
+\setcounter{chapter}{2}
+\chapter{Lie Algebras and the Exponential Mapping Solutions}
+
+\begin{exercise}[1]
+  \textit{The product rule.} Recall that a matrix-valued function $A(t)$ is
+  smooth if each $A_{ij}(t)$ is smooth. The derivative of such a function is
+  defined as
+  \[%
+    \left(\odv{A}{t}\right)_{ij} = \odv{A_{ij}}{t}
+  ,\]%
+  or equivalently,
+  \[%
+    \odv{}{t} A(t) = \lim_{h \to 0} \frac{A(t + h) - A(t)}{h}
+  .\]%
+  Let $A(t)$ and $B(t)$ be two such functions. Prove that $A(t)B(t)$ is again
+  smooth, and that
+  \[%
+    \odv{}{t} [A(t)B(t)] = \odv{A}{t} B(t) + A(t)\odv{B}{t}
+  .\]%
+\end{exercise}
+
+\begin{proof}[Solution]
+\end{proof}
+
+\begin{exercise}[2]
+  Using the Jordan canonical form, show that every $n \times n$ matrix $A$ can
+  be written as $A = S + N$, with $S$ diagonalizable (over $\C$), $N$ nilpotent,
+  and $SN = NS$. Recall that the Jordan canonical form is block diagonal, with
+  each block of the form
+  \[%
+    \begin{pmatrix}
+      \lambda & & * \\
+      & \ddots & \\
+      0 & & \lambda \\
+    \end{pmatrix}
+  .\]%
+\end{exercise}
+
+\begin{proof}[Solution]
+\end{proof}
+
+\begin{exercise}[3]
+  Let $X$ and $Y$ be $n \times n$ matrices. Show that there exists a constant
+  $C$ such that
+  \[%
+    \left\lVert e^{\sfrac{(X+Y)}{M}} - e^{\sfrac{X}{m}}e^{\sfrac{Y}{m}} \right\rVert \le \frac{C}{m^2}
+  ,\]%
+  for all integers $m \ge 1$.
+\end{exercise}
+
+\begin{proof}[Solution]
+\end{proof}
+
+\begin{exercise}[4]
+  Using the Jordan canonical form, show that every $n \times n$ complex matrix
+  $A$ is the limit of a sequence of diagonalizable matrices.
+
+  \textit{Hint:} If the characteristic polynomial of $A$ has $n$ distinct roots,
+  then $A$ is diagonalizable.
+\end{exercise}
+
+\begin{proof}[Solution]
+\end{proof}
+
+\begin{exercise}[5]
+  Give an example of a matrix Lie group $G$ and a matrix $X$ such that $e^X \in
+  G$, but $X \notin \ggl$.
+\end{exercise}
+
+\begin{proof}[Solution]
+\end{proof}
+
+\begin{exercise}[6]
+  Show that two isomorphic matrix Lie groups have isomorphic Lie algebras.
+\end{exercise}
+
+\begin{proof}[Solution]
+\end{proof}
+
+\begin{exercise}[7]
+  \textit{The Lie algebra $\so(3, 1)$.} Write out explicitly the general form of
+  a $4 \times 4$ real matrix in $\so(3, 1)$.
+\end{exercise}
+
+\begin{proof}[Solution]
+\end{proof}
+
+\begin{exercise}[8]
+  Verify directly that Proposition 3.15 and Theorem 3.16 hold for the Lie
+  algebra of $\SU(n)$.
+\end{exercise}
+
+\begin{proof}[Solution]
+\end{proof}
+
+\begin{exercise}[9]
+  \textit{The Lie algebra $\su(2)$.} Show that the following matrices form a
+  basis for the real Lie algebra $\su(2)$
+  \[%
+    E_1 = \frac{1}{2} \begin{pmatrix}
+      0 & -i \\
+      i & 0 \\
+    \end{pmatrix},\quad
+    E_2 = \frac{1}{2} \begin{pmatrix}
+      0 & -1 \\
+      -1 & 0 \\
+    \end{pmatrix},\quad
+    E_3 = \frac{1}{2} \begin{pmatrix}
+      i & 0 \\
+      0 & -i \\
+    \end{pmatrix}
+  .\]%
+
+  Compute $[E_1, E_2]$, $[E_2, E_3]$, and $[E_3, E_1]$. Show that there is an
+  invertible linear map $\phi : \su(2) \to \R^3$ such that $\phi([X, Y]) =
+  \phi(X) \times \phi(Y)$ for all $X, Y \in \su(2)$, where $\times$ denotes the
+  cross-product on $\R^3$.
+\end{exercise}
+
+\begin{proof}[Solution]
+\end{proof}
+
+\begin{exercise}[10]
+  \textit{The Lie algebras $\su(2)$ and $\so(3)$.} Show that the real Lie
+  algebras $\su(2)$ and $\so(3)$ are isomorphic.
+
+  \textit{Note:} Nevertheless, the corresponding \textit{groups} $\SU(2)$ and
+  $\SO(3)$ are not isomorphic. (Although $\SO(3)$ is isomorphic to $\SU(2)
+  \slash \{I, -I\}$.)
+\end{exercise}
+
+\begin{proof}[Solution]
+\end{proof}
+
+\begin{exercise}[11]
+  \textit{The Lie algebras $\su(2)$ and $\sl(2, \R)$.} Show that $\su(2)$ and
+  $\sl(2, \R)$ are not isomorphic Lie algebras even though $\su(2)_\C \cong
+  \sl(2, \R)_\C$.
+
+  \textit{Hint:} Using Exercise 9 show that $\su(2)$ has no two-dimensional
+  sub-algebras.
+\end{exercise}
+
+\begin{proof}[Solution]
+\end{proof}
+
+\begin{exercise}[12]
+  Let $G$ be a matrix Lie group, and $\ggl$ its lie algebra. For each $A \in G$,
+  show that $AdA$ is a Lie algebra automorphism of $\ggl$.
+\end{exercise}
+
+\begin{proof}[Solution]
+\end{proof}
+
+\begin{exercise}[13]
+  \textit{$Ad$ and $ad$.} Let $X$ and $Y$ be matrices. Show by induction that
+  \[%
+    (\adX)^n(Y) = \sum_{k=0}^n \begin{pmatrix}
+      n \\
+      k \\
+    \end{pmatrix} X^kY(-X)^{n-k}
+  .\]%
+  Now show by direct computation that
+  \[%
+    e^{\adX}(Y) = Ad(e^X)Y = e^XYe^{-X}
+  .\]%
+  You may assume that it is legal to multiply power series term-by-term. (This
+  result was obtained indirectly in Equation 3.17.)
+
+  \textit{Hint:} Recall that Pascal's Triangle gives us a relationship between
+  things of the form $\begin{pmatrix}
+    n + 1 \\
+    k \\
+  \end{pmatrix}$ and things of the form $\begin{pmatrix}
+    n \\
+    k \\
+  \end{pmatrix}$.
+\end{exercise}
+
+\begin{proof}[Solution]
+\end{proof}
+
+\begin{exercise}[14]
+  \textit{The complexification of a real Lie algebra.} Let $\ggl$ be a real Lie
+  algebra, $\ggl_\C$ its complexification, and $\hl$ an arbitrary complex Lie
+  algebra. Show that every real Lie algebra homomorphism of $\ggl$ onto $\hl$
+  extends uniquely to a complex Lie algebra homomorphism of $\ggl_\C$ into $\hl$.
+  (This is the \textbf{universal property} of the complexification of a real Lie
+  algebra. This property can be used as an alternative definition of the
+  complexification.)
+\end{exercise}
+
+\begin{proof}[Solution]
+\end{proof}
+
+\begin{exercise}[15]
+  \textit{The exponential mapping for $\SL(2, \R)$.} Show that the image of the
+  exponential mapping for $\SL(2, \R)$ consists of precisely those matrices $A
+  \in \SL(2, \R)$ such that $\Tr(A) > -2$, together with the matrix $-I$ (which
+  has trace $-2$). You will need to consider the possibilities for the
+  eigenvalues of a matrix in the Lie algebra $\sl(2, \R)$ and in the group
+  $\SL(2, \R)$. In the Lie algebra, show that the eigenvalues are of the form
+  $(\lambda, -\lambda)$ or $(i\lambda, -i\lambda)$ with $\lambda$ real. In the
+  group, show that the eigenvalues are of the form $(\alpha, \sfrac{1}{\alpha})$
+  or $(-\alpha, -\sfrac{1}{\alpha})$ with a repeated eigenvalue ($(0, 0)$ in the
+  Lie algebra and $(1, 1)$ or $(-1, -1)$ in the group) will have to be treated
+  separately.
+\end{exercise}
+
+\begin{proof}[Solution]
+\end{proof}
+
+\begin{exercise}[16]
+  Using Exercise 4, show that the exponential mapping for $\GL(n, \C)$ maps onto
+  a dense subset of $\GL(n, \C)$.
+\end{exercise}
+
+\begin{proof}[Solution]
+\end{proof}
+
+\begin{exercise}[17]
+  \textit{The exponential mapping for the Heisenberg group.} Show that the
+  exponential mapping from the Lie algebra of the Heisenberg group to the
+  Heisenberg group is one-to-one and onto.
+\end{exercise}
+
+\begin{proof}[Solution]
+\end{proof}
+
+\begin{exercise}[18]
+  \textit{The exponential mapping for $\U(n)$.} Show that the exponential
+  mapping from $\u(n)$ to $\U(n)$ is onto, but not one-to-one. (Note that this
+  shows that $\U(n)$ is connected.)
+
+  \textit{Hint:} Every unitary matrix has an orthonormal basis of eigenvectors.
+\end{exercise}
+
+\begin{proof}[Solution]
+\end{proof}
+
+\begin{exercise}[19]
+  Let $G$ be a matrix Lie group, and $\ggl$ its Lie algebra. Let $A(t)$ be a
+  smooth curve lying in $G$, with $A(0) = I$. Let $X = \odv{}{t}_{t=0}$. Show
+  that $X \in \ggl$.
+
+  \textit{Hint:} Use Proposition 3.8.
+
+  \textit{Note:} This shows that the Lie algebra $\ggl$ coincides with what
+  would be called the \textbf{tangent space at the identity} in the language of
+  differentiable manifolds.
+\end{exercise}
+
+\begin{proof}[Solution]
+\end{proof}
+
+\begin{exercise}[20]
+  Consider the space $\gl(n, \C)$ of all $n \times n$ complex matrices. As
+  usual, for $X \in \gl(n, \C)$, define $\adX : \gl(n, \C) \to \gl(n, \C)$ by
+  $\adX(Y) = [X, Y]$. Suppose that $X$ is a diagonalizable matrix. Show, then,
+  that $\adX$ is diagonalizable as an operator on $\gl(n, \C)$.
+
+  \textit{Hint:} Consider first the case where $X$ is actually diagonal.
+
+  \textit{Note:} The problem of diagonalizing $\adX$ is an important one that we
+  will encounter again in Chapter 6, when we consider semi-simple Lie algebras.
+\end{exercise}
+
+\begin{proof}[Solution]
+\end{proof}

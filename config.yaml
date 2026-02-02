@@ -1,0 +1,69 @@
+---
+calendar_id: "pl1q0jmhbqqavhbtvi8km3m3lc@group.calendar.google.com"
+drive_folder_id: "1ssV0QxWFG54JBvmoqa4SP_nHyWrLmsdV"
+
+editor: "nvim"
+terminal: "kitty"
+pdf_viewer: "zathura"
+
+create_readme_file: true
+highlight_current_course: true
+
+notes_dir: "~/Documents/school-notes"
+root: "~/Documents/school-notes/College/Year-2/winter"
+templates_dir: "~/Documents/school-notes/College/_files"
+current_course: "~/Documents/school-notes/current-course"
+
+# relative to current_course
+books_dir: "books"
+figures_dir: "figures"
+
+date_format: "%b %d %Y %a (%H:%M:%S)"
+home: "/home/singularis"
+user: "singularis"
+
+# relative to current_course
+assignments_dir: "assignments"
+assignment_folders:
+  bib_folder: "my-assignments/bibtex-files"
+  tex_folder: "my-assignments/latex-files"
+  yaml_folder: "my-assignments/yaml-files"
+  pdf_folder: "my-assignments/pdf-files"
+  graded_assignment: "graded-assignments"
+  online_assignment: "online-assignments"
+  solution_key: "solution-keys"
+
+rofi_options:
+  - "-markup-rows"
+  - "-kb-row-down"
+  - "Down"
+  - "-kb-custom-1"
+  - "Ctrl+n"
+  - "-no-fixed-num-lines"
+
+folders:
+  - "assignments"
+  - "assignments/graded-assignments"
+  - "assignments/online-assignments"
+  - "assignments/solution-keys"
+  - "assignments/my-assignments"
+  - "assignments/my-assignments/bibtex-files"
+  - "assignments/my-assignments/image-files"
+  - "assignments/my-assignments/latex-files"
+  - "assignments/my-assignments/pdf-files"
+  - "assignments/my-assignments/sympy-scripts"
+  - "assignments/my-assignments/yaml-files"
+  - "books"
+  - "figures"
+  - "papers"
+  - "sympy-scripts"
+
+files:
+  "assignments/my-assignments/preamble.tex": "symlink"
+  "assignments/my-assignments/Makefile": "symlink"
+  "Makefile": "symlink"
+  "preamble.tex": "symlink"
+  "UltiSnips": "symlink"
+  "assignments/my-assignments/master.tex": "copy"
+  "intro.tex": "copy"
+  "master.tex": "copy"

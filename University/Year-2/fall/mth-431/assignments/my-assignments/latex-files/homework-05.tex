@@ -1,0 +1,123 @@
+\begin{problem}[4.4]
+  Let $(X, \metric)$ be a metric space, let $f : X \to X$, suppose there is a ``Lipschitz constant'' $r \in [0, 1)$ such that for all $p, q \in X$ we have
+  \[%
+    \metric(f(p), f(q)) \leq r \metric(p, q)
+  .\]%
+  Prove that $f$ is continuous. Hint: Take $\delta = \epsilon$.
+\end{problem}
+
+\begin{solution}
+  Let $\epsilon>0$. Take $\delta=\epsilon$. If $d(p,q)<\delta$ then
+  \[%
+    \metric(f(p), f(q))\le r\metric(p,q) < r\delta = r\epsilon \le \epsilon
+  ,\]%
+  since $0\le r < 1$. Thus for every $p\in X$ and every $\epsilon>0$ there exists $\delta>0$ (namely $\delta = \epsilon$) with $\metric(p, q) < \delta$ implying $\metric(f(p), f(q)) < \epsilon$. Hence $f$ is continuous.
+\end{solution}
+
+\begin{problem}[4.5]
+  Here are two examples of how Theorem 4.13 can fail if the hypotheses are weakened.
+  \begin{enumerate}
+    \item Instead of asking for a uniform constant $r < 1$ such that $\metric(f(p), f(q)) \le r \cdot \metric(p, q)$ for all $p, q \in X$, we might just have asked that $\metric(f(p), f(q)) < \metric(p, q)$ whenever $p \ne q$. But let $X = [1, \infty)$ with the usual metric, and let $f : X \to X$ be defined by $f(x) = x + 1/x$; prove that $f$ satisfies this weaker condition, but does not have a fixed point.
+
+    \item The theorem can also fail if the space is not complete: let $X = [1, \infty) \cap \Q$ with the usual metric, and let $f : X \to X$ be defined by $f(x) = x/2 + 1/x$; prove that $f$ satisfies the hypothesis of the theorem with of $r = 1/2$, but does not have a fixed point
+  \end{enumerate}
+\end{problem}
+
+\begin{proof}[Solution (i)]
+  Let $X = [1, \infty)$ and $f(x) = x + 1/x$. For $x > y\ge1$,
+  \[%
+    f(x) - f(y) = (x - y) + \left(\frac{1}{x} - \frac{1}{y}\right) = (x - y)\left(1 - \frac{1}{xy}\right)
+  .\]%
+  Since $xy \ge1$ we have $0 \le 1 - 1/xy < 1$, hence
+  \[%
+    0 < f(x) - f(y) < x - y
+  ,\]%
+  so $|f(x) - f(y)| < |x - y|$ whenever $x \ne y$. Thus the weaker condition holds.
+
+  If $x$ were a fixed point then $x + 1/x = x$, so $1/x = 0$, which is impossible. Therefore $f$ has no fixed point.
+\end{proof}
+
+\begin{proof}[Solution (ii)]
+  Let $X = [1, \infty)\cap\mathbb{Q}$ and $f(x) = \tfrac{x}{2} + \tfrac{1}{x}$. For $x, y\ge1$,
+  \[%
+    f(x) - f(y) = \frac{x - y}{2} + \left(\frac{1}{x} - \frac{1}{y}\right) = (x - y)\left(\frac{1}{2} - \frac{1}{xy}\right)
+  ,\]%
+  so
+  \[%
+    |f(x) - f(y)| = |x - y|\left\lvert\frac{1}{2} - \frac{1}{xy}\right\rvert
+  .\]%
+  Because $1/(xy) \in(0, 1]$ for $x, y \ge1$, we have $|1/2 - 1/xy| \le 1/2$. Thus
+  \[%
+    |f(x) - f(y)| \le \frac{1}{2} |x - y|
+  ,\]%
+  for all $x, y\in X$. Hence $f$ satisfies the hypothesis with $r = 1/2$. Note $f(X) \subset \Q$ since $x \mapsto x/2$ and $x \mapsto 1/x$ preserve rationals, so $f : X \to X$ is well defined.
+
+  A fixed point would satisfy $x/2 + 1/x = x$, i.e. $x^2 = 2$. This solution $x = \sqrt{2}$ is not rational, so there is no fixed point in $X$. Thus the theorem can fail when the space is not complete.
+\end{proof}
+
+\begin{problem}[5.3]
+  Let $(X, \metric)$ be any metric space (possibly incomplete), and let $U, V \subset X$ be two open, dense subsets. Prove that $U \cap V$ is again dense.
+\end{problem}
+
+\begin{solution}
+  Let $W \subset X$ be any nonempty open set. Since $U$ is dense, $W \cap U \neq \emptyset$. As $U$ is open, $W \cap U$ is a nonempty open subset of $X$. Because $V$ is dense, $(W \cap U) \cap V \neq \emptyset$. Hence
+  \[%
+    W \cap (U \cap V) = (W \cap U) \cap V \neq \emptyset
+  .\]%
+  Thus every nonempty open $W$ meets $U \cap V$, so $\overline{U \cap V} = X$. Therefore $U \cap V$ is dense.
+\end{solution}
+
+\begin{problem}[5.4]
+  \begin{enumerate}
+    \item A point $p$ in a metric space $(X, \metric)$ is called \emph{isolated} if there is some $r > 0$ such that $B_r(p) = \{p\}$. Use the Baire category theorem to prove that a complete metric space with no isolated points is uncountable.
+
+    \item Give an example of a countable, complete metric space.
+  \end{enumerate}
+\end{problem}
+
+\begin{solution}[(i)]
+  Suppose $X$ is complete, has no isolated points, and is countable. Write
+  \[%
+    X = \bigcup_{n=1}^\infty \{x_n\}
+  .\]%
+  Each singleton $\{x_n\}$ is closed. Because $x_n$ is not isolated, $\{x_n\}$ has empty interior, hence it is nowhere dense. Thus $X$ is a countable union of nowhere dense sets, so $X$ is meager. This contradicts the Baire Category Theorem (complete metric spaces are Baire). Therefore $X$ cannot be countable.
+\end{solution}
+
+\begin{solution}[(ii)]
+  Take $X = \Z$ with the usual metric $\metric(m,n) = |m - n|$. Any Cauchy sequence in $\Z$ is eventually constant, so it converges in $\Z$. Hence $\Z$ is complete and countable.
+\end{solution}
+
+\begin{problem}[5.7]
+  Give examples to show that Proposition 5.6 can fail
+  \begin{enumerate}
+    \item if the sets $F_n$ are not closed.
+    \item if the metric space $X$ is not complete.
+    \item if the diameters all finite, but do not go to zero.
+
+      (This is really tricky, because it can't happen in $\R^n$ with the Euclidean metric. But let $X = C([0, 1])$ with the sup metric, and let $F_n$ be the set of continuous functions $f : [0, 1] \to [0, 1]$ with $f(0) = 1$ and $f(x) = 0$ for $x \ge 1/n$. We can see that $F_1 \supset F_2 \supset \cdots$ and the proof that each $F_n$ is closed is similar to Exercise 3.4. Prove that $\diam(F_n) = 1$, but that $F_1 \cap F_2 \cap \cdots$ is empty.)
+  \end{enumerate}
+\end{problem}
+
+\begin{solution}[(i)]
+  Take $X = \R$ with the usual metric and
+  \[%
+    F_n = \left(0, \frac{1}{n}\right)
+  .\]%
+  Then $F_1 \supset F_2 \supset \cdots$, each $F_n$ is nonempty (but not closed), $\diam(F_n) = 1/n \to 0$, yet $\bigcap_{n=1}^\infty F_n = \emptyset$. This shows failure when the sets are not closed.
+\end{solution}
+
+\begin{solution}[(ii)]
+  Let $X = \Q$ (with the usual metric). For each $n$ set
+  \[%
+    F_n = \left[\sqrt{2} - \frac{1}{n} \sqrt{2} + \frac{1}{n}\right] \cap \Q
+  .\]%
+  Each $F_n$ is closed in $X = \Q$, nonempty, nested, and $\diam(F_n) \le 2/n\to0$. But $\bigcap_{n=1}^\infty F_n = \{\sqrt{2}\} \cap \Q = \emptyset$ since $\sqrt2 \notin \Q$. This shows failure when $X$ is not complete.
+\end{solution}
+
+\begin{solution}[(iii)]
+  Let $X = C([0, 1])$ with the sup metric and for each $n$ define $F_n$ to be the set of continuous $f : [0, 1] \to [0, 1]$ with $f(0) = 1$ and $f(x) = 0$ for all $x \ge 1/n$. Then $F_1 \supset F_2 \supset \cdots$ and each $F_n$ is closed.
+
+  If the diameter of $F_n$ is 1, then pick $0 < x_1 < x_2 < 1/n$. Define $f \in F_n$ with $f(0) = 1$, linear down to $0$ at $x_1$, and $g \in F_n$ with $g(0) = 1$, constant $1$ on $[0,x_2]$ then linear to $0$ at $1/n$. At any $x \in(x_1,x_2)$ we have $f(x) = 0$ and $g(x) = 1$, so $\metric_\infty(f, g) = 1$. Thus $\diam(F_n) \ge 1$, and since all functions take values in $[0, 1]$ we have $\diam(F_n) \le 1$, hence $\diam(F_n) = 1$.
+
+  Otherwise, if $\bigcap_{n=1}^\infty F_n = \emptyset$, then $f$ belongs to every $F_n$. This means that for each $n$, $f(x) = 0$ for all $x \ge 1/n$. Hence $f(x) = 0$ for every $x > 0$, while $f(0) = 1$, contradicting continuity. So the intersection is empty.
+\end{solution}

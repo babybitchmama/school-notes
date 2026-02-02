@@ -1,0 +1,301 @@
+\begin{problem}[4.49.7]
+  Show that if $C$ is a positively oriented simple closed contour, then the area of the region enclosed by $C$ can be written
+  \[%
+    \frac{1}{2i} \int_C \zb \dz
+  .\]%
+\end{problem}
+
+\begin{solution}
+  Let $z = x + iy$, where $x, y \in \R$. Then, we have
+  \[%
+    \zb = x - iy \aand \dz = \dx + i\dy
+  .\]%
+  Now compute the integrand:
+  \[%
+    \zb \dz = (x - iy)(dx + i dy) = x\dx + xi\dy - iy\dx - i^2 y\dy
+  .\]%
+  Since $i^2 = -1$, we get
+  \[%
+    \zb \dz = x\dx + i x\dy - i y\dx + y\dy = (x\dx + y\dy) + i(x\dy - y\dx)
+  .\]%
+  So,
+  \[%
+    \frac{1}{2i} \int_C \overline{z} \dz = \frac{1}{2i} \int_C \left[(x\dx + y\dy) + i(x\dy - y\dx)\right] = \frac{1}{2i} \left[\int_C (x\dx + y\dy) + i \int_C (x\dy - y\dx)\right]
+  .\]%
+
+  The first integral $\int_C (x\dx + y\dy)$ is zero because it represents the line integral of the gradient of the scalar function $\sfrac{1}{2}(x^2 + y^2)$, and over a closed path the integral of a gradient is zero
+  \[%
+    \int_C (x\dx + y\dy) = 0
+  .\]%
+
+  So we're left with just
+  \[%
+    \frac{1}{2i} \int_C \overline{z} \dz = \frac{1}{2i} \cdot i \int_C (x\dy - y\dx) = \frac{1}{2} \int_C (x\dy - y\dx)
+  .\]%
+  Notice that this is an expression for the area of the planar region bounded by a positively oriented curve,
+  \[%
+    A = \frac{1}{2} \int_C (x\dy - y\dx)
+  .\]%
+  Therefore,
+  \[%
+    A = \frac{1}{2i} \int_C \overline{z} \dz
+  .\qedhere\]%
+\end{solution}
+
+\begin{problem}[4.52.1]
+  Let $C$ denote the positively oriented boundary of the square whose sides lie along the lines $x = \pm 2$ and $y = \pm 2$. Evaluate each of these integrals:
+  \begin{multicols}{3}
+    \begin{enumerate}
+      \item[(i)] $\displaystyle \int_C \frac{e^{-z}}{z - (\sfrac{\pi i}{2})} \dz$;
+
+      \item[(iv)] $\displaystyle \int_C \frac{\cosh(z)}{z^4} \dz$;
+
+      \item[(ii)] $\displaystyle \int_C \frac{\cos(z)}{z(z^2 + 8)} \dz$;
+
+      \item[(v)] $\displaystyle \int_C \frac{\tan(\sfrac{z}{2})}{(z - x_0)^2} \dz$.
+
+      \item[(iii)] $\displaystyle \int_C \frac{z}{2z + 1} \dz$;
+
+      \item[]
+    \end{enumerate}
+  \end{multicols}
+\end{problem}
+
+\begin{solution}[(i)]
+  Let $f(z) = e^{-z}$, which is entire (analytic everywhere), and note that $\sfrac{\pi i}{2}$ lies inside the square since its imaginary part is $\frac{\pi}{2} < 2$. By Cauchy's Integral Formula, we have
+  \[%
+    \int_C \frac{e^{-z}}{z - \frac{\pi i}{2}} \dz = 2\pi i \cdot e^{-\frac{\pi i}{2}} = 2\pi i \cdot \cos\left(\frac{\pi}{2}\right) - i\sin\left(\frac{\pi}{2}\right) = 2\pi i \cdot (-i) = 2\pi
+  .\qedhere\]%
+\end{solution}
+
+\begin{solution}[(ii)]
+  The singularities are at $z = 0$ and $z = \pm 2\sqrt{2}i$. All of these are within the square (since $\sqrt{8} \approx 2.828 < 4$). Let
+  \[%
+    f(z) = \frac{\cos(z)}{z^2 + 8}
+  ,\]%
+  which is analytic at $z = 0$. Then by Cauchy's Integral Formula, we have
+  \[%
+    \int_C \frac{\cos(z)}{z(z^2 + 8)} \dz = 2\pi i \cdot \frac{\cos(0)}{0^2 + 8} = 2\pi i \cdot \frac{1}{8} = \frac{\pi i}{4}
+  .\qedhere\]%
+\end{solution}
+
+\begin{solution}[(iii)]
+  The integrand can be rewritten as
+  \[%
+    \frac{z}{2z + 1} = \frac{1}{2} \cdot \frac{2z}{2z + 1} = \frac{1}{2} \cdot \left(1 - \frac{1}{2z + 1}\right)
+  .\]%
+  Now integrate term-by-term, we have
+  \[%
+    \int_C \frac{z}{2z + 1} \dz = \frac{1}{2} \int_C \left(1 - \frac{1}{2z + 1}\right) \dz
+  .\]%
+  The integral of 1 over a closed contour is 0, and $\sfrac{1}{(2z + 1)}$ has a simple pole at $z = -\frac{1}{2}$, which lies inside the square. So:
+  \[%
+    \int_C \frac{z}{2z + 1} \dz = -\frac{1}{2} \int_C \frac{1}{2z + 1} \dz = -\frac{1}{2} \cdot 2\pi i \cdot \frac{1}{2} = -\frac{\pi i}{2}
+  .\qedhere\]%
+\end{solution}
+
+\begin{solution}[(iv)]
+  We use the fact that
+  \[%
+    \int_C \frac{f(z)}{(z - z_0)^n} \dz = \frac{2\pi i}{(n-1)!} f^{(n-1)}(z_0)
+  ,\]%
+  for $n = 4$ and $z_0 = 0$. Here, $f(z) = \cosh(z)$ is entire, so, we have
+  \[%
+    \int_C \frac{\cosh(z)}{z^4} \dz = \frac{2\pi i}{3!} \cosh^{(3)}(0)
+  .\]%
+  Recall the Taylor series expansion for $\cosh(z)$
+  \[%
+    \cosh(z) = \sum_{n=0}^\infty \frac{z^{2n}}{(2n)!}
+  ,\]%
+  which imply that $\cosh^{(3)}(0) = 0$. Therefore,
+  \[%
+    \int_C \frac{\cosh(z)}{z^4} \dz = 0
+  .\qedhere\]%
+\end{solution}
+
+\begin{solution}[(v)]
+  Let $f(z) = \tan\left(\sfrac{z}{2}\right)$, which is analytic inside the square (its singularities occur at $z = (2n + 1)\pi$, none of which are inside the square since $\pi > 3$).
+
+  The integrand has a pole of order 2 at $z = x_0 \in (-2, 2)$, and we can use the derivative form of Cauchy's Integral Formula,
+  \[
+    \int_C \frac{f(z)}{(z - x_0)^2} \dz = 2\pi i \cdot f'(x_0).
+  \]
+  Computing the derivative of $f(z)$, we have
+  \[%
+    f'(z) = \frac{1}{2} \sec^2\left(\frac{z}{2}\right) \implies f'(x_0) = \frac{1}{2} \sec^2\left(\frac{x_0}{2}\right)
+  .\]%
+  Therefore, we have
+  \[%
+    \int_C \frac{\tan\left(\sfrac{z}{2}\right)}{(z - x_0)^2} \dz = \pi i \cdot \sec^2\left(\frac{x_0}{2}\right)
+  .\qedhere\]%
+\end{solution}
+
+\begin{problem}[4.52.2]
+  Find the value of the integral of $g(z)$ around the circle $\abs{z - i} = 2$ in the positive sense when
+  \begin{multicols}{2}
+    \begin{enumerate}
+      \item $\displaystyle g(z) = \frac{1}{z^2 + 4}$;
+
+      \item $\displaystyle g(z) = \frac{1}{(z^2 + 4)^2}$.
+    \end{enumerate}
+  \end{multicols}
+\end{problem}
+
+\begin{solution}[(i)]
+  Factoring the denominator, we have $z^2 + 4 = (z + 2i)(z - 2i)$. The singularities are at $z = 2i$ and $z = -2i$. The contour $\abs{z - i} = 2$ is centered at $z = i$ and has radius $2$. Therefore, $\abs{2i - i} = 1 < 2$ and $\abs{-2i - i} = 3 > 2$, so the singularity at $z = 2i$ lies \emph{inside} the contour, while the singularity at $z = -2i$ lies \emph{outside}.
+
+  Since only $z = 2i$ is inside, we write
+  \[%
+    g(z) = \frac{1}{(z - 2i)(z + 2i)} = \frac{1}{z + 2i} \cdot \frac{1}{z - 2i}
+  .\]%
+  The function $f(z) = \sfrac{1}{(z + 2i)}$ is analytic on and inside the contour (since $z = -2i$ is outside). So we can use Cauchy's Integral Formula for the simple pole at $z = 2i$
+  \[%
+    \int_{\abs{z - i} = 2} \frac{f(z)}{z - 2i} \dz = 2\pi i \cdot f(2i) = 2\pi i \cdot \frac{1}{2i + 2i} = 2\pi i \cdot \frac{1}{4i} = \frac{\pi}{2}
+  .\qedhere\]%
+\end{solution}
+
+\begin{solution}[(ii)]
+  Again, factoring the denominator, we have $(z^2 + 4)^2 = [(z - 2i)(z + 2i)]^2$. So the integrand has a pole of order 2 at $z = 2i$, which is \emph{inside} the circle, and another at $z = -2i$, which is \emph{outside} the circle. We can rewrite the integrand as
+  \[%
+    g(z) = \frac{1}{[(z - 2i)^2 (z + 2i)^2]} = \frac{1}{(z + 2i)^2} \cdot \frac{1}{(z - 2i)^2}
+  .\]%
+
+  Let
+  \[%
+    f(z) = \frac{1}{(z + 2i)^2}
+  ,\]%
+  which is analytic inside and on the circle (since $z = -2i$ is outside). We apply the Cauchy Integral Formula for derivatives, to get
+  \[%
+    \int_{\abs{z - i} = 2} \frac{f(z)}{(z - 2i)^2} \dz = 2\pi i \cdot f'(2i)
+  .\]%
+  Computing the derivative of $f$, we have $f'(z) = -2(z + 2i)^{-3}$. So,
+  \[%
+    f'(2i) = -2(4i)^{-3} = -2 \cdot \frac{1}{64i^3} = -2 \cdot \frac{1}{64(-i)} = \frac{2}{64i} = \frac{1}{32i}
+  .\]%
+  Therefore, we have
+  \[%
+    \int_{\abs{z - i} = 2} \frac{1}{(z^2 + 4)^2} \dz = 2\pi i \cdot \frac{1}{32i} = \frac{\pi}{16}
+  .\qedhere\]%
+\end{solution}
+
+\begin{problem}[4.52.3]
+  Let $C$ be the circle $\abs{z} = 3$, described in the positive sense. Show that if
+  \[%
+    g(z) = \int_C \frac{2s^2 - s - 2}{s - z} \ds \qquad (\abs{z} \ne 3)
+  ,\]%
+  then $g(2) = 8\pi i$. What is the value of $g(z)$ when $\abs{z} > 3$?
+\end{problem}
+
+\begin{solution}
+  Assume that $\abs{2} < 3$. Since $z = 2$ is strictly \emph{inside} the contour $C$ (because $\abs{2} < 3$), we apply Cauchy's Integral Formula, to get
+  \[%
+    \int_C \frac{f(s)}{s - z} \ds = 2\pi i \cdot f(z)
+  .\]%
+  Therefore, we have
+  \[%
+    g(2) = 2\pi i \cdot f(2) = 2\pi i \cdot (2(2)^2 - 2 - 2) = 2\pi i \cdot (8 - 2 - 2) = 2\pi i \cdot 4 = 8\pi i
+  .\]%
+
+  Assume that $\abs{z} > 3$, i.e., $z$ is \emph{outside} the contour $C$. In this case, the function $\sfrac{f(s)}{(s - z)}$ is analytic in $s$ on and inside the contour $C$, because $z$ is outside the region enclosed by $C$ and $f$ is entire.
+
+  Since the integrand is analytic inside and on $C$, and $C$ is a closed curve, the Cauchy-Goursat Theorem implies that
+  \[%
+    g(z) = \int_C \frac{f(s)}{s - z} \ds = 0
+  .\qedhere\]%
+\end{solution}
+
+\begin{problem}[4.52.4]
+  Let $C$ be any simple closed contour, described in the positive sense in the $z$-plane, and write
+  \[%
+    g(z) = \int_C \frac{s^3 + 2z}{(s - z)^3} \ds
+  .\]%
+  Show that $g(z) = 6\pi iz$ when $z$ is inside $C$ and that $g(z) = 0$ when $z$ is outside.
+\end{problem}
+
+\begin{solution}
+  If $z$ is \emph{outside} the contour $C$, then the integrand is analytic on and inside $C$ since the denominator never vanishes. Therefore, by Cauchy's Theorem, we have
+  \[%
+    g(z) = \int_C \frac{s^3 + 2z}{(s - z)^3} \ds = 0
+  .\]%
+
+  Now, for when $z$ is \emph{inside} the contour $C$. We can write the integrand as
+  \[%
+    \frac{s^3 + 2z}{(s - z)^3} = \frac{s^3}{(s - z)^3} + \frac{2z}{(s - z)^3}
+  .\]%
+  Let us evaluate each term using Cauchy's Integral Formula for derivatives to get
+  \[%
+    \int_C \frac{f(s)}{(s - z)^n} \, ds = \frac{2\pi i}{(n - 1)!} f^{(n - 1)}(z), \quad n \geq 1
+  .\]%
+  For the first term, we have $f(s) = s^3$ and we compute the second derivative of $f$ at $s = z$ to get
+  \[%
+    f'(s) = 3s^2 \aand f''(s) = 6s \implies f''(z) = 6z
+  .\]%
+  Thus, we have
+  \[%
+    \int_C \frac{s^3}{(s - z)^3} \ds = \frac{2\pi i}{2!} \cdot 6z = \pi i \cdot 6z = 6\pi i z
+  .\]%
+  For the second term, we have $f(s) = 2z$, which is constant with respect to $s$, so, we have
+  \[%
+    \int_C \frac{2z}{(s - z)^3} \, ds = 2z \cdot \int_C \frac{1}{(s - z)^3} \ds
+  .\]%
+  But $\sfrac{1}{(s - z)^3}$ is the third derivative kernel for the constant function, which is 0, giving us
+  \[%
+    \int_C \frac{1}{(s - z)^3} \ds = 0
+  .\]%
+  So the second term vanishes. Therefore, we have
+  \[%
+    g(z) = \int_C \frac{s^3 + 2z}{(s - z)^3} \ds = 6\pi i z + 0 = 6\pi i z
+  .\qedhere\]%
+\end{solution}
+
+\begin{problem}[4.52.7]
+  Let $C$ be the unit circle $z = e^{i\theta}$ ($-\pi \le \theta \le \pi$). First show that for any real constant $a$,
+  \[%
+    \int_C \frac{e^{az}}{z} \dz = 2\pi i
+  .\]%
+  Then, write this integral in terms of $\theta$ to dive the integration formula
+  \[%
+    \int_0^\pi e^{a\cos(\theta)} \cos(a\sin(\theta)) \dd{\theta} = \pi
+  .\]%
+\end{problem}
+
+\begin{solution}
+  Note that the function $\frac{e^{az}}{z}$ is analytic everywhere inside and on $C$, except for a simple pole at $z = 0$, which lies inside $C$. We apply the Cauchy Integral Formula, to get
+  \[%
+    \int_C \frac{f(z)}{z - z_0} \dz = 2\pi i f(z_0)
+  ,\]%
+  for a function $f$ analytic on and inside $C$, and $z_0$ inside $C$. In our case, $f(z) = e^{az}$, and $z_0 = 0$, so
+  \[%
+    \int_C \frac{e^{az}}{z} \dz = 2\pi i e^{a \cdot 0} = 2\pi i
+  .\]%
+
+  Let $z = e^{i\theta}$, with $-\pi \le \theta \le \pi$, then $dz = i e^{i\theta} \d\theta$. So, we have
+  \[%
+    \int_C \frac{e^{az}}{z} \dz = \int_{-\pi}^{\pi} \frac{e^{a e^{i\theta}}}{e^{i\theta}} \cdot i e^{i\theta} \d\theta = i \int_{-\pi}^{\pi} e^{a e^{i\theta}} \dd{\theta}
+  .\]%
+  Now write $e^{a e^{i\theta}}$ in terms of real and imaginary parts, to get
+  \[%
+    e^{a e^{i\theta}} = e^{a(\cos\theta + i \sin\theta)} = e^{a\cos\theta} \cdot e^{i a \sin\theta} = e^{a\cos\theta} \left[\cos(a\sin\theta) + i \sin(a\sin\theta)\right]
+  .\]%
+  So,
+  \begin{align*}
+    i \int_{-\pi}^{\pi} e^{a e^{i\theta}} \dd{\theta} &= i \int_{-\pi}^{\pi} e^{a\cos\theta} \left[\cos(a\sin\theta) + i \sin(a\sin\theta)\right] \dd{\theta} \\
+                                                      &= i \int_{-\pi}^{\pi} e^{a\cos\theta} \cos(a\sin\theta) \dd{\theta} - \int_{-\pi}^{\pi} e^{a\cos\theta} \sin(a\sin\theta) \dd{\theta}
+  .\end{align*}
+  We know this entire expression equals $2\pi i$, so
+  \[%
+    i \int_{-\pi}^{\pi} e^{a\cos\theta} \cos(a\sin\theta) \dd{\theta} - \int_{-\pi}^{\pi} e^{a\cos\theta} \sin(a\sin\theta) \dd{\theta} = 2\pi i
+  .\]%
+  Equating real and imaginary parts, the imaginary part gives
+  \[%
+    \int_{-\pi}^{\pi} e^{a\cos\theta} \cos(a\sin\theta) \dd{\theta} = 2\pi
+  .\]%
+  Since the integrand is even (both $\cos$ and $e^{a\cos\theta}$ are even functions),
+  \[%
+    \int_{-\pi}^{\pi} e^{a\cos\theta} \cos(a\sin\theta) \dd{\theta} = 2 \int_{0}^{\pi} e^{a\cos\theta} \cos(a\sin\theta) \dd{\theta}
+  .\]%
+  So,
+  \[%
+    2 \int_0^\pi e^{a\cos\theta} \cos(a\sin\theta) \dd{\theta} = 2\pi \implies \int_0^\pi e^{a\cos\theta} \cos(a\sin\theta) \dd{\theta} = \pi
+  .\qedhere\]%
+\end{solution}

@@ -1,0 +1,41 @@
+\lecture{12}{Oct 28 2024 Mon (13:00:12)}{Subsequences}
+
+\begin{definition}[Subsequence]
+  Let $(a_n)$ be a sequence and $(n_k)$ be a strictly increasing sequence of natural numbers. Then, the sequence $(a_{n_k}) = (a_{n_1}, a_{n_2}, \dots)$ is called a \emph{subsequence of $(a_n)$}.
+\end{definition}
+
+\begin{example}
+  The sequence $(n)$ contains the subsequences $(2^n)$, $(2n)$, and $(n^2)$.
+\end{example}
+
+Now, a bunch of questions arise. If $(a_n)$ is a bounded sequence, can it have a convergent subsequence? If $(a_n)$ is an unbounded sequence, can it have a bounded sequence? For now, I'll answer the question if all subsequences of a convergent sequence converge to the same limit.
+
+\begin{theorem}
+  If $(a_n)$ is a convergent sequence, then all its subsequences converge to the same limit.
+\end{theorem}
+
+\begin{proof}
+  Let $\epsilon > 0$. There is an $N \in \N$ such that for all $n > N$, $\lvert a_n - a \rvert < \epsilon$.
+
+  Let $(a_{n_k})$ be a subsequence. Then, $n_k \ge k$. Hence, $n_N \ge N$. Hence, for all $n_k > n_N$, $\lvert a_{n_k} - a \rvert < \epsilon$.
+\end{proof}
+
+\begin{example}
+  Let $0 < b < 1$. Since $b > b^2 > b^3 > \cdots > 0$, the sequence $(b^n)$ is decreasing and bounded below by $0$. Hence, by the Monotone Convergence Theorem, $b^n \to l$. Notice that $\left(b^{2n}\right)$ is a subsequence of $\left(b^n\right)$, so $b^{2n} \to l \cdot l = l^2$. Since limits are unique, it follows that $l = 0$. We can then generalize this example to conclude that $b^n \to 0 \iff -1 < b < 1$.
+\end{example}
+
+We can use this theorem to prove that a sequence doesn't converge by finding two subsequences that converge to different limits.
+
+\begin{example}[Divergence Criterion]
+  Let $(a_n)$ be the sequence defined by
+  \[%
+    (a_n) = \left(0, \frac{1}{2}, -\frac{1}{2}, \frac{1}{3}, \frac{2}{3}, -\frac{2}{3}, \dots\right)
+  .\]%
+  Notice that we get three different subsequences
+  \[%
+    \left(a_{n_1}\right) = \left(0, \frac{1}{2}, \frac{1}{3}, \cdots\right), \quad
+    \left(a_{n_2}\right) = \left(0, \frac{1}{2}, \frac{2}{3}, \cdots\right), \aand
+    \left(a_{n_3}\right) = \left(0, -\frac{1}{2}, -\frac{2}{3}, \cdots\right)
+  .\]%
+  The first subsequence converges to $0$, the second subsequence converges to $1$, and the third subsequence converges to $-1$. Hence, the sequence $(a_n)$ doesn't converge.
+\end{example}

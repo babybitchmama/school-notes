@@ -1,0 +1,169 @@
+\setcounter{section}{8}
+\section{The Dihedral Cathedral}
+
+\begin{exercise}[9.25]
+  Let our base ring be some specialization of $\Z[\delta]$. Inside $\TL_{n,\delta}$ let $T$ be the vector space of elements which are killed by all the $(n-1)$ caps on top, and let $B$ be the space killed by cups on the bottom. For an element $x \in \TL_{n,\delta}$ let $\bar{x}$ denote the same element with each diagram flipped upside down. Thus, for example, $x \in T$ if and only if $\bar{x} \in B$.
+  \begin{enumerate}
+    \item Show that any crossingless matching is either the identity diagram, or has both a cap on bottom and a cup on top.
+
+    \item We now make the following assumption:
+      \begin{equation}\label{eq:9.25:assumption}
+        \textrm{There exist some $f \in T$ for which the coefficients of the identity diagram is invertible.}
+      \end{equation}
+      Why is this equivalent to the analogous assumption for $B$?
+
+    \item Let $f \in T$, with invertible coefficient $c$ for the identity diagram. Let $g \in B$, with invertible coefficient $d$ for the identity diagram. Compute the composition $fg$ in two ways and deduce that $f$ and $g$ are colinear.
+
+    \item Assuming \ref{eq:9.25:assumption} deduce that $T = B$, that this space is one-dimensional, and that $f = \bar{f}$ for $f \in T$.
+
+    \item Thus, assuming \ref{eq:9.25:assumption}, there is a unique element $\JW_n \in T$ whose identity coefficient is $1$. Prove that $\JW_n$ is idempotent. (If we construct $\JW_n$ in some other way, this proves \ref{eq:9.25:assumption}.)
+  \end{enumerate}
+\end{exercise}
+
+\begin{solution}[9.25(i)]
+\end{solution}
+
+\begin{solution}[9.25(ii)]
+\end{solution}
+
+\begin{solution}[9.25(iii)]
+\end{solution}
+
+\begin{solution}[9.25(iv)]
+\end{solution}
+
+\begin{solution}[9.25(v)]
+\end{solution}
+
+\begin{exercise}[9.26]
+  Let $\TL_n$ be the Temperley–Lieb algebra with $n$-strands where the bubble evaluates to $-[2] = q + q^{-1} \in \Q(q)$. Clearly, $\JW_1$ is just the identity element, where the condition of being killed by caps and cups is vacuous. Verify the following recursive formula:
+  \begin{equation}\label{eq:9.26:recursion}
+    \begin{tikzpicture}[baseline]
+    \end{tikzpicture}
+  \end{equation}
+  In this last diagram, the cup on top matches the $a$-th and $(a+1)$-st boundary points, counting from the left.
+\end{exercise}
+
+\begin{solution}[9.26]
+\end{solution}
+
+\begin{exercise}[9.27]
+  Prove the following recursive formula.
+\end{exercise}
+
+\begin{solution}[9.27]
+\end{solution}
+
+\begin{exercise}[9.28]
+  The trace of an element $a \in \TL_n$ is the evaluation in $\Z[q,q^{-1}]$ of the following closed diagram:
+  \begin{equation}\label{eq:9.28:trace}
+    \begin{tikzpicture}[baseline]
+    \end{tikzpicture}
+  \end{equation}
+  \begin{enumerate}
+    \item Calculate the trace of $\JW_n$.
+
+    \item Suppose that $q$ is a primitive $2m$-th root of unity. What is the trace of $\JW_{m-1}$? What do you get when you rotate $\JW_{m-1}$ by one strand?
+  \end{enumerate}
+\end{exercise}
+
+\begin{solution}[9.28(i)]
+\end{solution}
+
+\begin{solution}[9.28(ii)]
+\end{solution}
+
+\begin{exercise}[9.34]\leavevmode
+  \begin{enumerate}
+    \item Write down the two-color relations when $m = 2$. Prove that $B_sB_t \simeq B_tB_s$ by constructing inverse isomorphisms.
+
+    \item Write down the two-color relations when $m = 3$. Prove that $B_sB_tB_S \simeq X \oplus B_s$, where $X$ is the image of an idempotent constructed using two $6$-valent vertices, by following the rubric of Exercise 8.39.
+
+    \item (Still for m = 3) Similarly, one has $B_tB_sB_t \simeq Y \oplus B_t$. Prove that $X$ is isomorphic to $Y$. Extend the rubric of Exercise 8.39 to a rubric which describes when two summands of different objects are isomorphic.
+  \end{enumerate}
+\end{exercise}
+
+\begin{solution}[9.34(i)]
+\end{solution}
+
+\begin{solution}[9.34(ii)]
+\end{solution}
+
+\begin{solution}[9.34(iii)]
+\end{solution}
+
+\begin{exercise}[9.35]
+  Prove that there is an autoequivalence of $\mathcal{H}_{\BS}$ which flips each diagram vertically (resp. horizontally). See Exercise 8.10 for inspiration.
+\end{exercise}
+
+\begin{solution}[9.35]
+\end{solution}
+
+\begin{exercise}[9.36]
+  Show that the diagram obtained by attaching a ``handle'' to the left or right of a Jones–Wenzl projector equals 0. For example,
+  \begin{equation}\label{eq:9.36:handle}
+    \begin{tikzpicture}[baseline]
+    \end{tikzpicture}
+  \end{equation}
+  (Hint: use (9.16).)
+\end{exercise}
+
+\begin{solution}[9.36]
+\end{solution}
+
+\begin{exercise}[9.37]\leavevmode
+  \begin{enumerate}
+    \item A \textit{pitchfork} is a diagram of the form
+      \begin{equation}\label{eq:9.37:pitchfork}
+        \begin{tikzpicture}[baseline]
+        \end{tikzpicture}
+      \end{equation}
+      (or its color swap). The death by pitchfork relation states that the diagram obtained by placing a pitchfork anywhere on top or bottom of a Jones–Wenzl projector equals 0. For example:
+      \begin{equation}\label{eq:9.37:death-by-pitchfork}
+        \begin{tikzpicture}[baseline]
+        \end{tikzpicture}
+      \end{equation}
+      Why is death by pitchfork implied by the defining property of the Jones–Wenzl projector?
+
+    \item Use (9.28) and (9.31) to prove that the diagram obtained by placing a pitchfork anywhere on top or bottom of the $2m$-valent vertex equals $0$. We also call this \textit{death by pitchfork}.
+  \end{enumerate}
+\end{exercise}
+
+\begin{solution}[9.37(i)]
+\end{solution}
+
+\begin{solution}[9.37(ii)]
+\end{solution}
+
+\begin{exercise}[9.38]\leavevmode
+  \begin{enumerate}
+    \item Prove (9.29) and (9.30) using the relations in (9.27). (Hint: each relation follows from two careful applications of (9.27c). Alternatively, (9.29) can be proved by repeatedly applying (9.30).
+
+    \item Prove (9.27b) using (9.28) and the other relations in (9.27). (Hint: first use (8.12) to create a dot and a trivalent vertex on the left hand side, and then dispose of the trivalent vertex with two-color associativity.)
+
+      The following exercise is harder, but very worthwhile.
+  \end{enumerate}
+\end{exercise}
+
+\begin{solution}[9.38(i)]
+\end{solution}
+
+\begin{solution}[9.38(ii)]
+\end{solution}
+
+\begin{solution}[9.38(iii)]
+\end{solution}
+
+\begin{exercise}[9.39]\leavevmode
+  \begin{enumerate}
+    \item Prove (9.28) using the relations in (9.27).
+
+    \item Prove that the Elias–Jones–Wenzl relation (9.27b) follows from two-color associativity (9.27c) and two-color dot contraction (9.28).
+  \end{enumerate}
+\end{exercise}
+
+\begin{solution}[9.39(i)]
+\end{solution}
+
+\begin{solution}[9.39(ii)]
+\end{solution}

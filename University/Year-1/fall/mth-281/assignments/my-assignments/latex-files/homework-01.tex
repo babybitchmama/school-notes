@@ -1,0 +1,178 @@
+\renewcommand\type{problem}
+
+\begin{problem}
+  Consider the following regions of $\R^3$ described by an inequality. Describe
+  each region in words and sketch it to the best of your ability. Note:
+  Inequalities define a solid region in space rather than a surface.
+  \begin{enumerate}
+    \item $4 < x^2 + y^2 + z^2$.
+
+    \item $x^2 + z^2 \le 9$.
+  \end{enumerate}
+\end{problem}
+
+\begin{probsolution}
+  \begin{enumerate}
+    \item The inequality represents the points $(x, y, z)$ whose distance from
+      the origin is more than $2$. This creates a sphere of radius $2$ centered
+      at the origin (see \cref{fig:1_a}). All the points are outside the sphere.
+
+    \item Since $y = 0$ in this inequality, that means the inequality is being
+      drawn on the $xz$-plane. This is just a circle of radius $3$ centered at
+      the origin (see \cref{fig:1_b}). NOTE: The disk should be drawn on the
+      $xz$-plane, but my artistic skills are very subpar.
+  \end{enumerate}
+
+  \begin{figure}[H]
+    \centering
+
+    \begin{subfigure}[b]{0.45\textwidth}
+      \centering
+
+      \includegraphics[width=\textwidth]{./image-files/homework-01/1.jpg}
+
+      \caption{}
+      \label{fig:1_a}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.45\textwidth}
+      \centering
+
+      \includegraphics[width=\textwidth]{./image-files/homework-01/2.jpg}
+
+      \caption{}
+      \label{fig:1_b}
+    \end{subfigure}
+
+    \caption{}
+    \label{fig:1}
+  \end{figure}
+\end{probsolution}
+
+\newpage
+
+\begin{problem}
+  Consider the vectors $\a = \langle -2, 5, 4 \rangle$ and $\b = \langle 4, 8, 1
+  \rangle$.
+  \begin{enumerate}
+    \item Find $2\a - 3\b$.
+
+    \item Find the length of the vectors $\a$ and $\b$.
+
+    \item Find the angle between the vectors $\a$ and $\b$.
+
+    \item Find a unit vector in the direction of $\a$.
+
+    \item Find $\comp_{\a}(\b)$ and $\proj_{\a}(\b)$.
+  \end{enumerate}
+\end{problem}
+
+\begin{probsolution}
+  \begin{enumerate}
+    \item $\displaystyle2\langle -2, 5, 4 \rangle - 3\langle 4, 8, 1 \rangle =
+      \langle -4, 10, 8 \rangle - \langle 12, 24, 3 \rangle = \langle -16, -14,
+      5 \rangle$.
+
+    \item $\displaystyle\lvert a \rvert = \sqrt{(-2)^2 + 5^2 + 4^2} =
+      \sqrt{45}$.
+
+      $\displaystyle\lvert b \rvert = \sqrt{4^2 + 8^2 + 1^2} = \sqrt{81} = 9$.
+
+    \item $\displaystyle\frac{\a \cdot \b}{\lvert \a \rvert \cdot \lvert \b
+      \rvert} = \frac{36}{\sqrt{45} \cdot 9} = \frac{4\sqrt{5}}{15}$. This gives
+      us $\displaystyle\arccos\left(\frac{4 \sqrt{5}}{15}\right) \approx
+      \SI{54}{\degree}$.
+
+    \item The unit vector for $\a$ is $\displaystyle\frac{\a}{\lvert \a \rvert}
+      = \frac{\langle -2, 5, 4 \rangle}{\sqrt{45}} = \left\langle
+      -\frac{2}{\sqrt{45}}, \frac{5}{\sqrt{45}}, \frac{4}{\sqrt{45}}
+      \right\rangle$.
+
+    \item $\displaystyle\comp_{\a}(\b) = \frac{\a \cdot \b}{\lvert \a \rvert} =
+      \frac{36}{\sqrt{45}}$.
+
+      $\displaystyle\proj_{\a}(\b) = \frac{\a \cdot \b}{\lvert \a \rvert^2} \a =
+      \frac{36}{45} \langle -2, 5, 4 \rangle = \left\langle -\frac{8}{5}, 4,
+      \frac{16}{5} \right\rangle$.
+  \end{enumerate}
+\end{probsolution}
+
+\newpage
+
+\begin{problem}
+  Find the values of $x$ such that the vectors $\langle 6, 3x, x \rangle$ and
+  $\langle -3, 1, x \rangle$ are orthogonal.
+\end{problem}
+
+\begin{probsolution}
+  Both vectors are orthogonal if and only if their dot product is zero. Thus,
+  solving for $x$ gives us
+  \begin{alignat*}{3}
+    \langle 6, 3x, x \rangle \cdot \langle -3, 1, x \rangle = 0 &\implies = 6(-3) + 3x(1) + x(x) &&= 0 \\
+                                                                &\implies -18 + 3x + x^2 &&= 0 \\
+                                                                &\implies (x - 3)(x + 6) &&= 0
+  .\end{alignat*}
+  This gives us $x = 3$ and $x = -6$. Therefore, the following vector pairs are
+  orthogonal to one another
+  \begin{align*}
+    \langle 6, 9, 3 \rangle &\aand \langle -3, 1, 3 \rangle \\
+    \langle 6, -18, -6 \rangle &\aand \langle -3, 1, -6 \rangle
+  .\end{align*}
+\end{probsolution}
+
+\newpage
+
+\begin{problem}
+  If $\r = \langle x, y, z \rangle$ is an arbitrary position vector and $\u =
+  \langle u_1, u_2, u_3 \rangle$ and $\v = \langle v_1, v_2, v_3 \rangle$ are
+  constant position vectors, show that $(\r - \u) \cdot (\r - \v) = 0$ defines a
+  sphere. Find the center and radius of the sphere.
+\end{problem}
+
+\begin{probsolution}
+  Expanding the expression gives us
+  \begin{alignat*}{3}
+    &\phantom{\implies}~(\r - \u) \cdot (\r - \v) &&= 0 \\
+         &\implies \langle x - u_1, y -u_2, z - u_3 \rangle \cdot \langle x - v_1, y - v_2, z - v_3 \rangle &&= 0 \\
+         &\implies (x - u_1)(x - v_1) + (y - u_2)(y - v_2) + (z - u_3)(z - v_3) &&= 0 \\
+         &\implies x^2 - (u_1 + v_1)x + u_1v_1 + y^2 - (u_2 + v_2)y + u_2v_2 + z^2 - (u_3 + v_3)z + u_3v_3 &&= 0 \\
+         &\implies x^2 - (u_1 + v_1)x + y^2 - (u_2 + v_2)y + z^2 - (u_3 + v_3)z &&= D_1
+  ,\end{alignat*}
+  where $D_n$ is the sum of all the constant terms. Lastly, we need to factor
+  everything by completing the square, giving us
+  \begin{alignat*}{3}
+    &\phantom{\implies}~x^2 - (u_1 + v_1)x + y^2 - (u_2 + v_2)y + z^2 - (u_3 + v_3)z &&= D_1 \\
+    &\implies x^2 - (u_1 + v_1)x + \left(\frac{u_1 + v_1}{2}\right)^2 + y^2 - (u_2 + v_2)y + \left(\frac{u_2 + v_2}{2}\right)^2 + z^2 - (u_3 + v_3)z + \left(\frac{u_3 + v_3}{2}\right)^2 &&= D_2 \\
+    &\implies \left(x - \frac{u_1 + v_1}{2}\right)^2 + \left(y - \frac{u_2 + v_2}{2}\right)^2 + \left(z - \frac{u_3 + v_3}{2}\right)^2 &&= D_3
+  ,\end{alignat*}
+  where $\displaystyle \frac{u_1 + v_1}{2} = h$, $\displaystyle\frac{u_2 +
+  v_2}{2} = k$, $\displaystyle\frac{u_3 + v_3}{2} = l$, and $\sqrt{D_3} = r$.
+  This gives us the following center and radius for the sphere:
+  \begin{align*}
+    \text{Center} &= (h, k, l) = \left(\frac{u_1 + v_1}{2}, \frac{u_2 + v_2}{2}, \frac{u_3 + v_3}{2}\right) \\
+    \text{Radius} &= r = \sqrt{D_3}
+  .\end{align*}
+\end{probsolution}
+
+\newpage
+
+\begin{problem}
+  Show that if $\u + \v$ and $\u - \v$ are orthogonal, then $\u$ and $\v$ have
+  the same length.
+\end{problem}
+
+\begin{probsolution}
+  Suppose $\u + \v$ and $\u - \v$ are orthogonal. Then, by definition, we get
+  \begin{align*}
+    (\u + \v) \cdot (\u - \v) &= 0 \\
+    \u^2 - \u \cdot \v + \v \cdot \u - \v^2 &= 0 \\
+    \u^2 - \v^2 &= 0 \\
+    \u^2 &= \v^2 \\
+    \sqrt{\u \cdot \u} &= \sqrt{\v \cdot \v}
+  .\end{align*}
+  Expanding $\u \cdot \u$ and $\v \cdot \v$, we get
+  \[%
+    \underbrace{\sqrt{u_1^2 + u_2^2 + \cdots + u_n^2}}_{\lvert \u \rvert} = \underbrace{\sqrt{v_1^2 + v_2^2 + \cdots + v_n^2}}_{\lvert \v \rvert}
+  .\]%
+  Therefore, $\u$ and $\v$ have the same length if $\u + \v$ and $\u - \v$ are
+  orthogonal.
+\end{probsolution}

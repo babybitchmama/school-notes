@@ -1,0 +1,110 @@
+\lecture{1}{}{Introduction to Metric Spaces}
+
+In analysis, we defined properties such as \emph{convergence of sequences} and \emph{continuity of functions}. Recall the following definitions
+\begin{definitions}\leavevmode
+  \begin{itemize}
+    \item A sequence $(x_n)$ in $\R$ \emph{converges} to $x \in \R$, denoted $(x_n) \to x$, if
+      \[%
+        (\forall \epsilon > 0)(\exists N \in \N)(\forall n \ge N)[|x_n - x| < \epsilon]
+      .\]%
+
+    \item A function $f : A \to B$ is \emph{continuous} at $x_0 \in A$ if
+      \[%
+        (\forall \epsilon > 0)(\exists \delta > 0)(\forall x \in A)[|x - x_0| < \delta \implies |f(x) - f(x_0)| < \epsilon]
+      .\]%
+  \end{itemize}
+\end{definitions}
+
+Instead of using Euclidean distance, $|x - x_n|$, we can generalize these definitions.
+
+\begin{definition}[Metric Space]
+  A \emph{metric space} is a pair $(X, \metric_X)$ where $X$ is a set and $\metric_X : X \times X \to \R$ is a function (called a \emph{metric} or \emph{distance function}) satisfying the following properties for all $x, y, z \in X$:
+  \begin{itemize}
+    \item $\metric(x, y) \ge 0$ \hfill (Non-negativity)
+    \item $\metric(x, y) = \metric(y, x)$ \hfill (Symmetry)
+    \item $\metric(x, y) = 0$ if and only if $x = y$ \hfill (Identity of indiscernibles)
+    \item $\metric(x, z) \le \metric(x, y) + \metric(y, z)$ \hfill (Triangle inequality)
+  \end{itemize}
+\end{definition}
+
+We often say ``let $(X, \metric)$  be a metric space'', which means $X$ is the set and $\metric$ is the metric on $X$.
+
+\begin{remark}
+  One might observe the fact that analysis is just the study of metric spaces that are subsets of $\R^n$ with the usual Euclidean metric. However, metric spaces can be much more general and abstract, allowing us to explore concepts like convergence and continuity in a broader context.
+\end{remark}
+
+Therefore, we can re-write the definitions of convergence and continuity in the context of metric spaces.
+
+\begin{definitions}\leavevmode
+  \begin{itemize}
+    \item A sequence $(x_n)$ in a metric space $(X, \metric_X)$ \emph{converges} to $x \in X$, denoted $(x_n) \to x$, if
+      \[%
+        (\forall \epsilon > 0)(\exists N \in \N)(\forall n \ge N)[\metric_X(x_n, x) < \epsilon]
+      .\]%
+
+    \item A function $f : A \to B$ between two metric spaces $(A, \metric_A)$ and $(B, \metric_B)$ is \emph{continuous} at $x_0 \in A$ if
+      \[%
+        (\forall \epsilon > 0)(\exists \delta > 0)(\forall x \in A)[\metric_A(x, x_0) < \delta \implies \metric_B(f(x), f(x_0)) < \epsilon]
+      .\]%
+  \end{itemize}
+\end{definitions}
+
+\subsection{Metrics on $\R^n$}
+
+Here are a few fundamental examples of metric spaces I'll be using throughout these notes.
+
+\begin{examples}[Metrics on $\R^n$]\leavevmode
+  \begin{enumerate}
+    \item The Euclidean metric on $\R^n$:
+      \[%
+        \metric_2(\x, \y) = \sqrt{\sum_{i=1}^n (\x_i - \y_i)^2}
+      .\]%
+
+    \item The Taxicab (or Manhattan) metric on $\R^n$:
+      \[%
+        \metric_1(\x, \y) = \sum_{i=1}^n |\x_i - \y_i|
+      .\]%
+      It is called the Taxicab metric because it measures distance as if you were navigating a grid-like city, moving only along streets and avenues.
+
+    \item Square metric on $\R^n$:
+      \[%
+        \metric_\infty(\x, \y) = \max_{1 \le i \le n} |\x_i - \y_i|
+      .\]%
+      This metric measures the greatest difference along any single coordinate dimension. \qedhere
+  \end{enumerate}
+\end{examples}
+
+\begin{example}[Induced Metric]
+  Let $(X, \metric)$ be a metric space. If $Y \subseteq X$, then we can define a metric on $Y$ by restricting $\metric$ to $Y \times Y$. This is called the \emph{induced metric} on $Y$ and is denoted $\metric_Y = \metric|_{Y \times Y}$. Thus, $(Y, \metric_Y)$ is also a metric space.
+
+  This surface carries some interesting properties. For instance, we could declare the shortest distance between two points on the surface to be the length of the curve that lies entirely on the surface connecting those two points. This is known as the \emph{geodesic distance}. However, the geodesic distance may not satisfy the triangle inequality, so it may not be a valid metric. However, this goes boyond the scope of this course, as that's a more advanced topic in differential geometry.
+\end{example}
+
+\begin{example}[SNCF Metric]
+  Consider the metric space $(\R^2, \metric)$ given
+  \[%
+    \metric(\x, \y) = \begin{cases}
+      \metric_2(\x, \y) & \text{if $\x$ and $\y$ are on the same line through the origin}\\
+      \metric_2(\x) + \metric_2(\y) & \text{otherwise}
+    \end{cases}
+  .\]%
+  This metric is inspired by the layout of the French railway system (SNCF), where all train lines radiate out from a central hub (the origin). To travel between two points not on the same line, one must first go to the hub and then out to the destination.
+
+  We can verify that $\metric$ satisfies all the properties of a metric:
+  \begin{itemize}
+    \item Non-negativity: $\metric(\x, \y) \ge 0$ for all $\x, \y \in X$.
+    \item Symmetry: $\metric(\x, \y) = \metric(\y, \x)$ for all $\x, \y \in X$.
+    \item Identity of indiscernibles: $\metric(\x, \y) = 0$ if and only if $\x = \y$.
+    \item Triangle inequality: For any $\x, \y, \z \in X$, we have
+      \[%
+        \metric(\x, \z) \le \metric(\x, \y) + \metric(\y, \z)
+      .\]%
+      This can be checked by considering cases based on whether the points lie on the same line through the origin or not.
+  \end{itemize}
+
+  Thus, $(\R^2, \metric)$ is a valid metric space.
+\end{example}
+
+\subsection{Metrics on Function Spaces}
+
+

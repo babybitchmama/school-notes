@@ -1,0 +1,281 @@
+\begin{problem}[1]
+  A student is getting ready to take an important oral examination and is concerned about the possibility of having an ``on'' day or an ``off'' day. He figures that if he has an on day, then each of his examiners will pass him, independently of one another, with probability 0.8, whereas if he has an off day, this probability will be reduced to 0.4. Suppose that the student will pass the examination if a majority of the examiners pass him. If the student believes that he is twice as likely to have an off day as he is to have an on day, should he request an examination with 3 examiners or with 5 examiners?
+\end{problem}
+
+\begin{solution}
+  The student believes $\Pr(\text{on day}) = 1/3$ and $\Pr(\text{off day}) = 2/3$. If there are $n$ examiners the student passes exactly when a majority pass him; let $m = \lfloor n/2 \rfloor + 1$ be the smallest number of passing examiners that constitutes a majority. Write
+  \[%
+    S_{\text{on}}(n) = \sum_{k=m}^n \binom{n}{k} (0.8)^k(0.2)^{n-k}
+    \aand
+    S_{\text{off}}(n) = \sum_{k=m}^n \binom{n}{k} (0.4)^k(0.6)^{n-k}
+  ,\]%
+  so that the unconditional probability of passing with $n$ examiners is
+  \[%
+    P_n = \frac{1}{3}S_{\text{on}}(n) + \frac{2}{3}S_{\text{off}}(n)
+  .\]%
+
+  First take $n = 3$. Then a majority means $k \ge 2$, so
+  \begin{gather*}
+    S_{\text{on}}(3) = \binom{3}{2} (0.8)^2 (0.2) + \binom{3}{3} (0.8)^3 = 0.896 \\
+    S_{\text{off}}(3) = 3 \cdot (0.4)^2(0.6) + (0.4)^3 = 0.352
+  \end{gather*}
+  Hence
+  \[%
+    P_3 = \frac{1}{3} \cdot 0.896 + \frac{2}{3} \cdot 0.352 = \frac{8}{15} \approx 0.53333
+  .\]%
+
+  Next take $n = 5$. Now a majority means $k \ge 3$. Computing the binomial sums gives
+  \[%
+    S_{\text{on}}(5) \approx 0.94208 \aand S_{\text{off}}(5) \approx 0.31744
+  ,\]%
+  so
+  \[%
+    P_5 = \frac{1}{3} \cdot 0.94208 + \frac{2}{3} \cdot 0.31744 \approx 0.52565
+  .\]%
+
+  Comparing the two cases,
+  \[%
+    P_3= \frac{8}{15} \approx 0.53333 > 0.52565 \approx P_5
+  ,\]%
+  so the student has a slightly higher probability of passing with 3 examiners than with 5 examiners. Therefore he should request an examination with 3 examiners.
+\end{solution}
+
+\begin{problem}[2]
+  When coin 1 is flipped, it lands on heads with probability 0.4; when coin 2 is flipped, it lands on heads with probability 0.7. One of these coins is randomly chosen and flipped 10 times.
+  \begin{enumerate}
+    \item What is the probability that the coin lands on heads on exactly 7 of the 10 flips?
+    \item Given that the first flip of these 10 flips lands on heads, what is the conditional probability that exactly 7 of the 10 flips lands on heads?
+  \end{enumerate}
+\end{problem}
+
+\begin{solution}[(i)]
+  Each coin is chosen with probability $1/2$. Let $X$ denote the number of heads obtained in 10 flips. Conditional on the chosen coin, $X$ follows a binomial distribution,
+  \[%
+    \Pr(X = k \mid~\text{coin}~1) = \binom{10}{k} (0.4)^k (0.6)^{10-k}
+    \aand
+    \Pr(X = k \mid~\text{coin}~2) = \binom{10}{k} (0.7)^k (0.3)^{10-k}
+  .\]%
+  Hence the unconditional probability that the coin lands on heads exactly 7 times is
+  \[%
+    \Pr(X = 7) = \frac{1}{2} \left[\binom{10}{7} (0.4)^7 (0.6)^3 + \binom{10}{7} (0.7)^7 (0.3)^3\right]
+  .\]%
+  Evaluating gives $\Pr(X = 7) = 0.06986$. Thus the required probability is approximately $6.99\%$.
+\end{solution}
+
+\begin{solution}[(ii)]
+  Let $A$ be the event that exactly 7 of the 10 flips are heads, and $B$ be the event that the first flip is a head. We want $\Pr(A \mid B)$.
+
+  By the definition of conditional probability,
+  \[%
+    \Pr(A \mid B) = \frac{\Pr(A\cap B)}{\Pr(B)}
+  .\]%
+  First compute $\Pr(B)$ to get
+  \[%
+    \Pr(B) = \frac{1}{2}(0.4) + \frac{1}{2}(0.7) = 0.55
+  .\]%
+  Next, we compute $\Pr(A \cap B)$. Given the first flip is heads, for $A \cap B$ to occur we need 6 heads among the remaining 9 flips. Hence
+  \[%
+    \Pr(A \cap B) = \frac{1}{2}\left[(0.4)\binom{9}{6}(0.4)^6(0.6)^3 + (0.7)\binom{9}{6}(0.7)^6(0.3)^3\right]
+  .\]%
+  Simplifying gives that $\Pr(A \cap B) = 0.04248$. Therefore
+  \[
+    \Pr(A \mid B) = \frac{0.04248}{0.55} \approx 0.0772
+  .\]%
+  Hence, given that the first flip is a head, the conditional probability that exactly 7 of the 10 flips are heads is approximately $7.72\%$.
+\end{solution}
+
+\begin{problem}[3]
+  The expected number of typographical errors on a page of a certain magazine is 0.2.
+  \begin{enumerate}
+    \item What is the probability that the next page you read contains zero typographical errors?
+    \item What is the probability that the next page you read contains two or more typographical errors?
+  \end{enumerate}
+\end{problem}
+
+\begin{solution}[(i)]
+  Let $X$ denote the number of typographical errors on a page. Since errors occur randomly and independently with an average rate of $0.2$ per page, we model $X$ using a Poisson distribution with parameter $\lambda = 0.2$. Thus,
+  \[%
+    \Pr(X=k)=\frac{e^{-\lambda}\lambda^k}{k!}
+  ,\]%
+  where $k = 0, 1, 2, \cdots$. The probability that the next page contains no typographical errors is
+  \[%
+    \Pr(X = 0) = \frac{e^{-0.2}(0.2)^0}{0!} = e^{-0.2} \approx 0.8187
+  .\]%
+  Therefore, the probability that the next page you read contains zero errors is approximately $81.87\%$.
+\end{solution}
+
+\begin{solution}[(ii)]
+  We want the probability that the next page contains two or more errors, that is,
+  \[%
+    \Pr(X \ge 2) = 1 - \Pr(X = 0) - \Pr(X = 1)
+  .\]%
+  Using the Poisson probabilities,
+  \[%
+    \Pr(X = 1) = \frac{e^{-0.2}(0.2)^1}{1!} = 0.2e^{-0.2}
+  .\]%
+  Hence,
+  \[%
+    \Pr(X \ge 2) = 1 - e^{-0.2} - 0.2e^{-0.2} = 1 - e^{-0.2}(1 + 0.2) = 1 - (1.2)e^{-0.2}
+  .\]%
+  Evaluating gives $\Pr(X \ge 2) = 0.0176$. Therefore, the probability that the next page contains two or more typographical errors is approximately $1.76\%$.
+\end{solution}
+
+\begin{problem}[4]
+  Approximately 80,000 marriages took place in the state of New York last year. Estimate the probability that for at least one of these couples,
+  \begin{enumerate}
+    \item both partners were born on April 30;
+    \item both partners celebrated their birthday on the same day of the year. State your assumptions.
+  \end{enumerate}
+\end{problem}
+
+\begin{solution}[(i)]
+  Assume that birthdays are equally likely on each of the 365 days of a year, that February 29 can be ignored, and that the two partners' birthdays are independent. For a given couple the probability that both partners were born on April 30 is
+  \[%
+    p = \frac{1}{365} \frac{1}{365} = \frac{1}{365^2} = \approx 7.5060987 \times 10^{-6}
+  .\]%
+  With $n = 80,000$ independent couples the probability that none of the couples has both partners born on April 30 is
+  \[%
+    (1 - p)^n = \left(1 - \frac{1}{133225}\right)^{80000}
+  .\]%
+  It is convenient to use the Poisson approximation with parameter $\lambda = np$. Here
+  \[%
+    \lambda = 80000 \cdot \frac{1}{133225} = \frac{80000}{133225} = \frac{3200}{5329} \approx 0.6004878964
+  .\]%
+  The Poisson-approximate probability that at least one such couple exists is
+  \[%
+    1 - e^{-\lambda} \approx 1 - e^{-0.6004878964} \approx 0.4514560618
+  .\]%
+  Thus the probability is about $45.15\%$.
+\end{solution}
+
+\begin{solution}[(ii)]
+  Assume again that birthdays are uniformly distributed over 365 days, that partners' birthdays are independent, and ignore February 29. For a given couple the probability that the two partners share the same birthday (any day) is
+  \[%
+    q = \sum_{d=1}^{365} \Pr(\text{both born on day}~d) = 365 \frac{1}{365} \frac{1}{365} = \frac{1}{365}
+  .\]%
+  With $n = 80,000$ independent couples the probability that no couple shares the same birthday is
+  \[%
+    (1 - q)^n = \left(1 - \frac{1}{365}\right)^{80000}
+  .\]%
+  Again use the Poisson/exponential approximation, we set $\Lambda = nq$ to get
+  \[%
+    \Lambda = \frac{80000}{365} = \frac{16000}{73} \approx 219.1780822
+  ,\]%
+  and
+  \[%
+    (1 - q)^n \approx 4.80 \times 10^{-96}
+  .\]%
+  Therefore the probability that at least one couple shares the same birthday is
+  \[%
+    1 - (1 - q)^n \approx 1 - 4.80 \times 10^{-96} \approx 1
+  .\]%
+  In other words, it is virtually certain, i.e., practically $100\%$, that at least one of the 80,000 couples celebrated their birthday on the same day of the year.
+\end{solution}
+
+\begin{problem}[5]
+  A certain typing agency employs 2 typists. The average number of errors per article is 3 when typed by the first typist and 4.2 when typed by the second. If your article is equally likely to be typed by either typist, approximate the probability that it will have no errors.
+\end{problem}
+
+\begin{solution}
+  Let $X$ denote the number of errors in the article. If the first typist types the article, then $X$ follows a Poisson distribution with mean $\lambda_1 = 3$. If the second typist types it, $X$ follows a Poisson distribution with mean $\lambda_2 = 4.2$. Since the article is equally likely to be typed by either typist, the total probability that the article has no errors is
+  \[%
+    \Pr(X = 0) = \frac{1}{2}\left[\Pr(X = 0 \mid \text{typist 1}) + \Pr(X = 0 \mid \text{typist 2})\right]
+  .\]%
+  For a Poisson distribution with mean $\lambda$, the probability of zero errors is $\Pr(X = 0) = e^{-\lambda}$. Therefore,
+  \[%
+    \Pr(X = 0) = \frac{1}{2}\left[e^{-3} + e^{-4.2}\right]
+  .\]%
+  Evaluating, we have $e^{-3} \approx 0.0498$ and $e^{-4.2} \approx 0.0149$. So, we have
+  \[%
+    \Pr(X = 0) = \frac{1}{2}(0.0498 + 0.0149) = 0.03235
+  .\]%
+  Hence, the probability that the article will have no errors is approximately $3.24\%$.
+\end{solution}
+
+\begin{problem}[6]
+  Compare the Poisson approximation with the correct binomial probability for the following cases
+  \begin{enumerate}
+    \item $P\{X = 2\}$ when $n = 8$, $p = 0.1$
+    \item $P\{X = 9\}$ when $n = 10$, $p = 0.95$
+    \item $P\{X = 0\}$ when $n = 10$, $p = 0.1$
+    \item $P\{X = 4\}$ when $n = 9$, $p = 0.2$
+  \end{enumerate}
+\end{problem}
+
+\begin{solution}[(i)]
+  For the binomial case with $n = 8$ and $p = 0.1$,
+  \[%
+    \Pr(X = 2) = \binom{8}{2}(0.1)^2(0.9)^6 = 0.14880348
+  .\]%
+  For the Poisson approximation, use $\lambda = np = 8(0.1) = 0.8$. Then
+  \[%
+    \Pr(X = 2) \approx e^{-\lambda} \frac{\lambda^2}{2!} = e^{-0.8} \frac{0.8^2}{2} = 0.449329 \cdot 0.32 = 0.143785
+  .\]%
+  Thus, the Poisson approximation is quite close to the exact binomial probability, just off by a about $0.005$.
+\end{solution}
+
+\begin{solution}[(ii)]
+  Here $n = 10$ and $p = 0.95$. The binomial probability is
+  \[%
+    \Pr(X = 9) = \binom{10}{9}(0.95)^9(0.05)^1 = 0.315125
+  .\]%
+  For the Poisson approximation, $\lambda = np = 9.5$. Then
+  \[%
+    \Pr(X = 9) \approx e^{-9.5}\frac{9.5^9}{9!}
+  .\]%
+  Computing the necessary values gives
+  \[%
+    e^{-9.5} \approx 7.485 \times 10^{-5}, \qquad 9.5^9 = 3.774 \times 10^8, \aand 9! = 362880
+  ,\]%
+  so $\Pr(X = 9) \approx 0.0779$. The Poisson approximation is much smaller than the exact binomial, showing that the Poisson approximation is not very good in this case.
+\end{solution}
+
+\begin{solution}[(iii)]
+  Here $n = 10$ and $p = 0.1$. The binomial probability is
+  \[%
+    \Pr(X = 0) = (0.9)^{10} = 0.348678
+  .\]%
+  For the Poisson approximation, $\lambda = np = 1$. Then
+  \[
+    \Pr(X = 0) \approx e^{-\lambda} = e^{-1} = 0.367879.
+  \]
+  The two values are close. Thus, the Poisson approximation is fairly good in this case.
+\end{solution}
+
+\begin{solution}[(iv)]
+  For $n = 9$ and $p = 0.2$, the exact binomial probability is
+  \[%
+    \Pr(X = 4) = \binom{9}{4}(0.2)^4(0.8)^5 = 126(0.0016)(0.32768) = 0.0661
+  .\]%
+  For the Poisson approximation, $\lambda = np = 1.8$. Then
+  \[%
+    \Pr(X = 4) \approx e^{-1.8} \frac{1.8^4}{4!} = 0.165299 \cdot \frac{10.4976}{24} = 0.165299 \cdot 0.4374 = 0.0723
+  .\]%
+  Hence, the Poisson approximation is close to the binomial probability, differing by about $0.0062$.
+\end{solution}
+
+\begin{problem}[7]
+  Find the probability of being dealt a full house (a three of a kind and a pair) in a hand of poker. Find an approximation for the probability that in 1000 hands of poker, you will be dealt at least 2 full houses.
+\end{problem}
+
+\begin{solution}
+  A full house in a five-card poker hand consists of a three of a kind (three cards of one rank) together with a pair (two cards of a different rank). Count the number of such hands.
+
+  Choose the rank for the three of a kind in $13$ ways, choose which $3$ of the $4$ suits appear for that rank in $\binom{4}{3} = 4$ ways. Choose the rank for the pair in the remaining $12$ ranks, and choose which $2$ of the $4$ suits appear for that rank in $\binom{4}{2} = 6$ ways. Thus the number of full houses is
+  \[%
+    N_{\text{full}} = 13 \cdot \binom{4}{3} \cdot 12 \cdot \binom{4}{2} = 3744
+  .\]%
+  The total number of 5-card hands is $\binom{52}{5} = 2,598,960$. Hence the exact probability of being dealt a full house in one hand is
+  \[%
+    p = \frac{3744}{\binom{52}{5}} \approx 0.00144
+  .\]%
+  Now consider $n = 1000$ independent hands and let $X$ be the number of full houses observed. Then $X \sim \text{Binomial}(1000, p)$ and we seek $\Pr(X \ge 2)$. Using the binomial formula,
+  \[%
+    \Pr(X \ge 2) = 1 - \Pr(X = 0) - \Pr(X = 1) = 1 - (1 - p)^{1000} - 1000p(1 - p)^{999}
+  .\]%
+  Evaluating this expression gives $\Pr(X \ge 2) \approx 0.422$. It is common to use the Poisson approximation with parameter $\lambda = np = 1000p \approx 1.441$. Under the Poisson approximation,
+  \[%
+    \Pr(X \ge 2) \approx 1-e^{-\lambda} (1 + \lambda) = 1 - e^{-1.44}(1+1.44) \approx 0.4221
+  .\]%
+  Both methods agree closely; therefore the probability of being dealt at least two full houses in 1000 hands is approximately $42.2\%$.
+\end{solution}

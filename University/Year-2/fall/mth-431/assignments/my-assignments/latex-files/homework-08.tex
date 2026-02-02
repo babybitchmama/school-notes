@@ -1,0 +1,107 @@
+\begin{problem}[9.4]
+  Let $X$, $Y$, and $Z$ be topological spaces, let $f : X \times Y \to Z$ be continuous, and let $c \in X$. Prove that the map $h : Y \to Z$ given by $h(y) = f(c, y)$ is continuous
+\end{problem}
+
+\begin{solution}
+  Let $U \subset Z$ be an open set. Since $f$ is continuous, the preimage $f^{-1}(U)$ is open in $X \times Y$. By the definition of the product topology, there exist open sets $A \subset X$ and $B \subset Y$ such that $(c, y) \in A \times B \subset f^{-1}(U)$. Since $c \in A$, we have
+  \[%
+    h^{-1}(U) = \{y \in Y \mid h(y) \in U\} = \{y \in Y \mid f(c, y) \in U\} = \{y \in Y \mid (c, y) \in f^{-1}(U)\} \supset B
+  .\]%
+  Therefore, for every open set $U$ in $Z$, the preimage $h^{-1}(U)$ contains an open set $B$ in $Y$. This shows that $h^{-1}(U)$ is open in $Y$, and thus $h$ is continuous.
+\end{solution}
+
+\begin{problem}[9.5]
+  Let $f : \R^2 \to \R$ be the discontinuous function given in (9.2). Find an open set $V \subset \R$ such that $f^{-1}(V)$ is not open in $\R^2$. But notice that the intersection of $f^{-1}(V)$ with line of the form $\{c\} \times \R$ or $\R \times \{c'\}$ is open (in that line), reflecting the fact that $f(c, y)$ is continuous as a function of $y$ and $f(x, c')$ is continuous as a function of $x$.
+\end{problem}
+
+\begin{solution}
+  The function $f : \R^2 \to \R$ is defined by
+  \[%
+    f(x, y) = \begin{cases}
+      \frac{xy}{x^2 + y^2}, & (x, y) \neq (0, 0), \\
+      0, & (x, y) = (0, 0).
+    \end{cases}
+  \]%
+  Take $U = (-0.1, 0.1)$. Then, we have
+  \begin{align*}
+    f^{-1}(U) &= \{(x, y) \in \R^2 \mid -0.1 < f(x, y) < 0.1\} \\
+              &= \left\{(x, y) \in \R^2 \left\lvert -0.1 < \frac{xy}{x^2 + y^2} < 0.1\right\}\right\rvert \\
+              &= \left\{(x, y) \in \R^2 \left\lvert -0.1(x^2 + y^2) < xy < 0.1(x^2 + y^2)\right\}\right\rvert \\
+              &= \left\{(x, y) \in \R^2 \left\lvert 0.1x^2 - xy + 0.1y^2 > 0~\text{and}~0.1x^2 + xy + 0.1y^2 > 0\right\}\right\rvert \\
+              &= \R^2 \setminus \left\{(x, y) \in \R^2 \left\lvert 0.1x^2 - xy + 0.1y^2 \leq 0~\text{or}~0.1x^2 + xy + 0.1y^2 \leq 0\right\}\right\rvert \\
+              &= \R^2 \setminus \left\{(x, y) \in \R^2 \left\lvert (x - 5y)^2 \leq 0~\text{or}~(x + 5y)^2 \leq 0\right\}\right\rvert \\
+              &= \R^2 \setminus \left(\{(5y, y) \mid y \in \R\} \cup \{(-5y, y) \mid y \in \R\}\right) \\
+              &= \R^2 \setminus (L_1 \cup L_2)
+  ,\end{align*}
+  where $L_1$ and $L_2$ are the lines defined by $y = \frac{1}{5}x$ and $y = -\frac{1}{5}x$, respectively.
+\end{solution}
+
+\begin{problem}[10.4]
+  Given a map $f : X \to Y$, we can consider its graph
+  \[%
+    \Gamma_f = \{(x, y) \in X \times Y \mid y = f(x)\}
+  .\]%
+  \begin{enumerate}
+    \item Prove that if $X$ and $Y$ are topological spaces, $Y$ is Hausdorff, and $f$ is continuous, then $\Gamma_f$ is closed.
+
+      Hint: You could do this by hand, or you could consider the pre-image of the diagonal $\Delta \subset Y \times Y$ and under the map $X \times Y \to Y \times Y$ that sends $(x, y)$ to $(f(x), y)$.
+
+    \item Give an example of a function $f : \R \to \R$ that is not continuous (in the usual topology) but whose graph is nonetheless closed.
+
+      Hint: It won’t work if f is bounded.
+  \end{enumerate}
+\end{problem}
+
+\begin{solution}[(i)]
+  Define the diagonal subset of $Y \times Y$ as $\Delta = \{(y, y) \mid y \in Y\}$. Since $Y$ is Hausdorff, by Proposition 10.4, the diagonal, $\Delta$, is closed in $Y \times Y$. Define the function $F : X \times Y \to Y \times Y$, where $(x, y) \mapsto (f(x), y)$. Notice that we can re-write $F$ as
+  \[%
+    F(x, y) = (f \circ \pi_X(x, y), \pi_Y(x, y))
+  ,\]%
+  where $\pi_X : X \times Y \to X$ and $\pi_Y : X \times Y \to Y$ are the projection maps. Since $f$ and the projection maps are continuous, $F$ is continuous as well. Then, we have
+  \[%
+    (x, y) \in F^{-1}(\Delta) \iff (f(x), y) \in \Delta \iff f(x) = y \iff (x, y) \in \Gamma_f
+  ,\]%
+  so $\Gamma_f = F^{-1}(\Delta)$. Since $\Delta$ is closed in $Y \times Y$ and $F$ is continuous, $F^{-1}(\Delta)$ is closed in $X \times Y$. Therefore, $\Gamma_f$ is closed in $X \times Y$.
+\end{solution}
+
+\begin{solution}[(ii)]
+  Consider the function $f : \R \to \R$ defined by
+  \[%
+    f(x) = \begin{cases}
+      1/x, & x \neq 0, \\
+      0, & x = 0.
+    \end{cases}
+  \]%
+  This function is not continuous at $x = 0$, since $\lim_{x \to 0} f(x)$ does not exist. However, we can show that its graph $\Gamma_f$ is closed in $\R^2$. Let $(x_n, f(x_n))$ be a sequence in $\Gamma_f$ that converges to some point $(x, y) \in \R^2$. We need to show that $(x, y) \in \Gamma_f$.
+
+  If $x \neq 0$, then for sufficiently large $n$, $x_n \neq 0$ and $f(x_n) = 1/x_n$. Since $(x_n, f(x_n)) \to (x, y)$, it follows that $y = 1/x$, so $(x, y) \in \Gamma_f$.
+
+  If $x = 0$, then for the sequence $(x_n)$ to converge to $0$, infinitely many $x_n$ must be nonzero. But for $x_n \neq 0$, we have $f(x_n) = 1/x_n$, which becomes arbitrarily large in magnitude. Therefore, in order for $(f(x_n))$ to converge to a finite $y$, eventually $x_n = 0$. Then $f(x_n) = 0$, so $y = 0$. Hence, $(0,0) \in \Gamma_f$.
+
+  In both cases, any limit of a sequence in $\Gamma_f$ lies in $\Gamma_f$, proving that $\Gamma_f$ is closed in $\R^2$.
+\end{solution}
+
+\begin{problem}[10.5]
+  \begin{enumerate}
+    \item Let $X$ and $Y$ be topological spaces, and suppose that $Y$ is Hausdorff. Prove that if two continuous maps $f, g : X \to Y$ agree on a dense subset $D \subset X$, then $f = g$.
+
+      Hint: Let $E = \{x \in X \mid f (x) = g(x)\}$, and prove that it’s closed.
+
+    \item Give a counterexample when $Y$ is not Hausdorff.
+  \end{enumerate}
+\end{problem}
+
+\begin{solution}[(i)]
+  Let $E = \{x \in X \mid f(x) = g(x)\}$. Define the following mapping $h : X \to Y \times Y$ by $h(x) = (f(x), g(x))$. Since $f$ and $g$ are continuous, the map $h$ is also continuous. Now, take the diagonal subset $\Delta = \{(y_1, y_2) \in Y \times Y \mid y_1 = y_2\}$. Since $Y$ is Hausdorff, by Proposition 10.4, the diagonal $\Delta$ is closed in $Y \times Y$. Notice that $x \in E$ if and only if $f(x) = g(x)$. This is equivalent to saying $(f(x), g(x)) \in \Delta$, which is also equivalent to saying $h(x) \in \Delta$. Thus, we have $E = h^{-1}(\Delta)$. Since $\Delta$ is closed in $Y \times Y$ and $h$ is continuous, $h^{-1}(\Delta)$ is closed in $X$. Therefore, $E$ is closed in $X$. Since $f$ and $g$ agree on the dense subset $D \subset X$, we have $D \subset E$. Then, we have $\overline{D} \subseteq \overline{E}$, but $\overline{D} = X$, so $X \subseteq \overline{E}$. This implies that $E = X$. Hence, $f(x) = g(x)$ for all $x \in X$, and thus $f = g$.
+\end{solution}
+
+\begin{solution}[(ii)]
+  Consider the topological space $Y = \{a, b\}$ with the trivial topology $\{\emptyset, Y\}$. Define the functions $f, g : \R \to Y$ by $f(x) = a$, for all $x \in \R$, and
+  \[%
+    g(x) = \begin{cases}
+      a, & x \neq 0, \\
+      b, & x = 0.
+    \end{cases}
+  \]%
+  Both $f$ and $g$ are continuous since the preimage of any open set in $Y$ is either $\emptyset$ or $\R$, both of which are open in $\R$. The functions $f$ and $g$ agree on the dense subset $D = \R \setminus \{0\}$, but they do not agree at $x = 0$, where $f(0) = a$ and $g(0) = b$.
+\end{solution}

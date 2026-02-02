@@ -1,0 +1,406 @@
+\begin{problem}[1]
+  Use the following conclusion to solve the given problems.
+
+  \textit{Let $A \in \R^{n \times m}$ and $B \in \R^{m \times n}$ with $n \ge m$. Then $\det(\lambda I_n - AB) = \lambda^{n-m}\det(\lambda I_m - BA)$}.
+  \begin{enumerate}
+    \item Let $\x \in \R^n$ and $\x^T\x = 1$. Find the eigenvalues for $I_n - 2\x\x^T$.
+
+    \item Let $\displaystyle\x = \begin{pmatrix}
+        a_1 \\
+        \cdots \\
+        a_n \\
+        \end{pmatrix} \in \R^n$ and $\displaystyle\y = \begin{pmatrix}
+        b_1 \\
+        \cdots \\
+        b_n \\
+      \end{pmatrix} \in \R^n$. Find the eigenvalues for $I_n - \x\y^T$.
+  \end{enumerate}
+\end{problem}
+
+\begin{proof}[Solution to (i)]
+  We set
+  \[%
+    A = \x \in \R^{n \times 1} \aand B = 2\x^T \in \R^{1 \times n}
+  .\]%
+  Then,
+  \[%
+    AB = \x (2\x^T) = 2\x\x^T \in \R^{n \times n} \aand BA = (2\x^T) \x = 2 (\x^T \x) \in \R^{1 \times 1}
+  .\]%
+  Since we are given $\x^T \x = 1$, it follows that $BA = 2(1) = 2$. Applying
+  the determinant formula with $m = 1$, we get
+  \[%
+    \det(\lambda I_n - 2\x\x^T) = \lambda^{n-1} \det(\lambda I_1 - BA)
+  .\]%
+  Since $BA = 2$, we get
+  \[%
+    \det(\lambda I_1 - BA) = \det(\lambda - 2) = (\lambda - 2)
+  .\]%
+  Thus,
+  \[%
+    \det(\lambda I_n - 2\x\x^T) = \lambda^{n-1} (\lambda - 2)
+  .\]%
+  The characteristic equation is:
+  \[%
+    \lambda^{n-1} (\lambda - 2) = 0
+  .\]%
+  Therefore, the eigenvalues of $I_n - 2\x\x^T$ are $1$ with multiplicity $n -
+  1$ and $-1$ with multiplicity $1$.
+\end{proof}
+
+\begin{proof}[Solution to (ii)]
+  We set
+  \[%
+    A = \x \in \R^{n \times 1} \aand B = \y^T \in \R^{1 \times n}
+  .\]%
+  Thus, $AB = \x \y^T$ is an $n \times n$ matrix, while $BA = \y^T\x $ is a $1
+  \times 1$ scalar (a rank-1 matrix). Using the determinant identity with $m =
+  1$, we get
+  \[%
+    \det(\lambda I_n - AB) = \lambda^{n-1} \det(\lambda I_1 - BA)
+  .\]%
+  Since $BA = \y^T\x$ is a $1 \times 1$ matrix, we can write
+  \[%
+    \det(\lambda I_1 - BA) = \det(\lambda - \y^T\x) = (\lambda - \y^T\x)
+  .\]%
+  Thus,
+  \[%
+    \det(\lambda I_n - \x\y^T) = \lambda^{n-1} (\lambda - \y^T\x)
+  .\]%
+  The characteristic equation is
+  \[%
+    \lambda^{n-1} (\lambda - \y^T\x) = 0
+  .\]%
+  Therefore, the eigenvalues of $I_n - \x\y^T$ are $0$ with multiplicity $n - 1$
+  and $\y^T\x$ with multiplicity $1$.
+\end{proof}
+
+\begin{problem}[2]
+  Prove that an upper triangular matrix with zeros in all the diagonal entries
+  is nilpotent. (Note: A matrix $A$ is nilpotent if and only if there exists a
+  positive integer $k$ such that $A^k = 0$.)
+\end{problem}
+
+\begin{proof}[Solution]
+  Since $A$ is upper triangular, it has the form:
+  \[%
+    A = \begin{pmatrix}
+      0 & a_{12} & a_{13} & \cdots & a_{1n} \\
+      0 & 0 & a_{23} & \cdots & a_{2n} \\
+      0 & 0 & 0 & \cdots & a_{3n} \\
+      \vdots & \vdots & \vdots & \ddots & \vdots \\
+      0 & 0 & 0 & \cdots & 0
+    \end{pmatrix}
+  .\]%
+  Each entry on the main diagonal is zero: $a_{ii} = 0$ for all $1 \leq i \leq
+  n$. We prove by induction that for each $k$, the matrix $A^k$ is still upper
+  triangular, and its first nonzero entries shift further above the main
+  diagonal as $k$ increases.
+
+  Base Case ($k = 1$): $A$ is upper triangular with all zeros on the diagonal.
+
+  Induction Step: Suppose $A^k$ is upper triangular and has zeros on the first
+  $k$ diagonals, meaning that its nonzero entries are restricted to positions
+  where $j - i \geq k$. Now consider $A^{k+1} = A^k A$. The $(i,j)$ entry of
+  $A^{k+1}$ is given by
+  \[%
+    (A^{k+1})_{ij} = \sum_{m=1}^{n} (A^k)_{im} A_{mj}
+  .\]%
+  By the induction hypothesis, $(A^k)_{im} = 0$ unless $m - i \geq k$, and since
+  $A_{mj} = 0$ unless $j - m \geq 1$, it follows that $A^{k+1}$ has zeros on the
+  first $k + 1$ diagonals.
+
+  By induction, $A^k$ has zeros for all entries where $j - i < k$. In
+  particular, for $k = n$, this means $A^n = 0$, since there are no positions
+  satisfying $j - i \geq n$ in an $n \times n$ matrix. Therefore, $A$ is
+  nilpotent.
+\end{proof}
+
+\begin{problem}[3]
+  Let $A \in \R^{n \times n}$ be an invertible matrix. Prove that $A^{-1} =
+  g(A)$, for some polynomial $g(x)$ with $\deg(g(x)) = n - 1$.
+\end{problem}
+
+\begin{proof}[Solution]
+  Since $A$ is a square matrix of size $n$, its characteristic polynomial is
+  given by $p_A(x) = \det(xI - A)$. By the Cayley-Hamilton theorem, the matrix
+  $A$ satisfies its own characteristic equation $p_A(A) = 0$. Explicitly, if we
+  write out the characteristic polynomial and substitute $A$ into it, we get
+  \[%
+    A^n + c_{n-1} A^{n-1} + \cdots + c_1 A + c_0 I = 0
+  .\]%
+  Since $A$ is invertible, we must have $c_0 \neq 0$, as otherwise, the equation
+  above would imply that $A$ is singular, contradicting the fact that $A$ is
+  invertible. Rearranging the equation, we get
+  \[%
+    A^n + c_{n-1} A^{n-1} + \cdots + c_1 A = -c_0 I
+  .\]%
+  Multiplying both sides by $-\frac{1}{c_0}$ gives
+  \begin{alignat*}{3}
+    \phantom{\implies}&~-\frac{1}{c_0} \left(A^n + c_{n-1} A^{n-1} + \cdots + c_1 A\right) &&= I \\
+    \implies&~A \left(-\frac{1}{c_0} (A^{n-1} + c_{n-1} A^{n-2} + \cdots + c_1 I)\right) &&= I \\
+    \implies&~-\frac{1}{c_0} (A^{n-1} + c_{n-1} A^{n-2} + \cdots + c_1 I) &&= A^{-1}
+  .\end{alignat*}
+  The left-hand side is a polynomial in $A$ of degree at most $n-1$, so
+  defining
+  \[%
+    g(x) = -\frac{1}{c_0} (x^{n-1} + c_{n-1} x^{n-2} + \cdots + c_1)
+  ,\]%
+  we obtain $A^{-1} = g(A)$.
+\end{proof}
+
+\begin{problem}[4]
+  Let $\x = (x_1, x_2)$, $\y = (y_1, y_2) \in \R^2$. Define
+  \begin{equation}\label{eq:problem_4}
+    \langle \x, \y \rangle = x_1y_1 - x_2y_1 - x_1y_2 + 4x_2y_2
+  \end{equation}
+  Prove that \ref{eq:problem_4} is an inner product on $\R^2$.
+\end{problem}
+
+\begin{proof}[Solution]
+  We define the inner product $\langle \cdot, \cdot \rangle: \R \times \R \to
+  \FF$ as in \ref{eq:problem_4}. We
+
+  For all $\x, \y, \z \in \R^2$ and $c \in \R$, we have
+  \begin{align*}
+    \langle \x + \y, \z \rangle &= (x_1 + z_1)y_1 - (x_2 + z_2)y_1 - (x_1 + z_1)y_2 + 4(x_2 + z_2)y_2 \\
+                                &= x_1y_1 + z_1y_1 - x_2y_1 - z_2y_1 - x_1y_2 - z_1y_2 + 4x_2y_2 + 4z_2y_2 \\
+                                &= (x_1y_1 - x_2y_1 - x_1y_2 + 4x_2y_2) + (z_1y_1 - z_2y_1 - z_1y_2 + 4z_2y_2) \\
+                                &= \langle \x + \y \rangle + \langle \y, \z \rangle
+  .\end{align*}
+
+  For all $c \in \FF$ and $\x, \y \in \R^2$, we
+  \begin{align*}
+    \langle c\x, \y \rangle &= (cx_1)y_1 - (cx_2)y_1 - (cx_1)y_2 + 4(cx_2)y_2 \\
+                            &= c(x_1y_1 - x_2y_1 - x_1y_2 + 4x_2y_2) \\
+                            &= c\langle \x, \y \rangle
+  .\end{align*}
+
+  For all $\x, \y \in \R^2$, we have
+  \begin{align*}
+    \langle \x, \y \rangle &= x_1y_1 - x_2y_1 - x_1y_2 + 4x_2y_2 \\
+                           &= y_1x_1 - y_2x_1 - y_1x_2 + 4y_2x_2 \\
+                           &= \overline{\langle \y, \x \rangle} \\
+                           &= \langle \y, \x \rangle
+  ,\end{align*}
+  since we're in $\R$ and the conjugate is the identity.
+
+  For all $\x \in \R^2$, we have
+  \begin{align*}
+    \langle \x, \x \rangle &= x_1x_1 - x_2x_1 - x_1x_2 + 4x_2x_2 \\
+                           &= x_1^2 - 2x_1x_2 + 4x_2^2 \\
+                           &= (x_1 - 2x_2)^2 \ge 0
+  ,\end{align*}
+  with equality if and only if $\x = \zero$.
+
+  Therefore, $\langle \cdot, \cdot \rangle$ is an inner product on $\R^2$.
+\end{proof}
+
+\begin{problem}[5]
+  Let $A \in \C^{n \times n}$ and assume $A$ is Hermitian positive-definite.
+  Prove that $\langle \x, \y \rangle = \y^*A\x$ defines an inner product on
+  $\C^n$.
+\end{problem}
+
+\begin{proof}[Solution]
+  We define the inner product $\langle \cdot, \cdot \rangle: \C^n \times \C^n
+  \to \C$ as $\langle \x, \y \rangle = \y^*A\x$ for all $\x, \y \in \C^n$. We
+  need to verify that this inner product satisfies the properties of positivity,
+  linearity, and conjugate symmetry.
+
+  For all $\x, \y, \z \in \C^n$ and $c \in \C$, we have
+  \begin{align*}
+    \langle \x + \y, \z \rangle &= \z^*A(\x + \y) \\
+                  &= \z^*A\x + \z^*A\y \\
+                  &= \langle \x, \z \rangle + \langle \y, \z \rangle
+  .\end{align*}
+
+  For all $\x, \y \in \C^n$ and $c \in \C$, we have
+  \begin{align*}
+    \langle c\x, \y \rangle &= \y^*A(c\x) \\
+              &= \y^*(cA\x) \\
+              &= c\y^*A\x \\
+              &= c\langle \x, \y \rangle
+  .\end{align*}
+
+  For all $\x, \y \in \C^n$, we have
+  \begin{align*}
+    \overline{\langle \x, \y \rangle} &= \overline{\y^* A \x} \\
+                                      &= (\y^* A \x)^* \\
+                                      &= \x^* A^* \y \\
+                                      &= \x^* A \y \\
+                                      &= \langle \y, \x \rangle.
+  \end{align*}
+
+  For all $\x, \y \in \C^n$, we have
+  \begin{align*}
+    \langle \x, \x \rangle &= \x^*A\x \ge 0
+  ,\end{align*}
+  since $A$ is positive-definite, this is true for all $\x \ne \zero$, with
+  equality if and only if $\x = \zero$.
+
+  Therefore, $\langle \cdot, \cdot \rangle$ is an inner product on $\C^n$.
+\end{proof}
+
+\begin{problem}[6]
+  If $V$ is a vector space over $\R$, verify the following polarization identity
+  for any $\x, \y \in \R^n$:
+  \[%
+    \langle \x, \y \rangle = \frac{1}{4}\lVert \x + \y \rVert^2 - \frac{1}{4}\lVert \x - \y \rVert^2
+  .\]%
+\end{problem}
+
+\begin{proof}[Solution]
+  We begin with the definition of the norm induced by the inner product
+  \[%
+    \lVert \x \rVert^2 = \langle \x, \x \rangle
+  .\]%
+  Expanding the squared norms of the sum and difference of $\x$ and $\y$, we
+  compute
+  \begin{align*}
+    \lVert \x + \y \rVert^2 &= \langle \x + \y, \x + \y \rangle \\
+                            &= \langle \x, \x \rangle + \langle \x, \y \rangle + \langle \y, \x \rangle + \langle \y, \y \rangle
+  .\end{align*}
+  Since we are working in $\R^n$, the inner product satisfies symmetry, meaning
+  $\langle \x, \y \rangle = \langle \y, \x \rangle$, so we rewrite the equation
+  as
+  \[%
+    \lVert \x + \y \rVert^2 = \lVert \x \rVert^2 + 2\langle \x, \y \rangle + \lVert \y \rVert^2
+  .\]%
+  Similarly, we expand $\lVert \x - \y \rVert^2$
+  \begin{align*}
+    \lVert \x - \y \rVert^2 &= \langle \x - \y, \x - \y \rangle \\
+                            &= \langle \x, \x \rangle - \langle \x, \y \rangle - \langle \y, \x \rangle + \langle \y, \y \rangle
+  .\end{align*}
+  Using symmetry again, this simplifies to
+  \[%
+    \lVert \x - \y \rVert^2 = \lVert \x \rVert^2 - 2\langle \x, \y \rangle + \lVert \y \rVert^2
+  .\]%
+  Now, subtracting the two equations and dividing by 4, we get
+  \begin{align*}
+    \lVert \x + \y \rVert^2 - \lVert \x - \y \rVert^2 &= (\lVert \x \rVert^2 + 2\langle \x, \y \rangle + \lVert \y \rVert^2) - (\lVert \x \rVert^2 - 2\langle \x, \y \rangle + \lVert \y \rVert^2) \\
+                                                      &= 4\langle \x, \y \rangle
+  .\end{align*}
+  Dividing both sides by 4, we obtain the desired polarization identity
+  \[%
+    \langle \x, \y \rangle = \frac{1}{4} \lVert \x + \y \rVert^2 - \frac{1}{4} \lVert \x - \y \rVert^2
+  .\qedhere\]%
+\end{proof}
+
+\begin{problem}[7]
+  Let $V$ be an inner product space. Prove the following triangular inequality
+  for any $\x, \y \in V$:
+  \[%
+    \lVert \x + \y \rVert \le \lVert \x \rVert + \lVert \y \rVert
+  .\]%
+\end{problem}
+
+\begin{proof}[Solution]
+  We start with the definition of the norm induced by the inner product
+  \[%
+    \lVert \x \rVert = \sqrt{\langle \x, \x \rangle}
+  .\]%
+  For any $\x, \y \in V$, we expand the squared norm of their sum
+  \begin{align*}
+    \lVert \x + \y \rVert^2 &= \langle \x + \y, \x + \y \rangle \\
+                            &= \langle \x, \x \rangle + \langle \x, \y \rangle + \langle \y, \x \rangle + \langle \y, \y \rangle
+  .\end{align*}
+  Since the inner product satisfies conjugate symmetry, we have $\langle \y, \x
+  \rangle = \overline{\langle \x, \y \rangle}$. Using the Cauchy–Schwarz
+  inequality, we obtain the following
+  \begin{align*}
+    \lVert \x + \y \rVert^2 &= \lVert \x \rVert^2 + 2 \Re(\langle \x, \y \rangle) + \lVert \y \rVert^2 \\
+                            &\leq \lVert \x \rVert^2 + 2 |\langle \x, \y \rangle| + \lVert \y \rVert^2 \\
+                            &\leq \lVert \x \rVert^2 + 2 \lVert \x \rVert \lVert \y \rVert + \lVert \y \rVert^2
+  .\end{align*}
+  The right-hand side is a perfect square
+  \[%
+    \lVert \x \rVert^2 + 2 \lVert \x \rVert \lVert \y \rVert + \lVert \y \rVert^2 = (\lVert \x \rVert + \lVert \y \rVert)^2
+  .\]%
+  Thus, we obtain
+  \[%
+    \lVert \x + \y \rVert^2 \leq (\lVert \x \rVert + \lVert \y \rVert)^2
+  .\]%
+  Taking the square root of both sides (using the fact that norms are always
+  nonnegative),
+  \[%
+    \lVert \x + \y \rVert \leq \lVert \x \rVert + \lVert \y \rVert
+  .\qedhere\]%
+\end{proof}
+
+\begin{problem}[8]
+  Let $\x_1, \cdots, \x_n$ be orthonormal vectors in $\R^n$. Show that $A\x_1,
+  \cdots, A\x_n$ are also orthonormal if and only if $A \in \R^{n \times n}$ is
+  orthogonal.
+\end{problem}
+
+\begin{proof}[Solution]
+  Consider the transformed vectors $A\x_1, \cdots, A\x_n$ for some matrix $A \in
+  \R^{n \times n}$. These vectors are orthonormal if and only if
+  \[%
+    (\forall i, j \in \{1, \cdots, n\})[\langle A\x_i, A\x_j \rangle = \delta_{ij}]
+  .\]%
+  Using the definition of the inner product in $\R^n$, we get
+  \[%
+    \langle A\x_i, A\x_j \rangle = (A\x_i)^T (A\x_j)
+  .\]%
+  Rewriting in matrix form, we obtain
+  \[%
+    (A\x_i)^T (A\x_j) = \x_i^T A^T A \x_j
+  .\]%
+  For this to hold for all $i, j$, we require
+  \[%
+    \x_i^T A^T A \x_j = \langle \x_i, \x_j \rangle = \delta_{ij}
+  .\]%
+  This is equivalent to the matrix equation
+  \[%
+    A^T A = I_n
+  .\]%
+  By definition, a matrix $A$ satisfying $A^T A = I_n$ is an orthogonal matrix.
+
+  Therefore, the set $\{A\x_1, \cdots, A\x_n\}$ is orthonormal if and only if
+  $A$ is an orthogonal matrix.
+\end{proof}
+
+\begin{problem}[9]
+  True or False (No explanation needed.)
+  \begin{enumerate}
+    \item An inner product is a scalar-valued function on the set of ordered
+      pairs of vectors.
+
+    \item An inner product is linear in both components.
+
+    \item If $(\v, \w) = \zero$ for all $\v$ in an inner product space, then $\w
+      = \zero$.
+
+    \item A set of orthonormal vectors must be linearly independent.
+
+    \item A set of orthogonal vectors must be linearly independent.
+
+    \item A matrix in $\R^{n \times n}$ is orthogonal if and only if its column
+      vectors are orthogonal.
+  \end{enumerate}
+\end{problem}
+
+\begin{proof}[Solution to (i)]
+  True.
+\end{proof}
+
+\begin{proof}[Solution to (ii)]
+  False.
+\end{proof}
+
+\begin{proof}[Solution to (iii)]
+  True.
+\end{proof}
+
+\begin{proof}[Solution to (iv)]
+  True.
+\end{proof}
+
+\begin{proof}[Solution to (v)]
+  False.
+\end{proof}
+
+\begin{proof}[Solution to (vi)]
+  False.
+\end{proof}

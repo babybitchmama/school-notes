@@ -1,0 +1,151 @@
+\begin{problem}
+  Find the tangent plane to the surface
+  \[%
+    x^3y\cos(z^2 + x - y) = 3
+  ,\]%
+  at the point $P = (-1, 3, 2)$.
+\end{problem}
+
+\begin{probsolution}
+  Let $f(x, y, z) = x^3y\cos(z^2 + x - y) - 3$. The surface is defined
+  implicitly by $f(x, y, z) = 0$.
+
+  The gradient of $f$, $\displaystyle \nabla f(x, y, z) = \left\langle
+  \pdv{f}{x}, \pdv{f}{y}, \pdv{f}{z} \right\rangle$, is normal to the tangent
+  plane. Thus, we compute the partial derivatives of $f$
+  \begin{align*}
+    \pdv{f}{x} &= 3x^2y\cos(z^2 + x - y) - x^3y\sin(z^2 + x - y) \\
+    \pdv{f}{y} &= x^3\cos(z^2 + x - y) + x^3y\sin(z^2 + x - y) \\
+    \pdv{f}{z} &= -2zx^3y\sin(z^2 + x - y) \\
+  .\end{align*}
+  At $P$, substitute $x = -1$, $y = 3$, and $z = 2$ into $\nabla f(x, y, z)$.
+  \[%
+    \nabla f(-1, 3, 2) = \left\langle 3(1)(3)(1) - (-1)(3)(0), -1(1) + (-1)(3)(0), -2(2)(-1)(3)(0) \right\rangle = \langle 9, -1, 0 \rangle
+  .\]%
+  The equation of the tangent plane at $P = (-1, 3, 2)$ is given by
+  \[%
+    f_x(x - x_0) + f_y(y - y_0) + f_z(z - z_0) = 0
+  .\]%
+  Substituting $\nabla f(P) = (9, -1, 0)$ and $P = (-1, 3, 2)$ will give us the
+  equation of the tangent plane. Thus, we get
+  \[%
+    9x - y + 12 = 0
+  .\]%
+\end{probsolution}
+
+\newpage
+
+\begin{problem}
+  Find and classify (local maximum, local minimum, or saddle) the critical
+  points of the functions.
+  \begin{enumerate}
+    \item $f(x, y) = 2x^3 + xy^2 + 5x^2 + y^2$.
+    \item $f(x, y) = e^y(y^2 - x^2)$.
+  \end{enumerate}
+\end{problem}
+
+\begin{probsolution}
+  \begin{enumerate}
+    \item Let $f(x, y) = 2x^3 + xy^2 + 5x^2 + y^2$. To find the critical points,
+      we compute the first partial derivatives of $f$
+      \[%
+        \pdv{f}{x} = 6x^2 + y^2 + 10x \aand \pdv{f}{y} = 2xy + 2y
+      .\]%
+      Set $\pdv{f}{x} = 0$ and $\pdv{f}{y} = 0$ to solve for $x$ and $y$.
+      \begin{alignat*}{4}
+        \pdv{f}{y} = 0 &\implies 2y(x + 1) &&= 0 \implies y &&= 0 &&\oor x = -1 \\
+        \pdv{f}{x} = 0 &\implies 6x^2 + 10x &&= 0 \implies x(6x + 10) &&= 0 \implies x = 0 &&\oor x = -\frac{5}{3}
+      .\end{alignat*}
+      Thus, the critical points are $(0, 0)$ and $(-\sfrac{5}{3}, 0)$.
+      Substituting $x = -1$ into $\pdv{f}{x} = 0$ gives us
+      \[%
+        6(-1)^2 + y^2 + 10(-1) = 0 \implies 6 + y^2 - 10 = 0 \implies y^2 = 4 \implies y = \pm 2
+      .\]%
+      Thus, the additional critical points are $(-1, 2)$ and $(-1, -2)$.
+
+      To classify the critical points, we compute the second partial derivatives
+      \[%
+        \pdv[2]{f}{x} = 12x + 10, \quad \pdv[2]{f}{y} = 2x + 2, \aand \pdv{f}{x}{y} = 2y
+      .\]%
+      The Hessian determinant is
+      \[%
+        H = \pdv[2]{f}{x} \pdv[2]{f}{y} - \left( \pdv{f}{x}{y} \right)^2 = (12x + 10)(2x + 2) - (2y)^2
+      .\]%
+
+      \begin{enumerate}
+        \item At $(0, 0)$, we get the following values
+          \[%
+            \pdv[2]{f}{x} = 10, \quad \pdv[2]{f}{y} = 2, \aand \pdv{f}{x,y} = 0
+          .\]%
+          Plugging these values into the Hessian determinant gives us
+          \[%
+            H = (10)(2) - (0)^2 = 20 > 0, \quad \pdv[2]{f}{x} > 0
+          .\]%
+          Thus, $(0, 0)$ is a local minimum.
+
+        \item At $(-\sfrac{5}{3}, 0)$, we get the following values
+          \[%
+            \pdv[2]{f}{x} = 12(-\frac{5}{3}) + 10 = -10, \quad \pdv[2]{f}{y} = 2(-\frac{5}{3}) + 2 = -\frac{4}{3}, \aand \pdv{f}{x}{y} = 0
+          .\]%
+          Plugging these values into the Hessian determinant gives us
+          \[%
+            H = (-10)(-\frac{4}{3}) - (0)^2 = \frac{40}{3} > 0, \quad \pdv[2]{f}{x} < 0
+          .\]%
+          Thus, $(-\sfrac{5}{3}, 0)$ is a local maximum.
+
+        \item At $(-1, 2)$ and $(-1, -2)$, we get the following values
+          \[%
+            \pdv[2]{f}{x} = 12(-1) + 10 = -2, \quad \pdv[2]{f}{y} = 2(-1) + 2 = 0, \aand \pdv{f}{x}{y} = 4 \oor -4
+          .\]%
+          Plugging these values into the Hessian determinant gives us
+          \[%
+            H = (-2)(0) - (4)^2 = -16 < 0
+          .\]%
+          Thus, $(-1, 2)$ and $(-1, -2)$ are saddle points.
+      \end{enumerate}
+
+    \item Let $f(x, y) = e^y(y^2 - x^2)$. To find the critical points, compute
+      the first partial derivatives
+      \[%
+        \pdv{f}{x} = -2xe^y \aand \pdv{f}{y} = e^y(2y + y^2 - x^2)
+      .\]%
+      Set $\pdv{f}{x} = 0$ and $\pdv{f}{y} = 0$ to get
+      \begin{alignat*}{4}
+        \pdv{f}{x} = 0 &\implies -2xe^y &&= 0 \implies x &&= 0 \\
+        \pdv{f}{y} = 0 &\implies e^y(2y + y^2) &&= 0 \implies 2y + y^2 &&= 0 \implies y(y + 2) = 0 \implies y = 0 \oor y = -2
+      .\end{alignat*}
+      Thus, the critical points are $(0, 0)$ and $(0, -2)$.
+
+      To classify the critical points, compute the second partial derivatives
+      \[%
+        \pdv[2]{f}{x} = -2e^y, \quad \pdv[2]{f}{y} = e^y(2 + 2y + y^2 - x^2), \aand \pdv{f}{x}{y} = -2xe^y
+      .\]%
+      The Hessian determinant is
+      \[%
+        H = \pdv[2]{f}{x} \pdv[2]{f}{y} - \left(\pdv{f}{x,y}\right)^2
+      .\]%
+
+      \begin{enumerate}
+        \item At $(0, 0)$, we get the following values
+          \[%
+            \pdv[2]{f}{x} = -2, \quad \pdv[2]{f}{y} = 2, \aand \pdv{f}{x}{y} = 0
+          .\]%
+          Plugging these values into the Hessian determinant gives us
+          \[%
+            H = (-2)(2) - (0)^2 = -4 < 0
+          .\]%
+          Thus, $(0, 0)$ is a saddle point.
+
+        \item At $(0, -2)$, we get the following values
+          \[%
+            \pdv[2]{f}{x} = -2e^{-2}, \quad \pdv[2]{f}{y} = e^{-2}(2 - 4 + 4) = 2e^{-2}, \aand \pdv{f}{x}{y} = 0
+          .\]%
+          Plugging these values into the Hessian determinant gives us
+          \[%
+            H = (-2e^{-2})(2e^{-2}) - (0)^2 = -4e^{-4} > 0, \quad \pdv[2]{f}{x} < 0
+          .\]%
+          Since $H > 0$ and $\pdv[2]{f}{x} < 0$, the critical point $(0, -2)$ is
+          a local maximum.
+      \end{enumerate}
+  \end{enumerate}
+\end{probsolution}

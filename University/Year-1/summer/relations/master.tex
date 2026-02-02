@@ -1,0 +1,57 @@
+\documentclass[notitlepage]{report}
+
+\input{../preamble.tex}
+\usetikzlibrary{decorations.markings}
+
+\tikzset{uarrow/.style={
+    postaction={decorate},
+    decoration={
+      markings,
+      mark=at position 0.5 with {\arrow{>}}
+    }
+}}
+
+\tikzset{darrow/.style={
+    postaction={decorate},
+    decoration={
+      markings,
+      mark=at position 0.5 with {\arrow{<}}
+    }
+}}
+
+% \newcommand\figTriag[3]{
+%   \draw[uarrow] (0, 0) -- (0, 1) node[anchor=south] {#1};
+%   \draw[uarrow] (0, 0) -- (-1, -1) node[anchor=north east] {#2};
+%   \draw[uarrow] (0, 0) -- (1, -1) node[anchor=north west] {#3};
+% }
+
+\usepackage{xparse}
+\usepackage{xstring}
+
+\NewDocumentCommand{\triag}{O{u,u,u} m m m}{%
+  \StrBefore{#1}{,}[\first]%
+  \StrBetween{#1}{,}{,}[\second]%
+  \StrBehind{#1}{,}[\third]%
+
+  % Draw each line with resolved style
+  \draw[\resolvearrow{\first}] (0, 0) -- (0, 1) node[anchor=south] {#2};
+  \draw[\resolvearrow{\second}] (0, 0) -- (-1, -1) node[anchor=north east] {#3};
+  \draw[\resolvearrow{\third}] (0, 0) -- (1, -1) node[anchor=north west] {#4};
+}
+
+% Helper macro to expand string to style name
+\newcommand{\resolvearrow}[1]{%
+  \ifstrequal{#1}{u}{uarrow}{}%
+  \ifstrequal{#1}{d}{darrow}{}%
+  % else no style for false
+}
+
+\newcommand\figId[1]{
+  \draw[darrow] (0, -1) -- (0, 1) node[anchor=south] {#1};
+}
+
+\begin{document}
+  \begin{tikzpicture}
+    \triag{A}{B}{C}
+  \end{tikzpicture}
+\end{document}

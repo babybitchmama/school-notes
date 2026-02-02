@@ -1,0 +1,64 @@
+First Year:
+   Fall Term:
+    Intro to Proofs, 300
+    Multivariable Calculus 1, 200
+    Fundamentals of Analysis 1, 300
+  Winter Term:
+    Multivariable Calculus 2, 200
+    Fundamentals of Analysis 2, 300
+    Abstract Linear Algebra, 400
+  Spring Term:
+    Complex Analysis, 400
+    Differential Geometry, 400
+    Topological Data Analysis, 400
+
+Second Year:
+  Fall Term:
+    Abstract Algebra 1, 300
+    Topology 1, 400
+    Statistics 1, 400
+    Quantum Mechanics 1, 400
+  Winter Term:
+    Abstract Algebra 2, 300
+    Topology 2, 400
+    Statistics 2, 400
+    Stochastic Processes, 400
+    Quantum Mechanics 2, 400
+  Spring Term:
+    Abstract Algebra 3, 400
+    Topology 3, 400
+    Statistics 3, 400
+    Electromagnetism 3, 400
+
+Third Year:
+  Fall Term:
+    Abstract Algebra 1, 600
+    Algebraic Topology 1, 600
+    Differential Geometry 1, 600
+    Real Analysis 1, 400
+  Winter Term:
+    Abstract Algebra 2, 600
+    Algebraic Topology 2, 600
+    Differential Geometry 2, 600
+    Real Analysis 2, 400
+  Spring Term:
+    Abstract Algebra 3, 600
+    Algebraic Topology 3, 600
+    Differential Geometry 3, 600
+    Real Analysis 3, 400
+
+Fourth Year:
+  Fall Term:
+    Advanced Algebra 1, 600
+    Real Analysis 1, 600
+    Theory of Probability 1, 600
+    Advanced Geometry and Topology 1, 600
+  Winter Term:
+    Advanced Algebra 2, 600
+    Real Analysis 2, 600
+    Theory of Probability 2, 600
+    Advanced Geometry and Topology 2, 600
+  Winter Term:
+    Advanced Algebra 3, 600
+    Real Analysis 3, 600
+    Advanced Geometry and Topology 3, 600

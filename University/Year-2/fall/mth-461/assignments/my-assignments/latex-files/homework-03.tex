@@ -1,0 +1,207 @@
+\renewcommand\E{\operatorname{E}}
+
+\begin{problem}[1]
+  If two fair dice are rolled, what is the conditional probability that the first one lands on 5 given that the sum of the dice is $i$ where $i=2,3, \cdots, 12$ ?
+\end{problem}
+
+\begin{solution}
+  Let $A =$ first die $= 5$ and $B_i =$ sum $= i$. By definition
+  \[%
+    \Pr(A \mid B_i) = \frac{\Pr(A \cap B_i)}{\Pr(B_i)}
+  .\]%
+  For $A\cap B_i$ we must have the second die equal to $i - 5$, so $A\cap B_i$ is nonempty exactly when $1 \le i - 5 \le 6$, i.e. $i \in \{6, 7, 8, 9, 10, 11\}$. In that case $A \cap B_i$ consists of the single ordered outcome $(5, i - 5)$, so $\Pr(A \cap B_i) = 1/36$. The probability of the sum $i$ is
+  \[%
+    \Pr(B_i) = \frac{N_i}{36},\qquad
+    N_i = \begin{cases}
+      i - 1, & 2 \le i \le 7, \\
+      13 - i, & 8 \le i \le 12.
+    \end{cases}
+  \]%
+  Thus, we have
+  \[%
+    \Pr(A \mid B_i) = \begin{cases}
+      0, & i \in \{2, 3, 4, 5, 12\}, \\
+      1/N_i, & i \in \{6, 7, 8, 9, 10, 11\}.
+    \end{cases}
+  \]%
+  Using the values of $N_i$ gives the explicit probabilities, we have $\Pr(A \mid B_i) = 0$ when $i =$ 2, 3, 4, 5, or 12, $1/5$ when $i = 6$, $1/6$ when $i = 7$, $1/5$ when $i = 8$, $1/4$ when $i = 9$, $1/3$ when $i = 10$, and $1/2$ when $i = 11$. Writing this out explicitly, we have
+  \[%
+    \Pr(A \mid B_i) =
+    \begin{cases}
+      \dfrac{1}{\min(i-1,\, 13-i)}, & 6 \le i \le 11,\\[6pt]
+      0, & \text{otherwise.}
+    \end{cases}
+  \qedhere\]%
+\end{solution}
+
+\begin{problem}[2]
+  Ninety-eight percent of all babies survive delivery. However, 15 percent of all births involve Cesarean sections, and when a Cesarean section is performed, the baby survives 96 percent of the time. If a randomly chosen pregnant woman does not have a Cesarean, what is the probability that her baby survives?
+\end{problem}
+
+\begin{solution}
+  Let
+  \[%
+    C = \{\text{Cesarean section}\}, \qquad C' = \{\text{no Cesarean}\}, \qquad S = \{\text{baby survives}\}
+  .\]%
+  We are given:
+  \[%
+    \Pr(S) = 0.98, \quad \Pr(C) = 0.15, \quad \Pr(C') = 0.85, \quad \Pr(S \mid C) = 0.96.
+  \]%
+  We are asked to find $\Pr(S \mid C')$. By the law of total probability, we have the following equation
+  \[%
+    \Pr(S) = \Pr(S \mid C)\Pr(C) + \Pr(S \mid C')\Pr(C')
+  .\]%
+  Substitute the known values into the equation, we have
+  \[%
+    0.98 = (0.96)(0.15) + \Pr(S \mid C')(0.85)
+  .\]%
+  Now, we just need to solve for $\Pr(S \mid C')$, which is approximately 0.9835. Therefore, the probability that the baby survives given no Cesarean section is approximately 0.9835 or 98.35\%.
+\end{solution}
+
+\begin{problem}[3]
+  Consider two boxes. The first box contains 1 black and 2 white marbles. The second box contains 3 black and 2 white marbles. A box is selected at random, and a marble is drawn from it at random. What is the probability that the marble is black? What is the probability that the first box was the one selected given that the marble is white?
+\end{problem}
+
+\begin{solution}
+  Let
+  \begin{gather*}
+    A = \{\text{marble is black}\}, \quad A' = \{\text{marble is white}\}, \\
+    B_1 = \{\text{first box selected}\}, \quad B_2 = \{\text{second box selected}\}
+  \end{gather*}
+  Since a box is chosen at random, we have $\Pr(B_1) = \Pr(B_2) = 1/2$.
+
+  The probabilities of drawing a black marble from each box are
+  \[%
+    \Pr(A \mid B_1) = \frac{1}{3}, \qquad \Pr(A \mid B_2) = \frac{3}{5}
+  .\]%
+  Again, using the Law of Total Probability, we have
+  \[%
+    \Pr(A) = \Pr(A \mid B_1)\Pr(B_1) + \Pr(A \mid B_2)\Pr(B_2) = \frac{1}{3}\left(\frac{1}{2}\right) + \frac{3}{5}\left(\frac{1}{2}\right) = \frac{7}{15}
+  .\]%
+  Therefore, the probability that the marble is black is $7/15$.
+
+  To find the probability that the first box was selected given that the marble is white, we use Bayes' theorem,
+  \[%
+    \Pr(B_1 \mid A') = \frac{\Pr(A' \mid B_1)\Pr(B_1)}{\Pr(A')}
+  .\]%
+  We have
+  \[%
+    \Pr(A' \mid B_1) = 1 - \Pr(A \mid B_1) = 1 - \frac{1}{3} = \frac{2}{3}, \qquad \Pr(A' \mid B_2) = 1 - \Pr(A \mid B_2) = 1 - \frac{3}{5} = \frac{2}{5}
+  .\]%
+  Then by the law of total probability,
+  \[%
+    \Pr(A') = \Pr(A' \mid B_1)\Pr(B_1) + \Pr(A' \mid B_2)\Pr(B_2) = \frac{1}{2}\left(\frac{2}{3} + \frac{2}{5}\right) = \frac{8}{15}
+  .\]%
+  Therefore,
+  \[%
+    \Pr(B_1 \mid A') = \frac{(\frac{2}{3})(\frac{1}{2})}{\frac{8}{15}} = \frac{5}{8}
+  .\]%
+  Thus, the probability that the first box was selected given that the marble is white is $5/8$.
+\end{solution}
+
+\begin{problem}[4]
+  A deck of cards is shuffled and then divided into two halves of 26 cards each. A card is drawn from one of the halves; it turns out to be an ace. The ace is then placed in the second half-deck. This second pile of 27 cards is then shuffled, and a card is drawn from it. Compute the probability that this drawn card is an ace.
+
+  Hint : Condition on whether or not the interchanged card is selected.
+\end{problem}
+
+\begin{solution}
+  Let the deck contain 4 aces in total. After shuffling, each half-deck is equally likely to contain any subset of 26 cards.
+
+  Because of symmetry, the expected number of aces in each half is
+  \[%
+    \E[\text{aces per half}] = 4 \times \frac{26}{52} = 2
+  .\]%
+  Thus, before the transfer, each half on average contains 2 aces. An ace is drawn from the first half (so that half loses 1 ace), and the ace is added to the second half, which initially had 26 cards. Hence, the first half now has $26 - 1 = 25$ cards and $2 - 1 = 1$ ace (on average) and the second half now has $26 + 1 = 27$ cards and $2 + 1 = 3$ aces. So the second pile now contains 27 cards, 3 of which are aces.
+
+  Let $T$ be the event that the transferred ace is drawn. Then $\Pr(T) = 1/27$. If the transferred ace is drawn ($T$), the probability of drawing an ace is $1$. Otherwise, if it is not drawn ($T'$), the probability that the drawn card is one of the remaining 2 aces is
+  $2/26$.
+
+  Using the law of total probability, we have
+  \begin{align*}
+    \Pr(\text{drawn card is an ace}) &= \Pr(T)\Pr(\text{ace} \mid T) + \Pr(T')\Pr(\text{ace} \mid T') \\
+                                     &= \left(\frac{1}{27}\right)(1) + \left(\frac{26}{27}\right)\left(\frac{2}{26}\right) \\
+                                     &= \frac{1}{9}
+  .\end{align*}
+  Therefore, the probability that the drawn card is an ace is $1/9$.
+\end{solution}
+
+\begin{problem}[5]
+  A parallel system functions whenever at least one of its components works. Consider a parallel system of $n$ components, and suppose that each component works independently with probability $1 / 2$. Find the conditional probability that component 1 works given that the system is functioning.
+\end{problem}
+
+\begin{solution}
+  Let $A_1 =$ {component 1 works} and $F = $ {system functions}. We want to find $\Pr(A_1 \mid F)$.
+
+  Each component works independently with probability $1/2$. Thus, we have $\Pr(A_1) = 1/2$. The system fails only if all $n$ components fail, which occurs with probability $\Pr(F') = (1/2)^n$. Hence,
+  \[%
+    \Pr(F) = 1 - \left(\frac{1}{2}\right)^n
+  .\]%
+
+  If component 1 works, then the system certainly functions. Therefore,
+  \[%
+    \Pr(A_1 \cap F) = \Pr(A_1) = \frac{1}{2}
+  .\]%
+  Using the definition of conditional probability, we have
+  \[%
+    \Pr(A_1 \mid F) = \frac{\Pr(A_1 \cap F)}{\Pr(F)} = \frac{1}{2}\left[1 - \left(\tfrac{1}{2}\right)^n\right]^{-1}
+  .\qedhere\]%
+\end{solution}
+
+\begin{problem}[6]
+  $A$ and $B$ play a series of games. Each game is independently won by $A$ with probability $p$ and by $B$ with probability $1-p$. They stop when the total number of wins of one of the players is two greater than that of the other player. The player with the greater number of total wins is declared the winner of the series.
+
+  \begin{enumerate}
+    \item Find the probability that a total of 4 games are played.
+
+    \item Find the probability that $A$ is the winner of the series.
+  \end{enumerate}
+
+  Hint : Consider the possible outcomes of the first two games and condition on these outcomes. What possible outcomes will cause the series to continue? If the series continues, does the winner of the series depend on the outcomes of the first two games?
+\end{problem}
+
+\begin{solution}[(i)]
+  Let $A$ denote a win by player $A$ and $B$ a win by player $B$.
+  The series ends as soon as one player leads by $2$ wins.
+
+  If the series is to last exactly $4$ games it must \emph{not} end earlier. It would end after $2$ games if the first two were $AA$ or $BB$, so to reach four games the first two must be split (one $A$ and one $B$) -- this occurs with probability $2p(1-p)$. Starting from a $1\!-\!1$ split, the series will end at game $4$ precisely when one player wins both of the next two games; the probability of that is $p^2$ (two $A$'s) plus $(1-p)^2$ (two $B$'s). Hence, the probability that the series lasts exactly $4$ games is
+  \[%
+    \Pr(\text{4 games}) = 2p(1 - p)(p^2+(1 - p)^2)
+  .\qedhere\]%
+\end{solution}
+
+\begin{solution}[(ii)]
+  Let $P$ be the probability that $A$ wins the series starting from scratch. Condition on the outcomes of the first two games: If the first two are $AA$ (probability $p^2$), the series ends immediately and $A$ wins. If the first two are $BB$ (probability $(1-p)^2$), the series ends immediately and $A$ loses. If the first two are split ($AB$ or $BA$, total probability $2p(1-p)$), the score is tied and the remaining contest is probabilistically identical to the original start, so the probability $A$ eventually wins from there is $P$. Thus
+  \[%
+    P = p^2 + 2p(1 - p)P.
+  \]%
+  Solving for $P$,
+  \[%
+    P(1 - 2p(1 - p)) = p^2 \implies P = \frac{p^2}{1 - 2p(1 - p)} = \frac{p^2}{p^2 + (1 - p)^2}
+  .\]%
+  Therefore, the probability that $A$ is the winner of the series is
+  \[%
+    \Pr(A \text{ wins}) = \frac{p^2}{p^2 + (1 - p)^2}
+  .\qedhere\]%
+\end{solution}
+
+\begin{problem}[7]
+  Show that if $A$ and $B$ are independent so are:
+  \begin{enumerate}
+    \item $A^C$ and $B$
+    \item $A^C$ and $B^C$
+  \end{enumerate}
+\end{problem}
+
+\begin{solution}[(i)]
+\end{solution}
+
+\begin{solution}[(ii)]
+\end{solution}
+
+\begin{problem}[8]
+  Two archers are shooting at a floating balloon. The balloon becomes (slowly) destroyed, if it gets hit by an arrow. The first archer shot nine times and the second archer 10 times, independently, at the same time (regardless whether the balloon was hit or not). The first archer hits (any) target eight out of 10 times (on average) and the second archer seven out of 10 times (also on average). An arrow hit the balloon. Find the probability that the first archer destroyed the balloon.
+\end{problem}
+
+\begin{solution}
+\end{solution}

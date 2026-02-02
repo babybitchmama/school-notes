@@ -1,0 +1,234 @@
+\renewcommand\F{\mathcal{F}}
+
+% \begin{problem}[1]
+%   Let $x_0 \in \R^2$ and $R > 0$. Let $f$ be the characteristic function of the ball of radius $R$ around $x_0$. Compute the radon transform of the characteristic function.
+
+%   \textit{Hint:} First work out the case $x_0 = 0$. Then, work out a general formula for the Radon transform of the translate of a function.
+% \end{problem}
+
+% \begin{solution}
+% \end{solution}
+
+% \begin{problem}[2]
+%   Let $Tf(x) = \int_{-\infty}^x f(t) \dt$. Show that $T$ is a convolution operator by finding its convolution kernel. This means that $T$ is also a Fourier multiplier operator. Find its symbol (i.e. a function $m$ such that $T = \F^{-1}m\F$).
+% \end{problem}
+
+% \begin{solution}
+% \end{solution}
+
+% \begin{problem}[3]
+%   Show that if $m$ is bounded, then the operator $T_m$ defined by $T_m = \F^{-1}m\F$ is a bounded linear operator from $L_2$ to $L_2$, with operator norm bounded by $\|m\|_{L^\infty}$. To be clear, the operator $T_m$ is defined so that we have $\F[T_mf] = m(\xi)\F f(\xi)$.
+% \end{problem}
+
+% \begin{solution}
+% \end{solution}
+
+\begin{problem}[4]
+  Show that the unfiltered back-projection formula corresponds to convolution with $1/|x|$, i.e.,
+  \[%
+    \frac{1}{2\pi}\int_0^{2\pi} \mathcal{R}f(\bra{x, \omega}, \omega) \,\dd{\theta} = \frac{1}{\pi} [f * k](x), \quad k(x) = \frac{1}{|x|}
+  .\]%
+\end{problem}
+
+\begin{solution}
+  Computing the right-hand side, we have:
+  \[%
+    [f * k](x) = \int_{\R^2} f(y) \frac{1}{|x - y|} \dy
+  .\]%
+  Now, we can express the left-hand side using the Radon transform:
+  \[%
+    \frac{1}{2\pi} \int_0^{2\pi} \mathcal{R}f(\bra{x, \omega}, \omega) \,\dd{\theta} = \frac{1}{2\pi} \int_0^{2\pi} \int_{-\infty}^{\infty} f(x + t\omega^\perp) \dt \dd{\theta}
+  .\]%
+  Changing the order of integration, we have:
+  \[%
+    \frac{1}{2\pi} \int_{-\infty}^{\infty} \int_0^{2\pi} f(x + t\omega^\perp) \dd{\theta} \dt
+  .\]%
+  Now, we can use polar coordinates to express the integral over $\theta$:
+  \[%
+    \int_0^{2\pi} f(x + t\omega^\perp) \dd{\theta} = \int_{|y - x| = |t|} f(y) \frac{1}{|t|} \dd{s(y)}
+  .\]%
+  Thus, we have:
+  \[%
+    \frac{1}{2\pi} \int_{-\infty}^{\infty} \int_{|y - x| = |t|} f(y) \frac{1}{|t|} \dd{s(y)} \dt = \frac{1}{\pi} \int_{\R^2} f(y) \frac{1}{|x - y|} \dy = \frac{1}{\pi} [f * k](x)
+  .\qedhere\]%
+\end{solution}
+
+\begin{problem}[5]
+  Let $f_a(x) = e^{-a|x|^2}$. Compute $f_a * f_b$, where $a, b > 0$. (\textit{Hint:} Use the Fourier transform.)
+\end{problem}
+
+\begin{solution}
+  Computing the Fourier transform of $f_a(x) = e^{-a|x|^2}$, we have:
+  \[%
+    \hat{f_a}(\xi) = \int_{-\infty}^{\infty} e^{-a|x|^2} e^{-i \xi x} \dx = \sqrt{\frac{\pi}{a}} e^{-\frac{|\xi|^2}{4a}}
+  .\]%
+  Similarly, for $f_b(x) = e^{-b|x|^2}$, we have:
+  \[%
+    \hat{f_b}(\xi) = \sqrt{\frac{\pi}{b}} e^{-\frac{|\xi|^2}{4b}}
+  .\]%
+  Now, using the convolution theorem, we have:
+  \[%
+    \widehat{f_a * f_b}(\xi) = \hat{f_a}(\xi) \hat{f_b}(\xi) = \sqrt{\frac{\pi}{a}} e^{-\frac{|\xi|^2}{4a}} \cdot \sqrt{\frac{\pi}{b}} e^{-\frac{|\xi|^2}{4b}} = \frac{\pi}{\sqrt{ab}} e^{-\left(\frac{1}{4a} + \frac{1}{4b}\right)|\xi|^2}
+  .\]%
+  Simplifying the exponent, we get:
+  \[%
+    \widehat{f_a * f_b}(\xi) = \frac{\pi}{\sqrt{ab}} e^{-\frac{(a+b)}{4ab}|\xi|^2}
+  .\]%
+  Finally, taking the inverse Fourier transform, we find:
+  \[%
+    f_a * f_b(x) = \F^{-1}\left(\widehat{f_a * f_b}(\xi)\right) = \frac{\pi}{\sqrt{ab}} \cdot \sqrt{\frac{4\pi ab}{a+b}} e^{-\frac{ab}{a+b}|x|^2} = \frac{2\pi^{3/2}}{\sqrt{a+b}} e^{-\frac{ab}{a+b}|x|^2}
+  .\qedhere\]%
+\end{solution}
+
+\begin{problem}[6]
+  Suppose $g(x) = f(\lambda x)$ for some $\lambda > 0$.  Show that $\hat g(\xi) = \lambda^{-1} \hat{f}(\xi/\lambda)$.
+\end{problem}
+
+\begin{solution}
+  Computing the Fourier transform of $g(x) = f(\lambda x)$, we have:
+  \[%
+    \hat{g}(\xi) = \int_{-\infty}^{\infty} f(\lambda x) e^{-i \xi x} \dx
+  .\]%
+  Making the substitution $u = \lambda x$, we have $\dx = \frac{\du}{\lambda}$. Thus, the integral becomes:
+  \[%
+    \hat{g}(\xi) = \int_{-\infty}^{\infty} f(u) e^{-i \xi \frac{u}{\lambda}} \frac{\du}{\lambda} = \frac{1}{\lambda} \int_{-\infty}^{\infty} f(u) e^{-i \frac{\xi}{\lambda} u} \du = \frac{1}{\lambda} \hat{f}\left(\frac{\xi}{\lambda}\right)
+  .\qedhere\]%
+\end{solution}
+
+\begin{problem}[7]
+  Suppose $g(x) = f(x - x_0)$ for some $x_0 \in \R$. Show that $\hat{g}(\xi) = e^{-i\xi x_0} \hat{f}(\xi)$.
+\end{problem}
+
+\begin{solution}
+  Computing the Fourier transform of $g(x) = f(x - x_0)$, we have:
+  \[%
+    \hat{g}(\xi) = \int_{-\infty}^{\infty} f(x - x_0) e^{-i \xi x} \dx
+  .\]%
+  Making the substitution $u = x - x_0$, we have $\dx = \du$. Thus, the integral becomes:
+  \[%
+    \hat{g}(\xi) = \int_{-\infty}^{\infty} f(u) e^{-i \xi (u + x_0)} \du = e^{-i \xi x_0} \int_{-\infty}^{\infty} f(u) e^{-i \xi u} \du = e^{-i \xi x_0} \hat{f}(\xi)
+  .\qedhere\]%
+\end{solution}
+
+\begin{problem}[8]
+  State the Fourier inversion formula for $f \in L^1$. Make sure to include the assumptions we need to guarantee that the formula holds pointwise.
+\end{problem}
+
+\begin{solution}
+  The Fourier inversion formula states that if $f \in L^1(\R)$ and its Fourier transform $\hat{f}$ is also in $L^1(\R)$, then $f$ can be recovered from its Fourier transform by the formula:
+  \[%
+    f(x) = \frac{1}{4\pi^2} \int_{\R^2} e^{-ix \cdot \xi} \hat{f}(\xi) \dd{\xi}
+  ,\]%
+  for almost every $x \in \R$. Additionally, if $f$ is continuous at a point $x_0$, then the inversion formula holds pointwise at $x_0$. The assumptions needed to guarantee that the formula holds pointwise are that $f$ is absolutely integrable, i.e., $f \in L^1$ and that $\hat{f}$ is also absolutely integrable, i.e., $\hat{f} \in L^1$.
+\end{solution}
+
+% \begin{problem}[9]
+%   State and prove the Filtered Back Projection formula.
+% \end{problem}
+
+% \begin{solution}
+% \end{solution}
+
+\begin{problem}[10]
+  Describe the algebraic approach to X-ray CT reconstruction, namely, how the problem of reconstruction can be reduced to a linear system of the form $p = rx$. Then describe the Kaczmarz iteration (also known as method of projections), i.e. the algorithm that can be used to look for an approximate solution.
+\end{problem}
+
+\begin{solution}
+  The algebraic approach to X-ray CT reconstruction involves discretizing the continuous problem of reconstructing an image from its projections. In this approach, the image to be reconstructed is represented as a vector $x$ in a finite-dimensional space, where each element of the vector corresponds to a pixel or voxel in the image. The projections obtained from the X-ray measurements are also represented as a vector $p$. The relationship between the image $x$ and the projections $p$ can be expressed as a linear system of equations: $p = rx$. Here, $r$ is a matrix that represents the system of equations, where each row corresponds to a projection and each column corresponds to a pixel or voxel in the image. The entries of the matrix $r$ are determined by the geometry of the X-ray acquisition process.
+
+  The Kaczmarz iteration is an iterative algorithm used to find an approximate solution to the linear system $p = rx$. The algorithm works by iteratively projecting the current estimate of the solution onto the hyperplanes defined by each equation in the system. The steps of the Kaczmarz iteration are as follows:
+  \begin{enumerate}
+    \item Initialize the estimate of the solution $x^{(0)}$ (e.g., set it to zero).
+    \item For each iteration $k = 0, 1, 2, \ldots$, do the following:
+      \begin{enumerate}
+        \item For each row $i$ of the matrix $r$, update the estimate $x^{(k)}$ using the formula:
+          \[%
+            x^{(k+1)} = x^{(k)} + \frac{p_i - r_i x^{(k)}}{\|r_i\|^2} r_i
+          .\]%
+          Here, $r_i$ is the $i$-th row of the matrix $r$, and $p_i$ is the corresponding element of the projection vector $p$.
+      \end{enumerate}
+    \item Repeat the process until convergence or until a specified number of iterations is reached.
+  \end{enumerate}
+  The Kaczmarz iteration is particularly useful for large, sparse systems of equations, as it can converge quickly to an approximate solution. It is also well-suited for parallel implementation, making it efficient for practical applications in X-ray CT reconstruction.
+\end{solution}
+
+\begin{problem}[11]
+  I should have put this on Homework 3, but that homework was long enough already. Let $f = \chi_{[0, 1]}(x)$. Compute $f * f$.
+\end{problem}
+
+\begin{solution}
+  The convolution of two functions $f$ and $g$ is defined as:
+  \[%
+    (f * g)(x) = \int_{-\infty}^{\infty} f(t) g(x - t) \dt
+  .\]%
+  In this case, we have $f(x) = \chi_{[0, 1]}(x)$, which is the characteristic function of the interval $[0, 1]$. This means that $f(x) = 1$ for $x \in [0, 1]$ and $f(x) = 0$ otherwise. Therefore, we can compute the convolution $f * f$ as follows:
+  \[%
+    (f * f)(x) = \int_{-\infty}^{\infty} \chi_{[0, 1]}(t) \chi_{[0, 1]}(x - t) \dt
+  .\]%
+  The integrand is non-zero only when both $t$ and $x - t$ are in the interval $[0, 1]$. This leads to the following conditions:
+  \[%
+    (f * f)(x) = \begin{cases}
+      \int_0^x 1 \dt & \text{if}~0 \leq x < 1 \\
+      \int_{x-1}^1 1 \dt & \text{if } 1 \leq x < 2 \\
+      0 & \text{otherwise} \\
+    \end{cases}
+    = \begin{cases}
+      x & \text{if}~0 \leq x < 1 \\
+      2 - x & \text{if } 1 \leq x < 2 \\
+      0 & \text{otherwise} \\
+    \end{cases}
+  .\qedhere\]%
+\end{solution}
+
+\begin{problem}[12]
+  Let $H$ be the characteristic function of $(0, \infty)$. Prove that $\hat{H}(\xi) = 1/i\xi$ for all $\xi \neq 0$. Then compute the Fourier transform of the characteristic function of $(0, R)$ for general $R > 0$.
+\end{problem}
+
+\begin{solution}
+  Computing the Fourier transform of the characteristic function $H(x) = \chi_{(0, \infty)}(x)$, we have:
+  \[%
+    \hat{H}(\xi) = \int_{-\infty}^{\infty} H(x) e^{-i \xi x} \dx = \int_0^{\infty} e^{-i \xi x} \dx = \hat{H}(\xi) = \left[ \frac{e^{-i \xi x}}{-i \xi} \right]_0^{\infty} = \frac{1}{i \xi}
+  .\]%
+  This holds for all $\xi \neq 0$. For the second part, we compute the Fourier transform of the characteristic function of $(0, R)$:
+  \[%
+    \hat{f}(\xi) = \int_0^R e^{-i \xi x} \dx = \left[ \frac{e^{-i \xi x}}{-i \xi} \right]_0^R = \frac{1 - e^{-i \xi R}}{i \xi}
+  .\qedhere\]%
+\end{solution}
+
+\begin{problem}[13]
+  Let $\F$ denote the Fourier transform in $n$ dimensions, and let $\Delta$ be the Laplacian operator, i.e.
+  \[%
+    \Delta f = \sum_{j=1}^n \pdv[2]{f}{x_j}
+  .\]%
+  Prove that $\F[\Delta f](\xi) = -|\xi|^2 \F f(\xi)$. (If you are worried about working in $n$ dimensions, just prove it for $n=1$.)
+\end{problem}
+
+\begin{solution}
+  For this problem, we'll use Einstein summation notation to make the calculations cleaner. Using Einstein summation notation, we have:
+  \[%
+    \Delta f = \pd{i,i}f
+  .\]%
+  Now, we compute the Fourier transform of $\Delta f$:
+  \[%
+    \F[\Delta f](\xi) = \int_{\R^n} e^{-i \xi \cdot x} \pd{i,i}f(x) \dx
+  .\]%
+  We can integrate by parts twice. Let $u_1 = e^{-i \xi \cdot x}$ and $\dv_1 = \pd{i,i}f(x) \dx$. Then, we have $\du_1 = -i \xi_i e^{-i \xi \cdot x} \dx$ and $v_1 = \pd{i}f(x)$. Applying integration by parts, we get:
+  \[%
+    \F[\Delta f](\xi) = \left[ e^{-i \xi \cdot x} \pd{i}f(x) \right]_{-\infty}^{\infty} + i \xi \int_{\R^n} e^{-i \xi \cdot x} \pd{i}f(x) \dx = i \xi \int_{\R^n} e^{-i \xi \cdot x} \pd{i}f(x) \dx
+  ,\]%
+  since the boundary term vanishes for sufficiently nice functions $f$. Now, we apply integration by parts again with $u_2 = e^{-i \xi \cdot x}$ and $\dv_2 = \pd{i}f(x) \dx$. Then, we have $\du_2 = -i \xi_i e^{-i \xi \cdot x} \dx$ and $v_2 = f(x)$. Applying integration by parts again, we get:
+  \[%
+    \F[\Delta f](\xi) = i \xi \left[ e^{-i \xi \cdot x} f(x) \right]_{-\infty}^{\infty} + i^2 \xi \xi \int_{\R^n} e^{-i \xi \cdot x} f(x) \dx = -|\xi|^2 \F f(\xi)
+  .\qedhere\]%
+\end{solution}
+
+\begin{problem}[14]
+  Suppose that $f : \R \to \R$ is a compactly supported function that is infinitely differentiable everywhere except for $x = 0$, where it has a (finite) jump discontinuity. Prove that there exist $C_1, C_2 > 0$ such that
+  \[%
+    C_1|\xi|^{-1} \leq |\hat{f}(\xi)| \leq C_2 |\xi|^{-1}
+  ,\]%
+  for all $\xi \geq 1$.
+\end{problem}
+
+\begin{solution}
+\end{solution}

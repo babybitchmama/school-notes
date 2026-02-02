@@ -1,0 +1,259 @@
+\lecture{18}{Nov 13 2024 Wed (13:03:05)}{Closure and Compact Sets}
+
+\subsection{Closure}
+
+The concept of closure allows us to ``complete'' a set by adding all the points that are ``infinitely close'' to it.  This is done by including all of its limit points.
+
+\begin{definition}[Closure]
+  Let $E \subseteq \R^n$. The \textit{closure} of $E$, denoted $\overline{E}$, is the union of $E$ with the set of all limit points of $E$:
+  \[%
+    \overline{E} = E \cup E'
+  .\]%
+  Here $E'$ denotes the set of limit points of $E$.
+\end{definition}
+
+Intuitively, $\overline{E}$ is the smallest closed set containing $E$. If $E$ is already closed, then $\overline{E} = E$.
+
+\begin{examples}\leavevmode
+  \begin{enumerate}
+    \item If $E = (0,1) \subset \R$, then $E' = [0,1]$, since every point in $(0,1)$ and the endpoints $0$ and $1$ can be approached by points from $(0,1)$. Hence $\overline{E} = [0,1]$.
+
+    \item If $E = \Q \cap [0,1]$, then $E' = [0,1]$ because the rationals are dense in $\R$. Thus $\overline{E} = [0,1]$.
+
+    \item If $E = \{1/n \mid n \in \N\}$, then $E' = \{0\}$, since $0$ is the only point that can be approached by distinct points of $E$. Thus $\overline{E} = \{1/n \mid n \in \N\} \cup \{0\}$. \qedhere
+  \end{enumerate}
+\end{examples}
+
+We now state and prove the key properties that make the closure useful.
+
+\begin{theorem}
+  Let $E \subseteq \R^n$. Then:
+  \begin{enumerate}
+    \item $\overline{E}$ is closed.
+
+    \item $\overline{E}$ is the smallest closed set containing $E$, meaning that if $F$ is closed and $E \subseteq F$, then $\overline{E} \subseteq F$.
+
+    \item $\overline{E}$ is the intersection of all closed sets containing $E$:
+      \[%
+        \overline{E} = \bigcap \{F \subseteq \R^n \mid F \text{ is closed and } E \subseteq F\}
+      .\]%
+  \end{enumerate}
+\end{theorem}
+
+\begin{proof}\leavevmode
+  \begin{enumerate}
+    \item By definition, $\overline{E} = E \cup E'$. Every limit point of $\overline{E}$ belongs to $E'$ and hence is in $\overline{E}$, so $\overline{E}$ contains all its limit points. This means $\overline{E}$ is closed.
+
+    \item Suppose $F$ is closed and $E \subseteq F$. Since $F$ contains $E$, it must also contain all limit points of $E$ (otherwise it would not be closed). Thus $E' \subseteq F$, and hence $E \cup E' \subseteq F$, i.e., $\overline{E} \subseteq F$.
+
+    \item Let
+      \[%
+        C = \bigcap \{F \subseteq \R^n \mid F \text{ is closed and } E \subseteq F\}
+      .\]%
+      From (ii), $\overline{E}$ is contained in every closed set that contains $E$, so $\overline{E} \subseteq C$. Conversely, $C$ is a closed set containing $E$, so by (2) again, $\overline{E} \subseteq C$ and $C \subseteq \overline{E}$. Therefore $C = \overline{E}$. \qedhere
+  \end{enumerate}
+\end{proof}
+
+The closure can be described entirely in terms of neighborhoods.
+
+\begin{proposition}
+  For $x \in \R^n$, we have:
+  \[%
+    x \in \overline{E} \iff (\forall \epsilon > 0)[V_\epsilon(x) \cap E \neq \emptyset]
+  .\]%
+\end{proposition}
+
+\begin{proof}
+  Suppose $x \in \overline{E}$. If $x \in E$, the statement is immediate since $x \in V_\epsilon(x) \cap E$ for all $\epsilon > 0$. If $x \in E'$ (a limit point of $E$), then by definition, every neighborhood of $x$ contains a point of $E$ distinct from $x$, so in particular $V_\epsilon(x) \cap E \neq \emptyset$.
+
+  Conversely, suppose every neighborhood of $x$ meets $E$. If $x \in E$, then $x \in \overline{E}$ trivially. If $x \notin E$, then the given condition implies that $x$ is a limit point of $E$, so $x \in E' \subseteq \overline{E}$.
+\end{proof}
+
+\begin{examples}\leavevmode
+  \begin{enumerate}
+    \item If $E = [0,1)$, then $E' = [0,1]$, and hence $\overline{E} = [0,1]$. In particular, $1$ is not in $E$ but belongs to its closure because every neighborhood of $1$ intersects $E$.
+
+    \item If $E = (0,1) \cup \{2\}$, then $E' = [0,1]$. The closure is $\overline{E} = [0,1] \cup \{2\}$. Note that $2$ is in $E$ but is an isolated point; it is not a limit point of $E$. \qedhere
+  \end{enumerate}
+\end{examples}
+
+\subsection{Complements}
+
+If a set isn't open, that doesn't imply that it's closed. Take $S = (0, 1]$. This set is neither open nor closed. But, there are some relationships between open and closed sets via complements.
+
+\begin{theorem}
+  A set $O$ is open if and only if $O^c$ is closed. Likewise, a set $F$ is closed if and only if $F^c$ is open.
+\end{theorem}
+
+\begin{proof}
+  Assume we are given an open set $O \subseteq \R$. We first prove that $O^c$ is a closed set. If $x$ is a limit point of $O^c$, then \emph{every} neighborhood of $x$ contains some point of $O^c$. This implies that $x \notin O$, since that would imply that $V_\epsilon(x) \subseteq O$. Thus $x \in O^c$. Since $O^c$ contains all of its limit points, it is closed.
+
+  Now, for the converse. Given an arbitrary point $x \in O$, we must give an $\epsilon$-neighborhood $V_\epsilon(x) \subseteq O$. Because $O^c$ is closed, we can be sure that $x$ is not a limit point of $O^c$. Looking at the definition of a limit point, we see that this implies that there exists some neighborhood $V_\epsilon(x)$ of $x$ that doesn't intersect the set $O^c$, which implies that $V_\epsilon(x) \subseteq O$, which is what we wanted to show.
+\end{proof}
+
+\subsection{Compact Sets}
+
+In analysis, many theorems about continuous functions -- such as attaining maximum and minimum values, or being uniformly continuous -- require the underlying set to have a special property: \emph{compactness}. Compact sets can be thought of as the natural generalization of ``closed and bounded intervals'' in $\R$ to more abstract spaces.
+
+Intuitively, a set is compact if it is ``small'' in a certain topological sense: it can be completely covered by finitely many neighborhoods, no matter how we try to cover it.
+
+There are two main definitions of compactness, one using open covers (topology esk) and the other using sequences (analysis esk). We will start with the easier definition, which is based on sequences.
+
+\begin{definition}[Compactness V1]
+  A set $K \subseteq \R$ is \emph{compact} if every sequence in $K$ has a subsequence that converges to a limit that is also in $K$.
+\end{definition}
+
+\begin{example}
+  The most basic class of compact sets are closed and bounded intervals in $\R$. To see this, notice that if $(a_n)$ is a sequence contained in $[b, c]$, then the Bolzano-Weierstrass theorem guarantees that there exists a subsequence $(a_{n_k})$ that converges to some limit $L$. Since $[b, c]$ is closed, $L$ must also be in $[b, c]$.
+\end{example}
+
+Some basic properties of compact sets are
+\begin{theorem}
+  A set $K \subseteq \R$ is compact if and only if it is closed and bounded (i.e., $(\exists M > 0)(\forall a \in K)[\abs{a} \le M]$).
+\end{theorem}
+
+\begin{proof}
+  Suppose $K$ is compact. To see that $K$ is bounded, argue by contradiction: if $K$ were unbounded, then for each $m \in \N$ consider the open set
+  \[%
+    O_m = \{x \in \R^n \mid \|x\| < m\}
+  .\]%
+  The collection $\{O_m\}_{m \in \N}$ is an open cover of $\R^n$, hence also of $K$. If $K$ were unbounded, then for any finite subcollection $\{O_{m_1}, \dots, O_{m_k}\}$, with $M = \max\{m_1, \dots, m_k\}$, there would exist a point $x \in K$ with $\|x\| > M$, not covered by the finite subcover -- contradiction. Thus $K$ is bounded.
+
+  To see that $K$ is closed, let $p$ be a limit point of $K$. Suppose $p \notin K$. Then $p \in K^c$, which is open. Let $\epsilon > 0$ be such that $V_\epsilon(p) \subseteq K^c$. The sets $\{V_\epsilon(p)\} \cup \{O_\alpha\}_{\alpha \in A}$ (where the latter covers $K$) form an open cover of $K \cup \{p\}$. The compactness of $K$ forces $p$ to be included if it is a limit point, which contradicts $p \notin K$. Therefore $K$ contains all its limit points and is closed.
+
+  Now suppose $K$ is closed and bounded. Boundedness means $K \subseteq B_R(0)$ for some $R > 0$. It is a fact (proved via the Bolzano--Weierstrass theorem) that every bounded sequence in $\R^n$ has a convergent subsequence. Closedness ensures that the limit of any convergent sequence in $K$ is still in $K$. Using these facts, we prove sequential compactness: every sequence in $K$ has a convergent subsequence with limit in $K$. In $\R^n$, sequential compactness is equivalent to open-cover compactness. Hence $K$ is compact.
+\end{proof}
+
+The usefulness of compact sets aren't apparent from the current definition, as it's just, essentially, defined as a set whose closed and bounded. But, there's more to it, a more topological definition. To formally define compactness, we first need the notion of an \emph{open cover}.
+
+\begin{definition}[Open Cover]
+  Let $E \subseteq \R^n$. An \emph{open cover} of $E$ is a collection (possibly infinite) of open sets $\{O_\alpha\}_{\alpha \in A}$ indexed by some set $A$ such that
+  \[%
+    E \subseteq \bigcup_{\alpha \in A} O_\alpha
+  .\]%
+  This means that every point $x \in E$ lies in at least one $O_\alpha$.
+\end{definition}
+
+The index set $A$ can be finite, countably infinite, or uncountable; the definition does not restrict its size. What matters is that each $O_\alpha$ is open in $\R^n$ and that together they ``cover'' $E$.
+
+\begin{examples}\leavevmode
+  \begin{enumerate}
+    \item The collection $\{(k,k+2) \mid k \in \Z\}$ is an open cover of $\R$, since every real number lies in one of these open intervals.
+
+    \item The collection $\{(1/n, 2) \mid n \in \N\}$ is an open cover of $(0,2)$, because every point of $(0,2)$ lies in at least one of these intervals.
+
+    \item If $E = (0,1)$, then $\{(0, 1 - 1/n) \mid n \ge 2\}$ is \emph{not} an open cover of $E$, because points close to $1$ (e.g., $x = 0.99$) are missed. \qedhere
+  \end{enumerate}
+\end{examples}
+
+\begin{definition}[Finite Subcover]
+  Given an open cover $\{O_\alpha\}_{\alpha \in A}$ of $E$, a \emph{finite subcover} is a finite subcollection $\{O_{\alpha_1}, \dots, O_{\alpha_m}\}$ that still covers $E$:
+  \[%
+    E \subseteq \bigcup_{i=1}^m O_{\alpha_i}
+  .\]%
+\end{definition}
+
+It is important to stress that in general, an open cover need not admit a finite subcover. For example, the collection $\{(n, n+2) \mid n \in \Z\}$ is an open cover of $\R$, but no finite subcollection covers $\R$. This observation leads directly to the idea of compactness: those sets for which \emph{every} open cover does have a finite subcover are called compact.
+
+\begin{remark}
+  In many contexts, we will construct open covers using \emph{balls} or \emph{intervals} centered at points of $E$, but the definition allows for any shape of open set. The ``openness'' ensures that each point of $E$ has a small open neighborhood entirely contained in one of the covering sets.
+\end{remark}
+
+Now, we are prepared to define compactness in the topological sense.
+
+\begin{definition}[Compact Set]
+  A set $K \subseteq \R^n$ is \textit{compact} if every open cover of $K$ has a finite subcover.
+\end{definition}
+
+\begin{examples}\leavevmode
+  \begin{enumerate}
+    \item Take the open interval $(0, 1)$. For every point $x \in (0, 1)$, let $O_x$ be the open interval $(x/2, 1)$. The set $O = \{O_x \mid x \in (0, 1)\}$ is an open cover of $(0, 1)$. It is, however, impossible to find a finite subcover. Given any finite sub-collection $\{O_{x_1}, O_{x_2}, \cdots, O_{x_n}\}$, set $x' = \min(\{x_1, x_2, \cdots, x_n\})$ and notice that any real number $y$ satisfies $0 < y \le x'/2$ and isn't contained in the union $\bigcup_{i=1}^n O_{x_i}$.
+
+    \item Take the closed interval $[0, 1]$. We can take the same open cover as above. But in order to have an open cover of the closed interval, we must also cover the endpoints. Fix $\epsilon > 0$, and let $O_0 = (-\epsilon, \epsilon)$ and $O_1 = (1 - \epsilon, 1 + \epsilon)$. Then, the collection $\{O_0, O_1, O_x \mid x \in (0, 1)\}$, is an open cover for $[0, 1]$. But now there exists a finite subcover due to the addition of the endpoints. We can $x'$ so that $x'/2 < \epsilon$. It follows that $\{O_0, O_{x'}, O_1\}$ is a finite subcover of $[0, 1]$. \qedhere
+  \end{enumerate}
+\end{examples}
+
+\begin{definition}[Sequential Compactness]
+  A set $K \subseteq \R^n$ is \textit{sequentially compact} if every sequence in $K$ has a subsequence converging to a point in $K$.
+\end{definition}
+
+In $\R^n$, compactness and sequential compactness are equivalent, but in more general spaces they may differ.
+
+One of the foundational results in analysis is that, in $\R^n$, compactness has a simple characterization in terms of closedness and boundedness.
+
+\begin{theorem}[Heine Borel]
+  Let $K$ be a subset of $\R$. All of the following statements are equivalent in the sense that any one of them implies the other two
+  \begin{enumerate}
+    \item $K$ is compact,
+    \item $K$ is closed and bounded,
+    \item Every open cover for $K$ has a finite subcover.
+  \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+  We prove the equivalences in a cycle: (i) $\implies$ (ii) $\implies$ (i) and (i) $\implies$ (iii) $\implies$ (ii).
+
+  \begin{enumerate}
+    \item[(i) $\implies$ (ii)] Assume $K$ is compact (sequential compactness).
+
+      Suppose, for contradiction, that $K$ is unbounded. Then for each $n \in \N$ there exists $x_n \in K$ with $|x_n| > n$. The sequence $(x_n) \subset K$ cannot have any convergent subsequence because any convergent subsequence would be bounded, but the terms of $(x_n)$ tend to infinity in absolute value. This contradicts compactness. Hence $K$ is bounded.
+
+      Let $(y_n) \subset K$ be a sequence with $y_n \to y \in \R$. By compactness $(y_n)$ has a subsequence $y_{n_k}$ which converges to some $z \in K$. But limits of subsequences equal the limit of the full sequence when the full sequence converges, so $z = y$. Therefore $y\in K$, and $K$ contains all its sequential limits; in $\R$ this means $K$ is closed.
+
+    \item[(ii) $\implies$ (i)] Assume $K$ is closed and bounded.
+
+      Let $(x_n)$ be any sequence in $K$. Because $K$ is bounded, $(x_n)$ is a bounded sequence in $\R$. By the Bolzano--Weierstrass theorem every bounded sequence in $\R$ has a convergent subsequence; call it $(x_{n_k})$, and let $x_{n_k} \to x\in\R$. Since $K$ is closed and every $x_{n_k} \in K$, the limit $x$ must lie in $K$. Thus every sequence in $K$ has a convergent subsequence whose limit lies in $K$; i.e. $K$ is compact (sequentially).
+
+    \item[(i) $\implies$ (iii)] Assume $K$ is compact (sequentially). Let $\mathcal{U} = \{U_\lambda \mid \lambda \in \Lambda\}$ be an open cover of $K$. We prove $\mathcal{U}$ has a finite subcover.
+
+      Suppose, by way of contradiction, that no finite subcollection of $\mathcal{U}$ covers $K$. We will construct a sequence in $K$ with no convergent subsequence, contradicting compactness.
+
+      Choose any $x_1 \in K$. Because $\{U_\lambda\}$ has no finite subcover, $K \setminus U_{\lambda_1}$ is nonempty for every choice of $U_{\lambda_1}$ from the cover, so pick $x_2 \in K \setminus U_{\lambda_1}$. More generally, having chosen $x_1, \cdots, x_n$ and chosen for each $i$ (arbitrarily) an open set $U_{\lambda_i}$ from the cover that contains $x_i$, the set
+      \[%
+        K \setminus \bigcup_{i=1}^n U_{\lambda_i}
+      ,\]%
+      is nonempty (otherwise those $n$ sets would be a finite subcover). Choose $x_{n+1}$ from this nonempty set. In this way we inductively construct $(x_n) \subset K$ such that for every $m \neq n$, the point $x_n$ was chosen outside the finitely many open sets that covered $x_1, \cdots, x_{n-1}$.
+
+      Now suppose $(x_{n_k})$ were a convergent subsequence with limit $x\in K$. Because $\mathcal{U}$ covers $K$, there exists some $U_{\lambda} \in \mathcal{U}$ with $x\in U_{\lambda}$. By openness there is an $\varepsilon > 0$ with $V_\varepsilon(x) \subset U_{\lambda}$. Since $x_{n_k} \to x$, there is $K_0$ such that for all $k\ge K_0$, $x_{n_k} \in V_\varepsilon(x) \subset U_{\lambda}$. In particular, infinitely many members of the constructed sequence lie in $U_{\lambda}$. But by the construction of the sequence, once some $U_{\lambda}$ has been used to cover one chosen point it was never allowed to contain later chosen points (each point was chosen outside the union of the finitely many previously selected open sets). This contradiction shows there is no convergent subsequence — contradicting compactness. Therefore $\mathcal{U}$ must have a finite subcover.
+
+    \item[(iii) $\implies$ (ii)] Assume every open cover of $K$ admits a finite subcover (open-cover compactness).
+
+      For each $x \in K$ let $O_x = (x-1, x+1)$. The family $\{O_x \mid x\in K\}$ is an open cover of $K$, so by hypothesis it has a finite subcover $O_{x_1}, \cdots, O_{x_n}$. Then
+      \[%
+        K \subset \bigcup_{i=1}^n (x_i-1, x_i+1)
+      ,\]%
+      hence $K$ is contained in a finite union of bounded intervals and is therefore bounded.
+
+      Let $(y_n) \subset K$ be a Cauchy sequence with limit $y \in \R$. We show $y \in K$. Suppose not, i.e. $y \notin K$. For each $x \in K$ set
+      \[%
+        O_x = \Big(x-\frac{|x-y|}{2}, x+\frac{|x-y|}{2}\Big)
+      ,\]%
+      an open interval around $x$. Every $O_x$ misses $y$ (its radius is half the distance to $y$), and $\{O_x \mid x\in K\}$ is an open cover of $K$. By assumption there is a finite subcover $O_{x_1}, \cdots, O_{x_m}$. Set
+      \[%
+        \delta \coloneqq \min_{1 \le i \le m} \frac{|x_i - y|}{2} > 0
+      .\]%
+      Because $y_n\to y$, choose $N$ with $|y_N-y|<\delta$. Then for every $i$,
+      \[%
+        |y_N - x_i| \ge |y - x_i| - |y_N - y| > 2\delta - \delta = \delta > 0
+      ,\]%
+      so $y_N \notin O_{x_i}$ for every $i$. Hence $y_N$ is not in the finite union $\bigcup_{i=1}^m O_{x_i}$, contradicting that union covers $K$ (and $y_N \in K$). Therefore $y \in K$. So $K$ contains all limits of Cauchy sequences from $K$; since in $\R$ sequential closedness and the usual topological closedness agree, $K$ is closed.
+
+      Combining boundedness and closedness gives (ii).
+
+    \item[(iii) $\implies$ (i)] This follows immediately from $(iii)\iff(ii)$ and $(ii)\iff(i)$: from (iii) we obtain closed and bounded, and by Bolzano--Weierstrass the latter implies sequential compactness. Thus (iii) implies (i).
+  \end{enumerate}
+
+  Collecting the proved implications we have (i) $\iff$ (ii) $\iff$ (iii), completing the proof of the Heine--Borel theorem in $\R$.
+\end{proof}
+
+\begin{examples}\leavevmode
+  \begin{enumerate}
+    \item $[0, 1]^n$ is compact in $\R^n$.
+
+    \item The set $\{1/n \mid n \in \N\} \cup \{0\}$ is compact: it is closed and bounded.
+
+    \item The set $(0,1)$ is not compact: consider the open cover $\{(1/n,1) \mid n \in \N\}$, which has no finite subcover.
+
+    \item The set $\Z$ is closed but not bounded, hence not compact. \qedhere
+  \end{enumerate}
+\end{examples}

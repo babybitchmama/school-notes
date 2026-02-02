@@ -1,0 +1,108 @@
+\begin{problem}[1]
+  Show that $|e^{i\theta} - 1| \le \theta$ for $\theta \in \R$. (\textit{Hint:} You can use the fundamental theorem of calculus.)
+\end{problem}
+
+\begin{solution}
+  We have
+  \[%
+    e^{i\theta} - 1 = \int_0^\theta \odv{}{t} e^{it} \dt = \int_0^\theta ie^{it} \dt
+  .\]%
+  Thus,
+  \[%
+    |e^{i\theta} - 1| = \left|\int_0^\theta ie^{it} \dt\right| \le \int_0^\theta |ie^{it}| \dt \le \int_0^\theta 1 \dt = \theta
+  .\qedhere\]%
+\end{solution}
+
+\begin{problem}[2]
+  Prove that
+  \[%
+    (f * g)'(x) = (f' * g)(x)
+  ,\]%
+  where $'$ denotes derivative and $*$ denotes convolution. Just treat this as a formal identity, i.e. assume everything converges nicely and you can pass derivatives through the integral sign.
+
+  This identity has an important consequence, namely: ``the convolution of $f$ and $g$ is as smooth as the smoother of $f$ and $g$''.
+\end{problem}
+
+\begin{solution}
+  We have
+  \[%
+    (f * g)(x) = \int_\R f(x - y) g(y) \dy
+  .\]%
+  Computing the derivative, we have
+  \[%
+    (f * g)'(x) = \odv{}{x} \int_\R f(x - y) g(y) \dy = \int_\R \odv{}{x} f(x - y) g(y) \dy = \int_\R f'(x - y) g(y) \dy = (f' * g)(x)
+  .\qedhere\]%
+\end{solution}
+
+\begin{problem}[3]
+  Prove that if $f(x) = 0$ for $|x| > R$ and $g(x) = 0$ for $|x| > T$, then $(f * g)(x) = 0$ for $|x| > R + T$.
+\end{problem}
+
+\begin{solution}
+  We have
+  \[%
+    (f * g)(x) = \int_\R f(x - y) g(y) \dy
+  .\]%
+  If $|x| > R + T$, then for any $y$ such that $g(y) \neq 0$, we have $|y| \le T$. Thus,
+  \[%
+    |x - y| \ge |x| - |y| > (R + T) - T = R
+  .\]%
+  Since $f(x - y) = 0$ for $|x - y| > R$, it follows that $f(x - y) = 0$ whenever $g(y) \neq 0$. Therefore, the integrand $f(x - y) g(y)$ is zero for all $y$, and hence
+  \[%
+    (f * g)(x) = \int_\R f(x - y) g(y) \dy = 0
+  .\qedhere\]%
+\end{solution}
+
+\begin{problem}[4]
+  Show that if $g(x) = f(x + y)$ for some $y \in \R$, then $\hat{g}(\xi) = e^{iy\xi}\hat{f}(\xi)$.
+\end{problem}
+
+\begin{solution}
+  We have
+  \[%
+    \hat{g}(\xi) = \int_\R g(x) e^{-ix\xi} \dx = \int_\R f(x + y) e^{-ix\xi} \dx
+  .\]%
+  Making the substitution $u = x + y$, we have $\dx = \du$ and thus
+  \[%
+    \hat{g}(\xi) = \int_\R f(u) e^{-i(u - y)\xi} \du = e^{iy\xi} \int_\R f(u) e^{-iu\xi} \du = e^{iy\xi} \hat{f}(\xi)
+  .\qedhere\]%
+\end{solution}
+
+\begin{problem}[5]
+  Show that limits are unique in a metric space. That is, if $(X, \metric)$ is a metric space and $\{x_n\}$ is a sequence satisfying $x_n \to x \in X$ and $x_n \to y \in X$, then $x = y$.
+\end{problem}
+
+\begin{solution}
+  Since $\{x_n\} \to x$, we have for every $\epsilon > 0$, there exists $N_1 \in \N$ such that for all $n \ge N_1$, $\metric(x_n, x) < \epsilon/2$. Similarly, since $\{x_n\} \to y$, we have for every $\epsilon > 0$, there exists $N_2 \in \N$ such that for all $n \ge N_2$, $\metric(x_n, y) < \epsilon/2$. Let $N = \max(N_1, N_2)$. Then for all $n \ge N$, we have
+  \[%
+    \metric(x, y) \le \metric(x, x_n) + \metric(x_n, y) < \epsilon/2 + \epsilon/2 = \epsilon
+  .\]%
+  Since $\epsilon > 0$ was arbitrary, we conclude that $\metric(x, y) = 0$. By the properties of a metric, this implies that $x = y$.
+\end{solution}
+
+\begin{problem}[6]
+  (optional for 410, required for 510). Taking the following fact for granted, complete the proof of the Riemann–Lebesgue lemma (i.e.
+  $f \in L^1 \implies \hat{f} \in C_0$):
+
+  \textbf{Fact:} For any $f \in L^1$ and any $\epsilon > 0$, there exists a function $g \in L^1$ satisfying (i) $xg \in L^1$ and $g' \in L^1$ and (ii) $\|f - g\|_{L^1} < \epsilon$.
+
+  Recall that in class we proved that for $g \in L^1$ satisfying (i), we have $\hat{g} \in C_0$.
+\end{problem}
+
+\begin{solution}
+  Let $f \in L^1$ and let $\epsilon > 0$. By the given fact, there exists $g \in L^1$ such that $xg \in L^1$, $g' \in L^1$, and $\|f - g\|_{L^1} < \epsilon$. Since we have already established that for such a function $g$, $\hat{g} \in C_0$, it follows that $\hat{g}$ is continuous and vanishes at infinity.
+
+  Now, we need to show that $\hat{f} \in C_0$. We can write
+  \[%
+    \hat{f}(\xi) = \hat{g}(\xi) + (\hat{f}(\xi) - \hat{g}(\xi))
+  .\]%
+  Using the properties of the Fourier transform, we have
+  \[%
+    |\hat{f}(\xi) - \hat{g}(\xi)| = \left|\int_\R (f(x) - g(x)) e^{-ix\xi} \dx\right| \le \int_\R |f(x) - g(x)| \dx = \|f - g\|_{L^1} < \epsilon
+  .\]%
+  Since $\hat{g}(\xi)$ is continuous and vanishes at infinity, for any $\delta > 0$, there exists $M > 0$ such that for all $|\xi| > M$, $|\hat{g}(\xi)| < \delta$. Therefore, for all $|\xi| > M$, we have
+  \[%
+    |\hat{f}(\xi)| \le |\hat{g}(\xi)| + |\hat{f}(\xi) - \hat{g}(\xi)| < \delta + \epsilon
+  .\]%
+  Since $\epsilon$ and $\delta$ were arbitrary, this shows that $\hat{f}(\xi)$ also vanishes at infinity. Thus, we conclude that $\hat{f} \in C_0$.
+\end{solution}

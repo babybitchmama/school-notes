@@ -1,0 +1,370 @@
+\begin{problem}[4.2.1]
+  Let $F : U \subset \R^2 \to \R^3$ be given by
+  \begin{align*}
+    F(u, v) &= (u\sin(\alpha)\cos(v), u\sin(\alpha)\sin(v), u\cos(\alpha)) \\
+    (u, v) \in U &= \{(u, v) \in \R^2 \mid u > 0\}, \quad \alpha = \text{const}
+  .\end{align*}
+
+  \begin{enumerate}
+    \item Prove that $F$ is a local diffeomorphism of $U$ onto a cone $C$ with the vertex at the origin and $2\alpha$ as the angle of the vertex.
+
+    \item Is $F$ a local isometry?
+  \end{enumerate}
+\end{problem}
+
+\begin{solution}[(i)]
+  Let $F : U \to \R^3$ be defined by
+  \[%
+    F(u, v) = \bigl(u\sin(\alpha)\cos(v), u\sin(\alpha)\sin(v), u \cos(\alpha)\bigr), \quad u > 0, v \in \R
+  .\]%
+
+  We claim that $F(U)$ is the cone
+  \[%
+    C = \{(x,y,z) \in \R^3 \mid x^2 + y^2 = z^2 \tan^2(\alpha), \quad z \geq 0\}
+  ,\]%
+  with vertex at the origin and vertex angle $2\alpha$.
+
+  First, note the vertex is at the origin since $F(0,v) = (0,0,0)$ for all $v$.
+
+  Next, for any $(u,v) \in U$,
+  \[%
+    x^2 + y^2 = (u \sin(\alpha) \cos(v))^2 + (u \sin(\alpha) \sin(v))^2 = u^2 \sin^2(\alpha) (\cos^2(v) + \sin^2(v)) = u^2 \sin^2(\alpha)
+  ,\]%
+  and
+  \[%
+    z^2 = (u \cos(\alpha))^2 = u^2 \cos^2(\alpha)
+  .\]%
+  Hence,
+  \[%
+    x^2 + y^2 = z^2 \cdot \frac{\sin^2(\alpha)}{\cos^2(\alpha)} = z^2 \tan^2(\alpha)
+  ,\]%
+  confirming $F(U) \subseteq C$.
+
+  Finally, to show $F$ is a local diffeomorphism, observe the Jacobian matrix of $F$ has rank 2 for all $(u,v) \in U$ (since the partial derivatives with respect to $u$ and $v$ are linearly independent), so $F$ is an immersion and a local homeomorphism onto its image.
+
+  Therefore, $F$ parametrizes the cone $C$ locally diffeomorphically.
+
+  The vertex angle of the cone is $2\alpha$ because the generating lines of the cone form an angle $\alpha$ with the $z$-axis.
+\end{solution}
+
+\begin{solution}[(ii)]
+  Computing the partial derivatives, we have
+  \[%
+    F_u = (\sin(\alpha) \cos(v), \sin(\alpha) \sin(v), \cos(\alpha)) \aand F_v = (-u \sin(\alpha) \sin(v), u \sin(\alpha) \cos(v), 0)
+  .\]%
+  Then, the coefficients for the first fundamental form are
+  \begin{align*}
+    E &= \langle F_u, F_u \rangle = \sin^2\alpha + \cos^2\alpha = 1 \\
+    F &= \langle F_u, F_v \rangle = 0 \\
+    G &= \langle F_v, F_v \rangle = u^2 \sin^2\alpha
+  .\end{align*}
+  So the first fundamental form is
+  \[%
+    I = \du^2 + u^2 \sin^2(\alpha) \dv^2
+  .\]%
+  This is the same as the first fundamental form of a cone with vertex angle $2\alpha$ parametrized by
+  \[%
+    G(u,v) = u(\sin(\alpha)\cos(v), \sin(\alpha)\sin(v), \cos(\alpha))
+  .\]%
+  Therefore, by proposition 1, $F$ is a local isometry.
+\end{solution}
+
+\begin{problem}[4.2.2]
+  Prove the following ``converse'' of Prop. 1: Let $\phi : S \to \bar{S}$ be an isometry and $\x : U \to S$ a parametrization at $p \in S$; then $\bar{\x} = \phi \circ \x$ is a parametrization at $\phi(p)$ and $E = \bar{E}$, $F = \bar{F}$, $G = \bar{G}$.
+\end{problem}
+
+\begin{solution}
+  Let $\phi : S \to \bar{S}$ be an isometry, and let $\x : U \to S$ be a local parametrization at $p \in S$. Define $\bar{\x} = \phi \circ \x : U \to \bar{S}$. Since $\phi$ is a diffeomorphism and $\x$ is a parametrization, it follows that $\bar{\x}$ is also a parametrization at $\phi(p)$.
+
+  Since $\phi$ is an isometry, it preserves the inner product of tangent vectors. That is, for any $q = \x(u, v)$ and any tangent vectors $w_1, w_2 \in T_q(S)$,
+  \[%
+    \langle w_1, w_2 \rangle_q = \langle d\phi_q(w_1), d\phi_q(w_2) \rangle_{\phi(q)}
+  .\]%
+
+  In particular, we consider the tangent vectors $\x_u$ and $\x_v$, and compute the coefficients of the first fundamental form
+  \begin{align*}
+    E &= \langle \x_u, \x_u \rangle \\
+    F &= \langle \x_u, \x_v \rangle \\
+    G &= \langle \x_v, \x_v \rangle
+  .\end{align*}
+
+  Now, since $\bar{\x} = \phi \circ \x$, the chain rule gives
+  \[%
+    \bar{\x}_u = d\phi(\x_u) \aand \bar{\x}_v = d\phi(\x_v)
+  .\]%
+
+  Using the fact that $\phi$ is an isometry, we have
+  \begin{align*}
+    \bar{E} &= \langle \bar{\x}_u, \bar{\x}_u \rangle = \langle d\phi(\x_u), d\phi(\x_u) \rangle = \langle \x_u, \x_u \rangle = E \\
+    \bar{F} &= \langle \bar{\x}_u, \bar{\x}_v \rangle = \langle d\phi(\x_u), d\phi(\x_v) \rangle = \langle \x_u, \x_v \rangle = F \\
+    \bar{G} &= \langle \bar{\x}_v, \bar{\x}_v \rangle = \langle d\phi(\x_v), d\phi(\x_v) \rangle = \langle \x_v, \x_v \rangle = G
+  .\end{align*}
+
+  Therefore, the first fundamental form of $\bar{\x}$ is equal to that of $\x$, and so $E = \bar{E}$, $F = \bar{F}$, and $G = \bar{G}$.
+\end{solution}
+
+\begin{problem}[4.2.3]
+  Show that a diffeomorphism $\phi : S \to \bar{S}$ is an isometry if and only if the arc length of any parametrized curve in $S$ is equal to the arc length of the image curve by $\phi$.
+\end{problem}
+
+\begin{solution}
+  Assume $\phi$ is an isometry. Let $\alpha : (-\epsilon, \epsilon) \to S$ be a smooth parametrized curve, and let $\bar{\alpha} = \phi \circ \alpha : (-\epsilon, \epsilon) \to \bar{S}$ be the image of $\alpha$ under $\phi$. The arc length of $\alpha$ is
+  \[%
+    s = \int_{-\epsilon}^\epsilon \Abs{\alpha'(t)} \dt
+  .\]%
+  Since $\phi$ is an isometry, it preserves the inner product of tangent vectors. In particular, it preserves their lengths
+  \[%
+    \Abs{\bar{\alpha}'(t)} = \Abs{\dd{\phi}(\alpha'(t))} = \Abs{\alpha'(t)}
+  .\]%
+  Therefore,
+  \[%
+    \bar{s} = \int_{-\epsilon}^\epsilon \Abs{\bar{\alpha}'(t)} \dt = \int_{-\epsilon}^\epsilon \Abs{\alpha'(t)} \dt = s
+  .\]%
+  So the arc length of $\alpha$ is equal to the arc length of $\bar{\alpha}$.
+
+  Assume that for any parametrized smooth curve $\alpha$ in $S$, the arc length of $\alpha$ is equal to the arc length of $\bar{\alpha} = \phi \circ \alpha$ in $\bar{S}$. Let $\x: U \to S$ be a local parametrization around $p \in S$, and define $\bar{\x} = \phi \circ \x : U \to \bar{S}$, a local parametrization around $\bar{p} = \phi(p)$. Let $\v = (v_1~v_2)$ be a tangent vector at a point $u \in U$, and consider a curve $\gamma(t) = \x(u + t\v)$ in $S$. Then its arc length is given by
+  \[%
+    s = \int_{-\epsilon}^{\epsilon} \Abs{\odv{}{t} \x(u + t\v)} \dt = \int_{-\epsilon}^{\epsilon} \sqrt{\v^T \cdot \fff(u) \cdot \v} \dt = 2\epsilon \cdot \sqrt{\v^T \fff(u) v}
+  ,\]%
+  where $\fff(u)$ is the first fundamental form matrix for $\x$ at $u$. The image curve $\bar{\gamma}(t) = \bar{\x}(u + t\v)$ has arc length
+  \[%
+    \bar{s} = \int_{-\epsilon}^{\epsilon} \Abs{\odv{}{t} \bar{\x}(u + t\v)} \dt = 2\epsilon \cdot \sqrt{\v^T \bar{\fff}(u) \v}
+  ,\]%
+  where $\bar{\fff}(u)$ is the first fundamental form matrix for $\bar{\x}$ at $u$. Since arc length is preserved, $s = \bar{s}$ for all $\v$, so
+  \[%
+    \v^T \fff(u) \v = \v^T \bar{\fff}(u) \v \quad \text{for all}~\v \in \R^2
+  .\]%
+  This implies $\fff(u) = \bar{\fff}(u)$, so the first fundamental forms of $\x$ and $\bar{\x}$ agree at $u$. Since the first fundamental form determines the metric, this means that $\dd{\phi}_p$ preserves inner products between tangent vectors, i.e., $\phi$ is an isometry.
+
+  Therefore, $\phi$ is an isometry if and only if the arc length of any parametrized curve in $S$ is equal to the arc length of the image curve by $\phi$.
+\end{solution}
+
+\begin{problem}[4.2.4]
+  Use the stereographic projection (cf. Exercise 16, Sec. 2-2) to show that the sphere is locally conformal to a plane.
+\end{problem}
+
+\begin{solution}
+  Let $S^2 \subset \R^3$ be the unit sphere centered at the origin. The stereographic projection from the north pole $N = (0, 0, 1)$ onto the plane $z = 0$ is given by
+  \[%
+    \pi(x, y, z) = \left(\frac{x}{1 - z}, \frac{y}{1 - z}\right)
+  .\]%
+  This map is smooth on $S^2 \setminus \{N\}$ and its inverse is
+  \[%
+    \pi^{-1}(u, v) = \left(\frac{2u}{u^2 + v^2 + 1}, \frac{2v}{u^2 + v^2 + 1}, \frac{u^2 + v^2 - 1}{u^2 + v^2 + 1}\right)
+  .\]%
+
+  Let $\x(u, v) = \pi^{-1}(u, v)$ be a parametrization of the sphere minus the north pole. Computing the first fundamental form of this parametrization yields
+  \[%
+    E = G = \frac{4}{(u^2 + v^2 + 1)^2}, \quad F = 0
+  .\]%
+  Thus, the metric in $(u, v)$ coordinates is conformal to the Euclidean metric
+  \[%
+    \fff = \lambda(u, v)^2 (\du^2 + \dv^2), \quad \text{with}~\lambda(u, v) = \frac{2}{u^2 + v^2 + 1}
+  .\]%
+  Therefore, the stereographic projection induces a conformal (angle-preserving) correspondence between the sphere (minus a point) and the plane. This proves that the sphere is locally conformal to a plane.
+\end{solution}
+
+\begin{problem}[4.2.8]
+  Let $G : \R^3 \to \R^3$ be a map such that
+  \[%
+    \abs{G(p) - G(q)} = \abs{p - q}~\text{for all}~p, q \in \R^3
+  .\]%
+  (that is, $G$ is a \emph{distance-preserving} map). Prove that there exists $p_0 \in \R^3$ and a linear isometry (cf. Exercise 7) $F$ of the vector space $\R^3$ such that
+  \[%
+    G(p) = F(p) + p_0~\text{for all}~p \in \R^3
+  .\]%
+\end{problem}
+
+\begin{solution}
+  Define $p_0 \coloneqq G(0)$ and $F(p) = G(p) - p_0$, for all $p \in \R^3$. Then, for all $p, q \in \R^3$, we have
+  \[%
+    \abs{F(p) - F(q)} = \abs{(F(p) - p_0) - (F(q) - p_0)} = \abs{G(p) - G(q)} = \abs{p - q}
+  .\]%
+  So, $F$ is a distance-preserving map. It also preserves the norms, via
+  \[%
+    \Abs{F(p)} = \Abs{F(p) - F(0)} = \Abs{G(p) - G(0)} = \Abs{p - 0} = \Abs{p}
+  ,\]%
+  since
+  \[%
+    F(0) = G(0) - p_0 = G(0) - G(0) = 0
+  .\]%
+
+  We now show that $F$ is a linear map. Since $F$ is distance-preserving and satisfies $F(0) = 0$, it also preserves inner products. To see this, for all $p, q \in \R^3$, we use the polarization identity
+  \[%
+    \bra{p, q} = \frac{1}{2}(\Abs{p + q}^2 - \Abs{p}^2 - \Abs{q}^2)
+  ,\]%
+  and since $F$ preserves norms, we get
+  \[%
+    \bra{F(p), F(q)} = \frac{1}{2}(\Abs{F(p) + F(q)}^2 - \Abs{F(p)}^2 - \Abs{F(q)}^2) = \frac{1}{2}(\Abs{p + q}^2 - \Abs{p}^2 - \Abs{q}^2) = \bra{p, q}
+  .\]%
+  Hence, $F$ preserves inner products.
+
+  Now let $p, q \in \R^3$ and $\lambda \in \R$. Then,
+  \[%
+    \Abs{F(p + q) - (F(p) + F(q))}^2 = \Abs{F(p + q)}^2 + \Abs{F(p) + F(q)}^2 - 2\bra{F(p + q), F(p) + F(q)}
+  .\]%
+  Because $F$ preserves norms and inner products, this equals
+  \[%
+    \Abs{p + q}^2 + \Abs{p + q}^2 - 2\bra{p + q, p + q} = 0
+  ,\]%
+  so $F(p + q) = F(p) + F(q)$. A similar argument shows $F(\lambda p) = \lambda F(p)$. Hence, $F$ is linear.
+
+  Finally, since $F$ is a linear map that preserves inner products, it is a linear isometry of $\R^3$. Therefore, $G(p) = F(p) + p_0$, with $F$ a linear isometry and $p_0 = G(0)$, as desired.
+\end{solution}
+
+\begin{problem}[4.2.10]
+  Let $S$ be a surface of revolution. Prove that the rotations about its axis are isometries of $S$.
+\end{problem}
+
+\begin{solution}
+  Let $\x(u, v) = (f(v)\cos(u), f(v)\sin(u), g(v))$ be a surface of revolution of the generating curve $\alpha(u, v) = (f(v), g(v))$ along some axis of rotation. Computing th first fundamental form, we have
+  \begin{align*}
+    E &= \bra{\x_u, \x_u} = f^2(v) \\
+    F &= \bra{\x_u, \x_v} = 0 \\
+    G &= \bra{\x_v, \x_v} = (f'(v))^2 + (g'(v))^2
+  ,\end{align*}
+  giving us
+  \[%
+    \fff_p(\w) = f^2(v) \du^2 + ((f'(v))^2 + (g'(v))^2) \dv^2
+  ,\]%
+  for some $p \in S$ and $\w \in T_p(S)$.
+
+  Now consider the map $\phi_\theta(u, v) = (u + \theta, v)$, which corresponds to a rotation about the axis of revolution by a fixed angle $\theta$. This induces a new parametrization of the surface,
+  \[%
+    \bar{\x}(u, v) = \x(\phi_\theta(u, v)) = \x(u + \theta, v)
+  .\]%
+  We compute the first fundamental form of $\bar{\x}$ to get
+  \begin{align*}
+    \bar{\x}_u(u, v) &= \frac{\partial}{\partial u} \x(u + \theta, v) = \x_u(u + \theta, v) \\
+    \bar{\x}_v(u, v) &= \frac{\partial}{\partial v} \x(u + \theta, v) = \x_v(u + \theta, v)
+  .\end{align*}
+  Then the coefficients of the first fundamental form for $\bar{\x}$ are
+  \begin{align*}
+    \bar{E} &= \bra{\bar{\x}_u, \bar{\x}_u} = \bra{\x_u(u + \theta, v), \x_u(u + \theta, v)} = f^2(v) \\
+    \bar{F} &= \bra{\bar{\x}_u, \bar{\x}_v} = \bra{\x_u(u + \theta, v), \x_v(u + \theta, v)} = 0 \\
+    \bar{G} &= \bra{\bar{\x}_v, \bar{\x}_v} = \bra{\x_v(u + \theta, v), \x_v(u + \theta, v)} = (f'(v))^2 + (g'(v))^2
+  .\end{align*}
+  These are identical to the original coefficients $E, F, G$.
+
+  Since the map $\phi_\theta(u, v) = (u + \theta, v)$ is smooth, has a smooth inverse $\phi_{-\theta}$, and preserves the first fundamental form everywhere on the domain of the parametrization, it defines a global isometry of the surface. In particular, $\phi_\theta$ acts globally on $S$ because the surface of revolution is entirely covered by the parametrization $\x(u, v)$ with $u \in [0, 2\pi)$ (mod $2\pi$) and $v$ in an interval $I$. Thus, the rotations about the axis of revolution define smooth diffeomorphisms from $S$ to itself that preserve the Riemannian metric. Therefore, they are global isometries.
+\end{solution}
+
+\begin{problem}[4.2.14]
+  We say that a differentiable map $\phi : S_1 \to S_2$ \emph{preserves angles} when for every $p \in S_1$ and every pair $\v_1, \v_2 \in T_p(S_1)$ we have
+  \[%
+   \cos(\v_1, \v_2) = \cos(\dd{\phi}_p(\v_1), \dd{\phi}_p(\v_2))
+  .\]%
+  Prove that $\phi$ is locally conformal if and only if it preserves angles.
+\end{problem}
+
+\begin{solution}
+  Assume $\phi : S_1 \to S_2$ is a locally conformal map, i.e., for all $p \in S_1$ and $\v_1, \v_2 \in T_p(S_1)$, we have
+  \begin{equation}\label{eq:4.2.14}
+    \bra{\dd{\phi}_p(\v_1), \dd{\phi}_p(\v_2)} = \lambda^2(p) \bra{\v_1, \v_2}
+  ,\end{equation}
+  where $\lambda(p)$ is a nowhere-zero differentiable function on $S$. Notice that $\Abs{\dd{\phi}_p(\v_1)} = \sqrt{\bra{\dd{\phi}_p(\v_1), \dd{\phi}_p(\v_1)}} = \sqrt{\lambda^2(p) \bra{\v_1, \v_1}} = \lambda(p) \Abs{\v_1}$, and similarly for $\v_2$. Dividing both sides of equation \ref{eq:4.2.14} by $\Abs{\dd{\phi}_p(\v_1)} \Abs{\dd{\phi}_p(\v_2)}$, we obtain
+  \begin{align*}
+    \cos(\dd{\phi}_p(v_1), \dd{\phi}_p(v_2)) &= \frac{\bra{\dd{\phi}_p(\v_1), \dd{\phi}_p(\v_2)}}{\Abs{\dd{\phi}_p(\v_1)} \Abs{\dd{\phi}_p(\v_2)}} \\
+                                             &= \frac{\lambda^2(p) \bra{\v_1, \v_2}}{\lambda(p) \Abs{\v_1} \lambda(p) \Abs{\v_2}} \\
+                                             &= \frac{\lambda^2(p) \bra{\v_1, \v_2}}{\lambda^2(p) \Abs{\v_1} \Abs{\v_2}} \\
+                                             &= \frac{\bra{\v_1, \v_2}}{\Abs{\v_1} \Abs{\v_2}} \\
+                                             &= \cos(\v_1, \v_2)
+  .\end{align*}
+  Therefore, $\phi$ preserves angles if $\phi$ is locally conformal.
+
+  Assume $\phi$ preserves angles. Then for all $p \in S_1$ and all $\v_1, \v_2 \in T_p(S_1)$, we have
+  \[%
+    \frac{\bra{\dd{\phi}_p(\v_1), \dd{\phi}_p(\v_2)}}{\Abs{\dd{\phi}_p(\v_1)} \Abs{\dd{\phi}_p(\v_2)}} = \frac{\bra{\v_1, \v_2}}{\Abs{\v_1} \Abs{\v_2}}
+  .\]%
+  Let $\v \in T_p(S_1)$ be a nonzero vector, and define
+  \[%
+    \lambda(p) \coloneqq \frac{\Abs{\dd{\phi}_p(\v)}}{\Abs{\v}} > 0
+  .\]%
+  We claim that for all $\w \in T_p(S_1)$, we have
+  \[%
+    \Abs{\dd{\phi}_p(\w)} = \lambda(p) \Abs{\w} \aand \bra{\dd{\phi}_p(\v_1) \dd{\phi}_p(\v_2)} = \lambda^2(p) \bra{\v_1, \v_2}
+  .\]%
+
+  We claim that for all $\w \in T_p(S_1)$, we have
+  \[%
+    \Abs{\dd{\phi}_p(\w)} = \lambda(p) \Abs{\w} \aand \bra{\dd{\phi}_p(\v_1), \dd{\phi}_p(\v_2)} = \lambda^2(p) \bra{\v_1, \v_2}
+  .\]%
+
+  To see this, fix any $\w \in T_p(S_1)$ and apply angle preservation to the pair $\v, \w$. Then
+  \[%
+    \cos(\v, \w) = \cos(\dd{\phi}_p(\v), \dd{\phi}_p(\w)) = \frac{\bra{\dd{\phi}_p(\v), \dd{\phi}_p(\w)}}{\Abs{\dd{\phi}_p(\v)} \Abs{\dd{\phi}_p(\w)}}
+  .\]%
+  Substituting $\lambda(p) = \sfrac{\Abs{\dd{\phi}_p(\v)}}{\Abs{\v}}$ and rearranging gives
+  \[%
+    \frac{\bra{\v, \w}}{\Abs{\v} \Abs{\w}} = \frac{\bra{\dd{\phi}_p(\v), \dd{\phi}_p(\w)}}{\lambda(p) \Abs{\v} \Abs{\dd{\phi}_p(\w)}} \implies \bra{\dd{\phi}_p(\v), \dd{\phi}_p(\w)} = \lambda(p) \bra{\v, \w} \cdot \frac{\Abs{\dd{\phi}_p(\w)}}{\Abs{\w}}
+  .\]%
+  So
+  \[%
+    \frac{\Abs{\dd{\phi}_p(\w)}}{\Abs{\w}} = \lambda(p)
+  ,\]%
+  and hence
+  \[%
+    \Abs{\dd{\phi}_p(\w)} = \lambda(p) \Abs{\w}
+  .\]%
+  Now that both $\v$ and $\w$ scale by $\lambda(p)$, it follows that
+  \[%
+    \bra{\dd{\phi}_p(\v), \dd{\phi}_p(\w)} = \lambda^2(p) \bra{\v, \w}
+  .\]%
+  Since $\v, \w$ were arbitrary, this proves that $\phi$ is locally conformal at $p$.
+
+  Therefore, $\phi$ is locally conformal if and only if it preserves angles.
+\end{solution}
+
+\begin{problem}[4.2.15]
+  Let $\phi : \R^2 \to \R^2$ be given by $\phi(x, y) = (u(x, y), v(x, y))$, where $u$ and $v$ are differentiable functions that satisfy the Cauchy-Riemann equations
+  \[%
+    u_x = v_y \aand u_y = -v_x
+  .\]%
+  Show that $\phi$ is a local conformal map from $\R^2 - Q$ into $\R^2$, where $Q = \{(x, y) \in \R^2 \mid u_x^2 + u_y^2 = 0\}$
+\end{problem}
+
+\begin{solution}
+  Let $\phi(x, y) = (u(x, y), v(x, y))$ be a differentiable map satisfying the Cauchy-Riemann equations. Then, the Jacobian matrix $D\phi$ at a point $(x, y)$ is
+  \[%
+    D\phi = \begin{bmatrix}
+      u_x & u_y \\
+      v_x & v_y \\
+    \end{bmatrix}
+    = \begin{bmatrix}
+      u_x & u_y \\
+      -u_y & u_x \\
+    \end{bmatrix}
+  ,\]%
+  since $\phi$ satisfies the Cauchy-Riemann equations.
+
+  This matrix is of the form
+  \[%
+    D\phi = u_x \begin{bmatrix}
+      1 & \frac{u_y}{u_x} \\
+      -\frac{u_y}{u_x} & 1 \\
+    \end{bmatrix}
+    \quad \text{(when $u_x \neq 0$)}
+  .\]%
+  More importantly, for all points not in $Q = \{(x, y) \mid u_x^2 + u_y^2 = 0\}$, the Jacobian is nonzero and we can interpret $D\phi$ as a similarity transformation: a composition of a rotation and a scaling.
+
+  Indeed, the Jacobian satisfies
+  \[%
+    D\phi^\top D\phi
+    = \begin{bmatrix}
+      u_x & -u_y \\
+      u_y & u_x \\
+    \end{bmatrix}
+    \begin{bmatrix}
+      u_x & u_y \\
+      -u_y & u_x \\
+    \end{bmatrix}
+    = \begin{bmatrix}
+      u_x^2 + u_y^2 & 0 \\
+      0 & u_x^2 + u_y^2 \\
+    \end{bmatrix}
+    = (u_x^2 + u_y^2) \fff
+  .\]%
+  This shows that the differential of $\phi$ preserves angles and scales all vectors by the same factor locally -- that is, it is conformal.
+
+  Therefore, $\phi$ is a local conformal map on $\R^2 \setminus Q$.
+\end{solution}
