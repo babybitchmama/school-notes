@@ -198,16 +198,12 @@
 
 \begin{solution}[(ii)]
   After computing all the Christoffel symbols using the metric components from part (i), we find that the non-zero Christoffel symbols are:
-  \begin{align*}
-    \Gamma_{tt}^r &= -\frac{1}{2}g^{rr}\pd{r}g_{tt} \\
-    \Gamma_{rr}^r &= -\frac{1}{2}g^{rr}\pd{r}g_{rr} \\
-    \Gamma_{\theta\theta}^r &= -\frac{1}{2}g^{rr}\pd{r}g_{\theta\theta} \\
-    \Gamma_{\phi\phi}^r &= -\frac{1}{2}g^{rr}\pd{r}g_{\phi\phi} \\
-    \Gamma_{r\theta}^\theta &= \frac{1}{2}g^{\theta\theta}\pd{r}g_{\theta\theta} = \Gamma_{\theta r}^\theta \\
-    \Gamma_{\phi\phi}^\theta &= -\frac{1}{2}g^{\theta\theta}\pd{\theta}g_{\phi\phi} \\
-    \Gamma_{r\phi}^\phi &= \frac{1}{2}g^{\phi\phi}\pd{r}g_{\phi\phi} = \Gamma_{\phi r}^\phi \\
-    \Gamma_{\theta\phi}^\phi &= \frac{1}{2}g^{\phi\phi}\pd{\theta}g_{\phi\phi} = \Gamma_{\phi\theta}^\phi
-  .\end{align*}
+  \begin{gather*}
+    \Gamma_{rt}^t = \frac{1}{2}g^{tt}\pd{r}g_{tt} = \Gamma_{tr}^t \\
+    \Gamma_{tt}^r = -\frac{1}{2}g^{rr}\pd{r}g_{tt}, \quad \Gamma_{rr}^r = -\frac{1}{2}g^{rr}\pd{r}g_{rr}, \quad \Gamma_{\theta\theta}^r = -\frac{1}{2}g^{rr}\pd{r}g_{\theta\theta}, \quad \Gamma_{\phi\phi}^r = -\frac{1}{2}g^{rr}\pd{r}g_{\phi\phi} \\
+    \Gamma_{r\theta}^\theta = \frac{1}{2}g^{\theta\theta}\pd{r}g_{\theta\theta} = \Gamma_{\theta r}^\theta, \quad \Gamma_{\phi\phi}^\theta = -\frac{1}{2}g^{\theta\theta}\pd{\theta}g_{\phi\phi} \\
+    \Gamma_{r\phi}^\phi = \frac{1}{2}g^{\phi\phi}\pd{r}g_{\phi\phi} = \Gamma_{\phi r}^\phi, \quad \Gamma_{\theta\phi}^\phi = \frac{1}{2}g^{\phi\phi}\pd{\theta}g_{\phi\phi} = \Gamma_{\phi\theta}^\phi
+  .\qedhere\end{gather*}
 \end{solution}
 
 \begin{solution}[(iii)]
@@ -278,14 +274,14 @@
     V_{\text{eff}}(r) = \left(1 - \frac{2M}{r} + \frac{b}{r^2}\right) \left(1 + \frac{L^2}{r^2}\right)
   .\]%
   Setting $M = 0$, the potential reduces to:
-  \[%
+  \begin{equation}\label{eq:effective_potential_M0}
     V_{\text{eff}}(r) = \left(1 + \frac{b}{r^2}\right) \left(1 + \frac{L^2}{r^2}\right) = 1 + \frac{L^2 + b}{r^2} + \frac{bL^2}{r^4}
-  .\]%
-  For a bound orbit to exist, the effective potential must have a local minimum at some finite $r > 0$, so that the radial motion oscillates between two turning points. We check for extrema by differentiating $V_{\text{eff}}(r)$ with respect to $r$:
-  \[%
+  \end{equation}
+  For a bound orbit to exist, the effective potential must have a local minimum at some finite $r > 0$, so that the radial motion oscillates between two turning points. We check for extrema by differentiating Equation~\eqref{eq:effective_potential_M0} with respect to $r$:
+  \begin{equation}\label{eq:derivative_effective_potential}
     \odv{V_{\text{eff}}}{r} = -2\frac{L^2 + b}{r^3} - 4 \frac{bL^2}{r^5} = -\frac{2(L^2 + b) r^2 + 4 bL^2}{r^5}
-  .\]%
-  Setting $\odv{V_{\text{eff}}}/{r} = 0$ gives:
+  \end{equation}
+  Setting Equation~\eqref{eq:derivative_effective_potential} to zero to find critical points, we have:
   \[%
     2(L^2 + b) r^2 + 4 bL^2 = 0 \implies r^2 = -\frac{2bL^2}{L^2 + b}
   .\]%
@@ -304,5 +300,5 @@
     \includegraphics[width=0.6\textwidth]{image-files/timelike-geodesic.png}
   \end{center}
 
-  The resulting orbit displays a smooth inward–curving trajectory, typical of spacetimes with an effective attractive potential. The numerical integrator confirms the behavior predicted by the effective potential. For generic nonzero $M$ a range of interesting timelike trajectories exists, while the $M = 0$ limit becomes purely repulsive in the radial direction and no bound orbits are observed, consistent with the analysis in part (v).
+  The resulting orbit displays a smooth inward-curving trajectory, typical of spacetimes with an effective attractive potential. The numerical integrator confirms the behavior predicted by the effective potential. For generic nonzero $M$ a range of interesting timelike trajectories exists, while the $M = 0$ limit becomes purely repulsive in the radial direction and no bound orbits are observed, consistent with the analysis in part (v).
 \end{solution}
