@@ -1,0 +1,98 @@
+\renewcommand\L{\mathcal{L}}
+\newcommand\G{\tilde{\Gamma}}
+\begin{problem}[1]
+  A three-dimensional spacetime has the line element
+  \[%
+    \ds^2 = -\left(1 - \frac{2M}{r}\right) \ds t^2 + \left(1 - \frac{2M}{r}\right)^{-1} \dr^2 + r^2 \dd{\phi}^2
+  .\]%
+  \begin{enumerate}
+    \item (10 points) Find the explicit Lagrangian for the variational principle for geodesics in this spacetime in these coordinates.
+    \item (10 points) Using the results of (i) write out the components of the geodesic equation by computing them from the Lagrangian.
+    \item (5 points) Read off the nonzero Christoffel symbols for this metric from your results in (ii).
+  \end{enumerate}
+\end{problem}
+
+\begin{solution}[(i)]
+  The metric, $g_{\mu\nu}$, is given by:
+  \[%
+    g_{\mu\nu} = \begin{pmatrix}
+      -\left(1 - \frac{2M}{r}\right) & 0 & 0 \\
+      0 & \left(1 - \frac{2M}{r}\right)^{-1} & 0 \\
+      0 & 0 & r^2
+    \end{pmatrix}
+  .\]%
+  The Lagrangian, $\L$, for the variational principle for geodesics is given by:
+  \[%
+    \L = \frac{1}{2} g_{\mu\nu} \dot{x}^\mu \dot{x}^\nu
+  ,\]%
+  where $\dot{x}^\mu = \odv{x^\mu}/{\lambda}$ is a potential term and $\lambda$ is an affine parameter along the geodesic. Thus, we have:
+  \[%
+    \L = \frac{1}{2} \left[-\left(1 - \frac{2M}{r}\right) \dot{t}^2 + \left(1 - \frac{2M}{r}\right)^{-1} \dot{r}^2 + r^2 \dot{\phi}^2 \right]
+  .\qedhere\]%
+\end{solution}
+
+\begin{solution}[(ii)]
+  The Euler-Lagrange equations for the geodesic motion are given by:
+  \[%
+    \odv{}{\lambda} \left(\pd{\dot{x}^\mu}\L\right) - \pd{\mu}\L = 0
+  .\]%
+  We compute these for each coordinate. For $\mu = t$, we have:
+  \begin{align*}
+    &\quad\odv{}{\lambda} \left(-\left(1 - \frac{2M}{r}\right) \dot{t}\right) = 0 \\
+    \implies&\quad \left(1 - \frac{2M}{r}\right) \dot{t} = E
+  ,\end{align*}
+  where $E$ is a constant of motion. For $\mu = r$, we have:
+  \begin{align*}
+    &\quad\odv{}{\lambda} \left(\left(1 - \frac{2M}{r}\right)^{-1} \dot{r}\right) - \pd{r}\L = 0 \\
+    \implies&\quad \odv{}{\lambda} \left(\left(1 - \frac{2M}{r}\right)^{-1} \dot{r}\right) + \frac{M}{r^2} \dot{t}^2 - \frac{M}{r^2} \left(1 - \frac{2M}{r}\right)^{-2} \dot{r}^2 - r \dot{\phi}^2 = 0
+  .\end{align*}
+  For $\mu = \phi$, we have:
+  \begin{align*}
+    &\quad\odv{}{\lambda} \left(r^2 \dot{\phi}\right) = 0 \\
+    \implies&\quad r^2 \dot{\phi} = L
+  ,\end{align*}
+  where $L$ is another constant of motion. Thus, the geodesic equations are:
+  \begin{gather*}
+    \left(1 - \frac{2M}{r}\right) \dot{t} = E, \quad r^2 \dot{\phi} = L \\
+    \odv{}{\lambda} \left(\left(1 - \frac{2M}{r}\right)^{-1} \dot{r}\right) + \frac{M}{r^2} \dot{t}^2 - \frac{M}{r^2} \left(1 - \frac{2M}{r}\right)^{-2} \dot{r}^2 - r \dot{\phi}^2 = 0
+  .\qedhere\end{gather*}
+\end{solution}
+
+\begin{solution}[(iii)]
+  The nonzero Christoffel symbols can be read off from the geodesic equations. We have:
+  \begin{gather*}
+    \Gamma^t_{tr} = \frac{M}{r^2} \left(1 - \frac{2M}{r}\right)^{-1}, \quad \Gamma_{tt}^r = \frac{M}{r^2} \left(1 - \frac{2M}{r}\right) \\
+    \Gamma^r_{rr} = -\frac{M}{r^2} \left(1 - \frac{2M}{r}\right)^{-1}, \quad \Gamma^r_{\phi\phi} = -r \left(1 - \frac{2M}{r}\right) \\
+    \Gamma^\phi_{r\phi} = \frac{1}{r}
+  .\qedhere\end{gather*}
+\end{solution}
+
+\begin{problem}[2 (Christoffel Symbols, aka connection coefficients)]
+  Consider a change of basis $\tilde{e}_\mu = A_\mu^\nu e_\nu$.
+  \begin{enumerate}
+    \item (10 points) Show that the components of the Christoffel symbol in the new basis are related to the components in the old basis by
+      \[%
+        \G_{\rho\nu}^\mu = A_\rho^\sigma \left(A^{-1}\right)_\tau^\mu \left[A_\tau^\lambda \Gamma_{\sigma\lambda}^\tau + \pd{\sigma}A_\nu^\tau\right]
+      .\]%
+      Given the above equation, are the Christoffel symbols tensors? Why or why not?
+
+    \item (10 points) Does the difference of two connections, $S_{\rho\nu}^\mu = (\Gamma_1)_{\rho\nu}^\mu - (\Gamma_2)_{\rho\nu}^\mu$ obey the tensor transformation laws?
+  \end{enumerate}
+\end{problem}
+
+\begin{solution}[(i)]
+\end{solution}
+
+\begin{solution}[(ii)]
+\end{solution}
+
+\begin{problem}[3]
+  (15 points) ($\star$) An observer in a circular orbit of circumference $2\pi R$ around a charged, spherical, black hole (Reissner-Nordstr\"om black hole) of mass $M$ and charge $q$ measures local electric and magnetic fields. What are their strengths and orientations? The Reissner-Nordstr\"om metric is given by
+  \[%
+    \ds^2 = -f(r)\dt^2 + f(r)^{-1}\dr^2 + r^2(\dd{\theta}^2 + \sin^2\theta \dd{\phi}^2)
+  ,\]%
+  where $f(r) \equiv 1 - 2GM/r + q^2/r$.
+\end{problem}
+
+\begin{solution}
+\end{solution}
