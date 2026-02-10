@@ -1,0 +1,265 @@
+\begin{problem}[28.8]
+  Find all the generators of the cyclic multiplicative group of units $\Z_{23}^\times$.
+\end{problem}
+
+\begin{solution}
+  The group $\Z_{23}^\times$ consists of elements such that $1 \le a \le 23$ and $\gcd(a, 23) = 1$. Since 23 is a prime, $\Z_{23}^\times$ consists of all the elements from 1 to 22. The order of $\Z_{23}^\times$ is $\phi(23) = 22$. The generators of a cyclic group of order $n$ are the elements of order $n$. The order of an element $a$ in $\Z_{23}^\times$ is the smallest positive integer $k$ such that $a^k \equiv 1 \pmod{23}$. To find the generators, we need to find the elements of order 22. The generators of $\Z_{23}^\times$ are the elements $a$ such that $\gcd(a, 22) = 1$. The positive integers less than 22 that are coprime to 22 are 1, 3, 5, 7, 9, 11, 13, 15, 17, 19, and 21. Therefore, the generators of $\Z_{23}^\times$ are 1, 3, 5, 7, 9, 11, 13, 15, 17, 19, and 21.
+\end{solution}
+
+\begin{problem}[28.12]
+  Is $x^3 + 2x + 3$ an irreducible polynomial of $\Z_5[x]$? Why? Express it as a product of irreducible polynomials $\Z_5[x]$.
+\end{problem}
+
+\begin{solution}
+  Let $f(x) = x^3 + 2x + 3 \in \Z_5[x]$. Since $\Z_5$ is a field and $\deg f = 3$, $f$ is reducible if and only if it has a root in $\Z_5$. We evaluate $f$ at each element of $\Z_5$:
+  \begin{alignat*}{3}
+    f(0) &= 3 \neq 0 \\
+    f(1) &= 1 + 2 + 3 = 6 \equiv 1 &&\pmod{5} \\
+    f(2) &= 8 + 4 + 3 = 15 \equiv 0 &&\pmod{5} \\
+    f(3) &= 27 + 6 + 3 = 36 \equiv 1 &&\pmod{5} \\
+    f(4) &= 64 + 8 + 3 = 75 \equiv 0 &&\pmod{5}
+  .\end{alignat*}
+  Thus $2, 4 \in \Z_5$ are roots of $f(x)$, and hence $f(x)$ is not irreducible in $\Z_5[x]$. Since $x - 2$ and $x - 4$ divide $f(x)$, we compute their product:
+  \[%
+    (x - 2)(x - 4) = x^2 - 6x + 8 \equiv x^2 - x + 3 \pmod{5}
+  .\]%
+  Dividing $f(x)$ by $x^2 - x + 3$, we obtain:
+  \[%
+    f(x) = (x^2 - x + 3)(x - 4)
+  .\]%
+  Reducing all coefficients modulo $5$, we have $x - 4 \equiv x + 1$, so the factorization becomes:
+  \[%
+    f(x) = (x^2 - x + 3)(x + 1)
+  .\]%
+  Finally, note that $x^2 - x + 3 = (x + 1)(x + 3)$, in $\Z_5[x]$, so:
+  \[%
+    f(x) = (x + 1)^2 (x + 3)
+  .\]%
+  Each factor is linear, hence irreducible in $\Z_5[x]$, and this is the complete factorization of $f(x)$ into irreducible polynomials.
+\end{solution}
+
+\begin{problem}[28.36]
+  (Remainder Theorem) Let $f(x) \in F[x]$ where $F$ is a field, and let $\alpha \in F$. Show that the remainder $r(x)$ when $f(x)$ is divided by $x - \alpha$, in accordance with the division algorithm, is $f(\alpha)$.
+\end{problem}
+
+\begin{solution}
+  Let $f(x) = q(x)(x - \alpha) + r(x)$, where $q(x), r(x) \in F[x]$ and $\deg r < 1$. Since $\deg r < 1$, $r(x)$ is a constant polynomial, say $r(x) = r$. Substituting $x = \alpha$ into the equation, we get:
+  \[%
+    f(\alpha) = q(\alpha)(\alpha - \alpha) + r = r
+  .\]%
+  Thus, the remainder $r$ when $f(x)$ is divided by $x - \alpha$ is equal to $f(\alpha)$.
+\end{solution}
+
+\begin{problem}[30.2]
+  Find all positive integers n such that $\Z_n$ contains a subring isomorphic to $\Z_2$.
+\end{problem}
+
+\begin{solution}
+  Clearly, $n = 2$ works, since $\Z_2$ is isomorphic to itself. If $n > 2$, then $\Z_n$ contains a subring isomorphic to $\Z_2$ if and only if the following properties the identity element, $e$ satisfies the following:
+  \begin{enumerate}
+    \item $e^2 \equiv e \pmod{n}$,
+    \item $e + e \equiv 0 \pmod{n}$,
+    \item and $e \ne 0$.
+  \end{enumerate}
+  The second condition implies that $2e \equiv 0 \pmod{n}$, so $n$ divides $2e$. Since $e \ne 0$, we have $e \ge 1$, and thus $n$ divides $2$. Therefore, we have $e = n/2$. Substituting $e = n/2$ into the first condition, we get:
+  \[%
+    \left(\frac{n}{2}\right)^2 \equiv \frac{n}{2} \pmod{n} \implies \frac{n^2}{4} - \frac{n}{2} = kn
+  .\]%
+  Since $n \ne 0$, we can divide both sides by $n$ to obtain:
+  \[%
+    \frac{n - 2}{4} = k
+  .\]%
+  For $k$ to be an integer, $n - 2$ must be divisible by 4, which means $n \equiv 2 \pmod{4}$. Therefore, the positive integers $n$ such that $\Z_n$ contains a subring isomorphic to $\Z_2$ are those of the form $n = 4k + 2$ for some integer $k \ge 0$. Lastly, we just check that $n = 4k + 2$ works. Let $e = n/2 = 2k + 1$. Then:
+  \begin{alignat*}{3}
+    e^2 &\equiv (2k + 1)^2 = 4k^2 + 4k + 1 \equiv 2k + 1 &&\pmod{n} \\
+    e + e &\equiv 2(2k + 1) = 4k + 2 \equiv 0 &&\pmod{n}
+  .\end{alignat*}
+  Thus, the positive integers $n$ such that $\Z_n$ contains a subring isomorphic to $\Z_2$ are those of the form $n = 4k + 2$ for some integer $k \ge 0$.
+\end{solution}
+
+\begin{problem}[30.4]
+  Give addition and multiplication tables for $2\Z/8\Z$. Are $2\Z/8\Z$ and $\Z_4$ isomorphic rings?
+\end{problem}
+
+\begin{solution}
+  The elements of $2\Z/8\Z$ are $(0 + 8\Z), (2 + 8\Z), (4 + 8\Z)$, and $6+ 8\Z$.
+
+  \begin{center}
+    \begin{tabular}{c|cccc}
+      + & $0 + 8\Z$ & $2 + 8\Z$ & $4 + 8\Z$ & $6 + 8\Z$ \\
+      \hline\hline
+      $0 + 8\Z$ & $0 + 8\Z$ & $2 + 8\Z$ & $4 + 8\Z$ & $6 + 8\Z$ \\
+      \hline
+      $2 + 8\Z$ & $2 + 8\Z$ & $4 + 8\Z$ & $6 + 8\Z$ & $0 + 8\Z$ \\
+      \hline
+      $4 + 8\Z$ & $4 + 8\Z$ & $6 + 8\Z$ & $0 + 8\Z$ & $2 + 8\Z$ \\
+      \hline
+      $6 + 8\Z$ & $6 + 8\Z$ & $0 + 8\Z$ & $2 + 8\Z$ & $4 + 8\Z$ \\
+      \hline
+    \end{tabular}
+    $\quad$
+    \begin{tabular}{c|cccc}
+      $\times$ & $0 + 8\Z$ & $2 + 8\Z$ & $4 + 8\Z$ & $6 + 8\Z$ \\
+      \hline\hline
+      $0 + 8\Z$ & $0 + 8\Z$ & $0 + 8\Z$ & $0 + 8\Z$ & $0 + 8\Z$ \\
+      \hline
+      $2 + 8\Z$ & $0 + 8\Z$ & $4 + 8\Z$ & $0 + 8\Z$ & $4 + 8\Z$ \\
+      \hline
+      $4 + 8\Z$ & $0 + 8\Z$ & $0 + 8\Z$ & $0 + 8\Z$ & $0 + 8\Z$ \\
+      \hline
+      $6 + 8\Z$ & $0 + 8\Z$ & $4 + 8\Z$ & $0 + 8\Z$ & $4 + 8\Z$ \\
+      \hline
+    \end{tabular}
+  \end{center}
+
+  \noindent Since $\Z_4$ has unity but $2\Z/8\Z$ does not, these two rings are not isomorphic.
+\end{solution}
+
+\begin{problem}[30.17]
+  Let $R = \{a + b\sqrt{2}~|~a, b \in \Z\}$, and let $R'$ consist of all $2 \times 2$ matrices of the form $\begin{bmatrix}
+    a & 2b \\
+    b & a \\
+    \end{bmatrix}$ for $a, b \in \Z$. Show that $R$ is a subring of $\R$ and that $R'$ is a subring of $M_2(\Z)$. Then show that $\phi : R \to R'$, where $\phi(a + b\sqrt{2}) = \begin{bmatrix}
+    a & 2b \\
+    b & a \\
+  \end{bmatrix}$ is an isomorphism.
+\end{problem}
+
+\begin{solution}
+  We first show that $R$ is a subring of $\R$. Clearly, $R$ is non-empty. Let $x = a + b\sqrt{2}$ and $y = c + d\sqrt{2}$ be elements of $R$, where $a, b, c, d \in \Z$. Then:
+  \begin{align*}{3}
+    x + y &= (a + c) + (b + d)\sqrt{2} \in R \\
+    xy &= (a + b\sqrt{2})(c + d\sqrt{2}) = ac + 2bd + (ad + bc)\sqrt{2} \in R
+  .\end{align*}
+  Since $R$ is closed under addition and multiplication, and contains the additive identity $0 = 0 + 0\sqrt{2}$, it is a subring of $\R$.
+
+  Next, we show that $R'$ is a subring of $M_2(\Z)$. Clearly, $R'$ is non-empty. Let $A$ and $B$ be two elements $R'$. Then:
+  \[%
+    A + B = \begin{bmatrix}
+      a + c & 2(b + d) \\
+      b + d & a + c \\
+    \end{bmatrix} \in R' \aand AB = \begin{bmatrix}
+      ac + 2bd & 2(ad + bc) \\
+      ad + bc & ac + 2bd \\
+    \end{bmatrix} \in R'
+  .\]%
+  Since $R'$ is closed under addition and multiplication, and contains the additive identity $\begin{bmatrix}
+    0 & 0 \\
+    0 & 0 \\
+  \end{bmatrix}$, it is a subring of $M_2(\Z)$.
+
+  Finally, we show that $\phi : R \to R'$ defined by $\phi(a + b\sqrt{2}) = \begin{bmatrix}
+    a & 2b \\
+    b & a \\
+  \end{bmatrix}$ is an isomorphism. We first show that $\phi$ is a homomorphism. Let $x = a + b\sqrt{2}$ and $y = c + d\sqrt{2}$ be elements of $R$. Then:
+  \begin{gather*}
+    \phi(x + y) = \phi((a + c) + (b + d)\sqrt{2}) = \begin{bmatrix}
+      a + c & 2(b + d) \\
+      b + d & a + c \\
+    \end{bmatrix} = \begin{bmatrix}
+      a & 2b \\
+      b & a \\
+    \end{bmatrix} + \begin{bmatrix}
+      c & 2d \\
+      d & c \\
+    \end{bmatrix} = \phi(x) + \phi(y) \\
+    \phi(xy) = \phi((a + b\sqrt{2})(c + d\sqrt{2})) = \begin{bmatrix}
+      ac + 2bd & 2(ad + bc) \\
+      ad + bc & ac + 2bd \\
+    \end{bmatrix}
+    = \begin{bmatrix}
+      a & 2b \\
+      b & a \\
+      \end{bmatrix} \begin{bmatrix}
+      c & 2d \\
+      d & c \\
+    \end{bmatrix} = \phi(x)\phi(y)
+  .\end{gather*}
+  Thus, $\phi$ is a homomorphism. Next, we show that $\phi$ is one-to-one. Suppose $\phi(a + b\sqrt{2}) = \phi(c + d\sqrt{2})$. Then:
+  \[%
+    \begin{bmatrix}
+      a & 2b \\
+      b & a \\
+    \end{bmatrix} = \begin{bmatrix}
+      c & 2d \\
+      d & c \\
+    \end{bmatrix}
+  .\]%
+  This implies that $a = c$ and $b = d$, so $a + b\sqrt{2} = c + d\sqrt{2}$. Thus, $\phi$ is one-to-one. Finally, we show that $\phi$ is onto. Let $A = \begin{bmatrix}
+    a & 2b \\
+    b & a \\
+  \end{bmatrix}$ be an element of $R'$. Then $\phi(a + b\sqrt{2}) = A$, so $\phi$ is onto. Since $\phi$ is a homomorphism that is one-to-one and onto, it is an isomorphism.
+\end{solution}
+
+\begin{problem}[30.18]
+  Show that each homomorphism from a field to a ring is either one-to-one or maps everything onto 0.
+\end{problem}
+
+\begin{solution}
+  Let $\phi : F \to R$ be a homomorphism from a field $F$ to a ring $R$. Suppose $\phi$ is not one-to-one. Then there exist distinct elements $a, b \in F$ such that $\phi(a) = \phi(b)$. This implies that $\phi(a - b) = \phi(a) - \phi(b) = 0$. Since $F$ is a field, $a - b \ne 0$, so $\phi$ maps a non-zero element of $F$ to $0$. Let $x$ be any element of $F$. Then:
+  \[%
+    \phi(x) = \phi\left(\frac{x}{a - b}(a - b)\right) = \phi\left(\frac{x}{a - b}\right)\phi(a - b) = \phi\left(\frac{x}{a - b}\right) \cdot 0 = 0
+  .\]%
+  Thus, if $\phi$ is not one-to-one, it maps every element of $F$ to $0$.
+
+  Now, assume that $\phi$ doesn't map everything onto $0$. Then there exists some element $c \in F$ such that $\phi(c) \ne 0$. Since $F$ is a field, $c$ has a multiplicative inverse, say $c^{-1}$. Then:
+  \[%
+    \phi(1) = \phi(c c^{-1}) = \phi(c)\phi(c^{-1}) \ne 0
+  .\]%
+  Let $x$ be any element of $F$. Then:
+  \[%
+    \phi(x) = \phi\left(\frac{x}{c}c\right) = \phi\left(\frac{x}{c}\right)\phi(c) \ne 0
+  .\]%
+  Thus, if $\phi$ doesn't map everything onto $0$, it is one-to-one. Therefore, each homomorphism from a field to a ring is either one-to-one or maps everything onto $0$.
+\end{solution}
+
+\begin{problem}[30.21]
+  Let $R$ and $R'$ be rings and let $\phi : R \to R'$ be a ring homomorphism such that $\phi[R] \ne \{0'\}$. Show that if $R$ has unity 1 and $R'$ has no 0 divisors, then $\phi(1)$ is a unity for $R'$.
+\end{problem}
+
+\begin{solution}
+  Assume that $R$ has unity 1 and $R'$ has no zero divisors. Then we know that, for any nonzero $x, y \in R$, $\phi(xy) = \phi(x)\phi(y) \ne 0$ if and only if $x \ne 0$ and $y \ne 0$. Then, if we let $x = 1 = y$, we obtain:
+  \[%
+    \phi(1 \cdot 1) = \phi(1)\phi(1) = 1' \phi(1) = \phi(1) 1' = \phi(1)
+  .\]%
+  Thus, $\phi(1)$ is a unity for $R'$.
+\end{solution}
+
+\begin{problem}[30.22]
+  Let $\phi : R \to R'$ be a ring homomorphism and let $N$ be an ideal of $R$.
+  \begin{enumerate}
+    \item Show that $\phi[N]$ is an ideal of $\phi[R]$.
+    \item Give an example to show that $\phi[N]$ need not be an ideal of $R'$.
+    \item Let $N'$ be an ideal of either $\phi[R]$ or of $R'$. Show that $\phi^{-1}[N']$ is an ideal of $R$.
+  \end{enumerate}
+\end{problem}
+
+\begin{solution}[(i)]
+  Let $I = \phi[N]$. Since $N$ is an ideal of $R$, it is non-empty, so $I$ is non-empty. Let $x, y \in I$. Then there exist $a, b \in N$ such that $\phi(a) = x$ and $\phi(b) = y$. Since $N$ is an ideal, $a - b \in N$, so $\phi(a - b) = \phi(a) - \phi(b) = x - y \in I$. Let $r \in \phi[R]$ and let $x \in I$. Then there exists $a \in N$ such that $\phi(a) = x$. Since $\phi[R]$ is the image of $\phi$, there exists some element $s \in R$ such that $\phi(s) = r$. Since $N$ is an ideal, $sa \in N$, so $\phi(sa) = \phi(s)\phi(a) = rx \in I$. Similarly, since $as \in N$, we have $\phi(as) = \phi(a)\phi(s) = xr \in I$. Thus, $I$ is an ideal of $\phi[R]$.
+\end{solution}
+
+\begin{solution}[(ii)]
+  Let $R = \Z$ and $R' = \Q$, with $f : \Z \to \Q$. Let $I = 3\Z$. Suppose that $f(I)$ is an ideal of $\Q$. Then $1/3 \in \Q$, but $1/3 \notin f(I)$, since $f(I)$ consists of all rational numbers of the form $3k$ for some integer $k$. Thus, $f(I)$ is not an ideal of $\Q$.
+\end{solution}
+
+\begin{solution}[(iii)]
+  Let $I = \phi^{-1}[N']$. Since $N'$ is an ideal of either $\phi[R]$ or $R'$, it is non-empty, so $I$ is non-empty. Let $x, y \in I$. Then $\phi(x), \phi(y) \in N'$, so $\phi(x) - \phi(y) = \phi(x - y) \in N'$. Thus, $x - y \in I$. Let $r \in R$ and let $x \in I$. Then $\phi(r) \in \phi[R]$ and $\phi(x) \in N'$, so $\phi(r)\phi(x) = \phi(rx) \in N'$. Similarly, since $\phi(x)\phi(r) = \phi(xr) \in N'$, we have $xr \in I$. Thus, $I$ is an ideal of $R$.
+\end{solution}
+
+\begin{problem}[30.30]
+  An element $a$ of a ring $R$ is \textit{nilpotent} if $a^n = 0$ for some $n \in \Z^+$. Show that the collection of all nilpotent elements in a commutative ring $R$ is an ideal, the \textit{nilradical of $R$}.
+\end{problem}
+
+\begin{solution}
+  Let $I = \{a \in R~|~a^n = 0~\text{for some}~n \in \Z^+\}$. We first show that $I$ is non-empty. Since $0^1 = 0$, we have $0 \in I$, so $I$ is non-empty. Let $x, y \in I$. Then there exist positive integers $m$ and $n$ such that $x^m = 0$ and $y^n = 0$. Since $R$ is commutative, we have:
+  \begin{align*}
+    (x - y)^{m+n} &= \sum_{k=0}^{m+n} \binom{m+n}{k} x^k (-y)^{m+n-k} = \sum_{k=0}^{m-1} \binom{m+n}{k} x^k (-y)^{m+n-k} + \sum_{k=m}^{m+n} \binom{m+n}{k} x^k (-y)^{m+n-k} \\
+                  &= \sum_{k=0}^{m-1} \binom{m+n}{k} x^k (-y)^{m+n-k} + \sum_{k=m}^{m+n} \binom{m+n}{k} 0 \cdot (-y)^{m+n-k} = \sum_{k=0}^{m-1} \binom{m+n}{k} x^k (-y)^{m+n-k} \\
+                  &= \sum_{k=0}^{m-1} \binom{m+n}{k} 0 \cdot (-y)^{m+n-k} = 0
+  .\end{align*}
+  Thus, $x - y \in I$. Let $r \in R$ and let $x \in I$. Then there exists a positive integer $m$ such that $x^m = 0$. Since $R$ is commutative, we have:
+  \[%
+    (rx)^m = r^m x^m = r^m \cdot 0 = 0 \aand (xr)^m = x^m r^m = 0 \cdot r^m = 0
+  .\]%
+  Thus, $rx \in I$ and $xr \in I$. Therefore, $I$ is an ideal of $R$, and it is called the nilradical of $R$.
+\end{solution}

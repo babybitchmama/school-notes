@@ -81,9 +81,40 @@
 \end{problem}
 
 \begin{solution}[(i)]
+  The Christoffel symbols are defined by the relation:
+  \[%
+    \nabla_\mu e_\nu = \Gamma_{\mu\nu}^\rho e_\rho
+  .\]%
+  Under a change of basis, we have:
+  \begin{align}
+    \nabla_\mu \tilde{e}_\nu &= \nabla_\mu (A_\nu^\sigma e_\sigma) \tag*{} \\
+                             &= \pd{\mu} A_\nu^\sigma e_\sigma + A_\nu^\sigma \nabla_\mu e_\sigma \tag*{} \\
+                             &= \pd{\mu} A_\nu^\sigma e_\sigma + A_\nu^\sigma \Gamma_{\mu\sigma}^\tau e_\tau \tag*{} \\
+                             &= \left(\pd{\mu} A_\nu^\tau + A_\nu^\sigma \Gamma_{\mu\sigma}^\tau\right) e_\tau \label{eq:christoffel_transform_1}
+  .\end{align}
+  On the other hand, we also have:
+  \begin{equation}\label{eq:christoffel_transform_2}
+    \nabla_\mu \tilde{e}_\nu = \G_{\mu\nu}^\rho \tilde{e}_\rho = \G_{\mu\nu}^\rho A_\rho^\tau e_\tau
+  \end{equation}
+  Equating the right-hand sides of equations~\eqref{eq:christoffel_transform_1} and~\eqref{eq:christoffel_transform_2}, we get:
+  \[%
+    \G_{\mu\nu}^\rho A_\rho^\tau = \pd{\mu} A_\nu^\tau + A_\nu^\sigma \Gamma_{\mu\sigma}^\tau
+  .\]%
+  Multiplying both sides by $\left(A^{-1}\right)_\tau^\mu$, we obtain:
+  \[%
+    \G_{\mu\nu}^\rho = A_\mu^\sigma \left(A^{-1}\right)_\tau^\rho \left[A_\nu^\lambda \Gamma_{\sigma\lambda}^\tau + \pd{\sigma}A_\nu^\tau\right]
+  .\]%
+  The Christoffel symbols do not transform as tensors because of the presence of the inhomogeneous term $\pd{\sigma}A_\nu^\tau$ in the transformation law. This term prevents the Christoffel symbols from obeying the tensor transformation laws, which require that all terms in the transformation be homogeneous (i.e., involve only the original components and the transformation matrices without derivatives).
 \end{solution}
 
 \begin{solution}[(ii)]
+  Let $S_{\rho\nu}^\mu = (\Gamma_1)_{\rho\nu}^\mu - (\Gamma_2)_{\rho\nu}^\mu$. Under a change of basis, we have:
+  \begin{align*}
+    S_{\rho\nu}^\mu \to \G_{\rho\nu}^\mu &= A_\rho^\sigma \left(A^{-1}\right)_\tau^\mu \left[A_\nu^\lambda (\Gamma_1)_{\sigma\lambda}^\tau + \pd{\sigma}A_\nu^\tau\right] - A_\rho^\sigma \left(A^{-1}\right)_\tau^\mu \left[A_\nu^\lambda (\Gamma_2)_{\sigma\lambda}^\tau + \pd{\sigma}A_\nu^\tau\right] \\
+                                         &= A_\rho^\sigma \left(A^{-1}\right)_\tau^\mu A_\nu^\lambda \left[(\Gamma_1)_{\sigma\lambda}^\tau - (\Gamma_2)_{\sigma\lambda}^\tau\right] \\
+                                         &= A_\rho^\sigma \left(A^{-1}\right)_\tau^\mu A_\nu^\lambda S_{\sigma\lambda}^\tau
+  .\end{align*}
+  Thus, the difference of two connections, $S_{\rho\nu}^\mu$, transforms as a tensor under a change of basis. This is because the inhomogeneous terms cancel out when taking the difference, leaving only the homogeneous transformation terms that satisfy the tensor transformation laws.
 \end{solution}
 
 \begin{problem}[3]
@@ -95,4 +126,33 @@
 \end{problem}
 
 \begin{solution}
+  The strengths and orientations of the electric and magnetic fields measured by the observer can be determined using the electromagnetic field tensor, $F_{\mu\nu}$, which is related to the four-potential, $A_\mu$, by:
+  \[%
+    F_{\mu\nu} = \pd{\mu} A_\nu - \pd{\nu} A_\mu
+  .\]%
+  For a Reissner-Nordstr\"om black hole, the four-potential is given by:
+  \[%
+    A_\mu = \left(-\frac{q}{r}, 0, 0, 0\right)
+  .\]%
+  The nonzero components of the electromagnetic field tensor are:
+  \[%
+    F_{tr} = -F_{rt} = \pd{t} A_r - \pd{r} A_t = \frac{q}{r^2}
+  .\]%
+  The electric field, $\vec{E}$, measured by the observer is given by:
+  \[%
+    E^i = F^{i0} = g^{ij} F_{j0}
+  .\]%
+  In the observer's local frame, the electric field is:
+  \[%
+    E^r = g^{rr} F_{rt} = f(r) \frac{q}{r^2}, \quad E^\theta = 0, \quad E^\phi = 0
+  .\]%
+  The magnetic field, $\vec{B}$, measured by the observer is given by:
+  \[%
+    B^i = \frac{1}{2} \epsilon^{ijk} F_{jk}
+  .\]%
+  Since the only nonzero component of $F_{\mu\nu}$ is $F_{tr}$, the magnetic field is zero:
+  \[%
+    B^r = 0, \quad B^\theta = 0, \quad B^\phi = 0
+  .\]%
+  Thus, the observer measures an electric field of strength $E^r = f(R) \frac{q}{R^2}$ directed radially outward from the black hole, and no magnetic field.
 \end{solution}
