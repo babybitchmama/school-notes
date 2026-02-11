@@ -45,6 +45,7 @@
 \usepackage{titletoc} % Required for customizing table of contents
 \usepackage{xstring} % Required for customizing table of contents
 \usepackage[most,many,breakable]{tcolorbox} % Required for creating boxes
+\usepackage{braket} % Required for bra-ket notation
 
 % Required for drawing figures
 \usepackage{tikz}
@@ -362,9 +363,9 @@
 % Brackets
 \newcommand\abs[1]{\left\lvert #1\right\rvert}
 \newcommand\Abs[1]{\left\lVert #1\right\rVert}
-\newcommand\bra[1]{\left\langle #1 \right\rangle}
-\newcommand\brak[1]{\left\langle #1 \right\rvert}
-\newcommand\braket[2]{\left\langle #1\middle\vert #2 \right\rangle}
+% \newcommand\bra[1]{\left\langle #1 \right\rangle}
+% \newcommand\brak[1]{\left\langle #1 \right\rvert}
+% \newcommand\braket[2]{\left\langle #1\middle\vert #2 \right\rangle}
 
 % Covarient derivative
 \newcommand\codv[3][]{\odv[style-inf-num=\mathrm{D},#1]{#2}{#3}}
