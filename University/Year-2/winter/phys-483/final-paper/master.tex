@@ -211,6 +211,8 @@
 
 % Main macro
 \newcommand\dA{\dd{A}}
+\newcommand\dF{\dd{F}}
+\newcommand\df{\dd{f}}
 \newcommand\dV{\dd{V}}
 \newcommand\dm{\dd{m}}
 \newcommand\ds{\dd{s}}
@@ -265,6 +267,8 @@
   \endgroup
 }
 
+\newcommand\codv[3][]{\odv[style-inf-num=\mathrm{D},#1]{#2}{#3}}
+
 \begin{document}
   \pagenumbering{roman}
 
@@ -307,6 +311,8 @@
 
   \noindent
   This paper is organized in two parts: chapter~\ref{chap:1}~goes over the preliminaries and theoretical background of gravitational waves, while chapter~\ref{chap:2}~delves into the Einstein field equations, linearized gravity, and recent developments in gravitational wave astronomy. We only assume that the reader is familiar with the basics of undergraduate math and physics, as we'll develop the mathematics (differential geometry, PDE's, etc), and the physics (general relativity, gravitational waves, etc), as we go along.
+
+  If you already have a strong understanding of differential geometry (\ref{sub_sec:differential_geometry}), partial differential equations (\ref{sub_sec:partial_differential_equations}), and linear algebra (\ref{sub_sec:linear_algebra}), you can skip to section~\ref{sec:theoretical_physics_background}, where we introduce the necessary physics background for understanding gravitational waves.
 
   Please note that this paper will be more mathematical in nature, as I aim to explore the mathematical framework underlying gravitational waves, rather than focusing solely on their physical implications. The mathematical perspective will allow us to gain a deeper understanding of the properties and behavior of gravitational waves, as well as their significance in the broader context of physics and astronomy.
 
@@ -355,10 +361,15 @@
 
   \section{Preliminaries}
 
-  We start this section by developing the necessary mathematical tools and concepts required to understand gravitational waves. This includes an introduction to differential geomery, which is essential for understanding the curvature of spacetime and the behavior of gravitational waves. We will also cover the basics of partial differential equations, which are crucial for describing the propagation of gravitational waves through spacetime. Finally, we will review some linear algebra concepts that are relevant for understanding the properties of tensors, which play a central role in the mathematical description of gravitational waves.
+  We start this section by developing the necessary mathematical tools and concepts required to understand gravitational waves. This includes a brief review of linear algebra, differential geometry, and partial differential equations.
 
-  % 1. Differential Geometry (manifolds, tensors, curvature, curvature flow, etc.)
+  % 1. Linear Algebra (for understanding the properties of tensors, etc.)
+  \subsection{Linear Algebra}
+  \label{sub_sec:linear_algebra}
+
+  % 2. Differential Geometry (manifolds, tensors, curvature, curvature flow, etc.)
   \subsection{Differential Geometry}
+  \label{sub_sec:differential_geometry}
 
   Let's begin by introducing the concept of a manifold.
   \begin{definition}
@@ -431,10 +442,13 @@
   \begin{definition}
     A \emph{$k$-differentiable manifold} is a manifold $M$ equipped with an atlas $\mathcal{A}$ such that for every non-disjoint pair of charts $(U_i, \phi_i)$ and $(U_j, \phi_j)$ in $\mathcal{A}$, the transition map $\phi_j \circ \phi_i^{-1}$ is a $k$-differentiable function. If $k = \infty$, we call $M$ a \emph{smooth manifold}.
   \end{definition}
-  Note, throughout this paper, we will be working with smooth manifolds, so we will simply refer to them as manifolds.
 
   \subsubsection{Metrics}
-  Let $M$ be a smooth manifold of dimension $n$. We can define something called a metric that allows us to talk about distances and angles on the manifold. This is crucial for understanding the geometry of spacetime and the behavior of gravitational waves. We can define a metric as follows.
+  Let $M$ be a manifold
+  \footnote{
+    Throughout this paper, we're only interested in smooth manifolds, so we will assume that all manifolds are smooth unless otherwise stated. We also drop the adjective ``$n$-dimension''. So, it's safe to assume that whenever we say ``manifold'', we mean a smooth manifold of dimension $n$, unless otherwise stated.
+  }.
+  We can define something called a metric that allows us to talk about distances and angles on the manifold. This is crucial for understanding the geometry of spacetime and the behavior of gravitational waves. We can define a metric as follows.
   \begin{definition}
     A \emph{metric tensor} on $M$ is a smooth assignment
     \[%
@@ -523,7 +537,7 @@
     Covectors live in the cotangent bundle, while the contravariant vectors (i.e., tangent vectors) live in the tangent bundle.
   \end{note}
 
-  In local coordinates, tensor components are written using upper and lower indices to distinguish components with respect to a chosen basis of $T_pM$ and its dual basis in $T_p^*M$. The interpretation of raising and lowering indices will be discussed later once a metric structure is introduced.
+  In local coordinates, tensor components are written using upper and lower indices to distinguish components with respect to a chosen basis of $T_pM$ and its dual basis in $T_p^*M$. We go over this in more detail in section~\ref{sec:theoretical_physics_background}.
 
   \begin{definition}
     Let $\pi : E \to M$ be a vector bundle over $M$. A \emph{section} of $E$ is a smooth map
@@ -574,30 +588,45 @@
     .\]%
   \end{example}
 
-  Now, we need a way to generalize this to higher-order forms, which is where the concept of the wedge product comes in. The wedge product allows us to combine 1-forms to create higher-order forms, such as 2-forms, 3-forms, etc. We can define the wedge product as follows.
+  We denote the space of smooth 1-forms on $M$ by $\Omega^k(M)$, with $k = 1$. This implies that there are higher order forms. So, we need a way to generalize this to higher-order forms, which is where the concept of the wedge product comes in. The wedge product allows us to combine 1-forms to create higher-order forms, such as 2-forms, 3-forms, etc. We can define the wedge product as follows.
 
   \begin{definition}
     The \emph{wedge product}
     \[%
       \wedge : \Omega^p(M) \times \Omega^q(M) \to \Omega^{p+q}(M)
     ,\]%
-    is the bilinear operation defined by antisymmetrization of the tensor product. For $\alpha \in \Omega^p(M)$ and $\beta \in \Omega^q(M)$,
-    \[%
-      \alpha \wedge \beta = \frac{(p+q)!}{p!q!} \operatorname{Alt}(\alpha \otimes \beta)
-    ,\]%
-    where $\operatorname{Alt}$ denotes antisymmetrization.
+    is the bilinear operation that takes a $p$-form $\alpha$ and a $q$-form $\beta$ and produces a $(p+q)$-form $\alpha \wedge \beta$, defined by the following properties:
+    \begin{enumerate}
+      \item \emph{Bilinearity:} For all $\alpha, \alpha' \in \Omega^p(M)$, $\beta, \beta' \in \Omega^q(M)$, and $f, g \in C^\infty(M)$,
+        \begin{align*}
+          (f\alpha + g\alpha') \wedge \beta &= f(\alpha \wedge \beta) + g(\alpha' \wedge \beta), \\
+          \alpha \wedge (f\beta + g\beta') &= f(\alpha \wedge \beta) + g(\alpha \wedge \beta').
+        \end{align*}
+      \item \emph{Antisymmetry:} For all $\alpha \in \Omega^p(M)$ and $\beta \in \Omega^q(M)$,
+        \[%
+          \alpha \wedge \beta = (-1)^{pq} \beta \wedge \alpha
+        .\]%
+       In particular, if $\alpha$ is a 1-form, then $\alpha \wedge \alpha = 0$.
+      \item \emph{Associativity:} For all $\alpha \in \Omega^p(M)$, $\beta \in \Omega^q(M)$, and $\gamma \in \Omega^r(M)$,
+        \[%
+          (\alpha \wedge \beta) \wedge \gamma = \alpha \wedge (\beta \wedge \gamma)
+        .\]%
+    \end{enumerate}
   \end{definition}
 
-  Now, we can use the wedge product to define a 2-form, which represents an orientated area element on the manifold.
+  Now, we can use the wedge product to define a 2-form, which represents an orientated area element on the manifold. Just like in vector calculus, where we had $\dA = \dx\dy$, we can define a 2-form $\omega$ as
+  \[%
+    \omega = \omega_{\mu\nu} \dx^\mu \wedge \dx^\nu
+  .\]%
 
   Next, we need to define what the pullback of a differential form is and what a pushforward of a vector field is, as these concepts will be important when we talk about the behavior of gravitational waves under coordinate transformations. The pullback allows us to take a differential form defined on one manifold and pull it back to another manifold via a smooth map, while the pushforward allows us to take a vector field defined on one manifold and push it forward to another manifold via a smooth map.
 
   \begin{definition}
     Let $f : M \to N$ be a smooth map between manifolds $M$ and $N$. The \emph{pullback} of a differential form $\omega$ on $N$ by the map $f$ is a differential form on $M$, denoted by $f^*\omega$, defined as follows: for any point $p \in M$ and any tangent vectors $v_1, v_2, \ldots, v_k \in T_pM$, we have
     \[%
-      (f^*\omega)_p(v_1, v_2, \ldots, v_k) = \omega_{f(p)}(df_p(v_1), df_p(v_2), \ldots, df_p(v_k))
+      (f^*\omega)_p(v_1, v_2, \ldots, v_k) = \omega_{f(p)}(\df_p(v_1), \df_p(v_2), \ldots, \df_p(v_k))
     ,\]%
-    where $df_p : T_pM \to T_{f(p)}N$ is the differential of the map $f$ at the point $p$.
+    where $\df_p : T_pM \to T_{f(p)}N$ is the differential of the map $f$ at the point $p$.
   \end{definition}
 
   \begin{example}
@@ -631,9 +660,8 @@
   \begin{definition}
     Let $f : M \to N$ be a smooth map between manifolds $M$ and $N$. The \emph{pushforward} of a vector field $X$ on $M$ by the map $f$ is a vector field on $N$, denoted by $f_*X$, defined as follows: for any point $p \in M$, we have
     \[%
-      (f_*X)_{f(p)} = df_p(X_p)
-    ,\]%
-    where $df_p : T_pM \to T_{f(p)}N$ is the differential of the map $f$ at the point $p$.
+      (f_*X)_{f(p)} = \df_p(X_p)
+    .\]%
   \end{definition}
 
   \begin{example}
@@ -645,7 +673,7 @@
 
     The Jacobian matrix of $F$ is
     \[%
-      \d{F} = \begin{pmatrix}
+      \dF = \begin{pmatrix}
         \pd{x} u & \pd{y} u \\
         \pd{x} v & \pd{y} v \\
       \end{pmatrix}
@@ -760,7 +788,7 @@
   ,\]%
   then the \emph{covariant derivative of $X$ along $\gamma$} is defined by
   \[%
-    \mdv{X}{t} := \nabla_{\dot{\gamma}(t)} X
+    \codv{X}{t} := \nabla_{\dot{\gamma}(t)} X
   .\]%
 
   This measures how $X$ changes along the curve while accounting for the curvature of the manifold.
@@ -771,11 +799,11 @@
   ,\]%
   then
   \[%
-    \mdv{X^\mu}{t} = \odv{x^\mu}{t} + \Gamma^\mu_{\alpha\beta} \dot{\gamma}^\alpha X^\beta
+    \codv{X^\mu}{t} = \odv{x^\mu}{t} + \Gamma^\mu_{\alpha\beta} \dot{\gamma}^\alpha X^\beta
   .\]%
   A vector field $X$ along $\gamma$ is said to be \emph{parallel transported} if
   \[%
-    \mdv{\dot{\gamma}}{t} = 0
+    \codv{\dot{\gamma}}{t} = 0
   .\]%
   In coordinates, this becomes
   \[%
@@ -799,7 +827,7 @@
 
   A curve $\gamma$ is called a \emph{geodesic} if its tangent vector is parallel transported along itself:
   \[%
-    \mdv{\dot{y}}{t} = 0
+    \codv{\dot{y}}{t} = 0
   .\]%
   Equivalently,
   \[%
@@ -825,8 +853,9 @@
 
   The quantitative description of this relative acceleration is given by the geodesic deviation equation, which will be discussed later.
 
-  % 2. Partial Differential Equations (wave equations, hyperbolic PDEs, etc.)
+  % 3. Partial Differential Equations (wave equations, hyperbolic PDEs, etc.)
   \subsection{Partial Differential Equations}
+  \label{sub_sec:partial_differential_equations}
 
   Gravitational waves arise as solutions to certain hyperbolic partial differential equations. In this section, we review the class of equations that will be relevant for our discussion.
 
@@ -932,9 +961,6 @@
   where $\nabla$ denotes the covariant derivative.
 
   The study of gravitational waves ultimately reduces to analyzing tensor-valued solutions of hyperbolic equations of this type.
-
-  % 3. Linear Algebra (for understanding the properties of tensors, etc.)
-  \subsection{Linear Algebra}
 
   \section{Theoretical Physics Background}
   \label{sec:theoretical_physics_background}
