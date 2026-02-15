@@ -1,0 +1,52 @@
+\section{Introduction}
+\label{sec:introduction}
+
+\noindent
+This paper is organized in two parts: chapter~\ref{chap:1}~goes over the preliminaries and theoretical background of gravitational waves, while chapter~\ref{chap:2}~delves into the Einstein field equations, linearized gravity, and recent developments in gravitational wave astronomy. We only assume that the reader is familiar with the basics of undergraduate math and physics, as we'll develop the mathematics (differential geometry, PDE's, etc), and the physics (general relativity, gravitational waves, etc), as we go along.
+
+If you already have a strong understanding of differential geometry, you can skip to section~\ref{sec:theoretical_physics_background}, where we introduce the necessary physics background for understanding gravitational waves.
+
+Please note that this paper will be more mathematical in nature, as I aim to explore the mathematical framework underlying gravitational waves, rather than focusing solely on their physical implications. The mathematical perspective will allow us to gain a deeper understanding of the properties and behavior of gravitational waves, as well as their significance in the broader context of physics and astronomy.
+
+The goal is to provide a comprehensive overview of the mathematical framework underlying gravitational waves, while also highlighting their significance in the broader context of physics and astronomy. We start this chapter by going over the notation used throughout this paper.
+
+\section{Notation}
+
+Throughout this paper we employ the Einstein summation convention. Tensor components will be written using indices, where repeated indices appearing once as an upper index and once as a lower index imply summation over their range.
+
+More precisely, if an index $\mu$ appears exactly twice in a term, once as a superscript and once as a subscript, then
+\[%
+  A^\mu B_\mu := \sum_{\mu=0}^{n-1} A^\mu B_\mu
+.\]%
+Unless otherwise stated, Greek indices $\mu, \nu, \rho, \sigma$ range from $0$ to $n-1$, while Latin indices $i, j, k$ range from $1$ to $n-1$. In the context of general relativity, we will eventually specialize to $n = 4$. We adopt the convention that repeated indices are summed only when one index is upper and the other lower; repeated indices both upper or both lower do not imply summation.
+
+Indices are raised and lowered using a metric tensor, which will be introduced in section~\ref{sec:theoretical_physics_background}. The position of indices is significant, as it distinguishes between covariant and contravariant components of tensors.
+
+Partial derivatives with respect to coordinates $x^\mu$ will be written in the standard form
+\[%
+  \pdv{f}{x^\mu}
+\]%
+For notational convenience, we introduce the shorthand
+\[%
+  \pd{\mu} f := \pdv{f}{x^\mu}
+.\]%
+More generally,
+\[%
+  \pd{y^\mu} f := \pdv{f}{y^\mu}
+,\]%
+when differentiation with respect to a different coordinate system is required. We also use the shorthand notation that $\dot{x}$ is defined as
+\[%
+  \dot{x} := \odv{x}{\lambda}
+,\]%
+or whatever the parameter of differentiation is (in most cases, it's either $\lambda$, $\tau$, or $t$).
+
+\begin{example}
+  The Euler–Lagrange equations for a Lagrangian $L(x^k, \dot{x}^k)$ are
+  \[%
+    \pdv{L}{x^k} - \pdv{}{\lambda} \left(\pdv{L}{\dot{x}^k}\right) = 0
+  .\]%
+  Using the shorthand notation, this may be written as
+  \[%
+    \pd{k} L - \odv{}{\lambda} \left(\pd{\dot{x}^k} L\right) = 0
+  .\]%
+\end{example}
