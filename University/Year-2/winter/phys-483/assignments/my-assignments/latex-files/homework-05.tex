@@ -1,0 +1,182 @@
+\renewcommand\l{\mathbf{l}}
+\renewcommand\O{\mathcal{O}}
+\newcommand\dyn{\text{dyn}}
+\renewcommand\B{\mathbf{B}}
+\renewcommand\S{\mathbb{S}}
+
+\begin{problem}[1 (Geodetic Precession)]
+  Consider an observer with 4-velocity $\u$ who parallel-transports a unit vector $\l$ with $\l \cdot \u = 0$ along their trajectory. Imagine $\l$ to be the direction given by a gyroscope. Suppose also that our observer is in a spacetime that is dominated by nonrelativistic sources, so that the line element is
+  \[%
+    \ds^2 = -(1 + 2\Phi)\dt^2 + (1 - 2\Phi)\left[(\dx^1)^2 + (\dx^2)^2 + (\dx^3)^2\right]
+  ,\]%
+  with $\Phi \sim \O(\epsilon)$, and that the observer moves relative to the coordinate system with $u^i \sim \O(\epsilon^{1/2})$ The treatment of 3-velocity as being of order the square root of the potential is of course appropriate for the motions of virialized systems – e.g. the Solar System – where kinetic and potential energies are of the same order of magnitude. The trajectory of the observer can be parameterized by $x^i(t)$, where $t$ is the coordinate time; in this problem, we will use overdots to denote $\odv{}/{t}$ and not $\odv{}/{\tau}$. The system is assumed to evolve on a dynamical timescale $t_{\text{dyn}}$, and hence has a length scale of order $t_{\dyn}\epsilon^{1/2}$. For reference, in the Solar System, $t_{\dyn} \sim 1$ year, $\epsilon \sim 10^{-8}$ , and the length scale is $t_{\dyn}\epsilon^{1/2} \sim 1$ hour, which is a few AU in relativistic units where $c = 1$.
+  \begin{enumerate}
+    \item (5 points) Show that $\O(\epsilon), l^0 = \dot{x}^il_i$.
+    \item (10 points) By careful counting of the powers of $\epsilon$ and $t_\dyn$, show that to $\O(\epsilon/t_\dyn)$
+      \[%
+        \odv{l^i}{t} = -2\dot{x}^jl^j\Phi_{,i} + l^i\dot{\Phi} + \dot{x}^il^k\Phi_{,k} + \dot{x}^ml^i\Phi_{,m}
+      .\]%
+      \textit{Hint: start with the fact that $\l$ is parallel-transported and use definition of the Christoffel symbols with respect to the metric}
+
+      \noindent In what follows, we wish to consider the long-term evolution of the direction provided by the gyroscope, $\l$ - i.e., we will average the result from part (ii) over many dynamical times. We will assume that the orbit of our observer is virialized, i.e. that the velocities and potential may fluctuate but there is no secular (long term) trend: $\braket{\dot{\Phi}} = 0$, etc, where $\braket{x} = \lim_{T \to \infty} \frac{1}{T}\int_0^T x \,\dt$ is defined as the time-average of $x$.
+    \item (10 points) ($\star$) Show that under the case of virialization, $\braket{\dot{x}^i, \ddot{x}^j}$ is antisymmetric. Thus its entire information content is contained in
+      \[%
+        B^k = \epsilon^{ijk}\braket{\dot{x}^i\ddot{x}^j}
+      .\]%
+      For the Newtonian equations of motion, use virialization to express $\braket{\dot{x}^i\Phi_{,j}}$ in terms of $B^k$; your expression should be accurate of order $\epsilon/t_\dyn$.
+    \item (10 points) ($\star)$ Show that then the rate of change of direction of the gyroscope is
+      \[%
+        \braket{\odv{l^i}{t}} = \frac{3}{2}\epsilon_{ijk}B^jl^k
+      .\]%
+      Thus a gyroscope carried by the observer appears to precess at a rate given by $\B$ (in both magnitude and in direction, i.e. axis of precession) relative to the outside Universe.
+    \item (5 points) ($\star$) Evaluate $\B$ for an observer on a circular orbit of radius $R$ around a central mass $M$. In angular units per year (e.g. arcsec/yr, degrees/yr ...) what is this for a low-orbiting satellite around the Earth? [Yes, this has actually been measured!]
+  \end{enumerate}
+\end{problem}
+
+\begin{solution}[(i)]
+  Since we have $\u \cdot \l = 0$, we have
+  \begin{align*}
+    0 = \u \cdot \l &= g_{\mu\nu} u^\mu l^\nu \\
+                    &= g_{00}u^0l^0 + g_{ii}u^il^i
+  .\end{align*}
+  Thus, we have
+  \[%
+    g_{00}u^0l^0 = -g_{ii}u^iv^i \implies -(1 - 2\Phi)u^0l^0 = (1 - 2\Phi)u^iv^i
+  .\]%
+  Since we have $u^0 = 1$, we get
+  \[%
+    l^0 = \frac{1 + 2\Phi}{1 - 2\Phi} u^iv^i
+  .\]%
+\end{solution}
+
+\begin{solution}[(ii)]
+  Using the fact that $\l$ is parallel transported, we get:
+  \[%
+    \odv{l^i}{t} + \Gamma_{\alpha\beta}^\mu \dot{x}^\alpha l^\beta = 0
+  .\]%
+  Expanding using the definition of the Christoffel symbols in the metric $g_{\mu\nu}$, we get:
+  \[%
+    \odv{l^i}{t} + \frac{1}{2}g^{\mu\sigma}\left(\pd{\alpha}g_{\sigma\beta} + \pd{\beta}g_{\sigma\alpha} - \pd{\sigma}g_{\alpha\beta}\right) \dot{x}^\alpha l^\beta = 0
+  .\]%
+\end{solution}
+
+\begin{solution}[(iii)]
+\end{solution}
+
+\begin{solution}[(iv)]
+\end{solution}
+
+\begin{solution}[(v)]
+\end{solution}
+
+\begin{problem}[2 (Gauss-Bonnet theorem in action)]
+  Consider the round 2-sphere of radius $r_0$, whose metric is:
+  \[%
+    \ds^2 = r_0^2(\dd{\theta}^2 + \sin^2(\theta)\dd{\phi}^2)
+  .\]%
+  \begin{enumerate}
+    \item (5 points) Compute all the non-vanishing components of the Riemann curvature tensor $R_{\mu\nu\rho\sigma}$, where $\mu$, $\nu$, $\rho$, $\sigma$ run over $\theta$ and $\phi$.
+    \item (10 points) Show that the surface integral of the scalar curvature $R$
+      \[%
+        \int_{\S^2} \sqrt{g} \dd{\phi,\theta} R
+      ,\]%
+      over the whole 2-sphere is independent of $r_0$. Obtain the numerical value of this integral.
+  \end{enumerate}
+\end{problem}
+
+\begin{solution}[(i)]
+  For a 2D sphere of radius $r_0$, the non-vanishing components of the Riemann curvature tensor are:
+  \begin{gather*}
+    R_{\theta\phi\theta\phi} = r_0^2\sin^2(\theta) = R_{\phi\theta\phi\theta} \\
+    R_{\theta\phi\phi\theta} = -r_0^2\sin^2(\theta) = R_{\phi\theta\theta\phi}
+  .\qedhere\end{gather*}
+\end{solution}
+
+\begin{solution}[(ii)]
+  Computing $g$, we get:
+  \[%
+    g = \det\begin{pmatrix}
+      r_0^2 & 0 \\
+      0 & r_0^2\sin^2(\theta) \\
+    \end{pmatrix} = r_0^4\sin^2(\theta)
+  .\]%
+  Thus, we have $\sqrt{g} = r_0^2\sin(\theta)$.
+  The Riemann curvature scalar is given by:
+  \[%
+    R = g^{\mu\nu}R_{\mu\nu}
+  .\]%
+  On a 2D sphere with constant curvature, we have:
+  \[%
+     R = \frac{1}{r_0^2}
+  .\]%
+  Now, we evaluate the integral to get:
+  \begin{align*}
+    \int_{\S^2} \sqrt{g} \dd{\phi,\theta} R &= \int_0^{2\pi} \int_0^\pi r_0^2\sin(\theta) \dd{\phi,\theta} \frac{2}{r_0^2} \\
+                                               &= 2 \int_0^{2\pi} 2 \dd{\phi} \\
+                                               &= \frac{4r_0^2[2\pi - 0]}{r_0^2} = 8\pi
+  .\qedhere\end{align*}
+\end{solution}
+
+\begin{problem}[3 (Birkhoff's Theorem)]
+  Invariance under $t \rightarrow -t$ excludes elements of the form $g_{rt} \dd{r,t}$ from the line element that represents the geometry of a line element outside a static spherically symmetric distribution of stress energy. However, in a dynamic situation such a spherically symmetric collapse, this no longer holds and the most general spherically symmetric line element is of the form
+  \[%
+    \ds^2 = -A(r, t)\dt^2 + 2B(r, t)\dd{t,r} + C(r, t)\dr^2 + r^2\left(\dd{\theta}^2 + \sin^2(\theta)\dd{\phi}^2\right)
+  .\]%
+  \begin{enumerate}
+    \item Show that a transformation of the form $t \rightarrow t + f(r, t)$ for some $f(r, t)$ can be used to eliminate the $\dd{r,t}$ term, leaving as the most general spherically symmetric metric a line element of the form
+      \[%
+        \ds^2 = -e^{v(r,t)}\dt^2 + e^{\lambda(r,t)}\dr^2 + r^2\left(\dd{\theta}^2\sin^2(\theta)\dd{\phi}^2\right)
+      .\]%
+    \item Using the expressions for the Einstein tensor ($'$ denotes derivative with respect to to $r$ while $\dot{\phantom{ }}$ denotes derivative with respect to t)
+      \begin{align*}
+        G_{\hat{t}\hat{t}} &= e^{-\lambda}\left(-1 + e^\lambda + r\lambda'\right)/2 \\
+        G_{\hat{t}\hat{r}} &= e^{-(v+\lambda)/2}\dot{\lambda}/r \\
+        G_{\hat{r}\hat{r}} &= e^{-\lambda}\left(1 - e^\lambda + rv'\right)/r^2 \\
+        G_{\hat{\theta}\hat{\theta}} &= G_{\hat{\phi}\hat{\phi}} =
+        e^{-\lambda}\left[2v'' + (v')^2 + 2(v' - \lambda')/r - v'\lambda'\right]/4 - e^{-v}\left[2\ddot{\lambda} + \dot{\lambda}^2 - \dot{\lambda}\dot{v}\right]/4
+      ,\end{align*}
+      show that $G_{\hat{t}\hat{r}} = 0$ implies that $\lambda(r, t)$ is independent of time. Use the remaining components of the Einstein equation to show $v(r, t) = -\lambda(r) + h(t)$ for some $h(t)$.
+    \item (5 points) Use these results to conclude that the Schwarzschild geometry is the most general asymptotically flat, spherically symmetric solution of the Einstein equation, dynamic or not. This is known as Birkhoff's theorem.
+  \end{enumerate}
+\end{problem}
+
+\begin{solution}[(i)]
+  Let the new time coordinate be $T = t + f(r, t)$ for some $f(r, t)$. The differential is given by:
+  \[%
+    \dd{T} = \left(1 + \pdv{f}{t}\right) \dt + \pdv{f}{r} \dr
+  .\]%
+  Solving for $\dt$, we get:
+  \[%
+    \dt = \frac{\dd{T} - f_{,r} \dr}{1 + f_{,t}}
+  .\]%
+  Substituting this into the line element, we get:
+  \[%
+    \ds^2 = -A\left(\frac{\dd{T} - f_{,r} \dr}{1 + f_{,t}}\right)^2 + 2B\left(\frac{\dd{T} - f_{,r} \dr}{1 + f_{,t}}\right) \dr + C(r, t)\dr^2 + r^2\dd{\Omega}^2
+  .\]%
+  Collecting all the differential coefficients, we have:
+  \begin{equation}\label{eq:differential_coefficients}
+    -\frac{A}{(1 + f_t)^2}\dd{T}^2, \quad \left(\frac{2Af_r}{(1 + f_t)^2} + \frac{2B}{1 + f_t}\right)\dd{T,r}, \aand \left(C - \frac{Af_r^2}{(1 + f_t)^2} - \frac{2Bf_r}{1 + f_t}\right)\dr^2
+  \end{equation}
+  For the coefficient of $\dd{T,r}$ to vanish, we must have:
+  \begin{equation}\label{eq:new_f_r}
+    \frac{2Af_r}{(1 + f_t)^2} + \frac{2B}{1 + f_t} = 0 \implies f_r = -\frac{B}{A}(1 + f_t)
+  \end{equation}
+  Plugging the result from Equation~\eqref{eq:new_f_r} back into the $\dr^2$ coefficient from Equation~\eqref{eq:differential_coefficients}, we get:
+  \begin{gather*}
+    g_{rr} = C - \frac{A}{(1 + f_t)^2}\left(-\frac{B}{A}(1 + f_t)\right)^2 - \frac{2B}{1 + f_t}\left(-\frac{B}{A}(1 + f_t)\right) = C + \frac{B}{A}
+  \end{gather*}
+  Thus, we have:
+  \[%
+    \ds^2 = e^{v(r,t)}\dd{T}^2 + e^{\lambda(r,t)}\dr^2 + r^2\left(\dd{\theta}^2 + \sin^2(\theta)\dd{\phi}^2\right)
+  ,\]%
+  where
+  \[%
+    e^{v(r,t)} = -\frac{A(r, t)}{(1 + f_t)^2} \aand e^{\lambda(r,t)} = C(r, t) + \frac{B(r, t)^2}{A(r, t)}
+  .\qedhere\]%
+\end{solution}
+
+\begin{solution}[(ii)]
+\end{solution}
+
+\begin{solution}[(iii)]
+\end{solution}

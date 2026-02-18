@@ -1,0 +1,286 @@
+\newcommand\St{\operatorname{St}}
+
+\begin{problem}[1]
+  Prove Lemma 8.8 from the book (also stated in class), which says that the map $\chi$ is a chain map.
+\end{problem}
+
+\begin{solution}
+  We prove that the map $\chi$ is a chain map, i.e.
+  \[%
+    \partial \circ \chi = \chi \circ \partial
+  .\]%
+  Let $\sigma : \Delta^n \to X$ be a singular $n$-simplex. By definition,
+  \[%
+    \chi(\sigma) = \sum_{i=0}^n (-1)^i \sigma|_{[v_0,\dots,\widehat{v_i},\dots,v_n]}
+  ,\]%
+  where the restriction is taken to the $i$th face of $\Delta^n$.
+
+  Applying the boundary operator, we obtain
+  \[%
+    \partial(\chi(\sigma)) = \sum_{i=0}^n (-1)^i \, \partial\!\left(\sigma|_{[v_0, \dots, \widehat{v_i}, \dots, v_n]}\right)
+  .\]%
+  Each restricted map $\sigma|_{[v_0, \dots, \widehat{v_i}, \dots, v_n]}$ is an $(n - 1)$-simplex, so its boundary is
+  \[%
+    \partial\!\left(\sigma|_{[v_0, \dots, \widehat{v_i}, \dots, v_n]}\right) = \sum_{j=0}^{n-1} (-1)^j \sigma|_{[v_0, \dots, \widehat{v_i}, \dots, \widehat{v_{k}}, \dots, v_n]}
+  ,\]%
+  where $k$ denotes the original vertex omitted after removing the $i$th vertex.
+
+  Hence,
+  \[%
+    \partial(\chi(\sigma)) = \sum_{i<k} (-1)^{i+k-1} \sigma|_{[v_0, \dots, \widehat{v_i}, \dots, \widehat{v_k}, \dots, v_n]} + \sum_{k<i} (-1)^{i+k} \sigma|_{[v_0, \dots, \widehat{v_k}, \dots, \widehat{v_i}, \dots, v_n]}
+  .\]%
+  Each codimension--$2$ face appears exactly twice with opposite signs, so the terms cancel in pairs. Therefore, $\partial(\chi(\sigma)) = 0$.
+
+  On the other hand,
+  \[%
+    \partial \sigma = \sum_{i=0}^n (-1)^i \sigma|_{[v_0, \dots, \widehat{v_i}, \dots, v_n]}
+  .\]%
+  Applying $\chi$,
+  \[%
+    \chi(\partial \sigma) = \sum_{i=0}^n (-1)^i \chi\!\left(\sigma|_{[v_0, \dots, \widehat{v_i}, \dots, v_n]}\right)
+  .\]%
+  Expanding this produces the same collection of codimension--$2$ faces with the same coefficients as above, and hence the same cancellations occur. Therefore, $\chi(\partial \sigma) = 0$.
+  Thus,
+  \[%
+    \partial(\chi(\sigma)) = \chi(\partial \sigma)
+  ,\]%
+  and since both $\partial$ and $\chi$ are linear, this equality holds for all chains. Hence $\chi$ is a chain map.
+\end{solution}
+
+\begin{problem}[2]
+  Suppose that $s : |K^m| \to |L|$ is a simplicial approximation of $f : |K| \to |L|$, $n > m$, and $\theta : |K^n| \to |K^m|$ is a standard simplicial map (page 188). Show that $s \circ \theta : |K^n| \to |L|$ is also a simplicial approximation of $f$.
+\end{problem}
+
+\begin{solution}
+  Recall that $s : |K^m| \to |L|$ is a simplicial approximation to $f : |K| \to |L|$ if for every vertex $v$ of $K^m$,
+  \[%
+    f(\St(v)) \subset \St(s(v))
+  ,\]%
+  where $\St(v)$ denotes the open star of $v$.
+
+  Let $\theta : |K^n| \to |K^m|$ be the standard simplicial map with $n > m$. We must show that the composition
+  \[%
+    s \circ \theta : |K^n| \to |L|
+  ,\]%
+  is also a simplicial approximation to $f$. That is, for each vertex $w$ of $K^n$, we must verify
+  \[%
+    f(\St(w)) \subset \St\big((s \circ \theta)(w)\big)
+  .\]%
+
+  Let $w$ be a vertex of $K^n$. Since $\theta$ is simplicial, it maps vertices of $K^n$ to vertices of $K^m$, and it carries simplices linearly onto simplices. In particular, there exists a vertex $v = \theta(w)$ of $K^m$ such that
+  \[%
+    \theta(\St(w)) \subset \St(v)
+  .\]%
+
+  Now let $x \in \St(w)$. Then $\theta(x) \in \St(v)$. Since $s$ is a simplicial approximation to $f$, we have
+  \[%
+    f(\St(v)) \subset \St(s(v))
+  .\]%
+  Because $x \in \St(w)$ implies $\theta(x) \in \St(v)$, it follows that
+  \[%
+    f(x) \in \St(s(v))
+  .\]%
+
+  But $v = \theta(w)$, so $s(v) = s(\theta(w)) = (s \circ \theta)(w)$. Therefore,
+  \[%
+    f(x) \in \St\big((s \circ \theta)(w)\big)
+  .\]%
+  Since this holds for all $x \in \St(w)$, we conclude
+  \[%
+    f(\St(w)) \subset \St\big((s \circ \theta)(w)\big)
+  .\]%
+
+  Hence $s \circ \theta$ is a simplicial approximation to $f$.
+\end{solution}
+
+\begin{problem}[3]
+  Suppose that $s, t : |K| \to |L|$ are simplicial maps, and let $s_i, t_i : C_i(K) \to C_i(L)$ denote the induced maps on oriented $i$-simplices. Suppose also that, for each $i$, we have a linear map $d_i : C_i(K) \to C_{i+1}(L)$ with the property that we have the following equality of linear maps from $C_i(K)$ to $C_i(L)$:
+  \[%
+    d_{i-1} \circ \pd{i}^K + \pd{i+1}^L \circ d_i = t_i - s_i
+  ,\]%
+  Such a collection of maps $d_i$ is called a \textit{chain homotopy} relating the simplicial maps $s$ and $t$. Show that we have $t_* = s_* : H_i(K) \to H_i(L)$.
+\end{problem}
+
+\begin{solution}
+  Let $s_i, t_i : C_i(K) \to C_i(L)$ be the chain maps induced by the simplicial maps $s$ and $t$, and suppose there exist linear maps
+  \[%
+    d_i : C_i(K) \to C_{i+1}(L)
+  ,\]%
+  such that
+  \[%
+    d_{i-1} \circ \pd{i}^K + \pd{i+1}^L \circ d_i = t_i - s_i
+  .\]%
+  We must show that the induced maps on homology satisfy
+  \[%
+    t_* = s_* : H_i(K) \to H_i(L)
+  .\]%
+
+  Let $[z] \in H_i(K)$, where $z \in C_i(K)$ is a cycle, so
+  \[%
+    \pd{i}^K z = 0
+  .\]%
+  Apply the chain homotopy identity to $z$:
+  \[%
+    (t_i - s_i)(z) = d_{i-1}(\pd{i}^K z) + \pd{i+1}^L(d_i z)
+  .\]%
+  Since $z$ is a cycle, the first term vanishes:
+  \[%
+    d_{i-1}(\pd{i}^K z) = 0
+  .\]%
+  Hence,
+  \[%
+    t_i(z) - s_i(z) = \pd{i+1}^L(d_i z)
+  .\]%
+  This shows that $t_i(z) - s_i(z)$ is a boundary in $C_i(L)$. Therefore $t_i(z)$ and $s_i(z)$ represent the same homology class:
+  \[%
+    [t_i(z)] = [s_i(z)] \in H_i(L)
+  .\]%
+
+  By definition of the induced maps on homology,
+  \[%
+    t_*([z]) = [t_i(z)], \qquad s_*([z]) = [s_i(z)]
+  ,\]%
+  and thus
+  \[%
+    t_*([z]) = s_*([z])
+  .\]%
+  Since this holds for every homology class $[z] \in H_i(K)$, we conclude that
+  \[%
+    t_* = s_* : H_i(K) \to H_i(L)
+  .\qedhere\]%
+\end{solution}
+
+\begin{problem}[4]
+  Recall that two simplicial maps $s, t : |K| to |L|$ are \textit{close} if, for every simplex $A \in K$, there exists a simplex $B \in L$ such that $s(A)$ and $t(A)$ are both faces of $B$. The smallest such simplex $B$ is called the \textit{carrier} of $A$. The goal of this problem is to show that, if $s$ and $t$ are close, then they are related by a chain homotopy, and therefore they induce the same map on homology. Assume that $s$ and $t$ are close.
+  \begin{enumerate}
+    \item Define $d_0 : C_0(K) \to C_1(L)$ by putting
+      \[%
+        d_0(v) = \begin{cases}
+          0 & \text{if}~s(v) = t(v) \\
+          (s(v), t(v)) & \text{otherwise}.
+        \end{cases}
+      \]%
+      Show that $\pd{1}^L \circ d_0 = t_0 - s_0 : C_0(K) \to C_0(L)$.
+    \item Suppose that $j > 0$, and that, for all $i < j$, we have defined homomorphisms $d_i : C_i(K) \to C_{i+1}(L)$ such that
+      \[%
+        d_{i-1} \circ \pd{1}^K + \pd{i+1}^L \circ d_i = t_i - s_i
+      ,\]%
+      we have defined homomorphisms $\sigma, d_i(\sigma)$ is always a chain in the carrier of $\sigma$. Show that, for any oriented $j$-simplex $\sigma$ of $K$, we have
+      \[%
+        \pd{J}^L\left(t_j(\sigma) - s_j(\sigma) - d_{j-1} \circ \pd{j}^K(\sigma)\right) = 0
+      .\]%
+    \item Let $M \subset L$ be the subcomplex of $L$ consisting of the carrier of $\sigma$ and all of its faces. Show that there exists an element $c \in C_{j+1}(M) \subset C_{j+1}(L)$ such that
+      \[%
+        t_j(\sigma) - s_j(\sigma) - d_{j-1} \circ \pd{j}^K(\sigma) = \pd{j+1}^L(c)
+      .\]%
+    \item Finish the proof that the simplicial maps $s$ and $t$ are related by a chain homotopy.
+  \end{enumerate}
+\end{problem}
+
+\begin{solution}[(i)]
+  Let $v$ be a vertex of $K$. If $s(v) = t(v)$, then by definition $d_0(v) = 0$, and hence
+  \[%
+    \pd{1}^L(d_0(v)) = 0 = t_0(v) - s_0(v)
+  .\]%
+  If $s(v) \ne t(v)$, then
+  \[%
+    d_0(v) = (s(v), t(v))
+  ,\]%
+  an oriented $1$-simplex of $L$. Applying the boundary operator,
+  \[%
+    \pd{1}^L(s(v), t(v)) = t(v) - s(v)
+  .\]%
+  Thus in this case as well,
+  \[%
+    \pd{1}^L(d_0(v)) = t_0(v) - s_0(v)
+  .\]%
+  Since both sides are linear in $v$, it follows that
+  \[%
+    \pd{1}^L \circ d_0 = t_0 - s_0 : C_0(K) \to C_0(L)
+  .\qedhere\]%
+\end{solution}
+
+\begin{solution}[(ii)]
+  Let $\sigma$ be an oriented $j$-simplex of $K$, where $j>0$. Consider
+  \[%
+    z = t_j(\sigma) - s_j(\sigma) - d_{j-1}\big(\pd{j}^K(\sigma)\big)
+  .\]%
+  We compute its boundary. Since $s_*$ and $t_*$ are simplicial maps, they are chain maps, so
+  \[%
+    \pd{j}^L \circ t_j = t_{j-1} \circ \pd{j}^K \aand \pd{j}^L \circ s_j = s_{j-1} \circ \pd{j}^K
+  .\]%
+  Therefore,
+  \begin{align*}
+    \pd{j}^L z &= \pd{j}^L t_j(\sigma) - \pd{j}^L s_j(\sigma) - \pd{j}^L d_{j-1}\big(\pd{j}^K(\sigma)\big) \\
+               &= t_{j-1}\big(\pd{j}^K(\sigma)\big) - s_{j-1}\big(\pd{j}^K(\sigma)\big) - \pd{j}^L d_{j-1}\big(\pd{j}^K(\sigma)\big)
+  .\end{align*}
+
+  By the inductive hypothesis for $i = j - 1$,
+  \[%
+    d_{j-2}\circ \pd{{}j-1}^K + \pd{j}^L \circ d_{j-1} = t_{j-1} - s_{j-1}.
+  \]%
+  Applying this to $\pd{j}^K(\sigma)$ gives
+  \[%
+    t_{j-1}\big(\pd{j}^K(\sigma)\big) - s_{j-1}\big(\pd{j}^K(\sigma)\big) = d_{j-2}\big(\partial_{j-1}^K \pd{j}^K(\sigma)\big) + \pd{j}^L d_{j-1}\big(\pd{j}^K(\sigma)\big)
+  .\]%
+  Since $\partial_{j-1}^K \circ \pd{j}^K = 0$, this reduces to
+  \[%
+    t_{j-1}\big(\pd{j}^K(\sigma)\big) - s_{j-1}\big(\pd{j}^K(\sigma)\big) = \pd{j}^L d_{j-1}\big(\pd{j}^K(\sigma)\big)
+  .\]%
+  Substituting into the expression for $\pd{j}^L z$, we obtain
+  \[%
+    \pd{j}^L z = 0
+  .\]%
+  Hence
+  \[%
+    \pd{j}^L\left(t_j(\sigma) - s_j(\sigma) - d_{j-1}\circ \pd{j}^K(\sigma)\right) = 0
+  .\qedhere\]%
+\end{solution}
+
+\begin{solution}[(iii)]
+  Let $B$ be the carrier of $\sigma$, and let $M \subset L$ be the subcomplex consisting of $B$ and all of its faces. Since $s$ and $t$ are close, both $s(\sigma)$ and $t(\sigma)$ are faces of $B$. By the inductive assumption, $d_{j-1}(\tau)$ lies in the carrier of each face $\tau$ of $\sigma$, and hence also lies in $M$. Therefore
+  \[%
+    z = t_j(\sigma) - s_j(\sigma) - d_{j-1}\big(\pd{j}^K(\sigma)\big)
+  ,\]%
+  is a chain in $C_j(M)$.
+
+  By part (ii), $\pd{j}^L z = 0$, so $z$ is a cycle in $C_j(M)$. Since $M$ is a simplex (together with its faces), it is contractible, and hence
+  \[%
+    H_j(M) = 0 \qquad \text{for}~j > 0
+  .\]%
+  Therefore every $j$-cycle in $M$ is a boundary. Thus there exists
+  \[%
+    c \in C_{j+1}(M) \subset C_{j+1}(L)
+  ,\]%
+  such that
+  \[%
+    z = \partial_{j+1}^L(c)
+  .\]%
+  That is,
+  \[%
+    t_j(\sigma) - s_j(\sigma) - d_{j-1}\circ \pd{j}^K(\sigma) = \partial_{j+1}^L(c)
+  .\qedhere\]%
+\end{solution}
+
+\begin{solution}[(iv)]
+  For each oriented $j$-simplex $\sigma$ of $K$, define
+  \[%
+    d_j(\sigma) = c
+  ,\]%
+  where $c$ is the chain provided by part (iii). Extend $d_j$ linearly to all of $C_j(K)$. By construction, $d_j(\sigma)$ lies in the carrier of $\sigma$.
+
+  The defining property from part (iii) then gives
+  \[%
+    t_j(\sigma) - s_j(\sigma) = d_{j-1}\big(\pd{j}^K(\sigma)\big) + \partial_{j+1}^L\big(d_j(\sigma)\big)
+  .\]%
+  Since both sides are linear, this equality holds for all chains in $C_j(K)$. Hence
+  \[%
+    d_{j-1} \circ \pd{j}^K + \partial_{j+1}^L \circ d_j = t_j - s_j
+  .\]%
+
+  By induction, we obtain maps $d_i$ for all $i \ge 0$ satisfying
+  \[%
+    d_{i-1} \circ \pd{i}^K + \partial_{i+1}^L \circ d_i = t_i - s_i
+  .\]%
+  Thus $\{d_i\}$ is a chain homotopy relating the simplicial maps $s$ and $t$. Therefore $s$ and $t$ induce the same maps on homology.
+\end{solution}
