@@ -3,7 +3,7 @@
 \end{problem}
 
 \begin{solution}
-  The prime ideals of $\Z_{12}$ are given by $p_1^{k_1}\cdots p_n^{k_n}$, where each $p_i$ is a prime factor of 12. Thus, for 12, we have $12 = 2^2 \cdot 3$. Thus, the prime ideals for $\Z_{12}$ are given by $\braket{2} \aand \braket{3}$. Since we're working with $\Z_{12}$, the prime ideals are also maximal ideals. Thus, the maximal ideals of $\Z_{12}$ are also given by $\braket{2}$ and $\braket{3}$.
+  The prime ideals of $\Z_{12}$ are given by $p_1^{k_1} \cdots p_n^{k_n}$, where each $p_i$ is a prime factor of 12. Thus, for 12, we have $12 = 2^2 \cdot 3$. Thus, the prime ideals for $\Z_{12}$ are given by $\braket{2} \aand \braket{3}$. Since we're working with $\Z_{12}$, the prime ideals are also maximal ideals. Thus, the maximal ideals of $\Z_{12}$ are also given by $\braket{2}$ and $\braket{3}$.
 \end{solution}
 
 \begin{problem}[31.4]
@@ -35,7 +35,49 @@
 \end{problem}
 
 \begin{solution}
-  We can construct the idea $I = p\Z \times \Z$, where $p = 2$ is a prime number. We now check that it is an ideal of $\Z \times \Z$. Clearly, $I$ is commutative, since the original ring, $\Z \times \Z$ is commutative. It is also non-empty, since we have $(2, n) \in I$. Now we check that it's closed.
+  We construct the ideal $I = p\Z \times \Z$, where $p = 2$ is a prime number. We now check that it is an ideal of $\Z \times \Z$.
+
+  Clearly, $I$ is nonempty since $(2,0) \in I$. Let $(a_1,b_1), (a_2,b_2) \in I$. Then $a_1, a_2 \in 2\Z$ and $b_1, b_2 \in \Z$. Hence
+  \[%
+    (a_1,b_1) - (a_2,b_2) = (a_1 - a_2,\; b_1 - b_2)
+  ,\]%
+  and since $2\Z$ and $\Z$ are ideals of $\Z$, we have $a_1 - a_2 \in 2\Z$ and $b_1 - b_2 \in \Z$. Thus $I$ is closed under subtraction.
+
+  Now let $(r,s) \in \Z \times \Z$ and $(a,b) \in I$. Then $a \in 2\Z$, so $ra \in 2\Z$, and clearly $sb \in \Z$. Hence
+  \[%
+    (r,s)(a,b) = (ra,\; sb) \in I
+  .\]%
+  Thus $I$ is an ideal of $\Z \times \Z$.
+
+  Next, we show that $I$ is prime. Consider the quotient ring
+  \[%
+    (\Z \times \Z)/I
+  .\]%
+  Define a map
+  \[%
+    \phi : \Z \times \Z \to \Z/2\Z, \quad \phi(a,b) = \bar{a}
+  .\]%
+  This is a surjective ring homomorphism, and
+  \[%
+    \ker \phi = 2\Z \times \Z = I
+  .\]%
+  By the First Isomorphism Theorem,
+  \[%
+    (\Z \times \Z)/I \cong \Z/2\Z
+  ,\]%
+  which is a field, hence an integral domain. Therefore $I$ is a prime ideal.
+
+  Finally, $I$ is not maximal. Indeed, consider the ideal
+  \[%
+    J = 2\Z \times 2\Z
+  .\]%
+  Then
+  \[%
+    I = 2\Z \times \Z \subsetneq 2\Z \times 2\Z \subsetneq \Z \times \Z
+  ,\]%
+  so there exists a proper ideal strictly between $I$ and the whole ring. Hence $I$ is not maximal.
+
+  Therefore $I = 2\Z \times \Z$ is a prime ideal of $\Z \times \Z$ that is not maximal.
 \end{solution}
 
 \begin{problem}[31.18]
@@ -43,6 +85,7 @@
 \end{problem}
 
 \begin{solution}
+  The quotient $\Q[x]/\braket{x^2 - 5x + 6}$ isn't a field since we can factor the polynomial into $(x - 2)(x - 3)$. Since the polynomial is reducible, the ideal $\braket{x^2 - 5x + 6}$ isn't maximal, meaning the quotient isn't a field.
 \end{solution}
 
 \begin{problem}[31.24]
@@ -50,6 +93,25 @@
 \end{problem}
 
 \begin{solution}
+  Consider the ideal
+  \[%
+    I = \braket{x, y} \subset \Q[x,y].
+  \]%
+  We claim that $I$ is not principal. We prove this via contradiction. Assume that $I = \braket{f(x,y)}$ for some $f \in \Q[x,y]$. Since $x, y \in I$, we must have
+  \[%
+    f \mid x \aand f \mid y
+  \]%
+  Thus $f$ is a common divisor of $x$ and $y$. However, $x$ and $y$ are irreducible and not associates in the UFD $\Q[x,y]$, so their only common divisors are units. Hence $f$ must be a unit, which implies
+  \[%
+    I = \Q[x,y]
+  ,\]%
+  a contradiction since $1 \notin \braket{x,y}$. Therefore $\braket{x,y}$ is not a principal ideal.
+
+  Now let $R$ be an integral domain such that every ideal in $R$ is principal. Taking $R = \Q$, which is a field (hence a PID), we have
+  \[%
+    R[x][y] = \Q[x,y]
+  .\]%
+  Since $\Q[x,y]$ contains the non-principal ideal $\braket{x,y}$, it follows that even if every ideal in $R$ is principal, it does not follow that every ideal in $R[x]$ is principal.
 \end{solution}
 
 \begin{problem}[31.26]
@@ -57,6 +119,21 @@
 \end{problem}
 
 \begin{solution}
+  Let $P$ be a prime ideal in $R$. Then the quotient ring $R/P$ is an integral domain. Since $R$ is finite and $P$ is an ideal, the quotient $R/P$ is also finite. Thus $R/P$ is a finite integral domain. We claim that every finite integral domain is a field. Let $\bar{a} \in R/P$ with $\bar{a} \neq 0$. Consider the map
+  \[%
+    \phi : R/P \to R/P, \quad \phi(\bar{x}) = \bar{a}\bar{x}
+  .\]%
+  If $\phi(\bar{x}) = \phi(\bar{y})$, then
+  \[%
+    \bar{a}\bar{x} = \bar{a}\bar{y} \implies \bar{a}(\bar{x} - \bar{y}) = 0
+  .\]%
+  Since $R/P$ is an integral domain and $\bar{a} \neq 0$, it follows that $\bar{x} = \bar{y}$. Thus $\phi$ is injective. Because $R/P$ is finite, $\phi$ is also surjective. Hence there exists $\bar{x} \in R/P$ such that
+  \[%
+    \bar{a}\bar{x} = 1
+  \]%
+  Therefore every nonzero element of $R/P$ is invertible, so $R/P$ is a field.
+
+  Since $R/P$ is a field, $P$ is a maximal ideal. Thus every prime ideal in $R$ is maximal.
 \end{solution}
 
 \begin{problem}[31.32]
@@ -64,6 +141,17 @@
 \end{problem}
 
 \begin{solution}
+  Let $P$ be a proper nontrivial prime ideal of $F[x]$, where $F$ is a field. Since $F[x]$ is a principal ideal domain, there exists a nonzero polynomial $f(x) \in F[x]$ such that
+  \[%
+    P = \braket{f(x)}
+  .\]%
+  Because $P$ is prime, $\braket{f(x)}$ is a prime ideal. In a PID, a principal ideal is prime if and only if its generator is irreducible. Thus $f(x)$ is irreducible in $F[x]$. Consider the quotient ring
+  \[%
+    F[x]/\braket{f(x)}
+  .\]%
+  Since $f(x)$ is irreducible over the field $F$, the ideal $\braket{f(x)}$ is maximal, and hence the quotient is a field.
+
+  Therefore $P$ is a maximal ideal. Thus every proper nontrivial prime ideal of $F[x]$ is maximal.
 \end{solution}
 
 \begin{problem}[31.36]
@@ -78,7 +166,27 @@
 \end{problem}
 
 \begin{solution}[(i)]
+  First, $0 = 0 + 0 \in A + B$ since $0 \in A$ and $0 \in B$. Let $x, y \in A + B$. Then there exist $a_1, a_2 \in A$ and $b_1, b_2 \in B$ such that
+  \[%
+    x = a_1 + b_1, \quad y = a_2 + b_2
+  .\]%
+  Then
+  \[%
+    x - y = (a_1 - a_2) + (b_1 - b_2)
+  .\]%
+  Since $A$ and $B$ are ideals, $a_1 - a_2 \in A$ and $b_1 - b_2 \in B$. Hence $x - y \in A + B$. Thus $A + B$ is closed under subtraction.
+
+  Now let $r \in R$ and $x = a + b \in A + B$. Then
+  \[%
+    rx = ra + rb
+  .\]%
+  Since $A$ and $B$ are ideals, $ra \in A$ and $rb \in B$, so $rx \in A + B$. Similarly, $xr \in A + B$ if $R$ is not assumed commutative.
+
+  Therefore $A + B$ is an ideal of $R$.
 \end{solution}
 
 \begin{solution}[(ii)]
+  Since for any $a \in A$ we have $a = a + 0$ with $0 \in B$, it follows that $a \in A + B$. Thus $A \subseteq A + B$.
+
+  Similarly, for any $b \in B$ we have $b = 0 + b$ with $0 \in A$, so $b \in A + B$. Hence $B \subseteq A + B$.
 \end{solution}
