@@ -1,0 +1,267 @@
+\usepackage{amscd}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+\usepackage{tikz}
+\usepackage{pgffor}
+\usepackage{tkz-euclide}
+\usepackage{tikz-cd}
+\usepackage{tikz-3dplot}
+\usepackage{pgfplots}
+
+\usepackage{amsmath}
+\usepackage{esint}
+\usepackage{amsfonts}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{breqn}
+\usepackage{upgreek}
+\usepackage{derivative}
+
+\usepackage{epstopdf}
+\usepackage{etoolbox}
+\usepackage{fancyhdr}
+
+\usepackage{subcaption}
+\usepackage[colorlinks=true]{hyperref}
+\usepackage{url}
+\usepackage{booktabs}
+\usepackage{nicefrac}
+\usepackage{microtype}
+\usepackage{cleveref}
+\usepackage{lipsum}
+\usepackage{graphicx}
+\usepackage{doi}
+
+\captionsetup[figure]{font=small}
+
+\setcounter{tocdepth}{2}
+
+\theoremstyle{plain}
+\newtheorem{note}{Note}
+\newtheorem{theorem}{Theorem}
+\newtheorem{acknowledgement}{Acknowledgement}
+\newtheorem{algorithm}{Algorithm}
+\newtheorem{axiom}{Axiom}
+\newtheorem{case}{Case}
+\newtheorem{claim}{Claim}
+\newtheorem{conclusion}{Conclusion}
+\newtheorem{conjecture}{Conjecture}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{criterion}{Criterion}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{exercise}{Exercise}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{solution}{Solution}
+\newtheorem{summary}{Summary}
+\numberwithin{equation}{chapter}
+\numberwithin{theorem}{chapter}
+\newcommand{\thmref}[1]{Theorem~\ref{#1}}
+\newcommand{\secref}[1]{\S\ref{#1}}
+\newcommand{\lemref}[1]{Lemma~\ref{#1}}
+
+\newcommand\sfrac[2]{#1/#2}
+\newcommand\aand{\quad\text{and}\quad}
+
+\newcommand\F{\mathcal{F}}
+\newcommand\K{\mathcal{K}}
+\renewcommand\L{\mathcal{L}}
+\newcommand\M{\mathcal{M}}
+\newcommand\N{\mathbb{N}}
+\renewcommand\P{\mathbb{P}}
+\newcommand\R{\mathbb{R}}
+\newcommand\VR{\mathrm{VR}}
+
+\usetikzlibrary{
+  shadings,
+  intersections,
+  angles,
+  quotes,
+  calc,
+  positioning,
+  3d,
+  perspective,
+  arrows,
+  arrows.meta,
+  patterns,
+  decorations.markings,
+  bending,
+  decorations.pathreplacing,
+  calligraphy,
+  backgrounds,
+  shapes.arrows,
+}
+
+\tikzoption{canvas is xy plane at z}[]{%
+  \def\tikz@plane@origin{\pgfpointxyz{0}{0}{#1}}%
+  \def\tikz@plane@x{\pgfpointxyz{1}{0}{#1}}%
+  \def\tikz@plane@y{\pgfpointxyz{0}{1}{#1}}%
+  \tikz@canvas@is@plane}
+
+\newcommand\graphslopefield{
+  \pgfmathsetmacro{\hx}{(\xmax-\xmin)/\nx}
+  \pgfmathsetmacro{\hy}{(\ymax-\ymin)/\ny}
+  \foreach \i in {0,...,\nx}
+  \foreach \j in {0,...,\ny}{
+    \pgfmathsetmacro{\yprime}{f({\xmin+\i*\hx},{\ymin+\j*\hy})}
+    \draw[black,shift={({\xmin+\i*\hx},{\ymin+\j*\hy})}]
+    (0,0)--($(0,0)!2mm!(.1,.1*\yprime)$);
+  }
+
+  \draw[->] (\xmin-.5,0)--(\xmax+.5,0) node[below right] {$x$};
+  \draw[->] (0,\ymin-.5)--(0,\ymax+.5) node[above left] {$y$};
+}
+
+\tikzset{derivative/.style={color=gray,mark=none,line width=0.5pt,solid}}
+\tikzset{asymptote/.style={color=gray,mark=none,line width=1pt,<->,dashed}}
+\tikzset{soldot/.style={color=black,fill=black,only marks,mark=*}}
+\tikzset{holdot/.style={color=black,fill=white,only marks,mark=*}}
+
+\tikzset{>=stealth}
+\tikzset{->-/.style={decoration={markings,mark=at position .5 with {\arrow{>}}},postaction={decorate}}}
+
+\usepgfplotslibrary{
+  external,
+  colormaps,
+  groupplots,
+}
+\pgfplotsset{width=7cm,compat=1.8}
+\pgfplotsset{compat=newest}
+
+\let\div\relax
+\DeclareMathOperator\div{div}
+
+\hypersetup{
+  urlcolor=blue, citecolor=red,
+  pdftitle={},
+  pdfsubject={q-bio.NC, q-bio.QM},
+  pdfauthor={Hashem A.~Damrah},
+  pdfkeywords={},
+}
+
+% Symbols
+\let\oldlimsymbol\lim\renewcommand\lim{\displaystyle\oldlimsymbol}
+\let\to\rightarrow
+\let\implies\Rightarrow
+\let\impliedby\Leftarrow
+\let\iff\Leftrightarrow
+\let\epsilon\varepsilon
+\let\phi\varphi
+\let\tau\uptau
+
+% Page settings
+\textheight=8.2 true in
+\textwidth=5.0 true in
+\topmargin 30pt
+\setcounter{page}{1}
+
+% The next 5 line will be entered by an editorial staff.
+\def\currentvolume{X}
+\def\currentissue{X}
+\def\currentyear{200X}
+\def\currentmonth{XX}
+\def\ppages{X--XX}
+\def\DOI{10.3934/fods.2019001}
+
+% The next 3 lines are for the arXiv preprint.
+\makeatletter
+\renewcommand{\xleftrightarrow}[2][]{\ext@arrow 3359\leftrightarrowfill@{#1}{#2}}
+\newcommand{\xdashrightarrow}[2][]{\ext@arrow 0359\rightarrowfill@@{#1}{#2}}
+\newcommand{\xdashleftarrow}[2][]{\ext@arrow 3095\leftarrowfill@@{#1}{#2}}
+\newcommand{\xdashleftrightarrow}[2][]{\ext@arrow 3359\leftrightarrowfill@@{#1}{#2}}
+\def\rightarrowfill@@{\arrowfill@@\relax\relbar\rightarrow}
+\def\leftarrowfill@@{\arrowfill@@\leftarrow\relbar\relax}
+\def\leftrightarrowfill@@{\arrowfill@@\leftarrow\relbar\rightarrow}
+\def\arrowfill@@#1#2#3#4{%
+  $\m@th\thickmuskip0mu\medmuskip\thickmuskip\thinmuskip\thickmuskip
+   \relax#4#1
+   \xleaders\hbox{$#4#2$}\hfill
+   #3$%
+}
+\makeatother
+
+% Abstract environment (for amsbook)
+\renewenvironment{abstract}{
+  \begin{center}
+    \bfseries\abstractname
+  \end{center}
+  \begin{quote}
+}{
+  \end{quote}
+}
+
+\renewcommand\S{\mathbb{S}}
+\newcommand\B{\mathcal{B}}
+
+% Differentials
+\newcommand\dd[1]{\odif{#1}}
+\newcommand\pd[1]{\pdif{#1}}
+\newcommand\Dd[1]{\mdif{#1}}
+
+% Main macro
+\newcommand\dA{\dd{A}}
+\newcommand\dF{\dd{F}}
+\newcommand\df{\dd{f}}
+\newcommand\dV{\dd{V}}
+\newcommand\dm{\dd{m}}
+\newcommand\ds{\dd{s}}
+\newcommand\dS{\dd{S}}
+\newcommand\dSS{\dd{\S}}
+\newcommand\dw{\dd{w}}
+\newcommand\dt{\dd{t}}
+\newcommand\dr{\dd{r}}
+\newcommand\drr{\dd{\r}}
+\newcommand\dT{\dd{T}}
+\newcommand\du{\dd{u}}
+\newcommand\dv{\dd{v}}
+\newcommand\dx{\dd{x}}
+\newcommand\dy{\dd{y}}
+\newcommand\dz{\dd{z}}
+
+\newcommand\dxy{\dd{x,y}}
+\newcommand\dyx{\dd{y,x}}
+\newcommand\dzy{\dd{z,y}}
+\newcommand\dyz{\dd{y,z}}
+\newcommand\dzx{\dd{z,x}}
+\newcommand\dxz{\dd{x,z}}
+
+\newcommand\dxyz{\dd{x,y,z}}
+\newcommand\dxzy{\dd{x,z,y}}
+\newcommand\dyxz{\dd{y,x,z}}
+\newcommand\dyzx{\dd{y,z,x}}
+\newcommand\dzxy{\dd{z,x,y}}
+\newcommand\dzyx{\dd{z,y,x}}
+
+\newcommand\duv{\dd{u,v}}
+\newcommand\dvu{\dd{u,y}}
+
+\newcommand*{\bfrac}[2]{\genfrac{}{}{0pt}{}{#1}{#2}}
+
+\title{Geometric Inverse Problems}
+\author[Hashem A. Damrah]{}
+\date{\today}
+
+\def\subjclass{Primary 53C21; Secondary 35R30, 53C22}
+\def\keywords{Riemannian manifolds, inverse problems, geodesics, metric rigidity, X-ray transform, boundary distance data.}
+\def\subjclassname{}
+\email{hdamrah@uoregon.edu}
+
+\thanks{}
+
+\newcommand\bs{Berry and Sauer~\cite{1606.02353}}
+\newcommand\blfootnote[1]{%
+  \begingroup
+  \renewcommand\thefootnote{}\footnote{#1}%
+  \addtocounter{footnote}{-1}%
+  \endgroup
+}
+
+\newcommand\codv[3][]{\odv[style-inf-num=\mathrm{D},#1]{#2}{#3}}

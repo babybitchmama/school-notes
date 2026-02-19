@@ -59,10 +59,34 @@
 
 \begin{solution}[(ii)]
   The metric is given by $g_{00} = -(1 + 2\Phi)$, $g_{11} = g_{22} = g_{33} = 1 - 2\Phi$. The relent Christoffel symbols are:
-  \begin{gather*}
-    \Gamma_{00}^i = g^{ij}\left(2\pd{0}g_{j0} - \pd{j}g_{00}\right) \approx \pd{i} \Phi, \quad \Gamma_{0j}^i = \frac{1}{2}g^{ik}\left(\pd{0}g_{kj} + \pd{j}g_{k0} - \pd{k}g_{0j}\right) \approx -\delta_j^i \Phi \\
-    \Gamma_{jk}^i = \frac{1}{2}g^{im}\left(\pd{j}g_{mk} + \pd{k}g_{mj} - \pd{m}g_{jk}\right) \approx -\delta_k^i \Phi_{,j} - \delta_j^i \Phi_{,k} + \delta_{jk}\Phi_{,i}
-  \end{gather*}
+  \begin{gather}
+    \Gamma_{00}^i = g^{ij}\left(2\pd{0}g_{j0} - \pd{j}g_{00}\right) \approx \pd{i} \Phi, \quad \Gamma_{0j}^i = \frac{1}{2}g^{ik}\left(\pd{0}g_{kj} + \pd{j}g_{k0} - \pd{k}g_{0j}\right) \approx -\delta_j^i \Phi\label{eq:1} \\
+    \Gamma_{jk}^i = \frac{1}{2}g^{im}\left(\pd{j}g_{mk} + \pd{k}g_{mj} - \pd{m}g_{jk}\right) \approx -\delta_k^i \Phi_{,j} - \delta_j^i \Phi_{,k} + \delta_{jk}\Phi_{,i}\label{eq:2}
+  \end{gather}
+  Using the equation for parallel-transport, we get:
+  \begin{align}
+    0 &= \odv{l^\mu}{\tau} + \Gamma_{\alpha\beta}^\mu l^\alpha u^\beta \tag*{} \\
+    \odv{l^\mu}{\tau} &= -\Gamma_{\alpha\beta}^\mu l^\alpha u^\beta\label{eq:3}
+  .\end{align}
+  Substituting the results we got from Equations~\eqref{eq:1} and~\eqref{eq:2} into Equation~\eqref{eq:3}, we get:
+  \begin{equation}\label{eq:4}
+    \odv{l^\mu}{\tau} = -\left(
+      \Gamma_{00}^i l^0 \odv{t}{t} +
+      \Gamma_{0j}^i l^0\dot{x}^j +
+      \Gamma_{j0}^i l^j \odv{t}{t} +
+      \Gamma_{jk}^i l^j\dot{x}^k
+    \right)
+  \end{equation}
+  We know that:
+  \begin{gather}
+    -\Gamma_{00}^i \approx -\left(\Phi_{,i}\right)\left(l^k\dot{x}^k\right), \quad -\Gamma_{j0}^i l^j = -\left(-\delta_j^i \dot{\Phi}\right)l^j = l^i\Phi\label{eq:5} \\
+    -\Gamma_{jk}^i l^j\dot{x}^k = -\left(-\delta_k^i \Phi_{,j} - \delta_j^i\Phi_{,k} + \delta_{jk}\Phi_{,i}\right)l^j\dot{x}^k\label{eq:6}
+  \end{gather}
+  Substituting the results from Equations~\eqref{eq:5} and~\eqref{eq:6} into Equation~\eqref{eq:4}, we get:
+  \begin{align*}
+    \odv{l^i}{t} &= -\dot{x}^kl^k\Phi_{,i} + l^i\dot{\Phi} + \dot{x}^il^j\Phi_{,j} + l^i\dot{x}^k\Phi_{,k} - \dot{x}^jl^j\Phi_{,i} \\
+                 &= -2\dot{x}^jl^j\Phi_{,i} + l^i\dot{\Phi} + \dot{x}^il^k\Phi_{,k} + \dot{x}^ml^i\Phi_{,m}
+  .\qedhere\end{align*}
 \end{solution}
 
 \begin{solution}[(iii)]

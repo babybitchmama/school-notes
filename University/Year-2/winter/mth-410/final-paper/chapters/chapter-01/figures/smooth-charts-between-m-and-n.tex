@@ -1,0 +1,69 @@
+\begin{figure}[h]
+  \centering
+
+  \begin{tikzpicture}[>=Stealth, scale=1.2]
+
+    % --- MANIFOLD M (Left) ---
+    \filldraw[fill=green!10, draw=green!40!black, thick]
+      plot [smooth cycle, tension=0.7] coordinates {(-4,2) (-2,2.5) (-1,1) (-2,0) (-4.5,0.5)};
+    \node at (-1.9, 2) {\large $M$};
+
+    % Subset U
+    \filldraw[fill=green!20, draw=green!50!black, thick] (-2.8,1.2) circle (0.8);
+    \node at (-3.1, 1.7) {\large $U$};
+
+    % Point p
+    \fill (-2.6, 1.1) circle (1.5pt) node[right, xshift=2] {$p$};
+
+    % --- MANIFOLD N (Right) ---
+    \begin{scope}[shift={(3.5,0.2)}]
+      \filldraw[fill=blue!10, draw=blue!40!black, thick]
+        plot [smooth cycle, tension=0.7] coordinates {(-1,2) (1.5,2.5) (2.5,1) (1,0) (-1.5,0.5)};
+      \node at (1.7, 2) {\large $N$};
+
+      % Subset V
+      \filldraw[fill=blue!20, draw=blue!50!black, thick] (0.2,1.2) circle (0.9);
+      \node at (0.8, 1.4) {\large $V$};
+
+      % Point F(p)
+      \fill (0, 1.1) circle (1.5pt) node[above, yshift=2] {$F(p)$};
+      \draw[dashed] (0, 1.1) circle (0.5); % Interior neighborhood
+    \end{scope}
+
+    % --- COORDINATE CHART phi(U) (Bottom Left) ---
+    \begin{scope}[shift={(-3.5,-3)}]
+      \draw[->] (-1,0) -- (1.5,0);
+      \draw[->] (0,-0.8) -- (0,1.5);
+      \filldraw[fill=gray!15, draw=black, thick]
+        plot [smooth cycle, tension=0.7] coordinates {(-0.8,0.5) (0.5,1) (1.2,0.2) (0.2,-0.5) (-0.5,-0.2)};
+      \node at (0.5, 0.5) {\small $\varphi(U)$};
+    \end{scope}
+
+    % --- COORDINATE CHART psi(V) (Bottom Right) ---
+    \begin{scope}[shift={(3.5,-3)}]
+      \draw[->] (-1,0) -- (1.8,0);
+      \draw[->] (0,-0.8) -- (0,1.5);
+      \filldraw[fill=gray!15, draw=black, thick]
+        plot [smooth cycle, tension=0.7] coordinates {(-0.5,0.8) (1,1.2) (1.5,0.5) (0.8,-0.3) (-0.2,0.2)};
+      \node at (0.8, 0.6) {\small $\psi(V)$};
+    \end{scope}
+
+    % --- MAPPING ARROWS ---
+
+    % Map F: M -> N
+    \draw[->, thick, red!70!black] (-1.2, 2.1) to[bend left=20] node[midway, above] {\large $F$} (2, 2.1);
+
+    % Map phi: U -> R^n
+    \draw[->, thick, blue!70!black] (-3.2, 0.5) to[bend right=20] node[midway, left, xshift=-2] {\large $\varphi$} (-3.7, -1.8);
+
+    % Map psi: V -> R^m
+    \draw[->, thick, blue!70!black] (4, 0.5) to[bend left=20] node[midway, right, xshift=2] {\large $\psi$} (4.2, -1.8);
+
+    % Coordinate representation: psi o F o phi^-1
+    \draw[->, thick, orange!80!black] (-2, -2.5) to[out=-10, in=190] node[midway, above] {\large $\psi \circ F \circ \varphi^{-1}$} (2.7, -2.5);
+
+  \end{tikzpicture}
+
+  \caption{Smooth maps between $M$ and $N$}
+  \label{fig:smooth_maps_between_M_and_N}
+\end{figure}

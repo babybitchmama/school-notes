@@ -1,0 +1,87 @@
+\begin{figure}[h]
+  \centering
+
+  \begin{tikzpicture}[>=Stealth, scale=1.2]
+
+    % --- MANIFOLD M (Left Green) ---
+    \begin{scope}
+      \filldraw[fill=green!20, draw=green!40!black, thick]
+        plot [smooth cycle, tension=0.7] coordinates {(-3,0) (-1,1.5) (1,0.5) (0.5,-1.5) (-2,-1)};
+      \node at (0.5, -0.5) {$M$};
+    \end{scope}
+
+    % --- MANIFOLD N (Right Green) ---
+    \begin{scope}[shift={(4,0)}]
+      \filldraw[fill=green!20, draw=green!40!black, thick]
+        plot [smooth cycle, tension=0.7] coordinates {(-1,0) (1,1.5) (3,0.5) (2.5,-1.5) (0,-1)};
+      \node at (0, -0.5) {$N$};
+    \end{scope}
+
+    % --- MAPPINGS ---
+    % phi
+    \draw[->, thick] (1.2, 0.2) to[out=25, in=155] node[midway, above] {$\phi$} (3, 0.2);
+    % T_p phi
+    \draw[->, thick] (-0.2, 1.8) to[out=30, in=150] node[midway, above] {$T_p \phi$} (5.5, 1.7);
+
+    % --- TANGENT PLANE M ---
+    \coordinate (phiP) at (6.5, 1.2);
+    \begin{scope}[shift={(4.3,-0.8)}]
+      \filldraw[fill=blue!30, opacity=0.7, draw=blue!50!black, thick]
+        (-1,1.3) -- (1.5,2.5) -- (2.5,1.5) -- (0,0.3) -- cycle;
+      \node at (1.8, 2.7) {$T_{\phi(p)}N$};
+      \fill (0.5, 1.2) circle (1.5pt) node[above right] {\tiny $\phi(p)$};
+      \draw[->, brown!70!black, very thick] (0.5, 1.2) -- (-0.5, 1.4) node[above right, xshift=3.5, yshift=-2] {\tiny $T_p\phi \cdot v_p$};
+      % Transformed curve
+      \draw[blue!60!black, thick] (-0.5,1) to[out=20, in=180] (0.5,1.2) to[out=0, in=150] (2,0.8);
+      \node[xshift=-7.5, yshift=3] at (0.5, 0.7) {\tiny $[\phi \circ \gamma]_{\phi(p)}$};
+    \end{scope}
+
+    % --- TANGENT PLANE N ---
+    \coordinate (P) at (-1, 0.2);
+    \begin{scope}[shift={(0,-1)}]
+      \filldraw[fill=blue!30, opacity=0.7, draw=blue!50!black, thick]
+        (-2.5,1.5) -- (-0.5,2.8) -- (0.5,0.8) -- (-1.5,-0.5) -- cycle;
+      \node at (-2.3, 2.7) {$T_pM$};
+      \fill (P) circle (1.5pt) node[left] {$p$};
+      \draw[->, red!70!black, very thick] (P) -- (0, 1.7) node[above left] {$v_p$};
+      % Curve gamma
+      \draw[blue!60!black, thick] (-1.5,0.5) to[out=40, in=220] (P) to[out=40, in=200] (0.2,1.3);
+      \node at (-1, 0.5) {$[\gamma]_p$};
+    \end{scope}
+
+    % --- INTERVAL AT BOTTOM LEFT ---
+    \begin{scope}[shift={(0,0.5)}]
+      \draw[thick] (-3,-3.5) -- (-0,-3.5);
+      \draw[ultra thick, blue!40!black] (-2.2,-3.5) -- (-0.8,-3.5);
+
+      % Opening parenthesis "(" at -epsilon
+      \draw[thick] (-2.15, -3.3) arc (150:210:0.4);
+      % Closing parenthesis ")" at epsilon
+      \draw[thick] (-0.85, -3.7) arc (-30:30:0.4);
+
+      \draw (-2.2, -3.7) node[below] {$-\varepsilon$};
+      \draw (-0.8, -3.7) node[below] {$\varepsilon$};
+      \draw (-1.5, -3.4) -- (-1.5, -3.6) node[below] {$0$};
+      \draw[->] (-1.5, -3.3) to[bend left] node[midway, left] {$\gamma$} (-1.6,-1.1);
+    \end{scope}
+
+    % --- COTANGENT SPACES (Upper Part) ---
+    \begin{scope}[shift={(0,4)}]
+      \filldraw[fill=red!10, draw=red!60!black, thick] (-2, -1) rectangle (0.5, 1);
+      \node at (-1.5, 1.2) {$T^*_p M$};
+      \fill (-1, 0) circle (1.5pt) node[below] {$p$};
+      \draw[->, thick] (-1, 0) -- (-1.5, 0.6) node[right] {$T^*_p \phi \cdot \alpha_{\phi(p)}$};
+
+      \filldraw[fill=red!10, draw=red!60!black, thick] (4, -1) rectangle (6.5, 1);
+      \node at (4.5, 1.2) {$T^*_{\phi(p)} N$};
+      \fill (5, 0) circle (1.5pt) node[below] {$\phi(p)$};
+      \draw[->, thick] (5, 0) -- (5.6, 0.5) node[above] {$\alpha_{\phi(p)}$};
+
+      \draw[<-, thick] (0.7, 0.5) to[out=20, in=160] node[midway, above] {$T^*_p \phi$} (3.8, 0.5);
+    \end{scope}
+
+  \end{tikzpicture}
+
+  \caption{Pushforward and pullback under a smooth map $\phi : M \to N$.}
+  \label{fig:pushforward_and_pullback}
+\end{figure}
