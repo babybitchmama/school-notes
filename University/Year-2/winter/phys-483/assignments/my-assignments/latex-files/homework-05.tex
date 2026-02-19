@@ -34,30 +34,35 @@
 \end{problem}
 
 \begin{solution}[(i)]
-  Since we have $\u \cdot \l = 0$, we have
+  Since we have $\u \cdot \l = 0$, we have:
   \begin{align*}
     0 = \u \cdot \l &= g_{\mu\nu} u^\mu l^\nu \\
                     &= g_{00}u^0l^0 + g_{ii}u^il^i
   .\end{align*}
-  Thus, we have
+  Thus, we have:
   \[%
     g_{00}u^0l^0 = -g_{ii}u^iv^i \implies -(1 - 2\Phi)u^0l^0 = (1 - 2\Phi)u^iv^i
   .\]%
-  Since we have $u^0 = 1$, we get
+  Since we have $u^0 = 1$, we get:
   \[%
-    l^0 = \frac{1 + 2\Phi}{1 - 2\Phi} u^iv^i
+    l^0 = \frac{1 + 2\Phi}{1 - 2\Phi} \dot{x}^iv^i
   .\]%
+  We then expand using power series and remove the higher order terms to get:
+  \[%
+    l^0 = (1 - 2\Phi)(1 - 2\Phi + \O(\epsilon))\dot{x}^il^i = (1 - 4\Phi + 4\O(\epsilon^2))\dot{x}^il^i = \dot{x}^il^i + 4l^i\O\left(e^{3/2}\right)
+  .\]%
+  Thus, after dropping the higher order terms, we get:
+  \[%
+    l^0 = \dot{x}^il^i
+  .\qedhere\]%
 \end{solution}
 
 \begin{solution}[(ii)]
-  Using the fact that $\l$ is parallel transported, we get:
-  \[%
-    \odv{l^i}{t} + \Gamma_{\alpha\beta}^\mu \dot{x}^\alpha l^\beta = 0
-  .\]%
-  Expanding using the definition of the Christoffel symbols in the metric $g_{\mu\nu}$, we get:
-  \[%
-    \odv{l^i}{t} + \frac{1}{2}g^{\mu\sigma}\left(\pd{\alpha}g_{\sigma\beta} + \pd{\beta}g_{\sigma\alpha} - \pd{\sigma}g_{\alpha\beta}\right) \dot{x}^\alpha l^\beta = 0
-  .\]%
+  The metric is given by $g_{00} = -(1 + 2\Phi)$, $g_{11} = g_{22} = g_{33} = 1 - 2\Phi$. The relent Christoffel symbols are:
+  \begin{gather*}
+    \Gamma_{00}^i = g^{ij}\left(2\pd{0}g_{j0} - \pd{j}g_{00}\right) \approx \pd{i} \Phi, \quad \Gamma_{0j}^i = \frac{1}{2}g^{ik}\left(\pd{0}g_{kj} + \pd{j}g_{k0} - \pd{k}g_{0j}\right) \approx -\delta_j^i \Phi \\
+    \Gamma_{jk}^i = \frac{1}{2}g^{im}\left(\pd{j}g_{mk} + \pd{k}g_{mj} - \pd{m}g_{jk}\right) \approx -\delta_k^i \Phi_{,j} - \delta_j^i \Phi_{,k} + \delta_{jk}\Phi_{,i}
+  \end{gather*}
 \end{solution}
 
 \begin{solution}[(iii)]
@@ -85,7 +90,11 @@
 \end{problem}
 
 \begin{solution}[(i)]
-  For a 2D sphere of radius $r_0$, the non-vanishing components of the Riemann curvature tensor are:
+  The Riemann curvature tensor is given by:
+  \[%
+    R_{\mu\nu\rho\sigma} = \frac{1}{2}\left(\pd{\nu}\pd{\rho}g_{\mu\sigma} - \pd{\nu}\pd{\sigma}g_{\mu\rho} - \pd{\mu}\pd{\rho}g_{\nu\sigma} + \pd{\mu}\pd{\sigma}g_{\nu\rho}\right)
+  .\]%
+  The non-vanishing components are given by $R_{\theta\phi\theta\phi}$ and $R_{\theta\phi\phi\theta}$. Any other combination ends up canceling with one another. Thus, for a 2D sphere of radius $r_0$, the non-vanishing components of the Riemann curvature tensor are:
   \begin{gather*}
     R_{\theta\phi\theta\phi} = r_0^2\sin^2(\theta) = R_{\phi\theta\phi\theta} \\
     R_{\theta\phi\phi\theta} = -r_0^2\sin^2(\theta) = R_{\phi\theta\theta\phi}
@@ -110,11 +119,9 @@
      R = \frac{1}{r_0^2}
   .\]%
   Now, we evaluate the integral to get:
-  \begin{align*}
-    \int_{\S^2} \sqrt{g} \dd{\phi,\theta} R &= \int_0^{2\pi} \int_0^\pi r_0^2\sin(\theta) \dd{\phi,\theta} \frac{2}{r_0^2} \\
-                                               &= 2 \int_0^{2\pi} 2 \dd{\phi} \\
-                                               &= \frac{4r_0^2[2\pi - 0]}{r_0^2} = 8\pi
-  .\qedhere\end{align*}
+  \[%
+    \int_{\S^2} \sqrt{g} \dd{\phi,\theta} R = \int_0^\pi \int_0^{2\pi} r_0^2\sin(\theta) \dd{\phi,\theta} \frac{1}{r_0^2} = [2\pi - 0][-1 - (-1)] = 4\pi
+  .\qedhere\]%
 \end{solution}
 
 \begin{problem}[3 (Birkhoff's Theorem)]
@@ -129,7 +136,7 @@
       .\]%
     \item Using the expressions for the Einstein tensor ($'$ denotes derivative with respect to to $r$ while $\dot{\phantom{ }}$ denotes derivative with respect to t)
       \begin{align*}
-        G_{\hat{t}\hat{t}} &= e^{-\lambda}\left(-1 + e^\lambda + r\lambda'\right)/2 \\
+        G_{\hat{t}\hat{t}} &= e^{-\lambda}\left(-1 + e^\lambda + r\lambda'\right)/r^2 \\
         G_{\hat{t}\hat{r}} &= e^{-(v+\lambda)/2}\dot{\lambda}/r \\
         G_{\hat{r}\hat{r}} &= e^{-\lambda}\left(1 - e^\lambda + rv'\right)/r^2 \\
         G_{\hat{\theta}\hat{\theta}} &= G_{\hat{\phi}\hat{\phi}} =
@@ -176,7 +183,33 @@
 \end{solution}
 
 \begin{solution}[(ii)]
+  Assume that $G_{\hat{t}\hat{r}} = 0$. Then, we get:
+  \[%
+    G_{\hat{t}\hat{r}} = e^{-(v+\lambda)/2}\dot{\lambda}/r = 0
+  .\]%
+  Clearly, $r$ cannot be zero. Also, $e^x$ for any $x$ will always be a positive number. Therefore, we must have $\dot{\lambda} = \odv{\lambda}/{t} = 0$. This, $\lambda(r, t)$ must be independent of time.
+
+  In a vacuum, we have $G_{\hat{t}\hat{t}} = 0 = G_{\hat{r}\hat{r}}$. Summing the two values up, we get:
+  \begin{align*}
+    0 &= G_{\hat{t}\hat{t}} + G_{\hat{r}\hat{r}} \\
+      &= e^{-\lambda}\left(-1 + e^\lambda + r\lambda'\right)/r^2 + e^{-\lambda}\left(1 - e^\lambda + rv'\right)/r^2 \\
+      &= -1 + e^\lambda + r\lambda' + 1 - e^\lambda + rv' \\
+      &= \lambda' + v'
+  .\end{align*}
+  If we integrate with respect to $r$, we get $v(r, t) = h(t) - \lambda(r)$.
 \end{solution}
 
 \begin{solution}[(iii)]
+  In part (i), we have shown that transformations of the form $t \to t + f(r, t)$ give us the most general spherically symmetric line element. And if $\lambda(r, t)$ is time independent, then we have $v(r, t) = h(t) - \lambda(r)$. If we let $e^{-\lambda(r)} = 1 + A/r$, where $A = 2M$, giving us:
+  \[%
+    e^{-\lambda(r)} = 1 + \frac{2M}{r}
+  .\]%
+  Computing the differential, we get:
+  \[%
+    -e^{-\lambda(r)} = -\left(1 + \frac{2M}{r}\right)
+  .\]%
+  Plugging this into the line element, we get:
+  \[%
+    \ds^2 = -\left(1 + \frac{2M}{r}\right)\dt^2 + \left(1 + \frac{2M}{r}\right)^{-1}\dr^2 + r^2\dd{\Omega}^2
+  .\qedhere\]%
 \end{solution}
