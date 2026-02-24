@@ -1,0 +1,141 @@
+\begin{problem}[33.2]
+  determine whether $\{(1, 1, 0), (1, 0, 1), (0, 1, 1)\}$ is a basis for $\R^3$ over $\R$.
+\end{problem}
+
+\begin{solution}
+  The vectors $(1, 1, 0)$, $(1, 0, 1)$, and $(0, 1, 1)$ are linearly independent. To see this, we can set up the equation:
+  \[%
+    a(1, 1, 0) + b(1, 0, 1) + c(0, 1, 1) = (0, 0, 0)
+  .\]%
+  Writing this in matrix form, we have:
+  \[%
+    \begin{bmatrix}
+      1 & 1 & 0 \\
+      1 & 0 & 1 \\
+      0 & 1 & 1 \\
+    \end{bmatrix}
+    \begin{bmatrix}
+      a \\
+      b \\
+      c \\
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+      0 \\
+      0 \\
+      0 \\
+    \end{bmatrix}
+   .\]%
+  Solving this system of equations, we find that the only solution is $a = b = c = 0$. Therefore, the vectors are linearly independent.
+
+  Lastly, we show that the set of vectors spans $\R^3$. To do this, we reduce the matrix to row echelon form:
+  \[%
+    \begin{bmatrix}
+      1 & 1 & 0 \\
+      1 & 0 & 1 \\
+      0 & 1 & 1 \\
+    \end{bmatrix} \leftarrow
+    \begin{bmatrix}
+      1 & 0 & 0 \\
+      1 & 1 & 1 \\
+      0 & 1 & 1 \\
+    \end{bmatrix}
+  .\]%
+  Since there's a pivot in every row, the vectors span $\R^3$. Therefore, the set $\{(1, 1, 0), (1, 0, 1), (0, 1, 1)\}$ is a basis for $\R^3$ over $\R$.
+\end{solution}
+
+\begin{problem}[33.5]
+  Determine if $\{a + b\sqrt{2}~|~a, b \in \Q\}$ is a finite dimensional vector space over $\Q$. If it is, find a basis.
+\end{problem}
+
+\begin{solution}
+  The set $\{a + b\sqrt{2}~|~a, b \in \Q\}$ is a finite dimensional vector space over $\Q$. To see this, we can express any element of the set as a linear combination of the vectors $1$ and $\sqrt{2}$:
+  \[%
+    a + b\sqrt{2} = a \cdot 1 + b \cdot \sqrt{2}
+  .\]%
+  Therefore, the set is spanned by the vectors $1$ and $\sqrt{2}$. 
+
+  Next, we check if the vectors $1$ and $\sqrt{2}$ are linearly independent. Suppose there exist rational numbers $x$ and $y$ such that:
+  \[%
+    x \cdot 1 + y \cdot \sqrt{2} = 0
+  .\]%
+  This implies that $x + y\sqrt{2} = 0$. Since $\sqrt{2}$ is irrational, the only way for this equation to hold is if $x = 0$ and $y = 0$. Therefore, the vectors are linearly independent.
+
+  Since the vectors $1$ and $\sqrt{2}$ are linearly independent and span the set, they form a basis for the vector space. Thus, a basis for $\{a + b\sqrt{2}~|~a, b \in \Q\}$ over $\Q$ is $\{1, \sqrt{2}\}$.
+\end{solution}
+
+\begin{problem}[33.6]
+  Determine if $\left.\left\{\frac{a + b\sqrt{3}}{c + d\sqrt{3}}~\right\rvert~a, b, c, d \in \Q \and c + d \ne \sqrt{3}\right\}$ is finite dimensional vector space over $\Q$. If it is, find a basis.
+\end{problem}
+
+\begin{solution}
+  The set $\left.\left\{\frac{a + b\sqrt{3}}{c + d\sqrt{3}}~\right\rvert~a, b, c, d \in \Q \and c + d \ne \sqrt{3}\right\}$ is a finite dimensional vector space over $\Q$. To see this, we can express any element of the set as a linear combination of the vectors $1$ and $\sqrt{3}$:
+  \[%
+    \frac{a + b\sqrt{3}}{c + d\sqrt{3}} = \frac{(a + b\sqrt{3})(c - d\sqrt{3})}{(c + d\sqrt{3})(c - d\sqrt{3})} = \frac{(ac - 3bd) + (bc - ad)\sqrt{3}}{c^2 - 3d^2}
+  .\]%
+  Therefore, the set is spanned by the vectors $1$ and $\sqrt{3}$. 
+
+  Next, we check if the vectors $1$ and $\sqrt{3}$ are linearly independent. Suppose there exist rational numbers $x$ and $y$ such that:
+  \[%
+    x \cdot 1 + y \cdot \sqrt{3} = 0
+  .\]%
+  This implies that $x + y\sqrt{3} = 0$. Since $\sqrt{3}$ is irrational, the only way for this equation to hold is if $x = 0$ and $y = 0$. Therefore, the vectors are linearly independent.
+
+  Since the vectors $1$ and $\sqrt{3}$ are linearly independent and span the set, they form a basis for the vector space. Thus, a basis for $\left.\left\{\frac{a + b\sqrt{3}}{c + d\sqrt{3}}~\right\rvert~a, b, c, d \in \Q \and c + d \ne \sqrt{3}\right\}$ over $\Q$ is $\{1, \sqrt{3}\}$.
+\end{solution}
+
+\begin{problem}[33.7]
+  Determine if $\R$ is a finite dimensional vector space over $\{a + b\sqrt{2}~|~a, b \in \Q\}$. If it is, find a basis.
+\end{problem}
+
+\begin{solution}
+  The set $\R$ is not a finite dimensional vector space over $\{a + b\sqrt{2}~|~a, b \in \Q\}$. To see this, we can consider the dimension of $\R$ over $\Q$. Since $\R$ is an infinite-dimensional vector space over $\Q$, it cannot be a finite-dimensional vector space over any subfield of $\R$ that contains $\Q$. Therefore, $\R$ is not a finite dimensional vector space over $\{a + b\sqrt{2}~|~a, b \in \Q\}$.
+\end{solution}
+
+\begin{problem}[33.8]
+  Determine if $\R$ is a finite dimensional vector space over $\C$. If it is, find a basis.
+\end{problem}
+
+\begin{solution}
+  The set $\R$ is not a vector space over $\C$. For a set $V$ to be a vector space over a field $F$, it must be closed under scalar multiplication, meaning $a \cdot v \in V$ for all $a \in F$ and $v \in V$. If we take the scalar $i \in \C$ and the vector $1 \in \R$, their product is $i \cdot 1 = i$. Since $i \notin \R$, the closure property fails. Therefore, $\R$ cannot be a vector space over $\C$.
+\end{solution}
+
+\begin{problem}[33.9]
+  Determine if $\R$ is a finite dimensional vector space over $\Q$. If it is, find a basis.
+\end{problem}
+
+\begin{solution}
+  The set $\R$ is not a finite dimensional vector space over $\Q$. To see this, we can consider the dimension of $\R$ over $\Q$. Since $\R$ is an infinite-dimensional vector space over $\Q$, it cannot be a finite-dimensional vector space over $\Q$. Therefore, $\R$ is not a finite dimensional vector space over $\Q$.
+\end{solution}
+
+\begin{problem}[33.10]
+  There is a field $E$ with 32 elements. Determine which prime field is isomorphic with a subfield of $E$ and determine the dimension of $E$ over its prime field.
+\end{problem}
+
+\begin{solution}
+\end{solution}
+
+\begin{problem}[33.21]
+  Prove that if $V$ is a finite-dimensional vector space over a field $F$, then a subset $\{\beta_i,$ $\beta_2,$ $\cdots,$ $\beta_n\}$ of $V$ is a basis for $V$ over $F$ if and only if every vector in $V$ can be expressed uniquely as a linear combination of the $\beta_i$.
+\end{problem}
+
+\begin{solution}
+\end{solution}
+
+\begin{problem}[33.23]
+  Prove that every finite-dimensional vector space $V$ of dimension n over a field $F$ is isomorphic to the vector space $F^n$ of Exercise 19.
+\end{problem}
+
+\begin{solution}
+\end{solution}
+
+\begin{problem}[33.24]
+  Let $V$ and $V'$ be vector spaces over the same field $F$. A function $\phi : V \to V'$ is a \textit{linear transformation} of $V$ into $V'$ if the following conditions are satisfied for all $\alpha, \beta \in V$, and $a \in F$:
+  \begin{gather*}
+    \phi(\alpha + \beta) = \phi(\alpha) + \phi(\beta) \\
+    \phi(a\alpha) = a\phi(\alpha)
+  \end{gather*}
+\end{problem}
+
+\begin{solution}
+\end{solution}
