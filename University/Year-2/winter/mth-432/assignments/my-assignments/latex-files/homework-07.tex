@@ -5,6 +5,11 @@
 \end{problem}
 
 \begin{solution}
+  Assume that $f(x) \ne -x$ for every $x \in \S^n$. Then, we can define a homotopy $H \times \S^n \times I \to \S^n$ by
+  \[%
+    H(x, t) = \frac{(1 - t)f(x) + tx}{\|(1 - t)f(x) + tx\|}
+  .\]%
+  Since the $f(x) \ne -x$, the denominator is never zero, so $H$ is well-defined. At $t = 0$, we get $H(x, 0) = f(x)$, and at $t = 1$, we get $H(x, 1) = x$. Therefore, $H$ is a homotopy between $f$ and $\Id_{\S^n}$, which is a contradiction, since maps that are homotopic have the same degree. Thus, there must be a point $x \in \S^n$ with $f(x) = -x$.
 \end{solution}
 
 \begin{problem}[2]
@@ -12,13 +17,15 @@
 \end{problem}
 
 \begin{solution}
+  Let $f : \S^{2k} \to \S^{2k}$ for some integer $k$. The only way for $f(x) \ne -x$, the $\deg f \ne -1$ (by the contrapositive of Corollary 9.3). Since $\deg f \circ f = (\deg f)^2 = 1$, then $\deg f = 1$. Therefore, $f \sim \Id_{\S^{2k}}$. Since $\Id_{\S^{2k}} \circ \Id_{\S^{2k}} = \Id_{\S^{2k}}$, then $f \circ f \sim \Id_{\S^{2k}}$. Thus, by Corollary 9.4, there exists a point $x \in \S^{2k}$ with $f(f(x)) = x$.
 \end{solution}
 
 \begin{problem}[3]
-  Show that, if $n$ is odd, $-\Id_{\S_n} \sim \Id_{\S_n}$. (Hint: Try doing it when $n = 1$ first.)
+  Show that, if $n$ is odd, $-\Id_{\S^n} \sim \Id_{\S^n}$. (Hint: Try doing it when $n = 1$ first.)
 \end{problem}
 
 \begin{solution}
+  Let $f(x) = \Id_{\S^n}$ and $g(x) = -\Id_{\S^n}$. We have $\deg f = 1$. Since $g(x)$ has no fixed points, then by Corollary 9.3, we have $\deg g = (-1)^{n + 1} = 1$ (since $n$ is odd). Thus, $f \sim g$, so $-\Id_{\S^n} \sim \Id_{\S^n}$.
 \end{solution}
 
 \begin{problem}[4]
@@ -26,6 +33,7 @@
 \end{problem}
 
 \begin{solution}
+  Since $f \sim g$, where $g(x) = x_0$, for every $x$, then $f_* = g_*$. On $H_0(K)$, we have $f_* = g_* = \Id_{H_0(K)}$, since $K$ is connected. Therefore, $\Lambda_f = 1$. By the Lefschetz fixed point theorem, there exists a point $x \in |K|$ with $f(x) = x$.
 \end{solution}
 
 \begin{problem}[5]
