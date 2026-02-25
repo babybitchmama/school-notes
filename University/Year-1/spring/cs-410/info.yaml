@@ -15,8 +15,6 @@ start_time: "16:00"
 end_time: "17:20"
 days: "TU,TH"
 url: "https://canvas.uoregon.edu/courses/265516"
-type: "In Person"
-notes_type: "lectures"
 professor:
   name: "Hou T"
   email: "taohou@uoregon.edu"
