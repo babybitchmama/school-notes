@@ -1,0 +1,45 @@
+\documentclass{amsbook}
+
+\input{./preamble.tex}
+
+\begin{document}
+  \pagenumbering{roman}
+
+  \blfootnote{
+    \emph{Date}: \today.
+  }
+  \blfootnote{
+    \subjclassname~\subjclass
+  }
+  \blfootnote{
+    \emph{Key words and phrases.}~\keywords
+  }
+
+  \centerline{\Large\scshape \textbf{}}
+  \centerline{\Large\scshape \textbf{}}
+  \vspace{2em}
+  \centerline{\scshape Hashem A. Damrah}
+  \medskip
+  {\footnotesize
+    \centerline{University of Oregon}
+    \centerline{Department of Mathematics}
+    \centerline{Eugene, OR 97403, USA}
+  }
+
+  \vspace{2em}\begin{abstract}
+    This paper explores the mathematical foundations of geometric inverse problems, specifically focusing on their application within the context of medical imaging techniques. The first half of the work provides a rigorous treatment of the necessary preliminaries in differential and Riemannian geometry, including the study of smooth manifolds , metric tensors , and the properties of curvature. Special attention is given to the behavior of geodesics and the role of the Einstein summation convention in simplifying tensor calculus. Building upon this geometric framework, the second half delves into the formulation of inverse problems, such as the recovery of internal manifold properties from boundary data. By analyzing the relationship between metric geometry and integral transforms, we investigate how the curvature and topological structure of a medium influence the stability and uniqueness of reconstructions in techniques like X-ray and seismic imaging.
+  \end{abstract}
+
+  \tableofcontents
+
+  \setcounter{page}{1}
+  \pagenumbering{arabic}
+
+  \input{./chapters/chapter-01/master.tex}
+  \input{./chapters/chapter-02/master.tex}
+
+  \bibliographystyle{abbrv}
+  \bibliography{references}
+
+  \nocite*{}
+\end{document}

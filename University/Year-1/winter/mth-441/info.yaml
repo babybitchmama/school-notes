@@ -14,7 +14,7 @@ end_date: "Mar 16 2025 Mon (12:00:00)"
 start_time: "12:00"
 end_time: "12:50"
 days: "MO,WE,FR"
-url: ""
+url: "https://canvas.uoregon.edu/courses/259458"
 type: "In Person"
 notes_type: "lectures"
 professor:

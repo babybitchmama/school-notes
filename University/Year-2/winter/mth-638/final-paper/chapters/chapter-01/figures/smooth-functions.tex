@@ -1,0 +1,54 @@
+\begin{figure}[h]
+  \centering
+
+  \begin{tikzpicture}[>=Stealth, scale=1.2]
+
+    % --- MANIFOLD M ---
+    % Main body of the manifold with green shading
+    \filldraw[fill=green!10, draw=green!40!black, thick]
+      plot [smooth cycle, tension=0.7] coordinates {(-2,0.5) (0,1.5) (2,1) (3,-0.5) (1,-1.5) (-2,-1)};
+    \node at (1.2, 1.2) {\large $M$};
+
+    % Genus/Hole
+    \draw[thick] (1.4,0.1) to[out=-40, in=220] (2.4,0.1);
+    \draw[thick] (1.5,0) to[out=40, in=140] (2.3,0);
+
+    % Subset U (slightly darker green to highlight the region)
+    \filldraw[fill=green!20, draw=green!50!black, thick] (-0.1,0.3) circle (1.1 and 0.8);
+    \node at (0.1, 0.4) {\large $U$};
+
+    % --- COORDINATE CHART (Lower Left) ---
+    \begin{scope}[shift={(-1.8,-4.3)}]
+      % Axes
+      \draw[->] (-1.2,0) -- (1.6,0);
+      \draw[->] (-0.5,-1) -- (-0.5,1.8);
+
+      % Region U-hat with gray shading common for Euclidean subsets
+      \filldraw[fill=gray!15, draw=black, thick] (0.05,0.4) circle (1.05);
+      \node at (0.3, 0.8) {\large $\widehat{U}$};
+    \end{scope}
+
+    % --- TARGET SPACE R^k (Right) ---
+    \begin{scope}[shift={(6,-0.5)}]
+      % Axes
+      \draw[->] (-1.6,0) -- (1.6,0);
+      \draw[->] (0,-1.5) -- (0,1.5);
+      \node at (1.1, 1) {\large $\mathbb{R}^k$};
+    \end{scope}
+
+    % --- MAPPING ARROWS ---
+
+    % Map phi (M to U-hat)
+    \draw[->, thick, blue!70!black] (-1, -0.6) to[bend right] node[midway, below left] {\large $\varphi$} (-1.8, -2.6);
+
+    % Map f (M to R^k)
+    \draw[->, thick, red!70!black] (3.2, 0.7) to[out=15, in=165] node[midway, above] {\large $f$} (4.6, 0.7);
+
+    % Composition f o phi^-1
+    \draw[->, thick, orange!80!black] (-0.7, -3.1) to[out=30, in=195] node[midway, below right] {\large $f \circ \varphi^{-1}$} (4.6, -1);
+
+  \end{tikzpicture}
+
+  \caption{Smooth functions}
+  \label{fig:smooth_functions}
+\end{figure}

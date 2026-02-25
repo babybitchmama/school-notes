@@ -1,0 +1,151 @@
+\renewcommand\S{\mathbb{S}}
+
+\begin{problem}[1]
+  Let $G$ be a Lie group.
+  \begin{enumerate}
+    \item Let $m : G \times G \to G$ denote the multiplication map. Using Proposition 3.14 to identify $T_{(e,e)}(G \times G)$ with $T_eG \oplus T_eG$, show that the differential $\dd{m}_{(e,e)} : T_eG \oplus T_eG \to T_eG$ is given by
+      \[%
+        \dd{m}_{(e,e)}(X,Y) = X + Y
+      .\]%
+      [Hint: compute $\dd{m}_{(e,e)}(X, 0)$ and $\dd{m}_{(e,e)}(0, Y)$ separately.]
+    \item Let $i : G \to G$ denote the inversion map. Show that $\dd{i}_e : T_eG \to T_eG$ is given by $\dd{i}_e(X) = -X$.
+  \end{enumerate}
+\end{problem}
+
+\begin{solution}[(i)]
+  Proposition 3.14 states that given $M_1, \cdots, M_k$ smooth manifolds, a point $p \in M = M_1 \times \cdot \times M_k$, and $\pi_i : M \to M_i$ the projection map onto the $i$-th factor, then the map:
+  \[%
+    \alpha : T_pM \to \bigoplus_{i=1}^k T_{p_i}M_i
+  ,\]%
+  defined by
+  \[%
+    \alpha(v) = (\dd{(\pi_1)}_p(v), \cdots, \dd{(\pi_k)}_p(v))
+  ,\]%
+  is an isomorphism.
+
+  In our case, we have $M_1 = M_2 = G$, and $p = (e, e)$. Thus, we have the isomorphism:
+  \[%
+    \alpha : T_{(e,e)}(G \times G) \to T_eG \oplus T_eG
+  .\]%
+  Now, we compute $\dd{m}_{(e,e)}(X, 0)$ and $\dd{m}_{(e,e)}(0, Y)$ separately. Let $\gamma : (-\epsilon, \epsilon) \to G$ be a smooth curve such that $\gamma(0) = e$ and $\gamma'(0) = X$. Then, we have:
+  \[%
+    \dd{m}_{(e,e)}(X, 0) = \left.\odv{}{t}\right\rvert_{t=0} m(\gamma(t), e) = \left.\odv{}{t}\right\rvert_{t=0} \gamma(t) = X
+  .\]%
+  Similarly, let $\delta : (-\epsilon, \epsilon) \to G$ be a smooth curve such that $\delta(0) = e$ and $\delta'(0) = Y$. Then, we have:
+  \[%
+    \dd{m}_{(e,e)}(0, Y) = \left.\odv{}{t}\right\rvert_{t=0} m(e, \delta(t)) = \left.\odv{}{t}\right\rvert_{t=0} \delta(t) = Y
+  .\]%
+  Thus, we have:
+  \[%
+    \dd{m}_{(e,e)}(X, Y) = \dd{m}_{(e,e)}(X, 0) + \dd{m}_{(e,e)}(0, Y) = X + Y
+  .\qedhere\]%
+\end{solution}
+
+\begin{solution}[(ii)]
+  Let $\gamma : (-\epsilon, \epsilon) \to G$ be a smooth curve such that $\gamma(0) = e$ and $\gamma'(0) = X$. Then, we have
+  \[%
+    \dd{i}_e(X) = \left.\odv{}{t}\right\rvert_{t=0} i(\gamma(t)) = \left.\odv{}{t}\right\rvert_{t=0} \gamma(t)^{-1}
+  .\]%
+  Now, we can use the fact that the multiplication map $m : G \times G \to G$ is smooth to compute $\dd{m}_{(e,e)}(X, -X)$ as follows:
+  \[%
+    \dd{m}_{(e,e)}(X, -X) = X + (-X) = 0
+  .\]%
+  On the other hand, we have
+  \[%
+    \dd{m}_{(e,e)}(X, -X) = \left.\odv{}{t}\right\rvert_{t=0} m(\gamma(t), i(\gamma(t))) = \left.\odv{}{t}\right\rvert_{t=0} e = 0
+  .\]%
+  Therefore, we have $\dd{i}_e(X) = -X$ for all $X \in T_eG$. This completes the proof.
+\end{solution}
+
+\begin{problem}[2]
+  Show that smoothness of the inversion map is redundant in the definition of Lie group: if $G$ is a smooth manifold with a group structure such that the multiplication map is a smooth manifold with a group structure such that the multiplication map $m : G \times G \to G$, then $G$ is a Lie group.
+
+  \vspace{0.5em}
+
+  \noindent{[Hint: show that the map $F : G \times G \to G \times G$ defined by $F(g, h) = (g, gh)$ is a bijective local diffeomorphism.]}
+\end{problem}
+
+\begin{solution}
+\end{solution}
+
+\begin{problem}[3]
+  Let $\det : \GL(n; \R) \to \R$ denote the determinant function. Use Corollary 3.25 to compute the differential of $\det$, as follows:
+  \begin{enumerate}
+    \item For any $A \in M(n; \R)$, show that
+      \[%
+        \left.\odv{}{t}\right\rvert_{t=0} \det(I_n + tA) = \Tr A
+      ,\]%
+      where $\Tr A$ is the trace of matrix $A$.
+    \item For $X \in \GL(n; \R)$ and $B \in T_X\GL(n; \R) \cong M(n; \R)$ (the space of real $n \times n$ matrices), show that
+      \[%
+        \dd{(\det)}_X(B) = (\det X)\Tr(X^{-1} B)
+      .\]%
+      [Hint: $\det(X + tB) = (\det X) \cdot \det(I_n + tX^{-1}B)$.]
+  \end{enumerate}
+\end{problem}
+
+\begin{solution}[(i)]
+  Define the smooth curve $\gamma : (-\epsilon, \epsilon) \to M(n; \R)$ by $\gamma(t) = I_n + tA$, with $\gamma(0) = I_n$ and $\gamma'(0) = A$. Then, by Corollary 3.25, we have:
+  \[%
+    \left.\odv{}{t}\right\rvert_{t=0} \det(I_n + tA) = \dd{(\det)}_{I_n}(A)
+  .\]%
+  Notice that the characteristic polynomial of a matrix $A$ is given by $p_A(t) = \det(I_n - tA)$. Let $\lambda_1, \cdots, \lambda_n$ be the eigenvalues of $A$ (counted with multiplicity). Then, we have:
+  \[%
+    p_A(t) = \prod_{i=1}^n (1 - t\lambda_i) = 1 - t\sum_{i=1}^n \lambda_i + \mathcal{O}(t^2)
+  ,\]%
+  where $\mathcal{O}(t^2)$ denotes terms of order $t^2$ and higher. Therefore, we have:
+  \[%
+    \left.\odv{}{t}\right\rvert_{t=0} \det(I_n + tA) = -\left.\odv{}{t}\right\rvert_{t=0} p_A(-t) = \sum_{i=1}^n \lambda_i = \Tr A
+  .\qedhere\]%
+\end{solution}
+
+\begin{solution}[(ii)]
+  Define the smooth curve $\gamma : (-\epsilon, \epsilon) \to \GL(n; \R)$ by $\gamma(t) = X + tB$, with $\gamma(0) = X$ and $\gamma'(0) = B$. Then, by Corollary 3.25, we have:
+  \[%
+    \dd{(\det)}_X(B) = \left.\odv{}{t}\right\rvert_{t=0} \det(X + tB)
+  .\]%
+  Now, we can use the hint to compute $\dd{(\det)}_X(B)$ as follows:
+  \[%
+    \dd{(\det)}_X(B) = \left.\odv{}{t}\right\rvert_{t=0} (\det X) \cdot \det(I_n + tX^{-1}B) = (\det X) \cdot \left.\odv{}{t}\right\rvert_{t=0} \det(I_n + tX^{-1}B)
+  .\]%
+  Using part (i), we have:
+  \[%
+    \dd{(\det)}_X(B) = (\det X) \cdot \Tr(X^{-1}B)
+  .\qedhere\]%
+\end{solution}
+
+\begin{problem}[4]
+  Show that the formula
+  \[%
+    A \cdot [\vec{z}] = [A\vec{z}]
+  ,\]%
+  defines a smooth, transitive left action of $\GL(n + 1; \C)$ on $\CP^n$.
+\end{problem}
+
+\begin{solution}
+\end{solution}
+
+\begin{problem}[5]
+  Considering $\S^{2n+1}$ as the unit sphere in $\C^{n+1}$, define an action of
+  $\S^1$ on $\S^{2n+1}$, called the Hopf action, by
+  \[%
+    z \cdot (w^1, \cdots, w^{n+1}) = (zw^1, \ldots, zw^{n+1})
+  .\]%
+  Show that this action is smooth and its orbits are disjoint unit circles in $\C^{n+1}$ whose union is $\S^{2n+1}$.
+\end{problem}
+
+\begin{solution}
+\end{solution}
+
+\begin{problem}[6]
+  \begin{enumerate}
+    \item For each $n \ge 1$, prove that $U(n)$ is a properly embedded real $n^2$-dimensional Lie subgroup of $\GL(n; \C)$.
+    \item For each $n \ge 1$, prove that $SU(n)$ is a properly embedded $(n^2 - 1)$-dimensional Lie subgroup of $U(n)$.
+  \end{enumerate}
+\end{problem}
+
+\begin{solution}[(i)]
+\end{solution}
+
+\begin{solution}[(ii)]
+\end{solution}
