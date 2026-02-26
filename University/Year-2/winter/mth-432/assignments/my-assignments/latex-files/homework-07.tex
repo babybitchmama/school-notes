@@ -47,13 +47,25 @@
 \end{problem}
 
 \begin{solution}[(i)]
+  Assume that there is a proper face $B \subsetneq A$ such that $f(B) = B$. Then, $\hat{B} \in S$, which contradicts the assumption that $S$ is finite. Therefore, there is no proper face $B \subsetneq A$ such that $f(B) = B$.
 \end{solution}
 
 \begin{solution}[(ii)]
+  Let $A = (v_0, \dots, v_i)$ be a simplex such that $f(A) = A$. Since $f$ is simplicial, we have $f(v_j) \in A$ for all $0 \le j \le i$. Since there is no proper face $B \subsetneq A$ such that $f(B) = B$, then $f(v_j) \ne v_j$ for all $0 \le j \le i$. Therefore, we can order the vertices of $A$ such that $f(v_j) = v_{j+1}$ for all $0 \le j \le i - 1$ and $f(v_i) = v_0$.
 \end{solution}
 
 \begin{solution}[(iii)]
+  Let $\sigma = (v_0, \dots, v_i)$ be the orientation of $A$ that we constructed in part (ii). Then, we have
+  \[%
+    f_i(\sigma) = (f(v_0), \dots, f(v_i)) = (v_1, \dots, v_i, v_0) = (-1)^i\sigma
+  .\]%
+  Therefore, $f_i(\sigma) = (-1)^i\sigma$.
 \end{solution}
 
 \begin{solution}[(iv)]
+  Let $S = \{\hat{A}_1, \dots, \hat{A}_m\}$, where $A_j$ is a simplex such that $f(A_j) = A_j$ for all $1 \le j \le m$. Then, we have
+  \[%
+    \Lambda_f = \sum_{i = 0}^n (-1)^i\Tr(f_i) = \sum_{j = 1}^m (-1)^{\dim A_j}\Tr(f_{\dim A_j}) = \sum_{j = 1}^m (-1)^{\dim A_j}(-1)^{\dim A_j} = m
+  .\]%
+  Therefore, $\Lambda_f = |S|$.
 \end{solution}

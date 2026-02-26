@@ -16,7 +16,7 @@ fi
 
 tmux new-session -d -s "$SESSION_NAME"
 
-source ./todo-list/.tmux
+# source ./todo-list/.tmux
 
 #######################################################################
 #                                                                     #
@@ -50,15 +50,15 @@ source ./todo-list/.tmux
 #  Year 1  #
 ############
 
-source ./University/Year-1/fall/.tmux
-source ./University/Year-1/winter/.tmux
-source ./University/Year-1/spring/.tmux
+# source ./University/Year-1/fall/.tmux
+# source ./University/Year-1/winter/.tmux
+# source ./University/Year-1/spring/.tmux
 
 ############
 #  Year 2  #
 ############
 
-source ./University/Year-2/fall/.tmux
+# source ./University/Year-2/fall/.tmux
 source ./University/Year-2/winter/.tmux
 # source ./University/Year-2/spring/.tmux
 

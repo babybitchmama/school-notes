@@ -1,0 +1,22 @@
+---
+title: "Introduction to Mathematical Cryptography"
+topic: "Mathematics"
+class_number: 32900
+short: "MTH-458"
+author: "Hashem A. Damrah"
+term: "Spring"
+faculty: "Faculty of Mathematics"
+college: "University of Oregon"
+location: ""
+year: 2026
+start_date: "Mar 30 2026 Mon (12:00:00)"
+end_date: "June 05 2026 Fri (12:00:00)"
+start_time: "11:00"
+end_time: "11:50"
+days: "MO,WE,FR"
+url: ""
+professor:
+  name: "Ben Young"
+  email: "bjy@uoregon.edu"
+  phone_number: "541-346-8406"
+  office: "Fenton Hall, 211"
