@@ -1,0 +1,116 @@
+% ----------- Cover Master Thesis University of Oregon ---------------
+\RequirePackage{fix-cm}
+\documentclass[12pt,a4paper,oneside]{book}
+\usepackage[utf8]{inputenc}
+
+% ------------------------- Load packages ---------------------------
+\usepackage{graphicx,xcolor,textpos}
+\usepackage{amsmath,amsfonts, mathtools, amsthm, amssymb}
+\usepackage{helvet}
+
+% ------------------------ Page settings -----------------------------
+\topmargin -10mm
+\textwidth 160truemm
+\textheight 240truemm
+\oddsidemargin 0mm
+\evensidemargin 0mm
+
+% ---------------------- textpos settings ----------------------------
+\definecolor{uogreen}{RGB}{18,71,52}
+
+\setlength{\TPHorizModule}{1mm}
+\setlength{\TPVertModule}{1mm}
+
+\newcommand\SU{\operatorname{SU}}
+
+\begin{document}
+  \thispagestyle{empty}
+  \newcommand{\form}[1]{\scalebox{1.087}{\boldmath{#1}}}
+  \sffamily
+
+  % ----------------------- Front Cover --------------------------------
+  % Top Green Bar
+  \begin{textblock}{192}(-24,-11)
+  \colorbox{uogreen}{\hspace{127mm}\ \parbox[c][18truemm]{66mm}{\textcolor{white}{DEPARTMENT OF MATHEMATICS}}}
+  \end{textblock}
+
+  % Title and New Analysis-Focused Subtitle
+  \begin{textblock}{160}(-6,63)
+  \textblockcolour{}
+  \vspace{-\parskip}
+  \flushleft
+  \fontsize{42}{45}\selectfont \textcolor{uogreen}{Heat Kernel Asymptotics and the Geometry of $\SU(2)$}\\[5.5mm]
+  \fontsize{18}{22}\selectfont \parbox{20cm}{An investigation of spectral geometry, invariant metrics, \\[0.2em]and the representations of $\mathfrak{sl}(2, \mathbb{C})$}
+  \end{textblock}
+
+  % Your Name
+  \begin{textblock}{160}(8,153)
+  \textblockcolour{}
+  \vspace{-\parskip}
+  \flushright
+  \fontsize{14}{16}\selectfont \textbf{Hashem Alaa H. DAMRAH}
+  \end{textblock}
+
+  % Supervisor Info
+  \begin{textblock}{70}(-6,191)
+  \textblockcolour{}
+  \vspace{-\parskip}
+  \flushleft
+  Supervisor: Prof. Boris Botvinnik\\[-2pt]
+  \end{textblock}
+
+  % Thesis Requirements
+  \begin{textblock}{160}(8,191)
+  \textblockcolour{}
+  \vspace{-\parskip}
+  \flushright
+  Thesis presented to\\[4.5pt]
+  the Department of Mathematics\\[4.5pt]
+  in partial fulfillment of the requirements \\[4.5pt]
+  for the degree of Bachelor of Science in Mathematics
+  \end{textblock}
+
+  % Academic Year
+  \begin{textblock}{160}(8,232)
+  \textblockcolour{}
+  \vspace{-\parskip}
+  \flushright
+  Academic year 2026--2027
+  \end{textblock}
+
+  \begin{textblock}{191}(-24,248)
+  {\color{uogreen}\rule{550pt}{5.5pt}}
+  \end{textblock}
+
+  \newpage
+
+  % ----------------------- Back Cover ---------------------------------
+  \thispagestyle{empty}
+  \sffamily
+
+  % Top and Side Decorative Bars
+  \begin{textblock}{191}(112,-11)
+    {\color{uogreen}\rule{160pt}{5.5pt}}
+  \end{textblock}
+
+  \begin{textblock}{191}(167.4,-11)
+    {\color{uogreen}\rule{5.5pt}{59pt}}
+  \end{textblock}
+
+  % Contact Information
+  \begin{textblock}{183}(-15,-11)
+    \textblockcolour{}
+    \flushright
+    \fontsize{8}{10}\selectfont
+    \textbf{\textcolor{uogreen}{Department of Mathematics}}\\
+    University of Oregon\\
+    Fenton Hall\\
+    Eugene, OR 97403-1222\\
+    tel. (541) 346-4705\\
+    math.uoregon.edu
+  \end{textblock}
+
+  \begin{textblock}{191}(-20,235)
+    {\color{uogreen}\rule{544pt}{55pt}}
+  \end{textblock}
+\end{document}

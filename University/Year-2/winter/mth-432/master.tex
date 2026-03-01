@@ -13,22 +13,105 @@
 \def\location{University of Oregon}
 
 \begin{document}
-  \createintro
-  \newpage
+  \textbf{Definitions:}
+  \begin{enumerate}
+    \item Idempotent: $a^2 = a$, nilpotent: $a^n = 0$ for some $n > 0$, zero divisor: $ab = 0$ for some nonzero $b$, unit: $ab = ba = 1$ for some $b$.
+    \item \textbf{Integral Domain:} A commutative ring with unity is an integral domain if it has no zero divisors.
+    \item \textbf{Field:} A commutative ring with unity is a field if every nonzero element is a unit.
+    \item \textbf{Ideal:} A subset $I$ of a ring $R$ is an ideal if it is an additive subgroup of $R$ and for every $r \in R$ and $a \in I$, both $ra$ and $ar$ are in $I$.
+    \item \textbf{Maximal Ideal:} A maximal ideal of a ring $R$ is an ideal $M$ different from $R$ such that there is no proper ideal $N$ of $R$ properly containing $M$.
+    \item \textbf{Prime Ideal:} An ideal $N \ne R$ is a prime ideal if $ab \in N$ implies that either $a \in N$ or $b \in N$ for all $a, b \in R$.
+    \item \textbf{Prime Fields:} The fields $\Z_p$ and $\Q$ are prime fields.
+    \item \textbf{Principal Ideal:} An ideal $I$ of a ring $R$ is a principal ideal if there exists an element $a \in R$ such that $I = \braket{a} = \{ra : r \in R\}$.
+    \item \textbf{Principal Ideal Domain:} An integral domain $R$ is a principal ideal domain (PID) if every ideal in $R$ is principal.
+    \item \textbf{Unique Factorization Domain:} An integral domain $R$ is a unique factorization domain (UFD) if every nonzero element of $R$ that is not a unit can be written as a product of irreducible elements, and this factorization is unique up to order and units.
+    \item \textbf{Euclidean Norm:} A Euclidean norm on an integral domain $D$ is a function $\nu$ mapping the nonzero elements of $D$ into the nonnegative integers such that the following conditions are satsfied:
+      \begin{enumerate}
+        \item For all $a, b \in D$ with $b \ne 0$, there exist $q$ and $r$ in $D$ such that $a = bq + r$ where either $r = 0$ or $\nu(r) < \nu(b)$.
+        \item For all $a, b \in D$, where neither $a$ nor $b$ is 0, $\nu(a) \le \nu(ab)$.
+      \end{enumerate}
+    \item \textbf{Euclidean Domain:} An integral domain $D$ is a Euclidean domain (ED) if there exists a Euclidean norm on $D$.
+    \item \textbf{Gaussian Integer:} A Gaussian integer $a + bi$, where $a, b \in \Z$. The norm $N(\alpha) = a^2 + b^2$.
+  \end{enumerate}
 
-  \setcounter{chapter}{-1}
-  \chapter{Introduction}
+  \textbf{Theorems}
+  \begin{enumerate}
+    \item \textbf{31.6:} A field contains no proper nontrivial ideals.
+    \item \textbf{31.9:} Let $R$ be a commutative ring with unity. Then, $M$ is a maximal ideal of $R$ if and only if $R/M$ is a field.
+    \item \textbf{31.11:} A commutative ring with unity is a field if and only if it has no proper nontrivial ideals.
+    \item \textbf{31.15:} Let $R$ be a commutative ring with unity, and let $N \ne R$ be an ideal in $R$. Then, $R/N$ is an integral domain if and only if $N$ is a prime ideal in $R$.
+    \item \textbf{31.16:} Every maximal ideal in a commutative ring $R$ with unity is a prime ideal.
+    \item \textbf{31.17:} If $R$ is a ring with unity 1, then the map $\phi : \Z \to R$ given by $\phi(n) = n \cdot 1$ for any $n \in \Z$ is a homomorphism of $\Z$ onto $R$.
+    \item \textbf{31.18:} Let $R$ be a ring with unity. If $R$ has characteristic $n > 1$, then $R$ contains a subring isomorphic to $\Z_n$. If $R$ has characteristic 0, then $R$ contains a subring isomorphic to $\Z$.
+    \item \textbf{31.19:} If a field $F$ is either of prime characteristic $p$ and contains a subfield isomorphic to $\Z_p$ or of characteristic 0 and contains a subfield isomorphic to $\Q$.
+    \item \textbf{31.24:} If $F$ is a field, every ideal in $F[x]$ is principal.
+    \item \textbf{31.25:} An ideal $\braket{p(x)} \ne \{0\}$ of $F[x]$ is maximal if and only if $p(x)$ is irreducible over $F$.
+    \item \textbf{31.27:} Let $p(x)$ be an irreducible polynomial in $F[x]$. If $p(x)$ divides $r(x)s(x)$ for $r(x), s(x) \in F[x]$, then either $p(x)$ divides $r(x)$ or $s(x)$.
+    \item \textbf{33.5:} If $V$ is a vector space over $F$, then $0\alpha = 0$, $a0 = 0$, and $(-a)\alpha = a(-\alpha) = -(a\alpha)$.
+    \item \textbf{33.16:} In a finite-dimensional vector space, every finite set of vectors spanning the space contains a subset that is a basis.
+    \item \textbf{33.17:} A finite-dimensional vector space has a finite basis.
+    \item \textbf{34.13:} An ideal $\braket{p}$ in a PID is maximal iff $p$ is an irreducible.
+    \item \textbf{34.14:} In a PID, if an irreducible $p$ divides $ab$, then either $p|a$ or $p|b$.
+    \item \textbf{34.15:} If $p$ is an irreducible in a PID and $p$ divides $a_1a_2\cdots a_n$, then $p|a_i$ for some $i$.
+    \item \textbf{34.18:} Every PID is a UFD.
+    \item \textbf{34.30:} If $D$ is a UFD, then $D[x]$ is a UFD.
+    \item \textbf{35.4:} Every Euclidean domain (ED) is a PID.
+    \item \textbf{34.5:} A ED is a UFD.
+    \item \textbf{36.3:} $\Z[i]$ is an integral domain.
+  \end{enumerate}
 
-  % notes start 0-0
-  \input{lectures/lec-00.tex}
-  % notes end 0-0
+  \textbf{Nice Facts}
+  \begin{enumerate}
+    \item $F[x]/\braket{p}$ is a field iff $p$ is irreducible.
+    \item In $F[x]$, the ideal $\braket{p}$ is maximal iff $p(x)$ is irreducible.
+    \item $F[x]/\braket{p}$ is an integral domain iff $p(x)$ is irreducible.
+    \item An element $[a]$ is a unit in $\Z_n$ iff $\gcd(a, n) = 1$.
+    \item Every finite dimensional integral domain is a field.
+    \item Number of idempotent elements in $\Z_n$ is $2^k$, where $k$ is the number of distinct prime factors of $n$.
+    \item Number of nilpotent elements in $\Z_n$ is $p_1^{k_1 - 1} + p_2^{k_2 - 1} + \cdots + p_m^{k_m - 1}$, where $n = p_1^{k_1}p_2^{k_2}\cdots p_m^{k_m}$.
+    \item Number of zero divisors in $\Z_n$ is $n - \phi(n)$, where $\phi$ is the Euler totient function, where
+      \[%
+        \phi(n) = n\prod_{p|n} \left(1 - \frac{1}{p}\right)
+      .\]%
+    \item Number of units in $\Z_n$ is $\phi(n)$, where $\phi$ is the Euler totient function.
+    \item Number of elements in $Z[di]/\braket{a + ib}$ is $N(a + bd) = a^2 + b^2d^2$.
+  \end{enumerate}
 
-  \newpage
-  \pagenumbering{arabic}
-  \setcounter{page}{1}
+  \textbf{Examples:}
+  \begin{enumerate}
+    \item \textbf{Chinese Remainder Theorem:} Find an $x$ such that $x \equiv 2 \pmod{3}$, $x \equiv 3 \pmod{5}$, and $x \equiv 2 \pmod{7}$.
+      \begin{enumerate}
+        \item $M = 3 \cdot 5 \cdot 7 = 105$.
+        \item  $M_1 = 105/3 = 35, \quad M_2 = 105/5 = 21, \quad M_3 = 105/7 = 15$.
+        \item $35y_1 \equiv 1 \pmod{3} \implies 2y_1 \equiv 1 \pmod{3} \implies y_1 = 2$, $21y_2 \equiv 1 \pmod{5} \implies y_2 = 1, \quad 15y_3 \equiv 1 \pmod{7} \implies y_3 = 1$.
+        \item $x = (a_1M_1y_1) + (a_2M_2y_2) + (a_3M_3y_3) = 233$.
+      \end{enumerate}
+      Thus, $x \equiv 233 \equiv 23 \pmod{105}$.
+    \item \textbf{Euclidean Algorithm:} Find $\gcd(252, 105)$.
+      \begin{enumerate}
+        \item $252 = (2 \cdot 105) + 42$.
+        \item $105 = (2 \cdot 42) + 21$.
+        \item $42 = 2 \cdot 21 + 0$.
+      \end{enumerate}
+      Thus, $\gcd(252, 105) = 21$.
+  \end{enumerate}
 
-  \chapter{Chapter Name}
+  % \createintro
+  % \newpage
 
-  % start notes a-b
-  % end notes a-b
+  % \setcounter{chapter}{-1}
+  % \chapter{Introduction}
+
+  % % notes start 0-0
+  % \input{lectures/lec-00.tex}
+  % % notes end 0-0
+
+  % \newpage
+  % \pagenumbering{arabic}
+  % \setcounter{page}{1}
+
+  % \chapter{Chapter Name}
+
+  % % start notes a-b
+  % % end notes a-b
 \end{document}
