@@ -53,7 +53,7 @@
   \[%
     a + b\sqrt{2} = a \cdot 1 + b \cdot \sqrt{2}
   .\]%
-  Therefore, the set is spanned by the vectors $1$ and $\sqrt{2}$. 
+  Therefore, the set is spanned by the vectors $1$ and $\sqrt{2}$.
 
   Next, we check if the vectors $1$ and $\sqrt{2}$ are linearly independent. Suppose there exist rational numbers $x$ and $y$ such that:
   \[%
@@ -73,7 +73,7 @@
   \[%
     \frac{a + b\sqrt{3}}{c + d\sqrt{3}} = \frac{(a + b\sqrt{3})(c - d\sqrt{3})}{(c + d\sqrt{3})(c - d\sqrt{3})} = \frac{(ac - 3bd) + (bc - ad)\sqrt{3}}{c^2 - 3d^2}
   .\]%
-  Therefore, the set is spanned by the vectors $1$ and $\sqrt{3}$. 
+  Therefore, the set is spanned by the vectors $1$ and $\sqrt{3}$.
 
   Next, we check if the vectors $1$ and $\sqrt{3}$ are linearly independent. Suppose there exist rational numbers $x$ and $y$ such that:
   \[%
@@ -113,20 +113,74 @@
 \end{problem}
 
 \begin{solution}
+  To determine which prime field is isomorphic with a subfield of $E$, we need to find the characteristic of $E$. The characteristic of a field is the smallest positive integer $p$ such that $p \cdot 1 = 0$ in the field. Since $E$ has 32 elements, it must have characteristic 2, because 32 is a power of 2. Therefore, the prime field that is isomorphic with a subfield of $E$ is $\F_2$, the field with 2 elements.
 \end{solution}
 
 \begin{problem}[33.21]
-  Prove that if $V$ is a finite-dimensional vector space over a field $F$, then a subset $\{\beta_i,$ $\beta_2,$ $\cdots,$ $\beta_n\}$ of $V$ is a basis for $V$ over $F$ if and only if every vector in $V$ can be expressed uniquely as a linear combination of the $\beta_i$.
+  Prove that if $V$ is a finite-dimensional vector space over a field $F$, then a subset $\{\beta_1,$ $\beta_2,$ $\cdots,$ $\beta_n\}$ of $V$ is a basis for $V$ over $F$ if and only if every vector in $V$ can be expressed uniquely as a linear combination of the $\beta_i$.
 \end{problem}
 
 \begin{solution}
+  Assume that $\{\beta_1, \beta_2, \cdots, \beta_n\}$ is a basis for $V$ over $F$. By definition of a basis, the vectors are linearly independent and span $V$. Therefore, every vector in $V$ can be expressed as a linear combination of the $\beta_i$. To show uniqueness, suppose there are two different linear combinations of the $\beta_i$ that represent the same vector:
+  \[%
+    a_1\beta_1 + a_2\beta_2 + \cdots + a_n\beta_n = b_1\beta_1 + b_2\beta_2 + \cdots + b_n\beta_n
+  .\]%
+  Rearranging this equation gives:
+  \[%
+    (a_1 - b_1)\beta_1 + (a_2 - b_2)\beta_2 + \cdots + (a_n - b_n)\beta_n = 0
+  .\]%
+  Since the $\beta_i$ are linearly independent, it follows that $a_i - b_i = 0$ for all $i$, which means $a_i = b_i$ for all $i$. Thus, the representation of each vector in terms of the basis is unique.
+
+  Now, conversely, assume assume that every vector in $V$ can be expressed uniquely as a linear combination of $\{\beta_1, \beta_2, \cdots, \beta_n\}$. To show that these vectors form a basis, we need to show that they are linearly independent and span $V$.
+
+  First, we show linear independence. Suppose there exist scalars $c_1, c_2, \cdots, c_n$ such that:
+  \[%
+    c_1\beta_1 + c_2\beta_2 + \cdots + c_n\beta_n = 0
+  .\]%
+  Since the representation of each vector is unique, the only way for this equation to hold is if $c_i = 0$ for all $i$. Therefore, the vectors are linearly independent.
+
+  Next, we show that the vectors span $V$. Since every vector in $V$ can be expressed as a linear combination of $\{\beta_1, \beta_2, \cdots, \beta_n\}$, it follows that the vectors span $V$. Therefore, $\{\beta_1, \beta_2, \cdots, \beta_n\}$ is a basis for $V$ over $F$.
 \end{solution}
 
 \begin{problem}[33.23]
-  Prove that every finite-dimensional vector space $V$ of dimension n over a field $F$ is isomorphic to the vector space $F^n$ of Exercise 19.
+  Prove that every finite-dimensional vector space $V$ of dimension $n$ over a field $F$ is isomorphic to the vector space $F^n$ of Exercise 19.
 \end{problem}
 
 \begin{solution}
+  Let $V$ be a finite-dimensional vector space of dimension $n$ over a field $F$. Since $V$ has dimension $n$, there exists a basis $\{\beta_1, \beta_2, \cdots, \beta_n\}$ for $V$ over $F$. We can define a function $\phi : V \to F^n$ as follows: For any vector $\alpha \in V$, express $\alpha$ as a linear combination of the basis vectors:
+  \[%
+    \alpha = a_1\beta_1 + a_2\beta_2 + \cdots + a_n\beta_n
+  .\]%
+  Then we define:
+  \[%
+    \phi(\alpha) = (a_1, a_2, \cdots, a_n)
+  .\]%
+  This function $\phi$ is well-defined because the representation of each vector in terms of the basis is unique.
+
+  Next, we need to show that $\phi$ is an isomorphism. To show that $\phi$ is linear, we check the following properties for any vectors $\alpha, \gamma \in V$ and any scalar $a \in F$:
+  \begin{align*}
+    \phi(\alpha + \gamma) &= \phi((a_1\beta_1 + a_2\beta_2 + \cdots + a_n\beta_n) + (c_1\beta_1 + c_2\beta_2 + \cdots + c_n\beta_n)) \\
+                          &= (a_1 + c_1, a_2 + c_2, \cdots, a_n + c_n) = (a_1, a_2, \cdots, a_n) + (c_1, c_2, \cdots, c_n) = \phi(\alpha) + \phi(\gamma)
+  ,\end{align*}
+  and
+  \begin{align*}
+    \phi(a\alpha) &= \phi(a(a_1\beta_1 + a_2\beta_2 + \cdots + a_n\beta_n)) = (aa_1, aa_2, \cdots, aa_n) = a(a_1, a_2, \cdots, a_n) = a\phi(\alpha)
+  .\end{align*}
+  Therefore, $\phi$ is a linear transformation.
+
+  To show that $\phi$ is injective, suppose $\phi(\alpha) = \phi(\gamma)$ for some $\alpha, \gamma \in V$. This means that the coordinates of $\alpha$ and $\gamma$ with respect to the basis are the same, which implies that $\alpha = \gamma$. Therefore, $\phi$ is injective.
+
+  To show that $\phi$ is surjective, let $(b_1, b_2, \cdots, b_n) \in F^n$ be any vector. We can construct a vector $\alpha \in V$ as follows:
+  \[%
+    \alpha = b_1\beta_1 + b_2\beta_2 + \cdots + b_n\beta_n
+  .\]%
+  Then we have:
+  \[%
+    \phi(\alpha) = (b_1, b_2, \cdots, b_n)
+  .\]%
+  Therefore, $\phi$ is surjective.
+
+  Since $\phi$ is a linear transformation that is both injective and surjective, it is an isomorphism. Thus, $V$ is isomorphic to $F^n$.
 \end{solution}
 
 \begin{problem}[33.24]
@@ -135,7 +189,50 @@
     \phi(\alpha + \beta) = \phi(\alpha) + \phi(\beta) \\
     \phi(a\alpha) = a\phi(\alpha)
   \end{gather*}
+  \begin{enumerate}
+    \item If $\{\beta_i | i \in I\}$ is a basis for $V$ over $F$, show that a linear transformation $\phi : V \to V'$ is completely determined by the vectors $\phi(\beta_i) \in V'$.
+    \item Let $\{\beta_i | i \in I\}$ be a basis for $V$, and let $\{\beta_i' | i \in I\}$ be any set of vectors, not necessarily distinct, of $V'$. Show that there exists exactly one linear transformation $\phi : V \to V'$ such that $\phi(\beta_i) = \beta_i'$.
+  \end{enumerate}
 \end{problem}
 
-\begin{solution}
+\begin{solution}[(i)]
+  Assume that $\{\beta_i | i \in I\}$ is a basis for $V$ over $F$. Since $\{\beta_i | i \in I\}$ is a basis, every vector $\alpha \in V$ can be expressed as a linear combination of the basis vectors:
+  \[%
+    \alpha = a_1\beta_{i_1} + a_2\beta_{i_2} + \cdots + a_k\beta_{i_k}
+  .\]%
+  Applying the linear transformation $\phi$ to both sides, we have:
+  \[%
+    \phi(\alpha) = \phi(a_1\beta_{i_1} + a_2\beta_{i_2} + \cdots + a_k\beta_{i_k}) = a_1\phi(\beta_{i_1}) + a_2\phi(\beta_{i_2}) + \cdots + a_k\phi(\beta_{i_k})
+  .\]%
+  Therefore, the value of $\phi(\alpha)$ is completely determined by the values of $\phi(\beta_i)$ for the basis vectors $\beta_i$. Since every vector in $V$ can be expressed as a linear combination of the basis vectors, and the linear transformation is determined by its action on the basis vectors, it follows that $\phi$ is completely determined by the vectors $\phi(\beta_i) \in V'$.
+\end{solution}
+
+\begin{solution}[(ii)]
+  Let $\{\beta_i | i \in I\}$ be a basis for $V$, and let $\{\beta_i' | i \in I\}$ be any set of vectors in $V'$. We want to show that there exists exactly one linear transformation $\phi : V \to V'$ such that $\phi(\beta_i) = \beta_i'$ for all $i \in I$.
+
+  First, we define a function $\phi : V \to V'$ as follows: For any vector $\alpha \in V$, express $\alpha$ as a linear combination of the basis vectors:
+  \[%
+    \alpha = a_1\beta_{i_1} + a_2\beta_{i_2} + \cdots + a_k\beta_{i_k}
+  .\]%
+  Then we define:
+  \[%
+    \phi(\alpha) = a_1\beta_{i_1}' + a_2\beta_{i_2}' + \cdots + a_k\beta_{i_k}'
+  .\]%
+  This definition ensures that $\phi(\beta_i) = \beta_i'$ for all $i \in I$.
+
+  Next, we need to show that $\phi$ is a linear transformation. For any vectors $\alpha, \gamma \in V$ and any scalar $a \in F$, we have:
+  \begin{align*}
+    \phi(\alpha + \gamma) &= \phi((a_1\beta_{i_1} + a_2\beta_{i_2} + \cdots + a_k\beta_{i_k}) + (c_1\beta_{j_1} + c_2\beta_{j_2} + \cdots + c_m\beta_{j_m})) \\
+                          &= (a_1 + c_1)\beta_{i_1}' + (a_2 + c_2)\beta_{i_2}' + \cdots + (a_k + c_k)\beta_{i_k}' + (c_1)\beta_{j_1}' + (c_2)\beta_{j_2}' + \cdots + (c_m)\beta_{j_m}' \\
+                          &= (a_1\beta_{i_1}' + a_2\beta_{i_2}' + \cdots + a_k\beta_{i_k}') + (c_1\beta_{j_1}' + c_2\beta_{j_2}' + \cdots + c_m\beta_{j_m}') \\
+                          &= \phi(\alpha) + \phi(\gamma)
+  ,\end{align*}
+  and
+  \begin{align*}
+    \phi(a\alpha) &= \phi(a(a_1\beta_{i_1} + a_2\beta_{i_2} + \cdots + a_k\beta_{i_k})) \\
+                  &= (aa_1)\beta_{i_1}' + (aa_2)\beta_{i_2}' + \cdots + (aa_k)\beta_{i_k}' \\
+                  &= a(a_1\beta_{i_1}' + a_2\beta_{i_2}' + \cdots + a_k\beta_{i_k}') \\
+                  &= a\phi(\alpha)
+  .\end{align*}
+  Therefore, $\phi$ is a linear transformation.
 \end{solution}
