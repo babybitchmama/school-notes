@@ -1,0 +1,41 @@
+\newcommand\Rips{\operatorname{Rips}}
+\newcommand\Cech{\operatorname{Cech}}
+\renewcommand\S{\mathbb{S}}
+
+\begin{problem}[1]
+  Suppose that $\{K_r~|~r \ge 0\}$ is a filtered complex. More precisely, each $K_r$  is an abstract simplicial complex with the same vertex set, and $K_{r_1} \subset K_{r_2}$ whenever $r_1 \le r_2$. Define $r$ to be a \textit{critical scale} if, for all $\epsilon > 0$, $K_{r-\epsilon} \subsetneq K_r$.
+  \begin{enumerate}
+    \item Let $X = \R^2$ with its Euclidean metric, and let $S = \{(1, 0), (0, 1), (-1, 0), (0, -1)\} \subset X$. Determine all of the critical scales for $\{\Rips(s, r)~|~r \ge 0\}$ and describe the complex at all parameters.
+    \item With the same $X$ and $S$ in part (i), determine all of the critical scales for $\{\Cech(S, r)~|~r \ge 0\}$ and describe the complex at all parameters.
+    \item Redo part (ii) with the same set $S$ but this time with $X = \S^1$, still with the Euclidean metric.
+  \end{enumerate}
+\end{problem}
+
+\begin{solution}[(i)]
+  The critical scales are $r = 0, 1, \sqrt{2}$. For $0 \le r < 1$, $\Rips(S, r)$ consists of four vertices and no edges. For $1 \le r < \sqrt{2}$, $\Rips(S, r)$ consists of four vertices and four edges, but no triangles. For $r \ge \sqrt{2}$, $\Rips(S, r)$ consists of four vertices, six edges, and four triangles.
+\end{solution}
+
+\begin{solution}[(ii)]
+  The critical scales are $r = 0, \sqrt{2}$. For $0 \le r < \sqrt{2}$, $\Cech(S, r)$ consists of four vertices and no edges. For $r \ge \sqrt{2}$, $\Cech(S, r)$ consists of four vertices, six edges, and four triangles.
+\end{solution}
+
+\begin{solution}[(iii)]
+  The critical scales are $r = 0, \sqrt{2}$. For $0 \le r < \sqrt{2}$, $\Cech(S, r)$ consists of four vertices and no edges. For $r \ge \sqrt{2}$, $\Cech(S, r)$ consists of four vertices, six edges, and four triangles.
+\end{solution}
+
+\begin{problem}[2]
+  Let $X$ and $S$ be as in problem 1(i), and let
+  \[%
+    T = \left\{
+      \left(\frac{\sqrt{2}}{2}, \frac{\sqrt{2}}{2}\right),
+      \left(-\frac{\sqrt{2}}{2}, \frac{\sqrt{2}}{2}\right),
+      \left(\frac{\sqrt{2}}{2}, -\frac{\sqrt{2}}{2}\right),
+      \left(-\frac{\sqrt{2}}{2}, -\frac{\sqrt{2}}{2}\right)
+    \right\} \subset X
+  .\]%
+  Compute the minimum $\epsilon \ge 0$ such that $\{\Rips(S, r)~|~r \ge 0\}$ and $\{\Rips(T, r)~|~r \ge 0\}$ are $\epsilon$-interleaved.
+\end{problem}
+
+\begin{solution}
+  Let $X = \R^2$ and $S = \{(1, 0), (0, 1), (-1, 0), (0, -1)\} \subset X$. Let $T$ be as in the problem statement. We claim that the minimum $\epsilon \ge 0$ such that $\{\Rips(S, r)~|~r \ge 0\}$ and $\{\Rips(T, r)~|~r \ge 0\}$ are $\epsilon$-interleaved is $\epsilon = \sqrt{2} - 1$. To see this, note that $\Rips(S, r)$ and $\Rips(T, r)$ are isomorphic for all $r < \sqrt{2} - 1$. However, at $r = \sqrt{2} - 1$, $\Rips(S, r)$ consists of four vertices and four edges, while $\Rips(T, r)$ consists of four vertices and no edges. Therefore, the minimum $\epsilon$ such that $\{\Rips(S, r)~|~r \ge 0\}$ and $\{\Rips(T, r)~|~r \ge 0\}$ are $\epsilon$-interleaved is $\epsilon = \sqrt{2} - 1$.
+\end{solution}

@@ -2,60 +2,79 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
-def plot_dual_patch_geodesic(z0, z1, points=500):
-    # Setup the figure with two subplots: z-disk and w-disk
-    _, (ax_z, ax_w) = plt.subplots(1, 2, figsize=(12, 6))
+def fubini_study_geodesic(z0, dz0, t_max=4, points=1000):
+    """
+    Plot the Fubini–Study geodesic determined by
+    initial point z0 and initial tangent dz0.
+    """
 
-    # Draw unit boundaries for both
+    fig, (ax_z, ax_w) = plt.subplots(1, 2, figsize=(12, 6))
+
     theta = np.linspace(0, 2*np.pi, 200)
     for ax in [ax_z, ax_w]:
-        ax.plot(np.cos(theta), np.sin(theta), 'k--', color="k", lw=1, alpha=0.5)
+        ax.plot(np.cos(theta), np.sin(theta), 'k--', lw=1, alpha=0.4)
         ax.set_aspect('equal')
         ax.set_xlim(-1.1, 1.1)
         ax.set_ylim(-1.1, 1.1)
         ax.grid(True, linestyle=':', alpha=0.6)
 
-    ax_z.set_title(r"Patch $z$ ($|z| \leq 1$)")
-    ax_w.set_title(r"Patch $w = 1/z$ ($|w| \leq 1$)")
+    ax_z.set_title(r"$z$-chart ($|z|\leq1$)")
+    ax_w.set_title(r"$w=1/z$-chart ($|w|\leq1$)")
 
-    # 1. Map to Sphere
+    # --- stereographic projection to sphere ---
     def to_sphere(z):
-        mag_sq = np.abs(z)**2
-        return np.array([2*z.real, 2*z.imag, 1-mag_sq]) / (1+mag_sq)
+        r2 = abs(z)**2
+        return np.array([
+            2*z.real,
+            2*z.imag,
+            1-r2
+        ])/(1+r2)
 
-    p0, p1 = to_sphere(z0), to_sphere(z1)
+    def to_complex(p):
+        x,y,z = p
+        return (x + 1j*y)/(1+z)
 
-    # 2. Generate FULL Geodesic (0 to 2*pi)
-    # We find an orthogonal basis on the plane of the great circle
-    v1 = p0 / np.linalg.norm(p0)
-    v2 = p1 - np.dot(p1, v1) * v1
-    v2 /= np.linalg.norm(v2)
+    # lift point
+    p0 = to_sphere(z0)
 
-    t = np.linspace(0, 2*np.pi, points)
-    sphere_pts = np.cos(t)[:, None] * v1 + np.sin(t)[:, None] * v2
+    # compute pushforward of tangent
+    # derivative of stereographic projection
+    scale = 2/(1+abs(z0)**2)
+    v0 = np.array([
+        scale*dz0.real,
+        scale*dz0.imag,
+        -2*scale*(z0.real*dz0.real + z0.imag*dz0.imag)
+    ])
 
-    # 3. Project to complex coordinates
-    # z = (x + iy) / (1 + z_coord) is the standard stereographic from South Pole
-    x, y, z_c = sphere_pts[:, 0], sphere_pts[:, 1], sphere_pts[:, 2]
-    z_vals = (x + 1j*y) / (1 + z_c)
+    # orthogonalize
+    v0 -= np.dot(v0,p0)*p0
+    v0 /= np.linalg.norm(v0)
 
-    # 4. Filter and Plot
-    mask_z = np.abs(z_vals) <= 1.001 # Points in z-disk
-    mask_w = np.abs(z_vals) >= 0.999 # Points in w-disk (where |1/z| <= 1)
+    # generate great circle
+    t = np.linspace(-t_max, t_max, points)
+    sphere_pts = np.cos(t)[:,None]*p0 + np.sin(t)[:,None]*v0
 
-    # Plot on Z-chart
-    ax_z.plot(z_vals[mask_z].real, z_vals[mask_z].imag, 'r-', lw=2, label='Geodesic')
+    # project back
+    z_vals = np.array([to_complex(p) for p in sphere_pts])
 
-    # Plot on W-chart (transform z -> 1/z)
-    w_vals = 1 / z_vals[mask_w]
-    ax_w.plot(w_vals.real, w_vals.imag, 'b-', lw=2, label='Geodesic (1/z)')
+    # split into charts
+    mask_z = abs(z_vals) <= 1
+    mask_w = abs(z_vals) >= 1
 
-    # Mark original points
-    if np.abs(z0) <= 1: ax_z.scatter(z0.real, z0.imag, color='green', zorder=5)
-    else: ax_w.scatter((1/z0).real, (1/z0).imag, color='green', zorder=5)
+    ax_z.plot(z_vals[mask_z].real, z_vals[mask_z].imag, 'r', lw=2)
+    w_vals = 1/z_vals[mask_w]
+    ax_w.plot(w_vals.real, w_vals.imag, 'b', lw=2)
+
+    # mark initial point
+    if abs(z0)<=1:
+        ax_z.scatter(z0.real, z0.imag, color='green', zorder=5)
+    else:
+        w0 = 1/z0
+        ax_w.scatter(w0.real, w0.imag, color='green', zorder=5)
 
     plt.tight_layout()
     plt.show()
 
-# Example: A geodesic that clearly crosses the boundary
-plot_dual_patch_geodesic(complex(0.5, 0.1), complex(1.5, 0.8))
+
+# Example
+fubini_study_geodesic(0.5+0.2j, 1+0.3j)
