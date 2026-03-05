@@ -1,0 +1,15 @@
+\begin{definition}
+  A smooth map $F : M \to N$ is called an \emph{immersion} if its differential $dF_p : T_pM \to T_{F(p)}N$ is injective for all $p \in M$.
+\end{definition}
+
+\begin{definition}
+  A smooth map $F : M \to N$ is called a \emph{submersion} if its differential $dF_p : T_pM \to T_{F(p)}N$ is surjective for all $p \in M$.
+\end{definition}
+
+\begin{definition}
+  A \emph{smooth embedding} is an injective immersion $F : M \to N$ that is also a topological embedding (i.e., a homeomorphism onto its image with the subspace topology).
+\end{definition}
+
+\begin{definition}
+  We say $S \subset N$ is an \emph{embedded submanifold} if it is the image of a smooth embedding. If $F: M \to N$ is merely an injective immersion, we call its image an \emph{immersed submanifold}.
+\end{definition}

@@ -2,6 +2,19 @@
 
 \input{./preamble.tex}
 
+\newif\ifnofigures
+
+% \nofigurestrue    % Uncomment this line to suppress figures
+\nofiguresfalse   % Uncomment this line to include figures
+
+\newcommand{\includefigure}[1]{%
+  \ifnofigures
+    % Do nothing (figures suppressed)
+  \else
+    \input{#1}%
+  \fi
+}
+
 \begin{document}
   \pagenumbering{roman}
 

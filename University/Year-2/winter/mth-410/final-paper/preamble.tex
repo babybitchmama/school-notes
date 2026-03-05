@@ -36,6 +36,8 @@
 \usepackage{graphicx}
 \usepackage{doi}
 
+\usepackage{todonotes}
+
 \captionsetup[figure]{font=small}
 
 \setcounter{tocdepth}{2}
@@ -71,13 +73,21 @@
 \newcommand\sfrac[2]{#1/#2}
 \newcommand\aand{\quad\text{and}\quad}
 
+\newcommand\B{\mathcal{B}}
+\newcommand\C{\mathcal{B}}
 \newcommand\F{\mathcal{F}}
 \newcommand\K{\mathcal{K}}
 \renewcommand\L{\mathcal{L}}
 \newcommand\M{\mathcal{M}}
+
+\renewcommand\S{\mathbb{S}}
+\newcommand\T{\mathbb{T}}
+\newcommand\RP{\mathbb{RP}}
 \newcommand\N{\mathbb{N}}
 \renewcommand\P{\mathbb{P}}
 \newcommand\R{\mathbb{R}}
+\newcommand\Z{\mathbb{Z}}
+
 \newcommand\VR{\mathrm{VR}}
 
 \usetikzlibrary{
@@ -138,6 +148,7 @@
 
 \let\div\relax
 \DeclareMathOperator\div{div}
+\DeclareMathOperator\Id{Id}
 
 \hypersetup{
   urlcolor=blue, citecolor=red,
@@ -186,7 +197,6 @@
    \xleaders\hbox{$#4#2$}\hfill
    #3$%
 }
-\makeatother
 
 % Abstract environment (for amsbook)
 \renewenvironment{abstract}{
@@ -197,9 +207,6 @@
 }{
   \end{quote}
 }
-
-\renewcommand\S{\mathbb{S}}
-\newcommand\B{\mathcal{B}}
 
 % Differentials
 \newcommand\dd[1]{\odif{#1}}
