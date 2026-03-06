@@ -1,392 +1,41 @@
-\section{Differential Geometry}
-\label{sec:differential_geometry}
+\section{Notation}
+\label{sec:notation}
 
-We start this section by developing the necessary mathematical tools and concepts required to understand geometric inverse problems. This section just briefly introduces concepts from differential that's used throughout this paper.
+Throughout this paper we employ the Einstein summation convention. Tensor components will be written using indices, where repeated indices appearing once as an upper index and once as a lower index imply summation over their range.
 
-\subsection{Intro to Manifolds} Let's begin by introducing the concept of a manifold.
-\begin{definition}
-  An \emph{$n$-dimension manifold}, $M$, is a topological space such that
-  \begin{enumerate}
-    \item $M$ is locally Euclidean, i.e., for every point $p \in M$, there exists an open neighborhood $U$ of $p$ and a homeomorphism $\phi : U \to V \subset \R^n$, where $V$ is an open subset of $\R^n$. We call the pair $(U, \phi)$ a \emph{chart} of $M$.
-    \item $M$ is Hausdorff, i.e., for any two distinct points $p, q \in M$, there exist disjoint open neighborhoods $U_p$ and $U_q$ such that $p \in U_p$ and $q \in U_q$.
-    \item $M$ is second countable, i.e., there exists a countable basis for the topology of $M$.
-  \end{enumerate}
-\end{definition}
-We define an \textit{atlas} as the collection of all the charts along with their transition maps, $\mathcal{A} = \{(U_i, \phi_i)\}$. To go from one chart, $U_i$, to another chart, $U_j$, if $U_i \cap U_j \ne \emptyset$, we can use the transition maps:
+More precisely, if an index $\mu$ appears exactly twice in a term, once as a superscript and once as a subscript, then
 \[%
-  \phi_j \circ \phi_i^{-1} : \phi_i(U_i \cap U_j) \to \phi_j(U_i \cap U_j)
+  A^\mu B_\mu := \sum_{\mu=0}^{n-1} A^\mu B_\mu
 .\]%
-But, throughout this paper, we only care about smooth manifolds, which are manifolds that are endowed with a smooth structure. Before doing so, we first need to define what a smooth map is.
-\includefigure{./chapters/chapter-01/figures/manifold-charts.tex}
-\begin{definition}
-  If $U$ and $V$ are open subsets of $\R^n$ and $\R^m$, then $F : U \to V$ is said to be \emph{smooth}\footnote{Some authors use ``smooth'' to denote infinitely differentiable ($C^\infty$), some use it to indicate just $k$-differentiable ($C^k$). I use it to denote $C^\infty$.} if each of $F$'s component functions are continuous and have continuous partial derivatives. In addition, if $F$ is bijective, then $F$ is called a \emph{diffeomorphism}.
-\end{definition}
-We can formally define a smooth manifold as follows.
-\begin{definition}
-  A \emph{$k$-differentiable manifold} is a manifold $M$ equipped with an atlas $\mathcal{A}$ such that for every non-disjoint pair of charts $(U_i, \phi_i)$ and $(U_j, \phi_j)$ in $\mathcal{A}$, the transition map $\phi_j \circ \phi_i^{-1}$ is a $k$-differentiable function. If $k = \infty$, we call $M$ a \emph{smooth manifold}.
-\end{definition}
+Unless otherwise stated, Greek indices $\mu, \nu, \rho, \sigma$ range from $0$ to $n-1$, while Latin indices $i, j, k$ range from $1$ to $n-1$. We adopt the convention that repeated indices are summed only when one index is upper and the other lower; repeated indices both upper or both lower do not imply summation.
 
-\label{sub_sec:smooth_functions_and_maps}
-This section's all about defining what it means to have a smooth function from a manifold $M$ to a Euclidean space $E$ along with a map from a manifold $M$ to another manifold $N$.
-\begin{definition}
-  Suppose $M$ is a manifold\footnote{Throughout this paper, we're only interested in smooth manifolds, so we will assume that all manifolds are smooth unless otherwise stated. We also drop the adjective ``$n$-dimension''. So, it's safe to assume that whenever we say ``manifold'', we mean a smooth manifold of dimension $n$, unless otherwise stated.}. Let $f : M \to \R^k$, for some $k \ge 1$. We say that $f$ is a \emph{smooth function} if, for every $p \in M$, there exists a smooth chart $(U, \phi)$, where $p \in U$, such that $f \circ \phi^{-1}$ is smooth on the open subset $\hat{U} = \phi(U) \subseteq \R^n$.
-\end{definition}
-\includefigure{./chapters/chapter-01/figures/smooth-functions.tex}
-Now, we talk about smooth maps between manifolds.
-\begin{definition}
-  Let $M$ and $N$ be two different manifolds. We say $F : M \to N$ is a smooth map if for every $p \in M$, there exists charts $(U, \phi)$, where $p \in U$, and $(V, \psi)$, where $F(p) \in V$ such that $F(U) \subseteq V$ and $\psi \circ F \circ \phi^{-1}$ is smooth from $\phi(U)$ to $\psi(V)$.
-\end{definition}
-\includefigure{./chapters/chapter-01/figures/smooth-charts-between-m-and-n.tex}
+Indices are raised and lowered using a metric tensor. The position of indices is significant, as it distinguishes between covariant and contravariant components of tensors.
 
-A nice property (which we won't be proving), is that a composition of smooth maps is also smooth.
-
-\includefigure{./chapters/chapter-01/figures/composition-of-smooth-maps.tex}
-
-\subsection{The Tangent and Cotangent Bundles} Our next main definition is that of a tensor, but in order to do so, we need to introduce a few more concepts, such as the tangent and cotangent bundles of a manifold.
-\begin{definition}
-  Let $M$ be a manifold and $p \in M$. The \emph{tangent space} at $p$, denoted $T_pM$, is the vector space of derivations at $p$, that is,
-  \[%
-    T_pM = \{X : C^\infty(M) \to \R \mid X~\text{is linear and satisfies the Leibniz rule}\}
-  .\]%
-  That is, for all $f,g \in C^\infty(M)$,
-  \[%
-    X(fg) = X(f)g(p) + f(p)X(g)
-  .\]%
-\end{definition}
-
-\includefigure{./chapters/chapter-01/figures/tangent-space-of-s2.tex}
-
-A rather straightforward basis for the tangent space is given by
+Partial derivatives with respect to coordinates $x^\mu$ will be written in the standard form
 \[%
-  \B = \left\{\left.\pdv{}{x^i}\right\rvert_a\right\}_{i=1}^{i=n}
+  \pdv{f}{x^\mu}
+\]%
+For notational convenience, we introduce the shorthand
+\[%
+  \pd{\mu} f := \pdv{f}{x^\mu}
+.\]%
+More generally,
+\[%
+  \pd{y^\mu} f := \pdv{f}{y^\mu}
 ,\]%
-defined by
+when differentiation with respect to a different coordinate system is required. We also use the shorthand notation that $\dot{x}$ is defined as
 \[%
-  \left.\pdv{}{x^i}\right\rvert_a f = \pdv{f}{x^i}(a)
-.\]%
-
-\begin{definition}
-  A \emph{tangent bundle}, denoted as $TM$, of a manifold $M$ is defined as
-  \[%
-    TM = \bigsqcup_{p \in M} T_pM = \{(p, v) : p \in M, v \in T_pM\}
-  .\]%
-\end{definition}
-
-\includefigure{./chapters/chapter-01/figures/coordinates-for-the-tangent-bundle.tex}
-
-\begin{definition}
-  A \emph{vector bundle} over a manifold $M$ is a topological space $E$ together with a continuous surjection $\pi : E \to M$ such that for each point $p \in M$, the fiber $\pi^{-1}(p)$ is a vector space, and there exists an open neighborhood $U$ of $p$ in $M$ and a homeomorphism $\phi : \pi^{-1}(U) \to U \times \R^k$ that respects the vector space structure on the fibers.
-\end{definition}
-
-\begin{definition}
-  A \emph{fibre} of a vector bundle $E$ over a manifold $M$ at a point $p \in M$ is the vector space $\pi^{-1}(p)$, where $\pi : E \to M$ is the projection map of the vector bundle.
-\end{definition}
-
-\begin{definition}
-  The \emph{cotangent space} $T_p^*M$ is the dual space to $T_pM$. If $\{ \frac{\partial}{\partial x^i} \}$ is the coordinate basis for the tangent space, we define the \emph{coordinate dual basis} $\{ \dx^i \}$ for $T_p^*M$ such that:
-  \[%
-    \dx^i \left( \pdv{}{x^j} \right) = \delta^i_j
-  ,\]%
-  where $\delta^i_j$ is the Kronecker delta. This allows us to express any covector $\omega \in T_p^*M$ as $\omega = \omega_i \dx^i$.
-\end{definition}
-
-\begin{note}
-  If $\{\pdv{}/{x^i}\}$ is a basis for $T_pM$, then the dual basis $\{\dx^i\}$ is a basis for $T_p^*M$.
-\end{note}
-
-\begin{note}
-  Covectors live in the cotangent bundle, while the contravariant vectors (i.e., tangent vectors) live in the tangent bundle. The contravariant vectors represent velocities or directions. The covariant represents gradients or linear functionals.
-\end{note}
-
-In local coordinates, tensor components are written using upper and lower indices to distinguish components with respect to a chosen basis of $T_pM$ and its dual basis in $T_p^*M$.
-
-\begin{definition}
-  Let $\pi : E \to M$ be a vector bundle over $M$. A \emph{section} of $E$ is a smooth map
-  \[%
-    s : M \to E
-  ,\]%
-  such that
-  \[%
-    \pi \circ s = \mathrm{id}_M
-  .\]%
-  The space of smooth sections of $E$ is denoted $\Gamma(E)$.
-\end{definition}
-
-\includefigure{./chapters/chapter-01/figures/fibres-and-sections.tex}
-
-\subsection{Tensors and Sections}
-
-Now, with all that out of the way, we can finally define a tensor.
-
-\begin{definition}
-  Let $M$ be a manifold and $p \in M$. An \emph{$(r,s)$-tensor at $p$} is a multilinear map
-  \[%
-    T_p : (T_p^*M)^r \times (T_pM)^s \to \R
-  .\]%
-  An \emph{$(r,s)$-tensor field} on $M$ is a smooth section of the tensor bundle
-  \[%
-    (T^*M)^{\otimes r} \otimes (TM)^{\otimes s}
-  .\]%
-\end{definition}
-
-In local coordinates $\{x^i\}$, an $(r,s)$-tensor field $T$ is expressed as a linear combination of basis tensor products:
-\[%
-  T = T^{i_1 \dots i_r}_{j_1 \dots j_s} \left(\bigotimes_{k=1}^r \pd{i_k}\right) \otimes \left(\bigotimes_{m=1}^s \dx^{j_m}\right)
-.\]%
-Here, the functions $T^{i_1 \dots i_r}_{j_1 \dots j_s}$ are the \emph{components} of the tensor. Under a change of coordinates $x \to \tilde{x}$, these components transform according to the rule:
-\[%
-  \tilde{T}^{a_1 \dots a_r}_{b_1 \dots b_s} = T^{i_1 \dots i_r}_{j_1 \dots j_s} \pdv{\tilde{x}^{a_1}}{x^{i_1}} \dots \pdv{\tilde{x}^{j_s}}{x^{b_s}}
-.\]%
-Here are a few examples of tensors:
-\begin{example}\leavevmode
-  \begin{itemize}
-    \item \textbf{(0,0)-Tensors (Scalar Fields):} An $(0,0)$-tensor is simply a smooth function $f : M \to \R$. In medical imaging, this may represent an isotropic physical property, such as the \emph{proton density} in Magnetic Resonance Imaging (MRI) or the \emph{absorption coefficient} in optical tomography.
-
-    \item \textbf{(1,0)-Tensors (Vector Fields):} A $(1,0)$-tensor is a smooth section of the tangent bundle $TM$. Locally, it is written as $X = X^i \pd{i}$. These represent directional quantities, such as the \emph{velocity field} of blood flow in Doppler ultrasound or the \emph{gradient} of a potential (once identified via a metric).
-
-    \item \textbf{(0,1)-Tensors (Covectors/1-forms):} A $(0,1)$-tensor is a smooth section of the cotangent bundle $T^*M$, written locally as $\omega = \omega_i \dx^i$. A primary example is the \emph{differential of a function} $\df$, which at each point acts as a linear functional on tangent vectors.
-
-    \item \textbf{(0,2)-Tensors (Bilinear Forms):} A $(0,2)$-tensor is a section of $T^*M \otimes T^*M$. This is perhaps the most critical category for this paper, as it includes the \emph{Riemannian metric} $g$. In \emph{anisotropic} media, like heart muscle or brain white matter, physical properties like electrical conductivity or water diffusion are not single numbers but are modeled as symmetric $(0,2)$-tensors $g_{ij}$.
-  \end{itemize}
-\end{example}
-
-To manipulate the physical quantities represented by these tensors, we define several fundamental operations:
-
-\begin{itemize}
-  \item \textbf{Einstein Summation Convention:} Throughout this paper, we adopt the convention that whenever an index appears twice in a single term -- once as a superscript and once as a subscript--a summation over the full range of that index is implied. For example, $X^i \omega_i$ denotes $\sum_{i=1}^n X^i \omega_i$ (cf Section~\ref{sec:notation} for more details).
-
-  \item \textbf{Contraction:} A contraction is an operation that reduces the rank of an $(r,s)$-tensor to $(r-1, s-1)$. Locally, this is done by setting one upper index equal to one lower index and summing. For a $(1,1)$-tensor $T^i_j$, the contraction is the scalar $T^i_i$, analogous to the trace of a matrix.
-
-  \item \textbf{Tensor Product:} Given an $(r,s)$-tensor $T$ and a $(p,q)$-tensor $U$, their tensor product $T \otimes U$ is an $(r+p, s+q)$-tensor. This allows us to construct complex physical models, such as the metric tensor, from simpler 1-forms.
-\end{itemize}
-
-\begin{note}
-  Once a Riemannian metric $g$ is introduced in Section~\ref{sec:riemannian_geometry}, we gain the ability to \emph{raise and lower indices}. This operation, sometimes called the musical isomorphisms ($\flat$ and $\sharp$), allows us to physically identify vectors with covectors, effectively using the internal geometry of the tissue to translate between directional velocities and gradients of potential.
-\end{note}
-
-\subsection{Differential Forms and the Wedge Product} Next, we introduce the concept of a differential form. A very well-known example of a differential form is $\dx$, which is a 1-form. Formally, we can define a 1-form as follows.
-
-\begin{definition}
-  A \emph{1-form} on a manifold $M$ is a smooth section of the cotangent bundle $T^*M$, that is,
-  \[%
-    \omega \in \Gamma(T^*M)
-  ,\]%
-  where $\omega : M \to T^*M$ is a smooth map such that $\pi \circ \omega = \mathrm{id}_M$. Equivalently, for each $p \in M$, a 1-form assigns a covector $\omega_p \in T_p^*M$ smoothly in $p$.
-\end{definition}
-
-A 1-form represents a linear functional that takes a tangent vector at a point and produces scalar.
+  \dot{x} := \odv{x}{\lambda}
+,\]%
+or whatever the parameter of differentiation is (in most cases, it's either $\lambda$, $\tau$, or $t$).
 
 \begin{example}
-  In local coordinates $\{x^\mu\}$, a 1-form $\omega$ can be written as
+  The Euler-Lagrange equations for a Lagrangian $L(x^k, \dot{x}^k)$ are
   \[%
-    \omega = \omega_\mu \dx^\mu
+    \pdv{L}{x^k} - \pdv{}{\lambda} \left(\pdv{L}{\dot{x}^k}\right) = 0
   .\]%
-  If $v = v^\mu \pd{\mu} \in T_pM$, then
+  Using the shorthand notation, this may be written as
   \[%
-    \omega(v) = \omega_\mu v^\mu
+    \pd{k} L - \odv{}{\lambda} \left(\pd{\dot{x}^k} L\right) = 0
   .\]%
 \end{example}
-
-We denote the space of smooth 1-forms on $M$ by $\Omega^k(M)$, with $k = 1$. This implies that there are higher order forms. So, we need a way to generalize this to higher-order forms, which is where the concept of the wedge product comes in. The wedge product allows us to combine 1-forms to create higher-order forms, such as 2-forms, 3-forms, etc. We can define the wedge product as follows.
-
-\begin{definition}
-  The \emph{wedge product}
-  \[%
-    \wedge : \Omega^p(M) \times \Omega^q(M) \to \Omega^{p+q}(M)
-  ,\]%
-  is the bilinear operation that takes a $p$-form $\alpha$ and a $q$-form $\beta$ and produces a $(p+q)$-form $\alpha \wedge \beta$, defined by the following properties:
-  \begin{enumerate}
-    \item \emph{Bilinearity:} For all $\alpha, \alpha' \in \Omega^p(M)$, $\beta, \beta' \in \Omega^q(M)$, and $f, g \in C^\infty(M)$,
-      \begin{align*}
-        (f\alpha + g\alpha') \wedge \beta &= f(\alpha \wedge \beta) + g(\alpha' \wedge \beta), \\
-        \alpha \wedge (f\beta + g\beta') &= f(\alpha \wedge \beta) + g(\alpha \wedge \beta').
-      \end{align*}
-    \item \emph{Antisymmetry:} For all $\alpha \in \Omega^p(M)$ and $\beta \in \Omega^q(M)$,
-      \[%
-        \alpha \wedge \beta = (-1)^{pq} \beta \wedge \alpha
-      .\]%
-      In particular, if $\alpha$ is a 1-form, then $\alpha \wedge \alpha = 0$.
-    \item \emph{Associativity:} For all $\alpha \in \Omega^p(M)$, $\beta \in \Omega^q(M)$, and $\gamma \in \Omega^r(M)$,
-      \[%
-        (\alpha \wedge \beta) \wedge \gamma = \alpha \wedge (\beta \wedge \gamma)
-      .\]%
-  \end{enumerate}
-\end{definition}
-
-Now, we can use the wedge product to define a 2-form, which represents an orientated area element on the manifold. Just like in vector calculus, where we had $\dA = \dx\dy$, we can define a 2-form $\omega$ as
-\[%
-  \omega = \omega_{\mu\nu} \dx^\mu \wedge \dx^\nu
-.\]%
-
-Next, we need to define what the pullback of a differential form is and what a pushforward of a vector field is. The pullback allows us to take a differential form defined on one manifold and pull it back to another manifold via a smooth map, while the pushforward allows us to take a vector field defined on one manifold and push it forward to another manifold via a smooth map.
-
-\begin{definition}
-  Let $f : M \to N$ be a smooth map between manifolds $M$ and $N$. The \emph{pullback} of a differential form $\omega$ on $N$ by the map $f$ is a differential form on $M$, denoted by $f^*\omega$, defined as follows: for any point $p \in M$ and any tangent vectors $v_1, v_2, \ldots, v_k \in T_pM$, we have
-  \[%
-    (f^*\omega)_p(v_1, v_2, \ldots, v_k) = \omega_{f(p)}(\df_p(v_1), \df_p(v_2), \ldots, \df_p(v_k))
-  .\]%
-\end{definition}
-
-\begin{example}
-  Let $F : \R^2 \setminus \{0\} \to \R^2$ be defined by the polar coordinate transformation
-  \[%
-    F(r,\theta) = (x,y) = (r\cos\theta, r\sin\theta)
-  .\]%
-  We compute the pullback of the coordinate $1$-forms $\dx$ and $\dy$.
-
-  Since
-  \[%
-    x = r\cos\theta \quad \aand y = r\sin\theta
-  ,\]%
-  we have
-  \[%
-    \dx = \cos\theta \dr - r\sin\theta \dd{\theta} \aand \dy = \sin\theta \dr + r\cos\theta \dd{\theta}
-  .\]%
-  Therefore,
-  \[%
-    F^*(\dx) = \cos\theta \dr - r\sin\theta \dd{\theta} \aand F^*(\dy) = \sin\theta \dr + r\cos\theta \dd{\theta}
-  .\]%
-  As an application, consider the standard area form $\dx \wedge \dy$. Using the bilinearity and antisymmetry of the wedge product, we compute
-  \begin{align*}
-    F^*(\dx \wedge \dy) &= F^*(\dx) \wedge F^*(\dy) \\
-                      &= (\cos\theta \dr - r\sin\theta \dd{\theta}) \wedge (\sin\theta \dr + r\cos\theta \dd{\theta}) \\
-                      &= r \dr \wedge \dd{\theta}.
-  \end{align*}
-  Thus, the pullback naturally produces the Jacobian factor $r$ appearing in polar coordinates.
-\end{example}
-
-When we're computing pullbacks of differential forms, we can use the formula
-\[%
-  f^*\left(\bigwedge_{i=1}^k \du^i\right) = \bigwedge_{i=1}^k f^*(\du^i) = \bigwedge_{i=1}^k \pd{j} u^i \dx^j
-.\]%
-
-\begin{definition}
-  Let $f : M \to N$ be a smooth map between manifolds $M$ and $N$. The \emph{pushforward} of a vector field $X$ on $M$ by the map $f$ is a vector field on $N$, denoted by $f_*X$, defined as follows: for any point $p \in M$, we have
-  \[%
-    (f_*X)_{f(p)} = \df_p(X_p)
-  .\]%
-\end{definition}
-
-\begin{example}
-  Let $F : \R^2 \to \R^2$ be defined by
-  \[%
-    F(x,y) = (u,v) = (x^2 - y, x + y)
-  .\]%
-  We compute the pushforward of the vector field $X = \pd{x}$.
-
-  The Jacobian matrix of $F$ is
-  \[%
-    \dF = \begin{pmatrix}
-      \pd{x} u & \pd{y} u \\
-      \pd{x} v & \pd{y} v \\
-    \end{pmatrix}
-    = \begin{pmatrix}
-      2x & -1 \\
-      1 & 1 \\
-    \end{pmatrix}
-  .\]%
-  Since $\pd{x}$ corresponds to the vector $(1,0)$ in coordinates, we obtain
-  \[%
-    F_*(\pd{x}) = 2x \pd{u} + \pd{v}
-  .\]%
-  Thus, the pushforward transforms the coordinate basis vector $\pd{x}$ into a linear combination of the coordinate basis vectors $\pd{u}$ and $\pd{v}$.
-\end{example}
-
-\includefigure{./chapters/chapter-01/figures/pushforward-and-pullback.tex}
-
-\subsection{Differentials of Maps} We now define the differential of a map between two manifolds.
-\begin{definition}
-  Let $F : M \to N$ be a smooth map between two manifolds $M$ and $N$. For each point $p \in M$, we define the \emph{differential of $F$ at $p$} by
-  \[%
-    \dF_p : T_pM \to T_{F(p)}N
-  .\]%
-\end{definition}
-
-\includefigure{./chapters/chapter-01/figures/the-differential.tex}
-
-For any vector $v \in T_pM$, the image $v' = \dF_p(v) \in T_{F(p)}N$ is defined by its action on smooth functions $g \in C^\infty(N)$:
-\[%
-  (\dF_p(v))(g) = v(g \circ F)
-.\]%
-This definition ensures that the differential is a linear map that captures how the ``directional derivative'' at $p$ translates to a directional derivative at $F(p)$.
-
-In local coordinates $\{x^i\}$ on $M$ and $\{y^\alpha\}$ on $N$, let $F$ be represented by $y^\alpha = F^\alpha(x^1, \cdots, x^n)$. If $v = v^i\pd{i}$, then the components of the pushed-forward vector $v' = \dF_p(v)$ are given by:
-\[%
-  (v')^\alpha = \pdv{F^\alpha}{x^i} v^i
-.\]%
-Thus, the matrix of $\dF_p$ with respect to the coordinate bases is the Jacobian matrix $\pdv{F^\alpha}/{x^i}$.
-
-We finish this section by defining an immersion, which is a smooth map that locally looks like an embedding but may not be globally injective.
-\begin{definition}
-  A smooth map $F : M \to N$ is called an \emph{immersion} if its differential $dF_p : T_pM \to T_{F(p)}N$ is injective for all $p \in M$.
-\end{definition}
-
-\includefigure{./chapters/chapter-01/figures/immersion.tex}
-\todo{Add a figure here}
-
-\begin{definition}
-  A smooth map $F : M \to N$ is called a \emph{submersion} if its differential $dF_p : T_pM \to T_{F(p)}N$ is surjective for all $p \in M$.
-\end{definition}
-
-\includefigure{./chapters/chapter-01/figures/submersion.tex}
-
-\begin{definition}
-  A \emph{smooth embedding} is an injective immersion $F : M \to N$ that is also a topological embedding (i.e., a homeomorphism onto its image with the subspace topology).
-\end{definition}
-
-\includefigure{./chapters/chapter-01/figures/immersed-submanifold.tex}
-\todo{Add a figure here}
-
-\begin{definition}
-  We say $S \subset N$ is an \emph{embedded submanifold} if it is the image of a smooth embedding. If $F: M \to N$ is merely an injective immersion, we call its image an \emph{immersed submanifold}.
-\end{definition}
-
-\includefigure{./chapters/chapter-01/figures/embedded-submanifold.tex}
-
-One useful result we'll be using quite frequently in Chapter~\ref{chap:2} is the following:
-\begin{corollary}\label{cor:differential_of_a_map}
-  Suppose $F : M \to N$ is a smooth map, $p \in M$, and $v \in T_pM$. Then
-  \[%
-    \dd{f}_p(v) = (f \circ \gamma)'(0)
-  ,\]%
-  for any smooth curve $\gamma : [0, 1] \to M$ such that $\gamma(0) = 0$ and $\gamma'(0) = v$.
-\end{corollary}
-
-\subsection{Connections and the Riemann Tensor} To describe the geometry of a manifold, we must introduce a way to differentiate vector fields. Unlike in Euclidean space, there is no canonical way to compare vectors at different points without a ``connection.''
-
-\begin{definition}
-  A \emph{connection} (or \emph{covariant derivative}) on $M$ is a map $\nabla : \Gamma(TM) \times \Gamma(TM) \to \Gamma(TM)$ satisfying linearity and the Leibniz rule:
-  \[%
-    \nabla_X (fY) = X(f) Y + f \nabla_X Y
-  .\]%
-\end{definition}
-
-The connection is $C^\infty(M)$-linear in $X$, meaning $\nabla_{fX} Y = f\nabla_X Y$, but it satisfies the Leibniz rule in $Y$ defined above. We need a way of measuring how much the connection fails to be symmetric. This is where the Lie bracket comes in, which measures the non-commutativity of vector fields.
-
-\begin{definition}
-  The \emph{Lie bracket} of two vector fields $X$ and $Y$ is the vector field defined by
-  \[%
-    [X,Y](f) = X(Y(f)) - Y(X(f))
-  ,\]%
-  for all smooth functions $f \in C^\infty(M)$. The Lie bracket measures the non-commutativity of the flows generated by $X$ and $Y$.
-\end{definition}
-
-Geometrically, if we follow the flow of $X$ for time $t$, then $Y$ for time $s$, and then reverse the process, the Lie bracket $[X, Y]$ measures the displacement from the starting point.
-
-We can also define the anti-symmetry of the connection using the Lie bracket. A connection is \emph{symmetric} if $\nabla_X Y - \nabla_Y X = [X,Y]$ for all vector fields $X$ and $Y$. If this condition is not satisfied, we can measure the failure of symmetry using the torsion tensor, which we will define shortly.
-
-\begin{definition}
-  The \emph{Riemann curvature tensor} associated to a connection $\nabla$ is the $(1,3)$-tensor:
-  \[%
-    R(X,Y)Z = \nabla_X \nabla_Y Z - \nabla_Y \nabla_X Z - \nabla_{[X,Y]} Z
-  .\]%
-  It measures the path-dependence of parallel transport and the failure of covariant derivatives to commute.
-\end{definition}
-
-Here's a rough idea for what the parallel transport is (as we define it later on in Section~\ref{sec:riemannian_geometry}): A vector field $Z$ is \emph{parallel} along a curve with tangent $X$ if $\nabla_X Z = 0$. The Riemann tensor $R(X, Y)Z$ quantifies the change in $Z$ when it is parallel transported around an infinitesimal loop.
-
-\begin{definition}
-  The \emph{torsion tensor} $T$ is defined by $T(X,Y) = \nabla_X Y - \nabla_Y X - [X,Y]$. A connection is \emph{torsion-free} if $T = 0$.
-\end{definition}
-
-While these definitions apply to any affine connection, physical applications in medical imaging--such as modeling signal propagation or tissue conductivity--require a specific connection that respects the internal ``distance'' of the manifold. In the following section, we introduce the Riemannian metric and the unique Levi-Civita connection associated with it.
