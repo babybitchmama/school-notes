@@ -1,8 +1,97 @@
 \section{Worked Examples: Radial Symmetry and Inclusions}
 \label{sec:worked_examples_radial_symmetry_and_inclusions}
 
+The entirety of this paper thus far has had very few examples. That's why we dedicate this entire sections to working through some examples of the boundary rigidity problem, and how it applies to medical imaging. In particular, we'll be looking at the Herglotz-Wiechert formula for radial metrics, which is a powerful tool for understanding the behavior of geodesics in radially symmetric spaces. We'll also be looking at how to detect localized inclusions within a medium, which is a common problem in medical imaging. Finally, we'll explore the effect of conjugate points on the boundary rigidity problem, and provide a counterexample to illustrate this phenomenon.
+
 \subsection{The Herglotz-Wiechert Formula for Radial Metrics}
+
+While the general boundary rigidity problem is non-linear and computationally intensive, the assumption of radial symmetry allows for an elegant analytical solution. This case was historically investigated by Herglotz (1905) and Wiechert (1907) in the context of seismology to determine the Earth's internal velocity structure. In our medical imaging model, this corresponds to recovering a sound speed $c(r)$ that depends only on the distance from a central axis.
+
+Consider a disk $M = \{ (r, \theta) : 0 \le r \le R \}$ equipped with a rotationally invariant metric:
+\[%
+  g = \frac{1}{c(r)^2} \left( \dr^2 + r^2 \dd{\theta}^2 \right)
+.\]%
+To ensure the manifold is simple, the sound speed $c(r)$ must satisfy the \emph{Herglotz condition}:
+\[%
+  \odv{}{r} \left( \frac{r}{c(r)} \right) > 0
+.\]%
+This condition ensures that the boundary is strictly convex and that no geodesics are ``trapped'' in circular orbits. Geometrically, it ensures that as we move outward, the ``acoustic radius'' increases, preventing rays from bending so sharply that they never exit.
+
+Due to the symmetry, a geodesic $\gamma$ is uniquely determined by its \emph{impact parameter} $p$, which represents the closest approach of the ray to the center ($r=r_{min}$). Along a geodesic, the quantity
+\[%
+  p = \frac{r \sin \phi}{c(r)}
+,\]%
+remains constant (where $\phi$ is the angle between the ray and the radial vector). The total travel time $T(p)$ between two points on the boundary for a ray with impact parameter $p$ is given by:
+\[%
+  T(p) = 2 \int_{r_{min}}^R \frac{1}{c(r)} \frac{r/c(r)}{\sqrt{(r/c(r))^2 - p^2}} \dr
+.\]%
+
+The Herglotz-Wiechert formula provides the direct inverse to the integral above. It allows us to calculate the radius $r$ at which a specific sound speed occurs based on the measured travel times $T(p)$ at the boundary:
+\[%
+  \ln\left( \frac{R}{r(c)} \right) = \frac{1}{\pi} \int_{p_c}^{R/c(R)} \frac{\Delta\theta(p)}{\sqrt{p^2 - p_c^2}} \dd{p}
+,\]%
+where $p_c = r/c(r)$ and $\Delta\theta(p)$ is the angular distance between the source and receiver.
+
+In a clinical setting, this formula implies that if a patient's limb is approximately cylindrical and the tissue is stratified in layers (e.g., skin $\to$ fat $\to$ muscle), we do not need complex iterative algorithms to find the sound speed profile. By sweeping a transducer around the perimeter and measuring the time-of-flight for various angles, we can ``peel back'' the layers of the tissue mathematically.
+\begin{itemize}
+  \item Near-surface data (rays with large $p$) reconstructs the outer layers (skin/fat).
+  \item Deep-penetrating data (rays with small $p$) reconstructs the deep tissue.
+\end{itemize}
 
 \subsection{Detecting a Localized Inclusion}
 
+In this subsection, you move away from global symmetry to demonstrate the most practical application of the theory: detecting a tumor. This example illustrates how the abstract Geodesic X-ray Transform ($\mathcal{I}_g$) acts as a ``diagnostic tool'' to pinpoint an anomaly within otherwise healthy tissue.
+
+While radial metrics provide a baseline for stratified anatomy, the primary goal of medical imaging is the detection of localized anomalies, such as cysts or tumors, which break symmetry. We model this by considering a background manifold of constant sound speed (healthy tissue) and introducing a compact ``inclusion'' with a different refractive index.
+
+Consider a circular domain $M$ with a background Euclidean metric $g_0$ (constant sound speed $c_0$). We introduce a localized inclusion $f(x)$ representing a tumor. The physical sound speed $\tilde{c}(x)$ is perturbed such that:
+\[%
+  \frac{1}{\tilde{c}(x)^2} = \frac{1}{c_0^2} + f(x)
+.\]%
+We assume $f(x)$ is a smooth ``bump'' function supported entirely within a small interior disk $B_\delta(x_0) \subset \text{int}(M)$. In the linearized regime, the change in the metric tensor is given by $\delta g = f(x)\delta_{ij}$.
+
+When an ultrasound pulse is emitted from a source $S$ on the boundary, its travel time to a receiver $R$ is altered if the geodesic $\gamma_{SR}$ passes through the inclusion. According to our results from Section 3.1, the time-of-flight perturbation $\delta T$ is:
+\[%
+  \delta T(S, R) \approx \frac{1}{2c_0} \int_{\gamma_{SR}} f(\gamma(t)) , dt = \frac{1}{2c_0} \mathcal{I}g f(\gamma{SR})
+.\]%
+
+\begin{itemize}
+  \item Rays missing the inclusion: If $\gamma_{SR} \cap \text{supp}(f) = \emptyset$, then $\delta T = 0$.
+  \item Rays hitting the inclusion: If the inclusion is ``slower'' than healthy tissue ($f > 0$), the signal is delayed ($\delta T > 0$).
+\end{itemize}
+
+To find the location of the inclusion, we utilize the measurements from all source-receiver pairs. If $f$ is non-zero, it creates a ``shadow'' or ``delay signature'' in the boundary data. By using the \emph{Support Theorem} for the X-ray transform, we can conclude that the convex hull of the inclusion is uniquely determined by the set of rays that experience a delay.
+
+Mathematically, the back-projection operator $I^*$ (Section 3.4) ``smears'' these delays back into the manifold. The intersection of all delayed rays identifies the region $B_\delta(x_0)$ where the tumor is located.
+
+A critical realization in this example is that the inclusion does more than just delay the signal; it \emph{refracts} the rays.
+\begin{itemize}
+  \item If the inclusion is a ``slow'' zone (higher refractive index), the geodesics will bend \emph{toward} the center of the inclusion, behaving like a converging lens.
+  \item If the inclusion is a ``fast'' zone, the rays bend \emph{away}, behaving like a diverging lens.
+\end{itemize}
+
+In the simple manifold framework, we assume these perturbations are small enough that the geodesics do not cross before exiting the manifold. This ensures that the relationship between the measured delay and the inclusion's position remains one-to-one, allowing for the clear, artifact-free reconstruction required for surgical planning.
+
 \subsection{The Effect of Conjugate Points: A Counterexample}
+
+Throughout this work, we have assumed that the manifold $(M, g)$ is simple, ensuring that the exponential map is a global diffeomorphism. This final example explores what happens when this condition is violated. In medical imaging, the emergence of conjugate points corresponds to a ``multipath'' or ``focusing'' effect, where a single boundary measurement can no longer be uniquely attributed to a single internal path.
+
+Consider a disk $M$ containing a very high-density inclusion (a ``slow'' zone) where the sound speed $c(x)$ drops significantly. As discussed in Section 5.2, a slow zone acts as a converging lens. If the refractive index $n(x) = 1/c(x)$ is sufficiently large, the geodesics (ultrasound rays) will be pulled toward each other so sharply that they intersect within the interior of the manifold.
+
+\begin{definition}
+  Two points $p$ and $q$ along a geodesic $\gamma$ are \emph{conjugate} if there exists a non-zero Jacobi field $J$ along $\gamma$ such that $J(p) = 0$ and $J(q) = 0$.
+\end{definition}
+
+In the context of ray tracing, this means that an infinitesimal fan of rays emitted from $p$ converges again at $q$.
+
+Once conjugate points exist, the boundary distance function $d_g(x, y)$ loses its smoothness. At the boundary, the arrival time data may become multi-valued because there may be multiple geodesics (one ``direct'' and one ``refracted'') connecting the same source and receiver.
+
+Mathematically, the exponential map $\exp_x$ ceases to be a diffeomorphism. This renders the linearization used in Section 3 invalid, as the ``First Variation of Length'' formula assumes we are perturbing a \textit{unique} minimizing path.
+
+If an ultrasound scanner is used on a manifold with conjugate points, the resulting image will suffer from \emph{ghosting artifacts}.
+\begin{itemize}
+  \item \textbf{Loss of Injectivity:} The X-ray transform $I_g$ may no longer be injective. A function $f$ (a tumor) could exist in the ``shadow'' of the conjugate point region such that its integral along all boundary-to-boundary geodesics is zero, rendering it invisible.
+  \item \textbf{Geometric Misplacement:} Because the back-projection algorithm assumes a simple, unique path, it will attempt to ``smear'' data along the wrong geodesic, placing internal structures in the wrong physical location.
+\end{itemize}
+
+This counterexample reinforces the three pillars of a simple manifold. Without strict convexity, rays ``skid'' off the surface; without the non-trapping condition, rays ``hide'' in loops; and without the absence of conjugate points, rays ``tangle'' and confuse the reconstruction. Thus, the simplicity of $M$ is the fundamental mathematical guarantee that the medical image we see on the screen is a true representation of the patient's anatomy.

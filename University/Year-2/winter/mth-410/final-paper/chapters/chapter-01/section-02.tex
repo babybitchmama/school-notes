@@ -3,39 +3,59 @@
 
 Throughout this paper we employ the Einstein summation convention. Tensor components will be written using indices, where repeated indices appearing once as an upper index and once as a lower index imply summation over their range.
 
-More precisely, if an index $\mu$ appears exactly twice in a term, once as a superscript and once as a subscript, then
+\subsection{Basic Index Notation} More precisely, if an index $\mu$ appears exactly twice in a term, once as a superscript and once as a subscript, then:
 \[%
   A^\mu B_\mu := \sum_{\mu=0}^{n-1} A^\mu B_\mu
 .\]%
 Unless otherwise stated, Greek indices $\mu, \nu, \rho, \sigma$ range from $0$ to $n-1$, while Latin indices $i, j, k$ range from $1$ to $n-1$. We adopt the convention that repeated indices are summed only when one index is upper and the other lower; repeated indices both upper or both lower do not imply summation.
 
-Indices are raised and lowered using a metric tensor. The position of indices is significant, as it distinguishes between covariant and contravariant components of tensors.
-
-Partial derivatives with respect to coordinates $x^\mu$ will be written in the standard form
+\subsection{The Kronecker Delta and Identity} The \emph{Kronecker delta}, denoted by $\delta^\mu_\nu$, serves as the identity operator for index substitution:
 \[%
-  \pdv{f}{x^\mu}
-\]%
-For notational convenience, we introduce the shorthand
-\[%
-  \pd{\mu} f := \pdv{f}{x^\mu}
+  \delta^\mu_\nu = \begin{cases}
+    1 & \text{if}~\mu = \nu \\
+    0 & \text{if}~\mu \neq \nu \\
+  \end{cases}
 .\]%
-More generally,
+In our index notation, the delta satisfies the property $A^\mu \delta^\nu_\mu = A^\nu$. This is particularly useful when simplifying coordinate transformations or defining the Euclidean metric $\delta_{ij}$ in flat background regions of a medical scan.
+
+\subsection{Raising and Lowering Indices} Indices are raised and lowered using the \emph{metric tensor} $g_{\mu\nu}$ and its inverse $g^{\mu\nu}$. The position of indices is significant, as it distinguishes between covariant (downstairs) and contravariant (upstairs) components of tensors:
 \[%
-  \pd{y^\mu} f := \pdv{f}{y^\mu}
+  V_\mu = g_{\mu\nu} V^\nu, \quad \omega^\mu = g^{\mu\nu} \omega_\nu
+.\]%
+We require the metric and its inverse to satisfy $g_{\mu\rho}g^{\rho\nu} = \delta_\mu^\nu$. In the context of the boundary rigidity problem, the metric tensor components encode the local refractive properties (sound speed) of the biological tissue.
+
+\subsection{Partial Derivatives and Shorthand Notation} Partial derivatives with respect to coordinates $x^\mu$ will be written in the standard form $\pdv{f}{x^\mu}$. For notational convenience, we introduce the shorthand:
+\[%
+  \pd{\mu} f := \pdv{f}{x^\mu} \aand \pd{y^\mu} f := \pdv{f}{y^\mu}
 ,\]%
-when differentiation with respect to a different coordinate system is required. We also use the shorthand notation that $\dot{x}$ is defined as
+when differentiation with respect to a different coordinate system is required. We also use the shorthand notation $\dot{x}$ to denote differentiation with respect to the parameter of a curve (typically $\lambda$, $\tau$, or $t$):
 \[%
   \dot{x} := \odv{x}{\lambda}
-,\]%
-or whatever the parameter of differentiation is (in most cases, it's either $\lambda$, $\tau$, or $t$).
+.\]%
 
 \begin{example}
-  The Euler-Lagrange equations for a Lagrangian $L(x^k, \dot{x}^k)$ are
+  The Euler-Lagrange equations for a Lagrangian $L(x^k, \dot{x}^k)$ are:
   \[%
     \pdv{L}{x^k} - \pdv{}{\lambda} \left(\pdv{L}{\dot{x}^k}\right) = 0
   .\]%
-  Using the shorthand notation, this may be written as
+  Using our shorthand notation, this is compactly written as:
   \[%
     \pd{k} L - \odv{}{\lambda} \left(\pd{\dot{x}^k} L\right) = 0
   .\]%
 \end{example}
+
+\subsection{Symmetrization and Anti-symmetrization} To describe geometric objects such as the second fundamental form or the curvature tensor, we use parentheses and brackets to denote the symmetric and anti-symmetric parts of a tensor:
+\[%
+  T_{(\mu\nu)} = \frac{1}{2}(T_{\mu\nu} + T_{\nu\mu}), \quad T_{[\mu\nu]} = \frac{1}{2}(T_{\mu\nu} - T_{\nu\mu})
+.\]%
+This notation is vital for Section 2, where we define \emph{Strict Convexity} using the symmetric second fundamental form $\Pi$.
+
+\subsection{More In-depth Example: The Scalar Product} The Riemannian inner product of two vectors $U, V$ (which might represent the initial velocity of an ultrasound pulse and the normal to the skin) is written as:
+\[%
+  \braket{U, V}g = g{\mu\nu} U^\mu V^\nu
+.\]%
+In an isotropic Euclidean medium where $g_{\mu\nu} = \delta_{\mu\nu}$, this reduces to the standard dot product $U^\mu V_\mu$. The magnitude of the gradient of a pressure field $f$ is given by:
+\[%
+  |\nabla f|^2 = g^{\mu\nu} (\pd{\mu} f) (\pd{\nu} f)
+.\]%
+This demonstrates how the inverse metric $g^{\mu\nu}$ is necessary to compute the norm of a covector (gradient).
