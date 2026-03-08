@@ -1,0 +1,153 @@
+\begin{problem}[1 (Measuring the Cosmological Constant in the Laboratory)]
+  (20 points) It's not possible to measure the matter density $\rho_M$ in a laboratory of the typical size found on Earth because the FRW approximation that the matter is smoothly distributed breaks down at those scales. However, a fundamental vacuum energy could be exactly uniform and therefore in principle detectable in a laboratory experiment. Calculate how two test particles in a freely falling laboratory would move relative to each other in the presence of a vacuum energy corresponding to $\Omega_\Lambda = 1$. Estimate the time scale for significant relative motion and the size of their relative acceleration assuming they start 1 cm apart. Is laboratory detection feasible?
+\end{problem}
+
+\begin{solution}
+  To find the relative motion of two test particles, we use the equation of geodesic deviation:
+  \[%
+    \frac{D^2 S^\mu}{D\tau^2} = R^\mu{}_{\nu\rho\sigma} u^\nu u^\rho S^\sigma
+  ,\]%
+  where $S^\mu$ is the separation vector. In a vacuum dominated by a cosmological constant $\Lambda$, the Einstein field equations $G_{\mu\nu} + \Lambda g_{\mu\nu} = 0$ imply a constant curvature spacetime. We can treat the local physics using a metric perturbation or a local inertial frame where the Riemann tensor components are $R^i{}_{0j0} = \frac{\Lambda}{3} \delta^i_j$.
+
+  The relative acceleration $\mathbf{a} = \odv[2]{\S}/{t}$ for non-relativistic particles is:
+  \[%
+    a^i \approx R^i{}_{0j0} S^j = \frac{\Lambda}{3} S^i
+  .\]%
+  Given $\Omega_\Lambda = \Lambda/3H_0^2 = 1$, we have $\Lambda/3 = H_0^2$. The acceleration is $a = H_0^2 S$.
+
+  Using the current value of the Hubble constant $H_0 \approx 70~\text{km/s/Mpc} \approx 2.3 \times 10^{-18}~\text{s}^{-1}$:
+  \[%
+    a = (2.3 \times 10^{-18}~\text{s}^{-1})^2 (0.01~\text{m}) \approx 5.3 \times 10^{-38}~\text{m/s}^2
+  .\]%
+
+  Significant motion occurs when the change in separation $\Delta S$ is of the same order as the initial separation $S_0$. From $S(t) \approx S_0 e^{H_0 t}$, the time scale is:
+  \[%
+    t \sim \frac{1}{H_0} \approx 14~\text{billion years}
+  .\]%
+
+  An acceleration of $10^{-38}~\text{m/s}^2$ is roughly 25 orders of magnitude smaller than the sensitivity of current high-precision accelerometers or gravity gradiometers. Furthermore, the time scale required to see the particles move significantly relative to one another is the age of the universe. Therefore, laboratory detection of the cosmological constant using test particle deviation is not feasible.
+\end{solution}
+
+\begin{problem}[2 (Quantum Gravity)]
+  Could the observed vacuum mass-energy density in the universe be a consequence of quantum gravity? One obstacle to such an explanation is the great difference in scale between observed vacuum mass density $\rho_\Lambda$ and the Planck mass density $\rho_{Pl} \equiv c^5/\hbar G^2$ that might be expected on dimensional grounds to characterize quantum gravitational phenomena.
+  \begin{enumerate}
+    \item (5 points) Show that $\rho_{Pl}$ is the correct combination of $\hbar$, $G$, and $c$ with the dimensions of mass density.
+    \item (10 points) Evaluate the ratio $\rho_\Lambda/\rho_{Pl}$.
+  \end{enumerate}
+\end{problem}
+
+\begin{solution}[(i)]
+  We show that
+  \[%
+    \rho_{Pl} = \frac{c^5}{\hbar G^2}
+  ,\]%
+  has the dimensions of mass density. First recall the dimensions of the constants:
+  \[%
+    [c] = L T^{-1}, \qquad [\hbar] = M L^2 T^{-1}, \qquad [G] = M^{-1} L^3 T^{-2}
+  .\]%
+  We'll first compute the dimensions of each factor:
+  \[%
+    [c^5] = (L T^{-1})^5 = L^5 T^{-5}, \quad [G^2] = (M^{-1} L^3 T^{-2})^2 = M^{-2} L^6 T^{-4}
+  .\]%
+  Next, we compute the dimensions of the denominator:
+  \[%
+    [\hbar G^2] = (M L^2 T^{-1})(M^{-2} L^6 T^{-4}) = M^{-1} L^8 T^{-5}
+  .\]%
+  Therefore
+  \[%
+    \left[\frac{c^5}{\hbar G^2}\right] = \frac{L^5 T^{-5}}{M^{-1} L^8 T^{-5}} = M L^{-3}
+  .\]%
+  Since mass density has dimensions
+  \[%
+    [\rho] = \frac{M}{L^3} = M L^{-3}
+  ,\]%
+  we conclude that
+  \[%
+    \rho_{Pl} = \frac{c^5}{\hbar G^2}
+  ,\]%
+  indeed has the correct dimensions of a mass density.
+\end{solution}
+
+\begin{solution}[(ii)]
+  The observed vacuum mass density is approximately
+  \[%
+    \rho_\Lambda \approx 6 \times 10^{-27} \ \text{kg m}^{-3}
+  .\]%
+  The Planck mass density is
+  \[%
+    \rho_{Pl} = \frac{c^5}{\hbar G^2}
+  .\]%
+  Using
+  \[%
+    c = 3.00 \times 10^8 \ \text{m/s}, \qquad \hbar = 1.055 \times 10^{-34} \ \text{J s}, \qquad G = 6.674 \times 10^{-11} \ \text{m}^3 \text{kg}^{-1} \text{s}^{-2}
+  ,\]%
+  we obtain
+  \[%
+    \rho_{Pl} \approx 5.1 \times 10^{96} \ \text{kg m}^{-3}
+  .\]%
+  Therefore the ratio is
+  \[%
+    \frac{\rho_\Lambda}{\rho_{Pl}} = \frac{6 \times 10^{-27}}{5.1 \times 10^{96}} \approx 1.2 \times 10^{-123}
+  .\]%
+  Thus
+  \[%
+    \frac{\rho_\Lambda}{\rho_{Pl}} \sim 10^{-123}
+  .\]%
+  This enormous discrepancy of roughly $123$ orders of magnitude is known as the \emph{cosmological constant problem}, one of the major unresolved problems in theoretical physics.
+\end{solution}
+
+\begin{problem}[3]
+  In cosmology we tend to idealize nonrelativistic particles as having zero temperature $T$ and pressure $p$. In reality, random motions will give them some temperature and pressure, satisfying $p \propto T\rho$
+  \begin{enumerate}
+    \item (5 points) How does the pressure of a gas of massive particles decay as a function of the scale factor?
+    \item (10 points) Suppose neutrinos have a mass $m_\nu = 0.1$ eV and a current temperature $T_{\nu 0} = 2K$. At about what redshift did the neutrinos go from being relativistic to nonrelativistic?
+  \end{enumerate}
+\end{problem}
+
+\begin{solution}[(i)]
+  For a nonrelativistic gas the pressure satisfies
+  \[%
+    p \propto T\rho
+  .\]%
+  In an expanding universe the number density of particles scales with the volume, so $n \propto a^{-3}$. Since the particles have fixed mass, the mass density therefore scales as $\rho \propto a^{-3}$. The temperature of nonrelativistic particles is determined by their kinetic energy,
+  \[%
+    \frac{3}{2}k_B T \sim \frac{1}{2}mv^2
+  .\]%
+  As the universe expands, particle momenta redshift as
+  \[%
+    p_{\text{particle}} \propto a^{-1}
+  .\]%
+  For nonrelativistic particles $p_{\text{particle}} = mv$, so
+  \[%
+    v \propto a^{-1}, \qquad v^2 \propto a^{-2}
+  .\]%
+  Since $T \propto v^2$, we obtain $T \propto a^{-2}$. Therefore
+  \[%
+    p \propto T\rho \propto a^{-2} \cdot a^{-3} = a^{-5}
+  .\]%
+  Thus the pressure of a gas of massive nonrelativistic particles scales as $p \propto a^{-5}$.
+\end{solution}
+
+\begin{solution}[(ii)]
+  Neutrinos transition from relativistic to nonrelativistic when their thermal energy becomes comparable to their rest mass energy,
+  \[%
+    k_B T_\nu \sim m_\nu c^2
+  .\]%
+  The neutrino temperature scales with the expansion as
+  \[%
+    T_\nu(z) = T_{\nu 0}(1+z)
+  .\]%
+  Given
+  \[%
+    T_{\nu 0} = 2\,\text{K}, \qquad m_\nu = 0.1\,\text{eV}
+  .\]%
+  Convert the mass energy to an equivalent temperature. Using $1\,\text{eV} \approx 1.16\times 10^4\,\text{K}$, we obtain
+  \[%
+    T_{\text{transition}} = 0.1 \times 1.16\times 10^4 \approx 1.16\times 10^3 \,\text{K}
+  .\]%
+  Setting this equal to the neutrino temperature and solving, we get
+  \[%
+    1+z \approx 5.8\times 10^2, \qquad z \approx 5.8\times 10^2
+  .\]%
+  Therefore the neutrinos became nonrelativistic at approximately $z \sim 6\times10^2$.
+\end{solution}

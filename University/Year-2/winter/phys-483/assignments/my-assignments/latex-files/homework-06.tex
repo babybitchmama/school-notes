@@ -1,0 +1,120 @@
+\begin{problem}[1 (Schwarzschild with a Cosmological Constant)]
+  Consider Einstein's equations in vacuum, but now with a cosmological constant $\Lambda$:
+  \[%
+    G_{\mu\nu} + \Lambda g_{\mu\nu} = 0
+  .\]%
+  \begin{enumerate}
+    \item (10 points) Solve for the most general, spherically symmetric metric, in coordinates $(t, r, \theta, \phi)$. Show that this reduces to the ordinary Schwarzschild solution when $\Lambda = 0$. You can use information from HW\#5 to minimize the number of computations.
+    \item (10 points) Write down the equation of motion for radial geodesics in terms of an effective potential. Sketch the effective potential for massive particles.
+  \end{enumerate}
+\end{problem}
+
+\begin{solution}[(i)]
+  From the results of Homework 5, Problem 3, the most general spherically symmetric metric can be written in the form:
+  \[%
+    \ds^2 = -e^{\nu(r,t)} \dt^2 + e^{\lambda(r,t)} dr^2 + r^2 \dd{\Omega}^2
+  .\]%
+  The vacuum Einstein equation $G_{\hat{t}\hat{r}} = 0$ implies that $\lambda$ is independent of time: $\lambda = \lambda(r)$. Furthermore, the combination $G_{\hat{t}\hat{t}} + G_{\hat{r}\hat{r}} = 0$ (which holds here since $G_{\mu\nu} = -\Lambda g_{\mu\nu}$ and $g_{\hat{t}\hat{t}} + g_{\hat{r}\hat{r}} = -1 + 1 = 0$) implies $\nu' + \lambda' = 0$. By choosing a suitable time coordinate, we can set $\nu(r) = -\lambda(r)$.
+
+  Let $e^{-\lambda(r)} = f(r)$. The Einstein component $G_{\hat{t}\hat{t}} = -\Lambda g_{\hat{t}\hat{t}} = \Lambda$. Thus, we get:
+  \[%
+    G_{\hat{t}\hat{t}} = \frac{e^{-\lambda}(-1 + e^\lambda + r\lambda')}{r^2} = \frac{1}{r^2} \odv{}{r} [r(1 - e^{-\lambda})] = \Lambda
+  .\]%
+  Integrating with respect to $r$:
+  \[%
+    r(1 - f(r)) = \int \Lambda r^2 \dr = \frac{\Lambda r^3}{3} + C
+  .\]%
+  Setting the integration constant $C = 2M$ to match the Newtonian limit (Schwarzschild mass), we find:
+  \[%
+    f(r) = 1 - \frac{2M}{r} - \frac{\Lambda r^2}{3}
+  .\]%
+  The most general metric is the Schwarzschild-de Sitter metric:
+  \[%
+    \ds^2 = -\left(1 - \frac{2M}{r} - \frac{\Lambda r^2}{3}\right) \dt^2 + \left(1 - \frac{2M}{r} - \frac{\Lambda r^2}{3}\right)^{-1} \dr^2 + r^2 \dd{\Omega}^2
+  .\]%
+  When $\Lambda = 0$, this yields $f(r) = 1 - 2M/r$, which is exactly the ordinary Schwarzschild solution.
+\end{solution}
+
+\begin{solution}[(ii)]
+  For a massive particle on a radial geodesic ($L=0$), the 4-velocity normalization $g_{\mu\nu}u^\mu u^\nu = -1$ gives:
+  \[%
+    -f(r) \dot{t}^2 + f(r)^{-1} \dot{r}^2 = -1
+  .\]%
+  Using the conserved energy per unit mass $E = f(r) \dot{t}$, we substitute $\dot{t} = E/f(r)$:
+  \[%
+    -\frac{E^2}{f(r)} + \frac{1}{f(r)} \left(\odv{r}{\tau}\right)^2 = -1 \implies \left(\odv{r}{\tau}\right)^2 = E^2 - f(r)
+  .\]%
+  We define the effective potential $V_{\text{eff}}(r)$ such that $\left(\odv{t}{\tau}\right)^2 + V_{\text{eff}}(r) = E^2$:
+  \[%
+    V_{\text{eff}}(r) = f(r) = 1 - \frac{2M}{r} - \frac{\Lambda r^2}{3}
+  .\]%
+
+  For $\Lambda > 0$, the potential starts at $-\infty$ as $r \to 0$, rises to a local maximum, and then drops back toward $-\infty$ as $r \to \infty$ due to the $-\Lambda r^2$ term.
+\end{solution}
+
+\begin{problem}[2 (Metric perturbations)]
+  Consider the metric perturbation
+  \[%
+    h_{\alpha\beta}(x) = \begin{pmatrix}
+      c & 0 & 0 & 0 \\
+      0 & -c & 0 & 0 \\
+      0 & 0 & a & 0 \\
+      0 & 0 & 0 & -a \\
+    \end{pmatrix} \sin(k)(x - t)
+  ,\]%
+  where $c, a$ are arbitrary constants.
+  \begin{enumerate}
+    \item (10 points) Show how this solves the linearized Einstein equation $\delta R_{\alpha\beta} = 0$.
+    \item (10 points) Find the functions $\zeta_\alpha(x)$ that transform it into a form where $c = 0$. What is the new value of $a$?
+  \end{enumerate}
+\end{problem}
+
+\begin{solution}[(i)]
+  We consider the linearized Ricci tensor in vacuum ($\delta R_{\alpha\beta} = 0$), which is defined as:
+  \[%
+    \delta R_{\alpha\beta} = \frac{1}{2} \left(\pd{\alpha} \pd{\mu} h^\mu_\beta + \pd{\beta} \pd{\mu} h^\mu_\alpha - \square h_{\alpha\beta} - \pd{\alpha} \pd{\beta} h\right) = 0
+  .\]%
+  Let $u = k(x-t)$. The derivatives are $\pd{t} = -k \odv{}{u}$ and $\pd{x} = k \odv{}{u}$. First, we compute the trace $h = \eta^{\mu\nu}h_{\mu\nu} = -h_{00} + h_{11} + h_{22} + h_{33}$:
+  \[%
+    h = (-c - c + a - a)\sin(u) = -2c\sin(u)
+  .\]%
+  Since $h_{\alpha\beta}$ depends only on $(x-t)$, the wave equation $\square h_{\alpha\beta} = (-\pd{t}^2 + \pd{x}^2)h_{\alpha\beta} = 0$ is automatically satisfied. Next, we evaluate the divergence terms $\pd{\mu} h^\mu_\alpha$:
+  \begin{itemize}
+    \item $\pd{\mu} h^\mu_0 = \eta^{00}\pd{t} h_{00} = (-1)(-kc \cos u) = kc \cos u$
+    \item $\pd{\mu} h^\mu_1 = \eta^{11}\pd{x} h_{11} = (1)(-kc \cos u) = -kc \cos u$
+    \item $\pd{\mu} h^\mu_2 = \pd{\mu} h^\mu_3 = 0$
+  \end{itemize}
+  Substituting into $\delta R_{00}$:
+  \[%
+    \delta R_{00} = \frac{1}{2} [ 2\pd{t}(kc \cos u) - \pd{t}^2(-2c \sin u) ] = \frac{1}{2} [ -2k^2c \sin u + 2k^2c \sin u ] = 0
+  .\]%
+  All other components similarly vanish due to the plane-wave symmetry, confirming the solution.
+\end{solution}
+
+\begin{solution}[(ii)]
+  A gauge transformation is defined by $h_{\alpha\beta}^{\text{new}} = h_{\alpha\beta} - \pd{\alpha} \zeta_\beta - \pd{\beta} \zeta_\alpha$. To set the new $h_{00} = 0$, we require:
+  \[%
+    c \sin(k(x-t)) - 2\pd{t} \zeta_0 = 0 \implies \pd{t} \zeta_0 = \frac{c}{2} \sin(k(x-t))
+  .\]%
+  Integrating with respect to $t$:
+  \[%
+    \zeta_0 = \frac{c}{2k} \cos(k(x-t))
+  .\]%
+  Similarly, for $h_{11}^{\text{new}} = 0$:
+  \[%
+    -c \sin(k(x-t)) - 2\pd{x} \zeta_1 = 0 \implies \pd{x} \zeta_1 = -\frac{c}{2} \sin(k(x-t))
+  .\]%
+  Integrating with respect to $x$:
+  \[%
+    \zeta_1 = \frac{c}{2k} \cos(k(x-t))
+  .\]%
+  With $\zeta_2 = \zeta_3 = 0$, we check the cross term $h_{01}^{\text{new}}$:
+  \[%
+    h_{01}^{\text{new}} = 0 - \pd{t} \zeta_1 - \pd{x} \zeta_0 = -(\frac{c}{2} \sin u) - (-\frac{c}{2} \sin u) = 0
+  .\]%
+  Since $\zeta_2 = \zeta_3 = 0$, the transverse components $h_{22}$ and $h_{33}$ remain unchanged. Therefore, the new value of $a$ is:
+  \[%
+    a_{\text{new}} = a
+  .\]%
+  This demonstrates that $c$ was a gauge-dependent quantity, while $a$ represents the physical transverse-traceless degrees of freedom.
+\end{solution}
