@@ -6,11 +6,12 @@ Now that we've covered the basics of differential geometry (cf Section~\ref{sec:
 While differential geometry gives us the structure of the manifold, \emph{Riemannian geometry} introduces the tools necessary for measurement: lengths, angles, and volumes. Riemannian geometry coincides with our intuitive understanding that geometry is the study of lengths, angles, curvature, area, volume, and so on. It provides the mathematical framework for understanding the geometry of curved spaces, which is essential for many applications in physics, engineering, and other fields.
 
 \subsection{The Metric Tensor} Let $M$ be a manifold. We can define something called a metric that allows us to talk about distances and angles on the manifold. We can define a metric as follows.
+
 \begin{definition}
   A \emph{metric tensor} on $M$ is a smooth assignment
   \[%
     g_p : T_pM \times T_pM \to \R
-  \]%
+  ,\]%
   for each point $p \in M$ such that:
   \begin{enumerate}
     \item $g_p$ is bilinear,
@@ -22,8 +23,9 @@ While differential geometry gives us the structure of the manifold, \emph{Rieman
 Smoothness means that in any coordinate chart $\{x^\mu\}$, the components
 \[%
   g_{\mu\nu}(x) := g\!\left(\pd{\mu}, \pd{\nu}\right)
-\]%
+,\]%
 are smooth functions. From this, we get a special type of manifold, namely, the pseudo-Riemannian manifold.
+
 \begin{definition}
   The pair $(M, g)$ is called a \emph{pseudo-Riemannian manifold}.
 
@@ -37,6 +39,7 @@ are smooth functions. From this, we get a special type of manifold, namely, the 
 In general, a pseudo-Riemannian metric need not be positive definite. At each point $p$, the bilinear form $g_p$ has a well-defined \emph{signature} $(p, q)$, where $p$ and $q$ denote the number of positive and negative eigenvalues, respectively.
 
 The metric allows us to:
+
 \begin{itemize}
   \item Measure lengths of tangent vectors:
     \[%
@@ -61,6 +64,7 @@ Metrics that are not positive definite naturally classify tangent vectors into d
 \subsection{Levi-Civita Connection}
 
 Given a pseudo-Riemannian manifold $(M, g)$, there is a unique connection that is compatible with the metric and has zero torsion. This connection is called the \emph{Levi-Civita connection}.
+
 \begin{theorem}[Fundamental Theorem of Riemannian Geometry]
   Let $(M, g)$ be a pseudo-Riemannian manifold. There exists a unique connection $\nabla$ (the \emph{Levi-Civita connection}) such that:
   \begin{enumerate}
@@ -69,12 +73,12 @@ Given a pseudo-Riemannian manifold $(M, g)$, there is a unique connection that i
   \end{enumerate}
 \end{theorem}
 
-% talk about the The Koszul Formula
 From the properties of the Levi-Civita connection, we can derive an explicit formula for $\nabla$ in terms of the metric, known as the \emph{Koszul formula}:
 \[%
   2 g(\nabla_X Y, Z) = X(g(Y,Z)) + Y(g(Z,X)) - Z(g(X,Y)) + g([X,Y], Z) - g([Y,Z], X) - g([Z,X], Y)
 .\]%
 In a local coordinate system $\{x^i\}$, we can express the covariant derivative of one basis vector $\pd{j}$ in the direction of another $\pd{i}$. Since the result $\nabla_{\pd{i}} \pd{j}$ is itself a vector field, it can be written as a linear combination of the basis vectors $\{\pd{k}\}$.
+
 \begin{definition}
   The \emph{Christoffel symbols of the second kind} are defined by the relation:
   \[%
@@ -94,9 +98,7 @@ Since the Levi-Civita connection is torsion-free, the Christoffel symbols are sy
 .\]%
 This reduces the number of components you have to calculate (e.g., in 3D, there are only 18 independent components instead of 27).
 
-% Show how \Gamma is actually used to differentiate a vector field V = V^k \pd{k} (this is the actual formula people use in imaging simulations): (\nabla_XV)^k = X^i (\pd{i}V^k + \Gamma^k_{ij} V^j)
-Now, let's use the Christoffel symbols to compute the covariant derivative of a vector field $V = V^k \pd{k}$ in the direction of another vector field $X = X^i \pd{i}$.
-Let $V = V^k\pd{k}$ be a smooth vector field and $X = X^i\pd{i}$ be the direction of differentiation. By the Leibniz rule (property of the connection), the covariant derivative $\nabla_X V$ is:
+Now, let's use the Christoffel symbols to compute the covariant derivative of a vector field $V = V^k \pd{k}$ in the direction of another vector field $X = X^i \pd{i}$. Let $V = V^k\pd{k}$ be a smooth vector field and $X = X^i\pd{i}$ be the direction of differentiation. By the Leibniz rule (property of the connection), the covariant derivative $\nabla_X V$ is:
 \[%
   \nabla_XV = \nabla_{X^i\pd{i}}(V^j\pd{j}) = X^i\nabla_{\pd{i}}(V^j\pd{j})
 .\]%
@@ -113,77 +115,57 @@ Factoring out the basis $\pd{k}$, we arrive at the component formula:
   (\nabla_X V)^k = X^i \left(\pdv{V^k}{x^i} + \Gamma^k_{ij} V^j\right)
 .\]%
 
-\subsection{Parallel Transport and Geodesics} Let $(M, g)$ be a manifold equipped with a Levi-Civita connection $\nabla$.
+\subsection{Parallel Transport and Geodesics} In Euclidean space, a ``straight'' path is easily defined as one with zero acceleration. However, on a Riemannian manifold $(M, g)$, the notion of a straight line is complicated by the fact that the tangent spaces $T_p M$ and $T_q M$ at different points are distinct. To determine if a path is straight, we first need a way to move vectors from one point to another without ``turning'' them. This leads us to the concept of parallel transport.
 
-Let $\gamma : I \to M$ be a smooth curve, where $I \subset \R$ is an interval. Denote its tangent vector by
-\[%
-  \dot{\gamma}(t) = \odv{\gamma}{t}
-.\]%
+Let $(M, g)$ be a manifold equipped with the Levi-Civita connection $\nabla$. Given a smooth curve $\gamma: I \to M$ with tangent vector $\dot{\gamma}(t) = \frac{d\gamma}{dt}$, we seek to measure how a vector field $X$ changes as we move along $\gamma$.
 
-If $X$ is a vector field defined along $\gamma$, meaning
-\[%
-  X(t) \in T_{\gamma(t)} M
-,\]%
-then the \emph{covariant derivative of $X$ along $\gamma$} is defined by
-\[%
-  \codv{X}{t} := \nabla_{\dot{\gamma}(t)} X
-.\]%
+\begin{definition}
+  Let $X$ be a vector field defined along $\gamma$, such that $X(t) \in T_{\gamma(t)} M$. The \emph{covariant derivative of $X$ along $\gamma$} is the projection of the standard derivative back onto the tangent space:
+  \[%
+    \codv{X}{t} := \nabla_{\dot{\gamma}(t)} X
+  .\]%
+\end{definition}
 
-This measures how $X$ changes along the curve while accounting for the curvature of the manifold.
+In local coordinates $\{x^\mu\}$, the covariant derivative accounts for the ``twisting'' of the coordinate basis through the Christoffel symbols $\Gamma^\mu_{\alpha\beta}$:
+\[%
+  \left(\codv{X}{t}\right)^\mu = \odv{X^\mu}{t} + \Gamma^\mu_{\alpha\beta} \dot{\gamma}^\alpha X^\beta
+.\]%
+This formula captures the motivation for the connection: it corrects the ordinary derivative of the component $X^\mu$ by adding a term that represents how the basis vectors themselves are changing relative to the metric.
 
-In local coordinates $\{x^\mu\}$, if
-\[%
-  X = X^\mu \pd{\mu}
-,\]%
-then
-\[%
-  \codv{X^\mu}{t} = \odv{x^\mu}{t} + \Gamma^\mu_{\alpha\beta} \dot{\gamma}^\alpha X^\beta
-.\]%
-A vector field $X$ along $\gamma$ is said to be \emph{parallel transported} if
-\[%
-  \codv{\dot{\gamma}}{t} = 0
-.\]%
-In coordinates, this becomes
-\[%
-  \odv{X^\mu}{t}
-  +
-  \Gamma^\mu_{\alpha\beta}
-  \dot{\gamma}^\alpha
-  X^\beta
-  =
-  0.
-\]%
-Thus parallel transport preserves the vector with respect to the connection.
+A vector is ``parallel'' if it does not change its orientation relative to the manifold's geometry as it moves.
 
-If $\nabla$ is metric-compatible (as for the Levi-Civita connection), parallel transport preserves inner products:
-\[%
-  \odv{}{t} g(X, Y) = 0
-,\]%
-whenever $X$ and $Y$ are parallel along $\gamma$.
+\begin{definition}
+  A vector field $X$ along $\gamma$ is said to be \emph{parallel transported} if its covariant derivative along the curve vanishes:
+  \[%
+    \codv{X}{t} = 0 \quad \iff \quad \odv{X^\mu}{t} + \Gamma^\mu_{\alpha\beta} \dot{\gamma}^\alpha X^\beta = 0
+  .\]%
+\end{definition}
 
-A curve $\gamma$ is called a \emph{geodesic} if its tangent vector is parallel transported along itself:
+Because the Levi-Civita connection is metric-compatible, parallel transport is an \emph{isometry} between tangent spaces. It preserves both the lengths of vectors and the angles between them:
 \[%
-  \codv{\dot{y}}{t} = 0
+  \odv{}{t} g(X, Y) = g\left(\codv{X}{t}, Y\right) + g\left(X, \codv{Y}{t}\right) = 0
 .\]%
-Equivalently,
-\[%
-  \nabla_{\dot{\gamma}} \dot{\gamma} = 0
-.\]%
-In local coordinates, this yields the geodesic equation:
+In medical imaging, this ensures that if an ultrasound pulse is modeled as a vector, its ``energy'' (magnitude) remains constant as it moves through the tissue, even if its direction is deflected by the curvature of the sound-speed metric.
+
+With parallel transport defined, we can now define the ``straightest'' possible curves on a manifold. A curve is a geodesic if it does not ``accelerate'' in any direction other than the one dictated by the curvature of the manifold itself.
+
+\begin{definition}
+  A curve $\gamma$ is a \emph{geodesic} if its tangent vector is parallel transported along itself:
+  \[%
+    \codv{\dot{\gamma}}{t} = 0 \quad \text{or equivalently,} \quad \nabla_{\dot{\gamma}} \dot{\gamma} = 0
+  .\]%
+\end{definition}
+
+Expanding this in local coordinates yields the \emph{geodesic equation}, a second-order non-linear system of ODEs:
 \[%
   \odv[2]{x^\mu}{t} + \Gamma^\mu_{\alpha\beta} \odv{x^\alpha}{t} \odv{x^\beta}{t} = 0
 .\]%
 
-Thus geodesics are curves whose acceleration vanishes with respect to the connection.
-
-If $(M, g)$ is pseudo-Riemannian, geodesics can also be characterized as stationary points of the energy functional
+While the definition above is geometric (zero acceleration), geodesics also arise from a physical principle: the minimization of effort. Geodesics are critical points of the \emph{energy functional}:
 \[%
-  E[\gamma] = \frac{1}{2} \int g_{\mu\nu} \dot{x}^\mu \dot{x}^\nu \dt
+  E[\gamma] = \frac{1}{2} \int_I g_{\mu\nu} \dot{x}^\mu \dot{x}^\nu \dt
 .\]%
-
-Applying the Euler-Lagrange equations to this functional yields precisely the coordinate geodesic equation above.
-
-The quantitative description of this relative acceleration is given by the geodesic deviation equation, which will be discussed later.
+Applying the Euler-Lagrange equations to $E[\gamma]$ yields the exact same coordinate geodesic equation. In the context of our boundary rigidity problem, this variational perspective is vital; it tells us that ultrasound rays (geodesics) always follow the paths that minimize ``acoustic effort'' (time-of-flight), which is the very data we measure at the boundary.
 
 \subsection{Curvature} Next, we introduce the concept of curvature on a manifold.
 
@@ -294,7 +276,7 @@ In Euclidean space, the Laplacian $\Delta = \sum \pd{i}^2$ is the most fundament
 \begin{definition}
   The \emph{Laplace-Beltrami operator} acting on a smooth function $f \in C^\infty(M)$ is defined as the divergence of the gradient:
   \begin{equation}
-    \Delta_g f = \text{div}(\text{grad} f) = \nabla^\mu \nabla_\mu f
+    \Delta_g f = \div(\grad f) = \nabla^\mu \nabla_\mu f
   .\end{equation}
 \end{definition}
 

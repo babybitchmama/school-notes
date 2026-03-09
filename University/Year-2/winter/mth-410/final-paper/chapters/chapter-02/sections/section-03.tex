@@ -3,7 +3,10 @@
 
 Now with all the necessary tools in place, we can now start looking at the linearized version of the boundary rigidity problem, which is closely related to the geodesic X-ray transform. The linearized problem is often easier to analyze and can provide insights into the original nonlinear problem. In this section, we will explore the linearization of the boundary distance function, the geodesic X-ray transform, solenoidal injectivity and gauge freedom, and the normal operator and back-projection.
 
-\subsection{Linearization of the Boundary Distance Function} The boundary distance function $d_g(x, y)$ is a non-linear functional of the metric $g$. In the context of medical imaging, the inverse problem--recovering $g$ from $d_g$--is therefore non-linear and computationally difficult. To simplify the problem, we consider a small perturbation of the background metric and analyze the resulting change in travel time.
+\subsection{Linearization of the Boundary Distance Function}
+\label{sub_sec:linearization_of_the_boundary_distance_function}
+
+The boundary distance function $d_g(x, y)$ is a non-linear functional of the metric $g$. In the context of medical imaging, the inverse problem--recovering $g$ from $d_g$--is therefore non-linear and computationally difficult. To simplify the problem, we consider a small perturbation of the background metric and analyze the resulting change in travel time.
 
 Let $g$ be a smooth, simple background metric (representing healthy tissue) and let $f$ be a symmetric $(0,2)$-tensor field representing a small anomaly (such as a tumor). We define a one-parameter family of metrics:
 \[%
@@ -65,7 +68,10 @@ To solve the inverse problem--reconstructing $f$ from $If$--we analyze the prope
 
 The central question of this section is the \emph{injectivity} of $I$. If $If = 0$, does it necessarily imply that $f = 0$? In the scalar case (functions), the answer for simple manifolds is yes. However, for tensor fields, the existence of ``potential'' fields--tensors that are simply derivatives of coordinate shifts--creates a kernel that we must account for through the concept of \emph{solenoidal injectivity}.
 
-\subsection{Solenoidal Injectivity and Gauge Freedom} In the scalar case, the geodesic X-ray transform I is injective on simple manifolds, meaning the ``image'' is uniquely determined by the data. However, for the tensor fields that arise in the linearization of the boundary rigidity problem, a fundamental ambiguity emerges. This ambiguity, known as \emph{gauge freedom}, arises from the fact that we can smoothly re-parametrize the interior of the manifold without altering the distances measured at the boundary.
+\subsection{Solenoidal Injectivity and Gauge Freedom}
+\label{sub_sec:solenoidal_injectivity_and_gauge_freedom}
+
+In the scalar case, the geodesic X-ray transform I is injective on simple manifolds, meaning the ``image'' is uniquely determined by the data. However, for the tensor fields that arise in the linearization of the boundary rigidity problem, a fundamental ambiguity emerges. This ambiguity, known as \emph{gauge freedom}, arises from the fact that we can smoothly re-parametrize the interior of the manifold without altering the distances measured at the boundary.
 
 In our study of simple manifolds, any vector field $v$ that vanishes on the boundary ($v|_{\partial M} = 0$) can be used to ``push forward'' the metric. In the linearized setting, this corresponds to a specific type of tensor called a \emph{potential tensor}.
 
@@ -97,7 +103,10 @@ Because the potential part is always invisible, the best we can hope for is to r
 
 For medical imaging, this results in the conclusion that the boundary rigidity problem is solvable \emph{up to a diffeomorphism}. We can reconstruct the internal structure and the sound speed variations, but the exact ``spatial mapping'' is only determined relative to the boundary. In practice, because the ``skin'' of the patient is fixed by the transducer array, this gauge freedom is physically constrained, allowing for high-fidelity reconstructions of internal anomalies despite the underlying mathematical ambiguity.
 
-\subsection{The Normal Operator and the Back-Projection} The final step in our mathematical model of medical imaging is the development of a reconstruction algorithm. While the geodesic X-ray transform $I$ describes the ``forward problem'' (from tissue to data), we require a method to go from data back to tissue. This is achieved through the \emph{back-projection} and the study of the \emph{normal operator}.
+\subsection{The Normal Operator and the Back-Projection}
+\label{sub_sec:the_normal_operator_and_the_back_projection}
+
+The final step in our mathematical model of medical imaging is the development of a reconstruction algorithm. While the geodesic X-ray transform $I$ describes the ``forward problem'' (from tissue to data), we require a method to go from data back to tissue. This is achieved through the \emph{back-projection} and the study of the \emph{normal operator}.
 
 The adjoint operator $I^*$, known as back-projection, is the formal dual to the X-ray transform. While $I$ integrates a function along a single geodesic, $I^*$ ``smears'' a piece of boundary data across the manifold along all geodesics that could have produced it.
 

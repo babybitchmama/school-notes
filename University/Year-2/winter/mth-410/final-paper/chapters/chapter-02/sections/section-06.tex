@@ -13,11 +13,11 @@ In the language of Riemannian geometry, this TOF is the distance $d_g(S, R)$ und
 ,\]%
 where $c(x)$ is the spatially varying sound speed. The ``rays'' of ultrasound are the geodesics of this metric. Because the sound speed in biological tissue is relatively close to that of water, the manifold is typically \emph{simple}, ensuring that the rays do not trap or cross, and that the boundary is strictly convex.
 
-The goal of USCT is to recover the function $c(x)$ from the set of all possible TOF measurements $\{d_g(S, R) : S, R \in \partial M\}$. As established in Section 3, this is solved by linearizing the problem and applying the Geodesic X-ray Transform.
+The goal of USCT is to recover the function $c(x)$ from the set of all possible TOF measurements $\{d_g(S, R) : S, R \in \partial M\}$. As established in Section~\ref{sec:the_linearized_problem_and_the_x_ray_transform}, this is solved by linearizing the problem and applying the Geodesic X-ray Transform.
 
 \begin{itemize}
   \item \textbf{Forward Problem:} The scanner collects the integral of the refractive index along the curved geodesics.
-  \item \textbf{Inverse Problem:} Using the Normal Operator and Filtered Back-Projection (as discussed in Section 3.4), the computer ``smears'' the measured delays back into the manifold to identify regions of high or low sound speed.
+  \item \textbf{Inverse Problem:} Using the Normal Operator and Filtered Back-Projection (as discussed in Section~\ref{sub_sec:the_normal_operator_and_the_back_projection}), the computer ``smears'' the measured delays back into the manifold to identify regions of high or low sound speed.
 \end{itemize}
 
 USCT offers several advantages that are directly rooted in its geometric formulation:
@@ -29,7 +29,10 @@ USCT offers several advantages that are directly rooted in its geometric formula
 
 To satisfy the ``Simple Manifold'' requirement, USCT systems often use a ``water bath'' to provide a smooth transition between the transducers and the skin. This ensures that the boundary remains strictly convex ($\Pi > 0$) and that the rays enter the body at predictable angles, satisfying the \emph{Non-Trapping Condition} required for a unique reconstruction.
 
-\subsection{Diffusion Tensor Imaging (DTI) and Neural Tractography} While Ultrasound CT primarily investigates a scalar sound speed, the human brain presents a more complex geometric challenge: anisotropy. In the white matter of the brain, water molecules do not diffuse equally in all directions; instead, they move preferentially along the axes of myelinated nerve fibers. This physical phenomenon is modeled not by a single function, but by a symmetric (0,2)-tensor field--the diffusion tensor.
+\subsection{Diffusion Tensor Imaging (DTI) and Neural Tractography}
+\label{sub_sec:dti_and_neural_tractography}
+
+While Ultrasound CT primarily investigates a scalar sound speed, the human brain presents a more complex geometric challenge: anisotropy. In the white matter of the brain, water molecules do not diffuse equally in all directions; instead, they move preferentially along the axes of myelinated nerve fibers. This physical phenomenon is modeled not by a single function, but by a symmetric (0,2)-tensor field--the diffusion tensor.
 
 In DTI, the ``distance'' between two points is not measured by the travel time of sound, but by the \emph{mean squared displacement} of water molecules. We define a Riemannian metric $g$ where the components $g_{ij}$ are inversely proportional to the diffusion coefficients. In this geometry:
 
@@ -49,7 +52,7 @@ The resulting curves provide a 3D map of the brain's ``wiring diagram.'' This is
 
 The mathematical ``Inverse Problem'' in DTI is a variation of the Boundary Rigidity Problem for a tensor field. We ask: can we reconstruct the full internal connectivity of the brain (the tensor field $g_{ij}$) by observing the diffusion properties?
 \begin{itemize}
-  \item \textbf{Anisotropic Rigidity:} Unlike the scalar case in USCT, the reconstruction of a diffusion tensor is subject to the Solenoidal Injectivity limits discussed in Section 3.3.
+  \item \textbf{Anisotropic Rigidity:} Unlike the scalar case in USCT, the reconstruction of a diffusion tensor is subject to the Solenoidal Injectivity limits discussed in Section~\ref{sub_sec:solenoidal_injectivity_and_gauge_freedom}.
   \item \textbf{Gauge Freedom:} The ``diffeomorphism'' ambiguity means that while we can map the connections between regions (the ``topology'' of the wiring), the exact ``thickness'' or ``local density'' of the fibers is determined only up to a smooth coordinate transformation.
 \end{itemize}
 
@@ -57,7 +60,7 @@ DTI has revolutionized our understanding of neurological diseases. In conditions
 
 \subsection{Limitations and Future Frontiers: The ``Non-Simple'' Reality} While the theory of simple manifolds provides a rigorous foundation for boundary rigidity and the X-ray transform, the clinical application of these results often meets the limits of ``simplicity.'' In this concluding subsection, we address the mathematical and physical challenges that arise when the human body violates our established geometric assumptions.
 
-The ``No Conjugate Points'' and ``Non-Trapping'' conditions (Section 2) are most frequently violated by the presence of bone or air.
+The ``No Conjugate Points'' and ``Non-Trapping'' conditions (Section~\ref{sec:formalizing_the_geometry_of_simple_manifolds}) are most frequently violated by the presence of bone or air.
 
 \begin{itemize}
   \item \textbf{Bone:} Cortical bone has a sound speed nearly double that of soft tissue ($c \approx 3000$ m/s). This sharp jump in the metric $g$ acts as a massive ``fast'' lens, causing geodesics to diverge sharply and creating ``shadow zones'' where the X-ray transform $I$ lacks data.
@@ -66,7 +69,7 @@ The ``No Conjugate Points'' and ``Non-Trapping'' conditions (Section 2) are most
 
 In these cases, the distance function $d_g$ becomes non-smooth, and the reconstruction requires ``Microlocal Analysis'' to handle the resulting singularities.
 
-In Section 3.1, we linearized the problem using the first variation of length. However, if the tumor is large or the tissue is highly heterogeneous, the ``second-order'' effects become significant.
+In Section~\ref{sub_sec:linearization_of_the_boundary_distance_function}, we linearized the problem using the first variation of length. However, if the tumor is large or the tissue is highly heterogeneous, the ``second-order'' effects become significant.
 
 \begin{itemize}
   \item \textbf{Iterative Reconstruction:} Modern clinical systems often use an iterative approach: they guess a metric $\hat{g}$, compute the ``synthetic'' travel times, and then minimize the distance to the actual boundary data.

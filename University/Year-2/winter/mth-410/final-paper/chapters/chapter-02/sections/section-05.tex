@@ -50,7 +50,7 @@ Consider a circular domain $M$ with a background Euclidean metric $g_0$ (constan
 .\]%
 We assume $f(x)$ is a smooth ``bump'' function supported entirely within a small interior disk $B_\delta(x_0) \subset \text{int}(M)$. In the linearized regime, the change in the metric tensor is given by $\delta g = f(x)\delta_{ij}$.
 
-When an ultrasound pulse is emitted from a source $S$ on the boundary, its travel time to a receiver $R$ is altered if the geodesic $\gamma_{SR}$ passes through the inclusion. According to our results from Section 3.1, the time-of-flight perturbation $\delta T$ is:
+When an ultrasound pulse is emitted from a source $S$ on the boundary, its travel time to a receiver $R$ is altered if the geodesic $\gamma_{SR}$ passes through the inclusion. According to our results from Section~\ref{sub_sec:linearization_of_the_boundary_distance_function}, the time-of-flight perturbation $\delta T$ is:
 \[%
   \delta T(S, R) \approx \frac{1}{2c_0} \int_{\gamma_{SR}} f(\gamma(t)) , dt = \frac{1}{2c_0} \mathcal{I}g f(\gamma{SR})
 .\]%
@@ -62,7 +62,7 @@ When an ultrasound pulse is emitted from a source $S$ on the boundary, its trave
 
 To find the location of the inclusion, we utilize the measurements from all source-receiver pairs. If $f$ is non-zero, it creates a ``shadow'' or ``delay signature'' in the boundary data. By using the \emph{Support Theorem} for the X-ray transform, we can conclude that the convex hull of the inclusion is uniquely determined by the set of rays that experience a delay.
 
-Mathematically, the back-projection operator $I^*$ (Section 3.4) ``smears'' these delays back into the manifold. The intersection of all delayed rays identifies the region $B_\delta(x_0)$ where the tumor is located.
+Mathematically, the back-projection operator $I^*$ (Section~\ref{sub_sec:the_normal_operator_and_the_back_projection}) ``smears'' these delays back into the manifold. The intersection of all delayed rays identifies the region $B_\delta(x_0)$ where the tumor is located.
 
 A critical realization in this example is that the inclusion does more than just delay the signal; it \emph{refracts} the rays.
 \begin{itemize}
@@ -76,7 +76,7 @@ In the simple manifold framework, we assume these perturbations are small enough
 
 Throughout this work, we have assumed that the manifold $(M, g)$ is simple, ensuring that the exponential map is a global diffeomorphism. This final example explores what happens when this condition is violated. In medical imaging, the emergence of conjugate points corresponds to a ``multipath'' or ``focusing'' effect, where a single boundary measurement can no longer be uniquely attributed to a single internal path.
 
-Consider a disk $M$ containing a very high-density inclusion (a ``slow'' zone) where the sound speed $c(x)$ drops significantly. As discussed in Section 5.2, a slow zone acts as a converging lens. If the refractive index $n(x) = 1/c(x)$ is sufficiently large, the geodesics (ultrasound rays) will be pulled toward each other so sharply that they intersect within the interior of the manifold.
+Consider a disk $M$ containing a very high-density inclusion (a ``slow'' zone) where the sound speed $c(x)$ drops significantly. As discussed in Section~\ref{sub_sec:dti_and_neural_tractography}, a slow zone acts as a converging lens. If the refractive index $n(x) = 1/c(x)$ is sufficiently large, the geodesics (ultrasound rays) will be pulled toward each other so sharply that they intersect within the interior of the manifold.
 
 \begin{definition}
   Two points $p$ and $q$ along a geodesic $\gamma$ are \emph{conjugate} if there exists a non-zero Jacobi field $J$ along $\gamma$ such that $J(p) = 0$ and $J(q) = 0$.
@@ -86,7 +86,7 @@ In the context of ray tracing, this means that an infinitesimal fan of rays emit
 
 Once conjugate points exist, the boundary distance function $d_g(x, y)$ loses its smoothness. At the boundary, the arrival time data may become multi-valued because there may be multiple geodesics (one ``direct'' and one ``refracted'') connecting the same source and receiver.
 
-Mathematically, the exponential map $\exp_x$ ceases to be a diffeomorphism. This renders the linearization used in Section 3 invalid, as the ``First Variation of Length'' formula assumes we are perturbing a \textit{unique} minimizing path.
+Mathematically, the exponential map $\exp_x$ ceases to be a diffeomorphism. This renders the linearization used in Section~\ref{sec:the_linearized_problem_and_the_x_ray_transform} invalid, as the ``First Variation of Length'' formula assumes we are perturbing a \textit{unique} minimizing path.
 
 If an ultrasound scanner is used on a manifold with conjugate points, the resulting image will suffer from \emph{ghosting artifacts}.
 \begin{itemize}

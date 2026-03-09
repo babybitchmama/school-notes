@@ -42,7 +42,7 @@ A nice property (which we won't be proving), is that a composition of smooth map
 
 \includefigure{./chapters/chapter-01/figures/composition-of-smooth-maps.tex}
 
-\subsection{The Tangent and Cotangent Bundles} Our next main definition is that of a tensor, but in order to do so, we need to introduce a few more concepts, such as the tangent and cotangent bundles of a manifold.
+\subsection{Tangent Bundles, Cotangent Bundles, and Sections} Our next main definition is that of a tensor, but in order to do so, we need to introduce a few more concepts, such as the tangent and cotangent bundles of a manifold.
 \begin{definition}
   Let $M$ be a manifold and $p \in M$. The \emph{tangent space} at $p$, denoted $T_pM$, is the vector space of derivations at $p$, that is,
   \[%
@@ -58,12 +58,30 @@ A nice property (which we won't be proving), is that a composition of smooth map
 
 A rather straightforward basis for the tangent space is given by
 \[%
-  \B = \left\{\left.\pdv{}{x^i}\right\rvert_a\right\}_{i=1}^{i=n}
+  \B = \left\{\left.\pdv{}{x^i}\right\rvert_a\right\}_{i=1}^{i=n} = \{\pd{i}(a)\}_{i=1}^{i=n}
 ,\]%
 defined by
 \[%
-  \left.\pdv{}{x^i}\right\rvert_a f = \pdv{f}{x^i}(a)
-.\]%
+  \left.\pdv{}{x^i}\right\rvert_a f = \pdv{f}{x^i}(a) = \pd{i}(a)
+,\]%
+using Einstein notation. This is called the \emph{coordinate basis} for $T_pM$. We can also define the tangent space using equivalence classes of curves, but we won't be doing that here.
+
+Our next definition will be the tangent bundle. But before we do that, we need to define what a disjoint union is.
+
+\begin{definition}
+  The \emph{disjoint union} of a family of sets $\{A_i\}_{i \in I}$ is the set
+  \[%
+    \bigsqcup_{i \in I} A_i = \{(i, a) : i \in I, a \in A_i\}
+  .\]%
+\end{definition}
+
+\begin{example}
+  If we have two sets $A = \{1, 2\}$ and $B = \{1, 2\}$, then their disjoint union is
+  \[%
+    A \sqcup B = \{(A, 1), (A, 2), (B, 1), (B, 2)\}
+  .\]%
+  Notice that the elements $A = B$, but the disjoint union keeps track of which set each element belongs to. If we do $(A, 1) \cap (B, 1) = \emptyset$, even tho 1 does indeed equal 1.
+\end{example}
 
 \begin{definition}
   A \emph{tangent bundle}, denoted as $TM$, of a manifold $M$ is defined as
@@ -74,6 +92,8 @@ defined by
 
 \includefigure{./chapters/chapter-01/figures/coordinates-for-the-tangent-bundle.tex}
 
+\todo[inline]{Fix this recursive definition, since we're using the definition of fibre of a vector bundle to define the tangent bundle, which is a vector bundle.}
+
 \begin{definition}
   A \emph{vector bundle} over a manifold $M$ is a topological space $E$ together with a continuous surjection $\pi : E \to M$ such that for each point $p \in M$, the fiber $\pi^{-1}(p)$ is a vector space, and there exists an open neighborhood $U$ of $p$ in $M$ and a homeomorphism $\phi : \pi^{-1}(U) \to U \times \R^k$ that respects the vector space structure on the fibers.
 \end{definition}
@@ -83,15 +103,15 @@ defined by
 \end{definition}
 
 \begin{definition}
-  The \emph{cotangent space} $T_p^*M$ is the dual space to $T_pM$. If $\{ \frac{\partial}{\partial x^i} \}$ is the coordinate basis for the tangent space, we define the \emph{coordinate dual basis} $\{ \dx^i \}$ for $T_p^*M$ such that:
+  The \emph{cotangent space} $T_p^*M$ is the dual space to $T_pM$. If $\{\pd{i}\}$ is the coordinate basis for the tangent space, we define the \emph{coordinate dual basis} $\{ \dx^i \}$ for $T_p^*M$ such that:
   \[%
-    \dx^i \left( \pdv{}{x^j} \right) = \delta^i_j
+    \dx^i \left(\pd{j}\right) = \delta^i_j
   ,\]%
   where $\delta^i_j$ is the Kronecker delta. This allows us to express any covector $\omega \in T_p^*M$ as $\omega = \omega_i \dx^i$.
 \end{definition}
 
 \begin{note}
-  If $\{\pdv{}/{x^i}\}$ is a basis for $T_pM$, then the dual basis $\{\dx^i\}$ is a basis for $T_p^*M$.
+  If $\{\pd{i}\}$ is a basis for $T_pM$, then the dual basis $\{\dx^i\}$ is a basis for $T_p^*M$.
 \end{note}
 
 \begin{note}
@@ -114,18 +134,47 @@ In local coordinates, tensor components are written using upper and lower indice
 
 \includefigure{./chapters/chapter-01/figures/fibres-and-sections.tex}
 
-\subsection{Tensors and Sections}
+\subsection{Tensors}
 
 Now, with all that out of the way, we can finally define a tensor.
 
 \begin{definition}
   Let $M$ be a manifold and $p \in M$. An \emph{$(r,s)$-tensor at $p$} is a multilinear map
   \[%
-    T_p : (T_p^*M)^r \times (T_pM)^s \to \R
+    T_p : (T_p^*M)^r \times (T_pM)^s \to \mathbb{R}.
   .\]%
+\end{definition}
+
+\begin{definition}
+  The \emph{tensor bundle} of type $(r,s)$ over a manifold $M$ is the vector bundle
+  \[%
+    T^r_s M = \bigsqcup_{p \in M} T^r_s(p) = \bigsqcup_{p \in M} \left(\underbrace{T_p^*M \otimes \cdots \otimes T_p^*M}_{r~\text{times}} \otimes \underbrace{T_pM \otimes \cdots \otimes T_pM}_{s~\text{times}}\right)
+  .\]%
+\end{definition}
+
+\begin{note}
+  We use the shorthand notation
+  \[%
+    A^{\otimes r} = \underbrace{A \otimes \cdots \otimes A}_{r~\text{times}}
+  .\]%
+  Thus the tensor bundle may be written as
+  \[%
+    T^r_s M = \bigsqcup_{p \in M} (T_p^*M)^{\otimes r} \otimes (T_pM)^{\otimes s}
+  .\]%
+\end{note}
+
+\begin{definition}
   An \emph{$(r,s)$-tensor field} on $M$ is a smooth section of the tensor bundle
   \[%
-    (T^*M)^{\otimes r} \otimes (TM)^{\otimes s}
+    \pi : T^r_s M \to M
+  .\]%
+  That is, a smooth map
+  \[%
+    T : M \to T^r_s M
+  ,\]%
+  such that
+  \[%
+    \pi \circ T = \Id_M
   .\]%
 \end{definition}
 
@@ -389,4 +438,33 @@ Here's a rough idea for what the parallel transport is (as we define it later on
 
 While these definitions apply to any affine connection, physical applications in medical imaging--such as modeling signal propagation or tissue conductivity--require a specific connection that respects the internal ``distance'' of the manifold. In the following section, we introduce the Riemannian metric and the unique Levi-Civita connection associated with it.
 
-\subsection{Conformal and Isometric Maps} We end this section by defining conformal and isometric maps, which are important concepts in the study of geometric inverse problems.
+\subsection{Conformal and Isometric Maps} We conclude this section by defining conformal and isometric maps, which are the fundamental ``equivalence relations'' used to categorize Riemannian manifolds in geometric inverse problems.
+
+\begin{definition}
+  A smooth map $F : (M, g) \to (N, h)$ is called \emph{conformal} if there exists a smooth function $\Omega : M \to (0, \infty)$, called the \emph{conformal factor}, such that:
+  \[%
+    F^*h = \Omega^2 g
+  .\]%
+  In this case, $F$ preserves the angles between any two tangent vectors but scales lengths by the factor $\Omega(p)$.
+\end{definition}
+
+In medical imaging, we frequently work with \emph{conformally flat} metrics. For example, in an isotropic ultrasound scan, we assume the manifold is a domain $M \subset \mathbb{R}^n$ with a metric $g = c(x)^{-2} \delta$, where $c(x)$ is the sound speed. This metric is conformal to the Euclidean metric $\delta$; thus, while the sound waves follow "straight-line" Euclidean angles locally, the "acoustic distance" (time-of-flight) is warped by the factor $1/c(x)$.
+
+\begin{definition}
+  A smooth map $F : (M, g) \to (N, h)$ is called an \emph{isometry} if:
+  \[%
+    F^*h = g
+  .\]%
+  This is a special case of a conformal map where $\Omega \equiv 1$. An isometry preserves both angles and lengths, making it a distance-preserving map: $d_h(F(p), F(q)) = d_g(p, q)$.
+\end{definition}
+
+The distinction between these two maps is the key to understanding the ``up to a diffeomorphism'' clause in the Boundary Rigidity Problem.
+
+\begin{itemize}
+  \item \textbf{Isometries as Gauge Freedom:} If $F$ is an isometry that is the identity on the boundary, then the boundary distance functions $d_g$ and $d_h$ are identical. This means that a scanner cannot distinguish between $(M, g)$ and its isometric twin $(M, F^*h)$.
+  \item \textbf{Conformal Factors as Diagnostic Data:} In Ultrasound CT, the goal is often to find the conformal factor $\Omega = 1/c(x)$. Since a change in $\Omega$ changes the travel times (lengths) of geodesics, this information is \emph{not} hidden by gauge freedom and can be uniquely reconstructed under the ``simple manifold'' assumptions.
+\end{itemize}
+
+\begin{example}[The Poincare Disk]
+  A classic example of these concepts is the Poincare Disk model of hyperbolic space, $(D, g_{hyp})$, where $g_{hyp} = \frac{4}{(1-|x|^2)^2} \delta$. This metric is \emph{conformal} to the Euclidean disk. While the ``Euclidean'' straight lines represent one geometry, the ``Hyperbolic'' geodesics--which are circular arcs orthogonal to the boundary--represent a different metric that has been warped by a conformal factor that blows up at the boundary.
+\end{example}
