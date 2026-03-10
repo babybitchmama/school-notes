@@ -1,9 +1,10 @@
 \section{Differential Geometry}
 \label{sec:differential_geometry}
 
-We start this section by developing the necessary mathematical tools and concepts required to understand geometric inverse problems. This section just briefly introduces concepts from differential that's used throughout this paper.
+We start this section by developing the necessary mathematical tools and concepts required to understand gravitational waves. This section just briefly introduces concepts from differential geometry that are used throughout this paper.
 
 \subsection{Intro to Manifolds} Let's begin by introducing the concept of a manifold.
+
 \begin{definition}
   An \emph{$n$-dimension manifold}, $M$, is a topological space such that
   \begin{enumerate}
@@ -12,30 +13,39 @@ We start this section by developing the necessary mathematical tools and concept
     \item $M$ is second countable, i.e., there exists a countable basis for the topology of $M$.
   \end{enumerate}
 \end{definition}
+
 We define an \textit{atlas} as the collection of all the charts along with their transition maps, $\mathcal{A} = \{(U_i, \phi_i)\}$. To go from one chart, $U_i$, to another chart, $U_j$, if $U_i \cap U_j \ne \emptyset$, we can use the transition maps:
 \[%
   \phi_j \circ \phi_i^{-1} : \phi_i(U_i \cap U_j) \to \phi_j(U_i \cap U_j)
 .\]%
 But, throughout this paper, we only care about smooth manifolds, which are manifolds that are endowed with a smooth structure. Before doing so, we first need to define what a smooth map is.
+
 \includefigure{./chapters/chapter-01/figures/manifold-charts.tex}
+
 \begin{definition}
   If $U$ and $V$ are open subsets of $\R^n$ and $\R^m$, then $F : U \to V$ is said to be \emph{smooth}\footnote{Some authors use ``smooth'' to denote infinitely differentiable ($C^\infty$), some use it to indicate just $k$-differentiable ($C^k$). I use it to denote $C^\infty$.} if each of $F$'s component functions are continuous and have continuous partial derivatives. In addition, if $F$ is bijective, then $F$ is called a \emph{diffeomorphism}.
 \end{definition}
+
 We can formally define a smooth manifold as follows.
+
 \begin{definition}
   A \emph{$k$-differentiable manifold} is a manifold $M$ equipped with an atlas $\mathcal{A}$ such that for every non-disjoint pair of charts $(U_i, \phi_i)$ and $(U_j, \phi_j)$ in $\mathcal{A}$, the transition map $\phi_j \circ \phi_i^{-1}$ is a $k$-differentiable function. If $k = \infty$, we call $M$ a \emph{smooth manifold}.
 \end{definition}
 
-\label{sub_sec:smooth_functions_and_maps}
-This section's all about defining what it means to have a smooth function from a manifold $M$ to a Euclidean space $E$ along with a map from a manifold $M$ to another manifold $N$.
+\label{sub_sec:smooth_functions_and_maps} This section's all about defining what it means to have a smooth function from a manifold $M$ to a Euclidean space $E$ along with a map from a manifold $M$ to another manifold $N$.
+
 \begin{definition}
   Suppose $M$ is a manifold\footnote{Throughout this paper, we're only interested in smooth manifolds, so we will assume that all manifolds are smooth unless otherwise stated. We also drop the adjective ``$n$-dimension''. So, it's safe to assume that whenever we say ``manifold'', we mean a smooth manifold of dimension $n$, unless otherwise stated.}. Let $f : M \to \R^k$, for some $k \ge 1$. We say that $f$ is a \emph{smooth function} if, for every $p \in M$, there exists a smooth chart $(U, \phi)$, where $p \in U$, such that $f \circ \phi^{-1}$ is smooth on the open subset $\hat{U} = \phi(U) \subseteq \R^n$.
 \end{definition}
+
 \includefigure{./chapters/chapter-01/figures/smooth-functions.tex}
+
 Now, we talk about smooth maps between manifolds.
+
 \begin{definition}
   Let $M$ and $N$ be two different manifolds. We say $F : M \to N$ is a smooth map if for every $p \in M$, there exists charts $(U, \phi)$, where $p \in U$, and $(V, \psi)$, where $F(p) \in V$ such that $F(U) \subseteq V$ and $\psi \circ F \circ \phi^{-1}$ is smooth from $\phi(U)$ to $\psi(V)$.
 \end{definition}
+
 \includefigure{./chapters/chapter-01/figures/smooth-charts-between-m-and-n.tex}
 
 A nice property (which we won't be proving), is that a composition of smooth maps is also smooth.
@@ -106,7 +116,7 @@ The tangent bundle is the prototypical example of a vector bundle, a structure t
 \end{definition}
 
 \begin{note}
-  In this framework, the tangent bundle $TM$ is a vector bundle where the fibers are the tangent spaces $T_p M$. Similarly, we define the \textbf{cotangent bundle} $T^*M$ as the bundle whose fibers are the dual spaces $T^*_p M$, housing the covectors (gradients) used in imaging.
+  In this framework, the tangent bundle $TM$ is a vector bundle where the fibers are the tangent spaces $T_p M$. Similarly, we define the \emph{cotangent bundle} $T^*M$ as the bundle whose fibers are the dual spaces $T^*_p M$, housing the covectors (gradients).
 \end{note}
 
 \begin{definition}
@@ -139,11 +149,7 @@ In local coordinates, tensor components are written using upper and lower indice
   The space of smooth sections of $E$ is denoted $\Gamma(E)$.
 \end{definition}
 
-% \includefigure{./chapters/chapter-01/figures/fibres-and-sections.tex}
-
-\subsection{Tensors}
-
-Now, with all that out of the way, we can finally define a tensor.
+\subsection{Tensors} Now, with all that out of the way, we can finally define a tensor.
 
 \begin{definition}
   Let $M$ be a manifold and $p \in M$. An \emph{$(r,s)$-tensor at $p$} is a multilinear map
@@ -187,22 +193,17 @@ Now, with all that out of the way, we can finally define a tensor.
 
 In local coordinates $\{x^i\}$, an $(r,s)$-tensor field $T$ is expressed as a linear combination of basis tensor products:
 \[%
-  T = T^{i_1 \dots i_r}_{j_1 \dots j_s} \left(\bigotimes_{k=1}^r \pd{i_k}\right) \otimes \left(\bigotimes_{m=1}^s \dx^{j_m}\right)
+  T = T^{i_1 \dots i_r}_{j_1 \dots j_s} \left(\pd{i_k}\right)^{\otimes r} \otimes \left(\dx^{j_m}\right)^{\otimes s}
 .\]%
 Here, the functions $T^{i_1 \dots i_r}_{j_1 \dots j_s}$ are the \emph{components} of the tensor. Under a change of coordinates $x \to \tilde{x}$, these components transform according to the rule:
 \[%
   \tilde{T}^{a_1 \dots a_r}_{b_1 \dots b_s} = T^{i_1 \dots i_r}_{j_1 \dots j_s} \pdv{\tilde{x}^{a_1}}{x^{i_1}} \dots \pdv{\tilde{x}^{j_s}}{x^{b_s}}
 .\]%
 Here are a few examples of tensors:
+
 \begin{example}\leavevmode
   \begin{itemize}
-    \item \textbf{(0,0)-Tensors (Scalar Fields):} An $(0,0)$-tensor is simply a smooth function $f : M \to \R$. In medical imaging, this may represent an isotropic physical property, such as the \emph{proton density} in Magnetic Resonance Imaging (MRI) or the \emph{absorption coefficient} in optical tomography.
-
-    \item \textbf{(1,0)-Tensors (Vector Fields):} A $(1,0)$-tensor is a smooth section of the tangent bundle $TM$. Locally, it is written as $X = X^i \pd{i}$. These represent directional quantities, such as the \emph{velocity field} of blood flow in Doppler ultrasound or the \emph{gradient} of a potential (once identified via a metric).
-
-    \item \textbf{(0,1)-Tensors (Covectors/1-forms):} A $(0,1)$-tensor is a smooth section of the cotangent bundle $T^*M$, written locally as $\omega = \omega_i \dx^i$. A primary example is the \emph{differential of a function} $\df$, which at each point acts as a linear functional on tangent vectors.
-
-    \item \textbf{(0,2)-Tensors (Bilinear Forms):} A $(0,2)$-tensor is a section of $T^*M \otimes T^*M$. This is perhaps the most critical category for this paper, as it includes the \emph{Riemannian metric} $g$. In \emph{anisotropic} media, like heart muscle or brain white matter, physical properties like electrical conductivity or water diffusion are not single numbers but are modeled as symmetric $(0,2)$-tensors $g_{ij}$.
+    \item \todo{Add examples of tensors in regards to gravitational waves.}
   \end{itemize}
 \end{example}
 
@@ -348,9 +349,14 @@ When we're computing pullbacks of differential forms, we can use the formula
   Thus, the pushforward transforms the coordinate basis vector $\pd{x}$ into a linear combination of the coordinate basis vectors $\pd{u}$ and $\pd{v}$.
 \end{example}
 
+\begin{note}
+  These pullbacks and pushforwards will be important later on when we talk about the behavior of gravitational waves under coordinate transformations. The pullback allows us to understand how differential forms, such as the metric tensor, transform under changes of coordinates, while the pushforward allows us to understand how vector fields, such as the velocity field of a particle, transform under changes of coordinates.
+\end{note}
+
 \includefigure{./chapters/chapter-01/figures/pushforward-and-pullback.tex}
 
 \subsection{Differentials of Maps} We now define the differential of a map between two manifolds.
+
 \begin{definition}
   Let $F : M \to N$ be a smooth map between two manifolds $M$ and $N$. For each point $p \in M$, we define the \emph{differential of $F$ at $p$} by
   \[%
@@ -368,11 +374,12 @@ This definition ensures that the differential is a linear map that captures how 
 
 In local coordinates $\{x^i\}$ on $M$ and $\{y^\alpha\}$ on $N$, let $F$ be represented by $y^\alpha = F^\alpha(x^1, \cdots, x^n)$. If $v = v^i\pd{i}$, then the components of the pushed-forward vector $v' = \dF_p(v)$ are given by:
 \[%
-  (v')^\alpha = \pdv{F^\alpha}{x^i} v^i
+  (v')^\alpha = \pd{i}F^\alpha v^i
 .\]%
-Thus, the matrix of $\dF_p$ with respect to the coordinate bases is the Jacobian matrix $\pdv{F^\alpha}/{x^i}$.
+Thus, the matrix of $\dF_p$ with respect to the coordinate bases is the Jacobian matrix $\pd{i}F^\alpha$.
 
 We finish this section by defining an immersion, which is a smooth map that locally looks like an embedding but may not be globally injective.
+
 \begin{definition}
   A smooth map $F : M \to N$ is called an \emph{immersion} if its differential $\dF_p : T_pM \to T_{F(p)}N$ is injective for all $p \in M$.
 \end{definition}
@@ -392,16 +399,17 @@ We finish this section by defining an immersion, which is a smooth map that loca
 \includefigure{./chapters/chapter-01/figures/immersed-submanifold.tex}
 
 \begin{definition}
-  We say $S \subset N$ is an \emph{embedded submanifold} if it is the image of a smooth embedding. If $F: M \to N$ is merely an injective immersion, we call its image an \emph{immersed submanifold}.
+  We say $S \subset N$ is an \emph{embedded submanifold} if it is the image of a smooth embedding. If $F : M \to N$ is merely an injective immersion, we call its image an \emph{immersed submanifold}.
 \end{definition}
 
 \includefigure{./chapters/chapter-01/figures/embedded-submanifold.tex}
 
 One useful result we'll be using quite frequently in Chapter~\ref{chap:2} is the following:
+
 \begin{corollary}\label{cor:differential_of_a_map}
   Suppose $F : M \to N$ is a smooth map, $p \in M$, and $v \in T_pM$. Then
   \[%
-    \dd{f}_p(v) = (f \circ \gamma)'(0)
+    \df_p(v) = (f \circ \gamma)'(0)
   ,\]%
   for any smooth curve $\gamma : [0, 1] \to M$ such that $\gamma(0) = 0$ and $\gamma'(0) = v$.
 \end{corollary}
@@ -445,7 +453,7 @@ Here's a rough idea for what the parallel transport is (as we define it later on
 
 While these definitions apply to any affine connection, physical applications in medical imaging--such as modeling signal propagation or tissue conductivity--require a specific connection that respects the internal ``distance'' of the manifold. In the following section, we introduce the Riemannian metric and the unique Levi-Civita connection associated with it.
 
-\subsection{Conformal and Isometric Maps} We conclude this section by defining conformal and isometric maps, which are the fundamental ``equivalence relations'' used to categorize Riemannian manifolds in geometric inverse problems.
+\subsection{Conformal and Isometric Maps} We conclude this section by defining conformal and isometric maps, which are the fundamental ``equivalence relations'' used to categorize Riemannian manifolds.
 
 \begin{definition}
   A smooth map $F : (M, g) \to (N, h)$ is called \emph{conformal} if there exists a smooth function $\Omega : M \to (0, \infty)$, called the \emph{conformal factor}, such that:
@@ -464,13 +472,6 @@ In medical imaging, we frequently work with \emph{conformally flat} metrics. For
   .\]%
   This is a special case of a conformal map where $\Omega \equiv 1$. An isometry preserves both angles and lengths, making it a distance-preserving map: $d_h(F(p), F(q)) = d_g(p, q)$.
 \end{definition}
-
-The distinction between these two maps is the key to understanding the ``up to a diffeomorphism'' clause in the Boundary Rigidity Problem.
-
-\begin{itemize}
-  \item \textbf{Isometries as Gauge Freedom:} If $F$ is an isometry that is the identity on the boundary, then the boundary distance functions $d_g$ and $d_h$ are identical. This means that a scanner cannot distinguish between $(M, g)$ and its isometric twin $(M, F^*h)$.
-  \item \textbf{Conformal Factors as Diagnostic Data:} In Ultrasound CT, the goal is often to find the conformal factor $\Omega = 1/c(x)$. Since a change in $\Omega$ changes the travel times (lengths) of geodesics, this information is \emph{not} hidden by gauge freedom and can be uniquely reconstructed under the ``simple manifold'' assumptions.
-\end{itemize}
 
 \begin{example}[The Poincare Disk]
   A classic example of these concepts is the Poincare Disk model of hyperbolic space, $(D, g_{hyp})$, where $g_{hyp} = \frac{4}{(1-|x|^2)^2} \delta$. This metric is \emph{conformal} to the Euclidean disk. While the ``Euclidean'' straight lines represent one geometry, the ``Hyperbolic'' geodesics--which are circular arcs orthogonal to the boundary--represent a different metric that has been warped by a conformal factor that blows up at the boundary.

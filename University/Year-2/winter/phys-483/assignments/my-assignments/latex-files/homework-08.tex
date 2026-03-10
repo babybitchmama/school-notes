@@ -1,0 +1,207 @@
+\renewcommand\L{\mathcal{L}}
+
+\begin{problem}[1]
+  Consider the Robertson-Walker spacetime described by the metric
+  \[%
+    \ds^2 = \dt^2 - e^{2t/t_H}\left[\dr^2 + r^2\left(\dd{\theta}^2 + \sin^2(\theta)\dd{\phi}^2\right)\right]
+  ,\]%
+  with the coordinates $x^\mu = (t, r, \theta, \phi)$, where $t$ is the universal time and $t_H \approx 14$ Gyr is the Hubble time.
+  \begin{enumerate}
+    \item (5 points) Compute the path $r(t)$ of a light pulse emitted at time $t = t_0$ at the origin $r = 0$. You may assume that the light ray moves along the line $\theta = \pi/2$ and $\phi = 0$ so that $\odv{r}/{t} > 0$.
+    \item (5 points) Compute the proper distance between the origin $r = 0$ and a point $r > 0$ on the line $\theta = \pi/2$ and $\phi = 0$ at a fixed universal time $t$.
+    \item (5 points) Compute the spectral shift of the light pulse in (i) during the time between emission at the origin and arrival at a point $r > 0$.
+
+      \textit{Hint: the spectral shift is defined as $z = \lambda_{rec}/\lambda_{em} - 1$, where $\lambda_{em}$ is the wavelength of the light at emission and $\lambda_{rec}$ its wavelength when it arrives.}
+  \end{enumerate}
+\end{problem}
+
+\begin{solution}[(i)]
+  For a light ray we have a null curve, so $\ds^2 = 0$. Since the photon moves along
+  \[%
+    \theta = \frac{\pi}{2}, \qquad \phi = 0
+  ,\]%
+  we have $\dd{\theta} = 0$ and $\dd{\phi} = 0$. The metric therefore reduces to
+  \[%
+    0 = \dt^2 - e^{2t/t_H} \dr^2
+  .\]%
+  Thus
+  \[%
+    \dt^2 = e^{2t/t_H} \dr^2
+  ,\]%
+  and taking the positive root (since $\odv{r}/{t} > 0$),
+  \[%
+    \odv{r}{t} = e^{-t/t_H}
+  .\]%
+  Integrating from emission time $t_0$ at $r = 0$,
+  \[%
+    r(t) = \int_{t_0}^t e^{-t'/t_H} \dt'
+  .\]%
+  Compute the integral:
+  \[%
+    \int e^{-t'/t_H} \dt' = -t_H e^{-t'/t_H}
+  .\]%
+  Hence
+  \[%
+    r(t) = \left[-t_H e^{-t'/t_H}\right]_{t_0}^{t} = t_H\left(e^{-t_0/t_H} - e^{-t/t_H}\right)
+  \]%
+  Thus the path of the light pulse is
+  \[%
+    r(t) = t_H\left(e^{-t_0/t_H} - e^{-t/t_H}\right)
+  .\qedhere\]%
+\end{solution}
+
+\begin{solution}[(ii)]
+  The proper distance at fixed universal time $t$ is obtained from the spatial part of the metric with $\dt = 0$.
+
+  Along the line $\theta = \pi/2$ and $\phi = 0$ we again have $\dd{\theta} = \dd{\phi} = 0$, so
+  \[%
+    \ds^2 = -e^{2t/t_H} \dr^2
+  .\]%
+  The proper spatial distance is therefore
+  \[%
+    \dd{\ell} = e^{t/t_H} \dr
+  .\]%
+  The proper distance between $r=0$ and $r$ at fixed $t$ is
+  \[%
+    \ell(t,r) = \int_0^r e^{t/t_H} \dr'
+  .\]%
+  Since $t$ is fixed during the integration,
+  \[%
+    \ell(t,r) = e^{t/t_H} r
+  .\]%
+  Thus the proper distance is
+  \[%
+    \ell(t,r) = e^{t/t_H} r
+  .\qedhere\]%
+\end{solution}
+
+\begin{solution}[(iii)]
+  In a Robertson--Walker spacetime the wavelength of light scales with the scale factor $a(t)$. From the metric we identify
+  \[%
+    a(t) = e^{t/t_H}
+  .\]%
+  Therefore
+  \[%
+    \frac{\lambda_{rec}}{\lambda_{em}} = \frac{a(t_{rec})}{a(t_{em})}
+  .\]%
+  If the light is emitted at $t_{em} = t_0$ and received at $t_{rec} = t$, then
+  \[%
+    \frac{\lambda_{rec}}{\lambda_{em}} = \frac{e^{t/t_H}}{e^{t_0/t_H}} = e^{(t-t_0)/t_H}
+  .\]%
+  The spectral shift is defined as
+  \[%
+    z = \frac{\lambda_{rec}}{\lambda_{em}} - 1
+  ,\]%
+  so
+  \[%
+    z = e^{(t-t_0)/t_H} - 1
+  .\]%
+  Thus the redshift of the photon is
+  \[%
+    z = e^{(t - t_0)/t_H} - 1
+  .\qedhere\]%
+\end{solution}
+
+\begin{problem}[2]
+  A scalar field $\phi$ with potential energy density $V(\phi)$ has a Lagrangian density given by
+  \[%
+    \L = \frac{1}{2}g^{\mu\nu}(\pd{\nu}\phi)(\pd{\nu}\phi) - V(\phi)
+  .\]%
+  \begin{enumerate}
+    \item (5 points) Derive the equation of motion for the scalar field $\phi$.
+    \item (10 points) Assuming that the $N + 1$-dimensional spacetime has a metric given by
+      \[%
+        \ds^2 = g_{\mu\nu}\dx^\mu\dx^\nu = \dt' - a(t)^2G_{ij}\dx^i\dx^j
+      ,\]%
+      where $G_{ij}$ are the metric components on an N -dimensional Riemannian manifold, and that the scalar field $\phi$ only depends on the time coordinate $t$, show that the scalar field is an ideal fluid and find the (time-independent) equation-of-state parameter $w = p/\rho_0$.
+  \end{enumerate}
+\end{problem}
+
+\begin{solution}[(i)]
+  The equation of motion follows from the Euler--Lagrange equation for a scalar field,
+  \[%
+    \pdv{\L}{\phi} - \pd{\mu}\left(\pdv{\L}{(\pd{\mu}\phi)}\right) = 0
+  .\]%
+  First compute
+  \[%
+    \pdv{\L}{(\pd{\mu}\phi)} = g^{\mu\nu}\pd{\nu} \phi
+  .\]%
+  Next compute
+  \[%
+    \pdv{\L}{\phi} = -V'(\phi)
+  .\]%
+  Substituting into the Euler--Lagrange equation gives
+  \[%
+    -V'(\phi) - \pd{\mu}\left(g^{\mu\nu}\pd{\nu}\phi\right) = 0
+  .\]%
+  Thus the equation of motion is
+  \[%
+    \pd{\mu}\left(g^{\mu\nu}\partial_\nu\phi\right) - V'(\phi) = 0
+  .\]%
+  In curved spacetime it is conventional to write this using the covariant d'Alembertian,
+  \[%
+    \square \phi = \nabla_\mu\nabla^\mu \phi
+  ,\]%
+  so the Klein--Gordon equation becomes
+  \[%
+    \nabla_\mu\nabla^\mu \phi - V'(\phi) = 0
+  .\qedhere\]%
+\end{solution}
+
+\begin{solution}[(ii)]
+  The energy--momentum tensor for a scalar field is
+  \[%
+    T_{\mu\nu} = \pd{\mu}\phi\pd{\nu}\phi - g_{\mu\nu} \left(\frac{1}{2}g^{\alpha\beta}\pd{\alpha}\phi\pd{\beta}\phi - V(\phi) \right)
+  .\]%
+  Assume the scalar field depends only on time:
+  \[
+    \phi=\phi(t).
+  \]
+  Thus
+  \[
+    \partial_i\phi=0, \qquad \partial_t\phi=\dot\phi.
+  \]
+  First compute the kinetic term
+  \[%
+    g^{\alpha\beta}\pd{\alpha}\phi\pd{\beta}\phi = g^{tt}\dot{\phi}^2 = \dot{\phi}^2
+  .\]%
+  Therefore
+  \[%
+    \L = \frac{1}{2} \dot{\phi}^2 - V(\phi)
+  .\]%
+
+  The energy density is $\rho = T_{tt}$. Using the expression for $T_{\mu\nu}$,
+  \[%
+    T_{tt} = \dot{\phi}^2 - g_{tt}\left(\frac{1}{2}\dot{\phi}^2 - V(\phi)\right)
+  .\]%
+  Since $g_{tt}=1$, we obtain
+  \[%
+    \rho = \frac{1}{2}\dot{\phi}^2 + V(\phi)
+  .\]%
+
+  For pressure, the spatial components of the energy--momentum tensor are
+  \[%
+    T_{ij} = - g_{ij}\left(\frac{1}{2}\dot{\phi}^2 - V(\phi)\right)
+  .\]%
+  Since an ideal fluid has
+  \[%
+    T_{ij} = p g_{ij}
+  ,\]%
+  we identify
+  \[%
+    p = \frac{1}{2}\dot{\phi}^2 - V(\phi)
+  .\]%
+  Thus the scalar field behaves exactly like an ideal fluid with
+  \[%
+    \rho = \frac{1}{2}\dot{\phi}^2 + V(\phi), \qquad p = \frac{1}{2}\dot{\phi}^2 - V(\phi)
+  .\]%
+  The equation-of-state parameter is
+  \[%
+    w = \frac{p}{\rho}
+  .\]%
+  Hence
+  \[%
+    w = \frac{\frac{1}{2}\dot{\phi}^2 - V(\phi)} {\frac{1}{2}\dot{\phi}^2 + V(\phi)}
+  .\]%
+  This parameter is constant in time if the ratio between the kinetic energy and potential energy remains constant.
+\end{solution}

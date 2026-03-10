@@ -1,0 +1,169 @@
+\section{The Linearized Einstein Field Equations}
+\label{sec:the_linearized_einstein_field_equations}
+
+\subsection{The Weak-Field Limit and Metric Perturbation} To understand how gravitational waves propagate, we must determine how the metric perturbation $h_{\mu\nu}$ affects the curvature of the manifold. In Chapter~\ref{chap:1}, we defined the Riemann curvature tensor in terms of Christoffel symbols. Here, we apply the perturbation ansatz $g_{\mu\nu} = \eta_{\mu\nu} + h_{\mu\nu}$ and discard all terms of $\mathcal{O}(h^2)$.
+
+The Christoffel symbols $\Gamma^{\rho}_{\mu\nu}$ are defined by derivatives of the metric. In the weak-field limit, the background metric $\eta_{\mu\nu}$ is constant ($\partial \eta = 0$), so the connection is determined solely by the derivatives of the perturbation:
+\[%
+  \Gamma^{\rho}_{\mu\nu} = \frac{1}{2}\eta^{\rho\lambda}(\pd{\mu}h_{\nu\lambda} + \pd{\nu}h_{\mu\lambda} - \pd{\lambda}h_{\mu\nu}) + \mathcal{O}(h^2)
+.\]%
+Notice that the connection itself is first-order in $h$. Consequently, in any product of connections (like those appearing in the full Riemann tensor formula), the result would be second-order and is therefore neglected.
+
+The Riemann tensor $R^{\rho}_{\sigma\mu\nu}$ reduces to the difference of the partial derivatives of the connection:
+\[%
+  R^{\rho}_{\sigma\mu\nu} = \pd{\mu}\Gamma^{\rho}_{\nu\sigma} - \pd{\nu}\Gamma^{\rho}_{\mu\sigma}
+.\]%
+
+Substituting our linearized connection into this expression yields the linearized Riemann tensor in terms of the metric perturbation:
+\[%
+  R_{\rho\sigma\mu\nu} = \frac{1}{2}(\pd{\sigma}\pd{\mu}h_{\rho\nu} + \pd{\rho}\pd{\nu}h_{\sigma\mu} - \pd{\sigma}\pd{\nu}h_{\rho\mu} - \pd{\rho}\pd{\mu}h_{\sigma\nu})
+.\]%
+This expression is manifestly invariant under the linearized gauge transformations $h_{\mu\nu} \rightarrow h_{\mu\nu} - \pd{\mu}\xi_{\nu} - \pd{\nu}\xi_{\mu}$, confirming that the curvature is a physical observable independent of our choice of coordinates.
+
+By contracting the Riemann tensor ($R_{\sigma\nu} = \eta^{\rho\mu}R_{\rho\sigma\mu\nu}$), we obtain the linearized Ricci tensor:
+\[%
+  R_{\mu\nu} = \frac{1}{2}(\pd{\sigma}\pd{\mu}h^{\sigma}_{\nu} + \pd{\sigma}\pd{\nu}h^{\sigma}_{\mu} - \pd{\mu}\pd{\nu}h - \Box h_{\mu\nu})
+,\]%
+where $h$ is the trace $h^{\mu}_{\mu}$ and $\Box = \partial^{\sigma}\pd{\sigma}$ is the d’Alembertian operator. The Ricci scalar is then $R = \eta^{\mu\nu}R_{\mu\nu} = \pd{\mu}\pd{\nu}h^{\mu\nu} - \Box h$.
+
+Combining these, the linearized Einstein tensor $G_{\mu\nu} = R_{\mu\nu} - \frac{1}{2}\eta_{\mu\nu}R$ becomes:
+\[%
+  G_{\mu\nu} = \frac{1}{2}(\pd{\sigma}\pd{\mu}h^{\sigma}_{\nu} + \pd{\sigma}\pd{\nu}h^{\sigma}_{\mu} - \pd{\mu}\pd{\nu}h - \Box h_{\mu\nu} - \eta_{\mu\nu}\pd{\rho}\pd{\sigma}h^{\rho\sigma} + \eta_{\mu\nu}\Box h)
+.\]%
+This complex expression is the ``geometry'' side of the EFE. In the following sections, we will show how the trace-reversal and Lorenz gauge simplify this significant mathematical overhead into a elegant wave equation.
+
+\subsection{Linearized Curvature and the Riemann Tensor} To determine the dynamics of the gravitational field in the weak-field limit, we must analyze how the perturbation $h_{\mu\nu}$ generates curvature. In full General Relativity, curvature is a highly non-linear function of the metric; however, the assumption $|h_{\mu\nu}| [cite_start]\ll 1$ allows us to discard higher-order terms, leading to a linear relationship between the perturbation and the Riemann tensor.
+
+We begin with the Levi-Civita connection $\Gamma^{\rho}_{\mu\nu}$ defined in Section~\ref{sub_sec:levi_civita_connection}. In a flat Minkowski background, the connection vanishes. Thus, for $g_{\mu\nu} = \eta_{\mu\nu} + h_{\mu\nu}$, the Christoffel symbols are determined solely by the first derivatives of $h_{\mu\nu}$:
+\[%
+  \Gamma^{\rho}_{\mu\nu} = \frac{1}{2}\eta^{\rho\lambda}(\pd{\mu}h_{\nu\lambda} + \pd{\nu}h_{\mu\lambda} - \pd{\lambda}h_{\mu\nu}) + \mathcal{O}(h^2)
+.\]%
+Because $\Gamma$ is already of order $\mathcal{O}(h)$, any product of two connection coefficients--such as those found in the full definition of the Riemann tensor--is of order $\mathcal{O}(h^2)$ and is neglected in the linearization process.
+
+Under these approximations, the Riemann tensor components $R^{\rho}_{\sigma\mu\nu}$ are reduced to the difference of the partial derivatives of the connection coefficients:
+\[%
+  R^{\rho}_{\sigma\mu\nu} \approx \pd{\mu}\Gamma^{\rho}_{\nu\sigma} - \pd{\nu}\Gamma^{\rho}_{\mu\sigma}
+.\]%
+Substituting the expression for the linearized connection and lowering the first index using $\eta_{\rho\lambda}$, we arrive at the linearized Riemann tensor:
+\[%
+  R_{\rho\sigma\mu\nu} = \frac{1}{2}(\pd{\sigma}\pd{\mu}h_{\rho\nu} + \pd{\rho}\pd{\nu}h_{\sigma\mu} - \pd{\sigma}\pd{\nu}h_{\rho\mu} - \pd{\rho}\pd{\mu}h_{\sigma\nu})
+.\]%
+This expression is remarkably symmetric and, as we will explore in the next section, is invariant under infinitesimal coordinate transformations (gauge transformations).
+
+By contracting the Riemann tensor using the background metric $\eta^{\rho\mu}$, we obtain the linearized Ricci tensor:
+\[%
+  R_{\sigma\nu} = \eta^{\rho\mu}R_{\rho\sigma\mu\nu} = \frac{1}{2}(\pd{\sigma}\pd{\lambda}h^{\lambda}_{\nu} + \pd{\nu}\pd{\lambda}h^{\lambda}_{\sigma} - \pd{\sigma}\pd{\nu}h - \Box h_{\sigma\nu})
+,\]%
+where $h = \eta^{\mu\nu}h_{\mu\nu}$ is the trace and $\Box = \partial^{\lambda}\pd{\lambda}$ is the d'Alembertian operator. Finally, the linearized Einstein tensor $G_{\mu\nu}$ is constructed as:
+\[%
+  G_{\mu\nu} = R_{\mu\nu} - \frac{1}{2}\eta_{\mu\nu}R
+.\]%
+In the context of the Einstein vacuum equations ($G_{\mu\nu} = 0$), this expression governs the propagation of $h_{\mu\nu}$.
+
+While standard General Relativity utilizes only the symmetric part of the metric, modern frameworks like Gravitational Quantum Field Theory (GQFT) consider both symmetric and antisymmetric components. In such cases, the Riemann tensor may include additional terms sourced by antisymmetric energy-momentum tensors, potentially leading to the five propagating modes (scalar, vector, and tensor) discussed later in this chapter.
+
+\subsection{Gauge Transformations and Invariance}
+\label{sub_sec:gauge_transformations_and_invariance}
+
+In the full theory of General Relativity, the choice of a coordinate system is arbitrary; the physical laws are invariant under any smooth change of coordinates. When we linearize the theory, this principle of general covariance manifests as a gauge symmetry, very similar to the gauge invariance found in Maxwell's equations for electromagnetism.
+
+Consider a small coordinate transformation of the form:
+\[%
+  x^{\mu} \to {x'}^{\mu} = x^{\mu} + \xi^{\mu}(x)
+,\]%
+where $\xi^{\mu}$ is a vector field of the same order as the perturbation $h_{\mu\nu}$. Under this transformation, the metric $g_{\mu\nu}$ transforms in a way that induces a change in the perturbation:
+\[%
+  h'_{\mu\nu} = h_{\mu\nu} - \pd{\mu}\xi_{\nu} - \pd{\nu}\xi_{\mu}
+.\]%
+The terms $\pd{\mu}\xi_{\nu} + \pd{\nu}\xi_{\mu}$ represent ``gauge degrees of freedom''--changes in the components of the metric that arise purely from the choice of coordinates rather than from any physical change in the curvature of spacetime.
+
+A critical result for our framework is that the linearized Riemann tensor $R_{\rho\sigma\mu\nu}$ we derived in Section 2.1.2 is gauge invariant. If we substitute $h'_{\mu\nu}$ into our formula for the Riemann tensor, the terms involving $\xi_{\mu}$ vanish due to the commutativity of partial derivatives:
+\[%
+  \pd{\alpha}\pd{\beta}(\pd{\mu}\xi_{\nu} + \pd{\nu}\xi_{\mu}) - \text{permutations} = 0
+.\]%
+
+This confirms that the curvature remains the only truly physical observable. It allows us to distinguish between ``physical'' waves that actually curve spacetime and ``coordinate'' waves that can be vanished by a simple change of perspective.
+
+To solve the linearized Einstein Field Equations, we must ``fix'' the gauge--essentially choosing a coordinate system that makes the math manageable. The most common choice is the Lorenz gauge (or harmonic gauge), which requires:
+\[%
+  \partial^{\mu}h_{\mu\nu} = \frac{1}{2}\pd{\nu}h
+.\]%
+As we will see in~\ref{sub_sec:lorenz_gauge_and_the_vacuum_wave_equation}, this choice is mathematically equivalent to the Lorenz gauge in electromagnetism ($\pd{\mu}A^{\mu} = 0$) and allows the complex Einstein tensor to be written as a simple wave operator.
+
+In more advanced frameworks like Gravitational Quantum Field Theory (GQFT), the gauge symmetry must also account for the antisymmetric part of the field. In these cases, the gauge invariance is extended to ensure that the scalar and vector propagating modes are also handled consistently within the unified gravitational field.
+
+\subsection{The Trace-Reversed Perturbation}
+\label{sub_sec:the_trace_reversed_perturbation}
+
+While the metric perturbation $h_{\mu\nu}$ and the linearized Riemann tensor allow us to describe curvature, the resulting Einstein tensor $G_{\mu\nu}$ is still mathematically cumbersome. To streamline the field equations, we define a new tensor field known as the trace-reversed perturbation, denoted as $\bar{h}_{\mu\nu}$.
+
+The trace-reversed perturbation is defined by subtracting half the trace of the original perturbation from itself:
+\[%
+  \bar{h}_{\mu\nu} = h_{\mu\nu} - \frac{1}{2}\eta_{\mu\nu}
+,\]%
+where $h = \eta^{\mu\nu}h_{\mu\nu}$ is the trace of the perturbation. The name ``trace-reversed'' stems from the fact that the trace of this new tensor is the negative of the original trace:
+\[%
+  \bar{h} = \eta^{\mu\nu}\bar{h}_{\mu\nu} = h - \frac{1}{2}(4)h = -h
+.\]%
+The primary utility of $\bar{h}_{\mu\nu}$ is its effect on the linearized Einstein tensor. In terms of the original perturbation $h_{\mu\nu}$, the Einstein tensor $G_{\mu\nu}$ contains several divergent terms. By substituting $\bar{h}_{\mu\nu}$ into the expression for $G_{\mu\nu}$ derived in Section 2.1.2, we obtain a much more symmetrical form:
+\[%
+  G_{\mu\nu} = -\frac{1}{2} \left[ \Box \bar{h}_{\mu\nu} + \eta_{\mu\nu} \partial^\rho \partial^\sigma \bar{h}_{\rho\sigma} - \partial^\rho \pd{\nu} \bar{h}_{\mu\rho} - \partial^\rho \pd{\mu} \bar{h}_{\nu\rho} \right]
+,\]%
+where $\Box = \partial^\rho \pd{\rho}$ is the d'Alembertian operator.
+
+This ``trace-reversal'' trick is a standard technique in the Cauchy problem for the Einstein equations. It essentially prepares the geometry for the application of the Lorenz gauge condition. As we will see in Section 2.1.5, when we require that $\bar{h}_{\mu\nu}$ be divergence-free ($\partial^\mu \bar{h}_{\mu\nu} = 0$), all the complex partial derivative terms in the brackets vanish, leaving behind only the wave operator.
+
+In the context of Gravitational Quantum Field Theory (GQFT), the trace-reversed perturbation remains a vital component. However, in these extended theories, the symmetric part of the energy-momentum tensor specifically sources the trace and traceless parts of the quadrupole moment, which are directly related to the scalar and tensor components of $\bar{h}_{\mu\nu}$
+
+\subsection{Lorenz Gauge and the Vacuum Wave Equation}
+\label{sub_sec:lorenz_gauge_and_the_vacuum_wave_equation}
+
+The primary goal of the linearized framework is to simplify the complex, non-linear Einstein Field Equations into a form that describes wave propagation. By combining the trace-reversed perturbation $\bar{h}_{\mu\nu}$ with a specific choice of coordinate system, we can reduce the Einstein tensor to the standard d'Alembertian operator.
+
+As established in Section~\ref{sub_sec:gauge_transformations_and_invariance}, we possess the gauge freedom to perform infinitesimal coordinate transformations without altering the physical curvature. To simplify the field equations, we impose the Lorenz gauge condition (also known as the harmonic or Hilbert gauge):
+\[%
+  \partial^{\mu}\bar{h}_{\mu\nu} = 0
+.\]%
+This condition is mathematically analogous to the Lorenz gauge in electromagnetism ($\pd{\mu}A^{\mu} = 0$). Physically, it restricts our coordinate system to one where the ``coordinates'' themselves move in a way that respects the wave-like nature of the perturbation.
+
+In Section~\ref{sub_sec:the_trace_reversed_perturbation}, we saw that the linearized Einstein tensor in terms of the trace-reversed perturbation is:
+\[%
+  G_{\mu\nu} = -\frac{1}{2} \left[ \Box \bar{h}_{\mu\nu} + \eta_{\mu\nu} \partial^\rho \partial^\sigma \bar{h}_{\rho\sigma} - \partial^\rho \pd{\nu} \bar{h}_{\mu\rho} - \partial^\rho \pd{\mu} \bar{h}_{\nu\rho} \right]
+.\]%
+
+When the Lorenz gauge condition $\partial^{\mu}\bar{h}_{\mu\nu} = 0$ is applied, all terms involving the divergence of $\bar{h}$ vanish identically. The vacuum Einstein equations ($G_{\mu\nu} = 0$) then simplify to the vacuum wave equation:
+\[%
+  \Box \bar{h}_{\mu\nu} = 0
+,\]%
+where $\Box = \eta^{\mu\nu}\partial_{\mu}\partial_{\nu} = \nabla^2 - \frac{1}{c^2}\frac{\partial^2}{\partial t^2}$ is the d'Alembertian operator.
+
+The existence of this wave equation proves that perturbations in the geometry of spacetime propagate through the vacuum as waves at the speed of light $c$. This provides the mathematical foundation for the concept of gravitational radiation: ripples in the fabric of spacetime that carry energy and information away from their sources.
+
+In the framework of Gravitational Quantum Field Theory (GQFT), the wave equation is generalized to include both symmetric and antisymmetric fields. While standard General Relativity results in only tensor waves, the unified field equations in GQFT reveal that the vacuum can also support the propagation of scalar and vector modes, provided the appropriate gauge conditions are met for both the symmetric and antisymmetric components of the gravitational field.
+
+\subsection{Sourcing the Waves: The Energy-Momentum Tensor} In the previous subsections, we established that perturbations of spacetime can propagate as waves through a vacuum. However, to understand the origin of these waves, we must look to the ``source'' side of the Einstein Field Equations: the energy-momentum tensor $T_{\mu\nu}$. This tensor describes the distribution and flow of mass, energy, and momentum throughout the manifold.
+
+When matter is present, the linearized Einstein equations do not vanish. Instead, they relate the d’Alembertian of the trace-reversed perturbation directly to the energy-momentum tensor:
+\[%
+  \Box \bar{h}_{\mu\nu} = -\frac{16\pi G}{c^4} T_{\mu\nu}
+.\]%
+This is an inhomogeneous wave equation. Mathematically, it implies that any time-varying distribution of energy-momentum will act as a source for gravitational waves, much like accelerating charges generate electromagnetic radiation.
+
+A crucial constraint in this framework is the local conservation of energy and momentum, expressed as $\partial^{\mu}T_{\mu\nu} = 0$. This conservation law has profound implications for the nature of the waves produced:
+\begin{itemize}
+  \item \textbf{Monopole Radiation:} Because total mass-energy is conserved, there is no gravitational monopole radiation (analogous to the pulsating of a spherical mass).
+  \item \textbf{Dipole Radiation:} Because linear and angular momentum are conserved, there is no gravitational dipole radiation.
+  \item \textbf{Quadrupole Radiation:} The leading order for gravitational radiation is the quadrupole. Mathematically, waves are generated by the second time derivative of the ``quadrupole moment'' of the mass distribution, representing asymmetric accelerations like those in a binary star system.
+\end{itemize}
+
+In standard General Relativity, only the symmetric part of the energy-momentum tensor is considered, leading to the two standard tensor polarizations. However, in the Gravitational Quantum Field Theory (GQFT) framework:
+\begin{itemize}
+  \item \textbf{Symmetric Source ($T_{(\mu\nu)}$):} Generates the two tensor modes and a scalar mode through the trace and traceless parts of the quadrupole moment.
+  \item \textbf{Antisymmetric Source ($T_{[\mu\nu]}$):} Can act as a source for the two vector modes of gravitational waves, often associated with the spin of particles like fermions within the source.
+\end{itemize}
+
+To find the perturbation produced by a specific source, we use the method of Green's functions to find the retarded potential:
+\[%
+  \bar{h}_{\mu\nu}(t, \x) = \frac{4G}{c^4} \int \frac{T_{\mu\nu}(t - |\x - \y|/c, \y)}{|\x - \y|} \dd[3]{y}
+.\]%
+This formula shows that the wave observed at a distance is a result of the source's behavior at an earlier ``retarded'' time, accounting for the finite speed of gravity.

@@ -1,8 +1,9 @@
+import argparse
 import numpy as np
 import matplotlib.pyplot as plt
 
 
-def fubini_study_geodesic(z0, dz0, t_max=4, points=1000):
+def fubini_study_geodesic(z0, dz0, output, t_max=4, points=1000):
     """
     Plot the Fubini–Study geodesic determined by
     initial point z0 and initial tangent dz0.
@@ -73,8 +74,20 @@ def fubini_study_geodesic(z0, dz0, t_max=4, points=1000):
         ax_w.scatter(w0.real, w0.imag, color='green', zorder=5)
 
     plt.tight_layout()
+    if output:
+        plt.savefig(output)
     plt.show()
 
 
-# Example
-fubini_study_geodesic(0.5+0.2j, 1+0.3j)
+def main():
+    parser = argparse.ArgumentParser(description="Plot Fubini–Study geodesic")
+    parser.add_argument("--point", type=complex, default=0.2+0.8j, help="Initial point z0 in the complex plane")
+    parser.add_argument("--tangent", type=complex, default=0.5+0.1j, help="Initial tangent dz0 as a complex number")
+    parser.add_argument("--output", default=None, help="File name to save geodesic graph.")
+
+    args = parser.parse_args()
+
+    fubini_study_geodesic(args.point, args.tangent, args.output)
+
+if __name__ == "__main__":
+    main()

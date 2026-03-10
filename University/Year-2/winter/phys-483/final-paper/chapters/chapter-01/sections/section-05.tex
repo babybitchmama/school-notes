@@ -1,0 +1,93 @@
+\section{Theoretical Physics Background}
+\label{sec:theoretical_physics_background}
+
+Now that we have the mathematical preliminaries out of the way, we can start discussing the theoretical background of gravitational waves. This section will cover the fundamental concepts and equations that form the basis of our understanding of gravitational waves, in addition to a more thorough explanation to working with Einstein's notation and the Einstein summation convention.
+
+\subsection{Review of Special Relativity and Minkowski Spacetime} The transition from Riemannian geometry to physical theory begins with Special Relativity (SR). In this framework, we model the universe as a four-dimensional manifold known as Minkowski Spacetime ($\mathcal{M}, \eta$). Unlike the Riemannian manifolds discussed in Section~\ref{sec:riemannian_geometry}, spacetime is pseudo-Riemannian with a signature of $(1, 3)$ or $(-, +, +, +)$.
+
+In a standard inertial coordinate system $\{x^0, x^1, x^2, x^3\} = \{ct, x, y, z\}$, the components of the flat-space metric $\eta_{\mu\nu}$ are given by the constant matrix:
+\[%
+  \eta_{\mu\nu} = \text{diag}(-1, 1, 1, 1) = \begin{pmatrix}
+    -1 & 0 & 0 & 0 \\
+    0 & 1 & 0 & 0 \\
+    0 & 0 & 1 & 0 \\
+    0 & 0 & 0 & 1 \\
+  \end{pmatrix}
+.\]%
+This metric defines the spacetime interval $\ds^2$ between two events:
+\[%
+  \ds^2 = \eta_{\mu\nu} \dx^\mu \dx^\nu = -c^2\dt^2 + \dx^2 + \dy^2 + \dz^2
+.\]%
+The non-positive definite nature of $\eta$ allows us to classify tangent vectors $V \in T_p\mathcal{M}$ into three distinct types based on their norm:
+\begin{itemize}
+  \item \textbf{Time-like:} $\eta(V, V) < 0$. These represent the worldlines of massive particles.
+  \item \textbf{Null (Light-like):} $\eta(V, V) = 0$. These represent the paths of massless particles, such as photons.
+  \item \textbf{Space-like:} $\eta(V, V) > 0$. These connect events that cannot be causally linked.
+\end{itemize}
+In this flat background, the Lorentz Transformation $\Lambda^\mu_{\nu}$ serves as the isometry of the metric, satisfying $\eta_{\alpha\beta} = \eta_{\mu\nu} \Lambda^\mu_{\alpha} \Lambda^\nu_{\beta}$. This ensures that the speed of light $c$ remains invariant for all inertial observers.
+
+While Special Relativity assumes a fixed, flat metric where $\partial_\rho \eta_{\mu\nu} = 0$, General Relativity (GR) treats the metric $g_{\mu\nu}$ as a dynamic field. As we will see in the following sections, gravitational waves are essentially small, oscillating perturbations $h_{\mu\nu}$ propagating across this Minkowski background:
+\[%
+  g_{\mu\nu} = \eta_{\mu\nu} + h_{\mu\nu}, \quad |h_{\mu\nu}| \ll 1
+.\]%
+This ``linearized gravity'' approach, which we develop in Chapter~\ref{chap:2}, relies heavily on the index notation and contraction rules established in our preliminaries.
+
+\subsection{Intro to General Relativity} General Relativity (GR) is the realization that the ``force'' of gravity is not a force at all, but rather a consequence of the curvature of the four-dimensional spacetime manifold. Building on the concepts of smooth manifolds and the Levi-Civita connection, GR is founded on two primary pillars: the Equivalence Principle and the Einstein Field Equations.
+
+The physical core of the theory lies in the Equivalence Principle, which posits that at any point in a gravitational field, it is possible to choose a local coordinate system such that the laws of physics take the same form as in an unaccelerated Cartesian system. In mathematical terms, this means that for any point $p \in M$, there exists a coordinate chart such that the metric $g_{\mu\nu}$ at $p$ is exactly the Minkowski metric $\eta_{\mu\nu}$ and its first derivatives (and thus the Christoffel symbols) vanish.
+
+In SR, we assumed a flat background $\eta_{\mu\nu}$ where particles move in straight lines. In GR, the metric $g_{\mu\nu}$ becomes a dynamic variable that encodes the local ``refractive'' properties of spacetime. The movement of matter is governed by the geometry:
+\begin{itemize}
+  \item \textbf{Geodesic Motion:} In the absence of external non-gravitational forces, a particle follows a geodesic. As defined in Section~\ref{sub_sec:parallel_transport_and_geodesics}, this is a curve whose tangent vector is parallel transported along itself ($\nabla_{\dot{\gamma}}\dot{\gamma} = 0$).
+  \item \textbf{Spacetime Curvature:} The presence of mass-energy produces curvature, quantified by the Riemann tensor $R^{\rho}_{\sigma\mu\nu}$. This curvature causes initially parallel geodesics to deviate, an effect physically observed as ``gravitational attraction''.
+\end{itemize}
+
+The relationship between matter and geometry is summarized by the dictum: ``Matter tells spacetime how to curve, and spacetime tells matter how to move.'' This is expressed through the Einstein Tensor $G_{\mu\nu}$, which we defined in Section 4.4 as $G_{\mu\nu} = R_{\mu\nu} - \frac{1}{2}Rg_{\mu\nu}$. The divergence-free property of $G_{\mu\nu}$ ($\nabla^{\mu}G_{\mu\nu} = 0$) is mathematically essential here, as it matches the local conservation of energy and momentum in physics.
+
+By treating the metric as a field, we can eventually analyze how ripples in this geometry--gravitational waves--propagate through the vacuum.
+
+\subsection{Intro to the Schwarzschild Metric} The Schwarzschild metric was the first exact solution found for the Einstein field equations, describing the gravitational field outside a spherical, non-rotating, uncharged mass. It provides the mathematical basis for understanding planetary orbits, the bending of light, and the nature of black holes.
+
+In Schwarzschild coordinates $(t, r, \theta, \phi)$, the metric tensor $g_{\mu\nu}$ represents a vacuum solution where the energy-momentum tensor is zero. The line element is given by:
+\[%
+  \ds^2 = -\left(1 - \frac{2GM}{c^2r}\right)c^2\dt^2 + \left(1 - \frac{2GM}{c^2r}\right)^{-1}\dr^2 + r^2\left(\dd{\theta}^2 + \sin^2\theta \dd{\phi}^2\right)
+.\]%
+We often simplify this using the Schwarzschild radius, defined as $r_s = 2GM/c^2$. Substituting this, we have:
+\[%
+  \ds^2 = -\left(1 - \frac{r_s}{r}\right)c^2\dt^2 + \left(1 - \frac{r_s}{r}\right)^{-1}\dr^2 + r^2\dd{\Omega}^2
+,\]%
+where $\dd{\Omega}^2 = \dd{\theta}^2 + \sin^2(\theta)\dd{\phi}^2$ is the standard metric on a 2-sphere.
+
+Some physical implications of the Schwarzschild metric include:
+\begin{itemize}
+  \item \textbf{Asymptotic Flatness:} As $r \to \infty$, the metric components $g_{\mu\nu}$ approach the Minkowski values $\eta_{\mu\nu} = \text{diag}(-1, 1, 1, 1)$, meaning gravity vanishes at great distances.
+  \item \textbf{The Event Horizon:} A coordinate singularity appears at $r = r_s$. This surface is the event horizon; for a light ray to escape from within this radius, it would require an infinite ``acoustic effort'' or time-of-flight.
+  \item \textbf{Gravitational Redshift:} The $g_{tt}$ component indicates that time $(\tau)$ flows more slowly near a massive body compared to a distant observer, a phenomenon called time dilation.
+\end{itemize}
+
+As we discussed in Section~\ref{sub_sec:parallel_transport_and_geodesics}, particles in this geometry follow geodesics. By solving the geodesic equation:
+\[%
+  \ddot{x}^\mu + \Gamma_{\alpha\beta}^\mu \dot{x}^\alpha \dot{x}^\beta = 0
+,\]%
+for this specific metric, we can derive the precise orbits of planets and the deflection of light--successes that provided the first experimental proofs of General Relativity.
+
+\subsection{Einstein's Field Equations} The Einstein Field Equations (EFE) are the centerpiece of General Relativity. They provide the precise mathematical dictionary that translates between the geometry of a manifold and the physics of the matter contained within it.
+
+To represent the ``matter'' side of the equation, we introduce the stress-energy tensor $T_{\mu\nu}$. This is a symmetric $(0,2)$-tensor that describes the density and flux of energy and momentum in spacetime. For a perfect fluid, it is written as:
+\[%
+  T_{\mu\nu} = (\rho + p/c^2)u_\mu u_\nu + pg_{\mu\nu}
+,\]%
+where $\rho$ is the energy density and $p$ is the isotropic pressure.
+
+The field equations relate the Einstein tensor $G_{\mu\nu}$, which we defined in Section~\ref{sub_sec:curvature} as the divergence-free part of the curvature, to the stress-energy tensor. In units where $G$ is the gravitational constant and $c$ is the speed of light, the equations are:
+\[%
+  G_{\mu\nu} + \Lambda g_{\mu\nu} = \frac{8\pi G}{c^4} T_{\mu\nu}
+.\]%
+Here, $\Lambda$ represents the cosmological constant, which accounts for the energy density of the vacuum.
+
+The mathematical significances of the EFE include:
+\begin{itemize}
+  \item \textbf{Non-linearity:} Because the Einstein tensor is constructed from the metric and its derivatives, the EFE is a system of ten highly non-linear partial differential equations.
+  \item \textbf{Energy Conservation:} As noted in Section~\ref{sub_sec:curvature}, the contracted Bianchi identity ensures $\nabla^\mu G_{\mu\nu} = 0$. This mathematical requirement forces the physical conservation of energy and momentum: $\nabla^\mu T_{\mu\nu} = 0$.
+  \item \textbf{The Source of Waves:} In a vacuum where $T_{\mu\nu} = 0$, the equations reduce to the condition that the Ricci tensor vanishes ($R_{\mu\nu} = 0$). However, as we will explore in Chapter~\ref{chap:2}, the Weyl tensor $C_{\rho\sigma\mu\nu}$ can still be non-zero, allowing gravitational ripples to propagate through ``empty'' space.
+\end{itemize}
