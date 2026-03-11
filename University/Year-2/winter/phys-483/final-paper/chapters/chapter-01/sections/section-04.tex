@@ -148,8 +148,6 @@ Because the Levi-Civita connection is metric-compatible, parallel transport is a
 \[%
   \odv{}{t} g(X, Y) = g\left(\codv{X}{t}, Y\right) + g\left(X, \codv{Y}{t}\right) = 0
 .\]%
-\todo[inline]{Change this to reference gravtiational waves instead of medical imaging techniques.}
-In medical imaging, this ensures that if an ultrasound pulse is modeled as a vector, its ``energy'' (magnitude) remains constant as it moves through the tissue, even if its direction is deflected by the curvature of the sound-speed metric.
 
 With parallel transport defined, we can now define the ``straightest'' possible curves on a manifold. A curve is a geodesic if it does not ``accelerate'' in any direction other than the one dictated by the curvature of the manifold itself.
 
@@ -170,9 +168,6 @@ While the definition above is geometric (zero acceleration), geodesics also aris
   E[\gamma] = \frac{1}{2} \int_I g_{\mu\nu} \dot{x}^\mu \dot{x}^\nu \dt
 .\]%
 Applying the Euler-Lagrange equations to $E[\gamma]$ yields the exact same coordinate geodesic equation.
-
-\todo[inline]{Change this to reference gravtiational waves instead of medical imaging techniques.}
-In the context of our boundary rigidity problem, this variational perspective is vital; it tells us that ultrasound rays (geodesics) always follow the paths that minimize ``acoustic effort'' (time-of-flight), which is the very data we measure at the boundary.
 
 \subsection{Curvature}
 \label{sub_sec:curvature}
@@ -203,8 +198,6 @@ The Riemann tensor for a Levi-Civita connection satisfies several symmetries, mo
   \[%
     R = \frac{2}{a^2}
   .\]%
-  \todo[inline]{Change this to reference gravtiational waves instead of medical imaging techniques.}
-  In medical imaging, regions with high $R$ might correspond to areas of high structural complexity or sharp anatomical transitions.
 \end{example}
 
 If a metric $g_{\mu\nu}$ is given, we may further contract to obtain the scalar curvature.
@@ -277,13 +270,6 @@ The Riemann tensor can be decomposed into three irreducible components that repr
 
   \item \textbf{The Weyl Tensor ($C_{\rho\sigma\mu\nu}$):} Also known as the \emph{conformal curvature tensor}. In dimensions $n \geq 4$, it is the part of the Riemann tensor that remains after the Ricci and Scalar parts are removed.
 \end{enumerate}
-
-\todo[inline]{Change this to reference gravtiational waves instead of medical imaging techniques.}
-To connect these contractions to the ``Inverse Problem,'' consider a small ``cloud'' of test particles (or signal points in an MRI) initially at rest. The Ricci tensor $R_{\mu\nu}$ describes the initial second derivative of the volume $V$ of this cloud as it begins to move along geodesics:
-\begin{equation}
-  \left. \frac{\ddot{V}}{V} \right\rvert_{t=0} = -R_{\mu\nu} \dot{\gamma}^\mu \dot{\gamma}^\nu
-.\end{equation}
-This relation, known as \emph{Raychaudhuri's equation} in its simplest form, shows that positive Ricci curvature tends to converge geodesics, causing the volume to shrink. In imaging, this can be used to model the focus or dispersion of signals within heterogeneous media.
 
 \subsection{The Laplace-Beltrami Operator}
 

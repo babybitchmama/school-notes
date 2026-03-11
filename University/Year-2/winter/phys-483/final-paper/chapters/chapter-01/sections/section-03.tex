@@ -199,11 +199,25 @@ Here, the functions $T^{i_1 \dots i_r}_{j_1 \dots j_s}$ are the \emph{components
 \[%
   \tilde{T}^{a_1 \dots a_r}_{b_1 \dots b_s} = T^{i_1 \dots i_r}_{j_1 \dots j_s} \pdv{\tilde{x}^{a_1}}{x^{i_1}} \dots \pdv{\tilde{x}^{j_s}}{x^{b_s}}
 .\]%
-Here are a few examples of tensors:
 
+Here are a few examples of tensors:
 \begin{example}\leavevmode
   \begin{itemize}
-    \item \todo{Add examples of tensors in regards to gravitational waves.}
+    \item \textbf{The Metric Perturbation Tensor ($h_{\mu\nu}$):} This is a symmetric, rank-2 tensor that represents the ``ripples'' in spacetime. In the weak-field limit, the full metric is decomposed as $g_{\mu\nu} = \eta_{\mu\nu} + h_{\mu\nu}$. In the Transverse-Traceless (TT) gauge, for a wave propagating in the $z$-direction, it reduces to:
+      \[%
+        h_{ij}^{TT} = \begin{pmatrix}
+          h_+ & h_\times & 0 \\
+          h_\times & -h_+ & 0 \\
+          0 & 0 & 0 \\
+        \end{pmatrix}
+      .\]%
+      This tensor directly encodes the two physical polarization states, $h_+$ and $h_\times$, which describe the stretching and squeezing of space.
+    \item \textbf{The Energy-Momentum Tensor ($T_{\mu\nu}$):} This rank-2 tensor serves as the ``source'' for gravitational waves. It encapsulates the density and flux of energy and momentum in spacetime. While General Relativity primarily utilizes its symmetric part $T_{(\mu\nu)}$, the \textbf{GQFT} framework incorporates the antisymmetric part $T_{[\mu\nu]}$ to account for the intrinsic spin-currents of particles, which act as sources for vector-type gravitational radiation.
+    \item \textbf{The Riemann Curvature Tensor ($R^{\rho}_{\sigma\mu\nu}$):} A rank-4 tensor that provides a complete description of the local curvature of the manifold. In the context of detection, it is used in the Geodesic Deviation Equation:
+      \[%
+        \frac{D^2 S^\mu}{d\tau^2} = R^\mu_{\, \nu\rho\sigma} U^\nu U^\rho S^\sigma
+      .\]%
+      This tensor is the bridge between the abstract metric perturbation and the physical tidal forces that move the mirrors in an interferometer like LIGO.
   \end{itemize}
 \end{example}
 
