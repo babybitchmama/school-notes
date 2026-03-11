@@ -3,6 +3,39 @@
 \end{problem}
 
 \begin{solution}
+  We factor the polynomial $f(x) = 4x^2 - 4x + 8$ in three different polynomial rings.
+
+  \begin{itemize}
+    \item $\Z[x]$: First factor out the greatest common divisor of the coefficients:
+      \[%
+        f(x) = 4(x^2 - x + 2)
+      .\]%
+      Now check whether the quadratic factors further over $\Z$. Its discriminant is
+      \[%
+        \Delta = (-1)^2 - 4(1)(2) = 1 - 8 = -7
+      .\]%
+      Since the discriminant is negative, the quadratic has no rational (hence no integer) roots, so it is irreducible over $\Z$.
+    \item $\Q[x]$: The discriminant is still $-7$, which is not a square in $\Q$, so the quadratic does not factor over $\Q$. Also, nonzero constants are units in $\Q[x]$, so the factor $4$ is a unit.
+    \item $\Z_{11}[x]$: Reduce the coefficients modulo $11$:
+      \[%
+        f(x) \equiv 4x^2 + 7x + 8 \pmod{11}
+      .\]%
+      Compute the discriminant in $\Z_{11}$:
+      \[%
+        \Delta = 7^2 - 4(4)(8) = 49 - 128 = -79 \equiv 9 \pmod{11}
+      .\]%
+      Since $9$ is a square in $\Z_{11}$ ($9 = 3^2 = 8^2$), the polynomial factors. The roots are
+      \[%
+        x = \frac{-7 \pm 3}{2 \cdot 4}
+      .\]%
+      Therefore, the roots are $x = 5$ and $x = 7$. Hence, we can factor the polynomial to $4x^2 - 4x + 8 = 4(x - 5)(x - 7)$
+  \end{itemize}
+  Thus, we have
+  \begin{align*}
+    \Z[x]:& f(x) = 4(x^2 - x + 2) \\
+    \Q[x]:& f(x) = 4x^2 - 4x + 8 \\
+    \Z_{11}[x]:& f(x) = 4(x-5)(x-7)
+  .\qedhere\end{align*}
 \end{solution}
 
 \begin{problem}[34.25]
@@ -10,6 +43,11 @@
 \end{problem}
 
 \begin{solution}
+  Let $D$ be an integral domain and suppose $p \in D$ is a prime element. By definition, $p$ is prime if $p \ne 0$, $p$ is not a unit, and whenever $p$ divides $ab$, then $p$ divides either $a$ or $b$. We must show that $p$ is irreducible. Suppose $p = ab$ for some $a, b \in D$. Since $p = ab$, we have $p \mid ab$. Because $p$ is prime, it follows that $p | a$ or $p | b$.
+
+  If $p | a$, then there exists $c \in D$ such that $a = pc$. Substituting into $p = ab$ gives $p = (pc)b = p(cb)$. Since $D$ is an integral domain, we may cancel $p \neq 0$, yielding $1 = cb$. Thus $b$ is a unit in $D$. If $p | b$, then $b = pc$ for some $c \in D$. Substituting into $p = ab$ gives $p = a(pc) = p(ac)$. Canceling $p$ (since $D$ is an integral domain) gives $1 = ac$, In either case, one of the factors $a$ or $b$ is a unit. Therefore $p$ is irreducible.
+
+  Thus, every prime element in an integral domain is irreducible.
 \end{solution}
 
 \begin{problem}[34.26]
@@ -17,6 +55,21 @@
 \end{problem}
 
 \begin{solution}
+  Let $D$ be a unique factorization domain (UFD) and let $p \in D$ be irreducible. We must prove that $p$ is prime. Suppose $p \mid ab$. Then there exists some $c \in D$ such that $ab = pc$. Since $D$ is a UFD, every element has a factorization into irreducibles that is unique up to order and multiplication by units.
+
+  Write the factorizations of $a$ and $b$ into irreducibles:
+  \[%
+    a = u p_1 p_2 \cdots p_m, \qquad b = v q_1 q_2 \cdots q_n
+  ,\]%
+  where $u,v$ are units in $D$, and each $p_i$, $q_j$ is irreducible. Then
+  \[%
+    ab = (uv)\, p_1 p_2 \cdots p_m q_1 q_2 \cdots q_n
+  .\]%
+  On the other hand, $pc$ is a factorization of $ab$ in which $p$ appears as one of the irreducible factors. Since factorizations in a UFD are unique up to associates and ordering, the irreducible element $p$ must be associate to one of the irreducible factors appearing in the factorization of $ab$. Thus $p$ is associate to some $p_i$ or to some $q_j$.
+
+  If $p$ is associate to $p_i$, then $p \mid a$. If $p$ is associate to $q_j$, then $p \mid b$. Therefore, whenever $p \mid ab$, we have $p \mid a$ or $p \mid b$. Hence $p$ is prime.
+
+  Thus every irreducible element in a unique factorization domain is prime.
 \end{solution}
 
 \begin{problem}[34.27]
@@ -24,6 +77,15 @@
 \end{problem}
 
 \begin{solution}
+  Let $R$ be a commutative ring with unity. Define a relation on $R$ by
+  \[
+    a \sim b \quad \text{if and only if} \quad a = bu
+  \]
+  for some unit $u \in R$. We show that this relation is an equivalence relation by verifying that it is reflexive, symmetric, and transitive.
+
+  For any $a \in R$, we have $a = a \cdot 1$. Since $1$ is a unit in $R$, it follows that $a$ is an associate of itself. Hence $a \sim a$. Suppose $a \sim b$. Then $a = bu$ for some unit $u \in R$. Since $u$ is a unit, it has an inverse $u^{-1}$ in $R$. Multiply both sides by $u^{-1}$ to get $b = a u^{-1}$. Because $u^{-1}$ is also a unit, this shows that $b$ is an associate of $a$, so $b \sim a$. Suppose $a \sim b$ and $b \sim c$. Then there exist units $u,v \in R$ such that $a = bu$, $b = cv$. Substituting gives $a = (cv)u = c(vu)$. Since the product of units is again a unit, $vu$ is a unit in $R$. Hence $a$ is an associate of $c$, so $a \sim c$.
+
+  Thus, it is an equivalence relation on $R$.
 \end{solution}
 
 \begin{problem}[34.29]
@@ -31,6 +93,11 @@
 \end{problem}
 
 \begin{solution}
+  Let $D$ be a UFD and let $f(x) \in D[x]$ be a primitive polynomial. Recall that a polynomial is \emph{primitive} if the greatest common divisor of its coefficients is $1$.
+
+  Suppose $g(x) \in D[x]$ is a nonconstant polynomial such that $g(x) \mid f(x)$. Then there exists $h(x) \in D[x]$ with $f(x) = g(x)h(x)$. Assume for contradiction that $g(x)$ is not primitive. Then the coefficients of $g(x)$ have a nonunit common divisor. Since $D$ is a UFD, there exists an irreducible element $p \in D$ such that $p$ divides every coefficient of $g(x)$. Thus we may write $g(x) = pg_1(x)$, for some $g_1(x) \in D[x]$. Substituting into the factorization of $f(x)$ gives $f(x) = pg_1(x)h(x)$ This implies that $p$ divides every coefficient of $f(x)$, since multiplying by $p$ multiplies each coefficient by $p$. Hence $p$ is a common divisor of all coefficients of $f(x)$. But this contradicts the assumption that $f(x)$ is primitive, since a primitive polynomial has no nonunit common divisor of its coefficients. Therefore our assumption was false, and $g(x)$ must be primitive.
+
+  Hence every nonconstant divisor of a primitive polynomial in $D[x]$ is also primitive.
 \end{solution}
 
 \begin{problem}[34.30]
@@ -38,6 +105,11 @@
 \end{problem}
 
 \begin{solution}
+  Let $R$ be a PID and let $I$ be a proper ideal of $R$. Since $R$ is a PID, $I$ is principal, so there exists $a \in R$ such that $I = \braket{a}$. Because $I$ is proper, $a$ is not a unit. Factor $a$ into irreducibles. Since every PID is a UFD, we may write $a = p_1 p_2 \cdots p_n$, where each $p_i$ is irreducible. Choose one of these irreducible factors, say $p_1$. Then $p_1 \mid a$, so $a = p_1 b$, for some $b \in R$. This implies $\braket{a} \subseteq \braket{p_1}$, since every multiple of $a$ is also a multiple of $p_1$. In a PID, every irreducible element generates a maximal ideal. Hence $\braket{p_1}$ is a maximal ideal of $R$. Thus we have
+  \[%
+    I = \braket{a} \subseteq \braket{p_1}
+  ,\]%
+  where $\braket{p_1}$ is a maximal ideal. Therefore $I$ is contained in a maximal ideal. Thus, every proper ideal in a PID is contained in a maximal ideal.
 \end{solution}
 
 \begin{problem}[35.2]
@@ -45,6 +117,19 @@
 \end{problem}
 
 \begin{solution}
+  Consider the function $\nu(f(x)) = \deg(f(x))$ for nonzero $f(x) \in \Z[x]$. We show that this function does \emph{not} satisfy the Euclidean property. Take
+  \[%
+    a(x) = x, \qquad b(x) = 2
+  .\]%
+  Suppose there exist $q(x), r(x) \in \Z[x]$ such that
+  \[%
+    x = 2q(x) + r(x)
+  ,\]%
+  with either $r(x) = 0$ or $\deg(r) < \deg(2)$. Since $\deg(2) = 0$, the condition $\deg(r) < 0$ implies that $r(x)=0$. Thus the equation would require $x = 2q(x)$. However, this would imply
+  \[%
+    q(x) = \frac{x}{2}
+  ,\]%
+  which is not an element of $\Z[x]$ because its coefficients are not integers. Hence no such $q(x)$ exists. Therefore it is impossible to write $x = 2q(x) + r(x)$ with $q(x), r(x) \in \Z[x]$ and $\deg(r) < \deg(2)$. Thus the function $\nu(f) = \deg(f)$ does not satisfy the Euclidean division property in $\Z[x]$. Consequently, this function is not a Euclidean valuation for $\Z[x]$, and $\Z[x]$ is not a Euclidean domain with respect to degree.
 \end{solution}
 
 \begin{problem}[35.8]
@@ -52,6 +137,36 @@
 \end{problem}
 
 \begin{solution}
+  We use the Euclidean algorithm to compute $\gcd(49{,}349,15{,}555)$ and then express it as a linear combination.
+  \begin{itemize}
+    \item 49349 = 3(15555) + 2684,
+    \item 15555 = 5(2684) + 2135,
+    \item 2684 = 1(2135) + 549,
+    \item 2135 = 3(549) + 488,
+    \item 549 = 1(488) + 61,
+    \item 488 = 8(61) + 0.
+  \end{itemize}
+  Thus,
+  \[%
+    \gcd(49{,}349,15{,}555) = 61
+  .\]%
+  Now, we back-substitute it. From $61 = 549 - 488$, substitute $488 = 2135 - 3(549)$ to get
+  \[%
+    61 = 549 - (2135 - 3(549)) = 4(549) - 2135
+  .\]%
+  Substitute $549 = 2684 - 2135$:
+  \[%
+    61 = 4(2684) - 5(2135)
+  .\]%
+  Substitute $2135 = 15555 - 5(2684)$:
+  \[%
+    61 = 29(2684) - 5(15555)
+  .\]%
+  Substitute $2684 = 49349 - 3(15555)$:
+  \[%
+    61 = 29(49349) - 92(15555)
+  .\]%
+  Thus $\lambda = 29$ and $\mu = -92$.
 \end{solution}
 
 \begin{problem}[35.9]
@@ -67,6 +182,14 @@
 \end{problem}
 
 \begin{solution}
+  Since $\Q[x]$ is a Euclidean domain with Euclidean function $\nu(f)=\deg(f)$, we can compute the $\gcd$ using the Euclidean algorithm for polynomials. Repeatedly dividing the higher–degree polynomial by the lower–degree one and replacing the pair by the divisor and remainder eventually yields a remainder of $0$. The last nonzero remainder is the $\gcd$ (up to multiplication by a nonzero constant). Carrying out the Euclidean algorithm for $f(x)$ and $g(x)$ in $\Q[x]$ yields the final nonzero remainder
+  \[%
+    x^3 + 2x - 1
+  .\]%
+  The polynomial $x^3 + 2x - 1$ is already monic, so no normalization is needed. Therefore,
+  \[%
+    \gcd(f(x),g(x)) = x^3 + 2x - 1
+  .\qedhere\]%
 \end{solution}
 
 \begin{problem}[35.15]
@@ -74,4 +197,5 @@
 \end{problem}
 
 \begin{solution}
+  Let $D$ be a Euclidean domain with Euclidean norm $\nu$. Suppose $a,b \in D$ are associates. By definition of associates, there exists a unit $u \in D$ such that $a = bu$. Since $u$ is a unit, it has a multiplicative inverse $u^{-1} \in D$. Thus we also have $b = au^{-1}$. In a Euclidean domain, the norm satisfies the property that for nonzero elements $x,y \in D$, $\nu(x) \le \nu(xy)$. Applying this with $x = b$ and $y = u$, we obtain $\nu(b) \le \nu(bu) = \nu(a)$. Similarly, applying the same property with $x = a$ and $y = u^{-1}$ gives $\nu(a) \le \nu(au^{-1}) = \nu(b)$. Combining the two inequalities, we conclude that $\nu(a) = \nu(b)$. Therefore, associates in a Euclidean domain have the same Euclidean norm.
 \end{solution}
