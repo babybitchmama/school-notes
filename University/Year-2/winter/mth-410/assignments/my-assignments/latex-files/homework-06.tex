@@ -1,0 +1,84 @@
+\begin{problem}[1]
+  Suppose $X$ is a random variable with distribution function $\mu_X(t) = \frac{1}{\sqrt{2\pi}} e^{-t^2/2}$. Prove that $\mathbb{E}(X) = 0$ and $\mathbb{E}(X^2) = 1$.
+\end{problem}
+
+\begin{solution}
+\end{solution}
+
+\begin{problem}[2]
+  Suppose $X$ is a random variable with law $d\mu_X = \sum_{k=0}^\infty \frac{\lambda^k}{k!} e^{-\lambda}\delta_k$, where $\delta_k$ is a Dirac mass at $k$ and $\lambda>0$.  Show that $\mathbb{E}(X)=\lambda$ and $\text{Var}(X)=\lambda$. (\emph{Hint:} For the variance, first compute $\mathbb{E}\{X(X-1)\}$.) 
+\end{problem}
+
+\begin{solution}
+\end{solution}
+
+\begin{problem}[3]
+  Suppose we are trying to determine the intensity of some source in the presence of background noise.  We therefore have two (independent) random variables $S$ and $N$ (the source and the noise), modeled as independent Poisson random variables with intensities $\lambda_s$ and $\lambda_n$, respectively.  By previous measurements, we have already determined $\lambda_n$.  Our goal is to determine $\lambda_s$.  Our sensor records only the total $X=S+N$. 
+  \begin{enumerate}
+    \item Show that $X$ is a Poisson random variable with intensity $\lambda_s+\lambda_n$. 
+    \item Show that if the sensor records $N$ counts, then the maximum likelihood estimate for $\lambda_s$ is $N-\lambda_n$.  (Without loss of generality, you may assume $N>\lambda_n$.)  
+  \end{enumerate}
+  (To compute the maximum likelihood, you need to compute the probability that $X=N$ under the assumption that $\lambda_s=\lambda$, then optimize in the choice of $\lambda$.) 
+\end{problem}
+
+\begin{solution}[(i)]
+\end{solution}
+
+\begin{solution}[(ii)]
+\end{solution}
+
+\begin{problem}[4]
+  Let $f:\R^n\to\R$ be a continuously differentiable function.  Suppose that $f$ has a unique global minimum at some point $x_*\in\R^n$.  Let $x_0\in\R^n$ be arbitrary and define $\{x_k\}$ recursively via
+  \[%
+    x_{k+1} = x_k - \lambda\nabla f(x_k)
+  ,\]%
+  where $\lambda > 0$.
+
+  \begin{enumerate}
+    \item Show that if the sequence $x_k$ converges, then it converges to $x_*$.
+    \item Fix $n = 1$. Suppose in addition that $f$ is twice continuously differentiable and that $0 < m < f''(x) \leq M$ for some $m, M > 0$ and all $x \in \R$. Prove that the sequence $x_k$  defined above converges provided $\lambda$ is sufficiently small.
+  \end{enumerate}
+
+  (This is the gradient descent algorithm with learning rate $\lambda$.)
+\end{problem}
+
+\begin{solution}[(i)]
+\end{solution}
+
+\begin{solution}[(ii)]
+\end{solution}
+
+\begin{problem}[5]
+  Let $f : \R^3 \to \R$ be infinitely differentiable and equal to zero outside of some ball. Show that
+  \[%
+    -\int_{\R^3} \frac{1}{|x|} \Delta f(x) \dx = 4\pi f(0)
+  ,\]%
+  where $\Delta$ is the Laplacian. This calculation shows that in three space dimensions, $-\Delta(1/|x|) = 4\pi\delta$ (where $\delta$ is the Dirac delta distribution).
+
+  \noindent \emph{Hint.} Let $\epsilon > 0$ and split the integral into the set $|x| \leq \epsilon$ and the set $|x| > \epsilon$. On the set $|x| > \epsilon$, integrate by parts twice, using the identity
+  \[%
+    \int_S g \pd{j} f \dx = -\int_S f\pd{j} g \dx + \int_{\partial S} fg \nu_j \dA
+  ,\]%
+  where $\nu$ is the outward normal vector on $\partial S$ and $dA$ is surface measure.
+\end{problem}
+
+\begin{solution}
+\end{solution}
+
+\begin{problem}[6]
+  Recall that the Green's function $G = G(t, x, y)$ solves
+  \[%
+    \frac{1}{c^2(x)}\pdv[2]{G}{t} - \Delta_x G = \delta(t)\delta(x - y)
+  ,\]%
+  with $G(t, x, y) = 0$ for $t < 0$. Show that 
+  \[%
+    u(t,x) = \iint G(t - s, x, y) n(s, y)\dy\ds
+  ,\]%
+  solves
+  \[%
+    \frac{1}{c^2(x)}\pdv[2]{u}{t} - \Delta_x u = n(t, x)
+  .\]%
+\end{problem}
+
+\begin{solution}
+\end{solution}
