@@ -1,12 +1,136 @@
 \section{Sources of Gravitational Radiation}
 \label{sec:sources_of_gravitational_radiation}
 
-\subsection{The Multipole Expansion of the Field}
+\subsection{The Multipole Expansion of the Field} To understand how physical systems generate gravitational radiation, we must solve the inhomogeneous wave equation derived in Section~\ref{sub_sec:sourcing_the_waves_the_energy_momentum_tensor}: $\Box \bar{h}_{\mu\nu} = -\frac{16\pi G}{c^4} T_{\mu\nu}$. The standard mathematical approach is to use the method of Green's functions, which yields the retarded potential solution:
+\[%
+  \bar{h}_{\mu\nu}(t, \x) = \frac{4G}{c^4} \int \frac{T_{\mu\nu}(t - |\x - \y|/c, \y)}{|\x - \y|} \dd[3]{y}
+.\]%
+For a distant observer at a distance $R = |\x|$, where the source size $d$ satisfies $d \ll R$, we can perform a multipole expansion of this integral.
 
-\subsection{The Quadrupole Formula in General Relativity}
+In electromagnetism, the leading order of radiation is the dipole. However, in gravitation, the conservation laws established by the Einstein Field Equations impose stricter constraints:
+\begin{itemize}
+  \item \textbf{Monopole (Mass):} The $1/R$ term in the expansion corresponds to the total mass-energy of the system. Since mass-energy is conserved ($\partial_\mu T^{\mu 0} = 0$), the monopole moment does not vary in time, and thus produces no radiation.
+  \item \textbf{Dipole (Momentum):} The next term relates to the first mass moment (center of mass) and the current dipole (angular momentum). Conservation of linear and angular momentum ($\partial_\mu T^{\mu i} = 0$) ensures these moments have vanishing second time derivatives, precluding gravitational dipole radiation.
+  \item \textbf{Quadrupole:} The first non-vanishing radiative term appears at the $1/c^4$ order, corresponding to the quadrupole moment. This represents the leading order of gravitational wave generation in General Relativity.
+\end{itemize}
 
-\subsection{Antisymmetric Sources and Spin-Generated Waves}
+In the ``far-field'' or wave zone, we assume the source is ``slow-motion'' ($v \ll c$), meaning the wavelength $\lambda$ is much larger than the source size $d$. Under these conditions, the spatial components of the perturbation can be approximated purely by the second time derivative of the source's mass distribution:
+\[%
+  \bar{h}_{ij}(t, R) \approx \frac{2G}{c^4 R} \odv[2]{I_{ij}}{t} (t - R/c)
+,\]%
+where $I_{ij}$ is the second moment of the mass distribution.
 
-\subsection{Energy and Momentum Carried by Waves}
+In the GQFT framework, the expansion is more complex due to the presence of both symmetric and antisymmetric energy-momentum tensors.
+\begin{itemize}
+  \item \textbf{Symmetric Part ($T_{(\mu\nu)}$):} Continues to source the standard tensor waves via the traceless quadrupole moment and scalar waves via the trace of the quadrupole moment.
+  \item \textbf{Antisymmetric Part ($T_{[\mu\nu]}$):} Introduces ``spin-current'' multipoles. While mass-dipole radiation remains forbidden, the time-varying intrinsic spin distribution of the source can generate vector-type gravitational waves at the same order as the standard quadrupole radiation.
+\end{itemize}
 
-\subsection{Classification of Astrophysical Sources}
+\subsection{The Quadrupole Formula in General Relativity} In General Relativity, the quadrupole formula is the primary tool for calculating the gravitational radiation produced by a system in slow, non-relativistic motion ($v \ll c$). Because the monopole and dipole moments are stationary due to conservation laws, the first time-varying component of the gravitational field arises from the mass quadrupole moment.
+
+We define the mass quadrupole moment tensor, $I_{ij}$, as the second moment of the mass distribution:
+\[%
+  I_{ij}(t) = \int \rho(t, \x) x_i x_j \dd[3]{x}
+,\]%
+where $\rho$ is the mass density of the source. To isolate the parts of the distribution that actually contribute to radiation, we often use the reduced (traceless) quadrupole moment, $Q_{ij}$:
+\[%
+  Q_{ij} = I_{ij} - \frac{1}{3}\delta_{ij}I^k_{k}
+.\]%
+This tensor $Q_{ij}$ describes the degree of asymmetry in the mass distribution; a perfectly spherical object has a vanishing reduced quadrupole moment and thus radiates no gravitational waves.
+
+In the far-field limit ($R \gg d$), the spatial components of the trace-reversed perturbation $\bar{h}_{ij}$ are proportional to the second time derivative of the quadrupole moment, evaluated at the retarded time $t_{ret} = t - R/c$:
+\[%
+  \bar{h}_{ij}(t, R) = \frac{2G}{c^4 R} \ddot{Q}_{ij}(t - R/c)
+.\]%
+This formula illustrates why gravitational waves are so difficult to detect: the factor $G/c^4$ is approximately $8.2 \times 10^{-45} \text{s}^2/\text{kg}\cdot\text{m}$, meaning even massive astrophysical accelerations produce only miniscule strains in spacetime.
+
+The quadrupole formula also allows us to calculate the luminosity ($P$), or the rate at which the system loses energy to gravitational radiation:
+\[%
+  P = \frac{G}{5c^5} \braket{\dddot{Q}_{ij} \dddot{Q}^{ij}}
+,\]%
+where the brackets denote an average over several wavelengths. This energy loss is what causes binary systems, like the Hulse-Taylor pulsar, to slowly spiral inward as their orbital energy is carried away by waves.
+
+In the GQFT framework, this classical result is preserved as the leading order for tensor waves. However, GQFT clarifies that the symmetric energy-momentum tensor $T_{(\mu\nu)}$ is responsible for this coupling. While the traceless part of the quadrupole moment produces the standard $h_+$ and $h_\times$ tensor modes, the trace of the quadrupole moment can source the scalar (breathing) mode, which is missing from the standard Einsteinian derivation.
+
+\subsection{Antisymmetric Sources and Spin-Generated Waves} While standard General Relativity focuses almost exclusively on the symmetric part of the energy-momentum tensor, the Gravitational Quantum Field Theory (GQFT) framework explicitly incorporates the antisymmetric energy-momentum tensor, $T_{[\mu\nu]}$, as a fundamental source of gravitational radiation. This addition expands the physical landscape of gravitational waves to include modes generated by the intrinsic angular momentum, or spin, of the matter within a source.
+
+In GQFT, the unified gravitational field is governed by equations where both the symmetric and antisymmetric parts of the field are coupled to their respective parts of the energy-momentum tensor. Specifically, the antisymmetric part of the field equations can be expressed as:
+\[%
+  \Box f_{\mu\nu} = -16\pi G T_{[\mu\nu]}
+,\]%
+where $f_{\mu\nu}$ represents the antisymmetric gravitational field. This demonstrates that if a system possesses a time-varying antisymmetric stress-energy distribution, it will radiate gravitational energy that is mathematically distinct from the standard quadrupole radiation.
+
+The most significant physical consequence of antisymmetric sources is the generation of vector gravitational waves.
+\begin{itemize}
+  \item \textbf{Physical Source:} These waves are sourced by the ``spin-current'' of the system. For example, a system of fermions with time-varying spin orientations or a rotating body with a fluctuating distribution of intrinsic angular momentum would act as a source.
+  \item \textbf{Dipolar Nature:} Unlike the mass-quadrupole radiation which is tensor-based, spin-generated radiation can exhibit a dipolar structure. While the mass-dipole is forbidden by the conservation of linear momentum, the ``spin-dipole'' is allowed because it relates to the internal distribution of angular momentum rather than the net displacement of the center of mass.
+\end{itemize}
+
+It is also important to note that within this unified framework, the symmetric energy-momentum tensor $T_{(\mu\nu)}$ is responsible for both tensor and scalar modes. While the traceless part sources the standard $h_+$ and $h_\times$ waves, the trace of the symmetric energy-momentum tensor sources the scalar (breathing) mode:
+\[%
+  \Box \Phi \propto \eta^{\mu\nu} T_{(\mu\nu)}
+.\]%
+This means that a source undergoing isotropic pulsations (changes in volume or pressure) will radiate scalar gravitational waves, a phenomenon that does not occur in vacuum General Relativity.
+
+The total gravitational radiation from a complex source in GQFT is the sum of contributions from three distinct mathematical ``channels'':
+\begin{itemize}
+  \item \textbf{Traceless Symmetric Quadrupole:} Sources the two tensor modes ($h_+, h_\times$).
+  \item \textbf{Trace of Symmetric Tensor:} Sources the scalar breathing mode ($\Phi$).
+  \item \textbf{Antisymmetric Spin-Current:} Sources the two vector modes ($W_1, W_2$).
+\end{itemize}
+
+\subsection{Energy and Momentum Carried by Waves} Although gravitational waves are perturbations of the spacetime metric, they are not merely geometric abstractions; they carry physical energy, momentum, and angular momentum away from their sources. This energy transport is a non-linear effect of General Relativity, as the waves themselves contribute to the curvature of the spacetime through which they propagate.
+
+Because the Einstein Field Equations are non-linear, the energy of the gravitational field cannot be localized at a single point. Instead, we define the energy-momentum carried by the waves using the Isaacson stress-energy tensor, $t_{\mu\nu}^{GW}$. This tensor is calculated by averaging the products of the derivatives of the perturbation $h_{\mu\nu}$ over several wavelengths:
+\[%
+  t_{\mu\nu}^{GW} = \frac{c^4}{32\pi G} \braket{\partial_\mu h_{ij}^{TT} \partial_\nu h^{ij}_{TT}}
+.\]%
+This ``effective'' stress-energy tensor acts as a source in the second-order Einstein equations, representing the gravitational ``back-reaction'' on the background metric.
+
+The amount of energy passing through a unit area per unit time (the flux) is determined by the $t_{0i}^{GW}$ components. By integrating this flux over a large sphere surrounding the source, we derive the total luminosity ($P$), which for a standard quadrupole source is:
+\[%
+  P = \frac{G}{5c^5} \braket{\dddot{Q}_{ij} \dddot{Q}^{ij}}
+.\]%
+This formula shows that the power radiated is proportional to $c^{-5}$, explaining why only the most violent astrophysical events--such as merging black holes--produce detectable levels of radiation.
+
+In addition to energy, gravitational waves carry:
+\begin{itemize}
+  \item \textbf{Linear Momentum:} If a source radiates asymmetrically, it can experience a ``gravitational kick,'' potentially ejecting a merged black hole from its host galaxy.
+  \item \textbf{Angular Momentum:} Waves from rotating systems carry away orbital angular momentum, which is the primary driver for the orbital decay observed in binary pulsars.
+\end{itemize}
+
+The Gravitational Quantum Field Theory (GQFT) framework extends this by showing that the energy is distributed across all five propagating modes.
+\begin{itemize}
+  \item \textbf{Tensor Channels:} Carry the bulk of the energy in standard asymmetric mergers.
+  \item \textbf{Scalar and Vector Channels:} In systems with high intrinsic spin or isotropic volume changes, a significant fraction of the total radiated energy can be carried away by the scalar ``breathing'' mode or the vector ``spin'' modes.
+  \item \textbf{Unified Conservation:} GQFT ensures that the total energy lost by the combined symmetric and antisymmetric energy-momentum tensors matches the energy flux detected in the unified gravitational field $G_{\mu\nu}$.
+\end{itemize}
+
+\subsection{Classification of Astrophysical Sources} To conclude this section, we classify the physical systems that generate detectable gravitational radiation. These sources are generally categorized by the duration and characteristics of their signal, which is determined by the mathematical properties of their mass-energy and spin-current distributions.
+
+The most prominent sources are binary systems composed of compact objects, such as black holes (BH) or neutron stars (NS). The signal is divided into three mathematical phases:
+\begin{itemize}
+  \item \textbf{Inspiral:} As the objects orbit each other, they lose energy via the quadrupole formula, causing the orbital frequency and amplitude to increase—a phenomenon known as a ``chirp''.
+  \item \textbf{Merger:} The non-linear regime where the two objects collide. This phase requires numerical relativity to solve the full Einstein Field Equations.
+  \item \textbf{Ringdown:} The newly formed single object vibrates as it settles into a stable state (e.g., a Kerr black hole), emitting damped oscillations.
+\end{itemize}
+
+Continuous Sources are long-lived, nearly monochromatic signals produced by objects with a persistent, time-varying quadrupole moment.
+\begin{itemize}
+  \item \textbf{Asymmetric Neutron Stars:} A rapidly spinning neutron star with a small ``mountain'' or deformation on its surface will radiate continuously.
+  \item \textbf{Spin-Current Generation:} According to GQFT, if such a star has a fluctuating intrinsic spin distribution, it could also emit continuous vector-type gravitational waves.
+\end{itemize}
+
+Bursts are short-duration, ``unmodeled'' signals from sudden, violent events.
+\begin{itemize}
+  \item \textbf{Supernovae:} The core collapse of a massive star produces a burst of radiation. The signal's strength depends heavily on the degree of asymmetry in the explosion.
+  \item \textbf{Collapsars:} As identified in recent 2024 studies, the deaths of rapidly spinning stars can emit coherent bursts that provide a window into the star's internal collapse.
+\end{itemize}
+
+The Stochastic Background is a ``hum'' of gravitational radiation consisting of the superposition of countless unresolved sources.
+\begin{itemize}
+  \item \textbf{Cosmological Background:} Waves originating from the Big Bang or phase transitions in the early universe.
+  \item \textbf{Astrophysical Background:} The combined noise of all the binary mergers throughout the history of the universe that are too distant to be identified individually.
+\end{itemize}
+
+In the context of GQFT, these sources are not limited to tensor radiation. For example, a ``breathing'' binary or a pulsar with significant spin-current fluctuations would contribute to the scalar and vector backgrounds, respectively. Distinguishing these modes in the signals from the sources listed above remains one of the primary goals of next-generation gravitational wave astronomy.

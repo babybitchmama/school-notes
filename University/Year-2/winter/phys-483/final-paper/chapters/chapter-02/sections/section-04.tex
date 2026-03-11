@@ -1,10 +1,102 @@
 \section{Detection and Geodesic Deviation}
 \label{sec:detection_and_geodesic_deviation}
 
-\subsection{The Geodesic Deviation Equation}
+\subsection{The Geodesic Deviation Equation} In General Relativity, a single test mass in free-fall follows a geodesic, the curved-space equivalent of a straight line. To detect a gravitational wave, however, we cannot look at one particle in isolation; we must observe the relative motion between two or more test masses. The mathematical framework for this relative motion is the Equation of Geodesic Deviation, also known as the Jacobi equation.
 
-\subsection{Interaction with Interferometers}
+Consider two nearby particles moving along adjacent geodesics. Let $U^\mu = dx^\mu / d\tau$ be the four-velocity of the first particle and $S^\mu$ be the separation vector pointing from the first particle to the second. As the particles move through a region of curved spacetime, the acceleration of their separation is governed by the Riemann curvature tensor $R^\mu_{\nu\rho\sigma}$:
+\begin{equation}\label{eq:derivation}
+  \codv[2]{S^\mu}{\tau} = R^\mu_{\nu\rho\sigma} U^\nu U^\rho S^\sigma
+\end{equation}
+This equation demonstrates that ``tidal forces''--the forces that stretch and squeeze objects--are not a separate physical entity but are the direct manifestation of spacetime curvature.
 
-\subsection{Measuring Non-Standard Modes in GQFT}
+To apply this to a detector like LIGO, we simplify Equation~\ref{eq:derivation} using the assumptions of the linearized theory and the proper detector frame (a coordinate system tied to the center of the detector):
+\begin{itemize}
+  \item \textbf{Non-Relativistic Limit:} For test masses that are nearly stationary before the wave arrives, $U^0 \approx 1$ and $U^i \approx 0$.
+  \item \textbf{Linearized Riemann} In the Transverse-Traceless (TT) gauge, the components of the Riemann tensor are directly related to the second time derivative of the metric perturbation: $R^i_{ 0j0} = -\frac{1}{2} \ddot{h}^{TT}_{ij}$.
+\end{itemize}
 
-\subsection{Geodesic Deviation in the ``Memory Effect''}
+Substituting these into the Jacobi equation yields the fundamental detection formula:
+\[%
+  \ddot{S}^i = \frac{1}{2} \ddot{h}^{TT}_{ij} S^j
+.\]%
+This shows that the acceleration of the test masses is proportional to the amplitude of the gravitational wave and the original distance between the masses.
+
+In the GQFT framework, the geodesic deviation becomes a more powerful diagnostic tool because different modes affect the separation vector $S^\mu$ in distinct ways:
+\begin{itemize}
+  \item \textbf{Tensor Deviation:} Causes the standard differential change in length between perpendicular arms (e.g., $S^x$ stretches while $S^y$ shrinks).
+  \item \textbf{Scalar Deviation:} Induces a symmetric ``breathing'' effect where both $S^x$ and $S^y$ increase or decrease simultaneously.
+  \item \textbf{Vector Deviation:} Can induce longitudinal displacements ($S^z$) or ``frame-dragging'' rotations, depending on the orientation of the spin-current source.
+\end{itemize}
+
+By analyzing the specific pattern of geodesic deviation across a network of detectors, researchers can determine not just the strength of the wave, but which of the five physical modes are present.
+
+\subsection{Interaction with Interferometers} While the geodesic deviation equation describes how test masses should move, the displacements caused by gravitational waves are incredibly small--typically on the order of $10^{-18}$ meters, or one-thousandth the diameter of a proton. To measure such infinitesimal changes, experimental physics utilizes Michelson interferometry.
+
+A standard gravitational wave interferometer, such as LIGO or Virgo, consists of two perpendicular arms of length $L$. A laser beam is split at a corner, travels down both arms, reflects off suspended mirrors (the test masses), and returns to the beam splitter to recombine.
+\begin{itemize}
+  \item \textbf{Destructive Interference:} The detector is typically tuned so that, in the absence of a wave, the light from the two arms cancels out at the photodetector, resulting in ``darkness''.
+  \item \textbf{Differential Phase Shift:} When a gravitational wave passes, the metric perturbation $h_{\mu\nu}$ alters the proper distance of the arms differently. For a $+$ polarized wave, one arm stretches ($L + \Delta L$) while the other squeezes ($L - \Delta L$).j
+\end{itemize}
+
+Now, let's calculate the Phase Shift. The time it takes for light to travel the round-trip distance in an arm is affected by the metric. For an arm along the $x$-axis, the interval $ds^2 = 0$ for light implies:
+\[%
+  c^2 \dt^2 = (1 + h_{xx}) \dx^2
+.\]%
+Integrating this over the length of the arm shows that the change in the round-trip time $\Delta t$ is proportional to the amplitude of the wave $h$. This time delay manifests as a phase shift $\Delta \phi$ in the laser light:
+\[%
+  \Delta \phi = \frac{4\pi L}{\lambda} h(t)
+.\]%
+where $\lambda$ is the wavelength of the laser. This shift causes the light to no longer interfere destructively, allowing a signal to reach the photodetector.
+
+The ``antenna response'' of an interferometer depends on its orientation relative to the wave.
+\begin{itemize}
+  \item \textbf{Tensor Sensitivity:} An L-shaped detector is most sensitive to tensor waves arriving from directly ``above'' the plane of the arms.
+  \item \textbf{Scalar Sensitivity:} As noted in the GQFT framework, a scalar ``breathing'' mode would cause both arms to stretch and squeeze in unison. In a perfectly symmetric Michelson interferometer, this would result in no net phase shift, making the detector ``blind'' to certain scalar signals unless the arms are of unequal length or multiple detectors are cross-correlated.
+\end{itemize}
+
+To increase the effective arm length $L$ without building thousand-mile-long tunnels, modern detectors use Fabry-Pérot cavities. By placing mirrors near the beam splitter, the light is reflected back and forth roughly 300 times before being recombined. This multiplies the phase shift, allowing the detector to reach the extreme sensitivity required to observe the distant ``chirps'' of merging black holes.
+
+\subsection{Measuring Non-Standard Modes in GQFT} In General Relativity, the existence of only two tensor polarizations ($+, \times$) is a rigid prediction. However, as derived in Section 2.2.4, the GQFT framework predicts a total of five propagating modes: two tensor, two vector, and one scalar. Detecting these ``non-standard'' modes would provide the first direct evidence of physics beyond the Einsteinian metric.
+
+To distinguish between these modes, we must analyze the antenna response function $F$ of an interferometer. The response of a detector to a specific mode is determined by the contraction of the detector's geometry tensor $D^{ij}$ with the wave's polarization tensor $e_{ij}$:
+\[%
+  h(t) = F_+ h_+ + F_\times h_\times + F_x W_1 + F_y W_2 + F_s \Phi
+.\]%
+Because each mode (tensor, vector, or scalar) has a different geometric footprint, each will ``illuminate'' an L-shaped interferometer differently depending on the wave's direction of arrival.
+
+A single L-shaped interferometer (like LIGO Hanford) cannot distinguish a scalar breathing mode from a tensor mode on its own; it only measures a single time-varying strain $h(t)$. To ``disentangle'' the five modes, we require a global network of detectors--including LIGO (USA), Virgo (Italy), KAGRA (Japan), and LIGO-India.
+\begin{itemize}
+  \item \textbf{Triangulation:} By comparing the arrival times at different sites, we can determine the exact direction of the source.
+  \item \textbf{Polarization Resolving:} Because each detector is oriented differently on the Earth's curved surface, a single wave will produce a unique combination of strains across the network. By solving the resulting system of linear equations, researchers can mathematically isolate the amplitudes of the $h_+$, $h_\times$, $W_1$, $W_2$, and $\Phi$ components.
+\end{itemize}
+
+One of the most sought-after signatures in GQFT is the scalar breathing mode ($\Phi$).
+\begin{itemize}
+  \item \textbf{Detection Signature:} In a perfectly symmetric interferometer, a scalar wave causes both arms to stretch and squeeze in-phase, resulting in zero net phase shift.
+  \item \textbf{Non-Null Detection:} To detect it, physicists look for ``null stream'' violations--signals that appear in a way that tensor waves cannot explain--or utilize detectors with arms of unequal lengths or different orientations.
+\end{itemize}
+
+Recent analyses of binary black hole mergers (such as GW170814) have allowed for the first tests of these non-standard polarizations. While current data remains strongly consistent with pure tensor modes, the precision of the GQFT framework provides a rigorous ``null hypothesis'' that will be tested with much higher sensitivity by next-generation detectors like the Einstein Telescope and LISA.
+
+\subsection{Geodesic Deviation in the ``Memory Effect''} In the standard treatment of gravitational waves, we assume that after a wave passes, the spacetime returns exactly to its original Minkowski state. However, the non-linear nature of the Einstein Field Equations predicts a memory effect--a permanent, non-zero displacement in the separation vector $S^i$ between test masses long after the wave has vanished.
+
+The memory effect is mathematically split into two distinct components:
+\begin{itemize}
+  \item \textbf{Linear Memory:} Arises from the change in the velocities of the source's components (e.g., a burst of particles flying off to infinity).
+  \item \textbf{Nonlinear (Christodoulou) Memory:} A purely general-relativistic effect where the gravitational waves themselves act as a source of gravity. As the waves carry energy-momentum to ``null infinity,'' they create a permanent ``warp'' in the local spacetime metric.
+\end{itemize}
+
+Recall the geodesic deviation equation $\ddot{S}^i = \frac{1}{2} \ddot{h}^{TT}_{ij} S^j$. Integrating this equation twice over the duration of a gravitational wave event reveals the change in separation $\Delta S^i$:
+\[%
+  \Delta S^i = \frac{1}{2} \Delta h^{TT}_{ij} S^j
+,\]%
+where $\Delta h^{TT}_{ij}$ is the difference between the metric perturbation at the very beginning and the very end of the signal. In a system with ``memory,'' the metric does not return to its initial value ($h_{final} \neq h_{initial}$), meaning the test masses are left in a permanently shifted configuration.
+
+The GQFT framework provides a unique perspective on the memory effect by linking it to the different propagating modes:
+\begin{itemize}
+  \item \textbf{Tensor Memory:} The standard permanent ``stretch and squeeze'' shift measured by LIGO-like detectors.
+  \item \textbf{Scalar and Vector Memory:} In theories where the antisymmetric energy-momentum tensor is active, additional permanent shifts in the ``breathing'' (scalar) or ``rotational'' (vector) dimensions of the separation vector are possible.
+  \item \textbf{BMS Symmetry:} Mathematically, the memory effect is deeply connected to the Bondi-Metzner-Sachs (BMS) group of symmetries at the boundary of spacetime. In GQFT, these symmetries must be satisfied for all five modes, suggesting that memory might be a universal feature of any unified gravitational field.
+\end{itemize}
+
+Detecting memory is exceptionally difficult because it manifests as a ``DC'' (zero-frequency) offset in the detector’s strain data. While individual events may have a memory signature too small for current LIGO sensitivity, researchers are developing ``stacking'' techniques--combining the data from hundreds of black hole mergers--to statistically identify the permanent displacement left behind by these spacetime ripples.

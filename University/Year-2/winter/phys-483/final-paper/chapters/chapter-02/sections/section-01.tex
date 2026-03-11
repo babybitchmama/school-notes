@@ -24,7 +24,7 @@ By contracting the Riemann tensor ($R_{\sigma\nu} = \eta^{\rho\mu}R_{\rho\sigma\
 \[%
   R_{\mu\nu} = \frac{1}{2}(\pd{\sigma}\pd{\mu}h^{\sigma}_{\nu} + \pd{\sigma}\pd{\nu}h^{\sigma}_{\mu} - \pd{\mu}\pd{\nu}h - \Box h_{\mu\nu})
 ,\]%
-where $h$ is the trace $h^{\mu}_{\mu}$ and $\Box = \partial^{\sigma}\pd{\sigma}$ is the d’Alembertian operator. The Ricci scalar is then $R = \eta^{\mu\nu}R_{\mu\nu} = \pd{\mu}\pd{\nu}h^{\mu\nu} - \Box h$.
+where $h$ is the trace $h^{\mu}_{\mu}$ and $\Box = \partial^{\sigma}\pd{\sigma}$ is the d'Alembertian operator. The Ricci scalar is then $R = \eta^{\mu\nu}R_{\mu\nu} = \pd{\mu}\pd{\nu}h^{\mu\nu} - \Box h$.
 
 Combining these, the linearized Einstein tensor $G_{\mu\nu} = R_{\mu\nu} - \frac{1}{2}\eta_{\mu\nu}R$ becomes:
 \[%
@@ -141,9 +141,12 @@ The existence of this wave equation proves that perturbations in the geometry of
 
 In the framework of Gravitational Quantum Field Theory (GQFT), the wave equation is generalized to include both symmetric and antisymmetric fields. While standard General Relativity results in only tensor waves, the unified field equations in GQFT reveal that the vacuum can also support the propagation of scalar and vector modes, provided the appropriate gauge conditions are met for both the symmetric and antisymmetric components of the gravitational field.
 
-\subsection{Sourcing the Waves: The Energy-Momentum Tensor} In the previous subsections, we established that perturbations of spacetime can propagate as waves through a vacuum. However, to understand the origin of these waves, we must look to the ``source'' side of the Einstein Field Equations: the energy-momentum tensor $T_{\mu\nu}$. This tensor describes the distribution and flow of mass, energy, and momentum throughout the manifold.
+\subsection{Sourcing the Waves: The Energy-Momentum Tensor}
+\label{sub_sec:sourcing_the_waves_the_energy_momentum_tensor}
 
-When matter is present, the linearized Einstein equations do not vanish. Instead, they relate the d’Alembertian of the trace-reversed perturbation directly to the energy-momentum tensor:
+In the previous subsections, we established that perturbations of spacetime can propagate as waves through a vacuum. However, to understand the origin of these waves, we must look to the ``source'' side of the Einstein Field Equations: the energy-momentum tensor $T_{\mu\nu}$. This tensor describes the distribution and flow of mass, energy, and momentum throughout the manifold.
+
+When matter is present, the linearized Einstein equations do not vanish. Instead, they relate the d'Alembertian of the trace-reversed perturbation directly to the energy-momentum tensor:
 \[%
   \Box \bar{h}_{\mu\nu} = -\frac{16\pi G}{c^4} T_{\mu\nu}
 .\]%

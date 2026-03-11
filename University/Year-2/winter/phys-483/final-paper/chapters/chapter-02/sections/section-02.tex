@@ -1,12 +1,128 @@
 \section{Propagating Modes and Polarizations}
 \label{sec:propagating_modes_and_polarizations}
 
-\subsection{The Transverse-Traceless (TT) Gauge}
+\subsection{The Transverse-Traceless (TT) Gauge} Even after imposing the Lorenz gauge condition $\partial^{\mu}\bar{h}_{\mu\nu} = 0$, the coordinate system is not uniquely fixed. There exists a residual gauge freedom--infinitesimal transformations $x^{\mu} \to x^{\mu} + \xi^{\mu}$--where the gauge vector $\xi^{\mu}$ itself satisfies the wave equation $\Box \xi^{\mu} = 0$. By strategically utilizing this remaining freedom, we can move into the Transverse-Traceless (TT) gauge, which filters out all non-physical degrees of freedom and leaves only the radiative components of the gravitational wave.
 
-\subsection{Classical Tensor Modes: Plus ($+$) and Cross ($\times$)}
+In the TT gauge, the metric perturbation $h_{\mu\nu}$ is subjected to several strict algebraic and differential conditions:
+\begin{enumerate}
+  \item \textbf{Purely Spatial:} We set $h_{0\mu} = 0$, meaning the wave has no components involving the time index.
+  \item \textbf{Traceless:} The trace of the perturbation vanishes, $h = \eta^{\mu\nu}h_{\mu\nu} = 0$. A significant consequence of this is that the distinction between the original perturbation and the trace-reversed version disappears: $h^{TT}_{\mu\nu} = \bar{h}^{TT}_{\mu\nu}$.
+  \item \textbf{Transverse:} The perturbation is divergence-free in its spatial indices, $\partial^{j}h_{ij} = 0$. For a wave propagating in the $z$-direction, this implies that only the $x$ and $y$ components of the tensor can be non-zero.
+\end{enumerate}
 
-\subsection{Helicity and Spin-2 Properties}
+The TT gauge is the most ``physical'' frame for several reasons:
+\begin{enumerate}
+  \item \textbf{Coordinate Stability:} In this gauge, the coordinates of a test mass at rest do not change as the wave passes. The ``motion'' of the particles we observe is actually the stretching and squeezing of the underlying spacetime geometry between those fixed coordinate points.
+  \item \textbf{Non-Zero Components:} For a wave traveling along the $x^3$ (or $z$) axis, the TT constraints reduce the ten independent components of the symmetric $4 \times 4$ matrix to just two:
+    \[%
+      h_{ij}^{TT} = \begin{pmatrix}
+        h_+ & h_\times & 0 \\
+        h_\times & -h_+ & 0 \\
+        0 & 0 & 0 \\
+      \end{pmatrix}
+    .\]%
+    These two remaining degrees of freedom, $h_+$ and $h_\times$, represent the two physical polarizations of the gravitational wave.
+\end{enumerate}
+
+While the TT gauge effectively isolates the two tensor modes in General Relativity, the GQFT framework introduces a more complex field containing both symmetric and antisymmetric components. In this theory, the gauge-fixing process must account for the fact that the unified gravitational field possesses five propagating modes. While $h_+$ and $h_\times$ remain the primary tensor modes, the additional scalar and vector modes require their own specific gauge treatments to ensure they are physically distinguishable from the tensor radiation.
+
+\subsection{Classical Tensor Modes: Plus ($+$) and Cross ($\times$)} In the Transverse-Traceless gauge, the gravitational perturbation $h_{ij}^{TT}$ for a wave propagating in the $z$-direction is reduced to only two independent components. These components correspond to the two polarization states of the gravitational wave, conventionally denoted as plus ($+$) and cross ($\times$).
+
+For a monochromatic plane wave traveling along the $x^3$ axis, the spatial components of the perturbation tensor are expressed as:
+\[%
+  h_{ij}^{TT}(t, z) = \begin{pmatrix}
+    h_+ & h_\times & 0 \\
+    h_\times & -h_+ & 0 \\
+    0 & 0 & 0 \\
+  \end{pmatrix} \cos(\omega(t - z/c))
+.\]%
+Here, $h_+$ and $h_\times$ are the amplitudes of the two modes. The structure of this matrix reveals the physical requirements of the TT gauge: it is symmetric, its trace is zero ($h_{11} + h_{22} = h_+ - h_+ = 0$), and it is purely transverse to the $z$-direction of propagation.
+
+The plus polarization affects the proper distance between test particles in a ``quadrupolar'' fashion. If we consider a ring of test particles in the $x-y$ plane:
+\begin{itemize}
+  \item During the first half-cycle, the ring is stretched along the $x$-axis and simultaneously squeezed along the $y$-axis.
+  \item During the second half-cycle, the effect reverses: it is squeezed along the $x$-axis and stretched along the $y$-axis.
+\end{itemize}
+
+The cross polarization has an identical effect but is rotated by $45^\circ$ relative to the plus mode.
+\begin{itemize}
+  \item It stretches and squeezes the ring along the axes defined by $y = x$ and $y = -x$.
+  \item Mathematically, this corresponds to the off-diagonal components $h_{12} = h_{21}$ in the perturbation tensor.
+\end{itemize}
+
+Because the linearized Einstein equations are linear, any arbitrary gravitational wave can be described as a linear superposition of these two basis states:
+\[%
+  h_{ij}^{TT} = h_+ e_{ij}^+ + h_\times e_{ij}^\times
+,\]%
+where $e_{ij}^+$ and $e_{ij}^\times$ are the unit polarization tensors. This decomposition is essential for detection, as the orientation of an interferometer relative to the source determines the ratio of $h_+$ to $h_\times$ that is measured.
+
+While these two tensor modes are the only propagating degrees of freedom in General Relativity, the GQFT framework expands this view. In GQFT, these tensor modes are specifically generated by the traceless part of the symmetric energy-momentum quadrupole moment. However, they are accompanied by additional scalar and vector modes that arise from different components of the unified gravitational field, which we will examine in Section~\ref{sub_sec:beyond_general_relativity_scalar_and_vector_modes}.
+
+\subsection{Helicity and Spin-2 Properties} The classification of gravitational waves as spin-2 fields is rooted in how the metric perturbation $h_{ij}^{TT}$ transforms under rotations around the direction of propagation. This property distinguishes gravity from electromagnetism (a spin-1 theory) and scalar fields (spin-0).
+
+Consider a monochromatic gravitational wave propagating along the $z$-axis. If we rotate our coordinate system by an angle $\psi$ around this axis, the polarization states $h_+$ and $h_\times$ do not remain invariant; instead, they transform into a linear combination of one another:
+\begin{itemize}
+  \item $h'_+ = h_+ \cos(2\psi) + h_\times \sin(2\psi)$
+  \item $h'_\times = -h_+ \sin(2\psi) + h_\times \cos(2\psi)$
+\end{itemize}
+Mathematically, these transformation rules indicate that the field has helicity states of $\pm 2$. A rotation of $\psi = 180^\circ$ (or $\pi$ radians) returns the polarization tensor to its original state ($2\psi = 360^\circ$). This is the hallmark of a spin-2 field; in contrast, a spin-1 vector field (like a photon) requires a full $360^\circ$ rotation to return to its initial state.
+
+The spin-2 nature is a direct consequence of the tensor's rank and symmetry. Because the metric is a symmetric rank-2 tensor, its radiative degrees of freedom must exhibit this $180^\circ$ rotational symmetry. Physically, this corresponds to the ``quadrupolar'' nature of the wave: the stretching and squeezing pattern repeats twice during a single full rotation of the viewing plane.
+
+In the Gravitational Quantum Field Theory (GQFT) framework, the spin properties of the gravitational field are expanded beyond the standard tensor modes:
+\begin{itemize}
+  \item \textbf{Tensor Modes:} Maintain the standard spin-2 (helicity $\pm 2$) characteristics derived from the symmetric part of the field.
+  \item \textbf{Vector Modes:} Exhibit spin-1 (helicity $\pm 1$) properties, arising from the antisymmetric components of the gravitational field.
+  \item \textbf{Scalar Mode:} Exhibits spin-0 (helicity 0) properties, representing a longitudinal breathing mode that is invariant under any rotation around the axis of propagation.
+\end{itemize}
+This multi-spin structure in GQFT arises because the theory unifies the metric with additional degrees of freedom, suggesting that a complete quantum description of gravity may involve a spectrum of helicity states rather than just the classical spin-2 graviton.
 
 \subsection{Beyond General Relativity: Scalar and Vector Modes}
+\label{sub_sec:beyond_general_relativity_scalar_and_vector_modes}
 
-\subsection{Physical Effects on Matter: The Geodesic Deviation Perspective}
+While General Relativity (GR) restricts the propagation of gravity to two transverse-traceless tensor modes, the GQFT framework reveals a richer structure of five physical degrees of freedom. In this theory, the gravitational field $G_{\mu\nu}$ is composed of both symmetric and antisymmetric components, which decouple in the linearized vacuum to produce one scalar mode, two vector modes, and the two standard tensor modes.
+
+The scalar mode, often referred to as a ``breathing'' or ``longitudinal'' mode, arises from the trace part of the symmetric gravitational field.
+\begin{itemize}
+  \item \textbf{Mathematical Form:} For a wave propagating in the $z$-direction, the scalar perturbation $h^{(s)}_{ij}$ affects the diagonal components of the spatial metric equally: $h_{11} = h_{22} \propto \Phi$, where $\Phi$ is a scalar potential.
+  \item \textbf{Physical Effect:} Unlike the quadrupolar tensor modes that stretch one axis while squeezing the other, the scalar mode causes a symmetric expansion and contraction of the plane transverse to the wave's motion.
+  \item \textbf{Sourcing:} This mode is uniquely generated by the trace of the symmetric energy-momentum tensor, $T = \eta^{\mu\nu}T_{\mu\nu}$, representing isotropic changes in the source's mass-energy distribution.
+\end{itemize}
+
+The GQFT framework introduces two vector modes--denoted as $W_1$ and $W_2$--which arise from the antisymmetric component of the gravitational field $G_{[\mu\nu]}$.
+\begin{itemize}
+  \item \textbf{Helicity $\pm 1$:} These modes transform under rotations like electromagnetic waves (spin-1), requiring a full $360^\circ$ rotation to return to their original state.
+  \item \textbf{Physical Effect:} Vector modes induce a ``dipolar'' shift in test masses. They are transverse to the direction of propagation but, unlike tensor modes, they tend to displace particles in a way that suggests a rotation or ``frame-dragging'' effect as the wave passes.
+  \item \textbf{Sourcing:} These modes are sourced by the antisymmetric part of the energy-momentum tensor $T_{[\mu\nu]}$, which is physically linked to the intrinsic spin and angular momentum of particles within the source.
+\end{itemize}
+
+By accounting for both symmetric and antisymmetric energy-momentum tensors, the field equations in GQFT provide a complete set of solutions that generalize the Einsteinian view:
+\begin{itemize}
+  \item \textbf{Tensor Modes ($h_+, h_\times$):} Sourced by the traceless symmetric quadrupole moment.
+  \item \textbf{Scalar Mode ($\Phi$):} Sourced by the trace of the symmetric energy-momentum tensor.
+  \item \textbf{Vector Modes ($W_1, W_2$):} Sourced by the antisymmetric energy-momentum tensor.
+\end{itemize}
+This expanded classification is not merely a mathematical curiosity; it provides a framework for testing the limits of General Relativity. If a future detector network identifies a ``breathing'' signal or a vector-like displacement, it would provide direct evidence for the unified field structures predicted by GQFT.
+
+\subsection{Physical Effects on Matter: The Geodesic Deviation Perspective} The ultimate proof of a gravitational wave's existence lies in its interaction with matter. While the Transverse-Traceless (TT) gauge provides a convenient mathematical coordinate system where test masses appear ``stationary,'' the physical distance between them is constantly changing. To quantify this, we utilize the Geodesic Deviation Equation, which describes how the curvature of spacetime--represented by the Riemann tensor--pushes and pulls neighboring geodesics.
+
+As established in Section 4.3, a particle in free-fall follows a geodesic. If we have two such particles with a separation vector $S^\mu$, their relative acceleration is governed by the Riemann curvature tensor:
+\[%
+  \codv[2]{S^\mu}{\tau} = R^\mu_{\nu\rho\sigma} U^\nu U^\rho S^\sigma
+.\]%
+
+In the weak-field limit, for a detector at rest ($U^\nu \approx \delta^\nu_0$), this equation simplifies significantly. The relative acceleration is directly proportional to the second time derivative of the metric perturbation:
+\[%
+  \odv[2]{S^i}{t} \approx \frac{1}{2} \ddot{h}^i_{j} S^j
+.\]%
+
+This shows that the gravitational wave acts as a tidal force, stretching and squeezing the space between the masses.
+
+The nature of the displacement depends entirely on which modes are present in the wave:
+\begin{itemize}
+  \item \textbf{Tensor Modes ($h_+, h_\times$):} These produce the characteristic ``quadrupolar'' deformation. A ring of particles will stretch in one transverse direction while squeezing in the other, always maintaining a constant area in the plane of the ring.
+  \item \textbf{Scalar ``Breathing'' Mode:} Predicted by GQFT, this mode causes the ring to expand and contract symmetrically in all transverse directions at once. This ``breathing'' effect changes the local volume, a phenomenon strictly forbidden in standard vacuum General Relativity.
+  \item \textbf{Vector Modes:} These induce a shifting motion that can be thought of as a ``dipolar'' or frame-dragging effect. They displace test masses in a way that depends on the direction of propagation, often involving longitudinal components that are not present in pure tensor waves.
+\end{itemize}
+
+This geodesic deviation is exactly what laser interferometers like LIGO are designed to measure. By monitoring the phase shift of laser light traveling between mirrors (test masses), we can reconstruct the components of $h_{ij}$. However, as highlighted in the GQFT framework, a standard L-shaped interferometer is primarily sensitive to tensor modes. Detecting scalar or vector modes would require observing specific ``in-phase'' arm movements or utilizing a global network of detectors to perform a full ``polarization resolve'' of the incoming signal.

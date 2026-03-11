@@ -1,0 +1,253 @@
+\newcommand\Rips{\operatorname{Rips}}
+\newcommand\Cech{\operatorname{Cech}}
+\renewcommand\S{\mathbb{S}}
+
+\begin{problem}[1]
+  Consider the discrete persistence module
+  \[%
+    \R^2 \overset{f}{\longrightarrow} \R^3 \overset{g}{\longrightarrow} \R^2
+  ,\]%
+  where $f$ is represented by the matrix $\begin{pmatrix} 1 & 0 \\ 0 & 1\\ 0 & 0\end{pmatrix}$ and $g$ by the matrix $\begin{pmatrix} 1 & 1 & 0 \\ 0 & 0 & 1\end{pmatrix}$.
+  \begin{enumerate}
+    \item Compute the persistent Betti numbers $\beta_{1,2}$, $\beta_{1,3}$, and $\beta_{2,3}$ for this discrete persistence module.
+    \item Draw a persistence diagram to represent this discrete persistence module.
+      (This amounts to computing the numbers $n_{s,t}$, where $s < t \in \{1, 2, 3, \infty\}$.)
+    \item Draw a barcode to represent this discrete persistence module.
+  \end{enumerate}
+\end{problem}
+
+\begin{solution}[(i)]
+  Let $V_1 = \R^2$, $V_2 = \R^3$, and $V_3 = \R^2$. The persistence maps are
+  \[%
+    \phi_{1,2} : \R^2 \to \R^3, \qquad \phi_{2,3} : \R^3 \to \R^2, \qquad \phi_{1,3} = \phi_{2,3} \circ \phi_{1,2}
+  .\]%
+  The persistent Betti numbers are the ranks of these maps.
+
+  \begin{itemize}
+    \item $\beta_{1,2}$: The corresponding matrix is
+      \[%
+        f = \begin{pmatrix}
+          1 & 0 \\
+          0 & 1 \\
+          0 & 0
+        \end{pmatrix}
+      .\]%
+      The two columns are linearly independent, so
+      \[%
+        \beta_{1,2} = \Rank(f) = 2
+      .\]%
+    \item $\beta_{2,3}$: The corresponding matrix is
+      \[%
+        g = \begin{pmatrix}
+          1 & 1 & 0 \\
+          0 & 0 & 1
+        \end{pmatrix}
+      .\]%
+      The first and third columns are linearly independent, hence
+      \[%
+        \beta_{2,3} = \Rank(g) = 2
+      .\]%
+    \item $\beta_{1,3}$: This corresponds to the composition
+      \[%
+        g \circ f
+      .\]%
+      Computing the product gives
+      \[%
+        g f = \begin{pmatrix}
+          1 & 1 \\
+          0 & 0
+        \end{pmatrix}
+      .\]%
+      Thus
+      \[%
+        \beta_{1,3} = \Rank(gf) = 1
+      .\]%
+  \end{itemize}
+  Therefore,
+  \[%
+    \beta_{1,2} = 2, \qquad \beta_{2,3} = 2, \qquad \beta_{1,3} = 1
+  .\qedhere\]%
+\end{solution}
+
+\begin{solution}[(ii)]
+  We compute the multiplicities $n_{s,t}$ where $s < t \in \{1, 2, 3, \infty\}$. Since $\dim V_1 = 2$, two classes are born at time 1. Since $\beta_{1,3} = 1$, one class born at 1 survives until time 3. Thus, $n_{1,3} = 1$. Two classes persist to 2, since $\beta_{1,2} = 2$. But only one survives to 3, so one must die at 2. Thus, $n_{1,2} = 1$. New classes born at 2 are given by $\dim V_2 - \beta_{1,2} = 3 - 2 = 1$. So one class is born at 2. Since $\beta_{2,3} = 2$, two classes survive from 2 to 3. One of those is the class that came from 1 so the other must be the class born at 2. Thus, it dies at 3, $n_{2,3} = 1$. Thus,
+  \[%
+    n_{1,2} = 1, \quad n_{1,3} = 1, \aand n_{2,3} = 1
+  ,\]%
+  and all other $n_{s,t} = 0$. Thus, the persistence diagram consists of the points $(1, 2)$, $(1, 3)$, and $(2, 3)$.
+\end{solution}
+
+\begin{solution}[(iii)]
+  The barcode representation corresponds to the interval decomposition determined in part (ii). From the persistence diagram points
+  \[%
+    (1,2), \quad (1,3), \quad (2,3),
+  ,\]%
+  the corresponding barcode intervals are
+  \[%
+    [1,2), \quad [1,3), \quad [2,3)
+  .\]%
+  Thus the barcode consists of three intervals: one interval from $1$ to $2$, one interval from $1$ to $3$, and one interval from $2$ to $3$.
+\end{solution}
+
+\begin{problem}[2]
+  Recall Problem 1(iii) from Homework \#8. We take $X = S^1 \subset \R^2$ with the Euclidean metric, let $S = \{(1,0), (0,1), (-1,0), (0,-1)\} \subset X$, and consider the Cech filtration $\{\Cech(S, r) \mid r \geq 0\}$. Let $V(i)_r = H_i(\Cech(S, r))$, with maps $h(i)_{r,s} : V(i)_r \to V(i)_s$ induced by the inclusion $\Cech(S, r) \subset \Cech(S, s)$ for all $r \leq s$. Draw the barcodes for $V(0)$, $V(1)$, and $V(2)$.
+\end{problem}
+
+\begin{solution}
+  From the solution to Problem 1(iii) from Homework \#8, the Cech filtration has the following critical radii:
+  \[%
+    r_1 = \sqrt{2 - \sqrt{2}}, \qquad r_2 = \sqrt{2}, \qquad r_3 = \sqrt{2 + \sqrt{2}}
+  .\]%
+
+  We analyze the topology of $\Cech(S,r)$ as $r$ increases.
+
+  \begin{itemize}
+    \item \textbf{$0 \le r < r_1$}: The balls centered at the four points do not intersect, so the Cech complex consists of four isolated vertices. Thus
+      \[%
+        \beta_0 = 4, \qquad \beta_1 = 0, \qquad \beta_2 = 0
+      .\]%
+    \item \textbf{$r_1 < r < r_2$}: Adjacent balls intersect, producing edges between neighboring vertices. The complex becomes a square (a $4$-cycle). Hence
+      \[%
+        \beta_0 = 1, \qquad \beta_1 = 1, \qquad \beta_2 = 0
+      .\]%
+    \item \textbf{$r_2 < r < r_3$}: Triple intersections appear, filling in triangular faces. The resulting complex is the boundary of a tetrahedron. Therefore
+      \[%
+        \beta_0 = 1, \qquad \beta_1 = 0, \qquad \beta_2 = 1
+      .\]%
+    \item \textbf{$r > r_3$}: All four balls intersect simultaneously, producing the full $3$-simplex. The complex becomes contractible, so
+      \[%
+        \beta_0 = 1, \qquad \beta_1 = 0, \qquad \beta_2 = 0
+      .\]%
+  \end{itemize}
+
+  It follows that the persistent homology intervals are
+  \begin{align*}
+    H_0 &: \quad [0,r_1],\; [0,r_1],\; [0,r_1],\; [0,\infty), \\
+    H_1 &: \quad [r_1,r_2], \\
+    H_2 &: \quad [r_2,r_3].
+  \end{align*}
+
+  \begin{figure}[H]
+    \centering
+
+    \begin{subfigure}{0.45\textwidth}
+      \centering
+      \begin{tikzpicture}[xscale=3,yscale=1]
+
+        \draw[->] (0,0) -- (1.6,0) node[right] {$r$};
+
+        \draw (0.3,0.05) -- (0.3,-0.05) node[below] {$r_1$};
+        \draw (0.8,0.05) -- (0.8,-0.05) node[below] {$r_2$};
+        \draw (1.3,0.05) -- (1.3,-0.05) node[below] {$r_3$};
+
+        \node[left] at (0,1.2) {$H_0$};
+
+        \draw (0,1.2) -- (0.3,1.2);
+        \draw (0,1.0) -- (0.3,1.0);
+        \draw (0,0.8) -- (0.3,0.8);
+        \draw (0,0.6) -- (1.5,0.6);
+
+      \end{tikzpicture}
+      \caption{Barcode for $H_0$.}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.45\textwidth}
+      \centering
+      \begin{tikzpicture}[xscale=3,yscale=1]
+
+        \draw[->] (0,0) -- (1.6,0) node[right] {$r$};
+
+        \draw (0.3,0.05) -- (0.3,-0.05) node[below] {$r_1$};
+        \draw (0.8,0.05) -- (0.8,-0.05) node[below] {$r_2$};
+
+        \node[left] at (0,0.6) {$H_1$};
+
+        \draw (0.3,0.6) -- (0.8,0.6);
+
+      \end{tikzpicture}
+      \caption{Barcode for $H_1$.}
+    \end{subfigure}
+
+    \vspace{1em}
+
+    \begin{subfigure}{0.6\textwidth}
+      \centering
+      \begin{tikzpicture}[xscale=3,yscale=1]
+
+        \draw[->] (0,0) -- (1.6,0) node[right] {$r$};
+
+        \draw (0.8,0.05) -- (0.8,-0.05) node[below] {$r_2$};
+        \draw (1.3,0.05) -- (1.3,-0.05) node[below] {$r_3$};
+
+        \node[left] at (0,0.6) {$H_2$};
+
+        \draw (0.8,0.6) -- (1.3,0.6);
+
+      \end{tikzpicture}
+      \caption{Barcode for $H_2$.}
+    \end{subfigure}
+
+    \caption{Barcode diagrams for the persistent homology groups $H_0$, $H_1$, and $H_2$ of the Cech filtration $\{\Cech(S,r)\}_{r\ge0}$.}
+    \label{fig:barcodes}
+  \end{figure}
+
+  The corresponding barcode diagrams are shown in Figure~\ref{fig:barcodes}.
+\end{solution}
+
+\begin{problem}[3]
+  This problem is the missing piece needed to complete our proof that the interleaving distance between two interval modules is equal to the bottleneck distance between the corresponding persistence diagrams. Suppose that we have real numbers $p < q$, $p' < q'$, and $\epsilon \geq 0$. Furthermore, suppose that the both of the following conditions hold:
+  \begin{itemize}
+    \item[(a)] $p + \epsilon \geq p'$ and $q - \epsilon\leq q'$,
+    \item[(d)] $p' + \epsilon \geq q' - \epsilon$.
+  \end{itemize}
+  Prove that at least one of the following two conditions hold:
+  \begin{itemize}
+    \item[(c)] $p' + \epsilon \geq p$ and $q' - \epsilon\leq q$,
+    \item[(b)] $p + \epsilon \geq q - \epsilon$.
+  \end{itemize}
+\end{problem}
+
+\begin{solution}
+  Assume that conditions (a) and (d) hold. Thus
+  \begin{align}
+    p + \epsilon &\ge p',\label{eq:1}\\
+    q - \epsilon &\le q',\label{eq:2}\\
+    p' + \epsilon &\ge q' - \epsilon\label{eq:3}
+  .\end{align}
+  We prove that either (c) or (b) must hold.
+
+  Suppose that (c) does not hold. Then at least one of the following inequalities fails:
+  \[%
+    p' + \epsilon \ge p \oor q' - \epsilon \le q
+  .\]%
+
+  We then have two cases. Our first case is $p' + \epsilon < p$. Using Equation~\eqref{eq:1} and Equation~\eqref{eq:3}, we obtain
+  \[%
+    p + \epsilon \ge p' \ge q' - 2\epsilon
+  .\]%
+  Combining this with Equation~\eqref{eq:2} gives
+  \[%
+    p + \epsilon \ge q - 2\epsilon
+  ,\]%
+  and hence
+  \[%
+    p + \epsilon \ge q - \epsilon
+  .\]%
+  Thus condition (b) holds.
+
+  The second case is $q' - \epsilon > q$. Using Equation~\eqref{eq:3}, we obtain
+  \[%
+    p' + \epsilon \ge q' - \epsilon > q
+  .\]%
+  Since $p < q$, it follows that
+  \[%
+    p' + \epsilon > p
+  .\]%
+  Together with Equation~\eqref{eq:2}, this implies
+  \[%
+    p' + \epsilon \ge p \aand q' - \epsilon \le q
+  ,\]%
+  which is exactly condition (c).
+
+  Therefore, if conditions (a) and (d) hold, then at least one of the conditions (c) or (b) must also hold.
+\end{solution}
