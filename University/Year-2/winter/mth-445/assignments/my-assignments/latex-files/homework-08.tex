@@ -1,0 +1,237 @@
+\begin{problem}[35.16]
+  Let $D$ be a Euclidean domain and let $\nu$ be a Euclidean norm on $D$. Show that for nonzero $a, b \in D$, one has $\nu(a) < \nu(ab)$ if and only if $b$ is not a unit of $D$. [Hint: Argue from Exercise 15 that $\nu(a) < \nu(ab)$ implies that $b$ is not a unit of $D$. Using the Euclidean algorithm, show that $\nu(a) = \nu(ab)$ implies $\braket{a} = \braket{ab}$. Conclude that if $b$ is not a unit, then $\nu(a) < \nu(ab)$.]
+\end{problem}
+
+\begin{solution}
+  Suppose that $\nu(a) < \nu(ab)$. We show that $b$ is not a unit. Assume for contradiction that $b$ is a unit. Then there exists $b^{-1} \in D$ such that $bb^{-1} = 1$. Multiplying $ab$ by $b^{-1}$ gives $a = (ab)b^{-1}$. Since $b^{-1} \in D$, this shows that $a$ is a multiple of $ab$. In a Euclidean domain, the Euclidean norm is compatible with divisibility in the sense that if $x \mid y$ and $y \neq 0$, then $\nu(x) \le \nu(y)$. Thus from $ab \mid a$ we obtain $\nu(ab) \le \nu(a)$, which contradicts the assumption $\nu(a) < \nu(ab)$. Therefore $b$ cannot be a unit.
+
+  Now suppose that $b$ is not a unit. We show that $\nu(a) < \nu(ab)$. Assume for contradiction that $\nu(ab) \le \nu(a)$. Since $a \neq 0$, apply the Euclidean division algorithm to divide $a$ by $ab$. Then there exist $q,r \in D$ such that $a = q(ab) + r$, where either $r = 0$ or $\nu(r) < \nu(ab)$. If $r \neq 0$, then $\nu(r) < \nu(ab) \le \nu(a)$. But from the equation $r = a - qab = a(1 - qb)$, we see that $r$ is a multiple of $a$, so $a \mid r$. This implies $\nu(a) \le \nu(r)$, contradicting $\nu(r) < \nu(a)$. Hence $r=0$. Thus
+  \[%
+    a = q(ab) = (qa)b
+  .\]%
+  Since $a \neq 0$, cancelling $a$ gives $1 = qb$, so $b$ is a unit, contradicting the assumption. Therefore $\nu(ab) \le \nu(a)$ is impossible, and we must have $\nu(a) < \nu(ab)$.
+
+  Thus, $\nu(a) < \nu(ab)$ if and only if $b$ is not a unit in $D$.
+\end{solution}
+
+\begin{problem}[35.17]
+  Prove or disprove the following statement: If $\nu$ is a Euclidean norm on Euclidean domain $D$, then $\{a \in D | \nu(a) > \nu(1)\} \cup \{0\}$ is an ideal of $D$.
+\end{problem}
+
+\begin{solution}
+  Let $D = \Z$, which is a Euclidean domain with Euclidean norm $\nu(n) = |n|$. Then $\nu(1) = 1$. The set in the statement becomes
+  \[%
+    S = \{a \in \Z \mid |a| > 1\} \cup \{0\}
+  .\]%
+  If $S$ were an ideal of $\Z$, it would have to be closed under addition. However, this is not the case. For example, $2 \in S$, $-3 \in S$, yet $2 + (-3) = -1$. But $|-1| = 1$, so $-1 \notin S$. Thus $S$ is not closed under addition. Since an ideal must be closed under addition, $S$ is not an ideal of $\Z$.
+
+  Thus, the statement is \emph{false} in general.
+\end{solution}
+
+\begin{problem}[35.18]
+  Show that every field is a Euclidean domain.
+\end{problem}
+
+\begin{solution}
+  Let $F$ be a field. We show that $F$ is a Euclidean domain. Define a function $\nu : F \setminus \{0\} \to \N$ by
+  \[%
+    \nu(a) = 1 \quad \text{for all}~a \in F \setminus \{0\}
+  .\]%
+  We verify the Euclidean property. Let $a,b \in F$ with $b \neq 0$. Since $F$ is a field, $b$ has a multiplicative inverse $b^{-1}$. Define
+  \[%
+    q = ab^{-1}, \qquad r = 0
+  .\]%
+  Then $a = bq + r$. Because $r = 0$, the Euclidean condition is satisfied: either $r = 0$ or $\nu(r) < \nu(b)$. Hence the required division property holds for all $a,b \in F$ with $b \neq 0$.
+
+  Thus, $F$ is a Euclidean domain.
+\end{solution}
+
+\begin{problem}[35.20]
+  Let $D$ be a UFD. An element $c$ in $D$ is a least common multiple (abbreviated lcm) of two elements $a$ and $b$ in $D$ if $a \mid c$, $b \mid c$ and if $c$ divides every element of $D$ that is divisible by both $a$ and $b$. Show that every two nonzero elements $a$ and $b$ of a Euclidean domain $D$ have an lcm in $D$. [Hint: Show that all common multiples, in the obvious sense, of both a and b form an ideal of $D$.]
+\end{problem}
+
+\begin{solution}
+  Let $D$ be a Euclidean domain and let $a,b \in D$ be nonzero. Consider the set
+  \[%
+    I = \{x \in D : a \mid x~\and~b \mid x\}
+  ,\]%
+  that is, the set of all common multiples of $a$ and $b$. We first show that $I$ is an ideal.
+
+  First note that $0 \in I$ since $a \mid 0$ and $b \mid 0$. If $x, y \in I$, then $a \mid x$ and $a \mid y$, so $a \mid (x - y)$. Similarly, $b \mid (x - y)$. Hence $x - y \in I$. If $r \in D$ and $x \in I$, then $x = ak_1 = bk_2$ for some $k_1, k_2 \in D$, so
+  \[%
+    rx = a(rk_1) = b(rk_2)
+  ,\]%
+  which implies $rx \in I$. Thus $I$ is an ideal of $D$.
+
+  Since $D$ is a Euclidean domain, every ideal of $D$ is principal. Hence there exists $c \in D$ such that $I = \braket{c}$. Since $c \in I$, we have $a \mid c$ and $b \mid c$, meaning $c$ is a common multiple of $a$ and $b$.
+
+  Lastly, we show that $c$ divides every common multiple of $a$ and $b$. Let $x \in D$ such that $a \mid x$ and $b \mid x$. Then, $x \in I$. Since $I = \braket{c}$, then $x = cd$, for some $d \in D$. This implies that $c$ also divides $x$.
+\end{solution}
+
+\begin{problem}[36.6]
+  Consider $\alpha = 7 + 2i$ and $\beta = 3 - 4i$ in $\Z[i]$. Find $\sigma$ and $\rho$ in $\Z[i]$ such that
+  \[%
+    \alpha = \beta\sigma + \rho \wwith N(\rho) < N(\beta)
+  .\]%
+  [Hint: Use the construction in the proof of Theorem 36.4.]
+\end{problem}
+
+\begin{solution}
+  Dividing $\alpha$ and $\beta$, we get
+  \[%
+    \frac{\alpha}{\beta} = \frac{\alpha\bar{\beta}}{\beta\bar{\beta}} = \frac{(7 + 2i)(3 + 4i)}{(3 - 4i)(3 + 4i)} = \frac{13 + 34i}{25} = 0.52 + 1.36i
+  .\]%
+  Rounding 0.52 to 1, and 1.36 to 1, we get
+  \[%
+    \frac{\alpha}{\beta} = 1 + i = \sigma
+  .\]%
+  Now, let's compute the remainder
+  \[%
+    7 + 2i = (3 - 4i)(1 + i) + \rho \implies 7 + 2i = 7 - i + \rho \implies \rho = 3i
+  .\]%
+  Let's check that $N(\rho) < N(\beta)$. Computing each norm, we get $N(\rho) = 9 < 25 = N(\beta)$. Thus, we have
+  \[%
+    7 + 2i = (3 - 4i)(1 + i) + 3i
+  .\qedhere\]%
+\end{solution}
+
+\begin{problem}[36.15]
+  Let $\braket{a}$ be a nonzero principal ideal in $\Z[i]$.
+  \begin{enumerate}
+    \item Show that $\Z[i]/\braket{a}$ is a finite ring. [Hint: Use the division algorithm.]
+    \item Show that if $\sigma$ is an irreducible of $\Z[i]$, then $\Z[i]/\braket{\sigma}$ is a field.
+    \item Referring to part (ii), find the order and characteristic of each of the following fields.
+      \begin{multicols}{3}
+        \begin{itemize}
+          \item[(a)] $\Z[i]/\braket{3}$
+          \item[(b)] $\Z[i]/\braket{1+i}$
+          \item[(c)] $\Z[i]/\braket{1+2i}$
+        \end{itemize}
+      \end{multicols}
+  \end{enumerate}
+\end{problem}
+
+\begin{solution}[(i)]
+  Let $a \in \Z[i]$ be nonzero. Recall that $\Z[i]$ is a Euclidean domain with Euclidean norm
+  \[%
+    N(x + yi) = x^2 + y^2
+  .\]%
+  By the division algorithm in $\Z[i]$, for every $\alpha \in \Z[i]$ there exist $q,r \in \Z[i]$ such that $\alpha = qa + r$, with either $r = 0$ or $N(r) < N(a)$. Thus every coset of $\Z[i]/\braket{a}$ contains a representative $r \in \Z[i]$ satisfying $N(r) < N(a)$. Therefore
+  \[%
+    \Z[i]/\braket{a} = \{r + \braket{a} \mid r \in \Z[i],\ N(r) < N(a)\}
+  .\]%
+  But there are only finitely many Gaussian integers $r = x+yi$ such that
+  \[%
+    x^2 + y^2 < N(a)
+  ,\]%
+  since this inequality bounds both $x$ and $y$. Hence there are only finitely many possible representatives $r$, so $\Z[i]/\braket{a}$ has finitely many elements. Therefore $\Z[i]/\braket{a}$ is a finite ring.
+\end{solution}
+
+\begin{solution}[(ii)]
+  Let $\sigma$ be an irreducible element of $\Z[i]$. Since $\Z[i]$ is a Euclidean domain, it is also a principal ideal domain, and in a PID every irreducible element generates a maximal ideal.
+
+  Thus $\braket{\sigma}$ is a maximal ideal of $\Z[i]$. A standard result from ring theory states that if $M$ is a maximal ideal of a ring $R$, then the quotient ring $R/M$ is a field. Therefore $\Z[i]/\braket{\sigma}$, is a field.
+\end{solution}
+
+\begin{solution}[(iii)]
+  For $\Z[i]/\braket{3}$, we have $N(3) = 9$. Thus, the quotient has 9 elements. Since $3 = (1 + i)(1 - i)$ in $\Z[i]$, the ideal $\braket{3}$ is not generated by an irreducible, so the quotient is not an integral domain. However, its additive structure still has $9$ elements. The characteristic is $3$, since $3(1 + \braket{3}) = 0$. Thus, $|\Z[i]/\braket{3}| = 9$ and the characteristic is 3.
+
+  For $\Z[i]/\braket{1 + i}$, we have $N(1 + i) = 2$. Thus the quotient has $2$ elements. A field with $2$ elements is $\F_2$, so $|\Z[i]/\braket{1 + i}| = 2$ and the characteristic is 2.
+
+  For $\Z[i]/\braket{1 + 2i}$, we have $N(1 + 2i) = 5$. Since $5$ is prime in $\Z$, $1 + 2i$ is irreducible in $\Z[i]$, so the quotient is a field with $5$ elements. Thus $|\Z[i]/\braket{1 + 2i}| = 5$, and the characteristic is 5.
+\end{solution}
+
+\begin{problem}[19.1]
+  Find a basis $\{(a_1, a_2, a_3), (b_1, b_2, b_3), (c_1, c_2, c_3)\}$ for $\Z \times \Z \times \Z$ with all $a_i \ne 0$, all $b_i \ne 0$, and all $c_i \ne 0$. (Many answers are possible.)
+\end{problem}
+
+\begin{solution}
+  Consider the vectors
+  \[%
+    a = (1, 1, 1), \qquad b = (1, 1, 2), \aand c = (1, 2, 1)
+  .\]%
+  All coordinates of these vectors are nonzero. To check that they form a basis for $\Z^3$, we compute the determinant of the matrix whose rows are these vectors:
+  \[%
+    \begin{vmatrix}
+      1 & 1 & 1 \\
+      1 & 1 & 2 \\
+      1 & 2 & 1 \\
+    \end{vmatrix} = -1
+  .\]%
+  Since the determinant is $\pm 1$, the matrix is unimodular, and the vectors form a basis for $\Z^3$. Therefore
+  \[%
+    \{(1, 1, 1), (1, 1, 2), (1, 2, 1)\}
+  ,\]%
+  is a basis for $\Z \times \Z \times \Z$ with all coordinates nonzero.
+\end{solution}
+
+\begin{problem}[19.4]
+  Find conditions on $a, b, c, d \in \Z$ for $\{(a, b), (c, d)\}$ to be a basis for $\Z \times \Z$. [Hint: Solve $x(a, b) + y(c, d) = (e, f)$ in $\R$, and see when the $x$ and $y$ lie in $\Z$.]
+\end{problem}
+
+\begin{solution}
+  Let $(a, b), (c, d) \in \Z \times \Z$. We want to determine when $\{(a, b), (c, d)\}$ is a basis for $\Z \times \Z$. A basis for $\Z^2$ means that every $(e, f) \in \Z^2$ can be written uniquely as
+  \[%
+    (e, f) = x(a, b) + y(c, d)
+  ,\]%
+  with $x, y \in \Z$. First solve the equation over $\R$. Writing components gives the linear system
+  \[%
+    \begin{cases}
+      ax + cy = e, \\
+      bx + dy = f.
+    \end{cases}
+  \]%
+  In matrix form,
+  \[%
+    \begin{pmatrix}
+      a & c \\
+      b & d \\
+    \end{pmatrix}
+    \begin{pmatrix}
+      x \\
+      y \\
+    \end{pmatrix}
+    = \begin{pmatrix}
+      e \\
+      f \\
+    \end{pmatrix}
+  .\]%
+  Assume the determinant $\Delta = ad - bc$ is nonzero. Then the system has the unique real solution
+  \[%
+    x = \frac{ed - cf}{ad - bc} \aand y = \frac{af - be}{ad - bc}
+  .\]%
+  For $(a, b), (c, d)$ to be a basis of $\Z^2$, these expressions must lie in $\Z$ for every $e, f \in \Z$. This happens exactly when
+  \[%
+    ad - bc = \pm 1
+  .\]%
+  Indeed, if $ad - bc = \pm 1$, then the denominators are $\pm 1$, so $x$ and $y$ are always integers. Conversely, if $|ad - bc| > 1$, choose $(e, f) = (1, 0)$. Then
+  \[%
+    x = \frac{d}{ad - bc} \aand y = \frac{-b}{ad - bc}
+  ,\]%
+  which cannot both be integers unless $|ad - bc| = 1$. Hence not every element of $\Z^2$ can be written as an integer combination. Therefore $\{(a,b),(c,d)\}$ is a basis for $\Z \times \Z$ if and only if
+  \[%
+    ad - bc = \pm 1
+  .\qedhere\]%
+\end{solution}
+
+\begin{problem}[19.10]
+  Show that a free abelian group contains no nonzero elements of finite order.
+\end{problem}
+
+\begin{solution}
+  Let $G$ be a free abelian group with basis $\{e_i\}_{i \in I}$. By definition, every element $g \in G$ can be written uniquely as a finite linear combination
+  \[%
+    g = n_1 e_{i_1} + n_2 e_{i_2} + \cdots + n_k e_{i_k}
+  ,\]%
+  where $n_1, \dots, n_k \in \Z$ and the $e_{i_j}$ are distinct basis elements.
+
+  Suppose that $g \in G$ has finite order. Then there exists a positive integer $m$ such that $mg = 0$. Substituting the expression for $g$, we obtain
+  \[%
+    m(n_1 e_{i_1} + n_2 e_{i_2} + \cdots + n_k e_{i_k}) = (mn_1)e_{i_1} + (mn_2)e_{i_2} + \cdots + (mn_k)e_{i_k} = 0
+  \]%
+  Since the representation of elements in terms of the basis is unique, the coefficients of each basis element must be zero. Thus
+  \[%
+    mn_1 = mn_2 = \cdots = mn_k = 0
+  .\]%
+  Because $\Z$ has no nonzero elements of finite order, it follows that $n_1 = n_2 = \cdots = n_k = 0$. Hence $g = 0$. Therefore the only element of $G$ with finite order is the identity element. Thus a free abelian group contains no nonzero elements of finite order.
+\end{solution}
