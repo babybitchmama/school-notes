@@ -1,15 +1,95 @@
+\renewcommand\P{\mathbb{P}}
+
 \begin{problem}[1]
-  Suppose $X$ is a random variable with distribution function $\mu_X(t) = \frac{1}{\sqrt{2\pi}} e^{-t^2/2}$. Prove that $\mathbb{E}(X) = 0$ and $\mathbb{E}(X^2) = 1$.
+  Suppose $X$ is a random variable with distribution function $\mu_X(t) = \frac{1}{\sqrt{2\pi}} e^{-t^2/2}$. Prove that $\E(X) = 0$ and $\E(X^2) = 1$.
 \end{problem}
 
 \begin{solution}
+  Since
+  \[%
+    \mu_X(t) = \frac{1}{\sqrt{2\pi}} e^{-t^2/2},
+  ,\]%
+  this is the probability density function of the standard normal distribution. For a continuous random variable with density $f_X(t)$,
+  \[%
+    \E(X) = \int_{-\infty}^{\infty} t f_X(t) \dt \aand \E(X^2) = \int_{-\infty}^{\infty} t^2 f_X(t) \dt.
+  .\]%
+  For the first moment, we compute
+  \[%
+    \E(X) = \int_{-\infty}^{\infty} t \frac{1}{\sqrt{2\pi}} e^{-t^2/2} \dt = \frac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty} t e^{-t^2/2} \dt
+  .\]%
+  Observe that the function $te^{-t^2/2}$ is odd, since
+  \[%
+    (-t)e^{-(-t)^2/2} = -te^{-t^2/2}
+  .\]%
+  The integral of an odd function over a symmetric interval about $0$ is $0$, hence $\E(X) = 0$. For the second moment, we compute
+  \[%
+    \E(X^2) = \int_{-\infty}^{\infty} t^2 \frac{1}{\sqrt{2\pi}} e^{-t^2/2} \dt = \frac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty} t^2 e^{-t^2/2} \dt = \frac{\sqrt{2\pi}}{\sqrt{2\pi}} = 1
+  .\]%
+  Hence $\E(X) = 0$ and $\E(X^2) = 1$.
 \end{solution}
 
 \begin{problem}[2]
-  Suppose $X$ is a random variable with law $d\mu_X = \sum_{k=0}^\infty \frac{\lambda^k}{k!} e^{-\lambda}\delta_k$, where $\delta_k$ is a Dirac mass at $k$ and $\lambda>0$.  Show that $\mathbb{E}(X)=\lambda$ and $\text{Var}(X)=\lambda$. (\emph{Hint:} For the variance, first compute $\mathbb{E}\{X(X-1)\}$.) 
+  Suppose $X$ is a random variable with law $\dd{\mu}_X = \sum_{k=0}^\infty \frac{\lambda^k}{k!} e^{-\lambda}\delta_k$, where $\delta_k$ is a Dirac mass at $k$ and $\lambda>0$.  Show that $\E(X) = \lambda$ and $\Var(X) = \lambda$. (\emph{Hint:} For the variance, first compute $\E\{X(X-1)\}$.) 
 \end{problem}
 
 \begin{solution}
+  The law of $X$ is
+  \[%
+    \dd{\mu}_X = \sum_{k=0}^{\infty} \frac{\lambda^k}{k!}e^{-\lambda}\delta_k
+  ,\]%
+  so
+  \[%
+    \P(X = k) = \frac{\lambda^k}{k!}e^{-\lambda}
+  ,\]%
+  for $k = 0, 1, 2, \dots$. Thus $X$ has the Poisson distribution with parameter $\lambda$. For the expectation, by definition,
+  \[%
+    \E(X) = \sum_{k=0}^{\infty} k\,\P(X=k) = \sum_{k=0}^{\infty} k \frac{\lambda^k}{k!} e^{-\lambda}
+  .\]%
+  The $k = 0$ term vanishes. Observe that
+  \[%
+    k\frac{\lambda^k}{k!} = \lambda \frac{\lambda^{k-1}}{(k-1)!}
+  .\]%
+  Hence
+  \[%
+    \E(X) = \lambda e^{-\lambda}\sum_{k=1}^{\infty} \frac{\lambda^{k-1}}{(k-1)!}
+  .\]%
+  Let $j = k - 1$. Then
+  \[%
+    \sum_{k=1}^{\infty} \frac{\lambda^{k-1}}{(k-1)!} = \sum_{j=0}^{\infty} \frac{\lambda^j}{j!} = e^{\lambda}
+  .\]%
+  Therefore $\E(X) = \lambda$. For variance, we use the hint and compute $\E[X(X - 1)]$. By definition,
+  \[%
+    \E[X(X-1)] = \sum_{k=0}^{\infty} k(k-1)\frac{\lambda^k}{k!}e^{-\lambda}
+  .\]%
+  The terms for $k = 0, 1$ vanish, so
+  \[%
+    \E[X(X - 1)] = e^{-\lambda}\sum_{k=2}^{\infty} k(k - 1)\frac{\lambda^k}{k!}
+  .\]%
+  Observe that
+  \[%
+    k(k - 1)\frac{\lambda^k}{k!} = \lambda^2 \frac{\lambda^{k-2}}{(k-2)!}
+  .\]%
+  Thus
+  \[%
+    \E[X(X - 1)] = \lambda^2 e^{-\lambda}\sum_{k=2}^{\infty} \frac{\lambda^{k-2}}{(k-2)!}
+  .\]%
+  Let $j = k - 2$. Then
+  \[%
+    \sum_{k=2}^{\infty} \frac{\lambda^{k-2}}{(k - 2)!} = \sum_{j=0}^{\infty} \frac{\lambda^j}{j!} = e^{\lambda}
+  .\]%
+  Hence $\E[X(X - 1)] = \lambda^2$. Now observe that
+  \[%
+    X^2 = X(X - 1) + X
+  .\]%
+  Therefore
+  \[%
+    \E(X^2) = \E[X(X - 1)] + \E(X) = \lambda^2 + \lambda
+  .\]%
+  Finally,
+  \[%
+    \Var(X) = \E(X^2) - (\E(X))^2 = (\lambda^2 + \lambda) - \lambda^2 = \lambda
+  .\]%
+  Thus $\E(X) = \lambda$ and $\Var(X) = \lambda$.
 \end{solution}
 
 \begin{problem}[3]
@@ -22,13 +102,71 @@
 \end{problem}
 
 \begin{solution}[(i)]
+  Let $S$ and $N$ be independent Poisson random variables with parameters $\lambda_s$ and $\lambda_n$, respectively. Thus
+  \[%
+    \P(S = k) = \frac{\lambda_s^k}{k!}e^{-\lambda_s} \aand \P(N = j) = \frac{\lambda_n^j}{j!}e^{-\lambda_n}
+  .\]%
+  Let $X = S + N$. For any integer $m \ge 0$,
+  \[%
+    \P(X = m) = \sum_{k=0}^{m} \P(S = k, N = m - k)
+  .\]%
+  Since $S$ and $N$ are independent,
+  \[%
+    \P(S = k, N = m - k) = \P(S = k)\P(N = m - k)
+  .\]%
+  Hence
+  \[%
+    \P(X = m) = \sum_{k=0}^{m} \frac{\lambda_s^k}{k!}e^{-\lambda_s} \frac{\lambda_n^{m-k}}{(m - k)!}e^{-\lambda_n}
+  .\]%
+  Factoring out the exponential term gives
+  \[%
+    \P(X = m) = e^{-(\lambda_s+\lambda_n)} \sum_{k=0}^{m} \frac{\lambda_s^k\lambda_n^{m-k}}{k!(m - k)!}
+  .\]%
+  Using
+  \[%
+    \binom{m}{k} = \frac{m!}{k!(m-k)!}
+  ,\]%
+  we rewrite the sum as
+  \[%
+    \sum_{k=0}^{m} \frac{\lambda_s^k\lambda_n^{m-k}}{k!(m - k)!} = \frac{1}{m!} \sum_{k=0}^{m} \binom{m}{k}\lambda_s^k\lambda_n^{m-k}
+  .\]%
+  Using the Binomial Theorem, we get
+  \[%
+    \P(X = m) = \frac{(\lambda_s + \lambda_n)^m}{m!}e^{-(\lambda_s + \lambda_n)}
+  .\]%
+  Thus $X$ is a Poisson random variable with intensity $\lambda_s + \lambda_n$.
 \end{solution}
 
 \begin{solution}[(ii)]
+  Suppose the sensor records $N$ counts, so $X=N$. From part (i),
+  \[%
+    X \sim \text{Poisson}(\lambda_s + \lambda_n)
+  .\]%
+  To estimate $\lambda_s$, assume $\lambda_s=\lambda$ and compute the likelihood
+  \[%
+    L(\lambda) = \P(X = N \mid \lambda_s = \lambda)
+  .\]%
+  Using the Poisson distribution,
+  \[%
+    L(\lambda) = \frac{(\lambda + \lambda_n)^N}{N!}e^{-(\lambda + \lambda_n)}
+  .\]%
+  To maximize this likelihood, it is convenient to maximize the log-likelihood:
+  \[%
+    \ell(\lambda) = \log L(\lambda) = N\log(\lambda + \lambda_n) - (\lambda + \lambda_n) - \log(N!)
+  .\]%
+  Differentiating with respect to $\lambda$ gives
+  \[%
+    \ell'(\lambda) = \frac{N}{\lambda + \lambda_n}-1
+  .\]%
+  Setting this equal to zero yields
+  \[%
+    \frac{N}{\lambda + \lambda_n} = 1, \qquad \lambda + \lambda_n = N
+  .\]%
+  Thus $\lambda = N - \lambda_n$. Since we assume $N>\lambda_n$, this value is positive and therefore admissible. Hence the maximum likelihood estimate for $\lambda_s$ is $\hat{\lambda}_s = N - \lambda_n$.
 \end{solution}
 
 \begin{problem}[4]
-  Let $f:\R^n\to\R$ be a continuously differentiable function.  Suppose that $f$ has a unique global minimum at some point $x_*\in\R^n$.  Let $x_0\in\R^n$ be arbitrary and define $\{x_k\}$ recursively via
+  Let $f : \R^n \to \R$ be a continuously differentiable function. Suppose that $f$ has a unique global minimum at some point $x_* \in \R^n$. Let $x_0 \in \R^n$ be arbitrary and define $\{x_k\}$ recursively via
   \[%
     x_{k+1} = x_k - \lambda\nabla f(x_k)
   ,\]%
@@ -81,4 +219,37 @@
 \end{problem}
 
 \begin{solution}
+  Let
+  \[%
+    u(t, x) = \iint G(t - s, x, y)n(s, y) \dd{y,s}
+  \]%
+  Define the operator
+  \[%
+    L = \frac{1}{c^2(x)}\pdv[2]{}{t} - \Delta_x
+  .\]%
+  Since differentiation with respect to $t$ and $x$ can be passed under the integral, we obtain
+  \[%
+    Lu(t, x) = \iint \left(\frac{1}{c^2(x)}\pdv[2]{}{t}G(t - s, x, y) - \Delta_x G(t - s, x, y)\right) n(s, y) \dd{y,s}
+  .\]%
+  Because $G$ satisfies
+  \[%
+    \frac{1}{c^2(x)}\pdv[2]{G}{t} - \Delta_x G = \delta(t)\delta(x - y)
+  ,\]%
+  we substitute $t - s$ for $t$ to obtain
+  \[%
+    \frac{1}{c^2(x)}\pdv[2]{}{t}G(t - s, x, y) - \Delta_x G(t - s, x, y) = \delta(t - s)\delta(x - y)
+  .\]%
+  Hence
+  \[%
+    Lu(t, x) = \iint \delta(t - s)\delta(x - y)n(s, y) \dd{y,s}
+  \]%
+  Using the defining property of the Dirac delta,
+  \[%
+    \int \delta(t - s)f(s) \ds = f(t) \aand \int \delta(x - y)g(y) \dy = g(x)
+  ,\]%
+  the integrals collapse, $Lu(t, x) = n(t, x)$ Thus
+  \[%
+    \frac{1}{c^2(x)}\pdv[2]{u}{t} - \Delta_x u = n(t, x)
+  ,\]%
+  so $u(t,x)$ solves the desired equation.
 \end{solution}
