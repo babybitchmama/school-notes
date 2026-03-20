@@ -1,0 +1,220 @@
+\section{Formalizing the Geometry of Simple Manifolds}
+\label{sec:formalizing_the_geometry_of_simple_manifolds}
+
+This entire section will be dedicated to developing the theory of \emph{simple manifolds}. Intuitively, a simple manifold is one where the ``geometry is not too strong.'' It allows the interior to be ``illuminated'' by boundary sources such that every interior point is uniquely ``seen'' by a well-defined family of rays. Each subsequent subsections will introduce one of the key conditions that define a simple manifold, and we will see how they relate to the behavior of geodesics and the exponential map. The three main conditions are:
+\begin{itemize}
+  \item Strict Convexity of the Boundary.
+  \item The Non-Trapping Condition.
+  \item Absence of Conjugate Points (Injectivity of the Exponential Map).
+\end{itemize}
+
+\subsection{Strict Convexity of the Boundary} Now, let's try and develop the theory for a \emph{simple manifold} (although we don't give a formal definition just yet, as we do that in Subsection~\ref{sub_sec:definition_and_properties_of_simple_manifolds}). A simple manifold is one that is ``nice enough'' to be solvable, but still rich enough to be interesting. It is a class of manifolds that satisfy certain geometric conditions that make the inverse problem of determining the interior structure from boundary measurements well-posed. Firstly, let's start with the strict convexity of the boundary.
+
+The standard way to define convexity in Riemannian geometry is through the second fundamental form $\Pi$.
+\begin{definition}
+  Let $\nu$ be the unit inner normal vector field along the boundary $\partial M$. For any tangent vector $X \in T_x(\partial M)$, we define the \emph{second fundamental form} $\Pi$ at $x$ as:
+  \[%
+    \Pi(X, X) = \braket{\nabla_X \nu, X}
+  .\]%
+\end{definition}
+The second fundamental form $\Pi$ is associated with the shape operator $S$. For any $x \in \partial M$, strict convexity requires that $S$ is positive-definite, ensuring that the curvature of any geodesic starting tangent to the boundary is directed into $M$.
+
+\begin{definition}
+  A Riemannian manifold $(M, g)$ with boundary $\partial M$ is said to have a \emph{strictly convex boundary} if for every point $x \in \partial M$ and every non-zero tangent vector $X \in T_x(\partial M)$, the second fundamental form $\Pi(X, X) > 0$. Equivalently, the shape operator $S$ associated with the boundary is positive-definite at every point on $\partial M$.
+\end{definition}
+
+This means that the boundary curves ``away'' from the tangent plane toward the interior. If you fire a laser along the tangent to the skin, it will immediately move into the body rather than skimming along the outside.
+
+If $x \in \partial M$ and $v \in T_x(\partial M)$, strict convexity implies that the geodesic $\gamma_{x,v}(t)$ satisfies $d(\gamma(t), \partial M) > 0$ for small $t > 0$. This ensures that no geodesic ``skims'' the boundary. If a geodesic could skim the boundary, the boundary distance $d_g(x, y)$ could be achieved by a path that never actually probes the interior, giving us zero information about the ``organs'' inside.
+
+In medical imaging, this is related to the acoustic coupling of the transducer.
+\begin{itemize}
+  \item \textbf{Ideal Geometry:} When imaging a breast or a limb, we often place it in a cylindrical or spherical ``well'' filled with water. This artificially imposes a strictly convex boundary.
+  \item \textbf{The Failure:} If the boundary has ``folds'' or concave regions (like the armpit or certain facial structures), ultrasound waves can undergo multiple reflections off the skin before entering the tissue. This creates ``multipath interference,'' making the boundary distance $d_g$ nearly impossible to calculate because the ``shortest path'' might actually be a path that exits and re-enters the body.
+\end{itemize}
+
+\begin{example}[The Euclidean Ball $B^n \subset \R^n$]
+  The unit ball with the flat metric $g_{ij} = \delta_{ij}$ is the prototypical strictly convex manifold. For any point $x$ on the boundary $\S^{n-1}$, the unit inner normal is $\nu(x) = -x$. If $X$ is a tangent vector at $x$ (meaning $X \cdot x = 0$), the second fundamental form is calculated as:
+  \[%
+    \Pi(X, X) = \langle \nabla_X (-x), X \rangle = \langle -X, X \rangle = |X|^2
+  .\]%
+  Since $|X|^2 > 0$ for all non-zero $X$, the ball is strictly convex.
+
+  Geometrically, this means any geodesic starting at the boundary in a tangential direction will curve into the interior. In medical imaging, this is the ``ideal'' scenario where every transducer on the surface ``looks'' directly into the patient.
+\end{example}
+
+\begin{example}[{The Flat Cylinder $\S^1 \times [0, L]$}]
+  Consider a ``sleeve'' of tissue. This example shows that even a flat manifold can fail to be strictly convex if the boundary is ``too straight.'' The boundary consists of two circles at $z = 0$ and $z = L$. For a vector $X$ pointing in the $z$-direction (along the length of the cylinder), the normal $\nu$ does not change as we move in that direction ($\nabla_X \nu = 0$). Here, $\Pi(X, X) = 0$. The boundary is convex but not strictly convex. A geodesic can ``graze'' the boundary circle and stay on the surface forever.
+
+  This creates a ``surface wave'' that travels around the perimeter without ever sampling the internal organs. The boundary distance $d_g$ would record the length of this perimeter path, giving us zero information about the density inside the cylinder.
+\end{example}
+
+\begin{example}[The ``Dumbbell'' or Concave Neck]
+  Imagine a manifold with a ``waist'' that curves inward, similar to the geometry of a human neck or armpit. In the ``neck'' region, the inner normal $\nu$ points away from the center of curvature. For a tangent vector $X$ in this region, $\Pi(X, X) < 0$. The manifold is concave.
+
+  This creates ``shadow zones.'' A geodesic (ultrasound ray) attempting to cross the neck might be forced to ``bend away'' from the center or reflect off the boundary. Mathematically, the shortest path between two points on the boundary might actually exit the manifold entirely, traveling through the air rather than the tissue. This makes the interior geometry ``invisible'' to standard boundary distance measurements.
+\end{example}
+
+\subsection{The Non-Trapping Condition} Next, we define the non-trapping condition. A manifold is non-trapping if every geodesic eventually exits the manifold. Formally, for any geodesic $\gamma : [0, \infty) \to M$, there exists a time $T > 0$ such that $\gamma(T) \in \partial M$. This condition ensures that we can probe the interior of the manifold using geodesics. If there were trapped geodesics, they would never reach the boundary, and we would lose information about the interior along those paths.
+
+The non-trapping condition ensures that every ``ray'' of information we send into the manifold eventually returns to the boundary to be measured. Mathematically, we formalize this using the exit time function.
+
+\begin{definition}
+  Let $SM$ be the unit tangent bundle of $M$. For any point $x \in M$ and direction $v \in S_x M$, let $\gamma_{x,v}$ be the unique geodesic such that $\gamma(0) = x$ and $\dot{\gamma}(0) = v$. We define the \emph{exit time} $\tau(x, v)$ as:
+  \begin{equation}
+    \tau(x, v) = \sup\{t \geq 0 : \gamma_{x,v}([0, t]) \subset M\}
+  .\end{equation}
+\end{definition}
+Now, we can define the non-trapping condition in terms of the exit time function $\tau$.
+\begin{definition}
+  A Riemannian manifold $(M, g)$ is \emph{non-trapping} if $\tau(x, v) < \infty$ for all $(x, v) \in SM$.
+\end{definition}
+
+In a manifold that allows trapping (such as the flat torus $\T^2$ or a manifold with a ``closed geodesic'' loop), there exist initial conditions $(x, v)$ such that the geodesic $\gamma_{x,v}$ remains in a compact subset of the interior for all $t > 0$.
+
+From the perspective of the Geodesic X-ray Transform, a trapped geodesic represents a ``kernel'' of the operator. If a function $f$ (representing a tumor or density anomaly) is supported entirely along a trapped orbit, its integral along all geodesics that exit the boundary will be zero. Consequently, $f$ becomes ``invisible'' to the boundary sensors, rendering the inverse problem non-injective.
+
+\begin{example}[The Euclidean Disk $D^2 \subset \R^2$]
+  Consider the unit disk with the standard flat metric. For any initial position $x \in D^2$ and unit vector $v \in S_x D^2$, the geodesic $\gamma_{x,v}$ is a straight line segment. Since the disk is compact and the velocity is constant ($|\dot{\gamma}| = 1$), the ray must intersect the boundary circle in a time $t \leq 2$. In this case, the exit time function $\tau(x,v)$ is bounded and continuous for all $v$. This is the ideal non-trapping case used in standard CT scans.
+\end{example}
+
+\begin{example}[The ``Maxwell Fish-Eye'' (Radial Trapping)]\label{exm:maxwell_fish_eye}
+  Consider a disk with a radially symmetric metric $g = c(r)^{-2}(dr^2 + r^2 d\theta^2)$. If the ``sound speed'' $c(r)$ is designed such that the curvature increases significantly toward the center, the geodesics can ``bend'' so sharply that they form closed circular orbits.
+\end{example}
+
+\begin{example}[The Toroidal Domain (Topological Trapping)]
+  Take a flat torus $\T^2$ and remove a small disk to create a boundary $\partial M$. While the manifold is now ``open,'' it still inherits the closed loops of the torus.
+\end{example}
+
+\subsection{Conjugate Points and Injectivity of the Exponential Map} Lastly, we define the concept of conjugate points, which are related to the behavior of geodesics and the injectivity of the exponential map.
+
+We need to find a way to measure how much geodesics diverge or converge from the boundary as they propagate throughout the manifold. This is where the Jacobi fields come in. A Jacobi field is a vector field along a geodesic that describes how nearby geodesics deviate from each other. The behavior of Jacobi fields is governed by the curvature of the manifold, and they play a crucial role in understanding the geometry of geodesics. Formally, we can define Jacobi fields as follows:
+
+\begin{definition}
+  The \emph{Jacobi Field} $J(t)$ along a geodesic $\gamma(t)$ is a vector field that satisfies the Jacobi equation:
+  \[%
+    \nabla_{\dot{\gamma}} \nabla_{\dot{\gamma}} J + R(J, \dot{\gamma})\dot{\gamma} = 0
+  .\]%
+\end{definition}
+
+The non-trapping condition implies that there are no Jacobi fields that vanish at two distinct points along a geodesic, which is related to the absence of conjugate points, which are defined as follows:
+
+\begin{definition}
+  Two points $p$ and $q$ along a geodesic $\gamma$ are called \emph{conjugate} if there exists a non-trivial Jacobi field $J(t)$ along $\gamma$ that vanishes at both $p$ and $q$. Conjugate points indicate that the exponential map fails to be injective, which can lead to ambiguities in determining the interior structure from boundary measurements.
+\end{definition}
+
+If the sectional curvature is non-positive ($K \le 0$), Jacobi fields always diverge, and you can never have conjugate points.
+
+In medical imaging, positive curvature (which causes conjugate points) acts like a converging lens. If a tumor is much denser than the surrounding tissue, it can focus ultrasound rays so sharply that they cross, creating ``caustics.'' This is where the exponential map fails to be a diffeomorphism.
+
+The last definition we need is the exponential map, which maps tangent vectors at a point to points on the manifold by following geodesics. The injectivity of the exponential map is crucial for ensuring that each point in the interior can be uniquely identified by its distance from the boundary.
+
+\begin{definition}
+  The \emph{exponential map} at a point $p \in M$ is defined as:
+  \[%
+    \exp_p : T_pM \to M, \quad \exp_p(v) = \gamma_v(1)
+  ,\]%
+  where $\gamma_v$ is the geodesic starting at $p$ with initial velocity $v$. The exponential map is said to be injective if it is a one-to-one mapping from a neighborhood of the origin in $T_pM$ to its image in $M$. This injectivity is guaranteed by the absence of conjugate points along the geodesics emanating from $p$.
+\end{definition}
+
+The absence of conjugate points is crucial for injectivity of the exponential map, which, in turn, is essential for the uniqueness of the inverse problem. If there are conjugate points, multiple geodesics can connect the same pair of points, making it impossible to uniquely determine the interior structure from boundary data.
+
+We can strengthen the definition of a simple manifold by restricting the injectivity of the exponential map to the entire manifold.
+
+For a simple manifold, we require that for every $p \in M$, the map $\exp_p : \exp_p^{-1}(M) \to M$ is a global diffeomorphism. This ensures that every point in the ``body'' is reached by exactly one minimizing geodesic from $p$, eliminating the ``multipath'' ambiguity in ultrasound signals.
+
+\begin{example}[The ``Trapping'' Annulus]
+  Consider a flat annulus $M = \{(r, \theta) : 1 \leq r \leq 2\}$ in $\R^2$. Now, let's warp the metric so that the ``speed of sound'' $c(r)$ is very slow in the center. Specifically, let $g = c(r)^{-2}(\dr^2 + r^2 \dd{\theta}^2)$ with $c(r) = r$. In this specific metric (cf Example~\ref{exm:maxwell_fish_eye}), geodesics are circles. A geodesic starting at $r = 1.5$ tangent to the circle $r = 1.5$ will stay on that circle forever.
+
+  This manifold is Trapping. There exist geodesics that never hit the boundary $\partial M = \{r = 1, r = 2\}$ If there is a tumor located exactly at $r = 1.5$, a ``ray'' of ultrasound that stays trapped in that circular orbit will never reach the sensors on the skin. This creates a Blind Spot. No matter how many sensors you put on the boundary, you can never ``see'' the trapped region because no information ever escapes from it.
+\end{example}
+
+\begin{example}[The ``Lensed'' Cylinder]
+  Consider a surface that is mostly a flat cylinder, but has a ``mountain'' (positive curvature) in the middle, like a bulge on a pipe.
+
+  As geodesics (ultrasound rays) pass over the bulge, the positive curvature causes them to converge (the Jacobi equation $\nabla_{\dot{\gamma}} \nabla_{\dot{\gamma}} J + R(J, \dot{\gamma})\dot{\gamma} = 0$ with $R > 0$ pushes $J$ toward zero). If the bulge is sharp enough, two rays starting from the same point $P$ will cross at a point $Q$ before hitting the boundary. $Q$ is a Conjugate Point. At the boundary sensor, you receive two signals from the same source at different times (or the same time). The exponential map $\exp_P$ is no longer a diffeomorphism. This creates Ghosting/Multipath Artifacts. The reconstruction algorithm assumes each ``time-of-flight'' corresponds to a unique path. When conjugate points exist, the computer might ``hallucinate'' two objects when there is only one, or blur the edges of a real anomaly.
+\end{example}
+
+\subsection{Definition and Properties of Simple Manifolds}
+\label{sub_sec:definition_and_properties_of_simple_manifolds}
+Lastly, we'll show how all these various conditions come together to define a simple manifold, i.e., a manifold that's boring enough manifold to be solvable, but still rich enough to be interesting.
+
+Now, we can formally define a simple manifold as follows:
+\begin{definition}
+  A compact Riemannian manifold $(M, g)$ with boundary $\partial M$ is called \emph{simple} if:
+  \begin{enumerate}
+    \item The boundary $\partial M$ is strictly convex.
+    \item The manifold is non-trapping.
+    \item There are no conjugate points along any geodesic in $M$.
+  \end{enumerate}
+\end{definition}
+
+Strict convexity is the ``gatekeeper'' condition. It ensures that the exponential map behaves well at the boundary. Specifically, it guarantees that for every $x \in \partial M$, the set of directions that point into the manifold is a nice, open hemisphere.
+
+The non-trapping condition ensures that every geodesic eventually reaches the boundary, allowing us to probe the interior with boundary measurements. This is crucial for the well-posedness of the inverse problem.
+
+The absence of conjugate points guarantees that the exponential map is injective, ensuring that each point in the interior can be uniquely identified by its distance from the boundary. This is essential for the uniqueness of the inverse problem.
+
+Now, let's look at a few examples of simple manifolds:
+
+\begin{example}[[The Euclidean Ball (The Zero Curvature Case)]
+  The most fundamental example of a simple manifold is any closed, convex domain in $\R^n$ with the flat metric $g_{ij} = \delta_{ij}$. The boundary of a ball is strictly convex ($\Pi > 0$). Geodesics are straight lines, so they must exit in finite time (non-trapping). Since the curvature is zero, Jacobi fields grow linearly ($J(t) = tV$), meaning they never vanish twice; thus, there are no conjugate points.
+
+  This is the mathematical model for a standard CT scan in a vacuum or uniform medium.
+\end{example}
+
+\begin{example}[The Small Spherical Cap (The Positive Curvature Case)]
+  Consider a spherical cap $M \subset \S^2$ defined by colatitude $\phi \in [0, \alpha]$. If $\alpha < \pi/2$ (less than a hemisphere), the boundary is a circle with positive geodesic curvature, satisfying the strict convexity condition. Because the cap is strictly smaller than a hemisphere, no geodesic has time to reach its first conjugate point (which occurs at distance $\pi$). Every geodesic is a great circle arc that hits the boundary and exits.
+
+  This represents a medium with high density (like bone) that ``lenses'' the signal but isn't powerful enough to create multiple paths or ``ghost'' images.
+\end{example}
+
+\begin{example}[The Hyperbolic Disk (The Negative Curvature Case)]
+  Consider the Poincar\'e disk $D^2$ with the hyperbolic metric $g = \frac{4}{(1-r^2)^2}(dx^2 + dy^2)$, restricted to a disk of radius $r < 1$. Negative curvature ($K = -1$) is the ``friend'' of simplicity. In negatively curved manifolds, geodesics diverge exponentially. This divergence prevents any ``trapping'' in loops and strictly forbids conjugate points (Jacobi fields never return to zero). If the boundary is chosen to be a coordinate circle, it remains strictly convex in the hyperbolic sense.
+
+  This models a ``diverging lens'' medium. Even though the paths are highly curved, the ``spread'' of the rays ensures that every point in the interior is hit by exactly one ray from any boundary source, making the reconstruction mathematically stable.
+\end{example}
+
+The remainder of this section will be dedicated to proving various properties of simple manifolds. One of the most important properties is that on a simple manifold, the boundary distance function $d_g(x, y)$ is a smooth function on $(\partial M \times \partial M) \setminus \diag$. This smoothness is the bedrock upon which we will build the linearized theory of the Geodesic X-ray transform in Section~\ref{sec:the_linearized_problem_and_the_x_ray_transform}.
+
+\begin{property}[Topological Triviality]
+  A simple manifold $(M, g)$ is contractible. In fact, $M$ is diffeomorphic to the unit ball $D^n$ in $\R^n$.
+\end{property}
+
+Before we prove this, let's understand the intuition. The strict convexity of the boundary ensures that the manifold is ``bulging out'' everywhere, preventing any ``holes'' or ``handles'' that would create non-trivial topology. The absence of conjugate points and the non-trapping condition ensure that geodesics behave in a well-controlled manner, allowing us to use the exponential map to construct a global diffeomorphism from a star-shaped domain in $T_pM$ to $M$.
+
+\begin{proof}
+  Fix a point $p \in \text{Int}(M)$. By the definition of a simple manifold, the exponential map $\exp_p$ is a diffeomorphism from its domain in $T_pM$ onto $M$. The domain of the exponential map is a star-shaped set in $T_pM$. Since any star-shaped set in a vector space is contractible to the origin, and a diffeomorphism preserves the homotopy type, $M$ must be contractible. Furthermore, the strict convexity of the boundary and the absence of the cut locus ensure that $M$ is a manifold with boundary that ``looks'' globally like a ball.
+\end{proof}
+
+\begin{property}[Global Uniqueness of Geodesics]
+  For any two points $p, q \in M$, there exists a unique minimizing geodesic connecting them that depends smoothly on its endpoints.
+\end{property}
+
+Again, let's understand the intuition. The strict convexity of the boundary ensures that geodesics cannot ``graze'' the boundary and must enter the interior. The non-trapping condition guarantees that every geodesic eventually reaches the boundary, preventing any infinite loops. The absence of conjugate points ensures that geodesics do not focus back on themselves, which would create multiple paths between the same points.
+
+\begin{proof}
+  The existence of at least one minimizing geodesic follows from the completeness of the manifold as a metric space (Hopf-Rinow theorem for manifolds with boundary).The uniqueness is guaranteed by the absence of conjugate points. If there were two distinct geodesics between $p$ and $q$, there would have to be a ``cut point'' or a ``conjugate point'' where the paths either meet or stop being minimizers. Since simple manifolds have no conjugate points and are non-trapping (avoiding ``looping'' paths like on a torus), the exponential map $\exp_p$ is a global diffeomorphism. Thus, for any $q$, there is exactly one $v \in T_pM$ such that $\exp_p(v) = q$.
+\end{proof}
+
+\begin{property}[Smoothness of the Distance Function]
+  The boundary distance function $d_g(x, y)$ is smooth on $(\partial M \times \partial M) \setminus \diag$
+\end{property}
+
+This property is crucial for the analysis of the Geodesic X-ray transform. The smoothness of $d_g$ away from the diagonal allows us to use tools from microlocal analysis and PDE theory to study the linearized problem. The only singularity occurs at the diagonal, where $d_g(x, x) = 0$ and the gradient is not defined.
+
+\begin{proof}
+  Let $x, y \in \partial M$ with $x \neq y$. From Property 2, there is a unique geodesic $\gamma$ connecting $x$ to $y$. Because there are no conjugate points, the derivative of the exponential map is non-singular everywhere. By the Inverse Function Theorem, the map $(x, v) \mapsto (x, \exp_x(v))$ is a local diffeomorphism.
+
+  Since $d_g(x, y) = |v|_g$ where $y = \exp_x(v)$, and the metric $g$ is smooth, the distance function inherits the smoothness of the exponential map and the metric. The only singularity occurs at $x = y$, where the distance function is continuous but its gradient is undefined (the standard ``cone'' singularity of a distance metric).
+\end{proof}
+
+\begin{property}[Finiteness of Volume and Diameter]
+  A simple manifold has finite volume and a finite diameter $D = \sup_{x,y \in M} d_g(x, y)$.
+\end{property}
+
+This property is important because it ensures that the manifold is not ``infinitely large'' in any sense, which would make the inverse problem ill-posed. The non-trapping condition prevents geodesics from being infinitely long, and the strict convexity of the boundary ensures that the manifold cannot have ``tentacles'' that stretch out indefinitely.
+
+\begin{proof}
+  This follows directly from the Non-trapping condition. If the diameter were infinite, there would exist a geodesic ray that never exits the manifold, contradicting the non-trapping requirement that $\tau(x, v) < \infty$ for all $(x, v)$. Since $M$ is a compact manifold with a bounded diameter and a smooth metric, its volume $\text{Vol}(M, g) = \int_M \dV_g$ must be finite.
+\end{proof}

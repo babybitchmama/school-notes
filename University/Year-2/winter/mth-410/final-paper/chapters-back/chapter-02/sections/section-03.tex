@@ -1,0 +1,137 @@
+\section{The Linearized Problem and the X-ray Transform}
+\label{sec:the_linearized_problem_and_the_x_ray_transform}
+
+Now with all the necessary tools in place, we can now start looking at the linearized version of the boundary rigidity problem, which is closely related to the geodesic X-ray transform. The linearized problem is often easier to analyze and can provide insights into the original nonlinear problem. In this section, we will explore the linearization of the boundary distance function, the geodesic X-ray transform, solenoidal injectivity and gauge freedom, and the normal operator and back-projection.
+
+\subsection{Linearization of the Boundary Distance Function}
+\label{sub_sec:linearization_of_the_boundary_distance_function}
+
+The boundary distance function $d_g(x, y)$ is a non-linear functional of the metric $g$. In the context of medical imaging, the inverse problem--recovering $g$ from $d_g$--is therefore non-linear and computationally difficult. To simplify the problem, we consider a small perturbation of the background metric and analyze the resulting change in travel time.
+
+Let $g$ be a smooth, simple background metric (representing healthy tissue) and let $f$ be a symmetric $(0,2)$-tensor field representing a small anomaly (such as a tumor). We define a one-parameter family of metrics:
+\[%
+  g_s = g + sf, \quad s \in (-\epsilon, \epsilon)
+.\]%
+For any two fixed points $x, y \in \partial M$, let $\gamma_s$ be the unique $g_s$-geodesic connecting them. The distance is given by the length functional:
+\[%
+  L(g_s) = d_{g_s}(x, y) = \int_0^{T_s} \sqrt{g_s(\dot{\gamma}_s(t), \dot{\gamma}_s(t))} \dt
+.\]%
+To linearize, we calculate the derivative of the distance with respect to $s$ at $s = 0$. A key result in Riemannian geometry is that since $\gamma_0$ (the geodesic for the background metric) is a critical point of the length functional, the variation of the geodesic path itself ($\dot{\gamma}_s$) does not contribute to the first-order change in length. This is known as the \emph{First Variation Formula}.
+
+\begin{proposition}
+  The linearization of the boundary distance function in the direction of $f$ is given by:
+  \[%
+    \left. \odv{}{s} d_{g_s}(x, y) \right\rvert_{s=0} = \frac{1}{2} \int{0}^{T} \frac{f(\dot{\gamma}(t), \dot{\gamma}(t))}{|\dot{\gamma}(t)|_g} \dt
+  .\]%
+\end{proposition}
+
+\begin{proof}[Sketch of Proof]
+  Using the definition of the length functional and differentiating under the integral sign:
+  \[%
+    \odv{}{s} \sqrt{(g_{ij} + s f_{ij})\dot{x}^i \dot{x}^j} = \frac{1}{2\sqrt{g_s(\dot{x}, \dot{x})}} f_{ij} \dot{x}^i \dot{x}^j
+  .\]%
+  Setting $s = 0$ and assuming $\gamma$ is unit-speed ($|\dot{\gamma}|_g = 1$), we obtain the integral of the perturbation $f$ along the background geodesic $\gamma$.
+\end{proof}
+
+This result is profound for medical imaging. It implies that if we know the background sound speed of a patient, the \emph{delay} in the arrival of an ultrasound pulse ($\delta d$) is a linear measurement of the internal change in tissue density ($f$).
+\[%
+  \delta d \approx \frac{1}{2} \int_{\gamma} f_{ij} \dot{\gamma}^i \dot{\gamma}^j \dt
+.\]%
+This integral is exactly the definition of the \emph{Geodesic X-ray Transform} of the tensor $f$. Thus, the linearized boundary rigidity problem reduces to the question of whether this transform is injective--that is, whether the set of all path integrals uniquely determines $f$.
+
+\subsection{The Geodesic X-ray Transform} The Geodesic X-ray Transform is the mathematical operator that formalizes the process of probing a manifold's interior via line integrals. Having established that the linearization of the boundary distance function results in an integral of the metric perturbation, we now define this integral as a standalone operator.
+
+\begin{definition}
+  Let $(M, g)$ be a simple Riemannian manifold. Let $\partial_+ SM$ be the set of inward-pointing unit vectors at the boundary. For a smooth function $f \in C^\infty(M)$, the \emph{geodesic X-ray transform} $I f$ is defined as:
+  \[%
+    If(x, v) = \int_{0}^{\tau(x, v)} f(\gamma_{x,v}(t)) \dt
+  ,\]%
+  where $\gamma_{x,v}$ is the geodesic starting at $x \in \partial M$ in direction $v \in S_xM$, and $\tau(x, v)$ is the exit time.
+\end{definition}
+
+In the context of ultrasound imaging, $If$ represents the total accumulation of a scalar property (such as an attenuation coefficient or a temperature-induced speed shift) along the sound ray. The central question is whether $I$ is injective on the space of smooth functions (or more generally, on symmetric tensor fields). If $I$ is injective, then we can uniquely recover the internal structure of the medium from boundary measurements. However, if $I$ has a non-trivial kernel, then there exist non-zero functions that produce zero integrals along all geodesics, leading to non-uniqueness in the reconstruction.
+
+In the specific case of the boundary rigidity problem, we are interested in perturbations of the metric tensor itself. This requires the definition of the transform acting on symmetric tensor fields of order 2. For a symmetric tensor field $f = f_{ij}dx^i \otimes dx^j$, the transform is defined as:
+\[%
+  If(x, v) = \int_{0}^{\tau(x, v)} f_{ij}(\gamma(t)) \dot{\gamma}^i(t) \dot{\gamma}^j(t) \dt
+.\]%
+
+To solve the inverse problem--reconstructing $f$ from $If$--we analyze the properties of $I$.
+\begin{enumerate}
+  \item \textbf{Linearity:} The operator $I$ is linear, which allows us to utilize the tools of linear functional analysis.
+  \item \textbf{The Adjoint ($I^*$):} The adjoint operator, often called the \emph{back-projection operator}, maps data on the boundary back into the interior of the manifold. For a function $\phi$ on the boundary phase space $\partial_+ SM$, the back-projection is:
+    \[%
+      I^*\phi(x) = \int_{S_x M} \phi(\gamma_{x,v}) \dv
+    .\]%
+    This represents ``smearing'' the measured boundary data back along all possible geodesics passing through a point $x$ in the tissue.
+\end{enumerate}
+
+The central question of this section is the \emph{injectivity} of $I$. If $If = 0$, does it necessarily imply that $f = 0$? In the scalar case (functions), the answer for simple manifolds is yes. However, for tensor fields, the existence of ``potential'' fields--tensors that are simply derivatives of coordinate shifts--creates a kernel that we must account for through the concept of \emph{solenoidal injectivity}.
+
+\subsection{Solenoidal Injectivity and Gauge Freedom}
+\label{sub_sec:solenoidal_injectivity_and_gauge_freedom}
+
+In the scalar case, the geodesic X-ray transform I is injective on simple manifolds, meaning the ``image'' is uniquely determined by the data. However, for the tensor fields that arise in the linearization of the boundary rigidity problem, a fundamental ambiguity emerges. This ambiguity, known as \emph{gauge freedom}, arises from the fact that we can smoothly re-parametrize the interior of the manifold without altering the distances measured at the boundary.
+
+In our study of simple manifolds, any vector field $v$ that vanishes on the boundary ($v|_{\partial M} = 0$) can be used to ``push forward'' the metric. In the linearized setting, this corresponds to a specific type of tensor called a \emph{potential tensor}.
+
+\begin{definition}
+  A symmetric $(0,2)$-tensor field $f$ is a \emph{potential tensor} if there exists a vector field $v$ vanishing on the boundary ($v|_{\partial M} = 0$) such that:
+  \[%
+    f = dv := \frac{1}{2}(\nabla_i v_j + \nabla_j v_i) = \nabla_{(i} v_{j)}
+  ,\]%
+  where $\nabla$ is the Levi-Civita connection.
+\end{definition}
+
+The Fundamental Theorem of Calculus along geodesics implies that the integral of a potential tensor along any geodesic $\gamma$ depends only on the values of $v$ at the endpoints. Since $v$ vanishes on the boundary, we have:
+\[%
+  If(\gamma) = \int_{0}^{\tau} \frac{D}{dt} v(\gamma(t)) , dt = v(\gamma(\tau)) - v(\gamma(0)) = 0
+.\]%
+Consequently, potential tensors lie in the \emph{kernel} of the X-ray transform. Physically, this means that a ``tumor'' whose density variation looks like a coordinate stretch is invisible to our ultrasound sensors.
+
+To resolve this, we invoke a geometric version of the Helmholtz decomposition (often called the \emph{Pestov-Uhlmann decomposition}). Every symmetric tensor field $f$ can be uniquely decomposed as:
+\[%
+  f = f^s + dv
+,\]%
+where $f^s$ is the \emph{solenoidal part} (satisfying $\delta f^s = 0$, where $\delta$ is the divergence operator) and $dv$ is the potential part.
+
+Because the potential part is always invisible, the best we can hope for is to recover $f^s$.
+
+\begin{definition}
+  The geodesic X-ray transform $I$ is \emph{solenoidal injective} if $If = 0$ implies that $f$ is a potential tensor (i.e., its solenoidal part $f^s$ is zero).
+\end{definition}
+
+For medical imaging, this results in the conclusion that the boundary rigidity problem is solvable \emph{up to a diffeomorphism}. We can reconstruct the internal structure and the sound speed variations, but the exact ``spatial mapping'' is only determined relative to the boundary. In practice, because the ``skin'' of the patient is fixed by the transducer array, this gauge freedom is physically constrained, allowing for high-fidelity reconstructions of internal anomalies despite the underlying mathematical ambiguity.
+
+\subsection{The Normal Operator and the Back-Projection}
+\label{sub_sec:the_normal_operator_and_the_back_projection}
+
+The final step in our mathematical model of medical imaging is the development of a reconstruction algorithm. While the geodesic X-ray transform $I$ describes the ``forward problem'' (from tissue to data), we require a method to go from data back to tissue. This is achieved through the \emph{back-projection} and the study of the \emph{normal operator}.
+
+The adjoint operator $I^*$, known as back-projection, is the formal dual to the X-ray transform. While $I$ integrates a function along a single geodesic, $I^*$ ``smears'' a piece of boundary data across the manifold along all geodesics that could have produced it.
+
+\begin{definition}
+  For a function $\phi$ defined on the boundary phase space $\partial_+ SM$, the \emph{back-projection} $I^*\phi$ at a point $x \in M$ is the average of $\phi$ over all directions $v \in S_x M$:
+  \[%
+    (I^*\phi)(x) = \int_{S_x M} \phi(\gamma_{x,v}) , d\sigma_x(v)
+  ,\]%
+  where $\dd{\sigma}_x$ is the normalized measure on the unit sphere of the tangent space.
+\end{definition}
+
+In clinical practice, back-projection alone produces a ``blurry'' image of the interior. This blurriness occurs because the back-projection process spreads the signal information back into the manifold in a way that overlaps and loses high-frequency details (sharp edges of organs or tumors).
+
+To obtain a sharp reconstruction, we define the \emph{normal operator} $L = I^* I$. This operator maps a function (or tensor) in the interior back to the interior, passing through the ``bottleneck'' of the boundary data.
+
+\begin{proposition}
+  On a simple Riemannian manifold, the normal operator $L = I^* I$ is a \emph{Pseudodifferential Operator} ($\Psi$DO) of order $-1$. Specifically, its kernel has a singularity of type $1/d_g(x, y)^{n-1}$
+\end{proposition}
+
+Because $L$ is a $\Psi$DO of order $-1$, it acts similarly to a smoothing filter (like an integration). To ``undo'' this smoothing and recover the sharp details of the tissue, we must apply a ``sharpening'' filter, typically a derivative-like operator of order $+1$.
+
+In the Euclidean case (straight-line rays), this is the foundation of the \emph{Filtered Back-Projection (FBP)} algorithm:
+\[%
+  f \approx \Lambda I^* (I f)
+,\]%
+where $\Lambda$ is a filter in the frequency domain. In the curved geometry of a simple manifold, the filter must account for the Riemannian metric $g$. This ensures that the reconstruction correctly places anomalies in their proper ``geometric'' positions, accounting for the way ultrasound rays bend through heterogeneous tissue.
+
+The study of the normal operator proves that if the manifold is simple, the ``information loss'' during a scan is limited and mathematically reversible. This provides the theoretical guarantee that high-resolution ultrasound tomography is possible, even in complex biological environments where the sound speed is non-uniform.

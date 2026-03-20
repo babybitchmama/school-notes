@@ -1,0 +1,172 @@
+\section{Formalizing the Boundary Distance Rigidity Problem}
+\label{sec:formalizing_the_boundary_distance_rigidity_problem}
+
+The boundary distance rigidity problem represents a fundamental inquiry into the relationship between the internal geometry of a manifold and its observable surface data. At its core, the problem asks whether the metric structure of a hidden interior can be uniquely reconstructed by measuring the lengths of the shortest paths--the geodesics--connecting points on its boundary. In the context of medical imaging, this mathematical framework provides the formal justification for ultrasound tomography: if the human body is modeled as a Riemannian manifold $(M, g)$ where the metric $g$ encodes the local sound speed, then the time-of-flight measurements between sensors on the skin constitute the boundary distance data. However, as we shall explore, the transition from surface-level observations to interior reconstruction is complicated by gauge symmetries and topological obstructions. By formalizing this problem, we establish the criteria under which a clinical scan can be considered a mathematically unique and physically accurate representation of internal anatomy.
+
+\subsection{Formalizing the Problem} Let $(M, g)$ be a compact Riemannian manifold with smooth boundary $\partial M$. The distance between two points $x, y \in M$ is defined by the infimum of the lengths of all piecewise smooth curves connecting them:
+\begin{equation}
+  d_g(x, y) = \inf \{\ell_g(\gamma) : \gamma \in C_{pw}^\infty([0, 1], M), \gamma(0) = x, \gamma(1) = y\}
+\end{equation}
+where the length functional $\ell_g(\gamma)$ is given by
+\[%
+  \ell_g(\gamma) = \int_0^1 \sqrt{g(\dot{\gamma}(t), \dot{\gamma}(t))} \dt
+.\]%
+Since $d_g(x, y)$ is defined as an infimum, the paths $\gamma$ that realize this distance are precisely the geodesics of the metric $g$. Consequently, the boundary rigidity problem can be viewed as an attempt to reconstruct the geometry of $M$ by observing the behavior of its ``shortest paths'' as they enter and exit the manifold.
+
+While $d_g$ is defined for all pairs of points in $M$, the \emph{boundary distance function} is the restriction of $d_g$ to the pairs of points on the boundary $\partial M$:
+\begin{equation}
+  d_g|_{\partial M \times \partial M} : \partial M \times \partial M \to \R
+,\end{equation}
+which assigns to each pair of boundary points $(x, y)$ the distance $d_g(x, y)$ between them. The challenge lies in determining the metric $g$ at an interior point $p \in M \setminus \partial M$ using only these surface-level observations.
+
+The \emph{Boundary Rigidity Problem} asks the following:
+\begin{problem}
+  Does the knowledge of the boundary distance function $d_g|_{\partial M \times \partial M}$ uniquely determine the metric $g$ in the interior of $M$, up to a diffeomorphism that is the identity on the boundary?
+\end{problem}
+
+This inverse problem is highly relevant in fields where the interior of a medium is inaccessible. In \emph{medical imaging}, for instance, we treat a patient's body as the manifold $M$. If the metric $g$ represents the inverse of the sound speed, the boundary distances correspond to the \emph{time-of-flight} of ultrasound pulses between transducers placed on the skin. By recovering $g$, we effectively reconstruct the internal sound-speed map, allowing for the detection of anomalies such as tumors.
+
+In the context of ultrasound tomography, if we consider a non-homogeneous medium (like human tissue), the ``length'' $\ell_g(\gamma)$ is physically equivalent to the time-of-flight. A regions of high density or stiffness effectively ``warp'' the metric, causing the ultrasound pulses to follow curved trajectories rather than straight lines. The goal of the clinician is to use these arrival times to map out internal variations in tissue density.
+
+\subsection{Gauge Invariance and Isometries} This section will address what the ``up to isometry'' clause of the problem statement means. In particular, we will discuss the concept of gauge invariance and how it relates to the uniqueness of the solution to the boundary rigidity problem.
+\begin{lemma}[Gauge Invariance]
+  If $\psi : M \to M$ is a diffeomorphism such that $\psi|_{\partial M} = \Id$, then $d_{\psi^*g} = d_g$ on $\partial M \times \partial M$.
+\end{lemma}
+\begin{proof}
+  Since $x, y \in \partial M$ and $\psi|_{\partial M} = \Id$, a curve $\gamma$ connects $x$ to $y$ if and only if the transformed curve $\tilde{\gamma} = \psi \circ \gamma$ also connects $x$ to $y$. The length of $\gamma$ with respect to the pullback metric is:
+  \begin{align*}
+    \ell_{\psi^*g}(\gamma) &= \int_0^1 \sqrt{(\psi^*g)_{\gamma(t)}(\dot{\gamma}(t), \dot{\gamma}(t))} \dt \\
+                           &= \int_0^1 \sqrt{g_{\psi(\gamma(t))}(d\psi_{\gamma(t)}\dot{\gamma}(t), d\psi_{\gamma(t)}\dot{\gamma}(t))} \dt
+  \end{align*}
+  By the chain rule, $d\psi_{\gamma(t)}\dot{\gamma}(t) = \frac{d}{dt}(\psi \circ \gamma)(t)$. Thus, the integral is exactly $\ell_g(\psi \circ \gamma)$. Since $\psi$ is a diffeomorphism fixing the boundary, it induces a bijection on the space of paths $\Lambda_{x,y}$. Taking the infimum over all such paths, we conclude $d_{\psi^*g}(x, y) = d_g(x, y)$.
+\end{proof}
+
+\begin{note}
+  The pullback $\psi^*g$ is the unique tensor field such that the map $\psi: (M, \psi^*g) \to (M, g)$ is a Riemannian isometry. Geometrically, this means $\psi$ preserves all intrinsic measurements (lengths, angles, areas), even though it may ``stretch'' or ``warp'' the coordinate representation of the manifold.
+\end{note}
+
+Now, what consequences does this have for the boundary problem? This means that the data cannot distinguish between the metric $g$ and any other metric $\psi^*g$ obtained by pulling back $g$ via diffeomorphisms that fix the boundary. Therefore, the best we can hope for is to recover the metric $g$ up to such a diffeomorphism, which is precisely what the problem statement asserts. This is a nice result, as if we relate it back to medical imaging context. In clinical practice, this isometry represents a non-rigid deformation. While the distances (time-of-flight) remain the same, the ``coordinates'' of a tumor might appear shifted in the reconstructed image. This mathematical obstruction is why clinicians use anatomical landmarks to ``fix'' the gauge, essentially selecting one preferred representative from the isometry class.
+
+We finish this section with a definition of \emph{boundary rigidity}.
+\begin{definition}
+  Let $\C$ be a class of Riemannian metrics on $M$. We say that $g$ is boundary rigid in $\C$ if given any metric $h \in \C$ with $d_g|_{\partial M \times \partial M} = d_h|_{\partial M \times \partial M}$, there exists a diffeomorphism $\psi : M \to M$ such that $\psi|_{\partial M} = \Id$ and $h = \psi^*g$.
+\end{definition}
+
+\subsection{Computational Examples: Flat and Constant Curvature Cases}
+\label{sub_sec:examples}
+
+Before we move on to the more general theory, let's consider some special cases where the boundary rigidity problem can be explicitly solved. These examples will provide intuition for the general case and illustrate how curvature affects the uniqueness of the solution.
+\begin{proposition}
+  Let $D$ be the unit disk in $\R^2$ with the Euclidean metric $g_0$. The boundary distance function $d_{g_0}(x, y) = |x - y|$ uniquely determines $g_0$ up to a boundary-fixing isometry.
+\end{proposition}
+
+\begin{proof}
+  The boundary data provides the lengths of all straight-line segments (chords) connecting points on the circle. In the flat case, these chords are the unique distance-minimizing geodesics. 
+
+  If there existed another metric $g$ with the same boundary distances, the geodesics of $g$ would have to ``bend'' to maintain the same lengths between boundary points. However, a fundamental result in integral geometry (the Santaló formula) implies that any such ``bending'' would necessarily change the total volume or the average length of the paths. In the Euclidean case, the straight-line paths are the ``most efficient'' way to connect boundary points; any deviation into curvature would be detected by the distance function.
+\end{proof}
+
+This specific case allows us to see the ``spirit'' of the Boundary Rigidity Conjecture. The conjecture suggests that the boundary distance function acts as a \emph{hologram}: the information on the 1D boundary $(\partial M)$ is sufficient to encode the geometry of the 2D interior $(M)$. 
+
+In medical imaging, this is the ``Ideal Scan.'' If the human body were a flat Euclidean disk, an ultrasound pulse traveling from transducer $A$ to $B$ would tell us exactly what is on the line segment $AB$. By rotating the transducers, we ``fill in'' the disk with a web of lines. The Boundary Rigidity Problem asks: if those lines are no longer straight (due to the ``refractive index'' of different tissues), can we still untangle the web to see the organs inside?
+
+Before we move on, let's do a few more complicated examples to see how curvature can affect the problem.
+
+\begin{example}[{The Spherical Cap $M \subset \S^2$}]
+  Consider a spherical cap of radius $R=1$ defined by colatitude $\phi \in [0, \alpha]$. The metric in spherical coordinates is $g = d\phi^2 + \sin^2\phi \, d\theta^2$. Let two boundary points be $P_1 = (\alpha, 0)$ and $P_2 = (\alpha, \Delta \theta)$. The boundary distance $d_g$ is the angle $\psi$ between the corresponding unit vectors in $\R^3$, found via the spherical law of cosines:
+  \begin{equation}
+    d_g(P_1, P_2) = \arccos\left(\cos^2\alpha + \sin^2\alpha \cos(\Delta \theta)\right)
+  \end{equation}
+
+  \begin{itemize}
+    \item \textbf{Rigidity:} If $\alpha < \pi/2$, the cap is strictly smaller than a hemisphere. There is a unique minimizing geodesic between any two points, and the metric is boundary rigid.
+    \item \textbf{Failure:} If $\alpha = \pi/2$ (a hemisphere), then for antipodal points on the equator ($\Delta \theta = \pi$), $d_g = \pi$. However, there are infinitely many geodesics (meridians) of length $\pi$ connecting these points. This is a \emph{conjugate point} failure; the boundary data cannot distinguish between these paths, leading to a loss of internal resolution.
+  \end{itemize}
+\end{example}
+
+\begin{example}[{The Flat Cylinder $\S^1 \times [0, L]$}]
+  Consider the cylinder with coordinates $(\theta, z) \in [0, 2\pi) \times [0, L]$ and metric $g = d\theta^2 + dz^2$. For points $P_1 = (0, 0)$ and $P_2 = (\Delta \theta, L)$ on opposite boundary components, the periodicity of $\theta$ implies multiple geodesic paths indexed by winding number $k \in \Z$, with lengths:
+  \begin{equation}
+    \ell_k = \sqrt{(\Delta \theta + 2\pi k)^2 + L^2}
+  \end{equation}
+  The boundary distance function only records the infimum: $d_g(P_1, P_2) = \min_{k \in \Z} \ell_k$.
+
+  \begin{itemize}
+    \item \textbf{Topological Obstruction:} If we perturb the metric $g$ to $g'$ only in a region traversed by a path with $k=1$, but the $k=0$ path remains the shortest, then $d_{g'} = d_g$. The boundary distance function is ``blind'' to any interior changes that do not affect the global minimizer.
+  \end{itemize}
+\end{example}
+
+\begin{example}[{The Toroidal Domain $M \subset \T^2$}]
+  Consider a flat torus $\T^2 = \R^2 / \Z^2$ from which a small disk has been removed to create a boundary $\partial M$. 
+
+  \begin{itemize}
+    \item \textbf{Trapping:} The non-trivial homology of the torus allows for \emph{trapped geodesics}---closed loops or infinite windings that never intersect $\partial M$. 
+    \item \textbf{Consequence:} Because the boundary distance function $d_g$ is defined only by paths that start and end on $\partial M$, it provides zero information regarding the metric in the region containing trapped orbits. We could significantly alter the sound speed within a trapped ``dead zone'' without changing a single value of the boundary distance function, representing a complete failure of rigidity.
+  \end{itemize}
+\end{example}
+
+\begin{example}[The Real Projective Space $\RP^2$]
+  Let $M$ be the manifold formed by taking a hemisphere of $\S^2$ and identifying antipodal points on its boundary (the equator). Topologically, $M$ is the Real Projective Plane. If we remove a small disk from its interior, we obtain a manifold with a single boundary component $\partial M$, which is topologically a M\"obius strip.
+
+  \begin{itemize}
+    \item \textbf{Geodesic Behavior:} Geodesics in $\RP^2$ are the images of great circles from $\S^2$. A critical property of $\RP^2$ is that all geodesics are closed loops of length $\pi$. Specifically, a geodesic starting at $p$ in any direction will return to $p$ after traveling a distance $\pi$.
+
+    \item \textbf{Conjugate Points and the Cut Locus:} In $\RP^2$, every point $p$ has a conjugate point at a distance $\pi/2$ (relative to the sphere's metric). Furthermore, for any point $p$, the \emph{cut locus} $C(p)$ consists of the ``line at infinity'' relative to $p$. 
+
+    \item \textbf{Boundary Distance Computation:} Consider two points $x, y \in \partial M$. Because the manifold ``folds'' back on itself, there are at least two distinct geodesic paths connecting $x$ and $y$:
+      \begin{enumerate}
+        \item The ``short'' arc $\gamma_1$ of length $L$.
+        \item The ``long'' arc $\gamma_2$ that wraps around the non-orientable loop of the M\"obius strip, with length $\pi - L$.
+      \end{enumerate}
+      The boundary distance function only records $d_g(x, y) = \min(L, \pi - L)$.
+  \end{itemize}
+
+  \begin{itemize}
+    \item \textbf{Failure of Rigidity:} $\RP^2$ fails the boundary rigidity problem due to \emph{topological trapping}. One can perturb the metric $g$ to $g'$ inside a small region $U \subset M$. If $U$ is located such that no minimizing geodesics (the ``short'' arcs) pass through it, the change remains invisible to the boundary distance function $d_g$.
+
+    \item \textbf{Formal Failure:} Unlike the spherical cap where $\pi$ is the diameter, in $\RP^2$, the presence of closed geodesics means the manifold is \emph{trapping}. This violates the fundamental requirement for the injectivity of the X-ray transform, as a perturbation $f$ supported on a closed geodesic loop satisfies $If = 0$ for all geodesics entering and exiting the boundary.
+  \end{itemize}
+\end{example}
+
+\subsection{The Scattering Relation} While the boundary distance function $d_g$ provides a scalar measurement of geodesic length, the \emph{scattering relation} $\alpha_g$ captures the full phase-space behavior of geodesics as they interact with the manifold.
+\begin{definition}
+  Let $\partial_+ SM = \{(x, v) \in SM : x \in \partial M, \langle v, \nu(x) \rangle \leq 0\}$ be the set of inward-pointing unit vectors at the boundary. The scattering relation $\alpha_g: \partial_+ SM \to \partial_- SM$ is defined by:
+  \begin{equation}
+    \alpha_g(x, v) = (\gamma_{x,v}(\tau(x,v)), \dot{\gamma}_{x,v}(\tau(x,v)))
+  \end{equation}
+  where $\tau(x,v)$ is the exit time of the geodesic starting at $(x,v)$.
+\end{definition}
+
+For a simple manifold, the scattering relation is a diffeomorphism between the inward and outward boundary bundles. Furthermore, there is a fundamental link between the scattering relation and the boundary distance function: the exit position and direction are uniquely determined by the gradient of $d_g$ with respect to the boundary coordinates. 
+
+In the context of medical imaging, this represents the transition from \emph{time-of-flight tomography} to \emph{diffraction tomography}. By measuring the angle at which an ultrasound wave exits the body, we gain additional information about the internal refractive index gradients. This subsection concludes our survey of boundary data; on simple manifolds, $d_g$ and $\alpha_g$ provide a complete ``holographic'' description of the interior geometry, which we will now utilize to define the linearized X-ray transform.
+
+For a simple manifold $M$, any two points $x, y \in \partial M$ are joined by a unique minimizing geodesic $\gamma_{x,y}$. The initial and final velocities of this geodesic can be recovered by differentiating the distance function with respect to the boundary coordinates.
+
+Let $x, y$ be points on the boundary $\partial M$. Let $v \in T_x M$ be the inward-pointing unit vector such that $\gamma_{x,v}$ is the unique geodesic from $x$ to $y$, and let $w \in T_y M$ be the outward-pointing unit vector (the exit velocity). The scattering relation is defined as $\alpha_g(x, v) = (y, w)$. The link to the distance function is given by the following identities:
+\[%
+  v = -\nabla_x d_g(x, y) \aand w = \nabla_y d_g(x, y)
+,\]%
+where $\nabla_x$ and $\nabla_y$ denote the Riemannian gradient with respect to the first and second variables, restricted to the tangent space of the boundary.
+
+To see why this holds, consider the distance function $d_g(x, \cdot)$ from a fixed point $x$. Its level sets are the distance spheres $S(x, r) = \{z \in M : d_g(x, z) = r\}$. By the Gauss Lemma, the gradient $\nabla_z d_g(x, z)$ is a unit vector that is orthogonal to these distance spheres and points in the direction of the geodesic starting at $x$.
+
+When we restrict our observations to the boundary $\partial M$, we are looking at the ``footprints'' of these geodesics. The tangential component of the gradient $\nabla d_g$ on the boundary tells us the angle at which the geodesic ``hits'' the surface.
+
+Now, why does this matter? This proves that for simple manifolds, the boundary distance function and the scattering relation contain exactly the same information. If you know the travel times between all points on the skin, you mathematically know the exit angles of every ultrasound ray.
+
+Another key fact is that in the language of symplectic geometry, the scattering relation is a canonical transformation (a symplectomorphism) on the cotangent bundle of the boundary. The distance function $d_g$ serves as the generating function for this transformation.
+
+In modern medical imaging, we use phased array transducers. These devices don't just act as a single point-source; they use interference patterns to steer beams and, more importantly, to detect the angle of arrival of returning waves. We have $d_g$ measures the ``time-of-flight'' and $\alpha_g$ measures the ``phase shift'' across the sensor face to determine the exit vector $w$.
+
+By relating $\alpha_g$ to $d_g$, you are showing that these two types of medical data are redundant on ``simple'' tissue, but can be used together to verify the ``Simplicity'' of the organ--if the exit angle doesn't match the gradient of the distance function, the clinician knows there are conjugate points or trapped rays (like those in $\S^2$ or $\RP^2$) interfering with the scan.
+
+A powerful way to visualize the scattering relation is through the lens of Hamiltonian mechanics. In this context, the scattering relation is often referred to as \emph{lens data}. If we consider the manifold $M$ as a region of varying refractive index, $\alpha_g$ describes how the ``optical system'' of the manifold maps an incoming ray $(x, v)$ to an outgoing ray $(y, w)$. 
+
+Because $\alpha_g$ preserves the canonical symplectic form on the cotangent bundle, it implies that the phase-space volume of a beam of geodesics is conserved as it passes through the manifold. Geometrically, this means that while the metric $g$ may focus or disperse rays (lensing), it cannot ``create'' or ``destroy'' information unless the manifold fails to be simple. For instance, in the \emph{Spherical Cap} example from Section~\ref{sub_sec:examples}, the lens data would show a converging effect, where a wide array of incoming vectors is mapped to a narrow set of exit points, eventually collapsing into a singularity at a conjugate point.
+
+The equivalence of $d_g$ and $\alpha_g$ is the theoretical justification for moving beyond traditional X-ray-style ``straight-line'' assumptions. In \emph{Ultrasound Computed Tomography} (USCT), the ``lens data'' is captured by measuring both the time-of-arrival and the pressure gradient across a sensor array.
+\begin{itemize}
+    \item \textbf{Correcting for Refraction:} In heterogeneous tissue, ultrasound rays do not travel in straight lines; they refract at the interfaces of different organs. By measuring the exit vector $w$ (via the phase shift across the transducer), the reconstruction algorithm can ``trace back'' the curved path of the geodesic.
+    \item \textbf{Detecting Non-Simplicity:} In practice, if a clinician observes an exit angle $w$ that deviates significantly from the calculated $\nabla_y d_g$, it serves as a diagnostic flag. Such a discrepancy indicates that the ``simple manifold'' assumption has been violated--perhaps by a highly reflective bone surface or a trapped gas pocket in the bowels--alerting the operator that the resulting image may contain artifacts or ``shadows'' that are mathematically unreliable.
+\end{itemize}

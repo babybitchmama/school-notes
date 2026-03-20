@@ -1,0 +1,315 @@
+\begin{problem}[22.46]
+  An element a of a ring R is idempotent if $a^2 = a$.
+  \begin{enumerate}
+    \item Show that the set of all idempotent elements of a commutative ring is closed under multiplication.
+    \item Find all idempotents in the ring $\Z_6 \times \Z_{12}$.
+  \end{enumerate}
+\end{problem}
+
+\begin{solution}[(i)]
+  Let $R$ be a commutative ring, and let $a,b \in R$ be idempotent elements. Then
+  \[%
+    a^2 = a \aand b^2 = b
+  .\]%
+  We want to show that $ab$ is also idempotent, i.e., that $(ab)^2 = ab$. Using associativity and commutativity of $R$, we compute:
+  \[%
+    (ab)^2 = (ab)(ab) = a(ba)b = a(ab)b = (aa)(bb) = a^2 b^2
+  .\]%
+  Since $a^2 = a$ and $b^2 = b$, this becomes $(ab)^2 = ab$. Thus, $ab$ is idempotent. Therefore, the set of all idempotent elements of a commutative ring is closed under multiplication.
+\end{solution}
+
+\begin{solution}[(ii)]
+  In the direct product ring $\Z_6 \times \Z_{12}$, an element $(a,b)$ is idempotent if and only if
+  \[%
+    (a,b)^2 = (a,b)
+  ,\]%
+  which is equivalent to
+  \[%
+    (a^2, b^2) = (a,b)
+  \]%
+  Thus, $a^2 \equiv a \pmod{6}$ and $b^2 \equiv b \pmod{12}$.
+
+  We solve $a^2 \equiv a \pmod{6}$, i.e., $a(a-1) \equiv 0 \pmod{6}$. Checking $a = 0, 1, 2, 3, 4, 5$:
+  \[%
+    0^2 \equiv 0,\quad 1^2 \equiv 1,\quad 3^2 = 9 \equiv 3,\quad 4^2 = 16 \equiv 4 \pmod{6}.
+  .\]%
+  Thus, the idempotents in $\Z_6$ are $\{0, 1, 3, 4\}$.
+
+  Next, we solve $b^2 \equiv b \pmod{12}$, i.e., $b(b-1) \equiv 0 \pmod{12}$. Checking $b = 0, 1, \dots, 11$:
+  \[%
+    0^2 \equiv 0,\quad 1^2 \equiv 1,\quad 4^2 = 16 \equiv 4,\quad 9^2 = 81 \equiv 9 \pmod{12}
+  .\]%
+  Thus, the idempotents in $\Z_{12}$ are $\{0,1,4,9\}$.
+
+  An element $(a, b)$ is idempotent if and only if $a$ is idempotent in $\Z_6$ and $b$ is idempotent in $\Z_{12}$. Hence, all idempotents are:
+  \[%
+    \{0,1,3,4\} \times \{0,1,4,9\}
+  .\qedhere\]%
+\end{solution}
+
+\begin{problem}[22.48]
+  An element $a$ of a ring $R$ is nilpotent if $a^n = 0$ for some $n \in \Z^+$. Show that if $a$ and $b$ are nilpotent elements of a commutative ring, then $a + b$ is also nilpotent.
+\end{problem}
+
+\begin{solution}
+  Let $R$ be a commutative ring, and suppose that $a,b \in R$ are nilpotent. Then there exist positive integers $m,n \in \Z^+$ such that
+  \[%
+    a^m = 0 \quad \text{and} \quad b^n = 0
+  .\]%
+  We will show that $a + b$ is nilpotent.
+
+  Consider $(a + b)^{m+n}$. By the binomial theorem (which applies since $R$ is commutative), we have
+  \[%
+    (a+b)^{m+n} = \sum_{k=0}^{m+n} \binom{m+n}{k} a^k b^{m+n-k}
+  .\]%
+  Now consider any term $a^k b^{m+n-k}$ in this sum. Either $k \ge m$ or $m + n - k \ge n$. If $k \ge m$, then $a^k = 0$ since $a^m = 0$. If $k < m$, then $m + n - k > n-1$, so $m + n - k \ge n$, and hence $b^{m+n-k} = 0$ since $b^n = 0$. Thus, every term in the sum is zero, so $(a + b)^{m+n} = 0$. Therefore, $a + b$ is nilpotent.
+\end{solution}
+
+\begin{problem}[22.49]
+  Show that a ring $R$ has no nonzero nilpotent element if and only if 0 is the only solution of $x^2 = 0$ in $R$.
+\end{problem}
+
+\begin{solution}
+  Suppose that $R$ has no nonzero nilpotent elements. Let $x \in R$ satisfy $x^2 = 0$. Then $x$ is nilpotent (with $n = 2$), so by assumption we must have $x = 0$. Hence, $0$ is the only solution of $x^2 = 0$ in $R$.
+
+  Conversely, suppose that $0$ is the only solution of $x^2 = 0$ in $R$. Let $a \in R$ be nilpotent, so that $a^n = 0$ for some $n \in \Z^+$. We will show that $a = 0$. Choose $n$ minimal such that $a^n = 0$. If $n = 1$, then $a = 0$, and we are done. Suppose $n > 1$. Then $a^{n-1} \neq 0$ by minimality of $n$, and
+  \[%
+    (a^{n-1})^2 = a^{2n-2} = 0
+  ,\]%
+  since $2n - 2 \ge n$ and $a^n = 0$ implies all higher powers are also $0$. Thus, $a^{n-1}$ is a nonzero element satisfying $(a^{n-1})^2 = 0$, contradicting the assumption that $0$ is the only solution of $x^2 = 0$. Therefore, no nonzero nilpotent elements exist in $R$.
+\end{solution}
+
+\begin{problem}[22.50]
+  Show that a subset $S$ of a ring $R$ gives a subring of $R$ if and only if the following hold:
+  \begin{align*}
+    0 \in S;& \\
+    (a - b) \in S~\text{for all}~a, b \in S;& \\
+    ab \in S~\text{for all}~a, b \in S&
+  .\end{align*}
+\end{problem}
+
+\begin{solution}
+  We prove the statement by showing both directions.
+
+  Suppose that $S$ is a subring of $R$. Then, by definition of a subring:
+  \begin{itemize}
+    \item $0 \in S$.
+    \item If $a, b \in S$, then $a-b \in S$ (since $S$ is closed under addition and additive inverses).
+    \item If $a, b \in S$, then $ab \in S$ (since $S$ is closed under multiplication).
+  \end{itemize}
+  Thus, all three conditions hold.
+
+  Conversely, suppose that $S \subseteq R$ satisfies:
+  \begin{itemize}
+    \item $0 \in S$,
+    \item $a - b \in S$ for all $a, b \in S$,
+    \item $ab \in S$ for all $a, b \in S$.
+  \end{itemize}
+  We show that $S$ is a subring of $R$. First, we show closure under addition. Let $a,b \in S$. Since $b \in S$, we have $0 - b = -b \in S$. Then
+  \[%
+    a + b = a - (-b)
+  ,\]%
+  and since $a, -b \in S$, it follows that $a + b \in S$. Next, $S$ is closed under additive inverses since for any $a \in S$,
+  \[%
+    -a = 0 - a \in S
+  .\]%
+  Closure under multiplication is given by assumption. Thus, $S$ is closed under addition, additive inverses, and multiplication, and contains $0$. Therefore, $S$ is a subring of $R$.
+\end{solution}
+
+\begin{problem}[22.57]
+  A ring $R$ is a Boolean ring if $a^2 = a$ for all $a \in R$, so that every element is idempotent. Show that every Boolean ring is commutative.
+\end{problem}
+
+\begin{solution}
+  Let $R$ be a Boolean ring, so that $a^2 = a$ for all $a \in R$. We will show that $R$ is commutative. First, observe that for any $a \in R$,
+  \[%
+    (a + a)^2 = a + a.
+  \]%
+  Expanding the left-hand side, we get
+  \[%
+    (a + a)^2 = a^2 + aa + aa + a^2 = a + a + a + a = 4a
+  .\]%
+  Thus, $4a = 2a$. So $a + a = 0$ for all $a \in R$. Now let $a, b \in R$. Then
+  \[%
+    (a + b)^2 = a + b
+  .\]%
+  Expanding, we obtain $(a + b)^2 = a + ab + ba + b$. Thus, $a + ab + ba + b = a + b$. Canceling $a + b$ from both sides, we get $ab + ba = 0$. But since $a + a = 0$ for all $a$, we have $x = -x$ for all $x \in R$. Hence,
+  \[%
+    ab = -ab = ba
+  .\]%
+  Therefore, $ab = ba$ for all $a,b \in R$, so $R$ is commutative.
+\end{solution}
+
+\begin{problem}[24.29]
+  Use Fermat's theorem to show that for any positive integer $n$, the integer $n^{37} - n$ is divisible by 383838. [Hint: 383838 = (37)(19)(13)(7)(3)(2).]
+\end{problem}
+
+\begin{solution}
+  We will show that $n^{37} - n$ is divisible by each of the primes $2, 3, 7, 13, 19, 37$, and since these are distinct, their product
+  \[%
+    383838 = 2 \cdot 3 \cdot 7 \cdot 13 \cdot 19 \cdot 37
+  ,\]%
+  will also divide $n^{37} - n$.
+
+  Let $p$ be one of these primes. We consider two cases. If $p \mid n$, then $n \equiv 0 \pmod{p}$, so
+  \[%
+    n^{37} - n \equiv 0 - 0 \equiv 0 \pmod{p}
+  .\]%
+  If $\gcd(n,p) = 1$, then by Fermat's Little Theorem,
+  \[%
+    n^{p-1} \equiv 1 \pmod{p}
+  .\]%
+  Since $p - 1 \mid 36$ for each $p \in \{2, 3, 7, 13, 19, 37\}$, we can write $36 = k(p - 1)$ for some integer $k$. Then
+  \[%
+    n^{36} = (n^{p-1})^k \equiv 1^k \equiv 1 \pmod{p}
+  .\]%
+  Multiplying both sides by $n$, we obtain
+  \[%
+    n^{37} \equiv n \pmod{p}
+  ,\]%
+  so
+  \[%
+    n^{37} - n \equiv 0 \pmod{p}
+  .\]%
+  Thus, for every prime $p \in \{2,3,7,13,19,37\}$, we have
+  \[%
+    p \mid (n^{37} - n)
+  .\]%
+  Since these primes are distinct, their product divides $n^{37} - n$. Therefore,
+  \[%
+    383838 \mid (n^{37} - n)
+  .\qedhere\]%
+\end{solution}
+
+\begin{problem}[24.30]
+  Referring to Exercise 29, find a number larger than 383838 that divides $n^{37} - n$ for all positive integers $n$.
+\end{problem}
+
+\begin{solution}
+  From Exercise 29, we know that $383838 = 2 \cdot 3 \cdot 7 \cdot 13 \cdot 19 \cdot 37$, divides $n^{37} - n$ for all integers $n$. To find a larger integer with the same property, we check whether higher powers of these primes also divide $n^{37} - n$ for all $n$. Note that if $n$ is even, then $n^{37}$ is even, so $n^{37} - n$ is even. If $n$ is odd, then $n^{37}$ is odd, so $n^{37} - n$ is even. Thus,
+  \[%
+    2 \mid (n^{37} - n) \quad \text{for all}~n
+  .\]%
+  But, we can say an even stronger statement. If $n$ is even, both $n^{37}$ and $n$ are divisible by 4 or congruent to 0 or 2 module 4. You can check this directly that $n^{37} \equiv n \pmod{4}$. If $n$ is odd, then $n\equiv 1$ or $3 \pmod{4}$, and in either case, $n^{37} \equiv n \pmod{4}$. Thus,
+  \[%
+    4 \mid (n^{37} - n) \quad \text{for all}~n
+  .\]%
+  However, no higher power of $2$ works in general. For example, taking $n = 2$, we have
+  \[%
+    2^{37} - 2 \equiv 6 \pmod{8}
+  ,\]%
+  so $8 \nmid (n^{37} - n)$ in general.
+
+  For the odd primes $3,7,13,19,37$, one can check that higher powers (such as $p^2$) do not divide $n^{37} - n$ for all $n$. Thus, we cannot increase their exponents. Therefore, the largest integer of this form is obtained by replacing $2$ with $4$:
+  \[%
+    4 \cdot 3 \cdot 7 \cdot 13 \cdot 19 \cdot 37 = 767676
+  .\]%
+  Hence, a number larger than $383838$ that divides $n^{37} - n$ for all positive integers $n$ is $767676$.
+\end{solution}
+
+\begin{problem}[27.32]
+  Let $\phi : R_1 \to R_2$ be a ring homomorphism. Show that there is a unique ring homomorphism $\psi : R_1[x] \to R_2[x]$ such that $\psi(a) = \phi(a)$ for any $a \in R_1$ and $\psi(x) = x$.
+\end{problem}
+
+\begin{solution}
+  Let $\phi : R_1 \to R_2$ be a ring homomorphism. We will construct a ring homomorphism $\psi : R_1[x] \to R_2[x]$, such that $\psi(a) = \phi(a)$ for all $a \in R_1$ and $\psi(x) = x$, and then show it is unique.
+
+  Firstly, we prove its existence. Every polynomial $f(x) \in R_1[x]$ can be written uniquely as
+  \[%
+    f(x) = a_0 + a_1 x + \cdots + a_n x^n
+  ,\]%
+  with $a_i \in R_1$. Define $\psi : R_1[x] \to R_2[x]$ by
+  \[%
+    \psi(f(x)) = \phi(a_0) + \phi(a_1)x + \cdots + \phi(a_n)x^n
+  .\]%
+  That is, $\psi$ applies $\phi$ to each coefficient. Clearly, for $a \in R_1$ (viewed as a constant polynomial), $\psi(a) = \phi(a)$, and $\psi(x) = x$.
+
+  We now check that $\psi$ is a ring homomorphism. For $f(x) = \sum a_i x^i$ and $g(x) = \sum b_i x^i$,
+  \[%
+    \psi(f + g) = \sum \phi(a_i + b_i)x^i = \sum (\phi(a_i) + \phi(b_i))x^i = \psi(f) + \psi(g)
+  .\]%
+  Using the Cauchy product,
+  \[%
+    fg = \sum_{k} \left( \sum_{i+j=k} a_i b_j \right) x^k
+  ,\]%
+  so
+  \[%
+    \psi(fg) = \sum_{k} \phi\!\left(\sum_{i+j=k} a_i b_j\right)x^k = \sum_{k} \left(\sum_{i+j=k} \phi(a_i)\phi(b_j)\right)x^k = \psi(f)\psi(g)
+  .\]%
+  Thus, $\psi$ is a ring homomorphism.
+
+  Next, we prove uniqueness. Suppose $\psi' : R_1[x] \to R_2[x]$ is another ring homomorphism such that $\psi'(a) = \phi(a)$ for all $a \in R_1$ and $\psi'(x) = x$. For any polynomial $f(x) = \sum a_i x^i$, we have
+  \[%
+    \psi'(f(x)) = \sum \psi'(a_i)\,\psi'(x)^i = \sum \phi(a_i)x^i = \psi(f(x))
+  .\]%
+  Thus, $\psi' = \psi$, proving uniqueness.
+
+  Therefore, there exists a unique ring homomorphism $\psi : R_1[x] \to R_2[x]$ such that $\psi(a) = \phi(a)$ for all $a \in R_1$ and $\psi(x) = x$.
+\end{solution}
+
+\begin{problem}[28.38]
+  Find all irreducible polynomials of degree 3 in $\Z_2[x]$.
+\end{problem}
+
+\begin{solution}
+  We work in $\Z_2[x]$, where $\Z_2 = \{0,1\}$. A polynomial of degree $3$ has the form
+  \[%
+    f(x) = x^3 + ax^2 + bx + c, \quad a,b,c \in \Z_2
+  .\]%
+  Since the leading coefficient must be $1$, there are $2^3 = 8$ such polynomials.
+
+  A polynomial of degree $3$ over a field is reducible if and only if it has a root in that field. Thus, $f(x)$ is reducible over $\Z_2$ if and only if $f(0) = 0$ or $f(1) = 0$. We list all degree $3$ polynomials and test for roots:
+  \[%
+    \begin{array}{c|c|c}
+      f(x) & f(0) & f(1) \\ \hline
+      x^3 & 0 & 1 \\
+      x^3+1 & 1 & 0 \\
+      x^3+x & 0 & 0 \\
+      x^3+x+1 & 1 & 1 \\
+      x^3+x^2 & 0 & 0 \\
+      x^3+x^2+1 & 1 & 1 \\
+      x^3+x^2+x & 0 & 1 \\
+      x^3+x^2+x+1 & 1 & 0
+    \end{array}
+  \]
+  A polynomial is irreducible if it has no roots in $\Z_2$, so we look for those with $f(0) \neq 0$ and $f(1) \neq 0$. From the table, these are:
+  \[%
+    x^3 + x + 1 \aand x^3 + x^2 + 1.
+  .\qedhere\]%
+\end{solution}
+
+\begin{problem}[28.39]
+  Find all irreducible polynomials of degree 3 in $\Z_3[x]$.
+\end{problem}
+
+\begin{solution}
+  We work in $\Z_3[x]$, where $\Z_3 = \{0, 1, 2\}$. A polynomial of degree $3$ has the form
+  \[%
+    f(x) = x^3 + ax^2 + bx + c, \quad a,b,c \in \Z_3
+  ,\]%
+  and there are $3^3 = 27$ such polynomials. Over a field, a polynomial of degree $3$ is reducible if and only if it has a root in that field. Thus, $f(x)$ is irreducible over $\Z_3$ if and only if
+  \[%
+    f(0) \neq 0, \quad f(1) \neq 0, \quad f(2) \neq 0
+  .\]%
+
+  We first eliminate all polynomials with a root at 0. We have $f(0) = c$, so $c \neq 0$. Thus $c \in \{1,2\}$. This leaves $3 \cdot 3 \cdot 2 = 18$ polynomials. Then, we eliminate polynomials with a root at 1. We compute
+  \[%
+    f(1) = 1 + a + b + c \not\equiv 0 \pmod{3}
+  .\]%
+  Next, a root at 2. Since $2^2 = 1$ and $2^3 = 2$ in $\Z_3$, we have
+  \[%
+    f(2) = 2 + a(1) + 2b + c = 2 + a + 2b + c \not\equiv 0 \pmod{3}
+  .\]%
+  We now check all $a, b \in \Z_3$ and $c \in \{1, 2\}$ satisfying both conditions. The resulting irreducible polynomials are:
+  \begin{align*}
+    &x^3 + 2x + 1, \\
+    &x^3 + x^2 + 2, \\
+    &x^3 + x^2 + x + 2, \\
+    &x^3 + x^2 + 2x + 1, \\
+    &x^3 + 2x^2 + 1, \\
+    &x^3 + 2x^2 + x + 1, \\
+    &x^3 + 2x^2 + 2x + 2, \\
+    &x^3 + 2x^2 + x + 2
+  .\end{align*}
+  Thus, the irreducible polynomials of degree $3$ in $\Z_3[x]$ are exactly the eight polynomials listed above.
+\end{solution}

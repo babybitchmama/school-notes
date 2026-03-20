@@ -50,6 +50,61 @@
 
   \input{./chapters/chapter-01/master.tex}
   \input{./chapters/chapter-02/master.tex}
+  % \chapter{Boundary Distance Rigidity Problem}
+  % \label{chap:boundary_distance_rigidity_problem}
+
+  % \section{Introduction}
+
+  % Before we state the problem, we require a few definitions first. Let $(M, g)$ be a compact Riemannian manifold with smooth boundary. Define the distance between two points by
+  % \begin{equation}
+  %   d_g(x, y) = \inf\{\ell_g(\gamma) : \gamma \in C_{pw}^\infty([0, 1], M), \gamma(0) = x, \gamma(1) = y\}
+  % ,\end{equation}
+  % where $\ell_g(\gamma)$ is given by
+  % \[%
+  %   \ell_g(\gamma) = \int_0^1 \sqrt{(g\dot{\gamma}(t), \dot{\gamma}(t)} \dt
+  % .\]%
+  % The paths $\gamma$ are the geodesics of the metric $g$. One way to view the problem problem as can we reconstruct the geometry of $M$ by observing the behavior of the geodesics as they enter and leave the manifold.
+
+  % The whole premiss of the problem is working only on the boundary, so we constrict our function to only the boundary of the manifold. We write this as $d|_{\partial M \times \partial M} : \partial M \times \partial M \to \R$.
+
+  % Now formally, the boundary distance rigidity problem states the followings:
+  % \begin{problem}[Boundary Distance Rigidity]\label{prb:boundary_distance_rigidity}
+  %   Let $(M, g)$ be a compact Riemannian manifold with boundary. Suppose you are given the boundary distance function $d_g(x, y)$, where distances are measured by minimizing geodesics in $M$. Does this data determine the metric $gj$ uniquely up to a boundary-fixing isometry?
+  % \end{problem}
+  % This is highly relevant in numerous fields, especially in medical imaging. Say we would like to perform an ultrasound on a patient. We treat their body as the manifold $M$ and the time-of-flight of the ultrasound pulses between the transducers place on the skin represents $g$. How would we try and re-create what the inside of the patient's body looks like?
+
+  % Problem~\ref{prb:boundary_distance_rigidity} is the statement for the general case, but we will be working with the much simpler case, when $M$ is a \emph{simple manifold}, which will be defined in great detail in Chapter~\ref{chap:defining_a_simple_manifold}. Before doing so, I would like to address what the up to isometry portion of the problem means.
+  % \begin{lemma}\label{lma:gauge_invariance}
+  %   If $\psi : M \to M$ is a diffeomorphism such that $\phi|_{\partial M} = \Id$, then $d_{\psi^*g} = d_g$ on $\partial M \times \partial M$.
+  % \end{lemma}
+  % What exactly is this lemma stating? Well, given a function, $\psi$ on the entire manifold $M$, Lemma~\ref{lma:gauge_invariance} is claiming that the data cannot be distinguished between the metric $g$ and any other metric $\psi^*g$ obtained by pulling back $g$ under a diffeomorphism that fixes the boundary. Imagine that we are taking an ultrasound on a patient. We can define $\psi$ to be the action of the patient breathing. The data cannot distinguish between the true geometry of the patient and a slightly deformed version of it, so long as this deformation does not move the boundary. In other words, from the perspective of boundary measurements alone, $g$ and $\psi^*g$ produce exactly the same data. Therefore, it is impossible to recover the metric uniquely; the best we can hope for is to recover it up to such boundary-fixing diffeomorphisms, i.e., up to a boundary-fixing isometry.
+
+  % \section{Examples}
+
+  % Now, let's work through a few conceptual examples.
+
+  % \begin{examples}
+  %   \begin{enumerate}
+  %     \item Let $M = [0, 1]$ with the metric given by $g = \alpha^2(x)\dx^2$. The boundary of $M$ is given by $\partial M = \{0, 1\}$, and the distance is given by
+  %       \[%
+  %         d_g(0, 1) = \int_0^1 \alpha(x) \dx
+  %       .\]%
+  %       Notice that the integral just spits out a number, but many different $\alpha$'s produce the same number. So, this example isn't rigid, even tho it's rather trivial.
+  %     \item Now, let's take a look at the Euclidean disk, $M = \{x \in \R^2 | \|x\| \le 1\}$.
+  %   \end{enumerate}
+  % \end{examples}
+
+  % \chapter{Defining a Simple Manifold}
+  % \label{chap:defining_a_simple_manifold}
+
+  % \section{Strict Convexity of the Boundary}
+
+  % \section{Non-Trapping Condition}
+
+  % \section{Conjugate Points}
+
+  % \chapter{Worked Examples and their Relations to Medical Imaging}
+  % \label{chap:worked_examples_and_their_relations_to_medical_imaging}
 
   \bibliographystyle{abbrv}
   \bibliography{references}
