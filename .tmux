@@ -16,7 +16,7 @@ fi
 
 tmux new-session -d -s "$SESSION_NAME"
 
-# source ./todo-list/.tmux
+source ./todo-list/.tmux
 
 #######################################################################
 #                                                                     #
@@ -59,7 +59,7 @@ tmux new-session -d -s "$SESSION_NAME"
 ############
 
 # source ./University/Year-2/fall/.tmux
-source ./University/Year-2/winter/.tmux
+# source ./University/Year-2/winter/.tmux
 # source ./University/Year-2/spring/.tmux
 
 tmux rename-window -t "$SESSION_NAME" "Thesis"
