@@ -3,7 +3,7 @@
 \end{problem}
 
 \begin{solution}
-  Squaring $\alpha$ gives $\alpha^2 = 5 + 2\sqrt{6}$. Squaring again gives $\alpha^4 = 49 + 20\sqrt{6}$. Thus, we have $\alpha^4 - 10\alpha^2 + 1 = 0$, so $f(x) = x^4 - 10x^2 + 1$ is a polynomial in $\Q[x]$ such that $f(\alpha) = 0$.
+  We want to find $f(x) \in \C[x]$ such that $f(\alpha) = 0$. Squaring $\alpha$, we get $\alpha^2 = 2 + 3 + 2\sqrt{6} = 5 + 2\sqrt{6}$. Then, $(\alpha - 5)^2 = (2\sqrt{6})^2 = 24$. Thus, we have $(\alpha - 5)^2 - 24 = 0$. Rearranging gives us $\alpha^2 - 10\alpha + 1 = 0$. Thus, we can take $f(x) = x^2 - 10x + 1$.
 \end{solution}
 
 \begin{problem}[39.8]
@@ -11,7 +11,11 @@
 \end{problem}
 
 \begin{solution}
-  Squaring $\alpha$ gives $\alpha^2 = 1 + 2\sqrt{2} + 2i$. Squaring again gives $\alpha^4 = -7 + 4\sqrt{2} + 8i$. Thus, we have $\alpha^4 - 6\alpha^2 + 1 = 0$, so $f(x) = x^4 - 6x^2 + 1$ is a polynomial in $\Q[x]$ such that $f(\alpha) = 0$. Next, we show that $f(x)$ is irreducible over $\Q$.
+  Squaring $\alpha$, we get $\alpha^2 = 1 + 2\sqrt{2}i$. Then, we have $(\alpha^2 - 1)^2 = -8$. Rearranging gives us $\alpha^4 - 2\alpha^2 + 9 = 0$. Thus, we can take $f(x) = x^4 - 2x^2 + 9$. Lastly, we want to show that $f(x)$ is irreducible. Say $f$ has linear factor $x - \beta$. Then, the root $\beta$ must divide 9, so $\beta = \pm 1$, $\pm 3$, or $\pm 9$. But, evaluating the polynomial at all those points gives us a non-zero value, so $f$ has no linear factor. Now, say that $f$ can be written as the product of two quadratics, $f(x) = (x^2 + ax + b)(x^2 + cx + d)$. Expanding, we get:
+  \[%
+    f(x) = (x^2 + ax + b)(x^2 + cx + d) = x^4 + (a + d)x^3 + (e + b + ab)x^2 + (ae + bd)x + be
+  .\]%
+  We have $be = 9$, $b + e = \pm 10$ or $\pm 6$. From this, we get the contradiction that $a = \sqrt{3}$ or $a = -\sqrt{3}$, so $f$ has no quadratic factorization. Thus, $f$ is irreducible over $\Q$, so $\irr(\alpha, \Q) = f(x) = x^4 - 2x^2 + 9$ and $\deg(\alpha, \Q) = 4$.
 \end{solution}
 
 \begin{problem}[39.10]
@@ -31,19 +35,7 @@
 \end{problem}
 
 \begin{solution}
-  We first find what the simple field extension $\Q(\pi^3)$ looks like. Notice that $\Q(\pi^3) = \{a + b\pi^3 : a, b \in \Q\}$, since $\pi^3$ is transcendental over $\Q$. Assume that $\alpha$ is algebraic over $F$. Then, there exists a nonzero polynomial $f(x) \in F[x]$ such that $f(\alpha) = 0$. We can write $f(x)$ as $f(x) = a_nx^n + \cdots a_1x^1 + a_0$. Since $a_i \in F$ for all $i$, we can write $a_i = c_i + d_i\pi^3$ for some $c_i, d_i \in \Q$. Thus, we have:
-  \[%
-    f(x) = (c_n + d_n\pi^3)x^n + \cdots + (c_1 + d_1\pi^3)x^1 + (c_0 + d_0\pi^3)
-  .\]%
-  We can rearrange this to get:
-  \[%
-    f(x) = (c_nx^n + \cdots + c_1x^1 + c_0) + (d_nx^n + \cdots + d_1x^1 + d_0)\pi^3
-  .\]%
-  Since $f(\alpha) = 0$, we have:
-  \[%
-    (c_n\alpha^n + \cdots + c_1\alpha^1 + c_0) + (d_n\alpha^n + \cdots + d_1\alpha^1 + d_0)\pi^3 = 0
-  .\]%
-  This implies that $d_n\alpha^n + \cdots + d_1\alpha^1 + d_0 = 0$, since $\pi^3$ is transcendental over $\Q$. Thus, we have $c_n\alpha^n + \cdots + c_1\alpha^1 + c_0 = 0$. This implies that $\alpha$ is algebraic over $\Q$, which is a contradiction. Thus, $\alpha$ is transcendental over $F$.
+  Say that there exists a vanishing polynomial $f(x) = a_0 + a_1x^1 + \cdots + a_nx^n \in \Q[x]$ such that $f(\pi^2) = 0$. Then, $f(\pi^2) = a_0 + a_1\pi^2 + a_2\pi^4 + \cdots + a_n\pi^{2n} = 0$. This implies that for $g(x) = a_0 + a_1x^2 + \cdots + a_nx^n$, we have $g(\pi) = 0$. This contradicts the fact that $\pi$ is transcendental over $\Q$. Thus, there is no vanishing polynomial for $\alpha$, so $\alpha$ is transcendental over $F$.
 \end{solution}
 
 \begin{problem}[39.17]
@@ -51,6 +43,7 @@
 \end{problem}
 
 \begin{solution}
+  We first divide $x^2 + x + 1$ by $x - \alpha$ using long division. Multiplying $x - \alpha$ by $x$ gives us $x^2 - \alpha x$. Subtracting gives us $x + 1 + \alpha x = (1 + \alpha)x + 1$. Next, we multiply $x - \alpha$ by $1 + \alpha$ to get $(1 + \alpha)x + (1 + \alpha)\alpha$. Subtracting gives us $1 - (1 + \alpha)\alpha = 0$. Thus, we have the factorization $x^2 + x + 1 = (x - \alpha)(x + 1 + \alpha)$ in $(\Z_2(\alpha))[x]$.
 \end{solution}
 
 \begin{problem}[39.18]
@@ -68,7 +61,63 @@
   Thus, $x^2 + 1$ has no roots in $\Z_3$, so it is irreducible over $\Z_3[x]$.
 \end{solution}
 
-\begin{solution}[(ii)]
+\begin{solution}[(ii)] $ $
+
+  \begin{table}[H]
+    \begin{center}
+      \begin{tabular}{c||ccccccccc}
+        + & $0$ & $1$ & $2$ & $\alpha$ & $2\alpha$ & $1+\alpha$ & $1+2\alpha$ & $2+\alpha$ & $2+2\alpha$\\
+        \hline\hline
+        $0$ & $0$ & $1$ & $2$ & $\alpha$ & $2\alpha$ & $1+\alpha$ & $1+2\alpha$ & $2+\alpha$ & $2+2\alpha$ \\
+        \hline
+        $1$ & $1$ & $2$ & $0$ & $1+\alpha$ & $1+2\alpha$ & $2+\alpha$ & $2+2\alpha$ & $\alpha$ & $2\alpha$ \\
+        \hline
+        $2$ & $2$ & $0$ & $1$ & $2+\alpha$ & $2+2\alpha$ & $\alpha$ & $2\alpha$ & $1+\alpha$ & $1+2\alpha$ \\
+        \hline
+        $\alpha$ & $\alpha$ & $1+\alpha$ & $2+\alpha$ & $2\alpha$ & $0$ & $1+2\alpha$ & $1$ & $2+2\alpha$ & $2$ \\
+        \hline
+        $2\alpha$ & $2\alpha$ & $1+2\alpha$ & $2+2\alpha$ & $0$ & $\alpha$ & $1$ & $1+\alpha$ & $2$ & $2+\alpha$ \\  
+        \hline 
+        $1+\alpha$ & $1+\alpha$ & $2+\alpha$ & $\alpha$ & $1+2\alpha$ & $1$ & $2+2\alpha$ & $2$ & $2\alpha$ & $0$ \\ 
+        \hline 
+        $1+2\alpha$ & $1+2\alpha$ & $2+2\alpha$ & $2\alpha$ & $1$ & $1+\alpha$ & $2$ & $2+\alpha$ & $0$ & $\alpha$ \\  
+        \hline 
+        $2+\alpha$ & $2+\alpha$ & $\alpha$ & $1+\alpha$ & $2+2\alpha$ & $2$ & $2\alpha$ & $0$ & $1+2\alpha$ & $1$ \\ 
+        \hline
+        $2+2\alpha$ & $2+2\alpha$ & $2\alpha$ & $1+2\alpha$ & $2$ & $2+\alpha$ & $0$ & $\alpha$ & $1$ & $1+\alpha$ 
+      \end{tabular}
+      \caption{Addition table for $\Z_3(\alpha)$}
+    \end{center}
+  \end{table}
+
+  \begin{table}[H]
+    \begin{center}
+      \begin{tabular}{c||ccccccccc}
+        $\times$ & $0$ & $1$ & $2$ & $\alpha$ & $2\alpha$ & $1+\alpha$ & $1+2\alpha$ & $2+\alpha$ & $2+2\alpha$\\
+        \hline\hline
+        $0$ & $0$ & $0$ & $0$ & $0$ & $0$ & $0$ & $0$ & $0$ & $0$ \\
+        \hline
+        $1$ & $0$ & $1$ & $2$ & $\alpha$ & $2\alpha$ & $1+\alpha$ & $1+2\alpha$ & $2+\alpha$ & $2+2\alpha$ \\
+        \hline
+        $2$ & $0$ & $2$ & $1$ & $2\alpha$ & $\alpha$ & $2+2\alpha$ & $2+\alpha$ & $1+2\alpha$ & $1+\alpha$ \\
+        \hline
+        $\alpha$ & $0$ & $\alpha$ & $2\alpha$ & $2$ & $1$ & $2+\alpha$ & $1+\alpha$ & $2+2\alpha$ & $1+2\alpha$ \\
+        \hline
+        $2\alpha$ & $0$ & $2\alpha$ & $\alpha$ & $1$ & $2$ & $1+2\alpha$ & $2+2\alpha$ & $1+\alpha$ & $2+\alpha$ \\  
+        \hline 
+        $1+\alpha$ & $0$ & $1+\alpha$ & $2+2\alpha$ & $2+\alpha$ & $1+2\alpha$ & $2\alpha$ & $2$ & $0$ & $\alpha$ \\ 
+        \hline 
+        $1+2\alpha$ & $0$ & $1+2\alpha$ & $2+\alpha$ & $1+\alpha$ & $2+2\alpha$ & $2$ & $\alpha$ & $2\alpha$ & $1$ \\  
+        \hline 
+        $2+\alpha$ & $0$ & $2+\alpha$ & $1+2\alpha$ & $2+2\alpha$ & $1+\alpha$ & $0$ & $2\alpha$ & $\alpha$ & $2$ \\ 
+        \hline
+        $2+2\alpha$ & $0$ & $2+2\alpha$ & $1+\alpha$ & $1+2\alpha$ & $2+\alpha$ & $\alpha$ & $1$ & $2$ & $2\alpha$ 
+      \end{tabular}
+      \caption{Multiplication table for $\Z_3(\alpha)$}
+    \end{center}
+  \end{table}
+
+  These tables were generated using the fact that $\alpha^2 = -1$ and the distributive property of multiplication over addition.
 \end{solution}
 
 \begin{problem}[39.24]
@@ -80,35 +129,11 @@
 \end{problem}
 
 \begin{solution}[(i)]
-  We'll construct the subfield $F$ of $\R$ as follows. Let $F = \{a + b\pi + c\pi^2 + d\pi^3 : a, b, c, d \in \Q\}$. You can easily check that this is indeed a subfield of $\R$. Next, we show that $\pi$ is algebraic of degree 3 over $F$. Notice that $\pi$ is a root of the polynomial $f(x) = x^3 - \pi^3 \in F[x]$. To show that $\pi$ is algebraic of degree 3 over $F$, we need to show that $f(x)$ is irreducible over $F$. Assume that $f(x)$ is reducible over $F$. Then, there exists a non constant polynomial $g(x) \in F[x]$ such that $g(x) \mid f(x)$. Since $f(x)$ is a cubic polynomial, we must have $\deg(g(x)) = 1$. Thus, we can write $g(x) = x - r$ for some $r \in F$. Since $g(x) \mid f(x)$, we have $f(r) = 0$, which implies that $r^3 = \pi^3$. This implies that $r = \pi$, since $\pi$ is positive. However, this contradicts the fact that $r \in F$, since $\pi$ is transcendental over $\Q$. Thus, $f(x)$ is irreducible over $F$, so $\pi$ is algebraic of degree 3 over $F$.
+  Take the vanishing polynomial $f(x) = x^3 - \pi^3$. We now, have to show irreducibility. Assume that $f$ has a linear factor $x - \beta$. Then $\beta \in \Q$ must divide $\pi^3$. But if $k\beta = \pi^3$, then $\pi^3$ would be rational, which is a contradiction. Thus, there is no linear factor. Since $f$ has degree 3, it cannot have a quadratic factorization. Thus, $f$ is irreducible over $\Q$, so we can take $F = \Q(\pi) = \Q[x]/\braket{f(x)} \subset \R$, such that $\pi$ is algebraic of degree 3 over $F$.
 \end{solution}
 
 \begin{solution}[(ii)]
-  We can construct the subfield $E$ of $\R$ similarly to how we did in part (i). Take $E = \{a + \cdots ge^5 : a, b, c, d, g \in \Q\}$. Again, you can easily check that this is indeed a subfield of $\R$. Next, we show that $e^2$ is algebraic of degree 5 over $E$. Notice that $e^2$ is a root of the polynomial $f(x) = x^5 - e^{10} \in E[x]$. To show that $e^2$ is algebraic of degree 5 over $E$, we need to show that $f(x)$ is irreducible over $E$. Assume that $f(x)$ is reducible over $E$. Then, there exists a non constant polynomial $g(x) \in E[x]$ such that $g(x) \mid f(x)$. Since $f(x)$ is a quintic polynomial, we must have $\deg(g(x)) = 1$ or $\deg(g(x)) = 2$. If $\deg(g(x)) = 1$, then we can write $g(x) = x - r$ for some $r \in E$. Since $g(x) \mid f(x)$, we have $f(r) = 0$, which implies that $r^5 = e^{10}$. This implies that $r = e^2$, since $e$ is positive. However, this contradicts the fact that $r \in E$, since $e$ is transcendental over $\Q$. If $\deg(g(x)) = 2$, then we can write $g(x) = x^2 + ax + b$ for some $a, b \in E$. Since $g(x) \mid f(x)$, we have:
-  \[%
-    f(x) = (x^2 + ax + b)(x^3 + cx^2 + dx + e)
-  .\]%
-  Expanding the right hand side gives us:
-  \[%
-    f(x) = x^5 + (a + c)x^4 + (b + ac + d)x^3 + (bc + ad + e)x^2 + (bd + ae)x + be
-  .\]%
-  Comparing coefficients with the left hand side gives us the following system of equations:
-  \begin{align*}
-    a + c &= 0 \\
-    b + ac + d &= 0 \\
-    bc + ad + e &= 0 \\
-    bd + ae &= 0 \\
-    be &= -e^{10}
-  .\end{align*}
-  From the first equation, we have $c = -a$. Substituting this into the second equation gives us $b - a^2 + d = 0$, which implies that $d = a^2 - b$. Substituting $c = -a$ and $d = a^2 - b$ into the third equation gives us $-ab + a^3 - be + e = 0$, which implies that $e = ab - a^3 + be$. Substituting $c = -a$, $d = a^2 - b$, and $e = ab - a^3 + be$ into the fourth equation gives us $-b^2 + a^4 - abe + a^3b - b^2e + abe = 0$, which simplifies to $-b^2 + a^4 + a^3b - b^2e = 0$. Finally, substituting $c = -a$, $d = a^2 - b$, and $e = ab - a^3 + be$ into the fifth equation gives us $-b(ab - a^3 + be) = -e^{10}$, which simplifies to $-ab^2 + a^4b - b^3e = -e^{10}$. Thus, we have the following system of equations:
-  \begin{align*}
-    c &= -a \\
-    d &= a^2 - b \\
-    e &= ab - a^3 + be \\
-    -b^2 + a^4 + a^3b - b^2e &= 0 \\
-    -ab^2 + a^4b - b^3e &= -e^{10}
-  .\end{align*}
-  From the fourth equation, we have $b^2e = -b^2 + a^4 + a^3b$. Substituting this into the fifth equation gives us $-ab^2 + a^4b - b^3(-b^2 + a^4 + a^3b) = -e^{10}$, which simplifies to $-ab^2 + a^4b + b^5 - a^4b^3 - a^3b^4 = -e^{10}$. Rearranging gives us $-ab^2 + a^4b + b^5 - a^4b^3 - a^3b^4 + e^{10} = 0$. This is a polynomial in $a$ and $b$ with coefficients in $E$. Since $E$ is an extension of $\Q$, we can view this as a polynomial in $a$ and $b$ with coefficients in $\Q$. Since $\Q$ is infinite, there exist infinitely many pairs $(a, b) \in \Q \times \Q$ such that this polynomial evaluates to zero. Thus, there exist infinitely many pairs $(a, b) \in E \times E$ such that this polynomial evaluates to zero. This contradicts the fact that there are only finitely many pairs $(a, b) \in E \times E$. Thus, $f(x)$ is irreducible over $E$, so $e^2$ is algebraic of degree 5 over $E$.
+  Take the vanishing polynomial $g(x) = x^5 e^{10}$. We now, have to show irreducibility. Assume that $g$ has a linear factor $x - \beta$. The same logic holds from part (i) to show that $\beta$ cannot be rational. Now, assume that $g$ has a quadratic or cubic factorization. Then, we can write $g(x) = (x^2 + ax + b)(x^3 + cx^2 + dx + e)$. Then $be = e^{10}$, which implies that either $b$ or $e$ is irrational. Thus, there is no quadratic or cubic factorization. Thus, we can take $E = \Q(e) = \Q[x]/\braket{g(x)} \subset \R$, such that $e^2$ is algebraic of degree 5 over $E$.
 \end{solution}
 
 \begin{problem}[39.29]
@@ -140,4 +165,5 @@
 \end{solution}
 
 \begin{solution}[(ii)]
+  For each prime $p \in \Z^+$, consider any irreducible polynomial $f(x) \in \Z_p[x]$ of degree $p$. Such a polynomial exists by part (i). Then, we know that there exists a field extension $E$ of $\Z_p$ containing a zero $\alpha$ of $f$. Then, $\Z_p(\alpha)$ has elements of the form $a + b\alpha, a, b \in \Z_p$. Since $\Z_p$ has $p$ elements, there are $p^2$ such elements in $\Z_p(\alpha)$. Thus, there exist finite fields of $p^2$ elements for every prime $p$ in $\Z^+$.
 \end{solution}
