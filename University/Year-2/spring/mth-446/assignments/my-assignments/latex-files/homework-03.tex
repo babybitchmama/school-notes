@@ -1,0 +1,107 @@
+\begin{problem}[40.33]
+  Let $E$ be an algebraically closed extension field of a field $F$. Show that the algebraic closure $\bar{F}_E$ of $F$ in $E$ is algebraically closed. (Applying this exercise to $\C$ and $\Q$, we see that the field of all algebraic numbers is an algebraically closed field.)
+\end{problem}
+
+\begin{solution}
+  Let $\bar{F}_E$ be the algebraic closure of $F$ in $E$. We want to show that $\bar{F}_E$ is algebraically closed, which means that every non-constant polynomial with coefficients in $\bar{F}_E$ has a root in $\bar{F}_E$. Let $f(x) \in \bar{F}_E[x]$ be a non-constant polynomial. Since $\bar{F}_E$ is an algebraic closure of $F$ in $E$, every element of $\bar{F}_E$ is algebraic over $F$. Therefore, the coefficients of $f(x)$ are algebraic over $F$. Since $E$ is an algebraically closed extension field of $F$, the polynomial $f(x)$ has a root $\alpha$ in $E$.
+
+  Now, we need to show that $\alpha$ is actually in $\bar{F}_E$. Since $\alpha$ is a root of $f(x)$, it is algebraic over $\bar{F}_E$. Moreover, since the coefficients of $f(x)$ are algebraic over $F$, $\alpha$ is also algebraic over $F$. Therefore, $\alpha$ is algebraic over $F$ and belongs to $E$, which means that $\alpha$ must be in $\bar{F}_E$ (since $\bar{F}_E$ contains all elements of $E$ that are algebraic over $F$).
+\end{solution}
+
+\begin{problem}[40.35]
+  Show that no finite field of odd characteristic is algebraically closed. (Actually, no finite field of characteristic 2 is algebraically closed either.) [Hint: By counting, show that for such a finite field $F$, some polynomial $x^2 - a$, for some $a \in F$, has no zero in $F$. See Exercise 32, Section 39.]
+\end{problem}
+
+\begin{solution}
+  Assume that we have a finite field of odd characteristic, say $F$, with $q$ elements. We want to show that $F$ is not algebraically closed. Consider the polynomial $f(x) = x^2 - a$ for some $a \in F$. We will show that there exists an element $a \in F$ such that $f(x)$ has no root in $F$. Since $F$ has $q$ elements, there are $q$ possible values for $a$. For each $a \in F$, the polynomial $f(x) = x^2 - a$ has at most 2 roots in $F$ (since it is a quadratic polynomial). Therefore, the total number of roots of all such polynomials is at most $2q$. However, since there are $q$ choices for $a$, the total number of roots can be at most $2q$. But we know that there are only $q$ elements in $F$, so by the pigeonhole principle, there must be some element in $F$ that is not a root of any of these polynomials. This means that there exists some $a \in F$ such that the polynomial $x^2 - a$ has no root in $F$, which implies that $F$ is not algebraically closed.
+\end{solution}
+
+\begin{problem}[41.3]
+  Using the proof of Theorem 41.11, show that the regular 9-gon is not constructible.
+\end{problem}
+
+\begin{solution}
+  Let $\theta = 40^\circ$. Then, $\cos(3\theta) = 4\cos^3(\theta) - 3\cos(\theta)$. Letting $\alpha = \cos(\theta)$, we get:
+  \[%
+    4\alpha^3 - 3\alpha = -\frac{1}{2}
+  ,\]%
+  since $\cos(120^\circ) = -1/2$. Thus, $\alpha$, the length of of one vertex of the polygon centered at the point of the polygon, is a zero of the polynomial:
+  \[%
+    f(x) = 8x^3 - 6x + 1
+  .\]%
+  By Theorem 28.12, $f(x)$ has no roots in the rationals, implying that $f(x)$ is irreducible over $\Q$. Thus, $[\Q(\alpha) : \Q] = 3$. Therefore, $120^\circ = 30^\circ \times 40^\circ$ cannot be trisected, implying that the regular 9-gon is inconstructible.
+\end{solution}
+
+\begin{problem}[42.4]
+  Find the number of primitive 8th roots of unity in $\GF(9)$.
+\end{problem}
+
+\begin{solution}
+  The finite field $\GF(9)$ is an algebraic extension of $\GF(3)$ of degree 2, which means that $\GF(9)$ contains 9 elements. The multiplicative group of nonzero elements in $\GF(9)$ is cyclic of order 8. Therefore, there are $\phi(8)$ primitive 8th roots of unity in $\GF(9)$, where $\phi$ is Euler's totient function. Computing, we find that $\phi(8) = 4$. Therefore, there are 4 primitive 8th roots of unity in $\GF(9)$.
+\end{solution}
+
+\begin{problem}[42.6]
+  Find the number of primitive 15th roots of unity in $\GF(31)$.
+\end{problem}
+
+\begin{solution}
+  Notice that 31 is a prime number, so $\GF(31)$ is a finite field with 31 elements. The multiplicative group of nonzero elements in $\GF(31)$ is cyclic of order 30. To find the number of primitive 15th roots of unity in $\GF(31)$, we need to find the number of elements in the multiplicative group that have order 15. The number of elements of order $d$ in a cyclic group of order $n$ is given by $\phi(d)$ if $d$ divides $n$, and 0 otherwise. Since 15 divides 30, we can compute $\phi(15)$, which is 8. Therefore, there are 8 primitive 15th roots of unity in $\GF(31)$.
+\end{solution}
+
+\begin{problem}[42.9]
+  Let $\overline{\Z}_2$ be an algebraic closure of $\Z_2$, and let $\alpha, \beta \in \overline{\Z}_2$ be zeros of $x^3 + x^2 + 1$ and of $x^3 + x + 1$, respectively. Using the results of this section, show that $\Z_2(\alpha) = \Z_2(\beta)$.
+\end{problem}
+
+\begin{solution}
+  First, we note that both $x^3 + x^2 + 1$ and $x^3 + x + 1$ are irreducible polynomials over $\Z_2$, as their roots aren't contained in $\Z_2$. Therefore, the degree of both fields $\Z_2(\alpha)$ and $\Z_2(\beta)$ over $\Z_2$ is 3, which is prime. The order of both fields is $2^3 = 8$, which means that both fields are isomorphic to $\GF(8)$. By Lemma 42.8, the polynomial $x^8 - x$, has exactly 8 roots in $\GF(8)$, which are precisely the elements of $\GF(8)$. Since both $\alpha$ and $\beta$ are roots of $x^8 - x$, they must be elements of $\GF(8)$. Therefore, both $\Z_2(\alpha)$ and $\Z_2(\beta)$ are subfields of $\GF(8)$ that contain $\Z_2$. Since there is only one subfield of $\GF(8)$ that contains $\Z_2$ (which is $\GF(8)$ itself), we conclude that $\Z_2(\alpha) = \Z_2(\beta) = \GF(8)$.
+\end{solution}
+
+\begin{problem}[42.11]
+  Let $F$ be a finite field of $p^n$ elements containing the prime subfield $\Z_p$. Show that if $\alpha \in F$ is a generator of the cyclic group $\braket{F^*, \cdot}$, of nonzero elements of $F$, then $\deg(\alpha, \Z_p) = n$.
+\end{problem}
+
+\begin{solution}
+  Let $F$ be a finite field of $p^n$ elements, and let $\alpha \in F$ be a generator of the cyclic group of nonzero elements of $F$. Since $\alpha$ generates the multiplicative group of $F$, the order of $\alpha$ is $p^n - 1$. The degree of $\alpha$ over $\Z_p$ is the smallest positive integer $d$ such that $\alpha^d \in \Z_p$. Since $\Z_p$ has only $p$ elements, we have that $\alpha^d = 1$ for some positive integer $d$. The order of $\alpha$ divides $d$, which means that $p^n - 1$ divides $d$. Therefore, the degree of $\alpha$ over $\Z_p$ is at least $n$. On the other hand, since $\alpha \in F$, we have that $\alpha$ is algebraic over $\Z_p$, and its minimal polynomial has degree at most $n$. Therefore, the degree of $\alpha$ over $\Z_p$ is at most $n$. Combining these two inequalities, we conclude that $\deg(\alpha, \Z_p) = n$.
+\end{solution}
+
+\begin{problem}[42.12]
+  Show that a finite field of $p^n$ elements has exactly one subfield of $p^m$ elements for each divisor $m$ of $n$.
+\end{problem}
+
+\begin{solution}
+  Let $F$ be a finite field of $p^n$ elements. Let $m$ be a divisor $n$. First, we will show that there exists a subfield of $F$ with $p^m$ elements. Consider the polynomial $x^{p^m} - x$. This polynomial has at most $p^m$ roots in $F$, and since $F$ has $p^n$ elements, it must have exactly $p^m$ roots in $F$. Let $K$ be the set of these roots. Then $K$ is a subfield of $F$ with $p^m$ elements.
+\end{solution}
+
+\begin{problem}[42.13]
+  Show that $x^{p^n} - x$ is the product of all monic irreducible polynomials in $\Z_p[x]$ of a degree $d$ dividing $n$.
+\end{problem}
+
+\begin{solution}
+  Since $\Z_p$ is a field of prime characteristic, $x^{p^n} - x$ has $p^n$ roots in the closure of $\Z_p$, $\overline{Z}_p$. Therefore, we can write it as follows:
+  \[%
+    f(x) = x^{p^n} - x = \prod_{\alpha \in \overline{\Z}_p} (x - \alpha)
+  .\]%
+  Taking the derivative of $x^{p^n} - x$, we get:
+  \[%
+    \odv{f}{x} = \odv{}{x} \left(x^{p^n} - x\right) = p^nx^{p^n-1} - 1
+  .\]%
+  Since $f(x)$ and $f'(x)$ share no roots, each $\alpha$ has a multiplicity of 1 in $f(x)$.
+\end{solution}
+
+\begin{problem}[42.14]
+  Let $p$ be an odd prime.
+  \begin{enumerate}
+    \item Show that for $a \in \Z$, where $a \not\equiv 0 \pmod{p}$, the congruence $x^2 \equiv a \pmod{p}$ has a solution in $\Z$ if and only if $a^{(p-1)/2} \equiv 1 \pmod{p}$. [Hint: Formulate an equivalent statement in the finite field $\Z_p$, and use the theory of cyclic groups.]
+    \item Using part (i), determine whether or not the polynomial $x^2 - 6$ is irreducible in $\Z_{17}[x]$.
+  \end{enumerate}
+\end{problem}
+
+\begin{solution}[(i)]
+  Assume that $x^2 \equiv a \pmod{p}$. Re-writing, we have $x^2 - a \equiv 0 \pmod{p}$. Let $f(x) = x^2 - a$. Then, there exists some $\alpha \in \Z_p$ such that $f(\alpha) = 0$. Since $\Z_p$ is a finite field, its multiplicative group of nonzero elements is cyclic. Let $g$ be a generator of this group. Then, we can write $\alpha = g^m$, for some $m \in \Z_p$. Substituting back into the equation, we have $g^{2m} \equiv a \pmod{p}$. Since $g$ is a generator, we can write $a = g^k$ for some $k \in \Z_p$. Therefore, we have $g^{2m} \equiv g^k \pmod{p}$, which implies that $2m \equiv k \pmod{p-1}$. This means that $k$ must be even, and we can write $k = 2r$ for some $r \in \Z_p$. Substituting back, we have $a = g^{2r}$, which means that $a^{(p-1)/2} = (g^{2r})^{(p-1)/2} = g^{r(p-1)} = 1 \pmod{p}$.
+
+  Now, conversely, assume that $a^{(p-1)/2} \equiv 1 \pmod{p}$. Since the multiplicative group of nonzero elements in $\Z_p$ is cyclic, we can write $a = g^k$ for some $k \in \Z_p$. Then, we have $a^{(p-1)/2} = (g^k)^{(p-1)/2} = g^{k(p-1)/2} \equiv 1 \pmod{p}$. This implies that $k(p-1)/2$ is a multiple of $p-1$, which means that $k$ must be even. Therefore, we can write $k = 2r$ for some $r \in \Z_p$. Substituting back, we have $a = g^{2r}$, which means that there exists some $\alpha = g^r$ such that $\alpha^2 = a$. Therefore, the congruence $x^2 \equiv a \pmod{p}$ has a solution in $\Z$.
+\end{solution}
+
+\begin{solution}[(ii)]
+  Let $f(x) = x^2 - 6$. By part (i), there exists a solution in $\Z$ if and only if $6^8 \equiv 1 \pmod{p}$. But, computing the value, we find that $6^8 \equiv 16 \pmod{17}$. Therefore, there are no roots for the polynomial $f(x)$ in $\Z$, which means that $f(x)$ is irreducible.
+\end{solution}

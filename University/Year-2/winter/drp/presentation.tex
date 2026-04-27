@@ -13,10 +13,18 @@
 \title{Heat Flow, Geometry, and Ricci Flow}
 \author{
   Jack Bernstein-Sheehan and Hashem Damrah \\
-  \small{Advisor: Arya Yae} \\
+  \small{Mentor: Arya Yae} \\
   \small{University of Oregon}
 }
 \date{\today}
+
+\mode<presentation> { \setbeamercovered{transparent} }
+\makeatletter
+\def\beamerorig@set@color{%
+  \pdfliteral{\current@color}%
+  \aftergroup\reset@color
+}
+\def\beamerorig@reset@color{\pdfliteral{\current@color}}
 
 \begin{document}
   \begin{frame}
@@ -31,7 +39,7 @@
       \item Heat flow acts as a smoothing process.
       \item The behavior of heat depends on the underlying space.
       \item Geometry is encoded by a metric.
-      \item Curvature measures how that geometry bends.
+      \item Curvature measures how that geometry ``bends''.
       \item Ricci flow: evolve the metric the same way heat evolves temperature.
     \end{itemize}
   \end{frame}
@@ -77,34 +85,10 @@
       \frac{\partial u}{\partial t} = u_{xx} + u_{yy} = \Delta u
     .\]%
     \begin{itemize}
-      \item $u(x,y,t)$ = temperature
-      \item Heat flows from high to low
+      \item $u(x,y,t)$ = temperature.
+      \item Heat flows from high to low.
       \item The Laplacian $\Delta u$ measures the ``average concavity'' in all directions.
     \end{itemize}
-  \end{frame}
-
-  %------------------------------------------------
-  % Boundary Conditions
-  %------------------------------------------------
-  \begin{frame}{Boundary Conditions}
-    To solve the heat equation on a bounded domain, we must specify what happens at the boundary $\partial M$.
-    \vspace{0.5cm}
-
-    \begin{block}{Dirichlet Boundary Condition}
-      Fixes the temperature at the boundary.
-      \[%
-        u(x,t) = 0 \quad \text{for } x \in \partial M
-      .\]%
-      \emph{Physical meaning:} The boundary is held at a constant temperature (e.g., submerged in ice water).
-    \end{block}
-
-    \begin{block}{Neumann Boundary Condition}
-      Fixes the heat flux across the boundary.
-      \[%
-        \frac{\partial u}{\partial n}(x,t) = 0 \quad \text{for } x \in \partial M
-      .\]%
-      \emph{Physical meaning:} The boundary is perfectly insulated; no heat enters or escapes.
-    \end{block}
   \end{frame}
 
   %------------------------------------------------
@@ -116,13 +100,39 @@
       \frac{\partial u}{\partial t} = \Delta_{\text{polar}} u = u_{rr} + \frac{1}{r}u_r + \frac{1}{r^2}u_{\theta\theta}
     \]
     \begin{itemize}
-      \item Same physics, different coordinates
-      \item Extra terms come from geometry
-      \item Laplacian depends on how we measure space
+      \item Same physics, different coordinates.
+      \item Extra terms come from geometry.
+      \item Laplacian depends on how we measure space.
     \end{itemize}
 
-    \begin{block}{Remark}
-      This comes from rewriting the Laplacian using the chain rule. The extra terms ($\frac{1}{r}u_r$, etc.) reflect how distances and areas change as you move away from the origin.
+    \begin{block}{Note}
+      The Laplacian in Polar coordinates comes from the pushforward of the Cartesian Laplacian under the coordinate transformation. The extra terms arise because the basis vectors in polar coordinates are not constant and depend on position, leading to additional contributions when applying the chain rule.
+    \end{block}
+  \end{frame}
+
+  %------------------------------------------------
+  % Boundary Conditions
+  %------------------------------------------------
+  \begin{frame}{Boundary Conditions}
+    To solve the heat equation on a bounded domain, we must specify what happens at the boundary $\partial M$.
+    \vspace{0.5cm}
+
+    \pause
+    \begin{block}{Dirichlet Boundary Condition}
+      Fixes the temperature at the boundary:
+      \[%
+        u(x,t) = C \quad \text{for}~x \in \partial M
+      .\]%
+      \emph{Physical meaning:} The boundary is held at a constant temperature (e.g., submerged in ice water).
+    \end{block}
+
+    \pause
+    \begin{block}{Neumann Boundary Condition}
+      Fixes the heat flux across the boundary:
+      \[%
+        \frac{\partial u}{\partial n}(x,t) = C \quad \text{for } x \in \partial M
+      .\]%
+      \emph{Physical meaning:} The boundary is perfectly insulated; no heat enters or escapes.
     \end{block}
   \end{frame}
 
@@ -131,8 +141,8 @@
   %------------------------------------------------
   \begin{frame}{What is a Metric?}
     \begin{itemize}
-      \item A metric tells us how to measure \textbf{distance, angle, and area}
-      \item It encodes the geometry of the space
+      \item A metric tells us how to measure \textbf{distance, angle, and area}.
+      \item It encodes the geometry of the space.
     \end{itemize}
 
     \begin{block}{Examples}
@@ -147,7 +157,7 @@
     \end{block}
     \begin{itemize}
       \item Even flat space looks different under different coordinates.
-      \item The metric determines how derivatives behave.
+      \item The metric determines how the second derivatives (and thus the Laplacian) are computed.
     \end{itemize}
   \end{frame}
 
@@ -197,13 +207,12 @@
     \textbf{The Graph of $u$:}
     \begin{itemize}
       \item The set of points $(x, y, u(x,y))$ in $\mathbb{R}^3$.
-      \item This is a 2D surface sitting \emph{extrinsically} inside 3D space.
+      \item The graph of $u$ can be used to produce an embedding of the 2d manifold in 2d.
     \end{itemize}
 
     \vspace{0.3cm}
     \textbf{The Surface defined by the metric $g = u(x,y)(dx^2 + dy^2)$:}
     \begin{itemize}
-      \item This defines the \emph{intrinsic} geometry of a 2D space.
       \item You do not need a 3D ambient space to measure distances here.
       \item Walking on the $xy$-plane with a ``stretchy ruler'' defined by $u(x,y)$ is fundamentally different from walking on the 3D graph of $u$.
     \end{itemize}
@@ -222,6 +231,14 @@
       u(x,y) = \frac{4}{(1 + x^2 + y^2)^2}
     .\]%
     This maps the flat plane to the standard round sphere via stereographic projection.
+    \begin{figure}[H]
+      \centering
+
+      \includegraphics[width=0.8\textwidth]{./images/fubini-study-metric.png}
+
+      \caption{Fubini-Study metric visualized as a surface in $\mathbb{R}^3$. The geometry of the surface encodes the curvature of the sphere.}
+      \label{fig:}
+    \end{figure}
   \end{frame}
 
   %------------------------------------------------
@@ -230,24 +247,26 @@
   \begin{frame}{Curvature of the Fubini-Study Metric}
     For a conformal metric $g = u(x,y)(dx^2 + dy^2)$, the Gaussian curvature $K$ is given by:
     \[%
-      K = -\frac{1}{2u}\Delta (\ln u)
+      K = -\frac{1}{2u}\Delta (\log u)
     .\]%
     Let's calculate $K$ for Fubini-Study, where $u = 4(1+r^2)^{-2}$ and $r^2 = x^2+y^2$:
     \begin{align*}
-      \ln u &= \ln 4 - 2\ln(1+r^2) \\
-      \Delta (\ln u) &= \left(\frac{\partial^2}{\partial x^2} + \frac{\partial^2}{\partial y^2}\right) (\ln 4 - 2\ln(1+r^2)) \\
-      \partial_x \ln(1+r^2) &= \frac{2x}{1+r^2} \implies \partial_{xx} \ln(1+r^2) = \frac{2(1+r^2) - 4x^2}{(1+r^2)^2} = \frac{2-2x^2+2y^2}{(1+r^2)^2} \\
-      \Delta \ln(1+r^2) &= \frac{2-2x^2+2y^2 + 2-2y^2+2x^2}{(1+r^2)^2} = \frac{4}{(1+r^2)^2} \\
-      \Delta (\ln u) &= -2 \left( \frac{4}{(1+r^2)^2} \right) = -\frac{8}{(1+r^2)^2}
+      \log u &= \log 4 - 2\log(1+r^2) \\ \pause
+      \Delta (\log u) &= \left(\frac{\partial^2}{\partial x^2} + \frac{\partial^2}{\partial y^2}\right) (\log 4 - 2\log(1+r^2)) \\ \pause
+      \partial_x \log(1+r^2) &= \frac{2x}{1+r^2} \\ \pause
+      \partial_{xx} \log(1+r^2) &= \partial{x} \left(\frac{2x}{1+r^2}\right) \\ \pause
+                               &= \frac{2(1+r^2) - 4x^2}{(1+r^2)^2} = \frac{2-2x^2+2y^2}{(1+r^2)^2} \\ \pause
+      \Delta \log(1+r^2) &= \frac{2-2x^2+2y^2 + 2-2y^2+2x^2}{(1+r^2)^2} = \frac{4}{(1+r^2)^2} \\ \pause
+      \Delta (\log u) &= -2 \left( \frac{4}{(1+r^2)^2} \right) = -\frac{8}{(1+r^2)^2}
     .\end{align*}
   \end{frame}
 
   \begin{frame}{Curvature of the Fubini-Study Metric (Cont.)}
     Plugging the Laplacian back into our curvature formula:
     \begin{align*}
-      K &= -\frac{1}{2u}\Delta (\ln u) \\
-        &= -\frac{1}{2 \left( \frac{4}{(1+r^2)^2} \right)} \left( -\frac{8}{(1+r^2)^2} \right) \\
-        &= \frac{(1+r^2)^2}{8} \cdot \frac{8}{(1+r^2)^2} \\
+      K &= -\frac{1}{2u}\Delta (\log u) \\ \pause
+        &= -\frac{1}{2 \left( \frac{4}{(1+r^2)^2} \right)} \left( -\frac{8}{(1+r^2)^2} \right) \\ \pause
+        &= \frac{(1+r^2)^2}{8} \cdot \frac{8}{(1+r^2)^2} \\ \pause
         &= 1
     .\end{align*}
     The Fubini-Study metric describes a surface of \textbf{constant positive curvature} $K=1$, which perfectly matches our geometric intuition of a standard sphere.
@@ -270,6 +289,10 @@
       \[%
         \frac{d^2 \gamma^k}{dt^2} + \sum_{i,j} \Gamma_{ij}^k \frac{d\gamma^i}{dt} \frac{d\gamma^j}{dt} = 0
       .\]%
+      Given a conformal metric, we can compute the geodesic equation as:
+      \[%
+        \nabla_{\dot{\gamma}} \dot{\gamma} = \ddot{\gamma} + \left(\partial_z \log(u^2)\right) \dot{\gamma}^2 = 0
+      .\]%
     \end{block}
   \end{frame}
 
@@ -283,11 +306,15 @@
     .\]%
     For 2D surfaces, $\text{Ric}_{ij} = K g_{ij}$, where $K$ is the Gaussian curvature. The scalar $\rho$ dictates the type of flow:
 
-    \begin{itemize}
+    \begin{itemize}[<+->]
       \item \textbf{$\rho = 0$ (Unnormalized Ricci Flow):} The space shrinks or expands depending on the sign of curvature. Positive curvature shrinks to a point.
       \item \textbf{$\rho = \rho_t$ (Normalized Ricci Flow):} Here, $\rho_t$ is the time-dependent average curvature. This formulation preserves the total area of the surface as it evolves.
       \item \textbf{$\rho = \text{constant}$ (Yamabe Flow):} Evolving the metric by a constant scalar times the metric.
     \end{itemize}
+
+    \begin{block}{Note}
+      Flowing the weight function $u(x,y,t)$ smooths out bumps in the actual embedded manifold. This happens with bubbles in 3D space, as they round out as much as possible given whatever boundary constraints are imposed.
+    \end{block}
   \end{frame}
 
   %------------------------------------------------
@@ -300,6 +327,10 @@
     \[%
       \frac{\partial u}{\partial t} = -2Ku
     .\]%
-    Substitute $K = -\frac{1}{2u}\Delta (\ln u)$, and we get a diffusion-like equation for the conformal factor!
+    Substitute $K = -\frac{1}{2u}\Delta (\log u)$, we get:
+    \[%
+      \frac{\partial u}{\partial t} = -2 \left(-\frac{1}{2u}\Delta (\log u)\right) u = \Delta (\log u)
+    ,\]%
+    which is nice!
   \end{frame}
 \end{document}
