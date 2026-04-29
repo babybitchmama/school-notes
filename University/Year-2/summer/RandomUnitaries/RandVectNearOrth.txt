@@ -1,0 +1,337 @@
+From edcjones@erols.com Sun Oct 10 10:32:58 PDT 1999
+Article: 12974 of sci.math.research
+Path: news.uoregon.edu!hammer.uoregon.edu!vixen.cso.uiuc.edu!orion.math.uiuc.edu!dan
+From: "Edward C. Jones" <edcjones@erols.com>
+Newsgroups: sci.math.research
+Subject: Are "most" vectors in Hilbert Space "almost" orthogonal?
+Date: Thu, 07 Oct 1999 18:54:39 -0400
+Organization: University of Illinois at Urbana-Champaign
+Lines: 9
+Approved: Daniel Grayson, dan@math.uiuc.edu, moderator for sci.math.research
+Message-ID: <37FD24AF.E9A70AEE@erols.com>
+NNTP-Posting-Host: orion.math.uiuc.edu
+Mime-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Transfer-Encoding: 7bit
+X-Trace: 2aGLAqAo52DXepyaBcNQ0UAvMsfUI76bSKme17M/WfQ=
+X-Complaints-To: abuse@rcn.com
+NNTP-Posting-Date: 7 Oct 1999 22:53:06 GMT
+X-Accept-Language:  en
+X-Mailer:  Mozilla 4.7 [en] (X11; I; Linux 2.2.5-22 i586)
+Originator: dan@orion.math.uiuc.edu
+Xref: news.uoregon.edu sci.math.research:12974
+
+Are there any theorems that can be stated informally as:
+
+Let U be the unit ball in separable Hilbert space and let e be in
+U. "Most" vectors in U are "almost" orthogonal to e.
+
+This is a variant of an idea in Roland Omnes, "Understanding
+Quantum Mechanics", Princeton, 1999, p74.
+
+
+
+
+From stephen@math.missouri.edu Sun Oct 10 10:33:06 PDT 1999
+Article: 12976 of sci.math.research
+Path: news.uoregon.edu!hammer.uoregon.edu!vixen.cso.uiuc.edu!orion.math.uiuc.edu!dan
+From: Stephen Montgomery-Smith <stephen@math.missouri.edu>
+Newsgroups: sci.math.research
+Subject: Re: Are "most" vectors in Hilbert Space "almost" orthogonal?
+Date: Fri, 08 Oct 1999 10:17:33 -0500
+Organization: University of Missouri
+Lines: 36
+Approved: Daniel Grayson, dan@math.uiuc.edu, moderator for sci.math.research
+Message-ID: <37FE0B0D.2A9897A@math.missouri.edu>
+References: <37FD24AF.E9A70AEE@erols.com>
+NNTP-Posting-Host: orion.math.uiuc.edu
+Mime-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Transfer-Encoding: 7bit
+X-Mailer: Mozilla 4.6 [en] (X11; I; Linux 2.0.36 i386)
+X-Accept-Language: en
+X-Trace: typ11.nn.bcandid.com 939395891 128.206.72.27 (Fri, 08 Oct 1999 11:18:11 EDT)
+NNTP-Posting-Date: Fri, 08 Oct 1999 11:18:11 EDT
+Originator: dan@orion.math.uiuc.edu
+Xref: news.uoregon.edu sci.math.research:12976
+
+"Edward C. Jones" wrote:
+> 
+> Are there any theorems that can be stated informally as:
+> 
+> Let U be the unit ball in separable Hilbert space and let e be in
+> U. "Most" vectors in U are "almost" orthogonal to e.
+> 
+> This is a variant of an idea in Roland Omnes, "Understanding
+> Quantum Mechanics", Princeton, 1999, p74.
+
+Here is a naive interpretation of your idea.  Probability
+in infinite dimensional Hilbert space is not possible,
+so let's work with N dimensional Hilbert space where
+N is big, say l_2^N.  Let e = (1,0,...,0).  If one
+picks a point x on the unit sphere at random, then
+x.e = x1 gets close to a Gaussian with mean 0 and
+variance 1/N when N is big.  More precisely, sqrt(N) x1
+converges in law to a standard N(0,1) Gaussian as N->infty.
+
+If you don't like this approximation, one can do fairly
+explicit calculations to this effect.
+
+-- 
+
+Stephen Montgomery-Smith              stephen@math.missouri.edu
+307 Math Science Building             stephen@showme.missouri.edu
+Department of Mathematics             stephen@missouri.edu
+University of Missouri-Columbia
+Columbia, MO 65211
+USA
+
+Phone (573) 882 4540
+Fax   (573) 882 1869
+
+http://math.missouri.edu/~stephen
+
+
+
+From rs.1@mindspring.com Sun Oct 10 10:33:14 PDT 1999
+Article: 12978 of sci.math.research
+Path: news.uoregon.edu!hammer.uoregon.edu!vixen.cso.uiuc.edu!husk.cso.niu.edu!news.math.niu.edu!not-for-mail
+From: "r.e.s." <rs.1@mindspring.com>
+Newsgroups: sci.math.research
+Subject: Re: Are "most" vectors in Hilbert Space "almost" orthogonal?
+Date: 9 Oct 1999 23:30:03 -0500
+Organization: MindSpring Enterprises
+Lines: 33
+Approved: Dave Rusin <rusin@math.niu.edu>, moderator for sci.math.research
+Message-ID: <7tlem1$afb$1@nntp4.atl.mindspring.net>
+References: <37FD24AF.E9A70AEE@erols.com> <37FE0B0D.2A9897A@math.missouri.edu>
+NNTP-Posting-Host: vesuvius.math.niu.edu
+X-Trace: gannett.math.niu.edu 939529803 23410 131.156.3.93 (10 Oct 1999 04:30:03 GMT)
+X-Complaints-To: news@math.niu.edu
+NNTP-Posting-Date: 10 Oct 1999 04:30:03 GMT
+Return-Path: <news@nntp4.atl.mindspring.net>
+Xref: news.uoregon.edu sci.math.research:12978
+
+Stephen Montgomery-Smith <stephen@math.missouri.edu> wrote ...
+[...]
+: let's work with N dimensional Hilbert space where
+: N is big, say l_2^N.  Let e = (1,0,...,0).  If one
+: picks a point x on the unit sphere at random, then
+: x.e = x1 gets close to a Gaussian with mean 0 and
+: variance 1/N when N is big.  More precisely, sqrt(N) x1
+: converges in law to a standard N(0,1) Gaussian as N->infty
+
+I wonder if the exact expectation & variance of x1
+might be easily obtained without considerations of
+Gaussian behavior.
+
+In N-dim Euclidean space, with x=(x1,...,xN)~uniform
+on the unit sphere:
+
+N    exact distribution of x1         E(x1)   V(x1)
+---------------------------------------------------
+1    x1~uniform on two points -1,1      0      1
+2    x1~cos(t), t~uniform(0,2*pi)       0      1/2
+3    x1~uniform(-1,1)                   0      1/3
+
+In general, symmetry arguments give E(x1)=0, and
+the above results suggest that V(x1)=1/N (exactly,
+and not only asymptotically), for N=1,2,3,...
+
+Is this correct?  Is the exact result V(x1)=1/N
+easy to prove in general?
+
+--
+r.e.s.
+rs.1@mindspring.com
+
+
+
+From hrubin@stat.purdue.edu Sun Oct 10 10:33:20 PDT 1999
+Article: 12982 of sci.math.research
+Path: news.uoregon.edu!hammer.uoregon.edu!vixen.cso.uiuc.edu!husk.cso.niu.edu!news.math.niu.edu!not-for-mail
+From: hrubin@stat.purdue.edu (Herman Rubin)
+Newsgroups: sci.math.research
+Subject: Re: Are "most" vectors in Hilbert Space "almost" orthogonal?
+Date: 10 Oct 1999 10:00:08 -0500
+Organization: Purdue University Statistics Department
+Lines: 51
+Approved: Dave Rusin <rusin@math.niu.edu>, moderator for sci.math.research
+Message-ID: <7tq4h3$1iju@odds.stat.purdue.edu>
+References: <37FD24AF.E9A70AEE@erols.com> <37FE0B0D.2A9897A@math.missouri.edu> <7tlem1$afb$1@nntp4.atl.mindspring.net>
+NNTP-Posting-Host: vesuvius.math.niu.edu
+X-Trace: gannett.math.niu.edu 939567609 2670 131.156.3.93 (10 Oct 1999 15:00:09 GMT)
+X-Complaints-To: news@math.niu.edu
+NNTP-Posting-Date: 10 Oct 1999 15:00:09 GMT
+Return-Path: <hrubin@stat.purdue.edu>
+Xref: news.uoregon.edu sci.math.research:12982
+
+In article <7tlem1$afb$1@nntp4.atl.mindspring.net>,
+r.e.s. <rs.1@mindspring.com> wrote:
+>Stephen Montgomery-Smith <stephen@math.missouri.edu> wrote ...
+>[...]
+>: let's work with N dimensional Hilbert space where
+>: N is big, say l_2^N.  Let e = (1,0,...,0).  If one
+>: picks a point x on the unit sphere at random, then
+>: x.e = x1 gets close to a Gaussian with mean 0 and
+>: variance 1/N when N is big.  More precisely, sqrt(N) x1
+>: converges in law to a standard N(0,1) Gaussian as N->infty
+
+>I wonder if the exact expectation & variance of x1
+>might be easily obtained without considerations of
+>Gaussian behavior.
+
+>In N-dim Euclidean space, with x=(x1,...,xN)~uniform
+>on the unit sphere:
+
+>N    exact distribution of x1         E(x1)   V(x1)
+>---------------------------------------------------
+>1    x1~uniform on two points -1,1      0      1
+>2    x1~cos(t), t~uniform(0,2*pi)       0      1/2
+>3    x1~uniform(-1,1)                   0      1/3
+
+>In general, symmetry arguments give E(x1)=0, and
+>the above results suggest that V(x1)=1/N (exactly,
+>and not only asymptotically), for N=1,2,3,...
+
+>Is this correct?  Is the exact result V(x1)=1/N
+>easy to prove in general?
+
+Not only is it correct, but it is easy to prove.
+The exact distribution is the symmetric Beta
+distribution on (-1, 1) with density (for N>1)
+C(1 - x^2)^{(N-1)/2 - 1).
+
+This could be obtained from the properties of
+independent Gamma random variables (the normal
+distribution approach mentioned is of that type),
+in particular that the total and the proportions
+are independent, and the proportions for partial]
+sums are Beta; all proportions are Dirchlet.
+
+It can also be obtained by considering the radius
+of the section left at height x.
+-- 
+This address is for information only.  I do not claim that these views
+are those of the Statistics Department or of Purdue University.
+Herman Rubin, Dept. of Statistics, Purdue Univ., West Lafayette IN47907-1399
+hrubin@stat.purdue.edu         Phone: (765)494-6054   FAX: (765)494-0558
+
+
+
+From edgar@math.ohio-state.edu.nospam Sun Oct 10 10:33:27 PDT 1999
+Article: 12977 of sci.math.research
+Path: news.uoregon.edu!logbridge.uoregon.edu!arclight.uoregon.edu!hammer.uoregon.edu!vixen.cso.uiuc.edu!husk.cso.niu.edu!news.math.niu.edu!not-for-mail
+From: "G. A. Edgar" <edgar@math.ohio-state.edu.nospam>
+Newsgroups: sci.math.research
+Subject: Re: Are "most" vectors in Hilbert Space "almost" orthogonal?
+Date: 9 Oct 1999 23:30:01 -0500
+Organization: Ohio State University
+Lines: 23
+Approved: Dave Rusin <rusin@math.niu.edu>, moderator for sci.math.research
+Message-ID: <081019991546093922%edgar@math.ohio-state.edu.nospam>
+References: <37FD24AF.E9A70AEE@erols.com>
+NNTP-Posting-Host: vesuvius.math.niu.edu
+Mime-Version: 1.0
+Content-Type: text/plain; charset=ISO-8859-1
+X-Trace: gannett.math.niu.edu 939529802 23409 131.156.3.93 (10 Oct 1999 04:30:02 GMT)
+X-Complaints-To: news@math.niu.edu
+NNTP-Posting-Date: 10 Oct 1999 04:30:02 GMT
+Return-Path: <news@charm.magnus.acs.ohio-state.edu>
+Mail-Copies-To: nobody
+User-Agent: YA-NewsWatcher/4.2.5
+Xref: news.uoregon.edu sci.math.research:12977
+
+In article <37FD24AF.E9A70AEE@erols.com>, Edward C. Jones
+<edcjones@erols.com> wrote:
+
+> Are there any theorems that can be stated informally as:
+> 
+> Let U be the unit ball in separable Hilbert space and let e be in
+> U. "Most" vectors in U are "almost" orthogonal to e.
+> 
+> This is a variant of an idea in Roland Omnes, "Understanding
+> Quantum Mechanics", Princeton, 1999, p74.
+
+Or, if you like, it is a vague version of the classical isoperimetric
+inequality... In Euclidan space of dimension n, what fraction of
+points on the unit sphere are within 1 degree of being orthogonal
+to the north pole?  How does this fraction behave as n -> infinity?
+Replace 1 degree with any number as close to zero as you like?
+
+-- 
+Gerald A. Edgar              edgar@math.ohio-state.edu
+Department of Mathematics    telephone: 614-292-0395 (Office)
+The Ohio State University      614-292-4975 (Math. Dept.)
+Columbus, OH 43210             614-292-1479 (Dept. Fax)
+
+
+
+From stephen@math.missouri.edu Mon Oct 11 20:54:11 PDT 1999
+Article: 12983 of sci.math.research
+Path: news.uoregon.edu!hammer.uoregon.edu!vixen.cso.uiuc.edu!husk.cso.niu.edu!news.math.niu.edu!not-for-mail
+From: Stephen Montgomery-Smith <stephen@math.missouri.edu>
+Newsgroups: sci.math.research
+Subject: Re: Are "most" vectors in Hilbert Space "almost" orthogonal?
+Date: 11 Oct 1999 00:30:02 -0500
+Organization: bCandid - Powering the world's discussions - http://bCandid.com
+Lines: 45
+Approved: Dave Rusin <rusin@math.niu.edu>, moderator for sci.math.research
+Message-ID: <3800EA8E.795D325@math.missouri.edu>
+References: <37FD24AF.E9A70AEE@erols.com> <37FE0B0D.2A9897A@math.missouri.edu> <7tlem1$afb$1@nntp4.atl.mindspring.net>
+NNTP-Posting-Host: vesuvius.math.niu.edu
+Mime-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+X-Trace: gannett.math.niu.edu 939619804 14884 131.156.3.93 (11 Oct 1999 05:30:03 GMT)
+X-Complaints-To: news@math.niu.edu
+NNTP-Posting-Date: 11 Oct 1999 05:30:03 GMT
+Return-Path: <news@typ11.nn.bcandid.com>
+Xref: news.uoregon.edu sci.math.research:12983
+
+r.e.s. wrote:
+> 
+> 
+> I wonder if the exact expectation & variance of x1
+> might be easily obtained without considerations of
+> Gaussian behavior.
+> 
+> In N-dim Euclidean space, with x=(x1,...,xN)~uniform
+> on the unit sphere:
+> 
+> N    exact distribution of x1         E(x1)   V(x1)
+> ---------------------------------------------------
+> 1    x1~uniform on two points -1,1      0      1
+> 2    x1~cos(t), t~uniform(0,2*pi)       0      1/2
+> 3    x1~uniform(-1,1)                   0      1/3
+> 
+> In general, symmetry arguments give E(x1)=0, and
+> the above results suggest that V(x1)=1/N (exactly,
+> and not only asymptotically), for N=1,2,3,...
+> 
+> Is this correct?  Is the exact result V(x1)=1/N
+> easy to prove in general?
+
+Very easy - since x1, x2, ... xN are identically distributed
+random variables for which the sum of the squares is 1, it 
+quickly follows that E(x1^2) = 1/N.
+
+-- 
+
+Stephen Montgomery-Smith              stephen@math.missouri.edu
+307 Math Science Building             stephen@showme.missouri.edu
+Department of Mathematics             stephen@missouri.edu
+University of Missouri-Columbia
+Columbia, MO 65211
+USA
+
+Phone (573) 882 4540
+Fax   (573) 882 1869
+
+http://math.missouri.edu/~stephen
+
+.
+.
+
+
+
+

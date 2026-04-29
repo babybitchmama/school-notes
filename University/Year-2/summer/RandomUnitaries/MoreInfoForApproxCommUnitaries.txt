@@ -1,0 +1,7 @@
+For numerical computations of winding number invariant, and when
+vanishing of it implies an approximately commuting pair is near a
+commuting pair, see Sections 2 and 3 of:
+
+Terry A. Loring,
+Quantitative K-theory and spin Chern numbers,
+Preprint (arXiv:1302.0349v1 [math.OA]).

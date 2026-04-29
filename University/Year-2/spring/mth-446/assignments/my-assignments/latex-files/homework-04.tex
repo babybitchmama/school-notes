@@ -1,0 +1,134 @@
+\begin{problem}[43.4]
+  Find all conjugates in $\C$ of $\sqrt{2} - \sqrt{3}$ over $\Q$.
+\end{problem}
+
+\begin{solution}
+  Let $x = \sqrt{2} - \sqrt{3}$. Squaring both sides, we get:
+  \[%
+    x^2 = (\sqrt{2} - \sqrt{3})^2 = 2 - 2\sqrt{6} + 3 = 5 - 2\sqrt{6}
+  .\]%
+  Re-arranging, we get $-x^2 + 5 = 2\sqrt{6}$. Squaring both sides again, we get:
+  \[%
+    (x^2 - 5)^2 = 4 \cdot 6 = 24
+  .\]%
+  Expanding the left-hand side, we get $x^4 - 10x^2 + 25 = 24$. Re-arranging, we get $x^4 - 10x^2 + 1 = 0$.
+
+  We show that $f(x) = x^4 - 10x^2 + 1$ is a minimal polynomial of $x$ over $\Q$. Since $f(x)$ is a monic polynomial with rational coefficients, it suffices to show that $f(x) = 0$ and that $f(x)$ is irreducible over $\Q$. Clearly, $f(x) = 0$ by construction.
+
+  We now show that $f(x)$ is irreducible over $\Q$. We start by showing that $f(x)$ has no linear factors over $\Q$. Using the Rational Root Test, the only possible rational roots of $f(x)$ are $\pm 1$. We have $f(1) = 1 - 10 + 1 = -8 \neq 0$ and $f(-1) = 1 - 10 + 1 = -8 \neq 0$. Thus, $f(x)$ has no linear factors over $\Q$.
+
+  Next, we show that $f(x)$ has no quadratic factors over $\Q$. If $f(x)$ has a quadratic factor over $\Q$, then it must be of the form $x^2 + ax + b$ for some $a, b \in \Q$. We have:
+  \begin{align*}
+    f(x) &= (x^2 + ax + b)(x^2 + cx + d) \\
+    &= x^4 + (a + c)x^3 + (ac + b + d)x^2 + (ad + bc)x + bd
+  .\end{align*}
+  Comparing coefficients, we get the following system of equations:
+  \begin{align*}
+    a + c &= 0, \\
+    ac + b + d &= -10, \\
+    ad + bc &= 0, \\
+    bd &= 1
+  .\end{align*}
+  From the first equation, we get $c = -a$. Substituting into the second equation, we get $-a^2 + b + d = -10$. Substituting into the third equation, we get $ad - ab = 0$, which implies that $d = b$. Substituting into the fourth equation, we get $b^2 = 1$, which implies that $b = \pm 1$. If $b = 1$, then we have $-a^2 + 1 + d = -10$, which implies that $d = -9 + a^2$. Substituting into the fourth equation, we get $1 \cdot (-9 + a^2) = 1$, which implies that $a^2 = 10$. This is not possible since $a \in \Q$. If $b = -1$, then we have $-a^2 - 1 + d = -10$, which implies that $d = -9 + a^2$. Substituting into the fourth equation, we get $(-1)(-9 + a^2) = 1$, which implies that $a^2 = 8$. This is not possible since $a \in \Q$. Thus, $f(x)$ has no quadratic factors over $\Q$.
+
+  Lastly, we show that $f(x)$ has no cubic factors over $\Q$. If $f(x)$ has a cubic factor over $\Q$, then it must be of the form $x^3 + ax^2 + bx + c$ for some $a, b, c \in \Q$. We have:
+  \begin{align*}
+    f(x) &= (x^3 + ax^2 + bx + c)(x + d) \\
+    &= x^4 + (a + d)x^3 + (b + ad)x^2 + (c + bd)x + cd
+  .\end{align*}
+  Comparing coefficients, we get the following system of equations:
+  \begin{align*}
+    a + d &= 0, \\
+    b + ad &= -10, \\
+    c + bd &= 0, \\
+    cd &= 1
+  .\end{align*}
+  From the first equation, we get $d = -a$. Substituting into the second equation, we get $b - a^2 = -10$. Substituting into the third equation, we get $c - ab = 0$, which implies that $c = ab$. Substituting into the fourth equation, we get $ab(-a) = 1$, which implies that $a^2b = -1$. Substituting into the second equation, we get $b - a^2 = -10$, which implies that $b = -10 + a^2$. Substituting into the previous equation, we get $a^2(-10 + a^2) = -1$, which implies that $a^4 - 10a^2 + 1 = 0$. This is not possible since $a \in \Q$. Thus, $f(x)$ has no cubic factors over $\Q$.
+
+  Therefore, $f(x)$ is irreducible over $\Q$, making $f(x)$ the minimal polynomial of $x$ over $\Q$. Thus, the conjugates of $\sqrt{2} - \sqrt{3}$ over $\Q$ are the roots of the polynomial $x^4 - 10x^2 + 1$, which are $\sqrt{2} - \sqrt{3}$, $\sqrt{2} + \sqrt{3}$, $-\sqrt{2} - \sqrt{3}$, and $-\sqrt{2} + \sqrt{3}$.
+\end{solution}
+
+\begin{problem}[43.5]
+  Find all conjugates in $\C$ of $\sqrt{2} + i$ over $\Q$.
+\end{problem}
+
+\begin{solution}
+\end{solution}
+
+\begin{problem}[43.6]
+  Find all conjugates in $\C$ of $\sqrt{2} + i$ over $\R$.
+\end{problem}
+
+\begin{solution}
+  We start by finding the vanishing
+\end{solution}
+
+\begin{problem}[43.7]
+  Find all conjugates in $\C$ of $\sqrt{1 + \sqrt{2}}$ over $\Q$.
+\end{problem}
+
+\begin{solution}
+  We start by finding the vanishing polynomial of $\alpha = \sqrt{1 + \sqrt{2}}$. Re-writing, we have $\alpha^2 - 1 = \sqrt{2}$. Squaring both sides, we get $\alpha^4 - 2\alpha^2 - 2 = 0$. Therefore, we have the vanishing polynomial $f(x) = x^4 - 2x^2 - 2$.
+\end{solution}
+
+We consider the field $E = \Q\left(\sqrt{2}, \sqrt{3}, \sqrt{5}\right)$. It can be shown that $[E : \Q] = 8$. In the notation of Theorem 43.18, we have the following conjugation isomorphisms (which are here automorphisms of $E$):
+\begin{align*}
+  \psi_{\sqrt{2},-\sqrt{2}} : (\Q(\sqrt{3}, \sqrt{5}))(\sqrt{2}) &\to (\Q(\sqrt{3}, \sqrt{5}))(-\sqrt{2}), \\
+  \psi_{\sqrt{3},-\sqrt{3}} : (\Q(\sqrt{2}, \sqrt{5}))(\sqrt{3}) &\to (\Q(\sqrt{2}, \sqrt{5}))(-\sqrt{3}), \\
+  \psi_{\sqrt{5},-\sqrt{5}} : (\Q(\sqrt{2}, \sqrt{3}))(\sqrt{5}) &\to (\Q(\sqrt{2}, \sqrt{3}))(-\sqrt{5})
+.\end{align*}
+For shorter notation, let $\tau_2 = \psi_{\sqrt{2},-\sqrt{2}}$ and $\tau_3 = \psi_{\sqrt{3},-\sqrt{3}}$ and $\tau_5 = \psi_{\sqrt{5},-\sqrt{5}}$.
+
+\medskip
+
+\begin{problem}[43.10]
+  Compute $\tau_2(\sqrt{2} + \sqrt{5})$.
+\end{problem}
+
+\begin{solution}
+\end{solution}
+
+\begin{problem}[43.12]
+  Compute $(\tau_5\tau_3)\left(\frac{\sqrt{2} - 3\sqrt{5}}{2\sqrt{3} - \sqrt{2}}\right)$.
+\end{problem}
+
+\begin{solution}
+\end{solution}
+
+\begin{problem}[43.15]
+  Compute $\tau_3\tau_5\tau_3^{-1}(\sqrt{3} - \sqrt{5})$.
+\end{problem}
+
+\begin{solution}
+\end{solution}
+
+\begin{problem}[43.18]
+  Find the fixed field of the automorphism or set of automorphisms of $E$, $\{\tau_2, \tau_3\}$.
+\end{problem}
+
+\begin{solution}
+\end{solution}
+
+\begin{problem}[43.20]
+  Find the fixed field of the automorphism or set of automorphisms of $E$, $\tau_5\tau_3\tau_2$.
+\end{problem}
+
+\begin{solution}
+\end{solution}
+
+\begin{problem}[43.22]
+  \begin{enumerate}
+    \item Show that each of the automorphisms $\tau_2$, $\tau_3$, and $\tau_5$ is of order 2 in $G(E/\Q)$. (Remember what is meant by the order of an element of a group.)
+    \item Find the subgroup $H$ of $G(E/\Q)$ generated by the elements $\tau_2$, $\tau_3$, and $\tau_5$, and give the group table. [Hint: There are eight elements.]
+    \item Just as was done in Example 43.4, argue that the group $H$ of part (b) is the full group $G(E/\Q)$.
+  \end{enumerate}
+\end{problem}
+
+\begin{solution}[(i)]
+\end{solution}
+
+\begin{solution}[(ii)]
+\end{solution}
+
+\begin{solution}[(iii)]
+\end{solution}
