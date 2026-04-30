@@ -1,0 +1,32 @@
+1. What data structure is used to track the positions of all characters, and what do the Boolean values False and True represent in this context?
+
+A list called characters (or actors in some functions) is used to track positions. False represents the left bank and True represents the right bank. The four indices map to [farmer, wolf, goat, cabbage].
+
+2. Trace the flow of the program: Starting from river_crossing_simulation(), list the order in which functions are called during one complete iteration of the game loop. Please write down the names of the functions being called
+
+Starting from river_crossing_simulation():
+
+a. display_description()              - called once before the loop
+b. has_reach_end_state(characters)    - checked in the while condition
+c. show_game_state(characters)        - displays current positions
+d. get_input()                        - collects and validates user input
+e. change_state(characters, choice)   - updates positions based on input
+f. has_reach_end_state(characters)    - checked again at the top of the next loop iteration
+
+3. In the show_game_state() function, how does the code determine whether to add a character to bank0 or bank1? Give a specific example using one character.
+
+It checks whether each character's boolean value is True or False. If actors[index] is True, the character's letter is appended to bank1; otherwise it goes to bank0.
+
+Example using the wolf (actors[1]): if actors[1] is False (left bank), the code runs bank0 = bank0 + "        W". If it were True, it would run bank1 = bank1 + "        W" instead.
+
+4. The get_input() function includes error handling. What specific user inputs are considered invalid, and what happens when a user enters invalid input?
+
+Any input that is not 'h', 'w', 'g', or 'c' (case-insensitive) is considered invalid. When the user enters invalid input, the program prints "Your input is not valid." and then re-prompts with "Please reenter h, w, g or c to move the characters: ". This repeats in a while loop until valid input is provided.
+
+5. Explain the role of the while loop condition in river_crossing_simulation(). What must has_reach_end_state() return for the game to continue running?
+
+The condition is has_reach_end_state(characters) < 1. For the game to keep running, has_reach_end_state() must return 0, meaning no end state has been reached yet. The moment it returns 1 (win or loss), the condition becomes False and the loop exits.
+
+6. The characters list is defined as [False, False, False, False] with indices representing [Human, Wolf, Goat, Cabbage]. Why is it important that this list is passed to multiple functions rather than being defined separately in each function?
+
+Because lists in Python are passed by reference, every function that receives characters is working on the same object in memory. This means changes made in change_state() are immediately visible when has_reach_end_state() or show_game_state() reads it next. If each function defined its own separate list, they would all start at [False, False, False, False] and never share state - moves would have no effect across functions and the game could not progress.

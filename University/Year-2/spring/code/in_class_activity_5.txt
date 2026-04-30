@@ -1,0 +1,59 @@
+1. Please trace the function by keeping track of all the variables at each iteration of the loop.
+
+Iteration | count | count <= 5? | result calculation | result | count after increment
+----------|-------|-------------|--------------------|--------|----------------------
+Initial   |   1   |      -      |         -          |   0    |           -
+1         |   1   |    True     |   0 + 1x2 = 2      |   2    |           2
+2         |   2   |    True     |   2 + 2x2 = 6      |   6    |           3
+3         |   3   |    True     |   6 + 3x2 = 12     |   12   |           4
+4         |   4   |    True     |   12 + 4x2 = 20    |   20   |           5
+5         |   5   |    True     |   20 + 5x2 = 30    |   30   |           6
+End       |   6   |    False    |         -          |   30   |           -
+
+2. Please categorize each statement as True or False.
+a. An int type in Python is immutable: True
+b. A str type in Python is mutable: False
+c. A list type in Python is mutable: True
+
+3. Can you draw a stack diagram for the Python code below:
+
+┌─────────────────────────────┐
+│         __main__            │
+└─────────────────────────────┘
+
+┌─────────────────────────────┐
+│           main()            │
+│   num     → 44              │
+│   num_new → 45              │
+└─────────────────────────────┘
+
+┌─────────────────────────────┐
+│         function1(x)        │
+│   x  → 44                   │
+│   returns 45                │
+└─────────────────────────────┘
+
+┌─────────────────────────────┐
+│        function2(s)         │
+│   s  → "Jesse"              │
+│   prints "HelloJesse"       │
+└─────────────────────────────┘
+
+4. Fill in the blank. Please convert 1278 to decimal.
+
+127_8 = 1 * 64 + 2 * 8 + 7 * 1 = 64 + 16 + 7 = 87
+
+5. Please explain how we can modify/refactor this code to make it a more generalizable function.
+
+The current function is hardcoded for base 2 (binary) because it always uses 2**index. To make it generalizable, you would add a base parameter so it can convert from any base (octal, hexadecimal, etc.) to decimal:
+```python
+def to_dec(st, base):
+    dec_value = 0
+    index = 0
+    while index < len(st):
+        digit = st[-(index + 1)]
+        dec_value += int(digit) * (base ** index)
+        index += 1
+    return dec_value
+```
+Now the same function handles any base; for example, to_dec("127", 8) solves Question 4, and to_dec("1011", 2) still works for binary.

@@ -45,7 +45,36 @@
   .\end{align*}
   From the first equation, we get $d = -a$. Substituting into the second equation, we get $b - a^2 = -10$. Substituting into the third equation, we get $c - ab = 0$, which implies that $c = ab$. Substituting into the fourth equation, we get $ab(-a) = 1$, which implies that $a^2b = -1$. Substituting into the second equation, we get $b - a^2 = -10$, which implies that $b = -10 + a^2$. Substituting into the previous equation, we get $a^2(-10 + a^2) = -1$, which implies that $a^4 - 10a^2 + 1 = 0$. This is not possible since $a \in \Q$. Thus, $f(x)$ has no cubic factors over $\Q$.
 
-  Therefore, $f(x)$ is irreducible over $\Q$, making $f(x)$ the minimal polynomial of $x$ over $\Q$. Thus, the conjugates of $\sqrt{2} - \sqrt{3}$ over $\Q$ are the roots of the polynomial $x^4 - 10x^2 + 1$, which are $\sqrt{2} - \sqrt{3}$, $\sqrt{2} + \sqrt{3}$, $-\sqrt{2} - \sqrt{3}$, and $-\sqrt{2} + \sqrt{3}$.
+  Therefore, $f(x)$ is irreducible over $\Q$, making $f(x)$ the minimal polynomial of $x$ over $\Q$.
+
+  We now determine the conjugates of $\alpha$ over $\Q$. Recall that the conjugates of $\alpha$ are the images $\sigma(\alpha)$ under field embeddings:
+  \[%
+    \sigma : \Q(\alpha) \hookrightarrow \C \qtq{with} \sigma|_{\Q} = \Id
+  .\]%
+  Since $f(\alpha) = 0$ and $\sigma$ fixes $\Q$, we have:
+  \[%
+    0 = \sigma(f(\alpha)) = f(\sigma(\alpha))
+  ,\]%
+  so $\sigma(\alpha)$ must be a root of $f(x)$. Thus every conjugate of $\alpha$ is a root of its minimal polynomial.
+
+  Conversely, if $\beta$ is any root of $f(x)$, then there exists an embedding:
+  \[%
+    \sigma : \Q(\alpha) \hookrightarrow \C \qtq{such that} \sigma(\alpha) = \beta
+  .\]%
+  Hence the conjugates of $\alpha$ are exactly the roots of $f(x)$.
+
+  It remains to compute the roots of $f(x)$. Observe that
+  \[%
+    x^4 - 10x^2 + 1 = 0 \quad \Longleftrightarrow \quad x^2 = 5 \pm 2\sqrt{6}
+  .\]%
+  Therefore, the conjugates of $\alpha = \sqrt{2} - \sqrt{3}$ over $\Q$ are:
+  \[%
+    \sqrt{5 + 2\sqrt{6}}, \quad -\sqrt{5 + 2\sqrt{6}}, \quad \sqrt{5 - 2\sqrt{6}}, \quad -\sqrt{5 - 2\sqrt{6}}
+  ,\]%
+  which can be simplified to:
+  \[%
+    \sqrt{2} - \sqrt{3}, \quad -\sqrt{2} + \sqrt{3}, \quad \sqrt{2} + \sqrt{3}, \quad -\sqrt{2} - \sqrt{3}
+  .\qedhere\]%
 \end{solution}
 
 \begin{problem}[43.5]
@@ -53,6 +82,20 @@
 \end{problem}
 
 \begin{solution}
+  We start by finding the minimal polynomial of $\alpha = \sqrt{2} + i$ over $\Q$. We have $x^2 = (\sqrt{2} + i)^2 = 1 + 2\sqrt{2}i$. Re-arranging, we get $x^2 - 1 = 2\sqrt{2}i$. Squaring both sides, we get $x^4 - 2x^2 + 1 = -8$, which can be re-arranged to $x^4 - 2x^2 + 9 = 0$. Using the same procedure as Exercise 43.4, we can show that $f(x)$ is irreducible over $\Q$, making $f(x)$ the minimal polynomial of $\alpha$ over $\Q$.
+
+  Again, using my work from Exercise 43.4, we can show that the conjugates of $\alpha$ over $\Q$ are exactly the roots of $f(x)$. We have:
+  \[%
+    x^4 - 2x^2 + 9 = 0 \quad \Longleftrightarrow \quad x^2 = 1 \pm 2i\sqrt{2}
+  .\]%
+  Thus, the roots of $f(x)$ are:
+  \[%
+    \sqrt{1 + 2i\sqrt{2}}, \quad -\sqrt{1 + 2i\sqrt{2}}, \quad \sqrt{1 - 2i\sqrt{2}}, \quad -\sqrt{1 - 2i\sqrt{2}}
+  ,\]%
+  which can be simplified to:
+  \[%
+    \sqrt{2} + i, \quad -\sqrt{2} - i, \quad \sqrt{2} - i, \quad -\sqrt{2} + i
+  .\qedhere\]%
 \end{solution}
 
 \begin{problem}[43.6]
@@ -60,7 +103,13 @@
 \end{problem}
 
 \begin{solution}
-  We start by finding the vanishing
+  We start by finding the vanishing. Since $\sqrt{2} \in \R$, we have $x - \sqrt{2} = i$. Squaring both sides, we get $(x - \sqrt{2})^2 = -1$, which can be re-arranged to $x^2 - 2\sqrt{2}x + 3 = 0$. Using the same procedure as Exercise 43.4, we can show that $f(x) = x^2 - 2\sqrt{2}x + 3$ is irreducible over $\R$, making $f(x)$ the minimal polynomial of $\alpha$ over $\R$.
+
+  Again, using my work from Exercise 43.4, we can show that the conjugates of $\alpha$ over $\R$ are exactly the roots of $f(x)$. We have:
+  \[%
+    x^2 - 2\sqrt{2}x + 3 = 0 \quad \Longleftrightarrow \quad x = \sqrt{2} \pm i
+  .\]%
+  Thus, the conjugates of $\alpha$ over $\R$ are $\sqrt{2} + i$ and $\sqrt{2} - i$.
 \end{solution}
 
 \begin{problem}[43.7]
@@ -68,8 +117,19 @@
 \end{problem}
 
 \begin{solution}
-  We start by finding the vanishing polynomial of $\alpha = \sqrt{1 + \sqrt{2}}$. Re-writing, we have $\alpha^2 - 1 = \sqrt{2}$. Squaring both sides, we get $\alpha^4 - 2\alpha^2 - 2 = 0$. Therefore, we have the vanishing polynomial $f(x) = x^4 - 2x^2 - 2$.
+  We start by finding the vanishing polynomial of $\alpha = \sqrt{1 + \sqrt{2}}$. Re-writing, we have $\alpha^2 - 1 = \sqrt{2}$. Squaring both sides, we get $\alpha^4 - 2\alpha^2 - 1 = 0$. Therefore, we have the vanishing polynomial $f(x) = x^4 - 2x^2 - 1$. Using the same procedure as Exercise 43.4, we can show that $f(x)$ is irreducible over $\Q$, making $f(x)$ the minimal polynomial of $\alpha$ over $\Q$.
+
+  Now, applying the same procedure as Exercise 43.4, we can show that the conjugates of $\alpha$ over $\Q$ are exactly the roots of $f(x)$. We have:
+  \[%
+    x^4 - 2x^2 - 1 = 0 \quad \Longleftrightarrow \quad x^2 = 1 \pm \sqrt{2}
+  .\]%
+  Thus, the roots of $f(x)$ are:
+  \[%
+    \sqrt{1 + \sqrt{2}}, \quad -\sqrt{1 + \sqrt{2}}, \quad \sqrt{1 - \sqrt{2}}, \quad -\sqrt{1 - \sqrt{2}}
+  .\qedhere\]%
 \end{solution}
+
+\medskip
 
 We consider the field $E = \Q\left(\sqrt{2}, \sqrt{3}, \sqrt{5}\right)$. It can be shown that $[E : \Q] = 8$. In the notation of Theorem 43.18, we have the following conjugation isomorphisms (which are here automorphisms of $E$):
 \begin{align*}
@@ -86,6 +146,11 @@ For shorter notation, let $\tau_2 = \psi_{\sqrt{2},-\sqrt{2}}$ and $\tau_3 = \ps
 \end{problem}
 
 \begin{solution}
+  Computing $\tau_2(\sqrt{2} + \sqrt{5})$, we have:
+  \begin{align*}
+    \tau_2(\sqrt{2} + \sqrt{5}) &= \tau_2(\sqrt{2}) + \tau_2(\sqrt{5}) \\
+                                &= -\sqrt{2} + \sqrt{5}
+  .\qedhere\end{align*}
 \end{solution}
 
 \begin{problem}[43.12]
@@ -93,6 +158,13 @@ For shorter notation, let $\tau_2 = \psi_{\sqrt{2},-\sqrt{2}}$ and $\tau_3 = \ps
 \end{problem}
 
 \begin{solution}
+  Computing $\tau_5\tau_3\left(\frac{\sqrt{2} - 3\sqrt{5}}{2\sqrt{3} - \sqrt{2}}\right)$, we have:
+  \begin{align*}
+    \tau_5\tau_3\left(\frac{\sqrt{2} - 3\sqrt{5}}{2\sqrt{3} - \sqrt{2}}\right) &= \tau_5\left(\frac{\tau_3(\sqrt{2}) - 3\tau_3(\sqrt{5})}{2\tau_3(\sqrt{3}) - \tau_3(\sqrt{2})}\right) \\
+                                                                               &= \tau_5\left(\frac{\sqrt{2} - 3\sqrt{5}}{-2\sqrt{3} - \sqrt{2}}\right) \\
+                                                                                &= \frac{\tau_5(\sqrt{2}) - 3\tau_5(\sqrt{5})}{-2\tau_5(\sqrt{3}) - \tau_5(\sqrt{2})} \\
+                                                                                &= \frac{\sqrt{2} + 3\sqrt{5}}{-2\sqrt{3} - \sqrt{2}}
+  .\qedhere\end{align*}
 \end{solution}
 
 \begin{problem}[43.15]
@@ -100,6 +172,15 @@ For shorter notation, let $\tau_2 = \psi_{\sqrt{2},-\sqrt{2}}$ and $\tau_3 = \ps
 \end{problem}
 
 \begin{solution}
+  Computing $\tau_3\tau_5\tau_3^{-1}(\sqrt{3} - \sqrt{5})$, we have:
+  \begin{align*}
+    \tau_3\tau_5\tau_3^{-1}(\sqrt{3} - \sqrt{5}) &= \tau_3\tau_5\left(\frac{\sqrt{3} - \sqrt{5}}{\tau_3(\sqrt{3} - \sqrt{5})}\right) \\
+                                                  &= \tau_3\tau_5\left(\frac{\sqrt{3} - \sqrt{5}}{-\sqrt{3} - \sqrt{5}}\right) \\
+                                                  &= \tau_3\left(\frac{\tau_5(\sqrt{3}) - \tau_5(\sqrt{5})}{-\tau_5(\sqrt{3}) - \tau_5(\sqrt{5})}\right) \\
+                                                  &= \tau_3\left(\frac{\sqrt{3} + \sqrt{5}}{-\sqrt{3} + \sqrt{5}}\right) \\
+                                                  &= \frac{\tau_3(\sqrt{3}) + \tau_3(\sqrt{5})}{-\tau_3(\sqrt{3}) + \tau_3(\sqrt{5})} \\
+                                                  &= \frac{-\sqrt{3} + \sqrt{5}}{\sqrt{3} + \sqrt{5}}
+  .\qedhere\end{align*}
 \end{solution}
 
 \begin{problem}[43.18]
@@ -107,6 +188,19 @@ For shorter notation, let $\tau_2 = \psi_{\sqrt{2},-\sqrt{2}}$ and $\tau_3 = \ps
 \end{problem}
 
 \begin{solution}
+  The automorphisms act on the basis elements of $E$ by changing signs. Specifically, $\tau_2$ maps $\sqrt{2} \mapsto -\sqrt{2}$ and fixes $\sqrt{3}, \sqrt{5}$ and $\tau_3$ maps $\sqrt{3} \mapsto -\sqrt{3}$ and fixes $\sqrt{2}, \sqrt{5}$. An element $\alpha \in E$ is written as:
+  \[%
+    \alpha = a_0 + a_1\sqrt{2} + a_2\sqrt{3} + a_3\sqrt{5} + a_4\sqrt{6} + a_5\sqrt{10} + a_6\sqrt{15} + a_7\sqrt{30}
+  .\]%
+  For $\tau_2(\alpha) = \alpha$, all terms involving $\sqrt{2}$ (i.e., $\sqrt{2}, \sqrt{6}, \sqrt{10}, \sqrt{30}$) must have coefficients equal to zero. This simplifies $\alpha$ to:
+  \[%
+    \alpha = a_0 + a_2\sqrt{3} + a_3\sqrt{5} + a_6\sqrt{15}
+  .\]%
+  For $\tau_3(\alpha) = \alpha$ on the remaining terms, all terms involving $\sqrt{3}$ (i.e., $\sqrt{3}, \sqrt{15}$) must have coefficients equal to zero. This leaves:
+  \[%
+    \alpha = a_0 + a_3\sqrt{5}
+  .\]%
+  Thus, the fixed field is $\{a_0 + a_3\sqrt{5} \mid a_0, a_3 \in \Q\}$, which is exactly $\Q(\sqrt{5})$.
 \end{solution}
 
 \begin{problem}[43.20]
@@ -114,6 +208,25 @@ For shorter notation, let $\tau_2 = \psi_{\sqrt{2},-\sqrt{2}}$ and $\tau_3 = \ps
 \end{problem}
 
 \begin{solution}
+  Notice that the basis of $E$ is all products of $\sqrt{2}, \sqrt{3}, \sqrt{5}$, so it suffices to compute $\tau_5\tau_3\tau_2$ on these basis elements. We have:
+  \begin{align*}
+    \sigma(\sqrt{6}) &= \sigma(\sqrt{2})\sigma(\sqrt{3}) = -\sqrt{2} \cdot -\sqrt 3 = \sqrt{6} \\
+    \sigma(\sqrt{10}) &= \sigma(\sqrt{2})\sigma(\sqrt{5}) = \sqrt{10} \\
+    \sigma(\sqrt{15}) &= \sigma(\sqrt{5})\sigma(\sqrt{3}) = \sqrt{15} \\
+    \sigma(\sqrt{30}) &= \sigma(\sqrt{2})\sigma(\sqrt{3})\sigma(\sqrt{5}) = -\sqrt{30}
+  .\end{align*}
+  Thus, for any $\alpha\in E$, we have $\sigma(\alpha) = -a - b\sqrt{2} - c\sqrt{3} - d\sqrt{5} + e\sqrt{6} + f\sqrt{10} + g\sqrt{15} - h\sqrt{30}$. So $\alpha = \sigma(\alpha)$ if and only if
+  \begin{align*}
+    a &= -a = 0 \\
+    b &= -b = 0 \\
+    c &= -c = 0 \\
+    d &= -d = 0 \\
+    e &= e \\
+    f &= f \\
+    g &= g \\
+    h &= -h = 0
+  .\end{align*}
+  So the elements $\alpha \in E$ fixed by $\sigma$ are of the form $e\sqrt{6} + f\sqrt{10} + g\sqrt{15}$ which are exactly the elements of $\Q(\sqrt{6}, \sqrt{10}, \sqrt{15}) = \Q(\sqrt{6}, \sqrt{10})$. Thus $E_{\tau_5\tau_3\tau_2} = \Q(\sqrt{6}, \sqrt{10})$.
 \end{solution}
 
 \begin{problem}[43.22]
@@ -125,10 +238,32 @@ For shorter notation, let $\tau_2 = \psi_{\sqrt{2},-\sqrt{2}}$ and $\tau_3 = \ps
 \end{problem}
 
 \begin{solution}[(i)]
+  For $\tau_2$, we have $\tau_2(\sqrt{2}) = -\sqrt{2}$ and $\tau_2$ fixes $\sqrt{3}$ and $\sqrt{5}$. Applying it twice, we get $\tau^2_2(\sqrt{2}) = -(-\sqrt{2}) = \sqrt{2}$. Since $\tau_2^2$ fixes the generators $\sqrt{2}, \sqrt{3}, \sqrt{5}$, it fixes every element in $E$. Thus $\tau_2^2 = \iota$. Since $\tau_2 \neq \iota$, the order is 2. The same logic applies to $\tau_3$ and $\tau_5$.
 \end{solution}
 
 \begin{solution}[(ii)]
+  The subgroup $H = \langle \tau_2, \tau_3, \tau_5 \rangle$ consists of all compositions of these maps. Since they commute (e.g., $\tau_2\tau_3 = \tau_3\tau_2$) and each has order 2, the elements are:
+  \[%
+    H = \{ \iota, \tau_2, \tau_3, \tau_5, \tau_2\tau_3, \tau_2\tau_5, \tau_3\tau_5, \tau_2\tau_3\tau_5 \}
+  .\]%
+  Letting $\tau_{ijk} = \tau_i\tau_j\dots$, the group is isomorphic to $\Z_2 \times \Z_2 \times \Z_2$.
+
+  \begin{center}
+    \begin{tabular}{c|cccccccc}
+      $\circ$ & $\iota$ & $\tau_2$ & $\tau_3$ & $\tau_5$ & $\tau_{23}$ & $\tau_{25}$ & $\tau_{35}$ & $\tau_{235}$ \\ \hline
+      $\iota$ & $\iota$ & $\tau_2$ & $\tau_3$ & $\tau_5$ & $\tau_{23}$ & $\tau_{25}$ & $\tau_{35}$ & $\tau_{235}$ \\
+      $\tau_2$ & $\tau_2$ & $\iota$ & $\tau_{23}$ & $\tau_{25}$ & $\tau_3$ & $\tau_5$ & $\tau_{235}$ & $\tau_{35}$ \\
+      $\tau_3$ & $\tau_3$ & $\tau_{23}$ & $\iota$ & $\tau_{35}$ & $\tau_2$ & $\tau_{235}$ & $\tau_5$ & $\tau_{25}$ \\
+      $\tau_5$ & $\tau_5$ & $\tau_{25}$ & $\tau_{35}$ & $\iota$ & $\tau_{235}$ & $\tau_2$ & $\tau_3$ & $\tau_{23}$ \\
+      $\tau_{23}$ & $\tau_{23}$ & $\tau_3$ & $\tau_2$ & $\tau_{235}$ & $\iota$ & $\tau_{35}$ & $\tau_{25}$ & $\tau_5$ \\
+      $\tau_{25}$ & $\tau_{25}$ & $\tau_5$ & $\tau_{235}$ & $\tau_2$ & $\tau_{35}$ & $\iota$ & $\tau_{23}$ & $\tau_3$ \\
+      $\tau_{35}$ & $\tau_{35}$ & $\tau_{235}$ & $\tau_5$ & $\tau_3$ & $\tau_{25}$ & $\tau_{23}$ & $\iota$ & $\tau_2$ \\
+      $\tau_{235}$ & $\tau_{235}$ & $\tau_{35}$ & $\tau_{25}$ & $\tau_{23}$ & $\tau_5$ & $\tau_3$ & $\tau_2$ & $\iota$
+    \end{tabular}
+  \end{center}
+  The group table is symmetric since the group is abelian.
 \end{solution}
 
 \begin{solution}[(iii)]
+  Any automorphism in $G(E/\Q)$ must send $\sqrt{2}$, $\sqrt{3}$, and $\sqrt{5}$ to two possible values (i.e., $\sqrt{2} \mapsto \pm \sqrt{2}$, $\sqrt{3} \mapsto \pm \sqrt{3}$, and $\sqrt{5} \mapsto \pm \sqrt{5}$). Since there are 8 possible combinations of signs, there are at most 8 automorphisms in $G(E/\Q)$. Since $H$ has 8 elements, we must have $H = G(E/\Q)$.
 \end{solution}
