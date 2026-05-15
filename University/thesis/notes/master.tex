@@ -1,0 +1,382 @@
+\documentclass[notitlepage]{report}
+
+\input{preamble.tex}
+
+\def\nshort{}
+\def\ncourse{}
+\def\nlecturer{}
+\def\nterm{}
+\def\nyear{}
+
+\def\othernotes{singularisart.GitHub.Io/notes}
+\def\faculty{}
+\def\location{}
+
+\author{Hashem A. Damrah}
+\title{Notes for Thesis}
+
+\begin{document}
+  \maketitle
+
+  \section{Introduction}
+
+  \subsection{Definitions}
+
+  \subsection{Computational Work}
+
+  \subsection{Proof of Theorems}
+
+  \section{Geometric and Analytic Preliminaries}
+
+  \subsection{Definitions}
+
+  \begin{definition}[Lebegue Space]
+    If $q \ge 1$, the \emph{Lebesgue Space} $L^q(M)$ is the set of locally integrable functions $u$ on $M$ such that
+    \begin{equation}\label{eq:lebesgue_norm}
+      \|u\|_q \coloneqq \left(\int_M |u|^q \dd{V}_g\right)^{1/q}
+    ,\end{equation}
+    is finite.
+  \end{definition}
+
+  \begin{definition}[Sobolev Space]
+    If $L^q(M)$ is the Lebesgue space, for some nonnegative integer $k$, the \emph{Sobolev Space}, $L^q_k(M)$ is the set of $u \in L^q(M)$ such that $Pu = f \in L^q(M)$ whenever $P$ is a smooth differential operator of order $\le k$. The \emph{Sobolev norm} on $L^q_k(M)$ is given by
+    \begin{equation}\label{eq:sobolev_norm}
+      \|u\|_{q,k} \coloneqq \left(\sum_{i=0}^k \int_M \left\lvert\nabla^i u\right\rvert^q \dd{V}_g\right)^{1/q}
+    .\end{equation}
+  \end{definition}
+
+  \begin{definition}[Space of $C^k$ Functions]
+    \emph{The space of $C^k$ functions}, $C^k(M)$, is the set of functions on $M$ that are $k$-times continuously differentiable. The \emph{norm} on $C^k(M)$ is given by
+    \begin{equation}\label{eq:ck_norm}
+      \|u\|_{C^k} \coloneqq \sum_{i=0}^k \sup_M \left\lvert\nabla^i u\right\rvert
+    ,\end{equation}
+    is finite.
+  \end{definition}
+
+  \begin{definition}[H\"older Space]
+    The \emph{H\"older Space}, $C^{k,\alpha}(M)$, is defined for $0 < \alpha < 1$ as the set of $u \in C^k(M)$ for which the \emph{H\"older norm}
+    \begin{equation}\label{eq:holder_norm}
+      \|u\|_{C^{k,\alpha}} \coloneqq \|u\|_{C^k} + \sup_{x,y} \frac{\left\lvert \nabla^k u(x) - \nabla^k u(y)\right\rvert}{\left\lvert x - y \right\rvert^\alpha}
+    ,\end{equation}
+    is finite.
+  \end{definition}
+
+  \subsection{Computational Work}
+
+  \begin{computational-work}[Theorem~\ref{thm:aubin}]\leavevmode
+    \label{cw:aubin}
+
+    \begin{enumerate}
+      \item Showing $\|\phi\|_p^2 = \|\phi^2\|_{p/2}$:
+        \[%
+          \|\phi\|_p^2 = \left(\int_M |\phi|^p \dd{V}_g\right)^{2/p} = \left(\int_M |\phi|^p \dd{V}_g\right)^{1/(p/2)} = \|\phi^2\|_{p/2}
+        .\]%
+      \item Showing $\|\phi^2\|_{p/2} = \left\lVert\sum \psi_i^2 \phi^2\right\rVert_{p/2}$:
+        \[%
+          \|\phi^2\|_{p/2} = \left(\int_M |\phi|^p \dd{V}_g\right)^{1/(p/2)} = \left(\int_M \left|\sum_i \psi_i^2 \phi^2\right|^{p/2} \dd{V}_g\right)^{1/(p/2)} = \left\lVert\sum_i \psi_i^2 \phi^2\right\rVert_{p/2}
+        .\]%
+      \item Showing $\left\lVert \sum \psi_i^2 \phi^2\right\rVert \le \sum_i \left(\int_M |\psi_i \phi|^p \dd{V}_g\right)^{2/p}$:
+        \begin{align*}
+          \left\lVert\sum_i \psi_i^2 \phi^2\right\rVert_{p/2} &= \left(\int_M \left|\sum_i \psi_i^2 \phi^2\right|^{p/2} \dd{V}_g\right)^{1/(p/2)} \\
+                                                              &\le \sum_i \left(\int_M |\psi_i^2 \phi^2|^{p/2} \dd{V}_g\right)^{1/(p/2)} \\
+                                                              &= \sum_i \left(\int_M |\psi_i \phi|^p \dd{V}_g\right)^{2/p}
+        .\end{align*}
+      \item Showing $\sum_i \left(\int_M |\psi_i \phi|^p \dd{V}_g\right)^{2/p} \le (1 + \epsilon)^{2/p} \sum_i \left(\int_{U_i} |\psi_i \phi|^p \dd{V}_g\right)^{2/p}$:
+        \[%
+          \sum_i \left(\int_M |\psi_i \phi|^p \dd{V}_g\right)^{2/p} = \sum_i \left(\int_{U_i} |\psi_i \phi|^p \dd{V}_g + \int_{M - U_i} |\psi_i \phi|^p \dd{V}_g\right)^{2/p}
+        .\]%
+        The eigenvalues of $g_{jk}$ are between $(1 + \epsilon)^{-1}$ and $(1 + \epsilon)$, so the volume form $\dd{V}_g$ is between $(1 + \epsilon)^{-n/2} \dx$ and $(1 + \epsilon)^{n/2} \dx$. Since $p = 2n/(n - 2)$, we have $n/2 = p/(p - 2)$, so
+        \[%
+          \dd{V}_g \le (1 + \epsilon)^{n/2} \dx = (1 + \epsilon)^{p/(p - 2)} \dx = (1 + \epsilon)^{2/p} \dx
+        .\]%
+        Therefore,
+        \[%
+          \int_{M - U_i} |\psi_i \phi|^p \dd{V}_g \le (1 + \epsilon)^{2/p} \int_{M - U_i} |\psi_i \phi|^p \dx
+        .\]%
+        Thus, we have:
+        \begin{align*}
+          \sum_i \left(\int_M |\psi_i \phi|^p \dd{V}_g\right)^{2/p} &\le (1 + \epsilon)^{2/p} \sum_i \left(\int_{U_i} |\psi_i \phi|^p \dx + \int_{M - U_i} |\psi_i \phi|^p \dx\right)^{2/p} \\
+                                                                    &\le (1 + \epsilon)^{2/p} \sum_i \left(\int_{U_i} |\psi_i \phi|^p \dx\right)^{2/p}
+        .\end{align*}
+      \item Simplifying $|\nabla(\psi_i \phi)|^2$:
+        \begin{align*}
+          |\nabla(\psi_i \phi)|^2 &= \braket{\nabla(\psi_i \phi), \nabla(\psi_i \phi)} \\
+                                  &= \braket{\psi_i \nabla \phi + \phi \nabla \psi_i, \psi_i \nabla \phi + \phi \nabla \psi_i} \\
+                                  &= |\psi_i|^2 |\nabla \phi|^2 + 2\psi_i \phi \braket{\nabla \psi_i, \nabla \phi} + |\phi|^2 |\nabla \psi_i|^2
+        .\end{align*}
+        Working with the middle term, we have:
+        \[%
+          2\psi_i \phi \braket{\nabla \psi_i, \nabla \phi} \le 2\psi_i|\nabla \phi| \cdot \phi|\nabla \psi_i|
+        .\]%
+        Letting $a = \psi_i|\nabla \phi|$ and $b = \psi|\nabla \psi_i|$, we have:
+        \begin{align*}
+          |\nabla(\psi_i \phi)|^2 &\le \psi_i^2|\nabla \phi|^2 + \epsilon(\psi_i^2|\nabla \phi|^2) + \epsilon^{-1}(\phi^2|\nabla \psi_i|^2) + \phi^2|\nabla \psi_i|^2 \\
+                                  &= (1 + \epsilon)\psi_i^2|\nabla \phi|^2 + (1 + \epsilon^{-1})\phi^2|\nabla \psi_i|^2
+        .\end{align*}
+    \end{enumerate}
+  \end{computational-work}
+
+  \begin{computational-work}[Theorem~\ref{thm:aubin}]\leavevmode
+    \label{cw:aubin}
+
+    \begin{enumerate}
+      \item Showing $\|\phi\|_p^2 = \|\phi^2\|_{p/2}$:
+        \[%
+          \|\phi\|_p^2 = \left(\int_M |\phi|^p \dd{V}_g\right)^{2/p} = \left(\int_M |\phi^2|^{p/2} \dd{V}_g\right)^{1/(p/2)} = \|\phi^2\|_{p/2}
+        .\]%
+
+      \item Showing $\|\phi^2\|_{p/2} = \left\lVert\sum \psi_i^2 \phi^2\right\rVert_{p/2}$:
+
+        Since $\sum_i \psi_i^2 = 1$, we have $|\phi^2| = |\sum_i \psi_i^2 \phi^2|$ pointwise, we get:
+        \[%
+          \|\phi^2\|_{p/2} = \left(\int_M |\phi|^p \dd{V}_g\right)^{1/(p/2)} = \left(\int_M \left|\sum_i \psi_i^2 \phi^2\right|^{p/2} \dd{V}_g\right)^{1/(p/2)} = \left\lVert\sum_i \psi_i^2 \phi^2\right\rVert_{p/2}
+        .\]%
+
+      \item Showing $\left\lVert \sum \psi_i^2 \phi^2\right\rVert \le \sum_i \left(\int_M |\psi_i \phi|^p \dd{V}_g\right)^{2/p}$:
+
+        By the triangle inequality in $L^{p/2}$ and the identity $|\psi_i^2\phi^2|^{p/2} = |\psi_i\phi|^p$,
+        \begin{align*}
+          \left\lVert\sum_i \psi_i^2 \phi^2\right\rVert_{p/2} &= \left(\int_M \left|\sum_i \psi_i^2 \phi^2\right|^{p/2} \dd{V}_g\right)^{1/(p/2)} \\
+                                                              &\le \sum_i \left(\int_M |\psi_i^2 \phi^2|^{p/2} \dd{V}_g\right)^{1/(p/2)} \\
+                                                              &= \sum_i \left(\int_M |\psi_i \phi|^p \dd{V}_g\right)^{2/p}
+        .\end{align*}
+
+      \item Showing $\displaystyle\sum_i \left(\int_M |\psi_i\phi|^p\dd{V}_g\right)^{2/p} \le (1+\epsilon)^{n/2 \cdot 2/p} \sum_i \left(\int_{U_i} |\psi_i\phi|^p\dx\right)^{2/p}$:
+
+        Since $\psi_i$ is supported on $U_i$, the integral over $M$ reduces to $U_i$. In normal coordinates on $U_i$, the eigenvalues of $g_{jk}$ lie in $\bigl[(1+\epsilon)^{-1},  1+\epsilon\bigr]$, so $\dd{V}_g \le (1+\epsilon)^{n/2}\dx$. Therefore,
+        \[%
+          \int_{U_i} |\psi_i\phi|^p \dd{V}_g \le (1+\epsilon)^{n/2} \int_{U_i} |\psi_i\phi|^p \dx
+        ,\]%
+        and raising to the power $2/p$ gives $(1+\epsilon)^{n/2 \cdot 2/p}$ per term. Since $p = 2n/(n-2)$, we have $n/2 \cdot 2/p = (n-2)/2 < 1$, so this exponent is harmless and may be absorbed into a relabelled $\epsilon$.
+
+      \item Showing $|\nabla(\psi_i\phi)|^2 \le (1+\epsilon)\psi_i^2|\nabla\phi|^2 + (1+\epsilon^{-1})\phi^2|\nabla\psi_i|^2$:
+
+        Expanding,
+        \[%
+          |\nabla(\psi_i\phi)|^2 = \psi_i^2|\nabla\phi|^2 + 2\psi_i\phi\langle\nabla\psi_i,\nabla\phi\rangle + \phi^2|\nabla\psi_i|^2
+        .\]%
+        Applying Young's inequality $2ab \le \epsilon a^2 + \epsilon^{-1}b^2$ with $a = \psi_i|\nabla\phi|$ and $b = \phi|\nabla\psi_i|$ to the cross term gives
+        \begin{align*}
+          |\nabla(\psi_i\phi)|^2 &\le \psi_i^2|\nabla\phi|^2 + \epsilon\psi_i^2|\nabla\phi|^2 + \epsilon^{-1}\phi^2|\nabla\psi_i|^2 + \phi^2|\nabla\psi_i|^2\\
+                                 &= (1+\epsilon)\psi_i^2|\nabla\phi|^2 + (1+\epsilon^{-1})\phi^2|\nabla\psi_i|^2
+        .\end{align*}
+
+      \item Relating the Euclidean and Riemannian gradients on $U_i$:
+
+        In normal coordinates on $U_i$, the eigenvalues of $g_{jk}$ lie in $\bigl[(1+\epsilon)^{-1}, 1+\epsilon\bigr]$, so for any smooth function $f$,
+        \[%
+          |\nabla f|^2_0 \le (1+\epsilon) |\nabla f|^2_g, \qquad \dx \le (1+\epsilon)^{n/2}\dd{V}_g
+        .\]%
+        Therefore,
+        \[%
+          \int_{U_i} |\nabla(\psi_i\phi)|^2_0 \dx \le (1+\epsilon)^{1 + n/2} \int_{U_i} |\nabla(\psi_i\phi)|^2_g \dd{V}_g
+        .\]%
+    \end{enumerate}
+  \end{computational-work}
+
+  \begin{computational-work}[Theorem~\ref{thm:local_elliptic_regularity}]\leavevmode
+    \label{cw:local_elliptic_regularity}
+  \end{computational-work}
+
+  \subsection{Proof of Theorems}
+
+  \begin{theorem}[Sobolev Embedding Theorems for $\R^n$]\leavevmode
+    \label{thm:sobolev_embedding_rn}
+
+    \begin{enumerate}
+      \item Suppose
+        \[%
+          \frac{1}{r} = \frac{1}{q} - \frac{k}{n}
+        .\]%
+        Then, $L^q_k(\R^n) \hookrightarrow L^r(\R^n)$, continuously. In particular, for $q = 2$, $k = 1$, $r = p = 2n/(n - 2)$, we have the following Sobolev inequality:
+        \begin{equation}\label{eq:sobolev_inequality}
+          \|\phi\|^2_p \le \sigma_n \int_{\R^n} \left\lvert \nabla \phi\right\rvert^2 \dx
+        ,\end{equation}
+        for $\phi \in L^2_1(\R^n)$. We call $\sigma_n$ the \emph{best Sobolev constant}.
+
+      \item Suppose $0 < \alpha < 1$, and
+        \[%
+          \frac{1}{q} \le \frac{k - \alpha}{n}
+        .\]%
+        Then, $L^q_k(\R^n) \hookrightarrow C^\alpha(\R^n)$, continuously.
+    \end{enumerate}
+  \end{theorem}
+
+  \begin{proof}[Proof of (i)]
+  \end{proof}
+
+  \begin{proof}[Proof of (ii)]
+  \end{proof}
+
+  \begin{theorem}[Sobolev Embedding Theorems for Compact Manifolds] \leavevmode
+    \label{thm:sobolev_embedding_compact}
+
+    \begin{enumerate}
+      \item If
+        \[%
+          \frac{1}{r} \ge \frac{1}{q} - \frac{k}{n}
+        ,\]%
+        then $L^q_k(M) \hookrightarrow L^r(M)$, continuously.
+
+      \item Suppose strict inequality holds in the above. Then, the inclusion $L^q_k(M) \subset L^r(M)$ is a compact operator.
+
+      \item Suppose $0 < \alpha < 1$, and
+        \[%
+          \frac{1}{q} \le \frac{k - \alpha}{n}
+        .\]%
+        Then, $L^q_k(M) \hookrightarrow C^\alpha(M)$, continuously.
+    \end{enumerate}
+  \end{theorem}
+
+  \begin{proof}[Proof of (i)]
+  \end{proof}
+
+  \begin{proof}[Proof of (ii)]
+  \end{proof}
+
+  \begin{proof}[Proof of (iii)]
+  \end{proof}
+
+  \begin{theorem}[Aubin]
+    \label{thm:aubin}
+
+    Let $M$ be a compact Riemannian manifold with metric $g$, $p = 2n/(n - 2)$, and let $\sigma_n$ be the best Sobolev constant defined in Theorem~\ref{thm:sobolev_embedding_rn}. Then for every $\epsilon > 0$, there exists a constant $C_\epsilon$ such that for all $\phi \in C^\infty(M)$ such that
+    \[%
+      \|\phi\|^2_p \le (1 + \epsilon) \sigma_n \int_M |\nabla \phi|^2 \dd{V}_g + C_\epsilon \int_M \phi^2 \dd{V}_g
+    .\]%
+  \end{theorem}
+
+  \begin{note}
+    For more details of the computational work used in the proof of Theorem~\ref{thm:aubin}, see Computational Work~\ref{cw:aubin}.
+  \end{note}
+
+  \begin{proof}
+    Fix $\epsilon > 0$; we shall replace $(1+\epsilon)$ by a different name for the constant at the end, so we allow the factor to accumulate during the argument. Around each point of $M$ choose a coordinate neighbourhood on which the eigenvalues of $g_{jk}$ lie in $\bigl[(1+\epsilon)^{-1}, 1+\epsilon\bigr]$; this is possible by continuity of $g$ at every point. Extract a finite subcover $\{U_i\}$ and choose a subordinate partition of unity $\{\psi_i^2\}$ with $\sum_i \psi_i^2 = 1$ and each $\psi_i$ supported in $U_i$. By Computational Work~\ref{cw:aubin}(i)--(iv),
+    \begin{align*}
+      \|\phi\|_p^2 = \|\phi^2\|_{p/2} = \Bigl\lVert\sum_i \psi_i^2\phi^2\Bigr\rVert_{p/2} &\le \sum_i \left(\int_M |\psi_i\phi|^p\dd{V}_g\right)^{2/p} \\
+                                                                                          &\le (1+\epsilon)^{n/2 \cdot 2/p} \sum_i \left(\int_{U_i} |\psi_i\phi|^p\dx\right)^{2/p}
+    .\end{align*}
+    By Theorem~\ref{thm:sobolev_embedding_rn} applied to $\psi_i\phi \in C^\infty_c(\R^n)$,
+    \[%
+      \left(\int_{U_i} |\psi_i\phi|^p\dx\right)^{2/p} \le \sigma_n \int_{U_i} |\nabla(\psi_i\phi)|^2_0 \dx
+    .\]%
+    By Computational Work~\ref{cw:aubin}(vi),
+    \[%
+      \int_{U_i} |\nabla(\psi_i\phi)|^2_0 \dx \le (1+\epsilon)^{1+n/2} \int_{U_i} |\nabla(\psi_i\phi)|^2_g \dd{V}_g
+    .\]%
+    By Computational Work~\ref{cw:aubin}(v),
+    \[%
+      \int_{U_i} |\nabla(\psi_i\phi)|^2_g \dd{V}_g \le (1+\epsilon)\int_{U_i} \psi_i^2|\nabla\phi|^2_g \dd{V}_g + (1+\epsilon^{-1})\int_{U_i} \phi^2|\nabla\psi_i|^2_g \dd{V}_g
+    .\]%
+    Combining the previous steps and summing over $i$, we have:
+    \begin{align*}
+      \|\phi\|_p^2 &\le (1+\epsilon)^{n/2 \cdot 2/p} \cdot \sigma_n \cdot (1+\epsilon)^{1+n/2} \sum_i \left[(1+\epsilon)\int_{U_i}\psi_i^2|\nabla\phi|^2\dd{V}_g + (1+\epsilon^{-1})\int_{U_i}\phi^2|\nabla\psi_i|^2\dd{V}_g\right] \\
+                   &= A(\epsilon) \sigma_n \int_M |\nabla\phi|^2\dd{V}_g + B(\epsilon)\int_M \phi^2\dd{V}_g
+    ,\end{align*}
+    where we used $\sum_i \psi_i^2 = 1$ to collapse the sums, and where
+    \[%
+      A(\epsilon) = (1+\epsilon)^{n/2 \cdot 2/p + 1 + n/2 + 1} \aand B(\epsilon) = A(\epsilon)\cdot(1+\epsilon^{-1})\sup_i\sup_{U_i}|\nabla\psi_i|^2
+    .\]%
+    Since $A(\epsilon) \to 1$ as $\epsilon \to 0$, for any prescribed $\epsilon' > 0$ we may choose $\epsilon$ small enough that $A(\epsilon) \le 1 + \epsilon'$. Setting $C_{\epsilon'} = B(\epsilon)$ completes the proof.
+  \end{proof}
+
+  \begin{theorem}[Local Elliptic Regularity]
+    \label{thm:local_elliptic_regularity}
+
+    Suppose $\Omega$ is an open set in $\R^n$, $\Delta$ is the Laplacian with respect to any metric on $\Omega$, and $u \in L^1_{\text{loc}}(\Omega)$ is a weak-solution to $\Delta u = f$.
+
+    \begin{enumerate}
+      \item If $f \in L^q_k(\Omega)$, then $u \in L^q_{k+2}(K)$ for any compact set $K \Subset \Omega$, and if $u \in L^q(\Omega)$, then
+        \begin{equation}\label{eq:local_elliptic_regularity_thm}
+          \|u\|_{L^q_{k+2}(K)} \le C\left(\|\Delta u\|_{L^q_k(\Omega)} + \|u\|_{L^q(\Omega})\right)
+        \end{equation}
+
+      \item If $f \in C^{k,\alpha}(\Omega)$, then $u \in C^{k+2,\alpha}(K)$ for any compact subset $K \Subset \Omega$, and if $u \in C^\alpha(\Omega)$, then
+        \[%
+          \|u\|_{C^{k+2,\alpha}(K)} \le C\left(\|\Delta u\|_{C^{k,\alpha}(\Omega)} + \|u\|_{C^\alpha(\Omega)}\right)
+        .\]%
+    \end{enumerate}
+  \end{theorem}
+
+  \begin{note}
+    For more details of the computational work used in the proof of Theorem~\ref{thm:local_elliptic_regularity}, see Computational Work~\ref{cw:local_elliptic_regularity}.
+
+    I'll also be proving the theorem for the $L^2$ case, as I don't have the machinery to handle the $L^q$ case.
+  \end{note}
+
+  \begin{proof}
+    Expanding Equation~\ref{eq:local_elliptic_regularity_thm}, we have:
+    \begin{align*}
+      \|u\|_{L^q_{k+2}(K)} &= \left(\sum_{i=0}^{k+2} \int_K \left\lvert\nabla^i u\right\rvert^q \dd{V}_g\right)^{1/q} \\
+                           &\le C\left(\left(\sum_{i=0}^k \int_\Omega \left\lvert\nabla^i \left(\Delta u\right)\right\rvert^q \dd{V}_g\right)^{1/q} + \left(\int_\Omega |u|^q \dd{V}_g\right)^{1/q}\right)
+    ,\end{align*}
+    for some constant $C$ depending on $K$ and $\Omega$, and any metric $g$ on $\Omega$.
+  \end{proof}
+
+  \begin{proof}[Proof of (i)]
+  \end{proof}
+
+  \begin{proof}[Proof of (ii)]
+  \end{proof}
+
+  \begin{theorem}[Global Elliptic Regularity]
+    \label{thm:global_elliptic_regularity}
+
+    Let $M$ be a compact Riemannian manifold, and suppose $u \in L^1_{\text{loc}}(M)$ is a weak solution to $\nabla u = f$.
+
+    \begin{enumerate}
+      \item If $f \in L^q_k(M)$, then $u \in L^q_{k+2}(M)$, and
+        \[%
+          \|u\|_{q,k+2} \le C\left(\|u\|_{q,k} + \|u\|_q\right)
+        .\]%
+      \item If $f \in C^{k,\alpha}(M)$, then $u \in C^{k+2,\alpha}(M)$, and
+        \[%
+          \|u\|_{C^{k+2,\alpha}} \le C\left(\|u\|_{C^{k,\alpha} + \|u\|_{C^\alpha}}\right)
+        .\]%
+    \end{enumerate}
+  \end{theorem}
+
+  \begin{proof}[Proof of (i)]
+  \end{proof}
+
+  \begin{proof}[Proof of (ii)]
+  \end{proof}
+
+  \begin{theorem}[Strong Maximum Principle]
+    \label{thm:strong_maximum_principle}
+
+    Suppose $h$ is a nonnegative smooth function on a connected manifold $M$, and $u \in C^2(M)$ satisfies $(\delta + h)u \ge 0$. If $u$ attains its minimum $m \le 0$, then $u$ is constant on $M$.
+  \end{theorem}
+
+  \begin{proof}
+  \end{proof}
+
+  \begin{proposition}[Weak Removable Singularities Theorem]
+    \label{prop:weak_removable_singularities}
+
+    Let $U$ be an open set in $M$ and $P \in U$. Suppose $u$ is a weak solution of $(\delta + h)u = 0$ on $U - \{P\}$, with $h \in L^{n/2}(U)$ and $u \in L^q(U)$ for some $q > p/2 = n/(n - 2)$. Then $u$ satisfies $(\delta + h)u = 0$ weakly on all of $U$.
+  \end{proposition}
+
+  \begin{proof}
+  \end{proof}
+
+  \begin{theorem}[Existence of the Green Function]
+    \label{thm:green_function}
+
+    Suppose $M$ is a compact Riemannian manifold of dimension $n \ge 3$, and $h$ is a strictly positive smooth function on $M$. For each .
+  \end{theorem}
+
+  \begin{proof}
+  \end{proof}
+
+  \section{The Model Case: The Sphere}
+
+  \section{Questions}
+
+  \begin{question}
+    In Theorem~\ref{cw:aubin}, why do we want the eigenvalues of the metric to be between $(1 + \epsilon)^{-1}$ and $(1 + \epsilon)$?
+  \end{question}
+
+  \begin{solution}
+  \end{solution}
+\end{document}

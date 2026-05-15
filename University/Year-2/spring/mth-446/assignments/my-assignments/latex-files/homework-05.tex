@@ -1,0 +1,193 @@
+\begin{problem}[43.30]
+  Show that the only $\Q(\sqrt{2}, \sqrt{3})$ are $\Q$, $\Q(\sqrt{2})$, $\Q(\sqrt{3})$, $\Q(\sqrt{6})$, and $\Q(\sqrt{2}, \sqrt{3})$. [Hint: Show that a subfield of $\Q(\sqrt{2}, \sqrt{3})$ that is a degree 2 extension of $\Q$ must be of the form $\Q(\sqrt{s})$ for some rational number $s$.]
+\end{problem}
+
+\begin{solution}
+  We first show that any subfield of $\Q(\sqrt{2}, \sqrt{3})$ that is a degree 2 extension of $\Q$ must be of the form $\Q(\sqrt{s})$ for some rational number $s$. Let $E$ be a subfield of $\Q(\sqrt{2}, \sqrt{3})$ such that $[E : \Q] = 2$. Since $E$ is a degree 2 extension of $\Q$, there exists an element $\alpha \in E \setminus \Q$ such that $E = \Q(\alpha)$. Since $\alpha \in \Q(\sqrt{2}, \sqrt{3})$, we can write:
+  \[%
+    \alpha = a + b\sqrt{2} + c\sqrt{3} + d\sqrt{6}
+  ,\]%
+  for some $a, b, c, d \in \Q$. Replacing $\alpha$ by $\alpha - a$, we may assume $a = 0$ without loss of generality, so $\alpha = b\sqrt{2} + c\sqrt{3} + d\sqrt{6}$. We compute:
+  \[%
+    \alpha^2 = 2b^2 + 3c^2 + 6d^2 + 2bc\sqrt{6} + 2bd\sqrt{12} + 2cd\sqrt{18}
+  .\]%
+  Simplifying, $\sqrt{12} = 2\sqrt{3}$ and $\sqrt{18} = 3\sqrt{2}$, so:
+  \[%
+    \alpha^2 = (2b^2 + 3c^2 + 6d^2) + (6cd)\sqrt{2} + (4bd)\sqrt{3} + (2bc)\sqrt{6}
+  .\]%
+  For $\alpha$ to generate a degree 2 extension of $\Q$, its minimal polynomial over $\Q$ must be $x^2 - s$ for some $s \in \Q$, which requires $\alpha^2 \in \Q$. Thus all irrational parts must vanish:
+  \[%
+    6cd = 0, \quad 4bd = 0, \quad 2bc = 0
+  .\]%
+  These conditions imply that at most one of $b, c, d$ is nonzero. Since $\alpha \notin \Q$, at least one of $b, c, d$ is nonzero, so exactly one is nonzero. In each case we get $\alpha = b\sqrt{2}$, $\alpha = c\sqrt{3}$, or $\alpha = d\sqrt{6}$, giving $E = \Q(\sqrt{2})$, $E = \Q(\sqrt{3})$, or $E = \Q(\sqrt{6})$, respectively. In each case $E = \Q(\sqrt{s})$ for $s = 2, 3, 6 \in \Q$.
+
+  Now, we show that the only subfields of $\Q(\sqrt{2}, \sqrt{3})$ are $\Q$, $\Q(\sqrt{2})$, $\Q(\sqrt{3})$, $\Q(\sqrt{6})$, and $\Q(\sqrt{2}, \sqrt{3})$. Since $\Q(\sqrt{2}, \sqrt{3})$ is the splitting field of $(x^2 - 2)(x^2 - 3)$ over $\Q$, it is a Galois extension of $\Q$ of degree 4. The Galois group $G = G(\Q(\sqrt{2}, \sqrt{3})/\Q)$ has order 4 and consists of the automorphisms determined by:
+  \begin{alignat*}{3}
+    \sigma_1 &: \sqrt{2} \mapsto \sqrt{2}, \quad&& \sqrt{3} \mapsto \sqrt{3} \\
+    \sigma_2 &: \sqrt{2} \mapsto -\sqrt{2}, \quad&& \sqrt{3} \mapsto \sqrt{3} \\
+    \sigma_3 &: \sqrt{2} \mapsto \sqrt{2}, \quad&& \sqrt{3} \mapsto -\sqrt{3} \\
+    \sigma_4 &: \sqrt{2} \mapsto -\sqrt{2}, \quad&& \sqrt{3} \mapsto -\sqrt{3}
+  .\end{alignat*}
+  Since every non-identity element has order 2, we have $G \cong \Z_2 \times \Z_2$, which has exactly three subgroups of order 2:
+  \[%
+    H_1 = \{\sigma_1, \sigma_2\}, \quad H_2 = \{\sigma_1, \sigma_3\}, \quad H_3 = \{\sigma_1, \sigma_4\}
+  ,\]%
+  in addition to the trivial subgroup $\{\sigma_1\}$ and the whole group $G$. By the Galois correspondence, the five subgroups correspond to five subfields: the whole group $G$ corresponds to $\Q$, the three subgroups of order 2 correspond to the fixed fields $\Q(\sqrt{3})$, $\Q(\sqrt{2})$, and $\Q(\sqrt{6})$, and the trivial subgroup corresponds to $\Q(\sqrt{2}, \sqrt{3})$. By the first part of this solution, there are no degree 2 subfields other than these three, and clearly there are no subfields of degree 3 since it doesn't divide 4. Thus, the only subfields of $\Q(\sqrt{2}, \sqrt{3})$ are $\Q$, $\Q(\sqrt{2})$, $\Q(\sqrt{3})$, $\Q(\sqrt{6})$, and $\Q(\sqrt{2}, \sqrt{3})$.
+\end{solution}
+
+\begin{problem}[43.32]
+  Let $F(\alpha_1, \cdots, \alpha_n)$ be an extension field of $F$. Show that any automorphism $\sigma$ of $F(\alpha_1, \cdots, \alpha_n)$ leaving $F$ fixed is completely determined by the $n$ values $\sigma(\alpha_i)$.
+\end{problem}
+
+\begin{solution}
+  Let $\sigma$ be an automorphism of $F(\alpha_1, \cdots, \alpha_n)$ leaving $F$ fixed. Since $\sigma$ is a field homomorphism fixing $F$, we have $\sigma(a) = a$ for all $a \in F$. We claim that for any rational expression $f(\alpha_1, \cdots, \alpha_n)$ with coefficients in $F$, we have:
+  \[%
+    \sigma(f(\alpha_1, \cdots, \alpha_n)) = f(\sigma(\alpha_1), \cdots, \sigma(\alpha_n))
+  .\]%
+  Indeed, since $\sigma$ preserves addition and multiplication, a straightforward induction on the structure of polynomial expressions gives $\sigma(p(\alpha_1, \cdots, \alpha_n)) = p(\sigma(\alpha_1), \cdots, \sigma(\alpha_n))$ for any polynomial $p$ with coefficients in $F$. Since $\sigma$ is a field automorphism it also preserves division, so for any $f = p/q$ with $q(\alpha_1, \cdots, \alpha_n) \neq 0$ we have:
+  \[%
+    \sigma\!\left(\frac{p(\alpha_1, \cdots, \alpha_n)}{q(\alpha_1, \cdots, \alpha_n)}\right) = \frac{\sigma(p(\alpha_1, \cdots, \alpha_n))}{\sigma(q(\alpha_1, \cdots, \alpha_n))} = \frac{p(\sigma(\alpha_1), \cdots, \sigma(\alpha_n))}{q(\sigma(\alpha_1), \cdots, \sigma(\alpha_n))}
+  .\]%
+  Thus, the value of $\sigma$ on any element of $F(\alpha_1, \cdots, \alpha_n)$ is completely determined by the $n$ values $\sigma(\alpha_i)$.
+\end{solution}
+
+\begin{problem}[43.33]
+  Let $E$ be an algebraic extension of a field $F$, and let $\sigma$ be an automorphism of $E$ leaving $F$ fixed. Let $\sigma \in E$. Show that $\sigma$ induces a permutation of the set of all zeros of $\irr(\alpha, F)$ that are in $E$.
+\end{problem}
+
+\begin{solution}
+  Let $f(x) = \irr(\alpha, F)$ and let $S = \{\beta \in E : f(\beta) = 0\}$ be the set of zeros of $f(x)$ in $E$. Since $f$ has finite degree, $S$ is a finite set. We first show that $\sigma$ maps $S$ into $S$. If $\beta \in S$, then since the coefficients of $f(x)$ lie in $F$ and $\sigma$ fixes every element of $F$, we have:
+  \[%
+    f(\sigma(\beta)) = \sigma(f(\beta)) = \sigma(0) = 0
+  ,\]%
+  so $\sigma(\beta) \in S$. Thus $\sigma$ restricts to a map $\sigma|_S : S \to S$. Since $\sigma$ is a field automorphism, it is injective, so $\sigma|_S$ is an injective self-map of the finite set $S$. Any injective self-map of a finite set is a bijection, so $\sigma|_S$ is a permutation of $S$.
+\end{solution}
+
+\begin{problem}[43.34]
+  Let $E$ be an algebraic extension of a field $F$. Let $S = \{\sigma_i | i \in I\}$ be a collection of automorphisms of $E$ such that every $\sigma_i$ leaves each element of $F$ fixed. Show that if $S$ generates the subgroup $H$ of $G(E/F)$, then $E_S = E_H$.
+\end{problem}
+
+\begin{solution}
+  By definition, $E_S$ is the fixed field of the collection $S$, which consists of all elements of $E$ that are fixed by every $\sigma_i \in S$. On the other hand, $E_H$ is the fixed field of the subgroup $H$ generated by $S$, which consists of all elements of $E$ that are fixed by every element of $H$. Since $H$ is generated by $S$, every element of $H$ can be expressed as a finite composition of elements from $S$. Therefore, if an element of $E$ is fixed by every $\sigma_i \in S$, it must also be fixed by every element of $H$, since each element of $H$ is a composition of elements from $S$. Conversely, if an element of $E$ is fixed by every element of $H$, it must be fixed by every $\sigma_i \in S$, since each $\sigma_i$ is an element of $H$. Thus, the sets of elements fixed by $S$ and by $H$ are the same, and we conclude that $E_S = E_H$.
+\end{solution}
+
+\begin{problem}[43.36]
+  Referring to Exercise 35, let $F$ be a finite field of characteristic $p$, and let $\phi$ be the Frobenius automorphism on $F$. Prove that the fixed field $F_{\{\phi\}}$ is isomorphic with $\Z_p$.
+\end{problem}
+
+\begin{solution}
+  We first show that $\Z_p \subseteq F_{\{\phi\}}$. For any $a \in \Z_p$, we have:
+  \[%
+    \phi(a) = a^p
+  .\]%
+  Since $a$ is an integer between $0$ and $p-1$, we can use Fermat's little theorem, which states that if $p$ is a prime and $a$ is an integer not divisible by $p$, then $a^{p-1} \equiv 1 \pmod{p}$. If $a = 0$, then $\phi(0) = 0^p = 0$. If $a \neq 0$, then:
+  \[%
+    a^p = a^{(p-1) + 1} = a^{p-1} \cdot a \equiv 1 \cdot a = a \pmod{p}
+  .\]%
+  Thus, in either case, we have $\phi(a) = a$, so every element of $\Z_p$ is fixed by $\phi$. Therefore, $\Z_p \subseteq F_{\{\phi\}}$.
+
+  Now, we show that $F_{\{\phi\}} \subseteq \Z_p$. Suppose $\alpha \in F_{\{\phi\}}$, so $\phi(\alpha) = \alpha^p = \alpha$. This means that $\alpha$ is a root of the polynomial $x^p - x \in \Z_p[x]$. Since $x^p - x$ has degree $p$, it has at most $p$ roots in $F$. But from the first part, every element of $\Z_p$ satisfies $a^p = a$, so the $p$ elements of $\Z_p$ are already $p$ distinct roots of $x^p - x$. Therefore, the set of roots of $x^p - x$ in $F$ is exactly $\Z_p$, and so $\alpha \in \Z_p$. Thus $F_{\{\phi\}} \subseteq \Z_p$.
+
+  Combining both directions, we have $F_{\{\phi\}} = \Z_p$, and so $F_{\{\phi\}}$ is isomorphic with $\Z_p$.
+\end{solution}
+
+\begin{problem}[43.37]
+  Referring to Exercise 35, show that the finite assumption is necessary by finding an example of a field $F$ with characteristic $p$, such that the map $\phi : F \to F$ given by $\phi(\alpha) = \alpha^p$ is not an automorphism.
+\end{problem}
+
+\begin{solution}
+  Take $F = \Z_p(t)$, the field of rational functions in one variable $t$ over $\Z_p$. The characteristic of $F$ is $p$, since it contains $\Z_p$ as a subfield. The map $\phi : F \to F$ given by $\phi(\alpha) = \alpha^p$ is not an automorphism because it is not surjective. We claim that $t \in \Z_p(t)$ has no preimage under $\phi$. Suppose for contradiction that $\phi(f/g) = t$ for some $f, g \in \Z_p[t]$, so:
+  \[%
+    \left(\frac{f}{g}\right)^p = t \implies f^p = t \cdot g^p
+  .\]%
+  The left side has degree $p \cdot \deg(f)$, which is divisible by $p$. However, the right side has degree $p \cdot \deg(g) + 1$, which is not divisible by $p$. This is a contradiction. Therefore, $t$ is not in the image of $\phi$, so $\phi$ is not surjective and hence not an automorphism of $F$.
+\end{solution}
+
+\begin{problem}[43.38]
+  We saw in Corollary 28.18 that the cyclotomic polynomial
+  \[%
+    \Phi_p(x) = \frac{x^p - 1}{x - 1} = x^{p-1} + x^{p-2} + \cdots + x + 1
+  ,\]%
+  is irreducible over $\Q$ for every prime $p$. Let $\zeta$ be a zero of $p(x)$, and consider the field $\Q(\zeta)$.
+  \begin{enumerate}
+    \item Show that $\zeta$, $\zeta^2$, $\cdots$, $\zeta^{p-1}$ are distinct zeros of $p(x)$, and conclude that they are all the zeros of $p(x)$.
+
+    \item Deduce from Corollary 43.19 and part (i) of this exercise that $G(\Q(\zeta)/\Q)$ is abelian of order $p - 1$.
+
+    \item Show that the fixed field of $G(\Q(\zeta)/\Q)$ is $\Q$. [Hint: Show that
+      \[%
+        \{\zeta, \zeta^2, \cdots, \zeta^{p-1}\}
+      ,\]%
+      is a basis for $\Q(\zeta)$ over $\Q$, and consider which linear combinations of $\zeta, \zeta^2, \cdots, \zeta^{p-1}$ are fixed by all elements of $G(\Q(\zeta)/\Q)$].
+  \end{enumerate}
+\end{problem}
+
+\begin{solution}[(i)]
+  Since $\zeta$ is a zero of $\Phi_p(x)$, we have $\zeta^p = 1$ and $\zeta \neq 1$. Thus, $\zeta$ is a primitive $p$-th root of unity. The distinct powers $\zeta, \zeta^2, \cdots, \zeta^{p-1}$ are all roots of $\Phi_p(x)$ because:
+  \[%
+    \Phi_p(\zeta^k) = \frac{(\zeta^k)^p - 1}{\zeta^k - 1} = \frac{\zeta^{kp} - 1}{\zeta^k - 1} = \frac{1 - 1}{\zeta^k - 1} = 0
+  ,\]%
+  for $k = 1, 2, \cdots, p-1$. Since $\Phi_p(x)$ has degree $p-1$, it can have at most $p-1$ distinct roots. Therefore, the roots $\zeta, \zeta^2, \cdots, \zeta^{p-1}$ are all the zeros of $\Phi_p(x)$.
+\end{solution}
+
+\begin{solution}[(ii)]
+  Let $E = G(\Q(\zeta)/\Q)$. Then, since $\Phi_p(x)$ is irreducible over $\Q$, the extension $\Q(\zeta)/\Q$ is a Galois extension of degree $p - 1$. Then, for any $\sigma_j, \sigma_m \in E$, we have $\sigma_j(\zeta) = \zeta^j$ and $\sigma_m(\zeta) = \zeta^m$ for some integers $j, m$ coprime to $p$. The composition $\sigma_j \circ \sigma_m$ acts on $\zeta$ as follows:
+  \[%
+    (\sigma_j \circ \sigma_m)(\zeta) = \sigma_j(\sigma_m(\zeta)) = \sigma_j(\zeta^m) = (\zeta^m)^j = \zeta^{mj}
+  .\]%
+  Similarly, the composition $\sigma_m \circ \sigma_j$ acts on $\zeta$ as:
+  \[%
+    (\sigma_m \circ \sigma_j)(\zeta) = \sigma_m(\sigma_j(\zeta)) = \sigma_m(\zeta^j) = (\zeta^j)^m = \zeta^{jm}
+  .\]%
+  Since $mj = jm$, we have $(\sigma_j \circ \sigma_m)(\zeta) = (\sigma_m \circ \sigma_j)(\zeta)$, and since $\zeta$ generates $\Q(\zeta)$, it follows that $\sigma_j \circ \sigma_m = \sigma_m \circ \sigma_j$. Therefore, $E$ is abelian. Moreover, since $E$ is the Galois group of a degree $p - 1$ extension, we have $|E| = p - 1$.
+\end{solution}
+
+\begin{solution}[(iii)]
+  Since $\Q(\zeta)/\Q$ is a Galois extension of degree $p - 1$ with Galois group $G = G(\Q(\zeta)/\Q)$ of order $p - 1$, the fundamental theorem of Galois theory tells us that the fixed field of $G$ satisfies:
+  \[%
+    [\Q(\zeta) : F_G] = |G| = p - 1
+  .\]%
+  Since $\Q \subseteq F_G \subseteq \Q(\zeta)$ and $[\Q(\zeta) : \Q] = p - 1$, we have:
+  \[%
+    [\Q(\zeta) : \Q] = [\Q(\zeta) : F_G][F_G : \Q] \implies p - 1 = (p - 1)[F_G : \Q]
+  ,\]%
+  which gives $[F_G : \Q] = 1$, and therefore $F_G = \Q$. Thus, the fixed field of $G(\Q(\zeta)/\Q)$ is $\Q$.
+\end{solution}
+
+\begin{problem}[44.6]
+  Find the degree over $\Q$ of the splitting field over $\Q$ of the polynomial $(x^2 - 2)(x^3 - 2)$ in $\Q[x]$.
+\end{problem}
+
+\begin{solution}
+  The splitting field of $(x^2 - 2)(x^3 - 2)$ over $\Q$ is $\Q(\sqrt{2}, \sqrt[3]{2}, \omega)$, where $\omega = \frac{-1 + i\sqrt{3}}{2}$ is a primitive cube root of unity. This is because $x^2 - 2$ has roots $\pm\sqrt{2}$ and $x^3 - 2$ has roots $\sqrt[3]{2}, \omega\sqrt[3]{2}, \omega^2\sqrt[3]{2}$, all of which lie in $\Q(\sqrt{2}, \sqrt[3]{2}, \omega)$. We compute the degree using the tower:
+  \[%
+    \Q \subseteq \Q(\sqrt[3]{2}) \subseteq \Q(\sqrt[3]{2}, \omega) \subseteq \Q(\sqrt[3]{2}, \omega, \sqrt{2})
+  .\]%
+  By Eisenstein's criterion, taking $p = 3$, we know that $x^3 - 2$ is irreducible over $\Q$. So, $[\Q(\sqrt[3]{2}) : \Q] = 3$. Furthermore, $\omega$ satisfies $x^2 + x + 1 = 0$, which is irreducible over $\Q$ and has no roots in $\Q(\sqrt[3]{2})$. Thus, $[\Q(\sqrt[3]{2}, \omega) : \Q(\sqrt[3]{2})] = 2$. The value $\sqrt{2}$ is a root of $x^2 - 2$. We know that $[\Q(\sqrt[3]{2}, \omega) : \Q] = 6$ and $[\Q(\sqrt[3]{2}, \omega, \sqrt{2}) : \Q]$ must be divisible by both $6$ and $2 = [\Q(\sqrt{2}) : \Q]$. However, $\sqrt{2} \notin \Q(\sqrt[3]{2}, \omega)$. By the tower law, we have:
+  \[%
+    [\Q(\sqrt{2}, \sqrt[3]{2}, \omega) : \Q] = 3 \cdot 2 \cdot 2 = 12
+  .\qedhere\]%
+\end{solution}
+
+\begin{problem}[44.8]
+  What is the order of $G(\Q(\sqrt[3]{2}, i\sqrt{3})/\Q)$?
+\end{problem}
+
+\begin{solution}
+  The order of $G(\Q(\sqrt[3]{2}, i\sqrt{3})/\Q)$ equals the degree $[\Q(\sqrt[3]{2}, i\sqrt{3}) : \Q]$, since $\Q(\sqrt[3]{2}, i\sqrt{3})$ is the splitting field of the separable polynomial $x^3 - 2$ over $\Q$ and is therefore a Galois extension. We note that $\Q(\sqrt[3]{2}, i\sqrt{3}) = \Q(\sqrt[3]{2}, \omega)$, where $\omega = \frac{-1 + i\sqrt{3}}{2}$ is a primitive cube root of unity, since $i\sqrt{3} = 2\omega + 1$. We compute the degree using the tower:
+  \[%
+    \Q \subseteq \Q(\sqrt[3]{2}) \subseteq \Q(\sqrt[3]{2}, \omega)
+  .\]%
+  First, $x^3 - 2$ is irreducible over $\Q$ by Eisenstein's criterion, so $[\Q(\sqrt[3]{2}) : \Q] = 3$. Second, $\omega$ satisfies $x^2 + x + 1 = 0$, which is irreducible over $\Q$ and has no roots in $\Q(\sqrt[3]{2})$ since $\Q(\sqrt[3]{2}) \subseteq \R$, so $[\Q(\sqrt[3]{2}, \omega) : \Q(\sqrt[3]{2})] = 2$. By the tower law:
+  \[%
+    |G(\Q(\sqrt[3]{2}, i\sqrt{3})/\Q)| = [\Q(\sqrt[3]{2}, \omega) : \Q] = 3 \cdot 2 = 6
+  .\qedhere\]%
+\end{solution}
+
+\begin{problem}[44.10]
+  Let $\alpha$ be a zero of $x^3 + x^2 + 1$ over $\Z_2$. Show that $x^3 + x^2 + 1$ splits in $\Z_2(\alpha)$. [Hint: There are eight elements in $\Z_2(\alpha)$. Exhibit two more zeros of $x^3 + x^2 + 1$, in addition to $\alpha$, among these eight elements. Alternatively, use the results of Section 42.]
+\end{problem}
+
+\begin{solution}
+  We will use Galois correspondence to show that $x^3 + x^2 + 1$ splits over $\Z_2(\alpha)$. We do this by first showing that $\Z_2(\alpha) \cong GF(p^n)$, and then showing that $GF(p^n)$ contains all the roots of $x^3 + x^2 + 1$. We have $p = 2$ and $n = 3$, so $GF(2^3) = GF(8)$. Since $f(x) = x^3 + x^2 + 1$ is irreducible over $\Z_2$ ($f(x)$ has no roots in $\Z_2$), the extension $\Z_2(\alpha)$ has degree 3 over $\Z_2$. Then, there exists a unique field homomorphism $\Z_2(\alpha)$ to $GF(8)$ that sends $\alpha$ to a root of $f(x)$ in $GF(8)$. Since $\Z_2(\alpha)$ and $GF(8)$ are both fields of order 8, this homomorphism is an isomorphism. Thus, $\Z_2(\alpha) \cong GF(8)$. We also proved in HW 3 that $x^{p^n} - x$ is the product of all monic irreducible polynomials over $\Z_p$ whose degree divides $n$. In particular, since $f(x)$ is an irreducible polynomial of degree 3, it must divide $x^8 - x$ in $\Z_2[x]$. Therefore, all the roots of $f(x)$ are also roots of $x^8 - x$. Since $x^8 - x$ splits completely over $GF(8)$, it follows that $f(x)$ also splits completely over $GF(8)$. Since $\Z_2(\alpha) \cong GF(8)$, we conclude that $f(x)$ splits in $\Z_2(\alpha)$.
+\end{solution}
