@@ -2,6 +2,17 @@
 
 \input{preamble.tex}
 
+\def\Xint#1{\mathchoice
+   {\XXint\displaystyle\textstyle{#1}}%
+   {\XXint\textstyle\scriptstyle{#1}}%
+   {\XXint\scriptstyle\scriptscriptstyle{#1}}%
+   {\XXint\scriptscriptstyle\scriptscriptstyle{#1}}%
+   \!\int}
+\def\XXint#1#2#3{{\setbox0=\hbox{$#1{#2#3}{\int}$}
+     \vcenter{\hbox{$#2#3$}}\kern-.5\wd0}}
+\def\ddashint{\Xint=}
+\def\dashint{\Xint-}
+
 \def\nshort{}
 \def\ncourse{}
 \def\nlecturer{}
@@ -17,20 +28,128 @@
 
 \begin{document}
   \maketitle
+  \tableofcontents
 
-  \section{Introduction}
+  \begin{note*}
+    This paper is a collection of my notes for my thesis. It is not intended to be read by anyone other than myself, and it is not intended to be a polished or complete document. It is simply a place for me to write down my thoughts and calculations as I work on my thesis. It contains my work from the following sources:
+    \begin{enumerate}
+      \item My notes from the \emph{Partial Differential Equations} textbook, by Lawrence C. Evans.
+      \item My notes from the \emph{Functional Analysis, Sobolev Spaces and Partial Differential Equations} textbook, by Haim Brezis.
+      \item My notes from the \emph{The Yamabe Problem} paper, by John M. Lee and Thomas H. Parker.
+      \item My notes from the \emph{Scalar Curvature and Isometry Group Paper} paper, by J. Berard Bergery.
+    \end{enumerate}
+  \end{note*}
 
-  \subsection{Definitions}
+  \section{Notation}
 
-  \subsection{Computational Work}
+  We use $U$ to denote an open set in $\R^n$, and $M$ to denote a compact Riemannian manifold of dimension $n \ge 3$ with metric $g$. We use $\dd{V}_g$ to denote the volume form on $M$ induced by $g$. We use $\Delta$ to denote the Laplacian, and $\nabla$ to denote the covariant derivative. We use $C$ to denote a constant that may change from line to line, but does not depend on any variables.
 
-  \subsection{Proof of Theorems}
+  \subsection{Functions}
 
-  \section{Geometric and Analytic Preliminaries}
+  \begin{enumerate}
+    \item If $u : U \to \R$, we write $u(x) = u(x_1, \cdots, x_n)$.
+    \item If $\u : U \to \R^m$, we write $\u(x) = (u^1(x), \cdots, u^m(x))$.
+    \item If $\Sigma$ is a smooth $(n-1)$-dimensional surface in $\R^m$, we write:
+      \[%
+        \int_\Sigma f \dd{S}
+      ,\]%
+      for the integral of $f$ over $\Sigma$, with respect to the $(n-1)$-dimensional surface measure. If $C$ is a curve in $\R^m$, we denote it by:
+      \[%
+        \int_C f \dd{l}
+      ,\]%
+      the integral of $f$ over $C$ with respect to arclength.
+    \item Averages:
+      \[%
+        \dashint_{B(x,r)} f \dy = \frac{1}{\alpha(n)r^n} \int_{B(x,r)} f \dy =~\text{average of $f$ over the ball $B(x,r)$}
+      ,\]%
+      and
+      \[%
+        \dashint_{\partial B(x,r)} f \dd{S} = \frac{1}{n\alpha(n)r^{n-1}} \int_{\partial B(x,r)} f \dd{S} =~\text{average of $f$ over the sphere $\partial B(x,r)$}
+      .\]%
+  \end{enumerate}
 
-  \subsection{Definitions}
+  \subsection{Vector-Valued Functions}
 
-  \begin{definition}[Lebegue Space]
+  \begin{enumerate}
+    \item 
+  \end{enumerate}
+
+  \subsection{Derivatives}
+
+  \begin{enumerate}
+    \item I write:
+      \[%
+        \pdv{u}{x_i} = \pd{x_i} u = u_{x_i}
+      .\]%
+    \item Similarly, we also have:
+      \[%
+        \pdv{u}{x_i,x_j} = \pd[style-var=single]{x_i,x_j} u = u_{x_i,x_j}
+      .\]%
+    \item Given a multi-index $\alpha$, define:
+      \[%
+        D^\alpha u(x) = \pdv[order={\alpha_1, \alpha_n}, mixed-order={|\alpha|}, sep-ord-inf={\cdots}]{u(x)}{x_1, x_n} = \pd[\alpha_1]{x_1} \cdots \pd[\alpha_n]{x_n} u(x)
+      .\]%
+      This is the standard multi-index notation for partial derivatives.
+    \item If $k$ is a positive integer, the set of all partial derivatives of order $k$ is denoted by:
+      \[%
+        D^ku(x) := \{D^\alpha u(x) : |\alpha| = k\}
+      .\]%
+  \end{enumerate}
+
+  \section{Definitions}
+
+  \subsection{Geometry}
+
+  \begin{definition}[Riemannian Metric and Volume Form]
+    A \emph{Riemannian metric} $g$ on $M$ is a smooth symmetric positive-definite $(0,2)$-tensor field on $M$. In local coordinates $\{x^i\}$, $g$ is given by $g = g_{ij} \dd{x^i} \otimes \dd{x^j}$. The associated \emph{volume form} is
+    \[%
+      \dd{V}_g \coloneqq \sqrt{\det(g_{ij})} \, \dd{x^1} \wedge \cdots \wedge \dd{x^n}
+    .\]%
+  \end{definition}
+
+  \begin{definition}[Covariant Derivative]
+    The \emph{covariant derivative} $\nabla$ is the unique connection on $TM$ compatible with the metric $g$ and torsion-free, i.e.\ satisfying
+    \[%
+      \nabla g = 0, \qquad \nabla_X Y - \nabla_Y X = [X, Y]
+    ,\]%
+    for all vector fields $X, Y$ on $M$. For a smooth function $u \in C^\infty(M)$, the \emph{$i$-th order covariant derivative} $\nabla^i u$ is defined inductively by $\nabla^1 u = \nabla u$ and $\nabla^i u = \nabla(\nabla^{i-1} u)$.
+  \end{definition}
+
+  \begin{definition}[Geodesic Distance]
+    The \emph{geodesic distance} $d(x, y)$ between two points $x, y \in M$ is the infimum of the lengths of all piecewise smooth curves $\gamma : [0, 1] \to M$ with $\gamma(0) = x$ and $\gamma(1) = y$, where the length of $\gamma$ is given by
+    \[%
+      \ell(\gamma) \coloneqq \int_0^1 \sqrt{g(\dot\gamma(t), \dot\gamma(t))} \dd{t}
+    .\]%
+  \end{definition}
+
+  \begin{definition}[Isometry Group]
+    The \emph{isometry group} of a Riemannian manifold $(M, g)$ is the group of all diffeomorphisms $\phi : M \to M$ such that $\phi^*g = g$, where $\phi^*g$ is the pullback of $g$ by $\phi$.
+  \end{definition}
+
+  \begin{definition}[Partition of Unity]
+    A \emph{partition of unity} subordinate to an open cover $\{U_i\}$ of $M$ is a collection of smooth functions $\{\psi_i\}$ on $M$ such that
+    \begin{enumerate}
+      \item $0 \le \psi_i \le 1$ for all $i$,
+      \item $\supp(\psi_i) \subseteq U_i$ for all $i$,
+      \item $\sum_i \psi_i = 1$ everywhere on $M$.
+    \end{enumerate}
+  \end{definition}
+
+  \subsection{Function Spaces}
+
+  \begin{definition}[Locally Integrable Functions]
+    A function $u : M \to \R$ is \emph{locally integrable} if for every compact set $K \Subset M$,
+    \[%
+      \int_K |u| \dd{V}_g < \infty
+    .\]%
+    The space of locally integrable functions on $M$ is denoted $L^1_{\text{loc}}(M)$.
+  \end{definition}
+
+  \begin{definition}[Compactly Supported Functions]
+    A function $u : M \to \R$ has \emph{compact support} if the set $\supp(u) \coloneqq \overline{\{x \in M : u(x) \neq 0\}}$ is compact. We denote by $C^\infty_c(M)$ the space of smooth functions on $M$ with compact support.
+  \end{definition}
+
+  \begin{definition}[Lebesgue Space]
     If $q \ge 1$, the \emph{Lebesgue Space} $L^q(M)$ is the set of locally integrable functions $u$ on $M$ such that
     \begin{equation}\label{eq:lebesgue_norm}
       \|u\|_q \coloneqq \left(\int_M |u|^q \dd{V}_g\right)^{1/q}
@@ -39,82 +158,235 @@
   \end{definition}
 
   \begin{definition}[Sobolev Space]
-    If $L^q(M)$ is the Lebesgue space, for some nonnegative integer $k$, the \emph{Sobolev Space}, $L^q_k(M)$ is the set of $u \in L^q(M)$ such that $Pu = f \in L^q(M)$ whenever $P$ is a smooth differential operator of order $\le k$. The \emph{Sobolev norm} on $L^q_k(M)$ is given by
+    For $q \ge 1$ and a nonnegative integer $k$, the \emph{Sobolev Space} $L^q_k(M)$ is the set of $u \in L^q(M)$ whose covariant derivatives $\nabla^i u$ exist weakly and satisfy $\nabla^i u \in L^q(M)$ for all $0 \le i \le k$. The \emph{Sobolev norm} on $L^q_k(M)$ is given by
     \begin{equation}\label{eq:sobolev_norm}
       \|u\|_{q,k} \coloneqq \left(\sum_{i=0}^k \int_M \left\lvert\nabla^i u\right\rvert^q \dd{V}_g\right)^{1/q}
     .\end{equation}
   \end{definition}
 
-  \begin{definition}[Space of $C^k$ Functions]
-    \emph{The space of $C^k$ functions}, $C^k(M)$, is the set of functions on $M$ that are $k$-times continuously differentiable. The \emph{norm} on $C^k(M)$ is given by
+  \begin{definition}[Space of $k$-times Differentiable Functions]
+    \emph{The space of $k$-times differentiable functions}, $C^k(M)$, is the set of functions on $M$ that are $k$-times continuously differentiable. The \emph{norm} on $C^k(M)$ is given by:
     \begin{equation}\label{eq:ck_norm}
       \|u\|_{C^k} \coloneqq \sum_{i=0}^k \sup_M \left\lvert\nabla^i u\right\rvert
     ,\end{equation}
     is finite.
   \end{definition}
 
+  \begin{note}
+    Notice that $C^\infty(M) = \bigcap_{k=0}^\infty C^k(M)$, and $C^\infty(M) \subset L^q_k(M)$ for all $q$ and $k$.
+  \end{note}
+
+  \begin{note}
+    We denote the space of continuous functions as $C^0(M) = C(M)$, and the norm on $C(M)$ is given by $\|u\|_{C^0} = \sup_M |u|$.
+  \end{note}
+
   \begin{definition}[H\"older Space]
     The \emph{H\"older Space}, $C^{k,\alpha}(M)$, is defined for $0 < \alpha < 1$ as the set of $u \in C^k(M)$ for which the \emph{H\"older norm}
     \begin{equation}\label{eq:holder_norm}
-      \|u\|_{C^{k,\alpha}} \coloneqq \|u\|_{C^k} + \sup_{x,y} \frac{\left\lvert \nabla^k u(x) - \nabla^k u(y)\right\rvert}{\left\lvert x - y \right\rvert^\alpha}
+      \|u\|_{C^{k,\alpha}} \coloneqq \|u\|_{C^k} + \sup_{\substack{x,y \in M \\ x \neq y}} \frac{\left\lvert \nabla^k u(x) - \nabla^k u(y)\right\rvert}{d(x, y)^\alpha}
     ,\end{equation}
-    is finite.
+    is finite, where $d(x, y)$ denotes the geodesic distance between $x$ and $y$.
   \end{definition}
 
-  \subsection{Computational Work}
+  \subsection{Operators}
 
-  \begin{computational-work}[Theorem~\ref{thm:aubin}]\leavevmode
-    \label{cw:aubin}
+  \begin{definition}[Laplacian]
+    The \emph{Laplacian} $\Delta$ is the second-order differential operator defined by $\Delta u = \divg(\grad u)$, where $\divg$ is the divergence operator and $\grad$ is the gradient operator.
+  \end{definition}
+
+  \begin{definition}[Schr\"odinger Operator]
+    The \emph{Schr\"odinger operator} is the second-order differential operator defined by $\Delta + h$, where $\Delta$ is the Laplacian and $h$ is a smooth function on $M$.
+  \end{definition}
+
+  \begin{definition}[Elliptic Operator]
+    A second-order differential operator $L = \sum_{i,j} a^{ij}(x) \nabla_i \nabla_j + \text{lower order terms}$ is \emph{elliptic} at $x \in M$ if the symbol matrix $(a^{ij}(x))$ is positive definite, i.e.\ there exists $\lambda > 0$ such that
+    \[%
+      \sum_{i,j} a^{ij}(x) \xi_i \xi_j \ge \lambda |\xi|^2
+    ,\]%
+    for all $\xi \in \R^n$. The operator is \emph{elliptic on $M$} if it is elliptic at every point of $M$.
+  \end{definition}
+
+  \subsection{Analysis}
+
+  \begin{definition}[Weak Derivative]
+    Let $u \in L^1_{\text{loc}}(M)$. A function $v \in L^1_{\text{loc}}(M)$ is the \emph{weak derivative} of $u$ of order $i$ if for all $\phi \in C^\infty_c(M)$,
+    \[%
+      \int_M v \, \phi \dd{V}_g = (-1)^i \int_M u \, \nabla^i \phi \dd{V}_g
+    .\]%
+    We write $\nabla^i u \coloneqq v$.
+  \end{definition}
+
+  \begin{definition}[Weak-Solution]
+    A function $u \in L^1_{\text{loc}}(M)$ is a \emph{weak solution} to the equation $\Delta u = f$ if for all $\phi \in C^\infty_c(M)$,
+    \[%
+      \int_M u \, \Delta\phi \dd{V}_g = \int_M f \phi \dd{V}_g
+    .\]%
+  \end{definition}
+
+  \begin{definition}[Green Function]
+    A \emph{Green function} for the operator $\Delta + h$ is a function $G : M \times M \to \R$ such that for each fixed $y \in M$, $G(\cdot, y)$ is a weak solution to $(\Delta + h)G(\cdot, y) = \Delta_y$, where $\Delta_y$ is the Dirac delta distribution at $y$.
+  \end{definition}
+
+  \begin{definition}[Lipschitz Continuity]
+    A function $u : U \to \R$ is called \emph{Lipschitz continuous} if
+    \[%
+      |u(x) - u(y)| \le C|x - y|
+    ,\]%
+    for some constant $C$ and all $x, y \in U$. We write:
+    \[%
+      \Lip[u] := \sup_{x,y \in U \atop x \neq y} \frac{|u(x) - u(y)|}{|x - y|}
+    .\]%
+  \end{definition}
+
+  \subsection{Partial Differential Equations}
+
+  \begin{definition}[Order of a PDE]
+    The \emph{order} of a partial differential equation is the order of the highest derivative appearing in the equation.
+  \end{definition}
+
+  \begin{definition}[Classical Solution]
+    A function $u \in C^k(U)$ is a \emph{classical solution} to a PDE of order $k$ on $U$ if it satisfies the equation pointwise everywhere on $U$.
+  \end{definition}
+
+  \begin{definition}[Linear PDE]
+    A PDE $Lu = f$ is \emph{linear} if $L$ is a linear operator, i.e.\ $L(\alpha u + \beta v) = \alpha Lu + \beta Lv$ for all functions $u, v$ and constants $\alpha, \beta$.
+  \end{definition}
+
+  \begin{definition}[Uniformly Elliptic Operator]
+    A second-order linear operator $L = \sum_{i,j} a^{ij}(x) \partial_{x_i}\partial_{x_j} + \text{lower order terms}$ is \emph{uniformly elliptic} on $U$ if there exists $\lambda > 0$ such that
+    \[%
+      \sum_{i,j} a^{ij}(x) \xi_i \xi_j \ge \lambda |\xi|^2
+    ,\]%
+    for all $\xi \in \R^n$ and all $x \in U$.
+  \end{definition}
+
+  \begin{definition}[Dirac Delta Distribution]
+    The \emph{Dirac delta distribution} $\delta_y$ at a point $y \in M$ is the distribution defined by
+    \[%
+      \langle \delta_y, \phi \rangle \coloneqq \phi(y)
+    ,\]%
+    for all $\phi \in C^\infty_c(M)$.
+  \end{definition}
+
+  \begin{definition}[Fundamental Solution]
+    A \emph{fundamental solution} of a linear differential operator $L$ is a distribution $\Phi$ such that $L\Phi = \delta_0$, where $\delta_0$ is the Dirac delta distribution at the origin.
+  \end{definition}
+
+  \begin{definition}[Subharmonic and Superharmonic Functions]
+    A function $u \in C^2(M)$ is \emph{subharmonic} if $\Delta u \ge 0$ on $M$, and \emph{superharmonic} if $\Delta u \le 0$ on $M$. A function that is both subharmonic and superharmonic is \emph{harmonic}.
+  \end{definition}
+
+  \begin{definition}[Mollifier]
+    A \emph{mollifier} is a function $\eta \in C^\infty_c(\R^n)$ such that $\eta \ge 0$, $\operatorname{supp}(\eta) \subseteq B(0, 1)$, and $\int_{\R^n} \eta \, \dx = 1$. For $\epsilon > 0$, the \emph{mollification} of $u \in L^1_{\operatorname{loc}}(U)$ is
+    \[%
+      u^\epsilon(x) \coloneqq \int_U \eta_\epsilon(x - y) u(y) \, \dy
+    ,\]%
+    where $\eta_\epsilon(x) \coloneqq \epsilon^{-n} \eta(x/\epsilon)$.
+  \end{definition}
+
+  \begin{definition}[Cutoff Function]
+    A \emph{cutoff function} for a compact set $K \Subset U$ is a function $\chi \in C^\infty_c(U)$ such that $0 \le \chi \le 1$ and $\chi \equiv 1$ on $K$.
+  \end{definition}
+
+  \begin{definition}[Coercivity]
+    A bilinear form $B : H \times H \to \R$ on a Hilbert space $H$ is \emph{coercive} if there exists $\alpha > 0$ such that
+    \[%
+      B(u, u) \ge \alpha \|u\|_H^2
+    ,\]%
+    for all $u \in H$.
+  \end{definition}
+
+  \begin{definition}[Energy Functional]
+    The \emph{energy functional} associated to the equation $\Delta u = f$ is
+    \[%
+      E[u] \coloneqq \int_M \left(\frac{1}{2}|\nabla u|^2 - fu\right) \dd{V}_g
+    .\]%
+    A function $u$ is a weak solution to $\Delta u = f$ if and only if $u$ is a critical point of $E$.
+  \end{definition}
+
+  \section{Partial Differential Equations}
+
+  \section{Functional Analysis, Sobolev Spaces, and PDE's}
+
+  \section{Yamabe Problem Paper}
+
+  \setcounter{subsection}{1}
+  \subsection{Geometric and Analytic Preliminaries}
+  \label{sub_sec:geometric_analytic_preliminaries}
+
+  \begin{theorem}[Sobolev Embedding Theorems for $\R^n$]\leavevmode
+    \label{thm:sobolev_embedding_rn}
 
     \begin{enumerate}
-      \item Showing $\|\phi\|_p^2 = \|\phi^2\|_{p/2}$:
+      \item Suppose
         \[%
-          \|\phi\|_p^2 = \left(\int_M |\phi|^p \dd{V}_g\right)^{2/p} = \left(\int_M |\phi|^p \dd{V}_g\right)^{1/(p/2)} = \|\phi^2\|_{p/2}
+          \frac{1}{r} = \frac{1}{q} - \frac{k}{n}
         .\]%
-      \item Showing $\|\phi^2\|_{p/2} = \left\lVert\sum \psi_i^2 \phi^2\right\rVert_{p/2}$:
+        Then, $L^q_k(\R^n) \hookrightarrow L^r(\R^n)$, continuously. In particular, for $q = 2$, $k = 1$, $r = p = 2n/(n - 2)$, we have the following Sobolev inequality:
+        \begin{equation}\label{eq:sobolev_inequality}
+          \|\phi\|^2_p \le \sigma_n \int_{\R^n} \left\lvert \nabla \phi\right\rvert^2 \dx
+        ,\end{equation}
+        for $\phi \in L^2_1(\R^n)$. We call $\sigma_n$ the \emph{best Sobolev constant}.
+
+      \item Suppose $0 < \alpha < 1$, and
         \[%
-          \|\phi^2\|_{p/2} = \left(\int_M |\phi|^p \dd{V}_g\right)^{1/(p/2)} = \left(\int_M \left|\sum_i \psi_i^2 \phi^2\right|^{p/2} \dd{V}_g\right)^{1/(p/2)} = \left\lVert\sum_i \psi_i^2 \phi^2\right\rVert_{p/2}
+          \frac{1}{q} \le \frac{k - \alpha}{n}
         .\]%
-      \item Showing $\left\lVert \sum \psi_i^2 \phi^2\right\rVert \le \sum_i \left(\int_M |\psi_i \phi|^p \dd{V}_g\right)^{2/p}$:
-        \begin{align*}
-          \left\lVert\sum_i \psi_i^2 \phi^2\right\rVert_{p/2} &= \left(\int_M \left|\sum_i \psi_i^2 \phi^2\right|^{p/2} \dd{V}_g\right)^{1/(p/2)} \\
-                                                              &\le \sum_i \left(\int_M |\psi_i^2 \phi^2|^{p/2} \dd{V}_g\right)^{1/(p/2)} \\
-                                                              &= \sum_i \left(\int_M |\psi_i \phi|^p \dd{V}_g\right)^{2/p}
-        .\end{align*}
-      \item Showing $\sum_i \left(\int_M |\psi_i \phi|^p \dd{V}_g\right)^{2/p} \le (1 + \epsilon)^{2/p} \sum_i \left(\int_{U_i} |\psi_i \phi|^p \dd{V}_g\right)^{2/p}$:
-        \[%
-          \sum_i \left(\int_M |\psi_i \phi|^p \dd{V}_g\right)^{2/p} = \sum_i \left(\int_{U_i} |\psi_i \phi|^p \dd{V}_g + \int_{M - U_i} |\psi_i \phi|^p \dd{V}_g\right)^{2/p}
-        .\]%
-        The eigenvalues of $g_{jk}$ are between $(1 + \epsilon)^{-1}$ and $(1 + \epsilon)$, so the volume form $\dd{V}_g$ is between $(1 + \epsilon)^{-n/2} \dx$ and $(1 + \epsilon)^{n/2} \dx$. Since $p = 2n/(n - 2)$, we have $n/2 = p/(p - 2)$, so
-        \[%
-          \dd{V}_g \le (1 + \epsilon)^{n/2} \dx = (1 + \epsilon)^{p/(p - 2)} \dx = (1 + \epsilon)^{2/p} \dx
-        .\]%
-        Therefore,
-        \[%
-          \int_{M - U_i} |\psi_i \phi|^p \dd{V}_g \le (1 + \epsilon)^{2/p} \int_{M - U_i} |\psi_i \phi|^p \dx
-        .\]%
-        Thus, we have:
-        \begin{align*}
-          \sum_i \left(\int_M |\psi_i \phi|^p \dd{V}_g\right)^{2/p} &\le (1 + \epsilon)^{2/p} \sum_i \left(\int_{U_i} |\psi_i \phi|^p \dx + \int_{M - U_i} |\psi_i \phi|^p \dx\right)^{2/p} \\
-                                                                    &\le (1 + \epsilon)^{2/p} \sum_i \left(\int_{U_i} |\psi_i \phi|^p \dx\right)^{2/p}
-        .\end{align*}
-      \item Simplifying $|\nabla(\psi_i \phi)|^2$:
-        \begin{align*}
-          |\nabla(\psi_i \phi)|^2 &= \braket{\nabla(\psi_i \phi), \nabla(\psi_i \phi)} \\
-                                  &= \braket{\psi_i \nabla \phi + \phi \nabla \psi_i, \psi_i \nabla \phi + \phi \nabla \psi_i} \\
-                                  &= |\psi_i|^2 |\nabla \phi|^2 + 2\psi_i \phi \braket{\nabla \psi_i, \nabla \phi} + |\phi|^2 |\nabla \psi_i|^2
-        .\end{align*}
-        Working with the middle term, we have:
-        \[%
-          2\psi_i \phi \braket{\nabla \psi_i, \nabla \phi} \le 2\psi_i|\nabla \phi| \cdot \phi|\nabla \psi_i|
-        .\]%
-        Letting $a = \psi_i|\nabla \phi|$ and $b = \psi|\nabla \psi_i|$, we have:
-        \begin{align*}
-          |\nabla(\psi_i \phi)|^2 &\le \psi_i^2|\nabla \phi|^2 + \epsilon(\psi_i^2|\nabla \phi|^2) + \epsilon^{-1}(\phi^2|\nabla \psi_i|^2) + \phi^2|\nabla \psi_i|^2 \\
-                                  &= (1 + \epsilon)\psi_i^2|\nabla \phi|^2 + (1 + \epsilon^{-1})\phi^2|\nabla \psi_i|^2
-        .\end{align*}
+        Then, $L^q_k(\R^n) \hookrightarrow C^\alpha(\R^n)$, continuously.
     \end{enumerate}
+  \end{theorem}
+
+  \begin{computational-work}[Theorem~\ref{thm:sobolev_embedding_rn}]\leavevmode
+    \label{cw:sobolev_embedding_rn}
   \end{computational-work}
+
+  \begin{proof}[Proof of (i)]
+  \end{proof}
+
+  \begin{proof}[Proof of (ii)]
+  \end{proof}
+
+  \begin{theorem}[Sobolev Embedding Theorems for Compact Manifolds] \leavevmode
+    \label{thm:sobolev_embedding_compact}
+
+    \begin{enumerate}
+      \item If
+        \[%
+          \frac{1}{r} \ge \frac{1}{q} - \frac{k}{n}
+        ,\]%
+        then $L^q_k(M) \hookrightarrow L^r(M)$, continuously.
+
+      \item Suppose strict inequality holds in the above. Then, the inclusion $L^q_k(M) \subset L^r(M)$ is a compact operator.
+
+      \item Suppose $0 < \alpha < 1$, and
+        \[%
+          \frac{1}{q} \le \frac{k - \alpha}{n}
+        .\]%
+        Then, $L^q_k(M) \hookrightarrow C^\alpha(M)$, continuously.
+    \end{enumerate}
+  \end{theorem}
+
+  \begin{computational-work}[Theorem~\ref{thm:sobolev_embedding_compact}]\leavevmode
+    \label{cw:sobolev_embedding_compact}
+  \end{computational-work}
+
+  \begin{proof}[Proof of (i)]
+  \end{proof}
+
+  \begin{proof}[Proof of (ii)]
+  \end{proof}
+
+  \begin{proof}[Proof of (iii)]
+  \end{proof}
+
+  \begin{theorem}[Aubin]
+    \label{thm:aubin}
+
+    Let $M$ be a compact Riemannian manifold with metric $g$, $p = 2n/(n - 2)$, and let $\sigma_n$ be the best Sobolev constant defined in Theorem~\ref{thm:sobolev_embedding_rn}. Then for every $\epsilon > 0$, there exists a constant $C_\epsilon$ such that for all $\phi \in C^\infty(M)$ such that
+    \[%
+      \|\phi\|^2_p \le (1 + \epsilon) \sigma_n \int_M |\nabla \phi|^2 \dd{V}_g + C_\epsilon \int_M \phi^2 \dd{V}_g
+    .\]%
+  \end{theorem}
 
   \begin{computational-work}[Theorem~\ref{thm:aubin}]\leavevmode
     \label{cw:aubin}
@@ -158,7 +430,7 @@
         Applying Young's inequality $2ab \le \epsilon a^2 + \epsilon^{-1}b^2$ with $a = \psi_i|\nabla\phi|$ and $b = \phi|\nabla\psi_i|$ to the cross term gives
         \begin{align*}
           |\nabla(\psi_i\phi)|^2 &\le \psi_i^2|\nabla\phi|^2 + \epsilon\psi_i^2|\nabla\phi|^2 + \epsilon^{-1}\phi^2|\nabla\psi_i|^2 + \phi^2|\nabla\psi_i|^2\\
-                                 &= (1+\epsilon)\psi_i^2|\nabla\phi|^2 + (1+\epsilon^{-1})\phi^2|\nabla\psi_i|^2
+                                  &= (1+\epsilon)\psi_i^2|\nabla\phi|^2 + (1+\epsilon^{-1})\phi^2|\nabla\psi_i|^2
         .\end{align*}
 
       \item Relating the Euclidean and Riemannian gradients on $U_i$:
@@ -173,82 +445,6 @@
         .\]%
     \end{enumerate}
   \end{computational-work}
-
-  \begin{computational-work}[Theorem~\ref{thm:local_elliptic_regularity}]\leavevmode
-    \label{cw:local_elliptic_regularity}
-  \end{computational-work}
-
-  \subsection{Proof of Theorems}
-
-  \begin{theorem}[Sobolev Embedding Theorems for $\R^n$]\leavevmode
-    \label{thm:sobolev_embedding_rn}
-
-    \begin{enumerate}
-      \item Suppose
-        \[%
-          \frac{1}{r} = \frac{1}{q} - \frac{k}{n}
-        .\]%
-        Then, $L^q_k(\R^n) \hookrightarrow L^r(\R^n)$, continuously. In particular, for $q = 2$, $k = 1$, $r = p = 2n/(n - 2)$, we have the following Sobolev inequality:
-        \begin{equation}\label{eq:sobolev_inequality}
-          \|\phi\|^2_p \le \sigma_n \int_{\R^n} \left\lvert \nabla \phi\right\rvert^2 \dx
-        ,\end{equation}
-        for $\phi \in L^2_1(\R^n)$. We call $\sigma_n$ the \emph{best Sobolev constant}.
-
-      \item Suppose $0 < \alpha < 1$, and
-        \[%
-          \frac{1}{q} \le \frac{k - \alpha}{n}
-        .\]%
-        Then, $L^q_k(\R^n) \hookrightarrow C^\alpha(\R^n)$, continuously.
-    \end{enumerate}
-  \end{theorem}
-
-  \begin{proof}[Proof of (i)]
-  \end{proof}
-
-  \begin{proof}[Proof of (ii)]
-  \end{proof}
-
-  \begin{theorem}[Sobolev Embedding Theorems for Compact Manifolds] \leavevmode
-    \label{thm:sobolev_embedding_compact}
-
-    \begin{enumerate}
-      \item If
-        \[%
-          \frac{1}{r} \ge \frac{1}{q} - \frac{k}{n}
-        ,\]%
-        then $L^q_k(M) \hookrightarrow L^r(M)$, continuously.
-
-      \item Suppose strict inequality holds in the above. Then, the inclusion $L^q_k(M) \subset L^r(M)$ is a compact operator.
-
-      \item Suppose $0 < \alpha < 1$, and
-        \[%
-          \frac{1}{q} \le \frac{k - \alpha}{n}
-        .\]%
-        Then, $L^q_k(M) \hookrightarrow C^\alpha(M)$, continuously.
-    \end{enumerate}
-  \end{theorem}
-
-  \begin{proof}[Proof of (i)]
-  \end{proof}
-
-  \begin{proof}[Proof of (ii)]
-  \end{proof}
-
-  \begin{proof}[Proof of (iii)]
-  \end{proof}
-
-  \begin{theorem}[Aubin]
-    \label{thm:aubin}
-
-    Let $M$ be a compact Riemannian manifold with metric $g$, $p = 2n/(n - 2)$, and let $\sigma_n$ be the best Sobolev constant defined in Theorem~\ref{thm:sobolev_embedding_rn}. Then for every $\epsilon > 0$, there exists a constant $C_\epsilon$ such that for all $\phi \in C^\infty(M)$ such that
-    \[%
-      \|\phi\|^2_p \le (1 + \epsilon) \sigma_n \int_M |\nabla \phi|^2 \dd{V}_g + C_\epsilon \int_M \phi^2 \dd{V}_g
-    .\]%
-  \end{theorem}
-
-  \begin{note}
-    For more details of the computational work used in the proof of Theorem~\ref{thm:aubin}, see Computational Work~\ref{cw:aubin}.
-  \end{note}
 
   \begin{proof}
     Fix $\epsilon > 0$; we shall replace $(1+\epsilon)$ by a different name for the constant at the end, so we allow the factor to accumulate during the argument. Around each point of $M$ choose a coordinate neighbourhood on which the eigenvalues of $g_{jk}$ lie in $\bigl[(1+\epsilon)^{-1}, 1+\epsilon\bigr]$; this is possible by continuity of $g$ at every point. Extract a finite subcover $\{U_i\}$ and choose a subordinate partition of unity $\{\psi_i^2\}$ with $\sum_i \psi_i^2 = 1$ and each $\psi_i$ supported in $U_i$. By Computational Work~\ref{cw:aubin}(i)--(iv),
@@ -271,7 +467,7 @@
     Combining the previous steps and summing over $i$, we have:
     \begin{align*}
       \|\phi\|_p^2 &\le (1+\epsilon)^{n/2 \cdot 2/p} \cdot \sigma_n \cdot (1+\epsilon)^{1+n/2} \sum_i \left[(1+\epsilon)\int_{U_i}\psi_i^2|\nabla\phi|^2\dd{V}_g + (1+\epsilon^{-1})\int_{U_i}\phi^2|\nabla\psi_i|^2\dd{V}_g\right] \\
-                   &= A(\epsilon) \sigma_n \int_M |\nabla\phi|^2\dd{V}_g + B(\epsilon)\int_M \phi^2\dd{V}_g
+                    &= A(\epsilon) \sigma_n \int_M |\nabla\phi|^2\dd{V}_g + B(\epsilon)\int_M \phi^2\dd{V}_g
     ,\end{align*}
     where we used $\sum_i \psi_i^2 = 1$ to collapse the sums, and where
     \[%
@@ -298,17 +494,15 @@
     \end{enumerate}
   \end{theorem}
 
-  \begin{note}
-    For more details of the computational work used in the proof of Theorem~\ref{thm:local_elliptic_regularity}, see Computational Work~\ref{cw:local_elliptic_regularity}.
-
-    I'll also be proving the theorem for the $L^2$ case, as I don't have the machinery to handle the $L^q$ case.
-  \end{note}
+  \begin{computational-work}[Theorem~\ref{thm:local_elliptic_regularity}]\leavevmode
+    \label{cw:local_elliptic_regularity}
+  \end{computational-work}
 
   \begin{proof}
     Expanding Equation~\ref{eq:local_elliptic_regularity_thm}, we have:
     \begin{align*}
       \|u\|_{L^q_{k+2}(K)} &= \left(\sum_{i=0}^{k+2} \int_K \left\lvert\nabla^i u\right\rvert^q \dd{V}_g\right)^{1/q} \\
-                           &\le C\left(\left(\sum_{i=0}^k \int_\Omega \left\lvert\nabla^i \left(\Delta u\right)\right\rvert^q \dd{V}_g\right)^{1/q} + \left(\int_\Omega |u|^q \dd{V}_g\right)^{1/q}\right)
+                            &\le C\left(\left(\sum_{i=0}^k \int_\Omega \left\lvert\nabla^i \left(\Delta u\right)\right\rvert^q \dd{V}_g\right)^{1/q} + \left(\int_\Omega |u|^q \dd{V}_g\right)^{1/q}\right)
     ,\end{align*}
     for some constant $C$ depending on $K$ and $\Omega$, and any metric $g$ on $\Omega$.
   \end{proof}
@@ -327,14 +521,18 @@
     \begin{enumerate}
       \item If $f \in L^q_k(M)$, then $u \in L^q_{k+2}(M)$, and
         \[%
-          \|u\|_{q,k+2} \le C\left(\|u\|_{q,k} + \|u\|_q\right)
+          \|u\|_{q,k+2} \le C\left(\|\Delta u\|_{q,k} + \|\Delta u\|_q\right)
         .\]%
       \item If $f \in C^{k,\alpha}(M)$, then $u \in C^{k+2,\alpha}(M)$, and
         \[%
-          \|u\|_{C^{k+2,\alpha}} \le C\left(\|u\|_{C^{k,\alpha} + \|u\|_{C^\alpha}}\right)
+          \|u\|_{C^{k+2,\alpha}} \le C\left(\|\Delta u\|_{C^{k,\alpha}} + \|\Delta u\|_{C^\alpha}\right)
         .\]%
     \end{enumerate}
   \end{theorem}
+
+  \begin{computational-work}[Theorem~\ref{thm:global_elliptic_regularity}]\leavevmode
+    \label{cw:global_elliptic_regularity}
+  \end{computational-work}
 
   \begin{proof}[Proof of (i)]
   \end{proof}
@@ -345,8 +543,12 @@
   \begin{theorem}[Strong Maximum Principle]
     \label{thm:strong_maximum_principle}
 
-    Suppose $h$ is a nonnegative smooth function on a connected manifold $M$, and $u \in C^2(M)$ satisfies $(\delta + h)u \ge 0$. If $u$ attains its minimum $m \le 0$, then $u$ is constant on $M$.
+    Suppose $h$ is a nonnegative smooth function on a connected manifold $M$, and $u \in C^2(M)$ satisfies $(\Delta + h)u \ge 0$. If $u$ attains its minimum $m \le 0$, then $u$ is constant on $M$.
   \end{theorem}
+
+  \begin{computational-work}[Theorem~\ref{thm:strong_maximum_principle}]\leavevmode
+    \label{cw:strong_maximum_principle}
+  \end{computational-work}
 
   \begin{proof}
   \end{proof}
@@ -354,8 +556,12 @@
   \begin{proposition}[Weak Removable Singularities Theorem]
     \label{prop:weak_removable_singularities}
 
-    Let $U$ be an open set in $M$ and $P \in U$. Suppose $u$ is a weak solution of $(\delta + h)u = 0$ on $U - \{P\}$, with $h \in L^{n/2}(U)$ and $u \in L^q(U)$ for some $q > p/2 = n/(n - 2)$. Then $u$ satisfies $(\delta + h)u = 0$ weakly on all of $U$.
+    Let $U$ be an open set in $M$ and $P \in U$. Suppose $u$ is a weak solution of $(\Delta + h)u = 0$ on $U - \{P\}$, with $h \in L^{n/2}(U)$ and $u \in L^q(U)$ for some $q > p/2 = n/(n - 2)$. Then $u$ satisfies $(\Delta + h)u = 0$ weakly on all of $U$.
   \end{proposition}
+
+  \begin{computational-work}[Proposition~\ref{prop:weak_removable_singularities}]\leavevmode
+    \label{cw:weak_removable_singularities}
+  \end{computational-work}
 
   \begin{proof}
   \end{proof}
@@ -366,15 +572,68 @@
     Suppose $M$ is a compact Riemannian manifold of dimension $n \ge 3$, and $h$ is a strictly positive smooth function on $M$. For each .
   \end{theorem}
 
+  \begin{computational-work}[Theorem~\ref{thm:green_function}]\leavevmode
+    \label{cw:green_function}
+  \end{computational-work}
+
   \begin{proof}
   \end{proof}
 
-  \section{The Model Case: The Sphere}
+  \section{Scalar Curvature and Isometry Group Paper}
 
   \section{Questions}
 
   \begin{question}
     In Theorem~\ref{cw:aubin}, why do we want the eigenvalues of the metric to be between $(1 + \epsilon)^{-1}$ and $(1 + \epsilon)$?
+  \end{question}
+
+  \begin{solution}
+  \end{solution}
+
+  \begin{question}
+    In Theorem~\ref{thm:local_elliptic_regularity}, you assume any metric on $\Omega$. How sensitive are the estimates to the choice of metric, and does the constant $C$ depend on it?
+  \end{question}
+
+  \begin{solution}
+  \end{solution}
+
+  \begin{question}
+    For Theorem~\ref{thm:strong_maximum_principle}, what fails if $h$ fails to be negative?
+  \end{question}
+
+  \begin{solution}
+  \end{solution}
+
+  \begin{question}
+    In Proposition~\ref{prop:weak_removable_singularities}, why is $q > p/2 = n/(n-2)$ the right threshold for the integrability of $u$?
+  \end{question}
+
+  \begin{solution}
+  \end{solution}
+
+  \begin{question}
+    How do all the theorems from sub-section~\ref{sub_sec:geometric_analytic_preliminaries} fit together?
+  \end{question}
+
+  \begin{solution}
+  \end{solution}
+
+  \begin{question}
+    Given your background, what's the minimum you'd need to read to genuinely understand the proofs of the theorems you'll be using most heavily?
+  \end{question}
+
+  \begin{solution}
+  \end{solution}
+
+  \begin{question}
+    Are there any results in the paper you're extending that are still open or not fully understood, even at the research level?
+  \end{question}
+
+  \begin{solution}
+  \end{solution}
+
+  \begin{question}
+    What does a realistic scope for an undergraduate thesis on this topic look like?
   \end{question}
 
   \begin{solution}

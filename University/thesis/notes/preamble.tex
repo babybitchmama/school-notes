@@ -70,6 +70,12 @@
 \setcounter{tocdepth}{2}
 \allowdisplaybreaks
 
+\makeatletter
+\renewcommand{\tableofcontents}{%
+  \@starttoc{toc}%
+}
+\makeatother
+
 \ifx\nauthor\undefined
   \def\nauthor{Hashem A. Damrah}
 \else
@@ -374,9 +380,9 @@
 \newcommand\metric{\mathrm{d}}
 
 % Differentials
-\newcommand\dd[1]{\odif{#1}}
-\newcommand\pd[1]{\pdif{#1}}
-\newcommand\Dd[1]{\mdif{#1}}
+\newcommand\dd[2][]{\odif[#1]{#2}}
+\newcommand\pd[2][]{\pdif[#1]{#2}}
+\newcommand\Dd[2][]{\mdif[#1]{#2}}
 
 % Main macro
 \newcommand\dA{\dd{A}}
@@ -523,6 +529,10 @@
 
 % Operators
 % \DeclareMathOperator\arg{arg}
+\DeclareMathOperator\supp{supp}
+\DeclareMathOperator\divg{div}
+\DeclareMathOperator\grad{grad}
+\DeclareMathOperator\Lip{Lip}
 \DeclareMathOperator\Arg{Arg}
 \DeclareMathOperator\curl{curl}
 \DeclareMathOperator\div{div}
@@ -613,6 +623,7 @@
 
 \newtheorem*{remark}{Remark}
 \newtheorem{note}{Note}[section]
+\newtheorem*{note*}{Note}
 \newtheorem*{warning}{Warning}
 
 \theoremstyle{plain}
