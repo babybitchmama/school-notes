@@ -36,13 +36,30 @@
       \item My notes from the \emph{Partial Differential Equations} textbook, by Lawrence C. Evans.
       \item My notes from the \emph{Functional Analysis, Sobolev Spaces and Partial Differential Equations} textbook, by Haim Brezis.
       \item My notes from the \emph{The Yamabe Problem} paper, by John M. Lee and Thomas H. Parker.
-      \item My notes from the \emph{Scalar Curvature and Isometry Group Paper} paper, by J. Berard Bergery.
+      \item My notes from the \emph{Scalar Curvature and Isometry Group} paper, by J. Berard Bergery.
     \end{enumerate}
   \end{note*}
 
   \section{Notation}
 
   We use $U$ to denote an open set in $\R^n$, and $M$ to denote a compact Riemannian manifold of dimension $n \ge 3$ with metric $g$. We use $\dd{V}_g$ to denote the volume form on $M$ induced by $g$. We use $\Delta$ to denote the Laplacian, and $\nabla$ to denote the covariant derivative. We use $C$ to denote a constant that may change from line to line, but does not depend on any variables.
+
+  \subsection{Linear Algebra}
+
+  \begin{enumerate}
+    \item We use $\langle\cdot, \cdot\rangle$ to denote the inner product on $\R^n$ and the inner product on $T_xM$ induced by $g$.
+    \item We write $A = ((a_{ij}))$ to mean $A$ is an $m \times n$ matrix with $(i, j)^{\text{th}}$ entry $a_{ij}$.
+    \item If $A = ((a_{ij}))$ and $B = ((b_{ij}))$ are $m \times n$ matrices, then:
+      \[%
+        A : B = \sum_{i=1}^m \sum_{j=1}^n a_{ij} b_{ij}
+      ,\]%
+      and
+      \[%
+        |A| = (A : A)^{1/2} = \left(\sum_{i=1}^m \sum_{j=1}^n a_{ij}^2\right)^{1/2}
+      .\]%
+    \item We denote the space of invertible real matrices by $\GL(n, \R)$ (or $\GL(n, \C)$ for complex matrices).
+    \item We denote the space of real symmetric matrices by $\S(n, \R)$ (or $\S(n, \C)$ for complex symmetric matrices).
+  \end{enumerate}
 
   \subsection{Functions}
 
@@ -68,12 +85,6 @@
       .\]%
   \end{enumerate}
 
-  \subsection{Vector-Valued Functions}
-
-  \begin{enumerate}
-    \item 
-  \end{enumerate}
-
   \subsection{Derivatives}
 
   \begin{enumerate}
@@ -90,6 +101,10 @@
         D^\alpha u(x) = \pdv[order={\alpha_1, \alpha_n}, mixed-order={|\alpha|}, sep-ord-inf={\cdots}]{u(x)}{x_1, x_n} = \pd[\alpha_1]{x_1} \cdots \pd[\alpha_n]{x_n} u(x)
       .\]%
       This is the standard multi-index notation for partial derivatives.
+    \item If we specify a specific variable, we write:
+      \[%
+        D_xu = (u_{x_1}, \cdots, u_{x_n}), \quad D_yu = (u_{y_1}, \cdots, u_{y_n})
+      .\]%
     \item If $k$ is a positive integer, the set of all partial derivatives of order $k$ is denoted by:
       \[%
         D^ku(x) := \{D^\alpha u(x) : |\alpha| = k\}
@@ -130,7 +145,7 @@
     A \emph{partition of unity} subordinate to an open cover $\{U_i\}$ of $M$ is a collection of smooth functions $\{\psi_i\}$ on $M$ such that
     \begin{enumerate}
       \item $0 \le \psi_i \le 1$ for all $i$,
-      \item $\supp(\psi_i) \subseteq U_i$ for all $i$,
+      \item $\supp(\psi_i) \subseteq U_i$ for all $i$ (Definition~\ref{def:compactly_supported_functions}),
       \item $\sum_i \psi_i = 1$ everywhere on $M$.
     \end{enumerate}
   \end{definition}
@@ -146,6 +161,8 @@
   \end{definition}
 
   \begin{definition}[Compactly Supported Functions]
+    \label{def:compactly_supported_functions}
+
     A function $u : M \to \R$ has \emph{compact support} if the set $\supp(u) \coloneqq \overline{\{x \in M : u(x) \neq 0\}}$ is compact. We denote by $C^\infty_c(M)$ the space of smooth functions on $M$ with compact support.
   \end{definition}
 
@@ -240,6 +257,37 @@
 
   \subsection{Partial Differential Equations}
 
+  \begin{definition}[General PDE Form]
+    An expression of the form:
+    \begin{equation}\label{eq:general_pde_form}
+      F(D^ku(x), D^{k-1}u(x), \cdots, Du(x), u(x), x) = 0
+    ,\end{equation}
+    is called a $k^{\text{th}}$-order partial differential equation (PDE), where:
+    \[%
+      F : \R^{n^k} \times \R^{n^{k-1}} \times \cdots \times R^n \times \R \times U \to \R
+    ,\]%
+    is given and $u : U \to \R$ is the unknown function we want to solve for.
+  \end{definition}
+
+  \begin{definitions}\leavevmode
+    \begin{enumerate}
+      \item The PDE from Equation~\ref{eq:general_pde_form} is called \emph{linear} if it has the form:
+        \[%
+          \sum_{|\alpha|\le k} a_\alpha(x) D^\alpha u(x) = f(x)
+        ,\]%
+        for given functions $a_\alpha$ and $f$. It's called \emph{homogeneous} if $f \equiv 0$.
+      \item The PDE~\ref{eq:general_pde_form} is called \emph{semilinear} if it has the form:
+        \[%
+          \sum_{|\alpha|=k} a_\alpha(x) D^\alpha u + a_0(D^{k-1}u, \cdots, Du, u, x) = 0
+        .\]%
+      \item The PDE~\ref{eq:general_pde_form} is called \emph{quasilinear} if it has the form:
+        \[%
+          \sum_{|\alpha|=k} a_\alpha(D^{k-1}u, \cdots, Du, u, x)D^\alpha u + a_0(D^{k-1}u, \cdots, Du, u, x) = 0
+        .\]%
+      \item The PDE~\ref{eq:general_pde_form} is called \emph{fully nonlinear} if it depends nonlinearly upon the highest order derivatives.
+    \end{enumerate}
+  \end{definitions}
+
   \begin{definition}[Order of a PDE]
     The \emph{order} of a partial differential equation is the order of the highest derivative appearing in the equation.
   \end{definition}
@@ -305,6 +353,37 @@
   \end{definition}
 
   \section{Partial Differential Equations}
+
+  \subsection{Introduction}
+
+  \subsubsection{Solution to Select Exercises}
+
+  \begin{problem}
+    Prove the \emph{Multinomial Theorem}:
+    \[%
+      (x_1 + \cdots + x_n)^k = \sum_{|\alpha|=k} \binom{|\alpha|}{\alpha} x^\alpha
+    ,\]%
+    where $\binom{|\alpha|}{\alpha} = |\alpha|!/\alpha!$, $\alpha! = \alpha_1!\alpha_2!\cdots\alpha_n!$, and $x^\alpha = x_1^{\alpha_1} \cdots x_n^{\alpha_n}$. The sum is taken over all multiindices $\alpha = (\alpha_1, \cdots, \alpha_n)$ with $|\alpha| = k$.
+  \end{problem}
+
+  \begin{solution}
+    We prove this using induction on $n$. The base case is given by the binomial theorem, namely, when $n = 2$, we have:
+    \begin{align*}
+      (x_1 + x_2)^k &= \sum_{j=0}^k \binom{k}{j} x_1^j x_2^{k-j} \\
+                     &= \sum_{|\alpha|=k} \binom{|\alpha|}{\alpha} x^\alpha
+    .\end{align*}
+    Now, assume the multinomial theorem holds for $n-1$ variables. Then,
+    \begin{align*}
+      (x_1 + \cdots + x_n)^k &= \sum_{j=0}^k \binom{k}{j} x_n^j (x_1 + \cdots + x_{n-1})^{k-j} \\
+                             &= \sum_{j=0}^k \binom{k}{j} x_n^j \sum_{|\beta|=k-j} \binom{|\beta|}{\beta} x^\beta \\
+                             &= \sum_{j=0}^k \sum_{|\beta|=k-j} \binom{k}{j} \binom{|\beta|}{\beta} x_n^j x^\beta
+    .\end{align*}
+    Now, for each multiindex $\alpha$ with $|\alpha| = k$, we can write $\alpha = (\beta_1, \cdots, \beta_{n-1}, j)$, where $|\beta| = k-j$. Then,
+    \begin{align*}
+      \sum_{j=0}^k \sum_{|\beta|=k-j} \binom{k}{j} \binom{|\beta|}{\beta} x_n^j x^\beta &= \sum_{|\alpha|=k} \binom{k}{\alpha_n} \binom{|\alpha| - \alpha_n}{\alpha_1, \cdots, \alpha_{n-1}} x_n^{\alpha_n} x_1^{\alpha_1} \cdots x_{n-1}^{\alpha_{n-1}} \\
+                                                                                         &= \sum_{|\alpha|=k} \binom{|\alpha|}{\alpha} x^\alpha
+    .\qedhere\end{align*}
+  \end{solution}
 
   \section{Functional Analysis, Sobolev Spaces, and PDE's}
 
@@ -578,6 +657,22 @@
 
   \begin{proof}
   \end{proof}
+
+  \subsection{The Model Case: The Sphere}
+
+  \subsection{Conformal Normal Coordinates}
+
+  \subsection{Stereographic Projections}
+
+  \subsection{The Test Function Estimate}
+
+  \subsection{General Relativity}
+
+  \subsection{Analysis on Asymptotically Flat Manifolds}
+
+  \subsection{The Positive Mass Theorem}
+
+  \subsection{Solution of the Yamabe Problem}
 
   \section{Scalar Curvature and Isometry Group Paper}
 
