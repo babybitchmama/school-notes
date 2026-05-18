@@ -145,7 +145,7 @@
     A \emph{partition of unity} subordinate to an open cover $\{U_i\}$ of $M$ is a collection of smooth functions $\{\psi_i\}$ on $M$ such that
     \begin{enumerate}
       \item $0 \le \psi_i \le 1$ for all $i$,
-      \item $\supp(\psi_i) \subseteq U_i$ for all $i$ (Definition~\ref{def:compactly_supported_functions}),
+      \item $\supp(\psi_i) \subseteq U_i$ for all $i$ (\cref{def:compactly_supported_functions}),
       \item $\sum_i \psi_i = 1$ everywhere on $M$.
     \end{enumerate}
   \end{definition}
@@ -271,98 +271,246 @@
 
   \begin{definitions}\leavevmode
     \begin{enumerate}
-      \item The PDE from Equation~\ref{eq:general_pde_form} is called \emph{linear} if it has the form:
+      \item The PDE from \cref{eq:general_pde_form} is called \emph{linear} if it has the form:
         \[%
           \sum_{|\alpha|\le k} a_\alpha(x) D^\alpha u(x) = f(x)
         ,\]%
         for given functions $a_\alpha$ and $f$. It's called \emph{homogeneous} if $f \equiv 0$.
-      \item The PDE~\ref{eq:general_pde_form} is called \emph{semilinear} if it has the form:
+      \item The PDE from~\cref{eq:general_pde_form} is called \emph{semilinear} if it has the form:
         \[%
           \sum_{|\alpha|=k} a_\alpha(x) D^\alpha u + a_0(D^{k-1}u, \cdots, Du, u, x) = 0
         .\]%
-      \item The PDE~\ref{eq:general_pde_form} is called \emph{quasilinear} if it has the form:
+      \item The PDE from~\cref{eq:general_pde_form} is called \emph{quasilinear} if it has the form:
         \[%
           \sum_{|\alpha|=k} a_\alpha(D^{k-1}u, \cdots, Du, u, x)D^\alpha u + a_0(D^{k-1}u, \cdots, Du, u, x) = 0
         .\]%
-      \item The PDE~\ref{eq:general_pde_form} is called \emph{fully nonlinear} if it depends nonlinearly upon the highest order derivatives.
+      \item The PDE from~\cref{eq:general_pde_form} is called \emph{fully nonlinear} if it depends nonlinearly upon the highest order derivatives.
     \end{enumerate}
   \end{definitions}
 
-  \begin{definition}[Order of a PDE]
-    The \emph{order} of a partial differential equation is the order of the highest derivative appearing in the equation.
-  \end{definition}
-
-  \begin{definition}[Classical Solution]
-    A function $u \in C^k(U)$ is a \emph{classical solution} to a PDE of order $k$ on $U$ if it satisfies the equation pointwise everywhere on $U$.
-  \end{definition}
-
-  \begin{definition}[Linear PDE]
-    A PDE $Lu = f$ is \emph{linear} if $L$ is a linear operator, i.e.\ $L(\alpha u + \beta v) = \alpha Lu + \beta Lv$ for all functions $u, v$ and constants $\alpha, \beta$.
-  \end{definition}
-
-  \begin{definition}[Uniformly Elliptic Operator]
-    A second-order linear operator $L = \sum_{i,j} a^{ij}(x) \partial_{x_i}\partial_{x_j} + \text{lower order terms}$ is \emph{uniformly elliptic} on $U$ if there exists $\lambda > 0$ such that
+  \begin{definition}[Convex]
+    A function $f : \R^n \to \R$ is called \emph{convex} provided that
     \[%
-      \sum_{i,j} a^{ij}(x) \xi_i \xi_j \ge \lambda |\xi|^2
+      f(\tau x + (1 - \tau)y) \le \tau f(x) + (1 - \tau)f(y)
     ,\]%
-    for all $\xi \in \R^n$ and all $x \in U$.
+    for all $x, y \in \R^n$ and each $0 \le \tau \le 1$.
   \end{definition}
 
-  \begin{definition}[Dirac Delta Distribution]
-    The \emph{Dirac delta distribution} $\delta_y$ at a point $y \in M$ is the distribution defined by
+  \section{Theorems Used}
+
+  \subsection{Inequalities and Identities}
+
+  \begin{theorem}[Triangle Inequality]
+    \label{thm:triangle_inequality}
+  \end{theorem}
+
+  \begin{proof}
+  \end{proof}
+
+  \begin{theorem}[Cauchy's Inequality]
+    \label{thm:cauchy_inequality}
+
+    For all $a, b \in \R$ and $\epsilon > 0$,
+    \begin{equation}\label{eq:cauchy_inequality}
+      ab \le \frac{a^2}{2} + \frac{b^2}{2}
+    .\end{equation}
+  \end{theorem}
+
+  \begin{proof}
+    Since $0 \le (a - b)^2$, we have:
     \[%
-      \langle \delta_y, \phi \rangle \coloneqq \phi(y)
-    ,\]%
-    for all $\phi \in C^\infty_c(M)$.
-  \end{definition}
+      0 \le (a - b)^2 = a^2 - 2ab + b^2 \implies ab \le \frac{a^2}{2} + \frac{b^2}{2}
+    .\qedhere\]%
+  \end{proof}
 
-  \begin{definition}[Fundamental Solution]
-    A \emph{fundamental solution} of a linear differential operator $L$ is a distribution $\Phi$ such that $L\Phi = \delta_0$, where $\delta_0$ is the Dirac delta distribution at the origin.
-  \end{definition}
+  \begin{theorem}[Cauchy's Inequality with $\epsilon$]
+    \label{thm:cauchy_inequality_epsilon}
 
-  \begin{definition}[Subharmonic and Superharmonic Functions]
-    A function $u \in C^2(M)$ is \emph{subharmonic} if $\Delta u \ge 0$ on $M$, and \emph{superharmonic} if $\Delta u \le 0$ on $M$. A function that is both subharmonic and superharmonic is \emph{harmonic}.
-  \end{definition}
+    For all $a, b \in \R$ and $\epsilon > 0$,
+    \begin{equation}\label{eq:cauchy_inequality_epsilon}
+      ab \le \epsilon a^2 + \frac{b^2}{4\epsilon}
+    .\end{equation}
+  \end{theorem}
 
-  \begin{definition}[Mollifier]
-    A \emph{mollifier} is a function $\eta \in C^\infty_c(\R^n)$ such that $\eta \ge 0$, $\operatorname{supp}(\eta) \subseteq B(0, 1)$, and $\int_{\R^n} \eta \, \dx = 1$. For $\epsilon > 0$, the \emph{mollification} of $u \in L^1_{\operatorname{loc}}(U)$ is
+  \begin{proof}
+    We write:
     \[%
-      u^\epsilon(x) \coloneqq \int_U \eta_\epsilon(x - y) u(y) \, \dy
-    ,\]%
-    where $\eta_\epsilon(x) \coloneqq \epsilon^{-n} \eta(x/\epsilon)$.
-  \end{definition}
-
-  \begin{definition}[Cutoff Function]
-    A \emph{cutoff function} for a compact set $K \Subset U$ is a function $\chi \in C^\infty_c(U)$ such that $0 \le \chi \le 1$ and $\chi \equiv 1$ on $K$.
-  \end{definition}
-
-  \begin{definition}[Coercivity]
-    A bilinear form $B : H \times H \to \R$ on a Hilbert space $H$ is \emph{coercive} if there exists $\alpha > 0$ such that
-    \[%
-      B(u, u) \ge \alpha \|u\|_H^2
-    ,\]%
-    for all $u \in H$.
-  \end{definition}
-
-  \begin{definition}[Energy Functional]
-    The \emph{energy functional} associated to the equation $\Delta u = f$ is
-    \[%
-      E[u] \coloneqq \int_M \left(\frac{1}{2}|\nabla u|^2 - fu\right) \dd{V}_g
+      ab = ((2\epsilon)^{1/2}a)\left(\frac{b}{(2\epsilon)^{1/2}}\right)
     .\]%
-    A function $u$ is a weak solution to $\Delta u = f$ if and only if $u$ is a critical point of $E$.
-  \end{definition}
+    We apply~\cref{thm:cauchy_inequality} to the right-hand side to get:
+    \[%
+      ab \le \frac{(2\epsilon)a^2}{2} + \frac{b^2}{2(2\epsilon)} = \epsilon a^2 + \frac{b^2}{4\epsilon}
+    .\qedhere\]%
+  \end{proof}
+
+  \begin{theorem}[Young's Inequality]
+    \label{thm:young_inequality}
+
+    Let $1 < p$, $q < \infty$, $1/p + 1/q = 1$. Then, we have:
+    \begin{equation}\label{eq:young_inequality}
+      ab \le \frac{a^p}{p} + \frac{b^q}{q}
+    \end{equation}
+  \end{theorem}
+
+  \begin{proof}
+    The mapping $x \mapsto e^x$ is convex, so we have:
+    \[%
+      ab = e^{\log(a)+\log(b)} = e^{\frac{1}{p}\log(a^p)+\frac{1}{q}\log(b^q)} \le \frac{1}{p}e^{\log(a^p)} + \frac{1}{q}e^{\log(b^q)} = \frac{a^p}{p} + \frac{b^q}{q}
+    .\qedhere\]%
+  \end{proof}
+
+  \begin{theorem}[Young's Inequality with $\epsilon$]
+    \label{thm:young_inequality_epsilon}
+
+    Let $1 < p$, $q < \infty$, $1/p + 1/q = 1$. Then, for all $\epsilon > 0$, we have:
+    \begin{equation}\label{eq:young_inequality_epsilon}
+      ab \le \epsilon a^p + C(\epsilon)b^q
+    ,\end{equation}
+    where $C(\epsilon) = (ep)^{-q/p}q^{-1}$.
+  \end{theorem}
+
+  \begin{proof}
+    We write:
+    \[%
+      ab = ((\epsilon p)^{1/p}a)\left(\frac{b}{(\epsilon p)^{1/p}}\right)
+    .\]%
+    Applying~\cref{thm:young_inequality} to the right-hand side gives:
+    \[%
+      ab \le \frac{(\epsilon p)a^p}{p} + \frac{b^q}{q(\epsilon p)^{q/p}} = \epsilon a^p + C(\epsilon)b^q
+    .\qedhere\]%
+  \end{proof}
+
+  \begin{theorem}[H\"olders Inequality]
+    \label{thm:holders_inequality}
+
+    Assume $1 \le p$, $q \le \infty$, and $\frac{1}{p} + \frac{1}{q} = 1$. Then, if $u \in L^p(U)$, $v \in L^q(U)$, we have:
+    \begin{equation}\label{eq:holders_inequality}
+      \int_U |uv| \dx \le \|u\|_{L^p(U)} \|v\|_{L^q(U)}
+    .\end{equation}
+  \end{theorem}
+
+  \begin{proof}
+    We may assume $\|u\|_{L^p} = \|v\|_{L^q} = 1$, by homogeneity. Then,~\cref{thm:young_inequality} implies that $1 < p$, $q < \infty$, we have:
+    \[%
+      \int_U |uv| \dx \le \frac{1}{q} \int_U |u|^p \dx + \frac{1}{q} \int_U |v|^q \dx = 1 = \|u\|_{L^p(U)} \|v\|_{L^q(U)}
+    .\qedhere\]%
+  \end{proof}
+
+  \begin{theorem}[Minkowski's Inequality]
+    \label{thm:minkowski_inequality}
+
+    Assume $1 \le q \le \infty$ and $u, v \in L^p(U)$. Then, we have:
+    \begin{equation}\label{eq:minkowski_inequality}
+      \|u + v\|_{L^p(U)} \le \|u\|_{L^p(U)} + \|v\|_{L^p(U)}
+    .\end{equation}
+  \end{theorem}
+
+  \begin{proof}
+    Expanding the left hand side, we have:
+    \begin{align*}
+      \|u + v\|_{L^p(U)}^p &= \int_U |u + v|^p \dx \le \int_U |u + v|^{p-1} (|u| + |v|) \dx \\
+                           &\le \left(\int_U |u | v|^p \dx\right)^{\frac{p-1}{p}}\left(\left(\int |u|^p \dx\right)^{1/p} + \left(\int_U |v|^p \dx\right)^{1/p}\right) \\
+                           &= \|u + v\|_{L^p(U)}^{p-1} (\|u\|_{L^p(U)} + \|v\|_{L^p(U)})
+    .\qedhere\end{align*}
+  \end{proof}
+
+  \begin{theorem}[General H\"older Inequality]
+    \label{thm:general_holders_inequality}
+
+    Let $1 \le p_1, \cdots, p_m \le \infty$, with $\frac{1}{p_1} + \cdots + \frac{1}{p_m} = 1$, and assume that $u_k \in L^{p_k}(U)$ for $k = 1, \cdots, m$. Then, we have:
+    \begin{equation}\label{eq:general_holders_inequality}
+      \int_U |u_1 \cdots u_m| \dx \le \prod_{k=1}^m \|u_i\|_{L^{p_k}(U)}
+    .\end{equation}
+  \end{theorem}
+
+  \begin{proof}
+    We use induction on $m$. The base case $m = 2$ is given by~\cref{thm:holders_inequality}. Now, assume the general H\"older inequality holds for $m-1$ functions. Then, we write:
+    \[%
+      \int_U |u_1 \cdots u_m| \dx = \int_U |u_1| |u_2 \cdots u_m| \dx
+    .\]%
+    We apply~\cref{thm:holders_inequality} to the right-hand side to get:
+    \[%
+      \int_U |u_1| |u_2 \cdots u_m| \dx \le \|u_1\|_{L^{p_1}(U)} \|u_2 \cdots u_m\|_{L^{q}(U)}
+    ,\]%
+    where $\frac{1}{p_1} + \frac{1}{q} = 1$. Now, we apply the induction hypothesis to get:
+    \[%
+      \|u_2 \cdots u_m\|_{L^{q}(U)} \le \prod_{k=2}^m \|u_i\|_{L^{p_k}(U)}
+    .\]%
+    Combining the above inequalities gives:
+    \[%
+      \int_U |u_1 \cdots u_m| \dx \le \|u_1\|_{L^{p_1}(U)} \prod_{k=2}^m \|u_i\|_{L^{p_k}(U)} = \prod_{k=1}^m \|u_i\|_{L^{p_k}(U)}
+    .\qedhere\]%
+  \end{proof}
+
+  \begin{theorem}[Interpolation Inequality for $L^p$-norms]
+    \label{thm:interpolation_inequality_lp}
+
+    Assume $1 \le s \le r \le t \le \infty$ and
+    \[%
+      \frac{1}{r} = \frac{\theta}{s} + \frac{1 - \theta}{t}
+    .\]%
+    Suppose also $u \in L^s(U) \cap L^t(U)$. Then, $u \in L^r(U)$, and
+    \begin{equation}\label{eq:interpolation_inequality_lp}
+      \|u\|_{L^r(U)} \le \|u\|_{L^s(U)}^\theta \|u\|_{L^t(U)}^{1-\theta}
+    .\end{equation}
+  \end{theorem}
+
+  \begin{proof}
+    We compute
+    \begin{align*}
+      \int_U |u|^r \dx &= \int_U |u|^{\theta r} |u|^{(1-\theta)r} \dx \\
+                       &\le \left(\int_U |u|^{\theta r \frac{s}{\theta r}}\right)\left(\int_U |u|^{(1-\theta)r \frac{t}{(1-\theta)r}}\dx\right)^{\frac{(1-\theta)r}{t}}
+    .\end{align*}
+    Now, we can apply~\cref{thm:holders_inequality}, since $\frac{\theta r}{s} + \frac{(1-\theta)r}{t} = 1$.
+  \end{proof}
+
+  \begin{theorem}[Cauchy-Schwarz Inequality]
+    \label{thm:cauchy_schwarz_inequality}
+
+    Given $x, y \in \R^n$, we have:
+    \begin{equation}\label{eq:cauchy_schwarz_inequality}
+      |x \cdot y| \le |x| |y|
+    .\end{equation}
+  \end{theorem}
+
+  \begin{proof}
+    Let $\epsilon > 0$. Notice that:
+    \[%
+      0 \le |x \pm \epsilon y|^2 = |x|^2 \pm 2\epsilon x \cdot y + \epsilon^2|y|^2
+    .\]%
+    Therefore, we have:
+    \[%
+      \pm x \cdot y \le \frac{1}{2\epsilon}|x|^2 + \frac{\epsilon}{2}|y|^2
+    .\]%
+    Letting $\epsilon = |x|/|y|$, provided $y \ne 0$, we get:
+    \[%
+      \pm x \cdot y \le \frac{1}{2} \frac{|y|}{|x|} |x|^2 + \frac{1}{2} \frac{|x|}{|y|} |y|^2 = \frac{1}{2} |x||y| + \frac{1}{2} |y||x| = |x||y|
+    .\qedhere\]%
+  \end{proof}
+
+  \begin{theorem}[Gronwall's Inequality, Differential Form]
+    \label{thm:gronwall_inequality_differential_form}
+  \end{theorem}
+
+  \begin{proof}
+  \end{proof}
+
+  \begin{theorem}[Gronwall's Inequality, Integral Form]
+    \label{thm:gronwall_inequality_integral_form}
+  \end{theorem}
+
+  \begin{proof}
+  \end{proof}
 
   \section{Partial Differential Equations}
-
-  \subsection{Introduction}
 
   \subsubsection{Solution to Select Exercises}
 
   \begin{problem}
     Prove the \emph{Multinomial Theorem}:
-    \[%
+    \begin{equation}\label{eq:multinomial_formula}
       (x_1 + \cdots + x_n)^k = \sum_{|\alpha|=k} \binom{|\alpha|}{\alpha} x^\alpha
-    ,\]%
+    ,\end{equation}
     where $\binom{|\alpha|}{\alpha} = |\alpha|!/\alpha!$, $\alpha! = \alpha_1!\alpha_2!\cdots\alpha_n!$, and $x^\alpha = x_1^{\alpha_1} \cdots x_n^{\alpha_n}$. The sum is taken over all multiindices $\alpha = (\alpha_1, \cdots, \alpha_n)$ with $|\alpha| = k$.
   \end{problem}
 
@@ -415,7 +563,7 @@
     \end{enumerate}
   \end{theorem}
 
-  \begin{computational-work}[Theorem~\ref{thm:sobolev_embedding_rn}]\leavevmode
+  \begin{computational-work}[\Cref{thm:sobolev_embedding_rn}]\leavevmode
     \label{cw:sobolev_embedding_rn}
   \end{computational-work}
 
@@ -445,7 +593,7 @@
     \end{enumerate}
   \end{theorem}
 
-  \begin{computational-work}[Theorem~\ref{thm:sobolev_embedding_compact}]\leavevmode
+  \begin{computational-work}[\Cref{thm:sobolev_embedding_compact}]\leavevmode
     \label{cw:sobolev_embedding_compact}
   \end{computational-work}
 
@@ -461,13 +609,13 @@
   \begin{theorem}[Aubin]
     \label{thm:aubin}
 
-    Let $M$ be a compact Riemannian manifold with metric $g$, $p = 2n/(n - 2)$, and let $\sigma_n$ be the best Sobolev constant defined in Theorem~\ref{thm:sobolev_embedding_rn}. Then for every $\epsilon > 0$, there exists a constant $C_\epsilon$ such that for all $\phi \in C^\infty(M)$ such that
+    Let $M$ be a compact Riemannian manifold with metric $g$, $p = 2n/(n - 2)$, and let $\sigma_n$ be the best Sobolev constant defined in~\cref{thm:sobolev_embedding_rn}. Then for every $\epsilon > 0$, there exists a constant $C_\epsilon$ such that for all $\phi \in C^\infty(M)$ such that
     \[%
       \|\phi\|^2_p \le (1 + \epsilon) \sigma_n \int_M |\nabla \phi|^2 \dd{V}_g + C_\epsilon \int_M \phi^2 \dd{V}_g
     .\]%
   \end{theorem}
 
-  \begin{computational-work}[Theorem~\ref{thm:aubin}]\leavevmode
+  \begin{computational-work}[\Cref{thm:aubin}]\leavevmode
     \label{cw:aubin}
 
     \begin{enumerate}
@@ -506,7 +654,7 @@
         \[%
           |\nabla(\psi_i\phi)|^2 = \psi_i^2|\nabla\phi|^2 + 2\psi_i\phi\langle\nabla\psi_i,\nabla\phi\rangle + \phi^2|\nabla\psi_i|^2
         .\]%
-        Applying Young's inequality $2ab \le \epsilon a^2 + \epsilon^{-1}b^2$ with $a = \psi_i|\nabla\phi|$ and $b = \phi|\nabla\psi_i|$ to the cross term gives
+        Applying~\cref{thm:young_inequality} $2ab \le \epsilon a^2 + \epsilon^{-1}b^2$ with $a = \psi_i|\nabla\phi|$ and $b = \phi|\nabla\psi_i|$ to the cross term gives
         \begin{align*}
           |\nabla(\psi_i\phi)|^2 &\le \psi_i^2|\nabla\phi|^2 + \epsilon\psi_i^2|\nabla\phi|^2 + \epsilon^{-1}\phi^2|\nabla\psi_i|^2 + \phi^2|\nabla\psi_i|^2\\
                                   &= (1+\epsilon)\psi_i^2|\nabla\phi|^2 + (1+\epsilon^{-1})\phi^2|\nabla\psi_i|^2
@@ -526,20 +674,20 @@
   \end{computational-work}
 
   \begin{proof}
-    Fix $\epsilon > 0$; we shall replace $(1+\epsilon)$ by a different name for the constant at the end, so we allow the factor to accumulate during the argument. Around each point of $M$ choose a coordinate neighbourhood on which the eigenvalues of $g_{jk}$ lie in $\bigl[(1+\epsilon)^{-1}, 1+\epsilon\bigr]$; this is possible by continuity of $g$ at every point. Extract a finite subcover $\{U_i\}$ and choose a subordinate partition of unity $\{\psi_i^2\}$ with $\sum_i \psi_i^2 = 1$ and each $\psi_i$ supported in $U_i$. By Computational Work~\ref{cw:aubin}(i)--(iv),
+    Fix $\epsilon > 0$; we shall replace $(1+\epsilon)$ by a different name for the constant at the end, so we allow the factor to accumulate during the argument. Around each point of $M$ choose a coordinate neighbourhood on which the eigenvalues of $g_{jk}$ lie in $\bigl[(1+\epsilon)^{-1}, 1+\epsilon\bigr]$; this is possible by continuity of $g$ at every point. Extract a finite subcover $\{U_i\}$ and choose a subordinate partition of unity $\{\psi_i^2\}$ with $\sum_i \psi_i^2 = 1$ and each $\psi_i$ supported in $U_i$. By~\cref{cw:aubin}(i)--(iv),
     \begin{align*}
       \|\phi\|_p^2 = \|\phi^2\|_{p/2} = \Bigl\lVert\sum_i \psi_i^2\phi^2\Bigr\rVert_{p/2} &\le \sum_i \left(\int_M |\psi_i\phi|^p\dd{V}_g\right)^{2/p} \\
                                                                                           &\le (1+\epsilon)^{n/2 \cdot 2/p} \sum_i \left(\int_{U_i} |\psi_i\phi|^p\dx\right)^{2/p}
     .\end{align*}
-    By Theorem~\ref{thm:sobolev_embedding_rn} applied to $\psi_i\phi \in C^\infty_c(\R^n)$,
+    By~\cref{thm:sobolev_embedding_rn} applied to $\psi_i\phi \in C^\infty_c(\R^n)$,
     \[%
       \left(\int_{U_i} |\psi_i\phi|^p\dx\right)^{2/p} \le \sigma_n \int_{U_i} |\nabla(\psi_i\phi)|^2_0 \dx
     .\]%
-    By Computational Work~\ref{cw:aubin}(vi),
+    By~\cref{cw:aubin}(vi),
     \[%
       \int_{U_i} |\nabla(\psi_i\phi)|^2_0 \dx \le (1+\epsilon)^{1+n/2} \int_{U_i} |\nabla(\psi_i\phi)|^2_g \dd{V}_g
     .\]%
-    By Computational Work~\ref{cw:aubin}(v),
+    By~\cref{cw:aubin}(v),
     \[%
       \int_{U_i} |\nabla(\psi_i\phi)|^2_g \dd{V}_g \le (1+\epsilon)\int_{U_i} \psi_i^2|\nabla\phi|^2_g \dd{V}_g + (1+\epsilon^{-1})\int_{U_i} \phi^2|\nabla\psi_i|^2_g \dd{V}_g
     .\]%
@@ -573,12 +721,12 @@
     \end{enumerate}
   \end{theorem}
 
-  \begin{computational-work}[Theorem~\ref{thm:local_elliptic_regularity}]\leavevmode
+  \begin{computational-work}[\Cref{thm:local_elliptic_regularity}]\leavevmode
     \label{cw:local_elliptic_regularity}
   \end{computational-work}
 
   \begin{proof}
-    Expanding Equation~\ref{eq:local_elliptic_regularity_thm}, we have:
+    Expanding~\cref{eq:local_elliptic_regularity_thm}, we have:
     \begin{align*}
       \|u\|_{L^q_{k+2}(K)} &= \left(\sum_{i=0}^{k+2} \int_K \left\lvert\nabla^i u\right\rvert^q \dd{V}_g\right)^{1/q} \\
                             &\le C\left(\left(\sum_{i=0}^k \int_\Omega \left\lvert\nabla^i \left(\Delta u\right)\right\rvert^q \dd{V}_g\right)^{1/q} + \left(\int_\Omega |u|^q \dd{V}_g\right)^{1/q}\right)
@@ -609,7 +757,7 @@
     \end{enumerate}
   \end{theorem}
 
-  \begin{computational-work}[Theorem~\ref{thm:global_elliptic_regularity}]\leavevmode
+  \begin{computational-work}[\Cref{thm:global_elliptic_regularity}]\leavevmode
     \label{cw:global_elliptic_regularity}
   \end{computational-work}
 
@@ -625,7 +773,7 @@
     Suppose $h$ is a nonnegative smooth function on a connected manifold $M$, and $u \in C^2(M)$ satisfies $(\Delta + h)u \ge 0$. If $u$ attains its minimum $m \le 0$, then $u$ is constant on $M$.
   \end{theorem}
 
-  \begin{computational-work}[Theorem~\ref{thm:strong_maximum_principle}]\leavevmode
+  \begin{computational-work}[\Cref{thm:strong_maximum_principle}]\leavevmode
     \label{cw:strong_maximum_principle}
   \end{computational-work}
 
@@ -638,7 +786,7 @@
     Let $U$ be an open set in $M$ and $P \in U$. Suppose $u$ is a weak solution of $(\Delta + h)u = 0$ on $U - \{P\}$, with $h \in L^{n/2}(U)$ and $u \in L^q(U)$ for some $q > p/2 = n/(n - 2)$. Then $u$ satisfies $(\Delta + h)u = 0$ weakly on all of $U$.
   \end{proposition}
 
-  \begin{computational-work}[Proposition~\ref{prop:weak_removable_singularities}]\leavevmode
+  \begin{computational-work}[\Cref{prop:weak_removable_singularities}]\leavevmode
     \label{cw:weak_removable_singularities}
   \end{computational-work}
 
@@ -651,7 +799,7 @@
     Suppose $M$ is a compact Riemannian manifold of dimension $n \ge 3$, and $h$ is a strictly positive smooth function on $M$. For each .
   \end{theorem}
 
-  \begin{computational-work}[Theorem~\ref{thm:green_function}]\leavevmode
+  \begin{computational-work}[\Cref{thm:green_function}]\leavevmode
     \label{cw:green_function}
   \end{computational-work}
 
@@ -679,28 +827,28 @@
   \section{Questions}
 
   \begin{question}
-    In Theorem~\ref{cw:aubin}, why do we want the eigenvalues of the metric to be between $(1 + \epsilon)^{-1}$ and $(1 + \epsilon)$?
+    In~\cref{cw:aubin}, why do we want the eigenvalues of the metric to be between $(1 + \epsilon)^{-1}$ and $(1 + \epsilon)$?
   \end{question}
 
   \begin{solution}
   \end{solution}
 
   \begin{question}
-    In Theorem~\ref{thm:local_elliptic_regularity}, you assume any metric on $\Omega$. How sensitive are the estimates to the choice of metric, and does the constant $C$ depend on it?
+    In~\cref{thm:local_elliptic_regularity}, you assume any metric on $\Omega$. How sensitive are the estimates to the choice of metric, and does the constant $C$ depend on it?
   \end{question}
 
   \begin{solution}
   \end{solution}
 
   \begin{question}
-    For Theorem~\ref{thm:strong_maximum_principle}, what fails if $h$ fails to be negative?
+    For~\cref{thm:strong_maximum_principle}, what fails if $h$ fails to be negative?
   \end{question}
 
   \begin{solution}
   \end{solution}
 
   \begin{question}
-    In Proposition~\ref{prop:weak_removable_singularities}, why is $q > p/2 = n/(n-2)$ the right threshold for the integrability of $u$?
+    In~\cref{prop:weak_removable_singularities}, why is $q > p/2 = n/(n-2)$ the right threshold for the integrability of $u$?
   \end{question}
 
   \begin{solution}

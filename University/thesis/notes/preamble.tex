@@ -675,3 +675,39 @@
 \renewcommand\theequation{\thesubsection.\arabic{equation}}
 
 \makeatother
+
+\usepackage{cleveref}
+\usepackage{nameref}
+
+\makeatletter
+
+\let\orig@cref\cref
+\renewcommand{\cref}[1]{%
+  \def\cref@currentlabel{#1}%
+  \edef\cref@currentname{\nameref*{#1}}%
+  \orig@cref{#1}%
+}
+\let\orig@Cref\Cref
+\renewcommand{\Cref}[1]{%
+  \def\cref@currentlabel{#1}%
+  \edef\cref@currentname{\nameref*{#1}}%
+  \orig@Cref{#1}%
+}
+
+\newcommand{\cref@nameSuffix}{%
+  \ifx\cref@currentname\@empty\else{ }(\cref@currentname)\fi
+}
+
+\crefformat{theorem}{#2Theorem~#1\cref@nameSuffix#3}
+\Crefformat{theorem}{#2Theorem~#1#3}
+
+\crefformat{proposition}{#2Proposition~#1\cref@nameSuffix#3}
+\Crefformat{proposition}{#2Proposition~#1#3}
+
+\crefformat{definition}{#2Definition~#1\cref@nameSuffix#3}
+\Crefformat{definition}{#2Definition~#1#3}
+
+\crefformat{computational-work}{#2Computational Work~#1#3}
+\Crefformat{computational-work}{#2Computational Work~#1#3}
+
+\makeatother
