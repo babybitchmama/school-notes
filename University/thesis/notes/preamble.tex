@@ -529,6 +529,7 @@
 
 % Operators
 % \DeclareMathOperator\arg{arg}
+\DeclareMathOperator\Char{Char}
 \DeclareMathOperator\supp{supp}
 \DeclareMathOperator\divg{div}
 \DeclareMathOperator\grad{grad}
@@ -664,9 +665,15 @@
   \end{tcolorbox}%
 }
 
-% create solution env using proof env
+%% create solution env using proof env
+%\newenvironment{solution}[1][]{%
+%  \begin{proof}[Solution\ifthenelse{\equal{#1}{}}{}{~to~#1}]
+%}{%
+%  \end{proof}
+%}
+
 \newenvironment{solution}[1][]{%
-  \begin{proof}[Solution\ifthenelse{\equal{#1}{}}{}{~to~#1}]
+  \begin{proof}[Solution\ifthenelse{\equal{#1}{}}{}{~(#1)}]
 }{%
   \end{proof}
 }
