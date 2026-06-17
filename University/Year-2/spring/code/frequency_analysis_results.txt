@@ -1,0 +1,14 @@
+Frequency Analysis Results
+==============================
+
+Top 10 word counts:
+the: 9
+in: 4
+as: 4
+python: 3
+a: 3
+to: 3
+his: 3
+was: 2
+by: 2
+van: 2

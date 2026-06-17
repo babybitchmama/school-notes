@@ -1,5 +1,6 @@
 \usepackage{extramarks}
 \usepackage{multicol}
+\usepackage{adjustbox}
 \input{../../preamble.tex}
 
 \def\type{problem}
@@ -39,3 +40,13 @@
 \makeatother
 
 \renewenvironment{problem}[1][-1]{\ifthenelse{\equal{\type}{problem}}{\ifthenelse{\equal{#1}{-1}}{\noindent\textbf{Problem}.~}{\noindent\textbf{Problem~#1}.}}{\ifthenelse{\equal{#1}{-1}}{\noindent\textbf{Exercise}.~}{\noindent\textbf{Exercise #1}.}}}{}
+
+\newcommand\createtitlepage[2]{
+  \newcommand\hmwkTitle{#1}
+  \newcommand\hmwkDueDate{#2}
+  \maketitle
+  \pagestyle{plain}
+  \mbox{}\newpage
+  \pagestyle{fancy}
+  \setcounter{page}{1}
+}

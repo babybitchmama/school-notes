@@ -1,1 +1,216 @@
-39.33, 39.35, 39.36
+\createtitlepage{Optional Homework}{June 14, 2026}
+
+\begin{problem}[39.33]
+  Let $E$ be an extension field of a field $F$ and let $\alpha \in E$ be transcendental over $F$. Show that every element of $F(\alpha)$ that is not in $F$ is also transcendental over $F$.
+\end{problem}
+
+\begin{solution}
+  Since $\alpha$ is transcendental over $F$, the field $F(\alpha)$ is isomorphic to the field of rational functions $F(x)$, so every element of $F(\alpha)$ has the form
+  \[%
+    \beta = \frac{f(\alpha)}{g(\alpha)}
+  ,\]%
+  where $f, g \in F[x]$ with $g \neq 0$. Suppose $\beta \in F(\alpha) \setminus F$; we wish to show $\beta$ is transcendental over $F$.
+
+  Since $\beta \notin F$, the rational function $f(x)/g(x)$ is non-constant, so $h(x) := f(x) - \beta g(x) \in F(\beta)[x]$ is a nonzero polynomial (in $x$) of degree $n = \max(\deg f, \deg g) \geq 1$. Moreover, $\alpha$ is a root of $h$, since
+  \[%
+    h(\alpha) = f(\alpha) - \beta g(\alpha) = f(\alpha) - \frac{f(\alpha)}{g(\alpha)} \cdot g(\alpha) = 0
+  .\]%
+  Hence $\alpha$ is algebraic over $F(\beta)$.
+
+  Now suppose for contradiction that $\beta$ is algebraic over $F$. Then $F(\beta)/F$ is a finite algebraic extension, and since $\alpha$ is algebraic over $F(\beta)$, the tower
+  \[%
+    F \subseteq F(\beta) \subseteq F(\beta, \alpha) = F(\alpha)
+  ,\]%
+  consists of algebraic extensions, so $\alpha$ is algebraic over $F$, a contradiction. Therefore $\beta$ is transcendental over $F$.
+\end{solution}
+
+\begin{problem}[39.35]
+  Following the idea of Exercise 31, show that there exists a field of 8 elements; of 16 elements; of 25 elements.
+\end{problem}
+
+\begin{solution}
+  For a field of 8 elements, consider $p(x) = x^3 + x + 1 \in \Z_2[x]$. Since $p(0) = 1 \neq 0$ and $p(1) = 1 \neq 0$ in $\Z_2$, $p(x)$ has no roots in $\Z_2$ and is therefore irreducible over $\Z_2$ (as it has degree 3). Hence $\Z_2[x]/\langle x^3 + x + 1 \rangle$ is a field. Its elements are the cosets of polynomials of degree less than 3 over $\Z_2$, of which there are $2^3 = 8$.
+
+  Next, for a field of 16 elements, consider $p(x) = x^4 + x + 1 \in \Z_2[x]$. Since $p(0) = 1 \neq 0$ and $p(1) = 1 \neq 0$ in $\Z_2$, $p(x)$ has no roots in $\Z_2$, so $p(x)$ has no linear factors. One checks that $p(x)$ is not divisible by the only irreducible quadratic over $\Z_2$, namely $x^2 + x + 1$: performing the division gives remainder $x$, which is nonzero. Hence $p(x)$ is irreducible over $\Z_2$, and $\Z_2[x]/\langle x^4 + x + 1 \rangle$ is a field with $2^4 = 16$ elements.
+
+  Lastly, for a field of 25 elements, consider $p(x) = x^2 + x + 1 \in \Z_5[x]$. Evaluating at each element of $\Z_5$:
+  \[%
+    p(0) = 1,\quad p(1) = 3,\quad p(2) = 7 = 2,\quad p(3) = 13 = 3,\quad p(4) = 21 = 1
+  ,\]%
+  so $p(x)$ has no roots in $\Z_5$ and is therefore irreducible over $\Z_5$ (as it has degree 2). Hence $\Z_5[x]/\langle x^2 + x + 1 \rangle$ is a field with $5^2 = 25$ elements.
+\end{solution}
+
+\begin{problem}[39.36]
+  Let $F$ be a finite field of characteristic $p$. Show that every element of $F$ is algebraic over the prime field $\Z_p \le F$. [Hint: Let $F^*$ be the set of nonzero elements of $F$. Apply group theory to the group $\braket{F^*, \cdot}$ to show that every $\alpha \in F^*$ is a zero of some polynomial in $\Z_p[x]$ of the form $x^n - 1$.]
+\end{problem}
+
+\begin{solution}
+  Since $F$ has characteristic $p$, its prime subfield is $\Z_p$. The zero element $0 \in F$ is a root of $x \in \Z_p[x]$, hence algebraic over $\Z_p$. It remains to show every $\alpha \in F^*$ is algebraic over $\Z_p$.
+
+  Since $F$ is finite, so is $F^* = F \setminus \{0\}$, and $\langle F^*, \cdot \rangle$ is a finite group of some order $n = |F^*| = |F| - 1$. By Lagrange's theorem, the order of every element divides $|F^*|$, so $\alpha^n = 1$ for every $\alpha \in F^*$. Hence every $\alpha \in F^*$ is a root of
+  \[%
+    x^n - 1 \in \Z_p[x]
+  ,\]%
+  and is therefore algebraic over $\Z_p$. Thus every element of $F$ is algebraic over $\Z_p$.
+\end{solution}
+
+\begin{problem}[40.26]
+  Let $E$ be a finite extension field of $F$. Let $D$ be an integral domain such that $F \subseteq D \subseteq E$. Show that $D$ is a field.
+\end{problem}
+
+\begin{solution}
+  Let $\alpha \in D$ be nonzero; we must show $\alpha^{-1} \in D$. Since $F \subseteq D \subseteq E$ and $E$ is a finite extension of $F$, the element $\alpha \in E$ is algebraic over $F$. Hence $\alpha$ is also algebraic over $D$ (as $F \subseteq D$), but more directly: since $[E : F]$ is finite, $\alpha$ is algebraic over $F$, so consider the map
+  \[%
+    \phi : D \to D \quad \text{defined by} \quad \phi(\beta) = \alpha \beta
+  .\]%
+  This is an $F$-linear map on $D$, viewed as a subspace of $E$. Since $[E:F]$ is finite, $D$ is a finite-dimensional vector space over $F$, and $\phi$ is injective (as $D$ is an integral domain and $\alpha \neq 0$). A linear map from a finite-dimensional vector space to itself is injective if and only if it is surjective, so $\phi$ is surjective. In particular, there exists $\beta \in D$ such that $\alpha \beta = 1$, i.e., $\alpha^{-1} = \beta \in D$. Since $\alpha \in D$ was an arbitrary nonzero element, $D$ is a field.
+\end{solution}
+
+\begin{problem}[40.31]
+  Show that if $F$, $E$, and $K$ are fields with $F \le E \le K$, then $K$ is algebraic over $F$ if and only if $E$ is algebraic over $F$, and $K$ is algebraic over $E$. (You must not assume the extensions are finite.)
+\end{problem}
+
+\begin{solution}
+  Suppose $K$ is algebraic over $F$. Since $E \subseteq K$, every element of $E$ is an element of $K$ and hence algebraic over $F$, so $E$ is algebraic over $F$. Now let $\alpha \in K$; since $\alpha$ is algebraic over $F$ and $F \subseteq E$, any polynomial in $F[x]$ witnessing this lies in $E[x]$ as well, so $\alpha$ is algebraic over $E$. Hence $K$ is algebraic over $E$.
+
+  Conversely, suppose $E$ is algebraic over $F$ and $K$ is algebraic over $E$. Let $\alpha \in K$; we show $\alpha$ is algebraic over $F$. Since $\alpha$ is algebraic over $E$, there exists a nonzero polynomial
+  \[%
+    p(x) = a_n x^n + \cdots + a_1 x + a_0 \in E[x]
+  ,\]%
+  such that $p(\alpha) = 0$. The coefficients $a_0, a_1, \ldots, a_n$ are elements of $E$, each algebraic over $F$. Setting $F_0 = F$ and $F_k = F(a_0, \ldots, a_{k-1})$ for $k = 1, \ldots, n+1$, each extension $F_k \le F_{k+1}$ is finite since $a_k$ is algebraic over $F \subseteq F_k$, and so by the tower theorem
+  \[%
+    [F_{n+1} : F] = [F_{n+1} : F_n] \cdots [F_1 : F] < \infty
+  .\]%
+  Since $p(x) \in F_{n+1}[x]$ and $p(\alpha) = 0$, the element $\alpha$ is algebraic over $F_{n+1}$, so $[F_{n+1}(\alpha) : F_{n+1}]$ is finite. By the tower theorem,
+  \[%
+    [F_{n+1}(\alpha) : F] = [F_{n+1}(\alpha) : F_{n+1}][F_{n+1} : F] < \infty
+  ,\]%
+  so $\alpha$ is algebraic over $F$. Since $\alpha \in K$ was arbitrary, $K$ is algebraic over $F$.
+\end{solution}
+
+\begin{problem}[40.32]
+  Let $E$ be an extension field of a field $F$. Prove that every $\alpha \in E$ that is not in the algebraic closure $\bar{F}_E$ of $F$ in $E$ is transcendental over $\bar{F}_E$.
+\end{problem}
+
+\begin{solution}
+  Recall that $\bar{F}_E = \{\alpha \in E \mid \alpha \text{ is algebraic over } F\}$ is the algebraic closure of $F$ in $E$, and is itself a field. Let $\alpha \in E \setminus \bar{F}_E$, so that $\alpha$ is transcendental over $F$. Suppose for contradiction that $\alpha$ is algebraic over $\bar{F}_E$. Then by Problem 40.31 (with the tower $F \le \bar{F}_E \le \bar{F}_E(\alpha)$), since $\bar{F}_E$ is algebraic over $F$ and $\alpha$ is algebraic over $\bar{F}_E$, it follows that $\alpha$ is algebraic over $F$. This means $\alpha \in \bar{F}_E$, a contradiction. Therefore $\alpha$ is transcendental over $\bar{F}_E$.
+\end{solution}
+
+\begin{problem}[40.34]
+  Show that if $E$ is an algebraic extension of a field $F$ and contains all zeros in $F$ of every $f(x) \in F[x]$, then $E$ is an algebraically closed field.
+\end{problem}
+
+\begin{solution}
+  To show $E$ is algebraically closed, we must show every nonconstant polynomial $p(x) \in E[x]$ has a zero in $E$. Let $p(x) \in E[x]$ be nonconstant, and let $\alpha$ be a zero of $p(x)$ in some algebraic closure of $E$. Since $\alpha$ is algebraic over $E$ and $E$ is algebraic over $F$, Problem 40.31 gives that $\alpha$ is algebraic over $F$, so $\alpha \in \bar{F}$.
+
+  Since $\alpha$ is algebraic over $F$, it has a minimal polynomial $m(x) \in F[x]$. By hypothesis, $E$ contains all zeros in $\bar{F}$ of every polynomial in $F[x]$, so in particular $E$ contains all zeros of $m(x)$. Since $\alpha$ is one such zero, we conclude $\alpha \in E$.
+
+  Thus every nonconstant polynomial in $E[x]$ has a zero in $E$, so $E$ is algebraically closed.
+\end{solution}
+
+\begin{problem}[40.37]
+  Argue that every finite extension field of $\R$ is either $\R$ itself or is isomorphic to $\C$.
+\end{problem}
+
+\begin{solution}
+  Let $E$ be a finite extension of $\R$. Since $[E : \R]$ is finite, $E$ is an algebraic extension of $\R$, so every $\alpha \in E$ is algebraic over $\R$. Since $\C$ is algebraically closed (by the Fundamental Theorem of Algebra), the algebraic closure of $\R$ is $\C$, and every element of $E$ lies in $\C$. Thus $[E : \R]$ divides $[\C : \R] = 2$, so either $[E : \R] = 1$ or $[E : \R] = 2$.
+
+  If $[E : \R] = 1$, then $E = \R$. If $[E : \R] = 2$, then $E$ contains some $\alpha \notin \R$, which is algebraic over $\R$ with a minimal polynomial of degree 2. Since $\R$ has no irreducible polynomials of degree 2 with real roots, this minimal polynomial is an irreducible quadratic, and completing the square shows $\alpha = a + bi$ for some $a \in \R$ and $b \in \R \setminus \{0\}$. Hence $E = \R(\alpha) \cong \R[x]/\langle m(x) \rangle \cong \C$.
+\end{solution}
+
+\begin{problem}[40.38]
+  Use Zorn's lemma to show that every proper ideal of a ring R with unity is contained in some maximal ideal.
+\end{problem}
+
+\begin{solution}
+  Let $N$ be a proper ideal of $R$. Define
+  \[%
+    \mathcal{S} = \{ I \mid I \text{ is a proper ideal of } R \text{ and } N \subseteq I \}
+  ,\]%
+  partially ordered by inclusion. Since $N \in \mathcal{S}$, we have $\mathcal{S} \neq \emptyset$. Let $\mathcal{C} = \{I_\lambda\}_{\lambda \in \Lambda}$ be a chain in $\mathcal{S}$, and set $U = \bigcup_{\lambda \in \Lambda} I_\lambda$. We verify that $U$ is a proper ideal of $R$ containing $N$:
+  \begin{itemize}
+    \item $N \subseteq I_\lambda \subseteq U$ for all $\lambda$, so $N \subseteq U$.
+    \item If $a, b \in U$, then $a \in I_\lambda$ and $b \in I_\mu$ for some $\lambda, \mu$. Since $\mathcal{C}$ is a chain, one contains the other, say $I_\lambda \subseteq I_\mu$, so $a, b \in I_\mu$ and thus $a - b \in I_\mu \subseteq U$.
+    \item If $a \in U$ and $r \in R$, then $a \in I_\lambda$ for some $\lambda$, so $ra, ar \in I_\lambda \subseteq U$.
+    \item Since $1 \notin I_\lambda$ for any $\lambda$ (each $I_\lambda$ is proper), we have $1 \notin U$, so $U \neq R$.
+  \end{itemize}
+  Thus $U \in \mathcal{S}$ is an upper bound for $\mathcal{C}$. Since every chain in $\mathcal{S}$ has an upper bound in $\mathcal{S}$, Zorn's lemma guarantees a maximal element $M \in \mathcal{S}$. By definition $M$ is a proper ideal containing $N$, and maximality in $\mathcal{S}$ means no proper ideal of $R$ properly contains $M$, so $M$ is a maximal ideal of $R$.
+\end{solution}
+
+\begin{problem}[42.15]
+  Let $F$ be an arbitrary field. We define the \emph{derivative} of $p(x) = \sum_{k=0}^n a_kx^k \in F[x]$ to be $D(p(x)) = \sum_{k=0}^n \left(k \cdot \left(a_kx^{k-1}\right)\right)$. Let $p(x), q(x) \in F[x]$, and let $n$ and $m$ be nonnegative integers. Prove the following statements.
+  \begin{enumerate}
+    \item $D(p(x) + q(x)) = D(p(x)) + D(q(x))$.
+    \item $D(ap(x)) = aD(p(x))$ for any $a \in F$.
+    \item $D(x^nx^m) = x^nD(x^m) + D(x^n)x^m$.
+    \item $D(p(x)x^m) = p(x)D(x^m) + D(p(x))x^m$.
+    \item $D(p(x)q(x)) = p(x)D(q(x)) + D(p(x))q(x)$.
+    \item $(x - a)^2$ divides $p(x)$ if and only if $a$ is a zero of both $p(x)$ and $D(p(x))$.
+    \item Give a proof of Lemma 42.8 using part (f).
+  \end{enumerate}
+\end{problem}
+
+\begin{solution}[(i)]
+  Let $p(x) = \sum_{k=0}^n a_k x^k$ and $q(x) = \sum_{k=0}^m b_k x^k$. Without loss of generality assume $n \le m$ and set $a_k = 0$ for $k > n$. Then
+  \[%
+    D(p(x) + q(x)) = D\!\left(\sum_{k=0}^m (a_k + b_k)x^k\right) = \sum_{k=0}^m k(a_k + b_k)x^{k-1} = \sum_{k=0}^m ka_kx^{k-1} + \sum_{k=0}^m kb_kx^{k-1} = D(p(x)) + D(q(x))
+  .\qedhere\]%
+\end{solution}
+
+\begin{solution}[(ii)]
+  Let $p(x) = \sum_{k=0}^n a_k x^k$ and $a \in F$. Then
+  \[%
+    D(ap(x)) = D\!\left(\sum_{k=0}^n aa_k x^k\right) = \sum_{k=0}^n k(aa_k)x^{k-1} = a\sum_{k=0}^n ka_kx^{k-1} = aD(p(x))
+  .\qedhere\]%
+\end{solution}
+
+\begin{solution}[(iii)]
+  Using $x^n x^m = x^{n+m}$ and the definition of $D$:
+  \[%
+    D(x^nx^m) = D(x^{n+m}) = (n+m)x^{n+m-1} = nx^{n-1}x^m + x^n mx^{m-1} = D(x^n)x^m + x^nD(x^m)
+  .\qedhere\]%
+\end{solution}
+
+\begin{solution}[(iv)]
+  Write $p(x) = \sum_{k=0}^n a_k x^k$. Then by parts (i), (ii), and (iii):
+  \begin{align*}
+    D(p(x)x^m) &= D\!\left(\sum_{k=0}^n a_k x^{k+m}\right) \\
+               &= \sum_{k=0}^n a_k D(x^{k+m}) = \sum_{k=0}^n a_k\!\left(x^k D(x^m) + D(x^k)x^m\right) \\
+               &= \left(\sum_{k=0}^n a_k x^k\right)D(x^m) + \left(\sum_{k=0}^n a_k D(x^k)\right)x^m \\
+               &= p(x)D(x^m) + D(p(x))x^m
+  .\qedhere\end{align*}
+\end{solution}
+
+\begin{solution}[(v)]
+  Write $q(x) = \sum_{j=0}^m b_j x^j$. Then by parts (i), (ii), and (iv):
+  \begin{align*}
+    D(p(x)q(x)) &= D\!\left(\sum_{j=0}^m b_j p(x) x^j\right) = \sum_{j=0}^m b_j D(p(x)x^j) \\
+                &= \sum_{j=0}^m b_j\!\left(p(x)D(x^j) + D(p(x))x^j\right) \\
+                &= p(x)\sum_{j=0}^m b_j D(x^j) + D(p(x))\sum_{j=0}^m b_j x^j \\
+                &= p(x)D(q(x)) + D(p(x))q(x)
+  .\qedhere\end{align*}
+\end{solution}
+
+\begin{solution}[(vi)]
+  Suppose $(x-a)^2 \mid p(x)$, so $p(x) = (x-a)^2 q(x)$ for some $q(x) \in F[x]$. Then clearly $p(a) = 0$. By part (v),
+  \[%
+    D(p(x)) = (x-a)^2 D(q(x)) + D((x-a)^2)q(x) = (x-a)^2 D(q(x)) + 2(x-a)q(x)
+  ,\]%
+  so $D(p(a)) = 0$. Hence $a$ is a zero of both $p(x)$ and $D(p(x))$.
+
+  Conversely, suppose $p(a) = 0$ and $D(p(a)) = 0$. Since $a$ is a zero of $p(x)$, we have $p(x) = (x-a)q(x)$ for some $q(x) \in F[x]$. By part (v),
+  \[%
+    D(p(x)) = (x-a)D(q(x)) + q(x)
+  .\]%
+  Evaluating at $a$: $0 = D(p(a)) = q(a)$, so $(x - a) \mid q(x)$, say $q(x) = (x-a)r(x)$. Therefore $p(x) = (x-a)^2 r(x)$, so $(x-a)^2 \mid p(x)$.
+\end{solution}
+
+\begin{solution}[(vii)]
+  We prove Lemma 42.8: if $F$ has prime characteristic $p$ with algebraic closure $\bar{F}$, then $f(x) = x^{p^n} - x$ has $p^n$ distinct zeros in $\bar{F}$.
+
+  Since $\bar{F}$ is algebraically closed, $f(x)$ splits completely over $\bar{F}$ and has at most $p^n$ zeros. To show it has exactly $p^n$ distinct zeros, it suffices by part (vi) to show $f(x)$ and $D(f(x))$ share no common zeros. Computing the derivative:
+  \[%
+    D(f(x)) = D(x^{p^n} - x) = p^n x^{p^n - 1} - 1
+  .\]%
+  Since $F$ has characteristic $p$, we have $p^n \equiv 0$ in $F$, so $D(f(x)) = -1$. This is a nonzero constant with no zeros in $\bar{F}$, so $f(x)$ and $D(f(x))$ share no common zeros. By part (vi), $(x - a)^2 \nmid f(x)$ for any $a \in \bar{F}$, meaning all zeros of $f(x)$ are simple. Hence $f(x)$ has $p^n$ distinct zeros in $\bar{F}$.
+\end{solution}
