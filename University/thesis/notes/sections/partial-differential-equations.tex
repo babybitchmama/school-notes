@@ -1,0 +1,31 @@
+\section{Partial Differential Equations}
+
+\subsubsection{Solution to Select Exercises}
+
+\begin{problem}
+  Prove the \emph{Multinomial Theorem}:
+  \begin{equation}\label{eq:multinomial_formula}
+    (x_1 + \cdots + x_n)^k = \sum_{|\alpha|=k} \binom{|\alpha|}{\alpha} x^\alpha
+  ,\end{equation}
+  where $\binom{|\alpha|}{\alpha} = |\alpha|!/\alpha!$, $\alpha! = \alpha_1!\alpha_2!\cdots\alpha_n!$, and $x^\alpha = x_1^{\alpha_1} \cdots x_n^{\alpha_n}$. The sum is taken over all multiindices $\alpha = (\alpha_1, \cdots, \alpha_n)$ with $|\alpha| = k$.
+\end{problem}
+
+\begin{solution}
+  We prove this using induction on $n$. The base case is given by the binomial theorem, namely, when $n = 2$, we have:
+  \begin{align*}
+    (x_1 + x_2)^k &= \sum_{j=0}^k \binom{k}{j} x_1^j x_2^{k-j} \\
+                    &= \sum_{|\alpha|=k} \binom{|\alpha|}{\alpha} x^\alpha
+  .\end{align*}
+  Now, assume the multinomial theorem holds for $n-1$ variables. Then,
+  \begin{align*}
+    (x_1 + \cdots + x_n)^k &= \sum_{j=0}^k \binom{k}{j} x_n^j (x_1 + \cdots + x_{n-1})^{k-j} \\
+                            &= \sum_{j=0}^k \binom{k}{j} x_n^j \sum_{|\beta|=k-j} \binom{|\beta|}{\beta} x^\beta \\
+                            &= \sum_{j=0}^k \sum_{|\beta|=k-j} \binom{k}{j} \binom{|\beta|}{\beta} x_n^j x^\beta
+  .\end{align*}
+  Now, for each multiindex $\alpha$ with $|\alpha| = k$, we can write $\alpha = (\beta_1, \cdots, \beta_{n-1}, j)$, where $|\beta| = k-j$. Then,
+  \begin{align*}
+    \sum_{j=0}^k \sum_{|\beta|=k-j} \binom{k}{j} \binom{|\beta|}{\beta} x_n^j x^\beta &= \sum_{|\alpha|=k} \binom{k}{\alpha_n} \binom{|\alpha| - \alpha_n}{\alpha_1, \cdots, \alpha_{n-1}} x_n^{\alpha_n} x_1^{\alpha_1} \cdots x_{n-1}^{\alpha_{n-1}} \\
+                                                                                        &= \sum_{|\alpha|=k} \binom{|\alpha|}{\alpha} x^\alpha
+  .\qedhere\end{align*}
+\end{solution}
+

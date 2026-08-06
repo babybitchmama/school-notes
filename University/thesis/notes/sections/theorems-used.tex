@@ -1,0 +1,206 @@
+\section{Theorems Used}
+
+\subsection{Inequalities and Identities}
+
+\begin{theorem}[Triangle Inequality]
+  \label{thm:triangle_inequality}
+\end{theorem}
+
+\begin{proof}
+\end{proof}
+
+\begin{theorem}[Cauchy's Inequality]
+  \label{thm:cauchy_inequality}
+
+  For all $a, b \in \R$ and $\epsilon > 0$,
+  \begin{equation}\label{eq:cauchy_inequality}
+    ab \le \frac{a^2}{2} + \frac{b^2}{2}
+  .\end{equation}
+\end{theorem}
+
+\begin{proof}
+  Since $0 \le (a - b)^2$, we have:
+  \[%
+    0 \le (a - b)^2 = a^2 - 2ab + b^2 \implies ab \le \frac{a^2}{2} + \frac{b^2}{2}
+  .\qedhere\]%
+\end{proof}
+
+\begin{theorem}[Cauchy's Inequality with $\epsilon$]
+  \label{thm:cauchy_inequality_epsilon}
+
+  For all $a, b \in \R$ and $\epsilon > 0$,
+  \begin{equation}\label{eq:cauchy_inequality_epsilon}
+    ab \le \epsilon a^2 + \frac{b^2}{4\epsilon}
+  .\end{equation}
+\end{theorem}
+
+\begin{proof}
+  We write:
+  \[%
+    ab = ((2\epsilon)^{1/2}a)\left(\frac{b}{(2\epsilon)^{1/2}}\right)
+  .\]%
+  We apply~\cref{thm:cauchy_inequality} to the right-hand side to get:
+  \[%
+    ab \le \frac{(2\epsilon)a^2}{2} + \frac{b^2}{2(2\epsilon)} = \epsilon a^2 + \frac{b^2}{4\epsilon}
+  .\qedhere\]%
+\end{proof}
+
+\begin{theorem}[Young's Inequality]
+  \label{thm:young_inequality}
+
+  Let $1 < p$, $q < \infty$, $1/p + 1/q = 1$. Then, we have:
+  \begin{equation}\label{eq:young_inequality}
+    ab \le \frac{a^p}{p} + \frac{b^q}{q}
+  \end{equation}
+\end{theorem}
+
+\begin{proof}
+  The mapping $x \mapsto e^x$ is convex, so we have:
+  \[%
+    ab = e^{\log(a)+\log(b)} = e^{\frac{1}{p}\log(a^p)+\frac{1}{q}\log(b^q)} \le \frac{1}{p}e^{\log(a^p)} + \frac{1}{q}e^{\log(b^q)} = \frac{a^p}{p} + \frac{b^q}{q}
+  .\qedhere\]%
+\end{proof}
+
+\begin{theorem}[Young's Inequality with $\epsilon$]
+  \label{thm:young_inequality_epsilon}
+
+  Let $1 < p$, $q < \infty$, $1/p + 1/q = 1$. Then, for all $\epsilon > 0$, we have:
+  \begin{equation}\label{eq:young_inequality_epsilon}
+    ab \le \epsilon a^p + C(\epsilon)b^q
+  ,\end{equation}
+  where $C(\epsilon) = (ep)^{-q/p}q^{-1}$.
+\end{theorem}
+
+\begin{proof}
+  We write:
+  \[%
+    ab = ((\epsilon p)^{1/p}a)\left(\frac{b}{(\epsilon p)^{1/p}}\right)
+  .\]%
+  Applying~\cref{thm:young_inequality} to the right-hand side gives:
+  \[%
+    ab \le \frac{(\epsilon p)a^p}{p} + \frac{b^q}{q(\epsilon p)^{q/p}} = \epsilon a^p + C(\epsilon)b^q
+  .\qedhere\]%
+\end{proof}
+
+\begin{theorem}[H\"olders Inequality]
+  \label{thm:holders_inequality}
+
+  Assume $1 \le p$, $q \le \infty$, and $\frac{1}{p} + \frac{1}{q} = 1$. Then, if $u \in L^p(U)$, $v \in L^q(U)$, we have:
+  \begin{equation}\label{eq:holders_inequality}
+    \int_U |uv| \dx \le \|u\|_{L^p(U)} \|v\|_{L^q(U)}
+  .\end{equation}
+\end{theorem}
+
+\begin{proof}
+  We may assume $\|u\|_{L^p} = \|v\|_{L^q} = 1$, by homogeneity. Then,~\cref{thm:young_inequality} implies that $1 < p$, $q < \infty$, we have:
+  \[%
+    \int_U |uv| \dx \le \frac{1}{q} \int_U |u|^p \dx + \frac{1}{q} \int_U |v|^q \dx = 1 = \|u\|_{L^p(U)} \|v\|_{L^q(U)}
+  .\qedhere\]%
+\end{proof}
+
+\begin{theorem}[Minkowski's Inequality]
+  \label{thm:minkowski_inequality}
+
+  Assume $1 \le q \le \infty$ and $u, v \in L^p(U)$. Then, we have:
+  \begin{equation}\label{eq:minkowski_inequality}
+    \|u + v\|_{L^p(U)} \le \|u\|_{L^p(U)} + \|v\|_{L^p(U)}
+  .\end{equation}
+\end{theorem}
+
+\begin{proof}
+  Expanding the left hand side, we have:
+  \begin{align*}
+    \|u + v\|_{L^p(U)}^p &= \int_U |u + v|^p \dx \le \int_U |u + v|^{p-1} (|u| + |v|) \dx \\
+                          &\le \left(\int_U |u | v|^p \dx\right)^{\frac{p-1}{p}}\left(\left(\int |u|^p \dx\right)^{1/p} + \left(\int_U |v|^p \dx\right)^{1/p}\right) \\
+                          &= \|u + v\|_{L^p(U)}^{p-1} (\|u\|_{L^p(U)} + \|v\|_{L^p(U)})
+  .\qedhere\end{align*}
+\end{proof}
+
+\begin{theorem}[General H\"older Inequality]
+  \label{thm:general_holders_inequality}
+
+  Let $1 \le p_1, \cdots, p_m \le \infty$, with $\frac{1}{p_1} + \cdots + \frac{1}{p_m} = 1$, and assume that $u_k \in L^{p_k}(U)$ for $k = 1, \cdots, m$. Then, we have:
+  \begin{equation}\label{eq:general_holders_inequality}
+    \int_U |u_1 \cdots u_m| \dx \le \prod_{k=1}^m \|u_i\|_{L^{p_k}(U)}
+  .\end{equation}
+\end{theorem}
+
+\begin{proof}
+  We use induction on $m$. The base case $m = 2$ is given by~\cref{thm:holders_inequality}. Now, assume the general H\"older inequality holds for $m-1$ functions. Then, we write:
+  \[%
+    \int_U |u_1 \cdots u_m| \dx = \int_U |u_1| |u_2 \cdots u_m| \dx
+  .\]%
+  We apply~\cref{thm:holders_inequality} to the right-hand side to get:
+  \[%
+    \int_U |u_1| |u_2 \cdots u_m| \dx \le \|u_1\|_{L^{p_1}(U)} \|u_2 \cdots u_m\|_{L^{q}(U)}
+  ,\]%
+  where $\frac{1}{p_1} + \frac{1}{q} = 1$. Now, we apply the induction hypothesis to get:
+  \[%
+    \|u_2 \cdots u_m\|_{L^{q}(U)} \le \prod_{k=2}^m \|u_i\|_{L^{p_k}(U)}
+  .\]%
+  Combining the above inequalities gives:
+  \[%
+    \int_U |u_1 \cdots u_m| \dx \le \|u_1\|_{L^{p_1}(U)} \prod_{k=2}^m \|u_i\|_{L^{p_k}(U)} = \prod_{k=1}^m \|u_i\|_{L^{p_k}(U)}
+  .\qedhere\]%
+\end{proof}
+
+\begin{theorem}[Interpolation Inequality for $L^p$-norms]
+  \label{thm:interpolation_inequality_lp}
+
+  Assume $1 \le s \le r \le t \le \infty$ and
+  \[%
+    \frac{1}{r} = \frac{\theta}{s} + \frac{1 - \theta}{t}
+  .\]%
+  Suppose also $u \in L^s(U) \cap L^t(U)$. Then, $u \in L^r(U)$, and
+  \begin{equation}\label{eq:interpolation_inequality_lp}
+    \|u\|_{L^r(U)} \le \|u\|_{L^s(U)}^\theta \|u\|_{L^t(U)}^{1-\theta}
+  .\end{equation}
+\end{theorem}
+
+\begin{proof}
+  We compute
+  \begin{align*}
+    \int_U |u|^r \dx &= \int_U |u|^{\theta r} |u|^{(1-\theta)r} \dx \\
+                      &\le \left(\int_U |u|^{\theta r \frac{s}{\theta r}}\right)\left(\int_U |u|^{(1-\theta)r \frac{t}{(1-\theta)r}}\dx\right)^{\frac{(1-\theta)r}{t}}
+  .\end{align*}
+  Now, we can apply~\cref{thm:holders_inequality}, since $\frac{\theta r}{s} + \frac{(1-\theta)r}{t} = 1$.
+\end{proof}
+
+\begin{theorem}[Cauchy-Schwarz Inequality]
+  \label{thm:cauchy_schwarz_inequality}
+
+  Given $x, y \in \R^n$, we have:
+  \begin{equation}\label{eq:cauchy_schwarz_inequality}
+    |x \cdot y| \le |x| |y|
+  .\end{equation}
+\end{theorem}
+
+\begin{proof}
+  Let $\epsilon > 0$. Notice that:
+  \[%
+    0 \le |x \pm \epsilon y|^2 = |x|^2 \pm 2\epsilon x \cdot y + \epsilon^2|y|^2
+  .\]%
+  Therefore, we have:
+  \[%
+    \pm x \cdot y \le \frac{1}{2\epsilon}|x|^2 + \frac{\epsilon}{2}|y|^2
+  .\]%
+  Letting $\epsilon = |x|/|y|$, provided $y \ne 0$, we get:
+  \[%
+    \pm x \cdot y \le \frac{1}{2} \frac{|y|}{|x|} |x|^2 + \frac{1}{2} \frac{|x|}{|y|} |y|^2 = \frac{1}{2} |x||y| + \frac{1}{2} |y||x| = |x||y|
+  .\qedhere\]%
+\end{proof}
+
+\begin{theorem}[Gronwall's Inequality, Differential Form]
+  \label{thm:gronwall_inequality_differential_form}
+\end{theorem}
+
+\begin{proof}
+\end{proof}
+
+\begin{theorem}[Gronwall's Inequality, Integral Form]
+  \label{thm:gronwall_inequality_integral_form}
+\end{theorem}
+
+\begin{proof}
+\end{proof}
+

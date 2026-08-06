@@ -1,0 +1,89 @@
+\section{Tensor Calculus}
+
+\subsection{Covariant Derivatives}
+
+I will be providing multiple definitions of the covariant derivative, going from easiest and most intuitive to more general and abstract. The first definition is based on flat space. The second definition is based on ...
+
+\subsubsection{Flat Space}
+
+Let $c^1 = x$ and $c^2 = y$ in Cartesian coordinates and $p^1 = r$ and $p^2 = \theta$ in polar coordinates. I will be writing the basis elements as:
+\begin{gather*}
+  \e_x = \pdv{\RR}{x}, \quad \tilde{\e}_r = \pdv{\RR}{r} \\
+  \e_y = \pdv{\RR}{y}, \quad \tilde{\e}_\theta = \pdv{\RR}{\theta}
+,\end{gather*}
+where $\RR$ is the position vector. So, for instance computing $\pdv{\RR}/{\lambda}$, where $\lambda$ is some parameter, we have:
+\begin{align*}
+  \pdv{\RR}{\lambda} &= \pdv{\RR}{x}\pdv{x}{\lambda} + \pdv{\RR}{y}\pdv{y}{\lambda} \\
+                      &= \pdv{\RR}{c^1}\pdv{c^1}{\lambda} + \pdv{\RR}{c^2}\pdv{c^2}{\lambda} \\
+                      &= \sum_{i} \pdv{\RR}{c^i}\pdv{c^i}{\lambda} = \pdv{\RR}{c^i}\pdv{c^i}{\lambda}
+.\end{align*}
+
+\begin{example}
+  For instance, if we let $\v = 2\e_x + 1\e_y$, where $v^x = 2$ and $v^y = 1$, we'd expect the derivatives $\pd{x}\v = 0 = \pd{y}\v$. Computing, we find:
+  \begin{align*}
+    \pdv{}{x} \v = \pdv{}{x} \left(v^x\e_x + v^y\e_y\right) &= \pdv{}{x} \left(v^x\e_x\right) + \pdv{}{x} \left(v^y\e_y\right) \\
+                                                            &= \pdv{v^x}{x}\e_x + v^x\pdv{\e_x}{x} + \pdv{v^y}{x}\e_y + v^y\pdv{\e_y}{x}
+  .\end{align*}
+  The derivatives of $v^x$ and $v^y$ with respect to $x$ go to zero, since they are constant. Similarly, the derivatives of the basis vectors go to zero since they are constant, resulting in $\pd{x}\v = \zero$. Similarly, we can compute $\pd{y}\v = \zero$.
+\end{example}
+
+\begin{example}
+  Now, let's compute the derivatives in polar coordinates, where $\v = 2\tilde{e}_r + 1\tilde{e}_\theta$.
+  We know that:
+  \begin{gather*}
+    x = r\cos(\theta), \quad y = r\sin(\theta) \\
+    r = \sqrt{x^2 + y^2}, \quad \theta = \arctan\left(\frac{y}{x}\right)
+  \end{gather*}
+  Thus, we have:
+  \begin{gather*}
+    \pdv{x}{r} = \cos(\theta), \quad \pdv{y}{r} = \sin(\theta), \quad \pdv{x}{\theta} = -r\sin(\theta), \quad \pdv{y}{\theta} = r\cos(\theta) \\
+    \pdv{r}{x} = \frac{x}{\sqrt{x^2 + y^2}} = \cos(\theta), \quad \pdv{r}{y} = \frac{y}{\sqrt{x^2 + y^2}} = \sin(\theta) \\
+    \pdv{\theta}{x} = -\frac{y}{x^2 + y^2} = -\frac{\sin(\theta)}{r}, \quad \pdv{\theta}{y} = \frac{x}{x^2 + y^2} = \frac{\cos(\theta)}{r}
+  .\end{gather*}
+  Then, using the pushforward of the basis vectors, we have:
+  \begin{gather*}
+    \tilde{\e}_r = \pdv{\RR}{r} = \pdv{x}{r} \pdv{\RR}{x} + \pdv{y}{r} \pdv{\RR}{y} = \pdv{x}{r}\e_x + \pdv{y}{r}\e_y = \cos(\theta)\e_x + \sin(\theta)\e_y \\
+    \tilde{\e}_\theta = \pdv{\RR}{\theta} = \pdv{x}{\theta} \pdv{\RR}{x} + \pdv{y}{\theta} \pdv{\RR}{y} = \pdv{x}{\theta}\e_x + \pdv{y}{\theta}\e_y = -r\sin(\theta)\e_x + r\cos(\theta)\e_y \\
+    \e_x = \pdv{\RR}{x} = \pdv{r}{x} \pdv{\RR}{r} + \pdv{\theta}{x} \pdv{\RR}{\theta} = \pdv{r}{x}\tilde{\e}_r + \pdv{\theta}{x}\tilde{\e}_\theta = \cos(\theta)\tilde{\e}_r - \frac{\sin(\theta)}{r}\tilde{\e}_\theta \\
+    \e_y = \pdv{\RR}{y} = \pdv{r}{y} \pdv{\RR}{r} + \pdv{\theta}{y} \pdv{\RR}{\theta} = \pdv{r}{y}\tilde{\e}_r + \pdv{\theta}{y}\tilde{\e}_\theta = \sin(\theta)\tilde{\e}_r + \frac{\cos(\theta)}{r}\tilde{\e}_\theta
+  .\end{gather*}
+  Computing the partial derivatives of the basis vectors, we have:
+  \begin{align*}
+    \pdv{\tilde{\e}_r}{r} &= \pdv{}{r}\left(\cos(\theta)\e_x + \sin(\theta)\e_y\right) = 0 \\
+    \pdv{\tilde{\e}_r}{\theta} &= \pdv{}{\theta}\left(\cos(\theta)\e_x + \sin(\theta)\e_y\right) = -\sin(\theta)\e_x + \cos(\theta)\e_y \\
+                                &= -\sin(\theta)\left(\cos(\theta)\tilde{\e}_r - \frac{\sin(\theta)}{r}\tilde{\e}_\theta\right) + \cos(\theta)\left(\sin(\theta)\tilde{\e}_r + \frac{\cos(\theta)}{r}\tilde{\e}_\theta\right) = \frac{1}{r}\tilde{\e}_\theta \\
+    \pdv{\tilde{\e}_\theta}{r} &= \pdv{}{r}\left(-r\sin(\theta) \e_x + r\cos(\theta)\e_y\right) = -\sin(\theta)\e_x + \cos(\theta)\e_y \\
+                                &= -\sin(\theta)\left(\cos(\theta)\tilde{\e}_r - \frac{\sin(\theta)}{r}\tilde{\e}_\theta\right) + \cos(\theta)\left(\sin(\theta)\tilde{\e}_r + \frac{\cos(\theta)}{r}\tilde{\e}_\theta\right) = \frac{1}{r}\tilde{\e}_\theta \\
+    \pdv{\tilde{\e}_\theta}{\theta} &= \pdv{}{\theta}\left(-r\sin(\theta) \e_x + r\cos(\theta)\e_y\right) = -r\cos(\theta)\e_x - r\sin(\theta)\e_y \\
+                                    &= -r\cos(\theta)\left(\cos(\theta)\tilde{\e}_r - \frac{\sin(\theta)}{r}\tilde{\e}_\theta\right) - r\sin(\theta)\left(\sin(\theta)\tilde{\e}_r + \frac{\cos(\theta)}{r}\tilde{\e}_\theta\right) = -r\tilde{\e}_r
+  .\end{align*}
+
+  Now, let's compute $\pdv{\v}/{r}$ and $\pdv{\v}/{\theta}$. Using the product rule, we have:
+  \begin{align*}
+    \pdv{\v}{r} = \pdv{}{r}\left(v^r\tilde{e}_r + v^\theta\tilde{e}_\theta\right) &= \pdv{}{r}\left(v^r\tilde{e}_r\right) + \pdv{}{r}\left(v^\theta\tilde{e}_\theta\right) \\
+                                                                                  &= \underbrace{\pdv{v^r}{r} \tilde{\e}_r + \pdv{v^\theta}{r} \tilde{\e}_\theta}_{\text{change of components}} + \underbrace{v^r\pdv{\tilde{\e}_r}{r} + v^\theta\pdv{\tilde{\e}_\theta}{r}}_{\text{change of basis}} \\
+                                                                                  &= \pdv{v^r}{r} \tilde{\e}_r + \pdv{v^\theta}{r} \tilde{\e}_\theta + v^\theta \frac{1}{r}\tilde{\e}_\theta \\
+    \pdv{\v}{\theta} = \pdv{}{\theta}\left(v^r\tilde{e}_r + v^\theta\tilde{e}_\theta\right) &= \pdv{}{r}\left(v^r\tilde{e}_r\right) + \pdv{}{r}\left(v^\theta\tilde{e}_\theta\right) \\
+                                                                                        &= \underbrace{\pdv{v^r}{\theta} \tilde{\e}_r + \pdv{v^\theta}{\theta} \tilde{\e}_\theta}_{\text{change of components}} + \underbrace{v^r\pdv{\tilde{\e}_r}{\theta} + v^\theta\pdv{\tilde{\e}_\theta}{\theta}}_{\text{change of basis}} \\
+                                                                                        &= \pdv{v^r}{\theta} \tilde{\e}_r + \pdv{v^\theta}{\theta} \tilde{\e}_\theta + v^r \frac{1}{r}\tilde{\e}_\theta - v^\theta r \tilde{\e}_r
+  .\end{align*}
+  Now, substituting $v^r = 2$ and $v^\theta = 1$, we have:
+  \begin{gather*}
+    \pdv{\v}{r} = 0 \cdot \tilde{\e}_r + 0 \cdot \tilde{\e}_\theta + 1 \cdot \frac{1}{r}\tilde{\e}_\theta = \frac{1}{r}\tilde{\e}_\theta \\
+    \pdv{\v}{\theta} = 0 \cdot \tilde{\e}_r + 0 \cdot \tilde{\e}_\theta + 2 \cdot \frac{1}{r}\tilde{\e}_\theta - 1 \cdot r \tilde{\e}_r = -r\tilde{\e}_r + \frac{2}{r}\tilde{\e}_\theta
+  .\qedhere\end{gather*}
+\end{example}
+
+So, in flat space, the covariant derivative is simply the ordinary derivative of the components of the vector field, plus a correction term that accounts for the change in the basis vectors. This correction term is what makes the covariant derivative different from the ordinary derivative.
+
+\begin{note}
+  It's pretty common when working with $\pd{c^j}\e_j$ to write it as:
+  \[%
+    \pdv{\e_j}{c^j} = \Gamma^i_{jk}\e_i
+  ,\]%
+  where $\Gamma^i_{jk}$ are the Christoffel symbols of the second kind, defined as:
+  \[%
+    \Gamma^i_{jk} = g^{i\ell}\left(\pdv{g_{k\ell}}{c^j} + \pdv{g_{j\ell}}{c^k} - \pdv{g_{jk}}{c^\ell}\right)
+  .\]%
+  In flat space, the Christoffel symbols are zero, which is why the correction term vanishes in Cartesian coordinates.
+\end{note}
