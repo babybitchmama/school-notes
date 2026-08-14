@@ -1,0 +1,61 @@
+\documentclass[11pt, letterpaper]{article}
+
+% ==========================================
+% LIGHTWEIGHT PREAMBLE
+% ==========================================
+\usepackage[margin=1in]{geometry} % Wider margins for better screen reading
+\usepackage{amsmath, amssymb, amsthm, mathtools} % Core math 
+\usepackage{parskip} % Replaces indents with vertical spacing (perfect for brain dumps)
+\usepackage{hyperref} % Clickable TOC
+\usepackage{xcolor} % For quick text coloring
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,
+    urlcolor=cyan,
+}
+
+% ==========================================
+% ENVIRONMENTS
+% ==========================================
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{theorem}[definition]{Theorem}
+\newtheorem{lemma}[definition]{Lemma}
+\newtheorem{proposition}[definition]{Proposition}
+
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+\newtheorem*{idea}{Idea}
+\newtheorem*{question}{Question}
+
+% ==========================================
+% QUICK MACROS
+% ==========================================
+% Fields
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+
+% Geometry & Analysis Shortcuts
+\newcommand{\g}{\mathfrak{g}} % Lie algebra
+\newcommand{\pd}[2]{\frac{\partial #1}{\partial #2}} % Partial derivative
+\newcommand{\inner}[2]{\langle #1, #2 \rangle} % Inner product
+\newcommand{\Tr}{\operatorname{Tr}} % Trace
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert} % Norm
+
+% ==========================================
+% DOCUMENT
+% ==========================================
+\title{\vspace{-4em}\textbf{Meeting Notes}\vspace{-1em}}
+\author{Hashem Damrah}
+\date{\today}
+
+\begin{document}
+  \maketitle
+
+  % BEGIN SECTION INPUT
+  % END SECTION INPUT
+\end{document}

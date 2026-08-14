@@ -1,0 +1,61 @@
+\documentclass[notitlepage]{report}
+
+\input{preamble.tex}
+
+\def\Xint#1{\mathchoice
+   {\XXint\displaystyle\textstyle{#1}}%
+   {\XXint\textstyle\scriptstyle{#1}}%
+   {\XXint\scriptstyle\scriptscriptstyle{#1}}%
+   {\XXint\scriptscriptstyle\scriptscriptstyle{#1}}%
+   \!\int}
+\def\XXint#1#2#3{{\setbox0=\hbox{$#1{#2#3}{\int}$}
+     \vcenter{\hbox{$#2#3$}}\kern-.5\wd0}}
+\def\ddashint{\Xint=}
+\def\dashint{\Xint-}
+
+\def\nshort{}
+\def\ncourse{}
+\def\nlecturer{}
+\def\nterm{}
+\def\nyear{}
+
+\def\othernotes{singularisart.GitHub.Io/notes}
+\def\faculty{}
+\def\location{}
+
+%\author{Hashem A. Damrah}
+\author{}
+\date{}
+\title{Material for Midterm Exam}
+
+\theoremstyle{definition}
+\newtheorem*{classification}{Classification}
+\newtheorem*{toolkit}{Toolkit}
+
+\begin{document}
+  \maketitle
+  \tableofcontents
+
+  \begin{note*}
+    This paper is a collection of my notes for my thesis. It is not intended to be read by anyone other than myself, and it is not intended to be a polished or complete document. It is simply a place for me to write down my thoughts and calculations as I work on my thesis. It contains my work from the following sources:
+    \begin{enumerate}
+      \item My notes from the \emph{Partial Differential Equations} textbook, by Lawrence C. Evans.
+      \item My notes from the \emph{Functional Analysis, Sobolev Spaces and Partial Differential Equations} textbook, by Haim Brezis.
+      \item My notes from the \emph{The Yamabe Problem} paper, by John M. Lee and Thomas H. Parker.
+      \item My notes from the \emph{Scalar Curvature and Isometry Group} paper, by J. Berard Bergery.
+    \end{enumerate}
+  \end{note*}
+
+  % BEGIN SECTION INPUT
+  \input{sections/01-notation.tex}
+  \input{sections/02-definitions.tex}
+  \input{sections/03-tensor-calculus.tex}
+  \input{sections/04-theorems-used.tex}
+  \input{sections/05-partial-differential-equations.tex}
+  \input{sections/06-functional-analysis-sobolev-spaces-and-pdes.tex}
+  \input{sections/07-yamabe-problem-paper.tex}
+  \input{sections/08-scalar-curvature-and-isometry-group.tex}
+  \input{sections/09-questions.tex}
+  \input{sections/10-appendix.tex}
+  % END SECTION INPUT
+\end{document}
