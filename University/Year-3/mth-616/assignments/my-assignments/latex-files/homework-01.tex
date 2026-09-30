@@ -1,0 +1,171 @@
+\createtitlepage{Homework 1}{April 8, 2026}
+
+\begin{problem}[39.2]
+  Show that given $\alpha = \sqrt{2} + \sqrt{3} \in \C$ is algebraic over $\Q$ by finding $f(x) \in \Q[x]$ such that $f(\alpha) = 0$.
+\end{problem}
+
+\begin{solution}
+  We want to find $f(x) \in \C[x]$ such that $f(\alpha) = 0$. Squaring $\alpha$, we get $\alpha^2 = 2 + 3 + 2\sqrt{6} = 5 + 2\sqrt{6}$. Then, $(\alpha - 5)^2 = (2\sqrt{6})^2 = 24$. Thus, we have $(\alpha - 5)^2 - 24 = 0$. Rearranging gives us $\alpha^2 - 10\alpha + 1 = 0$. Thus, we can take $f(x) = x^2 - 10x + 1$.
+\end{solution}
+
+\begin{problem}[39.8]
+  Find $\irr(\alpha, \Q)$ and $\deg(\alpha, \Q)$ given the algebraic number $\alpha = \sqrt{2} + i \in \C$. Be prepared to prove that your polynomials are irreducible over $\Q$ if challenged to do so.
+\end{problem}
+
+\begin{solution}
+  Squaring $\alpha$, we get $\alpha^2 = 1 + 2\sqrt{2}i$. Then, we have $(\alpha^2 - 1)^2 = -8$. Rearranging gives us $\alpha^4 - 2\alpha^2 + 9 = 0$. Thus, we can take $f(x) = x^4 - 2x^2 + 9$. Lastly, we want to show that $f(x)$ is irreducible. Say $f$ has linear factor $x - \beta$. Then, the root $\beta$ must divide 9, so $\beta = \pm 1$, $\pm 3$, or $\pm 9$. But, evaluating the polynomial at all those points gives us a non-zero value, so $f$ has no linear factor. Now, say that $f$ can be written as the product of two quadratics, $f(x) = (x^2 + ax + b)(x^2 + cx + d)$. Expanding, we get:
+  \[%
+    f(x) = (x^2 + ax + b)(x^2 + cx + d) = x^4 + (a + d)x^3 + (e + b + ab)x^2 + (ae + bd)x + be
+  .\]%
+  We have $be = 9$, $b + e = \pm 10$ or $\pm 6$. From this, we get the contradiction that $a = \sqrt{3}$ or $a = -\sqrt{3}$, so $f$ has no quadratic factorization. Thus, $f$ is irreducible over $\Q$, so $\irr(\alpha, \Q) = f(x) = x^4 - 2x^2 + 9$ and $\deg(\alpha, \Q) = 4$.
+\end{solution}
+
+\begin{problem}[39.10]
+  Classify $\alpha = 1 + i$ as algebraic or transcendental over the field $F = \R$. If $\alpha$ is algebraic over $F$, find $\deg(\alpha, F)$.
+\end{problem}
+
+\begin{solution}
+  The number $\alpha$ is algebraic over $\R$, since it is a zero of a polynomial, $f(x) \in \R[x]$. To find this polynomial, we square $\alpha$ to get $\alpha^2 = 2i$. Squaring again gives $\alpha^4 = -4$. Thus, we have $\alpha^4 + 4 = 0$, so $f(x) = x^4 + 4$ is a polynomial in $\R[x]$ such that $f(\alpha) = 0$. Notice that $f(x)$ is reducible over $\R$, specifically, we have:
+  \[%
+    f(x) = \left(x^2 + 2x + 2\right)\left(x^2 - 2x + 2\right) = p(x)q(x)
+  .\]%
+  Notice that $\alpha$ is a root of $q(x)$, so $\irr(\alpha, \R) = q(x) = x^2 - 2x + 2$ and $\deg(\alpha, \R) = 2$.
+\end{solution}
+
+\begin{problem}[39.16]
+  Classify $\alpha = \pi^2$ as algebraic or transcendental over the field $F = \Q(\pi^3)$. If $\alpha$ is algebraic over $F$, find $\deg(\alpha, F)$.
+\end{problem}
+
+\begin{solution}
+  Say that there exists a vanishing polynomial $f(x) = a_0 + a_1x^1 + \cdots + a_nx^n \in \Q[x]$ such that $f(\pi^2) = 0$. Then, $f(\pi^2) = a_0 + a_1\pi^2 + a_2\pi^4 + \cdots + a_n\pi^{2n} = 0$. This implies that for $g(x) = a_0 + a_1x^2 + \cdots + a_nx^n$, we have $g(\pi) = 0$. This contradicts the fact that $\pi$ is transcendental over $\Q$. Thus, there is no vanishing polynomial for $\alpha$, so $\alpha$ is transcendental over $F$.
+\end{solution}
+
+\begin{problem}[39.17]
+  Refer to Example 39.20 of the text. The polynomial $x^2 + x + 1$ has a zero $\alpha$ in $\Z_2(\alpha)$ and thus must factor into a product of linear factors in $(\Z_2(\alpha))[x]$. Find this factorization. [\textit{Hint:} Divide $x^2 + x + 1$ by $x - \alpha$ by long division, using the fact that $\alpha^2 = \alpha + 1$.]
+\end{problem}
+
+\begin{solution}
+  We first divide $x^2 + x + 1$ by $x - \alpha$ using long division. Multiplying $x - \alpha$ by $x$ gives us $x^2 - \alpha x$. Subtracting gives us $x + 1 + \alpha x = (1 + \alpha)x + 1$. Next, we multiply $x - \alpha$ by $1 + \alpha$ to get $(1 + \alpha)x + (1 + \alpha)\alpha$. Subtracting gives us $1 - (1 + \alpha)\alpha = 0$. Thus, we have the factorization $x^2 + x + 1 = (x - \alpha)(x + 1 + \alpha)$ in $(\Z_2(\alpha))[x]$.
+\end{solution}
+
+\begin{problem}[39.18]
+  \begin{enumerate}
+    \item Show that the polynomial $x^2 + 1$ is irreducible in $\Z_3[x]$.
+    \item Let $\alpha$ be a zero of $x^2 + 1$ is an extension of the field $\Z_3$. As in Example 39.20, give the multiplication and addition tables for the nine elements of $\Z_3(\alpha)$, written in order 0, 1, 2, $\alpha$, $2\alpha$, $1 + \alpha$, $1 + 2\alpha$, $2 + \alpha$, and $2 + 2\alpha$.
+  \end{enumerate}
+\end{problem}
+
+\begin{solution}[(i)]
+  To show that $x^2 + 1$ is irreducible over $\Z_3[x]$, we can check if it has any roots in $\Z_3$. Evaluating $x^2 + 1$ at $0$, $1$, and $2$ gives us:
+  \[%
+    (0)^2 + 1 = 1, \quad (1)^2 + 1 = 2, \aand (2)^2 + 1 = 5 \equiv 2 \pmod{3}
+  .\]%
+  Thus, $x^2 + 1$ has no roots in $\Z_3$, so it is irreducible over $\Z_3[x]$.
+\end{solution}
+
+\begin{solution}[(ii)] $ $
+
+  \begin{table}[H]
+    \begin{center}
+      \begin{tabular}{c||ccccccccc}
+        + & $0$ & $1$ & $2$ & $\alpha$ & $2\alpha$ & $1+\alpha$ & $1+2\alpha$ & $2+\alpha$ & $2+2\alpha$\\
+        \hline\hline
+        $0$ & $0$ & $1$ & $2$ & $\alpha$ & $2\alpha$ & $1+\alpha$ & $1+2\alpha$ & $2+\alpha$ & $2+2\alpha$ \\
+        \hline
+        $1$ & $1$ & $2$ & $0$ & $1+\alpha$ & $1+2\alpha$ & $2+\alpha$ & $2+2\alpha$ & $\alpha$ & $2\alpha$ \\
+        \hline
+        $2$ & $2$ & $0$ & $1$ & $2+\alpha$ & $2+2\alpha$ & $\alpha$ & $2\alpha$ & $1+\alpha$ & $1+2\alpha$ \\
+        \hline
+        $\alpha$ & $\alpha$ & $1+\alpha$ & $2+\alpha$ & $2\alpha$ & $0$ & $1+2\alpha$ & $1$ & $2+2\alpha$ & $2$ \\
+        \hline
+        $2\alpha$ & $2\alpha$ & $1+2\alpha$ & $2+2\alpha$ & $0$ & $\alpha$ & $1$ & $1+\alpha$ & $2$ & $2+\alpha$ \\  
+        \hline 
+        $1+\alpha$ & $1+\alpha$ & $2+\alpha$ & $\alpha$ & $1+2\alpha$ & $1$ & $2+2\alpha$ & $2$ & $2\alpha$ & $0$ \\ 
+        \hline 
+        $1+2\alpha$ & $1+2\alpha$ & $2+2\alpha$ & $2\alpha$ & $1$ & $1+\alpha$ & $2$ & $2+\alpha$ & $0$ & $\alpha$ \\  
+        \hline 
+        $2+\alpha$ & $2+\alpha$ & $\alpha$ & $1+\alpha$ & $2+2\alpha$ & $2$ & $2\alpha$ & $0$ & $1+2\alpha$ & $1$ \\ 
+        \hline
+        $2+2\alpha$ & $2+2\alpha$ & $2\alpha$ & $1+2\alpha$ & $2$ & $2+\alpha$ & $0$ & $\alpha$ & $1$ & $1+\alpha$ 
+      \end{tabular}
+      \caption{Addition table for $\Z_3(\alpha)$}
+    \end{center}
+  \end{table}
+
+  \begin{table}[H]
+    \begin{center}
+      \begin{tabular}{c||ccccccccc}
+        $\times$ & $0$ & $1$ & $2$ & $\alpha$ & $2\alpha$ & $1+\alpha$ & $1+2\alpha$ & $2+\alpha$ & $2+2\alpha$\\
+        \hline\hline
+        $0$ & $0$ & $0$ & $0$ & $0$ & $0$ & $0$ & $0$ & $0$ & $0$ \\
+        \hline
+        $1$ & $0$ & $1$ & $2$ & $\alpha$ & $2\alpha$ & $1+\alpha$ & $1+2\alpha$ & $2+\alpha$ & $2+2\alpha$ \\
+        \hline
+        $2$ & $0$ & $2$ & $1$ & $2\alpha$ & $\alpha$ & $2+2\alpha$ & $2+\alpha$ & $1+2\alpha$ & $1+\alpha$ \\
+        \hline
+        $\alpha$ & $0$ & $\alpha$ & $2\alpha$ & $2$ & $1$ & $2+\alpha$ & $1+\alpha$ & $2+2\alpha$ & $1+2\alpha$ \\
+        \hline
+        $2\alpha$ & $0$ & $2\alpha$ & $\alpha$ & $1$ & $2$ & $1+2\alpha$ & $2+2\alpha$ & $1+\alpha$ & $2+\alpha$ \\  
+        \hline 
+        $1+\alpha$ & $0$ & $1+\alpha$ & $2+2\alpha$ & $2+\alpha$ & $1+2\alpha$ & $2\alpha$ & $2$ & $0$ & $\alpha$ \\ 
+        \hline 
+        $1+2\alpha$ & $0$ & $1+2\alpha$ & $2+\alpha$ & $1+\alpha$ & $2+2\alpha$ & $2$ & $\alpha$ & $2\alpha$ & $1$ \\  
+        \hline 
+        $2+\alpha$ & $0$ & $2+\alpha$ & $1+2\alpha$ & $2+2\alpha$ & $1+\alpha$ & $0$ & $2\alpha$ & $\alpha$ & $2$ \\ 
+        \hline
+        $2+2\alpha$ & $0$ & $2+2\alpha$ & $1+\alpha$ & $1+2\alpha$ & $2+\alpha$ & $\alpha$ & $1$ & $2$ & $2\alpha$ 
+      \end{tabular}
+      \caption{Multiplication table for $\Z_3(\alpha)$}
+    \end{center}
+  \end{table}
+
+  These tables were generated using the fact that $\alpha^2 = -1$ and the distributive property of multiplication over addition.
+\end{solution}
+
+\begin{problem}[39.24]
+  We have stated without proof that $\pi$ and $e$ are transcendental over $\Q$.
+  \begin{enumerate}
+    \item Find a subfield $F$ of $\R$ such that $\pi$ is algebraic of degree 3 over $F$.
+    \item Find a subfield $E$ of $\R$ such that $e^2$ is algebraic of degree 5 over $E$.
+  \end{enumerate}
+\end{problem}
+
+\begin{solution}[(i)]
+  Take the vanishing polynomial $f(x) = x^3 - \pi^3$. We now, have to show irreducibility. Assume that $f$ has a linear factor $x - \beta$. Then $\beta \in \Q$ must divide $\pi^3$. But if $k\beta = \pi^3$, then $\pi^3$ would be rational, which is a contradiction. Thus, there is no linear factor. Since $f$ has degree 3, it cannot have a quadratic factorization. Thus, $f$ is irreducible over $\Q$, so we can take $F = \Q(\pi) = \Q[x]/\braket{f(x)} \subset \R$, such that $\pi$ is algebraic of degree 3 over $F$.
+\end{solution}
+
+\begin{solution}[(ii)]
+  Take the vanishing polynomial $g(x) = x^5 e^{10}$. We now, have to show irreducibility. Assume that $g$ has a linear factor $x - \beta$. The same logic holds from part (i) to show that $\beta$ cannot be rational. Now, assume that $g$ has a quadratic or cubic factorization. Then, we can write $g(x) = (x^2 + ax + b)(x^3 + cx^2 + dx + e)$. Then $be = e^{10}$, which implies that either $b$ or $e$ is irrational. Thus, there is no quadratic or cubic factorization. Thus, we can take $E = \Q(e) = \Q[x]/\braket{g(x)} \subset \R$, such that $e^2$ is algebraic of degree 5 over $E$.
+\end{solution}
+
+\begin{problem}[39.29]
+  Let $E$ be an extension field of $F$, and let $\alpha, \beta \in E$. Suppose $\alpha$ is transcendental over $F$ but algebraic over $F(\beta)$. Show that $\beta$ is algebraic over $F(\alpha)$.
+\end{problem}
+
+\begin{solution}
+  Let $f(x) = \irr(\alpha, F(\beta)) = a_nx^n + \cdots a_1x^1 + a_0$. Notice that $f(\alpha) = 0$, so we have $a_n\alpha^n + \cdots + a_1\alpha^1 + a_0 = 0$. Rearranging gives us $a_n\alpha^n + \cdots + a_1\alpha^1 = -a_0$. Since $\alpha$ is transcendental over $F$, we can view this as a polynomial in $\beta$ with coefficients in $F(\alpha)$. Thus, we have $g(\beta) = a_n\alpha^n + \cdots + a_1\alpha^1 + a_0 = 0$, where $g(x) \in F(\alpha)[x]$. This implies that $\beta$ is algebraic over $F(\alpha)$.
+\end{solution}
+
+\begin{problem}[39.30]
+  Let $E$ be an extension field of a finite field $F$, where $F$ is $q$ elements. Let $\alpha \in E$ be algebraic over $F$ of degree $n$. Prove that $F(\alpha)$ has $q^n$ elements.
+\end{problem}
+
+\begin{solution}
+  Let $\irr(\alpha, F) = a_nx^n + \cdots + a_1x^1 + a_0$. Notice that $F(\alpha) = \{a_{n - 1}\alpha^{n - 1} + \cdots + a_1\alpha^1 + a_0 : a_i \in F\}$, since $\irr(\alpha, F)$ is irreducible over $F$. Since $F$ has $q$ elements, there are $q$ choices for each of the coefficients $a_i$. Thus, there are $q^n$ elements in $F(\alpha)$.
+\end{solution}
+
+\begin{problem}[39.32]
+  Consider the prime field $\Z_p$ of characteristic $p \ne 0$.
+  \begin{enumerate}
+    \item Show that, for $p \ne 2$, not every element in $\Z_p$ is a square of an element of $\Z_p$. [\textit{Hint:} $1^2 = (p - 1)^2 = 1$ in $\Z_p$. Deduce the desired conclusion by \textit{counting}.]
+    \item Using part (i), show that there exist finite fields of $p^2$ elements for every prime $p$ in $\Z^+$.
+  \end{enumerate}
+\end{problem}
+
+\begin{solution}[(i)]
+  By the hint, we already know that 1 is a square in $\Z_p$. Since $p \ne 2$, we have $p - 1 \ne 1$, so $p - 1$ is not a square in $\Z_p$. Thus, there are at least two elements in $\Z_p$ that are not squares. Since $\Z_p$ has $p$ elements, there are at most $p - 2$ squares in $\Z_p$. Thus, not every element in $\Z_p$ is a square of an element of $\Z_p$.
+\end{solution}
+
+\begin{solution}[(ii)]
+  For each prime $p \in \Z^+$, consider any irreducible polynomial $f(x) \in \Z_p[x]$ of degree $p$. Such a polynomial exists by part (i). Then, we know that there exists a field extension $E$ of $\Z_p$ containing a zero $\alpha$ of $f$. Then, $\Z_p(\alpha)$ has elements of the form $a + b\alpha, a, b \in \Z_p$. Since $\Z_p$ has $p$ elements, there are $p^2$ such elements in $\Z_p(\alpha)$. Thus, there exist finite fields of $p^2$ elements for every prime $p$ in $\Z^+$.
+\end{solution}

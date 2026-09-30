@@ -1,0 +1,98 @@
+\lecture{1}{Sep 28 2026 Mon (11:00:01)}{Measure Sets}
+
+\subsection{Refresher on the Riemann Integral}
+
+In the intro to fundamentals of analysis course II (MTH-317), we defined what the Riemann integral is. We provide a quick recap of that here.
+
+\begin{definition}
+  Let $f : [a, b] \to \R$ be a bounded function. The lower Riemann sum / Derboux sum is given by
+  \[%
+    L_N(f) = \frac{b - a}{N} \sum_{n=0}^{N-1} \inf\left\{f(x) | x \in \left[\frac{a - b}{N} + a, \frac{a - b}{N}(n+1) + a\right]\right\}
+  ,\]%
+  along with the upper Riemann sum,
+  \[%
+    U_N(f) = \frac{b - a}{N} \sum_{n=0}^{N-1} \sup\left\{f(x) | x \in \left[\frac{b - a}{N} + a, \frac{a - b}{N}(n+1) + a\right]\right\}
+  .\]%
+  We say $f$ is \emph{Riemann integrable} if $\lim_{N \to \infty} L_N(f) = c = \lim_{N \to \infty} U_N(f)$, where $c$ is some constant. Then, we have:
+  \[%
+    \int_a^b f(x) \dx := \lim_{N \to \infty} L_N(f) = \lim_{N \to \infty} U_N(f)
+  .\]%
+\end{definition}
+
+\subsection{Lebesgue Integration}
+
+Now, we introduce a different perspective of integration, \emph{Lebesgue integration}. Before doing so, we need to define what it means for a set to have \emph{measure zero}.
+\begin{definition}[Measure zero]
+  Let $S \subset \R$. The set $S$ has \emph{measure zero} if for every $\epsilon > 0$, there exists an open cover $\{U_i\}$ such that
+  \[%
+    \sum_{i=1}^{\infty} |U_i| < \epsilon \aand S \subset \bigcup_{i=1}^{\infty} U_i
+  .\]%
+\end{definition}
+
+\begin{theorem}[Lebesgue's Theorem]
+  The bounded function $f : [a, b] \to \R$ is Riemann integrable if and only if the set of discontinuities on $[a, b]$ has measure zero.
+\end{theorem}
+
+\begin{examples}\leavevmode
+  \begin{enumerate}
+    \item Any continuous function $f$ is Riemann integrable.
+    \item The standard Cantor set
+      \[%
+        \chi_C(x) = \begin{cases}
+          1 & \text{if}~x \in C \\
+          0 & \text{if}~x \not\in C \\
+        \end{cases}
+      .\]%
+    \item Notice that $\chi_\Q$ is not Riemann integrable as it's discontinuous everywhere, but $\Q$ has measure zero.
+  \end{enumerate}
+\end{examples}
+
+\begin{theorem}
+  Let $f_n : [a, b] \to \R$ be a sequence of bounded Riemann integrable functions which converge uniformly to a bounded function $f := \lim_{n \to \infty} f_n(x)$. Then, $f(x)$ is Riemann integrable and
+  \[%
+    \int_a^b f(x) \dx = \lim_{n \to \infty} \int_a^b f_n(x) \dx
+  .\]%
+\end{theorem}
+
+\subsection{Measure Sets: $\sigma$-algebras}
+
+We start by defining what a $\sigma$-algebra is.
+
+\begin{definition}[$\sigma$-algebra]
+  Let $X$ be a set.
+  A collection $m \subset \mathcal{P}(x)$ is called a $\sigma$-algebra if it satisfies the following conditions.
+  \begin{enumerate}
+    \item The set $X$ is contained inside $m$.
+    \item The set is closed under complements, i.e., for every $A \in m$, $X \setminus A = A^c \in m$.
+    \item The set is closed under countable union, i.e., given $\{A_n\}_{n\in\N}$, for each $A_n \in m$, then $\bigcup_{n\in\N} A_n \in m$.
+  \end{enumerate}
+  The tuple $(X, m)$ is a \emph{measurable space}, where $m$ is a $\sigma$-algebra. A set $A \in m$ is called a \emph{measurable set}.
+\end{definition}
+
+\begin{note}
+  Notice from (i) and (ii), we deduce that $\emptyset \in m$, since $X \setminus X = X^c = \emptyset \in m$.
+
+  Also from (ii) and (iii), by De Morgan's law, we get that $\bigcap_{n\in\N} A_n \in m$
+\end{note}
+
+\begin{exercise}
+  Prove every infinite $\sigma$-algebra has cardinality at least $2^N$, which is the cardinality of $P(\N)$.
+
+  Hint: Construct sequence of pairwise disjoint non-empty measurable sets.
+\end{exercise}
+
+\begin{solution}
+\end{solution}
+
+\subsection{Topology}
+
+Notice how the definition of a measurable space is eerily similar to the definition of a topological space. Recall that
+
+\begin{definition}[Topological Space]
+  Given a set $X$, a collection $\mathcal{T} \subset \mathcal{P}(X)$ is called a \emph{topology} on $X$ if it satisfies the following conditions.
+  \begin{enumerate}
+    \item The collection contains both $X$ and $\emptyset$.
+    \item It's closed under countable union, i.e., for every $U_\alpha \in \mathcal{T}$ and for every $\alpha \in A$, we have $\bigcup_{\alpha\in A} U_\alpha \in \mathcal{T}$.
+    \item It's closed under finite intersection, i.e., given $U_1, \cdots, U_n \in \mathcal{T}$, we have $\bigcap_{i=1}^n U_i \in \mathcal{T}$.
+  \end{enumerate}
+\end{definition}
