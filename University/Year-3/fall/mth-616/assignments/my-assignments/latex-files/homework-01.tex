@@ -1,0 +1,31 @@
+\createtitlepage{Homework 1}{October 7, 2026}
+
+\begin{problem}[1]
+  Given a $\lambda$-system, $\mathcal{D}$, prove the following properties:
+  \begin{enumerate}
+    \item $\emptyset \in \mathcal{D}$.
+    \item If $A \in \mathcal{D}$, then $A^c \in \mathcal{D}$.
+    \item If $\{A_i\}_{i\in\N}$, for each $A_i \in \mathcal{D}$, all pointwise-disjoint, then show that $\bigsqcup_{i=1}^\infty A_i \in \mathcal{D}$.
+  \end{enumerate}
+\end{problem}
+
+\begin{solution}[(i)]
+  Let $E = F = X$. By axiom 1, $X \in \mathcal{D}$, so $E, F \in \mathcal{D}$. Also, $E \subset F$ since every set is a subset of itself. Hence, by axiom 2, $F \setminus E = X \setminus X \in \mathcal{D}$. Since $X \setminus X$ contains no elements, $X \setminus X = \emptyset$, so $\emptyset \in \mathcal{D}$.
+\end{solution}
+
+\begin{solution}[(ii)]
+  Let $A \in \mathcal{D}$, and let $F = X$ and $E = A$. By axiom 1, $F = X \in \mathcal{D}$, and $E = A \in \mathcal{D}$ by assumption. Also, $E \subset F$ because $A \subset X$, as $X$ is the ambient space of which every set under consideration is a subset. Hence, by axiom 2, $F \setminus E = X \setminus A \in \mathcal{D}$. Since $X \setminus A = A^c$, we conclude $A^c \in \mathcal{D}$.
+\end{solution}
+
+\begin{solution}[(iii)]
+  Let $A, B \in \{A_i\}_{i\in\N}$ be two arbitrary sets in the collection. Since the sets are pointwise-disjoint, we have $B \subset A^c$. By part (ii), we know that $A^c \in \mathcal{D}$. By axiom (2), we have $A^c \setminus B \in \mathcal{D}$. Notice that:
+  \[%
+    (A^c \setminus B)^c = A \cup B
+  ,\]%
+  and by part (ii), we have $A \cup B \in \mathcal{D}$. By induction, we can extend this argument to any finite collection of pointwise-disjoint sets in $\{A_i\}_{i\in\N}$, showing that the union of any finite number of these sets is also in $\mathcal{D}$.
+
+  Now, we construct an increasing chain of sets from the collection $\{A_i\}_{i\in\N}$. Define $C_n = \bigsqcup_{i=1}^n A_i$ for each $n \in \N$. By the previous argument, we have $C_n \in \mathcal{D}$ for all $n$. Since $\{C_n\}_{n\in\N}$ is an increasing sequence of sets (i.e., $C_n \subset C_{n+1}$ for all $n$), we can apply axiom (3) to conclude that:
+  \[%
+    \bigsqcup_{i=1}^\infty A_i = \bigcup_{n=1}^\infty C_n \in \mathcal{D}
+  .\qedhere\]%
+\end{solution}

@@ -1,0 +1,50 @@
+Core claim: Text-to-image (T2I) models like Stable Diffusion and DALL-E 3 exoticize marginalized groups. Exoticism here means over-amplifying a culture's stereotypical features (attire, ornaments) at the cost of accuracy, and these features persist no matter what activity the prompt describes. The paper builds on Ghosh et al. (2024), which found this for India, and tests whether it generalizes.
+
+Method:
+
+Prompts follow the template "Person from [country] doing [activity]", with activities like at home, at work, cooking, groceries, hiking, and sports.
+They cover 13 "Global South" countries and 3 "Global North" countries (USA, UK, Australia).
+They generate 25 Stable Diffusion images per prompt, plus DALL-E 3 images for comparison.
+They compute CLIP-embedding cosine similarity between the baseline image ("Person from X") and the activity image ("Person from X doing Y"). High similarity means the same outfit regardless of activity, which they read as exoticism. Low similarity means activity-appropriate attire.
+
+Findings:
+
+Global North vs. South: The Global North averages about 0.40 and the Global
+South about 0.74. Examples are Papua New Guinea (0.88, shirtless with face
+paint everywhere), Sudan (white robes and turbans), Mexico (sombreros), and
+Egypt (nemes, even on a flight).
+
+Exoticism isn't just North vs. South: Indigenous people in the USA and
+Australia are shown in feathered headgear and "traditional" settings even when
+the prompt asks for caps, offices, or Parliament. This is a qualitative
+analysis.
+
+Double exoticization within India (qualitative): Dalit people are shown in
+poorer settings than Brahmin people. Muslim people are shown in religious
+headwear where Hindu people aren't, even for surgeons and cricketers. Northeast
+Indians are shown in red attire.
+
+Implications:
+
+Users: Be aware of the tendency, engineer prompts carefully, and build cultural literacy.
+Researchers: Cover more Global South contexts and use decolonial epistemologies.
+Developers: Add clarification requests (e.g., "Do you want sombreros?") and build context-specific tools like Kalaido.ai.
+Policymakers: Fund AI ethics education and awareness programs.
+Quick notes for your slide
+Title: Exoticism in text-to-image generators
+Definition: Over-representing stereotyped cultural features at the cost of accuracy
+Setup: 13 Global South and 3 Global North countries, with everyday-activity prompts and a CLIP similarity metric
+Key number: 0.74 (Global South) vs. 0.40 (Global North) average similarity
+Takeaways: It extends beyond India, it affects Indigenous groups in the Global North, and marginalized subgroups within a country are exoticized further
+Ask: Clarification prompts for developers, critical use for users
+Things worth flagging if you're asked questions
+
+I noticed a few weak spots while reading:
+
+Appendix vs. main text: The appendix describes 16 countries × 3 actor types (person/man/woman) × 10 activities, with 2 generations each. The main text describes 25 images per prompt with a "person" template only.
+Clubbing: The text mentions "clubbing" scores, but clubbing doesn't appear as a column in Figure 5 or Table 4.
+Table 4 caption: It cites 0.47 for USA hiking, but the table says 0.37.
+Interpretation of the metric: A high score is read as exoticism, but it measures only similarity to the baseline, not whether the depiction is inaccurate. The baseline itself could already be stereotyped, which makes this a relative measure.
+Qualitative sections: Sections 3 and 4 rest on a handful of selected images with no quantitative backing, and the authors acknowledge their own subjectivity.
+
+A good one-line framing for the audience: the paper shows that T2I models don't just misrepresent marginalized groups, they lock them into a stereotype regardless of context.
