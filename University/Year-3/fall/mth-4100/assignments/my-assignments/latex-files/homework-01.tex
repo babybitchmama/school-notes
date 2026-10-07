@@ -1,0 +1,100 @@
+\createtitlepage{Homework 1}{October 7, 2026}
+
+\begin{problem}[4]
+  How many distinct positive divisors does each of the following numbers have?
+  \begin{enumerate}
+    \item $3^4 \times 5^2 \times 7^6 \times 11$.
+    \item $620$.
+    \item $10^{10}$.
+  \end{enumerate}
+\end{problem}
+
+\begin{solution}[(i)]
+  The entire number is expressed as a product of prime factors. For 3, the exponent is 4, for 5 it is 2, for 7 it is 6, and for 11 it is 1. To find the number of distinct positive divisors, we add 1 to each of the exponents and multiply the results together:
+  \[%
+    (4 + 1)(2 + 1)(6 + 1)(1 + 1) = 5 \times 3 \times 7 \times 2 = 210
+  .\qedhere\]%
+\end{solution}
+
+\begin{solution}[(ii)]
+  We can factor $620$ into its prime factors, i.e., $620 = 2^2 \times 5 \times 31$. The exponents of the prime factors are 1, 1, and 1, respectively. As in part (i), we get:
+  \[%
+    (2 + 1)(1 + 1)(1 + 1) = 4 \times 2 \times 2 = 12
+  .\qedhere\]%
+\end{solution}
+
+\begin{solution}[(iii)]
+  We can express $10^{10}$ as:
+  \[%
+    10^{10} = (2 \times 5)^{10} = 2^{10} \times 5^{10}
+  .\]%
+  The exponents of the prime factors are 10 and 10, respectively. As in part (i), we get:
+  \[%
+    (10 + 1)(10 + 1) = 11 \times 11 = 121
+  .\qedhere\]%
+\end{solution}
+
+\begin{problem}[13]
+  There are 100 students at a school and three dormitories, $A$, $B$, and $C$, with capacities 25, 35, and 40, respectively.
+  \begin{enumerate}
+    \item How many ways are there to fill the dormitories?
+    \item Suppose that, of the 100 students, 50 are men and 50 are women and that $A$ is an all-men's dorm, $B$ is an all-women's dorm, and $C$ is co-ed. How many ways are there to fill the dormitories?
+  \end{enumerate}
+\end{problem}
+
+\begin{solution}[(i)]
+  For dorm $A$, there are 25 students to choose from 100, which can be done in $\binom{100}{25}$ ways. After filling dorm $A$, there are 75 students left for dorm $B$, which can be filled in $\binom{75}{35}$ ways. Finally, the remaining 40 students will go to dorm $C$, which can be done in $\binom{40}{40} = 1$ way. Therefore, the total number of ways to fill the dormitories is:
+  \[%
+    \binom{100}{25} \times \binom{75}{35} \times 1 = \binom{100}{25} \times \binom{75}{35}
+  .\qedhere\]%
+\end{solution}
+
+\begin{solution}[(ii)]
+  For dorm $A$, we need to choose 25 men from 50, which can be done in $\binom{50}{25}$ ways. For dorm $B$, we need to choose 35 women from the remaining 50, which can be done in $\binom{50}{35}$ ways. Finally, the remaining 15 men and 5 women will go to dorm $C$, which can be done in $\binom{20}{20} = 1$ way. Therefore, the total number of ways to fill the dormitories is:
+  \[%
+    \binom{50}{25} \times \binom{50}{35} \times 1 = \binom{50}{25} \times \binom{50}{35}
+  .\qedhere\]%
+\end{solution}
+
+\begin{problem}[16]
+  Prove that
+  \[%
+    \binom{n}{r} = \binom{n}{n-r}
+  ,\]%
+  by using a combinatorial argument and not the values of these numbers as given in Theorem 3.3.1.
+\end{problem}
+
+\begin{solution}
+\end{solution}
+
+\begin{problem}[27]
+  In how many ways can five indistinguishable rooks be placed on an 8-by-8 chessboard so that no rook can attack another and neither the first row nor the first column is empty?
+\end{problem}
+
+\begin{solution}
+\end{solution}
+
+\begin{problem}[44]
+  Prove that the number of ways to distribute $n$ different objects among $k$ children equals $k^n$.
+\end{problem}
+
+\begin{solution}
+\end{solution}
+
+\begin{problem}[56]
+  What is the probability that a poker hand contains a flush (that is, five cards of the same suit)?
+\end{problem}
+
+\begin{solution}
+  There are a total of $\binom{52}{5}$ possible poker hands. To have a flush, we need to choose 5 cards from the same suit. There are 4 suits, and for each suit, there are $\binom{13}{5}$ ways to choose 5 cards. Therefore, the total number of flush hands is:
+  \[%
+    \frac{4 \times \binom{13}{5}}{\binom{52}{5}} \approx 0.1965\%
+  .\]%
+\end{solution}
+
+\begin{problem}[60]
+  A bagel store sells six different kinds of bagels. Suppose you choose 15 bagels at random. What is the probability that your choice contains at least one bagel of each kind? If one of the kinds of bagels is Sesame, what is the probability that your choice contains at least three Sesame bagels?
+\end{problem}
+
+\begin{solution}
+\end{solution}
