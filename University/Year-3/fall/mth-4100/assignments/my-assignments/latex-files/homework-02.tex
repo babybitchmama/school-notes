@@ -1,0 +1,133 @@
+\createtitlepage{Homework 2}{October 15, 2026}
+
+\begin{problem}[5]
+  Show that if $n + 1$ distinct integers are chosen from the set $\{1, 2, \ldots , 3n\}$, then there are always two which differ by at most 2.
+\end{problem}
+
+\begin{solution}
+  Suppose we have $n + 1$ distinct integers chosen from the set $\{1, 2, \ldots, 3n\}$. We can partition the set $\{1, 2, \ldots, 3n\}$ into $n$ groups of three consecutive integers: $\{1, 2, 3\}, \{4, 5, 6\}, \ldots, \{3n - 2, 3n - 1, 3n\}$. Using the pigeonhole principle, since we have $n + 1$ integers and only $n$ groups, at least one group must contain at least two of the chosen integers. Therefore, there exist two integers that differ by at most 2.
+\end{solution}
+
+\begin{problem}[7]
+  Show that for any given 52 integers there exist two of them whose sum, or else whose difference, is divisible by 100.
+\end{problem}
+
+\begin{solution}
+  Define an equivalence relation on the integers module 100 by saying that $a \sim b$ if $a \equiv b \pmod{100}$. Then, we partition the integers into 100 equivalence classes: $[0], [1], [2], \ldots, [99]$. By the pigeonhole principle, since we have 52 integers and 100 equivalence classes, at least one equivalence class must contain at least two of the chosen integers. If two integers belong to the same equivalence class, their difference is divisible by 100. If they belong to different equivalence classes, their sum is divisible by 100. Therefore, there exist two integers whose sum or difference is divisible by 100.
+\end{solution}
+
+\begin{problem}[8]
+  Use the pigeonhole principle to prove that the decimal expansion of a rational number $m/n$ eventually is repeating. For example,
+  \[%
+    \frac{34,478}{99,900} = 0.34512512512512512\dots
+  .\]%
+\end{problem}
+
+\begin{solution}
+  Dividing out the integer part, we may assume $0 \le m < n$. Performing long division, let $r_0 = m$, and for each $k \ge 1$ write
+  \[%
+    10\,r_{k-1} = n\,d_k + r_k, \qquad 0 \le r_k < n
+  .\]%
+  Then $d_k$ is the $k$-th digit after the decimal point and $r_k$ is the remainder after that step.
+
+  Each remainder $r_k$ lies in $\{0, 1, \dots, n-1\}$, which has only $n$ elements. Consider the $n+1$ remainders $r_0, r_1, \dots, r_n$. By the pigeonhole principle, two of them are equal, i.e., $r_i = r_j$ for some $i < j$.
+
+  The next digit and next remainder are determined entirely by the current remainder, since
+  \[%
+    d_{k+1} = \lfloor 10 r_k / n \rfloor, \qquad r_{k+1} = 10 r_k - n\,d_{k+1}
+  .\]%
+  So $r_i = r_j$ forces $r_{i+1} = r_{j+1}$, then $r_{i+2} = r_{j+2}$, and so on, and the digits agree too, i.e., $d_{i+t} = d_{j+t}$ for all $t \ge 1$. Hence the digits from position $i+1$ onward repeat in blocks of length $p = j - i$, and the decimal expansion is eventually repeating.
+\end{solution}
+
+\begin{problem}[14]
+  A bag contains 100 apples, 100 bananas, 100 oranges, and 100 pears. If I pick one piece of fruit out of the bag every minute, how long will it be before I am assured of having picked at least a dozen pieces of fruit of the same kind?
+\end{problem}
+
+\begin{solution}
+  There are 4 kinds of fruit (the ``boxes''), and you want 12 of one kind. If you have picked 45 pieces and each kind appeared at most 11 times, you would have at most $4\cdot 11 = 44 < 45$ pieces, a contradiction. So some kind appears at least 12 times, hence, we have 45 picks. So it takes 45 minutes (counting the first pick at minute 1, the 45th pick happens at minute 45). You are assured of having a dozen of the same kind after the 45th pick, and not before, since 44 picks could be 11 of each.
+\end{solution}
+
+\begin{problem}[15]
+  Prove that, for any $n + 1$ integers $a_1, a_2, \cdots, a_{n+1}$, there exist two of the integers $a_i$ and $a_j$ with $i \ne j$ such that $a_i - a_j$ is divisible by $n$.
+\end{problem}
+
+\begin{solution}
+  Write
+  \[%
+    a_k = n\,q_k + s_k, \qquad 0 \le s_k \le n-1
+  .\]%
+  There are $n+1$ integers $a_1, \dots, a_{n+1}$, so there are $n+1$ remainders $s_1, \dots, s_{n+1}$. But each remainder lies in the set $\{0, 1, \dots, n-1\}$, which has only $n$ elements. By the pigeonhole principle, two of the remainders are equal, i.e., $s_i = s_j$ for some $i \ne j$. Then
+  \[%
+    a_i - a_j = n(q_i - q_j) + (s_i - s_j) = n(q_i - q_j)
+  ,\]%
+  which is divisible by $n$.
+
+  Here, the ``pigeons'' are the $n+1$ integers, the ``holes'' are the $n$ possible remainders mod $n$, and each integer goes into the hole given by its remainder. Two integers share a hole, so they differ by a multiple of $n$.
+\end{solution}
+
+\begin{problem}[20]
+  Prove that $r(3, 3, 3) \le 17$.
+\end{problem}
+
+\begin{solution}
+  Pick any vertex $v$ of $K_{17}$. It has $16$ edges, each colored with one of 3 colors. By the generalized pigeonhole principle, since $16 > 3\cdot 5 = 15$, at least $\lceil 16/3\rceil = 6$ of these edges have the same color, say red. Let $u_1, \dots, u_6$ be the other endpoints of those red edges. Now look at the $\binom{6}{2}=15$ edges among $u_1,\dots,u_6$. Here, we have two cases.
+
+  For the first case, some edge $u_iu_j$ is red. Then $v, u_i, u_j$ form a red triangle (the edges $vu_i$, $vu_j$, $u_iu_j$ are all red), and we are done.
+
+  For the second case, no edge among the $u$'s is red. Then these 6 vertices are joined by edges of only 2 colors (green and blue). Pick $u_1$. It has 5 edges to the others, colored green or blue, so by pigeonhole at least $3$ share a color, say green, going to $u_a, u_b, u_c$. If any of $u_au_b$, $u_au_c$, $u_bu_c$ is green, it forms a green triangle with $u_1$. Otherwise all three are blue, so $u_a, u_b, u_c$ form a blue triangle.
+
+  In every case there is a monochromatic triangle. Hence every 3-coloring of the edges of $K_{17}$ contains one, so $r(3,3,3)\le 17$.
+\end{solution}
+
+\begin{problem}[22]
+  Prove that
+  \[%
+    r(\underbrace{3, 3, 3, \cdots, 3}_{k+1}) \le (k + 1)(r(\underbrace{3, 3, 3, \cdots, 3}_{k}) - 1) + 2
+  .\]%
+  Use this result to obtain an upper bound for
+  \[%
+    r(\underbrace{3, 3, 3, \cdots, 3}_{n})
+  .\]%
+\end{problem}
+
+\begin{solution}
+  Let $N=(k+1)(R_k-1)+2$ and color the edges of $K_N$ with $k+1$ colors. We must find a monochromatic triangle. Pick a vertex $v$. It has $N-1=(k+1)(R_k-1)+1$ edges, each in one of $k+1$ colors. If every color were used on at most $R_k-1$ of them, there would be at most $(k+1)(R_k-1)$ edges, a contradiction. So by the pigeonhole principle some color, say color 1, appears on at least $R_k$ edges at $v$. Let $U$ be the set of the other endpoints of those edges, so $|U|\ge R_k$.
+  Again, we have two cases.
+
+  For the first case, some edge $xy$ with $x,y\in U$ has color 1. Then $v,x,y$ form a triangle of color 1.
+
+  For the second case, no edge inside $U$ has color 1. Then the edges inside $U$ use only $k$ colors, and $|U|\ge R_k$, so by the definition of $R_k$ there is a monochromatic triangle inside $U$.
+
+  Either way a monochromatic triangle exists, so $R_{k+1}\le (k+1)(R_k-1)+2$.
+
+  For the upper bound, let $b_k=R_k-1$. The recursion becomes
+  \[%
+    b_{k+1}\le (k+1)\,b_k+1
+  .\]%
+  Dividing by $(k+1)!$, we get
+  \[%
+    \frac{b_{k+1}}{(k+1)!}\le \frac{b_k}{k!}+\frac{1}{(k+1)!}
+  .\]%
+  Since $R_1=3$ (with one color, $K_3$ is itself monochromatic), $b_1=2=\frac1{0!}+\frac1{1!}$. Telescoping gives
+  \[%
+    \frac{b_n}{n!}\le \sum_{j=0}^{n}\frac1{j!}
+  .\]%
+  Therefore
+  \[%
+    r(\underbrace{3,\dots,3}_{n}) \le n!\sum_{j=0}^{n}\frac1{j!}+1 \;\le\; \lfloor e\cdot n!\rfloor+1
+  .\qedhere\]%
+\end{solution}
+
+\begin{problem}[27]
+  A collection of subsets of $\{1, 2, \cdots, n\}$ has the property that each pair of subsets has at least one element in common. Prove that there are at most $2^{n-1}$ subsets in the collection.
+\end{problem}
+
+\begin{solution}
+  Let $S=\{1,\dots,n\}$. There are $2^n$ subsets of $S$. Pair each subset $A$ with its complement $A^c = S\setminus A$. This splits the $2^n$ subsets into $2^{n-1}$ pairs $\{A, A^c\}$ (no subset is its own complement, so each pair has two distinct members).
+
+  Suppose the collection contains both $A$ and $A^c$ for some $A$. Then these two subsets have no element in common, since $A\cap A^c=\varnothing$, contradicting the hypothesis. So the collection contains at most one subset from each pair.
+
+  There are $2^{n-1}$ pairs, so the collection has at most $2^{n-1}$ subsets.
+
+  Here, the ``holes'' are the $2^{n-1}$ complementary pairs, and the ``pigeons'' are the subsets in the collection. If the collection had more than $2^{n-1}$ subsets, two of them would lie in the same hole, meaning they would be complements of each other and hence disjoint.
+\end{solution}
